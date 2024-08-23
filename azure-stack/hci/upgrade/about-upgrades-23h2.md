@@ -3,7 +3,7 @@ title: About Azure Stack HCI Upgrade to latest version 23H2
 description: Learn about how to upgrade from Azure Stack HCI, version 22H2 to latest Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/21/2024
+ms.date: 08/23/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -55,10 +55,20 @@ The following diagram illustrates the Azure Stack HCI upgrade process:
 
 :::image type="content" source="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png" alt-text="Diagram that illustrates the two steps to update the Azure Stack HCI OS and then apply the solution update." lightbox="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png":::
 
-> [!IMPORTANT]
-> - If running Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI cluster, you must remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. 
-> - Preview versions of Arc VMs can't be updated.
-> - If running stretched clusters, you must upgrade to version 23H2 OS to maintain your cluster in a supported state. The solution upgrade is not available for stretched clusters.
+
+## Supported workloads and configurations
+
+Azure Stack HCI upgrade supports the following services and workloads:
+
+
+|Workload/Service  |Supported  |Comments  |
+|---------|---------|---------|
+| Azure Kubernetes (AKS) on Azure Stack HCI     | No        | Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. <br>Remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade.        |
+| Arc VMs on Azure Stack HCI     | Yes        | Preview versions of Arc VMs can't be upgraded.        |
+| Stretch clusters on Azure Stack HCI     | No        | You must upgrade to version 23H2 OS to maintain your cluster in a supported state. <br> The solution upgrade is not available for stretched clusters.         |
+| System Center Virtual Machine Manager (SCVMM)     | No         | If your Azure Stack HCI, version 22H2 cluster is managed by SCVMM, this upgrade process is not supported. <br>System Center 2025 release will support management and monitoring of Azure Stack HCI, version 23H2 clusters. <br>For more information, see the [announcement](https://techcommunity.microsoft.com/t5/system-center-blog/announcement-system-center-2025-is-here/ba-p/4138510).         |
+| Azure Stack HCI, version 22H2SP    | No        | This upgrade process is not supported for upgrading from Azure Stack HCI, version 22H2 Supplemental Package clusters.        |
+
 
 ## Next steps
 
