@@ -71,14 +71,14 @@ Follow these steps to install updates:
 
 1. When you connect to a cluster, the Windows Admin Center dashboard alerts you if one or more servers have updates ready to be installed and provide a link to update now. Alternatively, select **Updates** from the **Operations** menu at the left.
 
-1. When updating cluster for the first time, Windows Admin Center checks if the cluster is properly configured to run CAU. If not, it prompts you to allow Windows Admin Center to configure CAU, which includes installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Add Cluster-Aware-Updating role**.
+1. If you're updating your cluster for the first time, Windows Admin Center checks if the cluster is properly configured to run CAU. If not, it prompts you to allow Windows Admin Center to configure CAU, which includes installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Add Cluster-Aware-Updating role**.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Screenshot of Windows Admin Center automatically configuring the cluster to run Cluster-Aware Updating." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
 
    > [!NOTE]
    > To use the CAU tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
 
-1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your cluster. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Stack HCI, version 23H2** is **Available** for the cluster nodes. If the feature update is not displayed, ensure your cluster is running the Azure Stack HCI OS and that the nodes have direct access to Windows Update, then select **Check for updates**.
+1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your cluster. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Stack HCI, version 23H2** is **Available** for the cluster nodes. If the feature update isn't displayed, ensure your cluster is running the Azure Stack HCI OS and that the nodes have direct access to Windows Update, then select **Check for updates**.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png" alt-text="Screenshot of the Updates page in Windows Admin Center showing the available updates." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png":::
 
@@ -87,7 +87,7 @@ Follow these steps to install updates:
 
    If you navigate away from the Updates screen while an update is in progress, there could be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
 
-1. Select **Install**. Windows Admin Center will automatically perform a series of readiness checks to identify issues that could prevent CAU from completing successfully. If any issues are found, select the **Details** link next to the issue, address the issue, and then select **Check again** to run the readiness checks again.
+1. Select **Install**. Windows Admin Center automatically performs a series of readiness checks to identify issues that could prevent CAU from completing successfully. If any issues are found, select the **Details** link next to the issue, address the issue, and then select **Check again** to run the readiness checks again.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-checks.png" alt-text="Screenshot of the readiness check during the installation of updates." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-checks.png":::
 
