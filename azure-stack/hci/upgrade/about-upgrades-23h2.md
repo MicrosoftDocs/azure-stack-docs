@@ -65,9 +65,9 @@ Azure Stack HCI upgrade supports the following services and workloads:
 |---------|---------|---------|
 | Azure Kubernetes (AKS) on Azure Stack HCI     | No        | Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. <br>Remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade.        |
 | Arc VMs on Azure Stack HCI     | Yes        | Preview versions of Arc VMs can't be upgraded.        |
-| Stretch clusters on Azure Stack HCI     | No        | You must upgrade to version 23H2 OS to maintain your cluster in a supported state. <br> The solution upgrade is not available for stretched clusters.         |
-| System Center Virtual Machine Manager (SCVMM)     | No         | If your Azure Stack HCI, version 22H2 cluster is managed by SCVMM, this upgrade process is not supported. <br>System Center 2025 release will support management and monitoring of Azure Stack HCI, version 23H2 clusters. <br>For more information, see the [announcement](https://techcommunity.microsoft.com/t5/system-center-blog/announcement-system-center-2025-is-here/ba-p/4138510).         |
-| Azure Stack HCI, version 22H2SP    | No        | This upgrade process is not supported for upgrading from Azure Stack HCI, version 22H2 Supplemental Package clusters.        |
+| Stretch clusters on Azure Stack HCI     | No        | You must upgrade to version 23H2 OS to maintain your cluster in a supported state. <br> The solution upgrade isn't available for stretched clusters.         |
+| System Center Virtual Machine Manager (SCVMM)     | No         | If your Azure Stack HCI, version 22H2 cluster is managed by SCVMM, this upgrade process isn't supported. <br>System Center 2025 release will support management and monitoring of Azure Stack HCI, version 23H2 clusters. <br>For more information, see the [announcement](https://techcommunity.microsoft.com/t5/system-center-blog/announcement-system-center-2025-is-here/ba-p/4138510).         |
+| Azure Stack HCI, version 22H2SP    | No        | This upgrade process isn't supported for upgrading from Azure Stack HCI, version 22H2 Supplemental Package clusters.        |
 
 
 ## Next steps
