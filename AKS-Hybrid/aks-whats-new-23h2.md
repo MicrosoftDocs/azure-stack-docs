@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 08/19/2024
+ms.date: 08/26/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
@@ -50,8 +50,8 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see the [PowerShell reference documentation](/powershell/module/az.aksarc/?view=azps-12.1.0&preserve-view=true).
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
-- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Stack HCI. For more information, see [link TBD].
-- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange. For more information, see [link TBD].
+- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Stack HCI.
+- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange.
 
 #### Supported component versions for 2408
 
