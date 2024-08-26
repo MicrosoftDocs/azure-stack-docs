@@ -11,7 +11,7 @@ ms.date: 08/26/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This topic provides guidance on how to deploy SQL Server on the Azure Stack HCI, version 23H2 operating system.
+This topic provides guidance on how to deploy SQL Server on the Azure Stack HCI, version 23H2 system.
 
 ## Solution overview
 
