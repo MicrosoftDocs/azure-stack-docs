@@ -9,7 +9,7 @@ ms.date: 08/26/2024
 
 # Deploy SQL Server on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 23H2, 22H2, and 21H2; SQL Server (all supported versions)
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; SQL Server (all supported versions)
 
 This topic provides guidance on how to plan, configure, and deploy SQL Server on the Azure Stack HCI operating system. The operating system is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment.
 
@@ -19,7 +19,7 @@ Azure Stack HCI provides a highly available, cost efficient, flexible platform t
 The platform’s flexibility is especially important for mission critical databases. You can run SQL Server on virtual machines (VMs) that use either Windows Server or Linux, which allows you to consolidate multiple database workloads and add more VMs to your Azure Stack HCI environment as needed. Azure Stack HCI also enables you to integrate SQL Server with Azure Site Recovery to provide a cloud-based migration, restoration, and protection solution for your organization’s data that is reliable and secure.
 
 ## Deploy SQL Server
-This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
+This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI, and use Windows Admin Center to manage the operating system on your servers. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
 
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
 First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.

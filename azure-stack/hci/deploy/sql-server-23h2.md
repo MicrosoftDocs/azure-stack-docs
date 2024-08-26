@@ -4,12 +4,12 @@ description: This topic provides guidance on how to deploy SQL Server on Azure S
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 08/26/2024
 ---
 
 # Deploy SQL Server on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This topic provides guidance on how to deploy SQL Server on the Azure Stack HCI, version 23H2 operating system.
 
@@ -21,7 +21,7 @@ The platform's flexibility is especially important for mission critical database
 
 ## Deploy SQL Server
 
-This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI, and use Windows Admin Center to manage the operating system on your servers. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
+This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
 
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
 
@@ -58,7 +58,7 @@ These options all work with the Microsoft [Azure Cloud witness](/windows-server/
 
 ### Step 5: Set up Azure hybrid services
 
-There are several Azure hybrid services that you can use to help keep your SQL Server data and applications secure. [Azure Site Recovery](https://azure.microsoft.com/products/site-recovery/) is a disaster recovery as a service (DRaaS). For more information about using this service to protect the SQL Server back end of an application to help keep workloads online, see [Set up disaster recovery for SQL Server](/azure/site-recovery/site-recovery-sql).
+There are several Azure hybrid services that you can use to help keep your SQL Server data and applications secure. [Azure Site Recovery](https://azure.microsoft.com/products/site-recovery/) is a disaster recovery as a service (DRaaS) solution. For more information about using this service to protect the SQL Server back end of an application to help keep workloads online, see [Set up disaster recovery for SQL Server](/azure/site-recovery/site-recovery-sql).
 
 [Azure Backup](https://azure.microsoft.com/products/backup/) lets you define backup policies to protect enterprise workloads and supports backing up and restoring SQL Server consistency. For more information about how to back up your on-premises SQL data, see [Install Azure Backup Server](/azure/backup/backup-azure-microsoft-azure-backup) and [Back up Azure Stack HCI virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
