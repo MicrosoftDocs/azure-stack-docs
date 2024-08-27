@@ -37,6 +37,9 @@ To convert the QCOW2 image to VHDX and create a VM image from the VHDX image.
 1. [Convert QCOW2 to VHDX](#step-1-convert-qcow2-to-vhdx).
 2. [Create a SUSE VM image](#step-2-create-a-suse-vm-image).
 
+> [!IMPORTANT]
+> Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+
 The following sections provide detailed instructions for each step in the workflow.
 
 ## Step 1: Convert QCOW2 to VHDX
