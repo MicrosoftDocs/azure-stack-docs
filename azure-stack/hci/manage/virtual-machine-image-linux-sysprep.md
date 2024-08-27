@@ -37,7 +37,8 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from an Ubuntu image
 
 > [!IMPORTANT]
-> We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
+> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> - We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
 
