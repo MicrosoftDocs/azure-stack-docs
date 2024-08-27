@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 07/09/2024
+ms.date: 08/15/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -94,6 +94,15 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 >[!NOTE]
 > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
+
+
+### Active Directory
+
+Ensure that the following firewall rules are configured in your on-premises firewall for Active Directory (local security authority).
+
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Stack HCI | TCP | 9389 |
 
 ### Failover Clustering
 
