@@ -186,17 +186,17 @@
       "redirect_document_id":false
     },    
     { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11300.md", 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11300.md", 
       "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
       "redirect_document_id":false
     },    
     { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11330.md", 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11330.md", 
       "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
       "redirect_document_id":false
     },    
     { 
-      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11930.md", 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11930.md", 
       "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
       "redirect_document_id":false
     },    
@@ -391,12 +391,12 @@
       "redirect_document_id":false
     },                          
     { 
-      "source_path":"azure-stack/operator/relnotearchive/known-issues-2002.md.md", 
+      "source_path":"azure-stack/operator/relnotearchive/known-issues-2002.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-2002", 
       "redirect_document_id":false
     },                          
     { 
-      "source_path":"azure-stack/operator/relnotearchive/release-notes-2002.md.md", 
+      "source_path":"azure-stack/operator/relnotearchive/release-notes-2002.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-2002", 
       "redirect_document_id":false
     },                          
