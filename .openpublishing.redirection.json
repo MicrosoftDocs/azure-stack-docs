@@ -161,6 +161,56 @@
       "redirect_document_id":false
     },    
     { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-five.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-four.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-one.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-seven.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-two.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11300.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11330.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11930.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/ruggedized/operator/azure-stack-manage-basics-tzl.md", 
+      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/ruggedized/operator/azure-stack-windows-server-faq-tzl.md", 
+      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
+      "redirect_document_id":false
+    },    
+    { 
       "source_path":"azure-stack/operator/known-issues-vn.md", 
       "redirect_url":"/azure-stack/operator/known-issues", 
       "redirect_document_id":false
