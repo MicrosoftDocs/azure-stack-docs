@@ -216,6 +216,16 @@
       "redirect_document_id":false
     },        
     { 
+      "source_path":"azure-stack/operator/hotfix-1-2008-41-163.md", 
+      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
+      "redirect_document_id":false
+    },            
+    { 
+      "source_path":"azure-stack/operator/hotfix-1-2301-2-58.md", 
+      "redirect_url":"/azure-stack/operator/hotfix-1-2301-2-64", 
+      "redirect_document_id":false
+    },            
+    { 
       "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
       "redirect_document_id":false
@@ -328,6 +338,16 @@
     { 
       "source_path":"azure-stack/operator/relnotearchive/release-notes-1910.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1910", 
+      "redirect_document_id":false
+    },                          
+    { 
+      "source_path":"azure-stack/operator/relnotearchive/known-issues-2002.md.md", 
+      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-2002", 
+      "redirect_document_id":false
+    },                          
+    { 
+      "source_path":"azure-stack/operator/relnotearchive/release-notes-2002.md.md", 
+      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-2002", 
       "redirect_document_id":false
     },                          
     { 
