@@ -201,6 +201,21 @@
       "redirect_document_id":false
     },    
     { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11300.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11330.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11930.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
       "source_path":"azure-stack/ruggedized/operator/azure-stack-manage-basics-tzl.md", 
       "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id":false
