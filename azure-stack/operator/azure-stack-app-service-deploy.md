@@ -607,7 +607,6 @@ To deploy Azure App Service in an offline environment, first create an offline i
     >    GO
     >    ***********************************************************
     > ```
-    > For more information, see the [release notes for Azure App Service on Azure Stack Hub 1.3](azure-stack-app-service-release-notes-update-three.md).
 
     ![Enter SQL Server info in Azure App Service Installer][8]
 
@@ -825,7 +824,6 @@ After you deploy and register the Azure App Service resource provider, test it t
     >    GO
     >    ***********************************************************
     > ```
-    > For more information, see the [release notes for Azure App Service on Azure Stack Hub 1.3](azure-stack-app-service-release-notes-update-three.md).
 
     ![Enter SQL Server info in Azure App Service Installer][8]
 

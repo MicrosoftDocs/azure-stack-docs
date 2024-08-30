@@ -330,6 +330,8 @@
         href: azure-stack-solution-template-service-fabric-cluster.md
   - name: Deploy apps
     items: 
+    - name: Common deployments
+      href: azure-stack-dev-start-deploy-app.md
     - name: Deploy a C# web app to a Windows VM
       href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
