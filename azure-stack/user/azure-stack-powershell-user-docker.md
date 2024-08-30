@@ -46,8 +46,7 @@ In these instructions, you will run a Linux-based container image that contains 
 
 1. You need to run Docker by using Linux container. When you run Docker, switch to Linux containers.
 
-1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-hub-with-vpn).
-
+1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), install the VPN on your remote machine.
 
 ## Install Azure Stack Hub Az module on a Linux container
 
@@ -102,7 +101,7 @@ In these instructions, you will run a Windows-based container image and install 
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers. The images supporting the Az module will require Docker 17.05 or newer.
 
-1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-hub-with-vpn).
+1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), install the VPN on your remote machine.
 
 ### Install Azure Stack Hub AzureRM module on a windows container
 
