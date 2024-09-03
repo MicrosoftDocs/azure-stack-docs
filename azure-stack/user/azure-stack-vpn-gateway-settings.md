@@ -184,7 +184,7 @@ This PowerShell example creates a new local network gateway:
 
 ```powershell
 New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
-   -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
+   -Location 'West US' -GatewayIpAddress '198.51.100.101' -AddressPrefix '10.5.51.0/24'
 ```
 
 Sometimes you need to modify the local network gateway settings; for example, when you add or modify the address range, or if the IP address of the VPN device changes. For more info, see [Modify local network gateway settings using PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
