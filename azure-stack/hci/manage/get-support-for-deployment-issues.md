@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 09/03/2024
 ---
 
 # Get support for Azure Stack HCI deployment issues
@@ -110,5 +110,10 @@ For remote support usage scenarios, see [Remote support examples](./get-remote-s
 
 ## Next steps
 
+For detailed remediation for common known issues, check out:
+> [!div class="nextstepaction"]
+> [Azure Stack HCI Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
+
+Alternatively, you can:
 - [Collect diagnostic logs](collect-logs.md)
 - [Contact Microsoft Support](get-support.md)
