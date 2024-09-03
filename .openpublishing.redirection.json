@@ -1,6 +1,26 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/install-preview-version.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/network-atc-faq.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/preview-post-installation.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/preview-channel.md",
       "redirect_url":"/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
       "redirect_document_id": false
@@ -146,6 +166,16 @@
       "redirect_document_id":false
     },
     { 
+      "source_path":"azure-stack/operator/azure-stack-provision-storage-account.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-manage-storage-accounts", 
+      "redirect_document_id":false
+    },
+    { 
+      "source_path":"azure-stack/user/azure-stack-connect-azure-stack.md", 
+      "redirect_url":"/azure-stack/user/azure-stack-powershell-configure-user", 
+      "redirect_document_id":false
+    },
+    { 
       "source_path":"azure-stack/operator/app-service-known-issues-v0.md", 
       "redirect_url":"/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
       "redirect_document_id":false
@@ -158,6 +188,86 @@
     { 
       "source_path":"azure-stack/operator/app-service-known-issues-v2.md", 
       "redirect_url":"/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-five.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-four.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-one.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-seven.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-two.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-three.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q2.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q3.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11300.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11330.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-sql-resource-provider-11930.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11300.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11330.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-mysql-resource-provider-11930.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-mysql-resource-provider-2-0-13", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/ruggedized/operator/azure-stack-manage-basics-tzl.md", 
+      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/ruggedized/operator/azure-stack-windows-server-faq-tzl.md", 
+      "redirect_url":"/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id":false
     },    
     { 
@@ -215,6 +325,16 @@
       "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
       "redirect_document_id":false
     },        
+    { 
+      "source_path":"azure-stack/operator/hotfix-1-2008-41-163.md", 
+      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
+      "redirect_document_id":false
+    },            
+    { 
+      "source_path":"azure-stack/operator/hotfix-1-2301-2-58.md", 
+      "redirect_url":"/azure-stack/operator/hotfix-1-2301-2-64", 
+      "redirect_document_id":false
+    },            
     { 
       "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
@@ -328,6 +448,16 @@
     { 
       "source_path":"azure-stack/operator/relnotearchive/release-notes-1910.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1910", 
+      "redirect_document_id":false
+    },                          
+    { 
+      "source_path":"azure-stack/operator/relnotearchive/known-issues-2002.md", 
+      "redirect_url":"/azure-stack/operator/relnotearchive/known-issues?view=azs-2002", 
+      "redirect_document_id":false
+    },                          
+    { 
+      "source_path":"azure-stack/operator/relnotearchive/release-notes-2002.md", 
+      "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-2002", 
       "redirect_document_id":false
     },                          
     { 
