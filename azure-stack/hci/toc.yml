@@ -19,7 +19,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2405 
       items:
-      - name: 2405.2 - Current
+      - name: 2405.3 - Current
+        href: known-issues-2405-3.md
+      - name: 2405.2
         href: known-issues-2405-2.md      
       - name: 2405.1
         href: known-issues-2405-1.md
@@ -51,7 +53,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: July 2024 - Current
+      - name: August 2024 - Current
+        href: security-update/hci-security-update-aug-2024.md
+      - name: July 2024
         href: security-update/hci-security-update-jul-2024.md
       - name: June 2024 
         href: security-update/hci-security-update-jun-2024.md
@@ -195,6 +199,8 @@ items:
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
       href: manage/create-arc-virtual-machines.md
+    - name: Run SQL Server
+      href: deploy/sql-server-23h2.md
 
 - name: Update 
   items:
@@ -291,6 +297,8 @@ items:
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
    
+    - name: Collect log files for Azure Arc VM
+      href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
@@ -475,6 +483,8 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
+  - name: Troubleshoot deployment validation issues
+    href: manage/troubleshoot-deployment.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support for Azure Stack HCI

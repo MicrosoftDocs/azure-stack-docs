@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 08/21/2024
 ms.custom: template-how-to
 ---
 
@@ -24,7 +24,9 @@ You can generate the parameters you need to create a single machine cluster usin
 New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json | Out-Null
 ```
 
-This command creates a configuration file called **aksedge-config.json** that includes the configuration needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. See the following examples for more options for creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+This command creates a configuration file called **aksedge-config.json** that includes the configuration needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. See the following examples for more options for creating the configuration file.
+
+A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
 
 The key parameters for single machine deployment are:
 

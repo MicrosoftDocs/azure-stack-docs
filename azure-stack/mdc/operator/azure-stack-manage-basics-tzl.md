@@ -60,7 +60,7 @@ There are a few account considerations to be aware of when managing Azure Stack 
 | **Account** | **Azure** | **AD FS** |
 |---|---|---|
 | Local administrator (.\Administrator) |   |
-| Microsoft Entra Global Administrator | Used during installation. <br> Owner of the default provider | Not applicable. |
+| Microsoft Entra Application Administrator | Used during installation. <br> Owner of the default provider | Not applicable. |
 | Account for Extended Storage|   |   |
 ||
 
@@ -141,7 +141,7 @@ There's information your users must understand before they use services and buil
 - [Azure Stack Hub VM features](../../user/azure-stack-vm-considerations.md)
 - [Azure Stack Hub storage: Differences and considerations](../../user/azure-stack-acs-differences.md)
 
-The information in these articles summarizes the differences between a service in Azure and Azure Stack Hub. It supplements the information that's available for an Azure service in the global Azure documentation.
+The information in these articles summarizes the differences between a service in Azure and Azure Stack Hub. It supplements the information that's available for an Azure service in the Azure documentation.
 
 ### Connect to Azure Stack Hub as a user
 

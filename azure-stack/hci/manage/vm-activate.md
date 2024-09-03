@@ -1,8 +1,8 @@
 ---
 title: Activate Windows Server VMs using Automatic Virtual Machine Activation
 description: This article explains the benefits of using Automatic Virtual Machine Activation over other activation methods and provides instructions on setting up this optional feature on Azure Stack HCI.
-author: sethmanheim
-ms.author: sethm
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 09/03/2024
 ---

@@ -4,7 +4,7 @@ description: This topic provides guidance on how to deploy SQL Server on Azure S
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 08/26/2024
 ---
 
 # Deploy SQL Server on Azure Stack HCI
@@ -48,7 +48,7 @@ Azure Stack HCI leverages [Windows Server Failover Clustering with SQL Server](/
 These options all work with the Microsoft Azure [Cloud witness](/windows-server/failover-clustering/deploy-cloud-witness) for quorum control. We recommend using cluster [AntiAffinity](/windows-server/failover-clustering/cluster-affinity) rules in WSFC for VMs placed on different physical nodes to maintain uptime for SQL Server in the event of host failures when you configure Always On availability groups.
 
 ### Step 5: Set up Azure hybrid services
-There are several Azure hybrid services that you can use to help keep your SQL Server data and applications secure. [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) is a disaster recovery as a service (DRaaS). For more information about using this service to protect the SQL Server back end of an application to help keep workloads online, see [Set up disaster recovery for SQL Server](/azure/site-recovery/site-recovery-sql).
+There are several Azure hybrid services that you can use to help keep your SQL Server data and applications secure. [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) is a disaster recovery as a service (DRaaS) solution. For more information about using this service to protect the SQL Server back end of an application to help keep workloads online, see [Set up disaster recovery for SQL Server](/azure/site-recovery/site-recovery-sql).
 
 [Azure Backup](https://azure.microsoft.com/services/backup/) lets you define backup policies to protect enterprise workloads and supports backing up and restoring SQL Server consistency. For more information about how to back up your on-premises SQL data, see [Install Azure Backup Server](/azure/backup/backup-azure-microsoft-azure-backup).
 
