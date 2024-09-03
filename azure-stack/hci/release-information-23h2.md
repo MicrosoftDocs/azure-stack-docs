@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/22/2024
+ms.date: 09/03/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
