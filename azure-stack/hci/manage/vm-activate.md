@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 09/03/2024
 ---
 
 # License Windows Server VMs on Azure Stack HCI
@@ -39,11 +39,11 @@ Choose the deployment option that best suits your needs:
 | Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
 | Where do I want to deploy my Windows Server (WS) VMs? | Azure Stack HCI only. | Can be applied anywhere. |
-| What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | Version-specific. |
+| What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | All versions up to the latest version includes versions of Windows Server that are supported by Azure Stack HCI. Specifically, the benefit is extended to Azure Stack HCI version 23H2 or 22H2. |
 | Does this option also allow me to use Windows Server: Azure edition? | Yes. | Need to have both Software Assurance (SA) and WS volume license keys. |
-| How do I activate my WS VMs? | No host-side keys – AVMA is automatically enabled. After it's enabled, you can then apply the generic AVMA keys on the client side. | Activate Azure Hybrid Benefit for Azure Stack HCI first, then enable Windows Server subscription. For more information, see [Azure Hybrid Benefit for Azure Stack HCI](../concepts/azure-hybrid-benefit-hci.md). |
-| What are the CAL requirements? | No CAL required – included in WS subscription. | Windows Server CAL. |
-| What is the pricing model? | Per physical core/per month pricing, purchased and billed through Azure (free trial within the first 60 days of registering your Azure Stack HCI). For details, see [Pricing for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-stack/hci/). | Core licenses. For details, see [Licensing Windows Server](https://www.microsoft.com/licensing/product-licensing/windows-server) and [Pricing for Windows Server licenses](https://www.microsoft.com/windows-server/pricing?rtc=1). |
+| How do I activate my WS VMs? | No host-side keys – AVMA is automatically enabled. After it's enabled, you can then apply the generic AVMA keys on the client side. | To activate this benefit, you must exchange your 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure#getting-azure-hybrid-benefit-for-azure-stack-hci). |
+| What are the CAL requirements? | No CAL required – included in WS subscription. | No CAL required – included in SA/WS subscription. |
+| What is the pricing model? | Per physical core/per month pricing, purchased and billed through Azure (free trial within the first 60 days of registering your Azure Stack HCI). For details, see [Pricing for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-stack/hci/). | This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription fee on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/). |
 
 ### Guest versions
 
