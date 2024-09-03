@@ -40,7 +40,6 @@ Here are the fixed issues in this release:
 | Updates <!--28101226-->|In this release, an update issue related to missing resource type ID field in the health checks, was fixed.  ||
 | Updates <!--28101677-->|In this release, an update issue related to different health checks having the same name, was fixed.   ||
 
-
 ## Known issues in this release
 
 Here are the known issues in this release:
@@ -48,7 +47,7 @@ Here are the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Arc VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Arc VM is unsupported. | |
-| Networking | When a node is configured with a proxy server that has capital letters in its name, such as **HTTP://10.100.000.00:8080**, Arc extensions fail to install or update on the node in existing builds, including version 2408. However, the node remains Arc connected. | To mitigate the issue follow these steps: </br><br> 1. Set the environment values in lowercase: `[System.Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://10.100.000.00:8080", "Machine")`. </br><br> 2. Validate the values have been set: `[System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine").` </br><br> 3. Restart Arc services: </br><br> `Restart-Service himds` </br><br> `Restart-Service ExtensionService` </br><br> `Restart-Service GCArcService` </br><br> 4. Signal the AzcmaAgent with the lowercase proxy information: </br><br> `& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config set proxy.url http://10.100.000.00:8080` </br><br>`& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config list` |
+| Networking | When a node is configured with a proxy server that has capital letters in its name, such as **HTTP://10.100.000.00:8080**, Arc extensions fail to install or update on the node in existing builds, including version 2408. However, the node remains Arc connected. | Follow these steps to mitigate the issue: </br><br> 1. Set the environment values in lowercase: `[System.Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://10.100.000.00:8080", "Machine")`. </br><br> 2. Validate the values have been set: `[System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine").` </br><br> 3. Restart Arc services: </br><br> `Restart-Service himds` </br><br> `Restart-Service ExtensionService` </br><br> `Restart-Service GCArcService` </br><br> 4. Signal the AzcmaAgent with the lowercase proxy information: </br><br> `& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config set proxy.url http://10.100.000.00:8080` </br><br>`& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config list` |
 
 ## Known issues from previous releases
 
