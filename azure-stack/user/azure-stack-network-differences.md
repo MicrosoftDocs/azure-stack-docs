@@ -2,7 +2,7 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: sethmanheim
-ms.date: 03/28/2024
+ms.date: 09/03/2024
 ms.topic: article
 ms.author: sethm
 ms.reviewer: rtiberiu
@@ -55,6 +55,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to set up alerts for VPN resources. | Not yet supported.|
+|  | ASN | Azure supports 4-byte ASNs. | Azure Stack Hub only supports 2-byte ASNs (up to 65535).|
 | Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported. The Standard Load Balancer is currently in public preview. For information, see [Standard Load Balancer considerations](standard-load-balancer-considerations.md).<br>The SKU property isn't supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT rules support for service endpoints | Azure supports specifying Service Endpoints for inbound NAT rules. | Azure Stack Hub doesn't yet support service endpoints, so these rules can't be specified. |
@@ -82,9 +83,9 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Virtual Machine Scale Sets | Public IP per Virtual Machine | Supported | Not supported. If needed, similar functionality can be achieved with a load balancer. |
 |  | Update or change VMs primary NIC | Supported | Not supported. It's not possible to elevate a secondary NIC to primary or vice versa in Azure Stack Hub. |
 
-## API versions 
+## API versions
 
-Azure Stack Hub Networking supports the following API versions: 
+Azure Stack Hub Networking supports the following API versions:
 
 - 2018-11-01
 - 2018-10-01
