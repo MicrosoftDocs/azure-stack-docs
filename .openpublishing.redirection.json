@@ -1,6 +1,26 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/install-preview-version.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/network-atc-faq.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/preview-post-installation.md",
+      "redirect_url":"/azure-stack/hci/whats-new?tabs=2405releases",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/preview-channel.md",
       "redirect_url":"/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
       "redirect_document_id": false
@@ -146,6 +166,16 @@
       "redirect_document_id":false
     },
     { 
+      "source_path":"azure-stack/operator/azure-stack-provision-storage-account.md", 
+      "redirect_url":"/azure-stack/operator/azure-stack-manage-storage-accounts", 
+      "redirect_document_id":false
+    },
+    { 
+      "source_path":"azure-stack/user/azure-stack-connect-azure-stack.md", 
+      "redirect_url":"/azure-stack/user/azure-stack-powershell-configure-user", 
+      "redirect_document_id":false
+    },
+    { 
       "source_path":"azure-stack/operator/app-service-known-issues-v0.md", 
       "redirect_url":"/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
       "redirect_document_id":false
@@ -182,6 +212,21 @@
     },    
     { 
       "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-two.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/azure-stack-app-service-release-notes-update-three.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q2.md", 
+      "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
+      "redirect_document_id":false
+    },    
+    { 
+      "source_path":"azure-stack/operator/app-service-release-notes-2020-Q3.md", 
       "redirect_url":"/azure-stack/operator/app-service-release-notes-2302", 
       "redirect_document_id":false
     },    

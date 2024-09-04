@@ -3,7 +3,7 @@ title: Standard Load Balancer considerations in Azure Stack Hub and Azure
 description: Learn about differences in the Standard Load Balancer between Azure Stack Hub and Azure.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 07/23/2024
+ms.date: 09/03/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/29/2024
@@ -19,7 +19,7 @@ Azure Stack Hub now supports the Standard Load Balancer SKU. While this new SKU 
 
 ## Main differences in Standard Load Balancer between Azure and Azure Stack Hub
 
-| Features                                       | Azure                                                                                                                                                                             | Azure Stack Hub                                                                                        |
+| Feature                                       | Azure                                                                                                                                                                             | Azure Stack Hub                                                                                        |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | Backend pool size                              | Supports up to 5000 instances.                                                                                                                                                     | Not limited by Standard Load Balancer itself - depends on the number of VMs on the stamp.                                  |
 | Backend pool endpoints                         | Any virtual machine, virtual machine scale sets, or IP address in a single virtual network.                                                                                        | Virtual machines and scale sets on a single virtual network only. No IP addresses supported.            |
@@ -39,7 +39,7 @@ Azure Stack Hub now supports the Standard Load Balancer SKU. While this new SKU 
 
 ## Main differences between Basic and Standard Load Balancer on Azure Stack Hub
 
-| Features                                       | Standard Load Balancer                                                                                                                                                            | Basic Load Balancer                                                                                                                                     |
+| Feature                                       | Standard Load Balancer                                                                                                                                                            | Basic Load Balancer                                                                                                                                     |
 |------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Backend pool size                              | Not limited by the Standard Load Balancer itself - depends on the number of VMs on the stamp.                                                                                                             | Depends on stamp capacity.                                                                                                                               |
 | Backend pool endpoints                         | Virtual machines and scale sets on the same virtual network.                                                                                                                                  | Virtual machines or virtual machine scale set on the same virtual network. It cannot include both types in the same backend pool.                                   |
@@ -68,6 +68,9 @@ The following scenarios were validated for the Standard Load Balancer on Azure S
 - Outbound-only load balancer configuration.
 - Internal load balancer with HA ports.
 - Internal load balancer with HA ports and floating IP.
+
+> [!NOTE]
+> Portal diagnostic features for the Standard Load Balancer are not supported.
 
 ## Next steps
 
