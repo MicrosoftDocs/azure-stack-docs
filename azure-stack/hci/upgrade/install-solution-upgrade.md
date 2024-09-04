@@ -3,7 +3,7 @@ title: Install solution upgrade on your Azure Stack HCI cluster
 description: Learn about how to install upgrade on your Azure Stack HCI cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/26/2024
+ms.date: 08/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -126,7 +126,10 @@ Follow these steps to verify that the upgrade was successful:
 
 ## Post solution upgrade tasks
 
-After the solution upgrade is complete, you may need to perform additional tasks to secure your system and ensure it's ready for workloads. 
+> [!IMPORTANT]
+> As additional services are installed during the solution upgrade, the resource consumption increases after the solution upgrade is complete.
+
+After the solution upgrade is complete, you may need to perform additional tasks to secure your system and ensure it's ready for workloads.
 
 - You may need to connect to the system via Remote Desktop Protocol (RDP) to deploy workloads. For more information, see [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
 - To prevent the accidental deletion of resources, you can lock resources. We recommend that you lock the Arc Resource Bridge. For more information, see [Lock Arc Resource Bridge](../deploy/deploy-via-portal.md#lock-arc-resource-bridge).

@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/02/2024
+ms.date: 09/03/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -83,6 +83,13 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2311 and later.
 - Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Standard Load Balancer portal error
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The Standard Load Balancer portal blades for **Logs** and **Diagnostic settings** both show errors displaying the content.
+- Remediation: The Standard Load Balancer in Azure Stack Hub does not support any diagnostic features.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
