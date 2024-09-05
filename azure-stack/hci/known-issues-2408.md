@@ -26,7 +26,7 @@ For more information about new features in this release, see [What's new in 23H2
 
 This software release maps to software version number **2408.0.29**.
 
-Release notes for this version include the issues fixed in this release, known issues in this release, and release notes issues carried over from previous versions.
+Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Stack HCI Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
