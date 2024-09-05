@@ -4,12 +4,12 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 10/05/2022
+ms.date: 08/19/2024
 ---
 
 In the Azure portal of your Azure Stack HCI cluster resource, perform the following steps:
 
-1. Go to **Resources (Preview)** > **VM images**.
+1. Go to **Resources** > **VM images**.
 
 1. From the list of VM images displayed in the right-pane, select the trash can icon next to the VM image you want to delete.
 

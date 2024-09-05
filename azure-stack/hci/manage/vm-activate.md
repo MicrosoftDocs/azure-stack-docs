@@ -38,7 +38,6 @@ Choose the deployment option that best suits your needs:
 
 | Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
-| Where do I want to deploy my Windows Server (WS) VMs? | Azure Stack HCI only. | Can be applied anywhere. |
 | What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | All versions up to the latest version - includes versions of Windows Server that are supported by Azure Stack HCI. Specifically, the benefit is extended to Azure Stack HCI version 23H2 or 22H2. |
 | Does this option also allow me to use Windows Server: Azure edition? | Yes. | Need to have both Software Assurance (SA) and WS volume license keys. |
 | How do I activate my WS VMs? | No host-side keys – AVMA is automatically enabled. After it's enabled, you can then apply the generic AVMA keys on the client side. | To activate this benefit, you must exchange your 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Stack HCI. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure#getting-azure-hybrid-benefit-for-azure-stack-hci). |
