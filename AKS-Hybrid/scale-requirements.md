@@ -21,10 +21,10 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Scale item   | Minimum  | Maximum |
 |--------------|----------|---------|
 | Number of physical nodes in an Azure Stack HCI cluster  | 1  | 16 |
-| Count of control plane nodes `(Allowed values: 1, 3, and 5)`   | 1 | 5 |
+| Count of control plane nodes (Allowed values are 1, 3, and 5)  | 1 | 5 |
 | Number of nodes in default node pool created during cluster create  | 1 | 200 |
 | Number of node pools in an AKS cluster  | 1  | 16  |
-| Number of nodes in a node pool (Empty node pools not supported)  | 1 | 64 |
+| Number of nodes in a node pool (empty node pools not supported)  | 1 | 64 |
 | Total number of nodes in an AKS cluster across nodepools | 1 | 200 |
 | Number of AKS clusters per Azure Stack HCI cluster | 0| 32 |
 
@@ -42,7 +42,7 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
 | AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
-| AKS Arc HA Proxy VM          | Standard_A4_v2. `Fixed size.`      | 8-GB memory, 4 vcpu  |
+| AKS Arc HA Proxy VM          | Standard_A4_v2. (This size is fixed and can't be changed) | 8-GB memory, 4 vcpu  |
 | AKS Arc Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 | AKS Arc Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
