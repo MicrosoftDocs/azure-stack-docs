@@ -118,7 +118,7 @@ Follow these steps in to change the deployment service principal:
     $AppId = "" 
     $secretText= "" 
     $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
-    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionID -TenantID -AppId $AppID -NewPassword $NewPassword 
+    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionID -TenantID $TenantID -AppId $AppID -NewPassword $NewPassword 
     ```
 
 ## Next steps
