@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 08/26/2024
+ms.date: 09/05/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
