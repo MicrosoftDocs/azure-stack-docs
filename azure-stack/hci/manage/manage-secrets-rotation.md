@@ -112,14 +112,14 @@ Follow these steps in to change the deployment service principal:
 
 6. Run the following PowerShell commands:
 
-```powershell
-$SubscriptionId= "" 
-$TenatId= ""
-$AppId = "" 
-$secretText= "" 
-$NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
-Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionID -TenantID -AppId $AppID -NewPassword $NewPassword 
-```
+    ```powershell
+    $SubscriptionId= "" 
+    $TenatId= ""
+    $AppId = "" 
+    $secretText= "" 
+    $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
+    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionID -TenantID -AppId $AppID -NewPassword $NewPassword 
+    ```
 
 ## Next steps
 
