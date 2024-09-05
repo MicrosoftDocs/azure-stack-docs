@@ -57,8 +57,8 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 | Component           | ??                                       |
 |---------------------|--------------------------------------------------|
-| AKS Arc             | 1.3.212                                     |
-| Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5?? 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4 |
+| AKS Arc             | 1.3.218                                     |
+| Kubernetes versions | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4 |
 
 ### Release 2405
 
