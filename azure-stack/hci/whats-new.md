@@ -64,7 +64,7 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues-
 
 This is primarily a bug fix release with a few improvements.
 
-- Arc VM management improvements: Starting this release, followiing improvements were made to the Arc VM management experience:
+- Arc VM management improvements: Starting this release, following improvements were made to the Arc VM management experience:
 
   - You can now view and delete VM network interfaces from the Azure portal.
   - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
