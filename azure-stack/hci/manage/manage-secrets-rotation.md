@@ -96,6 +96,33 @@ Follow these steps in to change the deployment service principal:
     Update-ServicePrincipalName -AppId <appID> -SecureSecretText $secretText
     ```
 
+## Change ARB service principal secret
+
+This section describes how you can change the service principal used for Azure resource bridge created during deployment.
+
+Follow these steps in to change the deployment service principal:
+
+1. Sign on to your Microsoft Entra ID.
+
+2. Locate the service principal for Azure resource bridge.  The name of the service principal includes **DefaultARBApplication**.
+
+3. Create a new client secret for the service principal.
+
+4. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
+
+5. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
+
+6. Run the following PowerShell commands:
+
+```powershell
+$SubscriptionId= “” 
+$TenatId=”” 
+$AppId = "" 
+$secretText= "" 
+$NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
+Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionID -TenantID -AppId $AppID -NewPassword $NewPassword 
+```
+
 ## Next steps
 
 - [Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
