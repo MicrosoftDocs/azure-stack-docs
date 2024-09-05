@@ -114,7 +114,7 @@ Follow these steps in to change the deployment service principal:
 
     ```powershell
     $SubscriptionId= "" 
-    $TenatId= ""
+    $TenantId= ""
     $AppId = "" 
     $secretText= "" 
     $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
