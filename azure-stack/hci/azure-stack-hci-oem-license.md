@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI OEM license overview (preview)
+title: Azure Stack HCI OEM license overview
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
@@ -10,13 +10,11 @@ ms.subservice: azure-stack-hci
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license is and how it can be beneficial to them.
 ---
 
-# Azure Stack HCI OEM license overview (preview)
+# Azure Stack HCI OEM license overview
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article covers the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the OEM license
 
@@ -71,7 +69,7 @@ For more information on the Azure Stack HCI OEM license, see [Azure Stack HCI OE
 
 ## Licensing Windows Server guest VMs on Azure Stack HCI
 
-You can activate Windows Server VMs on an Azure Stack HCI cluster using generic Automatic Virtual Machine Activation (AVMA) client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../hci/manage/vm-activate.md#activate-bring-your-own-license-byol-through-avma).
+You can activate Windows Server VMs on an Azure Stack HCI cluster using generic Automatic Virtual Machine Activation (AVMA) client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](manage/vm-activate.md#activate-azure-hybrid-benefit-ahb-through-avma).
 
 ## Licensing AKS on Azure Stack HCI
 

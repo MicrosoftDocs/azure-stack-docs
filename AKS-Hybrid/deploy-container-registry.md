@@ -157,14 +157,14 @@ Once you create the image pull secret, you can use it to create Kubernetes pods 
 apiVersion: v1
 kind: Pod
 metadata:
-name: poemfinder-app
-namespace: mydemoapps
+ name: poemfinder-app
+ namespace: mydemoapps
 spec:
-containers:
- - name: poemfinder-app
-   image: <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
-   imagePullPolicy: IfNotPresent
- - imagePullSecrets:
+ containers:
+  - name: poemfinder-app
+    image: <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
+    imagePullPolicy: IfNotPresent
+ imagePullSecrets:
    - name: acr-secret
 ```
 
