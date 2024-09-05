@@ -110,7 +110,7 @@ Follow these steps in to change the deployment service principal:
 
 5. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
 
-6. Run the following PowerShell commands:
+6. Run the following PowerShell command:
 
     ```powershell
     $SubscriptionId= "" 
