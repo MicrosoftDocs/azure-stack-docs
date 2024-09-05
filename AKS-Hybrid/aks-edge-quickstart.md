@@ -12,6 +12,9 @@ ms.custom: template-how-to
 
 This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge Essentials single-machine K3S Linux-only cluster.
 
+> [!NOTE]
+> The purpose of this quickstart script is to ease the evaluation process and requires higher level credentials for onetime setup of Azure subscription. This is not intended for production use.
+
 ## Prerequisites
 
 - See the [system requirements](aks-edge-system-requirements.md). For this quickstart, ensure that you have a minimum of 4.5 GB RAM free, 4 vCPUs and 20 GB free disk space.
