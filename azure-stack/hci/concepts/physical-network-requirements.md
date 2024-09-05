@@ -223,7 +223,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [SuperMicro](#tab/SuperMicro)
+# [Supermicro](#tab/Supermicro)
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
