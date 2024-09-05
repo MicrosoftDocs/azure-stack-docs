@@ -26,7 +26,7 @@ New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config
 
 This command creates a configuration file called **aksedge-config.json** that includes the configuration needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. See the following examples for more options for creating the configuration file.
 
-A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for a detailed description of the configuration parameters.
 
 The key parameters for single machine deployment are:
 
@@ -89,6 +89,9 @@ $machine.LinuxNode.MemoryInMB = 4096
 
 New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 ```
+
+> [!TIP]
+> See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for all available options, including network settings such as proxy settings.
 
 ### Create a simple cluster with NodePort service
 
