@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/12/2024
+ms.date: 09/05/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,17 +17,54 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-There are currently three release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are currently four release trains for Azure Stack HCI, version 23H2: 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+
+## [2408 releases](#tab/2408releases)
+
+This release train includes the following releases:
+
+## Features and improvements in 2408
+
+This is a baseline release with the following features and improvements:
+
+### Upgrade from version 22H2 to version 23H2
+
+This release introduces the ability to upgrade your Azure Stack HCI cluster from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+
+For more information, see [Upgrade Azure Stack HCI from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
+
+### Updates changes
+
+This release contains the following changes for updates:
+
+- Revised the names and descriptions of update steps. [27635293]
+- Introduced a health fault alert that is raised when there are available updates on the system. [27253002]
+
+## Arc VM management changes
+
+This release contains the following changes for Arc VM management:
+
+- 12 new Azure Marketplace images went live. For more information, see [Create Azure Stack HCI VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
+- Creation of logical networks is blocked if trying to create with overlapping IP pools.
+- Logical network properties are properly updated. Previously, the logical network sometimes would not have its properties (vLAN, IP Pools, etc.) filled.
+- The vLAN field on a logical network will be defaulted to '0' if not specified.
+- Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
+
+For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
 
 ## [2405 releases](#tab/2405releases)
 
 The 2405 release train includes the following releases:
 
+## Features and improvements in 2405.3
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-3.md) to understand the bug fixes.
+
 ## Features and improvements in 2405.2
 
 This is primarily a bug fix release with a few improvements.
 
-- Arc VM management improvements: Starting this release, followiing improvements were made to the Arc VM management experience:
+- Arc VM management improvements: Starting this release, following improvements were made to the Arc VM management experience:
 
   - You can now view and delete VM network interfaces from the Azure portal.
   - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.

@@ -3,10 +3,8 @@ title: Azure-connected deployment decisions for Azure Stack Hub integrated syste
 description: Determine deployment planning decisions for Azure-connected deployments of Azure Stack Hub integrated systems, including billing and identity.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: wfayed
-ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack operator, I want to know identity and billing models for an Azure-connected deployment of multi-node Azure Stack.
 # Keyword: identity billing azure stack deployment
@@ -29,19 +27,14 @@ For example, if you deploy IaaS tenant VMs on top of Azure Stack Hub, and want t
 <a name='azure-ad-identity-store'></a>
 
 ### Microsoft Entra identity store
-Using Microsoft Entra ID for your identity store requires two Microsoft Entra accounts: a global admin account and a billing account. These accounts can be the same accounts, or different accounts. While using the same user account might be simpler and useful if you have a limited number of Azure accounts, your business needs might suggest using two accounts:
+Using Microsoft Entra ID for your identity store requires two Microsoft Entra accounts: an app admin account and a billing account. These accounts can be the same accounts, or different accounts. While using the same user account might be simpler and useful if you have a limited number of Azure accounts, your business needs might suggest using two accounts:
 
-1. **Global admin account** (only required for connected deployments). This is an Azure account that's used to create apps and service principals for Azure Stack Hub infrastructure services in Microsoft Entra ID. This account must have directory admin permissions to the directory that your Azure Stack Hub system will be deployed under. It will become the "cloud operator" Global Admin for the Microsoft Entra user and is used for the following tasks:
+1. **Application administrator account** (only required for connected deployments). This is an Azure account that's used to create and manage all aspects of enterprise applications for Azure Stack Hub infrastructure services in Microsoft Entra ID. This account must have directory admin permissions to the directory that your Azure Stack Hub system will be deployed under. It will become the "cloud operator" administrator for the Microsoft Entra user and is used for the following tasks:
 
     - To provision and delegate apps and service principals for all Azure Stack Hub services that need to interact with Microsoft Entra ID and Graph API.
     - As the Service Administrator account. This account is the owner of the default provider subscription (which you can later change). You can log into the Azure Stack Hub administrator portal with this account, and can use it to create offers and plans, set quotas, and perform other administrative functions in Azure Stack Hub.
 
-> [!IMPORTANT]
-> - The global administrator account is not required to run Azure Stack Hub and can be disabled post-deployment.
-> - Secure the global administrator account following the [best practices documented here](/azure/security/fundamentals/identity-management-best-practices).
-
-
-2. **Billing account** (required for both connected and disconnected deployments). This Azure account is used to establish the billing relationship between your Azure Stack Hub integrated system and the Azure commerce backend. This is the account that's billed for Azure Stack Hub fees. This account will also be used for offering items in the marketplace and other hybrid scenarios.
+1. **Billing account** (required for both connected and disconnected deployments). This Azure account is used to establish the billing relationship between your Azure Stack Hub integrated system and the Azure commerce backend. This is the account that's billed for Azure Stack Hub fees. This account will also be used for offering items in the marketplace and other hybrid scenarios.
 
 ### AD FS identity store
 Choose this option if you want to use your own identity store, such as your corporate Active Directory, for your Service Administrator accounts.  
