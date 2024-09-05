@@ -22,11 +22,9 @@ Use the PowerShell cmdlet `Set-AzureStackLCMUserPassword` to rotate the`AzureSta
 > [!NOTE]
 > When you run `Set-AzureStackLCMUserPassword`, the cmdlet only updates what was previously changed in Active Directory.
 
-
 ### PowerShell cmdlet and properties
 
 The `Set-AzureStackLCMUserPassword` cmdlet takes the following parameters:
-
 
 |Parameter|Description  |
 |---------|---------|
@@ -115,8 +113,8 @@ Follow these steps in to change the deployment service principal:
 6. Run the following PowerShell commands:
 
 ```powershell
-$SubscriptionId= “” 
-$TenatId=”” 
+$SubscriptionId= "" 
+$TenatId= ""
 $AppId = "" 
 $secretText= "" 
 $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
