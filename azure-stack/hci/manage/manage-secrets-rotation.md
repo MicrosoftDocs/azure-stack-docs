@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 04/22/2024
+ms.date: 09/05/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -96,31 +96,26 @@ Follow these steps in to change the deployment service principal:
 
 ## Change ARB service principal secret
 
-This section describes how you can change the service principal used for Azure resource bridge created during deployment.
+This section describes how you can change the service principal used for Azure resource bridge that you created during deployment.
 
-Follow these steps in to change the deployment service principal:
+To change the deployment service principal, follow these steps:
 
-1. Sign on to your Microsoft Entra ID.
+1. Sign in to your Microsoft Entra ID.
+1. Locate the service principal for Azure resource bridge. The name of the service principal includes **DefaultARBApplication**.
+1. Create a new client secret for the service principal.
+1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
+1. Sign in to one of your Azure Stack HCI server nodes using the deployment user credentials.
+1. Run the following PowerShell command:
 
-2. Locate the service principal for Azure resource bridge.  The name of the service principal includes **DefaultARBApplication**.
-
-3. Create a new client secret for the service principal.
-
-4. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
-
-5. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
-
-6. Run the following PowerShell command:
-
-    ```powershell
-    $SubscriptionId= "<Subscription ID>" 
-    $TenantId= "<Tenant ID>"
-    $AppId = "<Application ID>" 
-    $secretText= "<Client secret>" 
-    $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
-    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionId -TenantID $TenantId -AppId $AppId -NewPassword $NewPassword 
-    ```
+   ```powershell
+   $SubscriptionId= "<Subscription ID>" 
+   $TenantId= "<Tenant ID>"
+   $AppId = "<Application ID>" 
+   $secretText= "<Client secret>" 
+   $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
+   Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionId -TenantID $TenantId -AppId $AppId -NewPassword $NewPassword 
+   ```
 
 ## Next steps
 
-- [Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
+[Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
