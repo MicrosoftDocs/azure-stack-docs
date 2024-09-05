@@ -22,11 +22,9 @@ Use the PowerShell cmdlet `Set-AzureStackLCMUserPassword` to rotate the`AzureSta
 > [!NOTE]
 > When you run `Set-AzureStackLCMUserPassword`, the cmdlet only updates what was previously changed in Active Directory.
 
-
 ### PowerShell cmdlet and properties
 
 The `Set-AzureStackLCMUserPassword` cmdlet takes the following parameters:
-
 
 |Parameter|Description  |
 |---------|---------|
@@ -94,6 +92,33 @@ Follow these steps in to change the deployment service principal:
     Import-Module Microsoft.AS.ArcIntegration.psm1 -Force
     $secretText=ConvertTo-SecureString -String <client secret> -AsPlainText -Force
     Update-ServicePrincipalName -AppId <appID> -SecureSecretText $secretText
+    ```
+
+## Change ARB service principal secret
+
+This section describes how you can change the service principal used for Azure resource bridge created during deployment.
+
+Follow these steps in to change the deployment service principal:
+
+1. Sign on to your Microsoft Entra ID.
+
+2. Locate the service principal for Azure resource bridge.  The name of the service principal includes **DefaultARBApplication**.
+
+3. Create a new client secret for the service principal.
+
+4. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
+
+5. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
+
+6. Run the following PowerShell command:
+
+    ```powershell
+    $SubscriptionId= "<Subscription ID>" 
+    $TenantId= "<Tenant ID>"
+    $AppId = "<Application ID>" 
+    $secretText= "<Client secret>" 
+    $NewPassword = ConvertTo-SecureString -String $secretText -AsPlainText -Force 
+    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionId -TenantID $TenantId -AppId $AppId -NewPassword $NewPassword 
     ```
 
 ## Next steps
