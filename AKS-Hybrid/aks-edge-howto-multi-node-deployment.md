@@ -27,7 +27,7 @@ You can generate the parameters needed to create a scalable cluster using the fo
 New-AksEdgeConfig -DeploymentType ScalableCluster -outFile .\aksedge-config.json | Out-Null
 ```
 
-This creates a configuration file called **aksedge-config.json** which includes the configuration needed to create a scalable cluster with a Linux node. The file is created in your current working directory. See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for detailed description of the configuration parameters (such as proxy settings).
+This command creates a configuration file named **aksedge-config.json**, which includes the configuration needed to create a scalable cluster with a Linux node. The file is created in your current working directory. See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for detailed descriptions of the configuration parameters (such as proxy settings).
 
 See the following examples for more options for creating the configuration file.
 
