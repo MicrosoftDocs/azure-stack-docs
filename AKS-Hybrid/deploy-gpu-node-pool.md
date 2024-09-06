@@ -29,10 +29,18 @@ The following GPU models are supported by AKS on Azure Stack HCI 23H2:
 |--------------|-----------|-------------------|
 | NVidia       | A2        | 2311.2            |
 | NVidia       | A16       | 2402.0            |
+| NVidia       | T4        | 2408.0            |
 
 ## Supported VM sizes
 
 The following VM sizes for each GPU models are supported by AKS on Azure Stack HCI 23H2. 
+
+### The Nvidia T4 is supported by NK T4 SKUs
+
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|-----------------|---|----|-----|----|
+| Standard_NK6    | 1 | 8  | 6   | 12 |
+| Standard_NK12   | 2 | 16 | 12  | 24 |
 
 ### The Nvidia A2 is supported by NC2 A2 SKUs
 
