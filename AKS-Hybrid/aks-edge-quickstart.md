@@ -12,6 +12,9 @@ ms.custom: template-how-to
 
 This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge Essentials single-machine K3S Linux-only cluster.
 
+> [!NOTE]
+> The purpose of this quickstart script is to ease the evaluation process. This script requires higher level credentials for a one-time setup of the Azure subscription. This is not intended for production use.
+
 ## Prerequisites
 
 - See the [system requirements](aks-edge-system-requirements.md). For this quickstart, ensure that you have a minimum of 4.5 GB RAM free, 4 vCPUs and 20 GB free disk space.
@@ -52,6 +55,9 @@ This script automates the following steps:
 - Invokes the `Connect-AideArc` function if the Azure parameters are provided. This function performs the following tasks:
   - Installs the Azure Connected Machine Agent and connects the host machine to Arc for Servers.
   - Connects the deployed cluster to Arc for connected Kubernetes.
+
+> [!TIP]
+> You can modify the `$aksedgeConfig` json content in the `AksEdgeQuickStart` script for any additional options. For available options, see [Deployment JSON configuration](aks-edge-deployment-config-json.md).
 
 ## Step 2: Deploy AKS Edge Essentials
 
