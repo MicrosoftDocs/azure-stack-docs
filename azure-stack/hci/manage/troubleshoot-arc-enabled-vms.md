@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 07/26/2024
+ms.date: 09/06/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -74,6 +74,35 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
+
+## Failure deploying a VM image from a storage account
+
+You see the following error when trying to deploy a VM image from a storage account on your Azure Stack HCI cluster:
+
+**Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n"}`
+
+Or, you see this error:
+
+**Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n"}`
+
+The failure occurs because the user creating the image does not have the right permissions to access the image from the storage account. The user must have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal?tabs=current) for access to blob data.
+
+**Resolution:**
+
+Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role has been added, retry deploying the image.
+
+You may also see the following error when trying to deploy a VM image from a storage account:
+
+**Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","additionalInfo":[{"type":"ErrorInfo","info":{"category":"Uncategorized","recommendedAction":"","troubleshootingURL":""}}]}`
+
+This failure is because the blob type is not correct within the storage account. The image must be of `page blob` type.
+
+**Resolution:**
+
+Upload the image into your storage account in `page blob format` and retry deploying the image.
+
+Ensure that the user has the right permissions, and the blob is in the correct format. For more information, see [Add VM image from Azure Storage account](virtual-machine-image-storage-account.md?tabs=azurecli#prerequisites).
+
 
 ## Failure deploying an Arc VM
 
