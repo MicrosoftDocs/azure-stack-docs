@@ -98,7 +98,7 @@ $urlArray = @(
     "https://management.azure.com",
     "https://eastus.dp.kubernetesconfiguration.azure.com",
     "https://login.microsoftonline.com",
-    "https://eastus.log in.microsoft.com",
+    "https://eastus.login.microsoft.com",
     "https://login.windows.net",
     "https://mcr.microsoft.com",
     "https://gbl.his.arc.azure.com",
