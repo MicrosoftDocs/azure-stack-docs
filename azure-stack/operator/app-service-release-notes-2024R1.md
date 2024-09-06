@@ -83,17 +83,21 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
   - Microsoft OpenJDK 21
     - 21.0.1.12
   - MSBuild 
-    - 16.7.0
-    - 17.1.0
-  - MSDeploy 3.5.100608.567
+    - 16.11.2
+    - 17.9.0
+  - MSDeploy 3.5.120717.134
   - NodeJS
-    - 14.18.1
-    - 16.9.1
-    - 16.13.0
+    - 14.20.0
+    - 16.16.0
+    - 18.12.1
+    - 18.19.1
+    - 20.9.0
   - npm
-    - 6.14.15
-    - 7.21.1
-    - 8.1.0
+    - 6.14.16
+    - 7.14.17
+    - 8.19.2
+    - 10.1.0
+    - 10.2.4
   - Tomcat
     - 8.5.79
     - 8.5.82
@@ -107,7 +111,7 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
     - 10.0.27
     - 10.1.5
     - 10.1.16
-  - Updated Kudu to 97.40427.5713.
+  - Updated Kudu to 102.10502.001.
 
 
 - **Updates to underlying operating system of all roles**:
