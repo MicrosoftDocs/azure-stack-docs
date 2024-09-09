@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 2024 R1 release notes
 description: Learn about what's new in the 2024 R1 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: anwestg
 ms.topic: article
-ms.date: 09/06/2024
+ms.date: 12/06/2024
 ms.author: anwestg
 ms.reviewer:
 
@@ -125,8 +125,6 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
 - 
 
 ## Pre-Update steps
-
-Azure App Service on Azure Stack Hub 2024 R1 is a significant update and as such can take multiple hours to complete if you are upgrading from prior to 2022 H1 or 2302, as the whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS.  Therefore we recommend informing end customers of planned update ahead of applying the update.
 
 - As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade.
 
