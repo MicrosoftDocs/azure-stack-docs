@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 07/02/2024
+ms.date: 09/09/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -144,7 +144,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
 > [!IMPORTANT]
-> Setting the proxy server during VM creation is not supported for Linux VMs.
+> Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
 ### Create a VM with proxy configured
 
