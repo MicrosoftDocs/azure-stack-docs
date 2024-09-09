@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/11/2024
+ms.date: 09/09/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI
