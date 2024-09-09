@@ -167,7 +167,8 @@ The procedures in this section describe how to install Velero and use Azure Blob
                  "Microsoft.Compute/snapshots/write",
                  "Microsoft.Compute/snapshots/delete",
                  "Microsoft.Storage/storageAccounts/listkeys/action",
-                 "Microsoft.Storage/storageAccounts/regeneratekey/action"
+                 "Microsoft.Storage/storageAccounts/regeneratekey/action",
+                 "Microsoft.Storage/storageAccounts/read"
              ],
              "NotActions": [],
              "AssignableScopes": [
