@@ -26,7 +26,7 @@ Active Directory requirements for Azure Stack HCI include:
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
 > - When group policy inheritance is blocked at the OU level, enforced GPO's aren't blocked. Ensure that any applicable GPO, which are enforced, are also blocked using other methods, for example, using [WMI Filters](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648) or [security groups](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012).
 
-To manually assign required permissions for Active Directory, create an OU, and create blocking inheritance of GPO, see
+For instructions on manually assigning Active Directory permissions, creating an OU, and blocking GPO inheritance, see
 [Custom Active Directory configuration for your Azure Stack HCI, version 23H2](../plan/configure-custom-settings-active-directory.md).
 
 ## Prerequisites
