@@ -13,8 +13,8 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge Essentials cluster.
 
 > [!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported per [VMware KB2009916](https://kb.vmware.com/s/article/2009916).
-> Other nested virutalization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
+> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported.
+> Other nested virtualization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This article describes how to set up a nested virtualization environment to depl
 
 ## Deployment on Windows VM on VMware ESXi
 
-VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine. See [VMware KB2009916](https://kb.vmware.com/s/article/2009916) for more information about VMware ESXi nested virtualization support.
+VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine.
 
 To set up AKS Edge Essentials on a VMware ESXi Windows virtual machine, use the following steps:
 
