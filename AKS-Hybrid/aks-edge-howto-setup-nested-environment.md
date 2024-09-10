@@ -1,10 +1,10 @@
 ---
 title: Nested virtualization environment for AKS Edge Essentials
 description: Learn how to prepare your nested virtualization environment for AKS Edge Essentials clusters. 
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 09/10/2024
 ms.custom: template-how-to
 ---
 
@@ -268,7 +268,7 @@ The following guide is an example of IP address allocation. You can use your own
    kubectl get nodes
    ```
 
-   If everything was correctly set up, you should see both Linux nodes running in your cluster
+   If everything was correctly set up, you should see both Linux nodes running in your cluster:
 
    ```output
    PS C:\> kubectl get nodes
@@ -276,6 +276,9 @@ The following guide is an example of IP address allocation. You can use your own
    windows-vm1-ledge        Ready    control-plane,etcd,master   3m45s   v1.24.3+k3s-
    windows-vm2-ledge        Ready    control-plane,etcd,master  10m25s   v1.24.3+k3s-
    ```
+
+   > [!NOTE]
+   > For a list of currently supported Kubernetes versions on both K3s and K8s, see the table in [Download AKS Edge Essentials](aks-edge-howto-setup-machine.md#download-aks-edge-essentials).
 
 ## Next steps
 
