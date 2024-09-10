@@ -17,6 +17,10 @@ sections:
   - name: Azure Stack HCI OEM license and billing FAQ
     questions:
 
+      - question: How do I get pricing for this license?
+        answer: |
+          For help with pricing information from this license first contact your OEM partner. For additional help, send an email to help-oemhci@service.microsoft.com.
+
       - question: How can I purchase this license?
         answer: |
           This license is exclusively designed for Azure Stack HCI Premier Solutions, Integrated Systems, and Validated Nodes as a pre-installed license activated in Azure. Contact your OEM partner for more information.
