@@ -123,14 +123,18 @@ Before deploying Azure Stack HCI version 23H2, you must:
 
 ### Example - append the DNS suffix
 
+To append the DNS suffix, run the following command:
+
 ```powershell
 Set-DnsClient -InterfaceIndex 12 -ConnectionSpecificSuffix "na.corp.contoso.com"
 ```
 
 ### Example - resolve the hostname to the FQDN
 
+To resolve the hostname to the FQDN, run the following command:
+
 ```powershell
-Nslookup node1.na.corp.contoso.com
+nslookup node1.na.corp.contoso.com
 ```
 
 > [!NOTE]
