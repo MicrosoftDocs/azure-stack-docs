@@ -39,7 +39,7 @@ The following issues are fixed in this release:
 |------|------|----------|
 | Updates <!--28101226-->|An update issue related to missing resource type ID field in the health checks was fixed.  ||
 | Updates <!--28101677-->|An update issue related to different health checks having the same name was fixed.   ||
-| Deployment | In large deployment scenarios, such as extensive AVD host pool deployments or large-scale VM provisioning, you might encounter reliability issues caused by a Hyper-V socket external library problem. ||
+| Arc VM management | In large deployment scenarios, such as extensive AVD host pool deployments or large-scale VM provisioning, you might encounter reliability issues caused by a Hyper-V socket external library problem. ||
 
 ## Known issues in this release
 
