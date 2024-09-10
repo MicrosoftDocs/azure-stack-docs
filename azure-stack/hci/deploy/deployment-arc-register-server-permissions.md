@@ -57,7 +57,7 @@ Before you begin, make sure you've completed the following prerequisites:
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
 
-1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
+<!-- 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
 
     # [PowerShell](#tab/powershell)
     ```powershell
@@ -89,7 +89,7 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     ```
-    ---
+    --- -->
 1. Set the parameters. The script takes in the following parameters:
 
     |Parameters  |Description  |
@@ -135,7 +135,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
 
     ---
-1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+2. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     # [PowerShell](#tab/powershell)
 
@@ -169,7 +169,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ---
 
-1. Finally run the Arc registration script. The script takes a few minutes to run.
+3. Finally run the Arc registration script. The script takes a few minutes to run.
 
     # [PowerShell](#tab/powershell)
 
@@ -214,7 +214,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
     ---
 
-1. After the script completes successfully on all the servers, verify that:
+4. After the script completes successfully on all the servers, verify that:
 
 
     1. Your servers are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
