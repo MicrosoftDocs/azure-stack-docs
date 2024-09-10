@@ -139,8 +139,7 @@ Follow these steps to configure the operating system using SConfig:
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
-
-## Install required Windows roles
+<!--## Install required Windows roles
 
 Install the Hyper-V role. Run the following command on each server of the cluster:
 
@@ -150,8 +149,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 Your servers will restart; this takes a few minutes.
 
-You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
-
+You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment. -->
 
 ## Next steps
 
