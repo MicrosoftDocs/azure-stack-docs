@@ -112,6 +112,30 @@ To verify that the DNS record exists, run the following command:
 nslookup "machine name"
 ```
 
+## Disjoint namespace
+
+A disjoint namespace occurs when the primary DNS suffix of one or more domain member computers doesn't match the DNS name of their Active Directory domain. For example, if a computer has a DNS name of corp.contoso.com but is part of an Active Directory domain called na.corp.contoso.com, it's using a disjoint namespace.
+
+Before deploying Azure Stack HCI version 23H2, you must:
+
+- Append the DNS suffix to the management adapter of every node.
+- Verify you can resolve the hostname to the FQDN of the Active Directory.
+
+### Example - append the DNS suffix
+
+```powershell
+Set-DnsClient -InterfaceIndex 12 -ConnectionSpecificSuffix "na.corp.contoso.com"
+```
+
+### Example - resolve the hostname to the FQDN
+
+```powershell
+Nslookup node1.na.corp.contoso.com
+```
+
+> [!NOTE]
+> You cannot use group policies to configure the DNS suffix list with Azure Stack HCI, version 23H2.
+
 ## Cluster aware updating (CAU)
 
 Cluster aware updating applies a client access point (Virtual Computer Object) that requires a DNS record.
