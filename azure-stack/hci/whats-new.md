@@ -21,6 +21,9 @@ There are currently four release trains for Azure Stack HCI, version 23H2: 2408,
 
 ## [2408 releases](#tab/2408releases)
 
+>[!NOTE]
+> A new ISO image is available that includes the Hyper-V role and all necessary Arc registration modules
+
 This release train includes the following releases:
 
 ## Features and improvements in 2408
