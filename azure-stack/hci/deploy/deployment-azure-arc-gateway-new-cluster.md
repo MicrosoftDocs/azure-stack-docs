@@ -78,7 +78,7 @@ Azure Stack HCI requires the Arc agent installation to follow a specific procedu
 
 However, for this Preview, you need to invoke the initialization script by passing the  **ArcGatewayID** value. Here's an example of how you should change the initialization script:
 
-```azurecli
+```powershell
 #Install required PowerShell modules in your node for registration
 Install-Module Az.Accounts -RequiredVersion 2.13.2
 Install-Module Az.Resources -RequiredVersion 6.12.0
@@ -130,9 +130,12 @@ You can audit the Arc gateway traffic by viewing the gateway router logs.
 
 Follow these steps to view the logs:
 
-1. Run the `azcmagent logs` command.
+1. Run the following command:
+   ```azurecli
+   azcmagent logs
+   ```
 
-1. In the resulting .zip file, view the logs in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
+1. In the resulting **.zip** file, view the logs in the `C:\ProgramData\Microsoft\ArcGatewayRouter` folder.
 
 
 ## Next steps
