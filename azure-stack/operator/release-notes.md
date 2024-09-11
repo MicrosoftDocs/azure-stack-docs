@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/13/2024
+ms.date: 09/11/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -58,7 +58,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2408"
 ## 2408 build reference
 
-The Azure Stack Hub 2408 update build number is **1.2408.x.x**.
+The Azure Stack Hub 2408 update build number is **1.2408.0.19**.
 
 ### Update type
 
