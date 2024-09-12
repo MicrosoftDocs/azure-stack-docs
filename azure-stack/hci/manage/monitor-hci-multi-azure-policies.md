@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/30/2024
+ms.date: 09/12/2024
 ---
 
 # Enable Insights for Azure Stack HCI at scale using Azure policies
@@ -37,8 +37,7 @@ Before applying this policy, keep in mind the following things:
 - This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
 - Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear. For more information, see [Uninstall AMA](/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal#uninstall).
 
-<details>
-  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
+Here's the policy definition in JSON:
 
 ```json
 {
@@ -455,7 +454,6 @@ Before applying this policy, keep in mind the following things:
   }
 }
 ```
-</details>
 
 ### Policy to install AMA
 
@@ -465,8 +463,7 @@ The policy to install AMA performs the following functions:
 
 - Installs AMA on clusters that aren't compliant with the policy through a remediation task.
 
-<details>
-  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
+Here's the policy definition in JSON:
 
 ```json
 {
@@ -544,7 +541,6 @@ The policy to install AMA performs the following functions:
   }
 }
 ```
-</details>
 
 ### Policy to configure DCR association
 
@@ -555,8 +551,7 @@ This policy is applied to each server in the Azure Stack HCI cluster and perform
   > [!NOTE]
   > This policy doesn’t create Data Collection Endpoint (DCE). If you're using private links, you must create DCE to ensure there's data available in Insights. For more information, see [Enable network isolation for Azure Monitor Agent by using Private Link](/azure/azure-monitor/agents/azure-monitor-agent-private-link).
 
-<details>
-  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
+Here's the policy definition in JSON:
 
 ```json
 {
@@ -643,7 +638,6 @@ This policy is applied to each server in the Azure Stack HCI cluster and perform
   }
 }
 ```
-</details>
 
 ## Enable Insights at scale using Azure policies
 
