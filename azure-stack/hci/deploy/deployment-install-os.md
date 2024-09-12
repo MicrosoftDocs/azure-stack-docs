@@ -139,6 +139,18 @@ Follow these steps to configure the operating system using SConfig:
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
+1. Install required Powershell Modules
+   In order to register the nodes in Azure, the following modules are required:
+   ```powershell
+   # Register PSGallery as Repository
+   Register-PSRepository -Default -InstallationPolicy Trusted
+   # Install required PowerShell modules in your node for registration
+   Install-Module Az.Accounts -RequiredVersion 2.13.2 -Force
+   Install-Module Az.Resources -RequiredVersion 6.12.0 -Force
+   Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2 -Force
+   Install-Module AzsHCI.ARCinstaller -Force
+   ```
+
 <!--## Install required Windows roles
 
 Install the Hyper-V role. Run the following command on each server of the cluster:
