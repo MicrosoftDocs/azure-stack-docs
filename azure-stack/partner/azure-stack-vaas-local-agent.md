@@ -4,10 +4,8 @@ titleSuffix: Azure Stack Hub
 description: Learn how to deploy the local agent for Azure Stack Hub validation as a service.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/16/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: johnhas
-ms.lastreviewed: 11/11/2019
 
 
 ROBOTS: NOINDEX
@@ -88,8 +86,8 @@ Check that your machine meets the following criteria:
 
 | Parameter | Description |
 | --- | --- |
-| `AadServiceAdminUser` | The global admin user for your Microsoft Entra tenant. For example: vaasadmin@contoso.onmicrosoft.com. |
-| `AadServiceAdminPassword` | The password for the global admin user. |
+| `AadServiceAdminUser` | The service admin user for your Microsoft Entra tenant. For example: vaasadmin@contoso.onmicrosoft.com. |
+| `AadServiceAdminPassword` | The password for the service admin user. |
 | `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. For more information, see [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md). |
 | `CloudAdminPassword` | The password for cloud admin account.|
 

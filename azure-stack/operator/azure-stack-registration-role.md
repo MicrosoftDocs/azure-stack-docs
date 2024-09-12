@@ -1,15 +1,15 @@
 ---
 title: Create a custom role for Azure Stack Hub registration
 titleSuffix: Azure Stack Hub
-description: Learn how to create a custom role to avoid using global administrator for Azure Stack Hub registration.
+description: Learn how to create a custom role for Azure Stack Hub registration.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 08/19/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 
-# Intent: As an Azure Stack operator, I want to create a custom role to avoid using global admin for Azure Stack registration. 
+# Intent: As an Azure Stack operator, I want to create a custom role for Azure Stack registration. 
 # Keyword: create custom role azure stack registration
 
 ---
@@ -23,7 +23,7 @@ During Azure Stack Hub registration, you must sign in with a Microsoft Entra acc
 
 * **App registration permissions in your Microsoft Entra tenant:** Admins have app registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create a Microsoft Entra app and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-    The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack Hub. If the app registrations setting is set to **No**, you can't use a user account to register Azure Stack Hub--you have to use a global admin account.
+    The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack Hub.
 
 * **A set of sufficient Azure Subscription permissions:** Users that belong to the Owner role have sufficient permissions. For other accounts, you can assign the permission set by assigning a custom role as outlined in the following sections.
 

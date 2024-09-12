@@ -4,9 +4,8 @@ description: Learn how to configure Azure Stack telemetry settings using PowerSh
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 09/05/2024
 ms.author: sethm
-ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
 
 # Intent: As an ASDK user, I want to learn about Azure Stack telemetry, so I can learn how use it, leverage it, and manage it. 
@@ -101,39 +100,15 @@ Turning off Windows and Azure Stack telemetry disables SQL telemetry. For additi
 ### Enable or disable telemetry after deployment
 
 To enable or disable telemetry after deployment, you need to have access to the Privileged End Point (PEP) which is exposed on the ERCS VMs.
-1.	To Enable: `Set-Telemetry -Enable`
-2.	To Disable: `Set-Telemetry -Disable`
+
+1. To Enable: `Set-Telemetry -Enable`
+1. To Disable: `Set-Telemetry -Disable`
 
 PARAMETER Detail:
 > .PARAMETER Enable - Turn On telemetry data upload
-> 
+>
 > .PARAMETER Disable - Turn Off telemetry data upload  
 
-**Script to enable telemetry:**
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
-Invoke-Command -Session $psSession {Set-Telemetry -Enable}
-if($psSession)
-{
-    Remove-PSSession $psSession
-}
-```
-
-**Script to disable telemetry:**
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
-Invoke-Command -Session $psSession {Set-Telemetry -Disable}
-if($psSession)
-{
-    Remove-PSSession $psSession
-}
-```
-
 ## Next steps
+
 [Start and stop the ASDK](asdk-start-stop.md)

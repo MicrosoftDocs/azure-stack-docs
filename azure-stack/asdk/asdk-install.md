@@ -4,10 +4,8 @@ description: Learn how to install the Azure Stack Development Kit (ASDK).
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: misainat
-ms.lastreviewed: 02/08/2019
 
 # Intent: As an ASDK user, I want to install the ASDK so I can start using it. 
 # Keyword: install asdk
@@ -34,9 +32,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
 
     ![Identity provider type drop-down in ASDK](media/asdk-install/2.PNG) 
   
-    If you choose an Azure subscription identity provider, you need an internet connection, the full name of a Microsoft Entra directory tenant in the form of *domainname*.onmicrosoft.com, or a Microsoft Entra ID verified custom domain name. You also need global admin credentials for the specified directory.
-
-    After deployment, Microsoft Entra global admin permission isn't required. However, some operations may require the global admin credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+    If you choose an Azure subscription identity provider, you need an internet connection, the full name of a Microsoft Entra directory tenant in the form of *domainname*.onmicrosoft.com, or a Microsoft Entra ID verified custom domain name. You also need admin credentials for the specified directory.
 
     When using AD FS as the identity provider, the default stamp directory service is used. The default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of setup.
 
@@ -67,7 +63,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
     > [!TIP]
     > Here you can also copy the PowerShell setup commands that'll be used to install the ASDK. This is helpful if you ever need to [redeploy the ASDK on the host computer using PowerShell](asdk-deploy-powershell.md).
 
-8. If you're doing a Microsoft Entra deployment, you'll be prompted to enter your Microsoft Entra global admin account credentials a few minutes after setup starts.
+8. If you're doing a Microsoft Entra deployment, you'll be prompted to enter your Microsoft Entra admin account credentials a few minutes after setup starts.
 
 9. The deployment process will take a few hours, during which time the host computer will automatically reboot once. If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin after the ASDK host restarts. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action 'Deployment'**. 
     > [!IMPORTANT]
@@ -85,4 +81,5 @@ If the deployment fails for some reason, you can [redeploy](asdk-redeploy.md) fr
   ```
 
 ## Next steps
+
 [Post deployment configuration](asdk-post-deploy.md)
