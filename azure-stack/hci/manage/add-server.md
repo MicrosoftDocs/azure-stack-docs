@@ -98,11 +98,6 @@ On the new server that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-    > [!NOTE]
-    > If your cluster is using a dedicated Network ATC intent for storage, and you are using custom storage IPs, you must configure the IPs on the storage network adapters before adding the new server.
-    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is added to the cluster.
-
-
 2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
