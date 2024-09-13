@@ -33,15 +33,13 @@ There are two agents that are important to understand in the context of guest ma
 
 When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI VM.
 
-Before enabling guest management, keep in mind the following information:
+Here are some key considerations for enabling guest management on a VM after provisioning it:
 
-- Enabling guest management after a VM is provisioned isn't supported for Windows Server 2012 and Windows Server 2012 R2.
-- The steps to enable guest management vary depending on whether a guest agent is running on your Arc VM.
+- Make sure that your Azure Stack HCI cluster is running 2311 or later.
+- Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
+- The steps to enable guest management differ based on whether a guest agent is running on your Arc VM.
 
 ### Verify if guest agent is running
-
-> [!IMPORTANT]
-> Make sure that your Azure Stack HCI cluster is running 2311 or later to run this procedure.
 
 1. To verify whether the guest agent is running on the Arc VM, connect to the Azure Stack HCI server.
 1. Run the following command:
