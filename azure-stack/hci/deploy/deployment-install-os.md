@@ -151,7 +151,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 Your servers will restart; this takes a few minutes.
 
-You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment. -->
+You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
 
 ## Next steps
 
