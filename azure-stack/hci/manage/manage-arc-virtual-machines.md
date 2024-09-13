@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2024
+ms.date: 09/13/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI
@@ -14,7 +14,6 @@ ms.date: 09/09/2024
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. The procedures to enable guest management, start, stop, restart, pause, save, or delete an Arc VM, are detailed.
-
 
 ## Prerequisites
 
@@ -34,12 +33,15 @@ There are two agents that are important to understand in the context of guest ma
 
 When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI VM.
 
-Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
+Before enabling guest management, keep in mind the following things:
 
-> [!IMPORTANT] 
-> Make sure that your Azure Stack HCI cluster is running 2311 or later to run this procedure.
+- Enabling guest management after VM is provisioned isn't supported for Windows Server 2012 and Windows Server 2012 R2.
+- The steps to enable guest management vary depending on whether a guest agent is running on your Arc VM.
 
 ### Verify if guest agent is running
+
+> [!IMPORTANT]
+> Make sure that your Azure Stack HCI cluster is running 2311 or later to run this procedure.
 
 1. To verify whether the guest agent is running on the Arc VM, connect to the Azure Stack HCI server.
 1. Run the following command:
