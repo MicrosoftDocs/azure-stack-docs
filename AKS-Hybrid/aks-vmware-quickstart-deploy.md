@@ -88,11 +88,15 @@ To complete this quickstart, you need to do these things:
 
 ## Step 3: Create the AKS cluster
 
-Run the following command to create the cluster:
+Run the following command to create the cluster. 
 
 ```azurecli
-az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-version 'v1.26.6' --custom-location $custom_location --aad-admin-group-object-ids $aad_group_id --vnet-ids $vnet_id --control-plane-ip $control_plane_ip --generate-ssh-keys --debug
+az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-version '<Kubernetes version from the Arc Resource Bridge>' --custom-location $custom_location --aad-admin-group-object-ids $aad_group_id --vnet-ids $vnet_id --control-plane-ip $control_plane_ip --generate-ssh-keys --debug
 ```
+
+   > [!NOTE]
+   > Currently, the Kubernetes version supported for AKS on VMware matches the Kubernetes version from the Arc Resource Bridge. The Kubernetes version you provide in the command must align with the Arc Resource Bridge's version. You can find the Arc Resource Bridge version in the Azure Portal under Azure Arc > Management > Resource Bridge. To determine the corresponding Kubernetes version, refer to [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes)
+
 
 ## Next steps
 
