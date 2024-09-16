@@ -95,7 +95,7 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
 ```
 
    > [!NOTE]
-   > Currently, the Kubernetes version supported for AKS on VMware matches the Kubernetes version from the Arc Resource Bridge. The Kubernetes version you provide in the command must align with the Arc Resource Bridge's version. You can find the Arc Resource Bridge version in the Azure Portal under Azure Arc > Management > Resource Bridge. To determine the corresponding Kubernetes version, refer to [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes)
+   > In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. The Kubernetes version you provide in the command must align with the Arc Resource Bridge's version. You can find the Arc Resource Bridge version in the Azure Portal under Azure Arc > Management > Resource Bridge. To determine the corresponding Kubernetes version, refer to [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes)
 
 
 ## Next steps
