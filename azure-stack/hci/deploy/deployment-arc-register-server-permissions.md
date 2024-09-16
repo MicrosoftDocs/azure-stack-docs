@@ -57,7 +57,7 @@ Before you begin, make sure you've completed the following prerequisites:
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
 
-<!-- 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
+1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery. **This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
 
     # [PowerShell](#tab/powershell)
     ```powershell
@@ -65,9 +65,9 @@ Before you begin, make sure you've completed the following prerequisites:
     Register-PSRepository -Default -InstallationPolicy Trusted
 
     #Install required PowerShell modules in your node for registration
-    Install-Module Az.Accounts -RequiredVersion 2.13.2
+    Install-Module Az.Accounts -RequiredVersion 3.0.0
     Install-Module Az.Resources -RequiredVersion 6.12.0
-    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
     
 
     #Install Arc registration script from PSGallery 
@@ -77,9 +77,9 @@ Before you begin, make sure you've completed the following prerequisites:
     Here's a sample output of the installation:
 
     ```output
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 3.0.0
     PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
     PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
     NuGet provider is required to continue                                                                                  
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
@@ -89,7 +89,7 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     ```
-    --- -->
+
 1. Set the parameters. The script takes in the following parameters:
 
     |Parameters  |Description  |
