@@ -79,6 +79,12 @@ If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Co
 > [!IMPORTANT]
 > You must use the **default** namespace.
 
+If the **default** namespace for a custom location was not automatically created for you, use the following command to create a custom location with the default namespace.
+
+```azurecli  
+az customlocation create -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId --host-resource-id $ArcApplianceResourceId --namespace "default"
+```
+
 ## Azure requirements
 
 You must connect to your Azure account:
