@@ -1,5 +1,5 @@
 ---
-title: Suspend and resume Azure Stack HCI clusters for planned maintenance operations
+title: Suspend and resume Azure Stack HCI, version 23H2 clusters for planned maintenance operations
 description: Learn how to suspend and resume cluster nodes for planned maintenance operations.
 author: ronmiab
 ms.author: robess
@@ -12,7 +12,7 @@ ms.date: 09/17/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their cluster nodes for planned maintenance.
 ---
 
-# Suspend and resume Azure Stack HCI clusters for maintenance
+# Suspend and resume Azure Stack HCI,version 23H2 clusters for maintenance
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
