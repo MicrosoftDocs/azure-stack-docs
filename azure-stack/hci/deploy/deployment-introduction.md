@@ -15,8 +15,6 @@ ms.subservice: azure-stack-hci
 
 This article is the first in the series of deployment articles that describe how to deploy Azure Stack HCI, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Stack HCI in their organization.
 
-[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]
-
 ## About deployment methods
 
 In this release, you can deploy Azure Stack HCI using one of the following methods:

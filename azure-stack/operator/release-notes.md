@@ -190,10 +190,10 @@ The Azure Stack Hub 2311 update build type is **Full**. This build contains only
 
 The 2311 update has the following expected runtimes based on our internal testing:
 
-- 4 nodes: 8-28 hours
-- 8 nodes: 11-30 hours
-- 12 nodes: 14-34 hours
-- 16 nodes: 17-40 hours
+- 4 nodes: 36-50 hours
+- 8 nodes: 36-50 hours
+- 12 nodes: 50-80 hours
+- 16 nodes: 50-90 hours
 
 > [!IMPORTANT]
 > Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
