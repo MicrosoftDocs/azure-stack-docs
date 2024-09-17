@@ -79,8 +79,14 @@ If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Co
 > [!IMPORTANT]
 > You must use the **default** namespace.
 
-If the **default** namespace for a custom location was not automatically created for you, use the following command to create a custom location with the default namespace.
+If your custom location was not created with the **default** namespace, use the following command to delete the custom location and create a custom location with the default namespace. To learn more about how to manage custom location, see [Create and manage custom locations](/azure/azure-arc/kubernetes/custom-locations)
 
+Delete the custom location
+```azurecli  
+az customlocation delete -g $customLocationResourceGroupName -n $customLocationName
+```
+
+Create the custom location with the **default** namespace
 ```azurecli  
 az customlocation create -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId --host-resource-id $ArcApplianceResourceId --namespace "default"
 ```
