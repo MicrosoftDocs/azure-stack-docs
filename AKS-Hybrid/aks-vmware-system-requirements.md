@@ -1,12 +1,12 @@
 ---
 title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
-ms.date: 03/22/2024
+ms.date: 09/16/2024
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.lastreviewed: 03/22/2024
+ms.lastreviewed: 09/16/2024
 
 ms.custom: references_regions
 
@@ -74,24 +74,27 @@ In this preview release, you can only deploy the same Kubernetes version that th
 
 ## Custom location
 
-If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Connect vCenter to Azure** [from the Azure portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix **AKS-**, and a default namespace, are created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [preview]** using the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace.
+If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Connect vCenter to Azure** [from the Azure portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix **AKS-**, and a default namespace, are created for you to deploy AKS on VMware. If you enable the Azure Kubernetes Service on VMware using the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace.
 
 > [!IMPORTANT]
 > You must use the **default** namespace.
 
-To view the custom location namespace, use the `az customlocation show` command
+To view the custom location namespace, use the `az customlocation show` command:
+
 ```azurecli  
 az customlocation show -g $customLocationResourceGroupName -n $customLocationName
 ```
 
-If your custom location was not created with the **default** namespace, use the following command to delete the custom location and create a custom location with the default namespace. To learn more about how to manage custom location, see [Create and manage custom locations](/azure/azure-arc/kubernetes/custom-locations)
+If your custom location was not created with the **default** namespace, use the following command to delete the custom location and create a custom location with the default namespace. For more information about how to manage custom locations, see [Create and manage custom locations](/azure/azure-arc/kubernetes/custom-locations).
 
-Delete the custom location
+Delete the custom location:
+
 ```azurecli  
 az customlocation delete -g $customLocationResourceGroupName -n $customLocationName
 ```
 
-Create the custom location with the **default** namespace
+Create the custom location with the **default** namespace:
+
 ```azurecli  
 az customlocation create -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId --host-resource-id $ArcApplianceResourceId --namespace "default"
 ```
