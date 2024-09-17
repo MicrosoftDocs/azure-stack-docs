@@ -74,7 +74,7 @@ In this preview release, you can only deploy the same Kubernetes version that th
 
 ## Custom location
 
-If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Connect vCenter to Azure** [from the Azure portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix **AKS-**, and a default namespace, are created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [preview]** using the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace.
+If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Connect vCenter to Azure** [from the Azure portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix **AKS-**, and a default namespace, are created for you to deploy AKS on VMware. If you enable the Azure Kubernetes Service on VMware using the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace.
 
 > [!IMPORTANT]
 > You must use the **default** namespace.
