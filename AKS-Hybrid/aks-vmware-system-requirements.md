@@ -1,12 +1,12 @@
 ---
 title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
-ms.date: 03/22/2024
+ms.date: 09/16/2024
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.lastreviewed: 03/22/2024
+ms.lastreviewed: 09/16/2024
 
 ms.custom: references_regions
 
@@ -79,19 +79,22 @@ If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Co
 > [!IMPORTANT]
 > You must use the **default** namespace.
 
-To view the custom location namespace, use the `az customlocation show` command
+To view the custom location namespace, use the `az customlocation show` command:
+
 ```azurecli  
 az customlocation show -g $customLocationResourceGroupName -n $customLocationName
 ```
 
-If your custom location was not created with the **default** namespace, use the following command to delete the custom location and create a custom location with the default namespace. To learn more about how to manage custom location, see [Create and manage custom locations](/azure/azure-arc/kubernetes/custom-locations)
+If your custom location was not created with the **default** namespace, use the following command to delete the custom location and create a custom location with the default namespace. For more information about how to manage custom locations, see [Create and manage custom locations](/azure/azure-arc/kubernetes/custom-locations).
 
-Delete the custom location
+Delete the custom location:
+
 ```azurecli  
 az customlocation delete -g $customLocationResourceGroupName -n $customLocationName
 ```
 
-Create the custom location with the **default** namespace
+Create the custom location with the **default** namespace:
+
 ```azurecli  
 az customlocation create -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId --host-resource-id $ArcApplianceResourceId --namespace "default"
 ```
