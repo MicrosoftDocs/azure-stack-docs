@@ -357,6 +357,8 @@ items:
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
+    - name: Suspend and resume cluster node
+      href: manaage/suspend-resume-cluster-maintenance.md
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 
