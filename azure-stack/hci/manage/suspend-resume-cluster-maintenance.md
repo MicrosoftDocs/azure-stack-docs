@@ -44,7 +44,7 @@ To suspend a cluster node follow these steps:
     > [!NOTE]
     > Running this command may take some time, depending on the number of VMs that need to be migrated.
 
-1. Confirm that the node is successfully suspended
+1. Then, to confirm that the node is successfully suspended, run this command.
 
     ```powershell
     Get-clusternode
@@ -61,7 +61,7 @@ To suspend a cluster node follow these steps:
     ASRRlS3lRl5Ull      Paused       Node
     ```
 
-1. Remove the node from the active Arc VM Configuration to ensure that no new VMs are placed on the node. **This step can only be done using PowerShell**.
+1. Next, remove the node from the active Arc VM Configuration to ensure that no new VMs are placed on the node. **This step can only be done using PowerShell**.
 
     ```powershell
     Remove-MocPhysicalNode -nodeName “MachineName”
@@ -93,7 +93,7 @@ To resume a cluster node follow these steps:
     > [!NOTE]
     > Running this command may take some time, depending on the number of VMs that need to be migrated.
 
-1. Confirm that the node is successfully resumed
+1. Then, to confirm that the node is successfully resumed, run this command:
 
     ```powershell
     Get-clusternode
@@ -110,8 +110,27 @@ To resume a cluster node follow these steps:
     ASRRlS3lRl5Ull      Paused       Node
     ```
 
-1. Add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
+1. Next, add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
     Remove-MocPhysicalNode -nodeName “MachineName”
     ```
+
+1. Verify that your storage pool is healthy. Run this command:
+
+    ```powershell
+    Get-Storagepool -friendlyname “SU_Pool1”
+    ```
+
+    Here's example output:
+
+    ```console
+    PS C : \programdata\wssdagent> get-storagepool -FriendlyName "SU1_Pool"
+
+    FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
+    ------------     -----------------     ------------     ------------     ----------     ----     -------------
+    SUl_Pool         OK                    Healthy          False            False     131.28 TB           1.8S TB
+    ```
+
+    > [!NOTE]
+    > If the pool is not reported as healthy, check the status of the storage repair jobs using the `get-storagejob command`.
