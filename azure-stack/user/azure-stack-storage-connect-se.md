@@ -49,8 +49,6 @@ Export and then import Azure Stack Hub certificate for disconnected integrated s
 
 4.  Under **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** find **AzureStackSelfSignedRootCert**.
 
-    ![Load the Azure Stack Hub root certificate through mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
-
 5. Right-click the certificate, select **All Tasks** > **Export**, and then follow the instructions to export the certificate with **Base-64 encoded X.509 (.CER)**.
 
     The exported certificate will be used in the next step.
