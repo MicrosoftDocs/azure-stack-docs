@@ -12,7 +12,7 @@ ms.date: 09/17/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their cluster nodes for planned maintenance.
 ---
 
-# Prepare Azure Stack HCI cluster for maintenance
+# Suspend and resume Azure Stack HCI clusters for maintenance
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
