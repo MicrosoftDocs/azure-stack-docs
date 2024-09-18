@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 06/10/2024
+ms.date: 08/22/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
@@ -71,24 +71,20 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
 
-<!--## Maximum supported hardware specifications
+## Maximum supported hardware specifications
 
 Azure Stack HCI deployments that exceed the following specifications are not supported:
 
-| Resource                     | Maximum |
-| ---------------------------- | --------|
-| Physical servers per cluster | 16      |
-| VMs per host                 | 1,024   |
-| Disks per VM (SCSI)          | 256     |
-| Storage per cluster          | 4 PB    |
-| Storage per server           | 400 TB  |
-| Volumes per cluster          | 64      |
-| Volume size                  | 64 TB   |
-| Logical processors per host  | 512     |
-| RAM per host                 | 24 TB   |
-| RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|
-| Virtual processors per host  | 2,048   |
-| Virtual processors per VM    | 240 (generation 2 VM) or 64 (generation 1)|-->
+| Resource | Maximum |
+| --- | --- |
+| Physical servers per cluster |16 |
+| Storage per cluster |	4 PB |
+| Storage per server | 400 TB |
+| Volumes per cluster |	64 |
+| Volume size |	64 TB |
+| Logical processors per host |	512 |
+| RAM per host | 24 TB
+| Virtual processors per host | 2,048 |
 
 ## Hardware requirements
 
