@@ -156,7 +156,7 @@ Verify the following:
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
 
-### Target Cluster Validation Failing on Appliance
+### Target cluster validation fails on appliance
 
 **Root Cause**
 The target cluster fails to validate because the cluster FQDN is not DNS-resolvable by default from the appliance.
