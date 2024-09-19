@@ -159,11 +159,13 @@ Verify the following:
 ### Target cluster validation fails on appliance
 
 **Root cause**
+
 The target cluster fails to validate because the cluster FQDN is not DNS-resolvable by default from the appliance.
 
 :::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
 
 **Recommended resolution**
+
 Manually map the Azure stack cluster IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
 
 Add a new line with the cluster IP and FQDN in the following format: *cluster_IP cluster_FQDN*
