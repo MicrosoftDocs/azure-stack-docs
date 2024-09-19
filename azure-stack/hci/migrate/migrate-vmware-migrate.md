@@ -118,7 +118,7 @@ Once you have verified that migration is complete and no more servers need to be
 
 ## Enable guest management
 
-After migrating a VM, you may want to enable guest management on that VM. Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Enable guest management](/manage/manage-arc-virtual-machines.md#enable-guest-management).
+After migrating a VM, you may want to enable guest management on that VM. Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
 
 ## Next steps
