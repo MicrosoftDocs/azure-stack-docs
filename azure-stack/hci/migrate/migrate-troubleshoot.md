@@ -168,7 +168,7 @@ The target cluster fails to validate because the cluster FQDN is not DNS-resolva
 
 Manually map the Azure stack cluster IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
 
-Add a new line with the cluster IP and FQDN in the following format: <Cluster IP><Cluster FQDN>
+Add a new line with the cluster IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
 
 
 ### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work.
