@@ -158,7 +158,7 @@ Verify the following:
 
 ### Target cluster validation fails on appliance
 
-**Root Cause**
+**Root cause**
 The target cluster fails to validate because the cluster FQDN is not DNS-resolvable by default from the appliance.
 
 :::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
