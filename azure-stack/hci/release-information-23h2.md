@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/03/2024
+ms.date: 09/17/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -55,7 +55,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2408.0.29 | 25398.1085 <br><br> [August OS security update](./security-update/hci-security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
+| 10.2408.1.6  | 25398.1128 <br><br> [September OS Security update](./security-update/hci-security-update-sep-2024.md) <br><br> Availability date: 2024-09-17 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
+| 10.2408.0.29 | 25398.1085 <br><br> [August OS security update](./security-update/hci-security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
 | 10.2405.3.7 | 25398.1085 <br><br> [August OS security update](./security-update/hci-security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
 | 10.2405.2.7 | 25398.1009  <br><br> [July OS security update](./security-update/hci-security-update-jul-2024.md) <br><br> Availability date: 2024-07-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24052) | [Known issues](./known-issues-2405-2.md) |
 | 10.2405.1.4 | 25398.950  <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
