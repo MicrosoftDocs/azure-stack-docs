@@ -28,7 +28,7 @@ To suspend a cluster node, follow these steps:
 1. To suspend the cluster node, run this command:
 
     ```powershell
-    Suspend-clusternode -name “MachineName” -drain
+    Suspend-Clusternode -name “MachineName” -drain
     ```
 
     Here's example output:
@@ -77,7 +77,7 @@ To resume a cluster node, follow these steps:
 1. To resume the cluster node, run this command:
 
     ```powershell
-    Resume-clusternode -name “MachineName” 
+    Resume-Clusternode -name “MachineName” 
     ```
 
     Here's example output:
@@ -96,7 +96,7 @@ To resume a cluster node, follow these steps:
 1. Confirm that the node is successfully resumed.
 
     ```powershell
-    Get-clusternode
+    Get-Clusternode
     ```
 
     Here's example output:
