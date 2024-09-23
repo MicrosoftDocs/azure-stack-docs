@@ -3,7 +3,7 @@ title: Migrate VMware VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate VMware VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/14/2024
+ms.date: 09/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -114,6 +114,13 @@ Once you have verified that migration is complete and no more servers need to be
 
 - Source VMs and the associated VM disks from VMware vCenter.
 - Source VMware appliance and target Azure Stack HCI appliance VMs.
+
+
+## Enable guest management
+
+After migrating a VM, you may want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+
+Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Supported Guest OS](/virtualization/hyper-v-on-windows/user-guide/make-integration-service#supported-guest-os).
 
 
 ## Next steps
