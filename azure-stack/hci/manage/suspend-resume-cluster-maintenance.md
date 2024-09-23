@@ -34,7 +34,7 @@ To suspend a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-ClusterNode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Suspend-Clusternode -name ASRRlS3lRl5ull -drain
 
     Name               State      Type
     ----               -----      ----
@@ -53,7 +53,7 @@ To suspend a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> get-clusternode
+    PS C:\programdata\wssdagent> Get-Clusternode
 
     Name                State        Type
     ----                -----        ----
@@ -65,6 +65,12 @@ To suspend a cluster node, follow these steps:
 
     ```powershell
     Remove-MocPhysicalNode -nodeName “MachineName”
+    ```
+
+    Here's example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -nodename ASRRlS3lRl5Ull
     ```
 
 ## Resume a cluster node
@@ -83,7 +89,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-ClusterNode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-Clusternode -name ASRRlS3lRl5ull
 
     Name               State      Type
     ----               -----      ----
@@ -102,7 +108,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-clusternode
+    PS C:\programdata\wssdagent> Get-Clusternode
 
     Name                State        Type
     ----                -----        ----
@@ -119,7 +125,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> new-MocPhysicalNode -nodename ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> New-MocPhysicalNode -nodename ASRRlS3lRl5ull
     
     ElementName     : HV Socket Agent Communication
     PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
@@ -143,7 +149,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C : \programdata\wssdagent> get-storagepool -FriendlyName "SU1_Pool"
+    PS C : \programdata\wssdagent> Get-Storagepool -friendlyname "SU1_Pool"
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
