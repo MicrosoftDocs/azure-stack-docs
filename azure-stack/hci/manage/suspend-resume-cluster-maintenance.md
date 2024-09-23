@@ -34,7 +34,7 @@ To suspend a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-Clusternode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Suspend-Clusternode -name ASRRlS3lRl5ull -drain
 
     Name               State      Type
     ----               -----      ----
@@ -89,7 +89,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-Clusternode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-Clusternode -name ASRRlS3lRl5ull
 
     Name               State      Type
     ----               -----      ----
@@ -149,7 +149,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C : \programdata\wssdagent> Get-Storagepool -FriendlyName "SU1_Pool"
+    PS C : \programdata\wssdagent> Get-Storagepool -friendlyname "SU1_Pool"
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
