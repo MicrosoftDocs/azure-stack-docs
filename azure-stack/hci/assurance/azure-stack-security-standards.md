@@ -1,7 +1,7 @@
 ---
 title: Azure Stack HCI and security standards
 description: Learn about Azure Stack HCI, security standards, and security assurance.
-ms.date: 2/5/2024
+ms.date: 09/23/2024
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
