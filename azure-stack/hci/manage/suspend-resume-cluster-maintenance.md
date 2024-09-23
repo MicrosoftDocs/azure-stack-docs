@@ -28,7 +28,7 @@ To suspend a cluster node, follow these steps:
 1. To suspend the cluster node, run this command:
 
     ```powershell
-    Suspend-clusternode -name “MachineName”
+    Suspend-clusternode -name “MachineName” -drain
     ```
 
     Here's example output:
@@ -113,7 +113,7 @@ To resume a cluster node, follow these steps:
 1. Add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName “MachineName”
+    New-MocPhysicalNode -nodeName “MachineName”
     ```
 
 1. Verify that your storage pool is healthy.
