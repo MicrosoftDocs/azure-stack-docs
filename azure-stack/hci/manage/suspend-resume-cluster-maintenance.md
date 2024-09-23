@@ -47,7 +47,7 @@ To suspend a cluster node, follow these steps:
 1. Confirm that the node is successfully suspended.
 
     ```powershell
-    Get-clusternode
+    Get-Clusternode
     ```
 
     Here's example output:
