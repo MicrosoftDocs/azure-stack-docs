@@ -28,7 +28,7 @@ To suspend a cluster node, follow these steps:
 1. To suspend the cluster node, run this command:
 
     ```powershell
-    Suspend-clusternode -name “MachineName”
+    Suspend-clusternode -name “MachineName” -drain
     ```
 
     Here's example output:
@@ -107,13 +107,31 @@ To resume a cluster node, follow these steps:
     Name                State        Type
     ----                -----        ----
     ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Paused       Node
+    ASRRlS3lRl5Ull      Up           Node
     ```
 
 1. Add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName “MachineName”
+    New-MocPhysicalNode -nodeName “MachineName”
+    ```
+
+    Here's example output:
+
+    ```console
+    PS C:\programdata\wssdagent> new-MocPhysicalNode -nodename ASRRlS3lRl5ull
+    
+    ElementName     : HV Socket Agent Communication
+    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
+    d58-64006a7986d3
+    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersions\Virtualization\GuestCommunicationServices
+    PSChildName     : 00000001-facb-lle6-bd58-64006a7986d3
+    PSDrive         : HKLM
+    PSProvider      : Microsoft.PowerShell.Core\Registry
+    PSComputerName  : ASRRlS3lRl5ull
+    RunspaceId      : 05c0eaad-0747-4912-a6e9-el09d975c444
+
+    True
     ```
 
 1. Verify that your storage pool is healthy.
