@@ -28,13 +28,13 @@ To suspend a cluster node, follow these steps:
 1. To suspend the cluster node, run this command:
 
     ```powershell
-    Suspend-clusternode -name “MachineName”
+    Suspend-Clusternode -name “MachineName” -drain
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Suspend-ClusterNode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Suspend-Clusternode -name ASRRlS3lRl5ull -drain
 
     Name               State      Type
     ----               -----      ----
@@ -47,13 +47,13 @@ To suspend a cluster node, follow these steps:
 1. Confirm that the node is successfully suspended.
 
     ```powershell
-    Get-clusternode
+    Get-Clusternode
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> get-clusternode
+    PS C:\programdata\wssdagent> Get-Clusternode
 
     Name                State        Type
     ----                -----        ----
@@ -67,6 +67,12 @@ To suspend a cluster node, follow these steps:
     Remove-MocPhysicalNode -nodeName “MachineName”
     ```
 
+    Here's example output:
+
+    ```console
+    PS C:\programdata\wssdagent> Remove-MocPhysicalNode -nodename ASRRlS3lRl5Ull
+    ```
+
 ## Resume a cluster node
 
 To resume a cluster node, first resume the cluster node in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
@@ -77,13 +83,13 @@ To resume a cluster node, follow these steps:
 1. To resume the cluster node, run this command:
 
     ```powershell
-    Resume-clusternode -name “MachineName” 
+    Resume-Clusternode -name “MachineName” 
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Resume-ClusterNode ASRRlS3lRl5ull
+    PS C:\programdata\wssdagent> Resume-Clusternode -name ASRRlS3lRl5ull
 
     Name               State      Type
     ----               -----      ----
@@ -96,24 +102,42 @@ To resume a cluster node, follow these steps:
 1. Confirm that the node is successfully resumed.
 
     ```powershell
-    Get-clusternode
+    Get-Clusternode
     ```
 
     Here's example output:
 
     ```console
-    PS C:\programdata\wssdagent> Get-clusternode
+    PS C:\programdata\wssdagent> Get-Clusternode
 
     Name                State        Type
     ----                -----        ----
     ASRRlS3lRl5u09      Up           Node
-    ASRRlS3lRl5Ull      Paused       Node
+    ASRRlS3lRl5Ull      Up           Node
     ```
 
 1. Add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
-    Remove-MocPhysicalNode -nodeName “MachineName”
+    New-MocPhysicalNode -nodeName “MachineName”
+    ```
+
+    Here's example output:
+
+    ```console
+    PS C:\programdata\wssdagent> New-MocPhysicalNode -nodename ASRRlS3lRl5ull
+    
+    ElementName     : HV Socket Agent Communication
+    PSPath          : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL MACHINE\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Virtualization\GuestCommunicationServices\00000001-facb-lle6-b
+    d58-64006a7986d3
+    PSParentPath    : Microsoft.PowerShell.Core\Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersions\Virtualization\GuestCommunicationServices
+    PSChildName     : 00000001-facb-lle6-bd58-64006a7986d3
+    PSDrive         : HKLM
+    PSProvider      : Microsoft.PowerShell.Core\Registry
+    PSComputerName  : ASRRlS3lRl5ull
+    RunspaceId      : 05c0eaad-0747-4912-a6e9-el09d975c444
+
+    True
     ```
 
 1. Verify that your storage pool is healthy.
@@ -125,7 +149,7 @@ To resume a cluster node, follow these steps:
     Here's example output:
 
     ```console
-    PS C : \programdata\wssdagent> get-storagepool -FriendlyName "SU1_Pool"
+    PS C : \programdata\wssdagent> Get-Storagepool -friendlyname "SU1_Pool"
 
     FriendlyName     Operationalstatus     HealthStatus     IsPrimordial     IsReadOnly     Size     AllocatedSize 
     ------------     -----------------     ------------     ------------     ----------     ----     -------------
