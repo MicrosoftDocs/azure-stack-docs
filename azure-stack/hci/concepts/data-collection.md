@@ -11,7 +11,7 @@ ms.date: 04/24/2023
 
 # Azure Stack HCI data collection
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 

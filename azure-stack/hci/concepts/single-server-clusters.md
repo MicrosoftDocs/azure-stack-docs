@@ -11,7 +11,7 @@ ms.date: 04/01/2024
 
 # Using Azure Stack HCI on a single server
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [warning-23h2](../../includes/hci-warning-single-server-22h2.md)]
 
