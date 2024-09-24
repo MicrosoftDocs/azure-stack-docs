@@ -428,7 +428,7 @@ If the CSV is moved to another server of the cluster while compression is in pro
 
 Avoid using `-FullRun` in manually started jobs unless the `Type` is `Dedup`.
 
-Follow these steps as a templorary workaround to mitigate this issue:
+Follow these steps as a temporary workaround to mitigate this issue:
 
 1. Disable ReFS deduplication and compression on the volume:
 
