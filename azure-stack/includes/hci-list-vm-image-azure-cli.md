@@ -95,4 +95,4 @@ inServer2022Az-01",
 PS C:\Users\azcli>
 ```
 
-For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image?view=azure-cli-latest#az-stack-hci-vm-image-list).
+For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
