@@ -88,11 +88,13 @@ Follow these steps to create a VM image using the Azure CLI.
 
 1. Set additional parameters that specify the intended VM image you would like to create. You will need to include the offer, publisher, SKU, and version for the marketplace image:
 
-%publisher = “Publisher name”
-$offer = “OS offer”
-$sku = “Image SKU”
+    ```azurecli
+    %publisher = “Publisher name”
+    $offer = “OS offer”
+    $sku = “Image SKU”
+    ```
 
-Use the following table to find the available marketplace images and their attribute values:
+    Use the following table to find the available marketplace images and their attribute values:
 
     | Name | Publisher | Offer | SKU |
     |------|-----------|-------|------|
@@ -110,12 +112,12 @@ Use the following table to find the available marketplace images and their attri
 
     If you wanted to create a Windows Server 2019 Datacenter image, you would have the following parameters: 
 
- 
-```azurecli
-$publisher = “microsoftwindowsserver” 
-$offer = “windowsserver” 
-$sku = “2019-datacenter-gensecond”
-```
+
+    ```azurecli
+    $publisher = “microsoftwindowsserver” 
+    $offer = “windowsserver” 
+    $sku = “2019-datacenter-gensecond”
+    ```
 
 1. Create the VM image starting with a specified marketplace image:
 
