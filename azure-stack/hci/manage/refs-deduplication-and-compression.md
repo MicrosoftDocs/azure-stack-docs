@@ -148,10 +148,9 @@ After you enable this feature, you can run a one-time job manually or schedule r
 
 Before you run, you should also factor these other considerations:
 
-- The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization covers the entire volume rather than new or unoptimized data. Don't use the `FullRun` parameter when the `Type` is `DedupandCompress` or `Compress`.
 - If you don't specify a compression format, the default algorithm is LZ4. You can change the algorithm from one run to another as needed.
 - You can specify more parameters for more complex use cases. The cmdlet used in this section is for the simplest use case.
-- The Full Run, Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply only when running deduplication, and don't apply when running compression.
+- The Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply only when running deduplication, and don't apply when running compression.
 
 **Manually run ReFS deduplication and compression jobs**
 
@@ -394,6 +393,32 @@ The duration limit is in place to prevent any performance impact on customer wor
 
 The following section lists the known issues that currently exist with ReFS deduplication and compression.
 
+### When Compression is enabled, using the `-FullRun` parameter on jobs after the first optimization run might result in a deadlock in the system.
+
+**Status:** Open.
+
+Avoid using `-FullRun` in manually started jobs unless the `Type` is `Dedup`.
+
+Follow these steps as a temporary workaround to mitigate this issue:
+
+1. Disable ReFS deduplication and compression on the volume:
+
+    ```powershell
+    Disable-ReFSDedup -Volume <path>
+    ```
+
+1. Decompress the volume using `refsutil`:
+
+    ```powershell
+    refsutil compression /c /f NONE <vol>
+    ```
+  
+1. Re-enable ReFS deduplication and compression with the `Dedup` only mode, if needed:
+
+    ```powershell
+    Enable-ReFSDedup -Volume <path> -Type Dedup
+    ```
+
 ### Scheduling jobs to run simultaneously on multiple CSVs within a single cluster can potentially trigger CSV movements and negatively impact performance.
 
 **Status:** Open.
@@ -421,32 +446,6 @@ Once ReFS deduplication and compression is disabled on a volume, the ETW channel
 **Status:** Resolved.
 
 If the CSV is moved to another server of the cluster while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
-
-### When Compression is enabled, using `-FullRun` on jobs after the first optimization run might result in a deadlock in the system.
-
-**Status:** Open.
-
-Avoid using `-FullRun` in manually started jobs unless the `Type` is `Dedup`.
-
-Follow these steps as a temporary workaround to mitigate this issue:
-
-1. Disable ReFS deduplication and compression on the volume:
-
-    ```powershell
-    Disable-ReFSDedup -Volume <path>
-    ```
-
-1. Decompress the volume using `refsutil`:
-
-    ```powershell
-    refsutil compression /c /f NONE <vol>
-    ```
-  
-1. Re-enable ReFS deduplication and compression with the `Dedup` only mode, if needed:
-
-    ```powershell
-    Enable-ReFSDedup -Volume <path> -Type Dedup
-    ```
 
 ## Next steps
 
