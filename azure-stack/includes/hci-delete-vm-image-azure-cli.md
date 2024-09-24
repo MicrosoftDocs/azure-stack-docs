@@ -5,16 +5,16 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 11/06/2023
+ms.date: 09/24/2024
 ---
 
 1. Run PowerShell as an administrator.
-1. Set the following parameters.
+1. Set the following parameters:
 
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Cluster resource group>"
-    $galleryImageName = "<Gallery image name>"    
+    $mktplaceImage = "<Markeplace image name>"    
     ```
 
 1. Remove an existing VM image. Run the following command:

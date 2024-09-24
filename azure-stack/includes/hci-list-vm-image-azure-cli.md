@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 11/06/2023
+ms.date: 09/24/2024
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -94,3 +94,5 @@ inServer2022Az-01",
 ]
 PS C:\Users\azcli>
 ```
+
+For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image?view=azure-cli-latest#az-stack-hci-vm-image-list).
