@@ -81,7 +81,7 @@ You can use default VLANs specified by Network ATC or use values specific to you
 
 This task helps you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents.
 
-In this example we installed two new adapters, pNIC03 and pNIC04, and we want them to be used in our intent named 'Cluster_Compute'.
+In this example, we installed two new adapters, pNIC03 and pNIC04, and we want them to be used in our intent named 'Cluster_Compute'.
 
 1. On one of the cluster nodes, run `Get-NetAdapter` to check that both adapters are present and report status of 'Up' on each cluster node. 
 
@@ -126,15 +126,15 @@ Global overrides and cluster network settings is a new feature Network ATC is in
 
 ### Cluster network features
 
-In this section, we go over the set of new Cluster Network Features that we are releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, and managing live migrations.
+In this section, we go over the set of new Cluster Network Features that we're releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, and managing live migrations.
 
 ###### Cluster network naming
 
-Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there is no way for clustering to know how you intended to use the networks – until now!
+Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there's no way for clustering to know how you intended to use the networks – until now!
 
-Once you define your configuration through Network ATC, we now understand how the subnets are going to be used and can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
+Once you define your configuration through Network ATC, we now understand how the subnets are going to be used, and we can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
 
-In the following screenshot, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
+In the following screenshot, you can see the storage intent was applied to this set of adapters. There's another unknown cluster network shown which the administrator may want to investigate.
 
 :::image type="content" source="media/manage-network-atc/cluster-network-naming.png" alt-text="Screenshot of Cluster Network Selection." lightbox="media/manage-network-atc/cluster-network-naming.png":::
 
@@ -149,7 +149,7 @@ This value enables or disables the intent-based selection of virtual machine liv
 If disabled:
 
 - Live migration transport selection uses the transport specified in VirtualMachineMigrationPerformanceOption override value.
-- If the VirtualMachineMigrationPerformanceOption override value is not specified, Network ATC reverts to behavior when Network ATC was absent.
+- If the VirtualMachineMigrationPerformanceOption override value isn't specified, Network ATC reverts to behavior when Network ATC was absent.
 - If null, but VirtualMachineMigrationPerformanceOption is configured, configure this option to $false and use the option specified in the VirtualMachineMigrationPerformanceOption override
 
 ###### Virtual machine migration performance option
@@ -158,7 +158,7 @@ Network ATC configures the live migration transport to TCPIP, Compression, or SM
 
 ###### Maximum concurrent virtual machine migrations
 
-Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through ten. 
+Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through 10.
 
 ###### Maximum SMB migration bandwidth
 
@@ -198,7 +198,7 @@ Remove-NetIntent -GlobalOverrides $clusterOverride
 
 ### Proxy configurations
 
-Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
+Proxy is unlike the existing ATC overrides because it isn't tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
 
 The `New-NetIntentGlobalProxyOverrides` command is used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
 
