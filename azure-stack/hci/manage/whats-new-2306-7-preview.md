@@ -33,8 +33,6 @@ For more information on Azure Stack HCI, version 2311.2, see [What's new in Azur
 
 [!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp-2306.md)]
 
-To learn more about the new deployment methods, see [Deployment overview](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
-
 ### What's new
 
 This release includes the Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to January 2024.
@@ -49,7 +47,3 @@ For more information on the January release, see [Azure Stack HCI, version 22H2 
 ## Known issues
 
 To review a list of the known issues for this release, see [View known issues in Azure Stack HCI, 2306.7 Supplemental Package release (preview)](../hci-known-issues-2306-7.md).
-
-## Next steps
-
-- For new Azure Stack HCI deployments via supplemental package read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
