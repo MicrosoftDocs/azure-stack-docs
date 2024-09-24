@@ -130,9 +130,6 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
-    > [!TIP]
-    > [Download a sample parameters file](https://databoxupdatepackages.blob.core.windows.net/documentation/EXAMPLE-cl-Parameters-2Node-Switchless-Compute_Management_withAdapterOverride.json) to understand the format in which you must provide the inputs.
-
 1. Select the appropriate resource group for your environment.
 
 1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.

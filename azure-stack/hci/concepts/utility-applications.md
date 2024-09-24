@@ -9,13 +9,13 @@ ms.date: 02/23/2024
 
 # Utility applications for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 Azure Stack HCI is a hyperconverged infrastructure stack that’s uniquely positioned for hybrid infrastructure, allowing customers to take advantage of cloud and on-premises resources working together and natively monitor, secure and back up to the cloud. To learn more, see the [Azure Stack HCI solution overview](../overview.md).
 
 This article spotlights utility applications from Microsoft partners that support the operating system.
 
-We recommend using Microsoft Defender Antivirus with the operating system. Other antivirus and malware detection software and services might impact the operating system’s ability to receive updates. This guidance might change in future releases of the operating system.
+We recommend using Microsoft Defender Antivirus with the Azure Stack HCI Operating System. Third party Antivirus and security software must be designed and approved for Azure Stack HCI. Other antivirus and malware detection software and services might impact the operating system’s ability to receive updates. This guidance might change in future releases of the operating system.
 
 ## Partner spotlight
 
