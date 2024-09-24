@@ -921,4 +921,3 @@ items:
       - name: 22H2 Supplemental Package plan, deploy, and manage
         items:
         - name: Deployment and management guide
-          href: https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf
