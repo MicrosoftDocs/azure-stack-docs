@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Stack 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2024
+ms.date: 09/24/2024
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Stack HCI
@@ -148,7 +148,7 @@ After you enable this feature, you can run a one-time job manually or schedule r
 
 Before you run, you should also factor these other considerations:
 
-- The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization covers the entire volume rather than new or unoptimized data.
+- The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization covers the entire volume rather than new or unoptimized data. Don't use the `FullRun` parameter when the `Type` is `DedupandCompress` or `Compress`.
 - If you don't specify a compression format, the default algorithm is LZ4. You can change the algorithm from one run to another as needed.
 - You can specify more parameters for more complex use cases. The cmdlet used in this section is for the simplest use case.
 - The Full Run, Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply only when running deduplication, and don't apply when running compression.
@@ -158,7 +158,7 @@ Before you run, you should also factor these other considerations:
 - To start a job immediately, run the following cmdlet. Once you start a job, its `State` might appear as `NotStarted` because it could still be in the initialization phase.
 
     ```powershell
-    Start-ReFSDedupJob -Volume <path> -Duration <TimeSpan> -FullRun -CompressionFormat <LZ4 | ZSTD> 
+    Start-ReFSDedupJob -Volume <path> -Duration <TimeSpan> -CompressionFormat <LZ4 | ZSTD> 
     ```
 
     For example, the following cmdlet starts a job immediately for a duration of 5 hours using the LZ4 compression format:
@@ -166,7 +166,7 @@ Before you run, you should also factor these other considerations:
     ```powershell
     PS C:\Users\hciuser> $Start = “10/31/2023 08:30:00”
     PS C:\Users\hciuser> $Duration = New-Timespan -Hours 5
-    PS C:\Users\hciuser> Start-ReFSDedupJob -Volume "C:\ClusterStorage\Volume1" -FullRun -Duration $Duration -CompressionFormat LZ4
+    PS C:\Users\hciuser> Start-ReFSDedupJob -Volume "C:\ClusterStorage\Volume1" -Duration $Duration -CompressionFormat LZ4
     
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
@@ -421,6 +421,32 @@ Once ReFS deduplication and compression is disabled on a volume, the ETW channel
 **Status:** Resolved.
 
 If the CSV is moved to another server of the cluster while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
+
+### When Compression is enabled, using `-FullRun` on jobs after the first optimization run might result in a deadlock in the system.
+
+**Status:** Open.
+
+Avoid using `-FullRun` in manually started jobs unless the `Type` is `Dedup`.
+
+Follow these steps as a templorary workaround to mitigate this issue:
+
+1. Disable ReFS deduplication and compression on the volume:
+
+    ```powershell
+    Disable-ReFSDedup -Volume <path>
+    ```
+
+1. Decompress the volume using `refsutil`:
+
+    ```powershell
+    refsutil compression /c /f NONE <vol>
+    ```
+  
+1. Re-enable ReFS deduplication and compression with the `Dedup` only mode, if needed:
+
+    ```powershell
+    Enable-ReFSDedup -Volume <path> -Type Dedup
+    ```
 
 ## Next steps
 
