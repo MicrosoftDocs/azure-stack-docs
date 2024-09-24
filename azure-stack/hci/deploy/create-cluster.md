@@ -10,7 +10,7 @@ ms.reviewer: shsathee
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 

@@ -122,20 +122,21 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
-    - Credential Guard
     - Drift Control
+    - Credential Guard
     - VBS (Virtualization Based Security)- We only support enable command.
     - DRTM (Dynamic Root of Trust for Measurement)
     - HVCI (Hypervisor Enforced if Code Integrity)
     - Side Channel Mitigation
-    - SMB Encryption
     - SMB Signing
+    - SMB Cluster encryption
 
 The following table documents supported security features, whether they support drift control, and whether a reboot is required to implement the feature.
 
 |Name |Feature |Supports drift control |Reboot required |
 |-----|--------|-----------------------|----------------|
 |Enable <br> |Virtualization Based Security (VBS) |Yes   |Yes |
+|Enable <br> |Credential Guard |Yes   |Yes |
 |Enable <br> Disable |Dynamic Root of Trust for Measurement (DRTM) |Yes |Yes |
 |Enable <br> Disable |Hypervisor-protected Code Integrity (HVCI) |Yes |Yes |
 |Enable <br> Disable |Side channel mitigation |Yes |Yes |

@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI upgrade
 description: Learn how to troubleshoot upgrade on your Azure Stack HCI system. 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 09/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -146,4 +146,9 @@ When you [Install the solution upgrade](./install-solution-upgrade.md), you may 
 
 ## Next steps
 
-- [Open a Support ticket.](../manage/get-support.md)
+For detailed remediation for common known issues, check out:
+> [!div class="nextstepaction"]
+> [Azure Stack HCI Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
+
+Alternatively, you can:
+- [Open a Support ticket](../manage/get-support.md)

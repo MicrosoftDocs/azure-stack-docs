@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters in Azure Stack HCI using Az
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 02/05/2024
+ms.date: 09/24/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
@@ -123,7 +123,7 @@ apiVersion: apps/v1
             "kubernetes.io/os": linux 
           containers: 
           - name: azure-vote-back 
-            image: mcr.microsoft.com/oss/bitnami/redis:6.0.8 
+            image: <path to image>/oss/bitnami/redis:6.0.8 
             env: 
             - name: ALLOW_EMPTY_PASSWORD 
               value: "yes" 
@@ -166,7 +166,7 @@ apiVersion: apps/v1
             "kubernetes.io/os": linux 
           containers: 
           - name: azure-vote-front 
-            image: mcr.microsoft.com/azuredocs/azure-vote-front:v1 
+            image: <path to image>/azure-vote-front:v1 
             resources: 
               requests: 
                 cpu: 100m 
