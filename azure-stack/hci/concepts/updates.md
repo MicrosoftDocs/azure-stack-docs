@@ -9,7 +9,7 @@ ms.date: 02/23/2024
 
 # Updates and upgrades
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 This article describes the lifecycle of updates and upgrades on Azure Stack HCI. 
 

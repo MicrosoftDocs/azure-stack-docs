@@ -357,6 +357,8 @@ items:
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
+    - name: Suspend and resume
+      href: manage/suspend-resume-cluster-maintenance.md
     - name: Use dashboard to manage at-scale
       href: manage/manage-at-scale-dashboard.md
 
@@ -935,4 +937,3 @@ items:
       - name: 22H2 Supplemental Package plan, deploy, and manage
         items:
         - name: Deployment and management guide
-          href: https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf

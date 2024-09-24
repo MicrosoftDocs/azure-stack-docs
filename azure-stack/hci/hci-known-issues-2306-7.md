@@ -50,7 +50,3 @@ Here are the known issues that have carried over from the previous releases in A
 |11|Azure Arc|After update, the Azure Stack HCI cluster servers show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that isn't registered: <br>`Register-AzStackHCI`   |
 |12|Arc Resource Bridge  |In this release, a custom location isn't created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
 |13|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
-
-## Next steps
-
-- Read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
