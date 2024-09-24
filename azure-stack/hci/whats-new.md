@@ -187,7 +187,7 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 This release includes the following updates to the security documentation:
 
 - The compliance score for Azure Stack HCI server is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
-- The Security Baselines settings have been updated to 315 settings, including six removals, one addition, and one change related to storing passwords for network authentication due deployment compatibility issues. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
+- The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
 - Updated the [Windows Defender Application Control](../hci/concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Stack HCI, version 23H2](../hci/concepts/security-features.md) article.
 
 ### AKS on Azure Stack HCI, version 23H2
