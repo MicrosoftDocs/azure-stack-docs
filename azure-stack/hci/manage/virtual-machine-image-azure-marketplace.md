@@ -66,9 +66,9 @@ Follow these steps to create a VM image using the Azure CLI.
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
     | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.     |
-    | `mktplaceImage` | Name of the Marketplace Image for Azure Stack HCI cluster.  |
-    | `customLocationName` | Name of Custom Location for Azure Stack HCI cluster.  |
-    | `customLocationID` | Resource ID of Custom Location for Azure Stack HCI cluster.   |
+    | `mktplaceImage` | Name of the marketplace image for Azure Stack HCI cluster.  |
+    | `customLocationName` | Name of custom location for Azure Stack HCI cluster.  |
+    | `customLocationID` | Resource ID of custom location for Azure Stack HCI cluster.   |
     | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
