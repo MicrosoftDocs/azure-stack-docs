@@ -320,4 +320,4 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ## Next steps
 
-- [Get support for depliyment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md)
