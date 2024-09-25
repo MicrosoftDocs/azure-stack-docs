@@ -201,4 +201,4 @@ To delete an Arc gateway resource, you must first detach it from the servers to 
 
 ## Next steps
 
-- [Connect Azure Stack HCI nodes to Arc gateway](deployment-connect-nodes-to-arc-gateway.md).
+- [Connect Azure Stack HCI nodes to Arc gateway](deployment-connect-nodes-to-arc-gateway.md)
