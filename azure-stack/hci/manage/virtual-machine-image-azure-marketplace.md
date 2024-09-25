@@ -88,9 +88,9 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Set additional parameters that specify the intended VM image you would like to create. You will need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in \< \> with the appropriate values:
 
     ```azurecli
-    %publisher = \<Publisher name\>
-    $offer = \<OS offer\>
-    $sku = \<Image SKU\>
+    %publisher = <Publisher name>
+    $offer = <OS offer>
+    $sku = <Image SKU>
     ```
 
     Use the following table to find the available marketplace images and their attribute values:
