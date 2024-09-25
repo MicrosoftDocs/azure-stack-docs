@@ -10,9 +10,9 @@ ms.subservice: azure-stack-hci
 
 # Connect Azure Stack HCI nodes to Arc gateway (preview)
 
-Applies to: Azure Stack HCI, version 23H2
+Applies to: Azure Stack HCI, version 2408
 
-This article details how to connect Azure Stack HCI, version 23H2 node Arc agents to Arc gateway version 2408.
+This article details how to connect Azure Stack HCI, version 2408 node Arc agents to Arc gateway.
 
 After creating the Arc gateway resource in your subscription, you have two options to enable the new version 2408 Arc gateway preview features.  
 

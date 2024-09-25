@@ -1,6 +1,6 @@
 --- 
 title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 clusters (preview)
-description: Learn what is Azure Arc gateway for Azure Stack HCI, version 23H2 cluster running software version 2408 (preview). 
+description: Learn what is Azure Arc gateway for Azure Stack HCI, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
 ms.date: 09/25/2024
@@ -8,11 +8,11 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# About Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
+# About Azure Arc gateway for Azure Stack HCI, version 2408 (preview)
 
-Applies to: Azure Stack HCI, version 23H2
+Applies to: Azure Stack HCI, version 2408
 
-This article provides an overview of the Azure Arc Gateway for Azure Stack HCI, version 23H2. The Arc gateway can be enabled on new deployments of Azure Stack HCI running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
+This article provides an overview of the Azure Arc Gateway for Azure Stack HCI, version 2408. The Arc gateway can be enabled on new deployments of Azure Stack HCI running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you have created the Arc gateway, you can connect to and use it for new deployments of Azure Stack HCI.
 
