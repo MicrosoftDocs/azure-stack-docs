@@ -893,8 +893,6 @@ items:
       href: whats-new-in-hci-21h2.md
     - name: Known issues in 2310
       href: known-issues-2310.md
-    - name: Create a VM-based lab
-      href: deploy/tutorial-private-forest.md
     - name: 22H2 Supplemental Package
       items:
       - name: What's in preview?
