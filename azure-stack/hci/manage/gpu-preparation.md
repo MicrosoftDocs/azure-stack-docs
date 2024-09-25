@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for Azure Stack HCI  (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/24/2024
+ms.date: 09/25/2024
 ---
 
 # Prepare GPUs for Azure Stack HCI (preview)

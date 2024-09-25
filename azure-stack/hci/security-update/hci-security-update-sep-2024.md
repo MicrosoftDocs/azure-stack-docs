@@ -3,7 +3,7 @@ title:  September 2024 security update (KB 5043055) for Azure Stack HCI, version
 description: Read about the September 2024 security update (KB 5043055) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 09/24/2024
+ms.date: 09/25/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci

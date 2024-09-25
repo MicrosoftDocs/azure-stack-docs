@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2408.1 basel
 description: Read about the known issues and fixed issues in Azure Stack HCI 2408.1 baseline release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 09/24/2024
+ms.date: 09/25/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
