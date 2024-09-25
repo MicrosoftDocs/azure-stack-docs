@@ -183,10 +183,8 @@ items:
     items:
     - name: About Arc gateway
       href: deploy/deployment-azure-arc-gateway-overview.md
-    - name: New v23H2 deployments
-      href: deploy/deployment-azure-arc-gateway-new-cluster.md
-    - name: Existing v23H2 deployments
-      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
+    - name: Connect nodes to Arc gateway
+      href: deploy/deployment-connect-nodes-to-arc-gateway.md
 
   - name: Deploy SDN
     items:
