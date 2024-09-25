@@ -11,7 +11,7 @@ ms.date: 04/12/2024
 
 # Deploy the Azure Stack HCI operating system
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
