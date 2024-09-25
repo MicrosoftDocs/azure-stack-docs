@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 09/24/2024
+ms.date: 09/25/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
@@ -66,9 +66,8 @@ Follow these steps to create a VM image using the Azure CLI.
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
     | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.     |
-    | `mktplaceImage` | Name of the marketplace image for Azure Stack HCI cluster.  |
-    | `customLocationName` | Name of custom location for Azure Stack HCI cluster.  |
-    | `customLocationID` | Resource ID of custom location for Azure Stack HCI cluster.   |
+    | `name` | Name of the marketplace image for Azure Stack HCI cluster.  |
+    | `customLocation` | Resource ID of custom location for Azure Stack HCI cluster.   |
     | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
@@ -86,12 +85,12 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Create VM image from marketplace image
 
-1. Set additional parameters that specify the intended VM image you would like to create. You will need to include the offer, publisher, SKU, and version for the marketplace image:
+1. Set additional parameters that specify the intended VM image you would like to create. You will need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in \< \> with the appropriate values:
 
     ```azurecli
-    %publisher = “Publisher name”
-    $offer = “OS offer”
-    $sku = “Image SKU”
+    %publisher = \<Publisher name\>
+    $offer = \<OS offer\>
+    $sku = \<Image SKU\>
     ```
 
     Use the following table to find the available marketplace images and their attribute values:
@@ -114,9 +113,9 @@ Follow these steps to create a VM image using the Azure CLI.
 
 
     ```azurecli
-    $publisher = “microsoftwindowsserver” 
-    $offer = “windowsserver” 
-    $sku = “2019-datacenter-gensecond”
+    $publisher = "microsoftwindowsserver" 
+    $offer = "windowsserver" 
+    $sku = "2019-datacenter-gensecond"
     ```
 
 1. Create the VM image starting with a specified marketplace image:
