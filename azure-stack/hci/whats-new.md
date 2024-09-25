@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/05/2024
+ms.date: 09/25/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -25,6 +25,19 @@ There are currently four release trains for Azure Stack HCI, version 23H2: 2408,
 > A new ISO image is available that includes the Hyper-V role and all necessary Arc registration modules.
 
 This release train includes the following releases:
+
+## Features and improvements in 2408.1
+
+This is a baseline release with the following features and improvements:
+
+- **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register servers with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-servers-with-azure-arc).
+- **Arc VM Management**: Starting in this release, you can attach or detach GPUs to an Arc VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
+  - [Prepare GPUs for Azure Stack HCI (preview)](./manage/gpu-preparation.md)
+  - [Manage GPUs using partitioning for Azure Stack HCI (preview)](./manage/gpu-manage-via-partitioning.md)
+  - [Manage GPUs via Discrete Device Assignment for Azure Stack HCI (preview)](./manage/gpu-manage-via-device.md)
+- **Improved CLI error messages** for deletion of VM network interfaces, data disks, and storage paths that are in use.
+- **Improved reliability** when installing open ssh client during solution deployment.
 
 ## Features and improvements in 2408
 
