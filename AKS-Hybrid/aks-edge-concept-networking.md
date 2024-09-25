@@ -49,7 +49,7 @@ If AKS Edge Essentials is deployed using a single machine cluster or a scalable 
 | **Maximum transmission unit (MTU)** | Supported using the `MTU` parameter. | Supported using the `MTU` parameter. |
 
 > [!IMPORTANT]
-> Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
 ## Single machine cluster
 
