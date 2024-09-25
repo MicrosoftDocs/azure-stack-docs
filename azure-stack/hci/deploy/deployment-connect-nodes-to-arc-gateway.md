@@ -24,7 +24,7 @@ This option entails manually configuring the proxy before Arc registration.
 
 ### Step 1: Manually configure the proxy on each node
 
-If you need to configure the proxy before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2).
+If you need to configure the proxy before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Stack HCI, version 23H2](/manage/configure-proxy-settings-23h2).
 
 Ensure that you configure the proxy and the bypass list across all your Azure HCI cluster nodes.
 
