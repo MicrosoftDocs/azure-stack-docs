@@ -40,8 +40,8 @@ To browse for available cluster updates using Azure Update Manager, follow these
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
 2. Under the **Resources** dropdown, select **Azure Stack HCI**.
-   - Filter by Subscription, Resource group, Location, Status, Update readiness, Current OS version, and/or Tags to view a list of clusters.
-3. In the cluster list, view the clusters update status, update readiness, current OS version, and the date and time of the last successful update.
+   - Filter by Subscription, Resource group, Location, Status, Update readiness, Current version, and/or Tags to view a list of clusters.
+3. In the cluster list, view the clusters update Status, Update readiness, Current version, and the date and time of the Last successful update.
 
     [![Screenshot to browse for cluster updates in Azure Update Manager.](./media/azure-update-manager/main-link.png)](media/azure-update-manager/main-link.png#lightbox)
 
@@ -121,7 +121,7 @@ In addition to using Azure Update Manager, you can update individual Azure Stack
 To install updates on a single cluster from the Azure Stack HCI cluster resource page, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
+2. Under the **Resources** dropdown, select **Azure Stack HCI**.
 3. Select the cluster name from the list.
 4. Select the update and then select **One-time update**.
 
