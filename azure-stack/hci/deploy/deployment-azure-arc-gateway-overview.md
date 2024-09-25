@@ -138,9 +138,12 @@ Consider the following limitations of Arc gateway in this release:
 - TLS terminating proxies aren't supported with the Arc gateway (Preview).
 - Use of ExpressRoute, Site-to-Site VPN, or Private Endpoints in addition to the Arc gateway (Preview) isn't supported.  
 
-## How to use the Arc gateway on Azure Stack HCI
+## Prerequisite
 
-After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new Azure Stack HCI 2408 deployments.
+Register your Azure subscription to join the limited public preview of the Arc gateway. This will allow you to create the Arc gateway resource in Azure. [Azure Arc gateway Limited Public Preview Sign-up form](https://forms.office.com/r/bfTkU2i0Qw).
+
+> [!Warning]
+> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Stack HCI, version 2408. Do not use the ISO image available in Azure portal.  
 
 ## Create the Arc gateway resource in Azure
 
