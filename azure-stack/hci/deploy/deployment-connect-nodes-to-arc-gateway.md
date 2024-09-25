@@ -26,7 +26,7 @@ This option entails manually configuring the Arc proxy before Arc registration.
 
 If you need to configure the Arc proxy on your Azure Stack HCI nodes before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
 
-Ensure that you configure the proxy and the bypass list for all your Azure HCI cluster nodes.
+Ensure that you configure the proxy and the bypass list for all your Azure Stack HCI cluster nodes.
 
 ### Step 2: Get the ArcGatewayID  
 
@@ -239,7 +239,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 
 # Use specific IPs such as 127.0.0.1 without mask 
 
-# Use * for subnets whitelisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
+# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
 
 # Append * for domain names exclusions like *.contoso.com 
 
@@ -312,4 +312,4 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ## Next steps
 
-- [Get support for depliyment issues](./manage/get-support-for-deployment-issues.md)
+- [Get support for depliyment issues](../manage/get-support-for-deployment-issues.md)
