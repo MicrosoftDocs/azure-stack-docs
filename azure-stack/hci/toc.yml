@@ -346,7 +346,7 @@ items:
     items:
       - name: Prepare GPUs
         href: manage/gpu-preparation.md
-      - name: Manage GPUs using Discrete Device Assigment
+      - name: Manage GPUs using Discrete Device Assignment
         href: manage/gpu-manage-via-device.md
       - name: Manage GPUs via partitioning
         href: manage/gpu-manage-via-partitioning.md

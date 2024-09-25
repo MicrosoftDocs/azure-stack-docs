@@ -100,7 +100,7 @@ After detaching the GPU partition, the output will show the full VM details. You
 		"virtualMachineGPUs":[],
 ```
 
-For more information on the GPU attach command, see see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
+For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
 
 ## Next steps
 
