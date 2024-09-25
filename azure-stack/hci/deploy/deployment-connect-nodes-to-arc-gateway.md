@@ -113,7 +113,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ### Step 4: Start Azure Stack HCI cloud deployment
 
-Once the Azure Stack HCI nodes are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure Portal or using the ARM templates documented in these articles:
+Once the Azure Stack HCI nodes are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates documented in these articles:
 
 - [Deploy an Azure Stack HCI system using the Azure portal](deploy-via-portal.md).
 
@@ -127,7 +127,7 @@ You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\
 
 :::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Output showing Arc gateway log using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
-To check the Arc agent configuration and verify that it is using the Arc gateway, run the following command: *c:\program files\AzureConnectedMachineAgent>.\azcmagent show*
+To check the Arc agent configuration and verify that it is using the Arc gateway, run the following command: `c:\program files\AzureConnectedMachineAgent>.\azcmagent show`
 
 The result should show the following values:
 
@@ -135,7 +135,7 @@ The result should show the following values:
 
 - **Agent Status** should show as **Connected**.
 
-- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as **http://localhost:40343** when the Arc gateway is enabled.
+- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
 
 - **Upstream Proxy** will show your enterprise proxy server and port.
 
@@ -280,7 +280,7 @@ The values displayed should be as follows:
 
 - **Agent Status** should show as **Connected**.
 
-- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as **http://localhost:40343** when the Arc gateway is enabled.
+- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
 
 - **Upstream Proxy** will show your enterprise proxy server and port.
 
@@ -311,3 +311,5 @@ You can also audit your gateway traffic by viewing the gateway router logs.
 To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
 ## Next steps
+
+- [Get support for depliyment issues](./manage/get-support-for-deployment-issues.md)

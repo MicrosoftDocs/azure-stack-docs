@@ -93,43 +93,43 @@ Support to enable the Arc gateway after update or deployment will be enabled in 
 
 ## Azure Stack HCI 2408 endpoints not redirected
 
-As part of the Azure Stack HCI version 2408 preview update, the endpoints from the table below are required and must be whitelisted in your proxy or firewall to successfully deploy the Azure Stack HCI cluster. These endpoints are not redirected via the Arc gateway:
+As part of the Azure Stack HCI version 2408 preview update, the endpoints from the table below are required and must be allowlisted in your proxy or firewall to successfully deploy the Azure Stack HCI cluster. These endpoints are not redirected via the Arc gateway:
 
 | Endpoint # | Required endpoint | Component  |
 | -- | -- | -- |
-| 1 | http://go.microsoft.com:443 | Env Chkr |
-| 2 | http://www.powershellgallery.com:443 | Env Chkr |
-| 3 | http://psg-prod-eastus.azureedge.net:443 | Env Chkr |
-| 4 | http://onegetcdn.azureedge.net:443 | Env Chkr |
-| 5 | http://login.microsoftonline.com:443 | Env Chkr |
-| 6 | http://aka.ms:443 | Env Chkr |
-| 7 | http://azurestackreleases.download.prss.microsoft.com:443 | Env Chkr |
-| 8 | http://download.microsoft.com:443 | Env Chkr |
-| 9 | http://portal.azure.com:443 | Env Chkr |
-| 10 | http://management.azure.com:443 | Env Chkr |
-| 11 | http://www.office.com:443 | Env Chkr |
-| 12 | http://gbl.his.arc.azure.com:443 | Arc agent |  
-| 13 | http://\<region\>.his.arc.azure.com:443 | Arc agent |
-| 14 | http://dc.services.visualstudio.com:443 | Arc agent |
-| 15 | http://\<yourarcgatewayId\>.gw.arc.azure.com:443 | Arc gateway |
-| 16 | http://\<yourkeyvaultname\>.vault.azure.net:443 | Azure Key Vault |
-| 17 | http://\<yourblobstorageforcloudwitnessname\>.blob.core.windows.net:443 | Cloud Witness Storage Account |
-| 18 | http://files.pythonhosted.org:443 | MOC/ARB/AKS |
-| 19 | http://pypi.org:443 | MOC/ARB/AKS |
-| 20 | http://raw.githubusercontent.com:443 | MOC/ARB/AKS |
-| 21 | http://pythonhosted.org:443 | MOC/ARB/AKS |
-| 22 | http://hciarcvmsstorage.z13.web.core.windows.net:443 | MOC/ARB/AKS |
-| 23 | http://ocsp.digicert.com  | CRL for Arc extensions |
-| 24 | http://s.symcd.com | CRL for Arc extensions |
-| 25 | http://ts-ocsp.ws.symantec.com | CRL for Arc extensions |
-| 26 | http://ocsp.globalsign.com | CRL for Arc extensions |
-| 27 | http://ocsp2.globalsign.com | CRL for Arc extensions |
-| 28 | http://oneocsp.microsoft.com | CRL for Arc extensions |
-| 29 | http://dl.delivery.mp.microsoft.com | LCM Binaries |
-| 30 | http://*.tlu.dl.delivery.mp.microsoft.com | LCM Binaries |
-| 31 | http://*.windowsupdate.com | Windows Update |
-| 32 | http://*.windowsupdate.microsoft.com | Windows Update |
-| 33 | http://*.update.microsoft.com | Windows Update |
+| 1 | `http://go.microsoft.com:443` | Env Chkr |
+| 2 | `http://www.powershellgallery.com:443` | Env Chkr |
+| 3 | `http://psg-prod-eastus.azureedge.net:443` | Env Chkr |
+| 4 | `http://onegetcdn.azureedge.net:443` | Env Chkr |
+| 5 | `http://login.microsoftonline.com:443` | Env Chkr |
+| 6 | `http://aka.ms:443` | Env Chkr |
+| 7 | `http://azurestackreleases.download.prss.microsoft.com:443` | Env Chkr |
+| 8 | `http://download.microsoft.com:443` | Env Chkr |
+| 9 | `http://portal.azure.com:443` | Env Chkr |
+| 10 | `http://management.azure.com:443` | Env Chkr |
+| 11 | `http://www.office.com:443` | Env Chkr |
+| 12 | `http://gbl.his.arc.azure.com:443` | Arc agent |  
+| 13 | `http://<region>.his.arc.azure.com:443` | Arc agent |
+| 14 | `http://dc.services.visualstudio.com:443` | Arc agent |
+| 15 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
+| 16 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
+| 17 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
+| 18 | `http://files.pythonhosted.org:443` | MOC/ARB/AKS |
+| 19 | `http://pypi.org:443` | MOC/ARB/AKS |
+| 20 | `http://raw.githubusercontent.com:443` | MOC/ARB/AKS |
+| 21 | `http://pythonhosted.org:443` | MOC/ARB/AKS |
+| 22 | `http://hciarcvmsstorage.z13.web.core.windows.net:443` | MOC/ARB/AKS |
+| 23 | `http://ocsp.digicert.com`  | CRL for Arc extensions |
+| 24 | `http://s.symcd.com` | CRL for Arc extensions |
+| 25 | `http://ts-ocsp.ws.symantec.com` | CRL for Arc extensions |
+| 26 | `http://ocsp.globalsign.com` | CRL for Arc extensions |
+| 27 | `http://ocsp2.globalsign.com` | CRL for Arc extensions |
+| 28 | `http://oneocsp.microsoft.com` | CRL for Arc extensions |
+| 29 | `http://dl.delivery.mp.microsoft.com` | LCM Binaries |
+| 30 | `http://*.tlu.dl.delivery.mp.microsoft.com` | LCM Binaries |
+| 31 | `http://*.windowsupdate.com` | Windows Update |
+| 32 | `http://*.windowsupdate.microsoft.com` | Windows Update |
+| 33 | `http://*.update.microsoft.com` | Windows Update |
 
 ## Restrictions and limitations
 
@@ -138,10 +138,9 @@ Consider the following limitations of Arc gateway in this release:
 - TLS terminating proxies aren't supported with the Arc gateway (Preview).
 - Use of ExpressRoute, Site-to-Site VPN, or Private Endpoints in addition to the Arc gateway (Preview) isn't supported.  
 
-
 ## How to use the Arc gateway on Azure Stack HCI
 
-After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new or existing Azure Stack HCI 2405 deployments.
+After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new Azure Stack HCI 2408 deployments.
 
 ## Create the Arc gateway resource in Azure
 
