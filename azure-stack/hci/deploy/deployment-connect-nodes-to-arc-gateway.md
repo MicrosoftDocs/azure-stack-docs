@@ -24,7 +24,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You’ve access to an Azure Stack HCI, versión 23H2 system.
 
-- An Arc gateway resource created in the same subscription as used to deploy Azure Stack HCI. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-Azure).
+- An Arc gateway resource created in the same subscription as used to deploy Azure Stack HCI. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
 ## Option 1: Configure manually
 
