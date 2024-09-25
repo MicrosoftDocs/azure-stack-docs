@@ -129,7 +129,7 @@ Figure showing Arc agent without Arc gateway:
 
 Figure showing Arc agent with Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png" alt-text=Output showing Arc agent with gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png" alt-text="Output showing Arc agent with gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
 
 You can also audit your gateway traffic by viewing the gateway router logs.  
 
@@ -216,7 +216,7 @@ To check the Arc agent configuration and verify that it is using the gateway, ru
 
 Figure showing Arc agent without Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Output showing Arc agent without gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Output showing Arc agent without gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png":::
 
 Figure showing Arc agent with Arc gateway:
 
@@ -240,7 +240,7 @@ The response should indicate that the **connection.type** is set to **gateway**,
 
 Figure showing Arc agent without Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Output showing Arc agent without Arc gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Output showing Arc agent without Arc gateway using script." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
 
 
 Figure showing Arc agent with Arc gateway:
