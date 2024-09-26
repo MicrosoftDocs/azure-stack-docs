@@ -199,4 +199,8 @@ To delete an Arc gateway resource, you must first detach it from the servers to 
 
 ## Next steps
 
-- [Connect Azure Stack HCI nodes to Arc gateway](deployment-connect-nodes-to-arc-gateway.md)
+- [Configure the proxy manually](deployment-azure-arc-gateway-configure-manually.md)
+
+- [Configure the proxy via registration script](deployment-azure-arc-gateway-configure-via-script.md)
+
+- [Use the gateway without a proxy](deployment-azure-arc-gateway-use-without-proxy.md)
