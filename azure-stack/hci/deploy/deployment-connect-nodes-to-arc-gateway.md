@@ -14,7 +14,7 @@ Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
 
 This article details how to connect Azure Stack HCI, versions 2408.1 and 2408 node Arc agents to Arc gateway.
 
-After creating the Arc gateway resource in your subscription, you have two options to enable the new Arc gateway preview features.  
+After creating the Arc gateway resource in your subscription, you've two options to enable the new Arc gateway preview features.  
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -41,9 +41,9 @@ Ensure that you configure the proxy and the bypass list for all your Azure Stack
 
 ### Step 2: Get the ArcGatewayID  
 
-You will need the proxy and the Arc gateway ID (ArcGatewayID) from Azure to run the Azure Stack HCI node registration script. To get the ArcGatewayID, run the following `az connectedmachine gateway list` command from any computer that is not an Azure Stack HCI node.
+You need the proxy and the Arc gateway ID (ArcGatewayID) from Azure to run the Azure Stack HCI node registration script. To get the ArcGatewayID, run the following `az connectedmachine gateway list` command from any computer that is not an Azure Stack HCI node.
 
-Here is an example:
+Here's an example:
 
 ```azurecli
 PS C:\> az connectedmachine gateway list 
@@ -70,7 +70,7 @@ This command is in preview and under development. Reference and support levels: 
 
 ### Step 3: Register new nodes in Azure Arc
 
-You run the initialization script by passing the ArcGatewayID parameter and the proxy server parameters. Here is an example of how you should change the `Invoke-AzStackHciArcInitialization` parameters on the initialization script:
+You run the initialization script by passing the ArcGatewayID parameter and the proxy server parameters. Here's an example of how you should change the `Invoke-AzStackHciArcInitialization` parameters on the initialization script:
 
 ```azurecli
 #Install required PowerShell modules in your node for registration 
@@ -124,7 +124,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ### Step 4: Start Azure Stack HCI cloud deployment
 
-Once the Azure Stack HCI nodes are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates documented in these articles:
+Once the Azure Stack HCI nodes are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates that are documented in these articles:
 
 - [Deploy an Azure Stack HCI system using the Azure portal](deploy-via-portal.md).
 
@@ -132,7 +132,7 @@ Once the Azure Stack HCI nodes are registered in Azure Arc and all the extension
 
 ### Step 5: Verify that the set up succeeded
 
-Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy security solutions.
+Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -144,13 +144,13 @@ The result should show the following values:
 
 - **Agent version** is **1.45**.
 
-- **Agent Status** should show as **Connected**.
+- **Agent Status** is **Connected**.
 
-- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
+- **Using HTTPS Proxy**  is empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
 
-- **Upstream Proxy** will show your enterprise proxy server and port.
+- **Upstream Proxy** shows your enterprise proxy server and port.
 
-- **Azure Arc Proxy** It will show as **stopped** when Arc gateway is not in use, and **running** when the Arc gateway is enabled.
+- **Azure Arc Proxy** shows as **stopped** when Arc gateway isn't in use, and **running** when the Arc gateway is enabled.
 
 The Arc agent without the Arc gateway:
 
@@ -182,7 +182,7 @@ With this method, you don’t need to configure the proxy across WinInet, WinHtt
 
 ### Step 1: Get the ArcGatewayID  
 
-You will need the proxy and the ArcGatewayID from Azure to run the Azure Stack HCI node registration script. To get the ArcGatewayID value, run the `az connectedmachine gateway list` command described previously. Do not run this command from any Azure Stack HCI nodes:
+You need the proxy and the ArcGatewayID from Azure to run the Azure Stack HCI node registration script. To get the ArcGatewayID value, run the `az connectedmachine gateway list` command described previously. Do not run this command from any Azure Stack HCI nodes:
 
 ```azurecli
 PS C:\> az connectedmachine gateway list 
@@ -207,9 +207,9 @@ This command is in preview and under development. Reference and support levels: 
 
 ### Step 2: Register new Azure Stack HCI version 2408 nodes
 
-You can run the initialization script by passing the the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters.
+You can run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters.
 
-Here is an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Stack HCI nodes will be registered in Azure Arc using the Arc gateway:
+Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Stack HCI nodes are registered in Azure Arc using the Arc gateway:
 
 ```azurecli
 #Install required PowerShell modules in your node for registration 
@@ -226,7 +226,7 @@ $Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
 #Define the resource group where you want to register your server as Arc device 
 $RG = "yourresourcegroupname" 
 
-#Define the tenant you will use to register your server as Arc device 
+#Define the tenant to use to register your server as Arc device 
 $Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
 
 #Define Proxy Server if necessary 
@@ -257,9 +257,9 @@ $id = (Get-AzContext).Account.Id
 Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
 ```
 
-### Step 3: Verify that the set up succeeded
+### Step 3: Verify that the setup succeeded
 
-Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and  which ones continue using your firewall or proxy security solutions.
+Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and  which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -273,11 +273,11 @@ The values displayed should be as follows:
 
 - **Agent Status** should show as **Connected**.
 
-- **Using HTTPS Proxy**  will be empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
+- **Using HTTPS Proxy**  empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
 
-- **Upstream Proxy** will show your enterprise proxy server and port.
+- **Upstream Proxy** shows your enterprise proxy server and port.
 
-- **Azure Arc Proxy** It will show as stopped when Arc gateway is not in use. Running when the Arc gateway is enabled.
+- **Azure Arc Proxy** shows as stopped when Arc gateway isn't in use. Running when the Arc gateway is enabled.
 
 The Arc agent without the Arc gateway:
 
@@ -344,7 +344,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 
 # Use specific IPs such as 127.0.0.1 without mask
 
-# Use * for subnets whitelisting. 192.168.1.* for /24 exclusions. Use 192.168.*.
+# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.
 * for /16 exclusions.
 
 # Append * for domain names exclusions like *.contoso.com

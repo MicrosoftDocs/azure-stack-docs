@@ -14,7 +14,7 @@ Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
 
 This article provides an overview of the Azure Arc gateway for Azure Stack HCI, version 23H2. The Arc gateway can be enabled on new deployments of Azure Stack HCI running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
-You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you have created the Arc gateway, you can connect to and use it for new deployments of Azure Stack HCI.
+You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Stack HCI.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -49,11 +49,11 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. With the proxy settings in place, ARB and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Stack HCI nodes over the routable IP.
 
-1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described above. If traffic to the target service is allowed, it will be sent to Arc gateway. If not, it will be sent to the enterprise proxy (or direct outbound if no proxy set). Note for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
+1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described above. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
 **Traffic flow for Arc VMs in version 2408**
 
-*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in version 2408. Arc gateway support for Arc VMs will be released in future updates.
+*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in version 2408.
 
 Traffic flows are illustrated in the following diagram:
 
@@ -86,8 +86,6 @@ Unsupported scenarios for Azure Stack HCI version 2408 include:
 - Azure Stack HCI clusters updated from versions 2402 or 2405 to version 2408 can't take advantage of all the new endpoints supported by this Arc gateway public preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
 
 - Enabling Arc gateway after version 2408 deployment cannot take advantage of all the new endpoints supported by this Arc gateway public preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
-
-Support to enable the Arc gateway after update or deployment will be enabled in future updates.
 
 ## Azure Stack HCI 2408 endpoints not redirected
 
@@ -138,18 +136,18 @@ Consider the following limitations of Arc gateway in this release:
 
 ## Prerequisite
 
-Register your Azure subscription to join the limited public preview of the Arc gateway. This will allow you to create the Arc gateway resource in Azure. [Azure Arc gateway Limited Public Preview Sign-up form](https://forms.office.com/r/bfTkU2i0Qw).
+Register your Azure subscription to join the limited public preview of the Arc gateway. This allows you to create the Arc gateway resource in Azure. [Azure Arc gateway Limited Public Preview Sign-up form](https://forms.office.com/r/bfTkU2i0Qw).
 
 > [!Warning]
 > Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Stack HCI, version 2408. Do not use the ISO image available in Azure portal.  
 
 ## Create the Arc gateway resource in Azure
 
-You must first create the Arc gateway resource in your Azure subscription. Do not create the Arc gateway resource from any of the HCI nodes. You can do so from any computer that has an internet connection, for example, your laptop.
+You first create the Arc gateway resource in your Azure subscription. Don't create the Arc gateway resource from any of the HCI nodes. Do so from any computer that has an internet connection, for example, your laptop.
 
 To create the Arc gateway resource in Azure, follow these steps:
 
-1. Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extension. This file contains the az connected machine commands required to create and manage your Gateway Resource.
+1. Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extension. This file contains the az connected machine commands required to create and manage your gateway resource.
 
 1. Install the [Azure Command Line Interface (CLI)](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
