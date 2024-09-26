@@ -47,13 +47,13 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. ARB and AKS forward proxy are configured to use the routable IP.
 
-1. With the proxy settings in place, ARB and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Stack HCI nodes over the routable IP.
+1. With the proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Stack HCI nodes over the routable IP.
 
-1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described above. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
+1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
 **Traffic flow for Arc VMs in version 2408**
 
-*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in version 2408.
+*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in this version.
 
 Traffic flows are illustrated in the following diagram:
 
@@ -89,7 +89,7 @@ Unsupported scenarios for Azure Stack HCI version 2408 include:
 
 ## Azure Stack HCI 2408 endpoints not redirected
 
-As part of the Azure Stack HCI version 2408 preview update, the endpoints from the table below are required and must be allowlisted in your proxy or firewall to successfully deploy the Azure Stack HCI cluster. These endpoints are not redirected via the Arc gateway:
+As part of the Azure Stack HCI version 2408 preview update, the endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Stack HCI cluster. These endpoints are not redirected via the Arc gateway:
 
 | Endpoint # | Required endpoint | Component  |
 | -- | -- | -- |
@@ -131,12 +131,12 @@ As part of the Azure Stack HCI version 2408 preview update, the endpoints from t
 
 Consider the following limitations of Arc gateway in this release:
 
-- TLS terminating proxies aren't supported with the Arc gateway (Preview).
+- TLS terminating proxies aren't supported with the Arc gateway preview.
 - Use of ExpressRoute, Site-to-Site VPN, or Private Endpoints in addition to the Arc gateway (Preview) isn't supported.  
 
 ## Prerequisite
 
-Register your Azure subscription to join the limited public preview of the Arc gateway. This allows you to create the Arc gateway resource in Azure. [Azure Arc gateway Limited Public Preview Sign-up form](https://forms.office.com/r/bfTkU2i0Qw).
+Register your Azure subscription to join the limited public preview of the Arc gateway. You can then create the Arc gateway resource in Azure. [Azure Arc gateway Limited Public Preview Sign-up form](https://forms.office.com/r/bfTkU2i0Qw).
 
 > [!Warning]
 > Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Stack HCI, version 2408. Do not use the ISO image available in Azure portal.  
