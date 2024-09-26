@@ -213,65 +213,47 @@ Here is an example of how you should change these parameters for the `Invoke-AzS
 
 ```azurecli
 #Install required PowerShell modules in your node for registration 
-
 Install-Module Az.Accounts -RequiredVersion 2.13.2 
-
 Install-Module Az.Resources -RequiredVersion 6.12.0 
-
 Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2 
 
 #Install Arc registration script from PSGallery  
-
 Install-Module AzsHCI.ARCinstaller 
 
 #Define the subscription where you want to register your server as Arc device 
-
 $Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" 
 
 #Define the resource group where you want to register your server as Arc device 
-
 $RG = "yourresourcegroupname" 
 
 #Define the tenant you will use to register your server as Arc device 
-
 $Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
 
 #Define Proxy Server if necessary 
-
 $ProxyServer = "http://x.x.x.x:port" 
 
 #Define the Arc gateway resource ID from Azure 
-
 $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yourresourcegroupname /providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 
 #Define the bypass list for the proxy. Use semicolon to separate each item from the list.  
-
-# Use “localhost” instead of <local> 
-
+# Use "localhost" instead of <local> 
 # Use specific IPs such as 127.0.0.1 without mask 
-
 # Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
-
 # Append * for domain names exclusions like *.contoso.com 
-
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
 
 $ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;node3;node4;node5;192.168.*.*;HCI-cluster1” 
 
 #Connect to your Azure account and Subscription 
-
 Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode 
 
 #Get the Access Token and Account ID for the registration 
-
 $ARMtoken = (Get-AzAccessToken).Token 
 
 #Get the Account ID for the registration 
-
 $id = (Get-AzContext).Account.Id 
 
 #Invoke the registration script with Proxy and ArcgatewayID 
-
 Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ArcGatewayID $ArcgwId -ProxyBypass $ProxyBypassList 
 ```
 

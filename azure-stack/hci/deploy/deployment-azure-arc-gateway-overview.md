@@ -41,7 +41,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. Based on the configuration in the Arc gateway, if allowed, the traffic is sent to target services. If not allowed, Arc proxy redirects this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
 
-**Arc appliance ARB and AKS control plane traffic flow**
+**Traffic flow for Arc appliance Arc Resource Bridge (ARB) and AKS control plane**
 
 1. The routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Stack HCI host nodes.
 
