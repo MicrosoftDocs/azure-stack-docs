@@ -154,8 +154,5 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ## Next steps
 
-Learn how to:
-
-- [Configure the proxy manually](deployment-azure-arc-gateway-configure-manually.md)
-
-- [Use the gateway without a proxy](deployment-azure-arc-gateway-use-without-proxy.md)
+- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Stack HCI](../manage/get-support.md)

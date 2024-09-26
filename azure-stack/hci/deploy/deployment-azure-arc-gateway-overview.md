@@ -49,7 +49,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. With the proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Stack HCI nodes over the routable IP.
 
-1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
+1. Once the traffic reaches Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
 **Traffic flow for Arc VMs in version 2408**
 

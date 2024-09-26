@@ -29,7 +29,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Run the initialization script
 
-To use the Arc gateway feature for Azure Stack HCI systems without a proxy, use the `ProxyBypassList` parameter to specify traffic that shouldn't route through the Arc Gateway. Create the bypass list according to this article.
+To use the Arc gateway feature for Azure Stack HCI systems without a proxy, use the `ProxyBypassList` parameter to specify traffic that shouldn't route through the Arc gateway. Create the bypass list according to this article.
 
 Run the initialization script as follows. All other instructions remain the same as listed in [Configure the proxy using the Arc registration script](deployment-azure-arc-gateway-configure-via-script.md).
 
@@ -98,9 +98,6 @@ $ProxyBypassList
 
 ## Next steps
 
-Learn how to:
-
-- [Configure the proxy manually](deployment-azure-arc-gateway-configure-manually.md)
-
-- [Configure the proxy via registration script](deployment-azure-arc-gateway-configure-via-script.md)
+- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Stack HCI](../manage/get-support.md)
 

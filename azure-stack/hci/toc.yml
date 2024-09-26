@@ -183,12 +183,14 @@ items:
     items:
     - name: About Arc gateway
       href: deploy/deployment-azure-arc-gateway-overview.md
-    - name: Configure proxy manually
-      href: deploy/deployment-azure-arc-gateway-configure-manually.md
-    - name: Configure proxy via script
-      href: deploy/deployment-azure-arc-gateway-configure-via-script.md
-    - name: Use Arc gateway without proxy
-      href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
+    - name: Choose a proxy option
+      items:
+      - name: Configure proxy manually
+        href: deploy/deployment-azure-arc-gateway-configure-manually.md
+      - name: Configure proxy via script
+        href: deploy/deployment-azure-arc-gateway-configure-via-script.md
+      - name: Configure without a proxy
+        href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
 
   - name: Deploy SDN
     items:
