@@ -1,20 +1,20 @@
 --- 
-title: Connect Azure Stack HCI nodes to Arc gateway (preview)
-description: Learn how to connect the Azure Stack HCI nodes to Arc gateway for version version 2408 (preview). 
+title: Connect Azure Stack HCI version 23H2 nodes to Arc gateway, version 2408 (preview)
+description: Learn how to connect the Azure Stack HCI version 23H2 nodes to Arc gateway version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 09/26/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
 # Connect Azure Stack HCI nodes to Arc gateway (preview)
 
-Applies to: Azure Stack HCI, version 2408
+Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
 
-This article details how to connect Azure Stack HCI, version 2408 node Arc agents to Arc gateway.
+This article details how to connect Azure Stack HCI, versions 2408.1 and 2408 node Arc agents to Arc gateway.
 
-After creating the Arc gateway resource in your subscription, you have two options to enable the new version 2408 Arc gateway preview features.  
+After creating the Arc gateway resource in your subscription, you have two options to enable the new Arc gateway preview features.  
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -22,11 +22,14 @@ After creating the Arc gateway resource in your subscription, you have two optio
 
 Make sure the following prerequisites are met before proceeding:
 
-- You’ve access to an Azure Stack HCI, versión 23H2 system.
+- You’ve access to an Azure Stack HCI, version 23H2 system.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Stack HCI. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
-## Option 1: Configure manually
+> [!Warning]
+> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Stack HCI, version 2408. Do not use the ISO image available in Azure portal.
+
+## Option 1: Configure the proxy manually
 
 This option entails manually configuring the Arc proxy before Arc registration.
 
@@ -173,7 +176,7 @@ You can also audit your gateway traffic by viewing the gateway router logs.
 
 To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
-## Option 2: Configure via script
+## Option 2: Configure the proxy using Arc registration script
 
 With this method, you don’t need to configure the proxy across WinInet, WinHttp, and Environment Variables manually like with option 1.
 
@@ -317,6 +320,75 @@ The Arc agent using the Arc gateway:
 You can also audit your gateway traffic by viewing the gateway router logs.  
 
 To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
+
+## Option 3: Using Arc gateway on environments that do not have proxy
+
+To use the Arc gateway feature for Azure Stack HCI systems without a proxy, ensure you use the `ProxyBypassList` parameter to specify traffic that shouldn't route through the Arc Gateway. Create the bypass list according to this article.
+
+Run the initialization script as follows. All other instructions remain the same as Option 2: Configure the proxy using Arc registration script.
+
+```azurecli
+#Install required PowerShell modules in your node for registration
+
+Install-Module Az.Accounts -RequiredVersion 2.13.2
+
+Install-Module Az.Resources -RequiredVersion 6.12.0
+
+Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+
+#Install Arc registration script from PSGallery
+
+Install-Module AzsHCI.ARCinstaller
+
+#Define the subscription where you want to register your server as Arc device
+
+$Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+
+#Define the resource group where you want to register your server as Arc device
+
+$RG = "yourresourcegroupname"
+
+#Define the tenant you will use to register your server as Arc device
+
+$Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+ 
+#Define the Arc gateway resource ID from Azure
+
+$ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yourresourcegroupname /providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
+
+#Define the bypass list for the proxy. Use semicolon to separate each item from the list.
+
+# Use “localhost” instead of <local>
+
+# Use specific IPs such as 127.0.0.1 without mask
+
+# Use * for subnets whitelisting. 192.168.1.* for /24 exclusions. Use 192.168.*.
+* for /16 exclusions.
+
+# Append * for domain names exclusions like *.contoso.com
+
+# DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration.
+
+$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;node3;node4;node5;192.168.*.*;HCI-cluster1”
+
+#Connect to your Azure account and Subscription
+
+Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+
+#Get the Access Token and Account ID for the registration
+
+$ARMtoken = (Get-AzAccessToken).Token
+
+#Get the Account ID for the registration
+
+$id = (Get-AzContext).Account.Id
+
+#Invoke the registration script with Proxy and ArcgatewayID
+
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup
+$RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -ArcGatewayID $ArcgwId -ProxyBypass
+$ProxyBypassList
+```
 
 ## Next steps
 

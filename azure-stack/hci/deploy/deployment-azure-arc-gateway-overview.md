@@ -1,18 +1,18 @@
 --- 
-title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 clusters (preview)
-description: Learn what is Azure Arc gateway for Azure Stack HCI, version 2408 (preview). 
+title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
+description: Learn what is Azure Arc gateway for Azure Stack HCI, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 09/26/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# About Azure Arc gateway for Azure Stack HCI, version 2408 (preview)
+# About Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 
-Applies to: Azure Stack HCI, version 2408
+Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
 
-This article provides an overview of the Azure Arc Gateway for Azure Stack HCI, version 2408. The Arc gateway can be enabled on new deployments of Azure Stack HCI running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
+This article provides an overview of the Azure Arc gateway for Azure Stack HCI, version 23H2. The Arc gateway can be enabled on new deployments of Azure Stack HCI running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you have created the Arc gateway, you can connect to and use it for new deployments of Azure Stack HCI.
 
@@ -25,37 +25,35 @@ For information on how to deploy the Azure Arc Gateway for standalone servers (n
 
 The Arc gateway works by introducing the following components:
 
-- **Arc gateway resource** – An Azure resource that acts as a common entry point for Azure traffic. This gateway resource has a specific domain or URL that you can use. When you create the Arc Gateway resource, this domain or URL is a part of the success response.  
+- **Arc gateway resource** – An Azure resource that acts as a common entry point for Azure traffic. This gateway resource has a specific domain or URL that you can use. When you create the Arc gateway resource, this domain or URL is a part of the success response.  
 
 - **Arc proxy** – A new component that is added to the Arc Agentry. This component runs as a service (Called  the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
 
-Upon integrating the Arc gateway limited public preview with new version 2408 Azure Stack HCI cluster deployments, each HCI cluster node will get Arc proxy along with other Arc Agents. Arc proxy acts as a forward proxy and aggregates all the outbound connections from edge side and funnels the traffic to Arc Gateway created in your subscription.
+Once you integrate the Arc gateway with version 2408 of Azure Stack HCI cluster deployments, each cluster node gets Arc proxy along with other Arc Agents.
 
-When Arc gateway is used, the http and https traffic flow changes as follows:
+When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
 
-**HCI Host OS components traffic flow**
+**Traffic flow for Azure Stack HCI host operating system components**
 
 1. OS proxy settings are used to route all HTTPS host traffic through Arc proxy.  
 
-1. From Arc proxy, the traffic is forwarded to Arc Gateway  
+1. From Arc proxy, the traffic is forwarded to Arc gateway.
 
-1. Based on the configuration in the Arc gateway, traffic will be sent to target services if allowed. If not allowed, Arc proxy will redirect this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
+1. Based on the configuration in the Arc gateway, if allowed, the traffic is sent to target services. If not allowed, Arc proxy redirects this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
 
 **Arc appliance ARB and AKS control plane traffic flow**
 
 1. The routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Stack HCI host nodes.
 
-1. ARB and AKS forward proxy are configured to use the Routable IP.
+1. ARB and AKS forward proxy are configured to use the routable IP.
 
 1. With the proxy settings in place, ARB and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Stack HCI nodes over the routable IP.
 
 1. Once the traffic reaches Arc Proxy, the remaining flow takes the same path as described above. If traffic to the target service is allowed, it will be sent to Arc gateway. If not, it will be sent to the enterprise proxy (or direct outbound if no proxy set). Note for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
-In upcoming releases, there will be support to bring Arc Proxy running as a K8 Pods as part of an AKS cluster. With this change, K8 pod network traffic will flow through Arc Proxy K8 pod.
+**Traffic flow for Arc VMs in version 2408**
 
-**Arc VMs in 2408 traffic flow**
-
-Http and https traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in version 2408. Arc gateway support for Arc VMs will be released in future updates.
+*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in version 2408. Arc gateway support for Arc VMs will be released in future updates.
 
 Traffic flows are illustrated in the following diagram:
 
