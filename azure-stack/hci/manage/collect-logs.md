@@ -52,7 +52,7 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
 1. In [the Azure portal](https://portal.azure.com/), go to the Azure Stack HCI cluster resource.
 1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
-1. On the **Get started** tab, under the **Send Diagnostics Logs** tile, select **Go to diagnostics**.
+1. In the **Get started** tab, under the **Send Diagnostics Logs** tile, select **Go to diagnostics**.
 
    :::image type="content" source="./media/collect-logs/get-started-tab.png" alt-text="Screenshot shows the Get started tab." lightbox="./media/collect-logs/get-started-tab.png" :::
 
@@ -60,11 +60,11 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
    :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
-1. On the **Send diagnostic logs to Microsoft** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collecting logs.
+1. In the **Send diagnostic logs to Microsoft** pane, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collecting logs.
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
-1. (Optional) On the **Diagnostics** tab, under **Log activity**, you can review the log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the details on the **Log detail** pane.
+1. (Optional) In the **Diagnostics** tab, under **Log activity**, you can review the log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the details in the **Log detail** pane.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
@@ -599,9 +599,9 @@ If you encounter an issue and need help from Microsoft Support, they might ask f
 
 Follow these steps to provide the required information in the Azure portal:
 
-1. On the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log.
+1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log.
 
-1. On the **Log detail** pane, note the values of **UTC time zone** and **Correlation ID**, and share them with Microsoft Support.
+1. In the **Log detail** pane, note the values of **UTC time zone** and **Correlation ID**, and share them with Microsoft Support.
 
    :::image type="content" source="./media/collect-logs/log-details-pane-required-values.png" alt-text="Screenshot of the Log details pane highlighting the required information to share with Microsoft Support." lightbox="./media/collect-logs/log-details-pane-required-values.png" :::
 
