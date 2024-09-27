@@ -22,7 +22,7 @@ This article describes how to prepare a Red Hat Enterprise Linux image to create
 Before you begin, meet the following prerequisites:
 
 - Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
+- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
@@ -39,7 +39,8 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from a Red Hat Enterprise image
 
 > [!IMPORTANT]
-> We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
+> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
 

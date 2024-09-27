@@ -1356,6 +1356,11 @@
         "redirect_document_id": false
       },
       {
+        "source_path": "AKS-Hybrid/manage-control-plane-nodes.md",
+        "redirect_url": "/azure/aks/hybrid/manage-node-pools",
+        "redirect_document_id": false
+      },
+      {
         "source_path": "AKS-Hybrid/deploy-metallb.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer",
         "redirect_document_id": false
@@ -1363,6 +1368,16 @@
       {
         "source_path": "AKS-Hybrid/get-kubelet-logs.md",
         "redirect_url": "/azure/aks/hybrid/aks-get-kubelet-logs",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/reference/aks-edge-ps/set-aksedgebillingpodstate.md",
+        "redirect_url": "/azure/aks/hybrid/reference/aks-edge-ps/",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/reference/aks-edge-ps/set-aksedgenodeconnectivitymode.md",
+        "redirect_url": "/azure/aks/hybrid/reference/aks-edge-ps/",
         "redirect_document_id": false
       },
       {
@@ -1377,7 +1392,7 @@
       },
       {
         "source_path": "AKS-Hybrid/offline-download.md",
-        "redirect_url": "/azure/aks/hybrid/aks-overview",
+        "redirect_url": "/azure/aks/hybrid/aks-whats-new-23h2",
         "redirect_document_id": false
       },      
       {

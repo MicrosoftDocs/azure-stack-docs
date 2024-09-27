@@ -171,7 +171,9 @@ The instructions apply to client VMs running:
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel:
+1. Install the metapackage that matches your running kernel.
+
+    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-7](./includes/client-install-version-rhel-7.md)]
 
@@ -206,6 +208,8 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
+    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
+
    [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
 
 ::: zone-end
@@ -237,7 +241,9 @@ The instructions apply to client VMs running:
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel:
+1. Install the metapackage that matches your running kernel.
+
+   The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
 
@@ -274,7 +280,9 @@ The instructions apply to client VMs running:
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel:
+1. Install the metapackage that matches your running kernel.
+
+    The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 
@@ -302,7 +310,9 @@ The instructions apply to client VMs running:
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel:
+1. Install the metapackage that matches your running kernel.
+
+    The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 
@@ -371,7 +381,9 @@ The instructions apply to client VMs running:
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel:
+1. Install the metapackage that matches your running kernel.
+
+    The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 

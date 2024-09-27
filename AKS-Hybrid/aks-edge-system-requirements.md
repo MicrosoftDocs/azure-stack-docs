@@ -4,7 +4,7 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 04/16/2024
+ms.date: 09/10/2024
 ms.custom: template-concept
 ---
 
@@ -50,16 +50,16 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## GA feature support matrix
 
-- **Kubernetes Distribution supported**: Kubernetes (K8S) - Version: 1.24.3 and on Kubernetes (K3S) - Version: 1.24.3
-- **Deployment options**: Single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
-- **Workloads**: Only Linux worker nodes.
-- **Network plugins**: Calico on K8S and Flannel on K3S.
+- **Supported Kubernetes distribution**: currently supported Kubernetes versions on both K3s and K8s [are described in this table](aks-edge-howto-setup-machine.md#download-aks-edge-essentials).
+- **Deployment options**: single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
+- **Workloads**: only Linux worker nodes.
+- **Network plugins**: Calico on K8s.
 
 ## Experimental or prerelease features
 
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
-- **Network plugins**: Flannel on K8S and Calico on K3S.
+- **Network plugins**: Calico on K3S.
 
 ## Next steps
 

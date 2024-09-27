@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 03/28/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,49 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2301"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+<!-- ## Alerts -->
+
+## Portal
+
+### Incorrect reporting of node CPU cores in the admin portal
+
+- Applicable: This issue applies to release 2301.
+- Cause: The number of cores reported in the Azure Stack Hub admin portal in the cluster **Nodes Capacity** window is incorrect. This is cosmetic and an issue with a change in 2301 with respect to how the Fabric Resource Provider gets this information. This impacts both new deployments and existing stamps updating to 2301, but doesn't affect operation of the stamp or any workload deployments.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Minor portal issue that occurs consistently.
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2206"
 <!-- ## Update -->
@@ -1875,7 +1918,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## App Service
 
 - Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
-- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot). The portal experience will be restored by upgrading your deployment of [Azure App Service on Azure Stack to 1.6 (Update 6)](../azure-stack-app-service-release-notes-update-six.md).
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot). The portal experience will be restored by upgrading your deployment of Azure App Service on Azure Stack to 1.6 (Update 6).
 
 ## Next steps
 

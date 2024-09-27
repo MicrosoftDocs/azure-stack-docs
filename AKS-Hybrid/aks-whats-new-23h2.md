@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 06/25/2024
+ms.date: 09/05/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
-ms.lastreviewed: 05/28/2024
+ms.lastreviewed: 06/25/2024
 
 ---
 
@@ -42,21 +42,39 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Stack HCI, version 23H2.
 
+### Release 2408
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **High availability improvements**. You can now deploy nodes with anti-affinity on specific physical hosts on Azure Stack HCI clusters. For more information, see [Availability sets](availability-sets.md).
+- **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see the [PowerShell reference documentation](/powershell/module/az.aksarc/?view=azps-12.1.0&preserve-view=true).
+- **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
+- **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
+- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Stack HCI.
+- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange.
+
+#### Supported component versions for 2408
+
+| Component           | Version                                       |
+|---------------------|--------------------------------------------------|
+| AKS Arc             | 1.3.218                                     |
+| Kubernetes versions | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4 |
+
 ### Release 2405
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
 - **Azure RBAC support**. You can now enable Azure RBAC for Kubernetes while creating AKS Arc clusters using Azure CLI and Azure Resource Manager templates.
-- **Taints and labels update**. You can can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
+- **Taints and labels update**. You can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
 - **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
 - **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This can help in environments in which downloading large files is inconvenient. If you are interested in using it, contact your Microsoft Account representative.
 
-#### Supported component versions
+#### Supported component versions for 2405
 
 The following component versions are supported in release 2405:
 
-| Component           | 2024-06-11                                       |
+| Component           | Version                                       |
 |---------------------|--------------------------------------------------|
 | AKS Arc             | 1.0.23.10605                                     |
 | Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |

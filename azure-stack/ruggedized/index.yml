@@ -104,6 +104,4 @@ landingContent:
             url: ../user/azure-stack-create-vm-template.md
           - text: Configure a virtual network
             url: ../user/deploy-foundational-patterns.md
-          - text: Host Apps written in your code
-            url: ../user/azure-stack-dev-start-deploy-app.md
 

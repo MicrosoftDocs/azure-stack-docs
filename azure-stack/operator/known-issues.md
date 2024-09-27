@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2024
+ms.date: 09/03/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -20,11 +20,11 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2301"
+::: moniker range=">=azs-2306"
 > [!IMPORTANT]  
 > Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2301"
+::: moniker range="<azs-2306"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
@@ -32,6 +32,51 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2406"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Standard Load Balancer portal error
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The Standard Load Balancer portal blades for **Logs** and **Diagnostic settings** both show errors displaying the content.
+- Remediation: The Standard Load Balancer in Azure Stack Hub does not support any diagnostic features.
+- Occurrence: Common.
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2311"
 <!-- ## Update -->
@@ -142,52 +187,12 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
-::: moniker range="azs-2301"
-<!-- ## Update -->
-
-<!-- ## Networking -->
-
-<!-- ## Compute -->
-
-<!-- ## Alerts -->
-
-## Portal
-
-### Incorrect reporting of node CPU cores in the admin portal
-
-- Applicable: This issue applies to release 2301.
-- Cause: The number of cores reported in the Azure Stack Hub admin portal in the cluster **Nodes Capacity** window is incorrect. This is cosmetic and an issue with a change in 2301 with respect to how the Fabric Resource Provider gets this information. This impacts both new deployments and existing stamps updating to 2301, but doesn't affect operation of the stamp or any workload deployments.
-- Remediation: Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Minor portal issue that occurs consistently.
-
-<!-- ## Datacenter integration -->
-
-<!-- ## Storage -->
-
-<!-- ## SQL and MySQL-->
-
-## App Service
-
-### Incorrect rotation status after secret rotation of resource provider certificates
-
-- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
-- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
-- Remediation: None. No impact to your system or workloads.
-- Occurrence: All supported versions of Azure Stack Hub.
-
-<!-- ## Usage -->
-
-<!-- ### Identity -->
-
-<!-- ### Marketplace -->
-
-<!-- ## Event Hubs -->
-
-::: moniker-end
-
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2301"
+## 2301 archived known issues
+::: moniker-end
 ::: moniker range="azs-2206"
 ## 2206 archived known issues
 ::: moniker-end
@@ -258,6 +263,6 @@ To access known issues for a different version, use the version selector dropdow
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2301"
+::: moniker range="<azs-2306"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

@@ -38,7 +38,7 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
     - Apply AVMA client key on every Azure Stack HCI host using the `Set-VMAutomaticActivation <product key>` cmdlet.
     To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
 
-  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-bring-your-own-license-byol-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-azure-hybrid-benefit-ahb-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
 
    > [!Tip]
    > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
@@ -173,8 +173,6 @@ To obtain Azure verification for the Windows Server Azure Edition license, a mem
 ```cmd
 Schtasks /change /TN "\Microsoft\Windows\Clip\LicenseImdsIntegration" /RU "NT Authority\System"
 ```
-
-For more information, see [flcip](https://github.com/urbans0ft/fclip) on GitHub.
 
 ## Next steps
 

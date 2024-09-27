@@ -1,10 +1,10 @@
 ---
 title: Rotate App Service on Azure Stack Hub secrets and certificates 
 description: Learn how to rotate secrets and certificates used by Azure App Service on Azure Stack Hub.
-author: apwestgarth
+author: sethmanheim
 ms.topic: article
-ms.date: 04/09/2020
-ms.author: anwestg
+ms.date: 08/19/2024
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/09/2020
 
@@ -17,7 +17,7 @@ ms.lastreviewed: 04/09/2020
 
 These instructions only apply to Azure App Service on Azure Stack Hub. Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub. Operators can monitor the validity of secrets within the system, the date on which they were last updated, and the time remaining until the secrets expire.
 
-> [!Important]
+> [!IMPORTANT]
 > Operators won't receive alerts for secret expiration on the Azure Stack Hub dashboard as Azure App Service on Azure Stack Hub is not integrated with the Azure Stack Hub alerting service. Operators must regularly monitor their secrets using the Azure App Service on Azure Stack Hub administration experience in the Azure Stack Hub administrator portal.
 
 This document contains the procedure for rotating the following secrets:
@@ -90,7 +90,7 @@ The identity application is created by the operator before deployment of Azure A
 
 To rotate the certificate for the application in Microsoft Entra ID, follow these steps:
 
-1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub.
+1. Go to the **Azure portal** and sign in using the admin used to deploy Azure Stack Hub.
 
 1. Go to **Microsoft Entra ID** and browse to **App Registrations**.
 
@@ -172,3 +172,7 @@ To rotate the system credentials used within Azure App Service on Azure Stack Hu
 1. Specify a **new Local Admin User Name** and a new **Password**. Then confirm the **Password** and select **OK**.
 
 1. The credential(s) are rotated as required throughout the corresponding Azure App Service on Azure Stack Hub role instance. Operators can check the status of the procedure using the **Status** button.
+
+## Next steps
+
+[Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md)

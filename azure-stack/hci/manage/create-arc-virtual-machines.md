@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 06/21/2024
+ms.date: 09/09/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -144,7 +144,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
 > [!IMPORTANT]
-> Setting the proxy server during VM creation is not supported for Linux VMs.
+> Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
 ### Create a VM with proxy configured
 
@@ -258,8 +258,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. Only the Active Directory domain join is supported and selected by default.  
     
     1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
+       
+       > [!IMPORTANT]
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
     
-    1. Provide the domain administrator password.
+    1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
     

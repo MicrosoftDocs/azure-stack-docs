@@ -14,7 +14,7 @@ ms.date: 11/13/2023
 
 # Deploy Windows Server Azure Edition VMs
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2.md)]
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
 
@@ -32,13 +32,12 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
   - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
 
-  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-bring-your-own-license-byol-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-azure-hybrid-benefit-ahb-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
 
-   > [!Tip]
+   > [!TIP]
    > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
 
 - **Azure verification for VMs:** You must enable Azure verification for VMs on your cluster. Azure VM verification is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads, such as Windows Server Azure Edition. For more information, see [Azure verification for VMs](../deploy/azure-verification.md).
-
 
 ## Deploy the OS
 

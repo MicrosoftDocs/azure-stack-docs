@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: jgerend
-ms.date: 02/26/2024
+ms.date: 07/10/2024
 ---
 
 # Manage volumes in Azure Stack HCI and Windows Server
@@ -21,7 +21,8 @@ Before you begin to manage volumes, make sure that:
 - You have administrator privileges to access the cluster.
 - You have access to a management computer that is in the same domain as your cluster.
 
-Here are a few additional prerequisites for moving volumes:
+Here are a few other prerequisites for moving volumes:
+
    - Make sure the volume is in a healthy state before you move it. To find out about the health state of a volume, see [Monitor volumes](monitor-cluster.md#monitor-volumes) for Windows Admin Center and [Virtual disk state](/windows-server/storage/storage-spaces/storage-spaces-states#virtual-disk-states) for PowerShell.
    - If using PowerShell to move volumes, make sure you have the Remote Server Administration Tools (RSAT) cmdlets and PowerShell modules for Hyper-V and Failover Clustering. If these aren't already available in your PowerShell session on your management computer, add them using the following command: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
@@ -235,6 +236,11 @@ Follow these steps to move volumes using PowerShell:
 
 This section describes how to delete volumes by using Windows Admin Center or PowerShell.
 
+Before you delete a volume, consider the following requirements:
+
+- Ensure the volume you're deleting isn't actively used by Arc Kubernetes clusters or VMs to prevent data loss or system issues.
+- Remove the associated workload and then delete the storage paths. For more information, see [Delete a storage path](./create-storage-path.md#delete-a-storage-path).
+
 ### [Windows Admin Center](#tab/windows-admin-center)
 
 1. In Windows Admin Center, connect to a cluster, and then select **Volumes** from the **Tools** pane on the left.
@@ -262,7 +268,7 @@ To delete a mirrored volume called *Volume1,* run the following command in Power
 Remove-VirtualDisk -FriendlyName "Volume1"
 ```
 
-You are asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
+You're asked to confirm that you want to perform the action and erase all the data that the volume contains. Choose Y or N.
 
    > [!WARNING]
    > This is not a recoverable action. This permanently deletes a **VirtualDisk** Volume object.

@@ -1,0 +1,80 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Stack HCI OEM license and billing FAQ
+  description: The Azure Stack HCI FAQ provides information on the Azure Stack HCI OEM license and billing.
+  ms.topic: faq
+  author: ronmiab
+  ms.author: robess
+  ms.service: azure-stack
+  ms.subservice: azure-stack-hci
+  ms.date: 07/15/2024
+
+title: Azure Stack HCI OEM license and billing FAQ
+summary: |
+  This FAQ provides information on the Azure Stack HCI OEM license and billing and applies to Azure Stack HCI, version 23H2.
+
+sections:
+  - name: Azure Stack HCI OEM license and billing FAQ
+    questions:
+
+      - question: How do I get pricing for this license?
+        answer: |
+          For help with pricing information from this license first contact your OEM partner. For additional help, send an email to help-oemhci@service.microsoft.com.
+
+      - question: How can I purchase this license?
+        answer: |
+          This license is exclusively designed for Azure Stack HCI Premier Solutions, Integrated Systems, and Validated Nodes as a pre-installed license activated in Azure. Contact your OEM partner for more information.
+
+      - question: Do I have to license all physical cores?
+        answer: |
+          Yes. Every physical core in the server must be licensed. This license doesn't support a dynamic core license model. The base license covers up to 16 cores and extra two-core and four-core add-ons are available for systems with 16-cores or more. 
+          
+          For systems with 16-cores or more, you may combine licenses to cover all cores. For example, a 36-core system requires two 16-core licenses plus a four-core add-on license.  
+
+      - question: Is an annual renewal or subscription required for this license?
+        answer: |
+          No. This license doesn't require annual renewals or subscriptions. It’s a prepaid license that once acquired remains valid for the lifetime of the hardware that the Azure Stack HCI OS is installed on. You can continue using the license if the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
+      
+      - question: Which version of Windows Server is supported for this license?
+        answer: |
+          You can use Windows Server Datacenter 2022, or an [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) that Microsoft supports, as a guest license.  
+
+      - question: Are next version rights for Windows Server Datacenter included?
+        answer: |
+          No. This license is limited to Windows Server Datacenter 2022 or earlier and doesn't include newer subsequent versions unless permitted by Microsoft. You can use Windows Server Datacenter 2022, or an earlier version that Microsoft supports, as a guest license.
+
+      - question: Where can I get support for this license?
+        answer: |
+          For support with your Azure Stack HCI OEM license first contact your OEM vendor. For additional help, file an Azure support request through [the Azure portal](https://portal.azure.com/).
+      
+      - question: Are mixed-node scenarios supported?
+        answer: |
+          No. This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
+
+      - question: Does Azure Kubernetes Service (AKS) offer unlimited virtualization?
+        answer: |
+          Yes. AKS on Azure Stack HCI offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
+
+      - question: Does Windows Server Datacenter provide unlimited VMs?
+        answer: | 
+          Yes. Windows Server Datacenter offers unlimited virtualization like AKS offers unlimited containers. You can run as many VMs and containers as your infrastructure supports, without incurring extra licensing costs. 
+
+      - question: Do I have access to the latest features?
+        answer: |
+          Yes. An active Azure subscription ensures you automatically receive the latest updates and enhancements for Azure Stack HCI and Azure Kubernetes Services on HCI. However, it's important to know that while Windows Server under this license receives security updates and fixes, it doesn't include enhancements.
+
+      - question: Are there Reassignment Rights associated with this license?
+        answer: |
+          No. This license doesn't include reassignment rights. This means that the license is tied to the original hardware on which the Azure Stack HCI OS is pre-installed and can't be transferred to different hardware or systems. This approach ensures that the license and its benefits remain specific to the initial hardware setup.
+
+      - question: Does this license include an End-User License Agreement (EULA)?
+        answer: |
+          Yes. There's an EULA that combines Azure Stack HCI (as the host), Azure Kubernetes Services on Azure Stack HCI, and Windows Server Datacenter 2022 (as the guest) into a single package.
+
+      - question: Is a product key or Certificate of Authenticity (COA) required?
+        answer: |
+          No. This pre-installed license doesn't include product keys or COA, the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.
+
+      - question: Do I need Device or User Client Access Licenses (CALs) with this License?
+        answer: |
+          No. For this specific license, there's no requirement for other Device or User CALs. The absence of CAL requirements with this license is specific to this offering and shouldn't be interpreted as a general exception from CALs for other server licenses or scenarios.

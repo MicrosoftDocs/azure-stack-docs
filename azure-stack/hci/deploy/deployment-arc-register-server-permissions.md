@@ -35,8 +35,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
-    - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
+    - Azure Connected Machine Onboarding
+    - Azure Connected Machine Resource Administrator
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
@@ -47,12 +47,17 @@ Before you begin, make sure you've completed the following prerequisites:
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::-->
 
+- Check your Azure policies. Make sure that:
+    - The Azure policies aren't blocking the installation of extensions.
+    - The Azure policies aren't blocking the creation of certain resource types in a resource group.
+    - The Azure policies aren't blocking the resource deployment in certain locations.
+
 ## Register servers with Azure Arc
 
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
 
-1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
+1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery. **This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
 
     # [PowerShell](#tab/powershell)
     ```powershell
@@ -60,9 +65,9 @@ Before you begin, make sure you've completed the following prerequisites:
     Register-PSRepository -Default -InstallationPolicy Trusted
 
     #Install required PowerShell modules in your node for registration
-    Install-Module Az.Accounts -RequiredVersion 2.13.2
+    Install-Module Az.Accounts -RequiredVersion 3.0.0
     Install-Module Az.Resources -RequiredVersion 6.12.0
-    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
     
 
     #Install Arc registration script from PSGallery 
@@ -72,9 +77,9 @@ Before you begin, make sure you've completed the following prerequisites:
     Here's a sample output of the installation:
 
     ```output
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 3.0.0
     PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
     PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
     NuGet provider is required to continue                                                                                  
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
@@ -84,7 +89,7 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     ```
-    ---
+
 1. Set the parameters. The script takes in the following parameters:
 
     |Parameters  |Description  |
@@ -130,7 +135,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
 
     ---
-1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+2. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     # [PowerShell](#tab/powershell)
 
@@ -164,7 +169,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ---
 
-1. Finally run the Arc registration script. The script takes a few minutes to run.
+3. Finally run the Arc registration script. The script takes a few minutes to run.
 
     # [PowerShell](#tab/powershell)
 
@@ -209,7 +214,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
     ---
 
-1. After the script completes successfully on all the servers, verify that:
+4. After the script completes successfully on all the servers, verify that:
 
 
     1. Your servers are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.

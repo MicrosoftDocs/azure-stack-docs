@@ -3,9 +3,9 @@ title: Install existing applications with Helm
 description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service (AKS) clusters in AKS enabled by Azure Arc.
 services: container-service
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 11/04/2022
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -19,7 +19,7 @@ ms.reviewer: scooley
 
 This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS enabled by Azure Arc.
 
-[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as **APT** and **Sum**, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
+[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as **APT** and **Sum**, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 ## Before you begin
 
@@ -90,7 +90,7 @@ Update Complete. Happy Helming!
 
 To install charts with Helm, use the [helm install][helm-install-command] command, and specify a release name and the name of the chart to install. To see a Helm chart installation in action, install a basic nginx deployment using a Helm chart.
 
-The following command is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you run commands in a PowerShell console, the command includes the backtick ( ` ) to allow line continuation.
+The following command is provided twice, one for use in Azure CLI, and one for use in a PowerShell console:
 
 ```azurecli
 helm install my-nginx-ingress ingress-nginx/ingress-nginx \
@@ -123,13 +123,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Use the `kubectl get services` command to get the *EXTERNAL-IP* of your service:
+Use the `kubectl get services` command to get the **EXTERNAL-IP** of your service:
 
 ```console
 kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 ```
 
-For example, the command below shows the *EXTERNAL-IP* for the *my-nginx-ingress-ingress-nginx-controller* service:
+For example, the following command shows the **EXTERNAL-IP** for the **my-nginx-ingress-ingress-nginx-controller** service:
 
 ```output
 NAME                                        TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)                      AGE   SELECTOR
@@ -144,7 +144,7 @@ To see a list of releases installed on your cluster, use the `helm list` command
 helm list
 ```
 
-The following example shows the *my-nginx-ingress* release deployed in the previous step:
+The following example shows the **my-nginx-ingress** release deployed in the previous step:
 
 ```output
 NAME                NAMESPACE    REVISION    UPDATED                                 STATUS      CHART                   APP VERSION
@@ -153,13 +153,13 @@ my-nginx-ingress    default      1           2021-05-14 17:43:27.1670709 +0000 U
 
 ### Clean up resources
 
-When you deploy a Helm chart, many Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command and specify your release name, as found in the previous `helm list` command.
+When you deploy a Helm chart, many Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command and specify your release name, as found in the previous `helm list` command:
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-The following example output shows the release named *my-nginx-ingress* has been uninstalled:
+The following example output shows that the release **my-nginx-ingress** has been uninstalled:
 
 ```output
 release "my-nginx-ingress" uninstalled

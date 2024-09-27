@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/29/2024
+ms.date: 09/25/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
@@ -24,13 +24,13 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
 ---
 
@@ -53,9 +53,9 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Resource group>"
+    $mktplaceImage = "<Marketplace image name>"
     $customLocationName = "<Custom location name>"
-    $customLocationID
-    /subscriptions/<Subscription ID>/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
+    $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --query id -o tsv)
     $location = "<Location for your Azure Stack HCI cluster>"
     $osType = "<OS of source image>"
     ```
@@ -65,7 +65,9 @@ Follow these steps to create a VM image using the Azure CLI.
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+    | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.     |
+    | `name` | Name of the marketplace image for Azure Stack HCI cluster.  |
+    | `customLocation` | Resource ID of custom location for Azure Stack HCI cluster.   |
     | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
@@ -74,107 +76,118 @@ Follow these steps to create a VM image using the Azure CLI.
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "myhci-rg"
+    PS C:\Users\azcli> $mktplaceImage= "myhci-marketplaceimage"
     PS C:\Users\azcli> $customLocationName = "myhci-cl"
+    PS C:\Users\azcli> $customerLocationID /subscriptions$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
     ```
 
 ### Create VM image from marketplace image
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
+1. Set additional parameters that specify the intended VM image you would like to create. You will need to include the offer, publisher, SKU, and version for the marketplace image. Replace the parameters in \< \> with the appropriate values:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for Azure Stack HCI cluster>" --query id -o tsv)
+    $publisher = "<Publisher name>"
+    $offer = "<OS offer>"
+    $sku = "<Image SKU>"
     ```
 
-1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image. Use the following table to find the available marketplace images and their attribute values:
+    Use the following table to find the available marketplace images and their attribute values:
 
-    |    Name   |    Publisher     |    Offer   |    SKU    |    Version number    |
-    |-------------|-------------|-----------------|-----------|----------------------|
-    | Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 21H2- Gen2            | microsoftwindowsdesktop | office-365       | win10-21h2-avd-m365-g2                 | 19044.3570.231010 |
-    | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps- Gen2            | microsoftwindowsdesktop | office-365       | win11-21h2-avd-m365                    | 22000.2538.231010 |
-    | Windows 10 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-10       | win10-21h2-avd-g2                      | 19044.3570.231001 |
-    | Windows 11 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-11       | win11-21h2-avd                         | 22000.2538.231001 |
-    | Windows 11 Enterprise multi-session, version 22H2 - Gen2                                | microsoftwindowsdesktop | windows-11       | win11-22h2-avd                         | 22621.2428.231001 |
-    | Windows 11, version 22H2 Enterprise multi-session + Microsoft 365 Apps (Preview) - Gen2 | microsoftwindowsdesktop | windows11preview | win11-22h2-avd-m365                    | 22621.382.220810  |
-    | Windows Server 2022 Datacenter: Azure Edition - Gen2                                    | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition          | 20348.2031.231006 |
-    | Windows Server 2022 Datacenter: Azure Edition Core - Gen2                               | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition-core     | 20348.2031.231006 |
-    | Windows Server 2022 Datacenter: Azure Edition Hotpatch - Gen2                           | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition-hotpatch | 20348.2031.231006 |
+    | Name | Publisher | Offer | SKU |
+    |------|-----------|-------|------|
+    | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-21h2-avd-m365<br>win11-23h2-avd-m365 |
+    | Windows 10 Enterprise multi-session + Microsoft 365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365<br>win10-22h2-avd-m365 |
+    | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-21h2-pro<br>win11-22h2-pro<br>win11-23h2-pro |
+    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-21h2-ent<br>win11-22h2-ent<br>win11-23h2-ent |
+    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-21h2-avd<br>win11-22h2-avd<br>win11-23h2-avd |
+    | Windows 10 Pro | microsoftwindowsdesktop | windows-10 | win10-22h2-pro-g2 |
+    | Windows 10 Enterprise | microsoftwindowsdesktop | windows-10 | win10-22h2-ent-g2 |
+    | Windows 10 Enterprise multi-session | microsoftwindowsdesktop | windows-10 | win10-22h2-avd |
+    | Windows Server 2022 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | 2022-datacenter-azure-edition-hotpatch<br>2022-datacenter-azure-edition-core<br>2022-datacenter-azure-edition |
+    | Windows Server 2019 | microsoftwindowsserver | windowsserver | 2019-datacenter-gensecond<br>2019-datacenter-core-g2 |
+    | SQL Server 2022 Enterprise on Windows Server 2022 | microsoftsqlserver | sql2022-ws2022 | enterprise-gen2<br>standard-gen2 |
+
+    If you wanted to create a Windows Server 2019 Datacenter image, you would have the following parameters: 
 
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "<Publisher name>" --sku "<SKU>" --version "<Version number>" --storage-path-id $storagepathid
+    $publisher = "microsoftwindowsserver" 
+    $offer = "windowsserver" 
+    $sku = "2019-datacenter-gensecond"
     ```
 
-    A deployment job starts for the VM image. 
+1. Create the VM image starting with a specified marketplace image:
 
-    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
-
-    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
-
-The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
+    ```azurecli
+    az stack-hci-vm image create --resource-group $resource_group --custom-location $customLocationID --name $mktplaceImage --os-type $ostype --offer $offer --publisher $publisher --sku $sku 
+    ```
 
 Here's a sample output:
 
 ```
-PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
-PS C:\Users\azcli> $customLocationID
-/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "myhci-marketplaceimage" --os-type $ostype --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.2031.231006" --storage-path-id $storagepathid
-{
-  "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
-    "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage",
-  "location": "eastus",
-  "name": "myhci-marketplaceimage",
-  "properties": {
-    "identifier": {
-      "offer": "windowsserver",
-      "publisher": "microsoftwindowsserver",
-      "sku": "2022-datacenter-azure-edition-core"
-    },
-    "imagePath": null,
-    "osType": "Windows",
-    "provisioningState": "Succeeded",
-    "status": {
-      "downloadStatus": {
-        "downloadSizeInMB": 6750
-      },
-      "progressPercentage": 98,
-      "provisioningStatus": {
-        "operationId": "13be90e0-a780-45bf-a84a-ae91b6e5e468*A380D53083FF6B0A3A157ED7DFD00D33F6B3D40D5559D11AEAED6AD68F7F1A4A",
-        "status": "Succeeded"
-      }
-    },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
-    "version": {
-      "name": "20348.2031.231006",
-      "properties": {
-        "storageProfile": {
-          "osDiskImage": {
-            "sizeInMB": 130050
-          }
-        }
-      }
-    }
-  },
-  "resourceGroup": "myhci-rg",
-  "systemData": {
-    "createdAt": "2023-10-27T21:43:15.920502+00:00",
-    "createdBy": "guspinto@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2023-10-27T22:06:15.092321+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-    "lastModifiedByType": "Application"
-  },
-  "tags": null,
-  "type": "microsoft.azurestackhci/marketplacegalleryimages"
-}
+PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku 
+{ 
+  "extendedLocation": { 
+    "name": “/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl", 
+    "type": "CustomLocation" 
+  }, 
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
+\ 
+  "location": "eastus", 
+  "name": "myhci-marketplaceimage", 
+  "properties": { 
+    "cloudInitDataSource": null, 
+    "containerId": null, 
+    "hyperVGeneration": null, 
+    "identifier": { 
+      "offer": "windowsserver", 
+      "publisher": "microsoftwindowsserver", 
+      "sku": "2019-datacenter-gensecond" 
+    }, 
+    "osType": "Windows", 
+    "provisioningState": "Succeeded", 
+    "status": { 
+      "downloadStatus": { 
+        "downloadSizeInMb": 10832 
+      }, 
+      "errorCode": "", 
+      "errorMessage": "", 
+      "progressPercentage": 100, 
+      "provisioningStatus": { 
+        "operationId": "13efc468-7473-429f-911b-858c1e6fc1d5*B11A62EE76B08EF194F8293CDD40F7BC71BFB93255D5A99DD11B4167690752D9", 
+        "status": "Succeeded" 
+      } 
+    }, 
+    "version": { 
+      "name": "17763.6293.240905", 
+      "properties": { 
+        "storageProfile": { 
+          "osDiskImage": { 
+            "sizeInMb": 130050 
+          } 
+        } 
+      } 
 
-PS C:\Users\azcli>
+    } 
+  }, 
+  "resourceGroup": "myhci-rg", 
+  "systemData": { 
+    "createdAt": "2024-09-23T18:53:13.734389+00:00", 
+    "createdBy": "guspinto@contoso.com", 
+    "createdByType": "User", 
+    "lastModifiedAt": "2024-09-23T19:06:07.532276+00:00", 
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+    "lastModifiedByType": "Application" 
+  }, 
+
+  "tags": null, 
+  "type": "microsoft.azurestackhci/marketplacegalleryimages" 
+} 
 ```
+
+For more information on this CLI command, see [az stack-hci-vm image](/cli/azure/stack-hci-vm/image).
 
 # [Azure portal](#tab/azureportal)
 

@@ -1,10 +1,10 @@
 ---
 title: Single machine Kubernetes
-description: Learn how to deploy AKS on a single machine.
+description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 08/21/2024
 ms.custom: template-how-to
 ---
 
@@ -14,7 +14,7 @@ You can deploy AKS Edge Essentials on either a single machine or on multiple mac
 
 ## Prerequisites
 
-Set up your primary machine as described in the [Set up machine](aks-edge-howto-setup-machine.md) article.
+Set up your primary machine as described in [Set up machine](aks-edge-howto-setup-machine.md).
 
 ## Step 1: single machine configuration parameters
 
@@ -24,7 +24,9 @@ You can generate the parameters you need to create a single machine cluster usin
 New-AksEdgeConfig -DeploymentType SingleMachineCluster -outFile .\aksedge-config.json | Out-Null
 ```
 
-This command creates a configuration file called **aksedge-config.json** that includes the configuration needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. Refer to the following examples for more options for creating the configuration file. A detailed description of the configuration parameters [is available here](aks-edge-deployment-config-json.md).
+This command creates a configuration file called **aksedge-config.json** that includes the configuration needed to create a single-machine cluster with a Linux node. The file is created in your current working directory. See the following examples for more options for creating the configuration file.
+
+See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for a detailed description of the configuration parameters.
 
 The key parameters for single machine deployment are:
 
@@ -36,9 +38,12 @@ The key parameters for single machine deployment are:
 
 1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
-```PowerShell
+```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
+
+> [!IMPORTANT]
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
 ## Step 3: validate your cluster
 
@@ -88,13 +93,16 @@ $machine.LinuxNode.MemoryInMB = 4096
 New-AksEdgeDeployment -JsonConfigString ($jsonObj | ConvertTo-Json -Depth 4)
 ```
 
+> [!TIP]
+> See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for all available options, including network settings such as proxy settings.
+
 ### Create a simple cluster with NodePort service
 
 You can create a simple cluster with no service IPs (`ServiceIPRangeSize` set as 0):
 
-   ```powershell
-   New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig | ConvertTo-Json -Depth 4)
-   ```
+```powershell
+New-AksEdgeDeployment -JsonConfigString (New-AksEdgeConfig | ConvertTo-Json -Depth 4)
+```
 
 ### Allocate resources to your nodes
 
@@ -153,7 +161,7 @@ New-AksEdgeConfig -DeploymentType SingleMachineCluster -NodeType LinuxAndWindows
 
 Once the configuration file is created, you can deploy your cluster using the following command:
 
-```PowerShell
+```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 

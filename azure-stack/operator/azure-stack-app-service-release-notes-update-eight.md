@@ -313,7 +313,7 @@ In some cases, where a high number of sites are allocated to a worker or a site 
 
 To mitigate this issue remote to the individual worker and clear out the contents of the folder.
 
-This issue has been fixed in [App Service on Azure Stack Hub 2020 Q3](app-service-release-notes-2020-Q3.md), we encourage customers to upgrade to the 2020 Q3 release as soon as possible.
+This issue was fixed in a later release.
 
 > [!IMPORTANT]
 > In order to update to Azure App Service on Azure Stack Hub 2020 Q3 you **must** upgrade to Azure Stack Hub 2008

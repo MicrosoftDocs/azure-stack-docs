@@ -47,7 +47,9 @@
       - name: Azure CLI
         href: aks-create-clusters-cli.md
       - name: Azure portal
-        href: aks-create-clusters-portal.md   
+        href: aks-create-clusters-portal.md
+      - name: Bicep
+        href: create-clusters-bicep.md   
       - name: Deploy to Azure using a quickstart template
         href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
@@ -64,8 +66,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-    - name: Security and authentication
+    - name: Authentication and authorization
       items:
+      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
+        href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
@@ -94,6 +98,8 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
+      - name: Use availability sets
+        href: availability-sets.md
     - name: Scale a Kubernetes cluster
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
@@ -186,6 +192,8 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
+    - name: Use GPU acceleration
+      href: aks-edge-gpu.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online

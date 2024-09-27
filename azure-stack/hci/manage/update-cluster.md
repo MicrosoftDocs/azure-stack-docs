@@ -9,7 +9,7 @@ ms.date: 12/19/2023
 
 # Update Azure Stack HCI clusters, version 22H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [WARNING](../../includes/hci-applies-to-22h2-cluster-updates.md)]
 

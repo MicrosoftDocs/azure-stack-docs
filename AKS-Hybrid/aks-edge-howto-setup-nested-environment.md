@@ -1,10 +1,10 @@
 ---
 title: Nested virtualization environment for AKS Edge Essentials
 description: Learn how to prepare your nested virtualization environment for AKS Edge Essentials clusters. 
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 09/10/2024
 ms.custom: template-how-to
 ---
 
@@ -13,8 +13,8 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge Essentials cluster.
 
 > [!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported per [VMware KB2009916](https://kb.vmware.com/s/article/2009916).
-> Other nested virutalization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
+> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported.
+> Other nested virtualization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This article describes how to set up a nested virtualization environment to depl
 
 ## Deployment on Windows VM on VMware ESXi
 
-VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine. See [VMware KB2009916](https://kb.vmware.com/s/article/2009916) for more information about VMware ESXi nested virtualization support.
+VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine.
 
 To set up AKS Edge Essentials on a VMware ESXi Windows virtual machine, use the following steps:
 
@@ -170,7 +170,7 @@ The following guide is an example of IP address allocation. You can use your own
    > If you are using an Azure VM, use the **Windows host OS (L0)** DNS server. Use the `ipconfig /all` command to get the DNS server address. Check that you're able to get internet access using your web browser. If you have no access, check the if the DNS server is correctly configured:
 
    ```powershell
-   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
    Set-DNSClientServerAddress –InterfaceIndex $ifIndex –ServerAddresses "172.20.1.1"
    ```
 
@@ -268,7 +268,7 @@ The following guide is an example of IP address allocation. You can use your own
    kubectl get nodes
    ```
 
-   If everything was correctly set up, you should see both Linux nodes running in your cluster
+   If everything was correctly set up, you should see both Linux nodes running in your cluster:
 
    ```output
    PS C:\> kubectl get nodes
@@ -276,6 +276,9 @@ The following guide is an example of IP address allocation. You can use your own
    windows-vm1-ledge        Ready    control-plane,etcd,master   3m45s   v1.24.3+k3s-
    windows-vm2-ledge        Ready    control-plane,etcd,master  10m25s   v1.24.3+k3s-
    ```
+
+   > [!NOTE]
+   > For a list of currently supported Kubernetes versions on both K3s and K8s, see the table in [Download AKS Edge Essentials](aks-edge-howto-setup-machine.md#download-aks-edge-essentials).
 
 ## Next steps
 

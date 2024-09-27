@@ -37,9 +37,6 @@ To repair an existing server, follow these high-level steps:
 
     The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that can run for multiple days depending on number of the servers and the storage used.
 
-> [!NOTE]
-> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
-
 ## Supported scenarios
 
 Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration.
@@ -117,12 +114,16 @@ Follow these steps on the server you're trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-1. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+    > [!NOTE]
+    > If your cluster is using a dedicated Network ATC intent for storage and you are using custom storage IPs, you must configure the IPs on the storage network adapters before running the Repair-Server operation.
+    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is being repaired.
+
+2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
-1. Assign the following permissions to the repaired node:
+3. Assign the following permissions to the repaired node:
 
     - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
@@ -142,6 +143,9 @@ Follow these steps on another server that is a member of the same Azure Stack HC
     $Cred = Get-Credential 
     Repair-Server -Name "< Name of the new server>" -LocalAdminCredential $Cred
     ```
+
+    > [!NOTE]
+    > The server name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names).
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 

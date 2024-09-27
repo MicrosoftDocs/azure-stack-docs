@@ -1,13 +1,13 @@
 ---
-title: Prepare Linux image for Azure Stack HCI VM via Azure CLI 
-description: Learn how to prepare Linux images to create an Azure Stack HCI VM image.
+title: Prepare Ubuntu image for Azure Stack HCI VM via Azure CLI 
+description: Learn how to prepare Ubuntu images to create an Azure Stack HCI VM image.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 05/15/2024
+ms.date: 07/22/2024
 ---
 
 # Prepare an Ubuntu image for Azure Stack HCI virtual machines
@@ -37,7 +37,8 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from an Ubuntu image
 
 > [!IMPORTANT]
-> We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
+> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> - We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
 
@@ -99,6 +100,9 @@ Follow these steps on your Azure Stack HCI cluster to configure the VM that you 
 ### Step 3: Clean up the residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration.
+
+> [!NOTE]
+> Depending on the version of Ubuntu you are using, some of these files may not exist.
 
 1. Clean `cloud-init` default configurations.
 
