@@ -169,17 +169,6 @@ To create the Arc gateway resource in Azure, follow these steps:
 
     The gateway creation process takes about four to five minutes to complete.
 
-<!-- 1. When the resource is successfully created, the success response includes all the URLs that need to be allowed in your proxy, including the Arc gateway URL. Make sure that all the URLs are allowed in the environment that has your Azure Arc resources. The following URLs are required:
-
-    | URL | Purpose |
-    |--|--|
-    | [Your URL Prefix].gw.arc.azure.com | Gateway URL. To get this URL, run `az connectedmachine gateway list` after you create your gateway resource. |
-    | management.azure.com | Azure Resource Manager (ARM) Endpoint. This URL is required for the ARM control plane. |
-    | login.microsoftonline.com | Microsoft Entra ID endpoint. This URL is used to acquire identity access tokens. |
-    | gbl.his.arc.azure.com <br><your_region>.his.arc.azure.com  | The cloud service endpoint to communicate with Arc agents. |
-    | packages.microsoft.com | This URL is required to acquire a Linux-based Arc agentry payload. This URL is only needed to connect Linux servers to Arc. |
-    | download.microsoft.com | This URL is used to download the Windows installation package. | -->
-
 ## Delete the Arc gateway resource
 
 To delete an Arc gateway resource, you must first detach it from the servers to which it is attached.  

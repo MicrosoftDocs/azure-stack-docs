@@ -124,13 +124,13 @@ Once the Azure Stack HCI nodes are registered in Azure Arc and all the extension
 
 - [Azure Resource Manager template deployment for Azure Stack HCI, version 23H2](deployment-azure-resource-manager-template.md).
 
-## Step 5: Verify that the set up succeeded
+## Step 5: Verify that the setup succeeded
 
 Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Output showing Arc gateway log using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the the Arc gateway log using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
 To check the Arc agent configuration and verify that it is using the Arc gateway, run the following command: `c:\program files\AzureConnectedMachineAgent>.\azcmagent show`
 
@@ -148,11 +148,11 @@ The result should show the following values:
 
 The Arc agent without the Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Output showing Arc agent without gateway using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png" alt-text="Screenshot that shows the Arc agent without gateway using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway.png":::
 
 The Arc agent using the Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway.png" alt-text="Output showing Arc agent with gateway using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway.png" alt-text="Screenshot that shows the Arc agent with gateway using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway.png":::
 
 Additionally, to verify that the setup successful, you can run the following command: `c:\program files\AzureConnectedMachineAgent>.\azcmagent check`.
 
@@ -160,11 +160,11 @@ The response should indicate that `connection.type` is set to `gateway`, and the
 
 The Arc agent without the Arc gateway:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Output showing Arc agent without gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png" alt-text="Screenshot that shows the Arc agent without gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
 
 The Arc agent with the Arc gateway enabled:
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png" alt-text="Output showing Arc agent with gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-with-gateway-2.png" alt-text="Screenshot that shows the Arc agent with gateway 2 using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-agent-without-gateway-2.png":::
 
 You can also audit your gateway traffic by viewing the gateway router logs.  
 
