@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Stack HCI, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/26/2024
+ms.date: 09/27/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -19,7 +19,7 @@ You can use the Arc gateway to significantly reduce the number of required endpo
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 > [!NOTE]
-For information on how to deploy the Azure Arc Gateway for standalone servers (not Azure Stack HCI node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+> For information on how to deploy the Azure Arc Gateway for standalone servers (not Azure Stack HCI node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
 
 ## How it works
 
