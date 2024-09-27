@@ -601,7 +601,7 @@ Follow these steps to provide the required information in the Azure portal:
 
 1. On the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log.
 
-1. On the **Log detail** pane, share the **UTC time zone** and **Correlation ID** values with Microsoft Support.
+1. On the **Log detail** pane, note the values of **UTC time zone** and **Correlation ID**, and share them with Microsoft Support.
 
    :::image type="content" source="./media/collect-logs/log-details-pane-required-values.png" alt-text="Screenshot of the Log details pane highlighting the required information to share with Microsoft Support." lightbox="./media/collect-logs/log-details-pane-required-values.png" :::
 
