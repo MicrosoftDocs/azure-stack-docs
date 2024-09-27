@@ -16,10 +16,11 @@ This article provides an overview of the Azure Arc gateway for Azure Stack HCI, 
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Stack HCI.
 
+For information on how to deploy the Azure Arc gateway for standalone servers (not Azure Stack HCI node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-> [!NOTE]
-> For information on how to deploy the Azure Arc Gateway for standalone servers (not Azure Stack HCI node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+
 
 ## How it works
 
