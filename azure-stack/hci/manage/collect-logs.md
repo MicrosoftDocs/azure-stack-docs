@@ -60,11 +60,11 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
    :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
-1. On the **Send diagnostic logs to Microsoft** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. <!--check with Shireen about this-By doing this, you agree to the terms and conditions of collecting logs.->
+1. On the **Send diagnostic logs to Microsoft** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collecting logs.
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
-1. (Optional) On the **Diagnostics** tab, under **Log activity**, you can review the log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the **Log detail** pane.
+1. (Optional) On the **Diagnostics** tab, under **Log activity**, you can review the log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the details on the **Log detail** pane.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
