@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/27/2024
+ms.date: 09/27/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
@@ -17,19 +17,19 @@ This article describes how to collect diagnostic logs for Azure Stack HCI and se
 
 ## About on-demand log collection
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft. The logs you collect are sent to the Kusto database. Microsoft Support can then use the information you provide to locate your logs in Kusto and assist you in resolving your reported issue. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection refers to the process of manually gathering and sending diagnostic logs to Microsoft. These logs are stored in the Kusto database, where Microsoft Support can access them to help resolve your reported issues. The collected diagnostic data is retained for up to 30 days and is managed according to Microsoft’s [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
-Here are the scenarios in which you can perform on-demand log collection:
+You can perform on-demand log collection in the following scenarios:
 
-- Microsoft Support requests for logs based on an open case.
-- Logs are collected when a cluster is connected and registered.
-- Logs are collected when the observability components are operational and installed.
-- Logs are collected when a cluster is only partly registered.
-- Logs are collected for issues not related to registration failures.
+- When Microsoft Support requests logs for an open case.
+- When a cluster is connected and registered.
+- When observability components are operational and installed.
+- When a cluster is only partially registered.
+- For issues unrelated to registration failures.
 
-To explore other log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+For more information on other log collection methods in Azure Stack HCI and their appropriate use cases, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
@@ -56,17 +56,17 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
    :::image type="content" source="./media/collect-logs/get-started-tab.png" alt-text="Screenshot shows the Get started tab." lightbox="./media/collect-logs/get-started-tab.png" :::
 
-1. On the **Diagnostics** tab, under **Log activity**, review log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the **Log details** pane.
-
-   :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
-
 1. To collect and send logs now, select **Send logs**.
 
    :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
-1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collecting logs.
+1. On the **Send diagnostic logs to Microsoft** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. <!--check with Shireen about this-By doing this, you agree to the terms and conditions of collecting logs.->
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
+
+1. (Optional) On the **Diagnostics** tab, under **Log activity**, you can review the log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the **Log detail** pane.
+
+   :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
 ## [PowerShell](#tab/powershell)
 
@@ -595,13 +595,15 @@ The following roles are available for filtering by the **FilterByRole** paramete
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 
-You can obtain this information directly from the problematic page in the Azure portal or from the output of the `Send-DiagnosticData` cmdlet.
-
 ### [Azure portal](#tab/azureportal)
 
-On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
+Follow these steps to provide the required information in the Azure portal:
 
-If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
+1. On the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log.
+
+1. On the **Log detail** pane, share the **UTC time zone** and **Correlation ID** values with Microsoft Support.
+
+   :::image type="content" source="./media/collect-logs/log-details-pane-required-values.png" alt-text="Screenshot of the Log details pane highlighting the required information to share with Microsoft Support." lightbox="./media/collect-logs/log-details-pane-required-values.png" :::
 
 ### [PowerShell](#tab/powershell)
 
