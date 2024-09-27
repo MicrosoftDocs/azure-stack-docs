@@ -23,11 +23,11 @@ On-demand log collection refers to the process of manually gathering and sending
 
 You can perform on-demand log collection in the following scenarios:
 
-- When Microsoft Support requests logs for an open case.
-- When a cluster is connected and registered.
-- When observability components are operational and installed.
-- When a cluster is only partially registered.
-- For issues unrelated to registration failures.
+- When Microsoft Support requests logs for an open case
+- When a cluster is connected and registered
+- When observability components are operational and installed
+- When a cluster is only partially registered
+- For issues unrelated to registration failures
 
 For more information on other log collection methods in Azure Stack HCI and their appropriate use cases, see [Diagnostics](../concepts/observability.md#diagnostics).
 
