@@ -30,6 +30,17 @@ Azure Stack HCI, 2306 Supplemental Package is now in preview. You can deploy thi
 
 To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
 
+## Supportability
+
+>[!IMPORTANT]
+> The deployment of Azure Stack HCI 22H2 with the described Supplemental Package (SP) has become obsolete.
+>
+> If you deploy Azure Stack HCI 22H2 with SP, we advise you that this scenario is not supported to for going forward with Azure Stack HCI OS and solution upgrades, such as Azure Stack HCI 23H2 or later.
+>
+> In this case you will have to reinstall the cluster either with regular 22H2 methods, such as PowerShell or Windows Admin Center, or consider a reinstallation directly to the current release.
+> We thank you for evaluating the Supplemental Package, as it laid the foundation for the Azure Stack HCI 23H2 cloudbased solution deployment.
+> See [Azure Stack HCI Upgrades - Supported workloads and configurations](../upgrade/about-upgrades-23h2.md).
+
 ### What's new
 
 The following new features are available in the 2306 preview release of Supplemental Package:
