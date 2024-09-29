@@ -196,15 +196,13 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Attach drives to the newly created VHDXs for the VM. In these commands, six VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
-    Afterwards, the `Node1` VM has six VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
+    Afterwards, the `Node1` VM has four VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
 
    ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d2.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d3.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d4.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d5.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d6.vhdx"
     ```
 
 1. Disable time synchronization:
