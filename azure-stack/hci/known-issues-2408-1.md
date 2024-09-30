@@ -43,8 +43,6 @@ The following issues are fixed in this release:
 | Upgrade <!--29346181--> | Added validation to check for an IPv6 address. ||
 | Update | SBE interfaces wouldn't execute on all the servers if the hostname in the cluster was a subset of another hostname. ||
 
-Use appropriate host naming conventions.
-
 ## Known issues in this release
 
 <!--The following table lists the known issues in this release:
