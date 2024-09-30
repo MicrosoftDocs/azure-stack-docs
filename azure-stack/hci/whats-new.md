@@ -56,7 +56,7 @@ This release contains the following changes for updates:
 - Revised the names and descriptions of update steps. [27635293]
 - Introduced a health fault alert that is raised when there are available updates on the system. [27253002]
 
-## Arc VM management changes
+### Arc VM management changes
 
 This release contains the following changes for Arc VM management:
 
@@ -68,7 +68,7 @@ This release contains the following changes for Arc VM management:
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
 
-## SBE changes
+### SBE changes
 
 This release contains the following changes for SBE:
 
