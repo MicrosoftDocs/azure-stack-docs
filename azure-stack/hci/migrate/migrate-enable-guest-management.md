@@ -69,7 +69,7 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
 
     **Using Azure portal (recommended)**
 
-    1. To stop migrated VM from Azure Portal, select **Stop** on the VM details page:
+    1. To stop migrated VM from Azure portal, select **Stop** on the VM details page:
 
     :::image type="content" source="./media/migrate-enable-guest-management/vm-stop.png" alt-text="Screenshot of Azure portal showing how to stop a VM." lightbox="./media/migrate-enable-guest-management/vm-stop.png":::
 
@@ -143,7 +143,7 @@ Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI sy
 
 :::image type="content" source="./media/migrate-enable-guest-management/vm-settings.png" alt-text="Screenshot showing ISO attachment." lightbox="./media/migrate-enable-guest-management/vm-settings.png":::
 
-**Step 3**: Turn on the migrated VM, if needed, in Azure Portal and ensure it has public network connectivity as follows:
+**Step 3**: Turn on the migrated VM, if needed, in Azure portal and ensure it has public network connectivity as follows:
 
 1. Check that the VM **Status** on Azure portal is **Running**:
 
@@ -266,7 +266,7 @@ Code: Failed
 Message: moc-operator virtualmachine serviceclient returned an error while reconciling: rpc error: code = Unknown desc = AddlSODisk for IsoFile mocguestagentprov.iso failed. Error: ErrorCode[32768] ErrorDescription['<VM name>' failed to add device 'Synthetic DVD Drive'. (Virtual machine ID <VM ID>)] ErrorSummaryDescription [Failed to add device 'Synthetic DVD Drive'.]: WMI Error 0x00008000: Failed
 ```
 
-To resolve this, stop the VM in Azure portal by selecting **Stop**. If this doen't work, run the following command from Azure CLI:
+To resolve this, stop the VM in Azure portal by selecting **Stop**. If this doesn't work, run the following command from Azure CLI:
 
 ```azurecli
 az stack-hci-vm stop --name $vmName --resource-group $rgName
