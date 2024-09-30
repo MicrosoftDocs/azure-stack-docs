@@ -13,7 +13,9 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. For more information covering additional scenarios, see [Manage Arc VMs on Azure Stack HCI](../manage/manage-arc-virtual-machines.md).
+This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2.
+
+For more information on other scenarios, see [Manage Arc VMs on Azure Stack HCI](../manage/manage-arc-virtual-machines.md).
 
 The output properties may vary depending on whether VMs were migrated or not.
 
