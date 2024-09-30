@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 09/30/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -168,13 +168,11 @@ Complete the following tasks to generate the target appliance key:
 
 ### Create the target appliance
 
-You can download the appliance using either a .VHD file or a .zip file.
-
-Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
+You can download the appliance from a .zip file. Under **Step 2: Download Azure Migrate appliance**, select **Download installer**.
 
 :::image type="content" source="media/migrate-vmware-replicate/download-target-appliance-1.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance-1.png":::
 
-#### Install using a .VHD file
+<!--#### Install using a .VHD file
 
 This step applies only if you downloaded the *.VHD* file.
 
@@ -218,12 +216,12 @@ Now you can install the appliance using the .VHD file.
 
 1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
 
-1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
+1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.-->
 
 
 #### Install using a script (.zip file)
 
-This step applies only if you downloaded the .zip file.
+This step applies to the downloaded .zip file.
 
 1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
 
