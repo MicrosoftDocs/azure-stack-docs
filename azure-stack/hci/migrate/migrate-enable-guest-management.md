@@ -89,7 +89,17 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
         az stack-hci-vm show --name $vmName --resource-group $rgName --query "properties.status"
         ``` 
 
-        :::image type="content" source="./media/migrate-enable-guest-management/vm-stopped.png" alt-text="Screenshot of window showing VM power state." lightbox="./media/migrate-enable-guest-management/vm-stopped.png":::
+        Sample output:
+
+        ```azurecli
+        PS C : \Users\AzureStackAdminD> az stack-hci-vm show --name <VM name> --resource-group <resource group> --query "properties.status"
+        {
+            "errorCode":
+            "errorMessage" :
+            "powerstate": "Stopped",
+            "provisioningstatus": null
+        }
+        ```
 
 1. For Hyper-V generation 2 VMs, ensure the power status shown on Azure portal matches the actual power state of the migrated VM on Hyper-V Manager, regardless of whether it is **On** or **Off**:
 
@@ -111,7 +121,23 @@ az stack-hci-vm update --name $vmName --resource-group $rgName --enable-vm-confi
 
 **Sample output:**
 
-:::image type="content" source="./media/migrate-enable-guest-management/vm-agent-true.png" alt-text="Screenshot of output showing ISO attached for guest agent." lightbox="./media/migrate-enable-guest-management/vm-agent-true.png":::
+```azurecli
+PS C:\Users\AzureStackAdminD> az stack-hci-vm update --name $vmName -enable-vm-config-agent true --resource-group $resourceGroup
+{
+"endTime": "2024-08-19T22:01:22.1060463z",
+"error": {},
+"extendedLocation": null ,
+"id": "<ID>",
+"identity": null,
+"name": "<Name>",
+"properties": null,
+"resourceld": "<Resource ID>",
+"startTime": "2024-08-19T22: 01:09.4898702z" ,
+"status": "Succeeded",
+"systemData" : null,
+"type": null
+}
+```
 
 Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI system:
 
@@ -129,7 +155,15 @@ Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI sy
     az stack-hci-vm show --name $vmName --resource-group $rgName --query “properties.status” 
     ```
 
-    :::image type="content" source="./media/migrate-enable-guest-management/powerstate-stopped.png" alt-text="Screenshot showing VM Running status in Azure portal." lightbox="./media/migrate-enable-guest-management/powerstate-stopped.png":::
+    ```azurecli
+    PS C: \Users\AzureStackAdminD> az stack-hci-vm show --name <Name> --resource-group <Resource group> --query "properties.status" 
+    {
+    "errorCode":
+    "errorMessage":
+    "powerState": "Running",
+    "provisioningStatus": null
+    }
+    ```
 
 **Step 4**: Install the guest agent ISO on the migrated VM as follows:
 
@@ -147,7 +181,16 @@ Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI sy
 
         **Sample output (Linux):**
 
-        :::image type="content" source="./media/migrate-enable-guest-management/linux-output.png" alt-text="Screenshot of Linux output window showing guest agent enablement." lightbox="./media/migrate-enable-guest-management/linux-output.png":::
+        ```azurecli
+        migration@migration-virtual-machine: $ sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /nociso && bash /mociso/install.sh && umount /mociso && rm -df/mociso && eject LABEL=mocguestagentprov'
+        [sudo] password for migration:
+        mount: /moctso: WARNING: device write-protected, mounted read-only.
+        Loading configuration version 've.16.5'...
+        The agent could not find the '/opt/mocguestagent/v0.16.5/config.yaml' config file. Looking for older versions to upgrade from...
+        Service installed.
+        Service started.
+        The guest agent was successfully installed.
+        ```
 
     - If on Windows, open PowerShell as administrator and run:
 
@@ -157,7 +200,21 @@ Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI sy
 
         **Sample output (Windows):**
 
-        :::image type="content" source="./media/migrate-enable-guest-management/windows-output.png" alt-text="Screenshot of Windows output window showing guest agent enablement." lightbox="./media/migrate-enable-guest-management/windows-output.png":::
+```azurecli
+PS C:\Users\Administrator> $d=Get-Volume -FilesystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install ps1';powershell $p
+
+Directory : C : \ProgramData\mocguestagent
+
+
+Mode	LastWriteTime	Length Name
+----    -------------   -----------
+d------	8/19/2024	5:46 PM	certs
+Loading configuration version 'v0.16.5'...
+The agent could not find the 'C:\ProgramData\mocguestagent\v0.16.5\config.yaml' config file. Looking for older versions to upgrade from...
+Service installed.
+Service started.
+The guest agent was successfully installed.
+```
 
 
 ## Enable guest management
@@ -168,6 +225,26 @@ You can enable guest management after the guest agent is running as follows:
 
     ```azurecli
     az stack-hci-vm update --name $vmName --resource-group $rgName --enable-agent true
+    ```
+
+    Sample output:
+
+    ```azurecli
+    PS C:\Users\AzureStackAdminD> az stack-hci-vm update --name $vmName --resource-group $resourceGroup --enable-agent true
+    {
+    "endTime": "2024-08-19T22:59:13.9583373Z”,
+    "error": {},
+    "extendedLocation" : null,
+    "id": "/<ID>",
+    "identity": null,
+    "name": "<Name>",
+    "properties": null,
+    "resourceld": "<Resource ID",
+    "startTime": "2024-08-19t22:28:23.8158331Z",
+    "status": "Succeeded",
+    "systemData": null,
+    "type": null
+    }
     ```
 
 1. Check for guest management enablement status in Azure portal:
@@ -182,7 +259,12 @@ If you encounter any issues, contact Microsoft Support and provide your logs and
 
 If you forgot to turn off Hyper-V Generation 1 VM before running the update command with `--enable-vm-config-agent true`, the update command will fail and the VM may become unmanageable from Azure portal:
 
-:::image type="content" source="./media/migrate-enable-guest-management/appendix-error.png" alt-text="Screenshot showing update command failure." lightbox="./media/migrate-enable-guest-management/appendix-error.png":::
+```azurecli
+PS C:\Users\AzureStackAdminD> az stack-hci-vm update --name <VM name> -- resource-group <Resource group> --enable-vm-config-agent true
+(Failed) moc-operator virtualmachine serviceclient returned an error while reconciling: rpc error: code = Unknown dasc = AddlSODisk for IsoFile mocguestagentprov.iso failed. Error: ErrorCode[32768] ErrorDescription[<VM name>' failed to add device 'Synthetic DVD Drive'. (Virtual machine ID <VM ID>)] ErrorSummaryDescription [Failed to add device 'Synthetic DVD Drive'.]: WMI Error 0x00008000: Failed
+Code: Failed
+Message: moc-operator virtualmachine serviceclient returned an error while reconciling: rpc error: code = Unknown desc = AddlSODisk for IsoFile mocguestagentprov.iso failed. Error: ErrorCode[32768] ErrorDescription['<VM name>' failed to add device 'Synthetic DVD Drive'. (Virtual machine ID <VM ID>)] ErrorSummaryDescription [Failed to add device 'Synthetic DVD Drive'.]: WMI Error 0x00008000: Failed
+```
 
 To resolve this, stop the VM in Azure portal by selecting **Stop**. If this doen't work, run the following command from Azure CLI:
 
