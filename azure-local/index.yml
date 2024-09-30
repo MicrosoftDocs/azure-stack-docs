@@ -17,3 +17,8 @@ metadata:
 landingContent:
   # Card (optional)
   - title: About Azure Local
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local?
+            url: /azure/azure-stack/hci/overview
