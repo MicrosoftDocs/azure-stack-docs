@@ -41,23 +41,23 @@ Before you begin, complete the following:
 
     - To verify the installation and check that the **stack-hci-vm** version is 1.1.5 or later:
 
-    ```azurecli
-    PS C:\Users\AzureStackAdminD> az version
-    {
-        "azure-cli": ”2.60.0”,
-        "azure-cli-core": ”2.60.0”,
-        "azure-cli-telemetry": "1.1.0",
-        "extensions": {
-            "aksarc": ‘1. 2.20" ,
-            "arcappliance": "1.1.1", 
-            "connectedk8s": "1.6. 2‘ ,
-            "customlocation": "0.1.3",
-            "k8s-extension": "1.4. 5" ,
-            "stack-hci-vm": "1.1.8"
-    }
-    ```
+        ```azurecli
+        PS C:\Users\AzureStackAdminD> az version
+        {
+            "azure-cli": ”2.60.0”,
+            "azure-cli-core": ”2.60.0”,
+            "azure-cli-telemetry": "1.1.0",
+            "extensions": {
+                "aksarc": ‘1. 2.20" ,
+                "arcappliance": "1.1.1", 
+                "connectedk8s": "1.6. 2‘ ,
+                "customlocation": "0.1.3",
+                "k8s-extension": "1.4. 5" ,
+                "stack-hci-vm": "1.1.8"
+        }
+        ```
 
-- Familiarize yourself with Arc VMs and guest management features and considerations - see [Enable guest management](/manage/manage-arc-virtual-machines.md#enable-guest-management).
+- Familiarize yourself with Arc VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
 ## Enable the guest agent on migrated VMs
 
@@ -69,9 +69,9 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
 
     **Using Azure portal (recommended)**
 
-    1. To turn off migrated VM from Azure Portal, select **Stop** on the VM details page:
+    1. To stop migrated VM from Azure Portal, select **Stop** on the VM details page:
 
-    :::image type="content" source="./media/migrate-enable-guest-management/vm-stop.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-stop.png":::
+    :::image type="content" source="./media/migrate-enable-guest-management/vm-stop.png" alt-text="Screenshot of Azure portal showing how to stop a VM." lightbox="./media/migrate-enable-guest-management/vm-stop.png":::
 
     2. Wait and refresh the page to see the VM **Status** is shown as **Stopped**.
 
@@ -89,7 +89,7 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
         az stack-hci-vm show --name $vmName --resource-group $rgName --query "properties.status"
         ``` 
 
-        :::image type="content" source="./media/migrate-enable-guest-management/vm-stopped.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-stopped.png":::
+        :::image type="content" source="./media/migrate-enable-guest-management/vm-stopped.png" alt-text="Screenshot of window showing VM power state." lightbox="./media/migrate-enable-guest-management/vm-stopped.png":::
 
 1. For Hyper-V generation 2 VMs, ensure the power status shown on Azure portal matches the actual power state of the migrated VM on Hyper-V Manager, regardless of whether it is **On** or **Off**:
 
@@ -172,7 +172,7 @@ You can enable guest management after the guest agent is running as follows:
 
 1. Check for guest management enablement status in Azure portal:
 
-    :::image type="content" source="./media/migrate-enable-guest-management/guest-management-enabled-portal.png" alt-text="Screenshot of guest management enablement in Azure portal." lightbox="./media/migrate-enable-guest-management/.png":::
+    :::image type="content" source="./media/migrate-enable-guest-management/guest-management-enabled-portal.png" alt-text="Screenshot of guest management enablement in Azure portal." lightbox="./media/migrate-enable-guest-management/guest-management-enabled-portal.png":::
 
 1. You are now ready to add the Azure extensions of your choice.
 
@@ -182,7 +182,7 @@ If you encounter any issues, contact Microsoft Support and provide your logs and
 
 If you forgot to turn off Hyper-V Generation 1 VM before running the update command with `--enable-vm-config-agent true`, the update command will fail and the VM may become unmanageable from Azure portal:
 
-:::image type="content" source="./media/migrate-enable-guest-management/appendix-error.png" alt-text="Screenshot showing update command failure." lightbox="./media/migrate-enable-guest-management/.png":::
+:::image type="content" source="./media/migrate-enable-guest-management/appendix-error.png" alt-text="Screenshot showing update command failure." lightbox="./media/migrate-enable-guest-management/appendix-error.png":::
 
 To resolve this, stop the VM in Azure portal by selecting **Stop**. If this doen't work, run the following command from Azure CLI:
 
