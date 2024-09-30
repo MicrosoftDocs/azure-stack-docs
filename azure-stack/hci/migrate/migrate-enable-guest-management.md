@@ -1,0 +1,201 @@
+---
+title: Enable guest management for migrated VMs (preview)
+description: Learn how to enable guest management for migrated VMs (preview).
+author: alkohli
+ms.topic: how-to
+ms.date: 09/30/2024
+ms.author: alkohli
+ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
+---
+
+# Enable guest management for migrated VMs (preview)
+
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+
+This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. For more information covering additional scenarios, see [Manage Arc VMs on Azure Stack HCI](../manage/manage-arc-virtual-machines.md).
+
+The output properties may vary depending on whether VMs were migrated or not.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
+## Prerequisites
+
+Before you begin, complete the following:
+
+- You have access to a deployed and registered Azure Stack HCI system, with an Arc Resource Bridge and custom location configured.
+
+- Your system is running Azure Stack HCI, version 23H2, release 2405 or later.
+
+- Azure CLI is installed on the Azure Stack HCI system. For instructions, see [Install the Azure CLI for Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
+
+- Add the **stack-hci-vm** Azure extension by running PowerShell as administrator:
+
+    - To add the **stack-hci-vm** extension, run the following cmdlet:
+
+        ```azurecli
+        az extension add --name stack-hci-vm --upgrade 
+        ```
+
+    - To verify the installation and check that the **stack-hci-vm** version is 1.1.5 or later:
+
+    ```azurecli
+    PS C:\Users\AzureStackAdminD> az version
+    {
+        "azure-cli": ”2.60.0”,
+        "azure-cli-core": ”2.60.0”,
+        "azure-cli-telemetry": "1.1.0",
+        "extensions": {
+            "aksarc": ‘1. 2.20" ,
+            "arcappliance": "1.1.1", 
+            "connectedk8s": "1.6. 2‘ ,
+            "customlocation": "0.1.3",
+            "k8s-extension": "1.4. 5" ,
+            "stack-hci-vm": "1.1.8"
+    }
+    ```
+
+- Familiarize yourself with Arc VMs and guest management features and considerations - see [Enable guest management](/manage/manage-arc-virtual-machines.md#enable-guest-management).
+
+## Enable the guest agent on migrated VMs
+
+All Hyper-V generation 1 VMs must be powered off before proceeding with the following steps. There is no such requirement for Hyper-V generation 2 VMs, they can be either on or off and both power states are expected to work.
+
+**Step 1**: Check the power state of the migrated VMs as follows:
+
+1. For Hyper-V Generation 1, make sure the VM is stopped. See the Appendix for the error message if it is not stopped.
+
+    **Using Azure portal (recommended)**
+
+    1. To turn off migrated VM from Azure Portal, select **Stop** on the VM details page:
+
+    :::image type="content" source="./media/migrate-enable-guest-management/vm-stop.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-stop.png":::
+
+    2. Wait and refresh the page to see the VM **Status** is shown as **Stopped**.
+
+    **Using Azure CLI**
+
+    1. Sign on with Azure CLI on HCI cluster PowerShell window:
+
+        ```azurecli
+        az login --use-device-code --tenant $tenantId
+         ```
+
+    1. Check the VM power state using Azure CLI as follows:
+
+        ```azurecli
+        az stack-hci-vm show --name $vmName --resource-group $rgName --query "properties.status"
+        ``` 
+
+        :::image type="content" source="./media/migrate-enable-guest-management/vm-stopped.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-stopped.png":::
+
+1. For Hyper-V generation 2 VMs, ensure the power status shown on Azure portal matches the actual power state of the migrated VM on Hyper-V Manager, regardless of whether it is **On** or **Off**:
+
+    **Azure portal view**
+
+    :::image type="content" source="./media/migrate-enable-guest-management/vm-running-portal.png" alt-text="Screenshot showing VM power state in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-running-portal.png":::
+
+    **Hyper-V Manager view**
+
+    :::image type="content" source="./media/migrate-enable-guest-management/vm-running-hyperv-manager.png" alt-text="Screenshot showing VM power state in Hyper-V Manager." lightbox="./media/migrate-enable-guest-management/vm-running-hyperv-manager.png":::
+
+**Step 2**: Attach the ISO for the guest agent on the migrated VM as follows:
+
+Connect to an Azure Stack HCI server and run the following command in PowerShell, where `$vmName` is the name of the migrated VM to have guest agent enabled and `$rgName` is the name of the resource group where this VM lives on Azure:
+
+```azurecli
+az stack-hci-vm update --name $vmName --resource-group $rgName --enable-vm-config-agent true
+```
+
+**Sample output:**
+
+:::image type="content" source="./media/migrate-enable-guest-management/vm-agent-true.png" alt-text="Screenshot of output showing ISO attached for guest agent." lightbox="./media/migrate-enable-guest-management/vm-agent-true.png":::
+
+Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI system:
+
+:::image type="content" source="./media/migrate-enable-guest-management/vm-settings.png" alt-text="Screenshot showing ISO attachment." lightbox="./media/migrate-enable-guest-management/vm-settings.png":::
+
+**Step 3**: Turn on the migrated VM, if needed, in Azure Portal and ensure it has public network connectivity as follows:
+
+1. Check that the VM **Status** on Azure portal is **Running**:
+
+    :::image type="content" source="./media/migrate-enable-guest-management/vm-running-portal.png" alt-text="Screenshot showing VM status in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-running-portal.png":::
+
+1. Check that the VM **powerState**  is **Running** by running following command on your Azure Stack HCI cluster server in a PowerShell window:
+
+    ```azurecli
+    az stack-hci-vm show --name $vmName --resource-group $rgName --query “properties.status” 
+    ```
+
+    :::image type="content" source="./media/migrate-enable-guest-management/powerstate-stopped.png" alt-text="Screenshot showing VM Running status in Azure portal." lightbox="./media/migrate-enable-guest-management/powerstate-stopped.png":::
+
+**Step 4**: Install the guest agent ISO on the migrated VM as follows:
+
+1. Connect to the VM using your applicable OS-specific steps.
+
+1. Establish public network connectivity on the VM.
+
+1. Run the following command to enable the guest agent on the VM based on the OS you are using:
+
+    - If on Linux, open **Terminal** and run:
+
+        ```azurecli
+        sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso'
+        ```
+
+        **Sample output (Linux):**
+
+        :::image type="content" source="./media/migrate-enable-guest-management/linux-output.png" alt-text="Screenshot of Linux output window showing guest agent enablement." lightbox="./media/migrate-enable-guest-management/linux-output.png":::
+
+    - If on Windows, open PowerShell as administrator and run:
+
+      ```azurecli
+        $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p 
+        ```
+
+        **Sample output (Windows):**
+
+        :::image type="content" source="./media/migrate-enable-guest-management/windows-output.png" alt-text="Screenshot of Windows output window showing guest agent enablement." lightbox="./media/migrate-enable-guest-management/windows-output.png":::
+
+
+## Enable guest management
+
+You can enable guest management after the guest agent is running as follows:
+
+1. Enable guest management from your Azure Stack HCI system by running the following command in Azure CLI:
+
+    ```azurecli
+    az stack-hci-vm update --name $vmName --resource-group $rgName --enable-agent true
+    ```
+
+1. Check for guest management enablement status in Azure portal:
+
+    :::image type="content" source="./media/migrate-enable-guest-management/guest-management-enabled-portal.png" alt-text="Screenshot of guest management enablement in Azure portal." lightbox="./media/migrate-enable-guest-management/.png":::
+
+1. You are now ready to add the Azure extensions of your choice.
+
+If you encounter any issues, contact Microsoft Support and provide your logs and deployment details.
+
+## Appendix
+
+If you forgot to turn off Hyper-V Generation 1 VM before running the update command with `--enable-vm-config-agent true`, the update command will fail and the VM may become unmanageable from Azure portal:
+
+:::image type="content" source="./media/migrate-enable-guest-management/appendix-error.png" alt-text="Screenshot showing update command failure." lightbox="./media/migrate-enable-guest-management/.png":::
+
+To resolve this, stop the VM in Azure portal by selecting **Stop**. If this doen't work, run the following command from Azure CLI:
+
+```azurecli
+az stack-hci-vm stop --name $vmName --resource-group $rgName
+```
+
+You may see a **Resource failed to provision** error in Azure portal with **Start**, **Restart**, and **Stop** selections disabled, but Hyper-V Manager should show the VM is actually stopped:
+
+:::image type="content" source="./media/migrate-enable-guest-management/appendix-portal.png" alt-text="Screenshot showing the Resource failed to provision error." lightbox="./media/migrate-enable-guest-management/appendix-portal.png":::
+
+```azurecli
+az stack-hci-vm update --name $vmName --resource-group $rgName --enable-vm-config-agent true 
+```
+
+## Next steps
+
+- If you experience any issues, see [Troubleshoot VMware migration issues](./migrate-troubleshoot.md).
