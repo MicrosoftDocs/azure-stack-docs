@@ -4,7 +4,7 @@ description: Learn how to prepare your nested virtualization environment for AKS
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 09/10/2024
+ms.date: 09/11/2024
 ms.custom: template-how-to
 ---
 
