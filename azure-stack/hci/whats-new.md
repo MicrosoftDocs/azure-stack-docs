@@ -68,7 +68,7 @@ This release contains the following changes for Arc VM management:
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
 
-### SBE changes
+### Solution Builder Extension (SBE) changes
 
 This release contains the following changes for SBE:
 
