@@ -779,7 +779,7 @@ items:
     - name: Host networking
       items:
       - name: Network ATC overview
-        href: concepts/network-atc-overview.md
+        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)

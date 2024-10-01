@@ -1,18 +1,35 @@
 ---
 title: Network ATC overview 
-description: This topic introduces Network ATC for Azure Stack HCI.
-author: dcuomo
-ms.topic: how-to
-ms.date: 04/22/2022
+description: This article introduces Network ATC for Azure Stack HCI and Windows Server.
+author: parammahajan5
+ms.topic: overview
+ms.date: 10/01/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
+ms.subservice: core-os
+zone_pivot_groups: windows-os
 ---
 
 # Network ATC overview
 
+:::zone pivot="azure-stack-hci"
+
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2.md)]
 
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+
+> [!IMPORTANT]
+> Network ATC in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applys a consistency configuration across Windows Server cluster nodes to creat a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature.
+
+::: zone-end
 
 Network ATC can help:
 
@@ -21,9 +38,12 @@ Network ATC can help:
 - Ensure configuration consistency across the cluster
 - Eliminate configuration drift
 
-## Definitions
 
-Here is some new terminology:
+TODO: Add video of [Network ATC in action](https://techcommunity.microsoft.com/t5/networking-blog/deploying-100s-of-production-clusters-in-minutes/ba-p/3724977)
+
+## Terminology
+
+To understand Network ATC, you need to understand some basic concepts. Here is some terminology used by Network ATC:
 
 **Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a friendly name, identifies one or more physical adapters, and includes one or more intent types.
 
@@ -34,7 +54,7 @@ An individual physical adapter can only be included in one intent. By default, a
 - Management - adapters are used for management access to nodes
 - Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
 - Storage - adapters are used for SMB traffic including Storage Spaces Direct
-- Stretch - adapters are set up in a similar manner as a storage intent with the exception of RDMA not used for stretch adapters. 
+- Stretch - adapters are set up in a similar manner as a storage intent with the exception of RDMA not used for stretch adapters.
 
 Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
 
@@ -47,8 +67,30 @@ Any combination of the intent types can be specified for any specific single int
 
 Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
 
+## Features
+
+
+
 ## Next steps
 
-- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md).
-- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
-- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).
+To started with Network ATC, review the following articles:
+
+:::zone pivot="azure-stack-hci"
+
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
+- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking?pivots=azure-stack-hci).
+- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
+- [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
+- To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
+- To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
+
+::: zone-end

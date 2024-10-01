@@ -3,15 +3,29 @@ title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
 author: jasongerend
 ms.topic: how-to
-ms.date: 05/27/2022
+ms.date: 10/01/2024
 ms.author: jgerend
+ms.subservice: core-os
+zone_pivot_groups: windows-os
 ---
 
 # Manage Network ATC
 
+:::zone pivot="azure-stack-hci"
+
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+
+This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Windows Server clusters. You use Windows PowerShell to manage Network ATC.
+
+::: zone-end
 
 ## Add a server node
 
@@ -21,44 +35,69 @@ In this task, you add additional nodes to the cluster and observe how a consiste
 
 1. Use the `Add-ClusterNode` cmdlet to add the additional (not configured) nodes to the cluster. You only need management access to the cluster at this time. Each node in the cluster should have all pNICs named the same.
 
-
     ```powershell
-    Add-ClusterNode -Cluster HCI01
+    Add-ClusterNode -Cluster CLUSTER01
     Get-ClusterNode
     ```
 
 1. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC auto detects cluster name from version 22H2 and later.
 
-    # [21H2](#tab/21H2)
-    ```powershell
-    Get-NetIntentStatus -ClusterName HCI01
-    ```
-    
+   :::zone pivot="azure-stack-hci"
 
+   ### [21H2](#tab/21H2)
 
-    # [22H2](#tab/22H2)
-    ```powershell
-    Get-NetIntentStatus
-    ``` 
-    
-    ---
+   ```powershell
+   Get-NetIntentStatus -ClusterName CLUSTER01
+   ```
 
+   ### [22H2](#tab/22H2)
+
+   ```powershell
+   Get-NetIntentStatus
+   ```
+
+   ---
+
+   ::: zone-end
+
+   :::zone pivot="windows-server"
+
+   ```powershell
+   Get-NetIntentStatus
+   ```
+
+   ::: zone-end
 
     > [!NOTE]
     > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
 1. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. This may take a similar amount of time to provision as the original node.
 
-    # [21H2](#tab/21H2)
-    ```powershell
-    Get-NetIntentStatus -ClusterName HCI01
-    ```
+   :::zone pivot="azure-stack-hci"
 
-    # [22H2](#tab/22H2)
-    ```powershell
-    Get-NetIntentStatus
-    ```
-    ---
+   ### [21H2](#tab/21H2)
+
+   ```powershell
+   Get-NetIntentStatus -ClusterName CLUSTER01
+   ```
+
+   ### [22H2](#tab/22H2)
+
+   ```powershell
+   Get-NetIntentStatus
+   ```
+
+   ---
+
+   ::: zone-end
+
+   :::zone pivot="windows-server"
+
+   ```powershell
+   Get-NetIntentStatus
+   ```
+
+   ::: zone-end
 
     You can also add several nodes to the cluster at once.
 
@@ -66,16 +105,31 @@ In this task, you add additional nodes to the cluster and observe how a consiste
 
 You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent.
 
-   # [21H2](#tab/21H2)
-   ``` powershell
-   Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
-   ```
+:::zone pivot="azure-stack-hci"
 
-   # [22H2](#tab/22H2)
-   ``` powershell
-   Add-NetIntent -Name MyIntent -StorageVLANs 101, 102 -ManagementVLAN 10
-   ```
-   ---
+### [21H2](#tab/21H2)
+
+``` powershell
+Add-NetIntent -Name MyIntent -ClusterName CLUSTER01 -StorageVLANs 101, 102 -ManagementVLAN 10
+```
+
+### [22H2](#tab/22H2)
+
+``` powershell
+Add-NetIntent -Name MyIntent -StorageVLANs 101, 102 -ManagementVLAN 10
+```
+
+---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+``` powershell
+Add-NetIntent -Name MyIntent -StorageVLANs 101, 102 -ManagementVLAN 10
+```
+
+::: zone-end
 
 ## Add or remove network adapters from an intent
 
@@ -91,32 +145,61 @@ In this example, we installed two new adapters, pNIC03 and pNIC04, and we want t
 
 1. Run the following command to update the intent to include the old and new network adapters. 
 
-    # [21H2](#tab/21H2)
-    ```powershell
-     Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
-    ```
+   :::zone pivot="azure-stack-hci"
 
-    # [22H2](#tab/22H2)    
-     ```powershell
-     Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
-     ```
+   ### [21H2](#tab/21H2)
+
+   ```powershell
+    Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName CLUSTER01
+   ```
+
+   ### [22H2](#tab/22H2)
+
+   ```powershell
+   Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
+   ```
 
     ---
+
+   ::: zone-end
+
+   :::zone pivot="windows-server"
+
+   ```powershell
+   Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04
+   ```
+
+   ::: zone-end
 
 1. Check that the net adapters were successfully added to the intent.
 
-    # [21H2](#tab/21H2)
-    ```powershell
-        Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
-    ```
+   :::zone pivot="azure-stack-hci"
 
+   ### [21H2](#tab/21H2)
 
-    # [22H2](#tab/22H2)
-    ```powershell
-        Get-NetIntent -Name Cluster_Compute 
+   ```powershell
+       Get-NetIntent -Name Cluster_Compute -ClusterName CLUSTER01
+   ```
 
-    ```
-    ---
+   ### [22H2](#tab/22H2)
+
+   ```powershell
+       Get-NetIntent -Name Cluster_Compute 
+
+   ```
+
+   ---
+
+   ::: zone-end
+
+   :::zone pivot="windows-server"
+
+   ```powershell
+       Get-NetIntent -Name Cluster_Compute 
+
+   ```
+
+   ::: zone-end
 
 ## Global overrides and cluster network settings
 
@@ -185,13 +268,14 @@ Once you set any property for the override, you can add it as a GlobalOverride f
 Set-NetIntent -GlobalClusterOverrides $clusterOverride
 ```
 
- And to verify a successful deployment of your clusterOverride run: 
+And to verify a successful deployment of your clusterOverride run:
 
 ```powershell
 Get-NetIntentStatus -Globaloverrides
 ```
 
-To remove the GlobalClusterOverride, run the following: 
+To remove the GlobalClusterOverride, run the following:
+
 ```powershell
 Remove-NetIntent -GlobalOverrides $clusterOverride
 ```
@@ -210,7 +294,8 @@ ProxyBypass: The ProxyBypass parameter takes a list of sites that should be visi
 
 AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled.
 
-###### AutoDetect parameter set:
+###### AutoDetect parameter set
+
 AutoConfigUrl: The AutoConfigUrl parameter takes a string with the URL of the proxy server to use for http and/or https traffic as input. For both traffic classes, use a semi-colon to separate. This is a required parameter. 
 
 AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
@@ -253,7 +338,7 @@ More specifically, you can access the Proxy and Cluster global overrides respect
 ```powershell
 $Obj1.ProxyOverride
 $Obj1.ClusterOverride
-``` 
+```
 
 ## Update or override network settings
 
@@ -409,13 +494,13 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 1. Retry the configuration. This step is only performed to expedite the remediation. Network ATC will automatically remediate this configuration.
 
     ```powershell
-    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage -NodeName Node01
+    Set-NetIntentRetryState -ClusterName CLUSTER01 -Name Cluster_ComputeStorage -NodeName Node01
     ```
 
 1. Verify that the consistency check has completed:
 
     ```powershell
-    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    Get-NetIntentStatus -ClusterName CLUSTER01 -Name Cluster_ComputeStorage
     ```
 
 1. Verify that the adapter's MTU (JumboPacket) value has returned to the expected value:
