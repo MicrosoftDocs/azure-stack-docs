@@ -68,7 +68,7 @@ This release contains the following changes for Arc VM management:
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
 
-### Solution Builder Extension (SBE) changes
+### SBE changes
 
 This release contains the following changes for SBE:
 
@@ -131,7 +131,7 @@ Here are the features and improvements in this release.
   - The secret rotation PowerShell command `Set-AzureStackLCMUserPassword` now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
   - Reliability improvements were made around the services not restarting in a timely manner. <!--27837538-->
 
-- **SBE improvements** include:
+- **Solution Builder Extension (SBE) improvements** include:
   - A new PowerShell command to update the Solution Builder Extension partner property values is provided at the time of deployment. <!--25093172-->
   - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
 
