@@ -44,7 +44,17 @@ Network ATC provides the following features:
 
 - **Windows Admin Center deployment**: Network ATC is integrated with Windows Admin Center to provide an easy-to-use experience for deploying host networking.
 
-- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. :::zone pivot="azure-stack-hci" Beginning with Azure Stack HCI 22H2, ::: zone-end Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
+:::zone pivot="azure-stack-hci"
+
+- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Beginning with Azure Stack HCI 22H2, Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
+
+::: zone-end
 
 - **Storage adapter configuration**: Network ATC automatically configures the following components for your storage network.
 
@@ -60,7 +70,17 @@ Network ATC provides the following features:
 
   - Assign VLANs
 
-  - :::zone pivot="azure-stack-hci" Beginning with Azure Stack HCI 22H2, :::zone-end Network ATC automatically assigns IP Addresses for storage adapters.
+  :::zone pivot="azure-stack-hci"
+
+  - Beginning with Azure Stack HCI 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
+
+  :::zone-end
+
+  :::zone pivot="windows-server"
+
+  - Network ATC automatically assigns IP Addresses for storage adapters.
+
+  :::zone-end
 
 - **Cluster network naming**: Network ATC automatically names the cluster networks based on their usage. For example, the storage network might be named _storage_compute(Storage\_VLAN711)_.
 
