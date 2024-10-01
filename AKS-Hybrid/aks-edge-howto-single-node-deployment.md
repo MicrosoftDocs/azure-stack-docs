@@ -42,6 +42,9 @@ The key parameters for single machine deployment are:
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
 ```
 
+> [!IMPORTANT]
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
+
 ## Step 3: validate your cluster
 
 Confirm that the deployment was successful by running:

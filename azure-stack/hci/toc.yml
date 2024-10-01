@@ -187,10 +187,14 @@ items:
     items:
     - name: About Arc gateway
       href: deploy/deployment-azure-arc-gateway-overview.md
-    - name: New v23H2 deployments
-      href: deploy/deployment-azure-arc-gateway-new-cluster.md
-    - name: Existing v23H2 deployments
-      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
+    - name: Choose a proxy option
+      items:
+      - name: Configure proxy manually
+        href: deploy/deployment-azure-arc-gateway-configure-manually.md
+      - name: Configure proxy via script
+        href: deploy/deployment-azure-arc-gateway-configure-via-script.md
+      - name: Configure without a proxy
+        href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
 
   - name: Deploy SDN
     items:
@@ -887,6 +891,8 @@ items:
       href: assurance/azure-stack-pci-dss-guidance.md
     - name: HIPAA guidance
       href: assurance/azure-stack-hipaa-guidance.md
+    - name: FedRAMP guidance
+      href: assurance/azure-stack-fedramp-guidance.md
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
   - name: Pricing
@@ -911,8 +917,6 @@ items:
       href: whats-new-in-hci-21h2.md
     - name: Known issues in 2310
       href: known-issues-2310.md
-    - name: Create a VM-based lab
-      href: deploy/tutorial-private-forest.md
     - name: 22H2 Supplemental Package
       items:
       - name: What's in preview?

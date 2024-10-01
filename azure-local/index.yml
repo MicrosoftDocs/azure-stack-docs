@@ -1,0 +1,24 @@
+### YamlMime:Landing
+
+title: Azure Local documentation
+summary: Azure Local is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+
+metadata:
+  title: Azure Local documentation
+  description: Azure Local is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
+#  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page
+  author: ronmiab
+  ms.author: robess
+  ms.date: 09/30/2024
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+  # Card (optional)
+  - title: About Azure Local
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local?
+            url: /azure-stack/hci/overview
