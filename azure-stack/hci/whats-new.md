@@ -74,7 +74,7 @@ This release contains the following changes for SBE:
 
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Stack HCI deployment times.
 - **CAU plugin**: Starting in this release, SBE extensions utilize a new CAU plugin that supports enhancements. Check with your hardware vendors to determine if and how they use this plugin.
-- **Improved error details**: Starting in this release, failures or exceptions that involve hardware vendor SBE will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor for proper information on the exception.
+- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor for accurate details about the exception.
 
 ## [2405 releases](#tab/2405releases)
 
