@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Mig
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2024
+ms.date: 09/30/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -22,11 +22,12 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
-|Open required firewall ports.|source, target|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
+|Open required firewall ports.|source, target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **5985** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance.|
+|Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN policy on Windows VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure and register an Azure Stack HCI cluster.|target|[Create and register an Azure Stack HCI cluster](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
-|Verify and make a note of the custom location created during deployment on the Azure Stack HCI system.|target|[Set up Azure Arc VM management using command line](../manage/deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
+|Verify and make a note of the custom location created during deployment on the Azure Stack HCI system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
 |Create a custom storage path for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
 |Create a logical network for the Arc Resource Bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
 |Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
