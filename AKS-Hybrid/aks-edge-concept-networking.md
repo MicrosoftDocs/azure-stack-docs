@@ -48,6 +48,9 @@ If AKS Edge Essentials is deployed using a single machine cluster or a scalable 
 | **Static MAC Address** | Supported using the `MacAddress` parameter. | Supported using the `MacAddress` parameter. |
 | **Maximum transmission unit (MTU)** | Supported using the `MTU` parameter. | Supported using the `MTU` parameter. |
 
+> [!IMPORTANT]
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
+
 ## Single machine cluster
 
 Single machine deployments use an internal virtual switch to manage the networking. This type of deployment must have a Linux node; a Windows node is optional. The following diagram shows a single machine deployment architecture using internal virtual switch:

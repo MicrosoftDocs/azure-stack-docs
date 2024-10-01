@@ -56,7 +56,7 @@ This release contains the following changes for updates:
 - Revised the names and descriptions of update steps. [27635293]
 - Introduced a health fault alert that is raised when there are available updates on the system. [27253002]
 
-## Arc VM management changes
+### Arc VM management changes
 
 This release contains the following changes for Arc VM management:
 
@@ -67,6 +67,14 @@ This release contains the following changes for Arc VM management:
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
+
+### SBE changes
+
+This release contains the following changes for SBE:
+
+- **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Stack HCI deployment times.
+- **CAU plugin**: Starting in this release, SBE extensions utilize a new CAU plugin that supports enhancements. Check with your hardware vendors to determine if and how they use this plugin.
+- **Improved error details**: Starting in this release, failures or exceptions that involve hardware vendor SBE will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor for proper information on the exception.
 
 ## [2405 releases](#tab/2405releases)
 

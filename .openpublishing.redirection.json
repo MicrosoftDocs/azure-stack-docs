@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/deploy/tutorial-private-forest.md",
+      "redirect_url":"/azure-stack/hci",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
       "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
       "redirect_document_id": false

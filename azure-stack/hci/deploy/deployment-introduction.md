@@ -27,6 +27,10 @@ In this release, you can deploy Azure Stack HCI using one of the following metho
 
     For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
 
+- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Stack HCI deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Stack HCI. 
+
+    For more information about this program, see https://aka.ms/fasttrackforazure
+
 ## Deployment sequence
 
 Follow this sequence to deploy Azure Stack HCI in your environment:
