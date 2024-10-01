@@ -76,7 +76,7 @@ Network ATC provides the following features:
 
 - **Proxy configuration**: Network ATC can help you configure all cluster nodes with the same proxy configuration information if your environment requires it
 
-- **Stretch S2D cluster support**: Network ATC deploys the configuration required for [the storage replica networks](host-network-requirements.md##stretched-clusters). Since these adapters need to route across subnets, Network ATC doesn't assign any IP addresses, so you need to assign the IP address.
+- **Stretch S2D cluster support**: Network ATC deploys the configuration required for [the storage replica networks](host-network-requirements.md#stretched-clusters). Since these adapters need to route across subnets, Network ATC doesn't assign any IP addresses, so you need to assign the IP address.
 
 - **Scope detection**: Beginning with Azure Stack HCI 22H2, Network ATC automatically detects if you’re running the command on a cluster node. Meaning, you won’t need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
 
@@ -121,7 +121,7 @@ To get started with Network ATC, review the following articles:
 :::zone pivot="azure-stack-hci"
 
 - Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
-- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking?pivots=azure-stack-hci).
+- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
 - Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
 - [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
 - To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
@@ -131,7 +131,7 @@ To get started with Network ATC, review the following articles:
 :::zone pivot="windows-server"
 
 - Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
-- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md?context=/windows-server/context/windows-server-edge-networking#step-4-configure-host-networking).
 - Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
 - [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
 - To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
