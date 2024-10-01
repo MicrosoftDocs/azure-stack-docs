@@ -73,8 +73,8 @@ For more information, see the [Fixed issues list in 2408](./known-issues-2408.md
 This release contains the following changes for SBE:
 
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Stack HCI deployment times.
-- **CAU plugin**: Starting in this release, SBE extensions utilize a new CAU plugin that supports enhancements. Check with your hardware vendors to determine if and how they use this plugin.
-- **Improved error details**: Starting in this release, failures or exceptions that involve hardware vendor SBE will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor for proper information on the exception.
+- **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
+- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
 ## [2405 releases](#tab/2405releases)
 
@@ -131,7 +131,7 @@ Here are the features and improvements in this release.
   - The secret rotation PowerShell command `Set-AzureStackLCMUserPassword` now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
   - Reliability improvements were made around the services not restarting in a timely manner. <!--27837538-->
 
-- **SBE improvements** include:
+- **Solution Builder Extension (SBE) improvements** include:
   - A new PowerShell command to update the Solution Builder Extension partner property values is provided at the time of deployment. <!--25093172-->
   - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
 
