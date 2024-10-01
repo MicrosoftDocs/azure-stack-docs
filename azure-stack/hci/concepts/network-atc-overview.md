@@ -38,8 +38,49 @@ Network ATC can help:
 - Ensure configuration consistency across the cluster
 - Eliminate configuration drift
 
+## Features
 
-TODO: Add video of [Network ATC in action](https://techcommunity.microsoft.com/t5/networking-blog/deploying-100s-of-production-clusters-in-minutes/ba-p/3724977)
+Network ATC provides the following features:
+
+- **Windows Admin Center deployment**: Network ATC is integrated with Windows Admin Center to provide a simple and easy-to-use experience for deploying host networking.
+
+- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. :::zone pivot="azure-stack-hci" Beginning with Azure Stack HCI 22H2, ::: zone-endNetwork ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
+
+- **Storage adapter configuration**: Network ATC automatically configures the following components for your storage network.
+
+  - Configure the physical adapter properties
+
+  - Configure Data Center Bridging
+
+  - Determine if a virtual switch is needed
+
+  - If a vSwitch is needed, it will create the required virtual adapters
+
+  - Map the virtual adapters to the appropriate physical adapter
+
+  - Assign VLANs
+
+  - :::zone pivot="azure-stack-hci" Beginning with Azure Stack HCI 22H2, :::zone-endNetwork ATC also automatically assign IP Addresses for storage adapters.
+
+- **Cluster network naming**: Network ATC automatically names the cluster networks based on their usage. For example, the storage network may be named _storage_compute(Storage\_VLAN711)_.
+
+- **Live Migration guidelines**: Network ATC keeps you up to date with the recommended guidelines for Live Migration based on the operating system version (you can always override). Network ATC manages the following Live Migration settings:
+
+  - The maximum number of simultaneous live migrations
+
+  - The live migration network
+
+  - The live migration transport
+
+  - The maximum amount of SMBDirect (RDMA) bandwidth used for live migration
+
+- **Proxy configuration**: Network ATC can help you configure all cluster nodes with the same proxy configuration information if your environment requires it
+
+- **Stretch S2D cluster support**: Network ATC deploys the configuration required for [the storage replica networks](host-network-requirements.md##stretched-clusters). Since these adapters need to route across subnets, we don’t assign any IP addresses, so you’ll need to assign these yourselves.
+
+- **Scope detection**: Beginning with Azure Stack HCI 22H2, Network ATC automatically detects if you’re running the command on a cluster node. If you are, you won’t have to use the `-ClusterName` parameter because it automatically detect the cluster that you're on.
+
+To learn more about the features in Network ATC, see [Network ATC: What's coming](https://techcommunity.microsoft.com/t5/networking-blog/network-atc-what-s-coming-in-azure-stack-hci-22h2/ba-p/3598442).
 
 ## Terminology
 
@@ -67,9 +108,11 @@ Any combination of the intent types can be specified for any specific single int
 
 Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
 
-## Features
+## Deployment example
 
+The following video provides an overview of Network ATC using the [Copy-NetIntent](/powershell/module/networkatc/copy-netintent) command to copy an intent from one cluster to another. To learn more about the demonstration, see our Tech Community article [Deploying 100s of production clusters in minutes](https://techcommunity.microsoft.com/t5/networking-blog/deploying-100s-of-production-clusters-in-minutes/ba-p/3724977).
 
+> [!VIDEO https://www.youtube.com/embed/AZBE_3LCiHQ]
 
 ## Next steps
 
