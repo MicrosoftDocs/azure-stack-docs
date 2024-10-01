@@ -399,7 +399,7 @@ sections:
             crictl pull ecpacr.azurecr.io/kube-proxy:<Kubernetes version>
             ```
       - question: |
-          When you create an AKS Arc cluster from the Azure portal, there are no K8s versions or VM sizes listed.
+          When you create an AKS Arc cluster from the Azure portal, no K8s versions or VM sizes are listed
 
         answer: |
           The **kubernetesVersions/default** or the **skus/default** Azure Resource Manager resource is not yet created, or was deleted for some reason. This scenario can happen in older releases when AKS didn't create the default resource as a part of the deployment in the **ArcHci** module.
