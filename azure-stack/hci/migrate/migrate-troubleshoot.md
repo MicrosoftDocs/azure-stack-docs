@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating Hyper-V VMs to Azure Stack HCI using A
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/05/2023
+ms.date: 09/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -154,6 +154,22 @@ Verify the following:
 - Make sure that you have **Application Administrator** role on the Azure AD tenant.
 - Make sure that you have the **Contributor** and **User Access Administrator** roles on the Azure subscription.
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
+
+
+### Target cluster validation fails on appliance
+
+**Root cause**
+
+The target cluster fails to validate because the cluster FQDN is not DNS-resolvable by default from the appliance.
+
+:::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
+
+**Recommended resolution**
+
+Manually map the Azure stack cluster IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+
+Add a new line with the cluster IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
+
 
 ### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work.
 

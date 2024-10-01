@@ -21,4 +21,4 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Local?
-            url: /azure/azure-stack/hci/overview
+            url: /azure-stack/hci/overview
