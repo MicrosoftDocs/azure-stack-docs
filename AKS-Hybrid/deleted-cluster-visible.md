@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot deleted cluster still visible in portal
-description: Learn how to troubleshoot deleted cluster still visible in portal, shows "Not found".
+description: Learn how to troubleshoot deleted cluster still visible in portal, shows "Not found."
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
@@ -11,11 +11,11 @@ ms.reviewer: sumsmith
 
 # Deleted cluster still visible in portal, shows "Not found"
 
-A provisioned cluster that you deleted is still visible in the **Overview** blade on the Azure portal. Selecting the resource shows a **Not found** message. This happens because occasionally, the cluster delete command fails to fully remove a resource. While it might delete the child **provisionedClusterInstance** resource, the parent **connectedCluster** resource often remains, making it still visible in the portal.
+A provisioned cluster that you deleted is still visible in the **Overview** blade on the Azure portal. Selecting the resource shows a **Not found** message. This error happens because occasionally, the cluster delete command fails to fully remove a resource. While it might delete the child **provisionedClusterInstance** resource, the parent **connectedCluster** resource often remains, making it still visible in the portal.
 
 ## Verify
 
-- Get the provisioned cluster instance resource and verify that it does not exist:
+- Get the provisioned cluster instance resource and verify that it doesn't exist:
 
   ```azurecli
   az aksarc show -g <resource_group> -n <cluster_name>
