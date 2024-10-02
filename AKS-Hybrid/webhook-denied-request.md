@@ -22,7 +22,7 @@ When you create an AKS Arc cluster from the Azure portal or using CLI, the follo
 
 ## Workaround
 
-Run the following command:
+Run the following commands:
 
 ```azurecli
 $subscription = <subscription_id>
