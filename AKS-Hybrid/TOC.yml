@@ -134,6 +134,12 @@
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
+    - name: No K8s versions or VM sizes listed on cluster creation
+      href: cluster-k8s-version.md
+    - name: Deleted cluster still visible in portal
+      href: deleted-cluster-visible.md
+    - name: Admission webhook denied the request
+      href: webhook-denied-request.md
   - name: Reference
     items:
     - name: Azure CLI
