@@ -52,9 +52,9 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | vCPUs | Four cores. |
 | Memory | A minimum of 24 GB. |
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
-| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. |
-| Hard disks for Storage Spaces Direct | Six dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disk | At least 127 GB. |
+| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB |
+| Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
+| Data disks | At least 127 GB each. The size must be the same for each disk |
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
@@ -196,15 +196,13 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Attach drives to the newly created VHDXs for the VM. In these commands, six VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
-    Afterwards, the `Node1` VM has six VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
+    Afterwards, the `Node1` VM has four VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
 
    ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d2.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d3.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d4.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d5.vhdx"
-    Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d6.vhdx"
     ```
 
 1. Disable time synchronization:
