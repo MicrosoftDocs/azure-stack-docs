@@ -399,6 +399,7 @@ sections:
             crictl pull ecpacr.azurecr.io/kube-proxy:<Kubernetes version>
             ```
 
+
 additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
