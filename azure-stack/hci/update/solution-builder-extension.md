@@ -74,9 +74,31 @@ The following table provides the hardware update method for different hardware v
 
 The Azure Stack HCI Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Stack HCI and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
 
+To check to see if you have SBE installed on your registered Azure Stack HCI system, run the following command:
+
+```powershell
+$Update = Get-SolutionUpdateEnvironment
+$Update = ft SbeFamily, HardwareModel, CurrentSbeVersion
+```
+
+Here's a sample output
+
+```console
+PS C:\Users\HCIDeploymentUser\Documents> Get-SolutionUpdateEnvironment | FT SbeFamily, HardwareModel, CurrentSbeVersion
+
+SbeFamily             HardwareModel       CurrentSbeVersion
+---------             -------------       -----------------
+VirtualForTesting     Virtual Machine     4.0.0.0
+```
+
+> [!NOTE]
+> If you don't have an SBE the CurrentSbeVersion will be 2.1.0.0.
+
+Use one of the methods in the next sections to discover and install SBE or your SBE update.
+
 ### Discover Solution Builder Extension updates via the Azure portal
 
-To discover and select updates via the Azure portal, see [Browse for cluster updates](../update/azure-update-manager-23h2.md#browse-for-cluster-updates).
+To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
 ### Discover Solution Builder Extension updates via PowerShell
 
