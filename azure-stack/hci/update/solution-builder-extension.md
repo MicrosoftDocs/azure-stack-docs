@@ -84,11 +84,12 @@ $Update = ft SbeFamily, HardwareModel, CurrentSbeVersion
 Here's a sample output
 
 ```console
-PS C:\Users\HCIDeploymentUser\Documents> Get-SolutionUpdateEnvironment | FT SbeFamily, HardwareModel, CurrentSbeVersion
+PS C:\Users\lcmuser> $Update = Get-SolutionUpdateEnvironment
+PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
 
 SbeFamily             HardwareModel       CurrentSbeVersion
 ---------             -------------       -----------------
-VirtualForTesting     Virtual Machine     4.0.0.0
+Gen A                 Contoso680          4.0.0.0
 ```
 
 > [!NOTE]
