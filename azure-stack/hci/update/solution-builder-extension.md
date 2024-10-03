@@ -74,7 +74,7 @@ The following table provides the hardware update method for different hardware v
 
 The Azure Stack HCI Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Stack HCI and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
 
-To check to see if you have SBE installed on your registered Azure Stack HCI system, run the following command:
+Check to see if you have SBE installed on your registered Azure Stack HCI system by running the following command:
 
 ```powershell
 $Update = Get-SolutionUpdateEnvironment
@@ -95,7 +95,7 @@ Gen A                 Contoso680          4.0.0.0
 > [!NOTE]
 > If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
 
-Use one of the methods in the next sections to discover and install SBE or your SBE updates.
+To discover and install SBE or your SBE updates, use one of the methods in the next sections.
 
 ### Discover Solution Builder Extension updates via the Azure portal
 
