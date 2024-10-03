@@ -94,7 +94,7 @@ VirtualForTesting     Virtual Machine     4.0.0.0
 > [!NOTE]
 > If you don't have an SBE the CurrentSbeVersion will be 2.1.0.0.
 
-Use one of the methods in the next sections to discover and install SBE or your SBE update.
+Use one of the methods in the next sections to discover and install SBE or your SBE updates.
 
 ### Discover Solution Builder Extension updates via the Azure portal
 
