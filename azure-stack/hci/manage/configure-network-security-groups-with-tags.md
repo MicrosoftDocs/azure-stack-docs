@@ -38,14 +38,13 @@ Complete the following prerequisites to use network security groups with tags:
 
 - You have Azure Stack HCI 22H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
 
-- You have Network Controller installed. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+- You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
 - You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
 
-TODO: check Arc or non-Arc VMs?
-- You have created a VM. For more information, see how to [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md).
+- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+- FIXME: You have permissions to manage network. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
 
 ::: zone-end
 
