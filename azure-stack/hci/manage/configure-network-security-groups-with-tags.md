@@ -53,7 +53,7 @@ TODO: check Arc or non-Arc VMs?
 
 - You have Windows Server 2025 or later. For more information, see [Get started with Windows Server](/windows-server/get-started/get-started-with-windows-server).
 
-- You have Network Controller installed. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md?context=/windows-server/context/windows-server-edge-networking).
+- You have Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express?context=/windows-server/context/windows-server-edge-networking).
 
 - You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
 
