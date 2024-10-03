@@ -23,57 +23,44 @@ Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficul
 
 ## Quick start: install and run DISKSPD
 
-Without further ado, let’s get started:
+To install and run DISKSPD, open PowerShell as an admin on your management PC, and then follow these steps:
 
-1. From your management PC, open PowerShell as an administrator to connect to the target computer that you want to test using DISKSPD, and then type the following command and press Enter.
-
-     ```powershell
-     Enter-PSSession -ComputerName <TARGET_COMPUTER_NAME>
-    ```
-
-    In this example, we're running a virtual machine (VM) called “node1.”
-
-1. To download the DISKSPD tool, run the following commands:
+1. To download and expand the ZIP file for the DISKSPD tool, run the following commands:
 
     ```powershell
     # Define the ZIP URL and the full path to save the file, including the filename
-    $zipUrl = "https://github.com/microsoft/diskspd/releases/latest/download/DiskSpd.zip"
-    $zipPath = "C:\DISKSPD\DiskSpd.zip"
+    $zipName = "DiskSpd.zip"
+    $zipPath = "C:\DISKSPD"
+    $zipFullName = Join-Path $zipPath $zipName
+    $zipUrl = "https://github.com/microsoft/diskspd/releases/latest/download/" +$zipName
+
     # Ensure the target directory exists, if not then create
-    if (-Not (Test-Path "C:\DISKSPD")) {
-    New-Item -Path "C:\DISKSPD" -ItemType Directory
+    if (-Not (Test-Path $zipPath)) {
+    New-Item -Path $zipPath -ItemType Directory | Out-Null
     }
-    # Download the ZIP file
-    Invoke-RestMethod -Uri $zipUrl -OutFile $zipPath
-    ```
-
-1. To unzip the downloaded file, run the following command:
-
-    ```powershell
-    Expand-Archive -Path $zipPath -DestinationPath "C:\DISKSPD"
-    ```
-
-1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
-
-    In this example, we're using the amd64 version.
-
-    > [!NOTE]
-    > You can also download the DISKSPD tool directly from the [GitHub repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
-
-    In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
-
-    :::image type="content" source="media/diskspd-overview/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd-overview/download-directory.png":::
-
-1. Run DISKSPD with the following PowerShell command. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
+    # Download and expand the ZIP file
+    Invoke-RestMethod -Uri $zipUrl -OutFile $zipFullName
+    Expand-Archive -Path $zipFullName -DestinationPath $zipPath
+    
+1. To add the DISKSPD directory to your `$PATH` environment variable, run the following command:
 
     ```powershell
-     .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
+    $diskspdPath = Join-Path $zipPath $env:PROCESSOR_ARCHITECTURE
+    if ($env:path -split ';' -notcontains $diskspdPath) {
+    $env:path += ";" + $diskspdPath
+    }
+    ```
+
+1. Run DISKSPD with the following PowerShell command. Replace square brackets with your appropriate settings.
+
+    ```powershell
+    diskspd [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
     ```
 
     Here's an example command that you can run:
 
     ```powershell
-     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test01.txt
+    diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test01.txt
     ```
 
     > [!NOTE]
@@ -227,8 +214,8 @@ For a three-node, three-way mirrored situation, write operations always make a n
 
 Here's an example:
 
-- **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
-- **Running on nonlocal node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+- **Running on local node:** diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+- **Running on nonlocal node:** diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 
 From this example, you can clearly see in the results of the following figure that latency decreased, IOPS increased, and throughput increased when the coordinator node owns the CSV.
 
