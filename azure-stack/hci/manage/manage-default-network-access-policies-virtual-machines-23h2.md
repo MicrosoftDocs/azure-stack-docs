@@ -39,7 +39,7 @@ Complete the following prerequisites to use network access policies:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 23H2 or later installed on your cluster. For more information, see how to [Install Azure Stack HCI](../deploy/install-azure-stack-hci.md).
+- You have Azure Stack HCI 23H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
@@ -168,22 +168,29 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
         Set-SdnVMNetworkAdapterPortProfile -VMName <VMName> -MacAddress <MACAddress> -ProfileId ([guid]::Empty) -ProfileData 2
         ```
 
-- The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
-
 :::zone pivot="azure-stack-hci"
 
+- The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
+
     In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
-
-::: zone-end
-:::zone pivot="windows-server"
-
-    In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
-
-::: zone-end
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
+
+    In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
+
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
+
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
+
+::: zone-end
 
 ## Next steps
 

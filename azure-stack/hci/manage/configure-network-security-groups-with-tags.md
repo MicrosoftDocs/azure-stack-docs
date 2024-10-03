@@ -36,7 +36,7 @@ Complete the following prerequisites to use network security groups with tags:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 22H2 or later installed on your cluster. For more information, see how to [Install Azure Stack HCI](../deploy/install-azure-stack-hci.md).
+- You have Azure Stack HCI 22H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
 
 - You have Network Controller installed. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
