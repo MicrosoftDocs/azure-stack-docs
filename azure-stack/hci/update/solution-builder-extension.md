@@ -102,6 +102,8 @@ To discover and select updates via the Azure portal, see [Use Azure Update Manag
 
 ### Discover Solution Builder Extension updates via PowerShell
 
+Before you can install your SBE updates, sign in to the client with the domain user credentials that you provided during the deployment of the cluster.
+
 To understand if an update is a standalone Solution Builder Extension or combined "Solution" update, use the properties `PackageType` and `SbeVersion`.
 
 ```powershell
