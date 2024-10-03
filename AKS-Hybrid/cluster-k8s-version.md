@@ -11,7 +11,7 @@ ms.reviewer: sumsmith
 
 # Troubleshoot no K8s versions or VM sizes listed when you create an AKS Arc cluster
 
-The **kubernetesVersions/default** or the **skus/default** Azure Resource Manager resource is not yet created, or was deleted for some reason. This scenario can happen in older releases when AKS didn't create the default resource as a part of the deployment in the **ArcHci** module.
+The **kubernetesVersions/default** or the **skus/default** resource in Azure is not yet created, or was deleted for some reason. This scenario can happen in older releases when the default resource was not created as a part of the deployment.
 
 ## Workaround
 
