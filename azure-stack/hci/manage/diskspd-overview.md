@@ -70,7 +70,7 @@ Without further ado, let’s get started:
      .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
     ```
 
-    Here is an example command that you can run:
+    Here's an example command that you can run:
 
     ```powershell
      .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test01.txt
@@ -81,7 +81,7 @@ Without further ado, let’s get started:
 
 ## Specify key parameters
 
-Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
+Well, that was simple right? Unfortunately, there's more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
 
 > [!NOTE]
 > DISKSPD parameters are case sensitive.
@@ -116,7 +116,7 @@ You generate the test file under the unified namespace that the Cluster Shared V
 >[!NOTE]
 > The example environment does *not* have Hyper-V or a nested virtualization structure.
 
-As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
+As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it's important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
 - [VM sizes](/azure/virtual-machines/sizes-general?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
@@ -190,7 +190,7 @@ Storage performance is a delicate thing. Meaning, there are many variables that 
 - Hard drive spindle speeds
 
 ### CSV ownership
-A node is known as a volume owner or the **coordinator** node (a non-coordinator node would be the node that does not own a specific volume). Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
+A node is known as a volume owner or the **coordinator** node (a non-coordinator node would be the node that doesn't own a specific volume). Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
 
 Similarly, a Cluster Shared Volume (CSV) also has an “owner.” However, a CSV is “dynamic” in the sense that it will hop around and change ownership every time you restart the system (RDP). As a result, it’s important to confirm that DISKSPD is run from the coordinator node that owns the CSV. If not, you may need to manually change the CSV ownership.
 
@@ -213,7 +213,7 @@ If your real-world goal is to test file copy performance, then this may be a per
 
 The following short summary explains why using file copy to measure storage performance may not provide the results that you're looking for:
 - **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from File Explorer are single threaded, but Robocopy is multi-threaded. For these reasons, it's important to understand whether the implications of the test are what you are looking for.
-- **Every copy has two sides.** When you simply copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
+- **Every copy has two sides.** When you copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
     
     To learn more, see [Using file copy to measure storage performance](/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00&irgwc=1&OCID=AID2000142_aff_7593_1243925&ranEAID=je6NUbpObpQ&ranMID=24542&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&tduid=(ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00)(7593)(1243925)(je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q)()).
 
@@ -221,11 +221,12 @@ The following short summary explains why using file copy to measure storage perf
 This section includes a few other examples, experiments, and workload types.
 
 ### Confirming the coordinator node
-As mentioned previously, if the VM you are currently testing does not own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
+As mentioned previously, if the VM you are currently testing doesn't own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
 
 For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all the drives across the three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
 
-Here is an example:
+Here's an example:
+
 - **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 - **Running on nonlocal node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 
