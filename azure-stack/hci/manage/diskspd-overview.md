@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: JasonGerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 02/26/2024
+ms.date: 10/03/2024
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -14,6 +14,7 @@ ms.date: 02/26/2024
 This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
 ## What is DISKSPD?
+
 DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure Stack HCI cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
 
 DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. The cool thing about the tool is that it gives you the freedom to configure and tweak the parameters to create a specific scenario that resembles your real workload. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
@@ -21,6 +22,7 @@ DISKSPD is a tool that you can customize to create your own synthetic workloads,
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
 ## Quick start: install and run DISKSPD
+
 Without further ado, let’s get started:
 
 1. From your management PC, open PowerShell as an administrator to connect to the target computer that you want to test using DISKSPD, and then type the following command and press Enter.
@@ -31,20 +33,24 @@ Without further ado, let’s get started:
 
     In this example, we're running a virtual machine (VM) called “node1.”
 
-1. To download the DISKSPD tool, type the following commands and press Enter:
+1. To download the DISKSPD tool, run the following commands:
 
-     ```powershell
-     $client = new-object System.Net.WebClient
+    ```powershell
+    # Define the ZIP URL and the full path to save the file, including the filename
+    $zipUrl = "https://github.com/microsoft/diskspd/releases/latest/download/DiskSpd.zip"
+    $zipPath = "C:\DISKSPD\DiskSpd.zip"
+    # Ensure the target directory exists, if not then create
+    if (-Not (Test-Path "C:\DISKSPD")) {
+    New-Item -Path "C:\DISKSPD" -ItemType Directory
+    }
+    # Download the ZIP file
+    Invoke-RestMethod -Uri $zipUrl -OutFile $zipPath
     ```
 
-     ```powershell
-     $client.DownloadFile("https://github.com/microsoft/diskspd/releases/latest/download/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.1.zip")
-    ```
+1. To unzip the downloaded file, run the following command:
 
-1. Use the following command to unzip the downloaded file:
-
-     ```powershell
-     Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.1.zip -DestinationPath C:\DISKSPD
+    ```powershell
+    Expand-Archive -Path $zipPath -DestinationPath "C:\DISKSPD"
     ```
 
 1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
@@ -74,6 +80,7 @@ Without further ado, let’s get started:
     > If you do not have a test file, use the **-c** parameter to create one. If you use this parameter, be sure to include the test file name when you define your path. For example: [INSERT_CSV_PATH_FOR_TEST_FILE] = C:\ClusterStorage\CSV01\IO.dat. In the example command, IO.dat is the test file name, and test01.txt is the DISKSPD output file name.
 
 ## Specify key parameters
+
 Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
 
 > [!NOTE]
