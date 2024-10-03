@@ -5,23 +5,66 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 05/22/2024
+ms.subservice: core-os
+zone_pivot_groups: windows-os
+ms.date: 10/03/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
 
+:::zone pivot="azure-stack-hci"
+
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
+::: zone-end
 
-Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+> [!IMPORTANT]
+> Network access policies in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+::: zone-end
+
+This article describes how to enable default network access policies and assign these to virtual machines (VMs).
+
+Default network policies can be used to protect virtual machines running from external unauthorized attacks. These policies block all inbound access to virtual machines (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
 
 > [!NOTE]
 > In this release, you can enable and assign default network policies through the Windows Admin Center.
 
-## Enable default network access policies
+## Prerequisites
 
-To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+Complete the following prerequisites to use network access policies:
+
+:::zone pivot="azure-stack-hci"
+
+- You have Azure Stack HCI 23H2 or later installed on your cluster. For more information, see how to [Install Azure Stack HCI](../deploy/install-azure-stack-hci.md).
+
+- You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+
+- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
+
+TODO: check Arc or non-Arc VMs?
+- You have created a VM. For more information, see how to [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md).
+
+- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- You have Windows Server 2025 or later. For more information, see [Get started with Windows Server](/windows-server/get-started/get-started-with-windows-server).
+
+- You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md?context=/windows-server/context/windows-server-edge-networking).
+
+- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
+
+- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+
+- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+
+::: zone-end
 
 ## Assign default network policies to a VM
 
@@ -42,10 +85,21 @@ Depending on the type of network you want to attach your VM to, steps may be dif
 
 After you have created a logical network in Windows Admin Center, you can create a VM in Windows Admin Center and attach it to the logical network. As part of VM creation, select the **Isolation Mode** as **Logical Network**, select the appropriate **Logical Subnet** under the Logical Network, and provide an IP address for the VM.
 
+:::zone pivot="azure-stack-hci"
+
 > [!NOTE]
 > Unlike in 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
-Here's an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we demonstrate how to connect your VM to VLAN 5:
+::: zone-end
+
+:::zone pivot="windows-server"
+
+> [!NOTE]
+> You must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
+
+::: zone-end
+
+Here's an example that explains how you can attach your VM directly to a VLAN when Network Controller is installed. In this example, we demonstrate how to connect your VM to VLAN 5:
 
 1. Create a logical network with any name. Ensure that Network Virtualization is disabled.
 
@@ -79,7 +133,7 @@ You have three options:
 
 ## VMs created outside of Windows Admin Center
 
-If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you might encounter these two issues:
+If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs, and you have enabled default network access policies, you might encounter these two issues:
 
 - The VMs may not have network connectivity. This happens since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
 
@@ -87,7 +141,7 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
 
     1. Run PowerShell as an administrator.
     1. Download and install the [SdnDiagnostics](https://www.powershellgallery.com/packages/SdnDiagnostics) module. Run the following command:
-    
+
         ```azurepowershell
         Install-Module -Name SdnDiagnostics
         ```
@@ -107,16 +161,25 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
         ```
 
         Ensure that VFP port profile information is returned for the adapter. If not, then proceed with associating a port profile.
- 
+
     1. Specify the ports to be unblocked on the VM.
-    
+
         ```azurepowershell
         Set-SdnVMNetworkAdapterPortProfile -VMName <VMName> -MacAddress <MACAddress> -ProfileId ([guid]::Empty) -ProfileData 2
         ```
 
 - The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
 
+:::zone pivot="azure-stack-hci"
+
+    In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
+
+::: zone-end
+:::zone pivot="windows-server"
+
     In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
+
+::: zone-end
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
@@ -126,4 +189,13 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
 
 Learn more about:
 
+:::zone pivot="azure-stack-hci"
+
 - [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md)
+
+::: zone-end
+:::zone pivot="windows-server"
+
+- [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md?context=/windows-server/context/windows-server-failover-clustering)
+
+::: zone-end
