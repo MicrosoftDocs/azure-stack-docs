@@ -100,11 +100,11 @@ In a multisite SDN environment, one site is designated as the primary and the ot
 
 When you enable SDN Multisite, not all resources from each site are synchronized across all sites. Here are the lists of resources that are synchronized and that remain unsynchronized.
 
+:::zone pivot="azure-stack-hci"
+
 - **Synchronized resources**
 
     These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
-
-:::zone pivot="azure-stack-hci"
 
     - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
     - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md).
@@ -113,6 +113,10 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 ::: zone-end
 
 :::zone pivot="windows-server"
+
+- **Synchronized resources**
+
+    These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
 
     - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md?context=/windows-server/context/windows-server-edge-networking#establish-peering). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
     - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-edge-networking#establish-peering) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md?context=/windows-server/context/windows-server-edge-networking#establish-peering).
