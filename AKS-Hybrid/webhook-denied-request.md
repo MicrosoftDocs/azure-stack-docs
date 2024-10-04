@@ -47,6 +47,8 @@ az aksarc get-versions --custom-location $cl_id
 
 Verify that the `az aksarc get-versions --custom-location <custom_location_id>` command, or the portal, returns the corrected list of supported K8s versions, and that the error "admission webhook \'vhybridakscluster.kb.io\' denied the request: Kubernetes version x.x.x is not available" does not recur when you recreate the cluster with the correct K8s version.
 
+Make sure you validate the K8s version against the [supported K8s versions](aks-whats-new-23h2.md#release-2408).
+
 ## Next steps
 
 [Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
