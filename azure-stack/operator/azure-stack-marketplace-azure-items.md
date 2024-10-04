@@ -4,9 +4,9 @@ description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
 ms.custom: linux-related-content
-ms.date: 06/03/2024
+ms.date: 08/15/2024
 ms.author: sethm
-ms.reviewer: vrajasekaran
+ms.reviewer: rtiberiu
 ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
@@ -38,8 +38,6 @@ Whenever there are updates to virtual machine (VM) extensions you use, you shoul
 | ![Acronis Backup Extension for Windows](media/azure-stack-marketplace-azure-items/acronis.png) | [Acronis Backup Extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/acronis.storage-gateway) | The Acronis Backup Extension for Microsoft Azure is part of the Acronis Backup family of data protection products. | Acronis International GmbH. | Windows |
 | ![CloudLink SecureVM Extension for Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM Extension for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-solution)  | Control, monitor, and encrypt VMs with ease and confidence. | Dell EMC | Linux |
 | ![CloudLink SecureVM Extension for Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM Extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-solution)  | Control, monitor, and encrypt VMs with ease and confidence. | Dell EMC | Windows |
-| :::image type="icon" source="media/azure-stack-marketplace-azure-items/kaspersky.png" border="false"::: | [Kaspersky Hybrid Cloud Security Agent for Windows](https://azuremarketplace.microsoft.com/) | With Kaspersky Hybrid Cloud Security, you can provision cybersecurity capabilities inside your cloud workloads via Azure Extensions. | Kaspersky Lab | Windows |
-| :::image type="icon" source="media/azure-stack-marketplace-azure-items/kaspersky.png" border="false"::: | [Kaspersky Hybrid Cloud Security Agent for Linux](https://azuremarketplace.microsoft.com/?tab=Overview) | With Kaspersky Hybrid Cloud Security, you can provision cybersecurity capabilities right inside your cloud workloads via Azure Extensions. | Kaspersky Lab | Linux |
 
 ## Microsoft VM images and solution templates
 
@@ -81,7 +79,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Exivity - Hybrid Cloud Billing Solution](media/azure-stack-marketplace-azure-items/exivity.png) | [Exivity - Hybrid Cloud Billing Solution](https://azuremarketplace.microsoft.com/marketplace/apps/exivity.exivity-vm)  | A billing tool that can satisfy the requirements of virtually any IT service delivery model, whether deployed within on-premises, public cloud, or hybrid environments. | Exivity |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/f5.png" border="false"::: | [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Advanced Load Balancing, GSLB, Network Firewall, DNS, WAF, and App Access. | F5 Networks |
 | ![FortiGate Next-Generation Firewall](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | FortiGate Next-Generation Firewall | Firewall technology that delivers complete content and network protection with a comprehensive suite of powerful security features. App control, antivirus, IPS, web filtering, and VPN along with advanced features such as vulnerability management work in concert to identify and mitigate the latest complex security threats. | Fortinet |
-| :::image type="icon" source="media/azure-stack-marketplace-azure-items/kaspersky.png" border="false"::: | [Kaspersky Hybrid Cloud Security](https://azuremarketplace.microsoft.com/?tab=Overview) | The Kaspersky Hybrid Cloud Security enables a seamlessly orchestrated and adaptive cybersecurity ecosystem. | Kaspersky Lab |
 | ![KEMP LoadMaster Load Balancer ADC Content Switch](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Layer 4-7 Application Delivery Controller (ADC) Load Balancer, Content Switch, and Traffic Manager. | KEMP Technologies Inc. |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/kubernetes.png" border="false"::: | [Kubernetes](azure-stack-aks-engine.md) | This solution deploys a Kubernetes cluster running as a standalone cluster with templates generated using AKS-Engine.<br>**This solution template also requires Ubuntu Server 16.04 LTS and Custom Script for Linux 2.0.**| Microsoft |
 | ![Service Fabric Cluster](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric Cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.ServiceFabricOMS?tab=Overview) | This solution deploys Service Fabric running as a standalone cluster on a Virtual Machine Scale Set. <br>**This solution template requires you to also download the Windows Server 2016 Datacenter**| Microsoft |

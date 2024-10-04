@@ -3,7 +3,7 @@ title: Manage Azure Stack Hub usage and billing as a Cloud Solution Provider
 description: Learn how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and add customers for billing.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/07/2024
+ms.date: 08/15/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2019
@@ -18,7 +18,7 @@ ms.lastreviewed: 10/15/2019
 
 This article describes how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and how to add customers.
 
-As a CSP, you work with diverse customers using your Azure Stack Hub. Each customer has a CSP subscription in Azure. You must direct usage from your Azure Stack Hub to each user subscription.
+As a CSP, you work with diverse customers that use your Azure Stack Hub deployment. Each customer has a CSP subscription in Azure, and you must direct usage from your Azure Stack Hub instance to each user subscription.
 
 The following figure shows the required steps to choose your shared services account, and to register the Azure account with the Azure Stack Hub account. Once registered, you can onboard your end customers:
 
@@ -26,12 +26,14 @@ The following figure shows the required steps to choose your shared services acc
 
 ## Create a CSP or APSS subscription
 
+This section describes how to create shared services subscriptions.
+
 ### CSP subscription types
 
 Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that can be used for registration of a multitenant Azure Stack Hub are:
 
-- Cloud Solution Provider
-- Azure Partner Shared Services subscription
+- Cloud Solution Provider (CSP)
+- Azure Partner Shared Services (APSS)
 
 See this tutorial video to help you understand how to manage your multitenant rights:
 
@@ -49,11 +51,11 @@ For a description of APSS subscriptions and how to create them, see [Add Azure P
 
 CSP subscriptions are the preferred choice for registration when a CSP reseller or an end customer operates Azure Stack Hub.
 
-Services such as [Azure Site Recovery](azure-site-recovery-overview.md#how-is-site-recovery-billed) only report usage data in the subscription associated with the Azure Stack Hub registration. The CSP that operates the multitenant environment typically managed this subscription. As a result, it's the responsibility of the CSP to accurately determine and bill each of their customers who utilize the Azure Site Recovery service.
+Services such as [Azure Site Recovery](azure-site-recovery-overview.md#how-is-site-recovery-billed) only report usage data in the subscription associated with the Azure Stack Hub registration. The CSP that operates the multitenant environment typically managed this subscription. As a result, it's the responsibility of the CSP to accurately determine and bill each of their customers who use the Azure Site Recovery service.
 
 ## Register Azure Stack Hub
 
-Use the APSS subscription created using the information in the preceding section to register Azure Stack Hub with Azure. For more information, see [Register Azure Stack Hub with your Azure subscription](azure-stack-registration.md).
+Use the APSS subscription you created using the information in the preceding section to register Azure Stack Hub with Azure. For more information, see [Register Azure Stack Hub with your Azure subscription](azure-stack-registration.md).
 
 ## Add end customer
 
@@ -68,7 +70,7 @@ Using registration, Azure Stack Hub can:
 - Forward [Azure Stack Hub usage data](azure-stack-billing-and-chargeback.md) to Azure Commerce and bill an Azure subscription.
 - Report each customer's usage on a different subscription with a multitenant Azure Stack Hub deployment. Multitenancy enables Azure Stack Hub to support different organizations on the same Azure Stack Hub instance.
 
-For each Azure Stack Hub, there is one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that is charged if there's no tenant-specific subscription. It must be the first subscription to be registered. For multitenant usage reporting to work, the subscription must be a CSP or APSS subscription.
+For each Azure Stack Hub, there is one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that's charged if there's no tenant-specific subscription. It must be the first subscription to be registered. For multitenant usage reporting to work, the subscription must be a CSP or APSS subscription.
 
 Then, the registration is updated with an Azure subscription for each tenant that uses Azure Stack Hub. Tenant subscriptions must be of the CSP type, and must roll up to the partner who owns the default subscription. You cannot register someone else's customers.
 
