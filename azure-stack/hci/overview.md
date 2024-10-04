@@ -2,8 +2,8 @@
 title: Azure Local solution overview
 description: Azure Local is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Local deployments in the Azure portal.
 ms.topic: overview
-author: alkohli
-ms.author: alkohli
+author: jgerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 10/04/2024
@@ -18,11 +18,11 @@ Azure Local is a hyperconverged infrastructure (HCI) solution that hosts Windows
 
 ## Overview
 
-An Azure Local instance consists of a machine or a cluster of machines running the Azure Local operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
+An Azure Local instance consists of a machine or a cluster of machines running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
 
 Azure Local is available for download from the Azure portal with a free 60-day trial ([Download software](./deploy/download-azure-stack-hci-23h2-software.md)).
 
-To acquire the machines to run Azure Local, you can purchase integrated systems for Azure Local from a Microsoft hardware partner with the operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the Azure Local sizing tool to estimate hardware requirements.
+To acquire the machines to run Azure Local, you can purchase integrated systems for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
 
 ## Azure Local features and architecture
 
@@ -33,7 +33,7 @@ Each Azure Local instance consists of between 1 and 16 physical machines. All ma
 Azure Local combines the following:
 
 - Validated hardware from a hardware partner
-- Azure Local operating system
+- Azure Stack HCI operating system
 - Hyper-V-based compute resources
 - Storage Spaces Direct-based virtualized storage
 - Windows and Linux virtual machines as Arc-enabled machines
@@ -75,7 +75,7 @@ Customers often choose Azure Local in the following scenarios.
 | Data center consolidation and modernization | Refreshing and consolidating aging virtualization hosts with Azure Local can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support. |
 | Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Local deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Local](deploy/branch-office-edge.md). |
 
-#### Demo of using Microsoft Azure with Azure Local
+<!--#### Demo of Azure Local
 
 For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Local, see the **Retail edge transformation with Azure hybrid** demo.
 
@@ -83,7 +83,7 @@ Using a fictional customer, inspired directly by real customers, you will see ho
 
 > [!VIDEO https://www.youtube.com/embed/t81MNUjAnEQ]
 
-This video includes preview functionality which shows real product functionality, but in a closely controlled environment.
+This video includes preview functionality which shows real product functionality, but in a closely controlled environment.-->
 
 ### Azure integration benefits
 
