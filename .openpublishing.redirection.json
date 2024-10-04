@@ -1481,6 +1481,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/user/azure-stack-version-profiles-ruby.md",
+      "redirect_url": "/azure-stack/user/azure-stack-version-profiles",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/manage/processor-compatibility-mode.md",
       "redirect_url": "/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci",
       "redirect_document_id": false
