@@ -18,7 +18,7 @@ Azure Local is a hyperconverged infrastructure (HCI) solution that hosts Windows
 
 ## Overview
 
-An Azure Local instance consists of a machine or a cluster of machines running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
+An Azure Local instance consists of a machine or a cluster of machines running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage Azure Local with your existing tools, including Windows Admin Center and PowerShell.
 
 Azure Local is available for download from the Azure portal with a free 60-day trial ([Download software](./deploy/download-azure-stack-hci-23h2-software.md)).
 
@@ -28,19 +28,19 @@ To acquire the machines to run Azure Local, you can purchase integrated systems 
 
 Azure Local is built on proven technologies including Hyper-V, Storage Spaces Direct, and core Azure management service.
 
-Each Azure Local instance consists of between 1 and 16 physical machines. All machines share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
+Each Azure Local instance consists of 1 to 16 physical machines. All machines share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
 Azure Local combines the following:
 
-- Validated hardware from a hardware partner
-- Azure Stack HCI operating system
-- Hyper-V-based compute resources
-- Storage Spaces Direct-based virtualized storage
-- Windows and Linux virtual machines as Arc-enabled machines
-- Azure Virtual Desktop
-- Azure Kubernetes Service (AKS) enabled by Azure Arc
-- Azure services including monitoring, backup, site recovery, and more
-- Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools
+- Integrated hardware from a hardware partner.
+- Azure Stack HCI OS.
+- Hyper-V-based compute resources.
+- Storage Spaces Direct-based virtualized storage.
+- Windows and Linux virtual machines as Arc-enabled servers.
+- Azure Virtual Desktop.
+- Azure Kubernetes Service (AKS) enabled by Azure Arc.
+- Azure services including monitoring, backup, site recovery, and more.
+- Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools.
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Local solution." lightbox="media/overview/azure-stack-hci-solution.png" :::
 
@@ -52,7 +52,7 @@ There are many reasons customers choose Azure Local, including:
 
 - It provides industry-leading virtualization performance and value.
 - You pay for the software monthly via an Azure subscription instead of when buying the hardware.
-- It's familiar for Hyper-V and machine admins, allowing them to leverage existing virtualization and storage concepts and skills.
+- It's familiar for Hyper-V and server admins, allowing them to leverage existing virtualization and storage concepts and skills.
 - It can be monitored and managed from the Azure portal or using on-premises tools such as Microsoft System Center, Active Directory, Group Policy, and PowerShell scripting.
 - It works with popular third-party backup, security, and monitoring tools.
 - Flexible hardware choices allow customers to choose the vendor with the best service and support in their geography.
@@ -70,8 +70,8 @@ Customers often choose Azure Local in the following scenarios.
 | Run Azure Arc services on-premises | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Arc VMs, Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
 | Highly performant SQL Server | Azure Local provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Local](deploy/sql-server.md). |
 | Trusted enterprise virtualization | Azure Local satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [Deploy Trusted Enterprise Virtualization on Azure Local](deploy/trusted-enterprise-virtualization.md). |
-| Scale-out storage | Storage Spaces Direct is a core technology of Azure Local that uses industry-standard machines with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication. |
-| Disaster recovery for virtualized workloads | An Azure Local stretched cluster (functionality only available in Azure Local, version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
+| Scale-out storage | Storage Spaces Direct is a core technology of Azure Local that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication. |
+| Disaster recovery for virtualized workloads | A stretched cluster of Azure Local (functionality only available in version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
 | Data center consolidation and modernization | Refreshing and consolidating aging virtualization hosts with Azure Local can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support. |
 | Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Local deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Local](deploy/branch-office-edge.md). |
 
@@ -106,11 +106,11 @@ To get started, you'll need:
 - An [Azure subscription](https://azure.microsoft.com/).
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md).
 - An internet connection for each machine in the system that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.
-- For systems stretched across sites (functionality only available in Azure Local, version 22H2):
+- For systems stretched across sites (functionality only available in version 22H2):
   - At least four severs (two in each site)
   - At least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred)
   - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.
-- If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Local operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
+- If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Stack HCI OS to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
 
 Make sure your hardware meets the [System requirements](concepts/system-requirements-23h2.md) and that your network meets the [physical network](concepts/physical-network-requirements.md) and [host network](concepts/host-network-requirements.md) requirements for Azure Local.
 
@@ -120,7 +120,7 @@ Azure Local is priced on a per core basis on your on-premises machines. For curr
 
 ## Hardware and software partners
 
-Microsoft recommends purchasing Integrated Systems built by our hardware partners and validated by Microsoft to provide the best experience running Azure Local. You can also run Azure Local on Validated Nodes, which offer a basic building block for HCI systems to give customers more hardware choices. Microsoft partners also offer a single point of contact for implementation and support services.
+Microsoft recommends purchasing Integrated Systems built by our hardware partners and validated by Microsoft to provide the best experience running Azure Local. <!--You can also run Azure Local on Validated Nodes, which offer a basic building block for HCI systems to give customers more hardware choices.--> Microsoft partners also offer a single point of contact for implementation and support services.
 
 Browse the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Local solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, and Supermicro.
 
