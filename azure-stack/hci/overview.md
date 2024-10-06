@@ -14,9 +14,9 @@ ms.custom: e2e-hybrid, linux-related-content
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-Azure Local extends Azure to customer-owned infrastructure in distributed locations. Azure Local extends Azure's compute capacity and allows you to run modern and traditional applications and workloads locally across the distributed locations.
+Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution also offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners.
 
-Azure Local accelerates cloud and AI innovation, by delivering new applications, workloads, and services seamlessly from cloud to edge. Azure Local provides a unified management experience on a single control plane and also supports a wide range of validated hardware from trusted Microsoft partners.
+Azure Local also accelerates cloud and AI innovation by seamlessly delivering new applications, workloads, and services from cloud to edge.
 
 <!--Azure Local is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.-->
 
