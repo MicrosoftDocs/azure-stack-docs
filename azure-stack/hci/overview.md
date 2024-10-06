@@ -14,7 +14,7 @@ ms.custom: e2e-hybrid, linux-related-content
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution also offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners.
+Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners.
 
 Azure Local also accelerates cloud and AI innovation by seamlessly delivering new applications, workloads, and services from cloud to edge.
 
@@ -43,6 +43,7 @@ Azure Local combines the following:
 - Windows and Linux virtual machines as Arc-enabled servers.
 - Azure Virtual Desktop.
 - Azure Kubernetes Service (AKS) enabled by Azure Arc.
+- AI and machine learning workload deployment.
 - Azure services including monitoring, backup, site recovery, and more.
 - Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools.
 
@@ -71,6 +72,7 @@ Customers often choose Azure Local in the following scenarios.
 |:-|:-|
 | Azure Virtual Desktop (AVD) | Azure Virtual Desktop for Azure Local lets you deploy Azure Virtual Desktop session hosts on your on-premises infrastructure. You manage your session hosts from the Azure portal. To learn more, see [Azure Virtual Desktop for Azure Local](/azure/virtual-desktop/azure-stack-hci-overview). |
 | Azure Kubernetes Service (AKS) enabled by Azure Arc | You can leverage Azure Local to host container-based deployments, which increases workload density and resource usage efficiency. Azure Local also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Local manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more, see [Azure Kubernetes Service on Azure Local and Windows Server](/azure/aks/hybrid/aks-overview). |
+| AI and ML workloads | You can leverage Azure Local to deploy AI models on workloads. To learn more, see [Deploy AI models](index.yml). |
 | Run Azure Arc services on-premises | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Arc VMs, Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
 | Highly performant SQL Server | Azure Local provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Local](deploy/sql-server.md). |
 | Trusted enterprise virtualization | Azure Local satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [Deploy Trusted Enterprise Virtualization on Azure Local](deploy/trusted-enterprise-virtualization.md). |
