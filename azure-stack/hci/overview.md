@@ -14,7 +14,11 @@ ms.custom: e2e-hybrid, linux-related-content
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-Azure Local is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.
+Azure Local extends Azure to customer-owned infrastructure in distributed locations. Azure Local extends Azure's compute capacity and allows you to run modern and traditional applications and workloads locally across the distributed locations.
+
+Azure Local accelerates cloud and AI innovation, by delivering new applications, workloads, and services seamlessly from cloud to edge. Azure Local provides a unified management experience on a single control plane and also supports a wide range of validated hardware from trusted Microsoft partners.
+
+<!--Azure Local is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.-->
 
 ## Overview
 
@@ -22,7 +26,7 @@ An Azure Local instance consists of a machine or a cluster of machines running t
 
 Azure Local is available for download from the Azure portal with a free 60-day trial ([Download software](./deploy/download-azure-stack-hci-23h2-software.md)).
 
-To acquire the machines to run Azure Local, you can purchase integrated systems for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
+To acquire the machines to run Azure Local, you can purchase validated hardware for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
 
 ## Azure Local features and architecture
 
@@ -32,7 +36,7 @@ Each Azure Local instance consists of 1 to 16 physical machines. All machines sh
 
 Azure Local combines the following:
 
-- Integrated hardware from a hardware partner.
+- Validated hardware from a hardware partner.
 - Azure Stack HCI OS.
 - Hyper-V-based compute resources.
 - Storage Spaces Direct-based virtualized storage.
