@@ -134,7 +134,6 @@ To install updates on a single system from the resource page, follow these steps
    1. Select **Systems to update** to view updates to install or remove from the update installation.
    2. Select the **Version** link to view the update components and their versions.
    3. Select the Details, **View details** link, to view the update release notes.
-
 8. Select **Next**.
 9. On the **Review + install** page, verify your update deployment options, and select **Install**.
 
