@@ -1,23 +1,23 @@
 ---
-title: Collect diagnostic logs for Azure Stack HCI
+title: Collect diagnostic logs for Azure Local
 description: How to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/19/2024
+ms.date: 10/07/2024
 ---
 
-# Collect diagnostic logs for Azure Stack HCI
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
+This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Local solution.
 
 ## On-demand log collection
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within the Azure Local instance. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -29,13 +29,13 @@ Here are the scenarios in which you can perform on-demand log collection:
 - Logs are collected when a cluster is only partly registered.
 - Logs are collected for issues not related to registration failures.
 
-To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+To explore additional log collection methods in Azure Local and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
-- You must have access to an Azure Stack HCI cluster.
+- You must have access to an Azure Local instance.
 - You must have access to Azure.
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
