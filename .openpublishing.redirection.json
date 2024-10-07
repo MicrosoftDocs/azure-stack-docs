@@ -1489,6 +1489,11 @@
       "source_path": "azure-stack/hci/manage/processor-compatibility-mode.md",
       "redirect_url": "/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-azure-arc-gateway-new-cluster.md",
+      "redirect_url": "/azure-stack/deploy/deployment-azure-arc-gateway-overview",
+      "redirect_document_id": false
     }
   ]
 }
