@@ -1,23 +1,23 @@
 ---
-title: Troubleshoot deployment validation issues in Azure Stack HCI, version 23H2 via Azure portal
-description: Learn how to troubleshoot the deployment validation failures for Azure Stack HCI, version 23H2 when deployed via the Azure portal.
+title: Troubleshoot deployment validation issues in Azure Local, version 23H2 via Azure portal
+description: Learn how to troubleshoot the deployment validation failures for Azure Local, version 23H2 when deployed via the Azure portal.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 08/21/2024
+ms.date: 10/07/2024
 ---
 
 
-# Troubleshoot Azure portal deployment validation issues for Azure Stack HCI, version 23H2
+# Troubleshoot Azure portal deployment validation issues for Azure Local, version 23H2
 
 > Applies to: Azure Stack HCI, version 23H2 running 2405 or later
 
-This article provides guidance on how to troubleshoot deployment validation issues experienced during the deployment of your Azure Stack HCI cluster via the Azure portal.
+This article provides guidance on how to troubleshoot deployment validation issues experienced during the deployment of your Azure Local system via the Azure portal.
 
 ## Error - deployment validation failure
 
-When deploying Azure Stack HCI, version 23H2 via the Azure portal, you might encounter a deployment validation failure.
-The "Azure Stack HCI Network - Check network requirements" validation task fail with the following error:
+When deploying Azure Local, version 23H2 via the Azure portal, you might encounter a deployment validation failure.
+The "Azure Local Network - Check network requirements" validation task fail with the following error:
 
 ```
 Could not complete the operation. 400: Resource creation validation failed. Details:
@@ -35,7 +35,7 @@ The selected physical network adapter is not binded to the management virtual sw
 
 ## Cause
 
-This issue occurs on deployments triggered after August 6. The issue happens if the deployment validation was triggered on the cluster and the validation result was a failure, with subsequent validation retries.
+This issue occurs on deployments triggered after August 6. The issue happens if the deployment validation was triggered on the system and the validation result was a failure, with subsequent validation retries.
 
 The issue occurs for the following reason:
 
