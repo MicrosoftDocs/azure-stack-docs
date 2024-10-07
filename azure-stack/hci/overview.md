@@ -6,7 +6,7 @@ author: jgerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/04/2024
+ms.date: 10/07/2024
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
@@ -24,13 +24,13 @@ Azure Local also accelerates cloud and AI innovation by seamlessly delivering ne
 
 An Azure Local instance consists of a machine or a cluster of machines running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage Azure Local with your existing tools, including Windows Admin Center and PowerShell.
 
-Azure Local is available for download from the Azure portal with a free 60-day trial ([Download software](./deploy/download-azure-stack-hci-23h2-software.md)).
+You can [Download the operating system software](./deploy/download-azure-stack-hci-23h2-software.md) from the Azure portal with a free 60-day trial.
 
-To acquire the machines to run Azure Local, you can purchase validated hardware for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
+To acquire the machines that support Azure Local, you can purchase validated hardware for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
 
 ## Azure Local features and architecture
 
-Azure Local is built on proven technologies including Hyper-V, Storage Spaces Direct, and core Azure management service.
+Azure Local is built on proven technologies including Hyper-V, Storage Spaces Direct, and core Azure Management service.
 
 Each Azure Local instance consists of 1 to 16 physical machines. All machines share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
@@ -126,7 +126,7 @@ Azure Local is priced on a per core basis on your on-premises machines. For curr
 
 ## Hardware and software partners
 
-Microsoft recommends purchasing Integrated Systems built by our hardware partners and validated by Microsoft to provide the best experience running Azure Local. <!--You can also run Azure Local on Validated Nodes, which offer a basic building block for HCI systems to give customers more hardware choices.--> Microsoft partners also offer a single point of contact for implementation and support services.
+Microsoft recommends purchasing Premier Solutions offered in collaboration with our hardware partners to provide the best experience for Azure Local solution. <!--You can also run Azure Local on Validated Nodes, which offer a basic building block for HCI systems to give customers more hardware choices.--> Microsoft partners also offer a single point of contact for implementation and support services.
 
 Browse the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Local solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, and Supermicro.
 
