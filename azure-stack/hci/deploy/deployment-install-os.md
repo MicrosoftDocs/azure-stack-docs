@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI, version 23H2 operating system
-description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
+title: Install Azure Stack HCI operating system, version 23H2
+description: Learn how to install the Azure Stack HCI operating system, version 23H2  on each server of your cluster.
 author: alkohli
 ms.topic: how-to
 ms.date: 06/13/2024
@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Install the Azure Stack HCI, version 23H2 operating system
+# Install the Azure Stack HCI operating system, version 23H2 
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the steps needed to install the Azure Stack HCI, version 23H2 operating system locally on each server in your cluster.
+This article describes the steps needed to install the Azure Stack HCI operating system, version 23H2  locally on each server in your cluster.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Before you begin, make sure you do the following steps:
 
 ## Boot and install the operating system
 
-To install the Azure Stack HCI, version 23H2 operating system, follow these steps:
+To install the Azure Stack HCI operating system, version 23H2 , follow these steps:
 
 1. [Download the Azure Stack HCI operating system from the Azure portal](./download-azure-stack-hci-23h2-software.md).
 
@@ -77,7 +77,7 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI, version 23H2 after installation.
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI OS after installation.
 
 To use SConfig, sign in to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you sign in to the server.
 
