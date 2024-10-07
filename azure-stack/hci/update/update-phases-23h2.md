@@ -1,35 +1,35 @@
 ---
-title: Review update phases of Azure Stack HCI, version 23H2.
-description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2.
+title: Review update phases of Azure Local, version 23H2.
+description: Understand the various phases of solution updates applied to Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohl
 ms.topic: conceptual
-ms.date: 01/31/2024
+ms.date: 10/07/2024
 ---
 
-# Review update phases of Azure Stack HCI, version 23H2
+# Review update phases of Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2.
+This article describes the various phases of solution updates that are applied to your Azure Local instance to keep it up-to-date. This information is applicable to Azure Local, version 23H2.
 
 The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator.
 
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Stack HCI, version 23H2](about-updates-23h2.md).
+The Azure Local solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Local, version 23H2](about-updates-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
 The updates can be of the following types:
 
-- **Updates not requiring reboots** - The updates that can be applied to your Azure Stack HCI cluster without any server reboots in the cluster.
+- **Updates not requiring reboots** - The updates that can be applied to your Azure Local instance without any server reboots in the cluster.
 
-- **Updates that require reboots** - The updates that might need a server reboot in your Azure Stack HCI cluster. Cluster-Aware Updating is used to reboot servers in the cluster one by one, ensuring the availability of the cluster during the update process.
+- **Updates that require reboots** - The updates that might need a server reboot in your Azure Local instance. Cluster-Aware Updating is used to reboot servers in the cluster one by one, ensuring the availability of the cluster during the update process.
 
 The updates consist of several phases: discovering the update, staging the content, deploying the update, and reviewing the installation. Each phase might not require your input but distinct actions occur in each phase.
 
-You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Stack HCI takes through the update operation.
+You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Local takes through the update operation.
 
 [![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](./media/update-phases/updates-phases-actions-23h2.png)](./media/update-phases/updates-phases-actions-23h2.png#lightbox)
 
@@ -39,13 +39,13 @@ Before Microsoft releases a new update package, the package is validated as a co
 
 The release notes include the update contents, changes, known issues, and links to any external downloads that might be required (for example, drivers and firmware). For more information, see the [Latest release notes](../known-issues-2311-2.md).
 
-After Microsoft releases the update, your Azure Stack HCI update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
+After Microsoft releases the update, your Azure Local update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 
 Depending on the hardware in your cluster and the scope of an update bundle, you might need to acquire and sideload extra content to proceed with an update. The **operating system** and **agents and services** content are provided by Microsoft, while depending on your specific solution and the OEM, the **Solution Extension** might require an extra download from the hardware OEM. If more is required, the installation flow prompts you for the content.
 
 ## Phase 2: Readiness checks and staging
 
-There are a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
+There are a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Local instance is safe to update and ensures updates go more smoothly.
 
 A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content is downloaded and *before* it begins installing.
 
