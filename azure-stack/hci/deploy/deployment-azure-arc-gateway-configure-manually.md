@@ -1,16 +1,16 @@
 --- 
-title: Configure Arc proxy manually for Azure gateway, version 2408 (preview)
-description: Learn how to configure Arc proxy manually for Azure gateway, version 2408 (preview). 
+title: Configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview)
+description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/26/2024
+ms.date: 10/07/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Configure Arc proxy manually for Azure gateway (preview)
+# Configure Arc proxy manually for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
+Applies to: Azure Local, version 23H2, release 2408.1 and 2408
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to manually configure the Arc proxy before Arc registration.
 
@@ -20,22 +20,22 @@ After creating the Arc gateway resource in your Azure subscription, you can enab
 
 Make sure the following prerequisites are met before proceeding:
 
-- You’ve access to an Azure Stack HCI, version 23H2 system.
+- You’ve access to an Azure Local, version 23H2 system.
 
-- An Arc gateway resource created in the same subscription as used to deploy Azure Stack HCI. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
+- An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
 > [!Warning]
-> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Stack HCI, version 2408. Do not use the ISO image available in Azure portal.
+> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Local, version 2408. Do not use the ISO image available in Azure portal.
 
 ## Step 1: Manually configure the proxy on each node
 
-If you need to configure the Arc proxy on your Azure Stack HCI nodes before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
+If you need to configure the Arc proxy on your Azure Local machines before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
 
-Ensure that you configure the proxy and the bypass list for all your Azure Stack HCI cluster nodes.
+Ensure that you configure the proxy and the bypass list for all the nodes on your cluster.
 
 ## Step 2: Get the ArcGatewayID  
 
-You need the proxy and the Arc gateway ID (ArcGatewayID) from Azure to run the Azure Stack HCI node registration script. To get the ArcGatewayID, run the following `az connectedmachine gateway list` command from any computer that is not an Azure Stack HCI node.
+You need the proxy and the Arc gateway ID (ArcGatewayID) from Azure to run the registration script on Azure Local machines. To get the ArcGatewayID, run the following `az connectedmachine gateway list` command from any computer that is not an Azure Local machine.
 
 Here's an example:
 
@@ -79,15 +79,15 @@ Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
 
 Install-Module AzsHCI.ARCinstaller 
 
-#Define the subscription where you want to register your server as Arc device 
+#Define the subscription where you want to register your machine as Arc device 
 
 $Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" 
 
-#Define the resource group where you want to register your server as Arc device 
+#Define the resource group where you want to register your machine as Arc device 
 
 $RG = "yourresourcegroupname" 
 
-#Define the tenant you will use to register your server as Arc device 
+#Define the tenant you will use to register your machine as Arc device 
 
 $Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
 
@@ -116,17 +116,17 @@ $id = (Get-AzContext).Account.Id
 Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ArcGatewayID $ArcgwId 
 ```
 
-## Step 4: Start Azure Stack HCI cloud deployment
+## Step 4: Start Azure Local cloud deployment
 
-Once the Azure Stack HCI nodes are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates that are documented in these articles:
+Once the Azure Local machines are registered in Azure Arc and all the extensions are installed, you can start deployment from Azure portal or using the ARM templates that are documented in these articles:
 
-- [Deploy an Azure Stack HCI system using the Azure portal](deploy-via-portal.md).
+- [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
 
-- [Azure Resource Manager template deployment for Azure Stack HCI, version 23H2](deployment-azure-resource-manager-template.md).
+- [Azure Resource Manager template deployment for Azure Local, version 23H2](deployment-azure-resource-manager-template.md).
 
 ## Step 5: Verify that the setup succeeded
 
-Once the deployment validation starts, you can connect to the first Azure Stack HCI node from your cluster and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
+Once the deployment validation starts, you can connect to the first Azure Local machine from your cluster and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -173,4 +173,4 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 ## Next steps
 
 - [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
-- [Get support for Azure Stack HCI](../manage/get-support.md)
+- [Get support for Azure Local](../manage/get-support.md)
