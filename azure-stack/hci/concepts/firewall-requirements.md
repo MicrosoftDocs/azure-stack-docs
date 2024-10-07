@@ -53,6 +53,10 @@ For Australia East consolidated list of endpoints, including HCI, Arc-enabled se
 For Canada Central consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
 - [Azure Stack HCI 23H2 Canada Central required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
+For Central India consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+- [Azure Stack HCI 23H2 Central India required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
+
+
 ## Firewall requirements for additional Azure services
 
 Depending on additional Azure services you enable for Azure Stack HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
