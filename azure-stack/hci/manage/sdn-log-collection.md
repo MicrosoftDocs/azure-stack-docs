@@ -1,17 +1,17 @@
 ---
-title: Collect Software Defined Networking logs on Azure Stack HCI
-description: Learn how to collect logs to troubleshoot Software Defined Networking (SDN) in Azure Stack HCI.
+title: Collect Software Defined Networking logs on Azure Local
+description: Learn how to collect logs to troubleshoot Software Defined Networking (SDN) in Azure Local.
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 06/07/2024
+ms.date: 10/08/2024
 ---
 
-# Collect logs for Software Defined Networking on Azure Stack HCI
+# Collect logs for Software Defined Networking on Azure Local
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Stack HCI cluster.
+This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Local instance(s).
 
 The SDN logs help you identify and troubleshoot advanced issues in your SDN environment. Use these logs to gather key information before you contact Microsoft support.
 
@@ -125,7 +125,7 @@ After you installed the `SdnDiagnostics` module on the management computer and t
 
 A few things to consider before you run the `Start-SdnDataCollection` cmdlet:
 
-- The `Start-SdnDataCollection` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Stack HCI environment.
+- The `Start-SdnDataCollection` takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of SDN fabric servers in your Azure Local environment.
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
@@ -166,4 +166,4 @@ Start-SdnDataCollection -ComputerName $computers -IncludeLogs -FromDate (Get-Dat
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
+- [Contact Microsoft Support](get-support.md).
