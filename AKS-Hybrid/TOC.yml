@@ -20,8 +20,10 @@
       href: cluster-architecture.md
     - name: Networking
       items:
-      - name: Networking concepts
+      - name: Networking concepts and requirements
         href: aks-hci-network-system-requirements.md
+      - name: IP address planning for Kubernetes
+        href: aks-hci-ip-address-planning
       - name: Load balancer
         href: load-balancer-overview.md      
     - name: Access and identity
