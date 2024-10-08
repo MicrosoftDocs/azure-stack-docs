@@ -58,10 +58,10 @@ The Arc Storage Class service provides an inventory of storage classes on the cl
 
 For example, creating a [SQL Managed Instance enabled by Azure Arc](/azure/azure-arc/data/managed-instance-overview) requires you to select four different storage classes for different usage (data, data-logs, logs, and backups). To simplify the process, SQL Managed Instance enabled by Azure Arc provides templates that automatically select storage classes for several common Kubernetes cluster configurations, but it's not flexible or helpful enough for other cluster configurations. With Arc Storage Class, the Arc service can help you with any cluster configuration query, and can recommend storage classes for each scenario automatically, completely eliminating the need for predefined templates.
 
-## Platform Neutral
+## Platform neutral
 
 The Storage Class service is available on any Kubernetes distributions, including Azure Kubernetes Service and AKS on HCI.
 
 ## Next steps
 
-- [Learn more about the Storage Class service](/azure/azure-arc/data/storage-class-overview)
+- TBD
