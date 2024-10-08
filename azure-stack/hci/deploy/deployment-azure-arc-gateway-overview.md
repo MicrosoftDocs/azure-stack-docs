@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Stack HCI, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/08/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
