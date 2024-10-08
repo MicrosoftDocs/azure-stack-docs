@@ -120,4 +120,3 @@ The following Kubernetes cluster deployment and management capabilities are avai
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [System requirements for AKS Arc](system-requirements.md)
