@@ -1,0 +1,74 @@
+---
+title: IP address planning for AKS 
+description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production 
+ms.topic: conceptual
+ms.date: 10/08/2024
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: abha
+ms.lastreviewed: 10/08/2024
+---
+
+# AKS enabled by Azure Arc IP address planning requirements
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
+IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This document walks you through som key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. Ensure that you've read [AKS networking concepts and requirements](/aks-hci-network-system-requirements.md) before reading the below document.
+
+
+## Simple IP address planning for Kubernetes clusters and applications
+
+In the following scenario walk-through, you reserve IP addresses from a single network for your Kubernetes clusters and services. This is the most straightforward and simple scenario for IP address assignment.
+
+| IP address requirement    | Minimum number of IP addresses | How and where to make this reservation |
+|------------------|---------|---------------|
+| AKS Arc VM IPs | Reserve one IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need to have 9 IP addresses in your IP pool. | Reserve IP addresses for AKS Arc VMs through IP pools in Arc VM logical network. |
+| AKS Arc K8s version upgrade IPs | Because AKS Arc performs rolling upgrades, reserve one IP address for every AKS Arc cluster for Kubernetes version upgrade operations. | Reserve IP addresses for K8s version upgrade operation through IP pools in Arc VM logical network. |
+| Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you want to create 5 clusters in total, reserve 5 IP addresses, one for each Kubernetes cluster. | Reserve IP addresses for control plane IPs in the same subnet as Arc VM logical network, but outside the specified IP pool. |
+| Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve one IP address for every Kubernetes service. | Reserve IP addresses for control plane IPs in the same subnet as Arc VM logical network, but outside the specified IP pool. |
+
+### Example walkthrough for IP address reservation for Kubernetes clusters and applications
+
+Jane is an IT administrator just starting with AKS enabled by Azure Arc. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All her AKS clusters and services are running in a single network, with a single subnet.
+
+- Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
+- Kubernetes cluster B has 1 control plane node and 3 worker nodes.
+- 3 instances of the front-end UI (port 443).
+- 1 instance of the backend database (port 80).
+
+Based on the previous table, she must reserve a total of 19 IP addresses in her subnet:
+
+- 8 IP addresses for the AKS Arc node VMs in cluster A (one IP per K8s node VM).
+- 4 IP addresses for the AKS Arc node VMs in cluster B (one IP per K8s node VM).
+- 2 IP addresses for running AKS Arc upgrade operation (one IP address per AKS Arc cluster).
+- 2 IP addresses for the AKS Arc control plane (one IP address per AKS Arc cluster)
+- 3 IP addresses for the Kubernetes service (one IP address per instance of the front-end UI, since they all use the same port. The backend database can use any one of the three IP addresses as long as it uses a different port).
+
+Continuing with this example, and adding it to the following table, you get:
+
+| Parameter    | Number of IP addresses | How and where to make this reservation |
+|------------------|---------|---------------|
+| AKS Arc VMs and K8s version upgrade  | Reserve 14 IP addresses | Make this reservation through IP pools in the Azure Stack HCI logical network. |
+| Control plane IP | Reserve 2 IP addresses, one for AKS Arc cluster | Use the `controlPlaneIP` parameter to pass the IP address for control plane IP. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc logical network. |
+| Load balancer IPs | 3 IP address for Kubernetes services, for Jane's voting application. | These IP addresses are used when you install a load balancer on cluster A. You can use the MetalLB Arc extension, or bring your own 3rd party load balancer. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc VM logical network. |
+
+## IP Address range allocation for Pod CIDR and Service CIDR
+
+### Pod network CIDR
+
+Pod network CIDR is a range of IP addresses used by Kubernetes to assign unique IP addresses to the individual pods running within a Kubernetes cluster. Each pod gets its own IP address within this range, allowing pods to communicate with each other and with services within the cluster. In AKS, pod IP addresses are assigned via *Calico CNI in VXLAN mode*. Calico VXLAN helps create *Overlay networks*, where the IP addresses of pods (from the pod network CIDR) are virtualized and tunneled through the physical network. In this mode, each pod is assigned an IP address from the pod network CIDR, but this IP address is not directly routable on the physical network. Instead, it is encapsulated within the network packets and sent through the underlying physical network to reach its destination pod on another node.
+
+AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [`--pod-cidr`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
+
+### Service Network CIDR
+
+The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
+- ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
+- NodePort: Exposes the service on a specific port on each node’s IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
+- LoadBalancer: This creates a cloud-provider-managed load balancer and exposes the service externally. The external IP assigned is typically managed by the cloud provider, while the internal ClusterIP remains within the service network CIDR.
+
+AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations customizations for the serivce network CIDR today.
+
+## Next steps
+
+[Create logical networks for Kubernetes clusters on Azure Stack HCI 23H2](aks-networks.md)
