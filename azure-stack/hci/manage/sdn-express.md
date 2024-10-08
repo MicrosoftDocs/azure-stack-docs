@@ -46,7 +46,7 @@ The following requirements must be met for a successful SDN deployment:
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
 
@@ -203,7 +203,7 @@ The following configuration sample files for deploying SDN are available on the 
 
 - **SDN Gateways.psd1** - Deploy Network Controller, Software Load Balancer and Gateway for connectivity to external networks.
 
-[!INCLUDE [redeploy-sdn-network-controller](../../includes/hci-redeploy-sdn-network-controller.md)]
+[!INCLUDE [redeploy-sdn-network-controller](../../hci/includes/hci-redeploy-sdn-network-controller.md)]
 
 ## Next steps
 

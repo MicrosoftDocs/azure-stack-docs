@@ -55,7 +55,7 @@ The following requirements must be met for a successful SDN deployment:
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
 
 ## Deploy SDN Network Controller
 
@@ -92,7 +92,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 1. After the Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
-[!INCLUDE [redeploy-sdn-network-controller](../../includes/hci-redeploy-sdn-network-controller.md)]
+[!INCLUDE [redeploy-sdn-network-controller](../../hci/includes/hci-redeploy-sdn-network-controller.md)]
 
 ## Deploy SDN Software Load Balancer
 

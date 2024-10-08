@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Manage system security with Microsoft Defender for Cloud (preview)
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article discusses how to use Microsoft Defender for Cloud to protect your Azure Stack HCI system from various cyber threats and vulnerabilities.
 
@@ -19,7 +19,7 @@ Defender for Cloud helps improve the security posture of your Azure Stack HCI en
 
 For more information about Microsoft Defender for Cloud, see [Microsoft Defender for Cloud documentation](/azure/defender-for-cloud/).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

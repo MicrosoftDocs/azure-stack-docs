@@ -10,13 +10,13 @@ ms.date: 02/23/2024
 
 # Protect VM workloads with Azure Site Recovery on Azure Stack HCI (preview)
 
-[!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-22h2-later](../../hci/includes/hci-applies-to-22h2-later.md)]
 
 This guide describes how to protect Windows and Linux VM workloads running on your Azure Stack HCI clusters if there is a disaster. You can use the Azure Site Recovery to replicate your on-premises Azure Stack HCI virtual machines (VMs) into Azure and protect your business critical workloads.
 
 This feature is enabled on your Azure Stack HCI clusters running May 2023 cumulative update of version 22H2 and later.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../hci/includes/hci-preview.md)]
 
 ## Azure Site Recovery with Azure Stack HCI
 

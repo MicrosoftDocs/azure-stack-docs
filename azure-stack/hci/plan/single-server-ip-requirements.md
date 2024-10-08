@@ -12,7 +12,7 @@ ms.date: 03/21/2024
 
 # Review single-server storage reference pattern IP requirements for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes the IP requirements for deploying a single-server network reference pattern in your environment.
 

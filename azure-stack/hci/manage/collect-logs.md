@@ -11,7 +11,7 @@ ms.date: 03/19/2024
 
 # Collect diagnostic logs for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
 

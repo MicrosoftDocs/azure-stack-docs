@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # September OS security update (KB 5043055) for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on September 10, 2024 and applies to OS build 25398.1128.
 
