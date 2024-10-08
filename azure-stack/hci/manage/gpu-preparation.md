@@ -21,9 +21,9 @@ This article describes how to prepare graphical processing units (GPUs) for Azur
 
 You can attach your GPUs in one of two ways for Azure Local:
 
-- **[Discrete Device Assignment (DDA)](/windows-machine/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)** - allows you to dedicate a physical GPU to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.  
+- **[Discrete Device Assignment (DDA)](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)** - allows you to dedicate a physical GPU to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.  
 
-- **[GPU Partitioning (GPU-P)](/windows-machine/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci)** - allows you to share a GPU with multiple workloads by splitting the GPU into dedicated fractional partitions.
+- **[GPU Partitioning (GPU-P)](/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci)** - allows you to share a GPU with multiple workloads by splitting the GPU into dedicated fractional partitions.
 
 Consider the following functionality and support differences between the two options of using your GPUs:
 
