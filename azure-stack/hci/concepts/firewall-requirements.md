@@ -41,19 +41,19 @@ As shown in the following diagram, Azure Stack HCI can access Azure using more t
 
 Starting with Azure Stack HCI, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Stack HCI](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
-For East US consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+For East US consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
 - [Azure Stack HCI 23H2 East US required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
-For West Europe consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+For West Europe consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
 - [Azure Stack HCI 23H2 Western Europe required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
 
-For Australia East consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+For Australia East consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
 - [Azure Stack HCI 23H2 Australia East required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
-For Canada Central consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+For Canada Central consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
 - [Azure Stack HCI 23H2 Canada Central required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
-For Central India consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+For Central India consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
 - [Azure Stack HCI 23H2 Central India required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
 
 
