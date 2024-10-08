@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 05/02/2024
+ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
