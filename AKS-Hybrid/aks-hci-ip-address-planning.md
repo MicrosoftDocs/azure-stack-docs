@@ -52,6 +52,23 @@ Continuing with this example, and adding it to the following table, you get:
 | Control plane IP | Reserve 2 IP addresses, one for AKS Arc cluster | Use the `controlPlaneIP` parameter to pass the IP address for control plane IP. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc logical network. |
 | Load balancer IPs | 3 IP address for Kubernetes services, for Jane's voting application. | These IP addresses are used when you install a load balancer on cluster A. You can use the MetalLB Arc extension, or bring your own 3rd party load balancer. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc VM logical network. |
 
+### LNETs considerations for AKS clusters and Arc VMs
+
+Logical networks on Azure Stack HCI are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
+- Share a logical network between AKS and Arc VMs
+- Define seperate logical networks for AKS clusters and Arc VMs
+
+Sharing a logical network between AKS and Arc VMs on Azure Stack HCI offers the benefit of streamlined communication, cost savings, and simplified network management. However, this approach also introduces potential challenges such as resource contention, security risks, and complexity in troubleshooting.
+
+| **Criteria**                              | **Sharing a logical network**                                  | **Defining separate logical networks**     |
+|-------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
+| **Configuration complexity** | Simpler configuration with a single network, reducing setup complexity. | More complex setup, as you need to configure multiple logical networks for VMs and AKS clusters.
+| **Scalability**              | Potential scalability limitations as both Arc VMs and AKS clusters share network resources. | More scalable since network resources are separated and can scale independently. |
+| **Network policy management**  | Easier to manage with one set of network policies, but harder to isolate workloads. | Easier to isolate workloads, as separate policies can be applied per logical network. |
+| **Security Considerations**    | Increased risk of cross-communication vulnerabilities if not properly segmented.  | Better security as each network can be segmented and isolated more strictly. |
+| **Impact of network failures** | A failure in the shared network can affect both AKS and Arc VMs simultaneously.   | A failure in one network affects only the workloads within that network, reducing overall risk. |
+
+
 ## IP Address range allocation for Pod CIDR and Service CIDR
 
 ### Pod network CIDR
