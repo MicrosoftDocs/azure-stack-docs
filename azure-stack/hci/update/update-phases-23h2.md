@@ -13,7 +13,7 @@ ms.date: 10/07/2024
 
 This article describes the various phases of solution updates that are applied to your Azure Local instance to keep it up-to-date. This information is applicable to Azure Local, version 23H2.
 
-The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator.
+The procedure in this article applies to both a single server and a multi-server instance that is running the latest version including the orchestrator.
 
 ## About update phases
 
@@ -41,7 +41,7 @@ The release notes include the update contents, changes, known issues, and links 
 
 After Microsoft releases the update, your Azure Local update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 
-Depending on the hardware in your cluster and the scope of an update bundle, you might need to acquire and sideload extra content to proceed with an update. The **operating system** and **agents and services** content are provided by Microsoft, while depending on your specific solution and the OEM, the **Solution Extension** might require an extra download from the hardware OEM. If more is required, the installation flow prompts you for the content.
+Depending on the hardware in your system and the scope of an update bundle, you might need to acquire and sideload extra content to proceed with an update. The **operating system** and **agents and services** content are provided by Microsoft, while depending on your specific solution and the OEM, the **Solution Extension** might require an extra download from the hardware OEM. If more is required, the installation flow prompts you for the content.
 
 ## Phase 2: Readiness checks and staging
 

@@ -1,21 +1,21 @@
 ---
-title: Troubleshoot solution updates for Azure Stack HCI, version 23H2
-description: Learn how to troubleshoot solution updates applied to Azure Stack HCI, version 23H2.
+title: Troubleshoot solution updates for Azure Local, version 23H2
+description: Learn how to troubleshoot solution updates applied to Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 10/08/2024
 ---
 
 # Troubleshoot solution updates for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date.
+This article describes how to troubleshoot solution updates that are applied to your Azure Local instance to keep it up-to-date.
 
 ## About troubleshooting updates
 
-If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and updates for the workloads.
+If your cluster was created via a new deployment of Azure Local, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and updates for the workloads.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. When an update fails, you can retry the update.
 
@@ -23,7 +23,7 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 You can also collect diagnostic logs to help Microsoft identify and fix the issues.
 
-To collect logs for updates using the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
+To collect logs for updates using the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
 
 To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
 
