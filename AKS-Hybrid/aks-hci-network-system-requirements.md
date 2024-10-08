@@ -52,10 +52,10 @@ Kubernetes uses a control plane to ensure every component in the Kubernetes clus
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This load balancing can help prevent downtime and improve overall performance of applications. AKS supports the following options to deploy a load balancer for your Kubernetes cluster:
 
-- [Deploy MetalLB load balancer using Azure Arc extension](deploy-load-balancer-portal.md).
+- [Deploy extension for MetalLB for Azure Arc enabled Kubernetes](deploy-load-balancer-portal.md).
 - Bring your own third party load balancer.
 
-Whether you choose the MetalLB Arc extension, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
+Whether you choose the Arc extension for MetalLB, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
 
 - Provide IP addresses for your services from the same subnet as the AKS Arc VMs.
 - Use a different network and list of IP addresses if your application needs external load balancing.
@@ -72,7 +72,7 @@ Firewall requirements for AKS has been consolidated with Azure Stack HCI firewal
 
 ## DNS server settings
 
-
+You need to ensure that the DNS server of the logical network can resolve the domain name of the Azure Stack HCI nodes. DNS name resolution is required for all nodes to be able to communicate with each other. We also recommend enabling dynamic DNS updates in your DNS environment to allow AKS to register names in the DNS system for discovery.
 
 ## Network port and cross-VLAN requirements
 
