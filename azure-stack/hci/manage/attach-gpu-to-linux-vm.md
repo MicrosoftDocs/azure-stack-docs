@@ -1,6 +1,6 @@
 ---
-title: Attach a GPU to a Linux VM in Azure Stack HCI
-description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Stack HCI.
+title: Attach a GPU to a Linux VM in Azure Local
+description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Local.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
@@ -8,20 +8,20 @@ ms.custom: linux-related-content
 ms.date: 02/23/2024
 ---
 
-# Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
+# Attaching a GPU to an Ubuntu Linux VM on Azure Local
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 [!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
-This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
-This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
+This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Local using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
+This document assumes you have the Azure Local instance deployed and VMs installed.
 
 ## Install the GPU and then dismount it in PowerShell
 
-1. Install the NVIDIA GPU(s) physically into the appropriate server(s) following OEM instructions and BIOS recommendations.
-2. Power on each server.
-3. Sign in using an account with administrative privileges to the server(s) with the NVIDIA GPU installed.
+1. Install the NVIDIA GPU(s) physically into the appropriate machine(s) following OEM instructions and BIOS recommendations.
+2. Power on each machine.
+3. Sign in using an account with administrative privileges to the machine(s) with the NVIDIA GPU installed.
 4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "3D Video Controller."
 5. Right-click on "3D Video Controller" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 6. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
@@ -39,9 +39,9 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 ## Create and configure an Ubuntu virtual machine
 
 1. Download [Ubuntu desktop release 18.04.02 ISO](http://old-releases.ubuntu.com/releases/18.04.2/).
-2. Open **Hyper-V Manager** on the node of the system with the GPU installed.
+2. Open **Hyper-V Manager** on the machine of the system with the GPU installed.
    > [!NOTE]
-   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the node instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
+   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
 3. Using the Ubuntu ISO downloaded in step 1, create a new virtual machine using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Gen 1 VM with 2GB of memory and a network card attached to it.
 4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
@@ -84,7 +84,7 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 7. Log in to Ubuntu and open the terminal to install SSH:
 
    ```shell
-    $ sudo apt install openssh-server
+    $ sudo apt install openssh-machine
    ```
 
 8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the **eth0** interface.
