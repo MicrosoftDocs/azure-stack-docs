@@ -1,30 +1,30 @@
 ---
-title: Azure Resource Manager template deployment for Azure Stack HCI, version 23H2
-description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
+title: Azure Resource Manager template deployment for Azure Local, version 23H2
+description: Learn how to prepare and then deploy Azure Local, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/04/2024
+ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-arm-template
 ---
 
-# Deploy an Azure Stack HCI, version 23H2 via Azure Resource Manager deployment template
+# Deploy an Azure Local, version 23H2 instance via Azure Resource Manager deployment template
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
+This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-> Azure Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
+> Azure Resource Manager template deployment of Azure Local, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Local instances. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
 
 ## Prerequisites
 
-- Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
+- Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
   - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
-  - All servers are running the same version of OS.
-  - All the servers have the same network adapter configuration.
+  - All machines are running the same version of OS.
+  - All the machines have the same network adapter configuration.
 
 ## Step 1: Prepare Azure resources
 
@@ -32,7 +32,7 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Create a service principal and client secret
 
-To authenticate your cluster, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
+To authenticate your system, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
 
 ### Create a service principal for ARB
 
@@ -76,20 +76,20 @@ The steps are also summarized here:
 
     You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
 
-### Get the object ID for Azure Stack HCI Resource Provider
+### Get the object ID for Azure Local Resource Provider
 
-This object ID for the Azure Stack HCI RP is unique per Azure tenant.
+This object ID for the Azure Local RP is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
 1. Select the SPN that is listed and copy the **Object ID**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
-    Alternatively, you can use PowerShell to get the object ID of the Azure Stack HCI RP service principal. Run the following command in PowerShell:
+    Alternatively, you can use PowerShell to get the object ID of the Azure Local RP service principal. Run the following command in PowerShell:
 
     ```powershell
     Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
@@ -172,13 +172,13 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select **Deployments**.
 
-1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
+1. Refresh and watch the deployment progress from the first machine (also known as the seed machine and is the first machine where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
 1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
     Once complete, the task at the top updates with status and end time.
 
-You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
+You can also check out this community sourced template to [Deploy an Azure Local, version 23H2 instance using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
 ## Troubleshoot deployment issues
 
@@ -198,13 +198,13 @@ This section contains known issues and workarounds for ARM template deployment.
 
 <!--|Issue|Workaround/Comments|
 |------|-------|
-|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.|
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.|
 |Role assignment fails with error *Tenant ID, application ID, principal ID, and scope aren't allowed to be updated.* <br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.| To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.|
 |In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |-->
 
 #### Role assignment already exists
 
-**Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
+**Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png" alt-text="Screenshot showing the role assignment exists message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png":::
 
@@ -224,9 +224,9 @@ This section contains known issues and workarounds for ARM template deployment.
 
 **Issue**: In this release, you may encounter license sync issue when using ARM template deployment.
 
-**Workaround**: After the cluster completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues.
+**Workaround**: After the system completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your system is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues.
 
 ## Next steps
 
 - [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md)
+- [Deploy Azure Arc VMs on Azure Local](../manage/create-arc-virtual-machines.md)
