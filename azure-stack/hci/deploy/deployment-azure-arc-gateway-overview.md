@@ -58,7 +58,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 Traffic flows are illustrated in the following diagram:
 
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png" alt-text="Diagram of Azure Arc gateway version 2408 components." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png":::
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png" alt-text="Diagram of Azure Arc gateway architecture for version 2408." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png":::
 
 <!-- ## Arc-enabled server endpoints redirected via the Arc gateway in limited Public Preview
 
