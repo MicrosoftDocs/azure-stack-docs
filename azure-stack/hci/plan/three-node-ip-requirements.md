@@ -12,7 +12,7 @@ ms.date: 05/15/2024
 
 # Review three-node storage reference pattern IP requirements for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, learn about the IP address requirements for deploying a three-node network reference pattern in your environment.
 

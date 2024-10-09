@@ -9,7 +9,7 @@ ms.date: 05/12/2023
 
 # Enhanced management of Azure Stack HCI from Azure
 
-[!INCLUDE [hci-applies-to-22h2-later](../../includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-22h2-later](../../hci/includes/hci-applies-to-22h2-later.md)]
 
 This guide describes the feature in the May 2023 cumulative update for Azure Stack HCI, version 22H2, that enables enhanced management from Azure.
 

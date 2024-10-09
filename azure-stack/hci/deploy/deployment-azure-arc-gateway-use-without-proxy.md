@@ -14,7 +14,7 @@ Applies to: Azure Local, version 23H2, release 2408.1 and 2408
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features on your Azure Local. This article details how to use Azure gateway for Azure Local instances without a proxy.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

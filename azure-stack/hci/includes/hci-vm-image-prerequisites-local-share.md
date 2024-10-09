@@ -8,7 +8,7 @@ ms.date: 07/18/2024
 ---
 
 
-- Make sure to review and [complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
+- Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
 - For custom images in a local share on your Azure Stack HCI, you'll have the following extra prerequisites:
     - You should have a VHD/VHDX uploaded to a local share on your Azure Stack HCI cluster.

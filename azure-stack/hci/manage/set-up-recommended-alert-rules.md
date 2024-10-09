@@ -11,7 +11,7 @@ ms.date: 03/05/2024
 
 # Enable recommended alert rules for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable recommended alert rules for Azure Stack HCI.
 

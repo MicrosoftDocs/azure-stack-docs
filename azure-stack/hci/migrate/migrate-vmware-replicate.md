@@ -10,11 +10,11 @@ ms.subservice: azure-stack-hci
 
 # Discover and replicate VMware VMs for migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 

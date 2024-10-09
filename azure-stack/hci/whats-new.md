@@ -11,7 +11,7 @@ ms.date: 09/25/2024
 
 # What's new in Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 23H2.
 

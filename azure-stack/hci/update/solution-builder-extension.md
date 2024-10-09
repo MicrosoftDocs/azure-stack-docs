@@ -13,7 +13,7 @@ ms.date: 05/28/2024
 
 # Solution Builder Extension updates for your Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of the Solution Builder Extension updates and explains how to identify and install them on your Azure Stack HCI, version 23H2 clusters. Additionally, it offers insights into the extension’s advanced capabilities.
 

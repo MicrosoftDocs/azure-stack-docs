@@ -10,7 +10,7 @@ ms.date: 05/22/2024
 
 # Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
@@ -118,7 +118,7 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
 
     In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
 
-    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../hci/includes/hci-display-correct-default-network-policies-windows.md)]
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
 

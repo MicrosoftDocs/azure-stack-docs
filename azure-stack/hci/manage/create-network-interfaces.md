@@ -13,7 +13,7 @@ ms.date: 07/17/2024
 
 # Create network interfaces for Arc virtual machines on Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Stack HCI cluster. You can create network interfaces using the Azure portal or the Azure CLI. 
 
@@ -49,7 +49,7 @@ To create a VM, you'll first need to create a network interface on your logical 
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Virtual network interface with static IP
 

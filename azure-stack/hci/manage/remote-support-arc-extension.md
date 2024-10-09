@@ -11,7 +11,7 @@ ms.date: 01/19/2024
 
 # Azure Stack HCI Remote Support ARC extension overview
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides a brief overview of the Remote Support Arc extension, its benefits, and how to enable it on your Azure Stack HCI system using PowerShell.
 

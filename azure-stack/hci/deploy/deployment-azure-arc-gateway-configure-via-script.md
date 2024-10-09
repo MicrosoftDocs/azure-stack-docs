@@ -16,7 +16,7 @@ After creating the Arc gateway resource in your Azure subscription, you can enab
 
 Using this method, you don’t need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

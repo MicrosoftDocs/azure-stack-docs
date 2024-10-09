@@ -18,7 +18,7 @@ You can use the Arc gateway to significantly reduce the number of required endpo
 
 For information on how to deploy the Azure Arc gateway for standalone servers (not Azure Local node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 
 
