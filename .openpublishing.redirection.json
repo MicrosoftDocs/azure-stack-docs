@@ -1492,7 +1492,7 @@
     },
     {
       "source_path": "azure-stack/hci/deploy/deployment-azure-arc-gateway-new-cluster.md",
-      "redirect_url": "/azure-stack/deploy/deployment-azure-arc-gateway-overview",
+      "redirect_url": "/azure-stack/hci/deploy/deployment-azure-arc-gateway-overview",
       "redirect_document_id": false
     }
   ]

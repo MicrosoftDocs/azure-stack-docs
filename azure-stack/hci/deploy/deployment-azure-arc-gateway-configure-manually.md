@@ -3,7 +3,7 @@ title: Configure Arc proxy manually for Azure gateway, version 2408 (preview)
 description: Learn how to configure Arc proxy manually for Azure gateway, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/09/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -130,7 +130,7 @@ Once the deployment validation starts, you can connect to the first Azure Stack 
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
-:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the the Arc gateway log using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
+:::image type="content" source="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png" alt-text="Screenshot that shows the Arc gateway log using manual method." lightbox="./media/deployment-connect-nodes-to-arc-gateway/arc-gateway-log.png":::
 
 To check the Arc agent configuration and verify that it is using the Arc gateway, run the following command: `c:\program files\AzureConnectedMachineAgent>.\azcmagent show`
 

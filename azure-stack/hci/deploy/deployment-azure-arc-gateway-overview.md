@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Stack HCI, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 10/09/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -58,7 +58,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 Traffic flows are illustrated in the following diagram:
 
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png" alt-text="Diagram of Azure Arc gateway architecture for version 2408." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png":::
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture for version 2408." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
 
 <!-- ## Arc-enabled server endpoints redirected via the Arc gateway in limited Public Preview
 
