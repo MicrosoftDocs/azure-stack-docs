@@ -4,8 +4,7 @@ description: Select a network reference pattern for single-server and two-node A
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 03/14/2024
 ---
 
