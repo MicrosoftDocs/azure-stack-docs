@@ -4,8 +4,7 @@ description: Find out what's new in Azure Stack HCI, version 23H2 release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/25/2024
 ---
 

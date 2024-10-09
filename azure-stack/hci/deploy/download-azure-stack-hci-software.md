@@ -4,8 +4,7 @@ description: Learn how to download the Azure Stack HCI software from the Azure p
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 01/31/2024
 ---
 
