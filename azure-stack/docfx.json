@@ -210,7 +210,7 @@
         "reference/**/*.md": "azure-stack-hub",
         "user/**/*.md": "azure-stack-hub",
         "hci/**/*.md": "azure-stack-hci"
-      }
+      },
       "recommendations": true
     },
     "fileMetadata": {
