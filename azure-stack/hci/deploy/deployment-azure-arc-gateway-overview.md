@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 09/27/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # About Azure Arc gateway for Azure Local, version 23H2 (preview)

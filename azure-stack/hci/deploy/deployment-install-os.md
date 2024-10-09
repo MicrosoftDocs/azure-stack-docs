@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Install the Azure Stack HCI operating system, version 23H2
@@ -27,7 +27,7 @@ Before you begin, make sure you do the following steps:
 
 To install the Azure Stack HCI operating system, version 23H2, follow these steps:
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](./download-azure-stack-hci-23h2-software.md).
+1. [Download the Azure Stack HCI operating system from the Azure portal](./download-23h2-software.md).
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the machine where you want to install the operating system.
 

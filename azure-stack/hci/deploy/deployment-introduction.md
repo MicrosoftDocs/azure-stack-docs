@@ -6,7 +6,7 @@ ms.topic: overview
 ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # About Azure Local, version 23H2 deployment
@@ -40,10 +40,11 @@ Follow this sequence to deploy Azure Local in your environment:
 | [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your machines are cabled. You will define the network settings based on this topology. |
 | [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Local deployment. |
-| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-azure-stack-hci-23h2-software.md) | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal |
+| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-23h2-software.md) | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal |
 | Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI operating system locally on each machine in your system. |
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Local if your network uses a proxy server for internet access. |
-| Step 4: [Register machines with Arc and assign permissions](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
+| Step 4A: [Register machines with Arc and assign permissions via command line](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
+| Step 4B: [Register machines with Arc and assign permissions via local UI](./deployment-arc-register-server-permissions.md) | Configure via local UI and register with Arc the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
 | Step 5A: [Deploy the system via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to create Azure Local instance. |
 | Step 5B: [Deploy the system via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Resource Manager deployment template and the parameter file to deploy an Azure Local instance. |
 

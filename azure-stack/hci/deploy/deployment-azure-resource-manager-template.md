@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: devx-track-arm-template
 ---
 

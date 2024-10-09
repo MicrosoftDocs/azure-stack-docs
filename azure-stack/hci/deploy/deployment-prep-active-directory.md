@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Prepare Active Directory for Azure Local, version 23H2 deployment
@@ -107,4 +107,4 @@ To create a dedicated OU, follow these steps:
 
 ## Next steps
 
-- [Download Azure Local, version 23H2 software](./download-azure-stack-hci-23h2-software.md) on each machine in your system.
+- [Download Azure Local, version 23H2 software](./download-23h2-software.md) on each machine in your system.

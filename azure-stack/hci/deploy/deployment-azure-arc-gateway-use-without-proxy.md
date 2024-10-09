@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/07/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Use Azure gateway without a proxy on Azure Local (preview)

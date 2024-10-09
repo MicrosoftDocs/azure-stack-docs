@@ -4,7 +4,7 @@ description: Learn how to use the web UI to bootstrap and Arc register the Azure
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 10/07/2024
 ---
 
@@ -31,7 +31,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 1. You have the machines that you intend to cluster as an Azure Local instance. The machines must be powered on and connected to the network.
 1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md)
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-1. [Download the English Preview ISO](../deploy/download-azure-stack-hci-23h2-software.md) to install the preview version 23H2 of Azure Local.
+1. [Download the English Preview ISO](../deploy/download-23h2-software.md) to install the preview version 23H2 of Azure Local.
 1. Use the English Preview ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Local, version 23H2 software](../deploy/deployment-install-os.md).
 1. For your machines, note down the:
    1. Serial number of the machines.

@@ -5,6 +5,7 @@ author: JasonGerend
 ms.topic: how-to
 ms.date: 10/09/2024
 ms.author: jgerend
+ms.service: azure-stack-hci
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local system of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 

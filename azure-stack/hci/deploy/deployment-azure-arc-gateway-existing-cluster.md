@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 06/20/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Simplify outbound network requirements for existing Azure Stack HCI, version 23H2 clusters through Azure Arc gateway (preview)
