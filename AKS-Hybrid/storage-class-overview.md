@@ -14,7 +14,7 @@ ms.topic: conceptual
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Storage is key to most applications. Kubernetes uses a *storage class* to describe classes (types) of storage. Pods use storage class to request storage, and when the pod is up and running, volumes of requested storage class are mounted to the pod so that the pod can access their contents. Implementation details, including how the volumes are provisioned, mounted, how the files are stored, are handled by storage addons to the storage class.
+Storage is key to most applications. Kubernetes uses a *storage class* to describe classes (types) of storage. Pods use storage class to request storage, and when the pod is up and running, volumes of requested storage class are mounted to the pod so that the pod can access their contents. Implementation details, including how the volumes are provisioned and mounted, and how the files are stored, are handled by storage addons to the storage class.
 
 *Container Storage Interface (CSI)* is the interface that Kubernetes uses to handle different storage classes. Different storage types provide storage addons that implement the CSI for specific storage classes.
 
