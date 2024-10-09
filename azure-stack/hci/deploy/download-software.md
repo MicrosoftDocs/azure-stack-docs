@@ -52,7 +52,7 @@ Follow these steps to download the Azure Stack HCI software:
     1. Select the license terms and privacy notice checkbox.
     1. Select the **Download Azure Stack HCI** button. This action begins the download. Use the downloaded file to install the software on each server that you want to cluster.
 
-        :::image type="content" source="media/download-software/download-operating-system-page.png" alt-text="Screenshot of the Download Azure Stack HCI page." lightbox="media/download-software/download-operating-system-page.png":::
+        :::image type="content" source="media/download-software/download-operating-system.png" alt-text="Screenshot of the Download Azure Stack HCI page." lightbox="media/download-software/download-operating-system.png":::
 
 ## Next steps
 
