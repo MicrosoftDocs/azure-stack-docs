@@ -161,5 +161,5 @@ Get-NetAdapter "vManagement*"|Set-DnsClient -RegisterThisConnectionsAddress $fal
 ## Next steps
 
 Proceed to:
-- [Download the Azure Stack HCI OS software](../deploy/download-azure-stack-hci-23h2-software.md).
+- [Download the Azure Stack HCI OS software](../deploy/download-23h2-software.md).
 - [Install the Azure Stack HCI OS software](../deploy/deployment-install-os.md).

@@ -10,7 +10,7 @@ ms.date: 10/09/2024
 
 # Download operating system for Azure Local deployment
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to download the operating system (OS) software from the Azure portal to deploy an Azure Local instance.
 

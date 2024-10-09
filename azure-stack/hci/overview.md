@@ -20,7 +20,7 @@ Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts Win
 
 An Azure Stack HCI system consists of a server or a cluster of servers running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Stack HCI systems as well as view all of your Azure Stack HCI deployments. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
 
-Azure Stack HCI is available for download from the Azure portal with a free 60-day trial ([Download Azure Stack HCI](./deploy/download-azure-stack-hci-23h2-software.md)).
+Azure Stack HCI is available for download from the Azure portal with a free 60-day trial ([Download Azure Stack HCI](./deploy/download-23h2-software.md)).
 
 To acquire the servers to run Azure Stack HCI, you can purchase Azure Stack HCI integrated systems from a Microsoft hardware partner with the operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the Azure Stack HCI sizing tool to estimate hardware requirements.
 
