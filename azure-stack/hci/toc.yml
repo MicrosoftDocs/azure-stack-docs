@@ -616,7 +616,7 @@ items:
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
-      href: deploy/download-azure-stack-hci-software.md
+      href: deploy/download-software.md
     - name: 1. Deploy the Azure Stack HCI OS
       href: deploy/operating-system.md
     - name: 2. Create a cluster

@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 06/26/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ---
 

@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 02/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # View known issues in Azure Stack HCI 2311.2 General Availability release
