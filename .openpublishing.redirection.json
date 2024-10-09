@@ -6,6 +6,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-23h2-software.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-23h2-software",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-software.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-software",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
       "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
       "redirect_document_id": false
