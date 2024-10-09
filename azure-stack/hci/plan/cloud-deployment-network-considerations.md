@@ -269,8 +269,8 @@ By default, network ATC will automatically assign the IPs and VLANs for storage 
 |Storage Adapter|IP Address and Subnet|VLAN|
 |---------------|---------------------|----|
 |pNIC1          |10.71.1.x            |711 |
-|pNIC1          |10.71.2.x            |712 |
-|pNIC1          |10.71.3.x            |713 |
+|pNIC2          |10.71.2.x            |712 |
+|pNIC3          |10.71.3.x            |713 |
 
 However, if your deployment requirements do not fit with those default IPs and VLANs, you can use your own IPs, subnet and VLANs for storage. This functionality is only available when deploying clusters using ARM templates and you will need to specify the following parameters in your template.
 
