@@ -4,8 +4,7 @@ description: This article provides the release information for Azure Stack HCI, 
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 10/07/2024
 ---
 
