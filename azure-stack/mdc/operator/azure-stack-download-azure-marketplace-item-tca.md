@@ -4,7 +4,7 @@ description: Learn how to download marketplace items from Azure and publish to A
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: sethm
