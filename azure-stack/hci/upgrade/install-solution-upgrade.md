@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 # Install solution upgrade on your Azure Stack HCI cluster
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to install solution upgrade on your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 

@@ -12,7 +12,7 @@ ms.date: 03/14/2024
 
 # Review two-node storage reference pattern components for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll learn about which network components get deployed for two-node reference patterns, as shown below:
 

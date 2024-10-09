@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Azure Stack HCI observability
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes observability in Azure Stack HCI and the data sources through which it is achieved.
 

@@ -11,7 +11,7 @@ ms.date: 01/31/2024
 
 # Set up metric alerts for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to set up metric alerts for Azure Stack HCI.
 

@@ -19,7 +19,7 @@ You can use the Arc gateway to significantly reduce the number of required endpo
 
 <!--This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway]().-->
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -121,7 +121,7 @@ Next step is to [Verify that the setup was successful](#step-3-verify-that-setup
 
 ## Step 3: Verify that setup succeeded
 
-[!INCLUDE [hci-gateway-verify-setup-successful](../../includes/hci-gateway-verify-setup-successful.md)]
+[!INCLUDE [hci-gateway-verify-setup-successful](../../hci/includes/hci-gateway-verify-setup-successful.md)]
 
 
 ## Troubleshooting  

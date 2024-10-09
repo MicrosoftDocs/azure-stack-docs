@@ -11,7 +11,7 @@ ms.date: 07/08/2024
 
 Applies to: Azure Stack HCI, software version 2405.1 and later
 
-<!--[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]-->
+<!--[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]-->
 
 This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. 
 
@@ -19,7 +19,7 @@ You can use the local UI or Azure CLI to register your servers.
 
 Use the local web-based UI method if you intend to deploy some sites with a few servers per site.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

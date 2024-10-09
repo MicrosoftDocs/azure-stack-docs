@@ -10,11 +10,11 @@ ms.subservice: azure-stack-hci
 
 # Prerequisites for VMware migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes the prerequisite tasks you need to complete before you begin the process to migrate VMware virtual machines (VMs) to Azure Stack HCI. Make sure to [review the requirements](migrate-vmware-requirements.md) for migration if you haven't already.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # About Azure Stack HCI upgrades
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides an overview of upgrading your existing Azure Stack HCI system from version 22H2 to version 23H2.
 

@@ -9,7 +9,7 @@ ms.date: 01/31/2024
 
 # What is Azure Stack HCI monitoring?
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of Azure Stack HCI monitoring.
 

@@ -11,7 +11,7 @@ ms.date: 08/28/2024
 
 # Install and enable Network ATC on existing Azure Stack HCI, version 22H2 clusters
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides information on how to install and enable Network ATC on your existing Azure Stack HCI, version 22H2 cluster. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
 
