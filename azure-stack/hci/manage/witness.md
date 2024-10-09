@@ -12,7 +12,7 @@ ms.reviewer: stevenek
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+[!INCLUDE [warning-22h2](../../hci/includes/hci-warning-deploy-22h2.md)]
 
 This article describes how to set up an Azure Stack HCI or Windows Server cluster with a cluster witness in Azure (known as a cloud witness).
 

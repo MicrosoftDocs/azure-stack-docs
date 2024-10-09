@@ -12,7 +12,7 @@ ms.custom: e2e-hybrid, linux-related-content
 
 # Azure Stack HCI solution overview
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.
 

@@ -11,7 +11,7 @@ ms.date: 01/31/2024
 
 # Azure Arc extension management on Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Stack HCI server machines.
 

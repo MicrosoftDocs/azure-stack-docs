@@ -11,11 +11,11 @@ ms.date: 03/26/2024
 
 # Use the dashboard to manage Azure Stack HCI systems (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article details how to manage at-scale your Azure Stack HCI systems via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../hci/includes/hci-preview.md)]
 
 ## View the dashboard charts
 

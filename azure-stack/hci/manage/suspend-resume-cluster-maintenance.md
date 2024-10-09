@@ -14,7 +14,7 @@ ms.date: 09/17/2024
 
 # Suspend and resume Azure Stack HCI, version 23H2 clusters for maintenance
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to suspend a cluster node for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the cluster node once maintenance is complete. 
 

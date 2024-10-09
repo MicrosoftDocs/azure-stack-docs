@@ -10,7 +10,7 @@ ms.date: 04/02/2024
 
 # Configure network security groups with tags in Windows Admin Center
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
 

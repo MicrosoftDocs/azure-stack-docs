@@ -11,11 +11,11 @@ ms.subservice: azure-stack-hci
 
 # About options to migrate VM workloads to Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of some of the common options available for migrating virtual machine (VM) workloads to your Azure Stack HCI cluster.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 
 ## Migration options

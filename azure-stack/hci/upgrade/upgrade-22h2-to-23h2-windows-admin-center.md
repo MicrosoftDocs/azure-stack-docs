@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2 via Windows Admin Center
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to upgrade the Azure Stack HCI, version 22H2 operating system (OS) to version 23H2, which is the latest generally available software via Windows Admin Center.
 

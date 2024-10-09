@@ -14,7 +14,7 @@ Applies to: Azure Stack HCI, versions 2408.1, 2408, and 23H2
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to use Azure gateway for Azure Stack HCI systems without a proxy.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 

@@ -13,7 +13,7 @@ ms.date: 09/09/2024
 
 # Create Arc virtual machines on Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
@@ -33,7 +33,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+[!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
@@ -41,18 +41,18 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+[!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+[!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+[!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
@@ -69,7 +69,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ## Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Create a Windows VM
 

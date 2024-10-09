@@ -10,7 +10,7 @@ ms.author: jgerend
 
 # Deploy an Azure Stack HCI, version 23H2 system using the Azure portal
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article helps you deploy an Azure Stack HCI, version 23H2 system using the Azure portal.
 
