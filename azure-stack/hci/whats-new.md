@@ -31,7 +31,7 @@ This release train includes the following releases:
 This is a baseline release with the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
-- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register servers with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-servers-with-azure-arc).
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register servers with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).
 - **Arc VM Management**: Starting in this release, you can attach or detach GPUs to an Arc VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
   - [Prepare GPUs for Azure Stack HCI (preview)](./manage/gpu-preparation.md)
   - [Manage GPUs using partitioning for Azure Stack HCI (preview)](./manage/gpu-manage-via-partitioning.md)
