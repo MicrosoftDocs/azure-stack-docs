@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 11/30/2023
+ms.date: 10/08/2024
 ---
 
 > [!IMPORTANT]
