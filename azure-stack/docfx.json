@@ -202,7 +202,15 @@
         }
       },
       "manager":"femila",
-      "ms.service": "azure-stack",
+      "ms.service": {
+        "asdk/**/*.md": "azure-stack-hub-asdk",
+        "mdc/**/*.md": "azure-stack-hub-mdc",
+        "operator/**/*.md": "azure-stack-hub",
+        "partner/**/*.md": "azure-stack-hub",
+        "reference/**/*.md": "azure-stack-hub",
+        "user/**/*.md": "azure-stack-hub",
+        "hci/**/*.md": "azure-stack-hci"
+      }
       "recommendations": true
     },
     "fileMetadata": {
@@ -225,14 +233,6 @@
         "partner/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "reference/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub"
       },
-      "ms.subservice": {
-        "asdk/**/*.md": "azure-stack-hub-asdk",
-        "mdc/**/*.md": "azure-stack-hub-mdc",
-        "operator/**/*.md": "azure-stack-hub",
-        "partner/**/*.md": "azure-stack-hub",
-        "reference/**/*.md": "azure-stack-hub",
-        "user/**/*.md": "azure-stack-hub"
-      }
     },
     "template": [],
     "dest": "AzureStack",
