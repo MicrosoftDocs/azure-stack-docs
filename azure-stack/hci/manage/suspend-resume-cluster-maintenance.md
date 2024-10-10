@@ -4,8 +4,7 @@ description: Learn how to suspend and resume cluster nodes for planned maintenan
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
 ms.date: 09/17/2024

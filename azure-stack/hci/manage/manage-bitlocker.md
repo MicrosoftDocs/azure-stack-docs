@@ -4,8 +4,7 @@ description: Learn how to manage BitLocker encryption on your Azure Stack HCI, v
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/04/2024
 ---
 

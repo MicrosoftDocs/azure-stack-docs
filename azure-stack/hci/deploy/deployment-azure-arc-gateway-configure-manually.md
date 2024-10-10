@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/09/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Configure Arc proxy manually for Azure gateway (preview)

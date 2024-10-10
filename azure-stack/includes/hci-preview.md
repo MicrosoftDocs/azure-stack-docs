@@ -1,10 +1,9 @@
 ---
 author: ManikaDhiman
 ms.author: v-mandhiman
-ms.service: azure-stack
+ms.service: azure-stack-hci
 ms.topic: include
 ms.date: 10/26/2022
-ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 10/26/2022
 ---

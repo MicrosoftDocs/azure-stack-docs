@@ -4,8 +4,7 @@ description: Learn how to prepare SUSE Linux images to create an Azure Stack HCI
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
 ms.date: 08/01/2024
