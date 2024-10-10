@@ -42,7 +42,7 @@ With Insights for Azure Local, you get access to default workbooks with basic me
 
 ### Metrics
 
-You can store numeric data from your Azure Local systems in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
+Azure Local enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
 
 ### Alerts
 

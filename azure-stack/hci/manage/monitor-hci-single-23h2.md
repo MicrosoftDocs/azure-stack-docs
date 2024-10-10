@@ -42,7 +42,7 @@ Here are the prerequisites of using Insights for Azure Local:
 
 ## Enable Insights
 
-Enabling Insights helps you monitor all Azure Local systems currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Local system.
+Enabling Insights helps you monitor all the Azure Local systems currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Local system.
 
 To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
 
@@ -193,7 +193,7 @@ Provides health faults on a cluster.
 |--|--|--|--|
 | Nodes | The names of the nodes in the cluster. | No unit | VM-1 |
 | Last updated | The date and time of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
-| Status | The health of the nodes in the cluster. | It can be healthy, warning, critical, and other | Healthy |
+| Status | The health status of the nodes in the cluster. | It can be healthy, warning, critical, and other | Healthy |
 | CPU usage | The % of time the process has used the CPU. | Percent | 56% |
 | Memory usage | Memory usage of the node process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | 16% |
 | Logical processors | The number of logical processors. | Count | 2 |
@@ -204,7 +204,7 @@ Provides health faults on a cluster.
 
 ### Virtual machines
 
-Provides the state of virtual machines on each node in the cluster. A VM can be in one of the following states: Running, Stopped, Failed, or Other (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended).
+Provides the state of the virtual machines on each node in the cluster. A VM can be in one of the following states: Running, Stopped, Failed, or Other (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended).
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
