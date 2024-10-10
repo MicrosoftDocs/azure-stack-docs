@@ -28,10 +28,10 @@ The Azure Local operating system update is available via the Windows Update and 
 To upgrade the OS on your cluster, follow these high-level steps:
 
 1. [Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.](#complete-prerequisites)
-1. [Connect to the Azure Local, version 22H2 cluster.](#step-1-connect-to-the-azure-stack-hci-cluster)
+1. [Connect to the Azure Local, version 22H2 instance.](#step-1-connect-to-the-azure-stack-hci-instance)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
-   1. [Offline manual upgrade of all servers in a cluster.](#method-2-perform-a-fast-offline-os-update-of-all-servers-in-a-cluster)
+   1. [Offline manual upgrade of all machines in a cluster.](#method-2-perform-a-fast-offline-os-update-of-all-machines-in-a-cluster)
 1. Check the status of the updates.
 1. [Perform post-upgrade steps, after the OS is upgraded.](#next-steps)
 

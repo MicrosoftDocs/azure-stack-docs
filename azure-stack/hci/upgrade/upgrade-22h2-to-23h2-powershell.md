@@ -28,8 +28,8 @@ The Azure Local operating system update is available via the Windows Update and 
 To upgrade the OS on your cluster, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
-1. [Connect to the Azure Local, version 22H2 cluster.](#step-1-connect-to-the-azure-stack-hci-cluster)
-1. [Check for the available updates using PowerShell.](#step-1-connect-to-the-azure-stack-hci-cluster)
+1. [Connect to the Azure Local, version 22H2 cluster.](#step-1-connect-to-the-azure-local-instance)
+1. [Check for the available updates using PowerShell.](#step-1-connect-to-the-azure-local-instance)
 1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
 1. [Check the status of the updates.](#step-3-check-the-status-of-an-update)
 1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
@@ -45,7 +45,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 
 > [!NOTE]
-> The ISO file is only required if the cluster nodes do not have access to Windows Update to download the OS feature update.  If using this method, after you [Connect to the Azure Local, version 22H2 cluster](#step-1-connect-to-the-azure-stack-hci-cluster), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
+> The ISO file is only required if the cluster nodes do not have access to Windows Update to download the OS feature update.  If using this method, after you [Connect to the Azure Local, version 22H2 instance](#step-1-connect-to-the-azure-local-instance), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
 
 ## Step 1: Connect to the Azure Local instance
 
