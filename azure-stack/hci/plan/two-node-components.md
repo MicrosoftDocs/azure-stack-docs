@@ -5,8 +5,7 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 03/14/2024
 ---
 
