@@ -4,8 +4,7 @@ description: Learn how to get Microsoft support for Azure Stack HCI deployment i
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/03/2024
 ---
 

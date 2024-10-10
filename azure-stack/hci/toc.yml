@@ -191,7 +191,7 @@ items:
       items:
       - name: Configure proxy manually
         href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via script
+      - name: Configure proxy via Arc script
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md

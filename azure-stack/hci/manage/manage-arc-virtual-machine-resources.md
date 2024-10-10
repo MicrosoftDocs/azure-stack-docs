@@ -4,8 +4,7 @@ description: Learn how to manage resource such as data disks, network interfaces
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 02/13/2024
 ---
 

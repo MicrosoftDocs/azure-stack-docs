@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/27/2024
+ms.date: 10/09/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -58,7 +58,7 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 Traffic flows are illustrated in the following diagram:
 
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png" alt-text="Diagram of Azure Arc gateway version 2408 components." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram-2408.png":::
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture for version 2408." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
 
 <!-- ## Arc-enabled server endpoints redirected via the Arc gateway in limited Public Preview
 
@@ -94,34 +94,34 @@ As part of the Azure Local version 2408 preview update, the endpoints from the t
 
 | Endpoint # | Required endpoint | Component  |
 | -- | -- | -- |
-| 1 | `http://go.microsoft.com:443` | Env Chkr |
-| 2 | `http://www.powershellgallery.com:443` | Env Chkr |
-| 3 | `http://psg-prod-eastus.azureedge.net:443` | Env Chkr |
-| 4 | `http://onegetcdn.azureedge.net:443` | Env Chkr |
-| 5 | `http://login.microsoftonline.com:443` | Env Chkr |
-| 6 | `http://aka.ms:443` | Env Chkr |
-| 7 | `http://azurestackreleases.download.prss.microsoft.com:443` | Env Chkr |
-| 8 | `http://download.microsoft.com:443` | Env Chkr |
-| 9 | `http://portal.azure.com:443` | Env Chkr |
-| 10 | `http://management.azure.com:443` | Env Chkr |
-| 11 | `http://www.office.com:443` | Env Chkr |
+| 1 | `http://go.microsoft.com:443` | Environment Checker |
+| 2 | `http://www.powershellgallery.com:443` | Environment Checker |
+| 3 | `http://psg-prod-eastus.azureedge.net:443` | Environment Checker |
+| 4 | `http://onegetcdn.azureedge.net:443` | Environment Checker |
+| 5 | `http://login.microsoftonline.com:443` | Environment Checker |
+| 6 | `http://aka.ms:443` | Environment Checker |
+| 7 | `http://azurestackreleases.download.prss.microsoft.com:443` | Environment Checker |
+| 8 | `http://download.microsoft.com:443` | Environment Checker |
+| 9 | `http://portal.azure.com:443` | Environment Checker |
+| 10 | `http://management.azure.com:443` | Environment Checker |
+| 11 | `http://www.office.com:443` | Environment Checker |
 | 12 | `http://gbl.his.arc.azure.com:443` | Arc agent |  
 | 13 | `http://<region>.his.arc.azure.com:443` | Arc agent |
 | 14 | `http://dc.services.visualstudio.com:443` | Arc agent |
 | 15 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
 | 16 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
 | 17 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 18 | `http://files.pythonhosted.org:443` | MOC/ARB/AKS |
-| 19 | `http://pypi.org:443` | MOC/ARB/AKS |
-| 20 | `http://raw.githubusercontent.com:443` | MOC/ARB/AKS |
-| 21 | `http://pythonhosted.org:443` | MOC/ARB/AKS |
-| 22 | `http://hciarcvmsstorage.z13.web.core.windows.net:443` | MOC/ARB/AKS |
-| 23 | `http://ocsp.digicert.com`  | CRL for Arc extensions |
-| 24 | `http://s.symcd.com` | CRL for Arc extensions |
-| 25 | `http://ts-ocsp.ws.symantec.com` | CRL for Arc extensions |
-| 26 | `http://ocsp.globalsign.com` | CRL for Arc extensions |
-| 27 | `http://ocsp2.globalsign.com` | CRL for Arc extensions |
-| 28 | `http://oneocsp.microsoft.com` | CRL for Arc extensions |
+| 18 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 19 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 20 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 21 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 22 | `http://hciarcvmsstorage.z13.web.core.windows.net:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 23 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 24 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 25 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 26 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 27 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 28 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
 | 29 | `http://dl.delivery.mp.microsoft.com` | LCM Binaries |
 | 30 | `http://*.tlu.dl.delivery.mp.microsoft.com` | LCM Binaries |
 | 31 | `http://*.windowsupdate.com` | Windows Update |

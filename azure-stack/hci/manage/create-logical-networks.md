@@ -4,8 +4,7 @@ description: Learn how to create logical networks on your Azure Stack HCI cluste
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 07/18/2024
 ---
 

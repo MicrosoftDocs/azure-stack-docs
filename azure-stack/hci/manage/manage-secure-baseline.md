@@ -4,8 +4,7 @@ description: Learn how to manage security default settings available for Azure S
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 05/29/2024
 ---
 

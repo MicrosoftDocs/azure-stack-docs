@@ -3,8 +3,7 @@ ms.topic: include
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 11/09/2022
 ---
 

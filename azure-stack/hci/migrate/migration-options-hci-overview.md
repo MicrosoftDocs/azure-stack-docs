@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 04/24/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # About options to migrate VM workloads to Azure Stack HCI (preview)

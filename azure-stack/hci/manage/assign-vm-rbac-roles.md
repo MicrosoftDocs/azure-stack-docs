@@ -4,8 +4,7 @@ description: Learn how to use RBAC builtin roles for Arc VM management on Azure 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 07/19/2024
 ---
 
