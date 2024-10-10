@@ -4,7 +4,7 @@ title: Storage class and Container Storage Interface (CSI)
 description: Learn about the Storage class and Container Storage Interface (CSI) in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/8/2024
+ms.date: 10/10/2024
 ms.topic: conceptual
 
 ---
@@ -20,11 +20,15 @@ Storage is key to most applications. Kubernetes uses a *storage class* to descri
 
 The following diagram shows the relationships among pods, volumes, storage classes, storage addons and actual storage infrastructures:
 
+:::image type="content" source="media/storage-class-overview/pods-storage-classes.png" alt-text="Diagram showing relationships among pods, volumes, storage classes, storage addons and actual storage infrastructures." lightbox="media/storage-class-overview/pods-storage-classes.png":::
+
 ## Create storage classes on top of existing storage
 
 By default, a new Kubernetes cluster only supports the local disk storage class, which stores data in a local disk. This class has limitations and can't be directly used in most production scenarios. For example, local disk volumes can only support `ReadWriteOnce` access mode, meaning the volumes can only be accessed by one pod at a time. However, [SQL Managed Instance enabled by Azure Arc](/azure/azure-arc/data/managed-instance-overview) requires [its backup volume to support the ReadWriteMany(RWX) access mode](/azure/azure-arc/data/create-sql-managed-instance?tabs=directly-connected-mode#create-an-azure-arc-enabled-sql-managed-instance), meaning the volume should support simultaneous reads and writes from multiple pods.
 
 Storage is important for any running systems, so most companies might have already set up storage infrastructures for existing systems. The Arc storage service provides a unified experience for creating storage classes on top of existing storage. With the Arc Storage Class service, cluster administrators only need to specify the name and type of the storage class to be created, and Arc Storage Class installs storage classes and their respective CSI components into their clusters. The installed components are managed by Azure, so updates are automatically installed and security vulnerabilities are automatically fixed.
+
+:::image type="content" source="media/storage-class-overview/create-storage-class.gif" alt-text="Screenshot showing to to create a storage class on Azure portal." lightbox="media/storage-class-overview/create-storage-class.gif":::
 
 ### Scenario 1: Connect to existing NAS
 
@@ -48,6 +52,8 @@ Different storage types have different capabilities (attributes), such as perfor
 
 The Arc Storage Class service provides a way to describe and detect the capability attributes of storage classes. We defined standardized keys and values that describe different capability attributes of storage classes. When the Arc Storage Service is enabled on a cluster, the service automatically runs attribute detection scripts on all storage classes in the cluster and, when it's finished, writes the results with these standardized keys and values. If some attributes fail to be detected or can't be detected automatically, you can also manually define attributes.
 
+:::image type="content" source="media/storage-class-overview/attributes.png" alt-text="Screenthot showing storage attributes." lightbox="media/storage-class-overview/attributes.png":::
+
 With the attributes detected and recorded, the process to decide which storage class to use in an application can also be simplified. Instead of specifically choosing which storage class to use, you can list only the requirements for storage class attributes, and our service automatically chooses a storage class that matches these requirements.
 
 ## Automatically configure storage for Arc services
@@ -57,6 +63,8 @@ You can deploy Azure Arc enabled services to your Arc connected Kubernetes clust
 The Arc Storage Class service provides an inventory of storage classes on the cloud, synchronized with user cluster information. The Arc Storage Class service synchronizes the storage class information between the cloud and the cluster side, including basic Kubernetes information (names, provisioners, and so on) and capability attributes that are automatically detected or manually defined. Therefore, Azure Arc services can get access to the storage classes and their capability attributes and can help you query and filter the right storage classes when the service is created.
 
 For example, creating a [SQL Managed Instance enabled by Azure Arc](/azure/azure-arc/data/managed-instance-overview) requires you to select four different storage classes for different usage (data, data-logs, logs, and backups). To simplify the process, SQL Managed Instance enabled by Azure Arc provides templates that automatically select storage classes for several common Kubernetes cluster configurations, but it's not flexible or helpful enough for other cluster configurations. With Arc Storage Class, the Arc service can help you with any cluster configuration query, and can recommend storage classes for each scenario automatically, completely eliminating the need for predefined templates.
+
+:::image type="content" source="media/storage-class-overview/recommendations.png" alt-text="Screenshot showing storage class recommendations." lightbox="media/storage-class-overview/recommendations.png":::
 
 ## Platform neutral
 
