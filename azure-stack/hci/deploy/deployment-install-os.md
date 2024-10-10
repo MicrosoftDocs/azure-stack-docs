@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 06/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Install the Azure Stack HCI, version 23H2 operating system

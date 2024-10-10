@@ -4,8 +4,7 @@ description: Learn how to prepare CentOS Linux images to create an Azure Stack H
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 08/06/2024
 ---

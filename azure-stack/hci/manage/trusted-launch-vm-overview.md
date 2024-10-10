@@ -4,8 +4,7 @@ description: Learn about Trusted launch for Azure Arc VMs on Azure Stack HCI, ve
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 06/13/2024
 ---
 

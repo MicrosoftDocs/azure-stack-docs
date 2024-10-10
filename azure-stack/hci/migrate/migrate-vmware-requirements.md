@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 08/05/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ms.custom: references_regions
 ---
 

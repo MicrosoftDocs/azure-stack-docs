@@ -4,7 +4,7 @@ description: Reference for GPU computing in Azure Stack.
 services: azure-stack 
 author: sethmanheim 
 manager: femila 
-ms.service: azure-stack 
+ms.service: azure-stack-hub
 ms.topic: article 
 ms.date: 01/02/2020 
 ms.author: sethm 

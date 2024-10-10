@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/23/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2 via Windows Admin Center

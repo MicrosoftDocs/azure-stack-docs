@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: JasonGerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 02/26/2024
+ms.date: 10/03/2024
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -14,6 +14,7 @@ ms.date: 02/26/2024
 This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 
 ## What is DISKSPD?
+
 DISKSPD is an I/O generating, command-line tool for micro-benchmarking. Great, so what do all these terms mean? Anyone who sets up an Azure Stack HCI cluster or physical server has a reason. It could be to set up a web hosting environment, or run virtual desktops for employees. Whatever the real-world use case may be, you likely want to simulate a test before deploying your actual application. However, testing your application in a real scenario is often difficult – this is where DISKSPD comes in.
 
 DISKSPD is a tool that you can customize to create your own synthetic workloads, and test your application before deployment. The cool thing about the tool is that it gives you the freedom to configure and tweak the parameters to create a specific scenario that resembles your real workload. DISKSPD can give you a glimpse into what your system is capable of before deployment. At its core, DISKSPD simply issues a bunch of read and write operations.
@@ -21,60 +22,53 @@ DISKSPD is a tool that you can customize to create your own synthetic workloads,
 Now you know what DISKSPD is, but when should you use it? DISKSPD has a difficult time emulating complex workloads. But DISKSPD is great when your workload is not closely approximated by a single-threaded file copy, and you need a simple tool that produces acceptable baseline results.
 
 ## Quick start: install and run DISKSPD
-Without further ado, let’s get started:
 
-1. From your management PC, open PowerShell as an administrator to connect to the target computer that you want to test using DISKSPD, and then type the following command and press Enter.
+To install and run DISKSPD, open PowerShell as an admin on your management PC, and then follow these steps:
 
-     ```powershell
-     Enter-PSSession -ComputerName <TARGET_COMPUTER_NAME>
-    ```
-
-    In this example, we're running a virtual machine (VM) called “node1.”
-
-1. To download the DISKSPD tool, type the following commands and press Enter:
-
-     ```powershell
-     $client = new-object System.Net.WebClient
-    ```
-
-     ```powershell
-     $client.DownloadFile("https://github.com/microsoft/diskspd/releases/latest/download/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.1.zip")
-    ```
-
-1. Use the following command to unzip the downloaded file:
-
-     ```powershell
-     Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.1.zip -DestinationPath C:\DISKSPD
-    ```
-
-1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
-
-    In this example, we're using the amd64 version.
-
-    > [!NOTE]
-    > You can also download the DISKSPD tool directly from the [GitHub repository](https://github.com/microsoft/diskspd) that contains the open-source code, and a wiki page that details all the parameters and specifications. In the repository, under **Releases**, select the link to automatically download the ZIP file.
-
-    In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
-
-    :::image type="content" source="media/diskspd-overview/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd-overview/download-directory.png":::
-
-1. Run DISKSPD with the following PowerShell command. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
+1. To download and expand the ZIP file for the DISKSPD tool, run the following commands:
 
     ```powershell
-     .\[INSERT_DISKSPD_PATH] [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
-    ```
+    # Define the ZIP URL and the full path to save the file, including the filename
+    $zipName = "DiskSpd.zip"
+    $zipPath = "C:\DISKSPD"
+    $zipFullName = Join-Path $zipPath $zipName
+    $zipUrl = "https://github.com/microsoft/diskspd/releases/latest/download/" +$zipName
 
-    Here is an example command that you can run:
+    # Ensure the target directory exists, if not then create
+    if (-Not (Test-Path $zipPath)) {
+    New-Item -Path $zipPath -ItemType Directory | Out-Null
+    }
+    # Download and expand the ZIP file
+    Invoke-RestMethod -Uri $zipUrl -OutFile $zipFullName
+    Expand-Archive -Path $zipFullName -DestinationPath $zipPath
+    
+1. To add the DISKSPD directory to your `$PATH` environment variable, run the following command:
 
     ```powershell
-     .\diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test01.txt
+    $diskspdPath = Join-Path $zipPath $env:PROCESSOR_ARCHITECTURE
+    if ($env:path -split ';' -notcontains $diskspdPath) {
+    $env:path += ";" + $diskspdPath
+    }
+    ```
+
+1. Run DISKSPD with the following PowerShell command. Replace square brackets with your appropriate settings.
+
+    ```powershell
+    diskspd [INSERT_SET_OF_PARAMETERS] [INSERT_CSV_PATH_FOR_TEST_FILE] > [INSERT_OUTPUT_FILE.txt]
+    ```
+
+    Here's an example command that you can run:
+
+    ```powershell
+    diskspd -t2 -o32 -b4k -r4k -w0 -d120 -Sh -D -L -c5G C:\ClusterStorage\test01\targetfile\IO.dat > test01.txt
     ```
 
     > [!NOTE]
     > If you do not have a test file, use the **-c** parameter to create one. If you use this parameter, be sure to include the test file name when you define your path. For example: [INSERT_CSV_PATH_FOR_TEST_FILE] = C:\ClusterStorage\CSV01\IO.dat. In the example command, IO.dat is the test file name, and test01.txt is the DISKSPD output file name.
 
 ## Specify key parameters
-Well, that was simple right? Unfortunately, there is more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
+
+Well, that was simple right? Unfortunately, there's more to it than that. Let’s unpack what we did. First, there are various parameters that you can tinker with and it can get specific. However, we used the following set of baseline parameters:
 
 > [!NOTE]
 > DISKSPD parameters are case sensitive.
@@ -109,7 +103,7 @@ You generate the test file under the unified namespace that the Cluster Shared V
 >[!NOTE]
 > The example environment does *not* have Hyper-V or a nested virtualization structure.
 
-As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it is important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
+As you’ll see, it's entirely possible to independently hit either the IOPS or bandwidth ceiling at the VM or drive limit. And so, it's important to understand your VM size and drive type, because both have a maximum IOPS limit and a bandwidth ceiling. This knowledge helps to locate bottlenecks and understand your performance results. To learn more about what size may be appropriate for your workload, see the following resources:
 
 - [VM sizes](/azure/virtual-machines/sizes-general?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)
 - [Disk types](https://azure.microsoft.com/pricing/details/managed-disks/)
@@ -183,7 +177,7 @@ Storage performance is a delicate thing. Meaning, there are many variables that 
 - Hard drive spindle speeds
 
 ### CSV ownership
-A node is known as a volume owner or the **coordinator** node (a non-coordinator node would be the node that does not own a specific volume). Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
+A node is known as a volume owner or the **coordinator** node (a non-coordinator node would be the node that doesn't own a specific volume). Every standard volume is assigned a node and the other nodes can access this standard volume through network hops, which results in slower performance (higher latency).
 
 Similarly, a Cluster Shared Volume (CSV) also has an “owner.” However, a CSV is “dynamic” in the sense that it will hop around and change ownership every time you restart the system (RDP). As a result, it’s important to confirm that DISKSPD is run from the coordinator node that owns the CSV. If not, you may need to manually change the CSV ownership.
 
@@ -206,7 +200,7 @@ If your real-world goal is to test file copy performance, then this may be a per
 
 The following short summary explains why using file copy to measure storage performance may not provide the results that you're looking for:
 - **File copies might not be optimized,** There are two levels of parallelism that occur, one internal and the other external. Internally, if the file copy is headed for a remote target, the CopyFileEx engine does apply some parallelization. Externally, there are different ways of invoking the CopyFileEx engine. For example, copies from File Explorer are single threaded, but Robocopy is multi-threaded. For these reasons, it's important to understand whether the implications of the test are what you are looking for.
-- **Every copy has two sides.** When you simply copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
+- **Every copy has two sides.** When you copy and paste a file, you may be using two disks: the source disk and the destination disk. If one is slower than the other, you essentially measure the performance of the slower disk. There are other cases where the communication between the source, destination, and the copy engine may affect the performance in unique ways.
     
     To learn more, see [Using file copy to measure storage performance](/archive/blogs/josebda/using-file-copy-to-measure-storage-performance-why-its-not-a-good-idea-and-what-you-should-do-instead?epi=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&irclickid=_rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00&irgwc=1&OCID=AID2000142_aff_7593_1243925&ranEAID=je6NUbpObpQ&ranMID=24542&ranSiteID=je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q&tduid=(ir__rcvu3tufjwkftzjukk0sohzizm2xiezdpnxvqy9i00)(7593)(1243925)(je6NUbpObpQ-OaAFQvelcuupBvT5Qlis7Q)()).
 
@@ -214,13 +208,14 @@ The following short summary explains why using file copy to measure storage perf
 This section includes a few other examples, experiments, and workload types.
 
 ### Confirming the coordinator node
-As mentioned previously, if the VM you are currently testing does not own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
+As mentioned previously, if the VM you are currently testing doesn't own the CSV, you'll see a performance drop (IOPS, throughput, and latency) as opposed to testing it when the node owns the CSV. This is because every time you issue an I/O operation, the system does a network hop to the coordinator node to perform that operation.
 
 For a three-node, three-way mirrored situation, write operations always make a network hop because it needs to store data on all the drives across the three nodes. Therefore, write operations make a network hop regardless. However, if you use a different resiliency structure, this could change.
 
-Here is an example:
-- **Running on local node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
-- **Running on nonlocal node:** .\DiskSpd-2.0.21a\amd64\diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+Here's an example:
+
+- **Running on local node:** diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
+- **Running on nonlocal node:** diskspd.exe -t4 -o32 -b4k -r4k -w0 -Sh -D -L C:\ClusterStorage\test01\targetfile\IO.dat
 
 From this example, you can clearly see in the results of the following figure that latency decreased, IOPS increased, and throughput increased when the coordinator node owns the CSV.
 
