@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 07/15/2024
 ms.author: robess
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license is and how it can be beneficial to them.
 ---
 
