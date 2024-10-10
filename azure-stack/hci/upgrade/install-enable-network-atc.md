@@ -1,31 +1,31 @@
 ---
-title:  Install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster
-description: Learn how to install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster.
+title:  Install and enable Network ATC on an Azure Local, version 22H2 instance
+description: Learn how to install and enable Network ATC on an Azure Local, version 22H2 instance.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 08/28/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI, version 22H2 cluster.
+ms.date: 10/11/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Local, version 22H2 instance.
 ---
 
-# Install and enable Network ATC on existing Azure Stack HCI, version 22H2 clusters
+# Install and enable Network ATC on Azure Local, version 22H2 instances
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to install and enable Network ATC on your existing Azure Stack HCI, version 22H2 cluster. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
+This article provides information on how to install and enable Network ATC on your existing Azure Local, version 22H2 instance. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
 
 > [!IMPORTANT]
-> - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Stack HCI cluster. If Network ATC is already enabled on your existing cluster, you can skip this step. 
-> - We recommend that you set up Network ATC after you have upgraded the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Stack HCI to the latest version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+> - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Local instance. If Network ATC is already enabled on your existing instance, you can skip this step. 
+> - We recommend that you set up Network ATC after you have upgraded the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Local to the latest version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 ## About Network ATC
 
-Network ATC stores information in the cluster database, which is then replicated to other nodes in the cluster. From the initial node, other nodes in the cluster see the change in the cluster database and create a new intent. Here, we set up the cluster to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on nodes that have virtual machines (VM) on them.
+Network ATC stores information in the cluster database, which is then replicated to other machines in the cluster. From the initial node, other nodes in the cluster see the change in the cluster database and create a new intent. Here, we set up the cluster to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on nodes that have virtual machines (VM) on them.
 
 ## Benefits
 
-For Azure Stack HCI, Network ATC provides the following benefits:
+For Azure Local, Network ATC provides the following benefits:
 
 - Reduces host networking deployment time, complexity, and errors.
 - Deploys the latest Microsoft validated and supported best practices.
@@ -34,7 +34,7 @@ For Azure Stack HCI, Network ATC provides the following benefits:
 
 ## Before you begin
 
-Before you install and enable Network ATC on your existing Azure Stack HCI, make sure:
+Before you install and enable Network ATC on your existing Azure Local instance, make sure:
 
 - You're on a host that doesn't have a running VM on it.
 - You're on a cluster that has running workloads on the node.
@@ -73,7 +73,7 @@ Suspend-ClusterNode
 
 In this step, we eliminate any previous configurations, such as `VMSwitch`, Data Center Bridging (NetQos) policy for RDMA traffic, and Load Balancing Failover (LBFO), which might interfere with Network ATC’s ability to implement the new intent. Although Network ATC attempts to adopt existing configurations with matching names; including `NetQos` and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
-If you have more than one `VMSwitch` on your system, make sure you specify the switch attached to the adapters being used in the intent.
+If you have more than one `VMSwitch` on your instance, make sure you specify the switch attached to the adapters being used in the intent.
 
 To remove the existing `VMSwitch` configuration, run the following command:
 
@@ -89,7 +89,7 @@ Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
 Get-NetQosFlowControl | Disable-NetQosFlowControl
 ```
 
-LBFO isn't supported in Azure Stack HCI. However, if you accidentally deployed an LBFO team it should be removed using the following command:
+LBFO isn't supported in Azure Local. However, if you accidentally deployed an LBFO team it should be removed using the following command:
 
 ```powershell
 Get-NetLBFOTeam | Remove-NetLBFOTeam -Confirm:$true
@@ -116,20 +116,20 @@ To add the Network ATC intent, run the `Add-NetIntent` command with the appropri
 
 ### Example intents
 
-Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns and the corresponding PowerShell commands for your Azure Stack HCI.
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns and the corresponding PowerShell commands for your Azure Local.
 
 These examples aren't the only combinations available, but they should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md).
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, see [Network reference patterns overview for Azure Local](../plan/network-patterns-overview.md).
 
 #### Group management and compute in one intent with a separate intent for storage
 
-In this example, there are two intents that are managed across cluster nodes.
+In this example, there are two intents that are managed across nodes.
 
 1. **Management and compute**: This intent uses a dedicated pair of network adapter ports.
 2. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-enable-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/install-enable-network-atc/group-management-and-compute.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Local instance with a grouped management and compute intent." lightbox="media/install-enable-network-atc/group-management-and-compute.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -141,11 +141,11 @@ In this example, there are two intents that are managed across cluster nodes.
 
 #### Group all traffic on a single intent
 
-In this example, there's a single intent managed across cluster nodes.
+In this example, there's a single intent managed across nodes.
 
 - **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-enable-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with all traffic on a single intent." lightbox="media/install-enable-network-atc/group-all-traffic.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Local instance with all traffic on a single intent." lightbox="media/install-enable-network-atc/group-all-traffic.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -155,12 +155,12 @@ In this example, there's a single intent managed across cluster nodes.
 
 #### Group compute and storage traffic on one intent with a separate management intent
 
-In this example, there are two intents that are managed across cluster nodes.
+In this example, there are two intents that are managed across nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-enable-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped compute and storage intent." lightbox="media/install-enable-network-atc/group-compute-and-storage.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Local instance with a grouped compute and storage intent." lightbox="media/install-enable-network-atc/group-compute-and-storage.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -172,13 +172,13 @@ In this example, there are two intents that are managed across cluster nodes.
 
 #### Fully disaggregated host networking
 
-In this example, there are three intents that are managed across cluster nodes.
+In this example, there are three intents that are managed across nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute**: This intent uses a dedicated pair of network adapter ports.
 3. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-enable-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregated intent." lightbox="media/install-enable-network-atc/fully-disaggregated.png":::
+    :::image type="content" source="media/install-enable-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Local instance with a fully disaggregated intent." lightbox="media/install-enable-network-atc/fully-disaggregated.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -265,8 +265,8 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To apply the Network ATC settings across the cluster, repeat steps 1 through 5 (skip deleting the virtual switch as it was renamed), step 7, and step 9 for each node of the cluster.
+> To apply the Network ATC settings across your Azure Local instance, repeat steps 1 through 5 (skip deleting the virtual switch as it was renamed), step 7, and step 9 for each node of the cluster.
 
 ## Next step
 
-Learn how to [Assess solution upgrade readiness for Azure Stack HCI](./validate-solution-upgrade-readiness.md).
+Learn how to [Assess solution upgrade readiness for Azure Local](./validate-solution-upgrade-readiness.md).

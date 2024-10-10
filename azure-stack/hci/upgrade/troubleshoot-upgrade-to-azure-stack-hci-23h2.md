@@ -1,18 +1,18 @@
 ---
-title: Troubleshoot Azure Stack HCI upgrade
-description: Learn how to troubleshoot upgrade on your Azure Stack HCI system. 
+title: Troubleshoot Azure Local upgrade
+description: Learn how to troubleshoot upgrades on your Azure Local instance. 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/17/2024
+ms.date: 10/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Troubleshoot Azure Stack HCI upgrade
+# Troubleshoot Azure Local upgrade
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to identify and troubleshoot common Azure Stack HCI upgrade issues.
+This article describes how to identify and troubleshoot common Azure Local upgrade issues.
 
 ## Operating system upgrade
 
@@ -42,7 +42,7 @@ DiagnosticLevel :        Basic
 Region :
 ```
 
-If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Stack HCI registration](../deploy/troubleshoot-hci-registration.md).
+If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Local registration](../deploy/troubleshoot-hci-registration.md).
 
 ### Network ATC intent health state
 
@@ -148,7 +148,7 @@ When you [Install the solution upgrade](./install-solution-upgrade.md), you may 
 
 For detailed remediation for common known issues, check out:
 > [!div class="nextstepaction"]
-> [Azure Stack HCI Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
+> [Azure Local Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
 
 Alternatively, you can:
 - [Open a Support ticket](../manage/get-support.md)
