@@ -4,8 +4,7 @@ description: Preview features and OS versions available via preview channel and 
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 11/30/2023
 ---
 
@@ -26,7 +25,7 @@ The Azure Stack HCI preview channel features preview versions of Azure Stack HCI
 
 Azure Stack HCI, 2306.4 Supplemental Package is now in preview. You can deploy this package on servers running the English version of the Azure Stack HCI, version 22H2 OS. For more information on Azure Stack HCI, version 22H2, see [What's new in 22H2](../whats-new-in-hci-22h2.md).
 
-[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp-2306.md)]
+[!INCLUDE [hci-deployment-tool-sp](../../hci/includes/hci-deployment-tool-sp-2306.md)]
 
 
 To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).

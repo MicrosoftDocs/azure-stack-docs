@@ -9,14 +9,14 @@ ms.date: 04/16/2024
 
 # Update your Azure Stack HCI, version 23H2 via PowerShell
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
 The procedure in this article applies to both a single server and multi-server cluster that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-[!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
 For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI that didn't have the orchestrator installed see [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md).
 

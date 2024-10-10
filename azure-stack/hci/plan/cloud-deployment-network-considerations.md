@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Network considerations for cloud deployments of Azure Stack HCI, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article discusses how to design and plan an Azure Stack HCI, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Stack HCI networking patterns](../plan/choose-network-pattern.md) and available configurations.
 
@@ -137,7 +137,7 @@ The following diagram summarizes network intent options available to you for var
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-3-summary.png" alt-text="Diagram showing step 3 option summary for the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-3-summary.png":::
 
-## Step 4: Determine management network connectivity
+## Step 4: Determine management and storage network connectivity
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-4.png":::
 
@@ -262,6 +262,24 @@ Here are the summarized considerations for the VLAN ID:
 |3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
 |4     | There is no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
 
+### Custom IPs for storage
+
+By default, network ATC will automatically assign the IPs and VLANs for storage from the following table:
+
+|Storage Adapter|IP Address and Subnet|VLAN|
+|---------------|---------------------|----|
+|pNIC1          |10.71.1.x            |711 |
+|pNIC2          |10.71.2.x            |712 |
+|pNIC3          |10.71.3.x            |713 |
+
+However, if your deployment requirements do not fit with those default IPs and VLANs, you can use your own IPs, subnet and VLANs for storage. This functionality is only available when deploying clusters using ARM templates and you will need to specify the following parameters in your template.
+
+- **enableStorageAutoIP:** This parameter, when is not specified is set to true. To enable custom storage IPs during deployment this parameter must be set to false.
+- **storageAdapterIPInfo:** This parameter has a dependency with "enableStorageAutoIP" parameter and is always required when storage auto IP parameter is set to false. Within the "storageAdapterIPInfo" parameter in your ARM template you will also need to specify the **"ipv4Address"** and **"subnetMask"** parameters for each node and network adapter with your own IPs and subnet mask.
+- **vlanId:** As described above in the table, this parameter will use the Network ATC default VLANs if you don't need to change them. However, if those default VLANs does not work in your network you can specify your own VLAN IDs for each of your storage networks.
+
+The following ARM template includes an example of a two nodes HCI cluster with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
+
 ### Node and cluster IP assignment
 
 For Azure Stack HCI system, you have two options to assign IPs for the server nodes and for the cluster IP. 
@@ -337,7 +355,6 @@ Here are the summarized considerations for firewall:
 |------|---------|
 |1     | Firewall configuration must be done before registering the nodes in Azure Arc.        |
 |2     | Environment Checker in standalone mode can be used to validate the firewall configuration.       |
-
 
 ## Step 5: Determine network adapter configuration
 

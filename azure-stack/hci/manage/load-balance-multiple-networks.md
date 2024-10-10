@@ -9,7 +9,7 @@ ms.date: 04/30/2024
 
 # Load balance multiple SDN logical networks for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing, you have more control over isolating workloads from each other.
 

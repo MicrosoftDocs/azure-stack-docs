@@ -4,8 +4,7 @@ description: Software defined networking (SDN) provides a way to centrally confi
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 03/08/2024
 ---
 

@@ -4,14 +4,13 @@ description: Learn how to Manage GPUs via Discrete Device Assignment for Azure S
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/25/2024
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage GPU DDA with Arc virtual machines (VMs). For GPU DDA management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 

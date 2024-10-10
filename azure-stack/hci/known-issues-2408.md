@@ -6,12 +6,11 @@ ms.topic: conceptual
 ms.date: 09/24/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Known issues in the Azure Stack HCI 2408 release
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
 
 This article identifies critical known issues and their workarounds in the Azure Stack HCI 2408 release.
 

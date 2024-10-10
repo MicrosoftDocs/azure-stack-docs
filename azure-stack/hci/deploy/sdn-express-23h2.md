@@ -45,7 +45,7 @@ The following requirements must be met for a successful SDN deployment:
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
 

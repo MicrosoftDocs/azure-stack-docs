@@ -2,7 +2,7 @@
 title: Azure Stack network deployment for MDC
 description: Learn about Azure Stack network deployment for the MDC device. 
 author: sethmanheim
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: sethm

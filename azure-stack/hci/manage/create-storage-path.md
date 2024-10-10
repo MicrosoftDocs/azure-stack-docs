@@ -4,14 +4,13 @@ description: Learn how to create storage path for use with VM images for your Az
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 07/19/2024
 ---
 
 # Create storage path for Azure Stack HCI 
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to create storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your cluster. You can create a storage path using the Azure CLI.
 
@@ -70,7 +69,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set parameters
 

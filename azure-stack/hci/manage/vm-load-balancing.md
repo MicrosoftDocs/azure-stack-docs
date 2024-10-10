@@ -4,15 +4,14 @@ description: Use this article to learn how to configure the VM load balancing fe
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 02/27/2024
 ---
 # Virtual machine load balancing
 
 > Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
+[!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
 A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It's common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some machines in the system are hosting more virtual machines (VMs), while other machines are underutilized.
 

@@ -6,12 +6,11 @@ ms.topic: how-to
 ms.date: 09/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Enable guest management for migrated VMs (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2.
 
@@ -19,7 +18,7 @@ For more information on other scenarios, see [Manage Arc VMs on Azure Stack HCI]
 
 The output properties may vary depending on whether VMs were migrated or not.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 
