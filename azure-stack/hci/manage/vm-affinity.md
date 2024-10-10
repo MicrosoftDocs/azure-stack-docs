@@ -10,11 +10,11 @@ ms.reviewer: robhind
 
 # Create server and site affinity rules for VMs
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 Using either Windows Admin Center or Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 
-[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
+[!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
 Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as virtual machines (VMs), to keep them together on the same server, cluster, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate servers or in separate sites for disaster recovery.
 

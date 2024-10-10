@@ -12,7 +12,7 @@ ms.date: 04/30/2024
 
 # Troubleshoot Azure Stack HCI registration
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2](../../hci/includes/hci-applies-to-22h2.md)]
 
 > [!IMPORTANT]
 > Troubleshooting instructions provided in this article apply to an older version, Azure Stack HCI, version 22H2. To troubleshoot new deployments running the latest generally available version, Azure Stack HCI, version 23H2, see [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).

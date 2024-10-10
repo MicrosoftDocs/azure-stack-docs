@@ -5,13 +5,12 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 09/05/2024
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Rotate secrets on Azure Stack HCI, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how you can change the password associated with the deployment user on Azure Stack HCI.
 

@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 06/20/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Simplify outbound network requirements for existing Azure Stack HCI, version 23H2 clusters through Azure Arc gateway (preview)
@@ -19,7 +18,7 @@ You can use the Arc gateway to significantly reduce the number of required endpo
 <!--This article only covers the existing Azure Stack HCI deployments. For new deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-new-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).-->
 
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -77,7 +76,7 @@ Next step is to verify that the setup was successful.
 
 ## Step 4: Verify that setup succeeded
 
-[!INCLUDE [hci-gateway-verify-setup-successful](../../includes/hci-gateway-verify-setup-successful.md)]
+[!INCLUDE [hci-gateway-verify-setup-successful](../../hci/includes/hci-gateway-verify-setup-successful.md)]
 
 ## Troubleshooting  
 

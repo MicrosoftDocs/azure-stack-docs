@@ -6,13 +6,12 @@ ms.topic: how-to
 ms.date: 06/04/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ms.custom: devx-track-arm-template
 ---
 
 # Deploy an Azure Stack HCI, version 23H2 via Azure Resource Manager deployment template
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 

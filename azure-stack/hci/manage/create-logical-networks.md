@@ -4,14 +4,13 @@ description: Learn how to create logical networks on your Azure Stack HCI cluste
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 07/18/2024
 ---
 
 # Create logical networks for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to create or add logical networks for your Azure Stack HCI cluster.
 
@@ -61,7 +60,7 @@ Complete the following steps to create a logical network using Azure CLI.
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Create logical network via CLI
 

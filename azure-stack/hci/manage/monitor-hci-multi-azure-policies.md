@@ -5,14 +5,13 @@ author: ManikaDhiman
 ms.author: v-manidhiman
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/12/2024
 ---
 
 # Enable Insights for Azure Stack HCI at scale using Azure policies
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This document describes how to enable Insights for Azure Stack HCI clusters at scale using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md#enable-insights).
 

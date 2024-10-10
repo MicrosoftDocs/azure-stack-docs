@@ -4,7 +4,7 @@ description: Learn what to expect for a successful on-site deployment of a Modul
 services: azure-stack
 author: asganesh
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 02/17/2021
 ms.author: sethm
