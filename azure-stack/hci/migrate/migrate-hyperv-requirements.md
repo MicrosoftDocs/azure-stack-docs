@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 07/25/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Review requirements for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)

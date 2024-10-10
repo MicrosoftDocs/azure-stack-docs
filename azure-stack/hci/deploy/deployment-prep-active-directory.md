@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Prepare Active Directory for Azure Stack HCI, version 23H2 deployment
