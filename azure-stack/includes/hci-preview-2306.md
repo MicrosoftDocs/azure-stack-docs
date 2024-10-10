@@ -1,10 +1,9 @@
 ---
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack
+ms.service: azure-stack-hci
 ms.topic: include
 ms.date: 12/18/2023
-ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 12/18/2023
 ---

@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 11/28/2023
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ms.custom: linux-related-content
 ---
 

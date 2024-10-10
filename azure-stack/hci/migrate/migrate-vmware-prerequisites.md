@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 09/30/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Prerequisites for VMware migration to Azure Stack HCI using Azure Migrate (preview)

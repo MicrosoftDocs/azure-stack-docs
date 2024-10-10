@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 08/27/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # About Azure Stack HCI upgrades

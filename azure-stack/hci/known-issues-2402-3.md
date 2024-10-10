@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 05/17/2024
 ms.author: robess
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # View known issues in Azure Stack HCI 2402.3 release
