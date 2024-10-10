@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/09/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # About Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)

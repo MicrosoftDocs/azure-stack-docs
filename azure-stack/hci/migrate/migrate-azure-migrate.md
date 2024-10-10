@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 07/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ms.custom: linux-related-content
 ---
 

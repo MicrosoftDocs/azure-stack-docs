@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 09/30/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Discover and replicate VMware VMs for migration to Azure Stack HCI using Azure Migrate (preview)
