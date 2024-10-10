@@ -4,7 +4,7 @@ description: Learn how to build a recovery plan to protect VMs deployed on Azure
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: sethm
