@@ -4,7 +4,7 @@ description: Analyzing Azure Stack usage and reference for the resource usage AP
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: sethm
