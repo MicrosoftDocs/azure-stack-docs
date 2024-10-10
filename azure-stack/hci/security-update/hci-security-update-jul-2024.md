@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 07/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # July 2024 OS security update (KB 5040438) for Azure Stack HCI, version 23H2

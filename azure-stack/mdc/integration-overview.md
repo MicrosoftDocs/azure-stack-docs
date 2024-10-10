@@ -4,7 +4,7 @@ description: Learn what to expect for a successful onsite deployment of Azure Mo
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: sethm

@@ -4,7 +4,7 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 08/19/2024
 ms.author: sethm

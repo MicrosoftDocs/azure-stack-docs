@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 09/05/2024
+ms.date: 10/09/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
@@ -16,7 +16,7 @@ ms.lastreviewed: 06/25/2024
 
 This article lists the various features and improvements that are available in AKS enabled by Azure Arc, on HCI version 23H2.
 
-## About AKS Arc on Azure Stack HCI 23H2
+## About AKS on Azure Stack HCI 23H2
 
 AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Stack HCI directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Stack HCI. Since clusters are automatically connected to Arc when they are created, you can use your Microsoft Entra ID for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 

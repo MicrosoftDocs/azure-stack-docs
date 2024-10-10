@@ -5,8 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 08/02/2024
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Manage system security with Microsoft Defender for Cloud (preview)

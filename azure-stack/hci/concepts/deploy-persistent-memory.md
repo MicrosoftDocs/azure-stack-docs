@@ -4,8 +4,7 @@ description: This article provides details on what persistent memory is and how 
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/17/2023
 ---
 
