@@ -6,7 +6,7 @@ ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/04/2024
+ms.date: 10/10/2024
 ---
 
 # What is SDN Multisite?

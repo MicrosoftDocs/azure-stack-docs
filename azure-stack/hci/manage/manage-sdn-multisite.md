@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/04/2024
+ms.date: 10/10/2024
 ---
 
 # Manage SDN Multisite for Azure Stack HCI
@@ -52,7 +52,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
-- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md) or [SDN Express scripts](./sdn-express.md). This is required so that SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
+- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md) or [SDN Express scripts](./sdn-express.md). Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
 
 ::: zone-end
 
@@ -62,7 +62,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
-- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking) or [SDN Express scripts](./sdn-express.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking). This is required so that SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
+- SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking) or [SDN Express scripts](./sdn-express.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking). Separate sites are required so that the SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
 
 ::: zone-end
 
@@ -100,9 +100,9 @@ Follow these steps to establish peering across multiple sites using Windows Admi
 
     1. Enter the **Cluster name for new site** or secondary site.
 
-    1. Enter the **Network Controller VM name for new site** or secondary site. This can be any Network Controller VM name of the secondary site.
+    1. Enter the **Network Controller VM name for new site** or secondary site. The name can be any Network Controller VM name of the secondary site.
 
-    1. Enter the **Network Controller VM name for** your primary location. This can be any Network Controller VM name of your primary location.
+    1. Enter the **Network Controller VM name for** your primary location. The name can be any Network Controller VM name of your primary location.
 
 1. Select **Submit**.
 
@@ -185,7 +185,7 @@ To remove peering, follow these steps:
 
 ### Re-establish peering after SDN Multisite removal
 
-If you intend to re-establish your multisite connection after its removal, your secondary site will need to be set up as a new SDN environment. This means there can't be any preexisting virtual networks or network security groups. However, your secondary location has a local cache of the once global resources from SDN Multisite. Even when you remove SDN Multisite, your secondary location still has a copy of those resources. Without SDN Multisite, those resources are now out of sync.
+If you intend to re-establish your multisite connection after its removal, your secondary site will need to be set up as a new SDN environment. This means there can't be any pre-existing virtual networks or network security groups. However, your secondary location has a local cache of the once global resources from SDN Multisite. Even when you remove SDN Multisite, your secondary location still has a copy of those resources. Without SDN Multisite, those resources are now out of sync.
 
 For redeployment after SDN Multisite removal, ensure the following are removed:
 
