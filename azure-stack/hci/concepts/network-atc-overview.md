@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Stack HCI and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 10/01/2024
+ms.date: 10/10/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ms.subservice: core-os
@@ -16,7 +16,7 @@ zone_pivot_groups: windows-os
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2.md)]
 
-Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
+Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience. Network ATC is the complete product name and not an acronym.
 
 ::: zone-end
 
@@ -27,7 +27,7 @@ Deployment and operation of Azure Stack HCI networking can be a complex and erro
 > [!IMPORTANT]
 > Network ATC in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
 
-Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applies a consistency configuration across Windows Server cluster nodes to creat a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature.
+Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applies a consistency configuration across Windows Server cluster nodes to create a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature. Network ATC is the complete product name and not an acronym.
 
 ::: zone-end
 
@@ -58,23 +58,23 @@ Network ATC provides the following features:
 
 - **Storage adapter configuration**: Network ATC automatically configures the following components for your storage network.
 
-  - Configure the physical adapter properties
+  - Physical adapter properties
 
-  - Configure Data Center Bridging
+  - Data Center Bridging
 
-  - Determine if a virtual switch is needed
+  - Determines if a virtual switch is needed, and if so, creates the required virtual adapters
 
-  - If a vSwitch is needed, it creates the required virtual adapters
+  - Maps the virtual adapters to the appropriate physical adapter
 
-  - Map the virtual adapters to the appropriate physical adapter
-
-  - Assign VLANs
+  - Assigns VLANs
 
   :::zone pivot="azure-stack-hci"
 
-  - Beginning with Azure Stack HCI 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
+  - Beginning with Azure Stack HCI, version 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
 
   :::zone-end
+
+<br />
 
   :::zone pivot="windows-server"
 
@@ -110,19 +110,12 @@ To understand Network ATC, you need to understand some basic concepts. Here's so
 
 An individual physical adapter can only be included in one intent. By default, an adapter doesn't have an intent (there's no special status or property given to adapters that don't have an intent). You can have multiple intents; the number of adapters in your system limits the number of intents you have.
 
-**Intent type**: Every intent requires one or more intent types. The currently supported intent types are:
+**Intent type**: Every intent requires one or more intent types. Any combination of the intent types can be specified for any specific single intent. Here are the currently supported intent types and the maximum number of intents they can be defined in:
 
-- Management - adapters are used for management access to nodes
-- Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
-- Storage - adapters are used for SMB traffic including Storage Spaces Direct
-- Stretch - adapters are set up in a similar manner as a storage intent except for using RDMA, which can't be used with stretch intents.
-
-Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
-
-- Management: Can be defined in a maximum of one intent
-- Compute: Unlimited
-- Storage: Can be defined in a maximum of one intent
-- Stretch: Can be defined in a maximum of one intent
+Management: Adapters are used for management access to nodes. This intent type can be defined in a maximum of one intent.
+Compute: Adapters are used to connect virtual machine (VM) traffic to the physical network. This intent type can be defined in unlimited intents.
+Storage: Adapters are used for SMB traffic, including Storage Spaces Direct. This intent type can be defined in a maximum of one intent.
+Stretch: Adapters are set up similarly to a storage intent, except RDMA can't be used with stretch intents. This intent type can be defined in a maximum of one intent
 
 **Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if necessary. For example, you might choose to modify the VLANs used for storage adapters from the defaults.
 
@@ -130,7 +123,7 @@ Network ATC allows you to modify all configuration that the OS allows. However, 
 
 ## Deployment example
 
-The following video provides an overview of Network ATC using the [Copy-NetIntent](/powershell/module/networkatc/copy-netintent) command to copy an intent from one cluster to another. To learn more about the demonstration, see our Tech Community article [Deploying 100s of production clusters in minutes](https://techcommunity.microsoft.com/t5/networking-blog/deploying-100s-of-production-clusters-in-minutes/ba-p/3724977).
+The following video provides an overview of Network ATC using the [Copy-NetIntent](/powershell/module/networkatc/copy-netintent) command to copy an intent from one cluster to another. To learn more about the demonstration, see our Tech Community article [Deploying 100s of production clusters in minutes](https://techcommunity.microsoft.com/t5/networking-blog/deploying-100s-of-production-clusters-in-minutes/ba-p/3724977).<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/AZBE_3LCiHQ]
 
