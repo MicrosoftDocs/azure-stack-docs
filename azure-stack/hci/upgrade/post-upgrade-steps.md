@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the cluster.
+This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the Azure Local instance.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the new version and Azure Local, version 22H2 as the old version.
 
