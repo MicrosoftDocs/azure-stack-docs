@@ -4,8 +4,7 @@ description: Use this topic to learn about Datacenter Firewall in Azure Stack HC
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/22/2024
 ---
 
