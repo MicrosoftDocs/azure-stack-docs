@@ -5,9 +5,9 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 10/09/2024
+ms.service: azure-stack-hci
+ms.date: 10/10/2024
+# zone_pivot_groups: hci-versions
 ---
 
 # Monitor a single Azure Local, version 23H2 system with Insights

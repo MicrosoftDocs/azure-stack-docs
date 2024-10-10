@@ -4,8 +4,7 @@ description: Preview features and OS versions available via preview channel and 
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 11/30/2023
 ---
 

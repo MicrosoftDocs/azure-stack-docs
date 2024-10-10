@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 06/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Overview of Azure Migrate based VMware migration for Azure Stack HCI (preview)

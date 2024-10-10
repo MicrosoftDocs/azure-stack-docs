@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Perform the post operating system upgrade steps on your Azure Stack HCI via PowerShell

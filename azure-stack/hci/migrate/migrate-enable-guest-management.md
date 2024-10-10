@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 09/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Enable guest management for migrated VMs (preview)

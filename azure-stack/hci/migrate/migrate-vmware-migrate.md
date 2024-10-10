@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 09/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Migrate VMware VMs to Azure Stack HCI using Azure Migrate (preview)

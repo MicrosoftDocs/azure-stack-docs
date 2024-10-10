@@ -4,8 +4,7 @@ description: How to set up log alerts for various Azure Stack HCI system resourc
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.reviewer: kimlam
 ms.date: 04/22/2024
 ---

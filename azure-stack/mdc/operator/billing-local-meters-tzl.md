@@ -4,7 +4,7 @@ description: Read a list of local Azure Stack meters used when operating from a 
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/02/2021
 ms.author: sethm

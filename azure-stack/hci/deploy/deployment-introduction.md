@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 05/02/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # About Azure Stack HCI, version 23H2 deployment
