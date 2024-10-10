@@ -5,8 +5,7 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 04/04/2024
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Manage Windows Defender Application Control for Azure Stack HCI, version 23H2

@@ -4,8 +4,7 @@ description: Learn about Remote Access Service (RAS) Gateway for Software Define
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/09/2024
 ms.custom: kr2b-contr-experiment
 ---

@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/07/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Configure Arc proxy via registration script for Azure gateway (preview)
