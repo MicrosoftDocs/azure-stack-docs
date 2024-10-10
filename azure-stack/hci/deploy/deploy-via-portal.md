@@ -1,34 +1,33 @@
 ---
-title: Deploy an Azure Local system using the Azure portal
-description: Learn how to deploy an Azure Local system from the Azure portal
+title: Deploy an Azure Local instance using the Azure portal
+description: Learn how to deploy an Azure Local instance from the Azure portal
 author: JasonGerend
 ms.topic: how-to
 ms.date: 10/09/2024
 ms.author: jgerend
 ms.service: azure-stack-hci
-#CustomerIntent: As an IT Pro, I want to deploy an Azure Local system of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
+#CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy an Azure Local, version 23H2 system using the Azure portal
+# Deploy Azure Local, version 23H2 using the Azure portal
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article helps you deploy an Azure Local, version 23H2 system using the Azure portal.
+This article helps you deploy an Azure Local instance, version 23H2 using the Azure portal.
 
 ## Prerequisites
 
 * Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
-* For three-node clusters, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each machine without a switch isn't supported in this preview.
+* For three-node systems, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node systems with storage network adapters that are directly connected to each machine without a switch isn't supported in this preview.
 
 ## Start the wizard and fill out the basics
 
-<!---1. Open the Azure portal and navigate to the Azure Local service (searching is an easy way) and then select **Deploy**.--->
 1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Local**. On the **Get started** tab, select **Deploy cluster**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
 
-3. Enter the **Cluster name** used for this Azure Local system when Active Directory Domain Services (AD DS) was prepared for this deployment.
+3. Enter the **Cluster name** used for this Azure Local instance when Active Directory Domain Services (AD DS) was prepared for this deployment.
 
 4. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
@@ -38,10 +37,10 @@ This article helps you deploy an Azure Local, version 23H2 system using the Azur
 
     Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
 
-6. Select the machine or machines that make up this Azure Local system.
+6. Select the machine or machines that make up this Azure Local instance.
 
    > [!IMPORTANT]
-   > Servers must not be joined to Active Directory before deployment.
+   > Machines must not be joined to Active Directory before deployment.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
@@ -65,15 +64,15 @@ Choose whether to create a new configuration for this system or to load deployme
 
 ## Specify network settings
 
-1. For multi-node clusters, select whether the cluster is cabled to use a network switch for the storage network traffic:
-    * **No switch for storage** - For two-node clusters with storage network adapters that connect the two machines directly without going through a switch.
+1. For multi-node systems, select whether the cluster is cabled to use a network switch for the storage network traffic:
+    * **No switch for storage** - For two-node systems with storage network adapters that connect the two machines directly without going through a switch.
     * **Network switch for storage traffic** - For clusters with storage network adapters connected to a network switch. This also applies to clusters that use converged network adapters that carry all traffic types including storage.
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we're configuring:
     * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic
     * **Compute** traffic to or from VMs and containers on this system
-    * **Storage** (SMB) traffic between machines in a multi-node cluster
+    * **Storage** (SMB) traffic between machines in a multi-node system
 
     Select how you intend to group the traffic:
     * **Group all traffic** - If you're using network switches for storage traffic you can group all traffic types together on a set of network adapters.
@@ -166,7 +165,7 @@ Choose whether to create a new configuration for this system or to load deployme
     Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
     
     
-    |# Servers  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
+    |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
     |---------|---------|---------|----------|
     |Single machine    |Two-way mirror         | 1        |  1        |
     |Two machines     | Two-way mirror       | 1        |  2        |
@@ -204,7 +203,7 @@ The **Deployments** page then appears, which you can use to monitor the deployme
 
 If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
 
-Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node cluster takes about 2.5 hours to deploy.
+Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single machine is around 1.5-2 hours while a two-node system takes about 2.5 hours to deploy.
 
 ## Verify a successful deployment
 
@@ -241,12 +240,12 @@ After the deployment is complete, you may need to perform some additional tasks 
 
 ### Enable RDP
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local instances. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
 1. Run PowerShell as administrator on your management PC.
-1. Connect to your Azure Local system via a remote PowerShell session.
+1. Connect to your Azure Local instance via a remote PowerShell session.
 
     ```powershell
     $ip="<IP address of the Azure Local machine>"
@@ -270,10 +269,10 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 
 ### Lock Arc Resource bridge
 
-The Arc Resource Bridge enables the Azure Arc services to manage your Azure Local system. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge resource.
+The Arc Resource Bridge enables the Azure Arc services to manage your Azure Local instance. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge resource.
 Follow these steps to configure the resource locks:
 
-1. In the Azure portal, navigate to the resource group into which you deployed your Azure Local system.
+1. In the Azure portal, navigate to the resource group into which you deployed your Azure Local instance.
 1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
 1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the *Azure Local Administrator* role for the resource group.
 1. In the right pane, select **Add**.
