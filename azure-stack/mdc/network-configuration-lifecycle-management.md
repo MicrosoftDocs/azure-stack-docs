@@ -3,7 +3,7 @@ title: MDC network configuration lifecycle management
 description: Learn about network configuration lifecycle management for Azure Modular Datacenter. 
 author: sethmanheim
 ms.author: sethm
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.lastreviewed: 01/02/2020

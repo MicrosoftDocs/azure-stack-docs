@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Upgrade Azure Stack HCI operating system via PowerShell

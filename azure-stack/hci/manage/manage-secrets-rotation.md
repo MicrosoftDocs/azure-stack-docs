@@ -5,8 +5,7 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 09/05/2024
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Rotate secrets on Azure Stack HCI, version 23H2

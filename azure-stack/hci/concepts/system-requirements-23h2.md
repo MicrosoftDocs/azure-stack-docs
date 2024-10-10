@@ -4,8 +4,7 @@ description: How to choose servers, storage, and networking components for Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: references_regions
 ms.date: 08/22/2024
 ---

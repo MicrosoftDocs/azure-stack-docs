@@ -4,8 +4,7 @@ description: Learn how to create Azure Stack HCI VM images using source images f
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
 ms.date: 09/25/2024

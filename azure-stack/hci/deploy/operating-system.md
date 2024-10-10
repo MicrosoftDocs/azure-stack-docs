@@ -4,8 +4,7 @@ description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin 
 author: pronichkin
 ms.author: artemp
 ms.topic: reference
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/12/2024
 ---
 
