@@ -1,10 +1,10 @@
 ---
 title: Prepare GPUs for Azure Local (preview)
-description: Learn how to prepare GPUs for Azure Local  (preview).
+description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 10/10/2024
 ---
 
 # Prepare GPUs for Azure Local (preview)

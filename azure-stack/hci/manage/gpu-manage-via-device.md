@@ -1,11 +1,11 @@
 ---
-title: Manage GPUs via Discrete Device Assignment for Azure Local  (preview)
+title: Manage GPUs via Discrete Device Assignment for Azure Local (preview)
 description: Learn how to Manage GPUs via Discrete Device Assignment for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 09/25/2024
+ms.date: 10/10/2024
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
