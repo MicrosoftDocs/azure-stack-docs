@@ -7,7 +7,7 @@ ms.topic: article
 author: sethmanheim
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/03/2024
+ms.date: 10/10/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -40,11 +40,11 @@ Complete the following prerequisites to use network security groups with tags:
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
-- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
 
-- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+- You have a VM to apply a network security group to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- FIXME: You have permissions to manage network. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
 
 ::: zone-end
 
@@ -54,11 +54,11 @@ Complete the following prerequisites to use network security groups with tags:
 
 - You have Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express?context=/windows-server/context/windows-server-edge-networking).
 
-- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
 
-- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+- You have a VM to apply a network security group to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
 
 ::: zone-end
 
@@ -70,9 +70,9 @@ Network security groups allow you to configure access policies based on network 
 
 - When building policies for applications, you might want to reuse them across different scenarios. For example, if your production web app can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments, you'd have a similar policy for any new app. However, with network segmentation, recreating policies becomes necessary due to unique network elements for each app.
 
-- If you decommission an old application and provision a new one within the same network segment, policy adjustments are required.
+- If you decommission an old application and deploy a new one within the same network segment, policy adjustments are required.
 
-With the network security tags feature, you no longer need to track the network segments where your applications are hosted. This simplifies policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
+With network security tags, you no longer need to track the network segments where your applications are hosted. Network security tags simplify policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
 
 ## Create network security tag based network security groups
 
@@ -176,7 +176,7 @@ After you create a network security group, you're ready to create network securi
     | ----- | ----------- |
     | **Name** | Name of the rule. |
     | **Priority** | Priority of the rule. Acceptable values are **101** to **65000**. A lower value denotes a higher priority. |
-    | **Types** | Type of the rule. This can be **Inbound** or **Outbound**. |
+    | **Types** | Type of the rule. This rule type can be **Inbound** or **Outbound**. |
     | **Protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are **All**, **TCP** and **UDP**. |
     | **Source** | Select **Network Security Tag**.<br><br>**Note:** You can either select an address prefix or a network security tag but not both. |
     | **Source Security Tag Type** | (Optional) Select a type for the tag. |
@@ -203,6 +203,7 @@ You can apply a network security group to:
 - [Network security tag](#apply-network-security-group-to-a-network-security-tag)
 
 ::: zone-end
+
 :::zone pivot="windows-server"
 
 - [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-failover-clustering#apply-a-network-security-group-to-a-virtual-network)

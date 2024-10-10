@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/03/2024
+ms.date: 10/10/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
@@ -26,9 +26,9 @@ ms.date: 10/03/2024
 
 ::: zone-end
 
-This article describes how to enable default network access policies and assign these to virtual machines (VMs).
+This article describes how to enable default network access policies and assign them to virtual machines (VMs).
 
-Default network policies can be used to protect virtual machines running from external unauthorized attacks. These policies block all inbound access to virtual machines (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
+Default network policies can be used to protect virtual machines running from external unauthorized attacks. These policies block all inbound access to virtual machines (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, making it difficult for the threats to spread laterally.
 
 > [!NOTE]
 > In this release, you can enable and assign default network policies through the Windows Admin Center.
@@ -43,11 +43,11 @@ Complete the following prerequisites to use network access policies:
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
-- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
 
-- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+- You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
 
 ::: zone-end
 
@@ -57,11 +57,11 @@ Complete the following prerequisites to use network access policies:
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md?context=/windows-server/context/windows-server-edge-networking).
 
-- You have created a logical network or a virtual network. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
 
-- You have created a VM. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+- You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- FIXME: You have permissions to manage network access policies. For more information, see how to [Assign permissions to manage network access policies](./assign-permissions.md).
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
 
 ::: zone-end
 
@@ -69,14 +69,14 @@ Complete the following prerequisites to use network access policies:
 
 You can attach default policies to a VM in two ways:
 
-- During VM creation. You'll need to attach the VM to a logical network (traditional VLAN network) or an SDN virtual network.
+- During VM creation. You need to attach the VM to a logical network (traditional VLAN network) or an SDN virtual network.
 - Post VM creation.
 
 ### Create and attach networks
 
-Depending on the type of network you want to attach your VM to, steps may be different.
+Depending on the type of network you want to attach your VM to, steps might be different.
 
-- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of the physical network(s) available to your Azure Stack HCI. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
+- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of one or more physical networks available to your Azure Stack HCI. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 
@@ -112,13 +112,13 @@ Here's an example that explains how you can attach your VM directly to a VLAN wh
 
 ### Apply default network policies
 
-When you create a VM through Windows Admin Center, you'll see a **Security level** setting.
+When you create a VM through Windows Admin Center, you see a **Security level** setting.
 
 :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png" alt-text="Screenshot showing the three security level options for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/security-level-2.png":::
 
 You have three options:
 
-- **No protection** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks thereby posing a security risk. This option isn't recommended.
+- **No protection** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks posing a security risk. This option isn't recommended.
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png" alt-text="Screenshot showing the No protection option selected for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png":::
 
@@ -126,15 +126,15 @@ You have three options:
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs specified during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png":::
 
-- **Use existing NSG** - Choose this option to apply custom policies. You'll specify a Network Security Group (NSG) that you've already created.
+- **Use existing NSG** - Choose this option to apply custom policies. You specify a Network Security Group (NSG) that you've already created.
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png" alt-text="Screenshot showing the existing network security group selected during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/use-existing-nsg-1.png":::
 
 ## VMs created outside of Windows Admin Center
 
-If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs, and you have enabled default network access policies, you might encounter these two issues:
+You might encounter issues when you create VMs outside of Windows Admin Center and you have enabled default network access policies. For example, you've enabled default network access policies and created VMs using Hyper-V UI or New-VM PowerShell cmdlet.
 
-- The VMs may not have network connectivity. This happens since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
+- The VMs might not have network connectivity. Since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
 
     To unblock the port, run the following commands from a PowerShell session on a Hyper-V host where the VM is located:
 
@@ -145,7 +145,7 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
         Install-Module -Name SdnDiagnostics
         ```
 
-        Alternatively, if already installed then use the following:
+        Alternatively, if already installed then use the following command:
 
         ```azurepowershell
         Update-Module -Name SdnDiagnostics
@@ -200,6 +200,7 @@ Learn more about:
 - [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md)
 
 ::: zone-end
+
 :::zone pivot="windows-server"
 
 - [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md?context=/windows-server/context/windows-server-failover-clustering)
