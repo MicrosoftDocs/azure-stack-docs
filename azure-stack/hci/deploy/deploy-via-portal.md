@@ -90,7 +90,7 @@ Choose whether to create a new configuration for this system or to load deployme
     Make sure to use high-speed adapters for the intent that includes storage traffic.
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
      > [!IMPORTANT]
-     > Portal deployment does not allow to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you cannot use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](https://learn.microsoft.com/en-us/azure-stack/hci/plan/cloud-deployment-network-considerations#custom-ips-for-storage)
+     > Portal deployment does not allow to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you cannot use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](/azure-stack/hci/plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
