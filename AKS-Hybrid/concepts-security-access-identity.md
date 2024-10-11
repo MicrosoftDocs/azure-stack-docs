@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 07/30/2024
 ms.author: sethm
 ms.lastreviewed: 07/30/2024
-ms.reviewer: abha
+ms.reviewer: leslielin
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
 # Keyword: security concepts infrastructure security
