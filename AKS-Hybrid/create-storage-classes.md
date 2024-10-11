@@ -245,23 +245,23 @@ When a storage class is updated, if all the properties that changed are updatabl
 
 | Property | Type | In-place update | Description |
 | -- | -- | -- | -- |
-| `type` | `"NFS"` | N/A | Specify this is an NFS type. |
+| `type` | `NFS` | N/A | Specify this is an NFS type. |
 | `server` | `string` | No | NFS server address. |
 | `share` | `string` | No | NFS share. |
-| `subDir` | `string \| undefined` | No | Subdirectory under `share`. If the subdirectory doesn't exist, the driver creates it. |
-| `mountPermissions` | `string \| undefined` | No | Mounted folder permissions. Default is 0. If set as nonzero, the driver performs `chmod` after mount. |
-| `onDelete` | `"Delete" \| "Retain"` | No | The action to take when an NFS volume is deleted. Default is `Delete`. |
+| `subDir` | `string` \| `undefined` | No | Subdirectory under `share`. If the subdirectory doesn't exist, the driver creates it. |
+| `mountPermissions` | `string` \| `undefined` | No | Mounted folder permissions. Default is 0. If set as nonzero, the driver performs `chmod` after mount. |
+| `onDelete` | `Delete` \| `Retain` | No | The action to take when an NFS volume is deleted. Default is `Delete`. |
 
 ### SMB
 
 | Property  | Type | In-place update | Description |
 | -- | -- | -- | -- |
-| `type` | `"SMB"` | N/A | Specify this is an SMB type. |
+| `type` | `SMB` | N/A | Specify this is an SMB type. |
 | `source` | `string` | No |  SMB server source. |
-| `subDir` | `string \| undefined` | No | Subdirectory under share. If the subdirectory doesn't exist, the driver creates it. |
-| `username` | `string \| undefined` | **Yes** | Server username. |
-| `password` | `string \| undefined` (secret) | **Yes** | Server password. |
-| `domain` | `string \| undefined` | **Yes** | Server domain. |
+| `subDir` | `string` \| `undefined` | No | Subdirectory under share. If the subdirectory doesn't exist, the driver creates it. |
+| `username` | `string` \| `undefined` | **Yes** | Server username. |
+| `password` | `string` \| `undefined` (secret) | **Yes** | Server password. |
+| `domain` | `string` \| `undefined` | **Yes** | Server domain. |
 
 ### AksArcDisk (only for AKS Arc clusters)
 
@@ -269,9 +269,9 @@ You can create a storage class that uses custom disks. This process is only for 
 
 | Property  | type | In-place update | description |
 | -- | -- | -- | -- | 
-| `type` | `"AksArcDisk"` | N/A | Specify this is the AksArcDisk type. |
+| `type` | `AksArcDisk` | N/A | Specify this is the AksArcDisk type. |
 | `storagePathId` | `string` | No | The resource ID for the storage path. |
-| `fsType` | `string \| undefined` | No | `fsType` parameters for the storage class. If the storage class contains Linux workloads, set it to `ext4`. Otherwise, leave it undefined. |
+| `fsType` | `string` \| `undefined` | No | `fsType` parameters for the storage class. If the storage class contains Linux workloads, set it to `ext4`. Otherwise, leave it undefined. |
 
 ## Other features
 
@@ -280,10 +280,10 @@ You can create a storage class that uses custom disks. This process is only for 
 Current detections include:
 
 | Attribute | Azure property | Annotation key | Values | Description |
-| -- | -- | -- | -- | --
-| Performance | `performance` | `performance` | `"Ultra" \| "Premium" \| "Standard" \| "NotAvailable"` | The performance of the storage class. |
-| Failover speed | `failoverSpeed` | `failover` | `"Slow" \| "Fast" \| "Super" \| "NotAvailable"` | How fast a pod using a volume of the storage class can recover when the pod is migrated to another node. |
-| Access mode | `accssModes` | `accessModes` | Array of `"ReadWriteOnce" \| "ReadWriteMany" \| "ReadOnlyMany"`.  | If a storage class supports an access mode, a volume of the storage class can be bound to the PVC if PVC specifies its `spec.accessModes` to the access mode. |
+| -- | -- | -- | -- | -- |
+| Performance | `performance` | `performance` | `Ultra` \| `Premium` \| `Standard` \| `NotAvailable` | The performance of the storage class. |
+| Failover speed | `failoverSpeed` | `failover` | `Slow` \| `Fast` \| `Super` \| `NotAvailable` | How fast a pod using a volume of the storage class can recover when the pod is migrated to another node. |
+| Access mode | `accssModes` | `accessModes` | Array of `ReadWriteOnce` \| `ReadWriteMany` \| `ReadOnlyMany`.  | If a storage class supports an access mode, a volume of the storage class can be bound to the PVC if PVC specifies its `spec.accessModes` to the access mode. |
 
 You can see the attribute detection results of a storage class in the cloud as described in the next section. If any detection failed or timed out, the property isn't available.
 
@@ -291,7 +291,7 @@ You can see the attribute detection results of a storage class in the cloud as d
 
 The attribute detection results are available in the list.
 
-### REST CLI
+#### REST CLI
 
 ```azurecli
 > az rest --method get `
