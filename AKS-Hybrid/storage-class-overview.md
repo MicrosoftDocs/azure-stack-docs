@@ -1,7 +1,7 @@
 ---
 
-title: Storage class and Container Storage Interface (CSI)
-description: Learn about the Storage class and Container Storage Interface (CSI) in AKS enabled by Arc.
+title: Storage Class and Container Storage Interface (CSI) (preview)
+description: Learn about Storage Class and the Container Storage Interface (CSI) in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/10/2024
@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 ---
 
-# Storage Class and Container Storage Interface (CSI)
+# Storage Class and Container Storage Interface (preview)
+
+[!INCLUDE [storage-class-overview-intro](includes/storage-class-overview-intro.md)]
+[!INCLUDE [hci-applies-to-23h1](includes/hci-applies-to-23h1.md)]
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
