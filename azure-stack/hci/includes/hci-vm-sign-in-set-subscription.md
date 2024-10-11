@@ -6,7 +6,7 @@ ms.topic: include
 ms.date: 10/11/2024
 ---
 
-1. [Connect to a server](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly) on your Azure Local system. 
+1. [Connect to a server](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly) on your Azure Local instance. 
 
 
 1. Sign in. Type:

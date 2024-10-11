@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 If the Network Controller deployment fails or you want to deploy it again, do the following:
 
 1. Delete all Network Controller VMs and their VHDs from all machines.
-1. Remove the following registry keys from all hosts by running this command:
+1. Remove the following registry keys from all machines by running this command:
 
    ```powershell
     Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections

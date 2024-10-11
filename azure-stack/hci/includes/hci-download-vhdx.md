@@ -10,7 +10,7 @@ ms.date: 10/11/2024
 SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server operating system (OS) as a source for creating the SDN virtual machines (VMs).
 
 > [!NOTE]
-> The version of the OS in your VHDX must match the version used by the Azure Local Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
+> The version of the OS in your VHDX must match the version used by the Azure Local Hyper-V machines. This VHDX file is used by all SDN infrastructure components.
 
 To download an English-language version of the VHDX file, see [Download the operating system from the Azure portal](../deploy/download-azure-stack-hci-23h2-software.md). Make sure to select **English VHDX** from the **Choose language** dropdown list.
 

@@ -43,9 +43,9 @@ Use the Azure CLI to create the VM image:
     | `Location`       | Location for your Azure Local instance. For example, the location could be `eastus` or `westreurope`. |
     | `OsType`         | Operating system associated with the source image. This system can be Windows or Linux.           |
 
-1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on your Azure Local.
+1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on Azure Local.
 
-    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Local. For example, the path could look like `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
+    Make sure to copy the VHDX in user storage in the cluster shared volume of Azure Local. For example, the path could look like `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
 
     ```powershell
     $ImagePath = "Path to user storage in CSV" 
