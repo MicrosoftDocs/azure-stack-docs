@@ -25,7 +25,7 @@ An Azure Local instance consists of a machine or a cluster of machines running t
 
 You can [Download the operating system software](./deploy/download-azure-stack-hci-23h2-software.md) from the Azure portal with a free 60-day trial.
 
-To acquire the machines that support Azure Local, you can purchase validated hardware for Azure Local from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
+To acquire the machines that support Azure Local, you can purchase validated hardware from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
 
 ## Azure Local features and architecture
 
@@ -56,7 +56,7 @@ There are many reasons customers choose Azure Local, including:
 
 - It provides industry-leading virtualization performance and value.
 - You pay for the software monthly via an Azure subscription instead of when buying the hardware.
-- It's familiar for Hyper-V and server admins, allowing them to leverage existing virtualization and storage concepts and skills.
+- It's familiar to Hyper-V and server admins, allowing them to leverage existing virtualization and storage concepts and skills.
 - It can be monitored and managed from the Azure portal or using on-premises tools such as Microsoft System Center, Active Directory, Group Policy, and PowerShell scripting.
 - It works with popular third-party backup, security, and monitoring tools.
 - Flexible hardware choices allow customers to choose the vendor with the best service and support in their geography.
@@ -76,7 +76,7 @@ Customers often choose Azure Local in the following scenarios.
 | Highly performant SQL Server | Azure Local provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Local](deploy/sql-server.md). |
 | Trusted enterprise virtualization | Azure Local satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [Deploy Trusted Enterprise Virtualization on Azure Local](deploy/trusted-enterprise-virtualization.md). |
 | Scale-out storage | Storage Spaces Direct is a core technology of Azure Local that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication. |
-| Disaster recovery for virtualized workloads | A stretched cluster of Azure Local (functionality only available in version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
+| Disaster recovery for virtualized workloads | A stretched cluster of Azure Local (functionality only available in Azure Stack HCI OS, version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
 | Data center consolidation and modernization | Refreshing and consolidating aging virtualization hosts with Azure Local can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support. |
 | Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Local deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Local](deploy/branch-office-edge.md). |
 
