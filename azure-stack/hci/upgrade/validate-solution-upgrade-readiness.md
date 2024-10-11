@@ -20,7 +20,7 @@ Throughout this article, we refer to Azure Local, version 23H2 as the *new* vers
 
 This *optional* but *recommended* step helps you assess the readiness of your Azure Local instance for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your instance.
 - Ensure that sufficient storage space is available for infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate the validation checks that block the upgrade.
@@ -29,7 +29,7 @@ This *optional* but *recommended* step helps you assess the readiness of your Az
 
 We recommend that you use the Environment Checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
-Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
+Some of the actions require semachinerver reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
 ### Table: Blocking validation tests for upgrade
 
@@ -72,9 +72,9 @@ The following table contains the validation tests with severity *Warning* that s
 
 ### Set up the Environment Checker
 
-Follow these steps to set up the Environment Checker on a node of your Azure Local instance:
+Follow these steps to set up the Environment Checker on a machine of your Azure Local instance:
 
-1. Select one server that's the part of the cluster.
+1. Select one machine that's the part of the instance.
 
 1. Sign in to the machine using local administrative credentials.
 
@@ -94,7 +94,7 @@ Follow these steps to set up the Environment Checker on a node of your Azure Loc
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other machines in the cluster, run the following PowerShell command:
+1. To validate other machines in the instance, run the following PowerShell command:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
@@ -140,7 +140,7 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 ## Remediation 1: Install required and optional Windows features
 
-Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance mode before you install the roles and features. Verify that all the active virtual machines have migrated to other cluster members.
+Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine node into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other cluster members.
 
 Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
 
@@ -228,7 +228,7 @@ Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online
 
 ## Remediation 2: Ensure that cluster node is up
 
-Ensure that all the cluster members are up and that the instance is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
+Ensure that all the cluster members are up and that the instance is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster machines are online.
 
 To verify all members of the cluster are online, run the following PowerShell command:
 
@@ -285,7 +285,7 @@ Shrinking existing volumes isn't supported with Storage Spaces Direct. There are
 - **Option 3**: Add more physical drives to expand the pool capacity.
 
    > [!NOTE]
-   > Before you convert the volumes to thin provisioned, shut down all the virtual machines stored on that particular volume.
+   > Before you convert the volumes to thin provisioned, shut down all the VMs stored on that particular volume.
 
 ### Verify available space
 
@@ -374,7 +374,7 @@ Azure Local, version 23H2 deployment creates a dedicated volume *Infrastructure_
 Make sure to verify that there are no volumes that exist with the name *Infrastructure_1*. If there's an existing volume with the same name, this test fails.<!--ASK which test fails-->
 
 > [!NOTE]
-> Renaming the existing volume impacts the virtual machines as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the virtual machines.
+> Renaming the existing volume impacts the VMs as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the VMs.
 
 - To rename the existing volume, run the following PowerShell command:
 
@@ -394,7 +394,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 
    If an update is available, select the **AzureEdgeLifecycleManager** extension and then select **Update**.
 
-1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each node:
+1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each machine:
 
    ```powershell
    $ResourceGroup = "Your Resource Group Name"
@@ -412,7 +412,7 @@ If you were running AKS workloads on your Azure Local instance, you must remove 
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-## Remediation 11: Check the AKS HCI install state
+## Remediation 11: Check the AKS install state
 
 If you were running AKS workloads on your Azure Local instance, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2 and version 23H2.
 

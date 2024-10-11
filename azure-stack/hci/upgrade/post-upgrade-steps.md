@@ -27,7 +27,7 @@ Before you begin, make sure that:
     - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
     - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
     
-- Make sure that all the nodes in your Azure Local instance are healthy and show as **Online**.
+- Make sure that all the machines in your Azure Local instance are healthy and show as **Online**.
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 
 ## Step 1: Connect to the Azure Local instance
@@ -35,7 +35,7 @@ Before you begin, make sure that:
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
 
 1. Run PowerShell as Administrator on the client that you're using to connect to your instance.
-2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your server when prompted:
+2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
 
    ```powershell
    $cred = Get-Credential
@@ -98,7 +98,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
    We recommend that you upgrade the cluster functional level as soon as possible. Skip this step if you installed the feature upgrades with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
-   1. Run the following cmdlet on any machine in the cluster:
+   1. Run the following cmdlet on any machine in the instance:
 
       ```PowerShell
       Update-ClusterFunctionalLevel      
@@ -122,7 +122,7 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
        Update-StoragePool -FriendlyName "S2D on hci-cluster1"
       ```
 
-   1. Confirm the action when prompted. At this point, new cmdlets are fully operational on any server in the cluster.
+   1. Confirm the action when prompted. At this point, new cmdlets are fully operational on any machine in the cluster.
 
 1. (Optional) Upgrade VM configuration levels. You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
 
@@ -130,13 +130,13 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
        Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
 
-   1. Validate the cluster.
+   1. Validate the cluster instance.
 
-       Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
+       Run the `Test-Cluster` cmdlet on one of the machines in the cluster and examine the cluster validation report.
 
 You're now ready to apply the solution upgrade.
 
 ## Next steps
 
-- [Optional: Install and enable Network ATC on your cluster.](./install-enable-network-atc.md)
+- [Optional: Install and enable Network ATC on your instance.](./install-enable-network-atc.md)
 - [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)

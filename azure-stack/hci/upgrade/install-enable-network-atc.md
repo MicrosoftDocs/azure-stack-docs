@@ -21,7 +21,7 @@ This article provides information on how to install and enable Network ATC on yo
 
 ## About Network ATC
 
-Network ATC stores information in the cluster database, which is then replicated to other machines in the cluster. From the initial node, other nodes in the cluster see the change in the cluster database and create a new intent. Here, we set up the cluster to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on nodes that have virtual machines (VM) on them.
+Network ATC stores information in the cluster database, which is then replicated to other machines in the instance. From the initial node, other machines in the cluster instance see the change in the cluster database and create a new intent. Here, we set up the instance to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on machines that have virtual machines (VM) on them.
 
 ## Benefits
 
@@ -29,7 +29,7 @@ For Azure Local, Network ATC provides the following benefits:
 
 - Reduces host networking deployment time, complexity, and errors.
 - Deploys the latest Microsoft validated and supported best practices.
-- Ensures configuration consistency across the cluster.
+- Ensures configuration consistency across the instance.
 - Eliminates configuration drift.
 
 ## Before you begin
@@ -37,7 +37,7 @@ For Azure Local, Network ATC provides the following benefits:
 Before you install and enable Network ATC on your existing Azure Local instance, make sure:
 
 - You're on a host that doesn't have a running VM on it.
-- You're on a cluster that has running workloads on the node.
+- You're on an instance that has running workloads on the node.
 
 ## Steps to install and enable Network ATC
 
@@ -46,7 +46,7 @@ Before you install and enable Network ATC on your existing Azure Local instance,
 
 ### Step 1: Install Network ATC
 
-In this step, you install Network ATC on every node in the cluster using the following command. No reboot is required.
+In this step, you install Network ATC on every machine in the cluster instance using the following command. No reboot is required.
 
 ```powershell
 Install-WindowsFeature -Name NetworkATC
@@ -54,22 +54,22 @@ Install-WindowsFeature -Name NetworkATC
 
 ### Step 2: Stop the Network ATC service
 
-To prevent Network ATC from applying the intent while VMs are running, stop or disable the Network ATC service on all nodes that aren't paused. Use these commands:
+To prevent Network ATC from applying the intent while VMs are running, stop or disable the Network ATC service on all machines that aren't paused. Use these commands:
 
 ```powershell
 Set-Service -Name NetworkATC -StartupType Disabled
 Stop-Service -Name NetworkATC
 ```
 
-### Step 3: Pause one node in the cluster
+### Step 3: Pause one machine in the cluster
 
-When you pause one node in the cluster, all workloads are moved to other nodes, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your cluster node, use the following command:
+When you pause one machine in the cluster, all workloads are moved to other machine nodes, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your cluster node, use the following command:
 
 ```powershell
 Suspend-ClusterNode
 ```
 
-### Step 4: Remove the existing configuration on the paused node without running VMs
+### Step 4: Remove the existing configuration on the paused machine without running VMs
 
 In this step, we eliminate any previous configurations, such as `VMSwitch`, Data Center Bridging (NetQos) policy for RDMA traffic, and Load Balancing Failover (LBFO), which might interfere with Network ATC’s ability to implement the new intent. Although Network ATC attempts to adopt existing configurations with matching names; including `NetQos` and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 

@@ -25,7 +25,7 @@ Throughout this article, we refer to Azure Local, version 23H2 as the new versio
 Before you install the solution upgrade, make sure that you:
 
 - Validate the cluster using the Environment Checker as per the instructions  in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
-- Verify that latest `AzureEdgeLifecycleManager` extension on each node is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
+- Verify that latest `AzureEdgeLifecycleManager` extension on each machine is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
 
     :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on an Azure Local machine." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
 
@@ -39,7 +39,7 @@ Before you install the solution upgrade, make sure that you:
 
 You install the solution upgrade via the Azure portal.
 
-1. Go to your Azure Local instance resource in the portal.
+1. Go to your Azure Local instance resource in Azure portal.
 1. In the **Overview** page, you can see a banner indicating that a solution upgrade is available. Select the **Upgrade** link in the banner.
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-banner.png" alt-text="Screenshot of Azure Local Overview page with upgrade available banner." lightbox="./media/install-solution-upgrade/upgrade-banner.png":::
@@ -96,7 +96,7 @@ On the **Validation** tab, the operation automatically creates Azure resources l
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-1.png" alt-text="Screenshot of Upgrade Azure Local upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-progress-1.png":::
 
-1. Wait for the upgrade to complete. The solution upgrade process can take a few hours depending upon the number of nodes in the cluster.
+1. Wait for the upgrade to complete. The solution upgrade process can take a few hours depending upon the number of machines in the cluster instance.
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-2.png" alt-text="Screenshot of Upgrade Azure Local showing a completed upgrade." lightbox="./media/install-solution-upgrade/upgrade-progress-2.png":::
 
@@ -107,7 +107,7 @@ On the **Validation** tab, the operation automatically creates Azure resources l
 
 Follow these steps to verify that the upgrade was successful:
 
-1. In the Azure portal, go to the resource group where you deployed the Azure Local instance.
+1. In Azure portal, go to the resource group where you deployed the Azure Local instance.
 1. On the **Overview > Resources** page, you should see the following resources:
 
     

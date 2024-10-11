@@ -1,6 +1,6 @@
 ---
-title: Upgrade version 22H2 operating system to Azure Local, version 23H2 via Windows Admin Center
-description: Learn how to upgrade to Azure Stack HCI, version 23H2 using Windows Admin Center.
+title: Upgrade OS to Azure Local, version 23H2 via Windows Admin Center
+description: Learn how to upgrade the OS to Azure Stack HCI, version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/11/2024
@@ -8,11 +8,11 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Upgrade version 22H2 operating system to Azure Local, version 23H2 via Windows Admin Center
+# Upgrade OS to Azure Local, version 23H2 via Windows Admin Center
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 operating system (OS) to version 23H2, which is the latest generally available software via Windows Admin Center.
+This article describes how to upgrade the Azure Stack HCI, version 22H2 operating system (OS) for Azure Local to version 23H2, which is the latest generally available software via Windows Admin Center.
 
 While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
 
@@ -25,7 +25,7 @@ Throughout this article, we refer to Azure Local, version 23H2 as the *new* vers
 
 The Azure Stack HCI operating system update is available via Windows Update and via the media that you can download from the Azure portal.
 
-To upgrade the OS on your instance, follow these high-level steps:
+To upgrade the OS on your cluster instance, follow these high-level steps:
 
 1. [Complete the prerequisites](#complete-prerequisites).
 1. [Connect to the Azure Local, version 22H2 instance](#step-1-connect-to-azure-local-instance-via-windows-admin-center).
@@ -39,7 +39,7 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local, version 22H2 instance.
 - The instance should be registered in Azure.
-- Make sure that all the nodes in your Azure Local, version 22H2 cluster are healthy and show as **Online**.
+- Make sure that all the machines in your Azure Local, version 22H2 cluster are healthy and show as **Online**.
 - You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 
@@ -58,7 +58,7 @@ Follow these steps to add and connect to an Azure Local machine via Windows Admi
 
 ## Step 2: Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extensions. ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update an instance and apply quality updates using a simple user interface. If you purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extensions. ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
    > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Don't attempt to use the Cluster-Aware Updating (CAU) tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, see [Update a cluster using PowerShell](./upgrade-22h2-to-23h2-powershell.md).
@@ -68,16 +68,16 @@ Follow these steps to install updates:
 > [!NOTE]
 > The following steps use Windows Admin Center version 2311. If you are using a different version, your screens may vary slightly.
 
-1. When you connect to a cluster, the Windows Admin Center dashboard alerts you if one or more machines have updates ready to be installed and provide a link to update now. Alternatively, select **Updates** from the **Operations** menu at the left.
+1. When you connect to a cluster instance, the Windows Admin Center dashboard alerts you if one or more machines have updates ready to be installed and provide a link to update now. Alternatively, select **Updates** from the **Operations** menu at the left.
 
-1. If you're updating your cluster for the first time, Windows Admin Center checks if the cluster is properly configured to run CAU. If not, it prompts you to allow Windows Admin Center to configure CAU, which includes installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Add Cluster-Aware-Updating role**.
+1. If you're updating your instance for the first time, Windows Admin Center checks if the instance is properly configured to run CAU. If not, it prompts you to allow Windows Admin Center to configure CAU, which includes installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Add Cluster-Aware-Updating role**.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Screenshot of Windows Admin Center automatically configuring the cluster to run Cluster-Aware Updating." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
 
    > [!NOTE]
    > To use the CAU tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
 
-1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your cluster. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Local, version 23H2** is **Available** for the cluster nodes. If the feature update isn't displayed, ensure your cluster is running the Azure Local OS and that the nodes have direct access to Windows Update, then select **Check for updates**.
+1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your instance. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Local, version 23H2** is **Available** for the cluster machines. If the feature update isn't displayed, ensure your cluster is running the Azure Local OS and that the nodes have direct access to Windows Update, then select **Check for updates**.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png" alt-text="Screenshot of the Updates page in Windows Admin Center showing the available updates." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png":::
 
@@ -91,9 +91,9 @@ Follow these steps to install updates:
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-checks.png" alt-text="Screenshot of the readiness check during the installation of updates." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-checks.png":::
 
    > [!NOTE]
-   > If you're installing updates on a cluster that has [Kernel Soft Reboot](../manage/kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
+   > If you're installing updates on an instance that has [Kernel Soft Reboot](../manage/kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
 
-1. Select **Next: Install** to review the list of updates to be installed to each cluster node. Then, select **Install** to begin installing the operating system updates. One by one, each server downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, servers are restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign in to Windows Admin Center multiple times.
+1. Select **Next: Install** to review the list of updates to be installed to each cluster machine. Then, select **Install** to begin installing the operating system updates. One by one, each machine downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, machines are restarted one at a time, moving cluster roles such as VMs between machines to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign in to Windows Admin Center multiple times.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the cluster." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
@@ -103,12 +103,12 @@ Follow these steps to install updates:
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 
    > [!IMPORTANT]
-   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
+   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a machine restarts. **Don't remove any drives or restart any machines in the cluster until you see a confirmation that the sync is complete.**
    
    > [!NOTE]
-   > Hardware updates are only available on clusters that have the vendor's hardware extension installed. If your Windows Admin Center does not have this extension, there will not be an option to install hardware updates. 
+   > Hardware updates are only available on instances that have the vendor's hardware extension installed. If your Windows Admin Center does not have this extension, there will not be an option to install hardware updates.
 
-1. Windows Admin Center checks the cluster for installed extensions that support your specific machine hardware. Select **Next: Install** to install the hardware updates on each machine in the cluster. If no extensions or updates are found, select **Exit**.
+1. Windows Admin Center checks the instance for installed extensions that support your specific machine hardware. Select **Next: Install** to install the hardware updates on each machine in the cluster. If no extensions or updates are found, select **Exit**.
 
 1. As per security best practices, disable CredSSP as soon as you're finished installing the updates:
     - In Windows Admin Center, under **All connections**, select the first machine in your cluster and then select **Connect**.

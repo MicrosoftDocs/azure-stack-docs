@@ -33,7 +33,7 @@ The following diagram illustrates the components of an Azure Local, version 23H2
 
 An upgrade is a whole new version of software that represents a significant change or major improvement. An update, on the other hand, is a process of applying a set of changes to the software to improve its performance, security, or stability.
 
-Azure Local, version 23H2, is a whole new version of the solution with a multitude of new capabilities. To move from Azure Local, version 22H2 to version 23H2, you need to upgrade your existing cluster. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Local, you would need to update your existing cluster.
+Azure Local, version 23H2, is a whole new version of the solution with a multitude of new capabilities. To move from Azure Local, version 22H2 to version 23H2, you need to upgrade your existing cluster instance. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Local, you would need to update your existing instance.
 
 ## High-level steps for Azure Local upgrade
 

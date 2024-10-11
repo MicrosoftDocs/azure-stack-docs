@@ -1,5 +1,5 @@
 ---
-title: Upgrade Azure Local, version 22H2 to version 23H2 via other manual methods
+title: Upgrade to Azure Local, version 23H2 via other manual methods
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2 using other manual methods.
 author: alkohli
 ms.topic: how-to
@@ -8,11 +8,11 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Upgrade Azure Local, version 22H2 to Azure Local, version 23H2 via other methods
+# Upgrade to Azure Local, version 23H2 via other methods
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software, using manual methods such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
+This article describes how to upgrade the version 22H2 operating system (OS) to version 23H2 for Azure Local, which is the latest generally available software, using manual methods such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Local, version 22H2 OS to Azure Local, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
@@ -25,7 +25,7 @@ Throughout this article, we refer to Azure Local, version 23H2 as the new versio
 
 The Azure Local operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
 
-To upgrade the OS on your cluster, follow these high-level steps:
+To upgrade the OS on your instance, follow these high-level steps:
 
 1. [Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.](#complete-prerequisites)
 1. [Connect to the Azure Local, version 22H2 instance.](#step-1-connect-to-the-azure-local-instance)
@@ -51,10 +51,10 @@ Before you begin, make sure that:
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
 
 > [!IMPORTANT]
-> To perform a manual upgrade using SConfig, you must log in directly to the cluster nodes.  You can use remote PowerShell to control cluster actions, or you can run the commands directly from each node when performing the update.
+> To perform a manual upgrade using SConfig, you must log in directly to the machine nodes.  You can use remote PowerShell to control cluster actions, or you can run the commands directly from each machine when performing the update.
 
-1. Run PowerShell as Administrator on the client that you're using to connect to your cluster.
-2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your server when prompted:
+1. Run PowerShell as Administrator on the client that you're using to connect to your instance.
+2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
 
    ```powershell
    $cred = Get-Credential
@@ -75,30 +75,30 @@ Follow these steps on your client to connect to one of the machines of your Azur
 
 ## Step 2: Install new OS using other methods
 
-Depending upon your requirements, you can manually update the OS using SConfig or update all the machines of the cluster at the same time. Each of these methods is discussed in the following sections.
+Depending upon your requirements, you can manually update the OS using SConfig or update all the machines of the instance at the same time. Each of these methods is discussed in the following sections.
 
 
-## Method 1: Perform a manual OS update of a Failover Cluster using SCONFIG
+## Method 1: Perform a manual OS update of a failover cluster using SCONFIG
 
 To do a manual feature update of a failover cluster, use the **SConfig** tool and Failover Clustering PowerShell cmdlets. For more information about **SConfig**, see [Configure a Server Core installation of Windows Server and Azure Local with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-For each node in the instance, run these commands on the target node:
+For each machine in the instance, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node <Node Name> -Drain`
 
-    1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target node.
+    1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target machine.
 
-    1. Run the **SCONFIG** option 6.3 on the target node.
+    1. Run the **SCONFIG** option 6.3 on the target machine.
 
-    1. After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
+    1. After the target machine has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
 
 1. `Resume-ClusterNode -Node <Node Name> -Failback`
 
-When all the nodes are upgraded, you can perform the post-installation steps.
+When all the machines are upgraded, you can perform the post-installation steps.
 
 ## Method 2: Perform a fast, offline OS update of all machines in a cluster
 
-This method allows you to take all the machines in a cluster down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
+This method allows you to take all the machines in a cluster instance down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
 
 If there's a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method could be for you. This process brings down the Azure Local instance, updates the machines, and brings it all up again.
 
@@ -111,8 +111,8 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
    Set-Service -Name clussvc -StartupType Disabled
    ```
    
-1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all machines. You can update all machines at the same time: there's no need to wait because the cluster is down.
-1. Restart the machines rvers and ensure everything looks good.
+1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all machines. You can update all machines at the same time: there's no need to wait because the instance is down.
+1. Restart the machines and ensure everything looks good.
 1. Set the cluster service back to **Automatic** by running the PowerShell command below on each machine.
 
    ```

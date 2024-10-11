@@ -20,7 +20,7 @@ When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encount
 
 ### Registration failures
 
-Run the following PowerShell command to verify that the cluster is registered with Azure:
+Run the following PowerShell command to verify that the instance is registered with Azure:
 
 ```PowerShell
 Get-AzureStackHci
