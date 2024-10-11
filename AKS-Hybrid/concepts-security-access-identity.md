@@ -1,10 +1,10 @@
 ---
 title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Stack HCI.
-author: leslielin
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 07/30/2024
-ms.author: leslielin
+ms.author: sethm
 ms.lastreviewed: 07/30/2024
 ms.reviewer: abha
 
