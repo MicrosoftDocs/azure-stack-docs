@@ -18,7 +18,7 @@ This article describes how to create and manage virtual machines (VMs) on Azure 
 
 ## About managing VMs using PowerShell
 
-Typically, you manage VMs from a remote computer, rather than on a host machine in a system. This remote computer is called the management computer.
+Typically, you manage VMs from a remote computer, rather than on a host machine in an Azure Local instance. This remote computer is called the management computer.
 
 When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host machine you're managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
 
@@ -139,7 +139,7 @@ Export-VM -ComputerName Server1 -Name VM1 -Path D:\
 
 The `Rename-VM` cmdlet is used to rename a VM. For detailed information, see the [Rename-VM](/powershell/module/hyper-v/rename-vm) reference documentation.
 
-The following example renames VM1 to VM2 and displays the renamed virtual machine:
+The following example renames VM1 to VM2 and displays the renamed VM:
 
 ```powershell
 Rename-VM -ComputerName Server1 -Name VM1 -NewName VM2
@@ -227,13 +227,13 @@ Remove-VM -Name VM1
 
 ### Remove a VM from a system
 
-To remove or delete a VM and its resources from a system, first find them using the following cmdlet:
+To remove or delete a VM and its resources from an instance, first find them using the following cmdlet:
 
 ```powershell
 Get-ClusterGroup
 ```
 
-Then, run the following cmdlet for each VM you wish to remove from the system:
+Then, run the following cmdlet for each VM you wish to remove from the instance:
 
 ```powershell
 Remove-ClusterGroup -RemoveResources -Name VM1

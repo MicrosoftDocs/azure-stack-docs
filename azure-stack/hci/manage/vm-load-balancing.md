@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 02/27/2024
+ms.date: 10/11/2024
 ---
 # Virtual machine load balancing
 
@@ -13,9 +13,9 @@ ms.date: 02/27/2024
 
 [!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
-A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It's common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some machines in the system are hosting more virtual machines (VMs), while other machines are underutilized.
+A key consideration for Azure Local deployments is the capital expenditure (CapEx) required to go into production. It's common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some machines in the system are hosting more virtual machines (VMs), while other machines are underutilized.
 
-Enabled by default in Azure Local, Windows Server 2022, Windows Server 2019, and Windows Server 2016, VM load balancing is a feature that allows you to optimize machine utilization in your systems. It identifies over-committed machines and live migrates VMs from those machines to under-committed machines. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
+VM load balancing is a feature that allows you to optimize machine utilization in your systems. It identifies over-committed machines and live migrates VMs from those machines to under-committed machines. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
 
 VM load balancing evaluates a machine's load based on the following heuristics:
 
@@ -24,24 +24,24 @@ VM load balancing evaluates a machine's load based on the following heuristics:
 
 ## How does VM load balancing work?
 
-VM load balancing occurs automatically when you add a new machine to your system and can also be configured to perform periodic, recurring load balancing.
+VM load balancing occurs automatically when you add a new machine to your instance and can also be configured to perform periodic, recurring load balancing.
 
 ### When a new machine is added to a system
 
-When you join a new machine to your system, the VM load balancing feature automatically balances capacity from the existing machines to the newly added machine in the following order:
+When you join a new machine to your instance, the VM load balancing feature automatically balances capacity from the existing machines to the newly added machine in the following order:
 
-1. The memory pressure and CPU utilization are evaluated on the existing machines in the system.
+1. The memory pressure and CPU utilization are evaluated on the existing machines in the instance.
 2. All machines exceeding the threshold are identified.
 3. The machines with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
-4. VMs are live migrated (with no downtime) from a machine that exceeds the threshold to the newly added machine in the system.
+4. VMs are live migrated (with no downtime) from a machine that exceeds the threshold to the newly added machine in the instance.
 
-:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new machine being added to a system" lightbox="media/vm-load-balancing/server-added.png":::
+:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new machine being added to an instance." lightbox="media/vm-load-balancing/server-added.png":::
 
 ### Recurring load balancing
 
-By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each machine in the system are evaluated for balancing every 30 minutes. Here's the flow of the steps:
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each machine in the instance are evaluated for balancing every 30 minutes. Here's the flow of the steps:
 
-1. The memory pressure and CPU utilization are evaluated on all machines in the system.
+1. The memory pressure and CPU utilization are evaluated on all machines in the instance.
 2. All machines exceeding the threshold and those below the threshold are identified.
 3. The machines with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a machine that exceeds the threshold to another machine that is under the minimum threshold.
@@ -50,11 +50,11 @@ By default, VM load balancing is configured for periodic balancing: the memory p
 
 ## Configure VM load balancing using Windows Admin Center
 
-The easiest way to configure VM load balancing is using Windows Admin Center. 
+The easiest way to configure VM load balancing is using Windows Admin Center.
 
 :::image type="content" source="media/vm-load-balancing/vm-load-balancing.png" alt-text="Configuring VM load balancing with Windows Admin Center" lightbox="media/vm-load-balancing/vm-load-balancing.png":::
 
-1. Connect to your system and go to **Tools > Settings**.
+1. Connect to your instance and go to **Tools > Settings**.
 
 2. Under **Settings**, select **Virtual machine load balancing**.
 
@@ -64,7 +64,7 @@ The easiest way to configure VM load balancing is using Windows Admin Center.
 
 ## Configure VM load balancing using Windows PowerShell
 
-You can configure if and when load balancing occurs using the system common property `AutoBalancerMode`. To control when to balance the system, run the following in PowerShell, substituting a value from the table below:
+You can configure if and when load balancing occurs using the instance common property `AutoBalancerMode`. To control when to balance the instance, run the following in PowerShell, substituting a value from the table below:
 
 ```PowerShell
 (Get-Cluster).AutoBalancerMode = <value>
@@ -86,7 +86,7 @@ You can also configure the aggressiveness of balancing by using the system commo
 |-------------------|----------------|----------|
 | 1 (default) | Low | Move when host is more than 80% loaded |
 | 2 | Medium | Move when host is more than 70% loaded |
-| 3 | High | Average machines in the system and move when host is more than 5% above average |
+| 3 | High | Average machines in the instance and move when host is more than 5% above average |
 
 To check how the `AutoBalancerLevel` and `AutoBalancerMode` properties are set, run the following in PowerShell:
 
