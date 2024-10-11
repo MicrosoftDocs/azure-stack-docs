@@ -105,11 +105,11 @@ To create an NFS storage class, select **NFS** from the **Type** dropdown under 
 
 If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you are unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
 
-:::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-nfs.png" alt-text=":::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-nfs.png" alt-text="Screenshot of portal showing error when CSI not enabled.":::":::
+:::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-nfs.png" alt-text="Screenshot of portal showing error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-nfs.png":::
 
 After you complete the form in the **Basics** tab, you can optionally specify advanced options under the **Advanced** tab.
 
-:::image type="content" source="media/create-storage-classes/nfs-advanced-properties.png" alt-text=":::image type="content" source="media/create-storage-classes/nfs-advanced-properties.png" alt-text="Screenshot of portal showing storage class advanced properties. ":::":::
+:::image type="content" source="media/create-storage-classes/nfs-advanced-properties.png" alt-text="Screenshot of portal showing storage class advanced properties." lightbox="media/create-storage-classes/nfs-advanced-properties.png":::
 
 Select **Review + Create** at the bottom of the tab, wait for validation to complete, review the configuration for the storage class, and then select **Create** to create it.
 
@@ -144,7 +144,7 @@ Select **SMB** in the **Type** dropdown under the **Storage Class Type** section
 
 If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you are unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
 
-:::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text=":::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text="Screenshot of portal showing SMB error when CSI not enabled.":::":::
+:::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text="Screenshot of portal showing SMB error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-smb.png":::
 
 #### Azure CLI
 

@@ -11,9 +11,6 @@ ms.topic: conceptual
 
 # Storage Class and Container Storage Interface (preview)
 
-[!INCLUDE [storage-class-overview-intro](includes/storage-class-overview-intro.md)]
-[!INCLUDE [hci-applies-to-23h1](includes/hci-applies-to-23h1.md)]
-
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
