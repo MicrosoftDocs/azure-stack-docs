@@ -1,11 +1,12 @@
 --- 
-title: Manage VMs using Windows PowerShell - Azure Local
+title: Manage VMs using Windows PowerShell on Azure Local
 description: How to manage virtual machines on Azure Local using Windows PowerShell
-author: JasonGerend
+author: alkohli
 ms.topic: how-to 
-ms.date: 07/08/2024
+ms.date: 10/11/2024
 ms.author: jgerend
 ms.reviewer: stevenek
+ms.service: azure-stack-hci
 ---
 
 # Manage VMs on Azure Local using Windows PowerShell
@@ -227,13 +228,13 @@ Remove-VM -Name VM1
 
 ### Remove a VM from a system
 
-To remove or delete a VM and its resources from an instance, first find them using the following cmdlet:
+To remove or delete a VM and its resources from a system, first find them using the following cmdlet:
 
 ```powershell
 Get-ClusterGroup
 ```
 
-Then, run the following cmdlet for each VM you wish to remove from the instance:
+Then, run the following cmdlet for each VM you wish to remove from the system:
 
 ```powershell
 Remove-ClusterGroup -RemoveResources -Name VM1

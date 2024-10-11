@@ -1,13 +1,13 @@
 ---
-title: Manage VMs with Windows Admin Center
-description: Learn how to create and manage virtual machines in a system on Azure Local using Windows Admin Center.
-author: jasongerend
+title: Manage VMs with Windows Admin Center on Azure Local
+description: Learn how to create and manage virtual machines on Azure Local using Windows Admin Center.
+author: alkohli
 ms.topic: how-to
 ms.date: 10/11/2024
-ms.author: jgerend
+ms.author: alkohli
 ---
 
-# Manage VMs with Windows Admin Center
+# Manage VMs with Windows Admin Center on Azure Local
 
 > Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
@@ -30,7 +30,7 @@ You can easily create a new VM using Windows Admin Center.
 7. Under **Path**, select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\machine\share*.
 
     > [!NOTE]
-    > We strongly recommend that you select a system shared volume to ensure high availability of your VM.
+    > We strongly recommend that you select a cluster shared volume to ensure high availability of your VM.
 
 8. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](../concepts/nested-virtualization.md) enabled for the VM. If the system is running Azure Local, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
 9. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
@@ -57,7 +57,7 @@ You can easily see all VMs on a machine or in your Azure Local instance.
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Virtual Machines**.
 2. The  **Inventory** tab on the right lists all VMs available on the current machine or the instance, and provides commands to manage individual VMs. You can:
-    - View a list of the VMs running on the current machine or instance.
+    - View a list of the VMs running on the current machine or system.
     - View the VM's state and host machine if you are viewing VMs for a system. Also view CPU and memory usage from the host perspective, including memory pressure, memory demand and assigned memory, and the VM's uptime, heartbeat status, and protection status (using Azure Site Recovery).
     - Create a new VM.
     - Delete, start, turn off, shut down, pause, resume, reset or rename a VM. Also save the VM, delete a saved state, or create a checkpoint.
@@ -86,16 +86,16 @@ You can view detailed information and performance charts for a specific VM from 
 
 ## View aggregate VM metrics
 
-You can view resources usage and performance metrics for all VMs in your instance.
+You can view resources usage and performance metrics for all VMs in your system.
 
 :::image type="content" source="media/vm/host-metrics.png" alt-text="host metrics screen" lightbox="media/vm/host-metrics.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
-2. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected machine or instance, including the following:
-    - The number of VMs that are running, stopped, paused, and saved
-    - Recent health alerts or Hyper-V event log events for systems
-    - CPU and memory usage with host vs guest breakdown
-    - Live and historical data line charts for IOPS and I/O throughput for systems
+2. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected machine or system, including the following:
+    - The number of VMs that are running, stopped, paused, and saved.
+    - Recent health alerts or Hyper-V event log events for systems.
+    - CPU and memory usage with host vs guest breakdown.
+    - Live and historical data line charts for IOPS and I/O throughput for systems.
 
 ## Change VM settings
 
@@ -135,9 +135,9 @@ There are a variety of settings that you can change for a VM.
         - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select a network security group that can be applied to the VM.
 
     - To change additional settings for a network adapter, click **Advanced** to be able to:
-        - Select between dynamic or static MAC address type
-        - Enable MAC address spoofing
-        - Enable bandwidth management and specify the max/min range
+        - Select between dynamic or static MAC address type.
+        - Enable MAC address spoofing.
+        - Enable bandwidth management and specify the max/min range.
 
         :::image type="content" source="media/vm/vm-settings-network.png" alt-text="Change VM network settings screen" lightbox="media/vm/vm-settings-network.png":::
 
@@ -177,12 +177,12 @@ generate a KP that allows running the VM on this host.
 
 ## Move a VM to another machine or system
 
-You can easily move a VM to another machine or another instance as follows:
+You can easily move a VM to another machine or another system as follows:
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. Under the **Inventory** tab, select a VM from the list and select **Manage > Move**.
 3. Choose a machine from the list and select **Move**.
-4. If you want to move both the VM and its storage, choose whether to move it to another instanc or to another machine in the same instanc.
+4. If you want to move both the VM and its storage, choose whether to move it to another system or to another machine in the same system.
 
     :::image type="content" source="media/vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/vm/vm-more-move.png":::
 

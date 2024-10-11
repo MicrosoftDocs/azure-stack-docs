@@ -1,11 +1,12 @@
 ---
 title: Attach a GPU to a Linux VM in Azure Local
 description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Local.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
+ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 02/23/2024
+ms.date: 10/11/2024
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
@@ -14,8 +15,7 @@ ms.date: 02/23/2024
 
 [!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
-This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Local using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
-This document assumes you have the Azure Local instance deployed and VMs installed.
+This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) in Azure Local using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM). You must have an Azure Local instance already deployed and VMs installed.
 
 ## Install the GPU and then dismount it in PowerShell
 
@@ -36,13 +36,13 @@ This document assumes you have the Azure Local instance deployed and VMs install
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="Dismounted Device Screenshot." lightbox="media/attach-gpu-to-linux-vm/dismounted.png":::
 
-## Create and configure an Ubuntu virtual machine
+## Create and configure an Ubuntu VM
 
 1. Download [Ubuntu desktop release 18.04.02 ISO](http://old-releases.ubuntu.com/releases/18.04.2/).
-2. Open **Hyper-V Manager** on the machine of the system with the GPU installed.
+2. Open **Hyper-V Manager** on the machine in your Azure local instance with the GPU installed.
    > [!NOTE]
-   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
-3. Using the Ubuntu ISO downloaded in step 1, create a new virtual machine using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Gen 1 VM with 2GB of memory and a network card attached to it.
+   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a VM limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
+3. Using the Ubuntu ISO downloaded in step 1, create a new VM using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Generation 1 VM with 2GB of memory and a network card attached to it.
 4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
     # Confirm that there are no DDA devices assigned to the VM
