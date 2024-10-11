@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/11/2024
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -22,7 +22,7 @@ Follow these steps to list VM image using Azure CLI.
     az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
     
-    Depending on the command used, a corresponding set of images associated with the Azure Stack HCI cluster are listed.
+    Depending on the command used, a corresponding set of images associated with the Azure Local instance are listed.
 
     - If you specify just the subscription, the command lists all the images in the subscription.
     - If you specify both the subscription and the resource group, the command lists all the images in the resource group.
