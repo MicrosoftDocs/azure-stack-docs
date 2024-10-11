@@ -4,14 +4,15 @@ description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/10/2024
+ms.date: 10/11/2024
+ms.service: azure-stack-hci
 ---
 
 # Prepare GPUs for Azure Local (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) for Azure Local for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 > [!IMPORTANT]
 > This feature is currently in PREVIEW.
@@ -60,21 +61,21 @@ These additional GPU models are supported using GPU-P (only) for Arc VM workload
 
 Your Azure Local host must meet the following requirements:
 
-- Your instance must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
+- Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
 - You've access to an Azure Local, version 23H2 instance.
 
-- You must create a homogeneous configuration for GPUs across all the machines in your instance. A homogeneous configuration consists of installing the same make and model of GPU.
+- You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
-- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each machine in the instance. Contact your instance vendor if you're unable to identify the correct setting in your BIOS.
+- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each machine in the system. Contact your hardware vendor if you're unable to identify the correct setting in your BIOS.
 
 ## Prepare GPU drivers on each host
 
-The process for preparing and installing GPU drivers for each host machine differs somewhat between DDA and GPU-P. Follow the applicable process for your situation.
+The process for preparing and installing GPU drivers for each machine differs somewhat between DDA and GPU-P. Follow the applicable process for your situation.
 
 ### Find GPUs on each host
 
-First ensure there is no driver installed for each host machine. If there is a host driver installed, uninstall the host driver and restart the machine.  
+First ensure there is no driver installed for each machine. If there is a host driver installed, uninstall the host driver and restart the machine.  
 
 After you uninstalled the host driver or if you did not have any driver installed, run PowerShell as administrator with the following command:
 
@@ -118,13 +119,13 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
 ```
 
-Confirm the GPUs were correctly dismounted from the host. The GPUs will now be in an `Unknown` state:
+Confirm the GPUs were correctly dismounted from the host machine. The GPUs will now be in an `Unknown` state:
 
 ```powershell
 Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
 ```
 
-Repeat this process for each machine in the Azure Local instance to prepare the GPUs.
+Repeat this process for each machine in your system to prepare the GPUs.
 
 ### 2. Download and install the mitigation driver
 
@@ -156,7 +157,7 @@ You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
 ```
 
-Repeat the above steps for each host in your Azure Local instance.
+Repeat the above steps for each host in your Azure Local system.
 
 ## Using GPU-P
 
@@ -261,7 +262,7 @@ Follow these steps to configure the GPU partition count in PowerShell:
     PartitionCount          : 4
      ```
 
-1. To keep the configuration homogeneous, repeat the partition count configuration steps on each machine in your Azure Local instance.
+1. To keep the configuration homogeneous, repeat the partition count configuration steps on each machine in your system.
 
 ## Guest requirements
 
