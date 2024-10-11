@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/04/2024
+ms.date: 10/10/2024
 ---
 
 # Repair a server on Azure Stack HCI, version 23H2
@@ -136,6 +136,12 @@ Follow these steps on another server that is a member of the same Azure Stack HC
    ```powershell
     Update-AuthenticationToken
    ```
+
+1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
+
+    ```powershell
+    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
+    ```
 
 1. Sign into the server that is already a member of the cluster, with the domain user credentials that you provided during the deployment of the cluster. Run the following command to repair the incoming server:
 
