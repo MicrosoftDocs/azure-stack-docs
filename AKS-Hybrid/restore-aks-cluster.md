@@ -1,10 +1,10 @@
 ---
 title: Process for restoring a Kubernetes cluster from a disaster
 description: Learn how to restore Kubernetes clusters after a disaster.
-author: baziwane
+author: sethmanheim
 ms.topic: how-to
 ms.date: 07/03/2024
-ms.author: rbaziwane 
+ms.author: sethm 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane
 # Intent: As an IT Pro, I need to learn how to restore AKS Arc following a disaster.
