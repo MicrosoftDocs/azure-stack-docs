@@ -18,7 +18,7 @@ The procedure in this article applies to both a single machine and multi-machine
 
 [!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-system-updates.md)]
 
-For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-system.md).
+For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-cluster.md).
 
 ## About solution updates
 
@@ -482,4 +482,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](./update-tro
 
 ## Next step
 
-Learn more about how to [Update Azure Local instance, version 22H2](../manage/update-system.md) when the orchestrator isn't installed.
+Learn more about how to [Update Azure Local instance, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
