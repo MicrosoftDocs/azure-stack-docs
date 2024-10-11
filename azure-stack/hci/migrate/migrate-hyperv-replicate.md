@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 03/05/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview)
@@ -62,21 +61,21 @@ Complete the following tasks to generate the target appliance key:
 
 1. Under **Migration and modernization**, select **Replicate**.
 
-1. On the **Specify intent** page, select the following from the dropdown lists:
-    - Servers or virtual machines (VM).
-    - Azure Stack HCI.
-    - Hyper-V.
-    - Source appliance (pre-populated; select the applicable one from the dropdown if you have more than one).
+1. On the **Specify intent** page, provide the following inputs:
+    - For **What do you want to migrate?**, select **Servers or virtual machines (VM)**.
+    - For **Where do you want to migrate?**, select **Azure Stack HCI**.
+    - For **Virtualization Type**, select **Hyper-V**.
+    - For the **On-premises appliance**, the source appliance is pre-populated. IF you have more than one source appliance, select the applicable one from the dropdown list.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-hyperv-replicate/replicate-specify-intent.png":::
 
-1. Select **Download and configure** in **Before you start replication...** from the information block, then select **Continue**.
+1. Select **Download and configure** in **Before you start replication to Azure Stack HCI** from the information block.
 
-1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
+1. On the **Deploy and configure the target appliance** pane, provide a name for the target appliance and then select **Generate key**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-hyperv-replicate/generate-target-key.png":::
 
-1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
+1. Copy and paste the project key to a text editor (for example, Notepad) after it is generated for future use.
 
 ### Create the target appliance
 
@@ -203,9 +202,9 @@ This step applies only if you downloaded the .zip file.
 
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
-    1. Select **Azure Stack HCI** as **Where do you want to migrate to ?**
-    1. Select **Hyper-V** as the **Virtualization type**.
-    1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
+    1. Select **Azure Stack HCI** for **Where do you want to migrate to ?**
+    1. Select **HYper-V** for the **Virtualization type**.
+    1. Select the source appliance as the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
@@ -221,7 +220,7 @@ This step applies only if you downloaded the .zip file.
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. 
+1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark.
 
     > [!NOTE]
     > A green checkmark indicates that the target appliance is successfully registered and configured. If you haven't configured your target appliance yet, you will see the configuration page here instead.

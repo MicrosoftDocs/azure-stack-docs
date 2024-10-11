@@ -111,8 +111,6 @@
           href: azure-stack-version-profiles-java.md
         - name: Go
           href: azure-stack-version-profiles-go.md
-        - name: Ruby
-          href: azure-stack-version-profiles-ruby.md
         - name: Python
           href: azure-stack-version-profiles-python.md
         - name: NodeJS

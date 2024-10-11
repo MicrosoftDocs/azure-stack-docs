@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 09/25/2024
 ms.author: robess
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Known issues in the Azure Stack HCI 2408.1 release
@@ -39,8 +38,9 @@ The following issues are fixed in this release:
 |------|------|----------|
 | Arc VM management | The MAC address of the VM network interface wouldn't appear if the customer didn't pass the mac address at the time of creation. ||
 | Update <!--28489253--> | MOC node agent would get stuck in a restart pending stage during the update MOC step. ||
-| Update <!--29075839--> | Required permissions were not granted when upgrading which caused update to fail later. ||
+| Update <!--29075839--> | Required permissions weren't granted when upgrading which caused update to fail later. ||
 | Upgrade <!--29346181--> | Added validation to check for an IPv6 address. ||
+| Update | SBE interfaces wouldn't execute on all the servers if the hostname in the cluster was a subset of another hostname. ||
 
 ## Known issues in this release
 
