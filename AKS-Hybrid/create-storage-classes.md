@@ -43,7 +43,7 @@ To use the feature with Azure CLI, you must also have Azure CLI installed and se
 az extension add --name k8s-runtime
 ```
 
-## Azure portal
+## [Azure portal](#tab/portal)
 
 During the preview, our publicly available portal extension only targets provisioned clusters and is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` extension. [Use this link to show the link for provisioned clusters](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true). The example in this article uses a provisioned cluster for demonstration purposes.
 
@@ -63,7 +63,7 @@ When it's ready, the UI looks similar to the following screenshot. Your storage 
 
 :::image type="content" source="media/create-storage-classes/storage-classes-summary.png" alt-text="Screenshot showing summary of storage classes on portal." lightbox="media/create-storage-classes/storage-classes-summary.png":::
 
-## Azure CLI
+## [Azure CLI](#tab/cli)
 
 To enable the service in your connected cluster, you must first get the resource ID for your connected cluster. Run the following command:
 
@@ -71,15 +71,17 @@ To enable the service in your connected cluster, you must first get the resource
 az k8s-runtime storage-class enable --resource-uri <connected cluster resource id>
 ```
 
+---
+
 ## List all storage classes in the cloud
 
 This section describes how to list all storage classes in the cloud using the portal, or CLI.
 
-### Azure portal
+### [Azure portal](#tab/portal)
 
 The previous UI shows all the storage classes in your connected cluster that are already synchronized to the cloud.
 
-### Azure CLI
+### [Azure CLI](#tab/cli)
 
 You can get all storage class resources of an Arc-connected cluster using Azure CLI:
 
@@ -87,13 +89,15 @@ You can get all storage class resources of an Arc-connected cluster using Azure 
 az k8s-runtime storage-class list --resource-uri <connecter cluster resource id>
 ```
 
+---
+
 ## Create a storage class
 
 This section describes how to create a storage class using the portal, or CLI.
 
 ### NFS
 
-#### Azure portal
+#### [Azure portal](#tab/portal)
 
 When the service is ready, the **Create** button on the action bar becomes available. Select it, and a new blade to create a new storage class is displayed.
 
@@ -121,7 +125,7 @@ After the Azure Resource Manager deployment completes, a new storage class with 
 
 :::image type="content" source="media/create-storage-classes/storage-summary.png" alt-text="Screenshot of portal showing storage summary":::
 
-#### Azure CLI
+#### [Azure CLI](#tab/cli)
 
 You can create a new SMB storage class using Azure CLI:
 
@@ -134,9 +138,11 @@ az k8s-runtime storage-class create `
     --type-properties nfs.subDir="/subdir"
 ```
 
+---
+
 ### SMB
 
-#### Azure portal
+#### [Azure portal](#tab/portal)
 
 Select **SMB** in the **Type** dropdown under the **Storage Class Type** section, and then input the required information:
 
@@ -146,7 +152,7 @@ If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an e
 
 :::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text="Screenshot of portal showing SMB error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-smb.png":::
 
-#### Azure CLI
+#### [Azure CLI](#tab/cli)
 
 You can create an SMB storage class using Azure CLI:
 
@@ -158,9 +164,11 @@ az k8s-runtime storage-class create `
     --type-properties smb.subDir="/subdir"
 ```
 
+---
+
 ### AksArcDisk
 
-#### Azure portal
+#### [Azure portal](#tab/portal)
 
 You can create [a storage class for a custom disk](https://aka.ms/aks-arc-custom-disk-storage-class) for AKS Arc. This type is only available for AKS Arc. A storage path is required for this type of storage class. You can select one with the provided selector, or input the storage path resource ID directly:
 
@@ -168,7 +176,7 @@ You can create [a storage class for a custom disk](https://aka.ms/aks-arc-custom
 
 :::image type="content" source="media/create-storage-classes/custom-disk-properties.png" alt-text="Screenshot of portal showing custom disk properties." lightbox="media/create-storage-classes/custom-disk-properties.png":::
 
-#### Azure CLI
+#### [Azure CLI](#tab/cli)
 
 You can create a storage class for a custom disk using Azure CLI:
 
@@ -179,6 +187,8 @@ az k8s-runtime storage-class create `
     --type-properties aksarcdisk.storagePathId="<resource id for the storage path>" `
     --type-properties aksarcdisk.fsType=ext4
 ```
+
+---
 
 ## Update a storage class
 
@@ -199,7 +209,7 @@ az k8s-runtime storage-class update `
 
 You can delete a storage class using the Azure portal or Azure CLI.
 
-### Azure portal
+### [Azure portal](#tab/portal)
 
 To delete storage classes from a cluster using the portal, select the storage classes to delete, then select **Delete** and confirm the action.
 
@@ -207,13 +217,15 @@ To delete storage classes from a cluster using the portal, select the storage cl
 
 :::image type="content" source="media/create-storage-classes/delete-confirm.png" alt-text="Screenshot of portal showing storage class delete confirmation." lightbox="media/create-storage-classes/delete-confirm.png":::
 
-### Azure CLI
+### [Azure CLI](#tab/cli)
 
 You can delete a storage class using Azure CLI:
 
 ```azurecli
 az k8s-runtime storage-class delete --resource-uri <connected resource id> --storage-class-name <storage class name>
 ```
+
+---
 
 ## Disable Storage Class service
 
@@ -277,7 +289,7 @@ You can see the attribute detection results of a storage class in the cloud as d
 
 #### Azure portal
 
-The attribute detection results are available in the list, using the following methods.
+The attribute detection results are available in the list.
 
 ### REST CLI
 
