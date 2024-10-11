@@ -16,7 +16,7 @@ This article describes how to apply a solution update to your Azure Local instan
 
 The procedure in this article applies to both a single machine and multi-machine systems that run the latest version with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-system-updates.md)]
+[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
 For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-cluster.md).
 
