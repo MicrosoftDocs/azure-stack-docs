@@ -1,7 +1,7 @@
 ---
 title: Discover ONVIF cameras with Akri
 description: Learn how to discover and stream video from your ONVIF cameras with Akri.
-author: sethmanheim-msft
+author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.date: 10/17/2023

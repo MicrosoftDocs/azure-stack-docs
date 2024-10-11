@@ -1,7 +1,7 @@
 ---
 title: AKS Edge Essentials deployment configuration JSON parameters
 description: Description of deployment configuration JSON parameters in AKS Edge Essentials.
-author: sethmanheim-msft
+author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
 ms.date: 07/11/2024

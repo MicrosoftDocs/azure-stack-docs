@@ -1,7 +1,7 @@
 ---
 title: Discover sample OPC UA servers with Akri
 description: Learn how to deploy an OPC PLC container and use Akri to discover servers and display anomaly values.
-author: sethmanheim-msft
+author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.date: 10/17/2023
