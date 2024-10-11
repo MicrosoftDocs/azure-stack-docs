@@ -1,8 +1,8 @@
 ---
 title: Azure Site Recovery overview
 description: Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages.
-author: ronmiab
-ms.author: robess
+author: sethmanheim
+ms.author: sethm
 ms.topic: overview
 ms.date: 08/12/2024
 ms.reviewer: rtiberiu
