@@ -15,7 +15,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 ## About troubleshooting updates
 
-If your cluster was created via a new deployment of Azure Local, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and updates for the workloads.
+If your system was created via a new deployment of Azure Local, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and updates for the workloads.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. When an update fails, you can retry the update.
 
@@ -25,7 +25,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 
 To collect logs for updates using the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
 
-To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
+To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your system:
 
 1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
 

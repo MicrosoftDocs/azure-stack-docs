@@ -1,5 +1,5 @@
 ---
-title: Update Azure Local, version 23H2 clusters via PowerShell.
+title: Update Azure Local, version 23H2 systems via PowerShell.
 description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
@@ -14,11 +14,11 @@ ms.date: 10/08/2024
 
 This article describes how to apply a solution update to your Azure Local instance via PowerShell.
 
-The procedure in this article applies to both a single server and multi-server instance that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
+The procedure in this article applies to both a single machine and multi-machine systems that run the latest version with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
+[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-system-updates.md)]
 
-For information on how to apply solution updates to clusters created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-cluster.md).
+For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-system.md).
 
 ## About solution updates
 
@@ -244,7 +244,7 @@ Before you discover the updates, you can manually validate the system health. Th
 
 You can discover updates in one of the following two ways:
 
-- **Discover updates online** - The recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
+- **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
 - **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local instance and discover the updates locally.
 
 ### Discover solution updates online (recommended)
@@ -350,7 +350,7 @@ If you're using solution extension updates from your hardware, you would need to
 
 ## Step 4: Download, check readiness, and install updates
 
-You can download the updates, perform a set of checks to verify your cluster's update readiness, and start installing the updates.
+You can download the updates, perform a set of checks to verify your system's update readiness, and start installing the updates.
 
 1. You can only download the update without starting the installation or download and install the update.
 
@@ -482,4 +482,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](./update-tro
 
 ## Next step
 
-Learn more about how to [Update Azure Local instance, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
+Learn more about how to [Update Azure Local instance, version 22H2](../manage/update-system.md) when the orchestrator isn't installed.
