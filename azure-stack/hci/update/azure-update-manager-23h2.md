@@ -10,9 +10,9 @@ ms.date: 10/07/2024
 
 # Use Azure Update Manager to update your Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [IMPORTANT](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+[!INCLUDE [IMPORTANT](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
 This article describes how to use Azure Update Manager to find and install available updates on selected Azure Local systems. Additionally, we provide guidance on how to review system updates, track progress, and browse system updates history.
 

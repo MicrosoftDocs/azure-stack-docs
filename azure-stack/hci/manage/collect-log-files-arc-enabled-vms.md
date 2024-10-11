@@ -10,7 +10,7 @@ ms.reviewer: vlakshmanan
 
 # Collect log files for Azure Arc VM on your Azure Stack HCI system
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) in your Azure Stack HCI system.
 

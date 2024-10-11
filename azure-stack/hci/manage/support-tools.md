@@ -9,7 +9,7 @@ ms.date: 03/06/2024
 
 # Use the Azure Stack HCI Support Diagnostic tool to troubleshoot issues 
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 This article provides information on the Azure Stack HCI Support Diagnostic Tool that helps you troubleshoot and diagnose complex issues on your Azure Stack HCI. The tool consists of a set of PowerShell commands that simplify data collection, troubleshooting, and resolution of common issues in Azure Stack HCI.
 

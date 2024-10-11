@@ -5,14 +5,13 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 05/15/2024
 ---
 
 # Review two-node storage reference pattern IP requirements for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, learn about the IP address requirements for deploying a two-node network reference pattern in your environment.
 

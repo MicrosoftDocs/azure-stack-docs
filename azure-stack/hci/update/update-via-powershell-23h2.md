@@ -9,14 +9,14 @@ ms.date: 10/08/2024
 
 # Update your Azure Local, version 23H2 via PowerShell
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 
 This article describes how to apply a solution update to your Azure Local instance via PowerShell.
 
 The procedure in this article applies to both a single server and multi-server instance that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-[!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+[!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
 For information on how to apply solution updates to clusters created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-cluster.md).
 

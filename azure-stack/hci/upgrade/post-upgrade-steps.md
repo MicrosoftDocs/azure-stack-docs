@@ -6,12 +6,11 @@ ms.topic: how-to
 ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Perform the post operating system upgrade steps on your Azure Stack HCI via PowerShell
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to perform the post-OS upgrade tasks after you upgraded the Azure Stack HCI Operating System (OS) to new version. The post-upgrade tasks described in this article are required for the stability of the cluster.
 

@@ -5,15 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/22/2024
 # zone_pivot_groups: hci-versions
 ---
 
 # Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
 
-[!INCLUDE [applies-to-23H2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to-23H2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
 

@@ -4,15 +4,14 @@ description: Learn about Azure Hybrid Benefit for Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ms.date: 04/29/2024
 ---
 
 # Azure Hybrid Benefit for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 

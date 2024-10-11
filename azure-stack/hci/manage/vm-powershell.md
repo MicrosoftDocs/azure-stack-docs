@@ -14,7 +14,7 @@ ms.reviewer: stevenek
 
 This article describes how to create and manage virtual machines (VMs) on Azure Stack HCI using Windows PowerShell.
 
-[!INCLUDE [hci-arc-vm-wac](../../includes/hci-arc-vm-wac.md)]
+[!INCLUDE [hci-arc-vm-wac](../../hci/includes/hci-arc-vm-windows-admin-center.md)]
 
 ## About managing VMs using PowerShell
 

@@ -4,14 +4,13 @@ description: Learn how to manage GPUs using partitioning Azure Stack HCI (previe
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/25/2024
 ---
 
 # Manage GPUs using partitioning (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage GPU-P with Arc virtual machines (VMs). For using GPU-P management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 

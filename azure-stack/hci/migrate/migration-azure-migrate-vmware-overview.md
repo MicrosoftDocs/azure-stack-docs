@@ -6,12 +6,11 @@ ms.topic: overview
 ms.date: 06/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Overview of Azure Migrate based VMware migration for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of how to migrate VMware virtual machines (VMs) to your Azure Stack HCI cluster using Azure Migrate.
 
@@ -19,7 +18,7 @@ Azure Migrate is a central hub for tools to discover, assess, and migrate on-pre
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Benefits
 

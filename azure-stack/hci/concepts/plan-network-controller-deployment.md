@@ -9,7 +9,7 @@ ms.date: 05/22/2024
 
 # Plan to deploy Network Controller for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 Planning to deploy Network Controller via Windows Admin Center requires a set of virtual machines (VMs) running the Azure Stack HCI operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
