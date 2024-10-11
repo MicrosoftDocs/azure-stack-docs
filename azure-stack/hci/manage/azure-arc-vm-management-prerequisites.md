@@ -4,14 +4,13 @@ description: Learn about the prerequisites for deploying Azure Arc VM management
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 08/23/2024
 ---
 
 # Azure Arc VM management prerequisites
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article lists the requirements and prerequisites for Azure Arc VM management. We recommend that you review the requirements and complete the prerequisites before you manage your Arc VMs. 
 

@@ -4,15 +4,14 @@ description: How to choose servers, storage, and networking components for Azure
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: references_regions
 ms.date: 05/22/2024
 ---
 
 # System requirements for Azure Stack HCI, version 22H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 > [!WARNING]
 > The system requirements listed in this article apply to an older version, Azure Stack HCI, version 22H2. To find the system requirements for the latest generally available version, Azure Stack HCI, version 23H2, see [System requirements for Azure Stack HCI, version 23H2](./system-requirements-23h2.md).

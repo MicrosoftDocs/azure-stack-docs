@@ -4,14 +4,13 @@ description: How to use storage thin provisioning on Azure Stack HCI clusters by
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 12/09/2022
 ---
 
 # Storage thin provisioning in Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 

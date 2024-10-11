@@ -4,15 +4,14 @@ description: How to set up log alerts for various Azure Stack HCI system resourc
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.reviewer: kimlam
 ms.date: 04/22/2024
 ---
 
 # Set up log alerts for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to set up log alerts for Azure Stack HCI systems: using Insights for Azure Stack HCI and using pre-existing sample log queries, such as average server CPU, available memory, available volume capacity, and more.
 

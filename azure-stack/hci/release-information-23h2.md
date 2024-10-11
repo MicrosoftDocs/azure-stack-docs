@@ -4,14 +4,13 @@ description: This article provides the release information for Azure Stack HCI, 
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/25/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
 
 Feature updates for Azure Stack HCI are released periodically to enhance customer experience. Azure Stack HCI also releases monthly quality and security updates. These releases are cumulative, containing all previous updates to keep devices protected and productive.
 

@@ -10,7 +10,7 @@ ms.author: jgerend
 
 # Deploy an Azure Stack HCI, version 23H2 system using the Azure portal
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article helps you deploy an Azure Stack HCI, version 23H2 system using the Azure portal.
 
@@ -89,9 +89,12 @@ Choose whether to create a new configuration for this system or to load deployme
 
     Make sure to use high-speed adapters for the intent that includes storage traffic.
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
+     > [!IMPORTANT]
+     > Portal deployment does not allow to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you cannot use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
+
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
+5. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
     - **Storage traffic priority**. This specifies the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **Cluster traffic priority**.
@@ -100,13 +103,13 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customize network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
    
-1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
+6. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
 
     These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
-6. Select **Next: Management**.
+7. Select **Next: Management**.
 
 ## Specify management settings
 
