@@ -239,7 +239,7 @@ Follow these steps in the Azure portal of your Azure Local instance to restart a
 
 Pausing the VMs is useful to save the compute resources when you are not using the VMs. Pausing a VM stops any CPU activity. You can only pause running VMs. Once paused, you can resume the VM later.
 
-1. [Connect to the machine machine of your Azure Local instance](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. [Connect to the machine of your Azure Local system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 1. To pause the VM, run the following PowerShell cmdlet:
 
     ```azurecli
@@ -520,7 +520,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
 
 Saving a VM stores the current state of the VM to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can only save running VMs.
 
-1. [Connect to the machine machine of your Azure Local instance](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. [Connect to the machine of your Azure Local system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 1. To save the VM, run the following PowerShell cmdlet:
 
     ```azurecli

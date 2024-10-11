@@ -22,7 +22,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Make sure you have an external VM switch that can be accessed by all the machinesin your Azure Local instance. By default, an external switch is created during the deployment of your Azure Local instance that you can use to associate with the logical network you will create.
 

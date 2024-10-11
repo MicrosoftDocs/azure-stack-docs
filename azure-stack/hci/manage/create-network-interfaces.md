@@ -30,7 +30,7 @@ Before you create a network interface, make sure that the following prerequisite
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Access to a logical network that you created on your Azure Local instance. For more information, see [Create logical network](./create-virtual-networks.md).
 

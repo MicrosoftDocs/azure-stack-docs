@@ -52,7 +52,7 @@ Azure VM verification is automatically enabled by default in Azure Local 23H2 or
 
 ### VM prerequisites
 
-- Make sure to update your VMs. See the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
+- Make sure to update your VMs. See the [version requirements for workloads](#benefits-available-on-azure-local).
 
 - Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
 
@@ -118,19 +118,19 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    - **Unknown**: We can't determine the eligible benefits for these VMs because Hyper-V data exchange is turned off. See the following troubleshooting section.
    - **No applicable benefits**: These VMs don't have Azure-exclusive features and hence don't require Azure VM verification.
 
-3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Local](#benefits-available-on-azure-stack-hci).
+3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Local](#benefits-available-on-azure-local).
 
    :::image type="content" source="media/azure-verification/virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/virtual-machine-dashboard.png":::
 
 ### Troubleshoot VMs
 
 - Under the **VMs** tab, if one or more VMs appear as **Inactive benefits**:
-  - If the action suggested is to **Install updates**, you might not have the minimum OS version required for the benefit. Update the VM to meet the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
+  - If the action suggested is to **Install updates**, you might not have the minimum OS version required for the benefit. Update the VM to meet the [version requirements for workloads](#benefits-available-on-azure-local).
   - If the action suggested is to **Turn on Guest Service Interface**, select it and open the context pane to enable the [Hyper-V Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service). This feature is required for VMs to communicate to the host via VMbus.
   - If the action suggested is regarding **legacy OS support**, see [troubleshooting for legacy OS support](#legacy-os-support).
 
 - Under the **VMs** tab, if one or more VMs appear as **Unknown**:
-  - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Local](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
+  - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Local](#benefits-available-on-azure-local), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
 
 ### [PowerShell](#tab/azure-ps)
 
@@ -331,7 +331,7 @@ This section provides answers to some frequently asked questions about using Azu
 
 ### What Azure-exclusive workloads can I enable with Azure VM verification?
 
-See the [full list here](#benefits-available-on-azure-stack-hci).
+See the [full list here](#benefits-available-on-azure-local).
 
 ### Does it cost anything to enable Azure VM verification?
 
