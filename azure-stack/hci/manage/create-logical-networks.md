@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Azure Stack HCI cluster 
-description: Learn how to create logical networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this logical network.
+title: Create logical networks for Azure Local 
+description: Learn how to create logical networks on your Azure Local system. The Arc VM running on your system used this logical network.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,11 +8,11 @@ ms.service: azure-stack-hci
 ms.date: 07/18/2024
 ---
 
-# Create logical networks for Azure Stack HCI
+# Create logical networks for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical networks for your Azure Stack HCI cluster.
+This article describes how to create or add logical networks for your Azure Local instance.
 
 
 ## Prerequisites
@@ -22,11 +22,11 @@ Before you begin, make sure to complete the following prerequisites:
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
-- Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use to associate with the logical network you will create.
+- Make sure you have an external VM switch that can be accessed by all the machinesin your Azure Local instance. By default, an external switch is created during the deployment of your Azure Local instance that you can use to associate with the logical network you will create.
 
-  Run the following command to get the name of the external VM switch on your cluster.
+  Run the following command to get the name of the external VM switch on your system.
 
   ```powershell
   Get-VmSwitch -SwitchType External
@@ -95,20 +95,20 @@ Create a static logical network when you want to create virtual machines with ne
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created. |
-    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the logical network. |
-    | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
-    | **custom-location** | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this logical network. |
+    | **name**  |Name for the logical network that you create for your Azure Local instance. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created. |
+    | **vm-switch-name** |Name of the external virtual switch on your Azure Local instance where you deploy the logical network. |
+    | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Local instance where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
     | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
-    | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
+    | **dns-servers** | List of IPv4 addresses of DNS machines. Specify multiple DNS machinesin a space separated format. For example: "10.0.0.5" "10.0.0.10" |
     | **gateway** | Ipv4 address of the default gateway. |
 
     > [!NOTE]
-    > DNS server and gateway must be specified if you're creating a static logical network.
+    > DNS machine and gateway must be specified if you're creating a static logical network.
 
 1. Create a static logical network. Run the following cmdlet:
 
@@ -208,11 +208,11 @@ Follow these steps to configure a DHCP logical network:
 
     | Parameters | Description |
     |--|--|
-    | **name** | Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
-    | **vm-switch-name** | Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the logical network. |
-    | **resource-group** | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
-    | **subscription** | Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
-    | **custom-location** | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this logical network. |
+    | **name** | Name for the logical network that you create for your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **vm-switch-name** | Name of the external virtual switch on your Azure Local instance where you deploy the logical network. |
+    | **resource-group** | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
+    | **subscription** | Name or ID of the subscription where Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Local instance where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
 
@@ -286,8 +286,8 @@ Complete the following steps to create a logical network using Azure portal.
     - Select the associated resource group name.
     - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created.
     - Enter the virtual switch name that you saved earlier.
-    - The geographic region is automatically set to the region where you registered your cluster.
-    - The custom location is automatically populated from the cluster.
+    - The geographic region is automatically set to the region where you registered your system.
+    - The custom location is automatically populated from the system.
 
     When complete, select **Next: Network Configuration**.
 
@@ -299,7 +299,7 @@ Complete the following steps to create a logical network using Azure portal.
     - IPv4 address space (previously reserved).
     - IP pools (if used).
     - Default gateway address.
-    - DNS server address.
+    - DNS machine address.
     - VLAN ID (if used).
 
     When complete, select **Review + Create**.
@@ -347,4 +347,4 @@ These steps are the same for both static and DHCP network deployments.
 
 ## Next steps
 
-- [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md)
+- [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md)

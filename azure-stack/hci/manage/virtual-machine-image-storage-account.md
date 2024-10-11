@@ -1,6 +1,6 @@
 ---
-title: Create Azure Stack HCI VM from images in Azure Storage account
-description: Learn how to create Azure Stack HCI VM images using source images from Azure Storage account via Azure portal and Azure CLI.
+title: Create Azure Local VM from images in Azure Storage account
+description: Learn how to create Azure Local VM images using source images from Azure Storage account via Azure portal and Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -10,11 +10,11 @@ ms.custom:
 ms.date: 03/01/2024
 ---
 
-# Create Azure Stack HCI VM image using image in Azure Storage account
+# Create Azure Local VM image using image in Azure Storage account
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
 
 ## Prerequisites
@@ -25,7 +25,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../../hci/includes/hci-vm-image-prerequisites-storage-account.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
@@ -39,7 +39,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from Azure Storage account
 
-You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local instance.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -56,7 +56,7 @@ Follow these steps to create a VM image using the Azure CLI.
 ```azurecli
 $subscription = "<Subscription ID>"
 $resource_group = "<Resource group>"
-$location = "<Location for your Azure Stack HCI cluster>"
+$location = "<Location for your Azure Local instance>"
 $osType = "<OS of source image>"
 $imageName = "<VM image name>"
 $imageSourcePath = "<path to the source image in the Storage account>"
@@ -67,9 +67,9 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-| `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
+| `subscription`   | Resource group for Azure Local instance that you associate with this image.        |
+| `resource_group` | Resource group for Azure Local instance that you associate with this image.        |
+| `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
 | `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. |
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -87,10 +87,10 @@ PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.n
 
 ### Create VM image from image in Azure Storage account
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance. Get the custom location ID for your Azure Local instance. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI system>" --query id -o tsv)
     ```
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
 
@@ -154,7 +154,7 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Stack HCI cluster resource, take the following steps:
+Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Local instance resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 
@@ -170,9 +170,9 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
     
     1. **Save image as** Enter a name for your VM image.
 
-    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
+    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance.
 
-    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Stack HCI cluster.
+    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local instance.
 
     1. **OS type** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
     
@@ -180,9 +180,9 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Source.** The source of the image should be Storage blobs and is automatically populated.
 
-    1. **Storage blob.** Specify the Azure Storage account path for the source image on your HCI cluster.
+    1. **Storage blob.** Specify the Azure Storage account path for the source image on your HCI system.
 
-    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the specified storage path has sufficient storage space.
+    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
 
 1. Select **Review + Create** to create your VM image.
 
@@ -196,7 +196,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-storage-account/deployment-in-progress.png":::
 
-   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
+   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the system.
 
    To view more details of any image, select the VM image name from the list of VM images.
 

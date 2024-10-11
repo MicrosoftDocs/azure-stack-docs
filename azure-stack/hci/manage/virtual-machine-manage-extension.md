@@ -1,6 +1,6 @@
 ---
-title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI 
-description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal.
+title: Manage VM Extensions on Arc-enabled VMs on Azure Local 
+description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Local via Azure portal.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,13 +8,13 @@ ms.service: azure-stack-hci
 ms.date: 02/02/2024
 ---
 
-# Manage VM extensions on Azure Stack HCI virtual machines 
+# Manage VM extensions on Azure Local virtual machines 
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to install and manage VM extensions on your Azure Stack HCI via the Azure portal.
+This article describes how to install and manage VM extensions on Azure Local via the Azure portal.
 
-The VM extensions on your Azure Arc VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc VMs.
+The VM extensions on your Azure Arc VMs on Azure Local are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc VMs.
 
 
 ## Supported VM extensions 
@@ -30,21 +30,21 @@ For a full list of supported VM extensions, see:
 
 Before you install and manage VM extensions, make sure that:
 
-- You’ve access to an Arc VM running on your Azure Stack HCI and the VM has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc VM, see [Create Arc VMs on your Azure Stack HCI cluster](./create-arc-virtual-machines.md).
+- You’ve access to an Arc VM running on Azure Local and the VM has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc VM, see [Create Arc VMs on your Azure Local instance](./create-arc-virtual-machines.md).
 
 ## Verify guest management is enabled
 
-To manage VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
+To manage VMs on Azure Local, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation via the Azure portal. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](./create-arc-virtual-machines.md).
+> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation via the Azure portal. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Local](./create-arc-virtual-machines.md).
 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources** > **Virtual machines**.
+1. In the Azure portal of your Azure Local instance resource, go to **Resources** > **Virtual machines**.
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension.
 
@@ -59,7 +59,7 @@ After the guest management enablement is verified, you can now add the VM extens
 
 Follow these steps in Azure portal to add a VM extension.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and go to **Settings > Extensions**.
  
@@ -73,7 +73,7 @@ Follow these steps in Azure portal to add a VM extension.
 
 1. Provide the parameters to configure the selected VM extension. 
 
-    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy server URL and port number.
+    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy machine URL and port number.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png" alt-text="Screenshot showing configuration of Azure Monitor Extension installation in the chosen Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png":::
 
@@ -83,11 +83,11 @@ The extension might take a few minutes to install. After the extension is instal
 
 ## List installed extensions
 
-You can get a list of all the VM extensions installed on your Azure Stack HCI cluster.
+You can get a list of all the VM extensions installed on your Azure Local instance.
 
 Follow these steps in Azure portal to list the installed VM extensions.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
@@ -100,7 +100,7 @@ Follow these steps in Azure portal to list the installed VM extensions.
 You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  

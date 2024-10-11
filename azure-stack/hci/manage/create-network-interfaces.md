@@ -1,6 +1,6 @@
 ---
-title: Create network interfaces for virtual machines on Azure Stack HCI
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Stack HCI cluster. The Arc VM running on your cluster uses these network interfaces.
+title: Create network interfaces for virtual machines on Azure Local
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Local instance. The Arc VM running on your system uses these network interfaces.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -10,16 +10,16 @@ ms.custom: devx-track-azurecli
 ms.date: 07/17/2024
 ---
 
-# Create network interfaces for Arc virtual machines on Azure Stack HCI
+# Create network interfaces for Arc virtual machines on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Stack HCI cluster. You can create network interfaces using the Azure portal or the Azure CLI. 
+This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Local instance. You can create network interfaces using the Azure portal or the Azure CLI. 
 
 
 ## About network interfaces
 
-Network interfaces are an Azure resource and can be used to deploy virtual machines on your cluster. After a logical network is created, you can create network interfaces and associate those with the virtual machines you'll create.
+Network interfaces are an Azure resource and can be used to deploy virtual machines on your system. After a logical network is created, you can create network interfaces and associate those with the virtual machines you'll create.
 
 You can create network interfaces using the Azure portal or the Azure CLI. When using the Azure portal, the network interface creation is a part of the VM creation process. When using the Azure CLI, you can create a network interface first and then use it to create a VM.
 
@@ -30,13 +30,13 @@ Before you create a network interface, make sure that the following prerequisite
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
-- Access to a logical network that you created on your Azure Stack HCI cluster. For more information, see [Create logical network](./create-virtual-networks.md).
+- Access to a logical network that you created on your Azure Local instance. For more information, see [Create logical network](./create-virtual-networks.md).
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal, you create a network interface during the VM creation flow. For prerequisites and more information, see [Create Azure Stack HCI VM in Azure portal](./create-arc-virtual-machines.md).
+In the Azure portal, you create a network interface during the VM creation flow. For prerequisites and more information, see [Create Azure Local VM in Azure portal](./create-arc-virtual-machines.md).
 
 ---
 
@@ -73,10 +73,10 @@ Follow these steps to create a network interface on your static logical network.
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
-    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster.  |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
+    | **resource-group** |Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local instance.  |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
@@ -159,10 +159,10 @@ Follow these steps to create a network interface on your DHCP logical network. R
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
-    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster. |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
+    | **resource-group** |Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local instance. |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
 
@@ -223,11 +223,11 @@ You can use this network interface to create a VM. For more information, see [Cr
 
 # [Azure portal](#tab/azureportal)
 
-In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Stack HCI VM in Azure portal](./create-arc-virtual-machines.md).
+In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Local VM in Azure portal](./create-arc-virtual-machines.md).
 
 ---
 
 ## Next steps
 
-- Use this network interface when you [Create an Arc VM on your Azure Stack HCI](./create-arc-virtual-machines.md).
+- Use this network interface when you [Create an Arc VM on your Azure Local](./create-arc-virtual-machines.md).
 
