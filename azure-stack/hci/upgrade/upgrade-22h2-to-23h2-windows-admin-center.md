@@ -1,20 +1,21 @@
 ---
-title: Upgrade OS to Azure Local, version 23H2 via Windows Admin Center
-description: Learn how to upgrade the OS to Azure Stack HCI, version 23H2 using Windows Admin Center.
+title: Upgrade Azure Local to version 23H2 via Windows Admin Center
+description: Learn how to upgrade the OS for Azure Local using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.service: azure-stack-hci
 ---
 
-# Upgrade OS to Azure Local, version 23H2 via Windows Admin Center
+# Upgrade to Azure Local via Windows Admin Center
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 operating system (OS) for Azure Local to version 23H2, which is the latest generally available software via Windows Admin Center.
+This article describes how to upgrade the version 22H2 operating system (OS) for Azure Local to version 23H2, which is the latest generally available software via Windows Admin Center.
 
-While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
+While the recommended method to [Upgrade Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 

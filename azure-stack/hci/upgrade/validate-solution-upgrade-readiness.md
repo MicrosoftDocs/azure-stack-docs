@@ -6,22 +6,23 @@ ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.service: azure-stack-hci
 ---
 
 # Validate solution upgrade readiness for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Local instance after the operating System (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Local system after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of your Azure Local instance for the upgrade. The following steps help you assess the upgrade readiness:
+This *optional* but *recommended* step helps you assess the readiness of your Azure Local system for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your instance.
-- Ensure that sufficient storage space is available for infrastructure volume.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your system.
+- Ensure that sufficient storage space is available for the infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate the validation checks that block the upgrade.
 
@@ -29,7 +30,7 @@ This *optional* but *recommended* step helps you assess the readiness of your Az
 
 We recommend that you use the Environment Checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
-Some of the actions require semachinerver reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
+Some of the actions require machine reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
 ### Table: Blocking validation tests for upgrade
 
@@ -72,9 +73,9 @@ The following table contains the validation tests with severity *Warning* that s
 
 ### Set up the Environment Checker
 
-Follow these steps to set up the Environment Checker on a machine of your Azure Local instance:
+Follow these steps to set up the Environment Checker on a machine of your Azure Local system:
 
-1. Select one machine that's the part of the instance.
+1. Select one machine that's a member of the system.
 
 1. Sign in to the machine using local administrative credentials.
 
@@ -94,7 +95,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other machines in the instance, run the following PowerShell command:
+1. To validate other machines in the system, run the following PowerShell command:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
@@ -226,11 +227,11 @@ Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online
 } 
 ```
 
-## Remediation 2: Ensure that cluster node is up
+## Remediation 2: Ensure that cluster nodes are up
 
-Ensure that all the cluster members are up and that the instance is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster machines are online.
+Ensure that all the cluster nodes are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
-To verify all members of the cluster are online, run the following PowerShell command:
+To verify all nodes of the cluster are online, run the following PowerShell command:
 
 ```powershell
 Get-ClusterNode -Cluster "mycluster" 
@@ -258,13 +259,13 @@ Resume-Bitlocker -MountPoint "C:"
 
 ## Remediation 4: Enable Application Control (WDAC) policies
 
-If your instance is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your instance, disable the policies. After the instance is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
+If your system is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
 ## Remediation 5: Ensure language is English
 
-Only instances installed using an English language are eligible to apply the solution upgrade. Make sure that your instance was installed using English.
+Only systems installed using an English language are eligible to apply the solution upgrade. Make sure that your system was installed using English.
 
 For more information, see [Verify OS language for Azure Local](../manage/languages.md#change-the-language-in-server-core).
 
@@ -278,7 +279,7 @@ The required size for the infrastructure volume is 250 GB. Ensure that the stora
 
 Shrinking existing volumes isn't supported with Storage Spaces Direct. There are three alternatives to freeing up space in the storage pool:
 
-- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
+- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new system with the default setting.
 
 - **Option 2**: Back up all the data, re-create the volume with a smaller size, and restore the content.
 

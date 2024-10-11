@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.service: azure-stack-hci
 ---
 
 # Troubleshoot Azure Local upgrade
@@ -20,7 +21,7 @@ When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encount
 
 ### Registration failures
 
-Run the following PowerShell command to verify that the instance is registered with Azure:
+Run the following PowerShell command to verify that your system is registered with Azure:
 
 ```PowerShell
 Get-AzureStackHci

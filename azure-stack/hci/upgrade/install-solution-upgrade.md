@@ -1,19 +1,20 @@
 ---
-title: Install solution upgrade on your Azure Local instance
-description: Learn about how to install upgrade on your Azure Local instance.
+title: Install solution upgrade on Azure Local
+description: Learn about how to install upgrade on your Azure Local system.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/28/2024
+ms.date: 10/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.service: azure-stack-hci
 ---
 
 
-# Install solution upgrade on your Azure Local instance
+# Install solution upgrade on Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to install solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to install the solution upgrade on your Azure Local system after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the new version and Azure Local, version 22H2 as the old version.
 
@@ -24,7 +25,7 @@ Throughout this article, we refer to Azure Local, version 23H2 as the new versio
 
 Before you install the solution upgrade, make sure that you:
 
-- Validate the cluster using the Environment Checker as per the instructions  in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
+- Validate the system using the Environment Checker as per the instructions  in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
 - Verify that latest `AzureEdgeLifecycleManager` extension on each machine is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
 
     :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on an Azure Local machine." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
@@ -39,7 +40,7 @@ Before you install the solution upgrade, make sure that you:
 
 You install the solution upgrade via the Azure portal.
 
-1. Go to your Azure Local instance resource in Azure portal.
+1. Go to your Azure Local cluster resource in Azure portal.
 1. In the **Overview** page, you can see a banner indicating that a solution upgrade is available. Select the **Upgrade** link in the banner.
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-banner.png" alt-text="Screenshot of Azure Local Overview page with upgrade available banner." lightbox="./media/install-solution-upgrade/upgrade-banner.png":::
@@ -55,7 +56,7 @@ On the **Basics** tab, specify the following information:
 
    :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of Create key vault page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
 
-1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each node. For more information on how to create this deployment account, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).
+1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each machine. For more information on how to create this deployment account, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).
 
    > [!NOTE]
    > The user can't be Administrator and can't use format `domain\username`.
@@ -96,7 +97,7 @@ On the **Validation** tab, the operation automatically creates Azure resources l
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-1.png" alt-text="Screenshot of Upgrade Azure Local upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-progress-1.png":::
 
-1. Wait for the upgrade to complete. The solution upgrade process can take a few hours depending upon the number of machines in the cluster instance.
+1. Wait for the upgrade to complete. The solution upgrade process can take a few hours depending upon the number of machines in the system.
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-2.png" alt-text="Screenshot of Upgrade Azure Local showing a completed upgrade." lightbox="./media/install-solution-upgrade/upgrade-progress-2.png":::
 
