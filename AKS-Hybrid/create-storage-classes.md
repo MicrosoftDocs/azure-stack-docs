@@ -24,7 +24,7 @@ Storage classes in AKS enabled by Azure Arc are supported in the following regio
 - westus
 - westus2
 
-During the preview, it's recommended that you have an AKS Arc cluster in order to use this feature. If you don't have an AKS Arc cluster, you can also try this feature with any Arc-connected cluster. The following commands create an AKS instance and a connected cluster on top of it using Azure CLI:
+During the preview, we recommend that you have an AKS Arc cluster in order to use this feature. If you don't have an AKS Arc cluster, you can also try this feature with any Arc-connected cluster. The following commands create an AKS instance and a connected cluster on top of it using Azure CLI:
 
 ```azurecli
 $rg = "<rg>"
@@ -107,7 +107,7 @@ To create an NFS storage class, select **NFS** from the **Type** dropdown under 
 
 :::image type="content" source="media/create-storage-classes/create-storage-class-nfs.png" alt-text="Screenshot of portal blade showing create NFS storage class." lightbox="media/create-storage-classes/create-storage-class-nfs.png":::
 
-If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you are unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
+If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you're unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
 
 :::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-nfs.png" alt-text="Screenshot of portal showing error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-nfs.png":::
 
@@ -148,7 +148,7 @@ Select **SMB** in the **Type** dropdown under the **Storage Class Type** section
 
 :::image type="content" source="media/create-storage-classes/create-smb.png" alt-text="Screenshot of portal showing create SMB storage class." lightbox="media/create-storage-classes/create-smb.png":::
 
-If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you are unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
+If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you're unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
 
 :::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text="Screenshot of portal showing SMB error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-smb.png":::
 
@@ -192,11 +192,11 @@ az k8s-runtime storage-class create `
 
 ## Update a storage class
 
-You can update some properties of a storage class using Azure CLI. Consider the following::
+You can update some properties of a storage class using Azure CLI. See the following considerations when updating a storage class:
 
 - You can't change a storage class from one type to another type.
-- Changing most properties of a storage class results in deleting the original and re-creating a new one. However, updating some properties will not delete the original. These properties are called *in-place updatable*. To understand what properties you can update in-place, see the tables in the Reference section.
-- When you set the key name in `--type-properties`, use the property name directly without the `<storage class type>.` prefix. Properties that are not part of the storage class type are ignored.
+- Changing most properties of a storage class results in deleting the original and re-creating a new one. However, updating some properties doesn't delete the original. These properties are called *in-place updatable*. To understand what properties you can update in-place, see the tables in the Reference section.
+- When you set the key name in `--type-properties`, use the property name directly without the `<storage class type>.` prefix. Properties that aren't part of the storage class type are ignored.
 
 ```azurecli
 az k8s-runtime storage-class update `
@@ -239,7 +239,7 @@ az k8s-runtime storage-class disable --resource-uri <resource uri>
 
 To specify a property when you create a storage class using Azure CLI, you must pass the `<storage class name type in lower cases>.<property name>=<property name>` value to a `--type-properties` command line parameter. You can pass multiple `--type-properties` command line parameters. It's not necessary to pass the `type` property to the CLI. For example, to set the `server` property in an NFS storage class, pass the `--type-properties nfs.server={server address}` value.
 
-When a storage class is updated, if all the properties that changed are updatable in-place (see the **In-place update** column in the following tables), the storage class isn't recreated. If any properties to update are not updatable in-place, the storage class is deleted and re-created.
+When a storage class is updated, if all the properties that changed are updatable in-place (see the **In-place update** column in the following tables), the storage class isn't recreated. If any properties to update aren't updatable in-place, the storage class is deleted and re-created.
 
 ### NFS
 
@@ -249,7 +249,7 @@ When a storage class is updated, if all the properties that changed are updatabl
 | `server` | `string` | No | NFS server address. |
 | `share` | `string` | No | NFS share. |
 | `subDir` | `string \| undefined` | No | Subdirectory under `share`. If the subdirectory doesn't exist, the driver creates it. |
-| `mountPermissions` | `string \| undefined` | No | Mounted folder permissions. Default is 0. If set as non-zero, the driver performs `chmod` after mount. |
+| `mountPermissions` | `string \| undefined` | No | Mounted folder permissions. Default is 0. If set as nonzero, the driver performs `chmod` after mount. |
 | `onDelete` | `"Delete" \| "Retain"` | No | The action to take when an NFS volume is deleted. Default is `Delete`. |
 
 ### SMB
@@ -346,7 +346,7 @@ When you create a Persistent Volume Claim (PVC), you can add the following annot
 | `arcsc.microsoft.com/require-performance` | `Standard`, `Premium`, `Ultra` |
 | `arcsc.microsoft.com/require-failover` | `Slow`, `Fast`, `Super` |
 
-This feature also considers **access modes**. If the PVC specifies `spec.accessModes`, the service only chooses storage classes that either support all of the PVC's `spec.accessModes`, or didn't have their supported access modes detected.
+This feature also considers **access modes**. If the PVC specifies `spec.accessModes`, the service only chooses storage classes that either support all of the PVC's `spec.accessModes`, or that didn't detect their supported access modes.
 
 For example, the following YAML code creates a PVC that requires a storage class that has at least the `Standard` performance level, and supports the `ReadWriteOnce` access mode.
 
@@ -367,7 +367,7 @@ spec:
     - ReadWriteOnce
 ```
 
-If there are multiple storage classes that match the criteria, the priority indicated by the `arcsc.microsoft.com/priority` annotation is used, and the one with the highest priority wins. If the annotation value doesn't exist or is not a valid `int64` value, the priority is `0`. If there are multiple matching storage classes with the same priority, the names of the storage classes are sorted alphabetically, and the first one wins.
+If there are multiple storage classes that match the criteria, the priority indicated by the `arcsc.microsoft.com/priority` annotation is used, and the one with the highest priority wins. If the annotation value doesn't exist or isn't a valid `int64` value, the priority is `0`. If there are multiple matching storage classes with the same priority, the names of the storage classes are sorted alphabetically, and the first one wins.
 
 If there are no storage classes that match the criteria, the PVC creation is rejected, and generates an error message:
 
