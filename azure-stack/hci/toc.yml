@@ -276,6 +276,8 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+        - name: Using an existing Arc VM
+          href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
           - name: Using Ubuntu VM image
