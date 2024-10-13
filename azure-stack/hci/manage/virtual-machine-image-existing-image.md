@@ -21,11 +21,8 @@ This article describes how to create virtual machine (VM) images for your Azure 
 
 Before you begin, make sure that the following prerequisites are completed.
 
-
-[!INCLUDE [hci-vm-image-prerequisites-storage-account](../../includes/hci-vm-image-prerequisites-storage-account.md)]
-
+- Make sure to review and complete the prerequisites.
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
-
 
 
 ## Create VM image from existing Arc VM
@@ -40,7 +37,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Set some parameters
 
-1. Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
+Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
 ```azurecli
 $subscription = "<Subscription ID>"
