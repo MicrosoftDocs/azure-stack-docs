@@ -799,7 +799,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 You would need to change the administrator account passwords for the two accounts that are created after the Arc VM is deployed.
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to change the administrator account password for a VM. THe steps are different for Windows and Linux VMs.
+Follow these steps in the Azure portal of your Azure Stack HCI system to change the administrator account password for a VM. The steps are different for Windows and Linux VMs.
 
 ### [Windows](#tab/windows)
 
