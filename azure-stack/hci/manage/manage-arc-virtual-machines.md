@@ -863,7 +863,7 @@ If Bash is located in a different directory, make sure to change this line `#!/b
     else
         echo -e "\e[31mThe passwords do not match. Please try again.\e[0m"
     fi
-    ```
+---
 
 ## Delete a VM
 
