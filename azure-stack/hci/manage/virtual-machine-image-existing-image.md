@@ -81,9 +81,9 @@ PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 
 Create the VM image from an existing Arc VM. Run the following command:
 
-    ```azurecli
-    az stack-hci-vm image create -resource-group $resource_group --location $location --custom-location $cl --os-type "Windows" --source-vm $imageSourceVM --name $imageName
-    ```
+```azurecli
+az stack-hci-vm image create -resource-group $resource_group --location $location --custom-location $cl --os-type "Windows" --source-vm $imageSourceVM --name $imageName
+```
 
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete.
 
