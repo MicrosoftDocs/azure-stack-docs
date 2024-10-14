@@ -797,9 +797,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 ## Change administrator account password
 
-You would need to change the administrator account passwords for the two accounts that are created after the Arc VM is deployed.
-
-Follow these steps in the Azure portal of your Azure Stack HCI system to change the administrator account password for a VM. The steps are different for Windows and Linux VMs.
+Follow these steps to change the administrator account passwords for the two accounts created after the Arc VM is deployed on your Azure Local. The steps are different for Windows and Linux VMs.
 
 ### [Windows](#tab/windows)
 
@@ -820,7 +818,7 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to change 
     $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($newPassword))
     $plainVerifyPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($verifyPassword))
     
-    # Check if the passwords match, and change the password if they match and fail if they don’t match
+    # Check if the passwords match and change the password if they match. Fail if the passwords don’t match.
     if ($plainPassword -eq $plainVerifyPassword) {
         $account = [ADSI]"WinNT://./$username,user"
         $account.SetPassword($plainPassword)
