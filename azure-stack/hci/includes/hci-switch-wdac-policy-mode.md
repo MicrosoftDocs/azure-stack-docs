@@ -3,11 +3,11 @@ author: ManikaDhiman
 ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 11/29/2023
+ms.date: 10/11/2024
 ms.reviewer: alkohli
 ---
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 
 1. Run the following PowerShell command using local administrator credentials or deployment user (AzureStackLCMUser) credentials.
 
