@@ -5,7 +5,7 @@ author: sethmanheim
 
 ms.topic: article
 ms.date: 10/24/2022
-ms.author: anwestg
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 12/09/2021
 zone_pivot_groups: state-connected-disconnected
