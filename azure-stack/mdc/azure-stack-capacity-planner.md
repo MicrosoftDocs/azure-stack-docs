@@ -3,7 +3,7 @@ title: Azure Stack Hub Capacity Planner | Microsoft Docs
 description: Learn how to use the Azure Stack Hub Capacity planner to view allocations of computing resources for Azure Stack Hub deployments.
 services: azure-stack
 documentationcenter: ''
-author: prchint
+author: sethmanheim
 manager: femila
 ms.service: azure-stack-hub
 ms.topic: article

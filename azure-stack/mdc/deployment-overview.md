@@ -2,7 +2,7 @@
 title: Modular Data Center (MDC) deployment overview and set up for the Azure Stack Hub Hardware Lifecycle Host (HLH) management server| Microsoft Docs
 description: Learn what to expect for a successful on-site deployment of a Modular Data Center (MDC), from planning to post-deployment.
 services: azure-stack
-author: asganesh
+author: sethmanheim
 manager: femila
 ms.service: azure-stack-hub
 ms.topic: article
