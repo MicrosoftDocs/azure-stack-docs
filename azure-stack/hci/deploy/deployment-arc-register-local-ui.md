@@ -5,7 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 10/07/2024
+ms.date: 10/14/2024
 ---
 
 # Register your Azure Local, version 23H2 machines via the local UI (preview)
@@ -169,11 +169,11 @@ Follow these steps to configure the network settings and connect the machines to
 
 1. In the Azure portal, go to the resource group for bootstrapping.
 
-1. On the resource group used to bootstrap, you should see your Arc-enabled servers. In this example, you see a single server.
+1. On the resource group used to bootstrap, you should see your Arc-enabled servers. In this example, you see a single machine.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local ." lightbox="media/deployment-arc-register-local-ui/setup-arc-enabled-servers.png":::
 
-1. Select and drill down into the server. Go to **Settings** > **Extension**. Make sure that all the mandatory extensions are installed successfully.
+1. Select and drill down into the machine. Go to **Settings** > **Extension**. Make sure that all the mandatory extensions are installed successfully.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png" alt-text="Screenshot that shows the Azure Arc agent extensions for Azure Local  installed successfully." lightbox="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png":::
 

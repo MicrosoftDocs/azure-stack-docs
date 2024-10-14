@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -16,7 +16,7 @@ This article provides an overview of the Azure Arc gateway for Azure Local, vers
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
 
-For information on how to deploy the Azure Arc gateway for standalone servers (not Azure Local node servers), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+For information on how to deploy the Azure Arc gateway for standalone servers (not Azure Local machines), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
@@ -30,7 +30,7 @@ The Arc gateway works by introducing the following components:
 
 - **Arc proxy** – A new component that is added to the Arc Agentry. This component runs as a service (Called  the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
 
-Once you integrate the Arc gateway with version 2408 of Azure Local cluster deployments, each cluster node gets Arc proxy along with other Arc Agents.
+Once you integrate the Arc gateway with version 2408 of Azure Local deployments, each cluster node gets Arc proxy along with other Arc Agents.
 
 When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
 
@@ -44,11 +44,11 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 **Traffic flow for Arc appliance Arc Resource Bridge (ARB) and AKS control plane**
 
-1. The routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Local host nodes.
+1. The routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Local host machines.
 
 1. ARB and AKS forward proxy are configured to use the routable IP.
 
-1. With the proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Local nodes over the routable IP.
+1. With the proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Local machines over the routable IP.
 
 1. Once the traffic reaches Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
@@ -69,28 +69,28 @@ Traffic flows are illustrated in the following diagram:
 | *.guestconfiguration.azure.com  | Extension management and guest configuration services | Always |
 | guestnotificationservice.azure.com   | Notification service for extension and connectivity scenarios  | Always |
 | *.guestnotificationservice.azure.com   | Notification service for extension and connectivity scenarios  | Always |
-| *.servicesbus.windows.net  | Multiple HCI services require access to this endpoint | Always |
+| *.servicesbus.windows.net  | Multiple Azure Local services require access to this endpoint | Always |
 | *.waconazure.com | For Windows Admin Center connectivity    | If using Windows Admin Center |
-| *.blob.core.windows.net | Multiple HCI services require access to this endpoint  | Always |
-| dc.services.visualstudio.com | Multiple HCI services require access to this endpoint  | Always |
+| *.blob.core.windows.net | Multiple Azure Local services require access to this endpoint  | Always |
+| dc.services.visualstudio.com | Multiple Azure Local services require access to this endpoint  | Always |
 
-The list of supported endpoints by the Arc gateway in HCI will increase during the Public Preview -->
+The list of supported endpoints by the Arc gateway in Azure Local will increase during the Public Preview -->
 
 ## Supported and unsupported scenarios
 
 You can use the Arc gateway in the following scenario for Azure Local version 2408:
 
-- Enable Arc gateway during deployment of new Azure Local version 2408 clusters.
+- Enable Arc gateway during deployment of new Azure Local instances running version 2408.
 
-Unsupported scenarios for Azure Local version 2408 include:
+Unsupported scenarios for Azure Local, version 2408 include:
 
-- Azure Local clusters updated from versions 2402 or 2405 to version 2408 can't take advantage of all the new endpoints supported by this Arc gateway public preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
+- Azure Local instancs updated from versions 2402 or 2405 to version 2408 can't take advantage of all the new endpoints supported by this Arc gateway preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
 
-- Enabling Arc gateway after version 2408 deployment cannot take advantage of all the new endpoints supported by this Arc gateway public preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
+- Enabling Arc gateway after version 2408 deployment cannot take advantage of all the new endpoints supported by this Arc gateway public preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
 
-## Azure Local 2408 endpoints not redirected
+## Azure Local, version 2408 endpoints not redirected
 
-As part of the Azure Local version 2408 preview update, the endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Local cluster. These endpoints are not redirected via the Arc gateway:
+As part of the Azure Local version 2408 preview update, the endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Local instance. These endpoints are not redirected via the Arc gateway:
 
 | Endpoint # | Required endpoint | Component  |
 | -- | -- | -- |
@@ -144,7 +144,7 @@ Register your Azure subscription to join the limited public preview of the Arc g
 
 ## Create the Arc gateway resource in Azure
 
-You first create the Arc gateway resource in your Azure subscription. Don't create the Arc gateway resource from any of the HCI nodes. Do so from any computer that has an internet connection, for example, your laptop.
+You first create the Arc gateway resource in your Azure subscription. Don't create the Arc gateway resource from any of the Azure Local machines. Do so from any computer that has an internet connection, for example, your laptop.
 
 To create the Arc gateway resource in Azure, follow these steps:
 

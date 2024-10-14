@@ -1,16 +1,16 @@
 ---
 title: Azure Resource Manager template deployment for Azure Local, version 23H2
-description: Learn how to prepare and then deploy Azure Local, version 23H2 using the Azure Resource Manager template.
+description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-arm-template
 ---
 
-# Deploy an Azure Local, version 23H2 instance via Azure Resource Manager deployment template
+# Deploy Azure Local, version 23H2 via Azure Resource Manager deployment template
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
@@ -162,7 +162,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
 
-    The Deployment screen cycles on the Cluster resource during deployment.
+    The Deployment screen cycles on the cluster resource during deployment.
 
     Once deployment initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud deployment starts. After a few minutes, you can monitor deployment in the portal.
 
@@ -195,12 +195,6 @@ If the deployment fails, you should see an error message on the deployments page
 ### Known issues for ARM template deployment
 
 This section contains known issues and workarounds for ARM template deployment.
-
-<!--|Issue|Workaround/Comments|
-|------|-------|
-|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.|
-|Role assignment fails with error *Tenant ID, application ID, principal ID, and scope aren't allowed to be updated.* <br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.| To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.|
-|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |-->
 
 #### Role assignment already exists
 

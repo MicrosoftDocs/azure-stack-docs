@@ -16,9 +16,6 @@ This article describes how to set up an Azure Arc Gateway for existing deploymen
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. You can enable the Arc gateway for new deployments or for existing deployments. 
 
-<!--This article only covers the existing Azure Local deployments. For new deployments, see [Enable Azure Arc gateway for existing Azure Local deployments](deployment-azure-arc-gateway-new-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).-->
-
-
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Prerequisites
@@ -63,7 +60,7 @@ az connectedmachine setting update --resource-group [res-group] --subscription [
 
 ## Step 2: Update the machine to use the Arc gateway resource  
 
-Update each Azure Local machine in the system to use the Arc gateway resource. Run the following command locally on your Azure Local nodes to set the Arc agents to start using the Arc gateway.
+Update each Azure Local machine in the system to use the Arc gateway resource. Run the following command locally on your Azure Local machines to set the Arc agents to start using the Arc gateway.
 
 ```azurecli
 azcmagent config set connection.type gateway

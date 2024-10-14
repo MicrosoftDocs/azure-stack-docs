@@ -1,10 +1,10 @@
 ---
 title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
-author: JasonGerend
+author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2024
-ms.author: jgerend
+ms.date: 10/14/2024
+ms.author: alkohli
 ms.service: azure-stack-hci
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -66,13 +66,13 @@ Choose whether to create a new configuration for this system or to load deployme
 
 1. For multi-node systems, select whether the cluster is cabled to use a network switch for the storage network traffic:
     * **No switch for storage** - For two-node systems with storage network adapters that connect the two machines directly without going through a switch.
-    * **Network switch for storage traffic** - For clusters with storage network adapters connected to a network switch. This also applies to clusters that use converged network adapters that carry all traffic types including storage.
+    * **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This also applies to systems that use converged network adapters that carry all traffic types including storage.
 2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we're configuring:
-    * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic
-    * **Compute** traffic to or from VMs and containers on this system
-    * **Storage** (SMB) traffic between machines in a multi-node system
+    * **Management** traffic between this system, your management PC, and Azure; also Storage Replica traffic.
+    * **Compute** traffic to or from VMs and containers on this system.
+    * **Storage** (SMB) traffic between machines in a multi-node system.
 
     Select how you intend to group the traffic:
     * **Group all traffic** - If you're using network switches for storage traffic you can group all traffic types together on a set of network adapters.
@@ -225,7 +225,7 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 ## Rerun deployment
 
-If your deployment fails, you can rerun the deployment. In your cluster, go to **Deployments** and in the right-pane, select **Rerun deployment**.
+If your deployment fails, you can rerun the deployment. In your Azure Local instance, go to **Deployments** and in the right-pane, select **Rerun deployment**.
 
 :::image type="content" source="./media/deploy-via-portal/rerun-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/rerun-deployment.png":::
 
@@ -242,7 +242,7 @@ After the deployment is complete, you may need to perform some additional tasks 
 
 For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local instances. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
-You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
+You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your system via the Remote PowerShell and then enable RDP:
 
 1. Run PowerShell as administrator on your management PC.
 1. Connect to your Azure Local instance via a remote PowerShell session.

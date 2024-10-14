@@ -64,7 +64,7 @@ Before you begin, make sure you've completed the following prerequisites:
     #Register PSGallery as a trusted repo
     Register-PSRepository -Default -InstallationPolicy Trusted
 
-    #Install required PowerShell modules in your node for registration
+    #Install required PowerShell modules in your machine for registration
     Install-Module Az.Accounts -RequiredVersion 3.0.0
     Install-Module Az.Resources -RequiredVersion 6.12.0
     Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
@@ -118,7 +118,7 @@ Before you begin, make sure you've completed the following prerequisites:
     #Define the tenant you will use to register your machine as Arc device
     $Tenant = "YourTenantID"
     
-    #Define the proxy address if your HCI deployment access internet via proxy
+    #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
     ```
  

@@ -3,7 +3,7 @@ title: Configure Arc proxy manually for Azure gateway on Azure Local, version 24
 description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -31,7 +31,7 @@ Make sure the following prerequisites are met before proceeding:
 
 If you need to configure the Arc proxy on your Azure Local machines before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
 
-Ensure that you configure the proxy and the bypass list for all the nodes on your cluster.
+Ensure that you configure the proxy and the bypass list for all the machines on your system.
 
 ## Step 2: Get the ArcGatewayID  
 
@@ -62,12 +62,12 @@ This command is in preview and under development. Reference and support levels: 
 ] 
 ```
 
-## Step 3: Register new nodes in Azure Arc
+## Step 3: Register new machines in Azure Arc
 
 You run the initialization script by passing the ArcGatewayID parameter and the proxy server parameters. Here's an example of how you should change the `Invoke-AzStackHciArcInitialization` parameters on the initialization script:
 
 ```azurecli
-#Install required PowerShell modules in your node for registration 
+#Install required PowerShell modules in your machine for registration 
 
 Install-Module Az.Accounts -RequiredVersion 2.13.2 
 

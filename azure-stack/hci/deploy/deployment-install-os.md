@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2  on each server of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,7 +13,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the steps needed to install the Azure Stack HCI operating system, version 23H2 locally on each machine in your system.
+This article describes the steps needed to install the Azure Stack HCI operating system, version 23H2 locally on your Azure Local machines.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Before you begin, make sure you do the following steps:
 
 ## Boot and install the operating system
 
-To install the Azure Stack HCI operating system, version 23H2, follow these steps:
+To install the operating system, version 23H2, follow these steps:
 
 1. [Download the Azure Stack HCI operating system from the Azure portal](./download-23h2-software.md).
 
@@ -92,13 +92,13 @@ Follow these steps to configure the operating system using SConfig:
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your machines.
 
     > [!IMPORTANT]
-    > If your hardware partner provides a solution builder extension (SBE), copy it to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Stack HCI solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+    > If your hardware partner provides a solution builder extension (SBE), copy it to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 
     - Configure VLAN IDs for the management network. For more information, see [Management VLAN ID](../plan/cloud-deployment-network-considerations.md#management-vlan-id) and [Management VLAN ID with a virtual switch](../plan/cloud-deployment-network-considerations.md#management-vlan-id-with-a-virtual-switch).
     - Configure DHCP for the management network. For more information, see [DHCP IP assignment](../plan/cloud-deployment-network-considerations.md#dhcp-ip-assignment).
-    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
+    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
@@ -151,9 +151,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 Your machines will restart; this takes a few minutes.
 
-You are now ready to register the Azure Stack HCI machine with Azure Arc and assign permissions for deployment.
+You are now ready to register the Azure Local machine with Azure Arc and assign permissions for deployment.
 
 ## Next steps
 
-- (Optional) [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
-- [Register Azure Stack HCI machines in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
+- (Optional) [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
+- [Register Azure Local machines in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).

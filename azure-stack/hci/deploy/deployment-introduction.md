@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 10/08/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,7 +13,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
+This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-system deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
 
 ## About deployment methods
 
@@ -27,7 +27,7 @@ In this release, you can deploy Azure Local using one of the following methods:
 
     For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
 
-- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Local deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Stack HCI. 
+- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Local deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Local. 
 
     For more information about this program, see https://aka.ms/fasttrackforazure
 
@@ -58,23 +58,23 @@ Before starting the deployment, we recommend you check the following table that 
 
 |Network topology|Azure portal|Resource Manager template|
 |---|---|---|
-|One node - no switch for storage|By default|Supported|
-|One node - with network switch for storage|Not applicable|Supported|
-|Two nodes - no switch for storage|Supported|Supported|
-|Two nodes - with network switch for storage|Supported|Supported|
-|Three nodes - with network switch for storage|Supported|Supported|
-|Three nodes - with no network switch for storage|Not supported|Supported|
-|Four to 16 nodes - with no network switch for storage|Not supported|Not supported|
-|Four to 16 nodes - with network switch for storage|Supported|Supported|
+|One machine - no switch for storage|By default|Supported|
+|One machine - with network switch for storage|Not applicable|Supported|
+|Two machines - no switch for storage|Supported|Supported|
+|Two machines - with network switch for storage|Supported|Supported|
+|Three machines - with network switch for storage|Supported|Supported|
+|Three machines - with no network switch for storage|Not supported|Supported|
+|Four to 16 machines - with no network switch for storage|Not supported|Not supported|
+|Four to 16 machines - with network switch for storage|Supported|Supported|
 
 The two storage network options are:
 
-- **No switch for storage**. When you select this option, your Azure Local system uses crossover network cables directly connected to your network interfaces for storage communication. The current supported switchless deployments from the portal are one or two nodes.
+- **No switch for storage**. When you select this option, your Azure Local system uses crossover network cables directly connected to your network interfaces for storage communication. The current supported switchless deployments from the portal are one or two machines.
 
-- **Network switch for storage**. When you select this option, your Azure Local system uses network switches connected to your network interfaces for storage communication. You can deploy up to 16 nodes using this configuration.
+- **Network switch for storage**. When you select this option, your Azure Local system uses network switches connected to your network interfaces for storage communication. You can deploy up to 16 machines using this configuration.
 
 You can then select the [network reference pattern](../plan/choose-network-pattern.md) corresponding to a validated network topology that you intend to deploy.
 
 ## Next steps
 
-- Read the [prerequisites](./deployment-prerequisites.md) for Azure Stack HCI.
+- Read the [prerequisites](./deployment-prerequisites.md) for Azure Local.

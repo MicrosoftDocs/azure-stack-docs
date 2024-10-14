@@ -1,9 +1,9 @@
 --- 
 title: Prepare Active Directory for new Azure Local, version 23H2 deployment
-description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
+description: Learn how to prepare Active Directory before you deploy an Azure Local instance, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -56,11 +56,6 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 |`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name can use *admin* as the username.|
 |`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Local deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 
-<!--|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical machines.|
-|`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
-|`-AsHciClusterName`|The name for the new cluster AD object.|
-|`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Local deployment. <br> The prefix must not exceed 8 characters.|
-|`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
 
 > [!NOTE]
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.

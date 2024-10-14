@@ -1,20 +1,20 @@
 ---
-title: Download Azure Stack HCI Operating System, version 23H2 software  for Azure Local deployment
+title: Download Azure Stack HCI Operating System, version 23H2 software for Azure Local deployment
 description: Learn how to download Azure Local, version 23H2 software from the Azure portal to deploy an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/09/2024
+ms.date: 10/14/2024
 ---
 
-# Download operating system for Azure Local deployment
+# Download version 23H2 operating system for Azure Local deployment
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to download the operating system (OS) software from the Azure portal to deploy an Azure Local instance.
 
-The first step in deploying Azure Local, version 23H2 is to download the software from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
+The first step in deploying Azure Local, version 23H2 is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
 
 ## Prerequisites
 
@@ -48,18 +48,18 @@ Follow these steps to download the software:
     
 1. On the **Download Azure Stack HCI Operating System** page on the right, do the following:
 
-    :::image type="content" source="media/download-23h2-software/download-23h2-software-2.png" alt-text="Screenshot of the Download Azure Stack HCI version 23H2 page with the various ISO options." lightbox="media/download-23h2-software/download-23h2-software-2.png":::
+    :::image type="content" source="media/download-23h2-software/download-23h2-software-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page with the various ISO options." lightbox="media/download-23h2-software/download-23h2-software-2.png":::
 
-    1. Choose software version. By default, the latest generally available version of Azure Stack HCI is selected.
+    1. Choose software version. By default, the latest generally available version is selected.
     1. Select **English** to download the English version of the ISO. To download the VHDX, select **English VHDX** from the dropdown list.
         > [!NOTE]
         > - Currently, English is the only language that is supported.
         > - Download an **English VHDX** if you are performing [Virtual deployments](./deployment-virtual.md) for educational and demonstration purposes only.
         > - Download **English Preview** only if you are participating in the Azure Local preview program. The**English** and **English VHDX** options are not available for preview versions.
 
-    1. Select the **Azure Local, version 23H2** option.
+    1. Select the **Azure Stack HCI OS, version 23H2** option.
         > [!NOTE]
-        > The ISO that you download for Azure Stack HCI is OS version 25398.469. This ISO is then patched to the latest OS version during the installation process.
+        > The ISO that you download is OS version 25398.469. This ISO is then patched to the latest OS version during the installation process.
     1. Review service terms and privacy notice.
     1. Select the license terms and privacy notice checkbox.
     1. Select **Download Azure Stack HCI OS**. This action begins the download. Use the downloaded ISO file to install the software on each machine that you want to cluster.

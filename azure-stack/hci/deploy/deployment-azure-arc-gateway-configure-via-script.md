@@ -3,7 +3,7 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -69,13 +69,13 @@ Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
 #Install Arc registration script from PSGallery  
 Install-Module AzsHCI.ARCinstaller 
 
-#Define the subscription where you want to register your server as Arc device 
+#Define the subscription where you want to register your machine as Arc device 
 $Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" 
 
-#Define the resource group where you want to register your server as Arc device 
+#Define the resource group where you want to register your machine as Arc device 
 $RG = "yourresourcegroupname" 
 
-#Define the tenant to use to register your server as Arc device 
+#Define the tenant to use to register your machine as Arc device 
 $Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
 
 #Define Proxy Server if necessary 
@@ -91,7 +91,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 # Append * for domain names exclusions like *.contoso.com 
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
 
-$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;node3;node4;node5;192.168.*.*;HCI-cluster1"
+$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;Node3;Node4;Node5;192.168.*.*;HCI-cluster1"
 
 #Connect to your Azure account and Subscription 
 Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode 
@@ -108,7 +108,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ## Step 3: Verify that the setup succeeded
 
-Once the deployment validation starts, you can connect to the first node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy.
+Once the deployment validation starts, you can connect to the first node from your system and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 

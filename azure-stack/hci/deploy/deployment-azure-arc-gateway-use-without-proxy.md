@@ -1,14 +1,14 @@
 --- 
-title: Use Azure gateway without a proxy, version 2408 (preview)
-description: Learn how to use Azure gateway without a proxy, version 2408 (preview). 
+title: Use Azure gateway without a proxy on Azure Local, version 2408 (preview)
+description: Learn how to use Azure gateway without a proxy, on Azure Local instance running version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
 
-# Use Azure gateway without a proxy on Azure Local (preview)
+# Use Azure Arc gateway without a proxy on Azure Local (preview)
 
 Applies to: Azure Local, version 23H2, release 2408.1 and 2408
 
@@ -25,7 +25,7 @@ Make sure the following prerequisites are met before proceeding:
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
 > [!Warning]
-> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Local, version 2408. Do not use the ISO image available in Azure portal.
+> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway preview on Azure Local, version 2408. Do not use the ISO image available in Azure portal.
 
 ## Run the initialization script
 
@@ -75,7 +75,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration.
 
-$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;node3;node4;node5;192.168.*.*;HCI-cluster1"
+$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;Node3;Node4;Node5;192.168.*.*;HCI-cluster1"
 
 #Connect to your Azure account and Subscription
 
