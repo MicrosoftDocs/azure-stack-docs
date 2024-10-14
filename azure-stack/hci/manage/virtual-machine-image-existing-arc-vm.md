@@ -53,7 +53,7 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+| `subscription`   | Subscription for Azure Stack HCI cluster that you associate with this image.        |
 | `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
 | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
 | `custom-location`| Custom location ID for your Azure Stack HCI cluster.  |
@@ -73,13 +73,13 @@ PS C:\Users\azcli> $imageName = "myhci-image"
 PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 ```
 
-### Create VM image from image in Azure Storage account
+### Create VM image from an Arc VM
 
 
 Create the VM image from an existing Arc VM. Run the following command:
 
 ```azurecli
-az stack-hci-vm image create -resource-group $resource_group --location $location --custom-location $cl --os-type "Windows" --source-vm $imageSourceVM --name $imageName
+az stack-hci-vm image create -resource-group $resource_group --location $location --custom-location $custom_location --os-type $osType --source-vm $sourceVmName --name $imageName
 ```
 
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete.
