@@ -1,7 +1,7 @@
 ---
-title: Azure Stack HCI and security standards
-description: Learn about Azure Stack HCI, security standards, and security assurance.
-ms.date: 09/23/2024
+title: Azure Local and security standards
+description: Learn about Azure Local, security standards, and security assurance.
+ms.date: 10/14/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -9,11 +9,11 @@ author: dv00000
 ms.reviewer: alkohli
 ---
 
-# Azure Stack HCI and security standards
+# Azure Local and security standards
 
-This article provides information about security standards related to Azure Stack HCI. The resources detailed in this article, including certifications and evaluation reports, could be used as sources to help you in your compliance planning.
+This article provides information about security standards related to Azure Local. The resources detailed in this article, including certifications and evaluation reports, could be used as sources to help you in your compliance planning.
 
-Azure Stack products, including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Stack HCI and a particular security standard, together with any completed certifications.
+Azure Stack products, including Azure Local, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Local and a particular security standard, together with any completed certifications.
 
 ## Federal Information Processing Standard (FIPS) 140
 
