@@ -69,7 +69,7 @@ Sharing a logical network between AKS and Arc VMs on Azure Stack HCI offers the 
 | **Impact of network failures** | A failure in the shared network can affect both AKS and Arc VMs simultaneously.   | A failure in one network affects only the workloads within that network, reducing overall risk. |
 
 
-## IP Address range allocation for Pod CIDR and Service CIDR
+## IP address range allocation for pod CIDR and service CIDR
 
 ### Pod network CIDR
 
