@@ -7,7 +7,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 04/09/2021
 ms.lastreviewed: 8/16/2021
-ms.author: caoyang
+ms.author: sethm
 ms.reviewer: jiadu
 
 # Intent: As an Azure Stack operator, I want to deploy the SQL server resource provider.
