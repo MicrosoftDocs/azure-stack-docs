@@ -72,7 +72,7 @@ Firewall requirements for AKS has been consolidated with Azure Stack HCI firewal
 
 ## DNS server settings
 
-You need to ensure that the DNS server of the logical network can resolve the domain name of the Azure Stack HCI nodes. DNS name resolution is required for all nodes to be able to communicate with each other. We also recommend enabling dynamic DNS updates in your DNS environment to allow AKS to register names in the DNS system for discovery.
+You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Stack HCI cluster. DNS name resolution is required for all Azure Stack HCI nodes to be able to communicate with the AKS VM nodes. 
 
 ## Network port and cross-VLAN requirements
 
