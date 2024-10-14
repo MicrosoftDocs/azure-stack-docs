@@ -250,7 +250,7 @@ items:
   - name: 5 - Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
   - name: Troubleshoot upgrades
-    href: upgrade/troubleshoot-upgrade-to-azure-local.md
+    href: upgrade/troubleshoot-upgrade-to-23h2.md
 
 
 - name: Manage
