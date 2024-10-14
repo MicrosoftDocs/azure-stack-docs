@@ -5,8 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.custom:
-  - devx-track-azurecli
+ms.custom: devx-track-azurecli
 ms.date: 10/13/2024
 ---
 
@@ -19,10 +18,10 @@ This article describes how to create virtual machine (VM) images for your Azure 
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
+Before you begin, make sure that:
 
-- Make sure to review and complete the prerequisites.
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- You've reviewed and completed the [Arc VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
+- You've connected to your Azure Stack HCI using the instructions in [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
 ## Create VM image from existing Arc VM
