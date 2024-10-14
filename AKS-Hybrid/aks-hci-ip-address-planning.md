@@ -75,7 +75,7 @@ Sharing a logical network between AKS and Arc VMs on Azure Stack HCI offers the 
 
 Pod network CIDR is a range of IP addresses used by Kubernetes to assign unique IP addresses to the individual pods running within a Kubernetes cluster. Each pod gets its own IP address within this range, allowing pods to communicate with each other and with services within the cluster. In AKS, pod IP addresses are assigned via *Calico CNI in VXLAN mode*. Calico VXLAN helps create *Overlay networks*, where the IP addresses of pods (from the pod network CIDR) are virtualized and tunneled through the physical network. In this mode, each pod is assigned an IP address from the pod network CIDR, but this IP address is not directly routable on the physical network. Instead, it is encapsulated within the network packets and sent through the underlying physical network to reach its destination pod on another node.
 
-AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [`--pod-cidr`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
+AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [`--pod-cidr`](/cli/azure/aksarc#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
 
 ### Service Network CIDR
 
