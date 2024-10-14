@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/04/2024
+ms.date: 10/10/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -117,6 +117,12 @@ On a server that already exists on your cluster, follow these steps:
 
     ```powershell
     Update-AuthenticationToken 
+    ```
+
+1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
+
+    ```powershell
+    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
 1. Run the following command to add the new incoming server:

@@ -6,7 +6,7 @@ ms.topic: include
 ms.date: 05/15/2024
 ---
 
-Follow these steps on your Azure Stack HCI cluster to create the VM image from the VHDX that you created earlier.
+Follow these steps on your Azure Local instance to create the VM image from the VHDX that you created earlier.
 
 Use the Azure CLI to create the VM image:
 
@@ -30,7 +30,7 @@ Use the Azure CLI to create the VM image:
     $Subscription = "<Subscription ID>"
     $Resource_Group = "<Resource group>"
     $CustomLocation = "<Custom location>"
-    $Location = "<Location for your Azure Stack HCI cluster>"
+    $Location = "<Location for your Azure Local instance>"
     $OsType = "<OS of source image>"
     ```
 
@@ -38,14 +38,14 @@ Use the Azure CLI to create the VM image:
 
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `Location`       | Location for your Azure Stack HCI cluster. For example, the location could be `eastus` or `westreurope`. |
+    | `Subscription`   | Subscription associated with your Azure Local instance.        |
+    | `Resource_Group` | Resource group for Azure Local instance that you associate with this image.        |
+    | `Location`       | Location for your Azure Local instance. For example, the location could be `eastus` or `westreurope`. |
     | `OsType`         | Operating system associated with the source image. This system can be Windows or Linux.           |
 
-1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on your Azure Stack HCI.
+1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on Azure Local.
 
-    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For example, the path could look like `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
+    Make sure to copy the VHDX in user storage in the cluster shared volume of Azure Local. For example, the path could look like `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
 
     ```powershell
     $ImagePath = "Path to user storage in CSV" 

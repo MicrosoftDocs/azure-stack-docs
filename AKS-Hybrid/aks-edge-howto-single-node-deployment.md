@@ -1,8 +1,8 @@
 ---
 title: Single machine Kubernetes
 description: Learn how to deploy AKS Edge Essentials on a single machine.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 08/21/2024
 ms.custom: template-how-to

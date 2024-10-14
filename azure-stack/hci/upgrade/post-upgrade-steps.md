@@ -134,6 +134,8 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
 
        Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
+1. Install the latest drivers from your hardware partner, as some drivers may revert to an older inbox driver version resulting in unexpected behaviors.  
+
 You're now ready to apply the solution upgrade.
 
 ## Next steps
