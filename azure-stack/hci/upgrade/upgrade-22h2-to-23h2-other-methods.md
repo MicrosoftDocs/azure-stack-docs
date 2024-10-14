@@ -29,7 +29,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your instance, follow these high-level steps:
 
 1. [Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.](#complete-prerequisites)
-1. [Connect to the Azure Local, version 22H2 instance.](#step-1-connect-to-the-azure-local-system)
+1. [Connect to the Azure Local, version 22H2 instance.](#step-1-connect-to-your-system)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
    1. [Offline manual upgrade of all machines in a system.](#method-2-perform-a-fast-offline-os-update-of-all-machines-in-a-system)
