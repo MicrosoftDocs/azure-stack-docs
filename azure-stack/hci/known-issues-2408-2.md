@@ -36,7 +36,6 @@ The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Security | An ISO used during deployment of an Arc VM wasn't automatically ejected and still mounted as a DVD drive in the guest OS.||
 | Security | SideChannelMitigation is reporting properly in both local cmdlets and Windows Admin Center. ||
 
 ## Known issues in this release
