@@ -1,7 +1,7 @@
 ---
-title: FedRAMP guidance for Azure Stack HCI
-description: Learn about FedRAMP compliance using Azure Stack HCI.
-ms.date: 9/23/2024
+title: FedRAMP guidance for Azure Local
+description: Learn about FedRAMP compliance using Azure Local.
+ms.date: 10/14/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -9,9 +9,9 @@ author: dv00000
 ms.reviewer: alkohli
 ---
 
-# Azure Stack HCI and FedRAMP
+# Azure Local and FedRAMP
 
-This article explains the relationship between Azure Stack HCI and FedRAMP and how organizations can stay compliant with FedRAMP with Azure Stack HCI solutions.
+This article explains the relationship between Azure Local and FedRAMP and how organizations can stay compliant with FedRAMP with Azure Local solutions.
 
 ## What is FedRAMP?
 
@@ -19,17 +19,17 @@ The US Federal Risk and Authorization Management Program (FedRAMP) provides a st
 
 For more information about FedRAMP, see [Azure & FedRAMP](/azure/compliance/offerings/offering-fedramp).
 
-## Azure Stack HCI and FedRAMP
+## Azure Local compliance obligations
 
-Azure Stack HCI is a hybrid infrastructure solution that hosts and operates workloads on the edge; and deploys, manages, and operates at scale with Azure cloud services. Therefore, from the lens of compliance obligations, we can segment Azure Stack HCI integrated systems into two categories: cloud services and on-premises systems.
+Azure Local is a hybrid infrastructure solution that hosts and operates workloads on the edge; and deploys, manages, and operates at scale with Azure cloud services. Therefore, from the lens of compliance obligations, we can segment Azure Local integrated systems into two categories: cloud services and on-premises systems.
 
 ### On-premises solutions
 
-As FedRAMP is designed for cloud service offerings (CSOs), the hardware device and operating system of Azure Stack HCI is not applicable for FedRAMP. Customers are responsible for the authorization package that covers the physical devices. Other standards, such as  [Federal Information Processing Standard (FIPS) 140](/azure-stack/hci/assurance/azure-stack-security-standards#federal-information-processing-standard-fips-140) and [Common Criteria (CC)](/azure-stack/hci/assurance/azure-stack-security-standards#common-criteria-for-information-technology-security-evaluation-cc), are applicable to on-premises which may be useful for your accreditation processes.
+As FedRAMP is designed for cloud service offerings (CSOs), the hardware device and operating system of Azure Local is not applicable for FedRAMP. Customers are responsible for the authorization package that covers the physical devices. Other standards, such as  [Federal Information Processing Standard (FIPS) 140](/azure-stack/hci/assurance/azure-stack-security-standards#federal-information-processing-standard-fips-140) and [Common Criteria (CC)](/azure-stack/hci/assurance/azure-stack-security-standards#common-criteria-for-information-technology-security-evaluation-cc), are applicable to on-premises which may be useful for your accreditation processes.
 
 ### Connected cloud services
 
-For cloud services that support Azure Stack HCI infrastructure and workloads on site, Azure has a rich portfolio of FedRAMP accreditation which you can utilize to support your compliance journey. Below are some commonly used cloud services for deploying, operating, and managing Azure Stack HCI which are in scope for the Azure FedRAMP High P-ATO.
+For cloud services that support Azure Local infrastructure and workloads on site, Azure has a rich portfolio of FedRAMP accreditation which you can utilize to support your compliance journey. Below are some commonly used cloud services for deploying, operating, and managing Azure Local which are in scope for the Azure FedRAMP High P-ATO.
 
 - Azure Arc-enabled Kubernetes
 - Azure Arc-enabled servers
