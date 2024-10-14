@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials licensing options
 description: Learn about AKS Edge Essentials licensing options.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: overview
 ms.date: 10/26/2023
 ms.custom: template-overview
