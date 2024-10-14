@@ -55,7 +55,7 @@ Continuing with this example, and adding it to the following table, you get:
 ### LNETs considerations for AKS clusters and Arc VMs
 
 Logical networks on Azure Stack HCI are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
-- Share a logical network between AKS and Arc VMs
+- Share a logical network between AKS and Arc VMs.
 - Define seperate logical networks for AKS clusters and Arc VMs
 
 Sharing a logical network between AKS and Arc VMs on Azure Stack HCI offers the benefit of streamlined communication, cost savings, and simplified network management. However, this approach also introduces potential challenges such as resource contention, security risks, and complexity in troubleshooting.
