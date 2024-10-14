@@ -13,7 +13,7 @@ ms.lastreviewed: 10/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. Ensure that you've read the [AKS networking concepts and requirements](/aks-hci-network-system-requirements.md) before reading the this article.
+IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. Ensure that you've read the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading the this article.
 
 
 ## Simple IP address planning for Kubernetes clusters and applications
