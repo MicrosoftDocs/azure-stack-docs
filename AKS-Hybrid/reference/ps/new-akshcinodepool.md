@@ -1,10 +1,10 @@
 ---
 title: New-AksHciNodePool for AKS hybrid
-author: mkostersitz
+author: sethmanheim
 description: The New-AksHciNodePool PowerShell command creates a new node pool to an existing cluster
 ms.topic: reference
 ms.date: 3/16/2022
-ms.author: mikek
+ms.author: sethm
 ---
 
 # New-AksHciNodePool
