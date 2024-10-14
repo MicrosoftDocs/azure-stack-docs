@@ -2,7 +2,7 @@
 ms.topic: include
 author: alkohli
 ms.topic: how-to
-ms.date: 06/20/2024
+ms.date: 10/11/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 
@@ -12,7 +12,7 @@ Once the deployment validation starts, connect to the first server node from you
 
   :::image type="content" source="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png" alt-text="Screenshot of location of log file for Azure Arc gateway." lightbox="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png":::
 
-1. To check the Arc agent configuration and verify that it is using the gateway, connect to the Azure Stack HCI server node.
+1. To check the Arc agent configuration and verify that it is using the gateway, connect to the Azure Local machine.
 1. Run the following command: `"c:\program files\AzureConnectedMachineAgent>.\azcmagent show"`. The result should show the following values:
 
     :::image type="content" source="./media/hci-gateway-verify-setup-successful/connected-machine-agent-with-arc-gateway-output.png" alt-text="Screenshot of Azure Arc gateway connected machine agent output window." lightbox="./media/hci-gateway-verify-setup-successful/connected-machine-agent-with-arc-gateway-output.png":::
@@ -20,7 +20,7 @@ Once the deployment validation starts, connect to the first server node from you
     - **Agent Version** should show as `1.40` or later. <!--CHECK-->
     - **Agent Status** should show as `Connected`.
     - **Using HTTPS Proxy** is empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
-    - **Upstream Proxy** always shows as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
+    - **Upstream Proxy** always shows as empty for Azure Local as it uses the environment variables to configure the Arc agent.
     - **Upstream Proxy Bypass List** should show your bypass list.
     - **Azure Arc Proxy (arcproxy)** shows as `Stopped` when Arc gateway isn't in use and shows as `Running` when Arc gateway is enabled.
 
