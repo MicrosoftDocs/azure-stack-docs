@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)

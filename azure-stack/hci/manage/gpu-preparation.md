@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ms.service: azure-stack-hci
 ---
 
