@@ -3,7 +3,7 @@ title: About Azure Local upgrade to version 23H2
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,20 +13,20 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides an overview of upgrading your existing Azure Local system from version 22H2 to version 23H2.
+This article provides an overview of upgrading Azure Local, version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 ## About Azure Local, version 23H2
 
-Azure Local, version 23H2 is the latest version of Azure Local. This version integrates the Azure Arc infrastructure that provisions and manages the workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Local, version 23H2](../whats-new.md#features-and-improvements-in-2311).
+The latest version of Azure Local, version 23H2, integrates the Azure Arc infrastructure that provisions and manages the workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Local, version 23H2](../whats-new.md#features-and-improvements-in-2311).
 
 With version 23H2, Azure Local evolved from a cloud-connected operating system (OS) to an Arc-enabled solution. The OS forms the base layer of this solution, with the Arc and the Orchestrator (also known as the Lifecycle Manager) components layered on top. These components are packaged together into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
 
 - This IaC model takes a set of input parameters that are specific to each customer and environment.
 - The lifecycle manager then orchestrates the desired state across all the layers to meet the desired state and version.
 
-The following diagram illustrates the components of an Azure Local, version 23H2 system:
+The following diagram illustrates the components of the new version of Azure Local:
 
 :::image type="content" source="./media/about-upgrades-23h2/azure-stack-hci-23h2-and-its-components.png" alt-text="Diagram that illustrates Azure Local and its components." lightbox="./media/about-upgrades-23h2/azure-stack-hci-23h2-and-its-components.png":::
 
@@ -65,7 +65,7 @@ Azure Local upgrade supports the following services and workloads:
 | Azure Kubernetes (AKS) on Azure Local     | See notes <br> Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. <br> Remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade.        |
 | Arc VMs on Azure Local     | See notes <br> Preview versions of Arc VMs can't be upgraded.        |
 | Stretched clusters on Azure Local     | No <br> The OS upgrade to 23H2 and the solution upgrade are unavailable for stretched clusters.      |
-| System Center Virtual Machine Manager (SCVMM)    | No <br> If your Azure Local, version 22H2 instance is managed by SCVMM, this upgrade process isn't currently supported. <br> For more information on System Center 2025 release and Azure Local, version 23H2 support, see the [announcement](https://techcommunity.microsoft.com/t5/system-center-blog/announcement-system-center-2025-is-here/ba-p/4138510).         |
+| System Center Virtual Machine Manager (SCVMM)    | No <br> If your Azure Local instance running version 22H2 is managed by SCVMM, this upgrade process isn't currently supported. <br> For more information on System Center 2025 release and Azure Local, version 23H2 support, see the [announcement](https://techcommunity.microsoft.com/t5/system-center-blog/announcement-system-center-2025-is-here/ba-p/4138510).         |
 | Azure Local, version 22H2SP    | No <br> This upgrade process isn't supported for upgrading from Azure Local, version 22H2 Supplemental Package clusters.        |
 
 

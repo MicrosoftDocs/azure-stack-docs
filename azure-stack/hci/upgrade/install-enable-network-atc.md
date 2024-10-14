@@ -1,28 +1,28 @@
 ---
-title:  Install and enable Network ATC on an Azure Local, version 22H2
+title:  Install and enable Network ATC on Azure Local, version 22H2
 description: Learn how to install and enable Network ATC on Azure Local, version 22H2.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ms.service: azure-stack-hci
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Local, version 22H2 instance.
 ---
 
-# Install and enable Network ATC on Azure Local, version 22H2 instances
+# Install and enable Network ATC on Azure Local, version 22H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to install and enable Network ATC on your existing Azure Local, version 22H2 system. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
+This article provides information on how to install and enable Network ATC on an existing Azure Local instance running version 22H2. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
 
 > [!IMPORTANT]
-> - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Local system. If Network ATC is already enabled on your existing system, you can skip this step. 
+> - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Local instance. If Network ATC is already enabled on your existing system, you can skip this step. 
 > - We recommend that you set up Network ATC after you have upgraded the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Local to the latest version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 ## About Network ATC
 
-Network ATC stores information in the cluster database, which is then replicated to other machines in the cluster. From the initial node, other machines in the cluster see the change in the cluster database and create a new intent. Here, we set up the instance to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on machines that have virtual machines (VM) on them.
+Network ATC stores information in the cluster database, which is then replicated to other machines in the cluster. From the initial node, other machines in the cluster see the change in the cluster database and create a new intent. Here, we set up the system to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on machines that have virtual machines (VM) on them.
 
 ## Benefits
 
@@ -30,24 +30,24 @@ For Azure Local, Network ATC provides the following benefits:
 
 - Reduces host networking deployment time, complexity, and errors.
 - Deploys the latest Microsoft validated and supported best practices.
-- Ensures configuration consistency across the instance.
+- Ensures configuration consistency across the cluster.
 - Eliminates configuration drift.
 
 ## Before you begin
 
-Before you install and enable Network ATC on your existing Azure Local system, make sure:
+Before you install and enable Network ATC on your existing Azure Local, make sure:
 
 - You're on a host that doesn't have a running VM on it.
-- You're on an system that has running workloads on the node.
+- You're on a system that has running workloads.
 
 ## Steps to install and enable Network ATC
 
 > [!IMPORTANT]
-> If you don't have running workloads on your nodes, execute [Step 4: Remove the existing configuration on the paused machine without running VMs](#step-4-remove-the-existing-configuration-on-the-paused-machine-without-running-vms) to remove any previous configurations that could conflict with Network ATC, then add your intent(s) following the standard procedures found in [Deploy host networking with Network ATC](../deploy/network-atc.md)
+> If you don't have running workloads on your Azure Local machines, execute [Step 4: Remove the existing configuration on the paused machine without running VMs](#step-4-remove-the-existing-configuration-on-the-paused-machine-without-running-vms) to remove any previous configurations that could conflict with Network ATC, then add your intent(s) following the standard procedures found in [Deploy host networking with Network ATC](../deploy/network-atc.md)
 
 ### Step 1: Install Network ATC
 
-In this step, you install Network ATC on every machine in the cluster instance using the following command. No reboot is required.
+In this step, you install Network ATC on every machine in the system using the following command. No reboot is required.
 
 ```powershell
 Install-WindowsFeature -Name NetworkATC
@@ -193,7 +193,7 @@ In this example, there are three intents that are managed across machines.
 
 ### Step 7: Verify the deployment on one machine
 
-The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each machine in the system. For example, if you have a three-machine (three-node) cluster with two intents, you should see six objects, each with their own status, returned by the command.
+The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each machine in the system. For example, if you have a three-node system with two intents, you should see six objects, each with their own status, returned by the command.
 
 To verify your machines's successful deployment of the intents submitted in step 5, run the following command:
 

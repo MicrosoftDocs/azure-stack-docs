@@ -1,9 +1,9 @@
 ---
 title: Install solution upgrade on Azure Local
-description: Learn about how to install upgrade on your Azure Local system.
+description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -14,7 +14,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to install the solution upgrade on your Azure Local system after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to install the solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the new version and Azure Local, version 22H2 as the old version.
 

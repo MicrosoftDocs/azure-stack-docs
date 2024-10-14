@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2024
+ms.date: 10/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,13 +13,13 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Local system after the operating system (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of your Azure Local system for the upgrade. The following steps help you assess the upgrade readiness:
+This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
 - Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
@@ -141,7 +141,7 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 ## Remediation 1: Install required and optional Windows features
 
-Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine node into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other cluster members.
+Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other cluster members.
 
 Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
 
