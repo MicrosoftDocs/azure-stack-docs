@@ -832,7 +832,7 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to change 
     }    
     ```
 
-### [Linux](#tab/windows)
+### [Linux](#tab/linux)
 
 If Bash is located in a different directory, make sure to change this line `#!/bin/bash` accordingly.
 
