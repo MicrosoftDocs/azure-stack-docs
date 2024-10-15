@@ -377,7 +377,7 @@ Here are the summarized considerations for network adapter configuration:
 |#     |Consideration  |
 |---------|---------|
 |1     | Use the default configurations as much as possible.        |
-|2     | Physical switches must be configured according to the network adapter configuration. See [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md#network-switches-for-azure-stack-hci).    |
+|2     | Physical switches must be configured according to the network adapter configuration. See [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md#network-switches-for-azure-local).    |
 |3     | Ensure that your network adapters are supported for Azure Local using the Windows Server Catalog.       |
 |4     | When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. <br><br>In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using Resource Manager templates.        |
 
