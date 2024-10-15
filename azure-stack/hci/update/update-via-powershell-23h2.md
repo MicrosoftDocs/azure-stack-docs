@@ -14,7 +14,7 @@ ms.date: 10/08/2024
 
 This article describes how to apply a solution update to your Azure Local instance via PowerShell.
 
-The procedure in this article applies to both a single machine and multi-machine systems that run the latest version with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
+The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
 [!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
@@ -44,12 +44,12 @@ The time taken to install the updates might vary based on the following factors:
 - Type of the hardware used.
 - Solution Builder Extension used.
 
-The approximate time estimates for a typical single machine and 4-machine system are summarized in the following table:
+The approximate time estimates for a typical single server and 4-server cluster are summarized in the following table:
 
-|System/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
+|Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
-|Single machine     | 0:01:44	        |1:25:42         |
-|4-machine system    | 0:01:58	        |3:53:09         |
+|Single server     | 0:01:44	        |1:25:42         |
+|4-server cluster    | 0:01:58	        |3:53:09         |
 
 ## Prerequisites
 
@@ -57,11 +57,11 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local, version 23H2 system that is running 2310 or higher. The system should be registered in Azure.
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
-- You have access to the solution update package over the network. You sideload or copy these updates to the machines of your system.
+- You have access to the solution update package over the network. You sideload or copy these updates to the machines in your system.
 
 ## Connect to your Azure Local instance
 
-Follow these steps on your client to connect to one of the machines of your Azure Local instance.
+Follow these steps on your client to connect to one of the machines in your Azure Local instance.
 
 1. Run PowerShell as administrator on the client that you're using to connect to your system.
 2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
@@ -90,7 +90,7 @@ Follow these steps on your client to connect to one of the machines of your Azur
 
 Before you discover the updates, make sure that the system was deployed using the Azure Local, version 23H2, software version 2310.  
 
-1. Make sure that you're connected to the system machine using the deployment user account. Run the following command:
+1. Make sure that you're connected to the machine using the deployment user account. Run the following command:
 
     ```powershell
     whoami
@@ -395,7 +395,7 @@ You can download the updates, perform a set of checks to verify your system's up
     - When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage of the installation that was completed.
 
         > [!IMPORTANT]
-        > During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
+        > During the install, machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
 
         Here's a sample output while the updates are being installed.
 

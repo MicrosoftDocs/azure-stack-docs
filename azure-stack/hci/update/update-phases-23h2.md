@@ -13,7 +13,7 @@ ms.date: 10/07/2024
 
 This article describes the various phases of solution updates that are applied to your Azure Local instance to keep it up-to-date. This information is applicable to Azure Local, version 23H2.
 
-The procedure in this article applies to both a single machine and a multi-machine system that is running the latest version including the orchestrator.
+The procedure in this article applies to both single node and multi-node systems that are running the latest version of Azure Local with the orchestrator installed.
 
 ## About update phases
 
@@ -23,9 +23,9 @@ The new update feature automates the update process for agents, services, operat
 
 The updates can be of the following types:
 
-- **Updates not requiring reboots** - The updates that can be applied to your Azure Local instance without any machine reboots in the system.
+- **Updates not requiring reboots** - The updates that can be applied to your Azure Local instance without any reboots in the system.
 
-- **Updates that require reboots** - The updates that might need a machine reboot in your Azure Local instance. Cluster-Aware Updating is used to reboot machines in the system one by one, ensuring the availability of the system during the update process.
+- **Updates that require reboots** - The updates that might need a reboot in your Azure Local instance. Cluster-Aware Updating is used to reboot machines in the system one by one, ensuring the availability of the system during the update process.
 
 The updates consist of several phases: discovering the update, staging the content, deploying the update, and reviewing the installation. Each phase might not require your input but distinct actions occur in each phase.
 

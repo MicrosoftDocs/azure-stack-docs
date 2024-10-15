@@ -14,7 +14,7 @@ ms.date: 10/07/2024
 
 [!INCLUDE [IMPORTANT](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
-This article describes how to use Azure Update Manager to find and install available updates on selected Azure Local systems. Additionally, we provide guidance on how to review system updates, track progress, and browse system updates history.
+This article describes how to use Azure Update Manager to find and install available updates on selected Azure Local systems. Additionally, we provide guidance on how to review, track progress, and browse the history of system updates.
 
 ## About Azure Update Manager
 
@@ -30,7 +30,7 @@ Here are some benefits of the Azure Update Manager:
 
 ## Prerequisites
 
-- An Azure Local, version 23H2 instance deployed and registered with Azure.
+- An Azure Local, version 23H2 system deployed and registered with Azure.
 
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).
 
@@ -125,7 +125,7 @@ To install updates on a single system from the resource page, follow these steps
 3. Select the system name from the list.
 4. Select the update and then select **One-time update**.
 
-      [![Screenshot of a one-time system update in Azure Update Manager.](./media/azure-update-manager/update-single-system.png)](media/azure-update-manager/update-single-system.png#lightbox)
+      [![Screenshot of a one-time system update in Azure Update Manager.](./media/azure-update-manager/update-single-cluster.png)](media/azure-update-manager/update-single-cluster.png#lightbox)
 
 5. On the **Check readiness** page, review the list of readiness checks and their results.
    - You can select the links under **Affected systems** to view more details and individual system results.

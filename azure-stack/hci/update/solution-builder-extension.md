@@ -19,7 +19,7 @@ This article provides an overview of the Solution Builder Extension updates and 
 
 ## About the extension
 
-The Solution Builder Extension (referred to as SBE in the Azure CLI) allows you to apply updates to your Azure Local, version 23H2 system from your hardware vendor. In addition to Microsoft Azure Local solution updates, many hardware vendors release regular updates for your Azure Local hardware. These updates may include driver and firmware updates, hardware monitoring enhancements, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Local pre-update health checks.
+The Solution Builder Extension (referred to as SBE in the Azure CLI) allows you to apply updates from your hardware vendor to your Azure Local, version 23H2 system. In addition to Microsoft Azure Local solution updates, many hardware vendors release regular updates for your Azure Local hardware. These updates may include driver and firmware updates, hardware monitoring enhancements, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Local pre-update health checks.
 
 Starting with Azure Local, version 23H2, these types of updates are packaged into **Solution Builder Extension** or **Solution Builder Extension packages**.
 
@@ -41,7 +41,7 @@ In addition to installing hardware updates, Solution Builder Extension may also 
 
 ## Identify a Solution Builder Extension update for your hardware
 
-Starting with Azure Local, version 23H2, any hardware added to the Azure Local catalog as an Integrated System or Premier Solution must implement a Solution Builder Extension that supports firmware and driver update. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the Solution Builder Extension.
+Starting with Azure Local, version 23H2, any new Integrated Systems or Premier Solution hardware added to the Azure Local catalog must implement a Solution Builder Extension that supports firmware and driver updates. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to fully utilize the update-at-scale capabilities enabled by the Solution Builder Extension.
 
 > [!NOTE]
 > A solution builder extension might not be implemented for your hardware if:

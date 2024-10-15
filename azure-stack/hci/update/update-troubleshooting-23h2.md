@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 10/08/2024
 ---
 
-# Troubleshoot solution updates for Azure Stack HCI, version 23H2
+# Troubleshoot solution updates for Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
@@ -27,7 +27,7 @@ To collect logs for updates using the Azure portal, see [Use Azure Update Manage
 
 To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your system:
 
-1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
+1. Establish a remote PowerShell session with the machine. Run PowerShell as administrator and run the following command:
 
     ```powershell
     Enter-PSSession -ComputerName <server_IP_address> -Credential <username\password for the server>
