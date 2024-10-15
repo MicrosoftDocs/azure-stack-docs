@@ -22,7 +22,7 @@ The Azure Local cloud service in Azure is a key part of the Azure Local product 
 
 The Azure Local cloud service extends the hybrid capabilities for Azure Local by enabling the following cloud-based functionalities:
 
-- **Registration.** To enable hybrid capabilities, you must register every Azure Local machine that you intend to connect with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md).
+- **Registration.** To enable hybrid capabilities, you must register every Azure Local machine that you intend to connect with Azure Arc. For more information, see [Register your servers and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md).
 
 - **Deployment and security.** Azure Local supports cloud-based deployment through the Azure portal or an Azure Resource Manager deployment template. For more information, see [Deploy Azure Local instance using the Azure portal](deploy/deploy-via-portal.md) and [Deploy Azure Local via the Azure Resource Manager deployment template](deploy/deployment-azure-resource-manager-template.md).
 
@@ -50,7 +50,7 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Local delivers hybrid value through the following Azure Arc technologies:
 
-- [**Arc machines.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local machine that you intend to join with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md)
+- [**Arc machines.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local machine that you intend to join with Azure Arc. For more information, see [Register your servers and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md)
 
     You can install, upgrade, and manage Azure Arc extensions on Azure Local machines to run hybrid services like monitoring and Windows Admin Center in the Azure portal. For more information, see [Azure Arc extension management on Azure Local](manage/arc-extension-management.md).
 
