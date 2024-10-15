@@ -30,8 +30,8 @@ This release train includes the following releases:
 This is a baseline release with the following features and improvements:
 
 - **Arc VM Management**: Starting in this release, you can perform a proxy configuration for Arc VMs on the Portal.
-- You can now create an image from an Arc VM's OS disk
-- When creating a logical network on the Azure portal there's a dropdown for virtual switch
+- You can now create an image from an Arc VM's OS disk.
+- When creating a logical network on the Azure portal there's a dropdown for virtual switch.
 
 ## Features and improvements in 2408.1
 
