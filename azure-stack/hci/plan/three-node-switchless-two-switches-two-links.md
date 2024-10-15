@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI three-node storage switchless, dual TOR, dual link deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI three-node storage switchless, dual TOR, dual link network reference pattern.
+title: Azure Local three-node storage switchless, dual TOR, dual link deployment network reference pattern
+description: Plan to deploy an Azure Local three-node storage switchless, dual TOR, dual link network reference pattern.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
@@ -10,14 +10,14 @@ ms.custom: devx-track-arm-template
 ms.date: 05/15/2024
 ---
 
-# Review three-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Stack HCI
+# Review three-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2.md)] and later
 
-In this article, learn about the three-node storage switchless with two TOR L3 switches and two full-mesh links network reference pattern that you can use to deploy your Azure Stack HCI solution.
+In this article, learn about the three-node storage switchless with two TOR L3 switches and two full-mesh links network reference pattern that you can use to deploy your Azure Local solution.
 
 > [!NOTE]
-> The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+> The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
@@ -31,7 +31,7 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 As illustrated in the diagram above, this pattern has the following physical network components:
 
-- For northbound and southbound communication, the Azure Stack HCI cluster requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
+- For northbound and southbound communication, the Azure Local cluster requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 
 - Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
 
@@ -59,9 +59,9 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you are responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI cluster from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local cluster from Azure.
 
-- For Azure Stack HCI, version 23H2 cloud deployments:
+- For Azure Local, version 23H2 cloud deployments:
 
     - Scale out storage switchless clusters aren't supported.
 

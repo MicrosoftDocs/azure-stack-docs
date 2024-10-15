@@ -1,6 +1,6 @@
 ---
-title: Physical network requirements for Azure Stack HCI
-description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
+title: Physical network requirements for Azure Local
+description: Physical network requirements and considerations for Azure Local, including network switches.
 author: jacobpedd
 ms.topic: conceptual
 ms.date: 03/14/2024
@@ -8,29 +8,29 @@ ms.author: jgerend
 ms.reviewer: JasonGerend
 ---
 
-# Physical network requirements for Azure Stack HCI
+# Physical network requirements for Azure Local
 
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
+This article discusses physical (fabric) network considerations and requirements for Azure Local, particularly for network switches.
 
 > [!NOTE]
-> Requirements for future Azure Stack HCI versions may change.
+> Requirements for future Azure Local versions may change.
 
-## Network switches for Azure Stack HCI
+## Network switches for Azure Local
 
-Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
+Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Local requirements.
 
 > [!IMPORTANT]
-> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.
+> While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Local and may be unable to assist in troubleshooting issues that occur.
 
-When purchasing network switches, contact your switch vendor and ensure that the devices meet the Azure Stack HCI requirements for your specified role types. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
+When purchasing network switches, contact your switch vendor and ensure that the devices meet the Azure Local requirements for your specified role types. The following vendors (in alphabetical order) have confirmed that their switches support Azure Local requirements:
 
 
 # [Overview](#tab/overview)
 
-Click on a vendor tab to see validated switches for each of the Azure Stack HCI traffic types. These network classifications can be found [here](host-network-requirements.md#network-traffic-types).
+Click on a vendor tab to see validated switches for each of the Azure Local traffic types. These network classifications can be found [here](host-network-requirements.md#network-traffic-types).
 
 > [!IMPORTANT]
 > We update these lists as we're informed of changes by network switch vendors.
@@ -245,7 +245,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 ## Network switch requirements
 
-This section lists industry standards that are mandatory for the specific roles of network switches used in Azure Stack HCI deployments. These standards help ensure reliable communications between nodes in Azure Stack HCI cluster deployments.
+This section lists industry standards that are mandatory for the specific roles of network switches used in Azure Local deployments. These standards help ensure reliable communications between nodes in Azure Local cluster deployments.
 
 > [!NOTE]
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
@@ -274,24 +274,24 @@ Here are the mandatory IEEE standards and specifications:
 > Guest RDMA requires both Compute (Standard) and Storage.
 ### Standard: IEEE 802.1Q
 
-Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Local and are required in all scenarios.
 
 ### Standard: IEEE 802.1Qbb
 
-Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
+Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
 
 ### Standard: IEEE 802.1Qaz
 
-Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
+Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
 A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
-> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
 
 ### Standard: IEEE 802.1AB
 
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and enables troubleshooting of physical networking configurations.
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Local and enables troubleshooting of physical networking configurations.
 
 Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
@@ -312,11 +312,11 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 ### Maximum Transmission Unit 
 The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
 ### Border Gateway Protocol 
-Ethernet switches used for Azure Stack HCI SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
 
 ### DHCP Relay Agent 
 
-Ethernet switches used for Azure Stack HCI management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
 # [22H2](#tab/22H2reqs)
 
@@ -341,24 +341,24 @@ Ethernet switches used for Azure Stack HCI management traffic must support DHCP 
 > Guest RDMA requires both Compute (Standard) and Storage.
 ### Standard: IEEE 802.1Q
 
-Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Stack HCI and are required in all scenarios.
+Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. VLANs are required for several aspects of Azure Local and are required in all scenarios.
 
 ### Standard: IEEE 802.1Qbb
 
-Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
+Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qbb specification that defines Priority Flow Control (PFC). PFC is required where Data Center Bridging (DCB) is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qbb is required in all scenarios. A minimum of three Class of Service (CoS) priorities are required without downgrading the switch capabilities or port speeds. At least one of these traffic classes must provide lossless communication.
 
 ### Standard: IEEE 802.1Qaz
 
-Ethernet switches used for Azure Stack HCI storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
+Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
 A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
-> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Stack HCI with Differentiated Services Code Point (DSCP).
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
 
 ### Standard: IEEE 802.1AB
 
-Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Stack HCI and enables troubleshooting of physical networking configurations.
+Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). LLDP is required for Azure Local and enables troubleshooting of physical networking configurations.
 
 Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
@@ -383,13 +383,13 @@ The maximum transmission unit (MTU) is the largest size frame or packet that can
 ### Border Gateway Protocol 
 *New Requirement in 22H2*
 
-Ethernet switches used for Azure Stack HCI SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
 
 ### DHCP Relay Agent 
 *New Requirement in 22H2*
 
 
-Ethernet switches used for Azure Stack HCI management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
+Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
 
 ---
@@ -398,7 +398,7 @@ Ethernet switches used for Azure Stack HCI management traffic must support DHCP 
 
 This section is predominantly for network administrators.
 
-Azure Stack HCI can function in various data center architectures including 2-tier (Spine-Leaf) and 3-tier (Core-Aggregation-Access). This section refers more to concepts from the Spine-Leaf topology that is commonly used with workloads in hyper-converged infrastructure such as Azure Stack HCI.
+Azure Local can function in various data center architectures including 2-tier (Spine-Leaf) and 3-tier (Core-Aggregation-Access). This section refers more to concepts from the Spine-Leaf topology that is commonly used with workloads in hyper-converged infrastructure such as Azure Local.
 
 ## Network models
 
@@ -408,9 +408,9 @@ Network traffic can be classified by its direction. Traditional Storage Area Net
 > We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 > [!NOTE]
-> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+> Stretched cluster functionality is only available in Azure Local, version 22H2.
 
-### North-South traffic for Azure Stack HCI
+### North-South traffic for Azure Local
 
 North-South traffic has the following characteristics:
 
@@ -419,7 +419,7 @@ North-South traffic has the following characteristics:
 - Includes management (PowerShell, Windows Admin Center), compute (VM), and inter-site stretched cluster traffic.
 - Uses an Ethernet switch for connectivity to the physical network.
 
-### East-West traffic for Azure Stack HCI
+### East-West traffic for Azure Local
 
 East-West traffic has the following characteristics:
 
@@ -429,7 +429,7 @@ East-West traffic has the following characteristics:
 
 ## Using switches
 
-North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Stack HCI, the most important aspect is the proper sizing of the network fabric.
+North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Local, the most important aspect is the proper sizing of the network fabric.
 
 It is imperative to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
@@ -439,7 +439,7 @@ Work with your network vendor or network support team to ensure your network swi
 
 ## Using switchless
 
-Azure Stack HCI supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
+Azure Local supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
 
 :::image type="content" source="media/physical-network-requirements/switchless-connectivity.png" alt-text="Diagram showing full-mesh switchless connectivity" lightbox="media/physical-network-requirements/switchless-connectivity.png":::
 

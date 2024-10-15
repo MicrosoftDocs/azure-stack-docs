@@ -1,6 +1,6 @@
 ---
-title: Review two-node storage reference pattern IP requirements for Azure Stack HCI
-description: Review two-node storage reference pattern IP requirements for Azure Stack HCI
+title: Review two-node storage reference pattern IP requirements for Azure Local
+description: Review two-node storage reference pattern IP requirements for Azure Local
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
@@ -9,7 +9,7 @@ ms.service: azure-stack-hci
 ms.date: 05/15/2024
 ---
 
-# Review two-node storage reference pattern IP requirements for Azure Stack HCI
+# Review two-node storage reference pattern IP requirements for Azure Local
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 

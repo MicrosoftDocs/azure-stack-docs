@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI two-node storage switched, non-converged deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI two-node storage switched, non-converged network reference pattern.
+title: Azure Local two-node storage switched, non-converged deployment network reference pattern
+description: Plan to deploy an Azure Local two-node storage switched, non-converged network reference pattern.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
@@ -9,13 +9,13 @@ ms.service: azure-stack-hci
 ms.date: 03/14/2024
 ---
 
-# Review two-node storage switched, non-converged deployment network reference pattern for Azure Stack HCI
+# Review two-node storage switched, non-converged deployment network reference pattern for Azure Local
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switch network reference pattern that you can use to deploy your Azure Local solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local in their datacenters.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information on other network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 

@@ -1,6 +1,6 @@
 ---
-title: System requirements for Azure Stack HCI, version 23H2
-description: How to choose servers, storage, and networking components for Azure Stack HCI, version 23H2.
+title: System requirements for Azure Local, version 23H2
+description: How to choose servers, storage, and networking components for Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,15 +9,15 @@ ms.custom: references_regions
 ms.date: 08/22/2024
 ---
 
-# System requirements for Azure Stack HCI, version 23H2
+# System requirements for Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
- This article discusses Azure, server and storage, networking, and other requirements for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+ This article discusses Azure, server and storage, networking, and other requirements for Azure Local. If you purchase Azure Local Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
 ## Azure requirements
 
-Here are the Azure requirements for your Azure Stack HCI cluster:
+Here are the Azure requirements for your Azure Local cluster:
 
 - **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
 
@@ -28,7 +28,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 - **Azure permissions**: Make sure that you're assigned the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md#assign-required-permissions-for-deployment).
 
-- **Azure regions**: Azure Stack HCI is supported for the following regions:
+- **Azure regions**: Azure Local is supported for the following regions:
 
    - East US
    - West Europe
@@ -41,7 +41,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 ## Server and storage requirements
 
-Before you begin, make sure that the physical server and storage hardware used to deploy an Azure Stack HCI cluster meets the following requirements:
+Before you begin, make sure that the physical server and storage hardware used to deploy an Azure Local cluster meets the following requirements:
 
 |Component|Minimum|
 |--|--|
@@ -66,13 +66,13 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ## Networking requirements
 
-An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
+An Azure Local cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
+Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
 ## Maximum supported hardware specifications
 
-Azure Stack HCI deployments that exceed the following specifications are not supported:
+Azure Local deployments that exceed the following specifications are not supported:
 
 | Resource | Maximum |
 | --- | --- |
@@ -87,16 +87,16 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 
 ## Hardware requirements
 
-In addition to Microsoft Azure Stack HCI updates, many OEMs also release regular updates for your Azure Stack HCI hardware, such as driver and firmware updates. To ensure that OEM package update notifications, reach your organization check with your OEM about their specific notification process.
+In addition to Microsoft Azure Local updates, many OEMs also release regular updates for your Azure Local hardware, such as driver and firmware updates. To ensure that OEM package update notifications, reach your organization check with your OEM about their specific notification process.
 
-Before deploying Azure Stack HCI, version 23H2, ensure that your hardware is up to date by:
+Before deploying Azure Local, version 23H2, ensure that your hardware is up to date by:
 
 - Determining the current version of your Solution Builder Extension (SBE) package.
 - Finding the best method to download, install, and update your SBE package.
 
 ### OEM information
 
-This section contains OEM contact information and links to OEM Azure Stack HCI, version 23H2 reference material.
+This section contains OEM contact information and links to OEM Azure Local, version 23H2 reference material.
 
 | HCI Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the cluster after it's running |
 |-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
@@ -106,15 +106,15 @@ This section contains OEM contact information and links to OEM Azure Stack HCI, 
 | Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
 | Thomas-krenn          | All models    | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios)   | [Firmware update process](https://thomas-krenn.com/azshci-driver)  | [Driver update process](https://thomas-krenn.com/azshci-driver)  |    |
 
-For a comprehensive list of all OEM contact information, download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 ### BIOS setting
 
-Check with your OEM regarding the necessary generic BIOS settings for Azure Stack HCI, version 23H2. These settings may include hardware virtualization, TPM enabled, and secure core.
+Check with your OEM regarding the necessary generic BIOS settings for Azure Local, version 23H2. These settings may include hardware virtualization, TPM enabled, and secure core.
 
 ## Driver
 
-Check with your OEM regarding the necessary drivers that need to be installed for Azure Stack HCI, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary drivers that need to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
 
 ### Driver installation steps
 
@@ -223,11 +223,11 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
 ## Firmware
 
-Check with your OEM regarding the necessary firmware that needs to be installed for Azure Stack HCI, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+You should always follow the OEM's recommended installation steps. With Azure Local, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
