@@ -1,5 +1,5 @@
 ---
-title: Suspend and resume Azure Local, version 23H2 systems for planned maintenance operations
+title: Suspend and resume Azure Local, version 23H2 machines for planned maintenance operations
 description: Learn how to suspend and resume machines for planned maintenance operations.
 author: ronmiab
 ms.author: robess
@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ms.date: 10/08/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their systems for planned maintenance.
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their machines for planned maintenance.
 ---
 
-# Suspend and resume Azure Local, version 23H2 systems for maintenance
+# Suspend and resume Azure Local, version 23H2 machines for maintenance
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend a system for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the system once maintenance is complete. 
+This article describes how to suspend a machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
 
-## Suspend a system
+## Suspend a machine
 
-To suspend a system, first suspend the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+To suspend a machine, first suspend the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
 
-To suspend a system, follow these steps:
+To suspend a machine, follow these steps:
 
 1. Log on to one of the machines with a user that has local administrator permissions.
 1. To suspend the machine, run this command:
