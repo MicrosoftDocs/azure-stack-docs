@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/11/2024
 ---
 
 1. Run PowerShell as an administrator.
