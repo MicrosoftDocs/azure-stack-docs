@@ -19,7 +19,7 @@ For information about firewall requirements for outbound endpoints and internal 
 
 Before you begin to configure proxy settings, make sure that:
 
-- You have access to an Azure Local instance for which you want to configure the proxy settings. You also have the local administrator credentials to access the machines in your Azure Local instance.
+- You have access to an Azure Local instance for which you want to configure the proxy settings. You also have the local administrator credentials to access the servers in your Azure Local instance.
 - You know the proxy server name or IP address and port (optional). If you don’t have this information, contact your network administrator.
 
 Here are some important considerations to keep in mind before you configure proxy settings:
@@ -32,15 +32,15 @@ Here are some important considerations to keep in mind before you configure prox
 
 ## Configure proxy settings for WinInet
 
-You must configure the `WinInet` proxy settings before you [Register the machines with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the `WinInet` proxy settings before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
 Install the `WinInetProxy` module to run the commands in this section. For information about the module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0). For information about the `WinInetProxy` PowerShell script, see [WinInetProxy.psm1](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
 
-If you can't install the `WinInetProxy` module to a cluster node because of no internet access, we recommend downloading the module to your management computer, and then manually transferring it to the cluster node where you want to run the module. You can also use the [**Start-BitsTransfer**](/powershell/module/bitstransfer/start-bitstransfer) PowerShell cmdlet to transfer one or more files between your management computer and a machine.
+If you can't install the `WinInetProxy` module to a cluster node because of no internet access, we recommend downloading the module to your management computer, and then manually transferring it to the cluster node where you want to run the module. You can also use the [**Start-BitsTransfer**](/powershell/module/bitstransfer/start-bitstransfer) PowerShell cmdlet to transfer one or more files between your management computer and a server.
 
-To configure the proxy settings for the Azure Stack HCI operating system, run the following PowerShell command as administrator on each machine in the system:
+To configure the proxy settings for the Azure Stack HCI operating system, run the following PowerShell command as administrator on each server in the cluster:
 
-1. Connect to the machine in your Azure Local instance via Remote Desktop Protocol (RDP) and open a PowerShell session.
+1. Connect to the server in your Azure Local instance via Remote Desktop Protocol (RDP) and open a PowerShell session.
 1. To configure proxy settings after you've installed the `WinInetProxy` module, run the following cmdlet:
 
     ```powershell
@@ -53,7 +53,7 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
     |---|---|
     | ProxySettingsPerUser | Specifies if the proxy settings are per machine or per user: <br><br>- 0 - Proxy settings are per machine.<br>- 1 (default) - Proxy settings are per user.<br>- If no value is provided, the `ProxySettingsPerUser` environment variable is used instead, if present.|
     | ProxyServer | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`.|
-    | ProxyBypass | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass “localhost”` to bypass local intranet URLs. The list must include:<br><br>- At least the IP address of each machine.<br>- At least the IP address of system.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each machine.<br>- NetBIOS name of the system.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
+    | ProxyBypass | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass “localhost”` to bypass local intranet URLs. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
 
 Here's an example of the command usage:
 
@@ -106,9 +106,9 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
 
 ## Configure proxy settings for WinHTTP
 
-You must configure the `WinHTTP` proxy settings before you [Register the machines with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the `WinHTTP` proxy settings before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
-To configure the `WinHTTP` proxy for Azure Local updates and cloud witness, run the following PowerShell command as administrator on each machine in the system:
+To configure the `WinHTTP` proxy for Azure Local updates and cloud witness, run the following PowerShell command as administrator on each server in the cluster:
 
 ```powershell
 Set-winhttpproxy -proxyserver http://<Proxy_Server_Address:Proxy_Port> -BypassList <URLs to bypass>
@@ -119,7 +119,7 @@ The parameters are described in the following table:
 | Parameter | Description |
 |---|---|
 | ProxyServer | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass "localhost"` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each machine.<br>- At least the IP address of system.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each machine.<br>- NetBIOS name of the system.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
+| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass "localhost"` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
 
 Here's an example of the command usage:
 
@@ -164,9 +164,9 @@ When configuring the `WinHTTP` proxy bypass list string, keep the following poin
 
 ## Configure proxy settings for Environment Variables
 
-You must configure the proxy for Azure Resource Bridge and AKS before you [Register the machines with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the proxy for Azure Resource Bridge and AKS before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
-To set the proxy server Environment Variable, run the following commands as administrator on each machine in the system:
+To set the proxy server Environment Variable, run the following commands as administrator on each server in the cluster:
 
 ```powershell
 # If a proxy server is needed, execute these commands with the proxy URL and port.
@@ -185,7 +185,7 @@ The parameters are described in the following table:
 |---|---|
 | HTTPS_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
 | HTTP_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. The list must include:<br><br>- At least the IP address of each machine.<br>- At least the IP address of system.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each machine.<br>- NetBIOS name of the system.<br>- Domain name or domain name with dot `.` wildcard for any host or subdomain.<br>- `.svc` for internal Kubernetes service traffic.|
+| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with dot `.` wildcard for any host or subdomain.<br>- `.svc` for internal Kubernetes service traffic.|
 
 Here's an example of the command usage:
 
@@ -220,7 +220,7 @@ When configuring the Environment Variables proxy bypass list string, keep the fo
     echo "https :" $env:https_proxy "http :" $env:http_proxy "bypasslist " $env:no_proxy
     ```
 
-- To remove the proxy configuration, run the following commands as administrator on each machine in the cluster:
+- To remove the proxy configuration, run the following commands as administrator on each server in the cluster:
 
     ```powershell
     [Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine")
@@ -229,9 +229,9 @@ When configuring the Environment Variables proxy bypass list string, keep the fo
     $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
     ```
 
-## Configure proxy settings for Arc-enabled machines agent
+## Configure proxy settings for Arc-enabled servers agent
 
-To configure the Azure Arc-enabled machines agent to communicate through a proxy server, run the following command:
+To configure the Azure Arc-enabled servers agent to communicate through a proxy server, run the following command:
 
 ```bash
 azcmagent config set proxy.url "http://ProxyServerFQDN:port"
@@ -253,7 +253,7 @@ azcmagent config clear proxy.url
 
 You do not need to restart any services when reconfiguring the proxy settings with the `azcmagent config` command.
 
-Please review the Arc-enabled machines agent page for further details [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#update-or-remove-proxy-settings).
+Please review the Arc-enabled servers agent page for further details [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#update-or-remove-proxy-settings).
 
 ## Configure proxy settings for Azure services
 
