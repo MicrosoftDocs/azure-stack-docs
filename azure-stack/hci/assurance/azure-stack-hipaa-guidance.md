@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 10/14/2024
+ms.date: 10/15/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -112,7 +112,7 @@ A metric alert rule monitors a resource by evaluating conditions on the resource
 
 #### Service and device alerts
 
-Azure Local provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure LOcal instances and their underlying components using [PowerShell](/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](/azure-stack/hci/manage/health-service-overview).
+Azure Local provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Local instances and their underlying components using [PowerShell](/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](/azure-stack/hci/manage/health-service-overview).
 
 ### Protection against malware
 
