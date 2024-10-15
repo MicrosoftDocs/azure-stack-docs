@@ -1,30 +1,30 @@
 ---
-title: Enable recommended alert rules for Azure Stack HCI
-description: How to enable recommended alert rules  for Azure Stack HCI.
+title: Enable recommended alert rules for Azure Local
+description: How to enable recommended alert rules for Azure Local.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/05/2024
+ms.date: 10/15/2024
 ---
 
-# Enable recommended alert rules for Azure Stack HCI
+# Enable recommended alert rules for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable recommended alert rules for Azure Stack HCI.
+This article describes how to enable recommended alert rules for Azure Local.
 
-A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Stack HCI cluster resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
+A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Local cluster resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
 
-For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Stack HCI](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Stack HCI](./setup-metric-alerts.md).
+For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Local](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Stack HCI cluster that is deployed and registered.
+- You have access to an Azure Local cluster that is deployed and registered.
 
-- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from Azure Local. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## When to enable recommended alerts
 
@@ -33,13 +33,13 @@ If you don't have alert rules defined for your cluster resource, you can enable 
 - The resource provider’s knowledge of important signals and thresholds for monitoring the resource.
 - Data that tells us what customers commonly alert on for this resource.
 
-For a list of predefined recommended alerts available for Azure Stack HCI, see [Recommended alert rules for Azure Stack HCI](#recommended-alert-rules-for-azure-stack-hci).
+For a list of predefined recommended alerts available for Azure Local, see [Recommended alert rules for Azure Local](#recommended-alert-rules-for-azure-stack-hci).
 
 ## Enable recommended alert rules
 
 Follow these steps to enable recommended alert rules in the Azure portal:
 
-1. Go to your Azure Stack HCI cluster resource page and select your cluster.
+1. Go to your Azure Local cluster resource page and select your cluster.
 
 1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts. You can also select **Set up recommendations**.
 
@@ -61,11 +61,11 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 ## View recommended alert rules
 
-When the alert rule creation is complete, you'll see the alerts page for the Azure Stack HCI cluster.
+When the alert rule creation is complete, you'll see the alerts page for the Azure Local cluster.
 
 Follow these steps to view recommended alert rules:
 
-1. Go to your Azure Stack HCI cluster resource page and select your cluster. From the **Monitoring** section on the left menu, select **Alerts**.
+1. Go to your Azure Local cluster resource page and select your cluster. From the **Monitoring** section on the left menu, select **Alerts**.
 
 1. On the **Alerts** page, select **Alert rules** to view the rules you created.
 
@@ -83,9 +83,9 @@ Follow these steps to view recommended alert rules:
 
     :::image type="content" source="media/set-up-recommended-alert-rules/edit-alert-rule.png" alt-text="Screenshot of the Edit alert rule page." lightbox="media/set-up-recommended-alert-rules/edit-alert-rule.png":::
 
-## Recommended alert rules for Azure Stack HCI
+## Recommended alert rules for Azure Local
 
-Here's a list of predefined recommended alert rules available for Azure Stack HCI:
+Here's a list of predefined recommended alert rules available for Azure Local:
 
 | Alert name | Performance counters used | Unit | Suggested threshold value |
 |--|--|--|--|
@@ -99,4 +99,4 @@ Here's a list of predefined recommended alert rules available for Azure Stack HC
 ## Next steps
 
 - Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
-- Learn how to [monitor Azure Stack HCI with Azure Monitor Metrics](./monitor-cluster-with-metrics.md).
+- Learn how to [monitor Azure Local with Azure Monitor Metrics](./monitor-cluster-with-metrics.md).

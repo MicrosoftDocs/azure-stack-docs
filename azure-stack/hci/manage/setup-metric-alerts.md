@@ -1,28 +1,28 @@
 ---
-title: Set up metric alerts for Azure Stack HCI
-description: How to set up metric alerts for Azure Stack HCI.
+title: Set up metric alerts for Azure Local
+description: How to set up metric alerts for Azure Local.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 10/15/2024
 ---
 
-# Set up metric alerts for Azure Stack HCI
+# Set up metric alerts for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to set up metric alerts for Azure Stack HCI.
+This article describes how to set up metric alerts for Azure Local.
 
-For information about how to set up log alerts, see [Set up log alerts for Azure Stack HCI systems](./setup-hci-system-alerts.md).
+For information about how to set up log alerts, see [Set up log alerts for Azure Local systems](./setup-hci-system-alerts.md).
 
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Stack HCI cluster that is deployed and registered.
+- You have access to an Azure Local cluster that is deployed and registered.
 
-- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from Azure Local. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Create metrics alerts
 
@@ -32,7 +32,7 @@ To learn more about metric alerts and how to create alert rules, see [Metric ale
 
 To learn about the metrics on which alerts can be set up, see [What metrics are collected?](./monitor-cluster-with-metrics.md#what-metrics-are-collected).
 
-You can create metric alerts for your Azure Stack HCI cluster through metrics explorer in the Azure portal or command-Line Interface (CLI).
+You can create metric alerts for Azure Local through metrics explorer in the Azure portal or command-Line Interface (CLI).
 
 ### Create metric alerts through metrics explorer
 
@@ -40,7 +40,7 @@ Follow these steps to create alerts through metrics explorer:
 
 1. In the Azure portal, select **Metrics** under the **Monitoring** section.
 
-1. Select **Scope** and then select **Metric Namespace** as **Azure Stack HCI**.
+1. Select **Scope** and then select **Metric Namespace** as **Azure Local standard metrics**.
 
 1. Select the **Metric** on which you want to set up alerts.
 
@@ -81,4 +81,4 @@ az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes 
 ## Next steps
 
 - Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
-- Learn how to [monitor Azure Stack HCI with Azure Monitor Metrics](./monitor-cluster-with-metrics.md).
+- Learn how to [monitor Azure Local with Azure Monitor Metrics](./monitor-cluster-with-metrics.md).
