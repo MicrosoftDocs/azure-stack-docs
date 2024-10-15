@@ -3,7 +3,6 @@ title: Monitor at scale using the Azure Local overview and All systems page (pre
 description: Learn to monitor your Azure Local systems using dashboards in Azure portal. You can view the status of Azure Local systems as charts or lists (preview).
 ms.topic: how-to
 author: alkohli
-ms.subservice: azure-stack-hci
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.date: 10/08/2024

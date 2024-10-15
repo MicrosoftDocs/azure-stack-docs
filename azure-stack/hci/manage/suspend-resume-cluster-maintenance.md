@@ -4,8 +4,6 @@ description: Learn how to suspend and resume machines for planned maintenance op
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
 ms.date: 10/08/2024
