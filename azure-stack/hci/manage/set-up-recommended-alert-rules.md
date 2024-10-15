@@ -33,7 +33,7 @@ If you don't have alert rules defined for your cluster resource, you can enable 
 - The resource provider’s knowledge of important signals and thresholds for monitoring the resource.
 - Data that tells us what customers commonly alert on for this resource.
 
-For a list of predefined recommended alerts available for Azure Local, see [Recommended alert rules for Azure Local](#recommended-alert-rules-for-azure-stack-hci).
+For a list of predefined recommended alerts available for Azure Local, see [Recommended alert rules for Azure Local](#recommended-alert-rules-for-azure-local).
 
 ## Enable recommended alert rules
 
