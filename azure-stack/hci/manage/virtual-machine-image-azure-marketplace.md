@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 09/25/2024
+ms.date: 10/15/2024
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
@@ -190,7 +190,7 @@ For more information on this CLI command, see [az stack-hci-vm image](/cli/azure
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using Azure portal. In Azure portal for your Azure Local instance resource, take the following steps:
+Follow these steps to create a VM image using Azure portal. In Azure portal for your Azure Local cluster resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 

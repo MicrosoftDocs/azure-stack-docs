@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 09/13/2024
+ms.date: 10/15/2024
 ---
 
 # Manage Arc VMs on Azure Local
@@ -799,7 +799,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 Follow these steps in the Azure portal of your Azure Local instance to remove a VM.
 
-1. Go to the Azure Local instance resource and then go to **Virtual machines**.
+1. Go to the Azure Local cluster resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that you wish to remove from your system.
 

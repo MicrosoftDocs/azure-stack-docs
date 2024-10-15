@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 09/09/2024
+ms.date: 10/15/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -143,13 +143,13 @@ To create a Linux VM, use the same command that you used to create the Windows V
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
 > [!IMPORTANT]
-> Setting the proxy machine during VM creation is supported for Ubuntu Server VMs.
+> Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
 ### Create a VM with proxy configured
 
-Use this optional parameter **proxy-configuration** to configure a proxy machine for your VM.
+Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
-If creating a VM behind a proxy machine, run the following command:
+If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy machine>" https_proxy="<Https URL of proxy machine>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>" 
@@ -159,10 +159,10 @@ You can input the following parameters for `proxy-server-configuration`:
 
 | Parameters | Description |
 |------------|-------------|
-| **http_proxy**  |HTTP URLs for proxy machine. An example URL is:`http://proxy.example.com:3128`.  |
-| **https_proxy**  |HTTPS URLs for proxy machine. The machine may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+| **https_proxy**  |HTTPS URLs for proxy server. The machine may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
 | **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-| **cert_file_path**  |Name of the certificate file path for your proxy machine. An example is: `C:\Users\Palomino\proxycert.crt`. |
+| **cert_file_path**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
@@ -618,7 +618,7 @@ Follow these steps to deploy the Resource Manager template:
 
 When the Arc VMs are created on your Azure Local instance via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
-The Arc VMs on Azure Local are extended from Arc-enabled machinesand can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+The Arc VMs on Azure Local are extended from Arc-enabled machines and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled machines](/azure/azure-arc/servers/managed-identity-authentication).
 

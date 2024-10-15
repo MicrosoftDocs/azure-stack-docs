@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 07/17/2024
+ms.date: 10/15/2024
 ---
 
 # Create network interfaces for Arc virtual machines on Azure Local

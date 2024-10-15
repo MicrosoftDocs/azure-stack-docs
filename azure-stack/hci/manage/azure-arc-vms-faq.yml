@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 10/11/2024
+  ms.date: 10/15/2024
 title: Azure Arc VM management FAQ
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Local, version 23H2.
@@ -33,7 +33,7 @@ sections:
     - question: |
         How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local 23H2 are handled automatically. For more information, see [Update overview for Azure Local, version 23H2](../update/about-updates-23h2.md).
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local, version 23H2 are handled automatically. For more information, see [Update overview for Azure Local, version 23H2](../update/about-updates-23h2.md).
 
     - question: | 
         Will I be charged when updating my Arc VM using the Azure Update Manager service?
@@ -54,7 +54,7 @@ sections:
     - question: |
         Can Azure Kubernetes Service on Azure Local and Windows Server and Azure Arc Resource Bridge coexist on the same Azure Local instance?
       answer: |
-        Yes. Azure Kubernetes Service on Azure Local and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Local system. You can deploy the AKS-HCI management system first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Local instance removes Arc Resource Bridge.
+        Yes. Azure Kubernetes Service on Azure Local and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Local instance. You can deploy the AKS-HCI management system first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Local removes Arc Resource Bridge.
     
     - question: |
         I used to be able to create virtual networks for my Arc VMs in past releases. Starting 2310 (November 2023), I can only create logical networks. What changed?
@@ -67,7 +67,7 @@ sections:
         SDN is currently not supported for VMs created from the Azure portal.
 
     - question: |
-        Is there a fee to use Arc management for VMs on Azure Local instance?
+        Is there a fee to use Arc management for VMs on Azure Local?
       answer: |
         VM management for Azure Local from the Azure control plane doesn't have any extra fees. Some VM extensions might have a fee.
 

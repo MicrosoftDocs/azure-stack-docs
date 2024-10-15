@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/11/2024
+ms.date: 10/15/2024
 ---
 
 # Use Role-based Access Control to manage Azure Local Virtual Machines 
@@ -41,7 +41,7 @@ Here's a table that describes the VM actions granted by each role for the VMs an
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that complete the [Azure Local instance requirements](./azure-arc-vm-management-prerequisites.md).
+1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
 1. Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
 

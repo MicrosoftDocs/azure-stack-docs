@@ -8,7 +8,7 @@ ms.service: azure-stack-hci
 ms.date: 02/13/2024
 ---
 
-# Manage resources for Arc VM on your Azure Local
+# Manage resources for Arc VMs on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
@@ -49,7 +49,7 @@ az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName -
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to your Azure Local instance resource and then go to **Virtual machines**.
+1. Go to your Azure Local cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
 1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 
@@ -100,7 +100,7 @@ Follow these steps in Azure portal of your Azure Local instance.
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to your Azure Local instance resource and then go to **Virtual machines**.
+1. Go to your Azure Local cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a network interface.
 
 1. Go to **Networking**. From the top command bar in the right pane, select **+ Add network interface**.  
@@ -130,7 +130,7 @@ Follow these steps in Azure portal of your Azure Local instance.
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to your Azure Local instance resource and then go to **Virtual machines**.
+1. Go to your Azure Local cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM whose network interface you want to delete.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of VM selected whose network interface you want to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::

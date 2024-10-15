@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 07/19/2024
+ms.date: 10/15/2024
 ---
 
 # Create storage path for Azure Local 
@@ -19,7 +19,7 @@ This article describes how to create storage path for VM images used on your Azu
 
 When the Azure Local instance is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specified storage path has sufficient storage space.
 
-The storage paths on your Azure Local instance should point to system shared volumes that can be accessed by all the machineson your system. In order to be highly available, we strongly recommend that you create storage paths under system shared volumes.
+The storage paths on your Azure Local instance should point to system shared volumes that can be accessed by all the machines on your system. In order to be highly available, we strongly recommend that you create storage paths under system shared volumes.
 
 The available space in the system shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\UserStorage_1\Volume01` and the `Volume01` is 4 TB, then the size of the storage path is the available space (out of the 4 TB) on `Volume01`.
   
@@ -29,7 +29,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure that complete the [Azure Local instance requirements](./azure-arc-vm-management-prerequisites.md).
 
-1. Make sure that a system shared volume exists on your Azure Local instance that is accessible from all the machinesin the system. The storage path that you intend to provide on a system shared volume should have sufficient space for storing VM images. By default, system shared volumes are created during the deployment of Azure Local instance. 
+1. Make sure that a system shared volume exists on your Azure Local instance that is accessible from all the machines in the system. The storage path that you intend to provide on a system shared volume should have sufficient space for storing VM images. By default, system shared volumes are created during the deployment of Azure Local instance. 
 
     You can create storage paths only within system shared volumes that are available in the system. For more information, see [Create a system shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
@@ -65,7 +65,7 @@ You could also use the following *optional* parameters:
 
 ### Create a storage path
 
-Follow these steps on one of the machinesof your Azure Local instance to create a storage path:
+Follow these steps on one of the machines of your Azure Local instance to create a storage path:
 
 ### Sign in and set subscription
 

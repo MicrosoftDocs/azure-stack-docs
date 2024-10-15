@@ -1,6 +1,6 @@
 ---
 title: Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
-description: Learn how to deploy Windows Server Azure Edition VMs on Azure Local, version 23H2 starting with an image in Azure Stack HCI Marketplace or Azure Marketplace.
+description: Learn how to deploy Windows Server Azure Edition VMs on Azure Local, version 23H2 starting with an image in Azure Local Marketplace or Azure Marketplace.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
@@ -8,14 +8,14 @@ ms.reviewer: alkohli
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/31/2024
+ms.date: 10/15/2024
 ---
 
 # Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local, version 23H2. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local, version 23H2. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Local marketplace or an image in Azure Marketplace.
 
 > [!NOTE]
 > Both Azure Arc VMs and non-Arc VMs are supported.
@@ -32,7 +32,7 @@ To use Windows Server Azure Edition on your Azure Local environment, here are a 
 
 - **VM licensing:**  Windows Server Azure Edition can be licensed with either:
 
-  - **Windows Server subscription**: Turn on the subscription on your Local instance, then choose one of the following options to activate:
+  - **Windows Server subscription**: Turn on the subscription on your Azure Local instance, then choose one of the following options to activate:
     - Apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest VM using the `slmgr /ipk <AVMA_key>` command.
     - Apply AVMA client key on every Azure Local machine using the `Set-VMAutomaticActivation <product key>` cmdlet.
     To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
@@ -51,7 +51,7 @@ To use Windows Server Azure Edition on your Azure Local environment, here are a 
 
 Windows Server Azure Edition can be deployed as a guest VM using either an Azure Local Marketplace VHD image or an [Azure Marketplace](/marketplace/azure-marketplace-overview) VHD image.
 
-## [HCI marketplace image](#tab/hci)
+## [Azure Local marketplace image](#tab/hci)
 
 You can provision a Windows Server Azure Edition VM using an Azure Local Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
 
@@ -102,7 +102,7 @@ To create an Azure managed disk:
 1. Run the following commands in an Azure command prompt to set the parameters of your managed disk. Make sure to replace the items in brackets with relevant values:
 
     ```azurecli
-        $urn = <URN_of_Marketplace_image> #Example: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest"
+    $urn = <URN_of_Marketplace_image> #Example: "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-core:latest"
     $diskName = <disk_name> #Name for new disk to be created
     $diskRG = <resource_group> #Resource group that contains the new disk
     ```
@@ -115,7 +115,7 @@ To create an Azure managed disk:
     $diskAccessSAS = ($sas | ConvertFrom-Json)[0].accessSas
     ```
 
-### 3. Export VHD to Azure Local instance
+### 3. Export VHD to Azure Local
 
 Next, you'll need to export the VHD you created from the managed disk to your Azure Local instance, which will let you create new VMs. Use the following method using a regular web browser or using Azure Storage Explorer.
 

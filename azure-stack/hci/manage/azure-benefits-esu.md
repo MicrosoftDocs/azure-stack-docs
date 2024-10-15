@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 10/11/2024
+ms.date: 10/15/2024
 ms.lastreviewed: 02/23/2024
 ms.service: azure-stack-hci
 ---
@@ -19,7 +19,7 @@ The Extended Security Update (ESU) program enables you to get important security
 To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification.md#legacy-os-support).
 
 > [!NOTE]
-> Azure Local customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled machine that is not Azure Local, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
+> Azure Local customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled machine that is not on Azure Local, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
 
 ## FAQ
 
@@ -47,7 +47,7 @@ Yes. You can discover ESUs even if you don't have Azure VM verification. For the
 
 The operating systems currently supported for AVD on Azure Local aren't yet eligible for ESUs. [See the list here](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
 
-### Do I need to do anything to renew for Year 1/Year 2/Year 3, etc.?
+### Do I need to do anything to renew for Year 1, Year 2, Year 3...?
 
 No. Once you set up Azure verification for VMs, you don't need to renew or do anything else.
 

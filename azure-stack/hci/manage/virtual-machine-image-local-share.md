@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/27/2024
+ms.date: 10/15/2024
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -84,7 +84,7 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance. Get the custom location ID for your Azure Local instance. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI system>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for system>" --query id -o tsv)
     ```
 
 1. Create the VM image starting with a specified image in a local share on your Azure Local instance.
@@ -161,7 +161,7 @@ PS C:\Users\azcli>
 
 You can create a VM image by downloading an image that resides in a local share on your Azure Local instance and then use that VM image to deploy a virtual machine.
 
-In Azure portal for your Azure Local instance resource, perform the following steps:
+In Azure portal for your Azure Local cluster resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**.
 
@@ -185,7 +185,7 @@ In Azure portal for your Azure Local instance resource, perform the following st
 
     1. **Source.** The source of the image should be **Local file share** and is automatically populated.
 
-    1. **Local file share path.** Specify the local share path for the source image on your HCI system.
+    1. **Local file share path.** Specify the local share path for the source image on your system.
 
     1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
 

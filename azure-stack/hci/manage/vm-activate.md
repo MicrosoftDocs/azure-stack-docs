@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/03/2024
+ms.date: 10/15/2024
 ms.service: azure-stack-hci
 ---
 
@@ -95,29 +95,29 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Windows Server Subscription following these steps:
 
-1. Set up parameters from your subscription, resource group, and system name:
+1. Set up parameters from your subscription, resource group, and cluster name:
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
    resourceGroup="hcicluster-rg" # Replace with your resource group name
-   systemName="HCICluster" # Replace with your system name
+   systemName="HCICluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
 
-1. To view Windows Server Subscription status on a system, run the following command:
+1. To view Windows Server Subscription status on a cluster, run the following command:
 
    ```azurecli    
-   az stack-hci system list \
+   az stack-hci cluster list \
    --resource-group "${resourceGroup}" \
    --query "[?name=='${clusterName}'].{Name:name, DesiredWSSStatus:desiredProperties.windowsServerSubscription}" \
    -o table
    ```
 
-1. To enable Windows Server Subscription on a system, run the following command:
+1. To enable Windows Server Subscription on a cluster, run the following command:
 
    ```azurecli    
-   az stack-hci system update \
+   az stack-hci cluster update \
    --cluster-name "${clusterName}" \
    --resource-group "${resourceGroup}" \
    --desired-properties windows-server-subscription="Enabled"
@@ -263,7 +263,7 @@ Open PowerShell as an administrator, and run the following commands:
      Get-VMAutomaticActivation
     ```
 
-1. Repeat these steps on each of the other machinesin your Azure Local instance.
+1. Repeat these steps on each of the other machines in your Azure Local instance.
 
 Now that you have set up AVMA through AHB, you can activate VMs against the host machine by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 
@@ -283,7 +283,7 @@ This error might be due to one of the following issues:
 
 To resolve such issues, in the **Activate Windows Server VMs** window, select the machine with the warning, and then select **Manage activation keys** to enter a new key.
 
-#### Error 2: "Some machines use keys for an older version of Windows Server"
+#### Error 2: "Some servers use keys for an older version of Windows Server"
 
 All machines must use the same version of keys. Update the keys to the same version to ensure that the VMs stay activated regardless of which machine they run on.
 
@@ -291,7 +291,7 @@ All machines must use the same version of keys. Update the keys to the same vers
 
 Your machine is offline and can't be reached. Bring all machines online and then refresh the page.
 
-#### Error 4: "Couldn't check the status on this machine" or "To use this feature, install the latest update"
+#### Error 4: "Couldn't check the status on this server" or "To use this feature, install the latest update"
 
 One or more of your machines isn't updated and doesn't have the required packages to set up AVMA. Ensure that your system is updated, and then refresh the page. For more information, see [Update Azure Local instances](./update-cluster.md).
 
@@ -347,9 +347,9 @@ Once a product key is associated with a device, that association is permanent. O
 
 You can update to newer versions of keys, or replace existing keys with the same version, but you can't downgrade to a previous version.
 
-### What happens if I add or remove a new machine?
+### What happens if I add or remove a new server?
 
-You must [add activation keys](#change-or-add-keys-later-optional) for each new machine, so that the Windows Server VMs can be activated against the new machine. Removing a machine doesn't affect how AVMA is set up for the remaining machinesin the system.
+You must [add activation keys](#change-or-add-keys-later-optional) for each new machine, so that the Windows Server VMs can be activated against the new machine. Removing a machine doesn't affect how AVMA is set up for the remaining machines in the system.
 
 ### I previously purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Local?
 

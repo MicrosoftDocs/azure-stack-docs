@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/11/2024
+ms.date: 10/15/2024
 ms.lastreviewed: 03/05/2024
 ms.service: azure-stack-hci
 ---
@@ -46,7 +46,7 @@ Azure VM verification is automatically enabled by default in Azure Local 23H2 or
 
 ### Host prerequisites
 
-- Make sure that you have access to an Azure Local, version 23H2 system. All machines must be online, registered, and system deployed. For more information, see [Register your machineswith Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
+- Make sure that you have access to an Azure Local, version 23H2 instance. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - (Optional) If you're using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
@@ -81,10 +81,10 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    az account set --subscription "${subscription}"
    ```
 
-2. To view Azure VM verification status on a system, run the following command:
+2. To view Azure VM verification status on a cluster, run the following command:
 
    ```azurecli
-   az stack-hci system list \
+   az stack-hci cluster list \
    --resource-group "${resourceGroup}" \
    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.imdsAttestation}" \
    -o table
@@ -205,20 +205,20 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
 
-1. Set up parameters from your subscription, resource group, and system name:
+1. Set up parameters from your subscription, resource group, and cluster name:
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
    resourceGroup="hcicluster-rg" # Replace with your resource group name
-   systemName="HCICluster" # Replace with your system name
+   systemName="HCICluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
 
-2. To view legacy OS support status on a system, run the following command:
+2. To view legacy OS support status on a cluster, run the following command:
 
    ```azurecli
-   az stack-hci system list \
+   az stack-hci cluster list \
    --resource-group "${resourceGroup}" \
    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
    -o table
@@ -343,7 +343,7 @@ No. Azure VM verification is a feature built into Azure Local, and can only be u
 
 ### If I just upgraded to version 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local version 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus in version 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
+If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local, version 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus in version 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
 
 ### I just set up Azure VM verification on my system. How do I ensure that Azure VM verification stays active?
 

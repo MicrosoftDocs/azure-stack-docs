@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management for Azure Local
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 09/06/2024
+ms.date: 10/15/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-stack-hci
@@ -13,7 +13,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Local instance. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
+This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) on your Azure Local instance. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
 ## Troubleshoot Azure Arc VMs
 

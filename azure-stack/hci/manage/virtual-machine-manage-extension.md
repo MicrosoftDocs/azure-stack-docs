@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 02/02/2024
+ms.date: 10/15/2024
 ---
 
 # Manage VM extensions on Azure Local virtual machines 
@@ -44,7 +44,7 @@ You must verify that guest management is enabled on your VMs before you install 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
 
-1. In the Azure portal of your Azure Local instance resource, go to **Resources** > **Virtual machines**.
+1. In the Azure portal of your Azure Local cluster resource, go to **Resources** > **Virtual machines**.
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension.
 
@@ -59,7 +59,7 @@ After the guest management enablement is verified, you can now add the VM extens
 
 Follow these steps in Azure portal to add a VM extension.
 
-1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and go to **Settings > Extensions**.
  
@@ -73,7 +73,7 @@ Follow these steps in Azure portal to add a VM extension.
 
 1. Provide the parameters to configure the selected VM extension. 
 
-    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy machine URL and port number.
+    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy server URL and port number.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png" alt-text="Screenshot showing configuration of Azure Monitor Extension installation in the chosen Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png":::
 
@@ -87,7 +87,7 @@ You can get a list of all the VM extensions installed on your Azure Local instan
 
 Follow these steps in Azure portal to list the installed VM extensions.
 
-1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
@@ -100,7 +100,7 @@ Follow these steps in Azure portal to list the installed VM extensions.
 You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
 
-1. In the Azure portal of your Azure Local instance resource, go to **Resources > Virtual machines**.
+1. In the Azure portal of your Azure Local cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
