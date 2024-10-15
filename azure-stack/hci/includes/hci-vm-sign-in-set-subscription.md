@@ -3,10 +3,10 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 10/15/2024
 ---
 
-1. [Connect to a server](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly) on your Azure Local instance. 
+1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local instance. 
 
 
 1. Sign in. Type:
