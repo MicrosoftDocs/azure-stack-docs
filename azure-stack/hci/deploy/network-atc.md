@@ -3,7 +3,7 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI and Windows Server.
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 10/15/2024
 ms.author: dacuo
 ms.reviewer: jgerend
 zone_pivot_groups: windows-os

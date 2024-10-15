@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Stack HCI and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 10/10/2024
+ms.date: 10/15/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 zone_pivot_groups: windows-os

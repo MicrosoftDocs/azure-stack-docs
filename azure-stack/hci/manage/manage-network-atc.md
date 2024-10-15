@@ -3,7 +3,7 @@ title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
 author: jasongerend
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 10/15/2024
 ms.author: jgerend
 zone_pivot_groups: windows-os
 ---
@@ -28,7 +28,17 @@ This article discusses how to manage Network ATC after it has been deployed. Net
 
 ## Add a server node
 
-You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md).
+:::zone pivot="azure-stack-hci"
+
+You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+
+::: zone-end
 
 In this task, you add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
 
@@ -257,7 +267,7 @@ $clusterOverride = New-NetIntentGlobalClusterOverrides
 
 ```
 
-The 'clusterOverride' variable has the following properties: 
+The 'clusterOverride' variable has the following properties:
 
 :::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png":::
 
@@ -297,7 +307,7 @@ AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy A
 
 AutoConfigUrl: The AutoConfigUrl parameter takes a string with the URL of the proxy server to use for http and/or https traffic as input. For both traffic classes, use a semi-colon to separate. This is a required parameter. 
 
-AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
+AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled.
 
 ##### Setting-up proxy
 
@@ -460,13 +470,29 @@ The tasks to complete following a Network ATC deployment is depending on the Azu
 
 - **Stretched cluster configuration:** To add Stretch S2D to your Network ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after Network ATC has implemented the specified intent.
 
-Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see: 
+:::zone pivot="azure-stack-hci"
 
-- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#automatic-storage-ip-addressing)
+Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see:
 
-- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#cluster-network-settings)
+- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci#automatic-storage-ip-addressing)
+
+- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci#cluster-network-settings)
 
 - **Stretch cluster configuration**: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md#step-54-set-up-stretch-clustering-with-network-atc)
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see:
+
+- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#automatic-storage-ip-addressing)
+
+- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#cluster-network-settings)
+
+- **Stretch cluster configuration**: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#step-54-set-up-stretch-clustering-with-network-atc)
+
+::: zone-end
 
 ## Validate automatic remediation
 
@@ -512,6 +538,18 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 
 ## Next steps
 
-- Learn more about [Network ATC](../concepts/network-atc-overview.md).
+:::zone pivot="azure-stack-hci"
+
+- Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=azure-stack-hci).
 - Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
+- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+
+::: zone-end
