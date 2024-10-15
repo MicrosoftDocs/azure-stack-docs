@@ -169,7 +169,7 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 ### Management VLAN ID
 
-We recommend that the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific management VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
+We recommend that the management subnet of your Azure Local cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific management VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
 
 If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they're registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
 
@@ -278,7 +278,7 @@ However, if your deployment requirements do not fit with those default IPs and V
 - **storageAdapterIPInfo:** This parameter has a dependency with "enableStorageAutoIP" parameter and is always required when storage auto IP parameter is set to false. Within the "storageAdapterIPInfo" parameter in your ARM template you will also need to specify the **"ipv4Address"** and **"subnetMask"** parameters for each node and network adapter with your own IPs and subnet mask.
 - **vlanId:** As described above in the table, this parameter will use the Network ATC default VLANs if you don't need to change them. However, if those default VLANs does not work in your network you can specify your own VLAN IDs for each of your storage networks.
 
-The following ARM template includes an example of a two nodes HCI cluster with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
+The following ARM template includes an example of a two nodes Azure Local cluster with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
 
 ### Node and cluster IP assignment
 

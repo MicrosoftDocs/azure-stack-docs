@@ -98,9 +98,9 @@ Before deploying Azure Local, version 23H2, ensure that your hardware is up to d
 
 This section contains OEM contact information and links to OEM Azure Local, version 23H2 reference material.
 
-| HCI Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the cluster after it's running |
+| Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the cluster after it's running |
 |-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
-| Bluechip              | SERVERline R42203a *Certified for ASHCI*   | [bluechip Service & Support](https://service.bluechip.de/)     | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) |
+| Bluechip              | SERVERline R42203a *Certified for Azure Local*   | [bluechip Service & Support](https://service.bluechip.de/)     | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) |
 | DataON                | AZS-XXXX    | [AZS-XXXX BIOS link](https://www.dataonstorage.com/ir72)     | [AZS-XXXX driver link](https://www.dataonstorage.com/469v) | [AZS-XXXX driver link](https://www.dataonstorage.com/469v)| [AZS-XXXX update link](https://www.dataonstorage.com/9kto) |
 | primeLine             | All models  | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/)   | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/)  | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/) |     |
 | Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
