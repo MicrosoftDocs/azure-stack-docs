@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: dacuo
 ms.reviewer: jgerend
-ms.subservice: core-os
 zone_pivot_groups: windows-os
 ---
 

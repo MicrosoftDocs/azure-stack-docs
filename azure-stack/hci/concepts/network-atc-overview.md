@@ -6,7 +6,6 @@ ms.topic: overview
 ms.date: 10/10/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
-ms.subservice: core-os
 zone_pivot_groups: windows-os
 ---
 

@@ -5,7 +5,6 @@ author: jasongerend
 ms.topic: how-to
 ms.date: 10/01/2024
 ms.author: jgerend
-ms.subservice: core-os
 zone_pivot_groups: windows-os
 ---
 
