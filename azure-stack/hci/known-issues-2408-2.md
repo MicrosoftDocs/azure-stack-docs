@@ -37,6 +37,11 @@ The following issues are fixed in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Security | SideChannelMitigation is reporting properly in both local cmdlets and Windows Admin Center. ||
+| Update <!--29100330--> | An update would unnecessarily download SBE content that had already been sideloaded. ||
+| Upgrade <!--29426262--> | Cluster resources weren't in the same group. ||
+| Upgrade <!--29444056--> | Fixed IP pool validation in the Azure portal. ||
+| Upgrade <!--29498611--> | Added validation to ensure the package is the latest version ||
+| Upgrade <!--29546100--> | Validation would fail due to group policies. ||
 
 ## Known issues in this release
 
