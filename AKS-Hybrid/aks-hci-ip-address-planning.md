@@ -13,12 +13,12 @@ ms.lastreviewed: 10/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. Ensure that you've read the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading the this article.
+IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading this article.
 
 
 ## Simple IP address planning for Kubernetes clusters and applications
 
-In the following scenario walk-through, you reserve IP addresses from a single network for your Kubernetes clusters and services. This is the most straightforward and simple scenario for IP address assignment.
+In the following scenario walk-through, you reserve IP addresses from a single network for your Kubernetes clusters and services. This example is the most straightforward and simple scenario for IP address assignment.
 
 | IP address requirement    | Minimum number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
@@ -29,14 +29,14 @@ In the following scenario walk-through, you reserve IP addresses from a single n
 
 ### Example walkthrough for IP address reservation for Kubernetes clusters and applications
 
-Jane is an IT administrator just starting with AKS enabled by Azure Arc. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI cluster. She also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All her AKS clusters and services are running in a single network, with a single subnet.
+Jane is an IT administrator just starting with AKS enabled by Azure Arc. Jane wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on the Azure Stack HCI cluster. Jane also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All the AKS clusters and services are running in a single network, with a single subnet.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes.
 - 3 instances of the front-end UI (port 443).
 - 1 instance of the backend database (port 80).
 
-Based on the previous table, she must reserve a total of 19 IP addresses in her subnet:
+Based on the previous table, Jane must reserve a total of 19 IP addresses in Jane's subnet:
 
 - 8 IP addresses for the AKS Arc node VMs in cluster A (one IP per K8s node VM).
 - 4 IP addresses for the AKS Arc node VMs in cluster B (one IP per K8s node VM).
@@ -82,9 +82,9 @@ AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS 
 The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
 - ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
 - NodePort: Exposes the service on a specific port on each node’s IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
-- LoadBalancer: This creates a cloud-provider-managed load balancer and exposes the service externally. The external IP assigned is typically managed by the cloud provider, while the internal ClusterIP remains within the service network CIDR.
+- LoadBalancer: This type creates a cloud-provider-managed load balancer and exposes the service externally. The cloud provider typically manages the external IP assignment, while the internal ClusterIP remains within the service network CIDR.
 
-AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations customizations for the serivce network CIDR today.
+AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations for the service network CIDR today.
 
 ## Next steps
 
