@@ -64,7 +64,7 @@ Regardless of the option you choose, you must ensure that the IP addresses alloc
 
 ## Proxy settings
 
-Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet. For more information on how to set proxy correctly, see [proxy requirements for Azure Stack HCI](/azure-stack/hci/manage/configure-proxy-settings-23h2.md).
+Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet. For more information on how to set proxy correctly, see [proxy requirements for Azure Stack HCI](/azure-stack/hci/manage/configure-proxy-settings-23h2).
 
 ## Firewall URL exceptions
 
