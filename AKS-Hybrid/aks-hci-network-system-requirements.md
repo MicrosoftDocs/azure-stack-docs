@@ -68,7 +68,7 @@ Proxy settings in AKS are inherited from the underlying infrastructure system. T
 
 ## Firewall URL exceptions
 
-Firewall requirements for AKS has been consolidated with Azure Stack HCI firewall requirements. See [Azure Stack HCI firewall requirements](/azure-stack/hci/concepts/firewall-requirements) for list of URLs that need to be allowed to successfully deploy AKS.
+Firewall requirements for AKS have been consolidated with Azure Stack HCI firewall requirements. See [Azure Stack HCI firewall requirements](/azure-stack/hci/concepts/firewall-requirements) for list of URLs that need to be allowed to successfully deploy AKS.
 
 ## DNS server settings
 

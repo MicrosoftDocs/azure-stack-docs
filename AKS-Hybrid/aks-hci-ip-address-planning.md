@@ -1,6 +1,6 @@
 ---
 title: IP address planning for AKS 
-description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production 
+description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production. 
 ms.topic: conceptual
 ms.date: 10/08/2024
 author: sethmanheim
@@ -77,7 +77,7 @@ Pod network CIDR is a range of IP addresses used by Kubernetes to assign unique 
 
 AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS does support customizations for the pod network CIDR. You can set your own value using the [`--pod-cidr`](/cli/azure/aksarc#az-aksarc-create) parameter when creating the AKS cluster. Ensure that the CIDR IP range is large enough to accommodate the maximum number of pods per node and across the Kubernetes cluster.
 
-### Service Network CIDR
+### Service network CIDR
 
 The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
 - ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
