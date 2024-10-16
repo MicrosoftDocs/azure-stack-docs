@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 10/15/2024
+ms.date: 10/16/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -132,7 +132,7 @@ Microsoft Defender for Cloud with Endpoint Protection (enabled through server 
 
 #### Stretched cluster
 
-Azure Local provides built-in support for disaster recovery of virtualized workloads through stretched clustering. By deploying a stretched Azure Local instance, you can synchronously replicate its virtualized workloads across two separate on-premises locations and automatically failover between them. Planned site failovers can happen with no downtime using Hyper-V live migration.
+Azure Local provides built-in support for disaster recovery of virtualized workloads through stretched clustering (Available in Azure Local, version 22H2). By deploying a stretched Azure Local instance, you can synchronously replicate its virtualized workloads across two separate on-premises locations and automatically failover between them. Planned site failovers can happen with no downtime using Hyper-V live migration.
 
 #### Kubernetes cluster nodes
 
