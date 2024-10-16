@@ -1,29 +1,29 @@
 ---
-title: Manage capacity by adding a server on Azure Stack HCI, version 23H2.
-description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 system by adding a server.
+title: Manage capacity by adding a server on Azure Local, version 23H2.
+description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a server.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/10/2024
+ms.date: 10/16/2024
 ---
 
-# Add a server on Azure Stack HCI, version 23H2
+# Add a server on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster.
+This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Local instance.
 
 ## About add servers
 
-You can easily scale the compute and storage at the same time on your Azure Stack HCI by adding servers to an existing cluster. Your Azure Stack HCI cluster supports a maximum of up to 16 servers.
+You can easily scale the compute and storage at the same time on Azure Local by adding servers to an existing cluster. Your Azure Local instance supports a maximum of 16 servers.
 
-Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives.
+Each new physical server that you add to your system must closely match the rest of the machines in terms of CPU type, memory, number of drives, and the type and size of the drives.
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Local instance from 1 to 16 servers. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 >
-> - In this release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
+> - In this release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once.
 > - It is not possible to permanently remove a server from a cluster.
 
 ## Add server workflow
@@ -34,13 +34,13 @@ The following flow diagram shows the overall process to add a server:
 
 To add a server, follow these high-level steps:
 
-1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
+1. Install the operating system, drivers, and firmware on the new machine that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
 1. Add the prepared server via the `Add-server` PowerShell cmdlet.
-1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
-1. Once the server is added, cluster is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. When adding a server to the instance, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
+1. Once the server is added, the instance is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
 
 > [!NOTE]
-> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
+> If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
 
 ## Supported scenarios
 
@@ -52,7 +52,7 @@ For adding a server, the following scale-out scenarios are supported:
 | Two-server cluster | Three-server cluster | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
 | Three-server cluster | N-server cluster | Three-way mirror | Switch only | Witness optional for target scenario. |
 
-When upgrading a cluster from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When upgrading an instance from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
 
 ### Resiliency settings
 
@@ -64,7 +64,7 @@ However, the default resiliency settings are updated at the storage pool level a
 
 ### Hardware requirements
 
-When adding a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
+When adding a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the instance.
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
 
@@ -76,8 +76,8 @@ Before you add a server, you would need to complete the hardware and software pr
 
 Make sure to complete the following prerequisites:
 
-1. The first step is to acquire the new Azure Stack HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
-1. Place the new physical server in the predetermined location, for example, a rack and cable it appropriately.
+1. The first step is to acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your instance.
+1. Place the new physical machine in the predetermined location, for example, a rack and cable it appropriately.
 1. Enable and adjust physical switch ports as applicable in your network environment.
 
 #### Software prerequisites
@@ -88,32 +88,32 @@ Make sure to complete the following prerequisites:
 
 ## Add a server
 
-This section describes how to add a server using PowerShell, monitor the status of the `Add-Server` operation and troubleshoot, if there are any issues.
+This section describes how to add a machine using PowerShell, monitor the status of the `Add-Server` operation and troubleshoot, if there are any issues.
 
 ### Add a server using PowerShell
 
-Make sure that you have reviewed and completed the [prerequisites](#prerequisites). 
+Make sure that you have reviewed and completed the [prerequisites](#prerequisites).
 
-On the new server that you plan to add, follow these steps.
+On the new machine that you plan to add, follow these steps.
 
-1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
+1. Install the operating system and required drivers on the new machine that you plan to add. Follow the steps in [Install the Azure Local, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+2. Register the machine with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
-    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+    > You must use the same parameters as the existing machines to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
-3. Assign the following permissions to the newly added server nodes:
+3. Assign the following permissions to the newly added machines:
 
-    - Azure Stack HCI Device Management Role
+    - Azure Local Device Management Role
     - Key Vault Secrets User
-    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
+    For more information, see [Assign permissions to the machine](../deploy/deployment-arc-register-server-permissions.md).
 
-On a server that already exists on your cluster, follow these steps:
+On a machine that already exists on your instance, follow these steps:
 
-1. Sign in with the domain user credentials that you provided during the deployment of the cluster.
+1. Sign in with the domain user credentials that you provided during the deployment of the instance.
 
-1. (Optional) Before you add the server, make sure to get an updated authentication token. Run the following command:
+1. (Optional) Before you add the machine, make sure to get an updated authentication token. Run the following command:
 
     ```powershell
     Update-AuthenticationToken 
@@ -125,12 +125,12 @@ On a server that already exists on your cluster, follow these steps:
     Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
-1. Run the following command to add the new incoming server:
+1. Run the following command to add the new incoming machine:
 
     ```powershell
-    $HostIpv4 = "<IPv 4 for the new server>"
+    $HostIpv4 = "<IPv 4 for the new machine>"
     $Cred = Get-Credential 
-    Add-Server -Name "< Name of the new server>" -HostIpv4 $HostIpv4 -LocalAdminCredential $Cred 
+    Add-Server -Name "< Name of the new machine>" -HostIpv4 $HostIpv4 -LocalAdminCredential $Cred 
     ```
 
 1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
@@ -141,7 +141,7 @@ To monitor the progress of the add server operation, follow these steps:
 
 [!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
 
-The newly added server shows in the Azure portal in your Azure Stack HCI cluster list after several hours. To force the server to show up in Azure portal, run the following command:
+The newly added machine shows in the Azure portal in your Azure Local instance list after several hours. To force the machine to show up in Azure portal, run the following command:
 
 ```powershell
 Sync-AzureStackHCI
@@ -149,19 +149,19 @@ Sync-AzureStackHCI
 
 ### Recovery scenarios
 
-Following recovery scenarios and the recommended mitigation steps are tabulated for adding a server:
+Following recovery scenarios and the recommended mitigation steps are tabulated for adding a machine:
 
 | Scenario description | Mitigation | Supported? |
 |--|--|--|
-| Added a new server out of band without using the orchestrator. | Remove the added server. <br> Use the orchestrator to add the server. | No |
-| Added a new server with orchestrator and the operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
-| Added a new server with orchestrator. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, orchestrator has already updated its knowledge store with the new server. Use the repair server scenario. | Yes |
+| Added a new machine out of band without using the orchestrator. | Remove the added machine. <br> Use the orchestrator to add the machine. | No |
+| Added a new machine with orchestrator and the operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
+| Added a new machine with orchestrator. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, orchestrator has already updated its knowledge store with the new machine. Use the repair machine scenario. | Yes |
 
 ### Troubleshoot issues
 
-If you experience failures or errors while adding a server, you can capture the output of the failures in a log file. On a server that already exists on your cluster, follow these steps:
+If you experience failures or errors while adding a machine, you can capture the output of the failures in a log file. On a machine that already exists on your instance, follow these steps:
 
-- Sign in with the domain user credentials that you provided during the deployment of the cluster. Capture the issue in the log files.
+- Sign in with the domain user credentials that you provided during the deployment of the instance. Capture the issue in the log files.
 
     ```powershell
     Get-ActionPlanInstance -ActionPlanInstanceID $ID|out-file log.txt
@@ -175,4 +175,4 @@ If you experience failures or errors while adding a server, you can capture the 
 
 ## Next steps
 
-Learn more about how to [Repair a server](./repair-server.md).
+Learn more about how to [Repair a machine](./repair-server.md).

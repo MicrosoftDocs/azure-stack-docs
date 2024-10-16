@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 05/16/2023
+ms.date: 10/16/2024
 ---
 
 | **Component** | **Compliancy check**               |
