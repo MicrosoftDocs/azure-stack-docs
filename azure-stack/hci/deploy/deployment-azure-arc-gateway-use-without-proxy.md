@@ -3,7 +3,7 @@ title: Use Azure gateway without a proxy on Azure Local, version 2408 (preview)
 description: Learn how to use Azure gateway without a proxy, on Azure Local instance running version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/16/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -75,7 +75,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration.
 
-$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;Node3;Node4;Node5;192.168.*.*;HCI-cluster1"
+$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;Node3;Node4;Node5;192.168.*.*;Local-cluster1"
 
 #Connect to your Azure account and Subscription
 

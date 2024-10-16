@@ -3,7 +3,7 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/16/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -108,7 +108,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 
 ## Step 3: Verify that the setup succeeded
 
-Once the deployment validation starts, you can connect to the first node from your system and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy.
+Once the deployment validation starts, you can connect to the first machine from your system and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 

@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 10/16/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -13,7 +13,7 @@ ms.custom: devx-track-azurepowershell
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to register your Azure Local machines and then set up the required permissions to deploy an Azure Local, version 23H2 cluster.
+This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local, version 23H2.
 
 ## Prerequisites
 
@@ -98,7 +98,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-    |`AccountID`         |The user who registers and deploys the cluster.         |
+    |`AccountID`         |The user who registers and deploys the instance.         |
     |`ProxyServer`       |Optional parameter. Proxy Server address when is required for outbound connectivity. |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
@@ -233,7 +233,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-a.png" alt-text="Screenshot of the Add role assignment in Access control in subscription for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-a.png":::
 
-1. Go through the tabs and assign the following role permissions to the user who deploys the cluster:
+1. Go through the tabs and assign the following role permissions to the user who deploys the instance:
 
     - **Azure Local Administrator**
     - **Reader**
@@ -242,7 +242,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign the following permissions to the user who deploys the cluster:
+1. Go through the tabs and assign the following permissions to the user who deploys the instance:
 
     - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for deployment.
     - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
@@ -264,6 +264,6 @@ This section describes how to assign Azure permissions for deployment from the A
 
 ## Next steps
 
-After setting up the first server in your cluster, you're ready to deploy using Azure portal:
+After setting up the first machine in your instance, you're ready to deploy using Azure portal:
 
 - [Deploy using Azure portal](./deploy-via-portal.md).

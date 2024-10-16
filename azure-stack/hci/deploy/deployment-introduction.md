@@ -3,7 +3,7 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 10/14/2024
+ms.date: 10/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,7 +13,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-system deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
+This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
 
 ## About deployment methods
 
@@ -40,8 +40,8 @@ Follow this sequence to deploy Azure Local in your environment:
 | [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your machines are cabled. You will define the network settings based on this topology. |
 | [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Local deployment. |
-| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-23h2-software.md) | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal |
-| Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI operating system locally on each machine in your system. |
+| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-23h2-software.md) | Download Azure Stack HCI Operating System, version 23H2 from Azure portal. |
+| Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI OS locally on each machine in your system. |
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Local if your network uses a proxy server for internet access. |
 | Step 4A: [Register machines with Arc and assign permissions via command line](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
 | Step 4B: [Register machines with Arc and assign permissions via local UI](./deployment-arc-register-server-permissions.md) | Configure via local UI and register with Arc the machines that you intend to cluster.<br> Assign required permissions for the deployment. |

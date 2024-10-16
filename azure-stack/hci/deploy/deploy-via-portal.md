@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -27,7 +27,7 @@ This article helps you deploy an Azure Local instance, version 23H2 using the Az
 
    All resources in the Azure subscription are billed together.
 
-3. Enter the **Cluster name** used for this Azure Local instance when Active Directory Domain Services (AD DS) was prepared for this deployment.
+3. Enter the **Instance name** used for this Azure Local instance when Active Directory Domain Services (AD DS) was prepared for this deployment.
 
 4. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 

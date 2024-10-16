@@ -1,9 +1,9 @@
 --- 
 title: Prepare Active Directory for new Azure Local, version 23H2 deployment
-description: Learn how to prepare Active Directory before you deploy an Azure Local instance, version 23H2.
+description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -102,4 +102,4 @@ To create a dedicated OU, follow these steps:
 
 ## Next steps
 
-- [Download Azure Local, version 23H2 software](./download-23h2-software.md) on each machine in your system.
+- [Download Azure Stack HCI OS, version 23H2 software](./download-23h2-software.md) on each machine in your system.

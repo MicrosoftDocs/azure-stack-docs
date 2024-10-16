@@ -3,7 +3,7 @@ title: Configure Arc proxy manually for Azure gateway on Azure Local, version 24
 description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/15/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -126,7 +126,7 @@ Once the Azure Local machines are registered in Azure Arc and all the extensions
 
 ## Step 5: Verify that the setup succeeded
 
-Once the deployment validation starts, you can connect to the first Azure Local machine from your cluster and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
+Once the deployment validation starts, you can connect to the first Azure Local machine from your machine and open the Arc gateway log to monitor which endpoints are redirected to the Arc gateway and which ones continue using your firewall or proxy.
 
 You can find the Arc gateway log at: *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
