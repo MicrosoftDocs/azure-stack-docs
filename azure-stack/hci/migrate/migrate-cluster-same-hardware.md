@@ -85,7 +85,7 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## Updating the machines and system
 
-Migration consists of running Azure Local setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Local. For detailed information, see [Deploy the Azure Local operating system](../deploy/operating-system.md). Afterwards, you create a new Azure Local instance, reattach your storage and import the VMs over.
+Migration consists of running Azure Local setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Local. For detailed information, see [Deploy the OS for Azure Local](../deploy/operating-system.md). Afterwards, you create a new Azure Local instance, reattach your storage and import the VMs over.
 
 1. Shut down your existing system VMs, offline CSVs, offline storage pools, and the system service.
 
