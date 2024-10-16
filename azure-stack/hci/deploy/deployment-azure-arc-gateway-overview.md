@@ -84,7 +84,7 @@ You can use the Arc gateway in the following scenario for Azure Local version 24
 
 Unsupported scenarios for Azure Local, version 2408 include:
 
-- Azure Local instancs updated from versions 2402 or 2405 to version 2408 can't take advantage of all the new endpoints supported by this Arc gateway preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
+- Azure Local instances updated from versions 2402 or 2405 to version 2408 can't take advantage of all the new endpoints supported by this Arc gateway preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
 
 - Enabling Arc gateway after version 2408 deployment cannot take advantage of all the new endpoints supported by this Arc gateway public preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
 

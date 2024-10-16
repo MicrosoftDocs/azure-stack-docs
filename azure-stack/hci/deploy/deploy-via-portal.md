@@ -99,7 +99,7 @@ Choose whether to create a new configuration for this system or to load deployme
     - **Storage traffic priority**. This specifies the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **Cluster traffic priority**.
     - **Storage traffic bandwidth reservation**. This parameter defines the bandwidth allocation in % for the storage traffic.
-    - **Adpater properties** such as **Jumbo frame size** (in bytes) and **RDMA protocol** (which can now be disabled).
+    - **Adapter properties** such as **Jumbo frame size** (in bytes) and **RDMA protocol** (which can now be disabled).
 
     :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customize network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
    
@@ -191,7 +191,7 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-3.png" alt-text="Screenshot of the successfully completed validation in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-3.png"::: 
 
-    If the validation has erorrs, resolve any actionable issues, and then select **Next: Review + create**.
+    If the validation has errors, resolve any actionable issues, and then select **Next: Review + create**.
 
     Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.
 
