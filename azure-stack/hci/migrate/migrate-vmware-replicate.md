@@ -1,17 +1,17 @@
 --- 
-title: Discover and replicate VMware VMs for migration to Azure Stack HCI using Azure Migrate (preview) 
-description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
+title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview) 
+description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/30/2024
+ms.date: 10/16/2024
 ms.author: alkohli
 ---
 
-# Discover and replicate VMware VMs for migration to Azure Stack HCI using Azure Migrate (preview)
+# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
+This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Migrate.
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
@@ -19,18 +19,18 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 ## Before you begin
 
-For both the source VMware vCenter Server and target Azure Stack HCI appliances, make sure that the underlying hardware has sufficient resources to support the creation of a Windows Server 2022 VM with a minimum of 16 GB RAM, 80 GB of disk storage (HDD), 8 vCPUs, and an external virtual switch.
+For both the source VMware vCenter Server and target Azure Local appliances, make sure that the underlying hardware has sufficient resources to support the creation of a Windows Server 2022 VM with a minimum of 16 GB RAM, 80 GB of disk storage (HDD), 8 vCPUs, and an external virtual switch.
 
 ## Step 1: Create and configure the source VMware appliance
 
 ### Generate the project key
 
 1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
-1. On the **Migration tools** tile, select **Discover**. Make sure to use the **Migration and Modernization Discover** page for Azure Stack HCI. If you use the **Discovery and Assessment Discover** page, Azure Stack HCI migrations will be blocked.
+1. On the **Migration tools** tile, select **Discover**. Make sure to use the **Migration and Modernization Discover** page for Azure Local. If you use the **Discovery and Assessment Discover** page, Azure Local migrations will be blocked.
 
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
-1. On the **Discover** page, select **Azure Stack HCI** under **Where do you want to migrate to** and then select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
+1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with VMware vSphere Hypervisor** under **Are your machines virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
 1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
@@ -94,7 +94,7 @@ Once the source appliance is installed, follow these steps:
 
         :::image type="content" source="./media/migrate-vmware-replicate/verify-vddk-installation-1.png" alt-text="Screenshot of verification of VDDK installation." lightbox="./media/migrate-vmware-replicate/verify-vddk-installation-1.png":::
 
-    1. Provide vCenter server credentials for the discovery of VMware VMs.
+    1. Provide vCenter machine credentials for the discovery of VMware VMs.
         1. Select **Add credentials**.
         1. Select the **Source type** as vCenter Server.
         1. Provide a **Friendly name** for the credentials.
@@ -108,23 +108,23 @@ Once the source appliance is installed, follow these steps:
 
         :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
 
-    1. Disable the slider under the **Applications discovery and agentless dependency analysis** section, as this is currently not supported in VMware to Azure Stack HCI migrations.
+    1. Disable the slider under the **Applications discovery and agentless dependency analysis** section, as this is currently not supported in VMware to Azure Local migrations.
     1. Select **Start Discovery**. The discovery may take several minutes to finish.
 
-You'll next onboard to the target Azure Stack HCI cluster.
+You'll next onboard to the target Azure Local instance.
 
-### Onboard to Azure Stack HCI
+### Onboard to Azure Local
 
-You now provide the Azure Stack HCI cluster information to onboard the discovered VMs.
+You now provide the Azure Local instance information to onboard the discovered VMs.
 
-1. Select **Add cluster information**.
-1. Enter the **Domain** for your target Azure Stack HCI cluster.
-1. Provide the **Username** and the **Password** for the target Azure Stack HCI cluster.
+1. Select **Add system information**.
+1. Enter the **Domain** for your target Azure Local cluster.
+1. Provide the **Username** and the **Password** for the target Azure Local cluster.
 1. Select **Save**.
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add cluster information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add system information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
-The cluster information table is updated with the cluster information. The status changes to **Validated**.
+The system information table is updated with the system information. The status changes to **Validated**.
 
 :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add cluster information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
 
@@ -151,13 +151,13 @@ Complete the following tasks to generate the target appliance key:
 1. On the **Specify intent** page, provide the following inputs:
 
     - Select Servers or virtual machines (VM) for **What do you want to migrate?**.
-    - Select **Azure Stack HCI** for **Where do you want to migrate?**.
+    - Select **Azure Local** for **Where do you want to migrate?**.
     - Select **VMware vSphere** for **Virtualization type**.
     - For the **On-premises appliance** the source appliance is pre-populated. If you have more than one source appliance, select the applicable one from the dropdown list.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-vmware-replicate/replicate-specify-intent.png":::
 
-1. Select **Download and configure** in **Before you start replication to Azure Stack HCI** from the information block.
+1. Select **Download and configure** in **Before you start replication to Azure Local** from the information block.
 
 1. On the **Deploy and configure the target appliance** pane, provide a name for the target appliance and then select **Generate key**.
 
@@ -175,7 +175,7 @@ You can download the appliance from a .zip file. Under **Step 2: Download Azure 
 
 This step applies only if you downloaded the *.VHD* file.
 
-1. On the server where you downloaded the file, open an administrator command window.
+1. On the machine where you downloaded the file, open an administrator command window.
 1. Run the following command to generate the hash for the VHD.
     
     ```powershell
@@ -193,7 +193,7 @@ This step applies only if you downloaded the *.VHD* file.
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Stack HCI appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847`         |07783a31d1e66be963349b5553dc1f1e94c70aa149e11ac7d8914f4076480731         |
+    |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847`         |07783a31d1e66be963349b5553dc1f1e94c70aa149e11ac7d8914f4076480731         |
 
 1. Extract the zip file to a folder.
 
@@ -201,13 +201,13 @@ Now you can install the appliance using the .VHD file.
 
 1. On a Hyper-V server, go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**.
 
-1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
+1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Local machine, and then select **OK**.
 
-1. Map the drive on your Azure Stack HCI server where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Stack HCI server.
+1. Map the drive on your Azure Local machine where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Local machine.
 
 1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
 
-    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Stack HCI server.
+    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Local machine.
     1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
     1. Finally review the settings and select **Finish**.
 
@@ -222,7 +222,7 @@ Now you can install the appliance using the .VHD file.
 
 This step applies to the downloaded .zip file.
 
-1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
+1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Local machine running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
 
 1. In  **Hyper-V Manager**, select the host.
 
@@ -268,11 +268,11 @@ This step applies to the downloaded .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-vmware-replicate/enter-code-22.png":::
 
-1. After the appliance is registered, under **Manage Azure Stack HCI cluster information**, select **Add cluster information**.
+1. After the appliance is registered, under **Manage Azure Local cluster information**, select **Add cluster information**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-1.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-1.png":::
 
-1. For your target Azure Stack HCI cluster, enter the cluster FQDN (example format is *clustername.domain.com*), domain name, username, and password, and then select **Save**.
+1. For your target Azure Local cluster, enter the system FQDN (example format is *systemname.domain.com*), domain name, username, and password, and then select **Save**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-22.png":::
 
@@ -291,7 +291,7 @@ This step applies to the downloaded .zip file.
 
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
-    1. Select **Azure Stack HCI** for **Where do you want to migrate to ?**
+    1. Select **Azure Local** for **Where do you want to migrate to ?**
     1. Select **VMware vSphere** for the **Virtualization type**.
     1. Select the source appliance as the **On-premises appliance** used for discovery.
     1. When finished, select **Continue**.
@@ -300,10 +300,10 @@ This step applies to the downloaded .zip file.
 
 1. On the **Replicate** page, on the **Basics** tab:
 
-    1. The subscription field is automatically populated. If this isn't the subscription that has your target cluster, choose the Azure subscription that has the cluster.
-    1. Select the resource group associated with your target cluster.
-	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
-	1. Verify there's a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
+    1. The subscription field is automatically populated. If this isn't the subscription that has your target system, choose the Azure subscription that has the system.
+    1. Select the resource group associated with your target system.
+	1. For **Cluster resource**, select the Azure Local cluster resource.
+	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::
@@ -380,7 +380,7 @@ This step applies to the downloaded .zip file.
 
 1. You're automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
-1. Go to **Azure Stack HCI migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
+1. Go to **Azure Local migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
 
