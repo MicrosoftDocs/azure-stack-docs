@@ -3,7 +3,7 @@ title: Migrate to Azure Local on same hardware
 description: Learn how to migrate a system to Azure Local on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 02/13/2024
+ms.date: 10/16/2024
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
@@ -16,9 +16,9 @@ This topic describes how to migrate a Windows Server failover system to Azure Lo
 
 The following diagram depicts migrating your Windows Server system in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
-:::image type="content" source="media/migrate-system-same-hardware/migrate-system-same-hardware.png" alt-text="Migrate system to Azure Local on the same hardware" lightbox="media/migrate-system-same-hardware/migrate-system-same-hardware.png":::
+:::image type="content" source="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png" alt-text="Migrate system to Azure Local on the same hardware" lightbox="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png":::
 
-To migrate your VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-system-new-hardware.md).
+To migrate your VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-cluster-new-hardware.md).
 
 > [!NOTE]
 > Migrating stretched systems is not covered in this article.
@@ -105,7 +105,7 @@ Migration consists of running Azure Local setup on your Windows Server deploymen
 
 If using Windows Admin Center to create the Azure Local instance, the Create Cluster wizard automatically installs all required roles and features on each machine node.
 
-For detailed information on how to create the system, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-system.md).
+For detailed information on how to create the system, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-cluster.md).
 
 > [!IMPORTANT]
 > Skip step **4.1 Clean drives** in the Create system wizard. Otherwise you will delete your existing VMs and storage.
@@ -138,7 +138,7 @@ If using PowerShell to create the Azure Local instance, the following roles and 
 Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging, RSAT-AD-PowerShell -IncludeAllSubFeature -IncludeManagementTools -Verbose
 ```
 
-For more information on how to create the system using PowerShell, see [Create an Azure Local instance using Windows PowerShell](../deploy/create-system-powershell.md).
+For more information on how to create the system using PowerShell, see [Create an Azure Local instance using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
 > [!NOTE]
 > Re-use the same name for the previously disabled Cluster Name Object.
@@ -261,4 +261,4 @@ Perform the following steps on your Azure Local instance to import the VMs, make
 ## Next steps
 
 - Validate the system after migration. See [Validate an Azure Local instance](../deploy/validate.md).
-- To migrate Windows Server VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-system-new-hardware.md).
+- To migrate Windows Server VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-cluster-new-hardware.md).

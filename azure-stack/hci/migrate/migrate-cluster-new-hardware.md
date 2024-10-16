@@ -3,7 +3,7 @@ title: Migrate to Azure Local on new hardware
 description: Learn how to migrate to Azure Local on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 02/13/2024 
+ms.date: 10/16/2024 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
@@ -12,14 +12,14 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Local, versions 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Local machine hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
 > Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Local is not supported. However, Hyper-V replica is valid and supported between Azure Local systems. You can't replicate a VM to another volume in the same system, only to another Azure Local system.
 
 If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](#migrating-older-vms).
 
-To migrate to Azure Local using the same hardware, see [Migrate to Azure Local on the same hardware](migrate-system-same-hardware.md).
+To migrate to Azure Local using the same hardware, see [Migrate to Azure Local on the same hardware](migrate-cluster-same-hardware.md).
 
 The following diagram shows a Windows Server source cluster and an Azure Local destination cluster as an example. You can also migrate VMs on stand-alone machines as well.
 
@@ -118,7 +118,7 @@ If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it fo
 
 Before you can create the Azure Local instance, you need to install the Azure Local OS on each new machine that will be in the system. For information on how to do this, see [Deploy the Azure Local operating system](../deploy/operating-system.md).
 
-Use Windows Admin Center or Windows PowerShell to create the new system. For detailed information on how to do this, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-system.md) and [Create an Azure Local instance using Windows PowerShell](../deploy/create-system-powershell.md).
+Use Windows Admin Center or Windows PowerShell to create the new system. For detailed information on how to do this, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-cluster.md) and [Create an Azure Local instance using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
 > [!IMPORTANT]
 > Hyper-V virtual switch (`VMSwitch`) names between systems must be the same. Make sure that virtual switch names created on the destination system match those used on the source system across all servers. Verify the switch names for the same before you import the VMs.
@@ -350,4 +350,4 @@ As an FYI, the following Windows Server guest operating systems support Generati
 
 - Validate the system after migration. See [Validate an Azure Local instance](../deploy/validate.md).
 
-- To migrate to Azure Local in-place using the same hardware, see [Migrate to Azure Local on the same hardware](migrate-system-same-hardware.md).
+- To migrate to Azure Local in-place using the same hardware, see [Migrate to Azure Local on the same hardware](migrate-cluster-same-hardware.md).

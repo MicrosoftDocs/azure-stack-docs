@@ -161,7 +161,7 @@ Verify the following:
 
 The target system fails to validate because the system FQDN is not DNS-resolvable by default from the appliance.
 
-:::image type="content" source="./media/migrate-troubleshoot/system-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/system-fqdn.png":::
+:::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
 
 **Recommended resolution**
 
