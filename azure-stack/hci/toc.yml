@@ -167,7 +167,7 @@ items:
   - name: 1. Prepare Active Directory
     href: deploy/deployment-prep-active-directory.md
   - name: 2. Download the software
-    href: deploy/download-azure-stack-hci-23h2-software.md
+    href: deploy/download-23h2-software.md
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Register with Arc and set up permissions
@@ -616,7 +616,7 @@ items:
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
-      href: deploy/download-azure-stack-hci-software.md
+      href: deploy/download-software.md
     - name: 1. Deploy the Azure Stack HCI OS
       href: deploy/operating-system.md
     - name: 2. Create a cluster
