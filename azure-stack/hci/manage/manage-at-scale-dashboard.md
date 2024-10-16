@@ -52,20 +52,20 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png" alt-text="Screenshot of the Azure Local dashboard list view." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png":::
 
-   Select a cluster name to view details about a cluster, or select a parameter to view details about cluster status.
+   Select a system name to view details about a system, or select a parameter to view details about system status.
 
 ## Troubleshooting
 
 ### Issue: No data available
 
-Use the following information when no cluster data is displayed in the **All clusters (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column or in the **Connection status** column.
+Use the following information when no system data is displayed in the **All systems (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column or in the **Connection status** column.
 
 | Issue | Issue seen in | Resolution |
 |-------|---------------|-------|
 | *Microsoft.Edge* Resource Provider (RP) is not registered with your subscription. | Connection status | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace "Microsoft.Edge"` |
-| The *Microsoft.Edge* RP isn't able to process data for the cluster. | Connection status | No action is required on your part. Azure Local service will automatically detect this condition and raise a Support ticket.  |
-| Your cluster isn't functioning. | Connection status | Your cluster is in **Needs attention** state. <br> Bring up the cluster. |
-| You have an older version cluster running Azure Local, version 22H2. This version can't be updated to Azure Local, version 23H2. | Updates and Connection status | Make sure to use an Azure Local, version 23H2 cluster. |
+| The *Microsoft.Edge* RP isn't able to process data for the system. | Connection status | No action is required on your part. Azure Local service will automatically detect this condition and raise a Support ticket.  |
+| Your system isn't functioning. | Connection status | Your system is in **Needs attention** state. <br> Bring up the system. |
+| You have an older version system running Azure Local, version 22H2. This version can't be updated to Azure Local, version 23H2. | Updates and Connection status | Make sure to use an Azure Local, version 23H2 system. |
 
 ## Next steps
 
