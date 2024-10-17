@@ -56,4 +56,4 @@ The following table lists network attributes for deployments SDN optional servic
 
 ## Next steps
 
-- [Download Azure Local](../deploy/download-azure-stack-hci-software.md)
+- [Download Azure Local](../deploy/download-software.md)
