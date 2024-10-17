@@ -18,7 +18,7 @@ To keep your Azure Stack HCI solution in a supported state, you have up to six m
 
 This article presents the release information for Azure Stack HCI, version 23H2, including the release build and OS build information.  
 
-## About Azure Stack HCI, version 23H2 releases
+## About Azure Local, version 23H2 releases
 
 The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, 2405, and 2408. Each release train includes a baseline build and subsequent updates.
 
