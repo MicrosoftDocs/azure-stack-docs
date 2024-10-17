@@ -183,7 +183,7 @@ Provides health faults on a cluster.
 |--|--|--|--|
 | Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | PoolCapacityThresholdExceeded |
 | Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
-| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {1245340c-780b-4afc-af3c-f9bdc4b12f8a}: SP:{c57f23d1-d784-4a42-8b59-4edd8e70e830} |
+| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1}: SP:{b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2} |
 | Severity | Severity of fault could be warning or critical. | No unit | Warning |
 | Initial fault time | Timestamp of when server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
