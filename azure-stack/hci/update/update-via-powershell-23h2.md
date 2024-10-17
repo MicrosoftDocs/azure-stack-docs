@@ -56,12 +56,12 @@ The approximate time estimates for a typical single server and 4-server cluster 
 Before you begin, make sure that:
 
 - You have access to an Azure Local, version 23H2 system that is running 2310 or higher. The system should be registered in Azure.
-- You have access to a client that can connect to your Azure Local system. This client should be running PowerShell 5.0 or later.
+- You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
 - You have access to the solution update package over the network. You sideload or copy these updates to the machines in your system.
 
 ## Connect to your Azure Local
 
-Follow these steps on your client to connect to one of the machines in your Azure Local system.
+Follow these steps on your client to connect to one of the machines in your Azure Local.
 
 1. Run PowerShell as administrator on the client that you're using to connect to your system.
 2. Open a remote PowerShell session to a machine on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
@@ -123,7 +123,7 @@ Before you discover the updates, you can manually validate the system health. Th
 > [!NOTE]
 > Any faults that have a severity of *critical* will block the updates from being applied.
 
-1. Connect to a machine on your Azure Local system using the deployment user account.
+1. Connect to a machine on your Azure Local using the deployment user account.
 2. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
 
     ```powershell
@@ -245,13 +245,13 @@ Before you discover the updates, you can manually validate the system health. Th
 You can discover updates in one of the following two ways:
 
 - **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local system and discover the updates locally.
+- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local and discover the updates locally.
 
 ### Discover solution updates online (recommended)
 
 Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
 
-1. Connect to a machine on your Azure Local system using the deployment user account.
+1. Connect to a machine on your Azure Local using the deployment user account.
 2. Verify that the Update service discovers the update package.
 
     ```powershell
@@ -285,7 +285,7 @@ You can now proceed to [Download and install the updates](#step-4-download-check
 
 If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
-1. Connect to a machine on your Azure Local system using the deployment user account.
+1. Connect to a machine on your Azure Local using the deployment user account.
 2. Go to the network share and acquire the update package that you use. Verify that the update package you sideload contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*

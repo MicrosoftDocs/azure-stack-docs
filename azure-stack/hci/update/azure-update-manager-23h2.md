@@ -14,7 +14,7 @@ ms.date: 10/07/2024
 
 [!INCLUDE [IMPORTANT](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
-This article describes how to use Azure Update Manager to find and install available updates on selected Azure Local systems. Additionally, we provide guidance on how to review, track progress, and browse the history of system updates.
+This article describes how to use Azure Update Manager to find and install available updates on Azure Local. Additionally, we provide guidance on how to review, track progress, and browse the history of system updates.
 
 ## About Azure Update Manager
 
@@ -22,7 +22,7 @@ Azure Update Manager is an Azure service that allows you to apply, view, and man
 
 Here are some benefits of the Azure Update Manager:
 
-- The update agent checks Azure Local systems for update health and available updates daily.
+- The update agent checks Azure Local for update health and available updates daily.
 - You can view the update status and readiness for each system.
 - You can update multiple systems at the same time.
 - You can view the status of updates while they're in progress.
@@ -114,9 +114,9 @@ To browse the update history of your systems, follow these steps:
 6. On the **Install** page, review the results of the installation.
    - Under the Result column, if you have an error, select **View Details** for more information.
 
-## Update via the Azure Local system resource page
+## Update via the Azure Local resource page
 
-In addition to using Azure Update Manager, you can update individual systems from the Azure Local systems resource page.
+In addition to using Azure Update Manager, you can update individual systems from the Azure Local resource page.
 
 To install updates on a single system from the resource page, follow these steps:
 
@@ -143,7 +143,7 @@ To install updates on a single system from the resource page, follow these steps
 
 ## Update your hardware via Windows Admin Center
 
-In addition to system updates using Azure Update Manager or the Azure Local system resource page, you can use Windows Admin Center to check for and install available hardware (firmware and driver) updates for your Azure Local system.
+In addition to system updates using Azure Update Manager or the Azure Local resource page, you can use Windows Admin Center to check for and install available hardware (firmware and driver) updates for your Azure Local.
 
 Here's an example of the Windows Admin Center updates tool for systems running Azure Local, version 23H2.
 
