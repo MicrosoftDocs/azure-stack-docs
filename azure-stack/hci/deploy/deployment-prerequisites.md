@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 08/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Review deployment prerequisites for Azure Stack HCI, version 23H2

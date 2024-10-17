@@ -4,8 +4,7 @@ description: How read and write caching works to accelerate performance in Stora
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 02/21/2024
 ---
 

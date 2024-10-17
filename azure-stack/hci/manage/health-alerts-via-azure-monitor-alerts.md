@@ -4,8 +4,7 @@ description: Learn how to use the Azure Monitor alerts to respond to Azure Stack
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 02/26/2024
 ---
 

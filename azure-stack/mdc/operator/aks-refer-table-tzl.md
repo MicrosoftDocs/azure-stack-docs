@@ -4,7 +4,7 @@ description: Look up portal reference links for Azure Stack Hub when operating f
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: reference
 ms.date: 10/26/2020
 ms.author: sethm

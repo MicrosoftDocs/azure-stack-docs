@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Validate solution upgrade readiness for your Azure Stack HCI
@@ -265,9 +264,17 @@ To learn more about how to disable WDAC policies, see [Remove Windows Defender A
 
 ## Remediation 5: Ensure language is English
 
-Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
+Only clusters installed using the English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
 
-For more information, see [Verify OS language for Azure Stack HCI](../manage/languages.md#change-the-language-in-server-core).
+If you used the English ISO, but configured a different language during setup, you must change the language settings for the doman account that you will use for upgrade.
+
+1. Sign in to each node of the cluster using the domain account you plan to use for the upgrade.
+1. Run the following PowerShell commands:
+   
+    ```powershell
+    $UserLanguageList = New-WinUserLanguageList -Language en-US
+    Set-WinUserLanguageList -LanguageList $UserLanguageList 
+    ```
 
 ## Remediation 6: Check storage pool space
 

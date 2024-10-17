@@ -4,8 +4,7 @@ description: Learn about the prerequisites for deploying Azure Arc VM management
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 08/23/2024
 ---
 

@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 09/24/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Known issues in the Azure Stack HCI 2408 release
@@ -53,9 +52,7 @@ The following table lists the known issues in this release:
 | Security <!--29333930--> | The SideChannelMitigation security feature may not show an enabled state even if it's enabled. This happens when using Windows Admin Center (Cluster Security View) or when this cmdlet returns *False*: `Get-AzSSecurity -FeatureName SideChannelMitigation`. | There's no workaround in this release to fix the output of these applications. <br> To validate the expected value, run the following cmdlet: <br> `Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "FeatureSettingsOverride*"`<br> The expected output is: <br> FeatureSettingsOverride: 83886152<br> FeatureSettingsOverrideMask: 3 <br> If your output matches the expected output, you can safely ignore the output from Windows Admin Center and `Get-AzSSecurity` cmdlet.|
 | Arc VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
 | Upgrade <!--29319539--> | When upgrading the stamp from 2311 or prior builds to 2408 or later, add node and repair node operations may fail. For example, you could see an error: `Type 'AddAsZHostToDomain' of Role 'BareMetal' raised an exception`. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
-| Update | When installing an SBE update for your Azure Stack HCI system, some SBE interfaces aren't executed on all the servers if the hostname in the cluster is a subset of another hostname. For example, host-1 is a subset of host-10. This could result in failures in the CAU scan or CAU run. | Use appropriate host naming conventions. |
-
-Use appropriate host naming conventions.
+| Update | When installing an SBE update for your Azure Stack HCI system, some SBE interfaces aren't executed on all the servers if the hostname in the cluster is a subset of another hostname. For example, host-1 is a subset of host-10. This could result in failures in the CAU scan or CAU run. | Microsoft recommends using at least 2 digits for hostname instance counts in your host naming conventions. For more information, see [Define your naming convention](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). |
 
 ## Known issues from previous releases
 

@@ -3,10 +3,9 @@ title: Options for migrating virtual machines to Azure Stack HCI (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 01/19/2024
+ms.date: 04/24/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # About options to migrate VM workloads to Azure Stack HCI (preview)
@@ -27,7 +26,10 @@ To migrate VM workloads and their data to your Azure Stack HCI cluster, several 
 First party migration options are provided by Microsoft. These options are built into the Azure Stack HCI platform and are available to you at no additional cost. The following first party migration options are available:
 
 - [Azure Migrate](./migration-azure-migrate-hci-overview.md). This option is only available on systems running Azure Stack HCI, version 23H2.
-- System Center Virtual Machine Manager (SCVMM). These options are only available on systems running Azure Stack HCI, version 22H2. 
+    - [For Hyper-V VMs](./migration-azure-migrate-hci-overview.md).
+    - [For VMware VMs](./migration-azure-migrate-vmware-overview.md).
+
+- System Center Virtual Machine Manager (SCVMM). These options are only available on systems running Azure Stack HCI, version 22H2.
     - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
     - [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
 
@@ -39,7 +41,6 @@ Third party migration options are provided by Microsoft partners. These options 
 - [Carbonite](https://www.carbonite.com/business/products/migration/)  
 - [Commvault](https://www.commvault.com/)  
 - [Veeam](https://www.veeam.com/)  
- 
 
 
 ## Manual migration options
@@ -58,4 +59,6 @@ The following manual migration options are available:
 
 ## Next steps
 
-To learn more about migration using Azure Migrate, see [About Azure Migrate based migration for Azure Stack HCI ](./migration-azure-migrate-hci-overview.md)
+To learn more about migration using Azure Migrate, see:
+- [Hyper-V migration to Azure Stack HCI](./migration-azure-migrate-hci-overview.md).
+- [VMware migration to Azure Stack HCI](./migration-azure-migrate-vmware-overview.md).

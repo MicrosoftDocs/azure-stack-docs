@@ -191,7 +191,7 @@ items:
       items:
       - name: Configure proxy manually
         href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via script
+      - name: Configure proxy via Arc script
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
@@ -531,22 +531,40 @@ items:
     href: migrate/migration-options-hci-overview.md
   - name: Migrate using Azure Migrate
     items:
-    - name: Overview
-      href: migrate/migration-azure-migrate-hci-overview.md
-    - name: Prepare
-      items:
-      - name: Review requirements
-        href: migrate/migrate-hyperv-requirements.md
-      - name: Complete prerequisites
-        href: migrate/migrate-hyperv-prerequisites.md 
-    - name: Discover, replicate
-      href: migrate/migrate-hyperv-replicate.md
-    - name: Migrate, verify
-      href: migrate/migrate-azure-migrate.md
-    - name: Troubleshoot
-      href: migrate/migrate-troubleshoot.md
+    - name: Hyper-V VMs
+      items: 
+      - name: Overview
+        href: migrate/migration-azure-migrate-hci-overview.md
+      - name: Prepare
+        items:
+        - name: Review requirements
+          href: migrate/migrate-hyperv-requirements.md
+        - name: Complete prerequisites
+          href: migrate/migrate-hyperv-prerequisites.md 
+      - name: Discover, replicate
+        href: migrate/migrate-hyperv-replicate.md
+      - name: Migrate, verify
+        href: migrate/migrate-azure-migrate.md
+    - name: VMware VMs
+      items: 
+      - name: Overview
+        href: migrate/migration-azure-migrate-vmware-overview.md
+      - name: Prepare
+        items:
+        - name: Review requirements
+          href: migrate/migrate-vmware-requirements.md
+        - name: Complete prerequisites
+          href: migrate/migrate-vmware-prerequisites.md 
+      - name: Discover, replicate
+        href: migrate/migrate-vmware-replicate.md
+      - name: Migrate, verify
+        href: migrate/migrate-vmware-migrate.md
+      - name: Enable guest management
+        href: migrate/migrate-enable-guest-management.md
     - name: FAQ
       href: migrate/migrate-faq.yml
+    - name: Troubleshoot
+      href: migrate/migrate-troubleshoot.md
   - name: Migrate using SCVMM (v22H2 only)
     items:
     - name: For Hyper-V VMs
@@ -618,7 +636,7 @@ items:
       - name: Create a cluster with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
-        href: deploy/network-atc.md
+        href: deploy/network-atc.md?pivots=azure-stack-hci
     - name: Deploy SDN 
       items:
       - name: Deploy using Windows Admin Center
@@ -690,7 +708,7 @@ items:
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
-        href: manage/manage-network-atc.md
+        href: manage/manage-network-atc.md?pivots=azure-stack-hci
       - name: Update the cluster
         href: manage/update-cluster.md
       - name: Manage quick restarts
@@ -783,7 +801,7 @@ items:
     - name: Host networking
       items:
       - name: Network ATC overview
-        href: concepts/network-atc-overview.md
+        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
