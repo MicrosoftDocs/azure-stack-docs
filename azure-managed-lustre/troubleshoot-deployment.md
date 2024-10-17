@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot Azure Managed Lustre cluster deployment issues
 description: Learn how to troubleshoot common cluster deployment issues in Azure Managed Lustre
-author: pauljewell
-ms.author: pauljewellmsft
+author: pauljewellmsft
+ms.author: pauljewell
 ms.service: azure-managed-lustre
 ms.topic: troubleshooting-general
 ms.date: 10/17/2024
