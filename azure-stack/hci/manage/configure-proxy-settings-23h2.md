@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Local, version 23H2
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 10/17/2024
 ---
 
 # Configure proxy settings for Azure Local, version 23H2
@@ -19,7 +19,7 @@ For information about firewall requirements for outbound endpoints and internal 
 
 Before you begin to configure proxy settings, make sure that:
 
-- You have access to an Azure Local instance for which you want to configure the proxy settings. You also have the local administrator credentials to access the machines in your Azure Local instance.
+- You have access to an Azure Local for which you want to configure the proxy settings. You also have the local administrator credentials to access the machines in your Azure Local.
 - You know the proxy server name or IP address and port (optional). If you don’t have this information, contact your network administrator.
 
 Here are some important considerations to keep in mind before you configure proxy settings:

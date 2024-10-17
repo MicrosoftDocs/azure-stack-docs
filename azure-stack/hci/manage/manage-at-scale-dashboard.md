@@ -69,4 +69,4 @@ Use the following information when no system data is displayed in the **All syst
 
 ## Next steps
 
-- Learn about the various options available to monitor your Azure Local instance in [What is Azure Local monitoring?](../concepts/monitoring-overview.md)
+- Learn about the various options available to monitor your Azure Local in [What is Azure Local monitoring?](../concepts/monitoring-overview.md)
