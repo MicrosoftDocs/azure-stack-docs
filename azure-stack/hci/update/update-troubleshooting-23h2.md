@@ -11,7 +11,7 @@ ms.date: 10/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot solution updates that are applied to your Azure Local instance to keep it up-to-date.
+This article describes how to troubleshoot solution updates that are applied to your Azure Local to keep it up-to-date.
 
 ## About troubleshooting updates
 

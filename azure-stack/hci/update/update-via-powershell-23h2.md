@@ -12,13 +12,13 @@ ms.date: 10/08/2024
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 
-This article describes how to apply a solution update to your Azure Local instance via PowerShell.
+This article describes how to apply a solution update to your Azure Local via PowerShell.
 
 The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
 [!INCLUDE [WARNING](../../hci/includes/hci-applies-to-23h2-cluster-updates.md)]
 
-For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local instances, version 22H2](../manage/update-cluster.md).
+For information on how to apply solution updates to systems created with older versions of Azure Local that didn't have the orchestrator installed see [Update Azure Local, version 22H2](../manage/update-cluster.md).
 
 ## About solution updates
 
@@ -30,7 +30,7 @@ When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
 2. Identify the software version running on your system.
-3. Connect to your Azure Local instance via remote PowerShell.
+3. Connect to your Azure Local via remote PowerShell.
 4. Use the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity) to verify that your system is in good health.
 5. Discover the updates that are available and filter the ones that you can apply to your system.
 6. Download the updates, assess the update readiness of your system and once ready, install the updates on your system. Track the progress of the updates. If needed, you can also monitor the detailed progress.
@@ -56,15 +56,15 @@ The approximate time estimates for a typical single server and 4-server cluster 
 Before you begin, make sure that:
 
 - You have access to an Azure Local, version 23H2 system that is running 2310 or higher. The system should be registered in Azure.
-- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
+- You have access to a client that can connect to your Azure Local system. This client should be running PowerShell 5.0 or later.
 - You have access to the solution update package over the network. You sideload or copy these updates to the machines in your system.
 
-## Connect to your Azure Local instance
+## Connect to your Azure Local
 
-Follow these steps on your client to connect to one of the machines in your Azure Local instance.
+Follow these steps on your client to connect to one of the machines in your Azure Local system.
 
 1. Run PowerShell as administrator on the client that you're using to connect to your system.
-2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
+2. Open a remote PowerShell session to a machine on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
 
     ```powershell
     $cred = Get-Credential
@@ -123,7 +123,7 @@ Before you discover the updates, you can manually validate the system health. Th
 > [!NOTE]
 > Any faults that have a severity of *critical* will block the updates from being applied.
 
-1. Connect to a machine on your Azure Local instance using the deployment user account.
+1. Connect to a machine on your Azure Local system using the deployment user account.
 2. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
 
     ```powershell
@@ -245,13 +245,13 @@ Before you discover the updates, you can manually validate the system health. Th
 You can discover updates in one of the following two ways:
 
 - **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local instance and discover the updates locally.
+- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local system and discover the updates locally.
 
 ### Discover solution updates online (recommended)
 
 Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
 
-1. Connect to a machine on your Azure Local instance using the deployment user account.
+1. Connect to a machine on your Azure Local system using the deployment user account.
 2. Verify that the Update service discovers the update package.
 
     ```powershell
@@ -285,7 +285,7 @@ You can now proceed to [Download and install the updates](#step-4-download-check
 
 If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
-1. Connect to a machine on your Azure Local instance using the deployment user account.
+1. Connect to a machine on your Azure Local system using the deployment user account.
 2. Go to the network share and acquire the update package that you use. Verify that the update package you sideload contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
@@ -482,4 +482,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](./update-tro
 
 ## Next step
 
-Learn more about how to [Update Azure Local instance, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
+Learn more about how to [Update Azure Local, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
