@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/15/2024
+ms.date: 10/17/2024
 ---
 
 # Firewall requirements for Azure Local
@@ -73,9 +73,9 @@ Depending on additional Azure services you enable for Azure Local, you may need 
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all server nodes, both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Local, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Local, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
 
-When using the **Cluster Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
+When using the **Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each machine, open the ports as described in the following sections:
 
 ### Azure Stack HCI OS management
 
@@ -83,7 +83,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound traffic to and from the Azure Local service on cluster servers | Allow | Cluster servers | Cluster servers | TCP | 30301 |
+| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local instance machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
 
 ### Windows Admin Center
 
@@ -113,16 +113,16 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow Failover Cluster validation | Allow | Management system | Cluster servers | TCP | 445 |
-| Allow RPC dynamic port allocation | Allow | Management system | Cluster servers | TCP | Minimum of 100 ports<br> above port 5000 |
-| Allow Remote Procedure Call (RPC) | Allow | Management system | Cluster servers | TCP | 135 |
-| Allow Cluster Administrator | Allow | Management system | Cluster servers | UDP | 137 |
-| Allow Cluster Service | Allow | Management system | Cluster servers | UDP | 3343 |
-| Allow Cluster Service (Required during<br> a server join operation.) | Allow | Management system | Cluster servers | TCP | 3343 |
-| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Cluster servers | n/a | n/a |
+| Allow Failover Cluster validation | Allow | Management system | Instance nodes | TCP | 445 |
+| Allow RPC dynamic port allocation | Allow | Management system | Instance nodes | TCP | Minimum of 100 ports<br> above port 5000 |
+| Allow Remote Procedure Call (RPC) | Allow | Management system | Instance nodes | TCP | 135 |
+| Allow Cluster Administrator | Allow | Management system | Instance nodes | UDP | 137 |
+| Allow Cluster Service | Allow | Management system | Instance nodes | UDP | 3343 |
+| Allow Cluster Service (Required during<br> a server join operation.) | Allow | Management system | Instance nodes | TCP | 3343 |
+| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Instance nodes | n/a | n/a |
 
 >[!NOTE]
-> The management system includes any computer from which you plan to administer the cluster, using tools such as Windows Admin Center, Windows PowerShell, or System Center Virtual Machine Manager.
+> The management system includes any computer from which you plan to administer the system, using tools such as Windows Admin Center, Windows PowerShell, or System Center Virtual Machine Manager.
 
 ### Hyper-V
 
@@ -143,13 +143,13 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 ### Storage Replica (stretched cluster)
 
-Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
+Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched instance).
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 445 |
-| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 5985 |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched cluster servers | Stretched cluster servers | n/a | n/a |
+| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 445 |
+| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 5985 |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched instance nodes | Stretched instance nodes | n/a | n/a |
 
 ## Update Microsoft Defender firewall
 
@@ -171,7 +171,7 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 
 1. Import the list of IP addresses to your external corporate firewall, if you're using an allowlist with it.
 
-1. Create a firewall rule for each server in the cluster to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
+1. Create a firewall rule for each node in the system to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
 
     ```powershell
     New-NetFirewallRule -DisplayName "Allow Azure Resource Manager" -RemoteAddress $IpList -Direction Outbound -LocalPort 443 -Protocol TCP -Action Allow -Profile Any -Enabled True
