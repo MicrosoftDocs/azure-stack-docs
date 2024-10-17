@@ -18,9 +18,9 @@ This guide describes the feature in the May 2023 cumulative update for Azure Loc
 
 In the May 2023 cumulative update for Azure Local, version 22H2, a feature enhancement has been made to the Azure Local operating system that enables additional capabilities for Azure Local systems to be managed from Azure.
 
-This feature enhancement includes support of managed identity for Azure Local instance resources in Azure to enable Azure services such as Azure Monitor and Azure Site Recovery. The managed identity is created when your Azure Local system is registered with Azure and persists for the lifetime of the Azure Local instance resource in Azure. The managed identity communicates with the resource provider in Azure and is used to authenticate your Azure Local system with Azure.
+This feature enhancement includes support of managed identity for Azure Local resources in Azure to enable Azure services such as Azure Monitor and Azure Site Recovery. The managed identity is created when your Azure Local system is registered with Azure and persists for the lifetime of resource in Azure. The managed identity communicates with the resource provider in Azure and is used to authenticate your Azure Local system with Azure.
 
-This feature also includes Azure Service Bus integration to allow for an improved user experience managing your Azure Local instance from Azure.
+This feature also includes Azure Service Bus integration to allow for an improved user experience managing your Azure Local from Azure.
 
 ## Benefits
 
@@ -30,7 +30,7 @@ The managed identity serves as an identity for the various components of your ma
 
     For more information, see [Monitor Azure Local with Azure Monitor Insights](./monitor-hci-single-23h2.md).
 
-- **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical VM workloads running on Azure Local instance by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Local instance managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Local instances.
+- **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical VM workloads running on Azure Local by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Local managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Local machines.
 
     The Arc for Server extension uses the cluster managed identity to download the key credential file to every node of the system. If a new node is added to your system, Azure Local automatically triggers the installation of Arc for Server extension for Azure Site Recovery on the new node. In the absence of managed identity, this was previously a manual step that required you to install the agent to each node that was added to the system.
 

@@ -36,9 +36,9 @@ The Azure Local cloud service extends the hybrid capabilities for Azure Local by
 
 - **Billing.** The Azure Local cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. You can pay for Azure Local through your Azure subscription. For more information, see [Azure Local billing and payment](concepts/billing.md).
 
-- **Licensing.** Azure Local requires cloud connectivity to keep its license up to date. The Azure Local cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Local FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
+- **Licensing.** An Azure Local machine requires cloud connectivity to keep its license up to date. The Azure Local cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Local FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
 
-   Azure verification for VMs makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature is a built-in platform attestation service that is enabled by default on Azure Local. For more information, see [Azure verification for VMs](deploy/azure-verification.md?tabs=azureportal).
+   Azure verification for VMs makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature is a built-in platform attestation service that is enabled by default on Azure Local machines. For more information, see [Azure verification for VMs](deploy/azure-verification.md?tabs=azureportal).
 
 - **Diagnostics.** Azure Local diagnostic data helps Microsoft detect, diagnose, and fix problems to restore service health and improve products. To collect diagnostic data for a registered and connected system, see [Collect diagnostic logs for Azure Local](manage/collect-logs.md). To collect diagnostics data in scenarios where observability components aren't deployed or during issues with the system registration process, see [Perform standalone log collection](manage/get-support-for-deployment-issues.md#perform-standalone-log-collection).
 
@@ -54,7 +54,7 @@ Azure Local delivers hybrid value through the following Azure Arc technologies:
 
     You can install, upgrade, and manage Azure Arc extensions on Azure Local machines to run hybrid services like monitoring and Windows Admin Center in the Azure portal. For more information, see [Azure Arc extension management on Azure Local](manage/arc-extension-management.md).
 
-- **Arc VMs.** Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage Arc VMs on their Azure Local by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
+- **Arc VMs.** Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage Arc VMs on their Azure Local machines by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
 
 - [**Azure Kubernetes Service (AKS) enabled by Arc.**](/azure/aks/hybrid/) AKS on Azure Local, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. For more information, see [What's new in AKS on Azure Local version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
@@ -62,11 +62,11 @@ Azure Local delivers hybrid value through the following Azure Arc technologies:
 
 In addition to hybrid functionality provided through Azure Arc, you can enable the following Azure services for other hybrid capabilities on Azure Local:
 
-- **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Local host (System State/BMR) and virtual machines (VMs) running on your Azure Local. To learn more about Azure Backup, see [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+- **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Local host (System State/BMR) and virtual machines (VMs) running on your Azure Local machine. To learn more about Azure Backup, see [Back up Azure Local virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
 
-- **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local instances. You can view Azure Local instances across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](update/azure-update-manager-23h2.md).
+- **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local machines. You can view Azure Local machines across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](update/azure-update-manager-23h2.md).
 
 ## Next steps
 
