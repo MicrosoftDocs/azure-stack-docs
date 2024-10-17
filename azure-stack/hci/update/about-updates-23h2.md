@@ -44,9 +44,9 @@ This new approach:
 
 ## Lifecycle cadence
 
-The Azure Local platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Local release information](/azure-stack/hci/release-information-23h2).
+The Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Local release information](/azure-stack/hci/release-information-23h2).
 
-Microsoft might release the following types of updates for the Azure Local platform:
+Microsoft might release the following types of updates for the Azure Local:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
@@ -93,7 +93,7 @@ The PowerShell procedures apply to both single-node and multi-node systems that 
 
 ### The Azure portal
 
-You can install available Azure Local instance updates via the Azure portal using the Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](./azure-update-manager-23h2.md)
+You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](./azure-update-manager-23h2.md)
 
 ## Next steps
 

@@ -18,7 +18,7 @@ This article describes how to use Azure Update Manager to find and install avail
 
 ## About Azure Update Manager
 
-Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local systems. You can monitor your entire infrastructure, including remote and branch offices, and perform updates at scale.
+Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local machines. You can monitor your entire infrastructure, including remote and branch offices, and perform updates at scale.
 
 Here are some benefits of the Azure Update Manager:
 
@@ -62,7 +62,7 @@ To install system updates using Azure Update Manager, follow these steps:
     [![Screenshot on the check readiness of updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
 
 6. On the **Select updates** page, specify the updates you want to include in the deployment.
-   1. Select **Systems to update** to view updates to install or remove from the update installation.
+   1. View and select the available updates to install on your Azure Local machines.
    2. Select the **Version** link to view the update components, versions, and update release notes.
 
 7. Select **Next**.
@@ -100,7 +100,7 @@ To view the progress of your update installation, and completion results, follow
 
 ## Browse system update job history
 
-To browse for your systems update history, follow these steps:
+To browse the update history of your systems, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
 2. Under the **Manage** dropdown, select **History**.
@@ -131,7 +131,7 @@ To install updates on a single system from the resource page, follow these steps
    - You can select the links under **Affected systems** to view more details and individual system results.
 6. Select **Next**.
 7. On the **Select updates** page, specify the updates you want to include in the deployment.
-   1. Select **Systems to update** to view updates to install or remove from the update installation.
+   1. View and select the available updates to install on your Azure Local machines.
    2. Select the **Version** link to view the update components and their versions.
    3. Select the Details, **View details** link, to view the update release notes.
 8. Select **Next**.
