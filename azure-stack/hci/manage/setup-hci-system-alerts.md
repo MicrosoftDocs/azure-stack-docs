@@ -25,7 +25,7 @@ Take a few moments to watch the video walkthrough on collecting new logs, custom
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Local cluster that is deployed and registered.
+- You have access to an Azure Local system that is deployed and registered.
 - You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights). Enabling Insights configures the cluster to collect required logs in a Log Analytics workspace.
 
 ## Set up log alerts using Insights
@@ -57,7 +57,7 @@ You can start monitoring your Azure Local system and setting up alerts for it by
 
 Follow these steps to set up log alerts using sample log queries. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
 
-1. In the Azure portal, browse to your Azure Local cluster resource page, then select the cluster you want to monitor using sample log queries.
+1. In the Azure portal, browse to your Azure Local system resource page, then select the cluster you want to monitor using sample log queries.
 
 1. On your cluster **Overview** page, select **JSON View**.
 

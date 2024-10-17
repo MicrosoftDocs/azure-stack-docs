@@ -24,7 +24,7 @@ For more information about Azure Monitor alerts, see [What are Azure Monitor ale
 
 The integration of Azure Monitor alerts with Azure Local offers several key benefits:
 
-- **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Local cluster health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
+- **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Local system health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
 
 - **Near real-time monitoring.** With Azure Local health alerts providing near real-time monitoring, you can detect issues as they occur and take immediate action, thereby reducing downtime.
 
@@ -49,9 +49,9 @@ When you enable alerts via the Azure portal, the Azure Monitor extension is inst
 
 Follow these steps to turn on health alerts via the Azure portal.
 
-1. Go to your Azure Local cluster resource page and select your cluster. Under the **Capabilities** tab, select the **Health alerts** tile.
+1. Go to your Azure Local system resource page and select your cluster. Under the **Capabilities** tab, select the **Health alerts** tile.
 
-   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png" alt-text="Screenshot of Azure Local cluster resource page, with your cluster and the Health alerts tile selected." lightbox="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png":::
+   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png" alt-text="Screenshot of Azure Local system resource page, with your cluster and the Health alerts tile selected." lightbox="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png":::
 
 2. On the **Turn on health alerts** pane on the right, select the **Turn on** button.  
 
@@ -77,15 +77,15 @@ For information about alert processing rules and how to configure them, see [Ale
 
 ## Review health alerts
 
-In the Azure portal, you can review health alerts on your Azure Local cluster in real-time from the **Monitoring** > **Alerts** blade.
+In the Azure portal, you can review health alerts on your Azure Local system in real-time from the **Monitoring** > **Alerts** blade.
 
 The **Alerts** blade has a high-level summary of alerts at each severity level. You can drill down to see individual alerts at each severity level.
 
    :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png" alt-text="Screenshot of a high-level summary of alerts at each severity level." lightbox="./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png":::
 
-<!--The **Overview** page of your Azure Local cluster resource page also displays the alerts.
+<!--The **Overview** page of your Azure Local system resource page also displays the alerts.
 
-   ![Screenshot of the Overview page of your Azure Local cluster resource page with the alerts displayed.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-5.png)-->
+   ![Screenshot of the Overview page of your Azure Local system resource page with the alerts displayed.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-5.png)-->
 
 ## Disable health alerts
 

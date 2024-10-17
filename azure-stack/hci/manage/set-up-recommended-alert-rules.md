@@ -14,7 +14,7 @@ ms.date: 10/15/2024
 
 This article describes how to enable recommended alert rules for Azure Local.
 
-A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Local cluster resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
+A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
 
 For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Local](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
@@ -22,7 +22,7 @@ For information about how to set up log alerts and metric alerts, see [Set up lo
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Local cluster that is deployed and registered.
+- You have access to an Azure Local system that is deployed and registered.
 
 - The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from Azure Local. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
@@ -39,7 +39,7 @@ For a list of predefined recommended alerts available for Azure Local, see [Reco
 
 Follow these steps to enable recommended alert rules in the Azure portal:
 
-1. Go to your Azure Local cluster resource page and select your cluster.
+1. Go to your Azure Local system resource page and select your system.
 
 1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts. You can also select **Set up recommendations**.
 
@@ -61,11 +61,11 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 ## View recommended alert rules
 
-When the alert rule creation is complete, you'll see the alerts page for the Azure Local cluster.
+When the alert rule creation is complete, you'll see the alerts page for the Azure Local system.
 
 Follow these steps to view recommended alert rules:
 
-1. Go to your Azure Local cluster resource page and select your cluster. From the **Monitoring** section on the left menu, select **Alerts**.
+1. Go to your Azure Local system resource page and select your system. From the **Monitoring** section on the left menu, select **Alerts**.
 
 1. On the **Alerts** page, select **Alert rules** to view the rules you created.
 

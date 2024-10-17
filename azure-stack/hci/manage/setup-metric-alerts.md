@@ -20,7 +20,7 @@ For information about how to set up log alerts, see [Set up log alerts for Azure
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Local cluster that is deployed and registered.
+- You have access to an Azure Local system that is deployed and registered.
 
 - The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from Azure Local. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
