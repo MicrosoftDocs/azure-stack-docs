@@ -1,6 +1,6 @@
 ---
 title: Monitor at scale using the Azure Local overview and All systems page (preview)
-description: Learn to monitor your Azure Local systems using dashboards in Azure portal. You can view the status of Azure Local systems as charts or lists (preview).
+description: Learn to monitor your Azure Local using dashboards in Azure portal. You can view the status of Azure Local as charts or lists (preview).
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
@@ -8,11 +8,11 @@ ms.reviewer: alkohli
 ms.date: 10/08/2024
 ---
 
-# Use the dashboard to manage Azure Local systems (preview)
+# Use the dashboard to manage Azure Local (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article details how to manage at-scale your Azure Local systems via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
+This article details how to manage at-scale your Azure Local via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
 
 [!INCLUDE [hci-preview](../../hci/includes/hci-preview.md)]
 
@@ -36,7 +36,7 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png" alt-text="Screenshot of the Azure Local dashboard VM workloads." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png":::
 
-   You are taken to the list view of VMs running on your Azure Local systems.
+   You are taken to the list view of VMs running on your Azure Local.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Local dashboard VM workload details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png":::
 

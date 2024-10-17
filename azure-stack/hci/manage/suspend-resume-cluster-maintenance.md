@@ -10,11 +10,11 @@ ms.date: 10/08/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their machines for planned maintenance.
 ---
 
-# Suspend and resume Azure Local, version 23H2 machines for maintenance
+# Suspend and resume Azure Local machines for maintenance
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend a machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
+TThis article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
 
 ## Suspend a machine
 
@@ -22,7 +22,7 @@ To suspend a machine, first suspend the machine in Windows Failover Clustering. 
 
 To suspend a machine, follow these steps:
 
-1. Log on to one of the machines with a user that has local administrator permissions.
+1. Sign in to one of the machines with a user that has local administrator permissions.
 1. To suspend the machine, run this command:
 
     ```powershell
