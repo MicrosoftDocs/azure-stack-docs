@@ -47,7 +47,7 @@ This feature provides details of clusters that aren't monitored by the user. To 
 | Column | Description | Example |
 |--|--|--|
 | Cluster | The name of the cluster. | 27cls1 |
-| Azure connection status | The HCI resource status. | Connected |
+| Azure connection status | The Azure Local resource status. | Connected |
 | OS version | The operating system build on the node. | 10.0.20348.10131 |
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:

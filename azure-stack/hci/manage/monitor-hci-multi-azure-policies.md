@@ -25,7 +25,7 @@ This section describes the Azure policies to use to enable Insights at scale. Fo
 
 ### Policy to repair AMA
 
-For Azure Local clusters registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
+For Azure Local systems registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
 
 The policy to repair AMA performs the following function:
 

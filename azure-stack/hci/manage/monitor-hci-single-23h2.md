@@ -36,7 +36,7 @@ Insights for Azure Local offers the following benefits:
 
 Here are the prerequisites of using Insights for Azure Local:
 
-- You must have access to an Azure Local cluster that is deployed and registered.
+- You must have access to an Azure Local system that is deployed and registered.
 
 - The managed identity for the Azure resource must be enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 
@@ -48,7 +48,7 @@ To enable Insights at scale, see [Enable Insights for Azure Local at scale using
 
 Follow these steps to enable Insights from the Azure portal:
 
-1. In the Azure portal, browse to your Azure Local cluster resource page, then select your cluster. Under the **Capabilities** tab, select **Insights**.
+1. In the Azure portal, browse to your Azure Local resource page, then select your system. Under the **Capabilities** tab, select **Insights**.
 
    :::image type="content" source="media/monitor-hci-single-23h2/insights-tile.png" alt-text="Screenshot showing the Insights tile." lightbox="media/monitor-hci-single-23h2/insights-tile.png":::
 
@@ -82,7 +82,7 @@ Follow these steps to enable Insights from the Azure portal:
 
    After selecting **Set up**, you're redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
 
-1. Go to your Azure Local cluster resource page, and then select your cluster. Insights now shows as **Configured** on the **Capabilities** tab:
+1. Go to your Azure Local resource page, and then select your system. Insights now shows as **Configured** on the **Capabilities** tab:
 
    :::image type="content" source="media/monitor-hci-single-23h2/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single-23h2/insights-configured.png":::
 

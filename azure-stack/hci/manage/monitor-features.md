@@ -41,7 +41,7 @@ Follow these steps to monitor Azure Local features with Insights:
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
 
-1. In the Azure portal, browse to your Azure Local cluster resource page, and then select your cluster.
+1. In the Azure portal, browse to your Azure Local system resource page, and then select your cluster.
 
 1. Select **Insights** from the left pane, and then select the **Overview** tab.
 
@@ -121,7 +121,7 @@ Follow these steps to update Insights:
 
 ## Monitor ReFS deduplication and compression
 
-ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It's a post-process solution and carries out block-level deduplication and compression at a fixed block size based on the cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Local](./refs-deduplication-and-compression.md).
+ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It's a post-process solution and carries out block-level deduplication and compression at a fixed block size based on the system size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Local](./refs-deduplication-and-compression.md).
 
 Follow these steps to start monitoring the ReFS deduplication and compression feature:
 

@@ -59,7 +59,7 @@ The following table provides a brief description and setup instructions for each
 | Health alerts | These are system-generated alerts and have no additional cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-stack-hci). |
 | Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. | See [Set up log alerts for Azure Local](../manage/setup-hci-system-alerts.md).  |
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
-| Recommended alerts | These are predefined metric-based alerts for your Azure Local cluster resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
+| Recommended alerts | These are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
 
 ## Next steps
 
