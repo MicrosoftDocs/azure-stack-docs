@@ -46,7 +46,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Install the current version of the Lustre client using the following command:
 
     ```bash
-    sudo dnf install amlfs-lustre-client-2.15.4_42_gd6d405d-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+    sudo dnf install amlfs-lustre-client-2.15.5_41_gc010524-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
     ```
 
 1. Verify that old kernel modules are removed using the following command:
@@ -86,7 +86,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Install the current version of the Lustre client using the following command:
 
     ```bash
-    sudo apt install amlfs-lustre-client-2.15.4-42-gd6d405d=$(uname -r)
+    sudo apt install amlfs-lustre-client-2.15.5-41-gc010524=$(uname -r)
     ```
 
 1. Verify that old kernel modules are removed using the following command:
