@@ -13,11 +13,11 @@ ms.date: 03/14/2024
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll review considerations when deploying Software Defined Networking (SDN) in your Azure Local cluster.
+In this article, you'll review considerations when deploying Software Defined Networking (SDN) in your Azure Local instance.
 
 ## SDN hardware requirements
 
-When using SDN, you must ensure that the physical switches used in your Azure Local cluster support a set of capabilities that are documented at [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+When using SDN, you must ensure that the physical switches used in your Azure Local instance support a set of capabilities that are documented at [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
 
 If you are using SDN Software Load Balancers (SLB) or Gateway Generic Routing Encapsulation (GRE) gateways, you must also configure Border Gateway Protocol (BGP) peering with the top of rack (ToR) switches so that the SLB and GRE Virtual IP addresses (VIPs) can be advertised. For more information, see [Switches and routers](../concepts/plan-software-defined-networking-infrastructure.md#switches-and-routers).
 

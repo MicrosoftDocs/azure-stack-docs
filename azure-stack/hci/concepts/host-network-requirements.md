@@ -11,7 +11,7 @@ ms.author: dacuo
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
+This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between machines, see [Physical network requirements](physical-network-requirements.md).
 
 For information on how to simplify host networking using Network ATC, see [Simplify host networking with Network ATC](../deploy/network-atc.md).
 
@@ -29,7 +29,7 @@ Azure Local network traffic can be classified by its intended purpose:
 
 ## Select a network adapter
 
-Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Local, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
+Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
 For more information about this role-based NIC qualification, please see this [link](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
@@ -232,7 +232,7 @@ SMB provides many benefits as the storage protocol for Azure Local, including SM
 > [!NOTE]
 >We recommend using multiple subnets and VLANs to separate storage traffic in Azure Local.
 
-Consider the following example of a four node cluster. Each server has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first server (192.168.1.1) will make a connection to the left-side port on the second server (192.168.1.2). The right-side port on the first server (192.168.1.12) will connect to the right-side port on the second server. Similar connections are established for the third and fourth servers.
+Consider the following example of a four node cluster. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
@@ -296,7 +296,7 @@ Here is the example bandwidth allocation table:
 
 ## Stretched clusters
 
-Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Local cluster network looks like this:
+Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Local instance network looks like this:
 
 
 
@@ -311,7 +311,7 @@ Stretched clusters have the following requirements and characteristics:
 
 - RDMA is limited to a single site, and isn't supported across different sites or subnets.
 
-- Servers in the same site must reside in the same rack and Layer-2 boundary.
+- Machines in the same site must reside in the same rack and Layer-2 boundary.
 
 - Host communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies aren't supported.
 

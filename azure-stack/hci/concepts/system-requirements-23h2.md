@@ -1,6 +1,6 @@
 ---
 title: System requirements for Azure Local, version 23H2
-description: How to choose servers, storage, and networking components for Azure Local, version 23H2.
+description: How to choose machines, storage, and networking components for Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -13,11 +13,11 @@ ms.date: 08/22/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
- This article discusses Azure, server and storage, networking, and other requirements for Azure Local. If you purchase Azure Local Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+ This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated Systems for Azure Local solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
 
 ## Azure requirements
 
-Here are the Azure requirements for your Azure Local cluster:
+Here are the Azure requirements for your Azure Local instance:
 
 - **Azure subscription**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
 
@@ -39,25 +39,25 @@ Here are the Azure requirements for your Azure Local cluster:
    - Japan East
    - South Central US
 
-## Server and storage requirements
+## Machine and storage requirements
 
-Before you begin, make sure that the physical server and storage hardware used to deploy an Azure Local cluster meets the following requirements:
+Before you begin, make sure that the physical machine and storage hardware used to deploy an Azure Local instance meets the following requirements:
 
 |Component|Minimum|
 |--|--|
-|Number of servers| 1 to 16 servers are supported. <br> Each server must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
+|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
 |Memory|A minimum of 32-GB RAM per node.|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200-GB size.|
-|Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single servers must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
+|Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 
-The servers should also meet this extra requirement:
+The machines should also meet this extra requirement:
 
-- Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
+- Have direct-attached drives that are physically attached to one machine each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
 
     > [!NOTE]
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
@@ -66,7 +66,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ## Networking requirements
 
-An Azure Local cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
+An Azure Local instance requires a reliable high-bandwidth, low-latency network connection between each machine.
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
@@ -76,9 +76,9 @@ Azure Local deployments that exceed the following specifications are not support
 
 | Resource | Maximum |
 | --- | --- |
-| Physical servers per cluster |16 |
+| Physical machines per cluster |16 |
 | Storage per cluster |	4 PB |
-| Storage per server | 400 TB |
+| Storage per machine | 400 TB |
 | Volumes per cluster |	64 |
 | Volume size |	64 TB |
 | Logical processors per host |	512 |
@@ -169,7 +169,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
 4. Download your driver.
 
-5. Install the driver identified in Step #2 by **DriverFileName** on all servers of the cluster. For more information, see [PnPUtil Examples - Windows Drivers](/windows-hardware/drivers/devtest/pnputil-examples#add-driver).
+5. Install the driver identified in Step #2 by **DriverFileName** on all machines of the system. For more information, see [PnPUtil Examples - Windows Drivers](/windows-hardware/drivers/devtest/pnputil-examples#add-driver).
 
     Here's an example:
 

@@ -15,7 +15,7 @@ ms.date: 03/14/2024
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
 
-A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
+A deployment consists of single-server or multiple server systems (up to 16 machines per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
 - At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the cluster in the future.
 
@@ -45,7 +45,7 @@ For more information, see [Physical network requirements for Azure Local](../con
 
 Azure Local requires periodic connectivity to Azure. If your organization's outbound firewall is restricted, you would need to include firewall requirements for outbound endpoints and internal rules and ports. There are required and recommended endpoints for the Azure Local core components, which include cluster creation, registration and billing, Microsoft Update, and cloud cluster witness.
 
-See the [firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table) for a complete list of endpoints. Make sure to include these required URLS in your allowed list. Proper network ports need to be opened between all server nodes both within a site and between sites (for stretched clusters).
+See the [firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table) for a complete list of endpoints. Make sure to include these required URLS in your allowed list. Proper network ports need to be opened between all machines both within a site and between sites (for stretched clusters).
 
 Azure Local connectivity validator of the [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.3-preview) tool, checks for the outbound connectivity requirement by default during deployment. Additionally, you can run the Environment Checker tool standalone before, during, or after deployment to evaluate the outbound connectivity of your environment.
 

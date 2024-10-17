@@ -91,7 +91,7 @@ Set-Acl -Path $ouPath -AclObject $acl
 
 ## Required DNS records
 
-If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Local system.
+If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Local instance.
 
 The following table contains the required DNS records and types:
 
@@ -102,7 +102,7 @@ The following table contains the required DNS records and types:
 | Cluster VCO   | Host A |
 
 > [!NOTE]
-> Every machine that becomes a part of the Azure Local cluster requires a DNS record.
+> Every machine that becomes a part of the Azure Local instance requires a DNS record.
 
 ### Example - verify that DNS record exists
 

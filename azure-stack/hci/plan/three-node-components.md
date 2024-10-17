@@ -49,7 +49,7 @@ The following are optional components. For more information on Software Defined 
 
 #### SDN Load Balancer VM
 
-The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
+The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple machines to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
 #### SDN Gateway VM
 
@@ -63,7 +63,7 @@ The SDN Gateway VM is used for routing network traffic between a virtual network
 
 ## Host service and agent components
 
-The following components run as services or agents on the host server:
+The following components run as services or agents on the host machine:
 
 **Arc host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
 

@@ -245,7 +245,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 ## Network switch requirements
 
-This section lists industry standards that are mandatory for the specific roles of network switches used in Azure Local deployments. These standards help ensure reliable communications between nodes in Azure Local cluster deployments.
+This section lists industry standards that are mandatory for the specific roles of network switches used in Azure Local deployments. These standards help ensure reliable communications between nodes in Azure Local instance deployments.
 
 > [!NOTE]
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).

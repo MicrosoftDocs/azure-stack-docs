@@ -42,7 +42,7 @@ Network security features such as microsegmentation and Quality of Service (QoS)
 
 As illustrated in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the Azure Local cluster is implemented using a single TOR L2 or L3 switch.
+- For northbound/southbound traffic, the Azure Local instance is implemented using a single TOR L2 or L3 switch.
 - Two teamed network ports to handle the management and compute traffic connected to the switch.
 - Two disconnected RDMA NICs that are only used if add a second server to your cluster for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.

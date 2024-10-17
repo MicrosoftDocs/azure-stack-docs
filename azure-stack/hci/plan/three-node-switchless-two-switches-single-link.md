@@ -31,7 +31,7 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 As illustrated in the diagram above, this pattern has the following physical network components:
 
-- For northbound and southbound communication, the Azure Local cluster requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
+- For northbound and southbound communication, the Azure Local instance requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 - Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
 - Two RDMA NICs on each node in a full-mesh single link configuration for East-West traffic for the storage.
     > [!NOTE]
@@ -59,7 +59,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local cluster from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
 - For Azure Local, version 23H2 cloud deployments:
 
