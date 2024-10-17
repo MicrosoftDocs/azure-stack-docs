@@ -19,7 +19,7 @@ For an overview of Azure Policy, see [What is Azure Policy?](/azure/governance/p
 
 ## About using Azure policies to enable Insights at scale
 
-To monitor multiple Azure Local systems with Insights, you need to enable Insights for each system individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on the defined rules. If any non-clompliant resources are found after assigning the policies, you can remediate them through remediation tasks.
+To monitor multiple Azure Local systems with Insights, you need to enable Insights for each system individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on the defined rules. If any non-compliant resources are found after assigning the policies, you can remediate them through remediation tasks.
 
 This section describes the Azure policies to use to enable Insights at scale. For each policy, it also provides policy definition template in JSON that you can use as-is to create policy definitions, or as a starting point for further customization.
 
