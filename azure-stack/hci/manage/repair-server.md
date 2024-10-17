@@ -154,8 +154,6 @@ Follow these steps on another machine that is a member of the same Azure Local i
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
-
-
 ### Monitor operation progress
 
 To monitor the progress of the add machine operation, follow these steps:
