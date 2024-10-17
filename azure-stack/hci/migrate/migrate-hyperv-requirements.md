@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ---
 
@@ -58,7 +58,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Source Hyper-V requirements
 
-- Hyper-V server is supported for both standalone server and cluster configuration.
+- Hyper-V Server is supported for both standalone server and cluster configuration.
 
     You can discover and migrate standalone (non-highly available) VMs on standalone Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
 
@@ -70,7 +70,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Target Azure Local requirements
 
-- The target Azure Local instance OS must be running version 23H2.
+- The target operating system for your Azure Local instance must be running version 23H2.
 
 - An Arc Resource Bridge must exist on the Azure Local, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 

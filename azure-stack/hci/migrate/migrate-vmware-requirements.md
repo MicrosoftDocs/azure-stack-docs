@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -23,7 +23,7 @@ The following operating systems (OSs) are supported for the VMware source applia
 
 |Component  |Supported OS |
 |---------|---------|
-|Source environment     |VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
+|Source environment     |VMware vCenter Server version 8.0 <br>VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
 |Source appliance     |Windows Server 2022          |
 |Target environment     |Azure Local, version 23H2         |
 |Target appliance     |Windows Server 2022         |
