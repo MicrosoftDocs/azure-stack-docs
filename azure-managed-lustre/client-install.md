@@ -146,6 +146,9 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-7"
 
+> [!WARNING]
+> We will no longer be publishing any more new AMLFS client packages for Red Hat Enterprise Linux 7 moving forward. Please migrated to one of the supported release to run newer versions of the AMLFS client packages.
+
 1. Install and configure the Azure Managed Lustre repository for the YUM package manager. Create the following script and name it `repo.bash`:
 
    ```bash
@@ -254,6 +257,9 @@ The instructions apply to client VMs running:
 > [!CAUTION]
 > Ubuntu 18.04 LTS reached the end of Standard Support on May 31, 2023. Microsoft recommends either migrating to the next Ubuntu LTS release or upgrading to Ubuntu Pro to gain access to extended security and maintenance from Canonical. For more information, see the [announcement](https://techcommunity.microsoft.com/t5/linux-and-open-source-blog/canonical-ubuntu-18-04-lts-reaching-end-of-standard-support/ba-p/3822623).
 
+> [!WARNING]
+> We will no longer be publishing any more new AMLFS client packages for Ubuntu 18.04 moving forward. Please migrated to one of the supported release to run newer versions of the AMLFS client packages.
+
 1. Ensure you have Ubuntu Pro activated and are on the recommended 5.4 kernel, which is provided by the linux-image-azure metapackage:
 
    ```bash
@@ -284,7 +290,7 @@ The instructions apply to client VMs running:
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
-   [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+   [!INCLUDE [client-install-version-ubuntu-18](./includes/client-install-version-ubuntu-18.md)]
 
 ::: zone-end
 
