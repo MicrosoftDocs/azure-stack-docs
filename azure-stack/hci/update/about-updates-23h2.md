@@ -5,12 +5,14 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 01/31/2024
+ms.date: 10/17/2024
 ---
 
 # About updates for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 This article describes the new update feature for this release, benefits of the feature, and how to keep various pieces of your Azure Stack HCI solution up to date.
 

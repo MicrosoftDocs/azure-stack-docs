@@ -121,3 +121,6 @@ sections:
           ------                         ----------------
           Microsoft Azure Stack HCI      23H2
           ```
+      - question: How long is Azure Stack HCI, version 22H2 supported?
+        answer: |
+          [!INCLUDE [end-of-service-22H2](../hci/includes/end-of-service-22h2.md)]
