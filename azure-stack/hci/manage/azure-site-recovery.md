@@ -42,7 +42,7 @@ The following diagram illustrates the overall workflow of Azure Site Recovery wo
 
 Here are the main steps that occur when using Site Recovery with an Azure Local:
 
-1. Start with a registered Azure Local system on which you enable Azure Site Recovery.
+1. Start with a registered Azure Local on which you enable Azure Site Recovery.
 1. Make sure that you meet the [prerequisites](#prerequisites-and-planning) before you begin.
 1. Create the following resources in your Azure Local resource portal:
     1. Recovery services vault
@@ -72,9 +72,9 @@ The following table lists the scenarios that are supported for Azure Site Recove
 Before you begin, make sure to complete the following prerequisites:
 
 - The Hyper-V VMs that you intend to replicate should be made highly available for replication to happen. If VMs aren't highly available, then the replication would fail. For more information, see [How to make an existing Hyper-V machine VM highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
-- Make sure that Hyper-V is set up on the Azure Local system.
+- Make sure that Hyper-V is set up on the Azure Local.
 - The machines hosting the VMs you want to protect must have internet access to replicate to Azure.
-- The Azure Local system must already be registered.
+- The Azure Local must already be registered.
     - The system must be running May cumulative update for Azure Local, version 22H2.
     - If you're running an earlier build, the Azure portal indicates that the disaster recovery isn't supported as managed identity isn't enabled for older versions.
 
@@ -111,7 +111,7 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
     1. Accept the defaults for other settings.
 
         > [!IMPORTANT]
-        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local system and its child resources.
+        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local and its child resources.
 
         Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
