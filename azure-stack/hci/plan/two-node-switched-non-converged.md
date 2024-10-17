@@ -29,7 +29,7 @@ Routing services such as BGP can be configured directly on the TOR switches if t
 
 As described in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the cluster in this pattern is implemented with two TOR switches in MLAG configuration.
+- For northbound/southbound traffic, the system in this pattern is implemented with two TOR switches in MLAG configuration.
 
 - Two teamed network cards to handle management and compute traffic connected to two TOR switches. Each NIC is connected to a different TOR switch.
 
@@ -89,7 +89,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both can use the same VLAN tag.
 
-The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
+The storage adapters operate in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the system.
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 

@@ -19,7 +19,7 @@ For information about other network patterns, see [Azure Local network deploymen
 
 ## Introduction
 
-Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Local running on a single-server behaves similarly to Azure Local on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](../manage/azure-benefits.md).
+Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single machine. Azure Local running on a single machine behaves similarly to Azure Local on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the system, and it includes the same [Azure benefits](../manage/azure-benefits.md).
 
 It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS on Azure Local, and is supported and billed the same way.
 
@@ -44,7 +44,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 
 - For northbound/southbound traffic, the Azure Local instance is implemented using a single TOR L2 or L3 switch.
 - Two teamed network ports to handle the management and compute traffic connected to the switch.
-- Two disconnected RDMA NICs that are only used if add a second server to your cluster for scale-out. This means no increased costs for cabling or physical switch ports.
+- Two disconnected RDMA NICs that are only used if add a second server to your system for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.
 
 :::image type="content" source="media/single-server/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout." lightbox="media/single-server/physical-connectivity-layout.png":::

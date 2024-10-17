@@ -76,10 +76,10 @@ Azure Local deployments that exceed the following specifications are not support
 
 | Resource | Maximum |
 | --- | --- |
-| Physical machines per cluster |16 |
-| Storage per cluster |	4 PB |
+| Physical machines per instance |16 |
+| Storage per instance |	4 PB |
 | Storage per machine | 400 TB |
-| Volumes per cluster |	64 |
+| Volumes per instance |	64 |
 | Volume size |	64 TB |
 | Logical processors per host |	512 |
 | RAM per host | 24 TB
@@ -98,7 +98,7 @@ Before deploying Azure Local, version 23H2, ensure that your hardware is up to d
 
 This section contains OEM contact information and links to OEM Azure Local, version 23H2 reference material.
 
-| Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the cluster after it's running |
+| Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the system after it's running |
 |-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
 | Bluechip              | SERVERline R42203a *Certified for Azure Local*   | [bluechip Service & Support](https://service.bluechip.de/)     | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) |
 | DataON                | AZS-XXXX    | [AZS-XXXX BIOS link](https://www.dataonstorage.com/ir72)     | [AZS-XXXX driver link](https://www.dataonstorage.com/469v) | [AZS-XXXX driver link](https://www.dataonstorage.com/469v)| [AZS-XXXX update link](https://www.dataonstorage.com/9kto) |

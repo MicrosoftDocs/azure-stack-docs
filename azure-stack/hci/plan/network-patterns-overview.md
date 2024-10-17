@@ -15,9 +15,9 @@ ms.date: 03/14/2024
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
 
-A deployment consists of single-server or multiple server systems (up to 16 machines per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
+A deployment consists of single-server or multiple server systems (up to 16 machines per system) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
-- At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the cluster in the future.
+- At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the system in the future.
 
 - One or two network adapter ports dedicated to management and compute traffic intents.
 
@@ -27,23 +27,23 @@ The following highlights some considerations of using switchless configurations:
 
 - Storage switchless deployments in Azure Local 23H2 only support 1,2 or 3 nodes.
 
-- Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local 23H2 clusters.  
+- Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local 23H2 systems.  
 
-- No switch is necessary for in-cluster (East-West) traffic; however, a physical switch is required for traffic outside the cluster (North-South).
+- No switch is necessary for in-system (East-West) traffic; however, a physical switch is required for traffic outside the system (North-South).
 
 - Network ATC doesn't support storage network autoIP on 3 nodes switchless deployments. Planning is required for IP and subnet addressing schemes.
 
 - Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication can't use the storage network adapters.
 
-- As the number of nodes in the cluster grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
+- As the number of nodes in the system grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
 
-- Beyond a three-node cluster, cable management complexity grows.
+- Beyond a three-node system, cable management complexity grows.
 
 For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
 ## Firewall requirements
 
-Azure Local requires periodic connectivity to Azure. If your organization's outbound firewall is restricted, you would need to include firewall requirements for outbound endpoints and internal rules and ports. There are required and recommended endpoints for the Azure Local core components, which include cluster creation, registration and billing, Microsoft Update, and cloud cluster witness.
+Azure Local requires periodic connectivity to Azure. If your organization's outbound firewall is restricted, you would need to include firewall requirements for outbound endpoints and internal rules and ports. There are required and recommended endpoints for the Azure Local core components, which include system creation, registration and billing, Microsoft Update, and cloud witness.
 
 See the [firewall requirements](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table) for a complete list of endpoints. Make sure to include these required URLS in your allowed list. Proper network ports need to be opened between all machines both within a site and between sites (for stretched clusters).
 

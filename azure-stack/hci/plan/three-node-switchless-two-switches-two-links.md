@@ -35,7 +35,7 @@ As illustrated in the diagram above, this pattern has the following physical net
 
 - Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
 
-- Four RDMA NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage. Each node in the cluster has a redundant connection with two paths to the other node in the cluster.
+- Four RDMA NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage. Each node in the system has a redundant connection with two paths to the other node in the system.
 
 |Networks|Management and compute|Storage|
 |--|--|--|
@@ -63,7 +63,7 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
 
 - For Azure Local, version 23H2 cloud deployments:
 
-    - Scale out storage switchless clusters aren't supported.
+    - Scale out storage switchless systems aren't supported.
 
     - It's only possible to deploy this three-node scenario using ARM templates.
 
@@ -87,7 +87,7 @@ The management network supports two different VLAN configurations for traffic - 
 
 - If the intent includes management and compute traffic types, the physical switch ports must be configured in trunk mode to accept all the VLANs required for management and compute workloads.
 
-The Management network supports traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, and Active Directory.
+The Management network supports traffic used by the administrator for management of the system including Remote Desktop, Windows Admin Center, and Active Directory.
 
 For more information, see [Management VLAN network considerations](cloud-deployment-network-considerations.md#management-vlan-id).
 

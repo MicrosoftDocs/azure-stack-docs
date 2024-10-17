@@ -405,7 +405,7 @@ Azure Local can function in various data center architectures including 2-tier (
 Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
-> We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+> We highly recommend that all system nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 > [!NOTE]
 > Stretched cluster functionality is only available in Azure Local, version 22H2.
@@ -424,7 +424,7 @@ North-South traffic has the following characteristics:
 East-West traffic has the following characteristics:
 
 - Traffic remains within the ToR switches and Layer-2 boundary (VLAN).
-- Includes storage traffic or Live Migration traffic between nodes in the same cluster and (if using a stretched cluster) within the same site.
+- Includes storage traffic or Live Migration traffic between nodes in the same system and (if using a stretched cluster) within the same site.
 - May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 ## Using switches
@@ -439,7 +439,7 @@ Work with your network vendor or network support team to ensure your network swi
 
 ## Using switchless
 
-Azure Local supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
+Azure Local supports switchless (direct) connections for East-West traffic for all system sizes so long as each node in the system has a redundant connection to every node in the system. This is called a "full-mesh" connection.
 
 :::image type="content" source="media/physical-network-requirements/switchless-connectivity.png" alt-text="Diagram showing full-mesh switchless connectivity" lightbox="media/physical-network-requirements/switchless-connectivity.png":::
 
@@ -451,20 +451,20 @@ Azure Local supports switchless (direct) connections for East-West traffic for a
 |SMB03|192.168.73.x/24|713|
 
 > [!NOTE]
->The benefits of switchless deployments diminish with clusters larger than three-nodes due to the number of network adapters required.
+>The benefits of switchless deployments diminish with systems larger than three-nodes due to the number of network adapters required.
 
 ### Advantages of switchless connections
 
-- No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs but is dependent on the number of nodes in the cluster.
-- Because there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the cluster size increases.
+- No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs but is dependent on the number of nodes in the system.
+- Because there is no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the system size increases.
 
 ### Disadvantages of switchless connections
 
 - More planning is required for IP and subnet addressing schemes.
 - Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access cannot use these adapters.
-- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
-- Doesn't scale well beyond three-node clusters. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
-- Cluster expansion is complex, requiring hardware and software configuration changes.
+- As the number of nodes in the system grows, the cost of network adapters could exceed the cost of using network switches.
+- Doesn't scale well beyond three-node systems. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
+- System expansion is complex, requiring hardware and software configuration changes.
 
 ## Next steps
 

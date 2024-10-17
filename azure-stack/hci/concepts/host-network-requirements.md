@@ -19,7 +19,7 @@ For information on how to simplify host networking using Network ATC, see [Simpl
 
 Azure Local network traffic can be classified by its intended purpose:
 
-- **Management traffic:** Traffic to or from outside the local cluster. For example, storage replica traffic or traffic used by the administrator for management of the cluster like Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Management traffic:** Traffic to or from outside the local system. For example, storage replica traffic or traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc.
 - **Compute traffic:** Traffic originating from or destined to a virtual machine (VM).
 - **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration. This traffic is layer-2 traffic and is not routable.
 
@@ -196,9 +196,9 @@ For detailed information on how to deploy RDMA, download the document from the [
 
 RoCE-based Azure Local implementations require the configuration of three PFC traffic classes, including the default traffic class, across the fabric and all hosts.
 
-#### Cluster traffic class
+#### System traffic class
 
-This traffic class ensures that there's enough bandwidth reserved for cluster heartbeats:
+This traffic class ensures that there's enough bandwidth reserved for system heartbeats:
 
 - Required: Yes
 - PFC-enabled: No
@@ -218,7 +218,7 @@ This traffic class ensures that there's enough bandwidth reserved for lossless R
 
 #### Default traffic class
 
-This traffic class carries all other traffic not defined in the cluster or RDMA traffic classes, including VM traffic and management traffic:
+This traffic class carries all other traffic not defined in the system or RDMA traffic classes, including VM traffic and management traffic:
 
 - Required: By default (no configuration necessary on the host)
 - Flow control (PFC)-enabled: No
@@ -232,15 +232,15 @@ SMB provides many benefits as the storage protocol for Azure Local, including SM
 > [!NOTE]
 >We recommend using multiple subnets and VLANs to separate storage traffic in Azure Local.
 
-Consider the following example of a four node cluster. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
+Consider the following example of a four node system. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
-:::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node cluster on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node system on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
 
 The recommended approach is to use separate subnets and VLANs for each set of adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
 
-:::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node cluster on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node system on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
 
 ## Traffic bandwidth allocation
 

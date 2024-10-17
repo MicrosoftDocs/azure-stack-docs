@@ -27,11 +27,11 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 As illustrated in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the cluster requires two TOR switches in MLAG configuration.
+- For northbound/southbound traffic, the system requires two TOR switches in MLAG configuration.
 
 - Two teamed network cards to handle management and compute traffic, and connected to the TOR switches. Each NIC is connected to a different TOR switch.
 
-- Two RDMA NICs in a full-mesh configuration for East-West storage traffic. Each node in the cluster has a redundant connection to the other node in the cluster.
+- Two RDMA NICs in a full-mesh configuration for East-West storage traffic. Each node in the system has a redundant connection to the other node in the system.
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
@@ -91,7 +91,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both may share the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
 
-The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
+The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the system.
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 

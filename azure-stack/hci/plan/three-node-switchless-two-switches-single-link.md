@@ -63,7 +63,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - For Azure Local, version 23H2 cloud deployments:
 
-    - Scale out storage switchless clusters aren't supported.
+    - Scale out storage switchless systems aren't supported.
 
     - It's only possible to deploy this three-node scenario using ARM templates.
     
@@ -87,7 +87,7 @@ The management network supports two different VLAN configurations for traffic - 
 
 - If the intent includes Management and Compute traffic types, the physical switch ports must be configured in trunk mode to accept all the VLANs required for management and compute workloads.
 
-The Management network supports traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, and Active Directory.
+The Management network supports traffic used by the administrator for management of the system including Remote Desktop, Windows Admin Center, and Active Directory.
 
 For more information, see [Management VLAN network considerations](cloud-deployment-network-considerations.md#management-vlan-id).
 
