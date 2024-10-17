@@ -49,4 +49,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)
+- [Download Azure Stack HCI](../deploy/download-software.md)
