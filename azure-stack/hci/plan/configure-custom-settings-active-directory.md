@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 06/26/2024
 ms.author: alkohli
+ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ---
 
@@ -160,5 +161,5 @@ Get-NetAdapter "vManagement*"|Set-DnsClient -RegisterThisConnectionsAddress $fal
 ## Next steps
 
 Proceed to:
-- [Download the Azure Stack HCI OS software](../deploy/download-azure-stack-hci-23h2-software.md).
+- [Download the Azure Stack HCI OS software](../deploy/download-23h2-software.md).
 - [Install the Azure Stack HCI OS software](../deploy/deployment-install-os.md).
