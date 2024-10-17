@@ -3,7 +3,7 @@ title: Host network requirements for Azure Local
 description: Learn the host network requirements for Azure Local
 author: dcuomo
 ms.topic: how-to
-ms.date: 06/24/2024
+ms.date: 10/17/2024
 ms.author: dacuo
 ---
 
@@ -31,7 +31,7 @@ Azure Local network traffic can be classified by its intended purpose:
 
 Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
-For more information about this role-based NIC qualification, please see this [link](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
+For more information about this role-based NIC qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
@@ -296,7 +296,7 @@ Here is the example bandwidth allocation table:
 
 ## Stretched clusters
 
-Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Local instance network looks like this:
+Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched cluster of Azure Local looks like this:
 
 
 

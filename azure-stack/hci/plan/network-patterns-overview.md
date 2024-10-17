@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 10/17/2024
 ---
 
 # Network reference patterns overview for Azure Local
@@ -15,9 +15,9 @@ ms.date: 03/14/2024
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
 
-A deployment consists of single-server or multiple server systems (up to 16 machines per system) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
+A deployment consists of single-node or multiple node systems (up to 16 machines per system) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
-- At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the system in the future.
+- At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-node deployments, where network adapters for storage aren't required if you aren't planning to scale out the system in the future.
 
 - One or two network adapter ports dedicated to management and compute traffic intents.
 

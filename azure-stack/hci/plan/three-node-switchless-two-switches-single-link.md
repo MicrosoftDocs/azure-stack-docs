@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-arm-template
-ms.date: 05/15/2024
+ms.date: 10/17/2024
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Local

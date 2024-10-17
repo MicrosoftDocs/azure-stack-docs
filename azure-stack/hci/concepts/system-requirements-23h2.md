@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 08/22/2024
+ms.date: 10/17/2024
 ---
 
 # System requirements for Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
- This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated Systems for Azure Local solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
+This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
 
 ## Azure requirements
 
@@ -41,7 +41,7 @@ Here are the Azure requirements for your Azure Local instance:
 
 ## Machine and storage requirements
 
-Before you begin, make sure that the physical machine and storage hardware used to deploy an Azure Local instance meets the following requirements:
+Before you begin, make sure that the physical machine and storage hardware used to deploy Azure Local meets the following requirements:
 
 |Component|Minimum|
 |--|--|
@@ -76,10 +76,10 @@ Azure Local deployments that exceed the following specifications are not support
 
 | Resource | Maximum |
 | --- | --- |
-| Physical machines per instance |16 |
-| Storage per instance |	4 PB |
+| Physical machines per system |16 |
+| Storage per system |	4 PB |
 | Storage per machine | 400 TB |
-| Volumes per instance |	64 |
+| Volumes per system |	64 |
 | Volume size |	64 TB |
 | Logical processors per host |	512 |
 | RAM per host | 24 TB

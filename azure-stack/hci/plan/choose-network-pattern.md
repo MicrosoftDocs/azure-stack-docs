@@ -1,11 +1,11 @@
 ---
 title: Azure Local deployment network reference patterns
-description: Select a network reference pattern for single-server and two-node Azure Local deployments.
+description: Select a network reference pattern for single-node and two-node Azure Local deployments.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 10/17/2024
 ---
 
 # Azure Local network deployment patterns
@@ -18,11 +18,11 @@ This article describes a set of network patterns references to architect, deploy
 
 Use the following table to directly go to a pattern and its content.
 
-### Single-server deployment pattern
+### Single-node deployment pattern
 
-**Go to [single server deployment](single-server-deployment.md)**
+**Go to [single node deployment](single-server-deployment.md)**
 
-:::image type="content" source="media/plan-deployment/single-server-deployment.png" alt-text="Diagram showing single-server deployment pattern." lightbox="media/plan-deployment/single-server-deployment.png":::
+:::image type="content" source="media/plan-deployment/single-server-deployment.png" alt-text="Diagram showing single-node deployment pattern." lightbox="media/plan-deployment/single-server-deployment.png":::
 
 ### Two-node deployment patterns
 

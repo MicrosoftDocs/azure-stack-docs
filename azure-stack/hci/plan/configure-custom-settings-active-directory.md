@@ -1,9 +1,9 @@
 --- 
 title: Custom or advanced Active Directory configuration for Azure Local, version 23H2
-description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2.
+description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/26/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -91,7 +91,7 @@ Set-Acl -Path $ouPath -AclObject $acl
 
 ## Required DNS records
 
-If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Local instance.
+If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Local system.
 
 The following table contains the required DNS records and types:
 
@@ -102,7 +102,7 @@ The following table contains the required DNS records and types:
 | Cluster VCO   | Host A |
 
 > [!NOTE]
-> Every machine that becomes a part of the Azure Local instance requires a DNS record.
+> Every machine that becomes a part of the Azure Local system requires a DNS record.
 
 ### Example - verify that DNS record exists
 
@@ -116,7 +116,7 @@ nslookup "machine name"
 
 A disjoint namespace occurs when the primary DNS suffix of one or more domain member computers doesn't match the DNS name of their Active Directory domain. For example, if a computer has a DNS name of corp.contoso.com but is part of an Active Directory domain called na.corp.contoso.com, it's using a disjoint namespace.
 
-Before deploying Azure Local version 23H2, you must:
+Before deploying Azure Local, version 23H2, you must:
 
 - Append the DNS suffix to the management adapter of every node.
 - Verify you can resolve the hostname to the FQDN of the Active Directory.

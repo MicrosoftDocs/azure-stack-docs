@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 05/15/2024
+ms.date: 10/17/2024
 ---
 
 # Review two-node storage reference pattern IP requirements for Azure Local
