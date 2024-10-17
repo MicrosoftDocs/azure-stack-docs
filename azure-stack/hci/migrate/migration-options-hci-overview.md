@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# About options to migrate VM workloads to Azure Stack HCI (preview)
+# About options to migrate VM workloads to Azure Local (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
