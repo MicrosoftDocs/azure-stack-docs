@@ -1,18 +1,18 @@
 ---
-title: Storage thin provisioning in Azure Stack HCI, version 23H2
-description: How to use storage thin provisioning on Azure Stack HCI, version 23H2 clusters by using Windows PowerShell.
+title: Storage thin provisioning in Azure Local, version 23H2
+description: How to use storage thin provisioning on Azure Local, version 23H2 instances by using Windows PowerShell.
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 05/09/2024
+ms.date: 10/17/2024
 ---
 
-# Storage thin provisioning in Azure Stack HCI, version 23H2
+# Storage thin provisioning in Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how thin provisioning works on your Azure Stack HCI cluster, version 23H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+This article describes how thin provisioning works on your Azure Local instance, version 23H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
 ## Capacity management: thin vs. fixed provisioned volumes
 
@@ -30,7 +30,7 @@ When a thin-provisioned volume is created, the footprint is smaller than the spe
 
 :::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="Diagram showing that as data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
 
-Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
+Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of instances. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
 
 You can create volumes that exceed the total available storage capacity by overprovisioning. An alert is sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
 
