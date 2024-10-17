@@ -111,7 +111,7 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
     1. Accept the defaults for other settings.
 
         > [!IMPORTANT]
-        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local and its child resources.
+        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local resource and its child resources.
 
         Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
