@@ -32,8 +32,8 @@ This is a baseline release with the following features and improvements:
 - **Arc VM management improvements**: Starting this release, following improvements were made to the Arc VM management experience:
 
   - You can set a proxy configuration for Arc VMs on the Portal.
-  - You can now create an image from an Arc VM's OS disk.
   - You can set a SQL Server configuration for Arc VMs on Portal.
+  - You can now create an image from an Arc VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
 
 ## Features and improvements in 2408.1
