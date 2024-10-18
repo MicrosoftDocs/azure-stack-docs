@@ -13,11 +13,12 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
-
 This article describes how to install solution upgrade on your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
+
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 > [!IMPORTANT]
 > While the Azure Stack HCI OS upgrade is generally available, the solution upgrade will have a phased rollout.
