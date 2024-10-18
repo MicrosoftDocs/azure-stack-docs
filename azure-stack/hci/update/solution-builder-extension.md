@@ -60,12 +60,12 @@ The following table provides the hardware update method for different hardware v
 
 | Solution Builder (server hardware vendor) | Platform series/generation | Hardware Update Method  | For more information  |
 |-----------------|------------------|---------------|-------------------|
-| DataON   | Models starting with S2D7 and AZS7   | Solution Builder Extension | [Must Stay Up to Date - DataON](https://www.dataonstorage.com/dataon-must/must-stay-up-to-date/) |
+| DataON   | Models starting with S2D6, S2D7, AZS6, AZS7   | Solution Builder Extension | [Must Stay Up to Date - DataON](https://www.dataonstorage.com/dataon-must/must-stay-up-to-date/) |
 | DataON  | Other Integrated Systems and Validated Nodes (not previously listed)    | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/DataON.MUSTPro/overview/3.2.6) | [Enhancing the Windows Admin Center Experience with DataON MUST](https://www.dataonstorage.com/must/windows-admin-center/)                   |
 | Dell Technologies  | Premier Solutions: </br><br> MC-660, MC-760 | APEX Cloud Platform Hardware Updates (Solution Builder Extension) | [Support Matrix of Dell APEX Cloud Platform for Microsoft Azure](https://dl.dell.com/content/manual34666301-dell-apex-cloud-platform-for-microsoft-azure-support-matrix.pdf) |
-| Dell Technologies | 15G Integrated Systems - Clusters running Azure Stack OS 23H2:</br><br> AX-650, AX-750, AX-6515, AX-7525 | Solution Builder Extension (once available)  | [Dell Solution Builder Extensions for Azure Stack HCI Integrated System AX Server Release Notes](https://www.dell.com/support/kbdoc/en-us/000224407) |
-| Dell Technologies | 15G Integrated Systems - Clusters running Azure Stack OS 23H2:</br><br> AX-650, AX-750, AX-6515, AX-7525 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0)  | [Full Stack Cluster-Aware Updating for Azure Stack HCI clusters using the OpenManage Integration snap-in](https://infohub.delltechnologies.com/l/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/full-stack-cluster-aware-updating-for-azure-stack-hci-clusters-45/) |
-| Dell Technologies | 14G Integrated Systems Clusters running Azure Stack OS 22H2:</br><br> AX-740xd, AX-640 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0) | [Full Stack Cluster-Aware Updating for Azure Stack HCI clusters using the OpenManage Integration snap-in](https://infohub.delltechnologies.com/l/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/full-stack-cluster-aware-updating-for-azure-stack-hci-clusters-45/) |
+| Dell Technologies | 15G and 16G Integrated Systems - Clusters running Azure Stack OS, version 23H2:</br><br> AX-650, AX-750, AX-6515, AX-7525, AX-4510c, AX-4520c, AX-760 | Solution Builder Extension (once available)  | [Dell Solution Builder Extensions for Azure Stack HCI Integrated System AX Server Release Notes](https://www.dell.com/support/kbdoc/en-us/000224407) |
+| Dell Technologies | 15G Integrated Systems - Clusters running Azure Stack OS, version 22H2:</br><br> AX-650, AX-750, AX-6515, AX-7525, AX-4150c, AX-4520c | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0)  | [E2E Deployment and Operations Guide - Cluster Creation Using Windows Admin Center (WAC) \| Dell Technologies Info Hub](https://infohub.delltechnologies.com/en-us/t/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/) |
+| Dell Technologies | 14G Integrated Systems - Clusters running Azure Stack OS, version 22H2:</br><br> AX-740xd, AX-640 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0) | [E2E Deployment and Operations Guide - Cluster Creation Using Windows Admin Center (WAC) \| Dell Technologies Info Hub](https://infohub.delltechnologies.com/en-us/t/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/) |
 | Hewlett Packard Enterprise | All | Solution Builder Extension and [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | 1. Install [Solution Builder Extension](https://www.hpe.com/info/ASHCI-SBE) </br><br> 2. Install hardware updates via [Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html) |
 | Lenovo | Premier Solutions and specific Integrated Systems:</br><br> MX455 V3, MX450 | Solution Builder Extension | [Azure Stack HCI Solution Builder Extension Update - Lenovo](https://thinkagile.lenovo.com/MX/) |
 | Lenovo | Other Integrated Systems and Validated Nodes (not previously listed)  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
@@ -74,11 +74,36 @@ The following table provides the hardware update method for different hardware v
 
 The Azure Stack HCI Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Stack HCI and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
 
+Check to see if you have SBE installed on your registered Azure Stack HCI system by running the following command:
+
+```powershell
+$Update = Get-SolutionUpdateEnvironment
+$Update = ft SbeFamily, HardwareModel, CurrentSbeVersion
+```
+
+Here's a sample output
+
+```console
+PS C:\Users\lcmuser> $Update = Get-SolutionUpdateEnvironment
+PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+
+SbeFamily             HardwareModel       CurrentSbeVersion
+---------             -------------       -----------------
+Gen A                 Contoso680          4.0.0.0
+```
+
+> [!NOTE]
+> If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
+
+To discover and install SBE or your SBE updates, use one of the methods in the next sections.
+
 ### Discover Solution Builder Extension updates via the Azure portal
 
-To discover and select updates via the Azure portal, see [Browse for cluster updates](../update/azure-update-manager-23h2.md#browse-for-cluster-updates).
+To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
 ### Discover Solution Builder Extension updates via PowerShell
+
+Before you can install your SBE updates, sign in to the client with the domain user credentials that you provided during the deployment of the cluster.
 
 To understand if an update is a standalone Solution Builder Extension or combined "Solution" update, use the properties `PackageType` and `SbeVersion`.
 
