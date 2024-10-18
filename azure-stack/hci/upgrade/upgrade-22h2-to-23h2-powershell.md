@@ -20,9 +20,6 @@ There are other methods to upgrade the OS that include using Windows Admin Cente
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
-> [!IMPORTANT]
-> To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
-
 ## High-level workflow for the OS upgrade
 
 The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.

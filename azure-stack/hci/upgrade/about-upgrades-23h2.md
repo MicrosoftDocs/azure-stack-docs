@@ -12,11 +12,11 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
 This article provides an overview of upgrading your existing Azure Stack HCI system from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## About Azure Stack HCI, version 23H2
 

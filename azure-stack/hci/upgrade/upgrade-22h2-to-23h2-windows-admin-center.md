@@ -12,13 +12,13 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
 This article describes how to upgrade the Azure Stack HCI, version 22H2 operating system (OS) to version 23H2, which is the latest generally available software via Windows Admin Center.
 
 While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## High-level workflow for the OS upgrade
 
