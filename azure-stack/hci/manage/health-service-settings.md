@@ -100,5 +100,5 @@ The Health Service provides an enforcement mechanism to restrict the components 
 
 ## Next steps
 
-- [Health Service](health-service-overview.md)
+- [Monitor clusters with the Health Service](health-service-overview.md)
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
