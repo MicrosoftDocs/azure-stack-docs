@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/15/2024
+ms.date: 10/18/2024
 ms.lastreviewed: 03/05/2024
 ms.service: azure-stack-hci
 ---
@@ -39,7 +39,7 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 ## Manage Azure VM verification
 
-Azure VM verification is automatically enabled by default in Azure Local 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
+Azure VM verification is automatically enabled by default in Azure Local, version 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
 > [!NOTE]
 > To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
@@ -60,7 +60,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### [Azure portal](#tab/azureportal)
 
-1. In your Azure Local instance resource page, navigate to the **Configuration** tab.
+1. In your Azure Local cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status.
 
    :::image type="content" source="media/azure-verification/cluster-status.png" alt-text="Screenshot showing system status on the portal." lightbox="media/azure-verification/cluster-status.png":::
