@@ -5,7 +5,7 @@ author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/17/2024
+ms.date: 10/18/2024
 ---
 
 # Storage thin provisioning in Azure Local, version 23H2
@@ -74,11 +74,11 @@ Set-StoragePool -FriendlyName <name of storage pool> -ThinProvisioningAlertThres
 
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 23H2.
+This section answers frequently asked questions about thin provisioning on Azure Local, version 23H2.
 
 ### Can existing fixed volumes be converted to thin?
 
-Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](../manage/thin-provisioning-conversion.md).
+Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Local](../manage/thin-provisioning-conversion.md).
 
 ### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
@@ -90,7 +90,7 @@ Yes, it's possible to have a mix of both fixed and thin volumes in one pool.
 
 ### Will space be given back to the pool immediately after files are deleted?
 
-No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the cluster, it may take longer for all of the space to be returned to the pool.
+No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the instance, it may take longer for all of the space to be returned to the pool.
 
 ## Next steps
 
