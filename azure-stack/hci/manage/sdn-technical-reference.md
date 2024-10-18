@@ -1,15 +1,15 @@
 ---
-title: Technical reference for Software Defined Networking (SDN) in Azure Stack HCI.
+title: Technical reference for Software Defined Networking (SDN) in Azure Local.
 description: This technical reference serves as a one-stop-shop to access learning resources available for SDN.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/18/2024
+ms.date: 10/18/2024
 ---
 
-# Technical reference for Software Defined Networking in Azure Stack HCI
+# Technical reference for Software Defined Networking in Azure Local
 
-> Applies to: Azure Stack HCI, version 22H2
+> Applies to: Azure Local, version 22H2
 
 This technical reference provides comprehensive learning resources to enhance your understanding of Software Defined Networking (SDN) in Azure Stack HCI.
 

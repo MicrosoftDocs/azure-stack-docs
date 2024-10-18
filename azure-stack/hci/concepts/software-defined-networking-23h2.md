@@ -1,16 +1,16 @@
 ---
-title: Software defined networking (SDN) in Azure Stack HCI, version 23H2
-description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your Azure Stack HCI system.
+title: Software defined networking (SDN) in Azure Local, version 23H2
+description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 03/08/2024
+ms.date: 10/18/2024
 ---
 
-# Software Defined Networking (SDN) in Azure Stack HCI, version 23H2
+# Software Defined Networking (SDN) in Azure Local, version 23H2
 
-> Applies to: Azure Stack HCI, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
@@ -32,11 +32,11 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-You have the option to [deploy SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard.md) after creating a cluster. <!--update WAC link for 23h2-->
+You have the option to [deploy SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard-23h2.md) after creating a system.
 
 ## Software Load Balancing
 
-[Software Load Balancer](software-load-balancer.md) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
+[Software Load Balancer](software-load-balancer.md) (SLB) can be used to evenly distribute customer network traffic among multiple VMs. It enables multiple machines to host the same workload, providing high availability and scalability. SLB uses [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise virtual IP addresses to the physical network.
 
 ## Gateway
 
