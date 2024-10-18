@@ -1,14 +1,14 @@
 ---
-title: Update SDN infrastructure for Azure Stack HCI
-description: Learn to update SDN infrastructure for Azure Stack HCI.
+title: Update SDN infrastructure for Azure Local
+description: Learn to update SDN infrastructure for Azure Local.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/10/2024
+ms.date: 10/18/2024
 ---
 
-# Update SDN infrastructure for Azure Stack HCI
+# Update SDN infrastructure for Azure Local
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
