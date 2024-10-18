@@ -3,24 +3,22 @@ title: Upgrade Azure Stack HCI  to latest version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI to latest version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Upgrade Azure Stack HCI operating system via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
 This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software, via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
 
 There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
-
-> [!IMPORTANT]
-> To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
 
 ## High-level workflow for the OS upgrade
 

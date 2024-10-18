@@ -4,8 +4,7 @@ description: How to enable recommended alert rules  for Azure Stack HCI.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 03/05/2024
 ---
 

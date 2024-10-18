@@ -4,7 +4,7 @@ description: Deploy Commvault from Azure Stack Marketplace for a Modular Data Ce
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/15/2021
 ms.author: sethm

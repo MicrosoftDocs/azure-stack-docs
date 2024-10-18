@@ -191,7 +191,7 @@ items:
       items:
       - name: Configure proxy manually
         href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via script
+      - name: Configure proxy via Arc script
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
@@ -636,7 +636,7 @@ items:
       - name: Create a cluster with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
-        href: deploy/network-atc.md
+        href: deploy/network-atc.md?pivots=azure-stack-hci
     - name: Deploy SDN 
       items:
       - name: Deploy using Windows Admin Center
@@ -708,7 +708,7 @@ items:
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
-        href: manage/manage-network-atc.md
+        href: manage/manage-network-atc.md?pivots=azure-stack-hci
       - name: Update the cluster
         href: manage/update-cluster.md
       - name: Manage quick restarts
@@ -801,7 +801,7 @@ items:
     - name: Host networking
       items:
       - name: Network ATC overview
-        href: concepts/network-atc-overview.md
+        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)

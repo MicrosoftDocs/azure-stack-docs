@@ -6,7 +6,6 @@ ms.topic: how-to
 ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
 ---
 
 # Perform the post operating system upgrade steps on your Azure Stack HCI via PowerShell
@@ -134,6 +133,8 @@ Once the new OS is installed, you need to upgrade the cluster functional level a
    1. Validate the cluster.
 
        Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
+
+1. Install the latest drivers from your hardware partner, as some drivers may revert to an older inbox driver version resulting in unexpected behaviors.  
 
 You're now ready to apply the solution upgrade.
 
