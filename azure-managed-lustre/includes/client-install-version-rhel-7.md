@@ -20,3 +20,4 @@ If you want to upgrade *only* the kernel and not all packages, you must, at mini
 ```bash
 export NEWKERNELVERSION=6.7.8
 sudo yum upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.4_42_gd6d405d-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+```
