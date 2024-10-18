@@ -75,7 +75,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 
   - If a hardware vendor integrates with our update validation and release platform, the solution extension content includes the drivers and firmware, and the orchestrator manages the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
 
-This solution is the recommended way to update your Azure Local instance.
+This solution is the recommended way to update your Azure Local.
 
 > [!NOTE]
 > Customer workloads aren't covered by this update solution.
@@ -89,7 +89,7 @@ There are two interfaces you can use to apply available updates.
 
 ### PowerShell
 
-The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update your Azure Local solution via PowerShell](update-via-powershell-23h2.md).
+The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update your Azure Local, version 23H2 via PowerShell](update-via-powershell-23h2.md).
 
 ### The Azure portal
 

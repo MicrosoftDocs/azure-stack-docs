@@ -11,7 +11,6 @@ ms.date: 10/08/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-
 This article describes how to apply a solution update to your Azure Local via PowerShell.
 
 The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, version 23H2, then the orchestrator was automatically installed as part of the deployment.
