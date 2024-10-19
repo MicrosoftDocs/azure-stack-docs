@@ -64,7 +64,7 @@ sections:
 
       - question: What content does Azure Local sync with the cloud?
         answer: |
-          This depends on which features you’re using. At the minimum, Azure Local syncs basic cluster information to display in the Azure portal, including the list of clustered nodes, hardware model, and software version; billing information that summarizes accrued core-days since the last sync, and minimum required diagnostic information that helps Microsoft keep your Azure Local secure, up-to-date, and working properly.
+          This depends on which features you’re using. At the minimum, Azure Local syncs basic cluster information to display in the Azure portal, including the list of clustered nodes, hardware model, and software version; billing information that summarizes accrued core-days since the last sync, and minimum required diagnostic information that helps Microsoft keep your Azure Local instance secure, up-to-date, and working properly.
           
           The total size is small – a few kilobytes. If you turn on additional services, they may upload more. For example, Azure Log Analytics would upload logs and performance counters for monitoring.
 

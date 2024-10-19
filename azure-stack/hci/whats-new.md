@@ -229,9 +229,9 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues-
 
 This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:
 
-- **Region expansion** - The following new regions are now supported on your Azure Local: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Region expansion** - The following new regions are now supported on your Azure Local instance: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 - **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
-- **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Local via the Azure Update Manager](./update/azure-update-manager-23h2.md).
+- **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Local instance via the Azure Update Manager](./update/azure-update-manager-23h2.md).
 
 ## Features and improvements in 2402.1
 
