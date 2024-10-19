@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/18/2024
+ms.date: 10/18/2024
 ---
 
 # Deploy a virtual Azure Local, version 23H2 system
