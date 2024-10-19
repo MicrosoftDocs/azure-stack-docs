@@ -1,6 +1,6 @@
 ---
-title: Deploy a virtual Azure Stack HCI, version 23H2 system
-description: Describes how to perform an Azure Stack HCI, version 23H2 virtualized deployment.
+title: Deploy a virtual Azure Local, version 23H2 system
+description: Describes how to perform an Azure Local, version 23H2 virtualized deployment.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 04/18/2024
 ---
 
-# Deploy a virtual Azure Stack HCI, version 23H2 system
+# Deploy a virtual Azure Local, version 23H2 system
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy a virtualized single server or a multi-node Azure Stack HCI, version 23H2, on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).  
+This article describes how to deploy a virtualized single node or multi-node Azure Local, version 23H2 instance on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).  
 
-You need administrator privileges for the Azure Stack HCI virtual deployment and should be familiar with the existing Azure Stack HCI solution. The deployment can take around 2.5 hours to complete.
+You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Stack HCI, version 23H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+> A virtual deployment of Azure Local, version 23H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
@@ -25,11 +25,11 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
-The following are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.
+The following are the minimum requirements to successfully deploy Azure Local, version 23H2.
 
 Before you begin, make sure that:
 
-- You have access to a physical host system that is running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Stack HCI deployment.
+- You have access to a physical host system that is running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Local deployment.
 
 - You have enough capacity. More capacity is required for running actual workloads like virtual machines or containers.
 
@@ -44,7 +44,7 @@ Before you begin, make sure that:
 
 ### Virtual host requirements
 
-Before you begin, make sure that each virtual host system can dedicate the following resources to provision your virtualized Azure Stack HCI system:
+Before you begin, make sure that each virtual host system can dedicate the following resources to provision your virtualized Azure Local system:
 
 | Component | Requirement |
 | ----------| ------- |
@@ -58,13 +58,13 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
-> These are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.  Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
+> These are the minimum requirements to successfully deploy Azure Local, version 23H2.  Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
-When deploying Azure Stack HCI in a virtual environment, you can use your existing networks and use IP addresses from that network if they're available. In such a case, you just need to create an external switch and connect all the virtual network adapters to that virtual switch. Virtual hosts will have connectivity to your physical network without any extra configuration.
+When deploying Azure Local in a virtual environment, you can use your existing networks and use IP addresses from that network if they're available. In such a case, you just need to create an external switch and connect all the virtual network adapters to that virtual switch. Virtual hosts will have connectivity to your physical network without any extra configuration.
 
-However, if your physical network where you're planning to deploy the Azure Stack HCI virtual environment is scarce on IPs, you can create an internal virtual switch with NAT enabled, to isolate the virtual hosts from your physical network while keeping outbound connectivity to the internet.
+However, if your physical network where you're planning to deploy the Azure Local virtual environment is scarce on IPs, you can create an internal virtual switch with NAT enabled, to isolate the virtual hosts from your physical network while keeping outbound connectivity to the internet.
 
 The following lists the steps for the two options:
 
@@ -78,7 +78,7 @@ New-VMSwitch -Name "external_switch_name" -SwitchType External -NetAdapterName "
 
 ### Deploy with internal virtual switch and NAT enabled
 
-On your physical host computer, run the following PowerShell command to create an internal virtual switch. The use of this switch ensures that the Azure Stack HCI deployment is isolated.
+On your physical host computer, run the following PowerShell command to create an internal virtual switch. The use of this switch ensures that the Azure Local deployment is isolated.
 
 ```PowerShell
 New-VMSwitch -Name "internal_switch_name" -SwitchType Internal -NetAdapterName "network_adapter_name" 
@@ -196,7 +196,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Attach drives to the newly created VHDXs for the VM. In these commands, six VHDs located in the `C:\vms\Node1` directory and named `s2d1.vhdx` through `s2d6.vhdx` are added to `Node1`. Each `Add-VMHardDiskDrive` command adds one VHD to the VM, so the command is repeated six times with different `-Path` parameter values.
 
-    Afterwards, the `Node1` VM has six VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
+    Afterwards, the `Node1` VM has six VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Local deployments:
 
    ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
@@ -229,7 +229,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Download Azure Stack HCI 23H2 ISO](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
+1. [Download Azure Local 23H2 ISO](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
 1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 
@@ -285,6 +285,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     $Node1macNIC4.MacAddress
     $Node1finalmacNIC4=$Node1macNIC4.MacAddress|ForEach-Object{($_.Insert(2,"-").Insert(5,"-").Insert(8,"-").Insert(11,"-").Insert(14,"-"))-join " "}
     $Node1finalmacNIC4
+    ```
 
 1. Obtain the `Node1` VM local admin credentials and then rename `Node1`:
 
@@ -346,11 +347,11 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. Once the virtual host server is ready, you must [register it and assign permissions](deployment-arc-register-server-permissions.md) in Azure as an Arc resource.
 
-1. Once the server is registered in Azure as an Arc resource and all the mandatory extensions are installed, choose one of the following methods to deploy Azure Stack HCI from Azure.
+1. Once the server is registered in Azure as an Arc resource and all the mandatory extensions are installed, choose one of the following methods to deploy Azure Local from Azure.
 
-    - [Deploy Azure Stack HCI using Azure portal](deploy-via-portal.md).
+    - [Deploy Azure Local using Azure portal](deploy-via-portal.md).
 
-    - [Deploy Azure Stack HCI using an Azure Resource Manager template](deployment-azure-resource-manager-template.md).
+    - [Deploy Azure Local using an Azure Resource Manager template](deployment-azure-resource-manager-template.md).
 
 Repeat the process above for extra nodes if you plan to test multi-node deployments. Ensure virtual host names and management IPs are unique and on the same subnet:
 
