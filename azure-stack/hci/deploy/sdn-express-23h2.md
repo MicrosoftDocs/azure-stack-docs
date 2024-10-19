@@ -84,7 +84,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **LocalAdminDomainUser** - local administrator username. The username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **RestIpAddress** - Static IP address for your REST API, which is allocated from your management network. It can be used for DNS resolution or REST IP-based deployments
-- **HyperVHosts** - host servers to be managed by Network Controller
+- **HyperVHosts** - host machines to be managed by Network Controller
 - **NCUsername** - Network Controller account username
 - **ProductKey** - product key for SDN infrastructure VMs
 - **SwitchName** - only required if more than one virtual switch exists on the Hyper-V hosts
@@ -119,7 +119,7 @@ The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddres
 Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
 - **ComputerName** - name of SLB VM
-- **HostName** - host name of server where the SLB VM is located
+- **HostName** - host name of the machine where the SLB VM is located
 - **ManagementIP** - management network IP address for the SLB VM
 - **MACAddress** - MAC address for the SLB VM
 - **PAIPAddress** - Provider network IP address (PA) for the SLB VM
@@ -134,7 +134,7 @@ The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MA
 Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
 - **ComputerName** - name of Gateway VM
-- **HostName** - host name of server where the Gateway VM is located
+- **HostName** - host name of the machine where the Gateway VM is located
 - **ManagementIP** - management network IP address for the Gateway VM
 - **MACAddress** - MAC address for the Gateway VM
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
@@ -172,7 +172,7 @@ The following parameters are used if you are deploying and managing overlay virt
 
 Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
 
-- Allocates two IP addresses to each physical server
+- Allocates two IP addresses to each physical machine
 - Allocates one IP address to each SLB MUX VM
 - Allocates one IP address to each gateway VM
 

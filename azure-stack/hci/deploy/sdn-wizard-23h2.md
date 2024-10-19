@@ -25,7 +25,7 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on an Azure Local, version 23H2 cluster, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you are deploying SDN on an Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
