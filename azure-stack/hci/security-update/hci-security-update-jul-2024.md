@@ -3,7 +3,7 @@ title:  July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2
 description: Read about the July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/30/2024
+ms.date: 10/18/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
