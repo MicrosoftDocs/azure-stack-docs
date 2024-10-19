@@ -1,6 +1,6 @@
 ---
-title: Compare Azure Stack HCI to Windows Server
-description: This topic helps you determine whether Azure Stack HCI or Windows Server is right for your organization.
+title: Compare Azure Local to Windows Server
+description: This topic helps you determine whether Azure Local or Windows Server is right for your organization.
 ms.topic: conceptual
 author: jasongerend
 ms.author: jgerend
@@ -8,34 +8,34 @@ ms.service: azure-stack-hci
 ms.date: 10/18/2024
 ---
 
-# Compare Azure Stack HCI to Windows Server
+# Compare Azure Local to Windows Server
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022
 
-This article explains key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
+This article explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
-## When to use Azure Stack HCI
+## When to use Azure Local
 
-Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. Azure Stack HCI can help to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
+Azure Local is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. Azure Local can help to modernize and secure your datacenters and branch offices, and achieve industry-best performance with low latency and data sovereignty.
 
-:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
+:::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Local over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
-Use Azure Stack HCI for:
+Use Azure Local for:
 
 - The best virtualization host to modernize your infrastructure, either for existing workloads in your core datacenter or emerging requirements for branch office and edge locations.
 - Easy extensibility to the cloud, with a regular stream of innovations from your Azure subscription and a consistent set of tools and experiences.
 - All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking.
 
   >[!NOTE]
-  > When using Azure Stack HCI, run all of your workloads inside virtual machines or containers, not directly on the cluster. Azure Stack HCI isn't licensed for clients to connect directly to it using Client Access Licenses (CALs).
+  > When using Azure Local, run all of your workloads inside virtual machines or containers, not directly on the cluster. Azure Local isn't licensed for clients to connect directly to it using Client Access Licenses (CALs).
 
-For information about licensing Windows Server VMs running on an Azure Stack HCI cluster, see [Activate Windows Server VMs](/windows-server/get-started/automatic-vm-activation).
+For information about licensing Windows Server VMs running on an Azure Local instance, see [Activate Windows Server VMs](/windows-server/get-started/automatic-vm-activation).
 
 ## When to use Windows Server
 
-Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Local.
 
-:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Local" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
 Use Windows Server for:
 
@@ -47,9 +47,9 @@ Use Windows Server for:
 
 ## Compare product positioning
 
-The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
+The following table shows the high-level product packaging for Azure Local and Windows Server.
 
-| Attribute    | Azure Stack HCI | Windows Server |
+| Attribute    | Azure Local | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
 | Product type     | Cloud service that includes an operating system and more | Operating system |
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement | Has its own end-user license agreement |
@@ -57,15 +57,15 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Support          | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
 | Where to get it  | Download from [the Azure portal](../deploy/download-software.md) or comes preinstalled on integrated systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host operating system | Yes, in the cloud or on premises |
-| Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-| Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) | None |
+| Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
+| Sizing| [Azure Local sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) | None |
 | Lifecycle policy | Always up to date with the latest features. You have up to six months to install updates. | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
 
 ## Compare workloads and benefits
 
-The following table compares the workloads and benefits of Azure Stack HCI and Windows Server.
+The following table compares the workloads and benefits of Azure Local and Windows Server.
 
-| Attribute | Azure Stack HCI | Windows Server |
+| Attribute | Azure Local | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Azure Kubernetes Service (AKS)| Yes | Yes |
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
@@ -77,9 +77,9 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
  
 ## Compare technical features
 
-The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
+The following table compares the technical features of Azure Local and Windows Server 2022.
 
-| Attribute | Azure Stack HCI | Windows Server 2022 |
+| Attribute | Azure Local | Windows Server 2022 |
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
 | Storage Spaces Direct | Yes | Yes |
@@ -92,21 +92,21 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
-| Storage Spaces Direct on a single server | Yes | No |
+| Storage Spaces Direct on a single machine | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
-<sup>1</sup> Functionality only available in Azure Stack HCI, version 22H2.
+<sup>1</sup> Functionality only available in Azure Local, version 22H2.
 
-For more information, see [What's New in Azure Stack HCI, version 23H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
+For more information, see [What's New in Azure Local, version 23H2](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 
 ## Compare management options
 
-The following table compares the management options for Azure Stack HCI and Windows Server. Both products are designed for remote management and can be managed with many of the same tools.
+The following table compares the management options for Azure Local and Windows Server. Both products are designed for remote management and can be managed with many of the same tools.
 
-| Attribute | Azure Stack HCI | Windows Server |
+| Attribute | Azure Local | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
@@ -115,7 +115,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure portal > Extensions and Arc-enabled host | Yes | Manual <sup>1</sup>|
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
-| Azure portal > Multi-cluster monitoring for Azure Stack HCI | Yes | No |
+| Azure portal > Multi-cluster monitoring for Azure Local | Yes | No |
 | Azure portal > Azure Resource Manager integration for clusters | Yes | No |
 | Azure portal > Arc VM management | Yes | No |
 | Desktop experience | No | Yes |
@@ -124,9 +124,9 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 ## Compare product pricing
 
-The table below compares the product pricing for Azure Stack HCI and Windows Server. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+The table below compares the product pricing for Azure Local and Windows Server. For details, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
-| Attribute | Azure Stack HCI | Windows Server |
+| Attribute | Azure Local | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
@@ -136,4 +136,4 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 
 ## Next steps
 
-- [Evaluate Azure Stack HCI](../deploy/deployment-virtual.md).
+- [Evaluate Azure Local](../deploy/deployment-virtual.md).
