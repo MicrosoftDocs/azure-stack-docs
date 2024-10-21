@@ -25,7 +25,7 @@ Starting with Azure Local, version 23H2, these types of updates are packaged int
 
 ## Solution Builder Extension package updates
 
-Solution Builder Extension package updates are integrated into the solution update process for Azure Local, version 23H2. You can install these updates as part of a combined (full solution) update with other Azure Local updates using orchestration within Azure Local. For example, if a Solution Builder Extension update that matches your systems hardware becomes available, it appears as an update option in the Azure portal or can be retrieved using the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Local, version 23H2](../update/about-updates-23h2.md#user-interfaces-for-updates).
+Solution Builder Extension package updates are integrated into the solution update process for Azure Local, version 23H2. You can install these updates as part of a combined (full solution) update with other Azure Local updates using orchestration within Azure Local. For example, if a Solution Builder Extension update that matches your system's hardware becomes available, it appears as an update option in the Azure portal or can be retrieved using the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Local, version 23H2](../update/about-updates-23h2.md#user-interfaces-for-updates).
 
 By installing such combined updates, you can keep your entire solution up to date with less impact and minimal effect on running workloads.
 
