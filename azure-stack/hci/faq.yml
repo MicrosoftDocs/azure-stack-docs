@@ -6,7 +6,7 @@ metadata:
   author: cosmosdarwin
   ms.author: cosdar
   ms.service: azure-stack-hci
-  ms.date: 10/18/2024
+  ms.date: 10/21/2024
 title: Azure Local FAQ
 summary: The Azure Local FAQ provides information about Azure Local connectivity with the cloud, and how Azure Local relates to Windows Server.
 
@@ -119,5 +119,5 @@ sections:
           ```
           OsName                         OSDisplayVersion
           ------                         ----------------
-          Microsoft Azure Local      23H2
+          Microsoft Azure Stack HCI      23H2
           ```

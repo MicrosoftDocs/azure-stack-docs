@@ -3,7 +3,7 @@ title:  May 2024 security update (KB 5037781) for Azure Local, version 23H2
 description: Read about the May 2024 security update (KB 5037781) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/18/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---

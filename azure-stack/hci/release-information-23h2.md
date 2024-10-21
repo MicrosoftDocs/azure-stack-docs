@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 10/18/2024
+ms.date: 10/21/2024
 ---
 
 # Azure Local, version 23H2 release information
@@ -18,6 +18,7 @@ To keep your Azure Local solution in a supported state, you have up to six month
 
 This article presents the release information for Azure Local, version 23H2, including the release build and OS build information.  
 
+<a name="about-azure-stack-hci-version-23h2-releases"></a>
 ## About Azure Local, version 23H2 releases
 
 The Azure Local, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, 2405, and 2408. Each release train includes a baseline build and subsequent updates.

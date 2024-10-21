@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2408 baseline re
 description: Read about the known issues and fixed issues in Azure Local 2408 baseline release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/18/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---

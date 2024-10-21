@@ -5,7 +5,7 @@ ms.topic: conceptual
 author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack-hci
-ms.date: 10/18/2024
+ms.date: 10/21/2024
 ---
 
 # Compare Azure Local to Windows Server

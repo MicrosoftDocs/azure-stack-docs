@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2408.1 baseline 
 description: Read about the known issues and fixed issues in Azure Local 2408.1 baseline release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 10/18/2024
+ms.date: 10/21/2024
 ms.author: robess
 ms.reviewer: alkohli
 ---
