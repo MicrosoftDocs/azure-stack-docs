@@ -1,15 +1,15 @@
 ---
 description: "Learn more about: Health Service faults"
 title: View Health Service faults
-ms.author: sethm
+ms.author: alkohli
 ms.topic: article
-author: sethmanheim
-ms.date: 01/31/2024
+author: alkohli
+ms.date: 10/18/2024
 ---
 
 # View Health Service faults
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults." One cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
 
@@ -258,15 +258,15 @@ However, in some cases, faults may be rediscovered by the Health Service, such a
 ### Fault properties
 The following table presents several key properties of the fault object. For the full schema, inspect the **MSFT\_StorageDiagnoseResult** class in *storagewmi.mof*.
 
-| **Property**              | **Example**                                                     |
-|---------------------------|-----------------------------------------------------------------|
-| FaultId                   | {12345-12345-12345-12345-12345}                                 |
-| FaultType                 | Microsoft.Health.FaultType.Volume.Capacity                      |
-| Reason                    | "The volume is running out of available space."                 |
-| PerceivedSeverity         | 5                                                               |
-| FaultingObjectDescription | Contoso XYZ9000 S.N. 123456789                                  |
-| FaultingObjectLocation    | Rack A06, RU 25, Slot 11                                        |
-| RecommendedActions        | {"Expand the volume.", "Migrate workloads to other volumes."}   |
+| **Property** | **Example** |
+|--|--|
+| FaultId | {12345-12345-12345-12345-12345} |
+| FaultType | Microsoft.Health.FaultType.Volume.Capacity |
+| Reason | "The volume is running out of available space." |
+| PerceivedSeverity | 5 |
+| FaultingObjectDescription | Contoso XYZ9000 S.N. 123456789 |
+| FaultingObjectLocation | Rack A06, RU 25, Slot 11 |
+| RecommendedActions | {"Expand the volume.", "Migrate workloads to other volumes."} |
 
 **FaultId**: Unique ID within the scope of one cluster.
 
@@ -283,22 +283,22 @@ The following table presents several key properties of the fault event. For the 
 
 Note the **ChangeType** that indicates whether a fault is being created, removed, or updated, and the **FaultId**. An event also contains all the properties of the affected fault.
 
-| **Property**              | **Example**                                                     |
-|---------------------------|-----------------------------------------------------------------|
-| ChangeType                | 0                                                               |
-| FaultId                   | {12345-12345-12345-12345-12345}                                 |
-| FaultType                 | Microsoft.Health.FaultType.Volume.Capacity                      |
-| Reason                    | "The volume is running out of available space."                 |
-| PerceivedSeverity         | 5                                                               |
-| FaultingObjectDescription | Contoso XYZ9000 S.N. 123456789                                  |
-| FaultingObjectLocation    | Rack A06, RU 25, Slot 11                                        |
-| RecommendedActions        | {"Expand the volume.", "Migrate workloads to other volumes."}   |
+| **Property** | **Example** |
+|--|--|
+| ChangeType | 0 |
+| FaultId | {12345-12345-12345-12345-12345} |
+| FaultType | Microsoft.Health.FaultType.Volume.Capacity |
+| Reason | "The volume is running out of available space." |
+| PerceivedSeverity | 5 |
+| FaultingObjectDescription | Contoso XYZ9000 S.N. 123456789 |
+| FaultingObjectLocation | Rack A06, RU 25, Slot 11 |
+| RecommendedActions | {"Expand the volume.", "Migrate workloads to other volumes."} |
 
 **ChangeType**
 ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
 
 ## Coverage
-In Windows Server 2019 and Azure Stack HCI, the Health Service provides the following fault coverage:
+In Windows Server 2019 and Azure Local, the Health Service provides the following fault coverage:
 
 ### **PhysicalDisk (31)**
 
