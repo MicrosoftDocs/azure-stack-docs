@@ -134,4 +134,3 @@ This article covers networking concepts for containers in AKS nodes on Azure Sta
 
 - [Network concepts for AKS nodes](./concepts-node-networking.md)
 - [Clusters and workloads](./kubernetes-concepts.md)
-- [Secure traffic between pods using network policies](./calico-networking-policy.md)
