@@ -1,5 +1,5 @@
 ---
-title: Review update phases of Azure Local, version 23H2.
+title: Review update phases of Azure Local, version 23H2
 description: Understand the various phases of solution updates applied to Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohl
