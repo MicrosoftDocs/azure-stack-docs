@@ -156,7 +156,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 **Error**: One or more servers in the cluster doesn't have the latest changes to this setting. We apply the changes as soon as the servers sync again.
 
-**Remediation**: Your cluster doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
+**Remediation**: Your cluster doesn't have the latest status on Windows Server subscription - for example, you enrolled or canceled and therefore may not have retrieved the licenses to set up AVMA. In most cases, the next cloud sync will resolve this error. For faster resolution, you can sync manually. For more information, see [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-local-sync-with-the-cloud).
 
 ## Activate VMs against a host server
 
