@@ -1,5 +1,5 @@
 ---
-title: Protect your Hyper-V Virtual Machine workloads on Azure Local with Azure Site Recovery. (preview)
+title: Protect your Hyper-V Virtual Machine workloads on Azure Local with Azure Site Recovery (preview)
 description: Use Azure Site Recovery to protect Hyper-V VM workloads running on Azure Local. (preview)
 ms.topic: article
 author: alkohli
@@ -65,7 +65,7 @@ The following table lists the scenarios that are supported for Azure Site Recove
 | Linux Gen 1                    | Failover to Azure | Failback on same or different host as failover |
 
 > [!NOTE]
-> Manual intervention is needed if after failover, VM is deleted on Azure Local followed by a failback to same or different host.
+> If an Azure Local VM is deleted after a failover, manual intervention is needed to fail back to the same or a different host..
 
 ## Prerequisites and planning
 
@@ -203,7 +203,7 @@ The next step is to configure a test failover.
 
 Once the replication is complete, the VMs are protected. We do recommend that you configure failover settings and run a test failover when you set up Azure Site Recovery.
 
-To prepare for fail over to an Azure VM, complete the following steps:
+To prepare for failover to an Azure VM, complete the following steps:
 
 1. If you didn't specify the network configuration for the replicated VM, you can complete that configuration now.
     1. First, make sure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
