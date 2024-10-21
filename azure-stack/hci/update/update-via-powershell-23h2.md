@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/16/2024
+ms.date: 10/20/2024
 ---
 
 # Update your Azure Stack HCI, version 23H2 via PowerShell
@@ -29,12 +29,12 @@ The Azure Stack HCI solution updates can consist of platform, service, and solut
 When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
-2. Identify the software version running on your cluster.
-3. Connect to your Azure Stack HCI cluster via remote PowerShell.
-4. Use the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity) to verify that your cluster is in good health.
-5. Discover the updates that are available and filter the ones that you can apply to your cluster.
-6. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
-7. Verify the version of the updates installed.
+1. Identify the software version running on your cluster.
+1. Connect to your Azure Stack HCI cluster via remote PowerShell.
+<!--1. Use the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity) to verify that your cluster is in good health.-->
+1. Discover the updates that are available and filter the ones that you can apply to your cluster.
+1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
+1. Verify the version of the updates installed.
 
 The time taken to install the updates might vary based on the following factors:
 
@@ -116,7 +116,7 @@ Before you discover the updates, make sure that the cluster was deployed using t
 
 3. Make a note of the `StampVersion` on your cluster. The stamp version reflects the solution version that your cluster is running.
 
-## Step 2: Optionally validate system health
+<!--## Step 2: Optionally validate system health
 
 Before you discover the updates, you can manually validate the system health. This step is optional as the orchestrator always assesses update readiness prior to applying updates.
 
@@ -238,9 +238,9 @@ Before you discover the updates, you can manually validate the system health. Th
     > [!NOTE]
     > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
 
-3. Review any failures and resolve them before you proceed to the discovery step.
+3. Review any failures and resolve them before you proceed to the discovery step.-->
 
-## Step 3: Discover the updates
+## Step 2: Discover the updates
 
 You can discover updates in one of the following two ways:
 
@@ -348,7 +348,7 @@ If you're using solution extension updates from your hardware, you would need to
      PS C:\Users\lcmuser>
     ```
 
-## Step 4: Download, check readiness, and install updates
+## Step 3: Download, check readiness, and install updates
 
 You can download the updates, perform a set of checks to verify your cluster's update readiness, and start installing the updates.
 
@@ -428,7 +428,7 @@ You can download the updates, perform a set of checks to verify your cluster's u
 
 Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
-## Step 5: Verify the installation
+## Step 4: Verify the installation
 
 After the updates are installed, verify the solution version of the environment and the operating system version.
 
