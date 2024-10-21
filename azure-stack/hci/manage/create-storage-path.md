@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/21/2024
 ---
 
 # Create storage path for Azure Local 
@@ -168,7 +168,7 @@ You can use the Azure portal to create, show, and list the storage paths on your
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to Azure Local instance resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
+1. Go to Azure Local cluster resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
 
 1. From the top command bar in the right pane, select **+ Create storage path**. 
 
@@ -188,7 +188,7 @@ Follow these steps in Azure portal of your Azure Local instance.
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to Azure Local instance resource and then go to **Storage paths**.  
+1. Go to Azure Local cluster resource and then go to **Storage paths**.  
 1. Select the storage path name. This should drill down in to the storage path properties. 
 
     :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of storage path properties." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
@@ -198,7 +198,7 @@ Follow these steps in Azure portal of your Azure Local instance.
 
 Follow these steps in Azure portal of your Azure Local instance.
 
-1. Go to Azure Local instance resource and then go to **Storage paths**.  
+1. Go to Azure Local cluster resource and then go to **Storage paths**.  
 1. For the storage path that you wish to delete, select the corresponding trashcan icon. 
 
     :::image type="content" source="./media/create-storage-path/delete-storage-path-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/delete-storage-path-1.png":::
