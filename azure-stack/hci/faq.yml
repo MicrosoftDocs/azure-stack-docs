@@ -68,7 +68,7 @@ sections:
           
           The total size is small – a few kilobytes. If you turn on additional services, they may upload more. For example, Azure Log Analytics would upload logs and performance counters for monitoring.
 
-      - question: How often does Azure Local sync with the cloud?
+      - <a name="how-often-does-azure-stack-hci-sync-with-the-cloud"></a>question: How often does Azure Local sync with the cloud?
         answer: |
           This depends on which features you’re using. At the minimum, Azure Local tries to sync every 12 hours. If a sync operation doesn’t succeed, the content is retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time using the `Sync-AzureStackHCI` PowerShell cmdlet.
           

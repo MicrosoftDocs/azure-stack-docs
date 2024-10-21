@@ -60,7 +60,7 @@ sections:
 
       - question: Do I have access to the latest features?
         answer: |
-          Yes. An active Azure subscription ensures you automatically receive the latest updates and enhancements for Azure Local and Azure Kubernetes Services on HCI. However, it's important to know that while Windows Server under this license receives security updates and fixes, it doesn't include enhancements.
+          Yes. An active Azure subscription ensures you automatically receive the latest updates and enhancements for Azure Local and Azure Kubernetes Services on Azure Local. However, it's important to know that while Windows Server under this license receives security updates and fixes, it doesn't include enhancements.
 
       - question: Are there Reassignment Rights associated with this license?
         answer: |
