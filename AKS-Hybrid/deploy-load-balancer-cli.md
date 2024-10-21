@@ -45,7 +45,7 @@ Configure the following variables before proceeding:
 To enable the Arc extension for MetalLB using the following command, you must have [Graph permission Application.Read.All](/graph/permissions-reference#applicationreadall). You can check if you have this permission by logging into your Azure subscription, and running the following command: 
 
 ```azurecli
-`az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --output json`
+`az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --output json`
 ```
 If the command fails, contact your Azure tenant administrator to get `Application.Read.All` role.
 
