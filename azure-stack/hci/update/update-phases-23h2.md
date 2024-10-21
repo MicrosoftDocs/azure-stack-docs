@@ -4,7 +4,7 @@ description: Understand the various phases of solution updates applied to Azure 
 author: alkohli
 ms.author: alkohl
 ms.topic: conceptual
-ms.date: 10/07/2024
+ms.date: 10/21/2024
 ---
 
 # Review update phases of Azure Local, version 23H2

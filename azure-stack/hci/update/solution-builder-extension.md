@@ -1,6 +1,6 @@
 ---
 title: Solution Builder Extension updates on Azure Local, version 23H2.
-description: This article describes the Solution Builder Extension updates and how to apply them on your Azure Stack HCI server machines.
+description: This article describes the Solution Builder Extension updates and how to apply them on your Azure Local machines.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
@@ -74,7 +74,7 @@ The following table provides the hardware update method for different hardware v
 
 The Azure Local Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Local and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
 
-Check to see if you have SBE installed on your registered Azure Stack HCI system by running the following command:
+Check to see if you have SBE installed on your registered Azure Local system by running the following command:
 
 ```powershell
 $Update = Get-SolutionUpdateEnvironment
@@ -99,7 +99,7 @@ To discover and install SBE or your SBE updates, use one of the methods in the n
 
 ### Discover Solution Builder Extension updates via the Azure portal
 
-To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).
+To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).
 
 ### Discover Solution Builder Extension updates via PowerShell
 

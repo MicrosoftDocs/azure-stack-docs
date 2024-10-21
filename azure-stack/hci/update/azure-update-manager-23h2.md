@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: mindydiep
-ms.date: 10/07/2024
+ms.date: 10/21/2024
 ---
 
 # Use Azure Update Manager to update your Azure Local, version 23H2
