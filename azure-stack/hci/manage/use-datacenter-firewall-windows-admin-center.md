@@ -4,7 +4,7 @@ description: Configure network security groups with Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 04/10/2024
+ms.date: 10/21/2024
 ---
 
 # Configure network security groups with Windows Admin Center
@@ -128,4 +128,4 @@ You can delete a network security group if you no longer need it.
 
 For more information, see also:
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking-23h2.md)
+- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking-23h2.md).

@@ -5,14 +5,14 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 04/13/2024
+ms.date: 10/21/2024
 ---
 
-# Configure network security groups on your Azure Stack HCI with PowerShell
+# Configure network security groups on your Azure Local with PowerShell
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface. 
+This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Local using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface.
 
 The example scripts in this article use Windows PowerShell commands exported from the **NetworkController** module. You can also [use Windows Admin Center to configure and manage network security groups](use-datacenter-firewall-windows-admin-center.md).
 
@@ -256,7 +256,7 @@ In this example, we show you how to remove a network security group from a netwo
 
 The firewall auditing capability for the Datacenter Firewall records any flow processed by SDN firewall rules. All network security groups that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
 
-Here's a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Stack HCI cluster with [Network Controller](../concepts/network-controller-overview.md) deployed:
+Here's a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Local instance with [Network Controller](../concepts/network-controller-overview.md) deployed:
 
 ```PowerShell
 $logpath = "C:\test\log1"

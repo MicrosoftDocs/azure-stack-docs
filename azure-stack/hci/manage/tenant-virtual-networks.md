@@ -4,7 +4,7 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 03/29/2024
+ms.date: 10/21/2024
 ---
 
 # Manage tenant virtual networks
@@ -85,4 +85,4 @@ You can delete a virtual network if you no longer need it.
 
 ## Next steps
 For more information, see also:
-- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking-23h2.md)
+- [Software Defined Networking (SDN) in Azure Local](../concepts/software-defined-networking-23h2.md)

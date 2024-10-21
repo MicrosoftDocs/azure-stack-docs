@@ -1,14 +1,14 @@
 ---
-title: Manage Azure Stack HCI gateway connections using Windows Admin Center
-description: Learn to manage your SDN gateway connections on Azure Stack HCI using Windows Admin Center.
+title: Manage Azure Local gateway connections using Windows Admin Center
+description: Learn to manage your SDN gateway connections on Azure Local using Windows Admin Center.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/03/2024
+ms.date: 10/21/2024
 ---
 
-# Manage Azure Stack HCI gateway connections
+# Manage Azure Local gateway connections
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
@@ -107,9 +107,9 @@ You can easily see all the gateway connections in your cluster.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
 1. The **Inventory** tab on the right lists the available gateway connections and provides commands to manage individual gateway connections. You can:
 
-    - View the list of gateway connections
-    - Change settings for a gateway connection
-    - Delete a gateway connection
+    - View the list of gateway connections.
+    - Change settings for a gateway connection.
+    - Delete a gateway connection.
 
 ## View gateway connection details
 
@@ -120,10 +120,10 @@ You can view detailed information for a specific gateway connection from its ded
 1. Under **Tools**, scroll down and select **Gateway Connections**.
 1. Click the **Inventory** tab on the right, then select the gateway connection. On the subsequent page, you can do the following:
 
-    - View the details of the connection (type, associated virtual network, properties, or connection state)
+    - View the details of the connection (type, associated virtual network, properties, or connection state).
     - Gateway on which the connection is hosted.
     - Visual representation of the connection with remote entity.
-    - View the connection statistics (Inbound/Outbound Bytes, Data transfer rate, or Dropped packets)
+    - View the connection statistics (Inbound/Outbound Bytes, Data transfer rate, or Dropped packets).
     - Change settings of the connection.
 
 ## Change gateway connection settings

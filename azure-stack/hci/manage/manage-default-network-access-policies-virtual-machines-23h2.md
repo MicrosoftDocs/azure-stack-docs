@@ -1,20 +1,20 @@
 ---
-title: Enable and assign default network access policies on Azure Stack HCI, version 23H2 VMs
-description: Learn how to enable and assign default network access policies on VMs running on Azure Stack HCI, version 23H2 via the Windows Admin Center.
+title: Enable and assign default network access policies on Azure Local, version 23H2 VMs
+description: Learn how to enable and assign default network access policies on VMs running on Azure Local, version 23H2 via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 05/22/2024
+ms.date: 10/21/2024
 ---
 
-# Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
+# Use default network access policies on virtual machines on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
+This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Local.
 
-Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
+Default network policies can be used to protect virtual machines running on your Azure Local from external unauthorized attacks. These policies block all inbound access to virtual machines on Azure Local (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
 
 > [!NOTE]
 > In this release, you can enable and assign default network policies through the Windows Admin Center.
@@ -34,7 +34,7 @@ You can attach default policies to a VM in two ways:
 
 Depending on the type of network you want to attach your VM to, steps may be different.
 
-- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of the physical network(s) available to your Azure Stack HCI. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
+- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of the physical network(s) available to your Azure Local. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 
@@ -45,7 +45,7 @@ After you have created a logical network in Windows Admin Center, you can create
 > [!NOTE]
 > Unlike in 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
-Here's an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we demonstrate how to connect your VM to VLAN 5:
+Here's an example that explains how you can attach your VM directly to a VLAN with Azure Local 22H2 when Network Controller is installed. In this example, we demonstrate how to connect your VM to VLAN 5:
 
 1. Create a logical network with any name. Ensure that Network Virtualization is disabled.
 
@@ -79,7 +79,7 @@ You have three options:
 
 ## VMs created outside of Windows Admin Center
 
-If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you might encounter these two issues:
+If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Local, and you have enabled default network access policies, you might encounter these two issues:
 
 - The VMs may not have network connectivity. This happens since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
 
@@ -126,4 +126,4 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
 
 Learn more about:
 
-- [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md)
+- [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md).

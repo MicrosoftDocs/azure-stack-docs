@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/02/2024
+ms.date: 10/21/2024
 ---
 
 # Manage Software Load Balancer for SDN
@@ -21,9 +21,9 @@ In this topic, learn how to manage Software Load Balancer (SLB) policies using W
 
 You can create three types of SLBs:
 
-- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Stack HCI cluster. The backend servers for this type of load balancer can belong to an SDN virtual network.
+- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Local instance. The backend servers for this type of load balancer can belong to an SDN virtual network.
 
-- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in an HCI cluster. Before you create a public IP load balancer, you need to create a public IP address. The backend servers for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
+- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in a Azure Local instance. Before you create a public IP load balancer, you need to create a public IP address. The backend servers for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
 
 - **IP Address SLB** – This is similar to the Public IP SLB. The difference between Public IP SLB and IP Address SLB is that the Public IP SLB creates a public IP resource that is then added to the load balancer. This is useful if you want to reserve that IP address for future use without it going back into the pool. The IP Address SLB assigns the IP address directly to the load balancer without creating a public IP resource. If you delete the load balancer, the IP address is returned to the pool.
 
@@ -69,10 +69,10 @@ After you create a load balancer, you need to define the front IP configuration 
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the front IP configuration.
 1. In the **Front IP Configuration** section, click **New**.
-1. Under **New Front IP Configuration**, enter a name. 
+1. Under **New Front IP Configuration**, enter a name.
 1. Set the **Type** as **Public IP** if **Load Balancer** type is Public IP. Select Type as **Internal** if Load Balancer Type is Internal. Select Type as **IP Address** if Load Balancer type is IP Address.
-1. If type is Public IP, Select a **Public IP Address**
-1. If type is Internal, select **Virtual Network**, **Virtual Network Subnet** and **Private IP address**
+1. If type is Public IP, Select a **Public IP Address**.
+1. If type is Internal, select **Virtual Network**, **Virtual Network Subnet** and **Private IP address**.
 1. If type is IP Address, select if the load balancing is for public networks or private networks and then select corresponding logical network, logical network subnets and IP address.
 1. Click **Create** to create the front IP configuration.
 
@@ -181,13 +181,13 @@ You can view detailed information for a specific load balancer from its dedicate
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Load Balancers**.
 1. Select the **Inventory** tab on the right, then select a load balancer. On the subsequent page, you can do the following:
-    - View the details of the load balancer
-    - View, add, change, or remove a front IP configuration
-    - View, add, change, or remove a backend pool
-    - View, add, change, or remove inbound NAT rules
-    - View, add, change, or remove outbound NAT rules
-    - View, add, change, or remove load balancing rules
-    - View, add, change, or remove health probes
+    - View the details of the load balancer.
+    - View, add, change, or remove a front IP configuration.
+    - View, add, change, or remove a backend pool.
+    - View, add, change, or remove inbound NAT rules.
+    - View, add, change, or remove outbound NAT rules.
+    - View, add, change, or remove load balancing rules.
+    - View, add, change, or remove health probes.
 
 ## Delete a load balancer
 
