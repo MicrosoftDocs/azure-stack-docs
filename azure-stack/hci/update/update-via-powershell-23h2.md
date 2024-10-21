@@ -279,7 +279,7 @@ Discovering solution updates using the online catalog is the *recommended* metho
      PS C:\Users\lcmuser>
     ```
 
-You can now proceed to [Download and install the updates](#step-4-download-check-readiness-and-install-updates).
+You can now proceed to [Download and install the updates](#step-3-download-check-readiness-and-install-updates).
 
 ### Sideload and discover solution updates
 
