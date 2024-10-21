@@ -3,7 +3,7 @@ title: Create and delete pods in AKS enabled by Azure Arc
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/02/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha

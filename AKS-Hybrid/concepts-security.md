@@ -3,7 +3,7 @@ title: Security concepts in AKS enabled by Azure Arc
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/10/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl
@@ -33,9 +33,9 @@ The following table describes the security-hardening aspects of AKS on Azure Sta
 | 2 | To reduce deployment cost and complexity, workload clusters share the underlying Windows Server. However, depending on the security needs, admins can choose to deploy a workload cluster on a dedicated Windows Server. When workload clusters share the underlying Windows Server, each cluster is deployed as a virtual machine, which ensures strong isolation guarantees between the workload clusters. |
 | 3 |  Customer workloads are deployed as containers and share the same virtual machine. The containers are process-isolated from one another, which is a weaker form of isolation compared to strong isolation guarantees offered by virtual machines.  |
 | 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. Calico policy support on AKS Arc is only for Linux containers, and is supported as-is. |
- 5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
- 6 | Communication with the API server from Windows client machines is secured using Microsoft Entra credentials for users.  |
- 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.  |
+| 5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
+| 6 | Communication with the API server from Windows client machines is secured using Microsoft Entra credentials for users.  |
+| 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.  |
 
 ## Application security
 
