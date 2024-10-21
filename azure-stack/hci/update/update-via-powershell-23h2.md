@@ -31,7 +31,6 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Make sure that all the prerequisites are completed.
 1. Identify the software version running on your cluster.
 1. Connect to your Azure Stack HCI cluster via remote PowerShell.
-<!--1. Use the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity) to verify that your cluster is in good health.-->
 1. Discover the updates that are available and filter the ones that you can apply to your cluster.
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
@@ -116,129 +115,6 @@ Before you discover the updates, make sure that the cluster was deployed using t
 
 3. Make a note of the `StampVersion` on your cluster. The stamp version reflects the solution version that your cluster is running.
 
-<!--## Step 2: Optionally validate system health
-
-Before you discover the updates, you can manually validate the system health. This step is optional as the orchestrator always assesses update readiness prior to applying updates.
-
-> [!NOTE]
-> Any faults that have a severity of *critical* will block the updates from being applied.
-
-1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
-2. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
-
-    ```powershell
-    $result = Test-EnvironmentReadiness
-    $result | ft Name,Status,Severity  
-    ```
-
-    Here's a sample output:
-
-    ```console
-    PS C:\Users\lcmuser> whoami
-    rq2205\lcmuser                                                                                               
-    PS C:\Users\lcmuser> $result=Test-EnvironmentReadiness                                                         
-    VERBOSE: Looking up shared vhd product drive letter.                                                                    
-    WARNING: Unable to find volume with label Deployment                                                                    
-    VERBOSE: Get-Package returned with Success:True                                                                        
-    VERBOSE: Found package Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment with version  10.2303.0.31 at                                                                                                         C:\NugetStore\Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.10.2303.0.31\Microsoft.Azure Stack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.nuspec.                                                   
-    03/29/2023 15:45:58 : Launching StoragePools                                                                            
-    03/29/2023 15:45:58 : Launching StoragePhysicalDisks                                                                    
-    03/29/2023 15:45:58 : Launching StorageMapping                                                                          
-    03/29/2023 15:45:58 : Launching StorageSubSystems                                                                       
-    03/29/2023 15:45:58 : Launching TestCauSetup                                                                            
-    03/29/2023 15:45:58 : Launching StorageVolumes                                                                          
-    03/29/2023 15:45:58 : Launching StorageVirtualDisks                                                                     
-    03/29/2023 15:46:05 : Launching OneNodeEnvironment                                                                      
-    03/29/2023 15:46:05 : Launching NonMigratableWorkload                                                                   
-    03/29/2023 15:46:05 : Launching FaultSummary                                                                            
-    03/29/2023 15:46:06 : Launching SBEHealthStatusOnNode                                                                   
-    03/29/2023 15:46:06 : Launching StorageJobStatus                                                                        
-    03/29/2023 15:46:07 : Launching StorageCsv
-    WARNING: There aren't any faults right now.
-    03/29/2023 15:46:09 : Launching SBEPrecheckStatus
-    WARNING: rq2205-cl: There aren't any faults right now.
-    VERBOSE: Looking up shared vhd product drive letter.
-    WARNING: Unable to find volume with label Deployment
-    VERBOSE: Get-Package returned with Success:True
-    VERBOSE: Found package Microsoft.AzureStack.Role.SBE with version 4.0.2303.66 at
-    C:\NugetStore\Microsoft.AzureStack.Role.SBE.4.0.2303.66\Microsoft.AzureStack.Role.SBE.nuspec.
-    VERBOSE: SolutionExtension module supports Tag 'HealthServiceIntegration'.
-    VERBOSE: SolutionExtension module SolutionExtension at
-    C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\CloudMedia\SBE\Installed\Content\Configuration\SolutionExtension is valid.
-    VERBOSE: Looking up shared vhd product drive letter.
-    WARNING: Unable to find volume with label Deployment
-    VERBOSE: Get-Package returned with Success:True
-    VERBOSE: Found package Microsoft.AzureStack.Role.SBE with version 4.0.2303.66 at
-    C:\NugetStore\Microsoft.AzureStack.Role.SBE.4.0.2303.66\Microsoft.AzureStack.Role.SBE.nuspec.
-    VERBOSE: SolutionExtension module supports Tag 'HealthServiceIntegration'.
-    VERBOSE: SolutionExtension module SolutionExtension at
-    C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\CloudMedia\SBE\Installed\Content\Configuration\SolutionExtension is valid.
-   PS C:\Users\lcmuser> $result|ft Name,Status,Severity
-    
-    Name                                    Status  Severity
-    ----                                    ------  --------
-    Storage Pool Summary                    SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Physical Disks Summary SUCCESS CRITICAL
-    Storage Services Summary                SUCCESS CRITICAL
-    Storage Services Summary                SUCCESS CRITICAL
-    Storage Services Summary                SUCCESS CRITICAL
-    Storage Subsystem Summary               SUCCESS CRITICAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS CRITICAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           SUCCESS INFORMATIONAL
-    Test-CauSetup                           FAILURE INFORMATIONAL
-    Test-CauSetup                           FAILURE INFORMATIONAL
-    Test-CauSetup                           FAILURE INFORMATIONAL
-    Storage Volume Summary                  SUCCESS CRITICAL
-    Storage Volume Summary                  SUCCESS CRITICAL
-    Storage Volume Summary                  SUCCESS CRITICAL
-    Storage Volume Summary                  SUCCESS CRITICAL
-    Storage Virtual Disk Summary            SUCCESS CRITICAL
-    Storage Virtual Disk Summary            SUCCESS CRITICAL
-    Storage Virtual Disk Summary            SUCCESS CRITICAL
-    Storage Virtual Disk Summary            SUCCESS CRITICAL
-    Get-OneNodeRebootRequired               SUCCESS WARNING
-    Test-NonMigratableVMs                   SUCCESS WARNING
-    Faults                                  SUCCESS INFORMATIONAL
-    Test-SBEHealthStatusOnNode              Success Informational
-    Test-SBEHealthStatusOnNode              Success Informational
-    Storage Job Summary                     SUCCESS CRITICAL
-    Storage Cluster Shared Volume Summary   SUCCESS CRITICAL
-    Storage Cluster Shared Volume Summary   SUCCESS CRITICAL
-    Storage Cluster Shared Volume Summary   SUCCESS CRITICAL
-    Test-SBEPrecheckStatus                  Success Informational  
-    
-    PS C:\Users\lcmuser>
-    ```
-
-    > [!NOTE]
-    > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
-
-3. Review any failures and resolve them before you proceed to the discovery step.-->
 
 ## Step 2: Discover the updates
 
