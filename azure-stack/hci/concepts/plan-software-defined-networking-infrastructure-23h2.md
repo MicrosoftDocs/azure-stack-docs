@@ -79,7 +79,7 @@ The HNV Provider network serves as the underlying physical network for East/West
 
 Here's how HNV Provider network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
 
-- Allocates two IP addresses to each machine
+- Allocates two IP addresses to each physical server
 - Allocates one IP address to each SLB MUX VM
 - Allocates one IP address to each gateway VM
 
@@ -168,9 +168,9 @@ The following shows the requirements for the VM roles.
 
 | Role | vCPU requirements | Memory requirements | Disk requirements |
 |--|--|--|--|
-| Network Controller (three machines) | 4 vCPUs | 4 GB minimum<br> (8 GB recommended) | 75 GB for operating system drive |
-| SLB/MUX (three machines) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
-| RAS Gateway<br> (single pool of three machines<br> gateways, two active, one passive) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
+| Network Controller (three nodes) | 4 vCPUs | 4 GB minimum<br> (8 GB recommended) | 75 GB for operating system drive |
+| SLB/MUX (three nodes) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
+| RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
 | RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router) | 2 vCPUs | 2 GB | 75 GB for operating system drive |
 
 If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?preserve-view=true&view=sc-vmm-2019).
@@ -178,7 +178,7 @@ If you use System Center - Virtual Machine Manager (VMM) for deployment, additio
 ## Extending your infrastructure
 The sizing and resource requirements for your infrastructure depend on the tenant workload VMs that you plan to host. The CPU, memory, and disk requirements for the infrastructure VMs (for example: Network Controller, SLB, gateway, and so on) are defined in the previous table. You can add more infrastructure VMs to scale as needed. However, any tenant VMs running on the Hyper-V hosts have their own CPU, memory, and disk requirements that you must consider.
 
-When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either Windows Admin Center, VMM, or PowerShell scripts to create new machine resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
+When the tenant workload VMs start to consume too many resources on the physical Hyper-V hosts, you can extend your infrastructure by adding additional physical hosts. You can use either Windows Admin Center, VMM, or PowerShell scripts to create new server resources through the Network Controller. The method to use depends on how you initially deployed the infrastructure. If you need to add additional IP addresses for the HNV Provider network, you can create new logical subnets (with corresponding IP Pools) that the hosts can use.
 
 ## Phased deployment
 Based on your requirements, you may need to deploy a subset of the SDN infrastructure. For example, if you want to only host customer workloads in your datacenter, and external communication isn't required, you can deploy Network Controller and skip deploying SLB/MUX and gateway VMs. The following describes networking feature infrastructure requirements for a phased deployment of the SDN infrastructure.
