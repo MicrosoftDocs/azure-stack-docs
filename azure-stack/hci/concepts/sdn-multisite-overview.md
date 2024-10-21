@@ -1,12 +1,12 @@
 ---
-title: Overview of SDN Multisite
+title: Overview of SDN Multisite in Azure Stack HCI and Windows Server
 description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/10/2024
+ms.date: 10/21/2024
 ---
 
 # What is SDN Multisite?

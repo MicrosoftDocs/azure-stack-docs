@@ -1,15 +1,15 @@
 ---
-title: Manage SDN Multisite for Azure Stack HCI and Windows Server
+title: Manage Multisite for SDN on Service Fabric in Azure Stack HCI and Windows Server
 description: Learn how to manage a multisite SDN solution for Azure Stack HCI and Windows Server.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/10/2024
+ms.date: 10/21/2024
 ---
 
-# Manage SDN Multisite for Azure Stack HCI
+# Manage Multisite for SDN on Service Fabric in Azure Stack HCI and Windows Server
 
 :::zone pivot="azure-stack-hci"
 
