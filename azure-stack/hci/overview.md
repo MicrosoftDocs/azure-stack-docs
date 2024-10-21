@@ -112,7 +112,7 @@ To get started, you'll need:
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md).
 - An internet connection for each machine in the system that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.
 - For systems stretched across sites (functionality only available in version 22H2):
-  - At least four severs (two in each site)
+  - At least four servers (two in each site)
   - At least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred)
   - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.
 - If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Stack HCI OS to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
