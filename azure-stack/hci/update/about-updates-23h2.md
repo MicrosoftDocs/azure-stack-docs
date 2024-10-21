@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 10/07/2024
+ms.date: 10/21/2024
 ---
 
 # About updates for Azure Local, version 23H2
