@@ -481,4 +481,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](./update-tro
 
 ## Next step
 
-Learn more about how to [Update Azure Local, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
+Learn more about how to [Update Azure Local, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed
