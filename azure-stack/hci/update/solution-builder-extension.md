@@ -99,7 +99,11 @@ To discover and install SBE or your SBE updates, use one of the methods in the n
 
 ### Discover Solution Builder Extension updates via the Azure portal
 
+<<<<<<< HEAD
 To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).
+=======
+To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).
+>>>>>>> 53ff8966bb23dcac2eaf5ca32f16fa493cbdef45
 
 ### Discover Solution Builder Extension updates via PowerShell
 
