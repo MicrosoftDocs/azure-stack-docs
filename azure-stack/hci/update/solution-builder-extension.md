@@ -97,6 +97,29 @@ Gen A                 Contoso680          4.0.0.0
 
 To discover and install SBE or your SBE updates, use one of the methods in the next sections.
 
+Check to see if you have SBE installed on your registered Azure Stack HCI system by running the following command:
+
+```powershell
+$Update = Get-SolutionUpdateEnvironment
+$Update = ft SbeFamily, HardwareModel, CurrentSbeVersion
+```
+
+Here's a sample output
+
+```console
+PS C:\Users\lcmuser> $Update = Get-SolutionUpdateEnvironment
+PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+
+SbeFamily             HardwareModel       CurrentSbeVersion
+---------             -------------       -----------------
+Gen A                 Contoso680          4.0.0.0
+```
+
+> [!NOTE]
+> If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
+
+To discover and install SBE or your SBE updates, use one of the methods in the next sections.
+
 ### Discover Solution Builder Extension updates via the Azure portal
 
 To discover and select updates via the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#browse-for-system-updates).

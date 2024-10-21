@@ -5,6 +5,8 @@
   items:
   - name: What is AKS enabled by Arc?
     href: aks-overview.md
+  - name: Compare AKS enabled by Arc deployment options
+    href: https://techcommunity.microsoft.com/t5/azure-arc-blog/comparing-feature-sets-for-aks-enabled-by-azure-arc-deployment/ba-p/4188163
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
@@ -20,8 +22,10 @@
       href: cluster-architecture.md
     - name: Networking
       items:
-      - name: Networking concepts
+      - name: Networking concepts and requirements
         href: aks-hci-network-system-requirements.md
+      - name: IP address planning for Kubernetes
+        href: aks-hci-ip-address-planning.md
       - name: Load balancer
         href: load-balancer-overview.md      
     - name: Access and identity
@@ -485,8 +489,6 @@
           href: secrets-store-csi-driver.md
         - name: Encrypt etcd secrets
           href: encrypt-secrets.md
-        - name: Secure traffic between pods using network policies
-          href: calico-networking-policy.md
         - name: Configure Defender for Azure Arc-enabled Kubernetes clusters
           href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
       - name: Monitoring and logging

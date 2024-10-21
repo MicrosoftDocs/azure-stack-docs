@@ -1,13 +1,13 @@
 ---
-title: Firewall requirements for Azure Stack HCI
+title: Firewall requirements for Azure Local
 description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/15/2024
+ms.date: 10/17/2024
 ---
 
-# Firewall requirements for Azure Stack HCI
+# Firewall requirements for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
@@ -15,51 +15,50 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
 
-If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
+If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings.md).
 
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link are not supported for Azure Stack HCI, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Stack HCI, version 23H2.
+> Azure Express Route and Azure Private Link are not supported for Azure Local, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Local, version 23H2.
 
 ## Firewall requirements for outbound endpoints
 
 Opening ports 80 and 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update.
 
-Azure Stack HCI needs to periodically connect to Azure for:
+Azure Local needs to periodically connect to Azure for:
 
 - Well-known Azure IPs
 - Outbound direction
 - Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Stack HCI doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
+> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors.
 
-As shown in the following diagram, Azure Stack HCI can access Azure using more than one firewall potentially.
+As shown in the following diagram, Azure Local can access Azure using more than one firewall potentially.
 
-:::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
+:::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Local accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-## Required firewall URLs for Azure Stack HCI 23H2 deployments
+## Required firewall URLs for Azure Local, version 23H2 deployments
 
-Starting with Azure Stack HCI, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Stack HCI](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
+Starting with Azure Local, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
-For East US consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
-- [Azure Stack HCI 23H2 East US required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
+For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in East US for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
-For West Europe consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
-- [Azure Stack HCI 23H2 Western Europe required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
+For a consolidated list of endpoints for West Europe that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in West Europe for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
 
-For Australia East consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
-- [Azure Stack HCI 23H2 Australia East required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
+For a consolidated list of endpoints for Australia East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Australia East for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
-For Canada Central consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
-- [Azure Stack HCI 23H2 Canada Central required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
+For a consolidated list of endpoints for Canada Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Canada Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
-For Central India consolidated list of endpoints, including HCI, Arc-enabled servers, ARB, and AKS use:
-- [Azure Stack HCI 23H2 Central India required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
-
+For a consolidated list of endpoints for India Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in India Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
 
 ## Firewall requirements for additional Azure services
 
-Depending on additional Azure services you enable for Azure Stack HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
+Depending on additional Azure services you enable for Azure Local, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
@@ -74,9 +73,9 @@ Depending on additional Azure services you enable for Azure Stack HCI, you may n
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all server nodes, both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Stack HCI, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Local, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
 
-When using the **Cluster Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
+When using the **Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each machine, open the ports as described in the following sections:
 
 ### Azure Stack HCI OS management
 
@@ -84,7 +83,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound traffic to and from the Azure Stack HCI service on cluster servers | Allow | Cluster servers | Cluster servers | TCP | 30301 |
+| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local instance machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
 
 ### Windows Admin Center
 
@@ -92,9 +91,9 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Provide access to Azure and Microsoft Update | Allow | Windows Admin Center | Azure Stack HCI | TCP | 445 |
-| Use Windows Remote Management (WinRM) 2.0<br> for HTTP connections to run commands<br> on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5985 |
-| Use WinRM 2.0 for HTTPS connections to run<br> commands on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5986 |
+| Provide access to Azure and Microsoft Update | Allow | Windows Admin Center | Azure Local | TCP | 445 |
+| Use Windows Remote Management (WinRM) 2.0<br> for HTTP connections to run commands<br> on remote Windows servers | Allow | Windows Admin Center | Azure Local | TCP | 5985 |
+| Use WinRM 2.0 for HTTPS connections to run<br> commands on remote Windows servers | Allow | Windows Admin Center | Azure Local | TCP | 5986 |
 
 >[!NOTE]
 > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
@@ -106,7 +105,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Stack HCI | TCP | 9389 |
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Local | TCP | 9389 |
 
 ### Failover Clustering
 
@@ -114,16 +113,16 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow Failover Cluster validation | Allow | Management system | Cluster servers | TCP | 445 |
-| Allow RPC dynamic port allocation | Allow | Management system | Cluster servers | TCP | Minimum of 100 ports<br> above port 5000 |
-| Allow Remote Procedure Call (RPC) | Allow | Management system | Cluster servers | TCP | 135 |
-| Allow Cluster Administrator | Allow | Management system | Cluster servers | UDP | 137 |
-| Allow Cluster Service | Allow | Management system | Cluster servers | UDP | 3343 |
-| Allow Cluster Service (Required during<br> a server join operation.) | Allow | Management system | Cluster servers | TCP | 3343 |
-| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Cluster servers | n/a | n/a |
+| Allow Failover Cluster validation | Allow | Management system | Instance nodes | TCP | 445 |
+| Allow RPC dynamic port allocation | Allow | Management system | Instance nodes | TCP | Minimum of 100 ports<br> above port 5000 |
+| Allow Remote Procedure Call (RPC) | Allow | Management system | Instance nodes | TCP | 135 |
+| Allow Cluster Administrator | Allow | Management system | Instance nodes | UDP | 137 |
+| Allow Cluster Service | Allow | Management system | Instance nodes | UDP | 3343 |
+| Allow Cluster Service (Required during<br> a server join operation.) | Allow | Management system | Instance nodes | TCP | 3343 |
+| Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Instance nodes | n/a | n/a |
 
 >[!NOTE]
-> The management system includes any computer from which you plan to administer the cluster, using tools such as Windows Admin Center, Windows PowerShell, or System Center Virtual Machine Manager.
+> The management system includes any computer from which you plan to administer the system, using tools such as Windows Admin Center, Windows PowerShell, or System Center Virtual Machine Manager.
 
 ### Hyper-V
 
@@ -144,13 +143,13 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 ### Storage Replica (stretched cluster)
 
-Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
+Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched instance).
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 445 |
-| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched cluster servers | Stretched cluster servers | TCP | 5985 |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched cluster servers | Stretched cluster servers | n/a | n/a |
+| Allow Server Message Block<br> (SMB) protocol | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 445 |
+| Allow Web Services-Management<br> (WS-MAN) | Allow | Stretched instance nodes | Stretched instance nodes | TCP | 5985 |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow | Stretched instance nodes | Stretched instance nodes | n/a | n/a |
 
 ## Update Microsoft Defender firewall
 
@@ -172,7 +171,7 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 
 1. Import the list of IP addresses to your external corporate firewall, if you're using an allowlist with it.
 
-1. Create a firewall rule for each server in the cluster to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
+1. Create a firewall rule for each node in the system to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
 
     ```powershell
     New-NetFirewallRule -DisplayName "Allow Azure Resource Manager" -RemoteAddress $IpList -Direction Outbound -LocalPort 443 -Protocol TCP -Action Allow -Profile Any -Enabled True

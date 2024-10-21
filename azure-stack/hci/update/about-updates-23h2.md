@@ -14,6 +14,8 @@ ms.date: 10/21/2024
 
 This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
 
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
 ## About the updates
 
 Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Local solution. The latest release introduces new features and components in addition to the OS, including the orchestrator (Lifecycle Manager).
