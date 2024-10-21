@@ -1,18 +1,18 @@
 ---
 title: Manage GPUs via Discrete Device Assignment for Azure Local (preview)
-description: Learn how to Manage GPUs via Discrete Device Assignment for Azure Local (preview).
+description: Learn how to manage GPUs via Discrete Device Assignment for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/14/2024
+ms.date: 10/21/2024
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU DDA wiforth Arc virtual machines (VMs) on Azure Local. For GPU DDA management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-instance-with-a-gpu-enabled-node-pool).
+This article describes how to manage GPU DDA with Arc virtual machines (VMs) on Azure Local. For GPU DDA management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 Discrete Device Assignment (DDA) allows you to dedicate a physical graphical processing unit (GPU) to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.
 
@@ -24,7 +24,7 @@ Discrete Device Assignment (DDA) allows you to dedicate a physical graphical pro
 
 Before you begin, satisfy the following prerequisites:
 
-- Follow the set up instructions found at [Prepare for GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local instance and Arc VMs and to ensure that your GPUs are prepared for DDA.  
+- Follow the setup instructions found at [Prepare GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared for DDA.  
 
 ## Attach a GPU during Arc VM creation
 

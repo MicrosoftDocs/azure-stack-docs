@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/21/2024
 ms.service: azure-stack-hci
 ---
 
@@ -12,7 +12,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 > [!IMPORTANT]
 > This feature is currently in PREVIEW.
@@ -63,7 +63,7 @@ Your Azure Local host must meet the following requirements:
 
 - Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
-- You've access to an Azure Local, version 23H2 instance.
+- You've access to Azure Local, version 23H2.
 
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
@@ -111,7 +111,7 @@ Follow this process if using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Local instance setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceID` obtained in the prior step.
+For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceID` obtained in the prior step.
 
 ```powershell
 $id1 = "GPU_instance_ID"
@@ -154,10 +154,10 @@ pnputil /enum-devices OR pnputil /scan-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
+Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
 ```
 
-Repeat the above steps for each host in your Azure Local system.
+Repeat the above steps for each host in your Azure Local.
 
 ## Using GPU-P
 
@@ -228,7 +228,7 @@ Wed Nov 30 15:22:36 2022
 Follow these steps to configure the GPU partition count in PowerShell:
 
 > [!NOTE]
-> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all machines in your Azure Local instance.
+> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all machines in your Azure Local.
 
 1. Connect to the machine whose GPU partition count you want to configure.
 

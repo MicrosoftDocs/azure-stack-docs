@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/14/2024
+ms.date: 10/21/2024
 ---
 
 # Manage GPUs using partitioning (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU-P with Arc virtual machines (VMs) for Azure Local. For using GPU-P management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-instance-with-a-gpu-enabled-node-pool).
+This article describes how to manage GPU-P with Arc virtual machines (VMs) for Azure Local. For using GPU-P management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 GPU Partitioning (GPU-P) allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
 
@@ -41,7 +41,7 @@ Consider the following limitations when using the GPU-P feature:
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local instance and Arc VMs and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared and partitioned.
 
 ## Attach a GPU during Arc VM creation
 
