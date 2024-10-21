@@ -51,10 +51,6 @@ To view the entire configuration of the pod, run the following command:
 kubectl describe pod nginx
 ```
 
-### Secure traffic between pods
-
-An important feature in Kubernetes is to ensure consistent policy enforcement across multiple clusters. For more information about verifying connectivity between the pods and then applying a basic network policy for pod traffic, see [Secure traffic between pods using network policies](./calico-networking-policy.md).
-
 ## Delete a pod
 
 To delete a pod you created, run the following command:
