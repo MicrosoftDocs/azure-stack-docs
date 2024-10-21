@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 10/11/2024
+ms.date: 10/21/2024
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
@@ -19,9 +19,9 @@ This topic provides step-by-step instructions on how to install and configure an
 
 ## Install the GPU and then dismount it in PowerShell
 
-1. Install the NVIDIA GPU(s) physically into the appropriate machine(s) following OEM instructions and BIOS recommendations.
+1. Install the NVIDIA GPUs physically into the appropriate machine following OEM instructions and BIOS recommendations.
 2. Power on each machine.
-3. Sign in using an account with administrative privileges to the machine(s) with the NVIDIA GPU installed.
+3. Sign in using an account with administrative privileges to the machine with the NVIDIA GPU installed.
 4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "3D Video Controller."
 5. Right-click on "3D Video Controller" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 6. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.

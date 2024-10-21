@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/11/2024
+ms.date: 10/21/2024
 ---
 # Virtual machine load balancing
 
@@ -24,7 +24,7 @@ VM load balancing evaluates a machine's load based on the following heuristics:
 
 ## How does VM load balancing work?
 
-VM load balancing occurs automatically when you add a new machine to your Azure Local instance and can also be configured to perform periodic, recurring load balancing.
+VM load balancing occurs automatically when you add a new machine to your Azure Local and can also be configured to perform periodic, recurring load balancing.
 
 ### When a new machine is added
 
@@ -39,7 +39,7 @@ When you join a new machine to your system, the VM load balancing feature automa
 
 ### Recurring load balancing
 
-By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each machine in the instance are evaluated for balancing every 30 minutes. Here's the flow of the steps:
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each machine in the system are evaluated for balancing every 30 minutes. Here's the flow of the steps:
 
 1. The memory pressure and CPU utilization are evaluated on all machines in the system.
 2. All machines exceeding the threshold and those below the threshold are identified.

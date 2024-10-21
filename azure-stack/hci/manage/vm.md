@@ -3,7 +3,7 @@ title: Manage VMs with Windows Admin Center on Azure Local
 description: Learn how to create and manage virtual machines on Azure Local using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ---
 
@@ -51,12 +51,12 @@ You can easily create a new VM using Windows Admin Center.
 
 ## Get a list of VMs
 
-You can easily see all VMs on a machine or in your Azure Local instance.
+You can easily see all VMs on a machine or in your Azure Local system.
 
 :::image type="content" source="media/vm/vm-inventory.png" alt-text="Virtual machines screen" lightbox="media/vm/vm-inventory.png":::
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Virtual Machines**.
-2. The  **Inventory** tab on the right lists all VMs available on the current machine or the instance, and provides commands to manage individual VMs. You can:
+2. The  **Inventory** tab on the right lists all VMs available on the current machine or the system, and provides commands to manage individual VMs. You can:
     - View a list of the VMs running on the current machine or system.
     - View the VM's state and host machine if you are viewing VMs for a system. Also view CPU and memory usage from the host perspective, including memory pressure, memory demand and assigned memory, and the VM's uptime, heartbeat status, and protection status (using Azure Site Recovery).
     - Create a new VM.

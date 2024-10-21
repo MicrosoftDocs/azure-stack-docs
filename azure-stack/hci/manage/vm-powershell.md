@@ -19,7 +19,7 @@ This article describes how to create and manage virtual machines (VMs) on Azure 
 
 ## About managing VMs using PowerShell
 
-Typically, you manage VMs from a remote computer, rather than on a host machine in an Azure Local instance. This remote computer is called the management computer.
+Typically, you manage VMs from a remote computer, rather than on a host machine in Azure Local. This remote computer is called the management computer.
 
 When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host machine you're managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
 

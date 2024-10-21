@@ -3,7 +3,7 @@ title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
 author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: robhind
 ms.service: azure-stack-hci
@@ -17,7 +17,7 @@ Using either Windows Admin Center or Windows PowerShell, you can easily create a
 
 [!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
-Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as VMs, to keep them together on the same machine, cluster instance, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate machines or in separate sites for disaster recovery.
+Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as VMs, to keep them together on the same machine, system, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate machines or in separate sites for disaster recovery.
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
@@ -31,7 +31,7 @@ You can create basic affinity and anti-affinity rules using Windows Admin Center
 
 :::image type="content" source="media/vm-affinity/vm-affinity-rules.png" alt-text="Virtual machines screen" lightbox="media/vm-affinity/vm-affinity-rules.png":::
 
-1. In Windows Admin Center home, under **All connections**, select the machine or Azure Local instance you want to create the VM rule for.
+1. In Windows Admin Center home, under **All connections**, select the machine or system you want to create the VM rule for.
 1. Under **Tools**, select **Settings**.
 1. Under **Settings**, select **Affinity rules**, then select **Create rule** under **Affinity rules**.
 1. Under **Rule name**, enter a name for your rule.
@@ -160,7 +160,7 @@ With the advent of the new cmdlets, we also added extra new switches to a few ex
 
 #### Move-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and moves the instance resource group to another machine. For more information on this cmdlet, see [Move-ClusterGroup](/powershell/module/failoverclusters/move-clustergroup).
+The new `-IgnoreAffinityRule` switch ignores the rule and moves the cluster resource group to another machine. For more information on this cmdlet, see [Move-ClusterGroup](/powershell/module/failoverclusters/move-clustergroup).
 
 Example:
 
@@ -173,7 +173,7 @@ Move-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 
 #### Start-ClusterGroup
 
-The new `-IgnoreAffinityRule` switch ignores the rule and brings the systemed resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](/powershell/module/failoverclusters/start-clustergroup).
+The new `-IgnoreAffinityRule` switch ignores the rule and brings the cluster resource group online in its current location. For more information on this cmdlet, see [Start-ClusterGroup](/powershell/module/failoverclusters/start-clustergroup).
 
 Example:
 
@@ -183,7 +183,7 @@ Start-ClusterGroup -IgnoreAffinityRule -Cluster Cluster1
 
 ## Affinity rule examples
 
-Affinity rules are "together" rules that keep resources on the same machine, cluster instance, or site. Here are a few common scenarios for setting up affinity rules.
+Affinity rules are "together" rules that keep resources on the same machine, system, or site. Here are a few common scenarios for setting up affinity rules.
 
 ### Scenario 1
 
@@ -231,7 +231,7 @@ DC      SameNode    {SQL1, WEB1}     1
 
 ## Anti-affinity rule examples
 
-Anti-affinity rules are "apart" rules that separate resources and place them on different machines, cluster instances, or sites.
+Anti-affinity rules are "apart" rules that separate resources and place them on different machines, systems, or sites.
 
 ### Scenario 1
 You have two VMs each running SQL Server on the same Azure Local multi-site system.  Each VM utilizes a lot of memory, CPU, and storage resources.  If the two end up on the same machine, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles.  Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different machines.  
