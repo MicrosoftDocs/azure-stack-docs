@@ -69,4 +69,4 @@ While the update installs, you can monitor the progress via your chosen interfac
 
 ## Next step
 
-Learn more about how to [Troubleshoot updates](./update-troubleshooting-23h2.md)
+Learn more about how to [Troubleshoot updates](./update-troubleshooting-23h2.md).

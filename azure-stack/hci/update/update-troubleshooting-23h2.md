@@ -111,4 +111,4 @@ Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -Ignore
 
 Learn more about how to [Run updates via PowerShell](./update-via-powershell-23h2.md).
 
-Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md)
+Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md).

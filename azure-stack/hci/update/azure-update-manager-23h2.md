@@ -174,4 +174,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](../update/up
 
 Learn to [Understand update phases](./update-phases-23h2.md).
 
-Learn more about how to [Troubleshoot updates](./update-troubleshooting-23h2.md)
+Learn more about how to [Troubleshoot updates](./update-troubleshooting-23h2.md).

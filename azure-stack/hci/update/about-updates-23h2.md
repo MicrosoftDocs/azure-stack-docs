@@ -101,4 +101,4 @@ You can install Azure Local updates using the Azure Update Manager in the Azure 
 
 Learn to [Understand update phases](./update-phases-23h2.md).
 
-Learn how to [Troubleshoot updates](./update-troubleshooting-23h2.md)
+Learn how to [Troubleshoot updates](./update-troubleshooting-23h2.md).
