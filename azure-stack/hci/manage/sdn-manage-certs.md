@@ -4,7 +4,7 @@ description: Learn how to manage certificates for Network Controller Northbound 
 ms.topic: article
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 04/25/2024
+ms.date: 10/21/2024
 ---
 
 # Manage certificates for Software Defined Networking
@@ -96,8 +96,8 @@ Creating a certificate with a CA includes the following steps.
 
 While you configure a certificate template in the next step, ensure that the template you configure includes the following required elements.
 
-1. The certificate subject name must be the FQDN of the Hyper-V host
-1. The certificate must be placed in the local machine personal store (My – cert:\localmachine\my)
+1. The certificate subject name must be the FQDN of the Hyper-V host.
+1. The certificate must be placed in the local machine personal store (My – cert:\localmachine\my).
 1. The certificate must have both Server Authentication (EKU: 1.3.6.1.5.5.7.3.1) and Client Authentication (EKU: 1.3.6.1.5.5.7.3.2) Application policies.
 
 >[!NOTE]
@@ -112,7 +112,7 @@ While you configure a certificate template in the next step, ensure that the tem
 1. In the MMC, double-click the CA name, right-click **Certificate Templates**, and then click **Manage**.
 1. The Certificate Templates console opens. All of the certificate templates are displayed in the details pane.
 1. In the details pane, click the template that you want to duplicate.
-1.  Click the **Action** menu, and then click **Duplicate Template**. The template **Properties** dialog box opens.
+1. Click the **Action** menu, and then click **Duplicate Template**. The template **Properties** dialog box opens.
 1. In the template **Properties** dialog box, on the **Subject Name** tab, click **Supply in the request**. \(This setting is required for Network Controller SSL certificates.\)
 1. In the template **Properties** dialog box, on the **Request Handling** tab, ensure that **Allow private key to be exported** is selected. Also ensure that the **Signature and encryption** purpose is selected.
 1. In the template **Properties** dialog box, on the **Extensions** tab, select **Key Usage**, and then click **Edit**.

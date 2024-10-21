@@ -1,17 +1,17 @@
 ---
-title: Manage SDN Multisite for Azure Stack HCI
-description: Learn how to manage a multisite SDN solution for Azure Stack HCI.
+title: Manage SDN Multisite for Azure Local
+description: Learn how to manage a multisite SDN solution for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/11/2024
+ms.date: 10/21/2024
 ---
 
-# Manage SDN Multisite for Azure Stack HCI
+# Manage SDN Multisite for Azure Local
 
 > Applies to: Azure Stack HCI, version 23H2
 
-This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Stack HCI using Windows Admin Center.
+This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Local using Windows Admin Center.
 
 For an overview of SDN Multisite, it's current capabilities and limitations, see [Overview of SDN Multisite](../concepts/sdn-multisite-overview.md).
 
@@ -19,7 +19,7 @@ For an overview of SDN Multisite, it's current capabilities and limitations, see
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
-- You must have access to Azure Stack HCI, version 23H2 clusters deployed at two separate physical sites.
+- You must have access to Azure Local, version 23H2 clusters deployed at two separate physical sites.
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
@@ -153,5 +153,5 @@ For redeployment after SDN Multisite removal, ensure the following are removed:
 
 ## Next steps
 
-- [Read the blog about SDN Multisite](https://techcommunity.microsoft.com/t5/azure-stack-blog/software-defined-networking-multisite-a-tale-of-2-sdn-sites/ba-p/3990521)
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
+- [Read the blog about SDN Multisite](https://techcommunity.microsoft.com/t5/azure-stack-blog/software-defined-networking-multisite-a-tale-of-2-sdn-sites/ba-p/3990521).
+- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md).

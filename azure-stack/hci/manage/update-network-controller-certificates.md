@@ -4,7 +4,7 @@ description: This article describes how to renew Network Controller certificates
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/15/2024
+ms.date: 10/21/2024
 ---
 
 # Renew certificates for Network Controller
@@ -33,7 +33,7 @@ You can renew or change Network Controller certificates when:
 
 ## Types of Network Controller certificates
 
-In Azure Stack HCI, each Network Controller VM uses two types of certificates:
+In Azure Local, each Network Controller VM uses two types of certificates:
 
 - REST certificate. A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all Network Controller VMs. To renew REST certificates, see [Renew REST certificates](#renew-rest-certificates).
 
@@ -374,7 +374,7 @@ To renew the Network Controller node certificate, perform the following steps on
 
 ## Re-import certificates in Windows Admin Center
 
-If you have renewed the Network Controller REST certificate and you are using Windows Admin Center to manage SDN, you must remove the Azure Stack HCI cluster from Windows Admin Center and add it again. By doing this, you ensure that Windows Admin Center imports the renewed certificate and uses it for SDN management.
+If you have renewed the Network Controller REST certificate and you are using Windows Admin Center to manage SDN, you must remove the Azure Local instance from Windows Admin Center and add it again. By doing this, you ensure that Windows Admin Center imports the renewed certificate and uses it for SDN management.
 
 Follow these steps to re-import the renewed certificate in Windows Admin Center:
 
@@ -385,4 +385,4 @@ Follow these steps to re-import the renewed certificate in Windows Admin Center:
 
 ## Next steps
 
-- [Update SDN infrastructure for Azure Stack HCI](./update-sdn.md)
+- [Update SDN infrastructure for Azure Local](./update-sdn.md).

@@ -5,7 +5,7 @@ ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
 author: sethmanheim
-ms.date: 04/18/2024
+ms.date: 10/21/2024
 ---
 
 # Configure Software Load Balancer for high availability ports
