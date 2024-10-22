@@ -7,7 +7,7 @@ ms.topic: article
 ms.custom:
   - devx-track-arm-template
 ms.date: 10/24/2022
-ms.author: anwestg
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019
 zone_pivot_groups: state-connected-disconnected

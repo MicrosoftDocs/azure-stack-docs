@@ -4,8 +4,7 @@ description: This topic provides guidance on how to properly pause, drain, and r
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/17/2023
 ---
 

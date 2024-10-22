@@ -3,8 +3,7 @@ title: HIPAA guidance for Azure Stack HCI
 description: Learn about HIPAA compliance using Azure Stack HCI.
 ms.date: 2/5/2024
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.author: nguyenhung
 author: dv00000
 ms.reviewer: alkohli

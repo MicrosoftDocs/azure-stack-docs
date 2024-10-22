@@ -4,8 +4,7 @@ description: This topic describes the design and policies relevant to diagnostic
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/24/2023
 ---
 
