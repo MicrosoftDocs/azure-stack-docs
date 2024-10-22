@@ -72,7 +72,7 @@ Network security groups allow you to configure access policies based on network 
 
 - If you decommission an old application and deploy a new one within the same network segment, policy adjustments are required.
 
-With network security tags, you no longer need to track the network segments where your applications are hosted. Network security tags simplify policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
+With network security tags, you no longer need to track the network segments where your applications are hosted. Network security tags simplify policy management and avoid the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
 
 ## Create network security tag based network security groups
 
