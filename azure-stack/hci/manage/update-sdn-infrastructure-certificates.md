@@ -4,7 +4,7 @@ description: This article describes how to renew or change SDN server and Softwa
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/15/2024
+ms.date: 10/21/2024
 ---
 
 # Renew certificates for Software Defined Networking infrastructure
@@ -33,7 +33,7 @@ You can renew or change SDN server and SLB MUX certificates when:
 
 ## Types of certificates
 
-In Azure Stack HCI and Windows Server, physical hosts and SLB MUX virtual machines (VMs) use one certificate each to secure southbound communication with the Network Controller. Network Controller pushes policy to the physical hosts and the SLB MUX VMs.
+In Azure Local and Windows Server, physical hosts and SLB MUX virtual machines (VMs) use one certificate each to secure southbound communication with the Network Controller. Network Controller pushes policy to the physical hosts and the SLB MUX VMs.
 
 ## View certificate expiry
 
@@ -91,4 +91,4 @@ Perform these steps to generate self-signed certificates and automatically renew
 
 ## Next steps
 
-- [Update SDN infrastructure for Azure Stack HCI](./update-sdn.md)
+- [Update SDN infrastructure for Azure Local](./update-sdn.md).
