@@ -1,6 +1,6 @@
 ---
-title:  Azure Arc extension management on Azure Stack HCI
-description: This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines.
+title:  Azure Arc extension management on Azure Local
+description: This article describes how to manage Azure Arc extensions on Azure Local machines.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -9,15 +9,15 @@ ms.reviewer: arduppal
 ms.date: 01/31/2024
 ---
 
-# Azure Arc extension management on Azure Stack HCI
+# Azure Arc extension management on Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Stack HCI server machines.
+This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Local machines.
 
-## Customer-managed Azure Arc extensions on Azure Stack HCI
+## Customer-managed Azure Arc extensions on Azure Local
 
-With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions on your Azure Stack HCI systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
+With Azure Local, you can install, uninstall and update Azure Arc extensions on your Azure Local systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
 Here are the individual extensions you can install and manage.
 
@@ -25,11 +25,11 @@ Here are the individual extensions you can install and manage.
 - [Azure Site Recovery](azure-site-recovery.md)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 
-## Azure-managed extensions in Azure Stack HCI
+## Azure-managed extensions in Azure Local
 
-Once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
+Once you've successfully registered your new Azure Local with Azure, Azure-managed extensions are automatically installed on your system. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
 
-If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information in the banner to guide you through installing these extensions.
+If you have an existing Azure Local that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information in the banner to guide you through installing these extensions.
 
 Here are the Azure-managed extensions:
 
@@ -38,11 +38,11 @@ Here are the Azure-managed extensions:
 
 ## Install an extension
 ### [Azure portal](#tab/azureportal)
-You can install extensions from the **Capabilities** tab for your Azure Stack HCI Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
+You can install extensions from the **Capabilities** tab for your Azure Local Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
-When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
+When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all machines of the system. If you add more machines to your system, all the extensions installed on your system are automatically added to the new servers.
 
 ### [Azure CLI](#tab/azurecli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
@@ -58,7 +58,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
     ```
 
-1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the systems under the resource group, run the following command:
     ```azurecli
     extensionName="AdminCenter"
     extensionType="AdminCenter"
@@ -87,7 +87,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the systems under the resource group, run the following command:
     ```azurecli
     extensionName="AzureMonitorWindowsAgent"
     extensionType="AzureMonitorWindowsAgent"
@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install the Azure Site Recovery extension on all the clusters under the resource group run the following command:
+1. To install the Azure Site Recovery extension on all the systems under the resource group run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
@@ -152,7 +152,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     Set-AzContext -Subscription "${subscription}"
     $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
     ```
-1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the systems under the resource group, run the following command:
     ```powershell
     $extensionName = "AdminCenter"
     $extensionType = "AdminCenter"
@@ -188,7 +188,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     }
     ```
 
-1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the systems under the resource group, run the following command:
     ```powershell
     $extensionName = "AzureMonitorWindowsAgent"
     $extensionType = "AzureMonitorWindowsAgent"
@@ -209,7 +209,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     }
     ```
 
-1. To install the Azure Site Recovery extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
+1. To install the Azure Site Recovery extension on all the systems under the resource group, create a JSON parameter file and then run the following command:
     ```powershell
     $settings = @{
         SubscriptionId = "<Replace with your Subscription Id>"
@@ -267,7 +267,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to check the s
     az account set --subscription "${subscription}"
     ```
 
-1. To list all the extensions on a cluster, run the following command:
+1. To list all the extensions on a system, run the following command:
 
     ```azurecli    
     az stack-hci extension list \
@@ -301,7 +301,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to check
     ```
 
 
-1. To list all the extensions on a cluster, run the following command:
+1. To list all the extensions on a system, run the following command:
     ```powershell
     foreach ($cluster in $clusters) {
         $clusterName = ${cluster}.Name
@@ -316,7 +316,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to check
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Stack HCI Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Local Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
 
 Currently, automatic extension upgrades are only supported in the Windows Admin Center extension, but more extensions will be added in the future.
 
@@ -385,15 +385,15 @@ New-AzStackHciExtension `
 
 ### Manual extension upgrade via the Azure portal
 
-The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Stack HCI Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all servers in the cluster to that version.
+The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all machines in the system to that version.
 
-On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Stack HCI cloud sync](../faq.yml).
+On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
 
 Use the manual workflow in these scenarios:
 
 - A new version of the extension is available and you want to upgrade it manually.
 
-- The extension's automatic upgrade option is disabled and there's a version mismatch across different servers of the Azure Stack HCI cluster.
+- The extension's automatic upgrade option is disabled and there's a version mismatch across different machines of the Azure Local.
 
 To manually upgrade an extension, follow these steps:
 
@@ -419,11 +419,11 @@ You can disable automatic upgrades for certain extensions in the Azure portal. T
 
 ### Check the extension upgrade history
 
-You can view the Activity Log tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions to check the history of automatic extension upgrades for individual cluster servers. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
+You can view the Activity Log tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions to check the history of automatic extension upgrades for individual machines. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
 
 ### Availability-first updates
 
-For a group of Azure Stack HCI Arc-enabled clusters undergoing an upgrade, the Azure platform used the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model to orchestrate upgrades.
+For a group of Azure Local Arc-enabled clusters undergoing an upgrade, the Azure platform used the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work) model to orchestrate upgrades.
 
 ### Timing of automatic extension upgrades
 
@@ -444,7 +444,7 @@ If multiple extension upgrades are available for a machine, they might be batche
 ## Uninstall an extension
 
 ### [Azure portal](#tab/azureportal)
-If desired, you can uninstall some extensions from your Azure Stack HCI clusters in the Azure portal. To uninstall an extension, use these steps:
+If desired, you can uninstall some extensions from your Azure Local in the Azure portal. To uninstall an extension, use these steps:
 
 1. Go to the **Extensions page**.
 2. Choose the extension you want to uninstall. The uninstall button isn't available for Azure-managed extensions.
