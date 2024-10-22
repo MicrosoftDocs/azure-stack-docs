@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
