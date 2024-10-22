@@ -6,7 +6,7 @@ ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/21/2024
+ms.date: 10/22/2024
 ---
 
 # What is SDN Multisite?
@@ -118,9 +118,9 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
     These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
 
-    - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md?context=/windows-server/context/windows-server-edge-networking#establish-peering). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
-    - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-edge-networking#establish-peering) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md?context=/windows-server/context/windows-server-edge-networking#establish-peering).
-    - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn?context=/windows-server/context/windows-server-edge-networking#establish-peering).
+    - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md?context=/windows-server/context/windows-server-edge-networking). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
+    - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-edge-networking) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md?context=/windows-server/context/windows-server-edge-networking).
+    - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn?context=/windows-server/context/windows-server-edge-networking).
 
 ::: zone-end
 
