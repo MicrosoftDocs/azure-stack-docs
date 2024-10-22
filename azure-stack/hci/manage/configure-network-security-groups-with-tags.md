@@ -7,7 +7,7 @@ ms.topic: article
 author: sethmanheim
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/10/2024
+ms.date: 10/22/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -52,7 +52,7 @@ Complete the following prerequisites to use network security groups with tags:
 
 - You have Windows Server 2025 or later. For more information, see [Get started with Windows Server](/windows-server/get-started/get-started-with-windows-server).
 
-- You have Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express?context=/windows-server/context/windows-server-edge-networking).
+- You have Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](sdn-express.md?context=/windows-server/context/windows-server-edge-networking).
 
 - You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
 
