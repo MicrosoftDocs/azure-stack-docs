@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -34,9 +34,9 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a network interface that you have created on a logical network associated with your Azure Local instance. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
+- Access to a network interface that you have created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -46,25 +46,25 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local instance. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
 ---
 
 ## Create Arc VMs
 
-Follow these steps to create an Arc VM on your Azure Local instance.
+Follow these steps to create an Arc VM on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Local instance.
+Follow these steps on the client running az CLI that is connected to your Azure Local.
 
 ## Sign in and set subscription
 
@@ -101,14 +101,14 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the VM that you create for your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **admin-username** |Username for the user on the VM you're deploying on your Azure Local instance. |
-    | **admin-password** |Password for the user on the VM you're deploying on your Azure Local instance. |
+    | **name**  |Name for the VM that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | **admin-username** |Username for the user on the VM you're deploying on your Azure Local. |
+    | **admin-password** |Password for the user on the VM you're deploying on your Azure Local. |
     | **image-name** |Name of the VM image used to provision the VM. |
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
-    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on your Azure Local instance. |
-    | **custom-location** |Use this to provide the custom location associated with your Azure Local instance where you're creating this VM. |
+    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Local. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on your Azure Local. |
+    | **custom-location** |Use this to provide the custom location associated with your Azure Local where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
@@ -188,7 +188,7 @@ Depending on the PowerShell version you're running on your VM, you may need to e
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal of your Azure Local instance.
+Follow these steps in Azure portal of your Azure Local.
 
 1. Go to **Azure Arc system view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
@@ -607,7 +607,7 @@ Follow these steps to deploy the Resource Manager template:
 # [Bicep template](#tab/biceptemplate)
 
 1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
-1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Local instance.
+1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Local.
 1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
    :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
@@ -616,7 +616,7 @@ Follow these steps to deploy the Resource Manager template:
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Local instance via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
 The Arc VMs on Azure Local are extended from Arc-enabled machines and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 

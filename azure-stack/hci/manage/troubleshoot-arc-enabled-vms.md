@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management for Azure Local
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-stack-hci
@@ -78,7 +78,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
 ## Failure deploying a VM image from a storage account
 
-You see the following error when trying to deploy a VM image from a storage account on your Azure Local instance:
+You see the following error when trying to deploy a VM image from a storage account on your Azure Local:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n"}`
 
@@ -107,7 +107,7 @@ Ensure that the user has the right permissions, and the blob is in the correct f
 
 ## Failure deploying an Arc VM
 
-You see the following error when trying to deploy an Arc VM on your Azure Local instance:
+You see the following error when trying to deploy an Arc VM on your Azure Local:
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 

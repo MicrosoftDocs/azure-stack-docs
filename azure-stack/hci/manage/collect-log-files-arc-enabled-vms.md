@@ -3,7 +3,7 @@ title: Collect log files for Azure Arc VMs on Azure Local
 description: Learn how to collect log files for an Azure Arc VMs on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-stack-hci

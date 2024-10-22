@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Manage VM extensions on Azure Local virtual machines 
@@ -30,7 +30,7 @@ For a full list of supported VM extensions, see:
 
 Before you install and manage VM extensions, make sure that:
 
-- You’ve access to an Arc VM running on Azure Local and the VM has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc VM, see [Create Arc VMs on your Azure Local instance](./create-arc-virtual-machines.md).
+- You’ve access to an Arc VM running on Azure Local and the VM has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc VM, see [Create Arc VMs on your Azure Local](./create-arc-virtual-machines.md).
 
 ## Verify guest management is enabled
 
@@ -83,7 +83,7 @@ The extension might take a few minutes to install. After the extension is instal
 
 ## List installed extensions
 
-You can get a list of all the VM extensions installed on your Azure Local instance.
+You can get a list of all the VM extensions installed on your Azure Local.
 
 Follow these steps in Azure portal to list the installed VM extensions.
 

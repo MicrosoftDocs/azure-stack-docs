@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ms.service: azure-stack-hci
 ---
 
@@ -83,7 +83,7 @@ You can enable Windows Server subscription through different methods. Select one
 
 ### [Azure portal](#tab/azure-portal)
 
-1. In your Azure Local instance resource page, navigate to the **Configuration** screen.
+1. In your Azure Local cluster resource page, navigate to the **Configuration** screen.
 2. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your system. Licenses take a few minutes to be applied on your system.
 
@@ -190,7 +190,7 @@ Before you begin:
   - **Number of keys:** One unique key for each host machine you are activating, unless you have a valid volume license key.
   - **Consistency across system:** All machines in a system need to use the same edition of keys, so that VMs stay activated regardless of which machine they run on.
 
-- An Azure Local instance (version 20H2 with the June 8, 2021 cumulative update or later).
+- Azure Local (version 20H2 with the June 8, 2021 cumulative update or later).
 - Windows Admin Center (version 2103 or later).
 - The Cluster Manager extension for Windows Admin Center (version 1.523.0 or later).
 
@@ -211,7 +211,7 @@ Use either Windows Admin Center or PowerShell to set up AVMA.
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
-You can use Windows Admin Center to set up and manage product keys for your Azure Local instance.
+You can use Windows Admin Center to set up and manage product keys for your Azure Local.
 
 #### Apply activation keys
 
@@ -221,7 +221,7 @@ To use AVMA in Windows Admin Center:
 
    :::image type="content" source="media/vm-activate/apply-keys.gif" alt-text="Apply keys" lightbox="media/vm-activate/apply-keys.gif":::
 
-1. In the **Automatically activate VMs** pane, select **Set up** and then select **Use existing Windows Server licenses**. In the **Apply activation keys to each machine** pane, enter your Windows Server Datacenter keys.
+1. In the **Automatically activate VMs** pane, select **Set up** and then select **Use existing Windows Server licenses**. In the **Apply activation keys to each server** pane, enter your Windows Server Datacenter keys.
 
    When you finish entering keys for each host machine in the system, select **Apply**. The process then takes a few minutes to complete.
 
@@ -247,7 +247,7 @@ To change or add keys:
 
 ### [PowerShell](#tab/powershell)
 
-You can also use PowerShell to set up and manage key-based AVMA for your Azure Local instance.
+You can also use PowerShell to set up and manage key-based AVMA for your Azure Local.
 
 Open PowerShell as an administrator, and run the following commands:
 
@@ -263,7 +263,7 @@ Open PowerShell as an administrator, and run the following commands:
      Get-VMAutomaticActivation
     ```
 
-1. Repeat these steps on each of the other machines in your Azure Local instance.
+1. Repeat these steps on each of the other machines in your Azure Local.
 
 Now that you have set up AVMA through AHB, you can activate VMs against the host machine by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 

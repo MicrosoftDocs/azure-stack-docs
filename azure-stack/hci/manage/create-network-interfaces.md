@@ -1,13 +1,13 @@
 ---
 title: Create network interfaces for virtual machines on Azure Local
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Local instance. The Arc VM running on your system uses these network interfaces.
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Local. The Arc VM running on your system uses these network interfaces.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Create network interfaces for Arc virtual machines on Azure Local
@@ -30,9 +30,9 @@ Before you create a network interface, make sure that the following prerequisite
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
-- Access to a logical network that you created on your Azure Local instance. For more information, see [Create logical network](./create-virtual-networks.md).
+- Access to a logical network that you created on your Azure Local. For more information, see [Create logical network](./create-virtual-networks.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -73,10 +73,10 @@ Follow these steps to create a network interface on your static logical network.
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
-    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local instance.  |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local.  |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
@@ -159,10 +159,10 @@ Follow these steps to create a network interface on your DHCP logical network. R
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Local is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
-    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local instance. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Local. |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
 

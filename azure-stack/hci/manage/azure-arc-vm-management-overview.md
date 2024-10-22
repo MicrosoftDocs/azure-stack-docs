@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # What is Azure Arc VM management?
@@ -29,7 +29,7 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 - Role-based access control via builtin Azure Local roles ensures that only authorized users can perform VM management operations thereby enhancing security. For more information, see [Azure Local Arc VM management roles](./assign-vm-rbac-roles.md).
 - Arc VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
-- The Azure portal acts as a single pane of glass to manage VMs on Azure Local instances and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or Azure CLI including:
+- The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or Azure CLI including:
 
   - Create, manage, update, and delete VMs. For more information, see [Create Arc VMs](./create-arc-virtual-machines.md)
   - Create, manage, and delete VM resources such as virtual disks, logical networks, network interfaces, and VM images.
@@ -41,11 +41,11 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 Arc VM management comprises several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
 
-- **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local instance to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy the Azure Local instance.
+- **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy your Azure Local.
 
     For more information, see the [Arc Resource Bridge overview](/azure/azure-arc/resource-bridge/overview).
 
-- **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Local instance. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
+- **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
 
 - **Kubernetes Extension for VM Operator**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It is a Kubernetes controller that uses custom resources to manage your VMs.
 
@@ -56,7 +56,7 @@ By integrating these components, Azure Arc offers a unified and efficient VM man
 
 In this release, the Arc VM management workflow is as follows:
 
-1. During the deployment of Azure Local instance, one Arc Resource Bridge is installed per system and a custom location is also created.
+1. During the deployment of your Azure Local, one Arc Resource Bridge is installed per system and a custom location is also created.
 1. [Assign builtin RBAC roles for Arc VM management](./assign-vm-rbac-roles.md).
 1. You can then create VM resources such as:
     1. [Storage paths](./create-storage-path.md) for VM disks.

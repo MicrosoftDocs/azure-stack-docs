@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/18/2024
+ms.date: 10/22/2024
 ms.lastreviewed: 03/05/2024
 ms.service: azure-stack-hci
 ---
@@ -46,7 +46,7 @@ Azure VM verification is automatically enabled by default in Azure Local, versio
 
 ### Host prerequisites
 
-- Make sure that you have access to an Azure Local, version 23H2 instance. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
+- Make sure that you have access to Azure Local, version 23H2. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - (Optional) If you're using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
@@ -71,12 +71,12 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
 
-1. Set up parameters from your subscription, resource group, and system name
+1. Set up parameters from your subscription, resource group, and cluster name.
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
    resourceGroup="hcicluster-rg" # Replace with your resource group name
-   systemName="HCICluster" # Replace with your system name
+   clusterName="HCICluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
@@ -210,7 +210,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
    resourceGroup="hcicluster-rg" # Replace with your resource group name
-   systemName="HCICluster" # Replace with your cluster name
+   clusterName="HCICluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
@@ -254,7 +254,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 ### 1. Turn on legacy OS support on the host
 
-- Run the following command from an elevated PowerShell window on your Azure Local instance:
+- Run the following command from an elevated PowerShell window on your Azure Local:
 
    ```powershell
    Enable-AzStackHCIAttestation
@@ -282,7 +282,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 ### 2. Enable access for VMs
 
-- To configure networking access for selected VMs, run the following command on your Azure Local instance:
+- To configure networking access for selected VMs, run the following command on your Azure Local:
 
    ```powershell
    Add-AzStackHCIVMAttestation [-VMName]

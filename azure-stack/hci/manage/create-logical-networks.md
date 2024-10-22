@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Create logical networks for Azure Local
@@ -22,9 +22,9 @@ Before you begin, make sure to complete the following prerequisites:
 
 # [Azure CLI](#tab/azurecli)
 
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
-- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local instance. By default, an external switch is created during the deployment of your Azure Local instance that you can use to associate with the logical network you will create.
+- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local. By default, an external switch is created during the deployment of your Azure Local that you can use to associate with the logical network you will create.
 
   Run the following command to get the name of the external VM switch on your system.
 
@@ -95,11 +95,11 @@ Create a static logical network when you want to create virtual machines with ne
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the logical network that you create for your Azure Local instance. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created. |
-    | **vm-switch-name** |Name of the external virtual switch on your Azure Local instance where you deploy the logical network. |
-    | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
-    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
-    | **custom-location** | Use this to provide the custom location associated with your Azure Local instance where you're creating this logical network. |
+    | **name**  |Name for the logical network that you create for your Azure Local. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created. |
+    | **vm-switch-name** |Name of the external virtual switch on your Azure Local where you deploy the logical network. |
+    | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
@@ -208,11 +208,11 @@ Follow these steps to configure a DHCP logical network:
 
     | Parameters | Description |
     |--|--|
-    | **name** | Name for the logical network that you create for your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
-    | **vm-switch-name** | Name of the external virtual switch on your Azure Local instance where you deploy the logical network. |
-    | **resource-group** | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
-    | **subscription** | Name or ID of the subscription where Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local instance. |
-    | **custom-location** | Use this to provide the custom location associated with your Azure Local instance where you're creating this logical network. |
+    | **name** | Name for the logical network that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **vm-switch-name** | Name of the external virtual switch on your Azure Local where you deploy the logical network. |
+    | **resource-group** | Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Local. |
+    | **subscription** | Name or ID of the subscription where Azure Local is deployed. This could be another subscription you use for logical network on your Azure Local. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Local where you're creating this logical network. |
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
 

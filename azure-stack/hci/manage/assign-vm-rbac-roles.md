@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Use Role-based Access Control to manage Azure Local Virtual Machines 
@@ -49,14 +49,14 @@ Before you begin, make sure to complete the following prerequisites:
 
 You can assign RBAC roles to user via the Azure portal. Follow these steps to assign RBAC roles to users:
 
-1. In the Azure portal, search for the scope to grant access to, for example, search for subscriptions, resource groups, or a specific resource. In this example, we use the subscription in which the Azure Local instance is deployed.
+1. In the Azure portal, search for the scope to grant access to, for example, search for subscriptions, resource groups, or a specific resource. In this example, we use the subscription in which your Azure Local is deployed.
 
 
 1. Go to your subscription and then go to **Access control (IAM) > Role assignments**. From the top command bar, select **+ Add** and then select **Add role assignment**.
 
     If you don't have permissions to assign roles, the **Add role assignment** option is disabled.
 
-    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-1.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Local instance." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
+    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-1.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Local." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
 1. On the **Role** tab, select an RBAC role to assign and choose from one of the following builtin roles:
 

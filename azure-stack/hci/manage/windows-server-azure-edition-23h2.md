@@ -8,7 +8,7 @@ ms.reviewer: alkohli
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
@@ -32,7 +32,7 @@ To use Windows Server Azure Edition on your Azure Local environment, here are a 
 
 - **VM licensing:**  Windows Server Azure Edition can be licensed with either:
 
-  - **Windows Server subscription**: Turn on the subscription on your Azure Local instance, then choose one of the following options to activate:
+  - **Windows Server subscription**: Turn on the subscription for your Azure Local, then choose one of the following options to activate:
     - Apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest VM using the `slmgr /ipk <AVMA_key>` command.
     - Apply AVMA client key on every Azure Local machine using the `Set-VMAutomaticActivation <product key>` cmdlet.
     To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
@@ -42,7 +42,7 @@ To use Windows Server Azure Edition on your Azure Local environment, here are a 
    > [!Tip]
    > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
 
-- **Azure verification for VMs:** You must enable Azure verification for VMs on your Azure Local instance. Azure VM verification is an attestation feature on Azure Local that makes it possible to run supported Azure-exclusive workloads, such as Windows Server Azure Edition. For more information, see [Azure verification for VMs](../deploy/azure-verification.md).
+- **Azure verification for VMs:** You must enable Azure verification for VMs on your Azure Local. Azure VM verification is an attestation feature on Azure Local that makes it possible to run supported Azure-exclusive workloads, such as Windows Server Azure Edition. For more information, see [Azure verification for VMs](../deploy/azure-verification.md).
 
     > [!NOTE]
     > If you are experiencing issues with Windows Server Azure Edition, a member of the Administrator group needs to sign onto the Azure Local host to perform attestation and provide the proper license. For more information, see the [Troubleshooting](#troubleshooting) section in this article.
@@ -117,7 +117,7 @@ To create an Azure managed disk:
 
 ### 3. Export VHD to Azure Local
 
-Next, you'll need to export the VHD you created from the managed disk to your Azure Local instance, which will let you create new VMs. Use the following method using a regular web browser or using Azure Storage Explorer.
+Next, you'll need to export the VHD you created from the managed disk to your Azure Local, which will let you create new VMs. Use the following method using a regular web browser or using Azure Storage Explorer.
 
 To export the VHD:
 

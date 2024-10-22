@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/15/2024
+ms.date: 10/22/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -22,12 +22,12 @@ The Azure requirements include:
 
 - Arc VM management infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Arc VM management on Azure Local, all entities must be registered, enabled, or created in the same region.
 
-  The entities include Azure Local instance, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
+  The entities include your Azure Local instance, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
 
 ## Azure Local requirements
 
-- You have access to an Azure Local instance that is deployed, has an Arc Resource Bridge, and a custom location.
+- You have access to an Azure Local that is deployed, has an Arc Resource Bridge, and a custom location.
 
   - Go to the **Overview > Server** page in the Azure Local cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your system.
     
@@ -50,15 +50,15 @@ For information on Azure CLI commands for Azure Local VMs, see [az stack-hci-vm]
 
 ### Connect to the system directly
 
-If you're accessing your Azure Local instance directly, no steps are needed on your part.
+If you're accessing your Azure Local directly, no steps are needed on your part.
 
 During the system deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the system. You can connect to and manage the system using the Azure CLI extension.
 
 ### Connect to the system remotely
 
-If you're accessing the Azure Local instance remotely, the following requirements must be met:
+If you're accessing your Azure Local remotely, the following requirements must be met:
  
-- The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you're using to connect to your Azure Local instance.
+- The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you're using to connect to your Azure Local.
 
   - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
   

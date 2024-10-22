@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/21/2024
+ms.date: 10/22/2024
 ---
 
 # Create storage path for Azure Local 
@@ -17,9 +17,9 @@ This article describes how to create storage path for VM images used on your Azu
 
 ## About storage path
 
-When the Azure Local instance is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specified storage path has sufficient storage space.
+When your Azure Local is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specified storage path has sufficient storage space.
 
-The storage paths on your Azure Local instance should point to system shared volumes that can be accessed by all the machines on your system. In order to be highly available, we strongly recommend that you create storage paths under system shared volumes.
+The storage paths on your Azure Local should point to system shared volumes that can be accessed by all the machines on your system. In order to be highly available, we strongly recommend that you create storage paths under system shared volumes.
 
 The available space in the system shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\UserStorage_1\Volume01` and the `Volume01` is 4 TB, then the size of the storage path is the available space (out of the 4 TB) on `Volume01`.
   
@@ -27,9 +27,9 @@ The available space in the system shared volume determines the size of the store
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that complete the [Azure Local instance requirements](./azure-arc-vm-management-prerequisites.md).
+1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
-1. Make sure that a system shared volume exists on your Azure Local instance that is accessible from all the machines in the system. The storage path that you intend to provide on a system shared volume should have sufficient space for storing VM images. By default, system shared volumes are created during the deployment of Azure Local instance. 
+1. Make sure that a system shared volume exists on your Azure Local that is accessible from all the machines in the system. The storage path that you intend to provide on a system shared volume should have sufficient space for storing VM images. By default, system shared volumes are created during the deployment of Azure Local instance. 
 
     You can create storage paths only within system shared volumes that are available in the system. For more information, see [Create a system shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
@@ -41,7 +41,7 @@ You can use the Azure CLI or the Azure portal to create a storage path on your s
 
 # [Azure CLI](#tab/azurecli)
 
-You can use the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Local instance.
+You can use the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Local.
 
 ### Review parameters used to create a storage path
 
@@ -49,10 +49,10 @@ The following parameters are *required* when you create a storage path:
 
 | Parameter | Description |
 | ----- | ----------- |
-| **name** | Name of the storage path that you create for your Azure Local instance. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a storage path after it's created. |
-| **resource-group** |Name of the resource group where you create the storage path. For ease of management, we recommend that you use the same resource group as your Azure Local instance. |
-| **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could also be another subscription you use for storage path on your Azure Local instance. |
-| **custom-location** |Name or ID of the custom location associated with your Azure Local instance where you're creating this storage path. |
+| **name** | Name of the storage path that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a storage path after it's created. |
+| **resource-group** |Name of the resource group where you create the storage path. For ease of management, we recommend that you use the same resource group as your Azure Local. |
+| **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could also be another subscription you use for storage path on your Azure Local. |
+| **custom-location** |Name or ID of the custom location associated with your Azure Local where you're creating this storage path. |
 | **path** | Path on a disk to create storage path. The selected path should have sufficient space available for storing your VM image. |
 
 
@@ -80,7 +80,7 @@ Follow these steps on one of the machines of your Azure Local instance to create
     $path="<Path on the disk to system shared volume>"
     $subscription="<Subscription ID>"
     $resource_group="<Resource group name>"
-    $customLocName="<Custom location of your Azure Local instance>"
+    $customLocName="<Custom location of your Azure Local>"
     $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$reource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location="<Azure region where the system is deployed>"
     ```
@@ -166,7 +166,7 @@ You can use the Azure portal to create, show, and list the storage paths on your
 
 ### Create a storage path
 
-Follow these steps in Azure portal of your Azure Local instance.
+Follow these steps in Azure portal of your Azure Local.
 
 1. Go to Azure Local cluster resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
 
@@ -186,7 +186,7 @@ Follow these steps in Azure portal of your Azure Local instance.
  
 ### View the storage path properties
 
-Follow these steps in Azure portal of your Azure Local instance.
+Follow these steps in Azure portal of your Azure Local.
 
 1. Go to Azure Local cluster resource and then go to **Storage paths**.  
 1. Select the storage path name. This should drill down in to the storage path properties. 
@@ -196,14 +196,14 @@ Follow these steps in Azure portal of your Azure Local instance.
 
 ### Delete a storage path
 
-Follow these steps in Azure portal of your Azure Local instance.
+Follow these steps in Azure portal of your Azure Local.
 
 1. Go to Azure Local cluster resource and then go to **Storage paths**.  
 1. For the storage path that you wish to delete, select the corresponding trashcan icon. 
 
     :::image type="content" source="./media/create-storage-path/delete-storage-path-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/delete-storage-path-1.png":::
 
-1. In the confirmation dialog, select Yes to continue. 
+1. In the confirmation dialog, select **Yes** to continue. 
 
     :::image type="content" source="./media/create-storage-path/delete-storage-path-2.png" alt-text="Screenshot of deletion confirmation." lightbox="./media/create-storage-path/delete-storage-path-2.png":::
 
