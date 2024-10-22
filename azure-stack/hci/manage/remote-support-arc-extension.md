@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: shisab
 ms.lastreviewed: 01/19/2024
-ms.date: 01/19/2024
+ms.date: 10/22/2024
 ---
 
 # Azure Local Remote Support ARC extension overview

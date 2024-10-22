@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
-ms.date: 01/31/2024
+ms.date: 10/22/2024
 ---
 
 # Azure Arc extension management on Azure Local

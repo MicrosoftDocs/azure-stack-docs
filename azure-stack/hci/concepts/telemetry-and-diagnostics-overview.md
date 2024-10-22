@@ -22,7 +22,7 @@ The Telemetry and Diagnostics Arc extension (shown as AzureEdgeTelemetryAndDiagn
 
 Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Local. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
-For more information, see [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-stack-hci).
+For more information, see [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md#azure-managed-extensions-in-azure-local).
 
 ## Benefits
 
