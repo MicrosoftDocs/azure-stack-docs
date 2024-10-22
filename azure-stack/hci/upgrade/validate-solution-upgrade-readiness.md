@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -227,9 +227,9 @@ Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online
 } 
 ```
 
-## Remediation 2: Ensure that cluster nodes are up
+## Remediation 2: Ensure that nodes are up
 
-Ensure that all the cluster nodes are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
+Ensure that all the nodes are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
 To verify all nodes of the cluster are online, run the following PowerShell command:
 

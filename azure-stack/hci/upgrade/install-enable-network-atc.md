@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 10/14/2024
+ms.date: 10/22/2024
 ms.service: azure-stack-hci
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Local, version 22H2 instance.
 ---
@@ -229,7 +229,7 @@ If the **ConfigurationStatus** shows **Failed**, check to see if the error messa
 
 ### Step 8: Rename the VMSwitch on other machines
 
-In this step, you move from the machine deployed with Network ATC to the next node and migrate the VMs from this second machine. You must verify that the second machine has the same `VMSwitch` name as the machine deployed with Network ATC.
+In this step, you move from the machine deployed with Network ATC to the next machine and migrate the VMs from this second machine. You must verify that the second machine has the same `VMSwitch` name as the machine deployed with Network ATC.
 
 > [!IMPORTANT]
 > After the virtual switch is renamed, you must disconnect and reconnect each VM so that it can appropriately cache the new name of the virtual switch. This is a disruptive action that requires planning to complete. If you do not perform this action, live migrations will fail with an error indicating the virtual switch doesn't exist on the destination.
@@ -266,7 +266,7 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To apply the Network ATC settings across your Azure Local system, repeat steps 1 through 5 (skip deleting the virtual switch as it was renamed), step 7, and step 9 for each machine of the system.
+> To apply the Network ATC settings across your Azure Local, repeat steps 1 through 5 (skip deleting the virtual switch as it was renamed), step 7, and step 9 for each machine of the system.
 
 ## Next step
 

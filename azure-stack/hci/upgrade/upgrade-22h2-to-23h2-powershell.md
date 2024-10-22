@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,14 +13,14 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the version 22H2 operating system (OS) for Azure Local to version 23H2, which is the latest generally available software, via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS
 
 There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
-Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
+hroughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
-> To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local, version 22H2 systems. We strongly recommend that you install this version as soon as it becomes available.
+> To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
 
 ## High-level workflow for the OS upgrade
 
@@ -29,7 +29,7 @@ The Azure Local operating system update is available via the Windows Update and 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
-1. [Connect to the Azure Local, version 22H2 instance.](#step-1-connect-to-the-azure-local-instance)
+1. [Connect to Azure Local, version 22H2.](#step-1-connect-to-the-azure-local-instance)
 1. [Check for the available updates using PowerShell.](#step-1-connect-to-the-azure-local-instance)
 1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
 1. [Check the status of the updates.](#step-3-check-the-status-of-an-update)
@@ -39,20 +39,20 @@ To upgrade the OS on your system, follow these high-level steps:
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local, version 22H2 system.
-- The instance should be registered in Azure.
+- You have access to an Azure Local running version 22H2.
+- The system is registered in Azure.
 - Make sure that all the machines  in your Azure Local, version 22H2 cluster are healthy and show as **Online**.
 - You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 
 > [!NOTE]
-> The ISO file is only required if the cluster instance machines do not have access to Windows Update to download the OS feature update.  If using this method, after you [Connect to the Azure Local, version 22H2 instance](#step-1-connect-to-the-azure-local-instance), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
+> The ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to the Azure Local, version 22H2](#step-1-connect-to-the-azure-local-instance), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
 
 ## Step 1: Connect to the Azure Local instance
 
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
 
-1. Run PowerShell as Administrator on the client that you're using to connect to your instance.
+1. Run PowerShell as Administrator on the client that you're using to connect to your system.
 1. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
 
    ```powershell
@@ -77,22 +77,22 @@ Follow these steps on your client to connect to one of the machines of your Azur
 To install the new OS using PowerShell, follow these steps:
 
 > [!NOTE]
-> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the instance.  For information on how to install and enable this feature on your Azure Local instance, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
+> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system.  For information on how to install and enable this feature on your Azure Local instance, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
 
-1. Run the following cmdlets on every machine in the instance: <!--ASK-->
+1. Run the following cmdlets on every machine in the system.
 
    ```PowerShell
    Set-WSManQuickConfig
    Enable-PSRemoting
    ```
 
-1. To test whether the instance is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which notifies you of any warnings or errors:
+1. To test whether the system is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which notifies you of any warnings or errors:
 
    ```PowerShell
    Test-CauSetup -ClusterName <Cluster name>
    ```
 
-1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the instance. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
+1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
 
    ```PowerShell
    Test-Cluster
@@ -106,7 +106,7 @@ To install the new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each machine is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You need a separate machine or VM outside the instance to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the nodes are rebooted.
+1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the nodes are rebooted.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
@@ -115,7 +115,7 @@ To install the new OS using PowerShell, follow these steps:
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the instance isn't connected to Windows Update and the Azure Local install media is available on a local share, CAU can also be used to upgrade the instance. Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
+1. If the system isn't connected to Windows Update and the Azure Local install media is available on a local share, CAU can also be used to upgrade the system. Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
 
    ```powershell
    Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
@@ -154,7 +154,7 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-You're now ready to perform the post-OS upgrade steps for your instance.
+You're now ready to perform the post-OS upgrade steps for your system.
 
 ## Next steps
 

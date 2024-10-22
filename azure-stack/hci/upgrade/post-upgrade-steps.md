@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -141,5 +141,5 @@ You're now ready to apply the solution upgrade.
 
 ## Next steps
 
-- [Optional: Install and enable Network ATC on your instance.](./install-enable-network-atc.md)
+- [Optional: Install and enable Network ATC on your Azure Local.](./install-enable-network-atc.md)
 - [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)

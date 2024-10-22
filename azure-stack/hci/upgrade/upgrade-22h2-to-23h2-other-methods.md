@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,20 +13,20 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the version 22H2 operating system (OS) to version 23H2 for Azure Local, which is the latest generally available software, using manual methods such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
+This article describes how to upgrade the operating system (OS) from version 22H2 to version 23H2 on your Azure Local using manual methods such a [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 OS to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 Throughout this article, we refer to Azure Stack HCI OS, version 23H2 as the new version and Azure Stack HCI OS, version 22H2 as the old version.
 
 > [!IMPORTANT]
-> To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Local, version 22H2 systems. We strongly recommend that you install this version as soon as it becomes available.
+> To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
 
 ## High-level workflow for the OS upgrade
 
 The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
 
-To upgrade the OS on your instance, follow these high-level steps:
+To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete prerequisites.](#complete-prerequisites)
 1. [Connect to your system.](#step-1-connect-to-your-system)
@@ -41,11 +41,11 @@ To upgrade the OS on your instance, follow these high-level steps:
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local, version 22H2 system.
-- The system should be registered in Azure.
-- Make sure that all the nodmachineses in your Azure Local, version 22H2 system are healthy and show as **Online**.
+- You have access to an Azure Local running version 22H2.
+- The system is registered in Azure.
+- Make sure that all the machines in your Azure Local are healthy and show as **Online**.
 - You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
-- You have access to a client that can connect to your Azure Local system. This client should be running PowerShell 5.0 or later.
+- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 
 ## Step 1: Connect to your system
 
@@ -55,7 +55,7 @@ Follow these steps on your client to connect to one of the machines on your syst
 > To perform a manual upgrade using SConfig, you must log in directly to the cluster nodes.  You can use remote PowerShell to control cluster actions, or you can run the commands directly from each machine when performing the update.
 
 1. Run PowerShell as Administrator on the client that you're using to connect to your system.
-2. Open a remote PowerShell session to a machine on your Azure Local system. Run the following command and provide the credentials of your machine when prompted:
+2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
 
    ```powershell
    $cred = Get-Credential
@@ -101,7 +101,7 @@ When all the nodes are upgraded, you can perform the post-installation steps.
 
 This method allows you to take all the machines in a system down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
 
-If there's a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method could be for you. This process brings down the Azure Local system, updates the machines, and brings it all up again.
+If there's a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method could be for you. This process brings down the Azure Local, updates the machines, and brings it all up again.
 
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
@@ -120,7 +120,7 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
    Set-Service -Name clussvc -StartupType Automatic
    ```
    
-1. Start the instance. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
+1. Start the system. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
 1. Give it a few minutes. Make sure the storage pool is healthy.  Run `Get-StorageJob` to ensure all jobs complete successfully.
 1. Bring the virtual disks back online.
 1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
