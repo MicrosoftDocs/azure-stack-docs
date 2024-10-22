@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new in 23H2
 
 ## Known issues for version 2408.2
 
-This software release maps to software version number **2408.2.6**.
+This software release maps to software version number **2408.2.7**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
