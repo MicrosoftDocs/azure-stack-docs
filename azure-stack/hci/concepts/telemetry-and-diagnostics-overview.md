@@ -18,7 +18,7 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The Telemetry and Diagnostics Arc extension (shown as AzureEdgeTelemetryAndDiagnostics in the Azure portal) enables the collection of telemetry and diagnostics information from your Azure Local system. This information helps Microsoft gain valuable insights into the system's behavior.
+The Telemetry and Diagnostics Arc extension (shown as AzureEdgeTelemetryAndDiagnostics in the Azure portal) enables the collection of telemetry and diagnostics information from your Azure Local instance. This information helps Microsoft gain valuable insights into the system's behavior.
 
 Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Local. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
@@ -32,7 +32,7 @@ Some of the advantages of the telemetry and diagnostics extension include:
   
 - **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly.
 
-- **Reduced update impact:** Allows non-disruptive update of your Azure Local system and doesn't require a reboot of the host machine.
+- **Reduced update impact:** Allows non-disruptive update of your Azure Local instance and doesn't require a reboot of the host machine.
 
 - **Resource consumption controls:** Ensures that no more than 5% CPU is consumed. Control of the process is enforced via the Azure Arc extension framework.
 

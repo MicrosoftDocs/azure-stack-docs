@@ -51,11 +51,11 @@ The scenarios in this list highlight the critical role of remote support in effi
 |Azure Local Information Retrieval | Obtain details related to Azure Local, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Local. |
 |Hyper-V Troubleshooting |Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
 |Observability Pipeline Testing | Verify the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
-|System Information Retrieval | Retrieve relevant details about system, system groups, machines, system resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
+|Cluster Information Retrieval | Retrieve relevant details about cluster, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
 | Network Adapter Details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details.<br></br> Additionally, retrieve information about VM Switches and IPsec settings. |
-|Storage, Systems, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, system group sets, available disks, network specifics for systems, SMB client information, and disk images. 
+|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, SMB client information, and disk images. |
 
-## Enable remote support via PowerShell on your Azure Local system
+## Enable remote support via PowerShell on your Azure Local
 
 To enable remote support on your Azure Local, follow these steps:
 
