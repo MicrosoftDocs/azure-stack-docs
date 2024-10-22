@@ -4,7 +4,7 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.date: 03/18/2024
+ms.date: 10/24/2024
 ---
 
 # What is SDN Multisite?
@@ -13,9 +13,9 @@ ms.date: 03/18/2024
 
 This article provides an overview of SDN Multisite, including its benefits and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
+SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Local instances deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
 
-For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
+For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md).
 
 ## Benefits
 
@@ -108,7 +108,7 @@ Currently, Software Load Balancers are local resources for each of your physical
 
 ### Load balancing in SDN Multisite: Example scenario
 
-The following sections explain load balancing in Multisite through an example scenario, demonstrating both without and with migrating workload VMs. Suppose you have two Azure Stack HCI clusters with SDN Multisite enabled, each with its own SDN infrastructure deployed and configured. In this scenario, a client wants to reach VM1 with IP address 10.0.0.5 and VIP of 11.0.0.5.
+The following sections explain load balancing in Multisite through an example scenario, demonstrating both without and with migrating workload VMs. Suppose you have two Azure Local instances with SDN Multisite enabled, each with its own SDN infrastructure deployed and configured. In this scenario, a client wants to reach VM1 with IP address 10.0.0.5 and VIP of 11.0.0.5.
 
 #### Load balancing in SDN Multisite without migrating workload VMs
 
@@ -118,7 +118,7 @@ In SDN Multisite, if there's no VM migration between locations, data packets are
 
 #### Load balancing in SDN Multisite with migrating workload VMs
 
-If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you're trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Stack HCI cluster. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
+If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you're trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Local instance. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
 
 :::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken.gif" alt-text="Animation that shows load balancing in an SDN Multisite environment with migrating workloads." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken.gif" :::
 
@@ -138,4 +138,4 @@ SDN gateway connections are also local resources that aren't synced across sites
 
 ## Next steps
 
-[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md)
+[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md)
