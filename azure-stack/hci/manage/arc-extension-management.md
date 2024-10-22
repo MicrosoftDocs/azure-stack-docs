@@ -17,7 +17,7 @@ This article describes how to install, upgrade, and manage Azure Arc extensions 
 
 ## Customer-managed Azure Arc extensions on Azure Local
 
-With Azure Local, you can install, uninstall and update Azure Arc extensions on your Azure Local systems. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
+You can install, uninstall and update Azure Arc extensions on your Azure Local. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
 Here are the individual extensions you can install and manage.
 
