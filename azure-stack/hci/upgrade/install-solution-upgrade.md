@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci

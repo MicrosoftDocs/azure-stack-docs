@@ -15,9 +15,9 @@ ms.service: azure-stack-hci
 
 This article describes how to upgrade the operating system (OS) from version 22H2 to version 23H2 on your Azure Local using manual methods such a [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
-While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 OS to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
-Throughout this article, we refer to Azure Stack HCI OS, version 23H2 as the new version and Azure Stack HCI OS, version 22H2 as the old version.
+Throughout this article, we refer to Azure Stack HCI OS, version 23H2 as the **new** version and Azure Stack HCI OS, version 22H2 as the **old** version.
 
 > [!IMPORTANT]
 > To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
@@ -45,17 +45,17 @@ Before you begin, make sure that:
 - The system is registered in Azure.
 - Make sure that all the machines in your Azure Local are healthy and show as **Online**.
 - You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
-- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
+- You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
 
 ## Step 1: Connect to your system
 
 Follow these steps on your client to connect to one of the machines on your system.
 
 > [!IMPORTANT]
-> To perform a manual upgrade using SConfig, you must log in directly to the cluster nodes.  You can use remote PowerShell to control cluster actions, or you can run the commands directly from each machine when performing the update.
+> To perform a manual upgrade using SConfig, you must log in directly to the machines.  You can use remote PowerShell to control system actions, or you can run the commands directly from each machine when performing the update.
 
 1. Run PowerShell as Administrator on the client that you're using to connect to your system.
-2. Open a remote PowerShell session to a machine on your Azure Local instance. Run the following command and provide the credentials of your machine when prompted:
+2. Open a remote PowerShell session to a machine on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
 
    ```powershell
    $cred = Get-Credential
@@ -87,7 +87,7 @@ For each node in the cluster, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node <Node Name> -Drain`
 
-    1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target machine.
+    1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target node.
 
     1. Run the **SCONFIG** option 6.3 on the target node.
 
@@ -105,7 +105,7 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
-1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
+1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the system.
 1. Set the cluster service to **Disabled** by running the PowerShell command below on each machine. This prevents the cluster service from starting up while being updated.
 
    ```

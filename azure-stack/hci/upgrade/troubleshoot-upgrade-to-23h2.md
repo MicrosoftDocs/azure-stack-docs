@@ -1,9 +1,9 @@
 ---
 title: Troubleshoot Azure Local upgrade
-description: Learn how to troubleshoot upgrades on your Azure Local instance. 
+description: Learn how to troubleshoot upgrades on your Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/14/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -13,7 +13,7 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to identify and troubleshoot common Azure Local system upgrade issues.
+This article describes how to identify and troubleshoot common Azure Local upgrade issues.
 
 ## Operating system upgrade
 

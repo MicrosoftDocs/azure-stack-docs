@@ -99,7 +99,7 @@ Once the new OS is installed, you need to upgrade the *cluster functional level*
 
    We recommend that you upgrade the cluster functional level as soon as possible. Skip this step if you installed the feature upgrades with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
-   1. Run the following cmdlet on any node in the system:
+   1. Run the following cmdlet on any machine in the system:
 
       ```PowerShell
       Update-ClusterFunctionalLevel      

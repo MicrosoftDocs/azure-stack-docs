@@ -141,7 +141,7 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 ## Remediation 1: Install required and optional Windows features
 
-Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other cluster members.
+Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
 Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
 
@@ -227,11 +227,11 @@ Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online
 } 
 ```
 
-## Remediation 2: Ensure that nodes are up
+## Remediation 2: Ensure that machines are up
 
-Ensure that all the nodes are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
+Ensure that all the machines are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the machines are online.
 
-To verify all nodes of the cluster are online, run the following PowerShell command:
+To verify all machines of the system are online, run the following PowerShell command:
 
 ```powershell
 Get-ClusterNode -Cluster "mycluster" 
@@ -409,13 +409,13 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Local instance, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
+If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
 ## Remediation 11: Check the AKS install state
 
-If you were running AKS workloads on your Azure Local instance, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2 and version 23H2.
+If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2 and version 23H2.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 

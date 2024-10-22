@@ -47,7 +47,7 @@ Before you begin, make sure that:
 > [!NOTE]
 > The offline ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
 
-## Step 1: Connect to Azure Local instance via Windows Admin Center
+## Step 1: Connect to Azure Local via Windows Admin Center
 
 Follow these steps to add and connect to an Azure Local machine via Windows Admin Center.
 
@@ -59,10 +59,10 @@ Follow these steps to add and connect to an Azure Local machine via Windows Admi
 
 ## Step 2: Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update an instance and apply quality updates using a simple user interface. If you purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extensions. ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update Azure Local and apply quality updates using a simple user interface. If you purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extensions. ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
-   > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Don't attempt to use the Cluster-Aware Updating (CAU) tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, see [Update a cluster using PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+   > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Don't attempt to use the Cluster-Aware Updating (CAU) tool or update a system with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, see [Upgrade via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 Follow these steps to install updates:
 
@@ -78,7 +78,7 @@ Follow these steps to install updates:
    > [!NOTE]
    > To use the CAU tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
 
-1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your system. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Local, version 23H2** is **Available** for the cluster machines. If the feature update isn't displayed, ensure your cluster is running the Azure Stack HCI OS and that the nodes have direct access to Windows Update, then select **Check for updates**.
+1. After the role is installed, Windows Admin Center automatically checks for updates applicable to your system. Ensure the radio button for **Feature update (Recommended)** is selected and the **Feature update for Azure Local, version 23H2** is **Available** for the machines. If the feature update isn't displayed, ensure your system is running the Azure Stack HCI OS and that the machines have direct access to Windows Update, then select **Check for updates**.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png" alt-text="Screenshot of the Updates page in Windows Admin Center showing the available updates." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/check-for-updates.png":::
 
@@ -94,7 +94,7 @@ Follow these steps to install updates:
    > [!NOTE]
    > If you're installing updates on a system that has [Kernel Soft Reboot](../manage/kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
 
-1. Select **Next: Install** to review the list of updates to be installed to each cluster machine. Then, select **Install** to begin installing the operating system updates. One by one, each machine downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, machines are restarted one at a time, moving cluster roles such as VMs between machines to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign in to Windows Admin Center multiple times.
+1. Select **Next: Install** to review the list of updates to be installed to each machine. Then, select **Install** to begin installing the operating system updates. One by one, each machine downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, machines are restarted one at a time, moving roles such as VMs between machines to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign in to Windows Admin Center multiple times.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the cluster." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
@@ -104,12 +104,12 @@ Follow these steps to install updates:
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 
    > [!IMPORTANT]
-   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a machine restarts. **Don't remove any drives or restart any machines in the cluster until you see a confirmation that the sync is complete.**
+   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a machine restarts. **Don't remove any drives or restart any machines in the system until you see a confirmation that the sync is complete.**
    
    > [!NOTE]
    > Hardware updates are only available on systems that have the vendor's hardware extension installed. If your Windows Admin Center does not have this extension, there will not be an option to install hardware updates.
 
-1. Windows Admin Center checks the system for installed extensions that support your specific machine hardware. Select **Next: Install** to install the hardware updates on each machine in the cluster. If no extensions or updates are found, select **Exit**.
+1. Windows Admin Center checks the system for installed extensions that support your specific machine hardware. Select **Next: Install** to install the hardware updates on each machine in the system. If no extensions or updates are found, select **Exit**.
 
 1. As per security best practices, disable CredSSP as soon as you're finished installing the updates:
     - In Windows Admin Center, under **All connections**, select the first machine in your cluster and then select **Connect**.
@@ -119,4 +119,4 @@ You're now ready to perform the post-upgrade steps for your system.
 
 ## Next steps
 
-- [Learn how to perform the post-upgrade steps for your Azure Local instance.](./post-upgrade-steps.md)
+- [Learn how to perform the post-upgrade steps for your Azure Local.](./post-upgrade-steps.md)

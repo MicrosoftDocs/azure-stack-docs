@@ -48,7 +48,7 @@ Before you begin, make sure that:
 > [!NOTE]
 > The ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to the Azure Local, version 22H2](#step-1-connect-to-the-azure-local-instance), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
 
-## Step 1: Connect to the Azure Local instance
+## Step 1: Connect to Azure Local
 
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
 
@@ -77,7 +77,7 @@ Follow these steps on your client to connect to one of the machines of your Azur
 To install the new OS using PowerShell, follow these steps:
 
 > [!NOTE]
-> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system.  For information on how to install and enable this feature on your Azure Local instance, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
+> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system.  For information on how to install and enable this feature on your Azure Local, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
 
 1. Run the following cmdlets on every machine in the system.
 
@@ -106,7 +106,7 @@ To install the new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each machine is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the nodes are rebooted.
+1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the machines are rebooted.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
@@ -158,4 +158,4 @@ You're now ready to perform the post-OS upgrade steps for your system.
 
 ## Next steps
 
-- [Learn how to perform the post-OS upgrade steps for your Azure Local instance.](./post-upgrade-steps.md)
+- [Learn how to perform the post-OS upgrade steps for your Azure Local.](./post-upgrade-steps.md)

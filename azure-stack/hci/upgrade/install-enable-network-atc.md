@@ -22,7 +22,7 @@ This article provides information on how to install and enable Network ATC on an
 
 ## About Network ATC
 
-Network ATC stores information in the cluster database, which is then replicated to other machines in the cluster. From the initial node, other machines in the cluster see the change in the cluster database and create a new intent. Here, we set up the system to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on machines that have virtual machines (VM) on them.
+Network ATC stores information in the cluster database, which is then replicated to other nodes in the cluster. From the initial node, other nodes in the cluster see the change in the cluster database and create a new intent. Here, we set up the cluster to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on nodes that have virtual machines (VM) on them.
 
 ## Benefits
 
@@ -257,9 +257,9 @@ You don't change the Network ATC `VMSwitch` for two reasons:
 - Network ATC ensures that all machines in the system have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
 
-### Step 9: Resume the cluster node
+### Step 9: Resume the node
 
-To reenter or put your cluster back in service, run the following command:
+To reenter or put your system back in service, run the following command:
 
 ```powershell
 Resume-ClusterNode
