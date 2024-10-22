@@ -14,6 +14,9 @@ ms.reviewer: alkohli
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
+> [!IMPORTANT]
+> - Consult your hardware OEM before you upgrade Azure Stack HCI. Validate that your OEM supports the version and the upgrade.
+
 This article provides an overview of upgrading your existing Azure Stack HCI system from version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
