@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 03/15/2024
+ms.date: 10/18/2024
 zone_pivot_groups: select-os
 
 ---
@@ -146,6 +146,9 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-7"
 
+> [!WARNING]
+> We're no longer publishing new client packages for **Red Hat Enterprise Linux 7**. Please migrate to one of the supported releases to run newer versions of the Azure Managed Lustre client packages.
+
 1. Install and configure the Azure Managed Lustre repository for the YUM package manager. Create the following script and name it `repo.bash`:
 
    ```bash
@@ -251,7 +254,9 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="ubuntu-18"
 
-> [!CAUTION]
+> [!WARNING]
+> We're no longer publishing new client packages for **Ubuntu 18.04**. Please migrate to one of the supported releases to run newer versions of the Azure Managed Lustre client packages.
+>
 > Ubuntu 18.04 LTS reached the end of Standard Support on May 31, 2023. Microsoft recommends either migrating to the next Ubuntu LTS release or upgrading to Ubuntu Pro to gain access to extended security and maintenance from Canonical. For more information, see the [announcement](https://techcommunity.microsoft.com/t5/linux-and-open-source-blog/canonical-ubuntu-18-04-lts-reaching-end-of-standard-support/ba-p/3822623).
 
 1. Ensure you have Ubuntu Pro activated and are on the recommended 5.4 kernel, which is provided by the linux-image-azure metapackage:
@@ -284,7 +289,7 @@ The instructions apply to client VMs running:
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
-   [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+   [!INCLUDE [client-install-version-ubuntu-18](./includes/client-install-version-ubuntu-18.md)]
 
 ::: zone-end
 
