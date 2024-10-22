@@ -1,18 +1,20 @@
 ---
-title: Collect diagnostic logs for Azure Stack HCI
-description: Learn how to collect diagnostic logs and share them with Microsoft.
+title: Collect diagnostic logs for Azure Stack HCI (preview)
+description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 03/19/2024
+ms.date: 10/22/2024
 ---
 
-# Collect diagnostic logs for Azure Stack HCI
+# Collect diagnostic logs for Azure Stack HCI (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect diagnostic logs for Azure Stack HCI and send them to Microsoft via the Azure portal or PowerShell. These diagnostic logs help identify and fix any issues with your Azure Stack HCI solution.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About on-demand log collection
 
