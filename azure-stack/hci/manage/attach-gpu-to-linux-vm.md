@@ -24,7 +24,7 @@ This topic provides step-by-step instructions on how to install and configure an
 3. Sign in using an account with administrative privileges to the machine with the NVIDIA GPU installed.
 4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "3D Video Controller."
 5. Right-click on "3D Video Controller" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
-6. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
+6. Note the value with string PCIRoot as highlighted in the screenshot below. Right-click on **Value** and copy/save it.
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot." lightbox="media/attach-gpu-to-linux-vm/pciroot.png":::
 
@@ -42,7 +42,7 @@ This topic provides step-by-step instructions on how to install and configure an
 2. Open **Hyper-V Manager** on the machine in your Azure local instance with the GPU installed.
    > [!NOTE]
    > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a VM limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the machine instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
-3. Using the Ubuntu ISO downloaded in step 1, create a new VM using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Generation 1 VM with 2GB of memory and a network card attached to it.
+3. Using the Ubuntu ISO downloaded in step 1, create a new VM using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create an Ubuntu Generation 1 VM with 2GB of memory and a network card attached to it.
 4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
     # Confirm that there are no DDA devices assigned to the VM
