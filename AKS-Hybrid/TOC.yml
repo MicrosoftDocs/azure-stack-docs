@@ -196,7 +196,7 @@
       href: aks-edge-howto-setup-nested-environment.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
-    - name: Deploy Azure IoT Operations on AKS Edge Essentials
+    - name: Deploy Azure IoT Operations
       href: aks-edge-howto-deploy-azure-iot.md
     - name: Offline installation
       href: aks-edge-howto-offline-install.md

@@ -58,24 +58,24 @@ After you download the script, perform the following steps:
 
 1. Run the following commands, replacing the placeholder values with your information:
 
-|Placeholder|Value  |
-|---------|---------|
-|SUBSCRIPTION_ID     |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).   |
-|TENANT_ID  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
-|RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created.      |
-|LOCATION     |      An Azure region close to you. For the list of currently supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
-|CLUSTER_NAME     |    A name for the new cluster to be created.     |
-|ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
+   |Placeholder|Value  |
+   |---------|---------|
+   |SUBSCRIPTION_ID     |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).   |
+   |TENANT_ID  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
+   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created.      |
+   |LOCATION     |      An Azure region close to you. For the list of currently supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
+   |CLUSTER_NAME     |    A name for the new cluster to be created.     |
+   |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
 
-```powershell
-$url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
-Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1
-Unblock-File .\AksEdgeQuickStartForAio.ps1
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-.\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>"
-```
+   ```powershell
+   $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
+   Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1
+   Unblock-File .\AksEdgeQuickStartForAio.ps1
+   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>"
+   ```
 
-If there are any issues during deployment, including if your machine reboots as part of this process, run the set of commands again.
+If there are any issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
 
 Run the following commands to check that the deployment was successful:
 
