@@ -19,7 +19,6 @@ In this section, we cover the following causes:
 
 - [Cause 1: Network ports are blocked](#cause-1-network-ports-are-blocked)
 - [Cause 2: Resources within the subnet are incompatible](#cause-2-resources-within-the-subnet-are-incompatible)
-- Cause n
 
 ### Cause 1: Network ports are blocked
 
@@ -47,7 +46,6 @@ In this section, we cover the following causes:
 
 - [Cause 1: Blob container allows public access](#cause-1-blob-container-allows-public-access)
 - [Cause 2: Blob container can't be accessed by the file system](#cause-2-blob-container-cant-be-accessed-by-the-file-system)
-- Cause n
 
 ### Cause 1: Blob container allows public access
 
