@@ -196,6 +196,8 @@
       href: aks-edge-howto-setup-nested-environment.md
     - name: Use GitOps with AKS Edge Essentials
       href: aks-edge-howto-use-gitops.md
+    - name: Deploy AIO on AKS Edge Essentials
+      href: aks-edge-howto-deploy-AIO.md
     - name: Offline installation
       href: aks-edge-howto-offline-install.md
     - name: Access TPM secrets
