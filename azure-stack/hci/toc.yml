@@ -59,7 +59,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: September 2024 - Current
+      - name: November 2024 - Current
+        href: security-update/hci-security-update-nov-2024.md
+      - name: September 2024
         href: security-update/hci-security-update-sep-2024.md
       - name: August 2024
         href: security-update/hci-security-update-aug-2024.md
