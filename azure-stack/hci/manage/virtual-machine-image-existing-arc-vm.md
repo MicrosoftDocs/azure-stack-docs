@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/22/2024
+ms.date: 10/23/2024
 ---
 
 # Create Azure Stack HCI VM image using existing Arc VMs
