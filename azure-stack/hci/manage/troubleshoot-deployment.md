@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment validation failures for Az
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 10/07/2024
+ms.date: 10/23/2024
 ---
 
 
@@ -12,7 +12,7 @@ ms.date: 10/07/2024
 
 > Applies to: Azure Stack HCI, version 23H2 running 2405 or later
 
-This article provides guidance on how to troubleshoot deployment validation issues experienced during the deployment of your Azure Local system via the Azure portal.
+This article provides guidance on how to troubleshoot deployment validation issues experienced during the deployment of Azure Local via the Azure portal.
 
 ## Error - deployment validation failure
 

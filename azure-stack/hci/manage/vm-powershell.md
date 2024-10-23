@@ -1,26 +1,27 @@
 --- 
-title: Manage VMs using Windows PowerShell - Azure Stack HCI
-description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell
-author: JasonGerend
+title: Manage VMs using Windows PowerShell on Azure Local
+description: How to manage virtual machines on Azure Local using Windows PowerShell
+author: alkohli
 ms.topic: how-to 
-ms.date: 07/08/2024
+ms.date: 10/11/2024
 ms.author: jgerend
 ms.reviewer: stevenek
+ms.service: azure-stack-hci
 ---
 
-# Manage VMs on Azure Stack HCI using Windows PowerShell
+# Manage VMs on Azure Local using Windows PowerShell
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article describes how to create and manage virtual machines (VMs) on Azure Stack HCI using Windows PowerShell.
+This article describes how to create and manage virtual machines (VMs) on Azure Local using Windows PowerShell.
 
-[!INCLUDE [hci-arc-vm-wac](../../includes/hci-arc-vm-wac.md)]
+[!INCLUDE [hci-arc-vm-wac](../../hci/includes/hci-arc-vm-windows-admin-center.md)]
 
 ## About managing VMs using PowerShell
 
-Typically, you manage VMs from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
+Typically, you manage VMs from a remote computer, rather than on a host machine in Azure Local. This remote computer is called the management computer.
 
-When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host server you're managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
+When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host machine you're managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
 
 For complete reference documentation on managing VMs using PowerShell, see [Hyper-V reference](/powershell/module/hyper-v/).
 
@@ -75,13 +76,13 @@ The following example returns a list of all VMs on Server1.
 Get-VM -ComputerName Server1
 ```
 
-The following example returns a list of all running VMs on a server by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)) documentation.
+The following example returns a list of all running VMs on a machine by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)) documentation.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Running"
 ```
 
-The next example returns a list of all shutdown VMs on the server.
+The next example returns a list of all shutdown VMs on the machine.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Off"
@@ -105,7 +106,7 @@ Stop-VM -Name VM1 -ComputerName Server1
 
 ## Move a VM
 
-The `Move-VM` cmdlet moves a VM to a different server. For more information, see the [Move-VM](/powershell/module/hyper-v/move-vm) reference documentation.
+The `Move-VM` cmdlet moves a VM to a different machine. For more information, see the [Move-VM](/powershell/module/hyper-v/move-vm) reference documentation.
 
  The following example shows how to move a VM to Server2 when the VM is stored on an SMB share on Server1:
 
@@ -139,7 +140,7 @@ Export-VM -ComputerName Server1 -Name VM1 -Path D:\
 
 The `Rename-VM` cmdlet is used to rename a VM. For detailed information, see the [Rename-VM](/powershell/module/hyper-v/rename-vm) reference documentation.
 
-The following example renames VM1 to VM2 and displays the renamed virtual machine:
+The following example renames VM1 to VM2 and displays the renamed VM:
 
 ```powershell
 Rename-VM -ComputerName Server1 -Name VM1 -NewName VM2
@@ -211,29 +212,29 @@ Removal or deletion of a VM via PowerShell deletes the VM's configuration file b
 
 Before you delete a VM, make sure that the VM is **OFF**. Remember that deleting a VM deletes the configuration file irreversibly.
 
-### Remove a VM from a server
+### Remove a VM from a machine
 
-To remove or delete a VM and its resources from a server, first find all VMs on the server using the following cmdlet:
+To remove or delete a VM and its resources from a machine, first find all VMs on the machine using the following cmdlet:
 
 ```powershell
 Get-VM -Name VM1
 ```
 
-Then, run the following cmdlet for each VM you wish to remove from the server:
+Then, run the following cmdlet for each VM you wish to remove from the machine:
 
 ```powershell
 Remove-VM -Name VM1
 ```
 
-### Remove a VM from a cluster
+### Remove a VM from a system
 
-To remove or delete a VM and its resources from a cluster, first find them using the following cmdlet:
+To remove or delete a VM and its resources from a system, first find them using the following cmdlet:
 
 ```powershell
 Get-ClusterGroup
 ```
 
-Then, run the following cmdlet for each VM you wish to remove from the cluster:
+Then, run the following cmdlet for each VM you wish to remove from the system:
 
 ```powershell
 Remove-ClusterGroup -RemoveResources -Name VM1

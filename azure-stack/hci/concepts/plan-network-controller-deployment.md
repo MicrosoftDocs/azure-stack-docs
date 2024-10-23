@@ -9,7 +9,7 @@ ms.date: 05/22/2024
 
 # Plan to deploy Network Controller for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 Planning to deploy Network Controller via Windows Admin Center requires a set of virtual machines (VMs) running the Azure Stack HCI operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
@@ -20,7 +20,7 @@ Planning to deploy Network Controller via Windows Admin Center requires a set of
 
 The following are required before you deploy the Network Controller:
 
-- A virtual hard disk (VHDX) for the Azure Stack HCI, version 23H2 operating system to create Network Controller VMs. Download the [VHDX file](../deploy/download-azure-stack-hci-23h2-software.md#download-azure-stack-hci-version-23h2-software).
+- A virtual hard disk (VHDX) for the Azure Stack HCI, version 23H2 operating system to create Network Controller VMs. Download the [VHDX file](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - A domain name and credentials to join Network Controller VMs to a domain. These are the same domain name and credentials that were used for management settings during the [Azure Stack HCI deployment via Azure portal]( ../deploy/deploy-via-portal.md#specify-management-settings).
 - At least one virtual switch that you configure using the Cluster Creation wizard in Windows Admin Center. If using a single network intent for management and compute, you can also use the default switch created during the Azure Stack HCI deployment.
 - A physical network configuration that matches one of the [Supported topology options for Azure Stack HCI, version 23H2 deployment](../deploy/deployment-introduction.md#supported-network-topologies).

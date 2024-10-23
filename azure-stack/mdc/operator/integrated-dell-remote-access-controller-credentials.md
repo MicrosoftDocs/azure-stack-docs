@@ -1,9 +1,9 @@
 ---
 title: Integrated Dell Remote Access Controller credentials - MDC
 description: Learn how to update user credentials for the Integrated Dell Remote Access Controller (iDRAC) in a Modular Data Center using Remote Desktop.
-author: troettinger
-ms.author: thoroet
-ms.service: azure-stack
+author: sethmanheim
+ms.author: sethm
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 05/27/2022
 ms.reviewer: justinha

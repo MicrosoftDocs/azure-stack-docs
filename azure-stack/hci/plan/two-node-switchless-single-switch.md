@@ -1,28 +1,27 @@
 ---
-title: Azure Stack HCI two-node storage switchless deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI two-node storage switchless network reference pattern.
+title: Azure Local two-node storage switchless deployment network reference pattern
+description: Plan to deploy an Azure Local two-node storage switchless network reference pattern.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 03/14/2024
+ms.service: azure-stack-hci
+ms.date: 10/17/2024
 ---
 
-# Review two-node storage switchless, single switch deployment network reference pattern for Azure Stack HCI
+# Review two-node storage switchless, single switch deployment network reference pattern for Azure Local
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes the two-node storage switchless with single TOR switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article targets the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+This article describes the two-node storage switchless with single TOR switch network reference pattern that you can use to deploy your Azure Local solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article targets the IT administrators who deploy and manage Azure Local in their datacenters.
 
-For information about other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information about other network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
 Scenarios for this network pattern include laboratories, factories, retail stores, and government facilities.
 
-Consider this pattern for a cost-effective solution that includes fault-tolerance at the cluster level, but can tolerate northbound connectivity interruptions if the single physical switch fails or requires maintenance.
+Consider this pattern for a cost-effective solution that includes fault-tolerance at the system level, but can tolerate northbound connectivity interruptions if the single physical switch fails or requires maintenance.
 
 You can scale out this pattern, but it requires workload downtime to reconfigure storage physical connectivity and storage network reconfiguration. Although SDN L3 services are fully supported for this pattern, the routing services such as BGP must be configured on the firewall device on top of the TOR switch if it doesn't support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device, as they're implemented on the virtual switch.
 
@@ -34,7 +33,7 @@ As shown in the following diagram, this pattern has the following physical netwo
 
 - Two teamed network ports to handle management and compute traffic, connected to the L2 switch on each host
 
-- Two RDMA NICs in a full-mesh configuration for east-west traffic for storage. Each node in the cluster has a redundant connection to the other node in the cluster.
+- Two RDMA NICs in a full-mesh configuration for east-west traffic for storage. Each node in the system has a redundant connection to the other node in the system.
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
@@ -94,7 +93,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface will be dedicated to a separate storage network, and both may utilize the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
 
-The storage adapters operate on different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnets defined by Network ATC (10.71.1.0/24 and 10.71.2.0/24) aren't usable, you're responsible for assigning all storage IP addresses in the cluster.
+The storage adapters operate on different IP subnets. To enable a switchless configuration, each connected node supports a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnets defined by Network ATC (10.71.1.0/24 and 10.71.2.0/24) aren't usable, you're responsible for assigning all storage IP addresses in the system.
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 

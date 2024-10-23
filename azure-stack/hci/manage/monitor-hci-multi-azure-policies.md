@@ -1,32 +1,31 @@
 ---
-title: Enable Insights for Azure Stack HCI at scale using Azure policies
-description: How to enable Insights for Azure Stack HCI clusters at scale using Azure policies.
+title: Enable Insights for Azure Local at scale using Azure policies
+description: How to enable Insights for Azure Local systems at scale using Azure policies.
 author: ManikaDhiman
 ms.author: v-manidhiman
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 09/12/2024
 ---
 
-# Enable Insights for Azure Stack HCI at scale using Azure policies
+# Enable Insights for Azure Local at scale using Azure policies
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This document describes how to enable Insights for Azure Stack HCI clusters at scale using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md#enable-insights).
+This document describes how to enable Insights for Azure Local systems at scale using Azure policies. To enable Insights for a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23H2.md#enable-insights).
 
 For an overview of Azure Policy, see [What is Azure Policy?](/azure/governance/policy/overview)
 
 ## About using Azure policies to enable Insights at scale
 
-To monitor multiple Azure Stack HCI clusters with Insights, you need to enable Insights for each cluster individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on the defined rules. If any non-clompliant resources are found after assigning the policies, you can remediate them through remediation tasks.
+To monitor multiple Azure Local systems with Insights, you need to enable Insights for each system individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on the defined rules. If any non-compliant resources are found after assigning the policies, you can remediate them through remediation tasks.
 
 This section describes the Azure policies to use to enable Insights at scale. For each policy, it also provides policy definition template in JSON that you can use as-is to create policy definitions, or as a starting point for further customization.
 
 ### Policy to repair AMA
 
-For Azure Stack HCI clusters registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
+For Azure Local systems registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
 
 The policy to repair AMA performs the following function:
 
@@ -34,7 +33,7 @@ The policy to repair AMA performs the following function:
 
 Before applying this policy, keep in mind the following things:
 
-- This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
+- This policy is applicable only to Azure Local, version 22H2 systems. Apply it before any other policies to ensure AMA picks up the correct resource ID.
 - Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear. For more information, see [Uninstall AMA](/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal#uninstall).
 
 Here's the policy definition in JSON:
@@ -459,9 +458,9 @@ Here's the policy definition in JSON:
 
 The policy to install AMA performs the following functions:
 
-- Evaluates if Azure Stack HCI clusters have the `AzureMonitoringAgent` extension installed.
+- Evaluates if Azure Local systems have the `AzureMonitoringAgent` extension installed.
 
-- Installs AMA on clusters that aren't compliant with the policy through a remediation task.
+- Installs AMA on systems that aren't compliant with the policy through a remediation task.
 
 Here's the policy definition in JSON:
 
@@ -544,9 +543,9 @@ Here's the policy definition in JSON:
 
 ### Policy to configure DCR association
 
-This policy is applied to each server in the Azure Stack HCI cluster and performs the following function:
+This policy is applied to each node in the Azure Local system and performs the following function:
 
-- Takes the `dataCollectionResourceId` as input and associates the Data Collection Rule (DCR) with each server.
+- Takes the `dataCollectionResourceId` as input and associates the Data Collection Rule (DCR) with each node.
 
   > [!NOTE]
   > This policy doesn’t create Data Collection Endpoint (DCE). If you're using private links, you must create DCE to ensure there's data available in Insights. For more information, see [Enable network isolation for Azure Monitor Agent by using Private Link](/azure/azure-monitor/agents/azure-monitor-agent-private-link).
@@ -641,23 +640,23 @@ Here's the policy definition in JSON:
 
 ## Enable Insights at scale using Azure policies
 
-This section describes how to enable Insights for Azure Stack HCI at scale using Azure policies.
+This section describes how to enable Insights for Azure Local at scale using Azure policies.
 
 ### Prerequisites
 
-Before you enable Insights for Azure Stack HCI at scale using Azure policies, complete the following prerequisites:
+Before you enable Insights for Azure Local at scale using Azure policies, complete the following prerequisites:
 
-- You must have access to Azure Stack HCI clusters on which you want to enable Insights. These clusters must be deployed and registered.
+- You must have access to deployed and registered Azure Local systems on which you will enable Insights.
 - You must have the managed identity for the Azure resources enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 - You must have the **Guest Configuration Resource Contributor** role in your Azure subscription.
-- (For Azure Stack HCI, version 22H2 clusters only) You must uninstall AMA before start applying the Azure policies.
+- (For Azure Local, version 22H2 systems only) You must uninstall AMA before start applying the Azure policies.
 
 ### Order of policy application
 
-To enable Insights at scale for Azure Stack HCI clusters, apply the Azure policies in the following order:
+To enable Insights at scale for Azure Local systems, apply the Azure policies in the following order:
 
-1. Repair AMA (for Azure Stack HCI, version 22H2 clusters only):
-    - If you're using Azure Stack HCI, version 22H2 clusters, start by applying the policy to repair AMA. This step isn't required for Azure Stack HCI, version 23H2 clusters.
+1. Repair AMA (for Azure Local, version 22H2 systems only):
+    - If you're using Azure Local, version 22H2 systems, start by applying the policy to repair AMA. This step isn't required for Azure Local, version 23H2 systems.
     - For policy definition template, see [Policy to repair AMA](#policy-to-repair-ama).
     
 1. Install AMA:
@@ -732,9 +731,10 @@ To create a policy assignment, follow these steps:
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign-remediation-tab.png" alt-text="Screenshot of the Remediation tab on the Assign policy page to define remediation task if necessary." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign-remediation-tab.png":::
 
 1. Select **Review + create** to review the assignment.
+
 1. Select **Create** to create the assignment.
 
-    You get notifications that the role assignment and policy assignment creations were successful. Once the assignment is created, the Azure Policy engine identifies all Azure Stack HCI clusters located within the scope and applies the policy configuration to each cluster. Typically, it takes 5 to 15 minutes for the policy assignment to take effect.
+    You get notifications that the role assignment and policy assignment creations were successful. Once the assignment is created, the Azure Policy engine identifies all Azure Local systems located within the scope and applies the policy configuration to each system. Typically, it takes 5 to 15 minutes for the policy assignment to take effect.
 
 ### View compliance status
 
@@ -748,7 +748,7 @@ To view the compliance status of the policy, follow these steps:
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status.png" alt-text="Screenshot of the Policy Compliance page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status.png":::
 
-1. Select the policy assignment name to view the **Resource Compliance** status. For example, the compliance report for the repair AMA policy shows the cluster nodes that need to be repaired:
+1. Select the policy assignment name to view the **Resource Compliance** status. For example, the compliance report for the repair AMA policy shows the nodes that need to be repaired:
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png" alt-text="Screenshot of the Policy Compliance status page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png":::
 
@@ -779,4 +779,4 @@ To remediate non-compliant resources and track remediation task progress, follow
 
 ## Next steps
 
-- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)

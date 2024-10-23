@@ -3,15 +3,15 @@ title: Release notes with known issues in Azure Stack HCI 2310 release (preview)
 description: Read about the known issues and fixed issues in Azure Stack HCI 2310 releases (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/26/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # View known issues in Azure Stack HCI 2310 release (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../hci/includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2310 release.
 
@@ -19,7 +19,7 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md#features-and-improvements-in-2311).
 
-[!INCLUDE [important](../includes/hci-preview.md)]
+[!INCLUDE [important](../hci/includes/hci-preview.md)]
 
 ## Issues for version 2310
 
@@ -48,7 +48,7 @@ Here are the known issues in version 2310 release:
 | Deployment |A new storage account is created for each run of the deployment. Existing storage accounts aren't supported in this release.| |
 | Deployment |A new key vault is created for each run of the deployment. Existing key vaults aren't supported in this release.| |
 | Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| |
-| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-servers-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
+| Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 | Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the Azure Resource Manager template to override this parameter and disable RDMA for the intents. |
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
@@ -56,7 +56,7 @@ Here are the known issues in version 2310 release:
 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
 | Azure Site Recovery <!--25766680--> |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Azure Site Recovery <!--25891533-->| There is an issue in this release with IP allocation from the Azure portal to the management network. As a result, Azure Site Recovery can't be installed on your Azure Stack HCI cluster. |There's no known workaround in this release. |
-| Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-4-download-check-readiness-and-install-updates). |
+| Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates). |
 
 
 ## Next steps

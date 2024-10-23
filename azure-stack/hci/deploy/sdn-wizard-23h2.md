@@ -1,20 +1,20 @@
 ---
-title: Deploy SDN using Windows Admin Center for Azure Stack HCI
-description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Stack HCI
+title: Deploy SDN using Windows Admin Center for Azure Local
+description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2024
+ms.date: 10/17/2024
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
 
-# Deploy SDN using Windows Admin Center for Azure Stack HCI
+# Deploy SDN using Windows Admin Center for Azure Local
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Stack HCI, version 23H2 cluster via the Azure portal.
+This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Local, version 23H2 via the Azure portal.
 
-Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
+Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Local, in the following deployment order:
 
 - Network Controller
 - Software Load Balancer (SLB)
@@ -25,7 +25,7 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on an Azure Stack HCI, version 23H2 cluster, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Stack HCI](../manage/update-sdn.md).
+> If you are deploying SDN on an Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
@@ -41,19 +41,19 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 
 The following requirements must be met for a successful SDN deployment:
 
-- All server nodes must have Hyper-V enabled.
+- All machines must have Hyper-V enabled.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](deployment-prep-active-directory.md).
-- All server nodes must be joined to Active Directory.
-- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI. You may need to create separate switches for compute traffic and management traffic, for example.
+- All machines must be joined to Active Directory.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured.
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
 
 ## Deploy SDN Network Controller
 
-SDN Network Controller deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Stack HCI cluster.
+SDN Network Controller deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Local.
 
 1. In Windows Admin Center, under **Tools**, select **Settings**, and then select **Extensions**.
 1. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
@@ -62,7 +62,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 
     :::image type="content" source="media/sdn/sdn-wizard.png" alt-text="SDN deployment wizard in Windows Admin Center" lightbox="media/sdn/sdn-wizard.png":::
 
-1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
+1. Specify a path to the Azure Local VHD file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. We strongly recommend three VMs for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
@@ -90,19 +90,19 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 
 If the Network Controller deployment fails or you want to deploy it again, do the following:
 
-1. Delete all Network Controller VMs and their VHDs from all server nodes.
+1. Delete all Network Controller VMs and their VHDs from all the Azure Local machines.
 1. Remove the following registry key from all hosts by running this command:
 
    ```powershell
     Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections
    ```
 
-1. After removing the registry key, remove the cluster from the Windows Admin Center management, and then add it back.
+1. After removing the registry key, remove Azure Local from the Windows Admin Center management, and then add it back.
 
    > [!NOTE]
    > If you don't do this step, you may not see the SDN deployment wizard in Windows Admin Center.
 
-1. (Additional step only if you plan to uninstall Network Controller and not deploy it again) Run the following cmdlet on all the servers in your Azure Stack HCI cluster, and then skip the last step.
+1. (Additional step only if you plan to uninstall Network Controller and not deploy it again) Run the following cmdlet on all the machines in your Azure Local, and then skip the last step.
     
     ```powershell
     Disable-VMSwitchExtension -VMSwitchName "<Compute vmswitch name>" -Name "Microsoft Azure VFP Switch Extension"
@@ -112,7 +112,7 @@ If the Network Controller deployment fails or you want to deploy it again, do th
 
 ## Deploy SDN Software Load Balancer
 
-SDN SLB deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy SLB on your existing Azure Stack HCI cluster.
+SDN SLB deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy SLB on your existing Azure Local.
 
 > [!NOTE]
 > Network Controller must be set up before you configure SLB.
@@ -128,7 +128,7 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
     - **Private VIP subnet prefix**. These don’t need to be routable on the public Internet because they are used for internal load balancing.
 1. Under **BGP Router Settings**, enter the **SDN ASN** for the SLB. This ASN is used to peer the SLB infrastructure with the Top of the Rack switches to advertise the Public VIP and Private VIP IP addresses.
 1. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. SLB infrastructure needs these settings to create a BGP peer with the switch. If you have an additional Top of Rack switch that you want to peer the SLB infrastructure with, add **IP Address** and **ASN** for that switch as well.
-1. Under **VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
+1. Under **VM Settings**, specify a path to the Azure Local VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for software load balancing. We strongly recommend at least two VMs for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. SLB needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
@@ -152,7 +152,7 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
 
 ## Deploy SDN Gateway
 
-SDN Gateway deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy SDN Gateways on your existing Azure Stack HCI cluster.
+SDN Gateway deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy SDN Gateways on your existing Azure Local.
 
 > [!NOTE]
 > Network Controller and SLB must be set up before you configure Gateways.
@@ -164,7 +164,7 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 1. Under **Define the Gateway Settings**, under **Tunnel subnets**, provide the **GRE Tunnel Subnets**. IP addresses from this subnet are used for provisioning on the SDN gateway VMs for GRE tunnels. If you don't plan to use GRE tunnels, put any placeholder subnets in this field.
 1. Under **BGP Router Settings**, enter the **SDN ASN** for the Gateway. This ASN is used to peer the gateway VMs with the Top of the Rack switches to advertise the GRE IP addresses. This field is auto populated to the SDN ASN used by SLB.
 1. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. Gateway VMs need these settings to create a BGP peer with the switch. These fields are auto populated from the SLB deployment wizard. If you have an additional Top of Rack switch that you want to peer the gateway VMs with, add **IP Address** and **ASN** for that switch as well.
-1. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
+1. Under **Define the Gateway VM Settings**, specify a path to the Azure Local VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for gateways. We strongly recommend at least two VMs for production deployments.
 1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend that you have at least one redundant gateway.
 

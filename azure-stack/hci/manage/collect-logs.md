@@ -4,20 +4,19 @@ description: How to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 10/07/2024
+ms.service: azure-stack-hci
+ms.date: 10/23/2024
 ---
 
 # Collect diagnostic logs for Azure Local
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Local solution.
+This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with Azure Local.
 
 ## On-demand log collection
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within the Azure Local instance. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -35,7 +34,7 @@ To explore additional log collection methods in Azure Local and understand when 
 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
-- You must have access to an Azure Local instance.
+- You must have access to Azure Local.
 - You must have access to Azure.
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local system. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
@@ -591,7 +590,7 @@ The `Diagnostics` extension in Windows Admin Center in the Azure portal enables 
 
 Follow these steps to perform on-demand log collection via Windows Admin Center in the Azure portal:
 
-1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Local systems using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+1. Connect to Windows Admin Center in the Azure portal. For more information, see [Manage Azure Local using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
 1. In the left pane, under **Extensions**, select **Diagnostics**.
 1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
 1. Select **Send manually**. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.

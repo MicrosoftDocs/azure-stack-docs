@@ -5,8 +5,7 @@ metadata:
   ms.topic: faq
   author: cosmosdarwin
   ms.author: cosdar
-  ms.service: azure-stack
-  ms.subservice: azure-stack-hci
+  ms.service: azure-stack-hci
   ms.date: 05/28/2024
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information about Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server.
@@ -122,3 +121,7 @@ sections:
           ------                         ----------------
           Microsoft Azure Stack HCI      23H2
           ```
+      - question: How long is Azure Stack HCI, version 22H2 supported?
+        answer: |
+            Azure Stack HCI, version 22H2 will reach end of service by May 2025. After that, you won't receive monthly security and quality updates that provide protection from the latest security threats. To continue receiving updates, we recommend updating your operating system to [version 23H2](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+            If you're currently running an Azure Stack HCI, version 22H2 stretch cluster or managing Azure Stack HCI via System Center - Virtual Machine Manager, review the [Supported workloads and configurations](./upgrade/about-upgrades-23h2.md#supported-workloads-and-configurations) table for update timelines.

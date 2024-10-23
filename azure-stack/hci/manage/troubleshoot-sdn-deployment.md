@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment of Software Defined Networ
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 10/08/2024
+ms.date: 10/23/2024
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center
@@ -43,9 +43,9 @@ If there's no connectivity between the management network VLAN and Azure Local, 
 
 Follow these steps to verify connectivity of the management network VLAN:
 
-1. Make sure you have access to an existing Azure Local instance(s) and management network VLAN.
+1. Make sure you have access to Azure Local and a management network VLAN.
 
-1. In Windows Admin Center, [create a new VM](./vm.md#create-a-new-vm) on the Azure Local instance(s) with any supported operating system.
+1. In Windows Admin Center, [create a new VM](./vm.md#create-a-new-vm) on Azure Local with any supported operating system.
 
 1. Assign the same IP address to the new VM that was assigned to the management network.
 
@@ -140,7 +140,7 @@ Follow these steps to collect guest logs for the SDN VM:
 
 1. To get VM deployment history details, go to the C:\Windows\Panther folder and collect the entire content of this folder.
 
-1. To collect SDN logs on the server, connect to the first physical node of the Azure Local instance(s). Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**.
+1. To collect SDN logs on the server, connect to the first physical node of Azure Local. Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**.
 
 ## Next steps
 

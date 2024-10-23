@@ -3,7 +3,6 @@ title: Manage Azure Stack HCI cluster registration
 description: Learn how to manage the Azure Stack HCI cluster registration.
 ms.topic: how-to
 author: sethmanheim
-ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ms.author: sethm
 ms.date: 03/11/2024
@@ -11,7 +10,7 @@ ms.date: 03/11/2024
 
 # Manage Azure Stack HCI cluster registration
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure portal. It also provides answers to the frequently asked questions about cluster registration.
 

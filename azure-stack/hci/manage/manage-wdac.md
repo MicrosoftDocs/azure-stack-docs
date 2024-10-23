@@ -5,13 +5,12 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 04/04/2024
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Manage Windows Defender Application Control for Azure Stack HCI, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
 
@@ -56,7 +55,7 @@ This is useful when:
 
 Follow these steps to switch between WDAC policy modes. These PowerShell commands interact with the Orchestrator to enable the selected modes.
 
-[!INCLUDE [Switch WDAC policy mode](../../includes/hci-switch-wdac-policy-mode.md)]
+[!INCLUDE [Switch WDAC policy mode](../../hci/includes/hci-switch-wdac-policy-mode.md)]
 
 <!--- ## Support for OEM extensions --->
 

@@ -1,10 +1,10 @@
 ---
 title: Use GPUs for compute-intensive workloads
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on HCI 22H2.
-author: baziwane
+author: sethmanheim
 ms.topic: how-to
 ms.date: 02/29/2024
-ms.author: rbaziwane 
+ms.author: sethm 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools

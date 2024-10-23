@@ -10,7 +10,7 @@ ms.date: 04/18/2024
 
 # Deploy a virtual Azure Stack HCI, version 23H2 system
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy a virtualized single server or a multi-node Azure Stack HCI, version 23H2, on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).  
 
@@ -229,7 +229,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Download Azure Stack HCI 23H2 ISO](./download-azure-stack-hci-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
+1. [Download Azure Stack HCI 23H2 ISO](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
 1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 

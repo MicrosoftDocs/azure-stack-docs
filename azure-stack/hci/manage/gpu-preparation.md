@@ -1,25 +1,26 @@
 ---
-title: Prepare GPUs for Azure Stack HCI (preview)
-description: Learn how to prepare GPUs for Azure Stack HCI  (preview).
+title: Prepare GPUs for Azure Local (preview)
+description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 10/23/2024
+ms.service: azure-stack-hci
 ---
 
-# Prepare GPUs for Azure Stack HCI (preview)
+# Prepare GPUs for Azure Local (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) for Azure Stack HCI for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 > [!IMPORTANT]
 > This feature is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-## Attaching GPUs on Azure Stack HCI
+## Attaching GPUs on Azure Local
 
-You can attach your GPUs in one of two ways for Azure Stack HCI:
+You can attach your GPUs in one of two ways for Azure Local:
 
 - **[Discrete Device Assignment (DDA)](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)** - allows you to dedicate a physical GPU to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.  
 
@@ -37,9 +38,9 @@ GPU resource model | Entire device | Equally partitioned device |
 
 ## Supported GPU models
 
-To see the full list of supported solutions and GPUs available, see [Azure Stack HCI Solutions](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **GPU support** in the left menu for options.  
+To see the full list of supported solutions and GPUs available, see [Azure Local Solutions](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **GPU support** in the left menu for options.  
 
-NVIDIA supports their workloads separately with their virtual GPU software. For more information, see [Microsoft Azure Stack HCI - Supported NVIDIA GPUs and Validated Server Platforms](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html#hardware-configuration).
+NVIDIA supports their workloads separately with their virtual GPU software. For more information, see [Microsoft Azure Local - Supported NVIDIA GPUs and Validated Server Platforms](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html#hardware-configuration).
 
 For AKS workloads, see [GPUs for AKS for Arc](/azure/aks/hybrid/deploy-gpu-node-pool#supported-gpu-models).
 
@@ -58,28 +59,28 @@ These additional GPU models are supported using GPU-P (only) for Arc VM workload
 
 ## Host requirements
 
-Your Azure Stack HCI host must meet the following requirements:
+Your Azure Local host must meet the following requirements:
 
-- Your system must support an Azure Stack HCI solution with GPU support. To browse your options, see the [Azure Stack HCI Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
+- Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
-- You've access to an Azure Stack HCI, version 23H2 cluster.
+- You've access to Azure Local, version 23H2.
 
-- You must create a homogeneous configuration for GPUs across all the servers in your cluster. A homogeneous configuration consists of installing the same make and model of GPU.
+- You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
-- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each server in the cluster. Contact your system vendor if you're unable to identify the correct setting in your BIOS.
+- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each machine in the system. Contact your hardware vendor if you're unable to identify the correct setting in your BIOS.
 
 ## Prepare GPU drivers on each host
 
-The process for preparing and installing GPU drivers for each host server differs somewhat between DDA and GPU-P. Follow the applicable process for your situation.
+The process for preparing and installing GPU drivers for each machine differs somewhat between DDA and GPU-P. Follow the applicable process for your situation.
 
 ### Find GPUs on each host
 
-First ensure there is no driver installed for each host server. If there is a host driver installed, uninstall the host driver and restart the server.  
+First ensure there is no driver installed for each machine. If there is a host driver installed, uninstall the host driver and restart the machine.  
 
 After you uninstalled the host driver or if you did not have any driver installed, run PowerShell as administrator with the following command:
 
 ```powershell
-Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
+Get-PnpDevice -Status Error | fl FriendlyName, ClusterId
 ```
 You should see the GPU devices appear in an error state as `3D Video Controller` as shown in the example output that lists the friendly name and instance ID of the GPU:
 
@@ -110,27 +111,27 @@ Follow this process if using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Stack HCI cluster setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceID` obtained in the prior step.
+For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `ClusterID` obtained in the prior step.
 
 ```powershell
 $id1 = "GPU_instance_ID"
-Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
+Disable-PnpDevice -ClusterId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
 ```
 
-Confirm the GPUs were correctly dismounted from the host. The GPUs will now be in an `Unknown` state:
+Confirm the GPUs were correctly dismounted from the host machine. The GPUs will now be in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
+Get-PnpDevice -Status Unknown | fl FriendlyName, ClusterId
 ```
 
-Repeat this process for each server in the Azure Stack HCI cluster to prepare the GPUs.
+Repeat this process for each machine in your system to prepare the GPUs.
 
 ### 2. Download and install the mitigation driver
 
 The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownloads/licence.php?lang=us).
 
-See the [NVIDIA documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the applicable NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host server. Use the following PowerShell script to download the mitigation driver and extract it:
+See the [NVIDIA documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the applicable NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine. Use the following PowerShell script to download the mitigation driver and extract it:
 
 ```powershell
 Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
@@ -153,10 +154,10 @@ pnputil /enum-devices OR pnputil /scan-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
+Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
 ```
 
-Repeat the above steps for each host in your Azure Stack HCI cluster.
+Repeat the above steps for each host in your Azure Local.
 
 ## Using GPU-P
 
@@ -166,9 +167,9 @@ Follow this process if using GPU-P:
 
 GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you will need an NVIDIA vGPU software graphics driver on each host and on each VM that will use GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/17.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/17.0/grid-licensing-user-guide/index.html).
 
-After identifying the GPUs as `3D Video Controller` on your host server, download the host vGPU driver. Through your NVIDIA GRID license, you should be able to obtain the proper host driver .zip file.
+After identifying the GPUs as `3D Video Controller` on your host machine, download the host vGPU driver. Through your NVIDIA GRID license, you should be able to obtain the proper host driver .zip file.
 
-You will need to obtain and move the following folder to your host server: *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers*
+You will need to obtain and move the following folder to your host machine: *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers*
 
 Navigate to *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers\Display.Driver* and install the driver.  
 
@@ -185,9 +186,9 @@ pnputil /enum-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
+Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
 ```
-You can also run the NVIDIA System Management Interface `nvidia-smi` to list the GPUs on the host server as follows:
+You can also run the NVIDIA System Management Interface `nvidia-smi` to list the GPUs on the host machine as follows:
 
 ```powershell
 nvidia-smi
@@ -227,9 +228,9 @@ Wed Nov 30 15:22:36 2022
 Follow these steps to configure the GPU partition count in PowerShell:
 
 > [!NOTE]
-> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all servers in your Azure Stack HCI cluster.
+> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all machines in your Azure Local.
 
-1. Connect to the server whose GPU partition count you want to configure.
+1. Connect to the machine whose GPU partition count you want to configure.
 
 1. Run the `Get-VMHostPartitionableGpu` command and refer to the **Name** and **ValidPartitionCounts** values.
 
@@ -261,7 +262,7 @@ Follow these steps to configure the GPU partition count in PowerShell:
     PartitionCount          : 4
      ```
 
-1. To keep the configuration homogeneous, repeat the partition count configuration steps on each server in your Azure Stack HCI cluster.
+1. To keep the configuration homogeneous, repeat the partition count configuration steps on each machine in your system.
 
 ## Guest requirements
 

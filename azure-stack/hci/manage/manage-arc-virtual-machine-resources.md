@@ -4,14 +4,13 @@ description: Learn how to manage resource such as data disks, network interfaces
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 02/13/2024
 ---
 
 # Manage resources for Arc VM on your Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virtual machine (VM) running on your Azure Stack HCI system.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
 

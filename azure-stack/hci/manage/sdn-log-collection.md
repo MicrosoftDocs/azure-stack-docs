@@ -4,14 +4,14 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 10/08/2024
+ms.date: 10/23/2024
 ---
 
 # Collect logs for Software Defined Networking on Azure Local
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Local instance(s).
+This article describes how to collect logs for Software Defined Networking (SDN) on Azure Local.
 
 The SDN logs help you identify and troubleshoot advanced issues in your SDN environment. Use these logs to gather key information before you contact Microsoft support.
 

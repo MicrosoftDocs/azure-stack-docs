@@ -1,34 +1,34 @@
 --- 
-title: Custom or advanced Active Directory configuration for Azure Stack HCI, version 23H2
-description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Stack HCI, version 23H2.
+title: Custom or advanced Active Directory configuration for Azure Local, version 23H2
+description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/26/2024
+ms.date: 10/17/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ---
 
-# Custom Active Directory configuration for your Azure Stack HCI, version 23H2
+# Custom Active Directory configuration for your Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the permissions and the DNS records required for the Azure Stack HCI, version 23H2 deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
+This article describes the permissions and the DNS records required for the Azure Local, version 23H2 deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
 
-The Azure Stack HCI solution is deployed in large Active Directories with established processes and tools for assigning permissions. Microsoft provides an [Active Directory preparation script](../deploy/deployment-prep-active-directory.md) that can be optionally used for the Azure Stack HCI deployment. The required permissions for Active Directory, the creation of the organizational unit, and blocking inheritance of GPOs - can all be also configured manually.
+The Azure Local solution is deployed in large Active Directories with established processes and tools for assigning permissions. Microsoft provides an [Active Directory preparation script](../deploy/deployment-prep-active-directory.md) that can be optionally used for the Azure Local deployment. The required permissions for Active Directory, the creation of the organizational unit, and blocking inheritance of GPOs - can all be also configured manually.
 
-You also have the choice of the DNS server to use, for example, you can use Microsoft DNS servers that support the integration with Active Directory to take advantage of secure dynamic updates. If Microsoft DNS servers aren't used, you must create a set of DNS records for the deployment and update of the Azure Stack HCI solution.
+You also have the choice of the DNS server to use, for example, you can use Microsoft DNS servers that support the integration with Active Directory to take advantage of secure dynamic updates. If Microsoft DNS servers aren't used, you must create a set of DNS records for the deployment and update of the Azure Local solution.
 
 
 ## About Active Directory requirements
 
-Here are some of the Active Directory requirements for the Azure Stack HCI deployment.
+Here are some of the Active Directory requirements for the Azure Local deployment.
 
 - A dedicated organization unit (OU) is required to optimize query times for the object discovery. This optimization is critical for large Active Directories spanning multiple sites. This dedicated OU is only required for the computer objects and the Windows failover cluster CNO.
 
 - The user (also known as deployment user) requires the necessary permissions over the dedicated OU. The user can reside anywhere in the directory.
 
-- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Stack HCI, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Stack HCI, version 23H2](../concepts/security-features.md).
+- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Local, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Local, version 23H2](../concepts/security-features.md).
 
 - Computer account objects and cluster CNO can be [precreated](/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to the deployment itself creating them.
 
@@ -91,7 +91,7 @@ Set-Acl -Path $ouPath -AclObject $acl
 
 ## Required DNS records
 
-If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Stack HCI system.
+If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Local system.
 
 The following table contains the required DNS records and types:
 
@@ -102,7 +102,7 @@ The following table contains the required DNS records and types:
 | Cluster VCO   | Host A |
 
 > [!NOTE]
-> Every machine that becomes a part of the Azure Stack HCI cluster requires a DNS record.
+> Every machine that becomes a part of the Azure Local system requires a DNS record.
 
 ### Example - verify that DNS record exists
 
@@ -116,7 +116,7 @@ nslookup "machine name"
 
 A disjoint namespace occurs when the primary DNS suffix of one or more domain member computers doesn't match the DNS name of their Active Directory domain. For example, if a computer has a DNS name of corp.contoso.com but is part of an Active Directory domain called na.corp.contoso.com, it's using a disjoint namespace.
 
-Before deploying Azure Stack HCI version 23H2, you must:
+Before deploying Azure Local, version 23H2, you must:
 
 - Append the DNS suffix to the management adapter of every node.
 - Verify you can resolve the hostname to the FQDN of the Active Directory.
@@ -138,7 +138,7 @@ nslookup node1.na.corp.contoso.com
 ```
 
 > [!NOTE]
-> You cannot use group policies to configure the DNS suffix list with Azure Stack HCI, version 23H2.
+> You cannot use group policies to configure the DNS suffix list with Azure Local, version 23H2.
 
 ## Cluster aware updating (CAU)
 
@@ -161,5 +161,5 @@ Get-NetAdapter "vManagement*"|Set-DnsClient -RegisterThisConnectionsAddress $fal
 ## Next steps
 
 Proceed to:
-- [Download the Azure Stack HCI OS software](../deploy/download-azure-stack-hci-23h2-software.md).
+- [Download the Azure Stack HCI OS software](../deploy/download-23h2-software.md).
 - [Install the Azure Stack HCI OS software](../deploy/deployment-install-os.md).
