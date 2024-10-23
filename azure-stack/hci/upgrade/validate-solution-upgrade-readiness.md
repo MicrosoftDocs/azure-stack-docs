@@ -344,7 +344,7 @@ Follow these steps to confirm the storage pool configuration:
    Set-VirtualDisk -FriendlyName TestVolume -ProvisioningType Thin
    ```
 
-1. To finish the convertion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
+1. To finish the conversion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
 
    ```powershell
    Get-ClusterSharedVolume -Name "Cluster Disk 1" | Stop-ClusterResource
