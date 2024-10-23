@@ -1,28 +1,51 @@
 ---
-title: Overview of SDN Multisite
+title: Overview of SDN Multisite in Azure Stack HCI and Windows Server
 description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.date: 10/24/2024
+ms.subservice: core-os
+zone_pivot_groups: windows-os
+ms.date: 10/22/2024
 ---
 
 # What is SDN Multisite?
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
+::: zone-end
+
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+
+> [!IMPORTANT]
+> SDN Multisite in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+::: zone-end
+
 This article provides an overview of SDN Multisite, including its benefits and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Local instances deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
+SDN Multisite allows you to expand the capabilities of traditional SDN deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
 
-For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md).
+:::zone pivot="azure-stack-hci"
+
+For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+
+::: zone-end
 
 ## Benefits
 
 Here are the benefits of using SDN Multisite:
 
 - **Unified policy management system.** With shared virtual networks and policy configurations, you can manage and configure your multisite networks from any site.
-- **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
+- **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or preexisting Network Security Groups (NSGs).
 - **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) on virtual networks, along with automatic manageability to any of their associated NSGs across your physical locations.
 
 ## Limitations
@@ -35,7 +58,17 @@ The SDN Multisite feature currently has a few limitations:
 
 ## Multisite peering
 
-Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. Once a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md#establish-peering).  
+:::zone pivot="azure-stack-hci"
+
+Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. Once a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci#establish-peering).  
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. Once a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking#establish-peering).  
+
+::: zone-end
 
 The following sections describe about the roles of each site within a multisite environment, and how resources are handled and synchronized between sites.
 
@@ -65,6 +98,8 @@ In a multisite SDN environment, one site is designated as the primary and the ot
 
 When you enable SDN Multisite, not all resources from each site are synchronized across all sites. Here are the lists of resources that are synchronized and that remain unsynchronized.
 
+:::zone pivot="azure-stack-hci"
+
 - **Synchronized resources**
 
     These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
@@ -72,6 +107,20 @@ When you enable SDN Multisite, not all resources from each site are synchronized
     - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
     - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md).
     - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- **Synchronized resources**
+
+    These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
+
+    - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md?context=/windows-server/context/windows-server-edge-networking). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
+    - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-edge-networking) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md?context=/windows-server/context/windows-server-edge-networking).
+    - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn?context=/windows-server/context/windows-server-edge-networking).
+
+::: zone-end
 
 - **Unsynchronized resources**
 
@@ -86,19 +135,19 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
 ## East-west traffic flow and subnet sharing
 
-Multisite allows VMs on different sites with SDN deployed to communicate over the same subnet without having to set up SDN gateway connections. This simplifies the network topology and reduces the need for additional VMs and subnets. The data path between VMs on different sites relies on the underlying physical infrastructure.
+Multisite allows VMs on different sites with SDN deployed to communicate over the same subnet without having to set up SDN gateway connections. This simplifies the network topology and reduces the need for more VMs and subnets. The data path between VMs on different sites relies on the underlying physical infrastructure.
 
 The following scenarios compare how VM communication is established between two physical sites in a traditional SDN setup vs in an SDN Multisite setup.
 
 ### VM to VM communication without SDN Multisite
 
-In a traditional setup with SDN deployed across two physical sites, you need to establish L3 or GRE gateway connection for intersite communication. You also need to provide additional subnets for your applications. For example, if each site hosts frontend applications, you'd allocate separate subnet ranges like 10.1/16 and 10.6/16. Moreover, when you set up a gateway connection, you also need to allocate additional VMs for your Gateway VMs and manage them thereafter.
+In a traditional setup with SDN deployed across two physical sites, you need to establish L3 or GRE gateway connection for intersite communication. You also need to provide more subnets for your applications. For example, if each site hosts frontend applications, you'd allocate separate subnet ranges like 10.1/16 and 10.6/16. Moreover, when you set up a gateway connection, you also need to allocate more VMs for your Gateway VMs and manage them thereafter.
 
 :::image type="content" source="./media/sdn-multisite-overview/sdn-without-multisite.png" alt-text="Diagram to show VM to VM communication between two physical sites in a traditional SDN setup." lightbox="./media/sdn-multisite-overview/sdn-without-multisite.png" :::
 
 ### VM to VM communication with SDN Multisite
 
-With SDN Multisite across two physical locations, you can have native Layer 2 connectivity for intersite communication. This enables you to have a single subnet range for your applications that span across both locations, eliminating the need to set up SDN gateway connection. For example, as illustrated in the following diagram, frontend applications on both locations can use the same subnet, such as 10.1/16, instead of maintaining two separate ones. With this setup, data flow from one VM to another solely relies on your underlying physical infrastructure, avoiding the need to traverse an additional SDN gateway VM.
+With SDN Multisite across two physical locations, you can have native Layer 2 connectivity for intersite communication. This enables you to have a single subnet range for your applications that span across both locations, eliminating the need to set up SDN gateway connection. For example, as illustrated in the following diagram, frontend applications on both locations can use the same subnet, such as 10.1/16, instead of maintaining two separate ones. With this setup, data flow from one VM to another solely relies on your underlying physical infrastructure, avoiding the need to traverse another SDN gateway VM.
 
 :::image type="content" source="./media/sdn-multisite-overview/sdn-with-multisite.png" alt-text="Diagram to show VM to VM communication with SDN Multisite." lightbox="./media/sdn-multisite-overview/sdn-with-multisite.png" :::
 
@@ -126,7 +175,7 @@ To work around this limitation, you can use external load balancer that checks t
 
 #### Use external load balancer in Multisite with migrating workload VMs
 
-You can enable an external load balancer to check if there are backend VMs behind a load balancer at one of your sites. If there are no backend VMs behind a load balancer, then the VIP for the MUX won't be advertised up to the external load balancer and subsequently any health probe sent forth will fail. This external load balancer ensures connectivity to workloads even as VMs move from one site to another.
+You can enable an external load balancer to check if there are backend VMs behind a load balancer at one of your sites. If there are no backend VMs behind a load balancer, then the VIP for the MUX isn't advertised up to the external load balancer and any health probe sent fail. This external load balancer ensures connectivity to workloads even as VMs move from one site to another.
 
 :::image type="content" source="./media/sdn-multisite-overview/external-load-balancer.png" alt-text="Diagram showing using an external software local balancer as a solution for migrating VMs between sites in a multisite setup." lightbox="./media/sdn-multisite-overview/external-load-balancer.png" :::
 
@@ -134,8 +183,18 @@ However, if deploying an external load balancer isn't feasible, use the software
 
 ## Gateways and their limitations
 
-SDN gateway connections are also local resources that aren't synced across sites by Multisite. Each site has its own gateway VMs and gateway connections. When a workload VM is created or migrated to a site, it gets local gateway configuration like gateway routes. If you create a gateway connection for a particular virtual network on one site, VMs from that site lose gateway connectivity upon migration to the other site. For VMs to retain gateway connectivity on migration, you must configure a separate gateway connection for the same virtual network on the other site.
+SDN multisite doesn't sync local resources such as gateway connections across sites. Each site has its own gateway VMs and gateway connections. When a workload VM is created or migrated to a site, it gets local gateway configuration like gateway routes. If you create a gateway connection for a particular virtual network on one site, VMs from that site lose gateway connectivity upon migration to the other site. For VMs to retain gateway connectivity on migration, you must configure a separate gateway connection for the same virtual network on the other site.
 
 ## Next steps
 
-[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md)
+:::zone pivot="azure-stack-hci"
+
+[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci)
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
+
+::: zone-end

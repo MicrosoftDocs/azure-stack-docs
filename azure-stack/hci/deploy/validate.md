@@ -4,7 +4,7 @@ description: Understand cluster validation's importance, and when to run it on a
 author: jasongerend
 ms.author: jgerend
 ms.topic: article
-ms.date: 04/12/2024
+ms.date: 10/22/2024
 ---
 
 # Validate an Azure Stack HCI cluster
