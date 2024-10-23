@@ -12,12 +12,12 @@ ms.custom: template-how-to
 
 [Azure IoT Operations (AIO)]() requires an Arc-enabled Kubernetes cluster. You can use AKS Edge Essentials to create a Microsoft managed Kubernetes cluster and deploy AIO as a workload on it. This article describes the steps to run a handy script that creates an AKS Edge Essentials Kubernetes clusters with all the required configurations applicable for AIO. 
 
-> [!INFO]
-> AIO is Gnerally Available on AKS EE single machine clusters. Deploying clusters on multiple machines is an experimental feature. 
+> [!NOTE]
+> AIO is Generally Available on AKS EE when deployed on single machine clusters. Deploying clusters on multiple machines is an experimental feature. 
 
 ## Pre-requisites for running the script 
 
-- An Azure subscription. If you don't have an Azure subscription, create one for free before you begin.
+- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. Read the [Azure Resource Manager documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use az --version to check your version and az upgrade to update if necessary.For more information, see [How to install the Azure CLI](https://review.learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 - The latest version of the following extensions for Azure CLI:
     ```bash
@@ -29,7 +29,20 @@ ms.custom: template-how-to
 
 
 ## Create an AKS EE cluster for AIO
-The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1) script automates the process of creating and connecting a cluster, and is the recommended path for deploying Azure IoT Operations on AKS Edge Essentials.
+The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1) script automates the process of creating and connecting a cluster, and is the recommended path for deploying Azure IoT Operations on AKS Edge Essentials. Here is what the script does on your behalf:
+- Downloads the latest AKS EE MSI from this [repo](https://github.com/Azure/aks-edge). 
+- Installs AKS EE and deploys to creates a single machine Kubernetes cluster on your Windows machine.
+- Connects to the Azure subscription and creates a resource group if it does exists already and connects the cluster to Arc to create an Arc-enabled Kubernetes cluster.
+- Enables the custom location feature on the Arc-enabled Kubernetes cluster.
+- Deploys the local path provisioning.
+- Configures firewall rules on the host Windows machine for the MQTT broker.
+- On the Linux VM, which serves as the Kubernetes control plane node:
+    - Configures port proxy for the Kubernetes Service default IP range of 10.96.0.0/28.
+    - Configures the IP table rules.
+        -  `sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 9110 -j ACCEPT`
+        - `sudo iptables -A INPUT -p tcp --dport (10124, 8420, 2379, 50051) -j ACCEPT`
+
+Once you have downloaded the script, 
 1. Open an elevated PowerShell window and change the directory to a working folder.
 1. Get the objectId of the Microsoft Entra ID application that the Azure Arc service uses in your tenant. Run the following command exactly as written, without changing the GUID value.
     ```azurecli
@@ -44,7 +57,7 @@ The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/to
 |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created.      |
 |LOCATION     |      An Azure region close to you. For the list of currently supported Azure regions, see [Supported regions](https://review.learn.microsoft.com/en-us/azure/iot-operations/overview-iot-operations#supported-regions).   |
 |CLUSTER_NAME     |    A name for the new cluster to be created.     |
-|ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in the previous step.       |
+|ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
 
 ```powershell
 $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
