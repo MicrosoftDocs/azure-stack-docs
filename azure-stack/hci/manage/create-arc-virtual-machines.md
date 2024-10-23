@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/22/2024
+ms.date: 10/23/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -218,7 +218,7 @@ Follow these steps in Azure portal of your Azure Local.
 
     1. **Security type** - For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
 
-   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the selected storage path has sufficient storage space.
+   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
 
    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     

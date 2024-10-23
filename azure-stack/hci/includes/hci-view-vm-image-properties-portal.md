@@ -4,10 +4,10 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 10/23/2024
 ---
 
-In the Azure portal of your Azure Local instance resource, perform the following steps:
+In the Azure portal of your Azure Local cluster resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**. In the right-pane, a list of VM images is displayed.
 

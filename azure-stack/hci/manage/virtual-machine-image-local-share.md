@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/23/2024
 ---
 
 # Create Azure Local VM image using images in a local share
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for Azure Local using source images from a local share on your instance. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
+This article describes how to create virtual machine (VM) images for Azure Local using source images from a local share. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
 
 ## Prerequisites
@@ -34,7 +34,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from image in local share
 
-You create a VM image starting from an image in a local share of your system and then use this image to deploy VMs on your Azure Local instance.
+You create a VM image starting from an image in a local share of your system and then use this image to deploy VMs on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -51,7 +51,7 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Resource group>"
-    $location = "<Location for your Azure Local instance>"
+    $location = "<Location for your Azure Local>"
     $imageName = <VM image name>
     $imageSourcePath = <path to the source image>
     $osType = "<OS of source image>"
@@ -61,9 +61,9 @@ Follow these steps to create a VM image using the Azure CLI.
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Resource group for Azure Local instance that you associate with this image.        |
-    | `resource_group` | Resource group for Azure Local instance that you associate with this image.        |
-    | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `subscription`   | Resource group for Azure Local that you associate with this image.        |
+    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
+    | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `name`| Path to the source gallery image (VHDX only) on your system. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -81,13 +81,13 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Create VM image from image in local share
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance. Get the custom location ID for your Azure Local instance. Run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
     ```azurecli
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for system>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified image in a local share on your Azure Local instance.
+1. Create the VM image starting with a specified image in a local share on your Azure Local.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
@@ -159,7 +159,7 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-You can create a VM image by downloading an image that resides in a local share on your Azure Local instance and then use that VM image to deploy a virtual machine.
+You can create a VM image by downloading an image that resides in a local share on your Azure Local and then use that VM image to deploy a virtual machine.
 
 In Azure portal for your Azure Local cluster resource, perform the following steps:
 
@@ -177,7 +177,7 @@ In Azure portal for your Azure Local cluster resource, perform the following ste
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance.
+    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
     1. **OS type.** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
 

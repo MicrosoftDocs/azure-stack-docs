@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/23/2024
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
@@ -39,7 +39,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from Azure Storage account
 
-You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local instance.
+You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -56,7 +56,7 @@ Follow these steps to create a VM image using the Azure CLI.
 ```azurecli
 $subscription = "<Subscription ID>"
 $resource_group = "<Resource group>"
-$location = "<Location for your Azure Local instance>"
+$location = "<Location for your Azure Local>"
 $osType = "<OS of source image>"
 $imageName = "<VM image name>"
 $imageSourcePath = "<path to the source image in the Storage account>"
@@ -67,8 +67,8 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Resource group for Azure Local instance that you associate with this image.        |
-| `resource_group` | Resource group for Azure Local instance that you associate with this image.        |
+| `subscription`   | Resource group for Azure Local that you associate with this image.        |
+| `resource_group` | Resource group for Azure Local that you associate with this image.        |
 | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
 | `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. |
@@ -87,10 +87,10 @@ PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.n
 
 ### Create VM image from image in Azure Storage account
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance. Get the custom location ID for your Azure Local instance. Run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI system>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local>" --query id -o tsv)
     ```
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
 
@@ -170,9 +170,9 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
     
     1. **Save image as** Enter a name for your VM image.
 
-    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance.
+    1. **Custom location** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
-    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local instance.
+    1. **Image to download** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local.
 
     1. **OS type** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
     

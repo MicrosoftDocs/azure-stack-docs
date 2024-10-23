@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/15/2024
+ms.date: 10/23/2024
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
@@ -55,7 +55,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $mktplaceImage = "<Marketplace image name>"
     $customLocationName = "<Custom location name>"
     $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --query id -o tsv)
-    $location = "<Location for your Azure Local instance>"
+    $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     ```
 
@@ -63,11 +63,11 @@ Follow these steps to create a VM image using the Azure CLI.
 
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Subscription associated with your Azure Local instance.        |
-    | `resource-group` | Resource group for Azure Local instance that you associate with this image.     |
-    | `name` | Name of the marketplace image for Azure Local instance.  |
-    | `customLocation` | Resource ID of custom location for Azure Local instance.   |
-    | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `subscription`   | Subscription associated with your Azure Local.        |
+    | `resource-group` | Resource group for your Azure Local that you associate with this image.     |
+    | `name` | Name of the marketplace image for Azure Local.  |
+    | `customLocation` | Resource ID of custom location for your Azure Local.   |
+    | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
     Here's a sample output:
@@ -204,9 +204,9 @@ Follow these steps to create a VM image using Azure portal. In Azure portal for 
 
     1. **Resource group.** Create new or select an existing resource group that you associate with the VM image.
 
-    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local instance.
+    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
-    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local instance.
+    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local.
 
     1. **Save image as.** Enter a name for your VM image.
 
@@ -269,7 +269,7 @@ You might want to view the properties of VM images before you use the image to c
 
 ## Update VM image
 
-When a new updated image is available in Azure Marketplace, the VM images on your Azure Local instance become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Local become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
 
 To update a VM image, use the following steps in Azure portal.
 
