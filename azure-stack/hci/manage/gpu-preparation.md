@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 10/23/2024
 ms.service: azure-stack-hci
 ---
 
@@ -80,7 +80,7 @@ First ensure there is no driver installed for each machine. If there is a host d
 After you uninstalled the host driver or if you did not have any driver installed, run PowerShell as administrator with the following command:
 
 ```powershell
-Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
+Get-PnpDevice -Status Error | fl FriendlyName, ClusterId
 ```
 You should see the GPU devices appear in an error state as `3D Video Controller` as shown in the example output that lists the friendly name and instance ID of the GPU:
 
@@ -111,18 +111,18 @@ Follow this process if using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceID` obtained in the prior step.
+For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `ClusterID` obtained in the prior step.
 
 ```powershell
 $id1 = "GPU_instance_ID"
-Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
+Disable-PnpDevice -ClusterId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -ClusterPath $id1 -Force
 ```
 
 Confirm the GPUs were correctly dismounted from the host machine. The GPUs will now be in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
+Get-PnpDevice -Status Unknown | fl FriendlyName, ClusterId
 ```
 
 Repeat this process for each machine in your system to prepare the GPUs.
@@ -186,7 +186,7 @@ pnputil /enum-devices
 You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
+Get-PnpDevice -Class Display | fl FriendlyName, ClusterId
 ```
 You can also run the NVIDIA System Management Interface `nvidia-smi` to list the GPUs on the host machine as follows:
 
