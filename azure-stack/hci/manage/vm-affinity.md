@@ -3,7 +3,7 @@ title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
 author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 10/23/2024
 ms.author: alkohli
 ms.reviewer: robhind
 ms.service: azure-stack-hci
@@ -17,7 +17,7 @@ Using either Windows Admin Center or Windows PowerShell, you can easily create a
 
 [!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
 
-Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as VMs, to keep them together on the same machine, system, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate machines or in separate sites for disaster recovery.
+Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as VMs, to keep them together on the same machine, system, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate machines, or in separate sites for disaster recovery.
 
 Affinity and anti-affinity rules are used similarly to the way Azure uses Availability Zones. In Azure, you can configure Availability Zones to keep VMs in separate zones and away from each other or in the same zone with each other.  
 
@@ -38,7 +38,7 @@ You can create basic affinity and anti-affinity rules using Windows Admin Center
 1. Under Rule type, select either **Together (same machine)** or **Apart (different machines)** to place your VMs on the same machine or on different machines.
 1. Under **Applies to**, select the VMs that this rule applies to. Use the **Add** button to add more VMs to the rule.
 1. When finished, select **Create rule**.
-1. To delete a rule, simply select it and select **Delete rule**.
+1. To delete a rule, select it and select **Delete rule**.
 
 ## Using Windows PowerShell
 
@@ -106,7 +106,7 @@ Add-ClusterGroupToAffinityRule -Groups Group1 -Name Rule1
 
 The **`Add-ClusterSharedVolumeToAffinityRule`** allows your VMs to stay together with the Cluster Shared Volume the VHDX resides on, where:
 
-**`-ClusterSharedVolumes`** is the CSV disk(s) you wish to add to the rule
+**`-ClusterSharedVolumes`** is the CSV disk that you wish to add to the rule
 
 **`-Name`** is the name of rule to add to
 
@@ -132,7 +132,7 @@ The **`Remove-ClusterGroupFromAffinityRule`** removes a VM group or role from a 
 
 **`-Name`** is the name of the rule
 
-**`-Groups`** are the groups or roles you wish to remove from the rule
+**`-Groups`** are the groups or roles that you wish to remove from the rule
 
 Example:
 
@@ -144,7 +144,7 @@ Remove-ClusterGroupFromAffinityRule -Name Rule1 -Groups Group1
 
 The **`Remove-ClusterSharedVolumeFromAffinityRule`** cmdlet is used to remove the Cluster Shared Volumes from a specific rule but doesn't disable or delete the rule, where:
 
-**`-ClusterSharedVolumes`** is the CSV disk(s) you want to remove from the rule.
+**`-ClusterSharedVolumes`** is the CSV disk that you want to remove from the rule.
 
 **`-Name`** is the name of the rule to add to.
 
@@ -187,7 +187,7 @@ Affinity rules are "together" rules that keep resources on the same machine, sys
 
 ### Scenario 1
 
-Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but don't necessarily need to be on the same machine.  Using `SameFaultDomain`, this is possible, as shown below:
+Suppose you have a SQL Server VM and a Web Server VM. These two VMs need to always remain in the same site but don't necessarily need to be on the same machine.  Using `SameFaultDomain`, this is possible, as shown:
 
 ```powershell
 New-ClusterAffinityRule -Name WebData -Ruletype SameFaultDomain -Cluster Cluster1
@@ -209,7 +209,7 @@ WebData     SameFaultDomain   {SQL1, WEB1}     1
 
 ### Scenario 2
 
-Let's use the same scenario above except specify that the VMs must reside on the same machine. Using `SameNode`, you can set this as follows:
+Let's use the same scenario except specify that the VMs must reside on the same machine. Using `SameNode`, set it as follows:
 
 ```powershell
 New-ClusterAffinityRule -Name WebData1 -Ruletype SameNode -Cluster Cluster1
@@ -234,9 +234,9 @@ DC      SameNode    {SQL1, WEB1}     1
 Anti-affinity rules are "apart" rules that separate resources and place them on different machines, systems, or sites.
 
 ### Scenario 1
-You have two VMs each running SQL Server on the same Azure Local multi-site system.  Each VM utilizes a lot of memory, CPU, and storage resources.  If the two end up on the same machine, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles.  Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different machines.  
+You have two VMs each running SQL Server on the same Azure Local multi-site system. Each VM utilizes a lot of memory, CPU, and storage resources. If the two end up on the same machine, this can cause performance issues with one or both as they compete for memory, CPU, and storage cycles. Using an anti-affinity rule with `DifferentNode` as the rule type, these VMs will always stay on different machines.  
 
-The example commands for this would be:
+The example commands would be:
 
 ```powershell
 New-ClusterAffinityRule -Name SQL -Ruletype DifferentNode -Cluster Cluster1
@@ -279,7 +279,7 @@ DC      DifferentFaultDomain    {DC1, DC2}       1
 ```
 ## Combined rule examples
 
-Combining affinity and anti-affinity rules, you can easily configure various VM combinations across a multi-site system.  In this scenario, each site has three VMs: SQL Server (SQL), Web Server (WEB), and domain controller (DC).  For each of the combinations, you can use affinity rules with `SameFaultDomain` to keep them all in the same site.  You can also set the domain controllers for each site with anti-affinity rules and `DifferentFaultDomain` to keep the domain controller VMs in separate sites as shown below:
+Combining affinity and anti-affinity rules, you can easily configure various VM combinations across a multi-site system. In this scenario, each site has three VMs: SQL Server (SQL), Web Server (WEB), and domain controller (DC).  For each of the combinations, you can use affinity rules with `SameFaultDomain` to keep them all in the same site. You can also set the domain controllers for each site with anti-affinity rules and `DifferentFaultDomain` to keep the domain controller VMs in separate sites as shown below:
 
 ```powershell
 New-ClusterAffinityRule -Name Site1Trio -Ruletype SameFaultDomain -Cluster Cluster1
@@ -316,7 +316,7 @@ TrioApart   DifferentFaultDomain   {DC1, DC2}           1
 
 ## Storage affinity rules
 
-You can also keep a VM and its VHDX on a Cluster Shared Volume (CSV) on the same machine. This would keep CSV redirection from occurring, which can slow down the starting or stopping of a VM.  Taking into account the combined affinity and anti-affinity scenario previously, you can keep the SQL VM and the Cluster Shared Volume on the same machine.  To do that, use the following commands:
+You can also keep a VM and its VHDX on a Cluster Shared Volume (CSV) on the same machine. Doing so would keep CSV redirection from occurring, which can slow down the starting or stopping of a VM. Taking into account the combined affinity and anti-affinity scenario previously, you can keep the SQL VM and the Cluster Shared Volume on the same machine. To do that, use the following commands:
 
 ```powershell
 New-ClusterAffinityRule -Name SQL1CSV1 -Ruletype SameNode -Cluster Cluster1
