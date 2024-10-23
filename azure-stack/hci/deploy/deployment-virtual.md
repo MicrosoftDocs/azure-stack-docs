@@ -345,9 +345,9 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Install-WindowsFeature -Name Hyper-V -IncludeManagementTools}
     ```
 
-1. Once the virtual host server is ready, you must [register it and assign permissions](deployment-arc-register-server-permissions.md) in Azure as an Arc resource.
+1. Once the virtual host machine is ready, you must [register it and assign permissions](deployment-arc-register-server-permissions.md) in Azure as an Arc resource.
 
-1. Once the server is registered in Azure as an Arc resource and all the mandatory extensions are installed, choose one of the following methods to deploy Azure Local from Azure.
+1. Once the machine is registered in Azure as an Arc resource and all the mandatory extensions are installed, choose one of the following methods to deploy Azure Local from Azure.
 
     - [Deploy Azure Local using Azure portal](deploy-via-portal.md).
 
