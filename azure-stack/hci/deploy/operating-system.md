@@ -4,18 +4,17 @@ description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin 
 author: pronichkin
 ms.author: artemp
 ms.topic: reference
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/12/2024
 ---
 
 # Deploy the Azure Stack HCI operating system
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
-[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+[!INCLUDE [warning-22h2](../../hci/includes/hci-warning-deploy-22h2.md)]
 
-The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](./download-azure-stack-hci-software.md) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
+The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](./download-software.md) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
 > [!NOTE]
 > If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to [Create an Azure Stack HCI cluster](create-cluster.md).

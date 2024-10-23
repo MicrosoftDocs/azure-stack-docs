@@ -3,7 +3,7 @@ title: Create and delete pods in AKS enabled by Azure Arc
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/02/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -50,10 +50,6 @@ To view the entire configuration of the pod, run the following command:
 ```powershell
 kubectl describe pod nginx
 ```
-
-### Secure traffic between pods
-
-An important feature in Kubernetes is to ensure consistent policy enforcement across multiple clusters. For more information about verifying connectivity between the pods and then applying a basic network policy for pod traffic, see [Secure traffic between pods using network policies](./calico-networking-policy.md).
 
 ## Delete a pod
 

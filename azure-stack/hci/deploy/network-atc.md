@@ -1,26 +1,42 @@
 ---
 title: Deploy host networking with Network ATC
-description: This topic covers how to deploy host networking for Azure Stack HCI.
+description: This topic covers how to deploy host networking for Azure Stack HCI and Windows Server.
 author: dcuomo
 ms.topic: how-to
-ms.date: 05/22/2023
+ms.date: 10/15/2024
 ms.author: dacuo
 ms.reviewer: jgerend
+zone_pivot_groups: windows-os
 ---
 
 # Deploy host networking with Network ATC
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, please see [Network ATC overview](../concepts/network-atc-overview.md).
 
+::: zone-end
+
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+
+> [!IMPORTANT]
+> Network ATC in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Windows Server clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, please see [Network ATC overview](../concepts/network-atc-overview.md).
+
+::: zone-end
+
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
-## Requirements and best practices
+## Prerequisites
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
-The following are requirements and best practices for using Network ATC in Azure Stack HCI:
+Complete the following prerequisites for using Network ATC in Azure Stack HCI:
 
 - All servers in the cluster must be running Azure Stack HCI, version 22H2 with the November update (or later).
 
@@ -49,7 +65,7 @@ The following are requirements and best practices for using Network ATC in Azure
   - Data Center Bridging
 
    Here's an example of installing the required features via PowerShell:
-   
+
    ```powershell
   Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
@@ -81,7 +97,7 @@ The following are requirements and best practices for using Network ATC in Azure
   - Data Center Bridging
   
    Here's an example of installing the required features via PowerShell:
-   
+
    ```powershell
    Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
@@ -92,8 +108,48 @@ The following are requirements and best practices for using Network ATC in Azure
 
 ---
 
+::: zone-end
+
+:::zone pivot="windows-server"
+
+Complete the following prerequisites for using Network ATC in Windows Server:
+
+- All servers in the cluster must be running Windows Server 2025 or later.
+
+- Must use physical hosts that are certified for Windows Server. You can find hardware certified for Secured-core server from the [Windows Server Catalog](https://www.windowsservercatalog.com/)
+
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node.
+
+  - Asymmetric adapters lead to a failure in deploying any intent. Network ATC will automatically confirm adapter symmetry for all nodes in the cluster before deploying an intent.
+
+  - For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#switch-embedded-teaming-set)
+
+- Each physical adapter specified in an intent must use the same name on all nodes in the cluster.
+
+- Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
+
+- Each node must have the following Windows Server features installed:
+
+  - Network ATC
+  - Network HUD
+  - Hyper-V
+  - Failover Clustering
+  - Data Center Bridging
+
+   Here's an example of installing the required features via PowerShell:
+
+   ```powershell
+  Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
+   ```
+
+- Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
+
+- Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. For more information, please see [Physical Network Requirements](../concepts/physical-network-requirements.md).
+
+::: zone-end
+
 > [!IMPORTANT]
-> Updated: Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
+> Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 >
 > Deploying Network ATC in standalone mode may be used for test and validation purposes only.
 
@@ -115,6 +171,8 @@ For this intent, compute, storage, and management networks are deployed and mana
 
 :::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent" lightbox="media/network-atc/network-atc-2-full-converge.png":::
 
+:::zone pivot="azure-stack-hci"
+
 # [22H2](#tab/22H2)
 
 ```powershell
@@ -124,16 +182,28 @@ Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -AdapterName p
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName CLUSTER01 -AdapterName pNIC01, pNIC02
 ```
 
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -AdapterName pNIC01, pNIC02
+```
+
+::: zone-end
 
 ### Converged compute and storage intent; separate management intent
 
 Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02; Compute and storage are on different adapters.
 
 :::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
@@ -145,16 +215,30 @@ Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC03, pNIC0
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Mgmt -Management -ClusterName CLUSTER01 -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName CLUSTER01 -AdapterName pNIC03, pNIC04
 ```
+
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC03, pNIC04
+```
+
+::: zone-end
 
 ### Fully disaggregated intent
 
 For this intent, compute, storage, and management networks are all managed on different adapters across all cluster nodes.
 
 :::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
@@ -167,17 +251,32 @@ Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-Add-NetIntent -Name Compute -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
-Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
+Add-NetIntent -Name Mgmt -Management -ClusterName CLUSTER01 -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute -Compute -ClusterName CLUSTER01 -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Storage -Storage -ClusterName CLUSTER01 -AdapterName pNIC05, pNIC06
 ```
+
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name Mgmt -Management -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Compute -Compute -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
+```
+
+::: zone-end
 
 ### Storage-only intent
 
 For this intent, only storage is managed. Management and compute adapters aren't managed by Network ATC.
 
 :::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
@@ -188,15 +287,28 @@ Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
+Add-NetIntent -Name Storage -Storage -ClusterName CLUSTER01 -AdapterName pNIC05, pNIC06
 ```
+
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name Storage -Storage -AdapterName pNIC05, pNIC06
+```
+
+::: zone-end
 
 ### Compute and management intent
 
 For this intent, compute and management networks are managed, but not storage.
 
 :::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
@@ -207,16 +319,28 @@ Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC01,
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -AdapterName pNIC01, pNIC02
+Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName CLUSTER01 -AdapterName pNIC01, pNIC02
 ```
 
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC01, pNIC02
+```
+
+::: zone-end
 
 ### Multiple compute (switch) intents
 
 For this intent, multiple compute switches are managed.
 
 :::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
+
+:::zone pivot="azure-stack-hci"
 
 # [22H2](#tab/22H2)
 
@@ -228,11 +352,22 @@ Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
-Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
+Add-NetIntent -Name Compute1 -Compute -ClusterName CLUSTER01 -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Compute2 -Compute -ClusterName CLUSTER01 -AdapterName pNIC05, pNIC06
 ```
 
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name Compute1 -Compute -AdapterName pNIC03, pNIC04
+Add-NetIntent -Name Compute2 -Compute -AdapterName pNIC05, pNIC06
+```
+
+::: zone-end
 
 ## Default Network ATC values
 
@@ -240,10 +375,25 @@ This section lists some of the key default values used by Network ATC.
 
 ### Default values
 
+:::zone pivot="azure-stack-hci"
+
 This section covers additional default values that Network ATC will be setting in versions 22H2 and later.
 
+::: zone-end
+
+:::zone pivot="windows-server"
+
+This section covers additional default values that Network ATC will be setting.
+
+::: zone-end
+
 #### Default VLANs
+
+:::zone pivot="azure-stack-hci"
+
 Applies to: Azure Stack HCI 21H2, 22H2
+
+::: zone-end
 
 Network ATC uses the following VLANs by default for adapters with the _storage_ intent type. If the adapters are connected to a _physical_ switch, these VLANs must be allowed on the physical network. If the adapters are switchless, no additional configuration is required.
 
@@ -262,6 +412,8 @@ Network ATC uses the following VLANs by default for adapters with the _storage_ 
 
 Consider the following command:
 
+:::zone pivot="azure-stack-hci"
+
 # [22H2](#tab/22H2)
 
 ```powershell
@@ -271,10 +423,20 @@ Add-NetIntent -Name MyIntent -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC0
 # [21H2](#tab/21H2)
 
 ```powershell
-Add-NetIntent -Name MyIntent -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
+Add-NetIntent -Name MyIntent -Storage -ClusterName CLUSTER01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
 ```
 
 ---
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+```powershell
+Add-NetIntent -Name MyIntent -Storage -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
+```
+
+::: zone-end
 
 The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
@@ -282,7 +444,12 @@ The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 7
 > Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
 
 #### Automatic storage IP addressing
+
+:::zone pivot="azure-stack-hci"
+
 Applies to: Azure Stack HCI 22H2
+
+::: zone-end
 
 Network ATC will automatically configure valid IP Addresses for adapters with the _storage_ intent type. Network ATC does this in a uniform manner across all nodes in your cluster and verifies that the address chosen isn't already in use on the network.
 
@@ -306,7 +473,12 @@ Add-NetIntent -Name MyIntent -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -
 ```
 
 #### Cluster network settings
+
+:::zone pivot="azure-stack-hci"
+
 Applies to: Azure Stack HCI 22H2
+
+::: zone-end
 
 Network ATC configures a set of Cluster Network Features by default. The defaults are listed below:
 
@@ -332,15 +504,15 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 > [!NOTE]
 > Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
-## Common Error Messages 
+## Common Error Messages
 
 With the new event logs in 22H2, there are some simplistic troubleshooting methods to identify intent deployment failures. This section outlines some of the common fixes when an issue is encountered. The errors shown below are from the output of the `Get-NetIntentStatus` cmdlet.
 
 ### Error: AdapterBindingConflict
 
 :::image type="content" source="media/network-atc/error-adapterbindingconflict.png" alt-text="Screenshot of Adapter Binding Error."  lightbox="media/network-atc/error-adapterbindingconflict.png":::
- 
-Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC. 
+
+Scenario 1: An adapter is actually bound to an existing vSwitch that conflicts with the new vSwitch that is being deployed by Network ATC.
 
 **Solution:** Remove the conflicting vSwitch, then Set-NetIntentRetryState
 
@@ -354,7 +526,7 @@ Scenario 2: An adapter is bound to the component, but not necessarily a vSwitch.
 
 This issue occurs because a traffic class is already configured. This preconfigured traffic class conflicts with the traffic classes being deployed by Network ATC. For example, the customer may have already deployed a traffic class called SMB when Network ATC will deploy a similar traffic class with a different name.
 
-**Solution:** 
+**Solution:**
 
 Clear the existing DCB configuration on the system then run Set-NetIntentRetryState
 
@@ -371,18 +543,18 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 You may see this message:
 
-1.	If the network adapter uses an inbox driver. Inbox drivers aren't supported and must be updated.
+1. If the network adapter uses an inbox driver. Inbox drivers aren't supported and must be updated.
 
-    **Solution:** Upgrade the driver for the adapter.
-    
-2.	If SR-IOV is disabled in the BIOS.
+   **Solution:** Upgrade the driver for the adapter.
 
-    **Solution:** Enable SR-IOV for the adapter in the system BIOS
+1. If SR-IOV is disabled in the BIOS.
 
-4.	If RDMA is disabled in the BIOS
+   **Solution:** Enable SR-IOV for the adapter in the system BIOS
 
-    **Solution:** Enable RDMA for the adapter in the system BIOS
-    
+1. If RDMA is disabled in the BIOS
+
+   **Solution:** Enable RDMA for the adapter in the system BIOS
+
 ### Error: InvalidIsolationID
 
 :::image type="content" source="media/network-atc/error-invalidisolationid.png" alt-text="Screenshot of Invalid Isolation ID error."  lightbox="media/network-atc/error-invalidisolationid.png":::
@@ -393,15 +565,26 @@ This message will occur when RoCE RDMA is in use and you have overridden the def
 
     **Solution:** If supported by the adapter, Network ATC automatically chooses iWARP as its RDMA protocol which may use a VLAN ID of 0. Remove the override that enforces RoCE as the chosen protocol.
 
-2. Use the default VLANs
+1. Use the default VLANs
 
     **Solution:** We highly recommend using the Network ATC [Default VLANs](../deploy/network-atc.md#default-vlans)
-    
-3. Use a valid VLAN
+
+1. Use a valid VLAN
 
     When specifying a VLAN use the -StorageVLANs parameter and specify comma separated values between 1 - 4094.
 
 ## Next steps
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
-- Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
+:::zone pivot="azure-stack-hci"
+
+- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
+- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=azure-stack-hci).
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=windows-server&context=/windows-server/context/windows-server-failover-clustering).
+
+::: zone-end

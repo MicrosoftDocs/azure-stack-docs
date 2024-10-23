@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials update (online)
 description: Learn how to update AKS Edge Essentials clusters.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 09/10/2024
 ms.custom: template-how-to

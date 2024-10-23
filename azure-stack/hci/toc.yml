@@ -19,7 +19,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2408
       items:
-      - name: 2408.1 - Current
+      - name: 2408.2 - Current 
+        href: known-issues-2408-2.md
+      - name: 2408.1
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
@@ -59,7 +61,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: September 2024 - Current
+      - name: October 2024 - Current
+        href: security-update/hci-security-update-oct-2024.md
+      - name: September 2024
         href: security-update/hci-security-update-sep-2024.md
       - name: August 2024
         href: security-update/hci-security-update-aug-2024.md
@@ -167,7 +171,7 @@ items:
   - name: 1. Prepare Active Directory
     href: deploy/deployment-prep-active-directory.md
   - name: 2. Download the software
-    href: deploy/download-azure-stack-hci-23h2-software.md
+    href: deploy/download-23h2-software.md
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Register with Arc and set up permissions
@@ -191,7 +195,7 @@ items:
       items:
       - name: Configure proxy manually
         href: deploy/deployment-azure-arc-gateway-configure-manually.md
-      - name: Configure proxy via script
+      - name: Configure proxy via Arc script
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
@@ -250,7 +254,7 @@ items:
   - name: 5 - Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
   - name: Troubleshoot upgrades
-    href: upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md
+    href: upgrade/troubleshoot-upgrade-to-23h2.md
 
 
 - name: Manage
@@ -276,6 +280,8 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+        - name: Using an existing Arc VM
+          href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
           - name: Using Ubuntu VM image
@@ -616,7 +622,7 @@ items:
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
-      href: deploy/download-azure-stack-hci-software.md
+      href: deploy/download-software.md
     - name: 1. Deploy the Azure Stack HCI OS
       href: deploy/operating-system.md
     - name: 2. Create a cluster
@@ -636,7 +642,7 @@ items:
       - name: Create a cluster with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
-        href: deploy/network-atc.md
+        href: deploy/network-atc.md?pivots=azure-stack-hci
     - name: Deploy SDN 
       items:
       - name: Deploy using Windows Admin Center
@@ -708,7 +714,7 @@ items:
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
-        href: manage/manage-network-atc.md
+        href: manage/manage-network-atc.md?pivots=azure-stack-hci
       - name: Update the cluster
         href: manage/update-cluster.md
       - name: Manage quick restarts
@@ -801,7 +807,7 @@ items:
     - name: Host networking
       items:
       - name: Network ATC overview
-        href: concepts/network-atc-overview.md
+        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)

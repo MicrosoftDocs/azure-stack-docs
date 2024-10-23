@@ -1,18 +1,17 @@
 ---
-title: Review two-node storage reference pattern components for Azure Stack HCI
-description: Learn about two-node storage reference pattern components for Azure Stack HCI.
+title: Review two-node storage reference pattern components for Azure Local
+description: Learn about two-node storage reference pattern components for Azure Local.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 03/14/2024
+ms.service: azure-stack-hci
+ms.date: 10/17/2024
 ---
 
-# Review two-node storage reference pattern components for Azure Stack HCI
+# Review two-node storage reference pattern components for Azure Local
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll learn about which network components get deployed for two-node reference patterns, as shown below:
 
@@ -50,7 +49,7 @@ The following are optional components. For more information on Software Defined 
 
 #### SDN Load Balancer VM
 
-The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
+The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple machines to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
 #### SDN Gateway VM
 
@@ -64,7 +63,7 @@ The SDN Gateway VM is used for routing network traffic between a virtual network
 
 ## Host service and agent components
 
-The following components run as services or agents on the host server:
+The following components run as services or agents on the host machine:
 
 **Arc host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
 

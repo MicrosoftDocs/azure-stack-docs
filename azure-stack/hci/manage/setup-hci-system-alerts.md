@@ -1,22 +1,21 @@
 ---
-title: Set up log alerts for Azure Stack HCI
-description: How to set up log alerts for various Azure Stack HCI system resources using Insights for Azure Stack HCI and sample log queries.
+title: Set up log alerts for Azure Local
+description: How to set up log alerts for various Azure Local system resources using Insights for Azure Local and sample log queries.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.reviewer: kimlam
-ms.date: 04/22/2024
+ms.date: 10/15/2024
 ---
 
-# Set up log alerts for Azure Stack HCI
+# Set up log alerts for Azure Local
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to set up log alerts for Azure Stack HCI systems: using Insights for Azure Stack HCI and using pre-existing sample log queries, such as average server CPU, available memory, available volume capacity, and more.
+This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using pre-existing sample log queries, such as average node CPU, available memory, available volume capacity, and more.
 
-For information about how to set up metric alerts, see [Set up metric alerts for Azure Stack HCI](./setup-metric-alerts.md).
+For information about how to set up metric alerts, see [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
 Take a few moments to watch the video walkthrough on collecting new logs, customizing the Insights workbooks, and creating alerts using logs:
 
@@ -26,7 +25,7 @@ Take a few moments to watch the video walkthrough on collecting new logs, custom
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to an Azure Stack HCI cluster that is deployed and registered.
+- You have access to an Azure Local system that is deployed and registered.
 - You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights). Enabling Insights configures the cluster to collect required logs in a Log Analytics workspace.
 
 ## Set up log alerts using Insights
@@ -36,9 +35,9 @@ Before you begin, make sure that the following prerequisites are completed:
 
 Follow these steps to set up log alerts using Insights. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
 
-1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
+1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Local**.
 
-1. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
+1. Select one of the tabs to view the health of your resources. For example, select **Nodes** to view the health of nodes in your cluster.
 
 1. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
 
@@ -54,11 +53,11 @@ Follow these steps to set up log alerts using Insights. Ensure that you have rev
 
 ## Set up alerts using sample log queries
 
-You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
+You can start monitoring your Azure Local system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
 
 Follow these steps to set up log alerts using sample log queries. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
 
-1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, then select the cluster you want to monitor using sample log queries.
+1. In the Azure portal, browse to your Azure Local system resource page, then select the cluster you want to monitor using sample log queries.
 
 1. On your cluster **Overview** page, select **JSON View**.
 
@@ -72,7 +71,7 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. Select **+ Add filter** to add a filter for **Resource type**.
 
-1. Choose **Azure Stack HCI** for a populated list of Azure Stack HCI system sample logs.
+1. Choose **Azure Local** for a populated list of Azure Local system sample logs.
 
     :::image type="content" source="media/setup-hci-system-alerts/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/setup-hci-system-alerts/azure-monitor-logs.png":::
 
@@ -102,9 +101,9 @@ When creating a new alert rule, you must set conditional details to summarize yo
 
 - **Measure**: The value used to set up alerts. By default, it takes only numerical values. Convert your values to integer and select the correct one from the dropdown list.
 - **Aggregation type**: Ensures you receive an alert, even if only one cluster memory value meets what you have specified. For alerts on multiple clusters, you need to put the aggregation type as a maximum and not an average or total.
-- **Resource ID column**: Splits the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the server, use `_resourceID`. Check your value names in your log query for accuracy.
-- **Dimension name**: Splits an alert measure further. For example, to get alerts per server, select the `Nodename`.
-  - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple servers in the cluster.
+- **Resource ID column**: Splits the alert measure value based on other values. To get alerts on a cluster, use the `clusterarmID` or to set up alerts for the node, use `_resourceID`. Check your value names in your log query for accuracy.
+- **Dimension name**: Splits an alert measure further. For example, to get alerts per node, select the `Nodename`.
+  - When you set up alerts, you might not see all the values in the dropdown menu. Select the checkbox for **Include all future values** to ensure you set up the same alert on multiple nodes in the cluster.
 - **Threshold value**: Provides a notification based on the value you've set.
 
 In this example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.

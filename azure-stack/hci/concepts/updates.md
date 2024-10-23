@@ -9,7 +9,7 @@ ms.date: 02/23/2024
 
 # Updates and upgrades
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 This article describes the lifecycle of updates and upgrades on Azure Stack HCI. 
 
@@ -28,7 +28,7 @@ For information on the available updates for each version of Azure Stack HCI, se
 Updates to the Azure Stack HCI operating system are installed using Windows Admin Center, System Center, or PowerShell. The Cluster-Aware Updating feature orchestrates installing the updates on each server in the cluster so that your applications continue running during the upgrade.
 
 > [!NOTE]
-> Deploying annual feature updates by using Windows Server Update Services (WSUS) is currently not supported. You can use Windows Update or download the [Azure Stack HCI operating system ISO file](../deploy/download-azure-stack-hci-software.md) to perform a rolling cluster upgrade via Cluster-Aware Updating (CAU), or manually update each node.
+> Deploying annual feature updates by using Windows Server Update Services (WSUS) is currently not supported. You can use Windows Update or download the [Azure Stack HCI operating system ISO file](../deploy/download-software.md) to perform a rolling cluster upgrade via Cluster-Aware Updating (CAU), or manually update each node.
 
 :::image type="content" source="media/updates/feature-updates.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="media/updates/feature-updates.png":::
 

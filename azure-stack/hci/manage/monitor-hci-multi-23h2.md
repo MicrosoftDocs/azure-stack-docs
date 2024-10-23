@@ -1,24 +1,23 @@
 ---
-title: Monitor multiple Azure Stack HCI, version 23H2 clusters with Insights
-description: How to use Insights to monitor the health, performance, and usage of multiple Azure Stack HCI, version 23H2 clusters.
+title: Monitor multiple Azure Local, version 23H2 systems with Insights
+description: How to use Insights to monitor the health, performance, and usage of multiple Azure Local, version 23H2 systems.
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
-ms.date: 07/29/2024
+ms.service: azure-stack-hci
+ms.date: 10/10/2024
 ---
 
-# Monitor multiple Azure Stack HCI, version 23H2 clusters with Insights
+# Monitor multiple Azure Local, version 23H2 systems with Insights
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23h2.md).
+This article explains how to use Insights to monitor multiple Azure Local systems. For a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md).
 
-For information about the benefits, prerequisites, and how to enable Insights on each cluster, see [Benefits](./monitor-hci-single-23h2.md#benefits), [Prerequisites](./monitor-hci-single-23h2.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
+For information about the benefits, prerequisites, and how to enable Insights on each Azure Local system, see [Benefits](./monitor-hci-single-23h2.md#benefits), [Prerequisites](./monitor-hci-single-23h2.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
 
-To monitor multiple clusters with Insights, you need to enable Insights on each cluster individually. Instead, you can enable Insights at scale using Azure policies. For more information, see [Enable Insights for Azure Stack HCI at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+To monitor multiple Azure Local system with Insights, you need to enable Insights on each system individually. Instead, you can enable Insights at scale using Azure policies. For more information, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
 
 Watch the video for a quick introduction:
 
@@ -28,15 +27,15 @@ Watch the video for a quick introduction:
 
 Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There's no direct cost for Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
-You can access Insights from **Azure Monitor** > **Insights** > **Azure Stack HCI**. Use the following tabs to toggle between views: **Add to monitoring**, **Cluster health**, **Servers**, **Virtual machines**, and **Storage**.
+You can access Insights from **Azure Monitor** > **Insights** > **Azure Local**. Use the following tabs to toggle between views: **Add to monitoring**, **Cluster health**, **Nodes**, **Virtual machines**, and **Storage**.
 
 ### Filtering results
 
 The visualization can be filtered across subscriptions. You can filter the results based on the following drop-down menus:
 
 - **Time range:** This filter allows you to select a range for trend view. The default value is **Last 24 hours**.
-- **Subscriptions:**  Shows the subscriptions that have registered Azure Stack HCI clusters. You can select multiple subscriptions in this filter.
-- **HCI clusters:** Lists the registered Azure Stack HCI clusters that have Logs and Monitoring capabilities enabled in the selected time range. You can select multiple clusters from this filter.
+- **Subscriptions:**  Shows the subscriptions that have registered Azure Local clusters. You can select multiple subscriptions in this filter.
+- **Clusters:** Lists the registered Azure Local clusters that have Logs and Monitoring capabilities enabled in the selected time range. You can select multiple clusters from this filter.
 - **Resource groups:** This filter allows you to select all the clusters within a resource group.
 
 ## Add to monitoring
@@ -48,8 +47,8 @@ This feature provides details of clusters that aren't monitored by the user. To 
 | Column | Description | Example |
 |--|--|--|
 | Cluster | The name of the cluster. | 27cls1 |
-| Azure connection status | The HCI resource status. | Connected |
-| OS version | The operating system build on the server. | 10.0.20348.10131 |
+| Azure connection status | The Azure Local resource status. | Connected |
+| OS version | The operating system build on the node. | 10.0.20348.10131 |
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
 
@@ -75,34 +74,34 @@ This view provides an overview of the health of clusters.
 | Column | Description | Example |
 |--|--|--|
 | Cluster | The name of the cluster. | 27cls1 |
-| Last updated | The timestamp of when server was last updated. | 4/9/2022, 12:15:42 PM |
-| Status | Provides health of server resources in the cluster. It can be healthy, warning, critical, or other. | Healthy |
+| Last updated | The timestamp of when the node was last updated. | 4/9/2022, 12:15:42 PM |
+| Status | Provides the health status of the nodes in the cluster. It can be healthy, warning, critical, or other. | Healthy |
 | Faulting resource | Description of which resource caused the fault. | Server, StoragePool, Subsystem |
-| Total servers | The number of servers within a cluster. | 4 |
+| Total nodes | The number of nodes within a cluster. | 4 |
 
 If your cluster is missing or showing the status **Other**, go to the **Log Analytics workspace** used for the cluster and make sure that the **Agent configuration** is capturing data from
 the **microsoft-windows-health/operational** log. Also make sure the clusters have connected recently to Azure, and check that the clusters aren't filtered out in this workbook.
 
-#### Server
+#### Nodes
 
-This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](/azure-stack/hci/manage/monitor-hci-multi#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
+This view provides an overview of node health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](/azure-stack/hci/manage/monitor-hci-multi#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and the node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/server-health.png" alt-text="Screenshot showing health of servers." lightbox="media/monitor-hci-multi-23h2/server-health.png":::
+:::image type="content" source="media/monitor-hci-multi-23h2/server-health.png" alt-text="Screenshot showing the health status of the nodes." lightbox="media/monitor-hci-multi-23h2/server-health.png":::
 
 #### Virtual machines
 
-This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](/azure-stack/hci/manage/monitor-hci-multi#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
+This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](/azure-stack/hci/manage/monitor-hci-multi#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across nodes in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
 :::image type="content" source="media/monitor-hci-multi-23h2/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-hci-multi-23h2/virtual-machine-state.png":::
 
 | Metric | Description | Example |
 |--|--|--|
-| Cluster > Server | The name of the cluster. On expansion, it shows the servers within the cluster. | Sample-VM-1 |
-| Last Updated | The datetimestamp of when the server was last updated. | 4/9/2022, 12:24:02 PM |
-| Total VMs | The number of VMs in a server node within a cluster. | 1 of 2 running |
-| Running | The number of VMs running in a server node within a cluster. | 2 |
-| Stopped | The number of VMs stopped in a server node within a cluster. | 3 |
-| Failed | The number of VMs failed in a server node within a cluster. | 2 |
+| Cluster > Node | The name of the cluster. On expansion, it shows the nodes within the cluster. | Sample-VM-1 |
+| Last Updated | The datetimestamp of when the node was last updated. | 4/9/2022, 12:24:02 PM |
+| Total VMs | The number of VMs in a node within a cluster. | 1 of 2 running |
+| Running | The number of VMs running in a node within a cluster. | 2 |
+| Stopped | The number of VMs stopped in a node within a cluster. | 3 |
+| Failed | The number of VMs failed in a node within a cluster. | 2 |
 | Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | 2 |
 
 #### Storage
@@ -129,7 +128,7 @@ volumes. This view is built using the [volume event ID 3002](/azure-stack/hci/m
 
 Because the user experience is built on top of Azure Monitor workbook templates, users can edit the visualizations and queries and save them as a customized workbook.
 
-If you're using the visualization from **Azure Monitor > Insights hub > Azure Stack HCI**, select **Customize > Edit > Save As** to save a copy of your modified version to a custom workbook.
+If you're using the visualization from **Azure Monitor > Insights hub > Azure Local**, select **Customize > Edit > Save As** to save a copy of your modified version to a custom workbook.
 
 Workbooks are saved within a resource group. Everyone with access to the resource group can access the customized workbook.
 
@@ -141,7 +140,7 @@ Most queries are written using Kusto Query Language (KQL). Some queries are writ
 
 ## Support
 
-To open a support ticket for Insights, use the service type **Insights for Azure Stack HCI** under **Monitoring & Management**.
+To open a support ticket for Insights, use the service type **Insights for Azure Local** under **Monitoring & Management**.
 
 ## Event Log Channel
 
@@ -233,9 +232,9 @@ Most variables are self-explanatory from this JSON information. However, the fol
 
 | Variable | Description |
 |:-|:-|
-| m_servers | Array of server nodes. |
-| m_statusCategory | Health status of the server. | 
-| m_status | State of the server. It's an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
+| m_servers | Array of nodes. |
+| m_statusCategory | Health status of the node. | 
+| m_status | State of the node. It's an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
 
 Values for the **m_statusCategory** variable are as follows:
 
@@ -429,4 +428,4 @@ For more information about the data that's collected, see [Health Service faults
 
 For related information, see:
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
+- [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md)

@@ -4,14 +4,13 @@ description: This topic describes the design and policies relevant to diagnostic
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ms.date: 04/24/2023
 ---
 
 # Azure Stack HCI data collection
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 

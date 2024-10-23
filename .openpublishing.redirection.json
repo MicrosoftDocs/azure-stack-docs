@@ -6,6 +6,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-23h2-software.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-23h2-software",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/deploy/download-azure-stack-hci-software.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-software",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/bitlocker-on-csv.md",
       "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
       "redirect_document_id": false
@@ -1488,6 +1498,16 @@
     {
       "source_path": "azure-stack/hci/manage/processor-compatibility-mode.md",
       "redirect_url": "/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-azure-arc-gateway-new-cluster.md",
+      "redirect_url": "/azure-stack/hci/deploy/deployment-azure-arc-gateway-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md",
+      "redirect_url": "/azure-stack/hci/upgrade/troubleshoot-upgrade-to-23h2",
       "redirect_document_id": false
     }
   ]

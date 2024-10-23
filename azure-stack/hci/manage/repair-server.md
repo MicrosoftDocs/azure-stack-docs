@@ -4,12 +4,12 @@ description: Learn how to repair a server on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/04/2024
+ms.date: 10/11/2024
 ---
 
 # Repair a server on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
@@ -56,7 +56,7 @@ The other workload volumes that you created after the deployment are still retai
 
 When repairing a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
 
 ### Server replacement
 
@@ -96,7 +96,7 @@ The actual replacement steps for non hot-swappable components vary based on your
 
 Before you repair a server, you must ensure that:
 
-[!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
+[!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
 
 - If needed, take the server that you have identified for repair offline. Follow the steps here:
 
@@ -115,8 +115,7 @@ Follow these steps on the server you're trying to repair.
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
-    > If your cluster is using a dedicated Network ATC intent for storage and you are using custom storage IPs, you must configure the IPs on the storage network adapters before running the Repair-Server operation.
-    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is being repaired.
+    > If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
 
 2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
@@ -137,6 +136,12 @@ Follow these steps on another server that is a member of the same Azure Stack HC
     Update-AuthenticationToken
    ```
 
+1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
+
+    ```powershell
+    Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
+    ```
+
 1. Sign into the server that is already a member of the cluster, with the domain user credentials that you provided during the deployment of the cluster. Run the following command to repair the incoming server:
 
     ```powershell
@@ -149,14 +154,13 @@ Follow these steps on another server that is a member of the same Azure Stack HC
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
-> [!NOTE]
-> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
+
 
 ### Monitor operation progress
 
 To monitor the progress of the add server operation, follow these steps:
 
-[!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
+[!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
 
 ### Recovery scenarios
 

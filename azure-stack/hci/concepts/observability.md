@@ -5,13 +5,12 @@ author: alkohli
 ms.author: alkohli
 ms.date: 03/06/2024
 ms.topic: conceptual
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
+ms.service: azure-stack-hci
 ---
 
 # Azure Stack HCI observability
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes observability in Azure Stack HCI and the data sources through which it is achieved.
 

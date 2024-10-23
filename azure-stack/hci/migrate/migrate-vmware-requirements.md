@@ -3,19 +3,18 @@ title: Review requirements for VMware VM migration to Azure Stack HCI using Azur
 description: Learn the system requirements for VMware migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 08/05/2024
+ms.date: 10/17/2024
 ms.author: alkohli
-ms.subservice: azure-stack-hci
 ms.custom: references_regions
 ---
 
 # Review requirements for VMware VM migration to Azure Stack HCI using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Stack HCI using Azure Migrate.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## Supported operating systems
 
@@ -24,7 +23,7 @@ The following operating systems (OSs) are supported for the VMware source applia
 
 |Component  |Supported OS |
 |---------|---------|
-|Source environment     |VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
+|Source environment     |VMware vCenter Server version 8.0 <br>VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
 |Source appliance     |Windows Server 2022          |
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |

@@ -4,14 +4,14 @@ description: Learn how to collect network traces and logs to troubleshoot common
 ms.topic: how-to
 ms.author: arudell
 author: arudell
-ms.date: 10/08/2024
+ms.date: 10/23/2024
 ---
 
 # Collect traces and logs to troubleshoot common SDN issues
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article describes what data to collect to troubleshoot common issues in Software Defined Networking (SDN) on your Azure Local instance(s). Use this information to perform initial troubleshooting before contacting Microsoft Support.
+This article describes what data to collect to troubleshoot common issues in Software Defined Networking (SDN) on Azure Local. Use this information to perform initial troubleshooting before contacting Microsoft Support.
 
 ## Prerequisites
 
