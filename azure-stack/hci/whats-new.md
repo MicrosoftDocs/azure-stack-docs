@@ -199,7 +199,7 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 - In this release, an issue was fixed that prevented from showing a failed deployment in the Cluster overview when the deployment was canceled.
 - The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
-- This release changes the behavior to not delete the Arc server resources when the Azure Local instance resource is deleted.
+- This release changes the behavior to not delete the Arc server resources when the Azure Local resource is deleted.
 
 ### Security changes
 

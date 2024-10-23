@@ -17,7 +17,7 @@ This article covers the Azure Stack HCI OEM license, its benefits, license requi
 
 ## About the OEM license
 
-The Azure Stack HCI OEM license is designed for Azure Local hardware including [Azure Local Premier Solutions, Integrated Systems, and Validated Nodes](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?systemType=PremierSolution). The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
+The Azure Stack HCI OEM license is designed for Azure Local hardware including [Premier Solutions, Integrated Systems, and Validated Nodes](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?systemType=PremierSolution). The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
 
 - Azure Local
 - Azure Kubernetes Services (AKS)
@@ -33,7 +33,7 @@ The Azure Stack HCI OEM license simplifies the licensing and activation process,
 
 - A single license for Azure Local, AKS, and Windows Server 2022 guest VMs.
 
-- No tools or keys to activate the Azure Local operating system.
+- No tools or keys to activate the operating system on Azure Local.
 
 - Single vendor procurement for hardware, software, and full stack support.
 

@@ -12,7 +12,7 @@ ms.date: 10/18/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy a virtualized single node or multi-node Azure Local, version 23H2 instance on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).  
+This article describes how to deploy a virtualized Azure Local instance running version 23H2 on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).
 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
@@ -44,7 +44,7 @@ Before you begin, make sure that:
 
 ### Virtual host requirements
 
-Before you begin, make sure that each virtual host system can dedicate the following resources to provision your virtualized Azure Local system:
+Before you begin, make sure that each virtual host system can dedicate the following resources to provision your virtualized Azure Local instance:
 
 | Component | Requirement |
 | ----------| ------- |
@@ -229,7 +229,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Download Azure Local 23H2 ISO](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
+1. [Download Azure Local 23H2 software](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
 1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 
