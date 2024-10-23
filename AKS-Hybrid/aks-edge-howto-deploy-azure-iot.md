@@ -19,8 +19,8 @@ ms.custom: template-how-to
 
 To run the script, you need the following prerequisites:
 
-- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. See the [Azure Resource Manager documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-- Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary.For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
+- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. For more information about managing resource groups, see the [Azure Resource Manager documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal). If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the following extensions for Azure CLI:
 
    ```bash
@@ -28,7 +28,7 @@ To run the script, you need the following prerequisites:
    az extension add --upgrade --name connectedk8s 
    ```
 
-- Hardware requirements: ensure that your machine has a minimum of 16 GB available RAM, 8 available vCPUs, and 52 GB free disk space reserved for Azure IoT Operations.
+- Hardware requirements: ensure that your machine has a minimum of 16-GB available RAM, 8 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
 - If you deploy Azure IoT Operations to a multi-node cluster with fault tolerance enabled, review the hardware and storage requirements in [Prepare Linux for Edge Volumes](/azure/azure-arc/container-storage/prepare-linux-edge-volumes).
 
 ## Create an AKS Edge Essentials cluster for Azure IoT Operations
@@ -47,7 +47,7 @@ The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/to
     - `sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 9110 -j ACCEPT`
     - `sudo iptables -A INPUT -p tcp --dport (10124, 8420, 2379, 50051) -j ACCEPT`
 
-Once you have downloaded the script do the following:
+After you download the script, perform the following steps:
 
 1. Open an elevated PowerShell window and change the directory to a working folder.
 1. Get the `objectId` of the Microsoft Entra ID application that the Azure Arc service uses in your tenant. Run the following command exactly as written, without changing the GUID value.
