@@ -1,6 +1,96 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/guided-quick-deploy-eval.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/whats-new-in-hci-22h2.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/whats-new-in-hci-21h2.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/known-issues-2310.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",     
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-7-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-5-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-4-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-3-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-2-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/whats-new-2306-1-preview.md",
+      "redirect_url":"/azure-stack/hci/release-information-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-7.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-5.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-4.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-3.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-2.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306-1.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/hci-known-issues-2306.md",
+      "redirect_url":"/azure-stack/hci/known-issues-2311-2",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/deploy/tutorial-private-forest.md",
       "redirect_url":"/azure-stack/hci",
       "redirect_document_id": false
