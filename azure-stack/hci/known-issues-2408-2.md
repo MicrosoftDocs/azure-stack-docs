@@ -1,18 +1,18 @@
 ---
-title: Release notes with fixed and known issues in Azure Stack HCI 2408.1 baseline release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2408.1 baseline release.
+title: Release notes with fixed and known issues in Azure Stack HCI 2408.2 baseline release
+description: Read about the known issues and fixed issues in Azure Stack HCI 2408.2 baseline release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 10/22/2024
 ms.author: robess
 ms.reviewer: alkohli
 ---
 
-# Known issues in the Azure Stack HCI 2408.1 release
+# Known issues in the Azure Stack HCI 2408.2 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies critical known issues and their workarounds in the Azure Stack HCI 2408.1 release.
+This article identifies critical known issues and their workarounds in the Azure Stack HCI 2408.2 release.
 
 These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained here.
 
@@ -21,9 +21,9 @@ These release notes are continuously updated, and as critical issues requiring a
 
 For more information about new features in this release, see [What's new in 23H2](whats-new.md).
 
-## Known issues for version 2408.1
+## Known issues for version 2408.2
 
-This software release maps to software version number **2408.1.9**.
+This software release maps to software version number **2408.2.7**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -36,11 +36,12 @@ The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM management | The MAC address of the VM network interface wouldn't appear if the customer didn't pass the mac address at the time of creation. ||
-| Update <!--28489253--> | MOC node agent would get stuck in a restart pending stage during the update MOC step. ||
-| Update <!--29075839--> | Required permissions weren't granted when upgrading which caused update to fail later. ||
-| Upgrade <!--29346181--> | Added validation to check for an IPv6 address. ||
-| Update | SBE interfaces wouldn't execute on all the servers if the hostname in the cluster was a subset of another hostname. ||
+| Security | SideChannelMitigation is reporting properly in both local cmdlets and Windows Admin Center. ||
+| Update <!--29100330--> | An update would unnecessarily download SBE content that had already been sideloaded. ||
+| Upgrade <!--29426262--> | Cluster resources weren't in the same group. ||
+| Upgrade <!--29444056--> | Fixed IP pool validation in the Azure portal. ||
+| Upgrade <!--29498611--> | Added validation to ensure the package is the latest version ||
+| Upgrade <!--29546100--> | Validation would fail due to group policies. ||
 
 ## Known issues in this release
 
@@ -59,7 +60,7 @@ The following table lists the known issues from previous releases:
 |---------|---------|---------|
 | Repair server <!--29281897--> | After you repair a node and run the command `Set-AzureStackLCMUserPassword`, you may encounter the following error: </br><br>`CloudEngine.Actions.InterfaceInvocationFailedException: Type 'ValidateCredentials' of Role 'SecretRotation' raised an exception: Cannot load encryption certificate. The certificate setting 'CN=DscEncryptionCert' does not represent a valid base-64 encoded certificate, nor does it represent a valid certificate by file, directory, thumbprint, or subject name. at Validate-Credentials` | Follow these steps to mitigate the issue: <br><br> `$NewPassword = <Provide new password as secure string>` <br><br> `$OldPassword = <Provide the old/current password as secure string>` <br><br> `$Identity = <LCM username>` <br><br> `$credential = New-Object -TypeName PSCredential -ArgumentList $Identity, $NewPassword` <br><br> 1. Import the necessary module: <br><br> `Import-Module "C:\Program Files\WindowsPowerShell\Modules\Microsoft.AS.Infra.Security.SecretRotation\PasswordUtilities.psm1" -DisableNameChecking` <br><br> 2. Check the status of the ECE cluster group: <br><br> `$eceClusterGroup = Get-ClusterGroup` \| `Where-Object {$_.Name -eq "Azure Stack HCI Orchestrator Service Cluster Group"}` <br><br> `if ($eceClusterGroup.State -ne "Online") {Write-AzsSecurityError -Message "ECE cluster group is not in an Online state. Cannot continue with password rotation." -ErrRecord $_}` <br><br> 3. Update the ECE with the new password: <br><br> `Write-AzsSecurityVerbose -Message "Updating password in ECE" -Verbose` <br><br> `$eceContainersToUpdate = @("DomainAdmin", "DeploymentDomainAdmin", "SecondaryDomainAdmin", "TemporaryDomainAdmin", "BareMetalAdmin", "FabricAdmin", "SecondaryFabric", "CloudAdmin") <br><br> foreach ($containerName in $eceContainersToUpdate) {Set-ECEServiceSecret -ContainerName $containerName -Credential $credential 3>$null 4>$null} <br><br> Write-AzsSecurityVerbose -Message "Finished updating credentials in ECE." -Verbose` <br><br> 4. Update the password in Active Directory: <br><br>`Set-ADAccountPassword -Identity $Identity -OldPassword $OldPassword -NewPassword $NewPassword`|
 | Arc VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Arc VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-| Networking <!--29180461--> | When a node is configured with a proxy server that has capital letters in its address, such as **HTTP://10.100.000.00:8080**, Arc extensions fail to install or update on the node in existing builds, including version 2408.1. However, the node remains Arc connected. | Follow these steps to mitigate the issue: </br><br> 1. Set the environment values in lowercase. `[System.Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://10.100.000.00:8080", "Machine")`. </br><br> 2. Validate that the values were set. `[System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine").` </br><br> 3. Restart Arc services. </br><br> `Restart-Service himds` </br><br> `Restart-Service ExtensionService` </br><br> `Restart-Service GCArcService` </br><br> 4. Signal the AzcmaAgent with the lowercase proxy information. </br><br> `& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config set proxy.url http://10.100.000.00:8080` </br><br>`& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config list` |
+| Networking <!--29180461--> | When a node is configured with a proxy server that has capital letters in its address, such as **HTTP://10.100.000.00:8080**, Arc extensions fail to install or update on the node in existing builds, including version 2408.2. However, the node remains Arc connected. | Follow these steps to mitigate the issue: </br><br> 1. Set the environment values in lowercase. `[System.Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://10.100.000.00:8080", "Machine")`. </br><br> 2. Validate that the values were set. `[System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine").` </br><br> 3. Restart Arc services. </br><br> `Restart-Service himds` </br><br> `Restart-Service ExtensionService` </br><br> `Restart-Service GCArcService` </br><br> 4. Signal the AzcmaAgent with the lowercase proxy information. </br><br> `& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config set proxy.url http://10.100.000.00:8080` </br><br>`& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config list` |
 | Networking <!--29229789--> | When Arc machines go down, the "**All Clusters**" page, in the new portal experience shows a "**PartiallyConnected**" or "**Not Connected Recently** status. Even when the Arc machines become healthy, they may not show a "**Connected**" status. | There's no known workaround for this issue. To check the connectivity status, use the old experience to see if it shows as "**Connected**". |
 | Security <!--29333930--> | The SideChannelMitigation security feature may not show an enabled state even if it's enabled. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
 | Arc VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -94,7 +95,7 @@ The following table lists the known issues from previous releases:
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Update | When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates). |
-| Update <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command:<br>`Get-SolutionUpdate`\|`Start-SolutionUpdate`.|
+| Update <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command:<br>`Get-SolutionUpdate` \| `Start-SolutionUpdate`.|
 | Update <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
 | Update <!--26417221--> |In rare instances, when applying an update from 2311.0.24 to 2311.2.4, cluster status reports *In Progress* instead of expected *Failed to update*.   | Retry the update. If the issue persists, contact Microsoft Support.|
 | Update <!--26039754--> | Attempts to install solution updates can fail at the end of the CAU steps with:*<br>*`There was a failure in a Common Information Model (CIM) operation, that is, an operation performed by software that Cluster-Aware Updating depends on.` *<br>* This rare issue occurs if the `Cluster Name` or `Cluster IP Address` resources fail to start after a node reboot and is most typical in small clusters. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and resume the update as needed. |
