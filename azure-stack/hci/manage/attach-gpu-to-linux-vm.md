@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 10/21/2024
+ms.date: 10/23/2024
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
@@ -84,7 +84,7 @@ This topic provides step-by-step instructions on how to install and configure an
 7. Log in to Ubuntu and open the terminal to install SSH:
 
    ```shell
-    $ sudo apt install openssh-machine
+    $ sudo apt install openssh-server
    ```
 
 8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the **eth0** interface.
