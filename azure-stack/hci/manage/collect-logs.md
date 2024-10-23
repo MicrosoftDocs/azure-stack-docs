@@ -426,7 +426,7 @@ Send-DiagnosticData –SaveToPath <path> -SupplementaryLogs <path to adhoc logs 
 With `NoLogCollection`:
 
 ```powershell
-Send-DiagnosticData –NoLogCollection –SupplemenatryLogs <path to adhoc logs to collect>
+Send-DiagnosticData –NoLogCollection –SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 **Extension version**
