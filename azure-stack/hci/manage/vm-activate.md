@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ms.service: azure-stack-hci
 ---
 
@@ -100,7 +100,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
    resourceGroup="local-rg" # Replace with your resource group name
-   systemName="LocalCluster" # Replace with your cluster name
+   clusterName="LocalCluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```

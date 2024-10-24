@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ---
 
 # Manage Arc VMs on Azure Local
@@ -84,7 +84,7 @@ If your statuses do not match the above output, follow the steps in [Enable gues
 To enable guest management on an Arc VM that has guest agent running, run the following command:
 
 ```azurecli
-az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
 ```
 Guest management is enabled by setting the `enable-agent parameter` to `true`. Guest management should take a few minutes to get enabled.
 
@@ -141,7 +141,7 @@ Follow these steps:
 1. Connect to one of the machines. Run the following command to enable guest management.
 
    ```azurecli
-   az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+   az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
    ```
 
 Follow the steps to [verify that the guest management is enabled in the Azure portal](#verify-guest-management-is-enabled-in-the-azure-portal).

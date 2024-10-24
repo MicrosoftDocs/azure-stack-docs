@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -72,10 +72,10 @@ Follow these steps to create a VM image using the Azure CLI.
     
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "myhci-rg"
+    PS C:\Users\azcli> $resource_group = "mylocalrg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
-    PS C:\ClusterStorage\Volume1> $imageName = "myhci-localimage"
+    PS C:\ClusterStorage\Volume1> $imageName = "mylocal-localimage"
     PS C:\ClusterStorage\Volume1> $imageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
     ```
 
@@ -111,12 +111,12 @@ type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osTy
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-localimage",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-localimage",
   "location": "eastus",
-  "name": "myhci-localimage",
+  "name": "mylocal-localimage",
   "properties": {
     "identifier": null,
     "imagePath": null,
@@ -161,7 +161,7 @@ PS C:\Users\azcli>
 
 You can create a VM image by downloading an image that resides in a local share on your Azure Local and then use that VM image to deploy a virtual machine.
 
-In Azure portal for your Azure Local cluster resource, perform the following steps:
+In Azure portal for your Azure Local resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**.
 

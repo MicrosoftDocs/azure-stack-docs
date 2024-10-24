@@ -76,11 +76,11 @@ Create a static logical network when you want to create virtual machines with ne
 1. Set the parameters. Here's an example:
 
     ```azurecli
-    $lnetName = "myhci-lnet-static"
+    $lnetName = "mylocal-lnet-static"
     $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
     $subscription = "<Subscription ID>"
-    $resource_group = "myhci-rg"
-    $customLocationName = "myhci-cl"
+    $resource_group = "mylocal-rg"
+    $customLocationName = "mylocal-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
@@ -121,12 +121,12 @@ Create a static logical network when you want to create virtual machines with ne
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "name": "/subscriptions/<Subscription ID>resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-static",
+      "id": "/subscriptions/<Subscription ID>resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/mylocal-lnet-static",
       "location": "eastus",
-      "name": "myhci-lnet-static",
+      "name": "mylocal-lnet-static",
       "properties": {
         "dhcpOptions": {
           "dnsServers": [
@@ -137,7 +137,7 @@ Create a static logical network when you want to create virtual machines with ne
         "status": {},
         "subnets": [
           {
-            "name": "myhci-lnet-static",
+            "name": "mylocal-lnet-static",
             "properties": {
               "addressPrefix": "192.168.201.0/24",
               "addressPrefixes": null,
@@ -150,7 +150,7 @@ Create a static logical network when you want to create virtual machines with ne
                 "properties": {
                   "routes": [
                     {
-                      "name": "myhci-lnet-static-default-route",
+                      "name": "mylocal-lnet-static-default-route",
                       "properties": {
                         "addressPrefix": "0.0.0.0/0",
                         "nextHopIpAddress": "192.168.200.1"
@@ -166,7 +166,7 @@ Create a static logical network when you want to create virtual machines with ne
         ],
         "vmSwitchName": "ConvergedSwitch(management_compute_storage)"
       },
-      "resourceGroup": "myhci-rg",
+      "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2023-11-02T16:38:18.460150+00:00",
         "createdBy": "guspinto@contoso.com",
@@ -192,11 +192,11 @@ Follow these steps to configure a DHCP logical network:
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
-    $lnetName = "myhci-lnet-dhcp"
+    $lnetName = "mylocal-lnet-dhcp"
     $vSwitchName = "ConvergedSwitch(management_compute_storage)"
     $subscription = "<subscription-id>"
-    $resourceGroup = "myhci-rg"
-    $customLocationName = "myhci-cl"
+    $resourceGroup = "mylocal-rg"
+    $customLocationName = "mylocal-cl"
     $customLocationID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
@@ -228,19 +228,19 @@ Follow these steps to configure a DHCP logical network:
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-dhcp",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/mylocal-lnet-dhcp",
       "location": "eastus",
-      "name": "myhci-lnet-dhcp",
+      "name": "mylocal-lnet-dhcp",
       "properties": {
         "dhcpOptions": null,
         "provisioningState": "Succeeded",
         "status": {},
         "subnets": [
           {
-            "name": "myhci-lnet-dhcp",
+            "name": "mylocal-lnet-dhcp",
             "properties": {
               "addressPrefix": null,
               "addressPrefixes": null,
@@ -254,7 +254,7 @@ Follow these steps to configure a DHCP logical network:
         ],
         "vmSwitchName": "ConvergedSwitch(management_compute_storage)"
       },
-      "resourceGroup": "myhci-rg",
+      "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2023-11-02T16:32:51.531198+00:00",
         "createdBy": "guspinto@contoso.com",

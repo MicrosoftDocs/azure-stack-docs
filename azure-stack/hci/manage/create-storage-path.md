@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ---
 
 # Create storage path for Azure Local 
@@ -98,17 +98,17 @@ Follow these steps on one of the machines of your Azure Local instance to create
     PS C:\windows\system32> $storagepathname="test-storagepath"
     PS C:\windows\system32> $path="C:\ClusterStorage\UserStorage_1\mypath"
     PS C:\windows\system32> $subscription="<Subscription ID>"
-    PS C:\windows\system32> $resource_group="myhci-rg"
-    PS C:\windows\system32> $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl"
+    PS C:\windows\system32> $resource_group="mylocal-rg"
+    PS C:\windows\system32> $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
 
     PS C:\windows\system32> az stack-hci-vm storagepath create --name $storagepathname --resource-group $resource_group --custom-location $customLocationID --path $path
     Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
       "location": "eastus",
       "name": "test-storagepath",
       "properties": {
@@ -119,7 +119,7 @@ Follow these steps on one of the machines of your Azure Local instance to create
           "containerSizeMB": 243097
         }
       },
-      "resourceGroup": "myhci-rg",
+      "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2023-10-06T04:45:30.458242+00:00",
         "createdBy": "guspinto@contoso.com",
@@ -175,7 +175,7 @@ Follow these steps in Azure portal of your Azure Local.
    :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
 
 1. In the **Create storage path** pane, input the following parameters:
-    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a cluster share volume (CSV) on your system.
+    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a cluster shared volume (CSV) on your system.
     1. Provide a friendly name for your storage path. The name should be 3 to 64 characters long and should contain letters, numbers, and hyphens.
   
     :::image type="content" source="./media/create-storage-path/create-storage-path-2.png" alt-text="Screenshot of specifying file path and friendly name." lightbox="./media/create-storage-path/create-storage-path-2.png":::  

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ---
 
 # Manage resources for Arc VMs on Azure Local
@@ -49,7 +49,7 @@ az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName -
 
 Follow these steps in Azure portal of your Azure Local.
 
-1. Go to your Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
 1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 

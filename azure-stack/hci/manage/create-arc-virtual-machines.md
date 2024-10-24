@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -82,19 +82,19 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 1. Set some parameters.
 
     ```azurecli
-    $vmName ="myhci-vm"
+    $vmName ="local-vm"
     $subscription =  "<Subscription ID>"
-    $resource_group = "myhci-rg"
-    $customLocationName = "myhci-cl"
+    $resource_group = "local-rg"
+    $customLocationName = "local-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $computerName = "mycomputer"
-    $userName = "myhci-user"
+    $userName = "local-user"
     $password = "<Password for the VM>"
     $imageName ="ws22server"
-    $nicName ="myhci-vnic" 
-    $storagePathName = "myhci-sp" 
-    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
+    $nicName ="local-vnic" 
+    $storagePathName = "local-sp" 
+    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/local-rg/providers/Microsoft.AzureStackHCI/storagecontainers/local-sp" 
     ```
 
     The parameters for VM creation are tabulated as follows:
@@ -152,7 +152,7 @@ Use this optional parameter **proxy-configuration** to configure a proxy server 
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy machine>" https_proxy="<Https URL of proxy machine>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>" 
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>" 
 ```
 
 You can input the following parameters for `proxy-server-configuration`:
@@ -197,15 +197,15 @@ Follow these steps in Azure portal of your Azure Local.
 
 1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters in the **Project details** section:
 
-   :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
 
     1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
 
     1. **Resource group** – Create new or choose an existing resource group where you deploy all the resources associated with your VM.
 
-1. In the **Instance details** section, input the following parameters:
+1. In the **System details** section, input the following parameters:
 
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of system details on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
@@ -616,7 +616,7 @@ Follow these steps to deploy the Resource Manager template:
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a cluster-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
 The Arc VMs on Azure Local are extended from Arc-enabled servers and can use cluster-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a cluster-assigned managed identity to access the Azure Key Vault.
 

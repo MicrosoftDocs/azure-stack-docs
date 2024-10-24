@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
@@ -78,10 +78,10 @@ Here's a sample output:
 
 ```
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "myhci-rg"
+PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "myhci-storacctimage"
+PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
 PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D'
 ```
 
@@ -108,15 +108,15 @@ The image deployment takes a few minutes to complete. The time taken to download
 Here's a sample output:
 
 ```
-PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
+PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-storacctimage",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-storacctimage",
   "location": "eastus",
   "name": "windos",
   "properties": {
@@ -134,10 +134,10 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
         "status": "Succeeded"
       }
     },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/storagecontainers/mylocal-storagepath",
     "version": null
   },
-  "resourceGroup": "myhci-rg",
+  "resourceGroup": "mylocal-rg",
   "systemData": {
     "createdAt": "2023-11-03T20:17:10.971662+00:00",
     "createdBy": "guspinto@contoso.com",
@@ -154,7 +154,7 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Local cluster resource, take the following steps:
+Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Local resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 

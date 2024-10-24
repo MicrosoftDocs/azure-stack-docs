@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ---
 
 # Use Role-based Access Control to manage Azure Local Virtual Machines 
@@ -23,7 +23,7 @@ You can use the builtin RBAC roles to control access to VMs and VM resources suc
 
 To control access to VMs and VM resources on Azure Local, you can use the following RBAC roles:
 
-- **Azure Local Administrator** - This role grants full access to your Azure Local instance and its resources. An Azure Local administrator can register the system as well as assign Azure Local VM contributor and Azure Local VM reader roles to other users. They can also create system-shared resources such as logical networks, VM images, and storage paths. 
+- **Azure Local Administrator** - This role grants full access to your Azure Local instance and its resources. An Azure Local administrator can register the system as well as assign Azure Local VM contributor and Azure Local VM reader roles to other users. They can also create shared resources such as logical networks, VM images, and storage paths. 
 - **Azure Local VM Contributor** - This role grants permissions to perform all VM actions such as start, stop, restart the VMs. An Azure Local VM Contributor can create and delete VMs, as well as the resources and extensions attached to VMs. An Azure Local VM Contributor can't register the system or assign roles to other users, nor create system-shared resources such as logical networks, VM images, and storage paths.
 - **Azure Local VM Reader** - This role grants permissions to only view the VMs. A VM reader can't perform any actions on the VMs or VM resources and extensions.
 

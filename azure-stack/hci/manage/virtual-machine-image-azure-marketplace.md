@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
@@ -54,7 +54,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $resource_group = "<Resource group>"
     $mktplaceImage = "<Marketplace image name>"
     $customLocationName = "<Custom location name>"
-    $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --query id -o tsv)
+    $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Local>" --query id -o tsv)
     $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     ```
@@ -74,9 +74,9 @@ Follow these steps to create a VM image using the Azure CLI.
 
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "myhci-rg"
-    PS C:\Users\azcli> $mktplaceImage= "myhci-marketplaceimage"
-    PS C:\Users\azcli> $customLocationName = "myhci-cl"
+    PS C:\Users\azcli> $resource_group = "mylocal-rg"
+    PS C:\Users\azcli> $mktplaceImage= "mylocal-marketplaceimage"
+    PS C:\Users\azcli> $customLocationName = "mylocal-cl"
     PS C:\Users\azcli> $customerLocationID /subscriptions$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
@@ -129,10 +129,10 @@ Here's a sample output:
 PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku 
 { 
   "extendedLocation": { 
-    "name": “/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl", 
+    "name": “/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
     "type": "CustomLocation" 
   }, 
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
 \ 
   "location": "eastus", 
   "name": "myhci-marketplaceimage", 
@@ -171,7 +171,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
 
     } 
   }, 
-  "resourceGroup": "myhci-rg", 
+  "resourceGroup": "mylocal-rg", 
   "systemData": { 
     "createdAt": "2024-09-23T18:53:13.734389+00:00", 
     "createdBy": "guspinto@contoso.com", 

@@ -75,8 +75,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-   resourceGroup="hcicluster-rg" # Replace with your resource group name
-   clusterName="HCICluster" # Replace with your cluster name
+   resourceGroup="local-rg" # Replace with your resource group name
+   clusterName="LocalCluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
@@ -209,8 +209,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-   resourceGroup="hcicluster-rg" # Replace with your resource group name
-   clusterName="HCICluster" # Replace with your cluster name
+   resourceGroup="local-rg" # Replace with your resource group name
+   clusterName="LocalCluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```
