@@ -4,7 +4,7 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/02/2024
+ms.date: 10/24/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
