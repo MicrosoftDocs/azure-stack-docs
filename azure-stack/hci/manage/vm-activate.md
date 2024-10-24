@@ -83,7 +83,7 @@ You can enable Windows Server subscription through different methods. Select one
 
 ### [Azure portal](#tab/azure-portal)
 
-1. In your Azure Local cluster resource page, navigate to the **Configuration** screen.
+1. In your Azure Local resource page, navigate to the **Configuration** screen.
 2. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your system. Licenses take a few minutes to be applied on your system.
 
@@ -99,8 +99,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
-   resourceGroup="hcicluster-rg" # Replace with your resource group name
-   systemName="HCICluster" # Replace with your cluster name
+   resourceGroup="local-rg" # Replace with your resource group name
+   systemName="LocalCluster" # Replace with your cluster name
 
    az account set --subscription "${subscription}"
    ```

@@ -14,7 +14,7 @@ Follow these steps to use Azure CLI to view properties of an image:
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Cluster resource group>"
+    $resource_group = "<Azure Local resource group>"
     $mktplaceImage = "<Marketplace image name>"
     ```
 

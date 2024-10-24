@@ -104,11 +104,11 @@ Create a static logical network when you want to create virtual machines with ne
     | **vlan** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
     | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
     | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
-    | **dns-servers** | List of IPv4 addresses of DNS machines. Specify multiple DNS machinesin a space separated format. For example: "10.0.0.5" "10.0.0.10" |
+    | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
     | **gateway** | Ipv4 address of the default gateway. |
 
     > [!NOTE]
-    > DNS machine and gateway must be specified if you're creating a static logical network.
+    > DNS server and gateway must be specified if you're creating a static logical network.
 
 1. Create a static logical network. Run the following cmdlet:
 
@@ -299,7 +299,7 @@ Complete the following steps to create a logical network using Azure portal.
     - IPv4 address space (previously reserved).
     - IP pools (if used).
     - Default gateway address.
-    - DNS machine address.
+    - DNS server address.
     - VLAN ID (if used).
 
     When complete, select **Review + Create**.

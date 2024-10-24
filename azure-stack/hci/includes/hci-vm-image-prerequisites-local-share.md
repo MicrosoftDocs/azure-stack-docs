@@ -13,4 +13,4 @@ ms.date: 10/22/2024
     - You should have a VHD/VHDX uploaded to a local share on your system.
     - The VHDX image must be Gen 2 type and secure boot enabled.
     - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options?view=windows-11#oobe&preserve-view=true).
-    - The image should reside on a Cluster Shared Volume available to all the machines in the instance. Both the Windows and Linux operating systems are supported.
+    - The image should reside on a cluster shared volume available to all the machines in the instance. Both the Windows and Linux operating systems are supported.

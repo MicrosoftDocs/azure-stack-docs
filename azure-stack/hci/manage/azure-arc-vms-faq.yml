@@ -38,7 +38,7 @@ sections:
     - question: | 
         Will I be charged when updating my Arc VM using the Azure Update Manager service?
       answer: |
-        No. You can update Arc VMs for free when using the Azure Update Manager service. However, updating non-Arc VMs created using Windows Admin Center or Hyper-V Manager, and Arc-enabled independently (these are now arc-enabled machines), will incur a charge. For more information, see [Azure Update Manager Pricing for Arc-enabled machines](
+        No. You can update Arc VMs for free when using the Azure Update Manager service. However, updating non-Arc VMs created using Windows Admin Center or Hyper-V Manager, and Arc-enabled independently (these are now arc-enabled servers), will incur a charge. For more information, see [Azure Update Manager Pricing for Arc-enabled machines](
         /azure/update-manager/update-manager-faq#pricing).
         
     - question: |

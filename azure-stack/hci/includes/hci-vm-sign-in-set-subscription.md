@@ -6,7 +6,7 @@ ms.topic: include
 ms.date: 10/15/2024
 ---
 
-1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local instance. 
+1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local. 
 
 
 1. Sign in. Type:

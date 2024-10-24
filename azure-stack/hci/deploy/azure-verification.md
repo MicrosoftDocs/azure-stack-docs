@@ -60,7 +60,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### [Azure portal](#tab/azureportal)
 
-1. In your Azure Local cluster resource page, navigate to the **Configuration** tab.
+1. In your Azure Local resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status.
 
    :::image type="content" source="media/azure-verification/cluster-status.png" alt-text="Screenshot showing system status on the portal." lightbox="media/azure-verification/cluster-status.png":::

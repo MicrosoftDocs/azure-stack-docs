@@ -56,7 +56,7 @@ By integrating these components, Azure Arc offers a unified and efficient VM man
 
 In this release, the Arc VM management workflow is as follows:
 
-1. During the deployment of your Azure Local, one Arc Resource Bridge is installed per system and a custom location is also created.
+1. During the deployment of your Azure Local, one Arc Resource Bridge is installed per cluster and a custom location is also created.
 1. [Assign builtin RBAC roles for Arc VM management](./assign-vm-rbac-roles.md).
 1. You can then create VM resources such as:
     1. [Storage paths](./create-storage-path.md) for VM disks.

@@ -19,9 +19,9 @@ This article describes how to create storage path for VM images used on your Azu
 
 When your Azure Local is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specified storage path has sufficient storage space.
 
-The storage paths on your Azure Local should point to system shared volumes that can be accessed by all the machines on your system. In order to be highly available, we strongly recommend that you create storage paths under system shared volumes.
+The storage paths on your Azure Local should point to cluster shared volumes that can be accessed by all the machines on your system. In order to be highly available, we strongly recommend that you create storage paths under cluster shared volumes.
 
-The available space in the system shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\UserStorage_1\Volume01` and the `Volume01` is 4 TB, then the size of the storage path is the available space (out of the 4 TB) on `Volume01`.
+The available space in the cluster shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\UserStorage_1\Volume01` and the `Volume01` is 4 TB, then the size of the storage path is the available space (out of the 4 TB) on `Volume01`.
   
 ## Prerequisites
 
@@ -29,9 +29,9 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
-1. Make sure that a system shared volume exists on your Azure Local that is accessible from all the machines in the system. The storage path that you intend to provide on a system shared volume should have sufficient space for storing VM images. By default, system shared volumes are created during the deployment of Azure Local instance. 
+1. Make sure that a cluster shared volume exists on your Azure Local that is accessible from all the machines in the system. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Local. 
 
-    You can create storage paths only within system shared volumes that are available in the system. For more information, see [Create a system shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
+    You can create storage paths only within cluster shared volumes that are available in the system. For more information, see [Create a cluster shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
 
 ## Create a storage path on your system
@@ -77,7 +77,7 @@ Follow these steps on one of the machines of your Azure Local instance to create
 
     ```azurecli
     $storagepathname="<Storage path name>"
-    $path="<Path on the disk to system shared volume>"
+    $path="<Path on the disk to cluster shared volume>"
     $subscription="<Subscription ID>"
     $resource_group="<Resource group name>"
     $customLocName="<Custom location of your Azure Local>"
@@ -168,14 +168,14 @@ You can use the Azure portal to create, show, and list the storage paths on your
 
 Follow these steps in Azure portal of your Azure Local.
 
-1. Go to Azure Local cluster resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
+1. Go to Azure Local resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
 
 1. From the top command bar in the right pane, select **+ Create storage path**. 
 
    :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
 
 1. In the **Create storage path** pane, input the following parameters:
-    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a system share volume (CSV) on your system.
+    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a cluster share volume (CSV) on your system.
     1. Provide a friendly name for your storage path. The name should be 3 to 64 characters long and should contain letters, numbers, and hyphens.
   
     :::image type="content" source="./media/create-storage-path/create-storage-path-2.png" alt-text="Screenshot of specifying file path and friendly name." lightbox="./media/create-storage-path/create-storage-path-2.png":::  
@@ -188,7 +188,7 @@ Follow these steps in Azure portal of your Azure Local.
 
 Follow these steps in Azure portal of your Azure Local.
 
-1. Go to Azure Local cluster resource and then go to **Storage paths**.  
+1. Go to Azure Local resource and then go to **Storage paths**.  
 1. Select the storage path name. This should drill down in to the storage path properties. 
 
     :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of storage path properties." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
@@ -198,7 +198,7 @@ Follow these steps in Azure portal of your Azure Local.
 
 Follow these steps in Azure portal of your Azure Local.
 
-1. Go to Azure Local cluster resource and then go to **Storage paths**.  
+1. Go to Azure Local resource and then go to **Storage paths**.  
 1. For the storage path that you wish to delete, select the corresponding trashcan icon. 
 
     :::image type="content" source="./media/create-storage-path/delete-storage-path-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/delete-storage-path-1.png":::

@@ -183,7 +183,7 @@ Follow these steps:
 
 Follow these steps in the Azure portal of your Azure Local to view VM properties.
 
-1. Go to the Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select the name of the VM whose properties you wish to view.
 
@@ -197,7 +197,7 @@ Follow these steps in the Azure portal of your Azure Local to view VM properties
 
 Follow these steps in the Azure portal of your Azure Local to start a VM.
 
-1. Go to the Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that isn't running and you wish to start.
 
@@ -211,7 +211,7 @@ Follow these steps in the Azure portal of your Azure Local to start a VM.
 
 Follow these steps in the Azure portal of your Azure Local to stop a VM.
 
-1. Go to the Azure Local instance resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that is running and you wish to stop.
 
@@ -225,7 +225,7 @@ Follow these steps in the Azure portal of your Azure Local to stop a VM.
 
 Follow these steps in the Azure portal of your Azure Local to restart a VM.
 
-1. Go to the Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that is stopped and you wish to restart.
 
@@ -799,7 +799,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 Follow these steps in the Azure portal of your Azure Local to remove a VM.
 
-1. Go to the Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that you wish to remove from your system.
 
@@ -821,7 +821,7 @@ Follow these steps in the Azure portal of your Azure Local to remove a VM.
 
 Follow these steps in the Azure portal of your Azure Local to change cores and memory.
 
-1. Go to your Azure Local cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 
 1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
 

@@ -12,7 +12,7 @@ ms.date: 10/11/2024
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Cluster resource group>"
+    $resource_group = "<Azure Local resource group>"
     $mktplaceImage = "<Markeplace image name>"    
     ```
 

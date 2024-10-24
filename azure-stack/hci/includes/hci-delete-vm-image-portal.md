@@ -6,7 +6,7 @@ ms.topic: include
 ms.date: 10/23/2024
 ---
 
-In the Azure portal of your Azure Local cluster resource, perform the following steps:
+In the Azure portal of your Azure Local resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**.
 

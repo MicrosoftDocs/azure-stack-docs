@@ -190,7 +190,7 @@ For more information on this CLI command, see [az stack-hci-vm image](/cli/azure
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using Azure portal. In Azure portal for your Azure Local cluster resource, take the following steps:
+Follow these steps to create a VM image using Azure portal. In Azure portal for your Azure Local resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 

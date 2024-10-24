@@ -16,9 +16,9 @@ ms.date: 10/23/2024
 
 This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
-## About Azure Local cluster resource
+## About Azure Local resource
 
-Use the [Azure Local cluster resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
+Use the [Azure Local resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
 
 - Create and manage Arc VM resources such as VM images, disks, network interfaces.
 - View and access Azure Arc Resource Bridge and Custom Location associated with the Azure Local instance.
@@ -114,7 +114,7 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
     | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
-    | **proxy-configuration** |Use this optional parameter to configure a proxy machine for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
+    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
 1. Run the following command to create a VM.
 
@@ -160,7 +160,7 @@ You can input the following parameters for `proxy-server-configuration`:
 | Parameters | Description |
 |------------|-------------|
 | **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
-| **https_proxy**  |HTTPS URLs for proxy server. The machine may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
 | **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
 | **cert_file_path**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
@@ -190,7 +190,7 @@ Depending on the PowerShell version you're running on your VM, you may need to e
 
 Follow these steps in Azure portal of your Azure Local.
 
-1. Go to **Azure Arc system view** > **Virtual machines**.
+1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
    :::image type="content" source="./media/create-arc-virtual-machines/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/create-arc-virtual-machines/select-create-vm.png":::
@@ -618,9 +618,9 @@ Follow these steps to deploy the Resource Manager template:
 
 When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
-The Arc VMs on Azure Local are extended from Arc-enabled machines and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+The Arc VMs on Azure Local are extended from Arc-enabled servers and can use cluster-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a cluster-assigned managed identity to access the Azure Key Vault.
 
-For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled machines](/azure/azure-arc/servers/managed-identity-authentication).
+For  more information, see [Cluster-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
 ## Next steps
 
