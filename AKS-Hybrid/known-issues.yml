@@ -4,8 +4,7 @@ metadata:
   description: General known issues when using AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
-  ms.service: azure-stack
-  ms.subservice: aks-hci
+  ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 07/11/2024
 
