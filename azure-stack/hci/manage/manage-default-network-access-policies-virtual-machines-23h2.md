@@ -37,7 +37,7 @@ Complete the following prerequisites to use network access policies:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 23H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
+- You have Azure Stack HCI 23H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
@@ -45,7 +45,7 @@ Complete the following prerequisites to use network access policies:
 
 - You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- You have administrator permissions or equivalent to the cluster nodes and network controller.
+- You have administrator permissions or equivalent to the system nodes and network controller.
 
 ::: zone-end
 
@@ -59,7 +59,7 @@ Complete the following prerequisites to use network access policies:
 
 - You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- You have administrator permissions or equivalent to the cluster nodes and network controller.
+- You have administrator permissions or equivalent to the system nodes and network controller.
 
 ::: zone-end
 

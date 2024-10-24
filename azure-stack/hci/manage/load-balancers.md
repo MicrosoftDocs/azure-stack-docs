@@ -2,17 +2,17 @@
 title: Manage Software Load Balancer for SDN
 description: Learn how to manage Software Load Balancer for SDN
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: alkohli
+ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 10/21/2024
+ms.date: 10/24/2024
 ---
 
 # Manage Software Load Balancer for SDN
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this topic, learn how to manage Software Load Balancer (SLB) policies using Windows Admin Center after you deploy Software Defined Networking (SDN). SLBs are used to evenly distribute network traffic among multiple resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. You can create load balancers for your workloads hosted on traditional VLAN networks (SDN logical networks) as well as for workloads hosted on SDN virtual networks. To learn more about SLB, see [What is SLB for SDN?](../concepts/software-load-balancer.md)
+In this topic, learn how to manage Software Load Balancer (SLB) policies using Windows Admin Center after you deploy Software Defined Networking (SDN). SLBs are used to evenly distribute network traffic among multiple resources. SLB enables multiple machines to host the same workload, providing high availability and scalability. You can create load balancers for your workloads hosted on traditional VLAN networks (SDN logical networks) as well as for workloads hosted on SDN virtual networks. To learn more about SLB, see [What is SLB for SDN?](../concepts/software-load-balancer.md)
 
 > [!NOTE]
 >You need to deploy the SDN Network Controller and SLB components before you can create load balancer policies.
@@ -21,9 +21,9 @@ In this topic, learn how to manage Software Load Balancer (SLB) policies using W
 
 You can create three types of SLBs:
 
-- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Local instance. The backend servers for this type of load balancer can belong to an SDN virtual network.
+- **Internal SLB** – This is an internal load balancer used by internal system resources to reach internal load-balanced endpoints in an Azure Local instance. The backend machines for this type of load balancer can belong to an SDN virtual network.
 
-- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in a Azure Local instance. Before you create a public IP load balancer, you need to create a public IP address. The backend servers for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
+- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in a Azure Local instance. Before you create a public IP load balancer, you need to create a public IP address. The backend machines for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
 
 - **IP Address SLB** – This is similar to the Public IP SLB. The difference between Public IP SLB and IP Address SLB is that the Public IP SLB creates a public IP resource that is then added to the load balancer. This is useful if you want to reserve that IP address for future use without it going back into the pool. The IP Address SLB assigns the IP address directly to the load balancer without creating a public IP resource. If you delete the load balancer, the IP address is returned to the pool.
 
@@ -31,7 +31,7 @@ To create an SLB, complete the following steps in Windows Admin Center:
 
 :::image type="content" source="media/load-balancers/new-load-balancer.png" alt-text="Create an SLB." lightbox="media/load-balancers/new-load-balancer.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, then select **New**.
 1. Under **New Load Balancers**, enter a name for the load balancer
@@ -49,7 +49,7 @@ A public IP address must be created first if you are creating a Public IP Addres
 
 :::image type="content" source="media/load-balancers/public-ip-balancer.png" alt-text="Create public IP address SLB." lightbox="media/load-balancers/public-ip-balancer.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the public IP address on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the public IP address on.
 1. Under **Tools**, scroll down to **Networking**, and select **Public IP addresses**.
 1. Under **Public IP addresses**, select the **Inventory** tab, then select **New**.
 1. Under **New Public IP address**, enter a name for the address.
@@ -65,7 +65,7 @@ After you create a load balancer, you need to define the front IP configuration 
 
 :::image type="content" source="media/load-balancers/front-ip-balancer.png" alt-text="Create front IP SLB." lightbox="media/load-balancers/front-ip-balancer.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the front IP configuration.
 1. In the **Front IP Configuration** section, click **New**.
@@ -82,7 +82,7 @@ A backend pool represents the list of IP addresses that can receive network traf
 
 :::image type="content" source="media/load-balancers/backend-pool.png" alt-text="Create backend pool." lightbox="media/load-balancers/backend-pool.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the front IP configuration.
 1. In the **Backend Pools** section, click **New**.
@@ -98,7 +98,7 @@ An inbound NAT rule configures the load balancer to apply Network Address Transl
 
 :::image type="content" source="media/load-balancers/inbound-rules.png" alt-text="Create inbound NAT rule." lightbox="media/load-balancers/inbound-rules.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the Inbound NAT rule.
 1. In the **Inbound NAT Rules** section, click **New**.
@@ -118,7 +118,7 @@ An outbound NAT rule configures the load balancer to forward VM network traffic 
 
 :::image type="content" source="media/load-balancers/outbound-rules.png" alt-text="Create outbound NAT rule." lightbox="media/load-balancers/outbound-rules.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the Outbound NAT rule.
 1. In the **Outbound NAT Rules** section, click **New**.
@@ -130,13 +130,13 @@ An outbound NAT rule configures the load balancer to forward VM network traffic 
 
 ## Create a load balancing rule
 
-A load balancing rule configures the load balancer to evenly distribute tenant network traffic among multiple resources. This enables multiple servers to host the same workload, providing high availability and scalability.
+A load balancing rule configures the load balancer to evenly distribute tenant network traffic among multiple resources. This enables multiple machines to host the same workload, providing high availability and scalability.
 
-Set **Session Persistence** using the following procedure. Session persistence specifies the load balancing distribution type to be used by the load balancer. The load balancer uses a distribution algorithm that is a 5-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available servers. This provides stickiness within a transport session, which routes requests for a specific session to the same physical server that serviced the first request for that session. Packets in the same TCP or UDP session will be directed to the same backend instance behind the frontend IP. When the client closes and re-opens the connection or starts a new session from the same source IP, the source port changes and may cause the traffic to go to a different backend IP.
+Set **Session Persistence** using the following procedure. Session persistence specifies the load balancing distribution type to be used by the load balancer. The load balancer uses a distribution algorithm that is a 5-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available machines. This provides stickiness within a transport session, which routes requests for a specific session to the same physical machine that serviced the first request for that session. Packets in the same TCP or UDP session will be directed to the same backend instance behind the frontend IP. When the client closes and re-opens the connection or starts a new session from the same source IP, the source port changes and may cause the traffic to go to a different backend IP.
 
 :::image type="content" source="media/load-balancers/slb-rule.png" alt-text="Create SLB rule." lightbox="media/load-balancers/slb-rule.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the load balancing rule.
 1. In the **Load Balancing Rules** section, click **New**.
@@ -148,11 +148,11 @@ Set **Session Persistence** using the following procedure. Session persistence s
 1. Select a **Backend Pool**. Inbound traffic is load balanced across IPs in the backend pool.
 1. Select a **Health Probe**. See next procedure for information.
 1. Select a value for **Session Persistence**.
-    - **Default** – The load balancer is configured to use a 5-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available servers.
-    - **SourceIP** – The load balancer is configured to use a 2-tuple (source IP and destination IP) hash to map traffic to available servers.
-    - **SourceIPProtocol** – The load balancer is configured to use a 3-tuple (source IP, destination IP, and protocol) hash to map traffic to available servers.
+    - **Default** – The load balancer is configured to use a 5-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available machines.
+    - **SourceIP** – The load balancer is configured to use a 2-tuple (source IP and destination IP) hash to map traffic to available machines.
+    - **SourceIPProtocol** – The load balancer is configured to use a 3-tuple (source IP, destination IP, and protocol) hash to map traffic to available machines.
 1. Provide an **Idle Timeout** value. This indicates the timeout for the TCP idle connection in the inbound direction, such as a connection initiated by an internet client to a frontend IP. The value can be set between 4 and 30 minutes.
-1. Select whether you want to enable **Floating IP**. In this case, the frontend IP will be configured on one of the backend pool members, and any traffic to the frontend IP will be sent directly to that backend pool member. This is useful for guest clustering scenarios that work through a floating IP address set on the active instance of the cluster. The health probe will determine which backend IP is active, and the load balancer will set the front end IP on that backend pool member.
+1. Select whether you want to enable **Floating IP**. In this case, the frontend IP will be configured on one of the backend pool members, and any traffic to the frontend IP will be sent directly to that backend pool member. This is useful for guest clustering scenarios that work through a floating IP address set on the active instance of the system. The health probe will determine which backend IP is active, and the load balancer will set the front end IP on that backend pool member.
 1. Click **Create**.
 
 ## Create a health probe
@@ -161,7 +161,7 @@ A health probe is used by the load balancer to determine the health state of the
 
 :::image type="content" source="media/load-balancers/health-probe.png" alt-text="Create health probe." lightbox="media/load-balancers/health-probe.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the health probe.
 1. In the **Health Probes** section, click **New**.
