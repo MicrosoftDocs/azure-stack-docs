@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 10/16/2024
+ms.date: 10/24/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -80,7 +80,7 @@ By default, all operations that are performed within Azure Local are recorded so
 
 #### Local activity logs
 
-Azure Local Lifecycle Manager creates and stores activity logs for any action plan executed. These logs support deeper investigation and compliance monitoring.
+Azure Local creates and stores activity logs for any action plan executed. These logs support deeper investigation and compliance monitoring.
 
 #### Cloud activity logs
 

@@ -1,7 +1,7 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 10/14/2024
+ms.date: 10/24/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -130,13 +130,13 @@ The monitoring functionality described in this section can assist you in meeting
 
 - 8.15 – Logging
 
-#### Azure Local Insights
+#### Insights for Azure Local
 
-Azure Local Insights enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Insights for Azure Local enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
-#### Azure Local Metrics
+#### Metrics for Azure Local
 
-Metrics stores numeric data from monitored resources into a time-series database. You can use [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/analyze-metrics) to interactively analyze the data in your metric database and chart the values of multiple metrics over time. With Metrics, you can create charts from metric values and visually correlate trends.
+Metrics for Azure Local stores numeric data from monitored resources into a time-series database. You can use [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/analyze-metrics) to interactively analyze the data in your metric database and chart the values of multiple metrics over time. With Metrics, you can create charts from metric values and visually correlate trends.
 
 #### Log alerts
 
