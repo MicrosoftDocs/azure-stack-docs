@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 09/25/2024
+ms.date: 10/22/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -24,6 +24,17 @@ There are currently four release trains for Azure Stack HCI, version 23H2: 2408,
 > A new ISO image is available that includes the Hyper-V role and all necessary Arc registration modules.
 
 This release train includes the following releases:
+
+## Features and improvements in 2408.2
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VM management improvements**: Starting this release, following improvements were made to the Arc VM management experience:
+
+  - You can set a proxy configuration for Arc VMs on the Portal.
+  - You can set a SQL Server configuration for Arc VMs on Portal.
+  - You can now create an image from an Arc VM's OS disk.
+  - You can now select the virtual switch of a logical network from a dropdown menu.
 
 ## Features and improvements in 2408.1
 
