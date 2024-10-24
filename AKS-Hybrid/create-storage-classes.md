@@ -24,7 +24,7 @@ Storage classes in AKS enabled by Azure Arc are supported in the following regio
 - westus
 - westus2
 
-During the preview, we recommend that you have an AKS Arc cluster in order to use this feature. If you don't have an AKS Arc cluster, you can also try this feature with any Arc-connected cluster. The following commands create an AKS instance and a connected cluster on top of it using Azure CLI:
+During the preview, we recommend that you have an AKS Arc cluster in order to use this feature. If you don't have an AKS Arc cluster, you can also try this feature with any Arc-connected cluster. The following Azure CLI commands create an AKS instance and a connected cluster on top of that instance:
 
 ```azurecli
 $rg = "<rg>"
@@ -55,11 +55,7 @@ Select your cluster, then select **Storage classes (preview)** from menu to ente
 
 :::image type="content" source="media/create-storage-classes/enable-service.png" alt-text="Screenshot showing enable storage classes service on portal." lightbox="media/create-storage-classes/enable-service.png":::
 
-It might take a few minutes to enable the service in your cluster.
-
-:::image type="content" source="media/create-storage-classes/portal-enabling-service.png" alt-text="Screenshot showing portal enabling storage class service." lightbox="media/create-storage-classes/portal-enabling-service.png":::
-
-When it's ready, the UI looks similar to the following screenshot. Your storage classes and their detected attributes are uploaded to the cloud when they're ready.
+It might take a few minutes to enable the service in your cluster. When it's ready, the UI looks similar to the following screenshot. Your storage classes and their detected attributes are uploaded to the cloud when they're ready.
 
 :::image type="content" source="media/create-storage-classes/storage-classes-summary.png" alt-text="Screenshot showing summary of storage classes on portal." lightbox="media/create-storage-classes/storage-classes-summary.png":::
 
@@ -113,15 +109,9 @@ If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an e
 
 After you complete the form in the **Basics** tab, you can optionally specify advanced options under the **Advanced** tab.
 
-:::image type="content" source="media/create-storage-classes/nfs-advanced-properties.png" alt-text="Screenshot of portal showing storage class advanced properties." lightbox="media/create-storage-classes/nfs-advanced-properties.png":::
-
 Select **Review + Create** at the bottom of the tab, wait for validation to complete, review the configuration for the storage class, and then select **Create** to create it.
 
-:::image type="content" source="media/create-storage-classes/create-storage-class-summary.png" alt-text="Screenshot of portal showing summary of create storage class." lightbox="media/create-storage-classes/create-storage-class-summary.png":::
-
 After the Azure Resource Manager deployment completes, a new storage class with specified name is created in the cluster.
-
-:::image type="content" source="media/create-kubernetes-cluster/deployment-complete.png" alt-text="Screenshot of portal showing completed deployment." lightbox="media/create-kubernetes-cluster/deployment-complete.png":::
 
 :::image type="content" source="media/create-storage-classes/storage-summary.png" alt-text="Screenshot of portal showing storage summary":::
 
@@ -150,8 +140,6 @@ Select **SMB** in the **Type** dropdown under the **Storage Class Type** section
 
 If your AKS Arc instance doesn't have the built-in NFS CSI feature enabled, an error message is displayed, and you're unable to create an NFS storage class. [Follow these instructions](https://aka.ms/aks-arc-nfs-csi) to enable NFS CSI in your cluster, and then create the storage class again.
 
-:::image type="content" source="media/create-storage-classes/create-storage-class-no-csi-smb.png" alt-text="Screenshot of portal showing SMB error when CSI not enabled." lightbox="media/create-storage-classes/create-storage-class-no-csi-smb.png":::
-
 #### [Azure CLI](#tab/cli)
 
 You can create an SMB storage class using Azure CLI:
@@ -173,8 +161,6 @@ az k8s-runtime storage-class create `
 You can create [a storage class for a custom disk](https://aka.ms/aks-arc-custom-disk-storage-class) for AKS Arc. This type is only available for AKS Arc. A storage path is required for this type of storage class. You can select one with the provided selector, or input the storage path resource ID directly:
 
 :::image type="content" source="media/create-storage-classes/create-storage-class-aks-arc-disk.png" alt-text="Screenshot of portal showing create custom disk storage class." lightbox="media/create-storage-classes/create-storage-class-aks-arc-disk.png":::
-
-:::image type="content" source="media/create-storage-classes/custom-disk-properties.png" alt-text="Screenshot of portal showing custom disk properties." lightbox="media/create-storage-classes/custom-disk-properties.png":::
 
 #### [Azure CLI](#tab/cli)
 
@@ -214,8 +200,6 @@ You can delete a storage class using the Azure portal or Azure CLI.
 To delete storage classes from a cluster using the portal, select the storage classes to delete, then select **Delete** and confirm the action.
 
 :::image type="content" source="media/create-storage-classes/delete-portal.png" alt-text="Screenshot of portal showing delete storage classes." lightbox="media/create-storage-classes/delete-portal.png":::
-
-:::image type="content" source="media/create-storage-classes/delete-confirm.png" alt-text="Screenshot of portal showing storage class delete confirmation." lightbox="media/create-storage-classes/delete-confirm.png":::
 
 ### [Azure CLI](#tab/cli)
 
