@@ -176,7 +176,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2406, if any hotfixes for 2406 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2406.1.15](hotfix-1-2406-1-15.md)
+- [Azure Stack Hub hotfix 1.2406.1.16](hotfix-1-2406-1-16.md)
 ::: moniker-end
 
 ::: moniker range="azs-2311"
