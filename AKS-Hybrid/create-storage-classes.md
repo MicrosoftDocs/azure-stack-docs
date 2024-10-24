@@ -4,7 +4,7 @@ title: Create and use storage classes in AKS enabled by Arc (preview)
 description: Learn how to create and use storage classes in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/10/2024
+ms.date: 10/24/2024
 ms.topic: conceptual
 ms.custom: references_regions
 
@@ -268,7 +268,7 @@ When a storage class is updated, if all the properties that changed are updatabl
 You can create a storage class that uses custom disks. This process is only for AKS Arc clusters. See [Create custom storage class for disks](container-storage-interface-disks.md?tabs=23H2#create-custom-storage-class-for-disks).
 
 | Property  | type | In-place update | description |
-| -- | -- | -- | -- | 
+| -- | -- | -- | -- |
 | `type` | `AksArcDisk` | N/A | Specify this is the AksArcDisk type. |
 | `storagePathId` | `string` | No | The resource ID for the storage path. |
 | `fsType` | `string` \| `undefined` | No | `fsType` parameters for the storage class. If the storage class contains Linux workloads, set it to `ext4`. Otherwise, leave it undefined. |
