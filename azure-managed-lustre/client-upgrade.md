@@ -9,9 +9,7 @@ ms.date: 03/15/2024
 
 ---
 
-<!-- markdownlint-disable-file MD051 -->
-
-## Upgrade Lustre client software to the current version
+# Upgrade Lustre client software to the current version
 
 In this article, you learn how to upgrade an existing Lustre client package to the current version. Upgraded client software is required to connect to an Azure Managed Lustre file system.
 
