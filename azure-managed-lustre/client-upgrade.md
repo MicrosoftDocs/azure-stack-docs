@@ -9,7 +9,9 @@ ms.date: 03/15/2024
 
 ---
 
-# Upgrade Lustre client software to the current version
+<!-- markdownlint-disable-file MD051 -->
+
+## Upgrade Lustre client software to the current version
 
 In this article, you learn how to upgrade an existing Lustre client package to the current version. Upgraded client software is required to connect to an Azure Managed Lustre file system.
 
@@ -45,9 +47,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 
 1. Install the current version of the Lustre client using the following command:
 
-    ```bash
-    sudo dnf install amlfs-lustre-client-2.15.5_41_gc010524-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-    ```
+    [!INCLUDE [client-upgrade-version-rhel-alma](./includes/client-upgrade-version-rhel-alma.md)]
 
 1. Verify that old kernel modules are removed using the following command:
 
@@ -61,7 +61,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
+    If the output shows an old version of the Lustre kernel module, rebooting the system is recommended.
 
 ### [Ubuntu](#tab/ubuntu)
 
@@ -85,9 +85,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 
 1. Install the current version of the Lustre client using the following command:
 
-    ```bash
-    sudo apt install amlfs-lustre-client-2.15.5-41-gc010524=$(uname -r)
-    ```
+    [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu.md)]
 
 1. Verify that old kernel modules are removed using the following command:
 
@@ -95,13 +93,13 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should look similar to the following:
+    The following output should look similar to:
 
     ```bash
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
+    If the output shows an old version of the Lustre kernel module, rebooting the system is recommended.
 
 ---
 
