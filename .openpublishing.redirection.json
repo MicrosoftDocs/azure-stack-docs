@@ -1506,6 +1506,41 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/azure-stack-hci-oem-license.md",
+      "redirect_url": "/azure-stack/hci/oem-license",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/azure-stack-hci-license-billing.yml",
+      "redirect_url": "/azure-stack/hci/license-billing",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-sep-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-sep-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-aug-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-aug-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-jul-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-jul-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-jun-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-jun-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-may-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-may-2024",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md",
       "redirect_url": "/azure-stack/hci/upgrade/troubleshoot-upgrade-to-23h2",
       "redirect_document_id": false

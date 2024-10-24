@@ -10,9 +10,9 @@ items:
   - name: Azure Stack HCI OEM License
     items: 
     - name: OEM license information
-      href: azure-stack-hci-oem-license.md
+      href: oem-license.md
     - name: FAQ
-      href: azure-stack-hci-license-billing.yml
+      href: license-billing.yml
   - name: Release notes
     items:
     - name: Release information
@@ -64,15 +64,15 @@ items:
       - name: October 2024 - Current
         href: security-update/hci-security-update-oct-2024.md
       - name: September 2024
-        href: security-update/hci-security-update-sep-2024.md
+        href: security-update/security-update-sep-2024.md
       - name: August 2024
-        href: security-update/hci-security-update-aug-2024.md
+        href: security-update/security-update-aug-2024.md
       - name: July 2024
-        href: security-update/hci-security-update-jul-2024.md
+        href: security-update/security-update-jul-2024.md
       - name: June 2024 
-        href: security-update/hci-security-update-jun-2024.md
+        href: security-update/security-update-jun-2024.md
       - name: May 2024
-        href: security-update/hci-security-update-may-2024.md
+        href: security-update/security-update-may-2024.md
       - name: April 2024
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 
