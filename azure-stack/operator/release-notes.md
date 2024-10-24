@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/24/2024
+ms.date: 10/24/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -116,7 +116,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2406, if any hotfixes for 2406 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2406.1.15](hotfix-1-2406-1-15.md)
+- [Azure Stack Hub hotfix 1.2406.1.16](hotfix-1-2406-1-16.md)
 ::: moniker-end
 
 ::: moniker range="azs-2311"
