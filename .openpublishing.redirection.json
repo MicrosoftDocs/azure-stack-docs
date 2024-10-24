@@ -1516,6 +1516,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-oct-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-oct-2024",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/security-update/hci-security-update-sep-2024.md",
       "redirect_url": "/azure-stack/hci/security-update/security-update-sep-2024",
       "redirect_document_id": false

@@ -55,7 +55,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2408.2.7 | 25398.1189 <br><br> [October OS Security update](./security-update/hci-security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
+| 10.2408.2.7 | 25398.1189 <br><br> [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
 | 10.2408.1.9  | 25398.1128 <br><br> [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
 | 10.2408.0.29 | 25398.1085 <br><br> [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
 | 10.2405.3.7 | 25398.1085 <br><br> [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
