@@ -172,7 +172,13 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Juniper](#tab/Juniper)
+### 23H2
 
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2.13 or later|&check;| &check;| &check;| &check; |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 ### 22H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
