@@ -1,23 +1,23 @@
 ---
-title:  Azure Stack HCI Remote Support Arc extension overview
-description: This article describes the remote support arc extension and how to enable it for your Azure Stack HCI server machines.
+title:  Azure Local Remote Support Arc extension overview
+description: This article describes the remote support arc extension and how to enable it for your Azure Local machines.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: shisab
 ms.lastreviewed: 01/19/2024
-ms.date: 01/19/2024
+ms.date: 10/22/2024
 ---
 
-# Azure Stack HCI Remote Support ARC extension overview
+# Azure Local Remote Support ARC extension overview
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article provides a brief overview of the Remote Support Arc extension, its benefits, and how to enable it on your Azure Stack HCI system using PowerShell.
+This article provides a brief overview of the Remote Support Arc extension, its benefits, and how to enable it on your Azure Local system using PowerShell.
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the system. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
 
 The scheduled tasks to configure JEA are set up through either:
 
@@ -26,7 +26,7 @@ The scheduled tasks to configure JEA are set up through either:
 
 [![Screenshot that shows where to browse for the remote support extension.](../manage/media/remote-support-extension/remote-support-extension.png)](../manage/media/remote-support-extension/remote-support-extension.png#lightbox)
 
-Remote support with your consent, as detailed in [Get remote support for Azure Stack HCI](../manage/get-remote-support.md#remote-support-terms-and-conditions), grants Microsoft support professionals’ access to your device remotely.
+Remote support with your consent, as detailed in [Get remote support for Azure Local](../manage/get-remote-support.md#remote-support-terms-and-conditions), grants Microsoft support professionals’ access to your device remotely.
 
 Access is used to solve your support cases only after you submit a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) and is based on the level and duration of time that you grant.
 
@@ -48,20 +48,20 @@ The scenarios in this list highlight the critical role of remote support in effi
 |Scenario | Description|
 |---------|------------|
 |Log Collection Initiation | Use remote support to initiate log collection for diagnostic purposes. This includes the initiation of the command `Send-Diagnosticdata`. |
-|Azure Stack HCI Information Retrieval | Obtain details related to Azure Stack HCI, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Stack HCI. |
+|Azure Local Information Retrieval | Obtain details related to Azure Local, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Local. |
 |Hyper-V Troubleshooting |Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
 |Observability Pipeline Testing | Verify the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
 |Cluster Information Retrieval | Retrieve relevant details about clusters, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
 | Network Adapter Details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details.<br></br> Additionally, retrieve information about VM Switches and IPsec settings. |
-|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, SMB client information, and disk images. 
+|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, SMB client information, and disk images. |
 
-## Enable remote support via PowerShell on your Azure Stack HCI system
+## Enable remote support via PowerShell on your Azure Local
 
-To enable remote support on your Azure Stack HCI cluster, follow these steps:
+To enable remote support on your Azure Local, follow these steps:
 
-1. On the client you're using to connect to your cluster, run PowerShell as an administrator.
+1. On the client you're using to connect to your system, run PowerShell as an administrator.
 
-2. Open a remote PowerShell session to a node on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
+2. Open a remote PowerShell session to a node on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
 
     ```powershell
     $cred = Get-credential
@@ -96,7 +96,7 @@ To enable remote support on your Azure Stack HCI cluster, follow these steps:
 
     By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ('Microsoft Support Engineer') will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
 
-    During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.
+    During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Local.
 
     The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices (https://privacy.microsoft.com/en-US/). Any data previously collected with your consent will not be affected by the revocation of your permission.
 
@@ -204,10 +204,10 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
 
-- Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your server and enable remote support.
+- Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
   - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
 - Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
 
 ## Next step
 
-Learn more about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md).
+Learn more about [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md).

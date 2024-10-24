@@ -1,27 +1,28 @@
 ---
-title: Validate solution upgrade readiness for Azure Stack HCI, version 23H2
-description: Learn how to assess upgrade readiness for your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
+title: Validate solution upgrade readiness for Azure Local, version 23H2
+description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/14/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.service: azure-stack-hci
 ---
 
-# Validate solution upgrade readiness for your Azure Stack HCI
+# Validate solution upgrade readiness for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to assess the upgrade readiness of your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Local after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 
-Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
+Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
-This *optional* but *recommended* step helps you assess the readiness of your Azure Stack HCI cluster for the solution upgrade. The following steps help you assess the upgrade readiness:
+This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
-- Ensure that sufficient storage space is available for infrastructure volume.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your system.
+- Ensure that sufficient storage space is available for the infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 - Review and remediate the validation checks that block the upgrade.
 
@@ -29,7 +30,7 @@ This *optional* but *recommended* step helps you assess the readiness of your Az
 
 We recommend that you use the Environment Checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
-Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
+Some of the actions require machine reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
 ### Table: Blocking validation tests for upgrade
 
@@ -56,7 +57,7 @@ The following table contains the validation tests with severity *Critical* that 
 
 ### Table: Non-blocking validation tests for upgrade
 
-The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Stack HCI, version 23H2.
+The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Local, version 23H2.
 
 | Name                                           | Severity |
 |------------------------------------------------|----------|
@@ -72,13 +73,13 @@ The following table contains the validation tests with severity *Warning* that s
 
 ### Set up the Environment Checker
 
-Follow these steps to set up the Environment Checker on a server node of your Azure Stack HCI cluster:
+Follow these steps to set up the Environment Checker on a machine of your Azure Local system:
 
-1. Select one server that's the part of the cluster.
+1. Select one machine that's a member of the system.
 
-1. Sign in to the server using local administrative credentials.
+1. Sign in to the machine using local administrative credentials.
 
-1. Install the Environment Checker on the server. Run the following PowerShell command from the PSGallery:
+1. Install the Environment Checker on the machine. Run the following PowerShell command from the PSGallery:
 
    ```powershell
    Install-Module -Name AzStackHci.EnvironmentChecker -AllowClobber
@@ -86,15 +87,15 @@ Follow these steps to set up the Environment Checker on a server node of your Az
 
 ### Run the validation
 
-1. Sign in to the server where you installed the Environment Checker using local administrative credentials.
+1. Sign in to the machine where you installed the Environment Checker using local administrative credentials.
 
-1. To run the validation locally on the server, run the following PowerShell command:
+1. To run the validation locally on the machine, run the following PowerShell command:
 
    ```powershell
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other servers in the cluster, run the following PowerShell command:
+1. To validate other machines in the system, run the following PowerShell command:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
@@ -140,9 +141,9 @@ Each validation check of Environment Checker includes remediation guidance with 
 
 ## Remediation 1: Install required and optional Windows features
 
-Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance mode before you install the roles and features. Verify that all the active virtual machines have migrated to other cluster members.
+Azure Local, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the machine into maintenance mode before you install the roles and features. Verify that all the active virtual machines (VMs) have migrated to other machines.
 
-Use the following commands for each server to install the required features. If a feature is already present, the install automatically skips it.
+Use the following commands for each machine to install the required features. If a feature is already present, the install automatically skips it.
 
 ```powershell
 #Install Windows Roles & Features 
@@ -226,11 +227,11 @@ Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online
 } 
 ```
 
-## Remediation 2: Ensure that cluster node is up
+## Remediation 2: Ensure that machines are up
 
-Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
+Ensure that all the machines are up and that the system is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the machines are online.
 
-To verify all members of the cluster are online, run the following PowerShell command:
+To verify all machines of the system are online, run the following PowerShell command:
 
 ```powershell
 Get-ClusterNode -Cluster "mycluster" 
@@ -258,19 +259,19 @@ Resume-Bitlocker -MountPoint "C:"
 
 ## Remediation 4: Enable Application Control (WDAC) policies
 
-If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
+If your system is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your system, disable the policies. After the system is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
 ## Remediation 5: Ensure language is English
 
-Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
+Only systems installed using an English language are eligible to apply the solution upgrade. Make sure that your system was installed using English.
 
-For more information, see [Verify OS language for Azure Stack HCI](../manage/languages.md#change-the-language-in-server-core).
+For more information, see [Verify OS language for Azure Local](../manage/languages.md#change-the-language-in-server-core).
 
 ## Remediation 6: Check storage pool space
 
-Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge.
+Azure Local, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge.
 
 The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
@@ -278,14 +279,14 @@ The required size for the infrastructure volume is 250 GB. Ensure that the stora
 
 Shrinking existing volumes isn't supported with Storage Spaces Direct. There are three alternatives to freeing up space in the storage pool:
 
-- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
+- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new system with the default setting.
 
 - **Option 2**: Back up all the data, re-create the volume with a smaller size, and restore the content.
 
 - **Option 3**: Add more physical drives to expand the pool capacity.
 
    > [!NOTE]
-   > Before you convert the volumes to thin provisioned, shut down all the virtual machines stored on that particular volume.
+   > Before you convert the volumes to thin provisioned, shut down all the VMs stored on that particular volume.
 
 ### Verify available space
 
@@ -343,7 +344,7 @@ Follow these steps to confirm the storage pool configuration:
    Set-VirtualDisk -FriendlyName TestVolume -ProvisioningType Thin
    ```
 
-1. To finish the convertion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
+1. To finish the conversion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
 
    ```powershell
    Get-ClusterSharedVolume -Name "Cluster Disk 1" | Stop-ClusterResource
@@ -369,12 +370,12 @@ Follow these steps to confirm the storage pool configuration:
 
 ## Remediation 7: Check the storage volume name
 
-Azure Stack HCI, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
+Azure Local, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
 Make sure to verify that there are no volumes that exist with the name *Infrastructure_1*. If there's an existing volume with the same name, this test fails.<!--ASK which test fails-->
 
 > [!NOTE]
-> Renaming the existing volume impacts the virtual machines as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the virtual machines.
+> Renaming the existing volume impacts the VMs as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the VMs.
 
 - To rename the existing volume, run the following PowerShell command:
 
@@ -394,7 +395,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 
    If an update is available, select the **AzureEdgeLifecycleManager** extension and then select **Update**.
 
-1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each node:
+1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each machine:
 
    ```powershell
    $ResourceGroup = "Your Resource Group Name"
@@ -408,13 +409,13 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
+If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
-## Remediation 11: Check the AKS HCI install state
+## Remediation 11: Check the AKS install state
 
-If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2 and version 23H2.
+If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Local, version 22H2 and version 23H2.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 

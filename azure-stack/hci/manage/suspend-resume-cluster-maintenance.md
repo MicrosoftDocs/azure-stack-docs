@@ -1,30 +1,29 @@
 ---
-title: Suspend and resume Azure Stack HCI, version 23H2 clusters for planned maintenance operations
-description: Learn how to suspend and resume cluster nodes for planned maintenance operations.
+title: Suspend and resume Azure Local, version 23H2 machines for planned maintenance operations
+description: Learn how to suspend and resume machines for planned maintenance operations.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 09/17/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their cluster nodes for planned maintenance.
+ms.date: 10/08/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully suspend and resume their machines for planned maintenance.
 ---
 
-# Suspend and resume Azure Stack HCI, version 23H2 clusters for maintenance
+# Suspend and resume Azure Local machines for maintenance
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to suspend a cluster node for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the cluster node once maintenance is complete. 
+This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
 
-## Suspend a cluster node
+## Suspend a machine
 
-To suspend a cluster node, first suspend the cluster node in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+To suspend a machine, first suspend the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
 
-To suspend a cluster node, follow these steps:
+To suspend a machine, follow these steps:
 
-1. Log on to one of the cluster nodes with a user that has local administrator permissions.
-1. To suspend the cluster node, run this command:
+1. Sign in to one of the machines with a user that has local administrator permissions.
+1. To suspend the machine, run this command:
 
     ```powershell
     Suspend-Clusternode -name “MachineName” -drain
@@ -72,14 +71,14 @@ To suspend a cluster node, follow these steps:
     PS C:\programdata\wssdagent> Remove-MocPhysicalNode -nodename ASRRlS3lRl5Ull
     ```
 
-## Resume a cluster node
+## Resume a machine
 
-To resume a cluster node, first resume the cluster node in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
+To resume a machine, first resume the machine in Windows Failover Clustering. You can use various tools for this step, such as Windows Admin Center, Failover Cluster Manager, or PowerShell. We recommend using PowerShell as some steps can only be performed using that tool.
 
-To resume a cluster node, follow these steps:
+To resume a machine, follow these steps:
 
-1. Log on to one of the cluster nodes with a user that has local administrator permissions.
-1. To resume the cluster node, run this command:
+1. Sign in to one of the machines with a user that has local administrator permissions.
+1. To resume the machine, run this command:
 
     ```powershell
     Resume-Clusternode -name “MachineName” 

@@ -1,15 +1,15 @@
 ---
-title: Review three-node storage reference pattern components for Azure Stack HCI
-description: Learn about three-node storage reference pattern components for Azure Stack HCI.
+title: Review three-node storage reference pattern components for Azure Local
+description: Learn about three-node storage reference pattern components for Azure Local.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 05/15/2024
+ms.date: 10/17/2024
 ---
 
-# Review three-node storage reference pattern components for Azure Stack HCI
+# Review three-node storage reference pattern components for Azure Local
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
@@ -49,7 +49,7 @@ The following are optional components. For more information on Software Defined 
 
 #### SDN Load Balancer VM
 
-The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
+The SDN Software Load Balancer (SLB) VM is used to evenly distribute customer network traffic among multiple VMs. It enables multiple machines to host the same workload, providing high availability and scalability. It's also used to provide inbound Network Address Translation (NAT) services for inbound access to virtual machines, and outbound NAT services for outbound connectivity.
 
 #### SDN Gateway VM
 
@@ -63,7 +63,7 @@ The SDN Gateway VM is used for routing network traffic between a virtual network
 
 ## Host service and agent components
 
-The following components run as services or agents on the host server:
+The following components run as services or agents on the host machine:
 
 **Arc host agent**: Enables you to manage your Windows and Linux computers hosted outside of Azure on your corporate network or other cloud providers.
 

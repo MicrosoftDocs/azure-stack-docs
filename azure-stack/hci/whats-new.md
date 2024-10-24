@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 09/25/2024
+ms.date: 10/22/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -25,12 +25,23 @@ There are currently four release trains for Azure Stack HCI, version 23H2: 2408,
 
 This release train includes the following releases:
 
+## Features and improvements in 2408.2
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VM management improvements**: Starting this release, following improvements were made to the Arc VM management experience:
+
+  - You can set a proxy configuration for Arc VMs on the Portal.
+  - You can set a SQL Server configuration for Arc VMs on Portal.
+  - You can now create an image from an Arc VM's OS disk.
+  - You can now select the virtual switch of a logical network from a dropdown menu.
+
 ## Features and improvements in 2408.1
 
 This is a baseline release with the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
-- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register servers with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-servers-with-azure-arc).
+- **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register servers with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).
 - **Arc VM Management**: Starting in this release, you can attach or detach GPUs to an Arc VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
   - [Prepare GPUs for Azure Stack HCI (preview)](./manage/gpu-preparation.md)
   - [Manage GPUs using partitioning for Azure Stack HCI (preview)](./manage/gpu-manage-via-partitioning.md)
@@ -120,7 +131,6 @@ Here are the features and improvements in this release.
 
 ### Deployment changes
 
-<!--- **New ISO image** - Starting this release, you can download a new ISO image for Azure Stack HCI Operating System (OS) from the Azure portal. This new image has Hyper-V enabled by default, which reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).-->
 
 - **Active Directory integration** - In this release, an issue related to the use of a large Active Directory that results in timeouts when adding users to the local administrator group, is fixed. <!--27022398-->
 
@@ -332,7 +342,7 @@ You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This fea
 
 ### Monitoring changes
 
-In the Azure portal, you can now monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster's **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any graph to open it in Metrics Explorer for a more in-depth analysis. For more information, see [Monitor Azure Stack HCI through the Monitoring tab](./manage/monitor-cluster-with-metrics.md#monitor-azure-stack-hci-through-the-monitoring-tab).
+In the Azure portal, you can now monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster's **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any graph to open it in Metrics Explorer for a more in-depth analysis. For more information, see [Monitor Azure Stack HCI through the Monitoring tab](./manage/monitor-cluster-with-metrics.md#monitor-azure-local-through-the-monitoring-tab).
 
 ### Security via Microsoft Defender for Cloud (preview)
 
