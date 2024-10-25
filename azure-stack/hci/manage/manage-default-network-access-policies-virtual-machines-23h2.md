@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/24/2024
+ms.date: 10/25/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Local, version 23H2
@@ -74,7 +74,7 @@ You can attach default policies to a VM in two ways:
 
 Depending on the type of network you want to attach your VM to, steps might be different.
 
-- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of the physical network(s) available to your Azure Local. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
+- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of one or more physical networks available to Azure Local. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 

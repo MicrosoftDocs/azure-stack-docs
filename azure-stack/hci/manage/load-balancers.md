@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 10/24/2024
+ms.date: 10/25/2024
 ---
 
 # Manage Software Load Balancer for SDN
@@ -21,9 +21,9 @@ In this topic, learn how to manage Software Load Balancer (SLB) policies using W
 
 You can create three types of SLBs:
 
-- **Internal SLB** – This is an internal load balancer used by internal system resources to reach internal load-balanced endpoints in an Azure Local instance. The backend machines for this type of load balancer can belong to an SDN virtual network.
+- **Internal SLB** – This is an internal load balancer used by internal cluster resources to reach internal load-balanced endpoints in an Azure Local instance. The backend machines for this type of load balancer can belong to an SDN virtual network.
 
-- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in a Azure Local instance. Before you create a public IP load balancer, you need to create a public IP address. The backend machines for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
+- **Public IP SLB** – This is an external load balancer that is used to reach public load-balanced endpoints hosted in an Azure Local instance. Before you create a public IP load balancer, you need to create a public IP address. The backend machines for this type of load balancer can belong to an SDN logical network (traditional VLAN network) or an SDN virtual network.
 
 - **IP Address SLB** – This is similar to the Public IP SLB. The difference between Public IP SLB and IP Address SLB is that the Public IP SLB creates a public IP resource that is then added to the load balancer. This is useful if you want to reserve that IP address for future use without it going back into the pool. The IP Address SLB assigns the IP address directly to the load balancer without creating a public IP resource. If you delete the load balancer, the IP address is returned to the pool.
 
@@ -152,7 +152,7 @@ Set **Session Persistence** using the following procedure. Session persistence s
     - **SourceIP** – The load balancer is configured to use a 2-tuple (source IP and destination IP) hash to map traffic to available machines.
     - **SourceIPProtocol** – The load balancer is configured to use a 3-tuple (source IP, destination IP, and protocol) hash to map traffic to available machines.
 1. Provide an **Idle Timeout** value. This indicates the timeout for the TCP idle connection in the inbound direction, such as a connection initiated by an internet client to a frontend IP. The value can be set between 4 and 30 minutes.
-1. Select whether you want to enable **Floating IP**. In this case, the frontend IP will be configured on one of the backend pool members, and any traffic to the frontend IP will be sent directly to that backend pool member. This is useful for guest clustering scenarios that work through a floating IP address set on the active instance of the system. The health probe will determine which backend IP is active, and the load balancer will set the front end IP on that backend pool member.
+1. Select whether you want to enable **Floating IP**. In this case, the frontend IP will be configured on one of the backend pool members, and any traffic to the frontend IP will be sent directly to that backend pool member. This is useful for guest clustering scenarios that work through a floating IP address set on the active instance of the cluster. The health probe will determine which backend IP is active, and the load balancer will set the front end IP on that backend pool member.
 1. Click **Create**.
 
 ## Create a health probe
