@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 11/06/2023
+ms.date: 10/25/2024
 ---
 
 Follow these steps to use Azure CLI to view properties of an image:
@@ -23,7 +23,7 @@ Follow these steps to use Azure CLI to view properties of an image:
     1. Set the following parameter.
 
         ```azurecli
-        $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-marketplaceimage"
+        $mktplaceImageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
         ```
 
     1.	Run the following command to view the properties.
@@ -37,12 +37,12 @@ Follow these steps to use Azure CLI to view properties of an image:
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-marketplaceimage",
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
           "location": "eastus",
-          "name": "myhci-marketplaceimage",
+          "name": "mylocal-marketplaceimage",
           "properties": {
             "containerName": null,
             "hyperVGeneration": null,
@@ -53,7 +53,7 @@ Follow these steps to use Azure CLI to view properties of an image:
             "status": null,
             "version": null
           },
-          "resourceGroup": "myhci-rg",
+          "resourceGroup": "mylocal-rg",
           "systemData": {
             "createdAt": "2022-08-05T20:52:38.579764+00:00",
             "createdBy": "guspinto@microsoft.com",
@@ -73,8 +73,8 @@ Follow these steps to use Azure CLI to view properties of an image:
     1. Set the following parameters:
     
         ```azurecli
-        $mktplaceImage = "myhci-marketplaceimage"
-        $resource_group = "myhci-rg"    
+        $mktplaceImage = "mylocal-marketplaceimage"
+        $resource_group = "mylocal-rg"    
         ```
     
     1. Run the following command to view the properties:
@@ -93,9 +93,9 @@ Follow these steps to use Azure CLI to view properties of an image:
                 "name": "/subscriptions/<Suscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/cluster-638d2f5b237b4af6978885a2885d3ef4-mocarb-cl",
                 "type": "CustomLocation"
               },
-              "id": "/subscriptions/<Suscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage",
+              "id": "/subscriptions/<Suscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/mylocal-marketplaceimage",
               "location": "eastus",
-              "name": "myhci-marketplaceimage",
+              "name": "mylocal-marketplaceimage",
               "properties": {
                 "identifier": {
                   "offer": "windowsserver",
@@ -124,7 +124,7 @@ Follow these steps to use Azure CLI to view properties of an image:
                   }
                 }
               },
-              "resourceGroup": "myhci-rg",
+              "resourceGroup": "mylocal-rg",
               "systemData": {
                 "createdAt": "2023-10-27T21:43:15.920502+00:00",
                 "createdBy": "guspinto@contoso.com",

@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/23/2024
+ms.date: 10/25/2024
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -78,7 +78,7 @@ inServer2022Az-01",
         }
       }
     },
-    "resourceGroup": "myhci-rg",
+    "resourceGroup": "mylocal-rg",
     "systemData": {
       "createdAt": "2023-10-30T21:44:53.020512+00:00",
       "createdBy": "guspinto@contoso.com",
