@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 10/25/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI (preview)
@@ -46,6 +46,9 @@ You can perform on-demand log collection using any of the following methods:
 - **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the cluster level.
 
 - **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific rules only.
+
+> [!NOTE]
+> The recommended log collection period is two hours. Avoid log collections longer than 24 hours, as they aren't supported. Additionally, attempting multiple log collections simultaneously will result in failure.
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
