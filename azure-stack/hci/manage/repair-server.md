@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/16/2024
+ms.date: 10/25/2024
 ---
 
 # Repair a server on Azure Local, version 23H2
@@ -15,7 +15,7 @@ This article describes how to repair a server on your Azure Local instance.
 
 ## About repair servers
 
-Azure SLocal is a hyperconverged system that allows you to repair machines from existing instances. You may need to repair a machine in an instance if there's a hardware failure.
+Azure Local is a hyperconverged system that allows you to repair machines from existing instances. You may need to repair a machine in an instance if there's a hardware failure.
 
 Before you repair a machine, make sure to check with your solution provider, which components on the machine are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace.
 
