@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack-hci
-ms.date: 10/21/2024
+ms.date: 10/25/2024
 ---
 
 # What is Software Load Balancer (SLB) for SDN?
@@ -211,4 +211,3 @@ For related information, see also:
 
 - [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
 - [SDN in Azure Local and Windows Server](software-defined-networking-23h2.md)
-- [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Local](/training/modules/implement-firewall-load-balancer/)
