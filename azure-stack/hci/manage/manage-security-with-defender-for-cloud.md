@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 10/25/2024
 ms.service: azure-stack-hci
 ---
 
@@ -81,13 +81,13 @@ Follow these steps to apply the MCSB initiative at the subscription level:
 
 Security recommendations are created when potential security vulnerabilities are identified. These recommendations guide you through the process of configuring the needed control.
 
-After you've [enabled Defender for Cloud for Azure Stack HCI](#enable-defender-for-cloud-for-azure-stack-hci), follow these steps to view security recommendations for Azure Local:
+After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-cloud-for-azure-local), follow these steps to view security recommendations for Azure Local:
 
 1. In the Azure portal, go to the Azure Local resource page and select your instance.
 
 1. On the left pane, scroll down to the **Security (preview)** section and select **Microsoft Defender for Cloud**.
 
-1. On the **Microsoft Defender for Cloud** page, under **Recommendations**, you can view the current security recommendations for the selected Azure Stack HCI system and its workloads. By default, the recommendations are grouped by resource type.
+1. On the **Microsoft Defender for Cloud** page, under **Recommendations**, you can view the current security recommendations for the selected Azure Local system and its workloads. By default, the recommendations are grouped by resource type.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/security-recommendations.png" alt-text="Screenshot of the Microsoft Defender for Cloud page showing the security recommendations on Azure Local." lightbox="./media/manage-security-with-defender-for-cloud/security-recommendations.png" :::
 
