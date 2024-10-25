@@ -1,12 +1,12 @@
 ---
-title: Overview of SDN Multisite in Azure Stack HCI and Windows Server
+title: Overview of SDN Multisite in Azure Local and Windows Server
 description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/22/2024
+ms.date: 10/25/2024
 ---
 
 # What is SDN Multisite?
@@ -30,13 +30,13 @@ SDN Multisite allows you to expand the capabilities of traditional SDN deployed 
 
 :::zone pivot="azure-stack-hci"
 
-For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci).
+For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci).
 
 ::: zone-end
 
 :::zone pivot="windows-server"
 
-For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
+For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
 
 ::: zone-end
 
@@ -189,12 +189,12 @@ SDN multisite doesn't sync local resources such as gateway connections across si
 
 :::zone pivot="azure-stack-hci"
 
-[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci)
+[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci)
 
 ::: zone-end
 
 :::zone pivot="windows-server"
 
-[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
+[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)Local
 
 ::: zone-end
