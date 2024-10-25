@@ -91,7 +91,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The following output should look similar to:
+    The output should look similar to the following example:
 
     ```bash
     cat: /sys/module/lustre/version: No such file or directory
