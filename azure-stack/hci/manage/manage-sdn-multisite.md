@@ -4,7 +4,9 @@ description: Learn how to manage a multisite SDN solution for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.subservice: core-os
+zone_pivot_groups: windows-os
+ms.date: 10/25/2024
 ---
 
 # Manage SDN Multisite for Azure Local
@@ -43,6 +45,8 @@ For an overview of SDN Multisite, it's current capabilities and limitations, see
 ## Prerequisites
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
+
+:::zone pivot="azure-stack-hci"
 
 - You must have access to Azure Local, version 23H2 clusters deployed at two separate physical sites.
 
