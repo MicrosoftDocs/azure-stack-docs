@@ -45,7 +45,7 @@ You can perform on-demand log collection using any of the following methods:
 
 - **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the cluster level.
 
-- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific rules only.
+- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
    > [!NOTE]
    > The recommended log collection period is two hours. Avoid log collections longer than 24 hours, as they aren't supported. Additionally, attempting multiple log collections simultaneously will result in failure.
