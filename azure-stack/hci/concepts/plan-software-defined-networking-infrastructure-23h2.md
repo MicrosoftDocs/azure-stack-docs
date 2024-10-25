@@ -1,14 +1,14 @@
 ---
-title: Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
-description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment for Azure Stack HCI, version 23H2.
+title: Plan a Software Defined Network infrastructure for Azure Local, version 23H2
+description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment for Azure Local, version 23H2.
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 03/15/2024
+ms.date: 10/18/2024
 ---
-# Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
+# Plan a Software Defined Network infrastructure for Azure Local, version 23H2
 
-> Applies to: Azure Stack HCI, versions 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
 
@@ -196,5 +196,4 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [SDN in Azure Stack HCI](./software-defined-networking-23h2.md)
-- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)
+- [SDN in Azure Local](./software-defined-networking-23h2.md)

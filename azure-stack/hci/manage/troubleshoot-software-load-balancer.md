@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot Software Load Balancer (SLB) for SDN in Azure Stack HCI and Windows Server
-description: Learn how to troubleshoot Software Load Balancer for SDN in Azure Stack HCI and Windows Server.
+title: Troubleshoot Software Load Balancer (SLB) for SDN in Azure Local and Windows Server
+description: Learn how to troubleshoot Software Load Balancer for SDN in Azure Local and Windows Server.
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 04/12/2024
+ms.date: 10/08/2024
 ---
 
 # Troubleshoot Software Load Balancer for SDN
@@ -31,7 +31,7 @@ You must first check the configuration state of the SLB MUX VMs. To do this, you
 
 Follow these steps to check the configuration state of the SLB MUX through Windows Admin Center:
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to connect to.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to connect to.
 
 1. Under **Tools**, scroll down to the **Networking** area. Select **SDN Infrastructure** and then select **Summary**. If there are issues with SLB, you'll see it in the **Load Balancers MUX** section. If there are no issues, all the MUX VMs are in the **Healthy** state.
 
@@ -402,4 +402,4 @@ The following logs should be collected only for a short duration. Start the logg
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
+- [Contact Microsoft Support](get-support.md).

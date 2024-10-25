@@ -1,28 +1,28 @@
 ---
-title: Azure Stack HCI deployment network reference patterns
-description: Select a network reference pattern for single-server and two-node Azure Stack HCI deployments.
+title: Azure Local deployment network reference patterns
+description: Select a network reference pattern for single-node and two-node Azure Local deployments.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 10/17/2024
 ---
 
-# Azure Stack HCI network deployment patterns
+# Azure Local network deployment patterns
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI using either one, two or three physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Local using either one, two or three physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
 ## Choose a network reference pattern
 
 Use the following table to directly go to a pattern and its content.
 
-### Single-server deployment pattern
+### Single-node deployment pattern
 
-**Go to [single server deployment](single-server-deployment.md)**
+**Go to [single node deployment](single-server-deployment.md)**
 
-:::image type="content" source="media/plan-deployment/single-server-deployment.png" alt-text="Diagram showing single-server deployment pattern." lightbox="media/plan-deployment/single-server-deployment.png":::
+:::image type="content" source="media/plan-deployment/single-server-deployment.png" alt-text="Diagram showing single-node deployment pattern." lightbox="media/plan-deployment/single-server-deployment.png":::
 
 ### Two-node deployment patterns
 
@@ -49,4 +49,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Stack HCI](../deploy/download-software.md)
+- [Download Azure Local](../deploy/download-software.md)

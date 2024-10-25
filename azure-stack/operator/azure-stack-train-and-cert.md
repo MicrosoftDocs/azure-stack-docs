@@ -23,9 +23,6 @@ Want to learn about Azure Stack Hub and demonstrate your Azure Stack Hub profici
 
 ## Training
 
-- Microsoft IT training course:
-   - [Course 20537A: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub](https://aka.ms/azsmoc)
-
 - Open edx:
    - [edX: Configuring and Operating Microsoft Azure Stack Hub online course]()
    
