@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/23/2024
+ms.date: 10/25/2024
 ---
 
 # Get support for Azure Local deployment issues
@@ -25,7 +25,7 @@ The following table outlines potential issues you might encounter during deploym
 
 ## Perform standalone log collection
 
-If observability components have not been deployed or if you encounter issues during system deployment or registration process, you can perform standalone log collection to collect and send diagnostic data to Microsoft for troubleshooting purposes. Make sure to file a support ticket before you proceed with the log collection.
+If observability components have not been deployed or if you encounter issues during the system deployment or registration process, you can perform standalone log collection to collect and send diagnostic data to Microsoft for troubleshooting purposes. Make sure to file a support ticket before you proceed with the log collection.
 
 Here are the high-level steps for standalone log collection:
 
