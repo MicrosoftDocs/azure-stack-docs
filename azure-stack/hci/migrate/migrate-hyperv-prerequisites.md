@@ -17,7 +17,7 @@ This article describes the prerequisite tasks you need to complete before you be
 
 ## Prerequisites
 
-The following list contains the prerequisites that must be met to migrate Hyper-V VMs to Azure Local. Some prerequisites apply to the source Hyper-V Server, some to the target Azure Local instance, and others to both.
+The following list contains the prerequisites that must be met to migrate Hyper-V VMs to Azure Local. Some prerequisites apply to the source Hyper-V server, some to the target Azure Local instance, and others to both.
 
 |Prerequisite|Applies to|More information|
 |--|--|--|

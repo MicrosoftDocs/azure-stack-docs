@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, or Windows Server 2022 to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2 or later to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
 > Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Local is not supported. However, Hyper-V replica is valid and supported between Azure Local systems. You can't replicate a VM to another volume in the same system, only to another Azure Local system.
@@ -21,7 +21,7 @@ If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migra
 
 To migrate to Azure Local using the same hardware, see [Migrate to Azure Local on the same hardware](migrate-cluster-same-hardware.md).
 
-The following diagram shows a Windows Server source cluster and an Azure Local destination cluster as an example. You can also migrate VMs on stand-alone machines as well.
+The following diagram shows a Windows Server source cluster and an Azure Local destination system as an example. You can also migrate VMs on stand-alone machines as well.
 
 :::image type="content" source="media/migrate-cluster-new-hardware/migrate-cluster.png" alt-text="Migrate cluster to Azure Local" lightbox="media/migrate-cluster-new-hardware/migrate-cluster.png":::
 
@@ -81,7 +81,7 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2022| |
 |Azure Local|9.0|
 
-For VMs on Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, and Windows Server 2022 update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
+For VMs on Windows Server 2012 R2 or later, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
 
 For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012, the VM version will be less than version 5.0. These VMs also use an .xml file for configuration instead of an .vcmx file. As such, a direct import of the VM to Azure Local is not supported. In these cases, you have two options, as detailed in [Migrating older VMs](#migrating-older-vms).
 
@@ -107,7 +107,7 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## RDMA recommendations
 
-If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for copying your VMs between cluster. Here are some recommendations for using RDMA:
+If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it for copying your VMs between systems. Here are some recommendations for using RDMA:
 
 - Connect both systems to the same top of rack (ToR) switch to use the fastest network path between source and destination systems. For the storage network path this typically supports 10GbE/25GbE or higher speeds and leverages RDMA.
 
@@ -160,7 +160,7 @@ The migration script is run locally on each source machine to leverage the benef
 # Script: Robocopy_Remote_Server_.ps1
 #===========================================================================  
 .DESCRIPTION:
-Change the following variables to match your source system VM path with the destination system VM path. Then run this script on each source Cluster Node CSV owner and make sure the destination system machine is set to the CSV owner for the destination CSV.
+Change the following variables to match your source system VM path with the destination system VM path. Then run this script on each source Cluster Node CSV owner and make sure the destination machine is set to the CSV owner for the destination CSV.
 
         Change $Dest_Server = "Node01"
         Change $source  = "C:\Clusterstorage\Volume01"
@@ -204,7 +204,7 @@ Write-host " Copy Virtual Machines to $Dest_Server took $Time        ......" -fo
 
 ## Import the VMs
 
-A best practice is to create at least one Cluster Shared Volume (CSV) per system machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source system machine and the destination system machine to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
+A best practice is to create at least one Cluster Shared Volume (CSV) per machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between source and destination machines to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
 Perform the following steps on your Azure Local instance to import the VMs, make them highly available, and start them:
 
@@ -223,7 +223,7 @@ Perform the following steps on your Azure Local instance to import the VMs, make
     ```
 
     > [!NOTE]
-    > Windows Server 2012 R2 and older VMs use an XML file instead of a VCMX file. Fore more information, see the section **Migrating older VMs**.
+    > Windows Server 2012 R2 and older VMs use an XML file instead of a VCMX file. For more information, see the section **Migrating older VMs**.
 
 1. Run the following cmdlet for each machine to import, register, and make the VMs highly available on each CSV owner machine. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
@@ -281,7 +281,7 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
     Get-VMSwitch -CimSession $Servers | Select-Object Name
     ```
 
-    Rename the switch name on Windows Server 20212 R2 as needed. To rename the switch name across all machines in the system, use this:
+    Rename the switch name on Windows Server 20212 R2 as needed. To rename the switch name across all machines, use this:
 
     ```powershell
     Invoke-Command -ComputerName $Servers -ScriptBlock {rename-VMSwitch -Name $using:vSwitcholdName -NewName $using:vSwitchnewname}
@@ -338,6 +338,7 @@ Here is the process you use:
 
 As an FYI, the following Windows Server guest operating systems support Generation 2 VMs:
 
+- Windows Server 2022
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012 R2

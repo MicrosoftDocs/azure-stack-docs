@@ -67,7 +67,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - The VMware source environment must be able to initiate a network connection with the target Azure Local instance, either by being on the same on-premises network or by using a VPN.
 
-## Target Azure Local instance requirements
+## Target Azure Local system requirements
 
 - The target OS must be version 23H2 for Azure Local.
 

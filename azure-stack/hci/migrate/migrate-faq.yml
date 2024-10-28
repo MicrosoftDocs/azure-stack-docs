@@ -52,9 +52,9 @@ sections:
           ws2008R2         10.0
           ```
           
-          ### My system shared volume (CSV) storage is full or almost full. What should I do?
+          ### My cluster shared volume (CSV) storage is full or almost full. What should I do?
 
-          Expand your system shared volume. Follow the instructions in [Expand volumes on Azure Local and Windows Server systems](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
+          Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Local and Windows Server systems](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
 
           ### How do I remove appliances from the Azure Migrate project?
 

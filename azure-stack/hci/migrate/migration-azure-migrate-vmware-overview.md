@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Local instance (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/16/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -14,7 +14,7 @@ ms.reviewer: alkohli
 
 This article provides an overview of how to migrate VMware virtual machines (VMs) to your Azure Local instance using Azure Migrate.
 
-Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure (HCI) system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises VMware VMs to your Azure Local instance.
+Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises VMware VMs to your Azure Local instance.
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 
@@ -26,7 +26,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMware 
 
 - Requires no preparation for your VMware VMs including installation of agents prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure Local.
-- Keeps the data flow local, from on-premises VMware source machines to Azure Local.
+- Keeps the data flow local, from on-premises VMware source servers to Azure Local.
 - Results in a minimal downtime for the VMs running on your on-premises VMware servers.
 
 ## Migration components

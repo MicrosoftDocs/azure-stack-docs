@@ -12,7 +12,7 @@ ms.reviewer: kerimha
 
 > Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new Azure Local operating system and retains your existing system settings and storage, and imports your VMs.
+This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new operating system for Azure Local and retains your existing system settings and storage, and imports your VMs.
 
 The following diagram depicts migrating your Windows Server cluster in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
@@ -45,7 +45,7 @@ There are several requirements and things to consider before you begin migration
 
 The following table lists supported Windows Server OS versions and their VM versions for in-place migration on the same hardware.
 
-Regardless of the OS version a VM may be running on, the minimum VM version supported for migration to Azure Local is version 5.0. So any VMs running at version 2.0, 3.0, or 4.0 on your Windows Server 2016 or Windows Server 2019 system must be updated to version 5.0 before migration.
+Regardless of the OS version a VM may be running on, the minimum VM version supported for migration to Azure Local is version 5.0. So any VMs running at version 2.0, 3.0, or 4.0 on your Windows Server 2016 or later system must be updated to version 5.0 before migration.
 
 |OS version|VM version|
 |---|---|
@@ -66,13 +66,13 @@ For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012
 
 ## Updating the VM version
 
-Use the following command to show all VM versions on a single server:
+Use the following command to show all VM versions on a single node:
 
 ```powershell
 Get-VM * | Format-Table Name,Version
 ```
 
-To show all VM versions across all machines on your Windows Server cluster:
+To show all VM versions across all nodes on your Windows Server cluster:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode)
@@ -104,7 +104,7 @@ Migration consists of running Azure Local setup on your Windows Server deploymen
 
 ### Using Windows Admin Center
 
-If using Windows Admin Center to create the Azure Local instance, the Create Cluster wizard automatically installs all required roles and features on each machine node.
+If using Windows Admin Center to create the Azure Local instance, the Create Cluster wizard automatically installs all required roles and features on each machine.
 
 For detailed information on how to create the system, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-cluster.md).
 
@@ -133,7 +133,7 @@ For detailed information on how to create the system, see [Create an Azure Local
 
 ### Using Windows PowerShell
 
-If using PowerShell to create the Azure Local instance, the following roles and features must be installed on each Azure Local instance machine using this cmdlet:
+If using PowerShell to create the Azure Local instance, the following roles and features must be installed on each Azure Local machine using this cmdlet:
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging, RSAT-AD-PowerShell -IncludeAllSubFeature -IncludeManagementTools -Verbose
@@ -147,7 +147,7 @@ For more information on how to create the system using PowerShell, see [Create a
 1. Run the cmdlet to create the system:
 
     ```powershell
-    New-system –name "systemname" –machine Server01,Server02 –staticaddress xx.xx.xx.xx –nostorage
+    New-cluster –name "systemname" –server Server01,Server02 –staticaddress xx.xx.xx.xx –nostorage
     ```
 
 1. Run the cmdlet to create the new `Storagesubsystem Object` ID, rediscover all storage enclosures, and assign SES drive numbers:
@@ -194,7 +194,7 @@ For more information on how to create the system using PowerShell, see [Create a
     Get-VirtualDisk
     ```
 
-1. Determine the system machine version, which displays `ClusterFunctionalLevel` and `ClusterUpgradeVersion`. Run the cmdlet to get this:
+1. Determine the machine version, which displays `ClusterFunctionalLevel` and `ClusterUpgradeVersion`. Run the cmdlet to get this:
 
     ```powershell
     Get-ClusterNodeSupportedVersion
@@ -217,7 +217,7 @@ For Windows Server 2016 MAP volumes, ReFS compaction wasn't available, so re-att
 
 ## Import the VMs
 
-A best practice is to create at least one Cluster Shared Volume (CSV) per machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source system machine and the destination machine to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
+A best practice is to create at least one Cluster Shared Volume (CSV) per machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between source and destination machines to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
 Perform the following steps on your Azure Local instance to import the VMs, make them highly available, and start them:
 
