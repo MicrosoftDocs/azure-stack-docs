@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Stack HCI, versi
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 05/29/2024
+ms.date: 10/28/2024
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
@@ -47,14 +47,19 @@ The following requirements must be met for a successful SDN deployment:
 
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
-## Download the GitHub repository
-The SDN Express module is no longer hosted on GitHub. It is now available in powershell gallery. Please see the Install SDN Express Powershell section for further  details. 
+## Install the SDN Express PowerShell module
 
-## Install SDN Express Powershell module
-Update (10.25.2024) The SDN Express script files are no longer available in GitHub. Please follow the updated installation method as mentioned below.
+Run the following command to install the latest version of the SDN Express PowerShell module on the machine where you want to run the SDN installation:
 
-On the machine where you wish to run the installation of SDN, the latest version of SDN Express must be installed. To install the module please run `Install-Module -Name SDNExpress`. The files will automatically be installed in the default powershell module directory. You can locate them at `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`
-   
+```powershell
+Install-Module -Name SDNExpress
+```
+
+The files automatically install in the default PowerShell module directory: C:\Program Files\WindowsPowerShell\Modules\SdnExpress\.
+
+> [!NOTE]
+> The SDN Express script files are no longer available on GitHub.
+
 ## Edit the configuration file
 
 The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you're deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) article.
@@ -200,4 +205,3 @@ The following configuration sample files for deploying SDN are available in the 
 ## Next steps
 
 - [Manage VMs](../manage/vm.md)
-
