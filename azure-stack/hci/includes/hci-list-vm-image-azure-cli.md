@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 10/25/2024
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -13,23 +13,23 @@ Follow these steps to list VM image using Azure CLI.
 1. Set some parameters.
 
     ```azurecli
-    $subscription = "<Subscription ID associated with your cluster>"
-    $resource_group = "<Resource group name for your cluster>"
+    $subscription = "<Subscription ID associated with your Azure Local>"
+    $resource_group = "<Resource group name for your Azure Local>"
     ```
-1. List all the VM images associated with your cluster. Run the following command:
+1. List all the VM images associated with your Azure Local. Run the following command:
 
     ```azurecli
     az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
     
-    Depending on the command used, a corresponding set of images associated with the Azure Local instance are listed.
+    Depending on the command used, a corresponding set of images associated with your Azure Local are listed.
 
     - If you specify just the subscription, the command lists all the images in the subscription.
     - If you specify both the subscription and the resource group, the command lists all the images in the resource group.
 
     These images include:
     - VM images from marketplace images.
-    - Custom images that reside in your Azure Storage account or are in a local share on your cluster or a client connected to the cluster.
+    - Custom images that reside in your Azure Storage account or are in a local share on your system or a client connected to your system.
 
 Here's a sample output.
 
@@ -78,7 +78,7 @@ inServer2022Az-01",
         }
       }
     },
-    "resourceGroup": "myhci-rg",
+    "resourceGroup": "mylocal-rg",
     "systemData": {
       "createdAt": "2023-10-30T21:44:53.020512+00:00",
       "createdBy": "guspinto@contoso.com",

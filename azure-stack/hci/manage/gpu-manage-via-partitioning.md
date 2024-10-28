@@ -1,18 +1,18 @@
 ---
-title: Manage GPUs using partitioning for Azure Stack HCI (preview)
-description: Learn how to manage GPUs using partitioning Azure Stack HCI (preview).
+title: Manage GPUs using partitioning for Azure Local (preview)
+description: Learn how to manage GPUs using partitioning Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 09/25/2024
+ms.date: 10/21/2024
 ---
 
 # Manage GPUs using partitioning (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU-P with Arc virtual machines (VMs). For using GPU-P management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
+This article describes how to manage GPU-P with Arc virtual machines (VMs) for Azure Local. For using GPU-P management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 GPU Partitioning (GPU-P) allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
 
@@ -25,9 +25,9 @@ Consider the following limitations when using the GPU-P feature:
 
 - GPU partitioning is unsupported if your configuration isn't homogeneous. Here are some examples of unsupported configurations:
 
-    - Mixing GPUs from different vendors in the same cluster.
+    - Mixing GPUs from different vendors in the same system.
 
-    - Using different GPU models from different product families from the same vendor in the same cluster.
+    - Using different GPU models from different product families from the same vendor in the same system.
 
 - You can't assign a physical GPU as both Discrete Device Assignment (DDA) and as partitionable GPU (GPU-P). You can either assign it as DDA or as a partitionable GPU, but not both.
 
@@ -35,17 +35,17 @@ Consider the following limitations when using the GPU-P feature:
 
 - Partitions are autoassigned to the VMs. You can't choose a specific partition for a specific VM.
 
-- Currently, GPU partitioning on Azure Stack HCI doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
+- Currently, GPU partitioning on Azure Local doesn't support live migration of VMs. But VMs can be automatically restarted and placed where GPU resources are available if there's a failure.
 
-- You can partition your GPU using Azure Command-Line Interface (CLI). We recommend that you use Azure CLI to configure and assign GPU partitions. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the servers in your cluster.
+- You can partition your GPU using Azure Command-Line Interface (CLI). We recommend that you use Azure CLI to configure and assign GPU partitions. You must manually ensure that the homogeneous configuration is maintained for GPUs across all the machines in your system.
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Stack HCI](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Stack HCI cluster and Arc VMs and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared and partitioned.
 
 ## Attach a GPU during Arc VM creation
 
-Follow the steps outlined in [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
+Follow the steps outlined in [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuP

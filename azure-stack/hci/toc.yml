@@ -19,7 +19,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2408
       items:
-      - name: 2408.1 - Current
+      - name: 2408.2 - Current 
+        href: known-issues-2408-2.md
+      - name: 2408.1
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
@@ -59,7 +61,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: September 2024 - Current
+      - name: October 2024 - Current
+        href: security-update/hci-security-update-oct-2024.md
+      - name: September 2024
         href: security-update/hci-security-update-sep-2024.md
       - name: August 2024
         href: security-update/hci-security-update-aug-2024.md
@@ -250,7 +254,7 @@ items:
   - name: 5 - Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
   - name: Troubleshoot upgrades
-    href: upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md
+    href: upgrade/troubleshoot-upgrade-to-23h2.md
 
 
 - name: Manage
@@ -276,6 +280,8 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+        - name: Using an existing Arc VM
+          href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
           - name: Using Ubuntu VM image
@@ -582,6 +588,10 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
+  - name: Host networking
+    items:
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
   - name: SDN
     items:
     - name: SDN technical reference
@@ -800,8 +810,6 @@ items:
         href: concepts/nested-virtualization.md
     - name: Host networking
       items:
-      - name: Network ATC overview
-        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)

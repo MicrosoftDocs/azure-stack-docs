@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 10/25/2024
 ---
 
 1. Run PowerShell as an administrator.
@@ -12,7 +12,7 @@ ms.date: 10/11/2024
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Cluster resource group>"
+    $resource_group = "<Azure Local resource group>"
     $mktplaceImage = "<Markeplace image name>"    
     ```
 
@@ -31,13 +31,13 @@ After you've deleted an image, you can check that the image is removed. Here's a
 
 ```
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "myhci-rg"
-PS C:\Users\azcli> $mktplaceImage = "myhci-marketplaceimage"
+PS C:\Users\azcli> $resource_group = "mylocal-rg"
+PS C:\Users\azcli> $mktplaceImage = "mymylocal-marketplaceimage"
 PS C:\Users\azcli> az stack-hci-vm image delete --name $mktplaceImage --resource-group $resource_group
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Are you sure you want to perform this operation? (y/n): y
 PS C:\Users\azcli> az stack-hci-vm image show --name $mktplaceImage --resource-group $resource_group
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'myhci-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
 ```
