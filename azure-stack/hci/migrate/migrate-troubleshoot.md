@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating Hyper-V VMs to Azure Local using Azure
 description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -159,13 +159,13 @@ Verify the following:
 
 **Root cause**
 
-The target system fails to validate because the system FQDN is not DNS-resolvable by default from the appliance.
+The target system fails to validate because the FQDN is not DNS-resolvable by default from the appliance.
 
 :::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
 
 **Recommended resolution**
 
-Manually map the Azure stack system IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts.*.
 
 Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
 
@@ -220,12 +220,12 @@ To remove the target appliance from the project, follow these steps:
 **Root cause** 
 
 Replication of VMs can fail because of one or more of the following reasons:
-- The system shared volume or the storage container is full.
-- The VMs aren't highly available. All VMs must be highly available systemed to be discovered for replication and migration. If VMs aren't highly available, these don't show up in the list and are excluded for migration.
+- The cluster shared volume or the storage container is full.
+- The VMs aren't highly available. All VMs must be highly available to be discovered for replication and migration. If VMs aren't highly available, these don't show up in the list and are excluded for migration.
 
 **Recommended resolution** 
 
-To enable replication and migration, make sure that the system shared volume or the storage container has enough space. 
+To enable replication and migration, make sure that the cluster shared volume or the storage container has enough space. 
 
 Also, to migrate a non-HA VM, follow these steps: 
 
@@ -243,12 +243,12 @@ Replication or migration fails with the following error message:
 
 Value can't be null. Parameter name: `FetchingHyperVDiskPropertiesFailed`.
 
-The component fails to fetch the disk properties from the source Hyper-V host. This can happen if the underlying system virtual disk is offline or if the disk isn't in a healthy state.
+The component fails to fetch the disk properties from the source Hyper-V host. This can happen if the underlying cluster virtual disk is offline or if the disk isn't in a healthy state.
 
 
 **Recommended resolution** 
 
-1.  Make sure the system disks are operational and verify that you can fetch disk properties.
+1.  Make sure the cluster disks are operational and verify that you can fetch disk properties.
 2. On the source appliance, run PowerShell as an administrator. Run the following steps after replacing the content in {} with the actual values.
 
     ```powershell

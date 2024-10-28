@@ -3,25 +3,25 @@ title: Migrate to Azure Local on same hardware
 description: Learn how to migrate a system to Azure Local on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/16/2024
+ms.date: 10/28/2024
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
 
 # Migrate to Azure Local on same hardware
 
-> Applies to: Azure Local, versions 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate a Windows Server failover system to Azure Local using your existing machine hardware. This process installs the new Azure Local operating system and retains your existing system settings and storage, and imports your VMs.
+This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new Azure Local operating system and retains your existing system settings and storage, and imports your VMs.
 
-The following diagram depicts migrating your Windows Server system in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).
+The following diagram depicts migrating your Windows Server cluster in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
 :::image type="content" source="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png" alt-text="Migrate system to Azure Local on the same hardware" lightbox="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png":::
 
 To migrate your VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-cluster-new-hardware.md).
 
 > [!NOTE]
-> Migrating stretched systems is not covered in this article.
+> Migrating stretched clusters is not covered in this article.
 
 ## Before you begin
 
@@ -55,11 +55,12 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2012 R2|5.0|
 |Windows Server 2016|8.0|
 |Windows Server 2019|9.0|
+|Windows Server 2022| |
 |Azure Local|9.0|
 
 For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 systems, direct migration to Azure Local is not supported. In these cases, you have two options:
 
-- Migrate these VMs to Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 first, update the VM version, then begin the migration process.
+- Migrate these VMs to Windows Server 2012 R2 or later first, update the VM version, then begin the migration process.
 
 - Use Robocopy to copy all VM VHDs to Azure Local. Then create new VMs and attach the copied VHDs to their respective VMs in Azure Local. This bypasses the VM version limitation for these older VMs.
 
@@ -71,7 +72,7 @@ Use the following command to show all VM versions on a single server:
 Get-VM * | Format-Table Name,Version
 ```
 
-To show all VM versions across all machines on your Windows Server system:
+To show all VM versions across all machines on your Windows Server cluster:
 
 ```powershell
 Get-VM –ComputerName (Get-ClusterNode)
@@ -216,7 +217,7 @@ For Windows Server 2016 MAP volumes, ReFS compaction wasn't available, so re-att
 
 ## Import the VMs
 
-A best practice is to create at least one Cluster Shared Volume (CSV) per system machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source system machine and the destination system machine to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
+A best practice is to create at least one Cluster Shared Volume (CSV) per machine to enable an even balance of VMs for each CSV owner for increased resiliency, performance, and scale of VM workloads. By default, this balance occurs automatically every five minutes and needs to be considered when using Robocopy between a source system machine and the destination machine to ensure source and destination CSV owners match to provide the most optimal transfer path and speed.
 
 Perform the following steps on your Azure Local instance to import the VMs, make them highly available, and start them:
 
@@ -226,7 +227,7 @@ Perform the following steps on your Azure Local instance to import the VMs, make
     Get-ClusterSharedVolume
     ```
 
-1. For each machine node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
+1. For each machine, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
 
 1. Run the cmdlet on each CSV owner machine to display the path to all VM VMCX files per volume prior to VM import. Modify the path to match your environment:
 
@@ -234,13 +235,13 @@ Perform the following steps on your Azure Local instance to import the VMs, make
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse
     ```
 
-1. Run the cmdlet for each machine machine to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
+1. Run the cmdlet for each machine to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole
     ```
 
-1. Start each destination VM on each node:
+1. Start each destination VM on each machine:
 
     ```powershell
     Start-VM -Name

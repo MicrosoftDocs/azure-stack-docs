@@ -3,16 +3,16 @@ title: Migrate to Azure Local on new hardware
 description: Learn how to migrate to Azure Local on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/16/2024 
+ms.date: 10/28/2024 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
 
 # Migrate to Azure Local on new hardware
 
-> Applies to: Azure Local, versions 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
+This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, or Windows Server 2022 to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]
 > Hyper-V Live Migration and Hyper-V Replica from Windows Server to Azure Local is not supported. However, Hyper-V replica is valid and supported between Azure Local systems. You can't replicate a VM to another volume in the same system, only to another Azure Local system.
@@ -78,9 +78,10 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2012 R2|5.0|
 |Windows Server 2016|8.0|
 |Windows Server 2019|9.0|
+|Windows Server 2022| |
 |Azure Local|9.0|
 
-For VMs on Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
+For VMs on Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, and Windows Server 2022 update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
 
 For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012, the VM version will be less than version 5.0. These VMs also use an .xml file for configuration instead of an .vcmx file. As such, a direct import of the VM to Azure Local is not supported. In these cases, you have two options, as detailed in [Migrating older VMs](#migrating-older-vms).
 
@@ -116,7 +117,7 @@ If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it fo
 
 ## Create the new system
 
-Before you can create the Azure Local instance, you need to install the Azure Local OS on each new machine that will be in the system. For information on how to do this, see [Deploy the Azure Local operating system](../deploy/operating-system.md).
+Before you can create the Azure Local instance, you need to install the Azure Stack HCI OS on each new machine that will be in the system. For information on how to do this, see [Deploy the operating system for Azure Local](../deploy/operating-system.md).
 
 Use Windows Admin Center or Windows PowerShell to create the new system. For detailed information on how to do this, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-cluster.md) and [Create an Azure Local instance using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
@@ -128,13 +129,13 @@ Use Windows Admin Center or Windows PowerShell to create the new system. For det
 
 ## Run the migration script
 
-The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination system. This script has been modified from the original script on TechNet at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](/windows-server/administration/windows-commands/robocopy).
+The following PowerShell script `Robocopy_Remote_Server_.ps1` uses Robocopy to copy VM files and their dependent directories and metadata from the source to the destination system. This script has been modified from the original script at: [Robocopy Files to Remote Server Using PowerShell and RoboCopy](/windows-server/administration/windows-commands/robocopy).
 
 The script copies all VM VHD, VHDX, and VMCX files to your destination system for a given Cluster Shared Volume (CSV). One CSV is migrated at a time.
 
 The migration script is run locally on each source machine to leverage the benefit of RDMA and fast network transfer. To do this:
 
-1. Make sure each destination system machine is set to the CSV owner for the destination CSV.
+1. Make sure each destination machine is set to the CSV owner for the destination CSV.
 
 1. To determine the location of all VM VHD and VHDX files to be copied, use the following cmdlet. Review the `C:\vmpaths.txt` file to determine the topmost source file path for Robocopy to start from for step 4:
 
@@ -207,13 +208,13 @@ A best practice is to create at least one Cluster Shared Volume (CSV) per system
 
 Perform the following steps on your Azure Local instance to import the VMs, make them highly available, and start them:
 
-1. Run the following cmdlet to show all CSV owner nodes:
+1. Run the following cmdlet to show all CSV owner machines:
 
     ```powershell
     Get-ClusterSharedVolume
     ```
 
-1. For each machine node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
+1. For each machine, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
 
 1. Run the following cmdlet on each CSV owner machine to display the path to all VM VMCX files per volume prior to VM import. Modify the path to match your environment:
 
@@ -224,13 +225,13 @@ Perform the following steps on your Azure Local instance to import the VMs, make
     > [!NOTE]
     > Windows Server 2012 R2 and older VMs use an XML file instead of a VCMX file. Fore more information, see the section **Migrating older VMs**.
 
-1. Run the following cmdlet for each machine machine to import, register, and make the VMs highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
+1. Run the following cmdlet for each machine to import, register, and make the VMs highly available on each CSV owner machine. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole
     ```
 
-1. Start each destination VM on each node:
+1. Start each destination VM on each machine:
 
     ```powershell
     Start-VM -Name
@@ -254,7 +255,7 @@ Perform the following steps on your Azure Local instance to import the VMs, make
 
 If you have Windows Server 2008 SP1, Windows Server 2008 R2-SP1, Windows Server 2012, or Windows Server 2012 R2 VMs, this section applies to you. You have two options for handling these VMs:
 
-- Migrate these VMs to Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 first, update the VM version, then begin the migration process.
+- Migrate these VMs to Windows Server 2012 R2 or later first, update the VM version, then begin the migration process.
 
 - Use Robocopy to copy all VM VHDs to Azure Local. Then create new VMs and attach the copied VHDs to the VMs in Azure Local. This bypasses the VM version limitation for these older VMs.
 
@@ -289,11 +290,11 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 1. Copy and import the VMs to Windows Server 2012 R2:
 
      ```powershell
-    Get-ChildItem -Path "c:\systemstorage\volume01\Hyper-V\*.xml"-Recurse
+    Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
     ```
 
     ```powershell
-    Get-ChildItem -Path "c:\systemstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole  
+    Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole  
     ```
 
 1. On Windows Server 2012 R2, update the VM version to 5.0 for all VMs:
@@ -307,11 +308,11 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 1. Follow the process in [Import the VMs](#import-the-vms), replacing Step 3 and Step 4 with the following to handle the XML files and to import the VMs to Azure Local:
 
     ```powershell
-    Get-ChildItem -Path "c:\systemstorage\volume01\Hyper-V\*.xml"-Recurse
+    Get-ChildItem -Path "c:\clusterstorage\volume01\Hyper-V\*.xml"-Recurse
     ```
 
     ```powershell
-    Get-ChildItem -Path "c:\systemstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole  
+    Get-ChildItem -Path "c:\clusterstorage\volume01\image\*.xml" -Recurse    | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole  
     ```
 
 1. Complete the remaining steps in [Import the VMs](#import-the-vms).
@@ -329,7 +330,7 @@ Here is the process you use:
 
 1. Use the example Robocopy to copy VMs VHDs directly to Azure Local:
 
-    `Robocopy \\2012R2-Clus01\c$\systemstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\systemstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
+    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
 1. Create new Generation 1 VMs. For detailed information on how to do this, see [Manage VMs](../manage/vm.md).
 

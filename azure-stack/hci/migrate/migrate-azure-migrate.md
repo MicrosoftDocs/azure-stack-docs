@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Local using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Local instance using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -69,7 +69,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
  
 ## Verify migration
 
-1. In the Azure portal, go to your **Azure Local cluster resource > Virtual machines**.
+1. In the Azure portal, go to your **Azure Local resource > Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMs that you migrated are present.
 
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png" alt-text="Screenshot of Azure Local > Virtual machines in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png":::

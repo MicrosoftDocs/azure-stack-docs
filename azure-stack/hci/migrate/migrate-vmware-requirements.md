@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -57,9 +57,9 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
 
-## Source VMware machine requirements
+## Source VMware server requirements
 
-- The source VMware machine used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
 - In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated
 
@@ -71,7 +71,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - The target OS must be version 23H2 for Azure Local.
 
-- An Arc Resource Bridge must exist on the Azure Local, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Arc Resource Bridge must exist on Azure Local, version 23H2 for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
 - Make sure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 

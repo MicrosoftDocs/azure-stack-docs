@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 10/17/2024
+  ms.date: 10/28/2024
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
 
@@ -98,7 +98,7 @@ sections:
 
           ### How do I enable guest management on my migrated VMs? 
           
-          First, ensure that the target system that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+          First, ensure that the target Azure Local that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](../manage/manage-arc-virtual-machines.md#enable-guest-management).
           
           ### Can I use the same Azure Migrate Project for both Hyper-V and VMware migrations?
           
@@ -116,6 +116,6 @@ sections:
 
           ## [Hyper-V VMs only](#tab/hyper-v-vms)
           
-          ### I have a VM running on an older Hyper-V host machine - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Local?
+          ### I have a VM running on an older Hyper-V servers - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Local?
 
           Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.

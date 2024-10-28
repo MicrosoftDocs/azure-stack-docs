@@ -3,7 +3,7 @@ title: Migrate VMware VMs to Azure Local using Azure Migrate (preview)
 description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -74,7 +74,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
     :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-1.png" alt-text="Screenshot of Azure Local > Virtual machines in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-1.png":::
 
 1. Select a VM to view its details. Verify that:
-    1. The VM is running. The corresponding source VM on the VMware machine is turned off.
+    1. The VM is running. The corresponding source VM on the source ESX server is turned off.
     1. The VM has the disk and network configuration as configured during replication.
   
     :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png":::

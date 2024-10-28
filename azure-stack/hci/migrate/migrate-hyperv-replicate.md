@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ---
 
@@ -116,7 +116,7 @@ Check that the zipped file is secure, before you deploy it.
 
 Now you can install the appliance using the .VHD file.
 
-1. On a Hyper-V machine (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+1. On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
 
 1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Local machine, and then select **OK**.
 
@@ -124,7 +124,7 @@ Now you can install the appliance using the .VHD file.
 
 1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
 
-    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Local machine.
+    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateAppliance.zip) that you downloaded on your Azure Local machine.
     1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
     1. Finally review the settings and select **Finish**.
 
@@ -179,11 +179,11 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-hyperv-replicate/enter-code-2.png":::
 
-1. After the appliance is registered, under **Provide Azure Local cluster information**, select **Add cluster information**.
+1. After the appliance is registered, under **Provide Azure Local instance information**, select **Add system information**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-hyperv-replicate/add-cluster-info.png":::
 
-1. For your target Azure Local instance, enter the system fully qualified domain name (FQDN), domain name, username, and password, and then select **Save**.
+1. For your target Azure Local instance, enter the fully qualified domain name (FQDN), domain name, username, and password, and then select **Save**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-hyperv-replicate/add-cluster-info-2.png":::
 
@@ -211,9 +211,9 @@ This step applies only if you downloaded the .zip file.
 
 1. On the **Replicate** page, on the **Basics** tab:
 
-    1. This field is automatically populated. If this is not the subscription that has your target system, choose the Azure subscription that has the system.
+    1. This field is automatically populated. If this is not the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
-	1. For **Cluster resource**, select the Azure Local cluster resource.
+	1. For **Target system**, select the Azure Local resource.
 	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
     1. When finished, select **Next**.
     
