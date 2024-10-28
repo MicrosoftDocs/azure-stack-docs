@@ -42,7 +42,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 You can perform on-demand log collection using PowerShell, the recommended method, or Windows Admin Center in the Azure portal, as described later in this article.
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local system to perform on-demand log collection.
+Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local instance to perform on-demand log collection.
 
 Here are some important points to consider:
 
