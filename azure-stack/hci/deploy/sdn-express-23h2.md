@@ -192,7 +192,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 
 ## Configuration sample files
 
-The following configuration sample files for deploying SDN are available in the location where the powershell module is installed (`C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`):
+The following configuration sample files for deploying SDN are available in the location where the PowerShell module is installed (`C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`):
 
 - **Traditional VLAN networks.psd1** - Deploy Network Controller for managing network policies like microsegmentation and Quality of Service on traditional VLAN Networks.
 
