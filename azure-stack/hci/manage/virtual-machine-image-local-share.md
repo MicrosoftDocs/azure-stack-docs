@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/24/2024
+ms.date: 10/28/2024
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -61,7 +61,7 @@ Follow these steps to create a VM image using the Azure CLI.
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Resource group for Azure Local that you associate with this image.        |
+    | `subscription`   | Subscription group for Azure Local that you associate with this image.        |
     | `resource_group` | Resource group for Azure Local that you associate with this image.        |
     | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
