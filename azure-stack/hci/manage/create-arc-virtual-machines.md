@@ -1,27 +1,27 @@
 ---
-title: Create Arc virtual machines on Azure Stack HCI 
-description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI.
+title: Create Arc virtual machines on Azure Local 
+description: Learn how to view your system in the Azure portal and create Arc virtual machines on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 09/09/2024
+ms.date: 10/28/2024
 ---
 
-# Create Arc virtual machines on Azure Stack HCI
+# Create Arc virtual machines on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
-## About Azure Stack HCI cluster resource
+## About Azure Local resource
 
-Use the [Azure Stack HCI cluster resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
+Use the [Azure Local resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
 
 - Create and manage Arc VM resources such as VM images, disks, network interfaces.
-- View and access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster.
+- View and access Azure Arc Resource Bridge and Custom Location associated with the Azure Local instance.
 - Provision and manage Arc VMs.
 
 The procedure to create Arc VMs is described in the next section.
@@ -34,9 +34,9 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a network interface that you have created on a logical network associated with your Azure Stack HCI cluster. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
+- Access to a network interface that you have created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -46,25 +46,25 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../hci/includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
 ---
 
 ## Create Arc VMs
 
-Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
+Follow these steps to create an Arc VM on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster.
+Follow these steps on the client running az CLI that is connected to your Azure Local.
 
 ## Sign in and set subscription
 
@@ -82,33 +82,33 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 1. Set some parameters.
 
     ```azurecli
-    $vmName ="myhci-vm"
+    $vmName ="local-vm"
     $subscription =  "<Subscription ID>"
-    $resource_group = "myhci-rg"
-    $customLocationName = "myhci-cl"
+    $resource_group = "local-rg"
+    $customLocationName = "local-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $computerName = "mycomputer"
-    $userName = "myhci-user"
+    $userName = "local-user"
     $password = "<Password for the VM>"
     $imageName ="ws22server"
-    $nicName ="myhci-vnic" 
-    $storagePathName = "myhci-sp" 
-    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
+    $nicName ="local-vnic" 
+    $storagePathName = "local-sp" 
+    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/local-rg/providers/Microsoft.AzureStackHCI/storagecontainers/local-sp" 
     ```
 
     The parameters for VM creation are tabulated as follows:
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the VM that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **admin-username** |Username for the user on the VM you're deploying on your Azure Stack HCI cluster. |
-    | **admin-password** |Password for the user on the VM you're deploying on your Azure Stack HCI cluster. |
+    | **name**  |Name for the VM that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | **admin-username** |Username for the user on the VM you're deploying on your Azure Local. |
+    | **admin-password** |Password for the user on the VM you're deploying on your Azure Local. |
     | **image-name** |Name of the VM image used to provision the VM. |
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
-    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for VM on your Azure Stack HCI cluster. |
-    | **custom-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
+    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Local. |
+    | **subscription** |Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for VM on your Azure Local. |
+    | **custom-location** |Use this to provide the custom location associated with your Azure Local where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
@@ -152,7 +152,7 @@ Use this optional parameter **proxy-configuration** to configure a proxy server 
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your server>" 
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>" 
 ```
 
 You can input the following parameters for `proxy-server-configuration`:
@@ -188,7 +188,7 @@ Depending on the PowerShell version you're running on your VM, you may need to e
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
+Follow these steps in Azure portal of your Azure Local.
 
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
@@ -197,28 +197,28 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters in the **Project details** section:
 
-   :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
 
     1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
 
     1. **Resource group** – Create new or choose an existing resource group where you deploy all the resources associated with your VM.
 
-1. In the **Instance details** section, input the following parameters:
+1. In the **System details** section, input the following parameters:
 
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of system details on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
         > [!IMPORTANT]
         > VM names should be in lowercase letters and can include hyphens and numbers.
 
-    1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
+    1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Local.
     
-        **The Virtual machine kind** is automatically set to **Azure Stack HCI**.
+        **The Virtual machine kind** is automatically set to **Azure Local**.
 
     1. **Security type** - For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
 
-   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space.
+   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
 
    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
@@ -274,7 +274,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. Select **+ Add new disk**.
     1. Provide a **Name** and **Size**.
     1. Choose the disk **Provisioning type** to be **Static** or **Dynamic**.
-    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options autopopulate the dropdown by default.
+    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options autopopulate the dropdown by default.
     1. Select **Add**. After it's created, you can see the new disk in the list view.
     
        :::image type="content" source="./media/create-arc-virtual-machines/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/create-arc-virtual-machines/create-new-disk.png":::
@@ -600,14 +600,14 @@ Follow these steps to deploy the Resource Manager template:
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
 
-1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Stack HCI.
+1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Local.
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
 # [Bicep template](#tab/biceptemplate)
 
 1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
-1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Stack HCI cluster.
+1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Local.
 1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
    :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
@@ -616,11 +616,11 @@ Follow these steps to deploy the Resource Manager template:
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Stack HCI system via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
-The Arc VMs on Azure Stack HCI are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+The Arc VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
-For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
+For  more information, see [system-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
 ## Next steps
 
