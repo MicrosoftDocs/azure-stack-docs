@@ -99,7 +99,7 @@ Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
+Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -eq "3D Video Controller"}
 ```
 
 ```output
@@ -131,7 +131,7 @@ pnputil /scan-devices
 After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia A2_base - Dismounted**:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia"
+Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -match "Nvidia"}"
 ```
 
 ```output
