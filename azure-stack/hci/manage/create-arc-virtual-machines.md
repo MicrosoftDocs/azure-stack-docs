@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/24/2024
+ms.date: 10/28/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -616,11 +616,11 @@ Follow these steps to deploy the Resource Manager template:
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a cluster-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
-The Arc VMs on Azure Local are extended from Arc-enabled servers and can use cluster-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a cluster-assigned managed identity to access the Azure Key Vault.
+The Arc VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
-For  more information, see [Cluster-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
+For  more information, see [system-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
 ## Next steps
 
