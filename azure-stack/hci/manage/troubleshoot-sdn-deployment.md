@@ -1,13 +1,13 @@
 ---
-title: Troubleshoot Software Defined Networking deployment in Azure Stack HCI, version 23H2 via Windows Admin Center
-description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) in Azure Stack HCI, version 23H2 via Windows Admin Center.
+title: Troubleshoot Software Defined Networking deployment in Azure Local, version 23H2 via Windows Admin Center
+description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) in Azure Local, version 23H2 via Windows Admin Center.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 04/24/2024
+ms.date: 10/23/2024
 ---
 
-# Troubleshoot Software Defined Networking deployment in Azure Stack HCI via Windows Admin Center
+# Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
@@ -35,17 +35,17 @@ After you've completed these checks and resolved any identified issues through t
 
 ### Download the correct VHDX file
 
-You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard-23h2.md#download-the-vhdx-file).
+You must download a virtual hard disk of the Azure Stack HCI Operating System to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard-23h2.md#download-the-vhdx-file).
 
 ### Verify the connectivity of your management network VLAN
 
-If there's no connectivity between the management network VLAN and Azure Stack HCI, the VM deployment times out.
+If there's no connectivity between the management network VLAN and Azure Local, the VM deployment times out.
 
 Follow these steps to verify connectivity of the management network VLAN:
 
-1. Make sure you have access to an existing Azure Stack HCI cluster and management network VLAN.
+1. Make sure you have access to Azure Local and a management network VLAN.
 
-1. In Windows Admin Center, [create a new VM](./vm.md#create-a-new-vm) on the Azure Stack HCI cluster with any supported operating system.
+1. In Windows Admin Center, [create a new VM](./vm.md#create-a-new-vm) on Azure Local with any supported operating system.
 
 1. Assign the same IP address to the new VM that was assigned to the management network.
 
@@ -53,7 +53,7 @@ Follow these steps to verify connectivity of the management network VLAN:
 
 1. To confirm the new VM is assigned the correct IP address and to rule out any duplicate address issues, run the `ipconfig /all` command on the new VM.
 
-1. Verify the new VM can ping the Azure Stack HCI hosts and vice versa.
+1. Verify the new VM can ping the Azure Local hosts and vice versa.
 
 1. Check if the new VM can communicate with the DNS servers and the default gateway of the management network.
 
@@ -140,8 +140,8 @@ Follow these steps to collect guest logs for the SDN VM:
 
 1. To get VM deployment history details, go to the C:\Windows\Panther folder and collect the entire content of this folder.
 
-1. To collect SDN logs on the server, connect to the first physical node of the Azure Stack HCI cluster. Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**.
+1. To collect SDN logs on the server, connect to the first physical node of Azure Local. Find the SDN log file under **Tools** > **Files & file sharing** > **This PC** > **C:** > **Documents and Settings**.
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
+- [Contact Microsoft Support](get-support.md).
