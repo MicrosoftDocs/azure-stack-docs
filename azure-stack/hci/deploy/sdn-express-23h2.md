@@ -55,7 +55,7 @@ Run the following command to install the latest version of the SDN Express Power
 Install-Module -Name SDNExpress
 ```
 
-The files automatically install in the default PowerShell module directory: C:\Program Files\WindowsPowerShell\Modules\SdnExpress\.
+The files automatically install in the default PowerShell module directory: `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`.
 
 > [!NOTE]
 > The SDN Express script files are no longer available on GitHub.
