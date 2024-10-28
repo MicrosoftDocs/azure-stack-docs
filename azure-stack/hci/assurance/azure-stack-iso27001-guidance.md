@@ -1,7 +1,7 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 10/24/2024
+ms.date: 10/28/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -72,7 +72,7 @@ The identity and access management functionality described in this section can a
 - 8.3 – Information access restrictions
 - 8.5 – Secure authentication
 
-Azure Local provides full and direct access to the underlying system running on cluster nodes via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multifactor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
+Azure Local provides full and direct access to the underlying system running on machines via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multifactor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
 
 Learn more about local identity and access management at [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) and [Privileged Access Management for Active Directory Domain Services](/microsoft-identity-manager/pam/privileged-identity-management-for-active-directory-domain-services). Learn more about cloud-based identity and access management at [Microsoft Entra ID](/entra/fundamentals/whatis).
 
@@ -87,7 +87,7 @@ The data protection functionality described in this section can assist you in me
 
 #### Encrypting data with BitLocker
 
-On Azure Local systems, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Local deployment. For any new storage volumes added after the deployment, you need to manually turn-on BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+On Azure Local instances, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Local deployment. For any new storage volumes added after the deployment, you need to manually turn-on BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
 #### Protecting external network traffic with TLS/DTLS
 
@@ -221,7 +221,7 @@ This service enables you to back up Azure Local virtual machines, specifying a d
 
 - System State/Bare-Metal Recovery (BMR) of Azure Local host
 - Guest VMs in a system that has local or directly attached storage
-- Guest VMs on Azure Local systems with CSV storage
+- Guest VMs on Azure Local instances with CSV storage
 - VM Move within a cluster
 
 Learn more at [Back up Azure Local virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
