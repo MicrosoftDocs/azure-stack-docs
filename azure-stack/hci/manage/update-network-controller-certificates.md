@@ -1,15 +1,15 @@
 ---
 title: Renew certificates for Network Controller
 description: This article describes how to renew Network Controller certificates.
-author: sethmanheim
-ms.author: sethm
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 10/28/2024
 ---
 
 # Renew certificates for Network Controller
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Network Controller certificates, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
@@ -300,7 +300,7 @@ Follow these steps for copying one certificate to all Network Controller VMs.
 If you're using a self-signed certificate, place it in the root store of the local machine (LocalMachine\Root) for each of the following:
 
 - Every Network Controller VM.
-- Every Azure Stack HCI host machine and Software Load Balancer VMs. This ensures that the certificate is trusted by the peer entities.
+- Every Azure Local machine and all Software Load Balancer VMs. This ensures that the certificate is trusted by the peer entities.
 
 Here's a sample command to import the certificate public key that has already been exported:
 
@@ -364,7 +364,7 @@ To renew the Network Controller node certificate, perform the following steps on
    Set-Acl $privKeyCertFile.FullName $privKeyAcl
    ```
 
-1. Execute the following command to change the node certificate:
+1. Run the following command to change the node certificate:
 
    ```powershell
    Set-NetworkControllerNode -Name "<Name of the Network Controller node>" -NodeCertificate $cert

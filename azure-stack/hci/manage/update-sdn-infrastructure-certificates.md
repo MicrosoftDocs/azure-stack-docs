@@ -1,15 +1,15 @@
 ---
 title: Renew certificates for Software Defined Networking infrastructure
 description: This article describes how to renew or change SDN server and Software Load Balancer multiplexer certificates.
-author: sethmanheim
-ms.author: sethm
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 10/28/2024
 ---
 
 # Renew certificates for Software Defined Networking infrastructure
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Software Defined Networking (SDN) server and Software Load Balancer (SLB) multiplexer (MUX) certificates. If you face any issues in renewing your certificates, contact Microsoft Support.
 

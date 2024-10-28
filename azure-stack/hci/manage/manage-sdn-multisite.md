@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/25/2024
+ms.date: 10/28/2024
 ---
 
 # Manage SDN Multisite for Azure Local
@@ -209,12 +209,12 @@ For redeployment after SDN Multisite removal, ensure the following are removed:
 
 :::zone pivot="azure-stack-hci"
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
+- [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md)
 
 ::: zone-end
 
 :::zone pivot="windows-server"
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
+- [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
 
 ::: zone-end

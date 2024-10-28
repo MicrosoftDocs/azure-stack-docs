@@ -1,13 +1,13 @@
 ---
 title: Configure network security groups with tags in Windows Admin Center
 description: Learn how to configure network security groups with tags in Windows Admin Center.
-ms.author: sethm
+ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
-author: sethmanheim
+author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/24/2024
+ms.date: 10/28/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -34,9 +34,9 @@ Complete the following prerequisites to use network security groups with tags:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 22H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
+- You have Azure Local 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-- You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+- You have a Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
 - You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
 
@@ -50,7 +50,7 @@ Complete the following prerequisites to use network security groups with tags:
 
 - You have Windows Server 2025 or later. For more information, see [Get started with Windows Server](/windows-server/get-started/get-started-with-windows-server).
 
-- You have Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](sdn-express.md?context=/windows-server/context/windows-server-edge-networking).
+- You have a Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](sdn-express.md?context=/windows-server/context/windows-server-edge-networking).
 
 - You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
 
