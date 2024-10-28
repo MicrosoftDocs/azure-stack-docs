@@ -48,23 +48,18 @@ The following requirements must be met for a successful SDN deployment:
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
+The SDN Express module is no longer hosted in on the GitHub page. It is now moved to powershell gallery. Please see the Install SDN Express Powershell section for further  details. 
 
-The SDN Express script files live in GitHub. The first step is to get the necessary files and folders onto your deployment computer.
+## Install SDN Express Powershell module
+Update (10.25.2024) The SDN Express script files are no longer available in GitHub. Please follow the updated installation instructions as mentioned below. 
 
-1. Go to the [Microsoft SDN GitHub](https://github.com/microsoft/SDN) repository.
-
-1. In the repository, expand the **Code** drop-down list, and then choose either **Clone** or **Download ZIP** to download the SDN files to your designated deployment computer.
-
-    > [!NOTE]
-    > The designated deployment computer must be running Windows Server 2016 or later.
-
-1. Extract the ZIP file and copy the `SDNExpress` folder to your deployment computer's `C:\` folder.
-
+1. On the machine where you wish to run the installation of SDN, the latest version of SDN Express must be installed. To install the module please run `Install-Module -Name SDNExpress`. The files will automatically be installed in the default powershell module directory. You can locate them at `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`
+   
 ## Edit the configuration file
 
 The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you're deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) article.
 
-Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
+Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
 
 ### General settings and parameters
 
@@ -185,14 +180,14 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the cluster host servers:
 
     ```powershell
-    SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
+    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
 ## Configuration sample files
 
-The following configuration sample files for deploying SDN are available on the [Microsoft SDN GitHub](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) repository:
+The following configuration sample files for deploying SDN are available in the location where the powershell module is installed (`C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`):
 
 - **Traditional VLAN networks.psd1** - Deploy Network Controller for managing network policies like microsegmentation and Quality of Service on traditional VLAN Networks.
 
