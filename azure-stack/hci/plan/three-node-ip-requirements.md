@@ -1,17 +1,17 @@
 ---
-title: Review three-node storage reference pattern IP requirements for Azure Stack HCI
-description: Review three-node storage reference pattern IP requirements for Azure Stack HCI
+title: Review three-node storage reference pattern IP requirements for Azure Local
+description: Review three-node storage reference pattern IP requirements for Azure Local
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 05/15/2024
+ms.date: 10/17/2024
 ---
 
-# Review three-node storage reference pattern IP requirements for Azure Stack HCI
+# Review three-node storage reference pattern IP requirements for Azure Local
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, learn about the IP address requirements for deploying a three-node network reference pattern in your environment.
 

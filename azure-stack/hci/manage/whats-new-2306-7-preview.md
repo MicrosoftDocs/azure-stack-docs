@@ -30,7 +30,7 @@ Azure Stack HCI, 2306.7 Supplemental Package is now in preview. You can deploy t
 
 For more information on Azure Stack HCI, version 2311.2, see [What's new in Azure Stack HCI, version 23H2](../whats-new.md).
 
-[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp-2306.md)]
+[!INCLUDE [hci-deployment-tool-sp](../../hci/includes/hci-deployment-tool-sp-2306.md)]
 
 ### What's new
 

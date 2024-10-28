@@ -1,18 +1,18 @@
 ---
-title: Get support for Azure Stack HCI deployment issues
-description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support.
+title: Get support for Azure Local deployment issues
+description: Learn how to get Microsoft support for Azure Local deployment issues, including log collection and remote support.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 09/03/2024
+ms.date: 10/25/2024
 ---
 
-# Get support for Azure Stack HCI deployment issues
+# Get support for Azure Local deployment issues
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support.
+This article describes how to get Microsoft support for Azure Local deployment issues, including log collection and remote support.
 
 ## Potential deployment issues
 
@@ -20,19 +20,19 @@ The following table outlines potential issues you might encounter during deploym
 
 | Issues | Recommended troubleshooting actions |
 |--|--|
-| - Active directory preparation issues. <br> - Azure Stack HCI operating system installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| - Active directory preparation issues. <br> - Azure Stack HCI Operating System installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | - Environment validation issues. <br> - Initialization and registration issues. <br> - Deployment validation issues. <br> - Deployment failure issues. | 1. [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). <br> 2. [Perform standalone log collection](#perform-standalone-log-collection). |
 
 ## Perform standalone log collection
 
-If observability components have not been deployed or if you encounter issues during the cluster deployment or registration process, you can perform standalone log collection to collect and send diagnostic data to Microsoft for troubleshooting purposes. Make sure to file a support ticket before you proceed with the log collection.
+If observability components have not been deployed or if you encounter issues during the system deployment or registration process, you can perform standalone log collection to collect and send diagnostic data to Microsoft for troubleshooting purposes. Make sure to file a support ticket before you proceed with the log collection.
 
 Here are the high-level steps for standalone log collection:
 
-1. As instructed by Microsoft Support, copy the requested diagnostic data from the Azure Stack HCI node to a system which has connectivity to Azure.
+1. As instructed by Microsoft Support, copy the requested diagnostic data from the Azure Local machine to a system which has connectivity to Azure.
 1. Use `Send-AzStackHciDiagnosticData` to transmit the copied diagnostic data to Microsoft for troubleshooting purposes. Microsoft can access that data after you file a support ticket.
 
-If the observability feature is already configured, you can send diagnostic data to Microsoft using the on-demand log collection process. For instructions, see [Collect logs](./collect-logs.md). To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+If the observability feature is already configured, you can send diagnostic data to Microsoft using the on-demand log collection process. For instructions, see [Collect logs](./collect-logs.md). To explore additional log collection methods in Azure Local and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ### Send logs to Microsoft
 
@@ -74,7 +74,7 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 
 ## Get remote support
 
-In the pre-deployment or pre-registration scenarios, you are prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the cluster, see [Get remote support for Azure Stack HCI](./get-remote-support.md).
+In the pre-deployment or pre-registration scenarios, you are prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the cluster, see [Get remote support for Azure Local](./get-remote-support.md).
 
 The high-level workflow to get remote support in the pre-deployment or pre-registration scenario is as follows:
 
@@ -114,5 +114,5 @@ For detailed remediation for common known issues, check out:
 > [Azure Stack HCI Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
 
 Alternatively, you can:
-- [Collect diagnostic logs](collect-logs.md)
-- [Contact Microsoft Support](get-support.md)
+- [Collect diagnostic logs](collect-logs.md).
+- [Contact Microsoft Support](get-support.md).

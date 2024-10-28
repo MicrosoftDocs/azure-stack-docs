@@ -1,18 +1,19 @@
 ---
-title: Collect log files for Azure Arc VM on Azure Stack HCI
-description: Learn how to collect log files for an Azure Arc VM on your Azure Stack HCI system. 
+title: Collect log files for Azure Arc VMs on Azure Local
+description: Learn how to collect log files for an Azure Arc VMs on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/16/2024
+ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
+ms.service: azure-stack-hci
 ---
 
-# Collect log files for Azure Arc VM on your Azure Stack HCI system
+# Collect log files for Azure Arc VMs on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) in your Azure Stack HCI system.
+Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) on your Azure Local instance.
 
 ## Collect files when VM provisioning fails
 
@@ -27,7 +28,7 @@ The Windows Panther folder contains Windows setup, installation, and upgrade log
 | agent-log-0 | C:\ProgramData\mocguestagent\log\ | Operational logs |
 | SetupAct.log | C:\Windows\panther\ | Contains information about setup actions during the installation. |
 | SetupErr.log | C:\Windows\panther\ | Contains information about setup errors during the installation. |
-| SetupComplete.log | C:\Windows\panther\ | Contains custom scripts that run during or after the Windows Setup process. For HCI, includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent. |
+| SetupComplete.log | C:\Windows\panther\ | Contains custom scripts that run during or after the Windows Setup process. For Azure Local, includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent. |
 | Script files | C:\Windows\setup\scripts\ | Scripts from ISO |
 | System.evtx | C:\Windows\system32\winevt\logs\ | Windows event logs |
 

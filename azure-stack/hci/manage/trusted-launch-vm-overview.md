@@ -1,25 +1,25 @@
 ---
-title: Overview for Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
-description: Learn about Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2.
+title: Overview for Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+description: Learn about Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 06/13/2024
+ms.date: 10/23/2024
 ---
 
-# Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
+# Introduction to Trusted launch for Azure Arc VMs on Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
+This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
 
 
 ## Introduction
 
 Trusted launch for Azure Arc VMs supports secure boot, virtual Trusted Platform Module (vTPM), and vTPM state transfer when a VM migrates or fails over within a cluster.
 
-Trusted launch is a security type that can be specified when creating Arc VMs on Azure Stack HCI. For more information, see [Trusted launch for Azure Arc VMs on Azure Stack HCI](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
+Trusted launch is a security type that can be specified when creating Arc VMs on Azure Local. For more information, see [Trusted launch for Azure Arc VMs on Azure Local](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
 
 ## Capabilities and benefits
 
@@ -35,7 +35,7 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 
 ## Guidance
 
-- IgvmAgent is a component that is installed on all nodes in the Azure Stack HCI cluster. It enables support for isolated VMs such as Trusted launch Arc VMs for example.
+- IgvmAgent is a component that is installed on all nodes in the Azure Local system. It enables support for isolated VMs such as Trusted launch Arc VMs for example.
 
 - As part of Trusted launch Arc VM creation, Hyper-V creates VM files on disk to store the VM state. By default, access to those VM files is restricted to host server administrators. Host administrators must ensure that the location where those VM files are stored always remains appropriately access-restricted.
 
@@ -47,7 +47,7 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 
 The following VM guest OS images from Azure Marketplace are supported. The VM image can be created using Azure portal or Azure CLI.
 
-For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
+For more information, see [Create Azure Local VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
 
 | Name | Publisher | Offer | SKU | Version number |
 |---|---|---|---|---|

@@ -10,9 +10,7 @@ zone_pivot_groups: windows-os
 
 # Manage Network ATC
 
-:::zone pivot="azure-stack-hci"
-
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
 
@@ -222,7 +220,7 @@ In this section, we go over the set of new Cluster Network Features that we're r
 
 ###### Cluster network naming
 
-Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there's no way for clustering to know how you intended to use the networks – until now!
+Description: By default, failover clustering always names unique subnets like this: "Cluster Network 1", "Cluster Network 2", and so on. This is unconnected to the actual use of the network because there's no way for clustering to know how you intended to use the networks – until now!
 
 Once you define your configuration through Network ATC, we now understand how the subnets are going to be used, and we can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
 

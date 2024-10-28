@@ -1,21 +1,21 @@
 ---
-title: Azure Stack HCI two-node storage switched, fully converged deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI two-node storage switched, fully converged network reference pattern.
+title: Azure Local two-node storage switched, fully converged deployment network reference pattern
+description: Plan to deploy an Azure Local two-node storage switched, fully converged network reference pattern.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 10/17/2024
 ---
 
-# Review two-node storage switched, fully converged deployment network reference pattern for Azure Stack HCI
+# Review two-node storage switched, fully converged deployment network reference pattern for Azure Local
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Local solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local in their datacenters.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information on other network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
@@ -29,7 +29,7 @@ Routing services such as BGP can be configured directly on the TOR switches if t
 
 As described in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the cluster in this pattern is implemented with two TOR switches in MLAG configuration.
+- For northbound/southbound traffic, the system in this pattern is implemented with two TOR switches in MLAG configuration.
 
 - Two teamed network cards handle the management, compute, and RDMA storage traffic connected to the TOR switches. Each NIC is connected to a different TOR switch. SMB multichannel capability provides path aggregation and fault tolerance.
 
@@ -84,7 +84,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The storage intent-based traffic in this pattern shares the physical network adapters with management and compute.
 
-The storage network operates in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the cluster.
+The storage network operates in different IP subnets. Each storage network uses the ATC predefined VLANs by default (711 and 712). However, these VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the system.
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 

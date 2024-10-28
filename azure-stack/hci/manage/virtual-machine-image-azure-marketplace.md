@@ -1,20 +1,20 @@
 ---
-title: Create Azure Stack HCI VM from Azure Marketplace images via Azure CLI
-description: Learn how to create Azure Stack HCI VM images using source images from Azure Marketplace.
+title: Create Azure Local VM from Azure Marketplace images via Azure CLI
+description: Learn how to create Azure Local VM images using source images from Azure Marketplace.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 09/25/2024
+ms.date: 10/24/2024
 ---
 
-# Create Azure Stack HCI VM image using Azure Marketplace images
+# Create Azure Local VM image using Azure Marketplace images
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
 
 ## Prerequisites
@@ -25,7 +25,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+- If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 # [Azure portal](#tab/azureportal)
 
@@ -35,7 +35,7 @@ Make sure to review and [complete the prerequisites](./azure-arc-vm-management-p
 
 ## Add VM image from Azure Marketplace
 
-You create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Local instance.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -43,7 +43,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set some parameters
 
@@ -54,8 +54,8 @@ Follow these steps to create a VM image using the Azure CLI.
     $resource_group = "<Resource group>"
     $mktplaceImage = "<Marketplace image name>"
     $customLocationName = "<Custom location name>"
-    $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --query id -o tsv)
-    $location = "<Location for your Azure Stack HCI cluster>"
+    $customLocationID = (az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Local>" --query id -o tsv)
+    $location = "<Location for your Azure Local>"
     $osType = "<OS of source image>"
     ```
 
@@ -63,20 +63,20 @@ Follow these steps to create a VM image using the Azure CLI.
 
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.     |
-    | `name` | Name of the marketplace image for Azure Stack HCI cluster.  |
-    | `customLocation` | Resource ID of custom location for Azure Stack HCI cluster.   |
-    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
+    | `subscription`   | Subscription associated with your Azure Local.        |
+    | `resource-group` | Resource group for your Azure Local that you associate with this image.     |
+    | `name` | Name of the marketplace image for Azure Local.  |
+    | `customLocation` | Resource ID of custom location for your Azure Local.   |
+    | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
     Here's a sample output:
 
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "myhci-rg"
-    PS C:\Users\azcli> $mktplaceImage= "myhci-marketplaceimage"
-    PS C:\Users\azcli> $customLocationName = "myhci-cl"
+    PS C:\Users\azcli> $resource_group = "mylocal-rg"
+    PS C:\Users\azcli> $mktplaceImage= "mylocal-marketplaceimage"
+    PS C:\Users\azcli> $customLocationName = "mylocal-cl"
     PS C:\Users\azcli> $customerLocationID /subscriptions$subscription/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
@@ -129,10 +129,10 @@ Here's a sample output:
 PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mktplaceImage --os-type $ostype --resource-group $rg --publisher $publisher --offer $offer --sku $sku 
 { 
   "extendedLocation": { 
-    "name": “/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl", 
+    "name": “/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
     "type": "CustomLocation" 
   }, 
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage", 
 \ 
   "location": "eastus", 
   "name": "myhci-marketplaceimage", 
@@ -171,7 +171,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --custom-location $cl --name $mk
 
     } 
   }, 
-  "resourceGroup": "myhci-rg", 
+  "resourceGroup": "mylocal-rg", 
   "systemData": { 
     "createdAt": "2024-09-23T18:53:13.734389+00:00", 
     "createdBy": "guspinto@contoso.com", 
@@ -190,7 +190,7 @@ For more information on this CLI command, see [az stack-hci-vm image](/cli/azure
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Stack HCI cluster resource, take the following steps:
+Follow these steps to create a VM image using Azure portal. In Azure portal for your Azure Local resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 
@@ -204,13 +204,13 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Resource group.** Create new or select an existing resource group that you associate with the VM image.
 
-    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
+    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
-    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Stack HCI cluster.
+    1. **Image to download.** Select a VM image from the list of images in Azure Marketplace. The dropdown list shows all the Azure Marketplace images that are compatible with your Azure Local.
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the specified storage path has sufficient storage space.
+    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
 
 1. Select **Review + Create** to create your VM image.
 
@@ -224,7 +224,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
    :::image type="content" source="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png":::
 
-   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
+   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the system.
 
    To view more details of any image, select the VM image name from the list of VM images.
 
@@ -244,12 +244,12 @@ You need to view the list of VM images to choose an image to manage.
 
 ### [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
+[!INCLUDE [hci-list-vm-image-azure-cli](../../hci/includes/hci-list-vm-image-azure-cli.md)]
 
 
 ### [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
+[!INCLUDE [hci-list-vm-image-portal](../../hci/includes/hci-list-vm-image-portal.md)]
 
 ---
 
@@ -259,17 +259,17 @@ You might want to view the properties of VM images before you use the image to c
 
 ### [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-view-vm-image-properties-azure-cli.md)]
 
 ### [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
+[!INCLUDE [hci-view-vm-image-properties-portal](../../hci/includes/hci-view-vm-image-properties-portal.md)]
 
 ---
 
 ## Update VM image
 
-When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Local become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
 
 To update a VM image, use the following steps in Azure portal.
 
@@ -302,11 +302,11 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 ### [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-delete-vm-image-azure-cli.md)]
 
 ### [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
+[!INCLUDE [hci-delete-vm-image-portal](../../hci/includes/hci-delete-vm-image-portal.md)]
 ---
 
 ## Next steps

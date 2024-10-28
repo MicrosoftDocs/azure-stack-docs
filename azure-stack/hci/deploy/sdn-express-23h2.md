@@ -1,23 +1,27 @@
 --- 
-title: Deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23H2
-description: Learn to deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23h2.
+title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 23H2
+description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
+<<<<<<< HEAD
 ms.date: 10/28/2024
+=======
+ms.date: 10/16/2024
+>>>>>>> 6ccd049b8dfaf32eae81713dfc26ad0359e4cfb1
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
 
-# Deploy an SDN infrastructure using SDN Express for Azure Stack HCI
+# Deploy an SDN infrastructure using SDN Express for Azure Local
 
-> Applies to: Azure Stack HCI, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Stack HCI, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on an Azure Stack HCI, version 23H2 cluster, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Stack HCI](../manage/update-sdn.md).
+> If you are deploying SDN on Azure Stack HCI, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
@@ -29,23 +33,23 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 
 You don't have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
 
-Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](../deploy/deployment-install-os.md) on how to do this.
+Make sure all host machines have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](../deploy/deployment-install-os.md) on how to do this.
 
 ## Requirements
 
 The following requirements must be met for a successful SDN deployment:
 
-- All host servers must have Hyper-V enabled.
-- All host servers must be joined to Active Directory.
+- All host machines must have Hyper-V enabled.
+- All host machines must be joined to Active Directory.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured for the subnets and VLANs defined in the configuration file.
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
 
 ## Install the SDN Express PowerShell module
 
@@ -84,7 +88,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **LocalAdminDomainUser** - local administrator username. The username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **RestIpAddress** - Static IP address for your REST API, which is allocated from your management network. It can be used for DNS resolution or REST IP-based deployments
-- **HyperVHosts** - host servers to be managed by Network Controller
+- **HyperVHosts** - host machines to be managed by Network Controller
 - **NCUsername** - Network Controller account username
 - **ProductKey** - product key for SDN infrastructure VMs
 - **SwitchName** - only required if more than one virtual switch exists on the Hyper-V hosts
@@ -119,7 +123,7 @@ The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddres
 Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
 - **ComputerName** - name of SLB VM
-- **HostName** - host name of server where the SLB VM is located
+- **HostName** - host name of the machine where the SLB VM is located
 - **ManagementIP** - management network IP address for the SLB VM
 - **MACAddress** - MAC address for the SLB VM
 - **PAIPAddress** - Provider network IP address (PA) for the SLB VM
@@ -134,7 +138,7 @@ The `Gateways = @()` section is used for the Gateway VMs. Make sure that the `MA
 Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
 - **ComputerName** - name of Gateway VM
-- **HostName** - host name of server where the Gateway VM is located
+- **HostName** - host name of the machine where the Gateway VM is located
 - **ManagementIP** - management network IP address for the Gateway VM
 - **MACAddress** - MAC address for the Gateway VM
 - **FrontEndMac** - Provider network front end MAC address for the Gateway VM
@@ -172,7 +176,7 @@ The following parameters are used if you are deploying and managing overlay virt
 
 Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
 
-- Allocates two IP addresses to each physical server
+- Allocates two IP addresses to each physical machine
 - Allocates one IP address to each SLB MUX VM
 - Allocates one IP address to each gateway VM
 
@@ -182,7 +186,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 
 1. Review the `README.md` file for late-breaking information on how to run the deployment script.  
 
-1. Run the following command from a user account with administrative credentials for the cluster host servers:
+1. Run the following command from a user account with administrative credentials for the host machines:
 
     ```powershell
     .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose

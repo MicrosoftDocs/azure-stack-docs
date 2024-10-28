@@ -1,22 +1,22 @@
 ---
-title: Network considerations for cloud deployment for Azure Stack HCI, version 23H2
-description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
+title: Network considerations for cloud deployment for Azure Local, version 23H2
+description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/29/2024
+ms.date: 10/17/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
 
-# Network considerations for cloud deployments of Azure Stack HCI, version 23H2
+# Network considerations for cloud deployments of Azure Local, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article discusses how to design and plan an Azure Stack HCI, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Stack HCI networking patterns](../plan/choose-network-pattern.md) and available configurations.
+This article discusses how to design and plan an Azure Local, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
 
 ## Network design framework
 
-The following diagram shows the various decisions and steps that define the network design framework for your Azure Stack HCI system - cluster size, cluster storage connectivity, network traffic intents, management connectivity, and network adapter configuration. Each design decision enables or permits the design options available in subsequent steps:
+The following diagram shows the various decisions and steps that define the network design framework for your Azure Local instance - cluster size, cluster storage connectivity, network traffic intents, management connectivity, and network adapter configuration. Each design decision enables or permits the design options available in subsequent steps:
 
 :::image type="content" source="media/cloud-deployment-network-considerations/network-decision-framework.png" alt-text="Diagram showing step 1 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/network-decision-framework.png":::
 
@@ -24,15 +24,15 @@ The following diagram shows the various decisions and steps that define the netw
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-1.png" alt-text="Diagram showing the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-1.png":::
 
-To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
+To help determine the size of your Azure Local instance, use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
 
-As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.md#server-and-storage-requirements) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
+As described in the Azure Local [system machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
 
-- **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
+- **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Local instance network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
 - **If your workloads require three or less nodes**: You can choose either switchless or switched configurations for storage connectivity.
 
-- **If you plan to scale out later to more than three nodes**: You need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments requires manual configuration of your network cabling between the nodes that Microsoft isn't actively validating as part of its software development cycle for Azure Stack HCI.
+- **If you plan to scale out later to more than three nodes**: You need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments requires manual configuration of your network cabling between the nodes that Microsoft isn't actively validating as part of its software development cycle for Azure Local.
 
 Here are the summarized considerations for the cluster size decision:
 
@@ -47,7 +47,7 @@ Here are the summarized considerations for the cluster size decision:
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-2.png" alt-text="Diagram showing step 2 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-2.png":::
 
-As described in [Physical network requirements](../concepts/physical-network-requirements.md), Azure Stack HCI supports two types of connectivity for storage network traffic:
+As described in [Physical network requirements](../concepts/physical-network-requirements.md), Azure Local supports two types of connectivity for storage network traffic:
 
 - Use a physical network switch to handle the traffic.
 - Directly connect the nodes between them with crossover network or fiber cables for the storage traffic.
@@ -79,7 +79,7 @@ The following diagram summarizes storage connectivity options available to you f
 :::image type="content" source="media/cloud-deployment-network-considerations/step-3.png" alt-text="Diagram showing step 3 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-3.png":::
 
 
-For Azure Stack HCI, all deployments rely on Network ATC for the host network configuration. The network intents are automatically configured when deploying Azure Stack HCI via the Azure portal. To understand more about the network intents and how to troubleshoot those, see [Common network ATC commands](../deploy/network-atc.md#common-network-atc-commands).
+For Azure Local, all deployments rely on Network ATC for the host network configuration. The network intents are automatically configured when deploying Azure Local via the Azure portal. To understand more about the network intents and how to troubleshoot those, see [Common network ATC commands](../deploy/network-atc.md#common-network-atc-commands).
 
 This section explains the implications of your design decision for network traffic intents, and how they influence the next step of the framework. For cloud deployments, you can select between four options to group your network traffic into one or more intents. The options available depend on the number of nodes in your cluster and the storage connectivity type used.
 
@@ -151,7 +151,7 @@ Once you install the operating system, and before configuring networking on your
 
 ### Management IP pool
 
-When doing the initial deployment of your Azure Stack HCI system, you must define an IP range of consecutive IPs for infrastructure services deployed by default. 
+When doing the initial deployment of your Azure Local instance, you must define an IP range of consecutive IPs for infrastructure services deployed by default. 
 
 To ensure the range has enough IPs for current and future infrastructure services, you must use a range of at least six consecutive available IP addresses. These addresses are used for - the cluster IP, the Azure Resource Bridge VM and its components. 
 
@@ -169,9 +169,9 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 ### Management VLAN ID
 
-We recommend that the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific management VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
+We recommend that the management subnet of your Azure Local instance use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific management VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
 
-If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they're registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
+If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your machines, and before they're registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
 
 To set the VLAN ID on the physical network adapters, use the following PowerShell command:
 
@@ -195,7 +195,7 @@ If a virtual switch configuration is required and you must use a specific VLAN I
 
 #### 1. Create virtual switch with recommended naming convention
 
-Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch.
+Azure Local deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch.
 
 We recommend naming your virtual switch names with the same naming convention. The recommended name for the virtual switches is as follows:
 
@@ -257,8 +257,8 @@ Here are the summarized considerations for the VLAN ID:
 
 |#  | Considerations  |
 |---------|---------|
-|1    | VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.         |
-|2     | Use specific steps when a virtual switch is required before registering the servers to Azure Arc.         |
+|1    | VLAN ID must be specified on the physical network adapter for management before registering the machines with Azure Arc.         |
+|2     | Use specific steps when a virtual switch is required before registering the machines to Azure Arc.         |
 |3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
 |4     | There is no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
 
@@ -278,11 +278,11 @@ However, if your deployment requirements do not fit with those default IPs and V
 - **storageAdapterIPInfo:** This parameter has a dependency with "enableStorageAutoIP" parameter and is always required when storage auto IP parameter is set to false. Within the "storageAdapterIPInfo" parameter in your ARM template you will also need to specify the **"ipv4Address"** and **"subnetMask"** parameters for each node and network adapter with your own IPs and subnet mask.
 - **vlanId:** As described above in the table, this parameter will use the Network ATC default VLANs if you don't need to change them. However, if those default VLANs does not work in your network you can specify your own VLAN IDs for each of your storage networks.
 
-The following ARM template includes an example of a two nodes HCI cluster with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
+The following ARM template includes an example of a two nodes Azure Local instance with network switch for storage, where storage IPs are customized [2 Nodes deployment with custom storage IPs](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2-node-switched-custom-storageip/azuredeploy.parameters.json)
 
 ### Node and cluster IP assignment
 
-For Azure Stack HCI system, you have two options to assign IPs for the server nodes and for the cluster IP. 
+For Azure Local instance, you have two options to assign IPs for the machine nodes and for the cluster IP. 
 
 - Both the static and Dynamic Host Configuration Protocol (DHCP) protocols are supported.
 
@@ -296,7 +296,7 @@ The following sections discuss the implications of each option.
 
 If static IPs are used for the nodes, the management IP pool is used to obtain an available IP and assign it to the cluster IP automatically during deployment.
 
-It is important to use management IPs for the nodes that aren't part of the IP range defined for the management IP pool. Server node IPs must be on the same subnet of the defined IP range.
+It is important to use management IPs for the nodes that aren't part of the IP range defined for the management IP pool. Machine node IPs must be on the same subnet of the defined IP range.
 
 We recommend that you assign only one management IP for the default gateway and for the configured DNS servers for all the physical network adapters of the node. This ensures that the IP doesn't change once the management network intent is created. This also ensures that the nodes keep their outbound connectivity during the deployment process, including during the Azure Arc registration.
 
@@ -328,7 +328,7 @@ Here are the summarized considerations for the IP addresses:
 
 ### Proxy requirements
 
-A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Stack HCI supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before server nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
+A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Local supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before machine nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
 
 The Azure Stack HCI OS has three different services (WinInet, WinHTTP, and environment variables) that require the same proxy configuration to ensure all OS components can access the internet. The same proxy configuration used for the nodes is automatically carried over to the Arc Resource Bridge VM and AKS, ensuring that they have internet access during deployment.
 
@@ -345,9 +345,9 @@ Here are the summarized considerations for proxy configuration:
 
 ### Firewall requirements
 
-You are currently required to open several internet endpoints in your firewalls to ensure that Azure Stack HCI and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](../concepts/firewall-requirements.md).
+You are currently required to open several internet endpoints in your firewalls to ensure that Azure Local and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](../concepts/firewall-requirements.md).
 
-Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Stack HCI Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Stack HCI.
+Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Local Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Local.
 
 Here are the summarized considerations for firewall:
 
@@ -362,7 +362,7 @@ Here are the summarized considerations for firewall:
 
 Network adapters are qualified by network traffic type (management, compute, and storage) they're used with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com/), the Windows Server 2022 certification indicates for which network traffic the adapters are qualified. 
 
-Before purchasing a server for Azure Stack HCI, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it is important to use supported network adapters.
+Before purchasing a machine for Azure Local, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it is important to use supported network adapters.
 
 The default values used by Network ATC are documented in [Cluster network settings](../deploy/network-atc.md?tabs=22H2#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or Resource Manager templates if needed:
 
@@ -377,11 +377,11 @@ Here are the summarized considerations for network adapter configuration:
 |#     |Consideration  |
 |---------|---------|
 |1     | Use the default configurations as much as possible.        |
-|2     | Physical switches must be configured according to the network adapter configuration. See [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md#network-switches-for-azure-stack-hci).    |
-|3     | Ensure that your network adapters are supported for Azure Stack HCI using the Windows Server Catalog.       |
+|2     | Physical switches must be configured according to the network adapter configuration. See [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md#network-switches-for-azure-local).    |
+|3     | Ensure that your network adapters are supported for Azure Local using the Windows Server Catalog.       |
 |4     | When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. <br><br>In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using Resource Manager templates.        |
 
 
 ## Next steps
 
-- [About Azure Stack HCI, version 23H2 deployment](../deploy/deployment-introduction.md).
+- [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md).

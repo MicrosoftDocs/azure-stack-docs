@@ -1,25 +1,25 @@
 ---
-title: Host network requirements for Azure Stack HCI
-description: Learn the host network requirements for Azure Stack HCI
+title: Host network requirements for Azure Local
+description: Learn the host network requirements for Azure Local
 author: dcuomo
 ms.topic: how-to
-ms.date: 06/24/2024
+ms.date: 10/17/2024
 ms.author: dacuo
 ---
 
-# Host network requirements for Azure Stack HCI
+# Host network requirements for Azure Local
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
+This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between machines, see [Physical network requirements](physical-network-requirements.md).
 
 For information on how to simplify host networking using Network ATC, see [Simplify host networking with Network ATC](../deploy/network-atc.md).
 
 ## Network traffic types
 
-Azure Stack HCI network traffic can be classified by its intended purpose:
+Azure Local network traffic can be classified by its intended purpose:
 
-- **Management traffic:** Traffic to or from outside the local cluster. For example, storage replica traffic or traffic used by the administrator for management of the cluster like Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Management traffic:** Traffic to or from outside the local system. For example, storage replica traffic or traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc.
 - **Compute traffic:** Traffic originating from or destined to a virtual machine (VM).
 - **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration. This traffic is layer-2 traffic and is not routable.
 
@@ -29,9 +29,9 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 ## Select a network adapter
 
-Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
+Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
-For more information about this role-based NIC qualification, please see this [link](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
+For more information about this role-based NIC qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
@@ -48,7 +48,7 @@ For more information about this role-based NIC qualification, please see this [l
 
 ## Driver Requirements
 
-Inbox drivers are not supported for use with Azure Stack HCI. To identify if your adapter is using an inbox driver, run the following cmdlet. An adapter is using an inbox driver if the **DriverProvider** property is **Microsoft.**
+Inbox drivers are not supported for use with Azure Local. To identify if your adapter is using an inbox driver, run the following cmdlet. An adapter is using an inbox driver if the **DriverProvider** property is **Microsoft.**
 
 ```Powershell
 Get-NetAdapter -Name <AdapterName> | Select *Driver*
@@ -56,7 +56,7 @@ Get-NetAdapter -Name <AdapterName> | Select *Driver*
 
 ## Overview of key network adapter capabilities
 
-Important network adapter capabilities used by Azure Stack HCI include:
+Important network adapter capabilities used by Azure Local include:
 
 - Dynamic Virtual Machine Multi-Queue (Dynamic VMMQ or d.VMMQ)
 - Remote Direct Memory Access (RDMA)
@@ -91,7 +91,7 @@ RDMA enables high-throughput, low-latency networking, using minimal host CPU res
 
 All adapters with Storage (Standard) or Storage (Premium) qualification support host-side RDMA. For more information on using RDMA with guest workloads, see the "Guest RDMA" section later in this article.
 
-Azure Stack HCI supports RDMA with either the Internet Wide Area RDMA Protocol (iWARP) or RDMA over Converged Ethernet (RoCE) protocol implementations.
+Azure Local supports RDMA with either the Internet Wide Area RDMA Protocol (iWARP) or RDMA over Converged Ethernet (RoCE) protocol implementations.
 
 > [!IMPORTANT]
 > RDMA adapters only work with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
@@ -99,7 +99,7 @@ Azure Stack HCI supports RDMA with either the Internet Wide Area RDMA Protocol (
 Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification which require RDMA support.
 
 > [!NOTE]
-> InfiniBand (IB) is not supported with Azure Stack HCI.
+> InfiniBand (IB) is not supported with Azure Local.
 
 |NIC vendor|iWARP|RoCE|
 |----|----|----|
@@ -149,23 +149,23 @@ For more information, download the document from the [SDN GitHub repo](https://g
 
 ### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic and is supported with up to eight adapters in the same team.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local. SET works well with compute, storage, and management traffic and is supported with up to eight adapters in the same team.
 
 **Applicable traffic types:** compute, storage, and management
 
 **Certifications required:** Compute (Standard) or Compute (Premium)
 
-SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
+SET is the only teaming technology supported by Azure Local. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Azure Stack HCI doesn't support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Local doesn't support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Local](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Local.
 
-SET is important for Azure Stack HCI because it's the only teaming technology that enables:
+SET is important for Azure Local because it's the only teaming technology that enables:
 
 - Teaming of RDMA adapters (if needed).
 - Guest RDMA.
 - Dynamic VMMQ.
-- Other key Azure Stack HCI features (see [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642)).
+- Other key Azure Local features (see [Teaming in Azure Local](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642)).
 
 SET requires the use of symmetric (identical) adapters. Symmetric network adapters are those that have the same:
 
@@ -194,11 +194,11 @@ If you implement DCB, you must ensure that the PFC and ETS configuration is impl
 
 For detailed information on how to deploy RDMA, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
-RoCE-based Azure Stack HCI implementations require the configuration of three PFC traffic classes, including the default traffic class, across the fabric and all hosts.
+RoCE-based Azure Local implementations require the configuration of three PFC traffic classes, including the default traffic class, across the fabric and all hosts.
 
-#### Cluster traffic class
+#### System traffic class
 
-This traffic class ensures that there's enough bandwidth reserved for cluster heartbeats:
+This traffic class ensures that there's enough bandwidth reserved for system heartbeats:
 
 - Required: Yes
 - PFC-enabled: No
@@ -218,7 +218,7 @@ This traffic class ensures that there's enough bandwidth reserved for lossless R
 
 #### Default traffic class
 
-This traffic class carries all other traffic not defined in the cluster or RDMA traffic classes, including VM traffic and management traffic:
+This traffic class carries all other traffic not defined in the system or RDMA traffic classes, including VM traffic and management traffic:
 
 - Required: By default (no configuration necessary on the host)
 - Flow control (PFC)-enabled: No
@@ -227,24 +227,24 @@ This traffic class carries all other traffic not defined in the cluster or RDMA 
 
 ## Storage traffic models
 
-SMB provides many benefits as the storage protocol for Azure Stack HCI, including SMB Multichannel. SMB Multichannel isn't covered in this article, but it's important to understand that traffic is multiplexed across every possible link that SMB Multichannel can use.
+SMB provides many benefits as the storage protocol for Azure Local, including SMB Multichannel. SMB Multichannel isn't covered in this article, but it's important to understand that traffic is multiplexed across every possible link that SMB Multichannel can use.
 
 > [!NOTE]
->We recommend using multiple subnets and VLANs to separate storage traffic in Azure Stack HCI.
+>We recommend using multiple subnets and VLANs to separate storage traffic in Azure Local.
 
-Consider the following example of a four node cluster. Each server has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first server (192.168.1.1) will make a connection to the left-side port on the second server (192.168.1.2). The right-side port on the first server (192.168.1.12) will connect to the right-side port on the second server. Similar connections are established for the third and fourth servers.
+Consider the following example of a four node system. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
-:::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node cluster on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node system on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
 
 The recommended approach is to use separate subnets and VLANs for each set of adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
 
-:::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node cluster on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node system on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
 
 ## Traffic bandwidth allocation
 
-The following table shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Stack HCI. Note that this is an example of a *converged solution*, where all traffic types (compute, storage, and management) run over the same physical adapters, and are teamed by using SET.
+The following table shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Local. Note that this is an example of a *converged solution*, where all traffic types (compute, storage, and management) run over the same physical adapters, and are teamed by using SET.
 
 Because this use case poses the most constraints, it represents a good baseline. However, considering the permutations for the number of adapters and speeds, this should be considered an example and not a support requirement.
 
@@ -296,7 +296,7 @@ Here is the example bandwidth allocation table:
 
 ## Stretched clusters
 
-Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
+Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched cluster of Azure Local looks like this:
 
 
 
@@ -305,13 +305,13 @@ Stretched clusters provide disaster recovery that spans multiple datacenters. In
 ### Stretched cluster requirements
 
 > [!IMPORTANT]
-> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+> Stretched cluster functionality is only available in Azure Local, version 22H2.
 
 Stretched clusters have the following requirements and characteristics:
 
 - RDMA is limited to a single site, and isn't supported across different sites or subnets.
 
-- Servers in the same site must reside in the same rack and Layer-2 boundary.
+- Machines in the same site must reside in the same rack and Layer-2 boundary.
 
 - Host communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies aren't supported.
 

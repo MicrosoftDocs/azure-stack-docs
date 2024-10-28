@@ -10,7 +10,7 @@ ms.date: 05/30/2023
 
 # What's new in Azure Stack HCI, version 22H2
 
-[!INCLUDE [hci-applies-to-supplemental-package-22h2](../includes/hci-applies-to-supplemental-package-22h2.md)]
+[!INCLUDE [hci-applies-to-supplemental-package-22h2](../hci/includes/hci-applies-to-supplemental-package-22h2.md)]
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 22H2. This article also describes the Azure Stack HCI, Supplemental Package that can be deployed in conjunction with Azure Stack HCI, version 22H2 OS.
 
@@ -21,7 +21,7 @@ You can also join the Azure Stack HCI preview channel to test out features for f
 The following sections briefly describe the various features and enhancements in [Azure Stack HCI, Supplemental Package](#azure-stack-hci-supplemental-package-preview) and in [Azure Stack HCI, version 22H2](#azure-stack-hci-version-22h2).
 
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../hci/includes/hci-preview.md)]
 
 ## Azure Stack HCI, Supplemental Package (preview)
 
@@ -31,17 +31,17 @@ Azure Stack HCI, Supplemental Package is now available to be deployed on servers
 
 For servers running Azure Stack HCI, version 22H2 OS, you can perform new deployments using the Azure Stack HCI, Supplemental Package (preview). You can deploy an Azure Stack HCI cluster via a brand new deployment tool in one of the three ways - interactively, using an existing configuration file, or via PowerShell.
 
-[!INCLUDE [hci-deployment-tool-sp](../includes/hci-deployment-tool-sp.md)]
+[!INCLUDE [hci-deployment-tool-sp](../hci/includes/hci-deployment-tool-sp.md)]
 
 To learn more about the new deployment methods, see [Deployment overview](../hci/deploy/deployment-tool-introduction.md).
 
 ### New security capabilities (preview)
 
-[!INCLUDE [hci-security-capabilities-sp](../includes/hci-security-capabilities-sp.md)]
+[!INCLUDE [hci-security-capabilities-sp](../hci/includes/hci-security-capabilities-sp.md)]
 
 ### New Azure Stack HCI Environment Checker tool (preview)
 
-[!INCLUDE [hci-environment-checker-sp](../includes/hci-environment-checker-sp.md)]
+[!INCLUDE [hci-environment-checker-sp](../hci/includes/hci-environment-checker-sp.md)]
 
 ## Azure Stack HCI, version 22H2
 

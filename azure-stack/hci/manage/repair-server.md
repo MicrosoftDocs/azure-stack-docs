@@ -9,7 +9,7 @@ ms.date: 10/11/2024
 
 # Repair a server on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
@@ -56,7 +56,7 @@ The other workload volumes that you created after the deployment are still retai
 
 When repairing a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
 
 ### Server replacement
 
@@ -96,7 +96,7 @@ The actual replacement steps for non hot-swappable components vary based on your
 
 Before you repair a server, you must ensure that:
 
-[!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
+[!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
 
 - If needed, take the server that you have identified for repair offline. Follow the steps here:
 
@@ -160,7 +160,7 @@ Follow these steps on another server that is a member of the same Azure Stack HC
 
 To monitor the progress of the add server operation, follow these steps:
 
-[!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
+[!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
 
 ### Recovery scenarios
 

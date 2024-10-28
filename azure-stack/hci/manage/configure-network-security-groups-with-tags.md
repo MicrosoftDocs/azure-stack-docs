@@ -12,9 +12,7 @@ ms.date: 10/22/2024
 
 # Configure network security groups with tags in Windows Admin Center
 
-:::zone pivot="azure-stack-hci"
-
-[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 ::: zone-end
 

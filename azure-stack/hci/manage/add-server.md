@@ -9,7 +9,7 @@ ms.date: 10/10/2024
 
 # Add a server on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster.
 
@@ -66,7 +66,7 @@ However, the default resiliency settings are updated at the storage pool level a
 
 When adding a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the cluster.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../../includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ Make sure to complete the following prerequisites:
 
 Make sure to complete the following prerequisites:
 
-[!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
+[!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
 
 ## Add a server
 
@@ -139,7 +139,7 @@ On a server that already exists on your cluster, follow these steps:
 
 To monitor the progress of the add server operation, follow these steps:
 
-[!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
+[!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
 
 The newly added server shows in the Azure portal in your Azure Stack HCI cluster list after several hours. To force the server to show up in Azure portal, run the following command:
 

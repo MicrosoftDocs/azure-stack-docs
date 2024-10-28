@@ -12,9 +12,7 @@ ms.date: 10/10/2024
 
 # Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
 
-:::zone pivot="azure-stack-hci"
-
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 ::: zone-end
 
@@ -173,7 +171,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
     In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
 
-    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../hci/includes/hci-display-correct-default-network-policies-windows.md)]
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
 
@@ -185,7 +183,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
     In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
 
-    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
+    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../hci/includes/hci-display-correct-default-network-policies-windows.md)]
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
 

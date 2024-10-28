@@ -1,51 +1,51 @@
 ---
-title: Monitor Azure Stack HCI features with Insights
-description: Monitor Azure Stack HCI features with Insights.
+title: Monitor Azure Local features with Insights
+description: Monitor Azure Local features with Insights.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 02/27/2024
+ms.date: 10/10/2024
 ---
 
-# Monitor Azure Stack HCI features with Insights
+# Monitor Azure Local features with Insights
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Insights to monitor key Azure Stack HCI features, such as Resilient File System (ReFS) deduplication and compression.
+This article describes how to use Insights to monitor key Azure Local features, such as Resilient File System (ReFS) deduplication and compression.
 
-To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md) and [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
+To monitor Azure Local systems with Insights, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md) and [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md).
 
 ## About using Insights to monitor features
 
-Insights for Azure Stack HCI collects logs for different Azure Stack HCI features, which are processed using Kusto Query Language (KQL), and then visualized using the [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+Insights for Azure Local collects logs for different Azure Local features, which are processed using Kusto Query Language (KQL), and then visualized using the [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview).
 
-Enabling Insights on your Azure Stack HCI cluster provides access to a set of sample workbooks that you can use as-is or as a starting point to create custom workbooks. These workbooks help visualize the collected data and gain insights into the key Azure Stack HCI features, including:
+Enabling Insights on your Azure Local system provides access to a set of sample workbooks that you can use as-is or as a starting point to create custom workbooks. These workbooks help visualize the collected data and gain insights into the key Azure Local features, including:
 
 - **ReFS deduplication and compression.** Monitor and analyze savings, performance impact, and jobs related to the ReFS deduplication and compression feature. See [Monitor ReFS deduplication and compression](#monitor-refs-deduplication-and-compression).
 
 ## Prerequisites
 
-You must complete the following prerequisites before you can use Insights for monitoring Azure Stack HCI features:
+You must complete the following prerequisites before you can use Insights for monitoring Azure Local features:
 
-- You must have access to an Azure Stack HCI, version 23H2 cluster deployed, registered, and connected to Azure.
+- You must have access to an Azure Local, version 23H2 system that's deployed, registered, and connected to Azure.
 
-- Your cluster must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
+- Your system must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
-- You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights).
+- You must have [Insights enabled on the system](./monitor-hci-single-23h2.md#enable-insights).
 
 ## Monitor features with Insights
 
-Follow these steps to monitor Azure Stack HCI features with Insights:
+Follow these steps to monitor Azure Local features with Insights:
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
 
-1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, and then select your cluster.
+1. In the Azure portal, browse to your Azure Local system resource page, and then select your cluster.
 
 1. Select **Insights** from the left pane, and then select the **Overview** tab.
 
-    This tab provides a list of Azure Stack HCI features available for monitoring, along with descriptions of what is monitored, and the current monitoring status.
+    This tab provides a list of Azure Local features available for monitoring, along with descriptions of what is monitored, and the current monitoring status.
 
     :::image type="content" source="media/monitor-features/overview-tab.png" alt-text="Screenshot of the Overview tab." lightbox="media/monitor-features/overview-tab.png":::
 
@@ -121,7 +121,7 @@ Follow these steps to update Insights:
 
 ## Monitor ReFS deduplication and compression
 
-ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It's a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](../index.yml).
+ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It's a post-process solution and carries out block-level deduplication and compression at a fixed block size based on the system size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Local](./refs-deduplication-and-compression.md).
 
 Follow these steps to start monitoring the ReFS deduplication and compression feature:
 
@@ -238,5 +238,5 @@ For information about what data is collected and the different tabs on the workb
 
 ## Next steps
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
-- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)

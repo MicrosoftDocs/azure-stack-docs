@@ -1,28 +1,28 @@
 ---
-title: Manage including restart, start, stop or delete Arc VMs on Azure Stack HCI 
-description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on Azure Stack HCI, version 23H2.
+title: Manage including restart, start, stop or delete Arc VMs on Azure Local 
+description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 09/13/2024
+ms.date: 10/24/2024
 ---
 
-# Manage Arc VMs on Azure Stack HCI
+# Manage Arc VMs on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. The procedures to enable guest management, start, stop, restart, pause, save, or delete an Arc VM, are detailed.
+This article describes how to manage Arc virtual machines (VMs) running on Azure Local, version 23H2. The procedures to enable guest management, start, stop, restart, pause, save, or delete an Arc VM, are detailed.
 
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure you have access to an Azure Stack HCI cluster that is deployed and registered. During the deployment, an Arc Resource Bridge and a custom location are also created.
+1. Make sure you have access to an Azure Local instance that is deployed and registered. During the deployment, an Arc Resource Bridge and a custom location are also created.
 
-   Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
+   Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for your Azure Local. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
-1. Make sure you have one or more Arc VMs running on this Azure Stack HCI cluster. For more information, see [Create Arc VMs on Azure Stack HCI](./create-arc-virtual-machines.md).
+1. Make sure you have one or more Arc VMs running on your Azure Local. For more information, see [Create Arc VMs on Azure Local](./create-arc-virtual-machines.md).
 
 ## Enable guest management
 
@@ -30,17 +30,17 @@ After you created a VM, you would want to enable guest management on that VM.
 
 There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected Machine agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it.
 
-When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI VM.
+When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your VM.
 
 Here are some key considerations for enabling guest management on a VM after provisioning it:
 
-- Make sure that your Azure Stack HCI cluster is running 2311 or later.
+- Make sure that your Azure Local is running 2311 or later.
 - Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
 - The steps to enable guest management differ based on whether a guest agent is running on your Arc VM.
 
 ### Verify if guest agent is running
 
-1. To verify whether the guest agent is running on the Arc VM, connect to the Azure Stack HCI server.
+1. To verify whether the guest agent is running on the Arc VM, connect to the machine.
 1. Run the following command:
 
     ```azurecli
@@ -84,7 +84,7 @@ If your statuses do not match the above output, follow the steps in [Enable gues
 To enable guest management on an Arc VM that has guest agent running, run the following command:
 
 ```azurecli
-az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
 ```
 Guest management is enabled by setting the `enable-agent parameter` to `true`. Guest management should take a few minutes to get enabled.
 
@@ -138,10 +138,10 @@ Follow these steps:
 
     :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot showing that the guest agent is successfully enabled on the VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
 
-1. Connect to one of the Azure Stack HCI servers. Run the following command to enable guest management.
+1. Connect to one of the machines. Run the following command to enable guest management.
 
    ```azurecli
-   az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+   az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
    ```
 
 Follow the steps to [verify that the guest management is enabled in the Azure portal](#verify-guest-management-is-enabled-in-the-azure-portal).
@@ -160,7 +160,7 @@ Your status shows as null. This indicates the required *iso* for guest agent is 
 
 Follow these steps:
 
-1. Connect to Azure Stack HCI server.
+1. Connect to a machine.
 1. Run the following command:
 
     ```azurecli
@@ -173,7 +173,7 @@ Follow these steps:
 #### Verify guest management is enabled in the Azure portal
 
 1. Go to the Azure portal. 
-1. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. 
+1. Navigate to **Your Azure Local > Virtual machines** and then select the VM on which you enabled the guest management. 
 1. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
@@ -181,9 +181,9 @@ Follow these steps:
 
 ## View VM properties
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to view VM properties.
+Follow these steps in the Azure portal of your Azure Local to view VM properties.
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select the name of the VM whose properties you wish to view.
 
@@ -195,9 +195,9 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to view VM
 
 ## Start a VM
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to start a VM.
+Follow these steps in the Azure portal of your Azure Local to start a VM.
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that isn't running and you wish to start.
 
@@ -209,9 +209,9 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to start a
 
 ## Stop a VM
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to stop a VM.
+Follow these steps in the Azure portal of your Azure Local to stop a VM.
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that is running and you wish to stop.
 
@@ -223,9 +223,9 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to stop a 
 
 ## Restart a VM
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to restart a VM.
+Follow these steps in the Azure portal of your Azure Local to restart a VM.
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that is stopped and you wish to restart.
 
@@ -239,7 +239,7 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to restart
 
 Pausing the VMs is useful to save the compute resources when you are not using the VMs. Pausing a VM stops any CPU activity. You can only pause running VMs. Once paused, you can resume the VM later.
 
-1. [Connect to the server node of your Azure Stack HCI system](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 1. To pause the VM, run the following PowerShell cmdlet:
 
     ```azurecli
@@ -520,7 +520,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
 
 Saving a VM stores the current state of the VM to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can only save running VMs.
 
-1. [Connect to the server node of your Azure Stack HCI system](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 1. To save the VM, run the following PowerShell cmdlet:
 
     ```azurecli
@@ -797,9 +797,9 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 ## Delete a VM
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to remove a VM.
+Follow these steps in the Azure portal of your Azure Local to remove a VM.
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to the Azure Local resource and then go to **Virtual machines**.
 
 1. In the right pane, from the list of virtual machines, select a VM that you wish to remove from your system.
 
@@ -819,9 +819,9 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to remove 
 
 ## Change cores and memory
 
-Follow these steps in the Azure portal of your Azure Stack HCI system to change cores and memory.
+Follow these steps in the Azure portal of your Azure Local to change cores and memory.
 
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 
 1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
 

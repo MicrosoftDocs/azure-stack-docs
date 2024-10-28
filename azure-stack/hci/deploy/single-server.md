@@ -11,9 +11,9 @@ ms.date: 01/31/2024
 
 # Deploy Azure Stack HCI on a single server
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
-[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+[!INCLUDE [warning-22h2](../../hci/includes/hci-warning-deploy-22h2.md)]
 
 This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 

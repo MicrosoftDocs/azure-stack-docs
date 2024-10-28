@@ -1,17 +1,17 @@
 ---
-title: Review single-server storage reference pattern IP requirements for Azure Stack HCI
-description: Review single-server storage reference pattern IP requirements for Azure Stack HCI.
+title: Review single-server storage reference pattern IP requirements for Azure Local
+description: Review single-server storage reference pattern IP requirements for Azure Local.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 03/21/2024
+ms.date: 10/17/2024
 ---
 
-# Review single-server storage reference pattern IP requirements for Azure Stack HCI
+# Review single-server storage reference pattern IP requirements for Azure Local
 
-[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes the IP requirements for deploying a single-server network reference pattern in your environment.
 
@@ -56,4 +56,4 @@ The following table lists network attributes for deployments SDN optional servic
 
 ## Next steps
 
-- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)
+- [Download Azure Local](../deploy/download-software.md)

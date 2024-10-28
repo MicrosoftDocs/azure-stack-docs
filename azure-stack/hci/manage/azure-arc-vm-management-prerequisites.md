@@ -1,41 +1,41 @@
 ---
 title: Azure Arc VM management prerequisites
-description: Learn about the prerequisites for deploying Azure Arc VM management.
+description: Learn about the prerequisites for deploying Azure Arc VM management for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 08/23/2024
+ms.date: 10/24/2024
 ---
 
 # Azure Arc VM management prerequisites
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article lists the requirements and prerequisites for Azure Arc VM management. We recommend that you review the requirements and complete the prerequisites before you manage your Arc VMs. 
+This article lists the requirements and prerequisites for Azure Arc VM management on Azure Local. We recommend that you review the requirements and complete the prerequisites before you manage your Arc VMs.
 
 ## Azure requirements
 
 The Azure requirements include:
 
-- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Stack HCI Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 
-- Arc VM management infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Arc VM management on Azure Stack HCI, all entities must be registered, enabled, or created in the same region.
+- Arc VM management infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Arc VM management on Azure Local, all entities must be registered, enabled, or created in the same region.
 
-  The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
+  The entities include your Azure Local instance, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
 
-## Azure Stack HCI cluster requirements
+## Azure Local requirements
 
-- You have access to an Azure Stack HCI system that is deployed, has an Arc Resource Bridge and a custom location.
+- You have access to an Azure Local that is deployed, has an Arc Resource Bridge, and a custom location.
 
-  - Go to the **Overview > Server** page in the Azure Stack HCI system resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
+  - Go to the **Overview > Server** page in the Azure Local resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your system.
     
-       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
+       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
 ## Arc VM image requirements
 
-For Arc VM images to be used on Azure Stack HCI, make sure to satisfy the following requirements:
+For Arc VM images to be used on Azure Local, make sure to satisfy the following requirements:
 
 - Use only the English (en-us) language VHDs to create VM images.
 - Do not use Azure Virtual machine VHD disk to create VM images.
@@ -44,21 +44,21 @@ For Arc VM images to be used on Azure Stack HCI, make sure to satisfy the follow
 
 Skip this section if not using Azure CLI to provision and manage Arc VMs and VM resources.
 
-You can connect to Azure Stack HCI system directly or you can access the cluster remotely. Depending on whether you're connecting to the cluster directly or remotely, the steps are different.
+You can connect to your Azure Local system directly or you can access the system remotely. Depending on whether you're connecting to the system directly or remotely, the steps are different.
 
-For information on Azure CLI commands for Azure Stack HCI VMs, see [az stack-hci-vm](/cli/azure/stack-hci-vm).
+For information on Azure CLI commands for Azure Local VMs, see [az stack-hci-vm](/cli/azure/stack-hci-vm).
 
-### Connect to the cluster directly
+### Connect to the system directly
 
-If you're accessing the Azure Stack HCI cluster directly, no steps are needed on your part.
+If you're accessing your Azure Local directly, no steps are needed on your part.
 
-During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
+During the system deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the system. You can connect to and manage the system using the Azure CLI extension.
 
-### Connect to the cluster remotely
+### Connect to the system remotely
 
-If you're accessing the Azure Stack HCI system remotely, the following requirements must be met:
+If you're accessing your Azure Local remotely, the following requirements must be met:
  
-- The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you're using to connect to your Azure Stack HCI cluster.
+- The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you're using to connect to your Azure Local.
 
   - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
   
@@ -66,7 +66,7 @@ If you're accessing the Azure Stack HCI system remotely, the following requireme
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Stack HCI extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command:
+- The Azure Local extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command:
 
   ```PowerShell
   az extension add --name "stack-hci-vm"

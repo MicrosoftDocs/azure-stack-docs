@@ -1,20 +1,20 @@
 ---
-title: Create Azure Stack HCI VM from local share images via Azure CLI 
-description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster.
+title: Create Azure Local VM from local share images via Azure CLI 
+description: Learn how to create Azure Local VM images using source images from a local share on your system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/27/2024
+ms.date: 10/28/2024
 ---
 
-# Create Azure Stack HCI VM image using images in a local share
+# Create Azure Local VM image using images in a local share
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for Azure Local using source images from a local share. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
 
 ## Prerequisites
@@ -23,18 +23,18 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-image-prerequisites-local-share](../../includes/hci-vm-image-prerequisites-local-share.md)]
+[!INCLUDE [hci-vm-image-prerequisites-local-share](../../hci/includes/hci-vm-image-prerequisites-local-share.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-image-prerequisites-local-share](../../includes/hci-vm-image-prerequisites-local-share.md)]
+[!INCLUDE [hci-vm-image-prerequisites-local-share](../../hci/includes/hci-vm-image-prerequisites-local-share.md)]
 ---
 
 ## Add VM image from image in local share
 
-You create a VM image starting from an image in a local share of your cluster and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an image in a local share of your system and then use this image to deploy VMs on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -42,7 +42,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set some parameters
 
@@ -51,7 +51,7 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Resource group>"
-    $location = "<Location for your Azure Stack HCI cluster>"
+    $location = "<Location for your Azure Local>"
     $imageName = <VM image name>
     $imageSourcePath = <path to the source image>
     $osType = "<OS of source image>"
@@ -61,33 +61,33 @@ Follow these steps to create a VM image using the Azure CLI.
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
+    | `subscription`   | Subscription group for Azure Local that you associate with this image.        |
+    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
+    | `location`       | Location for your Azure Local. For example, this could be `eastus`. |
     | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-    | `name`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
+    | `name`| Path to the source gallery image (VHDX only) on your system. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
     
     Here's a sample output:
     
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "myhci-rg"
+    PS C:\Users\azcli> $resource_group = "mylocalrg"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
-    PS C:\ClusterStorage\Volume1> $imageName = "myhci-localimage"
+    PS C:\ClusterStorage\Volume1> $imageName = "mylocal-localimage"
     PS C:\ClusterStorage\Volume1> $imageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
     ```
 
 ### Create VM image from image in local share
 
-1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
+1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local. Get the custom location ID for your Azure Local. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for system>" --query id -o tsv)
     ```
 
-1. Create the VM image starting with a specified image in a local share on your Azure Stack HCI cluster.
+1. Create the VM image starting with a specified image in a local share on your Azure Local.
 
     ```azurecli
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
@@ -111,12 +111,12 @@ type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osTy
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-localimage",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-localimage",
   "location": "eastus",
-  "name": "myhci-localimage",
+  "name": "mylocal-localimage",
   "properties": {
     "identifier": null,
     "imagePath": null,
@@ -159,9 +159,9 @@ PS C:\Users\azcli>
 
 # [Azure portal](#tab/azureportal)
 
-You can create a VM image by downloading an image that resides in a local share on your Azure Stack HCI cluster and then use that VM image to deploy a virtual machine.
+You can create a VM image by downloading an image that resides in a local share on your Azure Local and then use that VM image to deploy a virtual machine.
 
-In the Azure portal of your Azure Stack HCI cluster resource, perform the following steps:
+In Azure portal for your Azure Local resource, perform the following steps:
 
 1. Go to **Resources** > **VM images**.
 
@@ -177,7 +177,7 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
+    1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Local.
 
     1. **OS type.** Select the OS of the image as Windows or Linux. This is the OS associated with the image in your Storage account.
 
@@ -185,9 +185,9 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
     1. **Source.** The source of the image should be **Local file share** and is automatically populated.
 
-    1. **Local file share path.** Specify the local share path for the source image on your HCI cluster.
+    1. **Local file share path.** Specify the local share path for the source image on your system.
 
-    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the specified storage path has sufficient storage space.
+    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Local instance. In this case, ensure that the specified storage path has sufficient storage space.
 
 1. Select **Review + Create** to create your VM image.
 
@@ -199,7 +199,7 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
    An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the custom image and the network bandwidth available for the download.
 
-   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
+   You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the system.
 
 1. When the image download is complete, the VM image shows up in the list of images and the **Status** shows as **Available**. To view more details of any image, select the VM image name from the list of VM images.
 
@@ -211,12 +211,12 @@ You need to view the list of VM images to choose an image to manage.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
+[!INCLUDE [hci-list-vm-image-azure-cli](../../hci/includes/hci-list-vm-image-azure-cli.md)]
 
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
+[!INCLUDE [hci-list-vm-image-portal](../../hci/includes/hci-list-vm-image-portal.md)]
 
 ---
 
@@ -226,11 +226,11 @@ You might want to view the properties of VM images before you use the image to c
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-view-vm-image-properties-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
+[!INCLUDE [hci-view-vm-image-properties-portal](../../hci/includes/hci-view-vm-image-properties-portal.md)]
 
 ---
 
@@ -241,11 +241,11 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
+[!INCLUDE [hci-delete-vm-image-portal](../../hci/includes/hci-delete-vm-image-portal.md)]
 
 ---
 

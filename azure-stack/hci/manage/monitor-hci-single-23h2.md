@@ -1,30 +1,30 @@
 ---
-title: Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
-description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI, version 23H2 cluster using Insights.
+title: Monitor a single Azure Local, version 23H2 system with Insights
+description: Enable logging and monitoring capabilities to monitor a single Azure Local, version 23H2 system using Insights.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 04/22/2024
+ms.date: 10/10/2024
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
+# Monitor a single Azure Local, version 23H2 system with Insights
 
-[!INCLUDE [applies-to-23H2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to-23H2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
+This article describes how to use Insights to monitor a single Azure Local system. For multiple Azure Local systems, see [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md).
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system. You can view key metrics, health, and usage information regarding cluster, nodes, virtual machines, and storage.
 
-Take a few moments to watch the video walkthrough on Insights for Azure Stack HCI:
+Take a few moments to watch the video walkthrough on Insights for Azure Local:
 
 > [!VIDEO https://www.youtube.com/embed/Cet2s5pnY7k]
 
 ## Benefits
 
-Insights for Azure Stack HCI offers the following benefits:
+Insights for Azure Local offers the following benefits:
 
 - **Managed by Azure.** Insights is managed by Azure and accessed through the Azure portal, ensuring it's always up to date. There's no need for database or special software setup.
 
@@ -34,21 +34,21 @@ Insights for Azure Stack HCI offers the following benefits:
 
 ## Prerequisites
 
-Here are the prerequisites of using Insights for Azure Stack HCI:
+Here are the prerequisites of using Insights for Azure Local:
 
-- You must have access to an Azure Stack HCI cluster that is deployed and registered.
+- You must have access to an Azure Local system that is deployed and registered.
 
 - The managed identity for the Azure resource must be enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 
 ## Enable Insights
 
-Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Stack HCI cluster.
+Enabling Insights helps you monitor all the Azure Local systems currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Local system.
 
-To enable Insights at scale, see [Enable Insights for Azure Stack HCI at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
 
 Follow these steps to enable Insights from the Azure portal:
 
-1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, then select your cluster. Under the **Capabilities** tab, select **Insights**.
+1. In the Azure portal, browse to your Azure Local resource page, then select your system. Under the **Capabilities** tab, select **Insights**.
 
    :::image type="content" source="media/monitor-hci-single-23h2/insights-tile.png" alt-text="Screenshot showing the Insights tile." lightbox="media/monitor-hci-single-23h2/insights-tile.png":::
 
@@ -82,7 +82,7 @@ Follow these steps to enable Insights from the Azure portal:
 
    After selecting **Set up**, you're redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
 
-1. Go to your Azure Stack HCI cluster resource page, and then select your cluster. Insights now shows as **Configured** on the **Capabilities** tab:
+1. Go to your Azure Local resource page, and then select your system. Insights now shows as **Configured** on the **Capabilities** tab:
 
    :::image type="content" source="media/monitor-hci-single-23h2/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single-23h2/insights-configured.png":::
 
@@ -102,7 +102,7 @@ The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-healt
 
 :::image type="content" source="media/monitor-hci-single-23h2/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-hci-single-23h2/event-channel.png":::
 
-By collecting these logs, Insights shows the health status of the individual servers, drives, volumes, and VMs. By default, five performance counters are added.
+By collecting these logs, Insights shows the health status of the individual nodes, drives, volumes, and VMs. By default, five performance counters are added.
 
 #### Performance counters
 
@@ -153,7 +153,7 @@ To enable Insights again, follow these steps:
 
 ## Troubleshoot
 
-This section gives guidance for resolving the issues with using Insights for Azure Stack HCI.
+This section gives guidance for resolving the issues with using Insights for Azure Local.
 
 ### Troubleshoot blank Workbooks page with no data populated
 
@@ -185,35 +185,35 @@ Provides health faults on a cluster.
 | Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
 | Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {1245340c-780b-4afc-af3c-f9bdc4b12f8a}: SP:{c57f23d1-d784-4a42-8b59-4edd8e70e830} |
 | Severity | Severity of fault could be warning or critical. | No unit | Warning |
-| Initial fault time | Timestamp of when server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
+| Initial fault time | Timestamp of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
-### Server
+### Nodes
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Servers | The names of the servers in the cluster. | No unit | VM-1 |
-| Last updated | The date and time of when the server was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
-| Status | The health of server resources in the cluster. | It can be healthy, warning, critical, and other | Healthy |
+| Nodes | The names of the nodes in the cluster. | No unit | VM-1 |
+| Last updated | The date and time of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
+| Status | The health status of the nodes in the cluster. | It can be healthy, warning, critical, and other | Healthy |
 | CPU usage | The % of time the process has used the CPU. | Percent | 56% |
-| Memory usage | Memory usage of the server process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | 16% |
+| Memory usage | Memory usage of the node process is equal to counter Process\Private Bytes plus the size of memory-mapped data. | Percent | 16% |
 | Logical processors | The number of logical processors. | Count | 2 |
 | CPUs | The number of CPUs. | Count | 2 |
 | Uptime | The time during which a machine, especially a computer, is in operation. | Timespan | 2.609 hr. |
-| Site | The name of the site to which the server belongs. | Site name | SiteA |
-| Domain name | The local domain to which the server belongs. | No unit | Contoso.local |
+| Site | The name of the site to which the node belongs. | Site name | SiteA |
+| Domain name | The local domain to which the node belongs. | No unit | Contoso.local |
 
 ### Virtual machines
 
-Provides the state of all the virtual machines in the cluster. A VM can be in one of the following states: Running, Stopped, Failed, or Other (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended).
+Provides the state of the virtual machines on each node in the cluster. A VM can be in one of the following states: Running, Stopped, Failed, or Other (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended).
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|
-| Servers | The name of the server. | No unit | Sample-VM-1 |
-| Last Updated | This gives the date and time of when the server was last updated | Datetime | 4/9/2022, 12:24:02 PM |
-| Total VMs | The number of VMs in a server node. | Count | 0 of 0 running |
-| Running | The number of VMs running in a server node. | Count | 2 |
-| Stopped | The number of VMs stopped in a server node. | Count | 3 |
-| Failed | The number of VMs failed in a server node. | Count | 2 |
+| Nodes | The name of the node. | No unit | Sample-VM-1 |
+| Last Updated | This gives the date and time of when the node was last updated | Datetime | 4/9/2022, 12:24:02 PM |
+| Total VMs | The number of VMs in a node. | Count | 0 of 0 running |
+| Running | The number of VMs running in a node. | Count | 2 |
+| Stopped | The number of VMs stopped in a node. | Count | 3 |
+| Failed | The number of VMs failed in a node. | Count | 2 |
 | Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | Count | 2 |
 
 ### Storage
@@ -247,6 +247,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 
 ## Next steps
 
-- [Monitor multiple clusters with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)

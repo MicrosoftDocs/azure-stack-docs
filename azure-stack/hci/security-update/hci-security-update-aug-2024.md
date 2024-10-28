@@ -1,26 +1,26 @@
 ---
-title:  August 2024 security update (KB 5041573) for Azure Stack HCI, version 23H2
-description: Read about the August 2024 security update (KB 5041573) for Azure Stack HCI, version 23H2.
+title:  August 2024 security update (KB 5041573) for Azure Local, version 23H2
+description: Read about the August 2024 security update (KB 5041573) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/13/2024
+ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# August 2024 OS security update (KB 5041573) for Azure Stack HCI, version 23H2
+# August 2024 OS security update (KB 5041573) for Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on August 13, 2024 and applies to OS build 25398.1085.
+This article describes the OS security update for Azure Local, version 23H2 that was released on August 13, 2024 and applies to OS build 25398.1085.
 
-<!--For an overview of Azure Stack HCI, version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
+<!--For an overview of Azure Local, version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 
 ## Improvements
 
 This security update includes quality improvements. The following key issues and features are present in this update:
 
-- **Stability of clusters on Windows Server 2022**. Servers in the same cluster shutdown when you don't expect them to. This leads to high latency and network availability issues.  
+- **Stability of clusters on Windows Server 2022**. Machines in the same cluster shutdown when you don't expect them to. This leads to high latency and network availability issues.  
 
 - **Bootloader**. A race condition might stop a computer from starting. This occurs when you configure the bootloader to start many operating systems.  
 
@@ -52,7 +52,7 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Local instances](../update/about-updates-23h2.md).
 
 ## File list
 
@@ -60,5 +60,5 @@ For a list of the files that are provided in this update, download the file info
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local, version 23H2.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local, version 23H2.
