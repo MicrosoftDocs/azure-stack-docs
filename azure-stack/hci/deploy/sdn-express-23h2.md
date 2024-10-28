@@ -48,12 +48,12 @@ The following requirements must be met for a successful SDN deployment:
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
 ## Download the GitHub repository
-The SDN Express module is no longer hosted in on the GitHub page. It is now moved to powershell gallery. Please see the Install SDN Express Powershell section for further  details. 
+The SDN Express module is no longer hosted on GitHub. It is now available in powershell gallery. Please see the Install SDN Express Powershell section for further  details. 
 
 ## Install SDN Express Powershell module
-Update (10.25.2024) The SDN Express script files are no longer available in GitHub. Please follow the updated installation instructions as mentioned below. 
+Update (10.25.2024) The SDN Express script files are no longer available in GitHub. Please follow the updated installation method as mentioned below.
 
-1. On the machine where you wish to run the installation of SDN, the latest version of SDN Express must be installed. To install the module please run `Install-Module -Name SDNExpress`. The files will automatically be installed in the default powershell module directory. You can locate them at `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`
+On the machine where you wish to run the installation of SDN, the latest version of SDN Express must be installed. To install the module please run `Install-Module -Name SDNExpress`. The files will automatically be installed in the default powershell module directory. You can locate them at `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`
    
 ## Edit the configuration file
 
