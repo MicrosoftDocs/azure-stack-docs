@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/25/2024
+ms.date: 10/28/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI (preview)
@@ -47,8 +47,11 @@ You can perform on-demand log collection using any of the following methods:
 
 - **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
-   > [!NOTE]
-   > The recommended log collection period is two hours. Avoid log collections longer than 24 hours, as they aren't supported. Additionally, attempting multiple log collections simultaneously will result in failure.
+Keep in mind the following information before you start log collection:
+
+- The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
+- Log collections longer than 24 hours aren't supported.
+- Attempting multiple log collections simultaneously will result in a failure.
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -66,7 +69,7 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
-   You get a notification that it can take up to 30 minutes to collect diagnostics log.
+   You get a notification that it can take up to 30 minutes to collect diagnostic logs.
 
 1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
 
@@ -603,7 +606,7 @@ If you encounter an issue and need help from Microsoft Support, they might ask f
 
 Follow these steps to provide the required information in the Azure portal:
 
-1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log.
+1. In the **Diagnostics** tab, under **Log activity**, select the link under **Time collected** for the relevant log collection.
 
 1. In the **Log detail** pane, note the value of **Correlation ID**, and share it with Microsoft Support for troubleshooting purposes.
 
