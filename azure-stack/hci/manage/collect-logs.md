@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/25/2024
+ms.date: 10/28/2024
 ---
 
 # Collect diagnostic logs for Azure Local
@@ -36,13 +36,13 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 - You must have access to Azure Local.
 - You must have access to Azure.
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local system. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Perform on-demand log collection via PowerShell
 
 You can perform on-demand log collection using PowerShell, the recommended method, or Windows Admin Center in the Azure portal, as described later in this article.
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection.
+Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local system to perform on-demand log collection.
 
 Here are some important points to consider:
 
@@ -109,7 +109,7 @@ FromDate in UTC is now 12/04/2023 20:41:21. ToDate in UTC is now 12/04/2023 21:4
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/v-Host1
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -209,7 +209,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
