@@ -1,19 +1,19 @@
 ---
-title: Troubleshoot issues when migrating Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview)
-description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate (preview).
+title: Troubleshoot issues when migrating Hyper-V VMs to Azure Local using Azure Migrate (preview)
+description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/19/2024
+ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
 ---
 
-# Troubleshoot issues migrating Hyper-V VMs to Azure Stack HCI via Azure Migrate (preview)
+# Troubleshoot issues migrating Hyper-V VMs to Azure Local via Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V VMs to your Azure Stack HCI using Azure Migrate.
+This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V VMs to your Azure Local using Azure Migrate.
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
@@ -84,7 +84,7 @@ Follow these steps to identify the correlation ID for your deployment in Azure p
 
 #### Get job ID for replication or migration
 
-Operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration) are also listed as **Jobs** in the Azure Stack HCI migration section of the portal.
+Operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration) are also listed as **Jobs** in the Azure Local migration section of the portal.
 
 In these cases, the **Job ID** needs to be collected as well.
 
@@ -94,19 +94,19 @@ Follow these steps to get the job ID:
 
     :::image type="content" source="./media/migrate-troubleshoot/get-job-id-1.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview in Azure portal.":::
 
-1. In the left-pane, go to **Azure Stack HCI migration > Jobs**.
+1. In the left-pane, go to **Azure Local migration > Jobs**.
 
 1. Identify the job that you want the job ID for and select the job name.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs > Your job in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Local migration > Jobs > Your job in Azure portal.":::
 
 1. Find the **Job Id**.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Stack HCI migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Local migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
 
 ### For scheduled replication operations  
 
-Failures in scheduled operations like hourly replication cycle failures are listed as **Events** under Azure Stack HCI migration section of the portal.
+Failures in scheduled operations like hourly replication cycle failures are listed as **Events** under Azure Local migration section of the portal.
 
 To troubleshoot replication issues, collect the following information:
 
@@ -155,32 +155,32 @@ Verify the following:
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
 
-### Target cluster validation fails on appliance
+### Target system validation fails on appliance
 
 **Root cause**
 
-The target cluster fails to validate because the cluster FQDN is not DNS-resolvable by default from the appliance.
+The target system fails to validate because the FQDN is not DNS-resolvable by default from the appliance.
 
 :::image type="content" source="./media/migrate-troubleshoot/cluster-fqdn.png" alt-text="Screenshot of Add Cluster Information page." lightbox="./media/migrate-troubleshoot/cluster-fqdn.png":::
 
 **Recommended resolution**
 
-Manually map the Azure stack cluster IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts.*.
 
-Add a new line with the cluster IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
+Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
 
 
-### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work.
+### Deleting or changing target system information from Source Appliance Configuration Manager doesn't work.
 
 **Root cause** 
-When providing information in the Source Appliance Configuration Manager, the target cluster name can't be changed once entered.
+When providing information in the Source Appliance Configuration Manager, the target system name can't be changed once entered.
 
 **Recommended resolution**
-Follow these steps to delete or change the target cluster from the Source Appliance Configuration Manager:
+Follow these steps to delete or change the target system from the Source Appliance Configuration Manager:
 
 1. On your source appliance, open Explorer. Go to *C:\ProgramData\Microsoft Azure\CredStore* and delete the  *TargetClusterCredentials.json*.
 
-1. Reload Appliance Configuration Manager and you are able to enter new values for the target cluster.
+1. Reload Appliance Configuration Manager and you are able to enter new values for the target system.
 
 > [!NOTE]
 > This workaround is not recommended if you have started the replication. 
@@ -221,7 +221,7 @@ To remove the target appliance from the project, follow these steps:
 
 Replication of VMs can fail because of one or more of the following reasons:
 - The cluster shared volume or the storage container is full.
-- The VMs aren't highly available. All VMs must be highly available clustered to be discovered for replication and migration. If VMs aren't highly available, these don't show up in the list and are excluded for migration.
+- The VMs aren't highly available. All VMs must be highly available to be discovered for replication and migration. If VMs aren't highly available, these don't show up in the list and are excluded for migration.
 
 **Recommended resolution** 
 
