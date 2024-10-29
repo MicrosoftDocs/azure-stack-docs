@@ -36,7 +36,7 @@ This section describes the monitoring capabilities in Azure Local.
 
 ### Insights
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system using logs. You can use Insights to monitor either a single Azure Local system or multiple systems simultaneously. Insights for Azure Local collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor one or more Azure Local systems, see [Monitor a single Azure Local system with Insights](../manage/monitor-hci-single-23h2.md) or [Monitor multiple Azure Local systems with Insights](../manage/monitor-hci-multi-23h2.md).
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system using logs. You can use Insights to monitor either a single Azure Local system or multiple systems simultaneously. Insights for Azure Local collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor one or more Azure Local systems, see [Monitor a single Azure Local system with Insights](../manage/monitor-single-23h2.md) or [Monitor multiple Azure Local systems with Insights](../manage/monitor-multi-23h2.md).
 
 With Insights for Azure Local, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Local. To learn more about these feature workbooks, see [Monitor Azure Local features with Insights](../manage/monitor-features.md).
 
@@ -57,12 +57,12 @@ The following table provides a brief description and setup instructions for each
 | Alert type | Description | How to configure |
 | --- | --- | --- |
 | Health alerts | These are system-generated alerts and have no additional cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-local). |
-| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. | See [Set up log alerts for Azure Local](../manage/setup-hci-system-alerts.md).  |
+| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. | See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
 | Recommended alerts | These are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
 
 ## Next steps
 
-- [Monitor a single Azure Local system with Insights](../manage/monitor-hci-single-23h2.md)
-- [Monitor multiple Azure Local systems with Insights](../manage/monitor-hci-multi-23h2.md)
+- [Monitor a single Azure Local system with Insights](../manage/monitor-single-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](../manage/monitor-multi-23h2.md)
 - [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md)

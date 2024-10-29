@@ -21,7 +21,7 @@ You can install, uninstall and update Azure Arc extensions on your Azure Local. 
 
 Here are the individual extensions you can install and manage.
 
-- [Azure Monitoring Agent](monitor-hci-single-23h2.md)
+- [Azure Monitoring Agent](monitor-single-23h2.md)
 - [Azure Site Recovery](azure-site-recovery.md)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 

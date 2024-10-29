@@ -15,7 +15,7 @@ ms.date: 10/10/2024
 
 This article describes how to use Insights to monitor key Azure Local features, such as Resilient File System (ReFS) deduplication and compression.
 
-To monitor Azure Local systems with Insights, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md) and [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md).
+To monitor Azure Local systems with Insights, see [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md) and [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md).
 
 ## About using Insights to monitor features
 
@@ -33,7 +33,7 @@ You must complete the following prerequisites before you can use Insights for mo
 
 - Your system must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
-- You must have [Insights enabled on the system](./monitor-hci-single-23h2.md#enable-insights).
+- You must have [Insights enabled on the system](./monitor-single-23h2.md#enable-insights).
 
 ## Monitor features with Insights
 
@@ -238,5 +238,5 @@ For information about what data is collected and the different tabs on the workb
 
 ## Next steps
 
-- [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md)
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)

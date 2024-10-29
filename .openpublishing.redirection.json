@@ -1639,6 +1639,71 @@
       "source_path": "azure-stack/hci/upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md",
       "redirect_url": "/azure-stack/hci/upgrade/troubleshoot-upgrade-to-23h2",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/migrate/migration-options-hci-overview.md",
+      "redirect_url": "/azure-stack/hci/migrate/migration-options-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/migrate/migration-azure-migrate-hci-overview.md",
+      "redirect_url": "/azure-stack/hci/migrate/migration-azure-migrate-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/monitor-hci-single-23h2.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-single-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/monitor-hci-multi-23h2.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-multi-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/monitor-hci-multi-azure-policies.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-multi-azure-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/setup-hci-system-alerts.md",
+      "redirect_url": "/azure-stack/hci/manage/setup-system-alerts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/azure-hybrid-benefit-hci.md",
+      "redirect_url": "/azure-stack/hci/concepts/azure-hybrid-benefit",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-nov-2023.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-nov-2023.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-dec-2023.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-dec-2023.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-jan-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-jan-2024.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-feb-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-feb-2024.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-mar-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-mar-2024.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/security-update/hci-security-update-apr-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024.md",
+      "redirect_document_id": false
     }
   ]
 }

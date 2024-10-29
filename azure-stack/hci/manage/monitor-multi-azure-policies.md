@@ -779,4 +779,4 @@ To remediate non-compliant resources and track remediation task progress, follow
 
 ## Next steps
 
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)

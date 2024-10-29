@@ -13,11 +13,11 @@ ms.date: 10/10/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article explains how to use Insights to monitor multiple Azure Local systems. For a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md).
+This article explains how to use Insights to monitor multiple Azure Local systems. For a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md).
 
-For information about the benefits, prerequisites, and how to enable Insights on each Azure Local system, see [Benefits](./monitor-hci-single-23h2.md#benefits), [Prerequisites](./monitor-hci-single-23h2.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
+For information about the benefits, prerequisites, and how to enable Insights on each Azure Local system, see [Benefits](./monitor-single-23h2.md#benefits), [Prerequisites](./monitor-single-23h2.md#prerequisites), and [Enable Insights](./monitor-single-23h2.md#enable-insights).
 
-To monitor multiple Azure Local system with Insights, you need to enable Insights on each system individually. Instead, you can enable Insights at scale using Azure policies. For more information, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+To monitor multiple Azure Local system with Insights, you need to enable Insights on each system individually. Instead, you can enable Insights at scale using Azure policies. For more information, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-multi-azure-policies.md).
 
 Watch the video for a quick introduction:
 
@@ -428,4 +428,4 @@ For more information about the data that's collected, see [Health Service faults
 
 For related information, see:
 
-- [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md)
+- [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md)
