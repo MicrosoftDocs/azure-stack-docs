@@ -52,6 +52,9 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
+[!NOTE]
+To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or "Use workload identity for your cluster".
+
 ## Connect to the Kubernetes cluster
 
 Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your development machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
