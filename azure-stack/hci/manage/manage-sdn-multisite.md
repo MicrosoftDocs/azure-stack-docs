@@ -1,21 +1,21 @@
 ---
-title: Manage Multisite for SDN on Service Fabric in Azure Stack HCI and Windows Server
-description: Learn how to manage a multisite SDN solution for Azure Stack HCI and Windows Server.
+title: Manage SDN Multisite for Azure Local and Windows Server
+description: Learn how to manage a multisite SDN solution for Azure Local and Windows Server.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/21/2024
+ms.date: 10/29/2024
 ---
 
-# Manage Multisite for SDN on Service Fabric in Azure Stack HCI and Windows Server
+# Manage SDN Multisite for Azure Local and Windows Server
 
 :::zone pivot="azure-stack-hci"
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Stack HCI using Windows Admin Center.
+This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Local using Windows Admin Center.
 
 ::: zone-end
 
@@ -48,7 +48,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 :::zone pivot="azure-stack-hci"
 
-- You must have access to Azure Stack HCI, version 23H2 or later clusters deployed at two separate physical sites.
+- You must have access to Azure Local, version 23H2 or later clusters deployed at two separate physical sites.
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
@@ -209,12 +209,12 @@ For redeployment after SDN Multisite removal, ensure the following are removed:
 
 :::zone pivot="azure-stack-hci"
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
+- [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md)
 
 ::: zone-end
 
 :::zone pivot="windows-server"
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
+- [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
 
 ::: zone-end
