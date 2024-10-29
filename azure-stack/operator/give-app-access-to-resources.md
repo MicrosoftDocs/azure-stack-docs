@@ -154,7 +154,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-   ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+   ClientId              : 00001111-aaaa-2222-bbbb-3333cccc4444
    Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
    ClientSecret          :
@@ -213,7 +213,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-   ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+   ClientId              : 00001111-aaaa-2222-bbbb-3333cccc4444
    Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
    ClientSecret          :
@@ -326,7 +326,7 @@ Now you create another app registration, but this time specify a client secret c
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
-     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     ClientId              : 11112222-bbbb-3333-cccc-4444dddd5555
      Thumbprint            : 
      ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
      ClientSecret          : 6RUWLRoBw3EebBLgaWGiowCkoko5_j_ujIPjA8dS
@@ -375,7 +375,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
-     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     ClientId              : 11112222-bbbb-3333-cccc-4444dddd5555
      Thumbprint            : 
      ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
      ClientSecret          : 6RUWLRoBw3EebBLgaWGiowCkoko5_j_ujIPjA8dS
@@ -414,7 +414,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
-     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     ClientId              : 11112222-bbbb-3333-cccc-4444dddd5555
      Thumbprint            : 
      ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
      ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
