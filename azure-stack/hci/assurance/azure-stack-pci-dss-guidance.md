@@ -1,7 +1,7 @@
 ---
 title: PCI DSS guidance for Azure Local
 description: Learn about PCI DSS compliance using Azure Local.
-ms.date: 10/14/2024
+ms.date: 10/29/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -50,7 +50,9 @@ As an on-premises solution, Azure Local provides an array of features that help 
 
 ## Azure Local capabilities relevant for PCI DSS
 
-This section briefly outlines how organizations can use Azure Local functionality to meet the requirements of PCI DSS. It's important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE). The following content focuses on the Azure Local level, which hosts service payments or payments-related workloads that include cardholder data.
+This section briefly outlines how organizations can use Azure Local functionality to meet the requirements of PCI DSS. It's important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE).
+
+The following content focuses on the Azure Local platform level, which hosts service payments or payments-related workloads that include cardholder data.
 
 ### Requirement 1: Install and maintain network security controls
 
@@ -169,7 +171,7 @@ Azure Local provides service-based alerts for connectivity, OS updates, Azure co
 
 ### Requirement 11: Test security of systems and networks regularly
 
-Besides carrying out frequent security assessments and penetration tests yourself, you may also use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) to assess security status across hybrid workloads in the cloud and on premises, including virtual machines, container images, and SQL Server instances that are Arc-enabled.
+Besides carrying out frequent security assessments and penetration tests yourself, you may also use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) to assess security status across hybrid workloads in the cloud and on premises, including virtual machines, container images, and SQL servers that are Arc-enabled.
 
 ### Requirement 12: Support information security with organizational policies and programs
 

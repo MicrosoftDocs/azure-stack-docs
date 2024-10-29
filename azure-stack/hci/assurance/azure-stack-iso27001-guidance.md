@@ -1,7 +1,7 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 10/28/2024
+ms.date: 10/29/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -173,9 +173,7 @@ For workloads running on Azure Local, you can use the Azure recommended operatin
 
 All components of Azure Local, including the operating system, core agents and services, and the solution extension, can be maintained easily with the Lifecycle Manager. This feature allows you to bundle different components into an update release and validates the combination of versions to ensure interoperability. Learn more at [Lifecycle Manager for Azure Local solution updates](/azure-stack/hci/update/update-azure-stack-hci-solution).
 
-#### Workload update
-
-For workloads running on top of Azure Local, including Azure Kubernetes Service (AKS) hybrid, Azure Arc, and infrastructure virtual machines (VMs) that aren't integrated into the Lifecycle Manager, follow the methods described in [Use Lifecycle Manager for updates](/azure-stack/hci/update/update-azure-stack-hci-solution#workload-updates) to keep them updated.
+Customer workloads are not covered by this update solution.
 
 ### Threat protection
 
