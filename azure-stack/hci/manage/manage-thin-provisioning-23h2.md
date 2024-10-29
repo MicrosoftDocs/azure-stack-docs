@@ -1,11 +1,11 @@
 ---
 title: Storage thin provisioning in Azure Local, version 23H2
-description: How to use storage thin provisioning on Azure Local, version 23H2 instances by using Windows PowerShell.
+description: How to use storage thin provisioning on Azure Local, version 23H2 by using Windows PowerShell.
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/18/2024
+ms.date: 10/29/2024
 ---
 
 # Storage thin provisioning in Azure Local, version 23H2
@@ -30,7 +30,7 @@ When a thin-provisioned volume is created, the footprint is smaller than the spe
 
 :::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="Diagram showing that as data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
 
-Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of instances. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
+Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of systems. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
 
 You can create volumes that exceed the total available storage capacity by overprovisioning. An alert is sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
 
@@ -90,7 +90,7 @@ Yes, it's possible to have a mix of both fixed and thin volumes in one pool.
 
 ### Will space be given back to the pool immediately after files are deleted?
 
-No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the instance, it may take longer for all of the space to be returned to the pool.
+No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the system, it may take longer for all of the space to be returned to the pool.
 
 ## Next steps
 

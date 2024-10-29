@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/18/2024
+ms.date: 10/29/2024
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
@@ -17,7 +17,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage and reduce storage cost.
 
-This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the size of the instance. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
+This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the system size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
 You can run ReFS deduplication and compression as a one-time job or automate it with scheduled jobs. This feature works with both all-flash and hybrid systems and supports various resiliency settings, such as two-way mirror, nested two-way mirror, three-way mirror, and mirror accelerated parity.
 
@@ -49,7 +49,7 @@ In Windows Admin Center, you can create a schedule for ReFS deduplication and co
 
 Follow these steps to enable ReFS deduplication and compression via Windows Admin Center and set a schedule when it should run:
 
-1. Connect to an instance, and then on the **Tools** pane on the left, select **Volumes**.
+1. Connect to a system, and then on the **Tools** pane on the left, select **Volumes**.
 
 1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**. To turn on ReFS deduplication and compression for a new volume, select **+ Create**.
 
@@ -67,7 +67,7 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
 # [PowerShell](#tab/powershell)
 
-To use ReFS deduplication and compression via PowerShell, you first enable the feature and then run it as a one-time manual job or automate to run it as scheduled jobs. The jobs are set at the CSV level for each instance and can be customized based on modes, duration, system resource usage, and more.
+To use ReFS deduplication and compression via PowerShell, you first enable the feature and then run it as a one-time manual job or automate to run it as scheduled jobs. The jobs are set at the CSV level for each system and can be customized based on modes, duration, system resource usage, and more.
 
 #### Enable ReFS deduplication and compression
 
@@ -260,7 +260,7 @@ Suspending the schedule cancels any running jobs and stops scheduled runs in the
 
 Follow these steps to suspend scheduled jobs using Windows Admin Center:
 
-1. Connect to an instance, and then on the **Tools** pane on the left, select **Volumes**.
+1. Connect to a system, and then on the **Tools** pane on the left, select **Volumes**.
 
 1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
 
@@ -318,7 +318,7 @@ When you disable this feature, it doesn't undo deduplication or compression, as 
 
 Follow these steps to disable the feature using Windows Admin Center:
 
-1. Connect to an instance, and then on the **Tools** pane on the left, select **Volumes**.
+1. Connect to a system, and then on the **Tools** pane on the left, select **Volumes**.
 
 1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
 
@@ -419,11 +419,11 @@ Follow these steps as a temporary workaround to mitigate this issue:
     Enable-ReFSDedup -Volume <path> -Type Dedup
     ```
 
-### Scheduling jobs to run simultaneously on multiple CSVs within a single instance can potentially trigger CSV movements and negatively impact performance.
+### Scheduling jobs to run simultaneously on multiple CSVs within a single system can potentially trigger CSV movements and negatively impact performance.
 
 **Status:** Open.
 
-As a recommended best practice, consider staggering the start time of the jobs to avoid any overlap. However, if all jobs must run simultaneously, adjust the CPU allocation per job across all CSVs so that it amounts to less than 50% of the overall instance CPU utilization. Keep in mind that imposing CPU limitations may result in longer job execution times.
+As a recommended best practice, consider staggering the start time of the jobs to avoid any overlap. However, if all jobs must run simultaneously, adjust the CPU allocation per job across all CSVs so that it amounts to less than 50% of the overall system CPU utilization. Keep in mind that imposing CPU limitations may result in longer job execution times.
 
 ### ReFS deduplication and compression job completed (either successfully or was canceled) and storage savings aren't listed in `Get-ReFSDedupStatus` or Windows Admin Center.
 
@@ -445,7 +445,7 @@ Once ReFS deduplication and compression is disabled on a volume, the ETW channel
 
 **Status:** Resolved.
 
-If the CSV is moved to another machine of the instance while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
+If the CSV is moved to another machine of the system while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
 
 ## Next steps
 
