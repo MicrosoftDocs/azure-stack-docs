@@ -1,27 +1,27 @@
 ---
-title: Azure Stack HCI single node storage deployment network reference pattern
-description: Plan to deploy an Azure Stack HCI single-server storage network reference pattern.
+title: Azure Local single node storage deployment network reference pattern
+description: Plan to deploy an Azure Local single-server storage network reference pattern.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 04/23/2024
+ms.date: 10/17/2024
 ---
 
-# Review single-server storage deployment network reference pattern for Azure Stack HCI
+# Review single-server storage deployment network reference pattern for Azure Local
 
 [!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+This article describes the single-server storage network reference pattern that you can use to deploy your Azure Local solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local in their datacenters.
 
-For information about other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information about other network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Introduction
 
-Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](../manage/azure-benefits.md).
+Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single machine. Azure Local running on a single machine behaves similarly to Azure Local on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the system, and it includes the same [Azure benefits](../manage/azure-benefits.md).
 
-It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS on Azure Stack HCI, and is supported and billed the same way.
+It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS on Azure Local, and is supported and billed the same way.
 
 ## Scenarios
 
@@ -33,7 +33,7 @@ Use the single-server storage pattern in the following scenarios:
 
 Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as Border Gateway Protocol (BGP) may need to be configured for the firewall device on the top-of-rack (TOR) switch.
 
-Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
+Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
 > [!NOTE]
 > Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
@@ -42,9 +42,9 @@ Network security features such as microsegmentation and Quality of Service (QoS)
 
 As illustrated in the diagram below, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the Azure Stack HCI cluster is implemented using a single TOR L2 or L3 switch.
+- For northbound/southbound traffic, the Azure Local instance is implemented using a single TOR L2 or L3 switch.
 - Two teamed network ports to handle the management and compute traffic connected to the switch.
-- Two disconnected RDMA NICs that are only used if add a second server to your cluster for scale-out. This means no increased costs for cabling or physical switch ports.
+- Two disconnected RDMA NICs that are only used if add a second server to your system for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.
 
 :::image type="content" source="media/single-server/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout." lightbox="media/single-server/physical-connectivity-layout.png":::
@@ -110,4 +110,4 @@ Optional - this pattern doesn't require a storage network.
 
 ## Next steps
 
-Learn about two-node patterns - [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+Learn about two-node patterns - [Azure Local network deployment patterns](choose-network-pattern.md).

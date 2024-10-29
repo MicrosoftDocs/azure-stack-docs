@@ -2,7 +2,7 @@
 title: Container networking concepts
 description: Learn about container networking in AKS enabled by Azure Arc.
 ms.topic: conceptual
-ms.date: 07/08/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
@@ -134,4 +134,3 @@ This article covers networking concepts for containers in AKS nodes on Azure Sta
 
 - [Network concepts for AKS nodes](./concepts-node-networking.md)
 - [Clusters and workloads](./kubernetes-concepts.md)
-- [Secure traffic between pods using network policies](./calico-networking-policy.md)
