@@ -3,7 +3,7 @@ title: Migrate to Azure Local on new hardware
 description: Learn how to migrate to Azure Local on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/28/2024 
+ms.date: 10/29/2024 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
@@ -273,7 +273,7 @@ This is a two-stage migration used for VMs hosted on Windows Server 2008 SP1, Wi
 
 1. Use the following example Robocopy command to copy VMs to Windows Server 2012 R2 first using the topmost path determined in step 1:
 
-    `Robocopy \\2012R2-Clus01\c$\systemstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\systemstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
+    `Robocopy \\2012R2-Clus01\c$\clusterstorage\volume01\Hyper-V\ \\20H2-Clus01\c$\clusterstorage\volume01\Hyper-V\ /E /MT:32 /R:0 /w:1 /NFL /NDL /copyall /log:c:\log.txt /xf`
 
 1. Verify the virtual switch (`VMSwitch`) name on used on the Windows Server 2012 R2 system is the same as the switch name used on the Windows 2008 R2 or Windows Server 2008 R2-SP1 source. To display the switch names used across all machines in a system, use this:
 

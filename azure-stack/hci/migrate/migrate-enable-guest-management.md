@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 10/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -76,7 +76,7 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
 
     **Using Azure CLI**
 
-    1. Sign on with Azure CLI on your Azure Local window:
+    1. Connect to Azure Local machine and open a PowerShell window. Sign on with Azure CLI.
 
         ```azurecli
         az login --use-device-code --tenant $tenantId

@@ -3,7 +3,7 @@ title: Migrate to Azure Local on same hardware
 description: Learn how to migrate a system to Azure Local on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/28/2024
+ms.date: 10/29/2024
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
@@ -33,7 +33,7 @@ There are several requirements and things to consider before you begin migration
 
 - Back up all VMs on your source system. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To back up to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
-- Collect inventory and configuration of all system machines and system naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
+- Collect inventory and configuration of all machines and system naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 
 - Shut down your system VMs, offline CSVs, offline storage pools, and the system service.
 - Disable the Cluster Name Object (CNO) (it's reused later) and:
@@ -201,7 +201,7 @@ For more information on how to create the system using PowerShell, see [Create a
     ```
 
     > [!NOTE]
-    > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new the operating system and system creation.
+    > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new the operating system and cluster creation.
 
 1. Update your storage pool as follows:
 
