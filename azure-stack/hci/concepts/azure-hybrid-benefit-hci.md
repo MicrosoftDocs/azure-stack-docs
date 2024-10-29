@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
-ms.date: 10/22/2024
+ms.date: 10/29/2024
 ---
 
 # Azure Hybrid Benefit for Azure Local
@@ -34,11 +34,8 @@ You can activate Azure Hybrid Benefit for Azure Local using the Azure portal.
 
 The following prerequisites are required to activate Azure Hybrid Benefit for Azure Local:
 
-- Make sure Azure Local is installed with the following:
+- You have access to an Azure Local instance running version 23H2. Make sure the instance is deployed and registered with Azure. For more information, see [Deploy Azure Local via Azure portal](../deploy/deploy-via-portal.md).
 
-    - Version 22H2 or later; or
-    - Version 21H2 with at least the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later.
-    
 - Make sure that all machines in your instance are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure.
 
 - Make sure that your cluster has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1)
@@ -57,7 +54,7 @@ Follow these steps to activate Azure Hybrid Benefit for Azure Local via the Azur
 1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, confirm the designated cluster and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
 
     > [!NOTE]
-    > You can't deactivate Azure Hybrid Benefit for your instance after activation. Proceed after you have confirmed the changes.
+    > You can't deactivate Azure Hybrid Benefit for your system after activation. Proceed after you have confirmed the changes.
 
     :::image type="content" source="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png":::
 
