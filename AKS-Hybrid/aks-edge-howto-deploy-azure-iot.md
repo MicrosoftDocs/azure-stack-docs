@@ -30,7 +30,7 @@ To run the script, you need the following prerequisites:
 
 - Hardware requirements: ensure that your machine has a minimum of 16-GB available RAM, 8 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
 
-## Create an Azure Arc-enabled AKS Edge Essentials cluster for Azure IoT Operations
+## Create an Arc-enabled cluster
 
 The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1) script automates the process of creating and connecting a cluster, and is the recommended path for deploying Azure IoT Operations on AKS Edge Essentials. The script performs the following tasks:
 
@@ -38,7 +38,7 @@ The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/to
 - Installs AKS Edge Essentials, and deploys and creates a single machine Kubernetes cluster on your Windows machine.
 - Connects to the Azure subscription, creates a resource group if it doesn't already exist, and connects the cluster to Arc to create an Arc-enabled Kubernetes cluster.
 - Enables the custom location feature on the Arc-enabled Kubernetes cluster.
-- Enables the workload identity feature on the Arc-enabled Kubernetes cluster.
+- Enables the workload identity federation feature on the Arc-enabled Kubernetes cluster.
 - Deploys the local path provisioning.
 - Configures firewall rules on the host Windows machine for the MQTT broker.
 - On the Linux VM, which serves as the Kubernetes control plane node:
