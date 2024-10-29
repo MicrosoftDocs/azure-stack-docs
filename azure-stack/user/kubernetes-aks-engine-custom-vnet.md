@@ -131,14 +131,14 @@ In **masterProfile** set the following values:
 
 | Field | Example | Description |
 | --- | --- | --- |
-| vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn` | Specify the Azure Resource Manager path ID the subnet. This value maps to the control plane nodes address block above.  |
+| vnetSubnetId | `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn` | Specify the Azure Resource Manager path ID the subnet. This value maps to the control plane nodes address block above.  |
 | firstConsecutiveStaticIP | 10.100.0.239 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the control plane node pool. |
 
 In **agentPoolProfiles** set the following values:
 
 | Field | Example | Description |
 | --- | --- | --- |
-| vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/agents-sn` | Specify the Azure Resource Manager path ID the subnet. This value maps to the agent nodes address block above. |
+| vnetSubnetId | `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/agents-sn` | Specify the Azure Resource Manager path ID the subnet. This value maps to the agent nodes address block above. |
 
 In **orchestratorProfile**, find **kubernetesConfig** and set the following value:
 
@@ -154,7 +154,7 @@ With a network address space of `10.100.0.0/16` where the subnet for `control-pl
 ```json
 "masterProfile": {
   ...
-  "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn",
+  "vnetSubnetId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn",
   "firstConsecutiveStaticIP": "10.100.0.239",
   ...
 },
@@ -162,7 +162,7 @@ With a network address space of `10.100.0.0/16` where the subnet for `control-pl
 "agentPoolProfiles": [
   {
     ...
-    "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/agents-sn",
+    "vnetSubnetId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/agents-sn",
     ...
   },
     ...
@@ -184,7 +184,7 @@ With a network address space of `172.24.0.0/16` where the subnet for `control-pl
 ```json
 "masterProfile": {
   ...
-  "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn",
+  "vnetSubnetId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn",
   "firstConsecutiveStaticIP": "172.24.0.239",
   ...
 },
@@ -192,7 +192,7 @@ With a network address space of `172.24.0.0/16` where the subnet for `control-pl
 "agentPoolProfiles": [
   {
     ...
-    "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/k8s-sn",
+    "vnetSubnetId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/k8s-sn",
     ...
   },
     ...

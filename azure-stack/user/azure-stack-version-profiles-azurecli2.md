@@ -146,7 +146,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 ```output
 {
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/RGCL11",
   "location": "local",
   "name": "RGCLI1",
   " properties ": {
@@ -236,7 +236,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 ```output
 {
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/RGCL11",
   "location": "local",
   "name": "RGCLI1",
   " properties ": {
@@ -329,7 +329,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 ```output
 {
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/RGCL11",
   "location": "local",
   "name": "RGCLI1",
   " properties ": {
@@ -423,7 +423,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 ```output
 {
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/RGCL11",
   "location": "local",
   "name": "RGCLI1",
   " properties ": {
