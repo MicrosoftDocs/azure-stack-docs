@@ -1,16 +1,16 @@
 ---
-title: Manage Azure Stack HCI gateway connections using Windows Admin Center
-description: Learn to manage your SDN gateway connections on Azure Stack HCI using Windows Admin Center.
+title: Manage Azure Local gateway connections using Windows Admin Center
+description: Learn to manage your SDN gateway connections on Azure Local using Windows Admin Center.
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: alkohli
+ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 04/03/2024
+ms.date: 10/24/2024
 ---
 
-# Manage Azure Stack HCI gateway connections
+# Manage Azure Local gateway connections
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 
@@ -25,7 +25,7 @@ IPsec gateway connections are used to provide secure site-to-site encrypted conn
 
 :::image type="content" source="media/gateway-connections/ipsec-connection.png" alt-text="SDN IPsec gateway connection." lightbox="media/gateway-connections/ipsec-connection.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
 1. Under **Gateway Connections**, select the **Inventory** tab, then select **New**.
 1. Under **Create a new Gateway Connection**, enter a name for the connection
@@ -48,7 +48,7 @@ GRE-based tunnels enable connectivity between tenant virtual networks and extern
 
 :::image type="content" source="media/gateway-connections/gre-connection.png" alt-text="SDN GRE gateway connection." lightbox="media/gateway-connections/gre-connection.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
 1. Under **Gateway Connections**, select the **Inventory** tab, then select **New**.
 1. Under **Create a new Gateway Connection**, enter a name for the connection.
@@ -70,7 +70,7 @@ L3 forwarding enables connectivity between the physical infrastructure in the da
 
 :::image type="content" source="media/gateway-connections/l3-connection.png" alt-text="SDN L3 gateway connection." lightbox="media/gateway-connections/l3-connection.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
+1. In Windows Admin Center, under **All Connections**, select the system you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
 1. Under **Gateway Connections**, select the **Inventory tab**, then select **New**.
 1. Under **Create a new Gateway Connection**, enter a name for the connection.
@@ -99,17 +99,17 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 
 ## View all gateway connections
 
-You can easily see all the gateway connections in your cluster.
+You can easily see all the gateway connections in your system.
 
 :::image type="content" source="media/gateway-connections/view-connections.png" alt-text="View SDN gateway connections." lightbox="media/gateway-connections/view-connections.png":::
 
-1. In Windows Admin Center, under **All Connections**, select the cluster for which you want to view the gateway connections.
+1. In Windows Admin Center, under **All Connections**, select the system for which you want to view the gateway connections.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
 1. The **Inventory** tab on the right lists the available gateway connections and provides commands to manage individual gateway connections. You can:
 
-    - View the list of gateway connections
-    - Change settings for a gateway connection
-    - Delete a gateway connection
+    - View the list of gateway connections.
+    - Change settings for a gateway connection.
+    - Delete a gateway connection.
 
 ## View gateway connection details
 
@@ -120,10 +120,10 @@ You can view detailed information for a specific gateway connection from its ded
 1. Under **Tools**, scroll down and select **Gateway Connections**.
 1. Click the **Inventory** tab on the right, then select the gateway connection. On the subsequent page, you can do the following:
 
-    - View the details of the connection (type, associated virtual network, properties, or connection state)
+    - View the details of the connection (type, associated virtual network, properties, or connection state).
     - Gateway on which the connection is hosted.
     - Visual representation of the connection with remote entity.
-    - View the connection statistics (Inbound/Outbound Bytes, Data transfer rate, or Dropped packets)
+    - View the connection statistics (Inbound/Outbound Bytes, Data transfer rate, or Dropped packets).
     - Change settings of the connection.
 
 ## Change gateway connection settings

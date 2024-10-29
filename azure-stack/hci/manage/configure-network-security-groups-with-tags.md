@@ -1,22 +1,65 @@
 ---
 title: Configure network security groups with tags in Windows Admin Center
 description: Learn how to configure network security groups with tags in Windows Admin Center.
-ms.author: sethm
+ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
-author: sethmanheim
-ms.date: 04/02/2024
+author: alkohli
+ms.subservice: core-os
+zone_pivot_groups: windows-os
+ms.date: 10/29/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
+::: zone-end
+
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025 (preview)
+> [!IMPORTANT]
+> Tag based network security groups in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+::: zone-end
+
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
 
 With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
-<!--Refactored the following section. Please review.-->
+## Prerequisites
+
+Complete the following prerequisites to use network security groups with tags:
+
+:::zone pivot="azure-stack-hci"
+
+- You have Azure Stack HCI operating system, version 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
+
+- You have a Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md) or [Create a virtual network](./tenant-virtual-networks.md).
+
+- You have a VM to apply a network security group to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- You have Windows Server 2025 or later. For more information, see [Get started with Windows Server](/windows-server/get-started/get-started-with-windows-server).
+
+- You have a Network Controller installed. For more information, see how to [Deploy an SDN infrastructure using SDN Express](sdn-express.md?context=/windows-server/context/windows-server-edge-networking).
+
+- You have a logical network or a virtual network to use. For more information, see how to [Create a logical network](./tenant-logical-networks.md?context=/windows-server/context/windows-server-failover-clustering) or [Create a virtual network](./tenant-virtual-networks.md?context=/windows-server/context/windows-server-failover-clustering).
+
+- You have a VM to apply a network security group to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
+
+- You have administrator permissions or equivalent to the cluster nodes and network controller.
+
+::: zone-end
+
 ## Simplify security with network security tags
 
 Network security groups allow you to configure access policies based on network constructs like network prefixes and subnets. For example, if you want to restrict communication between your Web Server VMs and database VMs, you must identify corresponding network subnets and create a policy to deny communication between those subnets. However, there are some limitations with this approach:
@@ -25,9 +68,9 @@ Network security groups allow you to configure access policies based on network 
 
 - When building policies for applications, you might want to reuse them across different scenarios. For example, if your production web app can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments, you'd have a similar policy for any new app. However, with network segmentation, recreating policies becomes necessary due to unique network elements for each app.
 
-- If you decommission an old application and provision a new one within the same network segment, policy adjustments are required.
+- If you decommission an old application and deploy a new one within the same network segment, policy adjustments are required.
 
-With the network security tags feature, you no longer need to track the network segments where your applications are hosted. This simplifies policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
+With network security tags, you no longer need to track the network segments where your applications are hosted. Network security tags simplify policy management and avoid the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
 
 ## Create network security tag based network security groups
 
@@ -131,7 +174,7 @@ After you create a network security group, you're ready to create network securi
     | ----- | ----------- |
     | **Name** | Name of the rule. |
     | **Priority** | Priority of the rule. Acceptable values are **101** to **65000**. A lower value denotes a higher priority. |
-    | **Types** | Type of the rule. This can be **Inbound** or **Outbound**. |
+    | **Types** | Type of the rule. This rule type can be **Inbound** or **Outbound**. |
     | **Protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are **All**, **TCP** and **UDP**. |
     | **Source** | Select **Network Security Tag**.<br><br>**Note:** You can either select an address prefix or a network security tag but not both. |
     | **Source Security Tag Type** | (Optional) Select a type for the tag. |
@@ -150,10 +193,23 @@ After you create a network security group, you're ready to create network securi
 
 You can apply a network security group to:
 
+:::zone pivot="azure-stack-hci"
+
 - [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-virtual-network)
 - [Logical network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-logical-network)
 - [Specific network interface](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-network-interface)
 - [Network security tag](#apply-network-security-group-to-a-network-security-tag)
+
+::: zone-end
+
+:::zone pivot="windows-server"
+
+- [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-failover-clustering#apply-a-network-security-group-to-a-virtual-network)
+- [Logical network subnet](use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-failover-clustering#apply-a-network-security-group-to-a-logical-network)
+- [Specific network interface](use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-failover-clustering#apply-a-network-security-group-to-a-network-interface)
+- [Network security tag](#apply-network-security-group-to-a-network-security-tag)
+
+::: zone-end
 
 ### Apply network security group to a network security tag
 
@@ -179,6 +235,17 @@ To apply a network security group to a network security tag via Windows Admin Ce
 
 For related information, see also:
 
+:::zone pivot="azure-stack-hci"
+
 - [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md)
 - [Configure network security groups with Windows Admin Center](use-datacenter-firewall-windows-admin-center.md)
 - [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md)
+
+::: zone-end
+:::zone pivot="windows-server"
+
+- [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md?context=/windows-server/context/windows-server-failover-clustering)
+- [Configure network security groups with Windows Admin Center](use-datacenter-firewall-windows-admin-center.md?context=/windows-server/context/windows-server-failover-clustering)
+- [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md?context=/windows-server/context/windows-server-failover-clustering)
+
+::: zone-end

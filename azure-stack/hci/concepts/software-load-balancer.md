@@ -1,16 +1,16 @@
 ---
-title: Software Load Balancer (SLB) for SDN in Azure Stack HCI and Windows Server
-description: Use this article to learn about Software Load Balancer for Software Defined Networking in Azure Stack HCI and Windows Server.
+title: Software Load Balancer (SLB) for SDN in Azure Local and Windows Server
+description: Use this article to learn about Software Load Balancer for Software Defined Networking in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack-hci
-ms.date: 04/23/2024
+ms.date: 10/25/2024
 ---
 
 # What is Software Load Balancer (SLB) for SDN?
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN)](software-defined-networking-23h2.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
@@ -19,7 +19,7 @@ Software Load Balancer can provide a multitenant, unified edge by integrating wi
 > [!NOTE]
 > Multitenancy for VLANs is not supported by [Network Controller](network-controller-overview.md). However, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density web servers.
 
-Using Software Load Balancer, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancer supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, Software Load Balancer supports tens of gigabytes per cluster, provides a simple provisioning model, and is easy to scale out and in.
+Using Software Load Balancer, you can scale out your load balancing capabilities using SLB virtual machines (VMs) on the same Hyper-V compute servers that you use for your other VM workloads. Because of this, Software Load Balancer supports rapid creation and deletion of load balancing endpoints as required for CSP operations. In addition, Software Load Balancer supports tens of gigabytes per system, provides a simple provisioning model, and is easy to scale out and in.
 
 To learn how to manage Software Load Balancer policies using Windows Admin Center, see [Manage Software Load Balancer for SDN](../manage/load-balancers.md).
 
@@ -111,7 +111,7 @@ Unlike a traditional load balancer appliance where the probe originates on the a
 
 Before you can configure Software Load Balancer, you must first deploy Network Controller and one or more SLB MUX VMs.
 
-In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled Hyper-V virtual switch and ensure that the SLB Host Agent is running. The routers that serve the hosts must support ECMP routing and Border Gateway Protocol (BGP), and they must be configured to accept BGP peering requests from the SLB MUXes.
+In addition, you must configure the Azure Local hosts with the SDN-enabled Hyper-V virtual switch and ensure that the SLB Host Agent is running. The routers that serve the hosts must support ECMP routing and Border Gateway Protocol (BGP), and they must be configured to accept BGP peering requests from the SLB MUXes.
 
 The following figure provides an overview of the SLB infrastructure.
 
@@ -125,7 +125,7 @@ Network Controller hosts the SLB Manager and performs the following actions for 
 
 - Processes SLB commands that come in through the Northbound API from Windows Admin Center, System Center, Windows PowerShell, or another network management application.
 
-- Calculates policy for distribution to Azure Stack HCI hosts and SLB MUXes.
+- Calculates policy for distribution to Azure Local hosts and SLB MUXes.
 
 - Provides the health status of the Software Load Balancer infrastructure.
 
@@ -210,5 +210,4 @@ The following sections describe some of the features and capabilities of Softwar
 For related information, see also:
 
 - [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
-- [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/training/modules/implement-firewall-load-balancer/)
+- [SDN in Azure Local and Windows Server](software-defined-networking-23h2.md)

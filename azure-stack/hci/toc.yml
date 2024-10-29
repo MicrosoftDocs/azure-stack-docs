@@ -10,16 +10,18 @@ items:
   - name: Azure Stack HCI OEM License
     items: 
     - name: OEM license information
-      href: azure-stack-hci-oem-license.md
+      href: oem-license.md
     - name: FAQ
-      href: azure-stack-hci-license-billing.yml
+      href: license-billing.yml
   - name: Release notes
     items:
     - name: Release information
       href: release-information-23h2.md
     - name: Known issues 2408
       items:
-      - name: 2408.1 - Current
+      - name: 2408.2 - Current 
+        href: known-issues-2408-2.md
+      - name: 2408.1
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
@@ -59,16 +61,18 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: September 2024 - Current
-        href: security-update/hci-security-update-sep-2024.md
+      - name: October 2024 - Current
+        href: security-update/security-update-oct-2024.md
+      - name: September 2024
+        href: security-update/security-update-sep-2024.md
       - name: August 2024
-        href: security-update/hci-security-update-aug-2024.md
+        href: security-update/security-update-aug-2024.md
       - name: July 2024
-        href: security-update/hci-security-update-jul-2024.md
+        href: security-update/security-update-jul-2024.md
       - name: June 2024 
-        href: security-update/hci-security-update-jun-2024.md
+        href: security-update/security-update-jun-2024.md
       - name: May 2024
-        href: security-update/hci-security-update-may-2024.md
+        href: security-update/security-update-may-2024.md
       - name: April 2024
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 
@@ -250,7 +254,7 @@ items:
   - name: 5 - Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
   - name: Troubleshoot upgrades
-    href: upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md
+    href: upgrade/troubleshoot-upgrade-to-23h2.md
 
 
 - name: Manage
@@ -276,6 +280,8 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
+        - name: Using an existing Arc VM
+          href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
           - name: Using Ubuntu VM image
@@ -582,6 +588,10 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
+  - name: Host networking
+    items:
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
   - name: SDN
     items:
     - name: SDN technical reference
@@ -800,8 +810,6 @@ items:
         href: concepts/nested-virtualization.md
     - name: Host networking
       items:
-      - name: Network ATC overview
-        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
@@ -907,52 +915,4 @@ items:
       href: /training/modules/implement-firewall-load-balancer/
     - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
       href: /training/modules/plan-deploy-sdn-infrastructure/
-  - name: Evaluation guide
-    href: guided-quick-deploy-eval.yml 
-  - name: Earlier versions
-    items:
-    - name: What's new in version 22H2
-      href: whats-new-in-hci-22h2.md
-    - name: What's new in version 21H2
-      href: whats-new-in-hci-21h2.md
-    - name: Known issues in 2310
-      href: known-issues-2310.md
-    - name: 22H2 Supplemental Package
-      items:
-      - name: What's in preview?
-        items:
-        - name: 2306 release - Current
-          href: manage/whats-new-2306-preview.md
-        - name: 2306 updates
-          items:
-          - name: 2306.7 release
-            href: manage/whats-new-2306-7-preview.md
-          - name: 2306.5 release
-            href: manage/whats-new-2306-5-preview.md
-          - name: 2306.4 release
-            href: manage/whats-new-2306-4-preview.md
-          - name: 2306.3 release
-            href: manage/whats-new-2306-3-preview.md
-          - name: 2306.2 release
-            href: manage/whats-new-2306-2-preview.md
-          - name: 2306.1 release
-            href: manage/whats-new-2306-1-preview.md
-      - name: View known issues
-        items:
-        - name: 2306.7 update release - Current
-          href: hci-known-issues-2306-7.md
-        - name: 2306.5 update release
-          href: hci-known-issues-2306-5.md
-        - name: 2306.4 update release
-          href: hci-known-issues-2306-4.md 
-        - name: 2306.3 update release
-          href: hci-known-issues-2306-3.md 
-        - name: 2306.2 update release
-          href: hci-known-issues-2306-2.md 
-        - name: 2306.1 update release
-          href: hci-known-issues-2306-1.md 
-        - name: 2306 release
-          href: hci-known-issues-2306.md 
-      - name: 22H2 Supplemental Package plan, deploy, and manage
-        items:
-        - name: Deployment and management guide
+  

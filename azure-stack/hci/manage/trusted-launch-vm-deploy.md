@@ -1,23 +1,23 @@
 ---
-title: Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
-description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2.
+title: Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 02/27/2024
+ms.date: 10/23/2024
 ---
 
-# Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
+# Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2.
+This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2.
 
 
 ## Prerequisites
 
-Make sure that you have access to an Azure Stack HCI, version 23H2 cluster that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
+Make sure that you have access to an Azure Local, version 23H2 system that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
 
 ## Create a Trusted launch Arc VM
 
@@ -25,7 +25,7 @@ You can create a Trusted launch VM using Azure portal or by using Azure Command-
 
 # [Azure portal](#tab/azure-portal)
 
-To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure portal, with the following changes:
+To create a Trusted launch Arc VM on Azure Local, follow the steps in the [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md) using Azure portal, with the following changes:
 
 1. While creating the VM, select **Trusted launch virtual machines** for security type.
 
@@ -41,18 +41,18 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 
 # [Azure CLI](#tab/azure-cli)
 
-To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure CLI, with the following changes:
+To create a Trusted launch Arc VM on Azure Local, follow the steps in the [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md) using Azure CLI, with the following changes:
 
-1. Create a VM image using a [supported VM guest OS image](trusted-launch-vm-overview.md#guest-operating-system-images) by Trusted launch from Azure Marketplace. For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
+1. Create a VM image using a [supported VM guest OS image](trusted-launch-vm-overview.md#guest-operating-system-images) by Trusted launch from Azure Marketplace. For more information, see [Create Azure Local VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
 
 1. Create a VM using CLI as follows:
 
     ```PowerShell
     $vmName="<Name of the VM>" 
-    $subscription="<Subscription ID associated with your cluster>" 
-    $resourceGroup="<Resource group name for your cluster>" 
-    $location="<Location for your Azure Stack HCI cluster>" 
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv) 
+    $subscription="<Subscription ID associated with your Azure Local system>" 
+    $resourceGroup="<Resource group name for your Azure Local system>" 
+    $location="<Location for your Azure Local system>" 
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for your Azure Local system>" --query id -o tsv) 
     $guestName="<Name of the guest>" 
     $userName="<Username for VM>" 
     $password="<Password for VM>" 

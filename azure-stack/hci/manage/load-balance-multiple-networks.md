@@ -1,17 +1,17 @@
 ---
-title: Load balance multiple logical networks for Azure Stack HCI
-description: Learn how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI.
+title: Load balance multiple logical networks for Azure Local
+description: Learn how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 10/21/2024
 ---
 
-# Load balance multiple SDN logical networks for Azure Stack HCI
+# Load balance multiple SDN logical networks for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing, you have more control over isolating workloads from each other.
+This article provides guidance on how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Local. By using multiple logical networks for load balancing, you have more control over isolating workloads from each other.
 
 For information about how to create and manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
 
@@ -23,7 +23,7 @@ Before you begin, make sure that the following prerequisites are completed:
 
 - Make sure that all software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface for additional logical networks.
 
-- Make sure that there's connectivity between the logical networks and the Azure Stack HCI management network on the physical network side. Ensure the management network is trunked at your Top-of-Rack (TOR) switch to maintain access to the VM from the Hyper-V host.
+- Make sure that there's connectivity between the logical networks and the Azure Local management network on the physical network side. Ensure the management network is trunked at your Top-of-Rack (TOR) switch to maintain access to the VM from the Hyper-V host.
 
 ## Set up load balancing across multiple logical networks
 
@@ -86,7 +86,7 @@ Follow these steps to set up multiple SDN logical networks and add extra interfa
 
 ## Troubleshoot
 
-If you encounter any issues during setup, collect logs for troubleshooting purposes. For more information, see [Collect logs for Software Defined Networking on Azure Stack HCI](./sdn-log-collection.md).
+If you encounter any issues during setup, collect logs for troubleshooting purposes. For more information, see [Collect logs for Software Defined Networking on Azure Local](./sdn-log-collection.md).
 
 ## Next steps
 

@@ -6,18 +6,18 @@ ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 05/15/2024
+ms.date: 10/22/2024
 ---
 
 # Kerberos with Service Principal Name (SPN)
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to use Kerberos authentication with Service Principal Name (SPN).
 
 Network Controller supports multiple authentication methods for communication with management clients. You can use Kerberos based authentication, X509 certificate-based authentication. You also have the option to use no authentication for test deployments.
 
-System Center Virtual Machine Manager uses Kerberos-based authentication. If you're using Kerberos-based  authentication, you must configure an SPN for Network Controller in Active Directory. The SPN is a unique identifier for the Network Controller service instance, which is used by Kerberos authentication to associate a service instance with a service login account. For more details, see [Service Principal Names](/windows/desktop/ad/service-principal-names).
+System Center Virtual Machine Manager uses Kerberos-based authentication. If you're using Kerberos-based authentication, you must configure an SPN for Network Controller in Active Directory. The SPN is a unique identifier for the Network Controller service instance, which is used by Kerberos authentication to associate a service instance with a service login account. For more details, see [Service Principal Names](/windows/desktop/ad/service-principal-names).
 
 ## Configure Service Principal Names (SPN)
 
@@ -66,4 +66,4 @@ If SPN isn't registered, REST client authentication uses NTLM, which is less sec
 
 ## Next steps
 
-- [Secure the Network Controller](./nc-security.md)
+- [Secure the Network Controller](./nc-security.md).

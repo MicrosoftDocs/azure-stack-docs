@@ -58,7 +58,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     PS C:\Users\lcmuser> $Failure = $Update|Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
     
-    ResourceId      : redmond/Solution10.2303.1.7/2c21b859-e063-4f24-a4db-bc1d6be82c4e
+    ResourceId      : redmond/Solution10.2303.1.7/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1
     Progress        : Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.Step
     TimeStarted     : 4/21/2023 10:02:54 PM
     LastUpdatedTime : 4/21/2023 3:19:05 PM
@@ -78,7 +78,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Here's sample output:
 
     ```output
-    PS C:\Users\lcmuser> Get-ActionplanInstance -actionplaninstanceid 2c21b859-e063-4f24-a4db-bc1d6be82c4e >log.txt
+    PS C:\Users\lcmuser> Get-ActionplanInstance -actionplaninstanceid a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1 >log.txt
     
     PS C:\Users\lcmuser>notepad log.txt
     ```
