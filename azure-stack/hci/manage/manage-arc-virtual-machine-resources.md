@@ -1,18 +1,18 @@
 ---
-title: Manage Arc VM resources such as disks, network interface for Azure Stack HCI virtual machines
+title: Manage Arc VM resources such as disks, network interface for Azure Local virtual machines
 description: Learn how to manage resource such as data disks, network interfaces on an Arc VM.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 02/13/2024
+ms.date: 10/24/2024
 ---
 
-# Manage resources for Arc VM on your Azure Stack HCI
+# Manage resources for Arc VMs on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virtual machine (VM) running on your Azure Stack HCI system.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
+This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virtual machine (VM) running on your Azure Local instance.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
 
 
 ## Manage Arc VM resources
@@ -23,7 +23,7 @@ Once the Arc VMs are deployed, you may need to manage the VMs. This would requir
 
 Before you begin, make sure to complete the following prerequisites:
 
-- Make sure that you have access to an Azure Stack HCI cluster that is deployed and registered. You should have one or more Arc VMs running on this Azure Stack HCI cluster. For more information, see [Create Arc VMs on your Azure Stack HCI](./create-arc-virtual-machines.md).
+- You have access to an Azure Local instance that is deployed and registered. You should have one or more Arc VMs running on this system. For more information, see [Create Arc VMs on your Azure Local](./create-arc-virtual-machines.md).
 
 ## Add a data disk
 
@@ -31,7 +31,7 @@ After you have created a VM, you may want to add a data disk to it. You can add 
 
 ### [Azure CLI](#tab/azurecli)
 
-To add a data disk, you need to first create a disk and then attach the disk to the VM. Follow these steps in Azure CLI of the computer that you are using to connect to your Azure Stack HCI system.
+To add a data disk, you need to first create a disk and then attach the disk to the VM. Follow these steps in Azure CLI of the computer that you are using to connect to your Azure Local.
 
 To create a data disk (dynamic) on a specified storage path, run the following command:
 
@@ -47,9 +47,9 @@ az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName -
 
 ### [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
+Follow these steps in Azure portal of your Azure Local.
 
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
 1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 
@@ -59,7 +59,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. Specify a friendly **Name** for the data disk.
     1. Provide the **Size** for the disk in GB.
     1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**.
-    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. 
+    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space. 
   
    <!--:::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of Add new disk blade with provided inputs." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::-->
 
@@ -76,9 +76,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Delete a data disk
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
+Follow these steps in Azure portal of your Azure Local.
 
-1. Go to Azure Stack HCI cluster resource and then go to **Virtual machines**.  
+1. Go to Azure Local resource and then go to **Virtual machines**.  
 1. From the list of VMs in the right pane, select and go to the VM whose data disk you want to delete.
 
     :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of delete icon selected for the data disk to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
@@ -98,9 +98,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 > [!NOTE]
 > Adding a network interface with static IP after the VM is provisioned is not supported.
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
+Follow these steps in Azure portal of your Azure Local.
 
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a network interface.
 
 1. Go to **Networking**. From the top command bar in the right pane, select **+ Add network interface**.  
@@ -128,9 +128,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Delete a network interface
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
+Follow these steps in Azure portal of your Azure Local.
 
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM whose network interface you want to delete.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of VM selected whose network interface you want to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::

@@ -588,6 +588,10 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
+  - name: Host networking
+    items:
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
   - name: SDN
     items:
     - name: SDN technical reference
@@ -806,8 +810,6 @@ items:
         href: concepts/nested-virtualization.md
     - name: Host networking
       items:
-      - name: Network ATC overview
-        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)

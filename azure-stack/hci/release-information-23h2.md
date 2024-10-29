@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI, version 23H2 release information
-description: This article provides the release information for Azure Stack HCI, version 23H2.
+title: Azure Local, version 23H2 release information
+description: This article provides the release information for Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
@@ -8,26 +8,27 @@ ms.service: azure-stack-hci
 ms.date: 10/23/2024
 ---
 
-# Azure Stack HCI, version 23H2 release information
+# Azure Local, version 23H2 release information
 
 [!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
 
-Feature updates for Azure Stack HCI are released periodically to enhance customer experience. Azure Stack HCI also releases monthly quality and security updates. These releases are cumulative, containing all previous updates to keep devices protected and productive.
+Feature updates for Azure Local are released periodically to enhance customer experience. Azure Local also releases monthly quality and security updates. These releases are cumulative, containing all previous updates to keep devices protected and productive.
 
-To keep your Azure Stack HCI solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
+To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
-This article presents the release information for Azure Stack HCI, version 23H2, including the release build and OS build information.  
+This article presents the release information for Azure Local, version 23H2, including the release build and OS build information.  
 
+<a name="about-azure-stack-hci-version-23h2-releases"></a>
 ## About Azure Local, version 23H2 releases
 
-The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, 2405, and 2408. Each release train includes a baseline build and subsequent updates.
+The Azure Local, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, 2405, and 2408. Each release train includes a baseline build and subsequent updates.
 
 - **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build.
 - **Update build**: An update build includes the incremental updates from the most recent baseline build.
 
 The following diagram illustrates the release trains, their associated baseline builds, and update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local, version 23H2 release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
 #### Move to the next release train
 
@@ -44,17 +45,17 @@ Follow these guidelines to move within the same release train:
 
 - Within your release train, you can update to the latest update build anytime. For example, if you're running the 2311 baseline build, you can update to any of the 2311 update builds such as 2311.2, 2311.3, 2311.4, or 2311.5 and so on.
 
-- To keep your Azure Stack HCI in a supported state, you have up to six months to install updates. For example, if you're running the 2311 baseline build, update to a later build within 6 months.
+- To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2311 baseline build, update to a later build within 6 months.
 
-## Azure Stack HCI, version 23H2 release information summary
+## Azure Local, version 23H2 release information summary
 
-The following table provides a summary of Azure Stack HCI, version 23H2 release information.
+The following table provides a summary of Azure Local, version 23H2 release information.
 
 All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2408.2.7 | 25398.1189 <br><br> [October OS Security update](./security-update/hci-security-update-oct-2024.md) <br><br> Availability date: 2024-10-22 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
+| 10.2408.2.7 | 25398.1189 <br><br> [October OS Security update](./security-update/hci-security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
 | 10.2408.1.9  | 25398.1128 <br><br> [September OS Security update](./security-update/hci-security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
 | 10.2408.0.29 | 25398.1085 <br><br> [August OS security update](./security-update/hci-security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
 | 10.2405.3.7 | 25398.1085 <br><br> [August OS security update](./security-update/hci-security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
@@ -75,4 +76,4 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 ## Next steps
 
-- [What's new for Azure Stack HCI, version 23H2](./whats-new.md)
+- [What's new for Azure Local, version 23H2](./whats-new.md)
