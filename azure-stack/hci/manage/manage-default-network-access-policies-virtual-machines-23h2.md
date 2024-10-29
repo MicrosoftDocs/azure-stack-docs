@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/25/2024
+ms.date: 10/29/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Local, version 23H2
@@ -37,7 +37,7 @@ Complete the following prerequisites to use network access policies:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 23H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
+- You have Azure Stack HCI operating system, version 23H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
