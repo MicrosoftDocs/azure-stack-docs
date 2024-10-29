@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/28/2024
+ms.date: 10/29/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -34,7 +34,7 @@ Complete the following prerequisites to use network security groups with tags:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Local 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
+- You have Azure Local, version 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
 - You have a Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
