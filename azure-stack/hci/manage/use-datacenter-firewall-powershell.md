@@ -322,7 +322,7 @@ These files contain a sequence of flow events, for example:
                 ]
             },
             "operationName":"NetworkSecurityGroupFlowEvents",
-            "resourceId":"394f647d-2ed0-4c31-87c5-389b8c0c8132",
+            "resourceId":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1",
             "time":"20180719:L012620622",
             "category":"NetworkSecurityGroupFlowEvent",
             "systemId":"d8b3b697-5355-40e2-84d2-1bf2f0e0dc4a"

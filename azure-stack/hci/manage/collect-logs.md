@@ -1,52 +1,52 @@
 ---
-title: Collect diagnostic logs for Azure Stack HCI
+title: Collect diagnostic logs for Azure Local
 description: How to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 03/19/2024
+ms.date: 10/28/2024
 ---
 
-# Collect diagnostic logs for Azure Stack HCI
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
+This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with Azure Local.
 
 ## On-demand log collection
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
 Here are the scenarios in which you can perform on-demand log collection:
 
 - Microsoft Support requests for logs based on an open case.
-- Logs are collected when a cluster is connected and registered.
+- Logs are collected when a system is connected and registered.
 - Logs are collected when the Observability components are operational and installed.
-- Logs are collected when a cluster is only partly registered.
+- Logs are collected when a system is only partly registered.
 - Logs are collected for issues not related to registration failures.
 
-To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+To explore additional log collection methods in Azure Local and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
-- You must have access to an Azure Stack HCI cluster.
+- You must have access to Azure Local.
 - You must have access to Azure.
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Perform on-demand log collection via PowerShell
 
 You can perform on-demand log collection using PowerShell, the recommended method, or Windows Admin Center in the Azure portal, as described later in this article.
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection.
+Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local instance to perform on-demand log collection.
 
 Here are some important points to consider:
 
-- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Local environment.
 - If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
 
 Here's the syntax of `Send-DiagnosticData`:
@@ -109,7 +109,7 @@ FromDate in UTC is now 12/04/2023 20:41:21. ToDate in UTC is now 12/04/2023 21:4
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/v-Host1
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -209,7 +209,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
@@ -217,7 +217,7 @@ When requested, share the following information with Microsoft Support. Get this
 
 On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
 
-If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
+If you're on any of the Azure Local blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
 
 ## `Send-DiagnosticData` command reference
 
@@ -570,19 +570,19 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
 | Extension | Data related to Azure managed extensions. |
 | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
-| HCICloudService | An Azure cloud service that provides core functionality for Azure Stack HCI. It combines Azure power with the flexibility of on-premises servers. |
+| HCICloudService | An Azure cloud service that provides core functionality for Azure Local. It combines Azure power with the flexibility of on-premises servers. |
 | DownloadService | Part of infra service to download update content. |
 | Health | Collects health, performance, and usage data from various sources, such as event logs and performance counters. |
 | HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
-| MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Stack HCI and Windows Server. |
+| MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Local and Windows Server. |
 | NC | Information related to the network infrastructure. |
 | ObservabilityLogmanTraces | Collects logs for Observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
 | ObservabilityVolume | Collects logs for Observability volume. |
 | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
-| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
+| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local nodes, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ## Perform on-demand log collection via Windows Admin Center in the Azure portal
 
@@ -590,7 +590,7 @@ The `Diagnostics` extension in Windows Admin Center in the Azure portal enables 
 
 Follow these steps to perform on-demand log collection via Windows Admin Center in the Azure portal:
 
-1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+1. Connect to Windows Admin Center in the Azure portal. For more information, see [Manage Azure Local using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
 1. In the left pane, under **Extensions**, select **Diagnostics**.
 1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
 1. Select **Send manually**. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
@@ -599,5 +599,5 @@ Follow these steps to perform on-demand log collection via Windows Admin Center 
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI](../known-issues-2311-2.md)
+- [Contact Microsoft Support](get-support.md).
+- [Review known issues in Azure Local](../known-issues-2311-2.md).

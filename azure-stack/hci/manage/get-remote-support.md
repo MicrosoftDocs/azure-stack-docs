@@ -1,24 +1,22 @@
 ---
-title: Get remote support for Azure Stack HCI
-description: Learn how to get remote support for the Azure Stack HCI operating system.
+title: Get remote support for Azure Local
+description: Learn how to get remote support for the Azure Stack HCI Operating System.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 03/29/2024
+ms.date: 10/25/2024
 ---
 
-# Get remote support for Azure Stack HCI
+# Get remote support for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides guidance on how to get remote support for your Azure Stack HCI operating system.
+This article provides guidance on how to get remote support for your Azure Stack HCI Operating System.
 
-You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and
-duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
-access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
+Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
 :::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
@@ -37,10 +35,10 @@ The following are the data handling terms and conditions for remote access. Care
 
 > By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
 >
-> During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.
-> 
+> During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Local.
+>
 > The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices.
-> 
+>
 > Any data previously collected with your consent will not be affected by the revocation of your permission.
 
 For more information about the personal data that Microsoft processes, how Microsoft processes it, and for what purposes, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
@@ -80,7 +78,7 @@ Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
 
 ### Configure proxy settings
 
-If you are using a proxy with Azure Stack HCI, include the following endpoints in your allowlist:
+If you are using a proxy with Azure Local, include the following endpoints in your allowlist:
 
 - \*.servicebus.windows.net
 - \*.core.windows.net
@@ -213,7 +211,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Where-Object
 ```
 
-**Azure Stack HCI**
+**Azure Local**
 
 ```powershell
     Get-AzureStackHCI
@@ -509,4 +507,4 @@ The **Diagnostics and Repair** access level includes the following commands in a
 
 ## Next steps
 
-Learn about [Azure Stack HCI Support](get-support.md)
+- Learn about [Azure Local Support](get-support.md).

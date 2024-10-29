@@ -64,7 +64,7 @@ To verify if you have an active Azure Stack HCI OEM license, use these steps:
 
 For support with your Azure Stack HCI OEM license first contact your OEM vendor. If you're unable to obtain vendor support, file an Azure support request through [the Azure portal](https://portal.azure.com/).
 
-For more information on the Azure Stack HCI OEM license, see [Azure Stack HCI OEM license FAQ](./azure-stack-hci-license-billing.yml).
+For more information on the Azure Stack HCI OEM license, see [Azure Stack HCI OEM license FAQ](./license-billing.yml).
 
 ## Licensing Windows Server guest VMs on Azure Local
 
