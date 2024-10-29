@@ -1,42 +1,42 @@
 ---
-title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2.
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2.
+title: Use Azure Local Environment Checker to assess deployment readiness for Azure Local, version 23H2.
+description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 03/07/2024
+ms.date: 10/29/2024
 ---
 
-# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
+# Evaluate the deployment readiness of your environment for Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
+This article describes how to use the Azure Local Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Local solution.
 
-For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
+For a smooth deployment of the Azure Local solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Local Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
 
 ## About the Environment Checker tool
 
-The Environment Checker tool runs a series of tests on each server in your Azure Stack HCI cluster, reports the result for each test, provides remediation guidance when available, and saves a log file and a detailed report file.
+The Environment Checker tool runs a series of tests on each machine in your Azure Local system, reports the result for each test, provides remediation guidance when available, and saves a log file and a detailed report file.
 
 The Environment Checker tool consists of the following validators:
 
-- **Connectivity validator.** Checks whether each server in the cluster meets the [connectivity requirements](../concepts/firewall-requirements.md?tabs=allow-table#firewall-requirements-for-outbound-endpoints). For example, each server in the cluster has internet connection and can connect via HTTPS outbound traffic to well-known Azure endpoints through all firewalls and proxy servers.
-- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements-23h2.md). For example, all the servers in the cluster have the same manufacturer and model.
+- **Connectivity validator.** Checks whether each machine in the system meets the [connectivity requirements](../concepts/firewall-requirements.md?tabs=allow-table#firewall-requirements-for-outbound-endpoints). For example, each machine in the system has internet connection and can connect via HTTPS outbound traffic to well-known Azure endpoints through all firewalls and proxy servers.
+- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements-23h2.md). For example, all the machines in the system have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
-- **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
+- **Arc integration validator.** Checks if the Azure Local system meets all the prerequisites for successful Arc onboarding.
 
 ## Why use Environment Checker?
 
 You can run the Environment Checker to:
 
-- Ensure that your Azure Stack HCI infrastructure is ready before deploying any future updates or upgrades.
+- Ensure that your Azure Local infrastructure is ready before deploying any future updates or upgrades.
 - Identify the issues that could potentially block the deployment, such as not running a pre-deployment Active Directory script.
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
-- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the Azure Stack HCI system requirements.
+- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the Azure Local system requirements.
 - Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
@@ -53,9 +53,9 @@ This article describes how to run the Environment Checker in a standalone mode.
 
 Before you begin, complete the following tasks:
 
-- Review [Azure Stack HCI system requirements](../concepts/system-requirements-23h2.md).
-- Review [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
-- Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Stack HCI cluster.
+- Review [Azure Local system requirements](../concepts/system-requirements-23h2.md).
+- Review [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
+- Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Local system.
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
 
@@ -63,7 +63,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before you begin the deployment to avoid any potential conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Local machine. However, if installed on an Azure Local machine, make sure to [uninstall](#uninstall-environment-checker) it before you begin the deployment to avoid any potential conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -93,7 +93,7 @@ To install the Environment Checker, follow these steps:
 
 ## Run readiness checks
 
-Each validator in the Environment Checker tool checks specific settings and requirements. You can run these validators by invoking their respective PowerShell cmdlet on each server in your Azure Stack HCI cluster or from any computer on the network where you'll deploy Azure Stack HCI.
+Each validator in the Environment Checker tool checks specific settings and requirements. You can run these validators by invoking their respective PowerShell cmdlet on each machine in your Azure Local system or from any computer on the network where you'll deploy Azure Local.
 
 You can run the validators from the following locations:  
 
@@ -101,24 +101,24 @@ You can run the validators from the following locations:
 
 - Locally from a workstation or a staging server.
 
-- Locally from the Azure Stack HCI cluster node. However, make sure to uninstall the Environment Checker before you begin the deployment to avoid any potential conflicts.
+- Locally from the Azure Local machine. However, make sure to uninstall the Environment Checker before you begin the deployment to avoid any potential conflicts.
 
 Select each of the following tabs to learn more about the corresponding validator.
 
 ### [Connectivity](#tab/connectivity)
 
-Use the connectivity validator to check if all the servers in your cluster have internet connectivity and meet the minimum connectivity requirements. For connectivity prerequisites, see [Firewall requirements for Azure Stack HCI](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table).
+Use the connectivity validator to check if all the machines in your system have internet connectivity and meet the minimum connectivity requirements. For connectivity prerequisites, see [Firewall requirements for Azure Local](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table).
 
 You can use the connectivity validator to:
 
-- Check the connectivity of your servers before receiving the actual hardware. You can run the connectivity validator from any client computer on the network where you'll deploy the Azure Stack HCI cluster.
-- Check the connectivity of all the servers in your cluster after you've deployed the cluster. You can check the connectivity of each server by running the validator cmdlet locally on each server. Or, you can remotely connect from a staging server to check the connectivity of one or more servers.
+- Check the connectivity of your machines before receiving the actual hardware. You can run the connectivity validator from any client computer on the network where you'll deploy the Azure Local system.
+- Check the connectivity of all the machines in your system after you've deployed the system. You can check the connectivity of each machine by running the validator cmdlet locally on each machine. Or, you can remotely connect from a staging server to check the connectivity of one or more machines.
 
 ### Run the connectivity validator
 
 To run the connectivity validator, follow these steps.
 
-1. Open PowerShell locally on the workstation, staging server, or Azure Stack HCI cluster node.
+1. Open PowerShell locally on the workstation, staging server, or Azure Local machine.
 
 1. Run a connectivity validation by entering the following cmdlet:
 
@@ -157,7 +157,7 @@ Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -Pr
 ```
 
 > [!NOTE]
-> The connectivity validator validates general proxy, it doesn't check if your Azure Stack HCI is configured correctly to use a proxy. For information about how to configure firewalls for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+> The connectivity validator validates general proxy, it doesn't check if your Azure Local system is configured correctly to use a proxy. For information about how to configure firewalls for Azure Local, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
 #### Example 4: Check connectivity and create PowerShell output object
 
@@ -217,13 +217,13 @@ If a test fails, the connectivity validator returns information to help you reso
 
 ### Potential failure scenario for connectivity validator
 
-The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
+The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Local system, you get the following error:
 
 :::image type="content" source="./media/use-environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/use-environment-checker/error-connectivity-validation.png":::
 
 **Workaround**
 
-Work with your network team to turn off SSL inspection for your Azure Stack HCI system. To confirm your SSL inspection is turned off, you can use the following examples. After SSL inspection is turned off, you can run the tool again to check connectivity to all the endpoints.
+Work with your network team to turn off SSL inspection for your Azure Local system. To confirm your SSL inspection is turned off, you can use the following examples. After SSL inspection is turned off, you can run the tool again to check connectivity to all the endpoints.
 
 If you receive the certificate validation error message, run the following commands individually for each endpoint to manually check the certificate information:
 
@@ -271,7 +271,7 @@ For example, if you want to verify the certificate information for two endpoints
 
 ## [Hardware](#tab/hardware)
 
-The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements-23h2.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
+The hardware validator checks whether the machines and other hardware components meet the [system requirements](../concepts/system-requirements-23h2.md). For example, it checks if all physical machines in your system are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
 
 We recommend you use the hardware validator before starting the deployment.
 
@@ -302,7 +302,7 @@ Refer to the following table for a description of the tests the hardware validat
 
 To run the hardware validator, follow these steps.
 
-1. Open PowerShell as administrator locally on the Azure Stack HCI server node.
+1. Open PowerShell as administrator locally on the Azure Local machine.
 
 1. Run the following cmdlet to invoke the hardware validator:
 
@@ -312,7 +312,7 @@ To run the hardware validator, follow these steps.
 
 Here are some examples of using the hardware validator.
  
-### Example 1: Check hardware readiness of one or more remote servers
+### Example 1: Check hardware readiness of one or more remote machines
 
 In this example, you remotely connect from a workstation or a staging server to check hardware readiness of two remote systems.
 
@@ -338,7 +338,7 @@ The following sample is the output from a successful run of the hardware validat
 
 The following sample is the output from a failed run of the hardware validator:
 
-This sample output indicates seven critical issues that you must fix before proceeding with the deployment. One server in the cluster doesn't have the same network adapters as others. Also, some of the network adapter properties in that server don't meet the minimum requirements.
+This sample output indicates seven critical issues that you must fix before proceeding with the deployment. One machine in the system doesn't have the same network adapters as others. Also, some of the network adapter properties in that machine don't meet the minimum requirements.
 
    :::image type="content" source="./media/use-environment-checker/hardware-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the hardware validator." lightbox="./media/use-environment-checker/hardware-validator-sample-failed.png":::
 
@@ -353,14 +353,14 @@ Use the Active Directory validator to:
 
 ### Run the Active Directory validator
 
-To run the Active Directory validator locally from an Azure Stack HCI server node, a workstation, or a staging server, follow these steps.
+To run the Active Directory validator locally from an Azure Local machine node, a workstation, or a staging server, follow these steps.
 
-1. Ensure the following parameters are unique in the Active Directory per cluster instance:
+1. Ensure the following parameters are unique in the Active Directory per machine:
 
-   - Azure Stack HCI deployment user
-   - Azure Stack HCI organization unit name
-   - Azure Stack HCI deployment prefix (must be at the max eight characters)
-   - Azure Stack HCI deployment cluster name
+   - Azure Local deployment user
+   - Azure Local organization unit name
+   - Azure Local deployment prefix (must be at the max eight characters)
+   - Azure Local deployment instance name
    - Physical nodes objects (if already created) must be available under nested computers organization unit
 
 1. Run the following command in PowerShell as administrator:
@@ -406,13 +406,13 @@ To remediate the blocking issues in this output, open the Active Directory tool 
 
 ### [Network](#tab/network)
 
-It is possible that the IP addresses allocated to Azure Stack HCI may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range.
+It is possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range.
 
-You provide the network IP range reserved for Azure Stack HCI deployment as part of the answer file JSON, which you can use during network validation. Or, you can manually provide the starting and ending IP addresses when running the validator cmdlet.
+You provide the network IP range reserved for Azure Local deployment as part of the answer file JSON, which you can use during network validation. Or, you can manually provide the starting and ending IP addresses when running the validator cmdlet.
 
 ### Run the network validator
 
-To run the network validator locally on the Azure Stack HCI server node, the workstation, or the staging server with the answer file, follow these steps.
+To run the network validator locally on the Azure Local machine node, the workstation, or the staging server with the answer file, follow these steps.
 
 1. Run one of the following cmdlets:
 
@@ -449,7 +449,7 @@ The following sample is the output from a failed run of the network validator. T
 
 ### [Arc integration](#tab/arc-integration)
 
-The Arc integration validator helps assess if the Azure Stack HCI cluster satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
+The Arc integration validator helps assess if the Azure Local system satisfies all the necessary prerequisites for successful [Azure Arc](https://azure.microsoft.com/products/azure-arc/) onboarding.
 
 You can use the Arc integration validator to verify the following:
 
@@ -457,20 +457,20 @@ You can use the Arc integration validator to verify the following:
 - One or more nodes aren't already Arc-enabled in a different subscription ID or resource group.
 - The specified Azure region is valid.
 - The resource group limit in the subscription is not reached.
-- The Azure Stack HCI resource count limit in the registration resource group is not reached.
+- The Azure Local resource count limit in the registration resource group is not reached.
 - The role assignment count limit in the subscription is not reached.
 
 ### Run the Arc integration validator
 
-1. Open PowerShell on any Azure Stack HCI cluster node.
+1. Open PowerShell on any Azure Local machine.
 
-1. Run the following command to connect to Azure with the account you intend to onboard your Azure Stack HCI cluster:
+1. Run the following command to connect to Azure with the account you intend to onboard your Azure Local system:
 
    ```powershell
    Connect-AzAccount -Tenant <Your_tenant_ID> -Subscription <Your_subscription_ID> -DeviceCode
    ```
 
-1. Run the following command to create an array variable containing the names of your Azure Stack HCI cluster nodes:
+1. Run the following command to create an array variable containing the names of your Azure Local machines:
 
    ```powershell
    $nodes = [string[]]("host1"," host2"," host3"," host4")
@@ -483,7 +483,7 @@ You can use the Arc integration validator to verify the following:
    ```
 
    where:
-   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Stack HCI cluster.
+   - `Arc_resourcegroup_name` represents the resource group that you plan to use to onboard your Azure Local system.
 
 ### Arc integration validator output
 
@@ -493,13 +493,13 @@ To learn more about different sections in the readiness check report, see [Under
 
 **Sample output: Successful test**
 
-The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current cluster.
+The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current system.
 
    :::image type="content" source="./media/use-environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/use-environment-checker/arc-integration-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
-The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current cluster. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
+The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current system. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
 
    :::image type="content" source="./media/use-environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/use-environment-checker/arc-integration-validator-sample-failed.png":::
 
@@ -515,7 +515,7 @@ The information displayed on each readiness check report varies depending on the
 | ------- | ----------- | ----------- |
 | Services | Displays the health status of each service endpoint that the connectivity validator checks. Any service endpoint that fails the check is highlighted with the **Needs Remediation** tag.| Connectivity validator report|
 | **Diagnostics** | Displays the result of the diagnostic tests. For example, the health and availability of a DNS server. It also shows what information the validator collects for diagnostic purposes, such as WinHttp, IE proxy, and environment variable proxy settings. | Connectivity validator report|
-| Hardware | Displays the health status of all the physical servers and their hardware components. For information on the tests performed on each hardware, see the table under the "Hardware" tab in the [Run readiness checks](#run-readiness-checks) section. | Hardware validator report|
+| Hardware | Displays the health status of all the physical machines and their hardware components. For information on the tests performed on each hardware, see the table under the "Hardware" tab in the [Run readiness checks](#run-readiness-checks) section. | Hardware validator report|
 | **AD OU Diagnostics** | Displays the result of the Active Directory organization unit test. Displays if the specified organizational unit exists and contains proper sub-organizational units. | Active Directory validator report|
 | Network range test | Displays the result of the network range test. If the test fails, it displays the IP addresses that belong to the reserved IP range. | Network validator report |
 | **Summary** | Lists the count of successful and failed tests. Failed test results are expanded to show the failure details under **Needs Remediation**.| All reports |
@@ -533,7 +533,7 @@ For each test, the validator provides a summary of the unique issues and classif
 
 ## Uninstall environment checker
 
-The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before you begin the deployment to avoid any potential conflicts.
+The environment checker is shipped with Azure Local, make sure to uninstall it from all Azure Local machines before you begin the deployment to avoid any potential conflicts.
 
 ```powershell
 Remove-Module AzStackHci.EnvironmentChecker -Force
@@ -542,7 +542,7 @@ Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path 
 
 ## Troubleshoot environment validation issues
 
-For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Get support for deployment issues](./get-support-for-deployment-issues.md).
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during system deployment or pre-registration, see [Get support for deployment issues](./get-support-for-deployment-issues.md).
 
 ## Next steps
 
