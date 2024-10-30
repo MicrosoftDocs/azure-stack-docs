@@ -26,7 +26,7 @@ Take a few moments to watch the video walkthrough on collecting new logs, custom
 Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Local system that is deployed and registered.
-- You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights). Enabling Insights configures the cluster to collect required logs in a Log Analytics workspace.
+- You must have [Insights enabled on the cluster](./monitor-single-23h2.md#enable-insights). Enabling Insights configures the cluster to collect required logs in a Log Analytics workspace.
 
 ## Set up log alerts using Insights
 
@@ -47,7 +47,7 @@ Follow these steps to set up log alerts using Insights. Ensure that you have rev
 
     :::image type="content" source="media/setup-hci-system-alerts/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/setup-hci-system-alerts/new-alert-rule.png":::
 
-1. From the alerts interface you can set up your alert conditions, actions, and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
+1. From the alerts interface you can set up your alert conditions, actions, and more. For more information, see [Log query results](setup-system-alerts.md#log-query-results) and [Alert actions and details](setup-system-alerts.md#alert-actions-and-details).
 
     :::image type="content" source="media/setup-hci-system-alerts/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/setup-hci-system-alerts/create-alert-rule.png":::
 
@@ -85,7 +85,7 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. Select **Run**.
 
-After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
+After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-system-alerts.md#log-query-results) and [Alert actions and details](setup-system-alerts.md#alert-actions-and-details).
 
 ### Set up alerts for multiple clusters
 

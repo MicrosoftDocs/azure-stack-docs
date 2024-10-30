@@ -25,8 +25,8 @@ To migrate VM workloads and their data to your Azure Local instance, several opt
 
 First party migration options are provided by Microsoft. These options are built into the Azure Local platform and are available to you at no additional cost. The following first party migration options are available:
 
-- [Azure Migrate](./migration-azure-migrate-hci-overview.md). This option is only available on systems running Azure Local, version 23H2.
-    - [For Hyper-V VMs](./migration-azure-migrate-hci-overview.md).
+- [Azure Migrate](./migration-azure-migrate-overview.md). This option is only available on systems running Azure Local, version 23H2.
+    - [For Hyper-V VMs](./migration-azure-migrate-overview.md).
     - [For VMware VMs](./migration-azure-migrate-vmware-overview.md).
 
 - System Center Virtual Machine Manager (SCVMM). These options are only available on systems running Azure Local, version 22H2.
@@ -60,5 +60,5 @@ The following manual migration options are available:
 ## Next steps
 
 To learn more about migration using Azure Migrate, see:
-- [Hyper-V migration to Azure Local](./migration-azure-migrate-hci-overview.md).
+- [Hyper-V migration to Azure Local](./migration-azure-migrate-overview.md).
 - [VMware migration to Azure Local](./migration-azure-migrate-vmware-overview.md).
