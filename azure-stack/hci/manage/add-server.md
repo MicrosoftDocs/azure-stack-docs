@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/16/2024
+ms.date: 10/30/2024
 ---
 
 # Add a server on Azure Local, version 23H2
@@ -15,9 +15,9 @@ This article describes how to manage capacity by adding a server (often called s
 
 ## About add servers
 
-You can easily scale the compute and storage at the same time on Azure Local by adding servers to an existing cluster. Your Azure Local instance supports a maximum of 16 servers.
+You can easily scale the compute and storage at the same time on Azure Local by adding machines to an existing cluster. Your Azure Local instance supports a maximum of 16 servers.
 
-Each new physical server that you add to your system must closely match the rest of the machines in terms of CPU type, memory, number of drives, and the type and size of the drives.
+Each new physical machine that you add to your system must closely match the rest of the machines in terms of CPU type, memory, number of drives, and the type and size of the drives.
 
 You can dynamically scale your Azure Local instance from 1 to 16 servers. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
