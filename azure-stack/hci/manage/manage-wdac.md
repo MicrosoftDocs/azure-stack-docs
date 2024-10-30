@@ -1,22 +1,22 @@
 ---
-title: Manage Windows Defender Application Control for Azure Stack HCI, version 23H2
-description: This article describes how to use Windows Defender Application Control on Azure Stack HCI, version 23H2.
+title: Manage Windows Defender Application Control for Azure Local, version 23H2
+description: This article describes how to use Windows Defender Application Control on Azure Local, version 23H2.
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 04/04/2024
+ms.date: 10/22/2024
 ms.service: azure-stack-hci
 ---
 
-# Manage Windows Defender Application Control for Azure Stack HCI, version 23H2
+# Manage Windows Defender Application Control for Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
+This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Local. For more information, see [Manage baseline security settings on Azure Local, version 23H2](../whats-new.md).
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local, version 23H2 instance that is deployed, registered, and connected to Azure.
 
 ## View WDAC settings via Azure portal
 
@@ -129,4 +129,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
-- [Complete the prerequisites and deployment checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
+- [Complete the prerequisites and deployment checklist and install Azure Local, version 23H2](../deploy/deployment-prerequisites.md).
