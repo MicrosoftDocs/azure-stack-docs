@@ -251,7 +251,7 @@ Follow these steps in Azure portal for your Azure Local.
 
 1. In the VM proxy configuration section, to configure a proxy for your Arc VM, input the following parameters:
 
-    > [!NOTE]]
+    > [!NOTE]
     > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
     :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png":::
