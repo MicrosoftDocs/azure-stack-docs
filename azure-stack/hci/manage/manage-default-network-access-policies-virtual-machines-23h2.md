@@ -1,16 +1,16 @@
 ---
-title: Enable and assign default network access policies on Azure Stack HCI, version 23H2 VMs
-description: Learn how to enable and assign default network access policies on VMs running on Azure Stack HCI, version 23H2 via the Windows Admin Center.
+title: Enable and assign default network access policies on Azure Local, version 23H2 VMs
+description: Learn how to enable and assign default network access policies on VMs running on Azure Local, version 23H2 via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/10/2024
+ms.date: 10/29/2024
 ---
 
-# Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
+# Use default network access policies on virtual machines on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
@@ -37,7 +37,7 @@ Complete the following prerequisites to use network access policies:
 
 :::zone pivot="azure-stack-hci"
 
-- You have Azure Stack HCI 23H2 or later installed on your cluster. For more information, see how to [Install the Azure Stack HCI, version 23H2 operating system](../deploy/deployment-install-os.md).
+- You have Azure Stack HCI operating system, version 23H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
 
 - You have Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
@@ -45,7 +45,7 @@ Complete the following prerequisites to use network access policies:
 
 - You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- You have administrator permissions or equivalent to the cluster nodes and network controller.
+- You have administrator permissions or equivalent to the system nodes and network controller.
 
 ::: zone-end
 
@@ -59,7 +59,7 @@ Complete the following prerequisites to use network access policies:
 
 - You have a VM to apply policies to. For more information, see how to [Manage VMs with Windows Admin Center](vm.md?context=/windows-server/context/windows-server-failover-clustering#create-a-new-vm).
 
-- You have administrator permissions or equivalent to the cluster nodes and network controller.
+- You have administrator permissions or equivalent to the system nodes and network controller.
 
 ::: zone-end
 
@@ -74,7 +74,7 @@ You can attach default policies to a VM in two ways:
 
 Depending on the type of network you want to attach your VM to, steps might be different.
 
-- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of one or more physical networks available to your Azure Stack HCI. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
+- **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of one or more physical networks available to Azure Local. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
 

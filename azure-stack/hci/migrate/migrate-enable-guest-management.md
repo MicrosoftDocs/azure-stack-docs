@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/30/2024
+ms.date: 10/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,9 +12,9 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2.
+This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Local, version 23H2.
 
-For more information on other scenarios, see [Manage Arc VMs on Azure Stack HCI](../manage/manage-arc-virtual-machines.md).
+For more information on other scenarios, see [Manage Arc VMs on Azure Local](../manage/manage-arc-virtual-machines.md).
 
 The output properties may vary depending on whether VMs were migrated or not.
 
@@ -24,11 +24,11 @@ The output properties may vary depending on whether VMs were migrated or not.
 
 Before you begin, complete the following:
 
-- You have access to a deployed and registered Azure Stack HCI system, with an Arc Resource Bridge and custom location configured.
+- You have access to a deployed and registered Azure Local instance, with an Arc Resource Bridge and custom location configured.
 
-- Your system is running Azure Stack HCI, version 23H2, release 2405 or later.
+- Your system is running Azure Local, version 23H2, release 2405 or later.
 
-- Azure CLI is installed on the Azure Stack HCI system. For instructions, see [Install the Azure CLI for Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
+- Azure CLI is installed on the Azure Local instance. For instructions, see [Install the Azure CLI for Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
 - Add the **stack-hci-vm** Azure extension by running PowerShell as administrator:
 
@@ -76,7 +76,7 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
 
     **Using Azure CLI**
 
-    1. Sign on with Azure CLI on HCI cluster PowerShell window:
+    1. Connect to Azure Local machine and open a PowerShell window. Sign on with Azure CLI.
 
         ```azurecli
         az login --use-device-code --tenant $tenantId
@@ -112,7 +112,7 @@ All Hyper-V generation 1 VMs must be powered off before proceeding with the foll
 
 **Step 2**: Attach the ISO for the guest agent on the migrated VM as follows:
 
-Connect to an Azure Stack HCI server and run the following command in PowerShell, where `$vmName` is the name of the migrated VM to have guest agent enabled and `$rgName` is the name of the resource group where this VM lives on Azure:
+Connect to an Azure Local machine and run the following command in PowerShell, where `$vmName` is the name of the migrated VM to have guest agent enabled and `$rgName` is the name of the resource group where this VM lives on Azure:
 
 ```azurecli
 az stack-hci-vm update --name $vmName --resource-group $rgName --enable-vm-config-agent true
@@ -138,7 +138,7 @@ PS C:\Users\AzureStackAdminD> az stack-hci-vm update --name $vmName -enable-vm-c
 }
 ```
 
-Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI system:
+Sample state of the VM with the ISO attached, viewed from the Azure Local system:
 
 :::image type="content" source="./media/migrate-enable-guest-management/vm-settings.png" alt-text="Screenshot showing ISO attachment." lightbox="./media/migrate-enable-guest-management/vm-settings.png":::
 
@@ -148,7 +148,7 @@ Sample state of the VM with the ISO attached, viewed from the Azure Stack HCI sy
 
     :::image type="content" source="./media/migrate-enable-guest-management/vm-running-portal.png" alt-text="Screenshot showing VM status in Azure portal." lightbox="./media/migrate-enable-guest-management/vm-running-portal.png":::
 
-1. Check that the VM **powerState**  is **Running** by running following command on your Azure Stack HCI cluster server in a PowerShell window:
+1. Check that the VM **powerState**  is **Running** by running following command on your Azure Local machine in a PowerShell window:
 
     ```azurecli
     az stack-hci-vm show --name $vmName --resource-group $rgName --query “properties.status” 
@@ -220,7 +220,7 @@ The guest agent was successfully installed.
 
 You can enable guest management after the guest agent is running as follows:
 
-1. Enable guest management from your Azure Stack HCI system by running the following command in Azure CLI:
+1. Enable guest management from your Azure Local instance by running the following command in Azure CLI:
 
     ```azurecli
     az stack-hci-vm update --name $vmName --resource-group $rgName --enable-agent true

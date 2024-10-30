@@ -1,18 +1,19 @@
 ---
-title: Troubleshoot Azure Arc VM management
+title: Troubleshoot Azure Arc VM management for Azure Local
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 09/06/2024
+ms.date: 10/24/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
+ms.service: azure-stack-hci
 ---
 
-# Troubleshoot Azure Arc VM management
+# Troubleshoot Azure Arc VM management for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
+This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) on your Azure Local instance. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
 ## Troubleshoot Azure Arc VMs
 
@@ -22,7 +23,7 @@ This section describes the errors related to Azure Arc VM management and their r
 
 When trying to run the command to enable guest management, you see the following error:
 
-**Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
+**Error:** `Deployment failed. Correlation ID: aaaa0000-bb11-2222-33cc-444444dddddd. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
 This failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
 
@@ -38,13 +39,13 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
+1. To create managed identity, connect to the Azure Local machine via RDP. Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
     ```
 
-1. Verify that the connected machine CLI extension is installed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
+1. Verify that the connected machine CLI extension is installed on the system. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
     
     ```output
     [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
@@ -77,7 +78,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
 ## Failure deploying a VM image from a storage account
 
-You see the following error when trying to deploy a VM image from a storage account on your Azure Stack HCI cluster:
+You see the following error when trying to deploy a VM image from a storage account on your Azure Local:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=AuthorizationPermissionMismatch) =====\nDescription=, Details: (none)\n"}`
 
@@ -106,7 +107,7 @@ Ensure that the user has the right permissions, and the blob is in the correct f
 
 ## Failure deploying an Arc VM
 
-You see the following error when trying to deploy an Arc VM on your Azure Stack HCI cluster:
+You see the following error when trying to deploy an Arc VM on your Azure Local:
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
@@ -118,11 +119,11 @@ Verify in your deployment template that:
 
 The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
 
-The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
 
 ## Failure deleting storage path
 
-When trying to delete a storage path on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
+When trying to delete a storage path on your Azure Local instance, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
 
 **Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`  
 `- linux-cblmariner-0.2.0.10503`  
@@ -156,19 +157,19 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
 
 Here's a list of existing limitations and known issues with Azure Arc VM management:
 
-- Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
+- Resource name must be unique for an Azure Local instance and must contain only alphabets, numbers, and hyphens.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
 
-- You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools aren't updated in the Azure portal.
+- You must update Arc VMs on Azure Local only from the Azure management plane. Any modifications to these VMs from other management tools aren't updated in the Azure portal.
 
 - Arc VMs must be created in the same Azure subscription as the Custom location.
 
-- An IT administrator can't view or manage VMs from cluster resource page in the Azure portal, if they are created in a subscription where the IT administrator doesn't have at least read-only access role.
+- An IT administrator can't view or manage VMs from system resource page in the Azure portal, if they are created in a subscription where the IT administrator doesn't have at least read-only access role.
 
 - If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
 
-- Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
+- Arc VM management is currently not available for stretched cluster configurations on Azure Local.
 
 - Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
 

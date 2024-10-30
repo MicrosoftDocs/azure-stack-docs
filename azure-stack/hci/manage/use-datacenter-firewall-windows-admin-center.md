@@ -4,12 +4,12 @@ description: Configure network security groups with Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 04/10/2024
+ms.date: 10/24/2024
 ---
 
 # Configure network security groups with Windows Admin Center
 
->Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+>Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create and configure network security groups (NSGs) to manage data traffic flow using Datacenter Firewall. It also provides instructions on managing network security groups on Software Defined Network (SDN) virtual and logical networks. You enable and configure Datacenter Firewall by creating network security groups and applying them to either a subnet or a network interface. To learn more, see [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md) To use PowerShell scripts to do this, see [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md).
 
@@ -24,7 +24,7 @@ Additionally, if you want to apply network security groups to an SDN logical net
 
 You can create a network security group in Windows Admin Center.
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the network security group on.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to create the network security group on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
 1. Under **Network security groups**, select the **Inventory** tab, and then select **New**.
 1. In the **Network Security Group** pane, type a name for the network security group, and then select **Submit**.
@@ -37,7 +37,7 @@ You can create a network security group in Windows Admin Center.
 
 After you create a network security group, you’re ready to create network security groups rules. If you want to apply network security group rules to both inbound and outbound traffic, you need to create two rules.
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the network security group on.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to create the network security group on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
 1. Under **Network security groups**, select the **Inventory** tab, and then select the network security group that you just created.
 1. Under **Network security rule**, select **New**.
@@ -96,11 +96,11 @@ You can apply a network security group to a network interface, either while crea
 
 ## Get a list of network security groups
 
-You can easily view all the network security groups in your cluster in a list.
+You can easily view a list of the network security groups in your system.
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to view a list of network security groups on.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to view a list of network security groups on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
-1. The **Inventory** tab displays the list of the network security groups available on the cluster and provides commands that you can use to manage individual network security groups in the list. You can:
+1. The **Inventory** tab displays the list of the network security groups available on the system and provides commands that you can use to manage individual network security groups in the list. You can:
     - View the network security groups list.
     - View the number of rules for each network security group, and the number of applied subnets and NICs applied to each network security group.
     - View the **Provisioning State** of each network security group (**Succeeded**, **Failed**).
@@ -128,4 +128,4 @@ You can delete a network security group if you no longer need it.
 
 For more information, see also:
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking-23h2.md)
+- [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking-23h2.md).

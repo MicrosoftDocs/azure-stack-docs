@@ -4,12 +4,12 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 03/29/2024
+ms.date: 10/29/2024
 ---
 
 # Manage tenant logical networks
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete logical networks after you have deployed Network Controller. A Software Defined Networking (SDN) logical network is a traditional VLAN-based network.
 
@@ -20,7 +20,7 @@ Use the following steps in Windows Admin Center to create a logical network.
 
 :::image type="content" source="./media/tenant-logical-networks/create-logical-network.png" alt-text="Screenshot of Windows Admin Center home screen showing the Logical networks name box." lightbox="./media/tenant-logical-networks/create-logical-network.png":::
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the logical network on.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to create the logical network on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
 1. Under **Logical networks**, select the **Inventory** tab, then select **New**.
 1. In the **Logical networks** pane, type a name for the logical network.
@@ -44,13 +44,13 @@ Use the following steps in Windows Admin Center to create a logical network.
 1. In the **Logical networks** list, verify that the state of the logical network is **Healthy**.
 
 ## Get a list of logical networks
-You can easily see all of the logical networks in your cluster.
+You can easily see all of the logical networks in your system.
 
 :::image type="content" source="./media/tenant-logical-networks/list-logical-networks.png" alt-text="Screenshot of Windows Admin Center home screen showing the Inventory pane of Logical networks." lightbox="./media/tenant-logical-networks/list-logical-networks.png":::
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster on which you want to view logical networks.
+1. On the Windows Admin Center home screen, under **All connections**, select the system on which you want to view logical networks.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
-1. The **Inventory** tab lists all logical networks available on the cluster, and provides commands to manage individual logical networks. You can:
+1. The **Inventory** tab lists all logical networks available on the system, and provides commands to manage individual logical networks. You can:
     - View the list of logical networks.
     - View logical network settings, the state of each logical network, and whether network virtualization is enabled for each logical network. If network virtualization is enabled, you can also view the number of virtual networks associated with each logical network.
     - Change the settings of a logical network.
@@ -92,4 +92,4 @@ You can delete a logical network if you no longer need it.
 ## Next steps
 For more information, see also:
 - [Manage tenant virtual networks](tenant-virtual-networks.md)
-- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking-23h2.md)
+- [Software Defined Networking (SDN) in Azure Local](../concepts/software-defined-networking-23h2.md)
