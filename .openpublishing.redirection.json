@@ -1672,32 +1672,32 @@
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-nov-2023.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-nov-2023.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-nov-2023",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-dec-2023.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-dec-2023.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-dec-2023",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-jan-2024.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-jan-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-jan-2024",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-feb-2024.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-feb-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-feb-2024",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-mar-2024.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-mar-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-mar-2024",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-apr-2024.md",
-      "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024.md",
+      "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024",
       "redirect_document_id": false
     }
   ]
