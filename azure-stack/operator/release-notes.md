@@ -40,9 +40,6 @@ To access release notes for a different version, use the version selector dropdo
 ## Update planning
 
 Before applying the update, make sure to review the following information:
-::: moniker range="azs-2306"
-## 2306 archived release notes
-::: moniker-end
 
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 - [Known issues](known-issues.md)
