@@ -254,7 +254,7 @@ Follow these steps in Azure portal for your Azure Local.
     > [!NOTE]
     > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
 
     - **Http proxy** - Provide an HTTP URL for the proxy server. An example URL is: `http://proxy.example.com:3128`.
     - **Https proxy** - Provide an HTTPS URL for the proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`.
@@ -267,7 +267,7 @@ Follow these steps in Azure portal for your Azure Local.
 
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
-    :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-adminacct-domainjoin.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
