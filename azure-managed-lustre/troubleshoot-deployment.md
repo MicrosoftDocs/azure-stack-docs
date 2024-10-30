@@ -5,7 +5,7 @@ author: pauljewellmsft
 ms.author: pauljewell
 ms.service: azure-managed-lustre
 ms.topic: troubleshooting-general
-ms.date: 10/17/2024
+ms.date: 10/30/2024
 
 ---
 
@@ -19,6 +19,7 @@ In this section, we cover the following causes:
 
 - [Cause 1: Network ports are blocked](#cause-1-network-ports-are-blocked)
 - [Cause 2: Resources within the subnet are incompatible](#cause-2-resources-within-the-subnet-are-incompatible)
+- [Cause 3: Network security group rules aren't configured correctly](#cause-3-network-security-group-rules-arent-configured-correctly)
 
 ### Cause 1: Network ports are blocked
 
@@ -39,6 +40,14 @@ Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. The 
 ### Solution: Verify the subnet configuration
 
 If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. To learn more, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites).
+
+### Cause 3: Network security group rules aren't configured correctly
+
+If you're using a network security group to filter network traffic between Azure resources in an Azure virtual network, the security rules that allow or deny inbound and outbound network traffic must be properly configured. If the network security group rules aren't correctly configured for Azure Managed Lustre file system support, the deployment fails.
+
+### Solution: Verify the network security group configuration
+
+For detailed guidance about configuring inbound and outbound security rules to support Azure Managed Lustre file systems, see [Configure network security group rules](configure-network-security-group.md#configure-network-security-group-rules).
 
 ## Cluster deployment fails due to incorrect blob container configuration
 
