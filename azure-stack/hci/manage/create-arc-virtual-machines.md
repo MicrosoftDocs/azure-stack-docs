@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/28/2024
+ms.date: 10/30/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -149,10 +149,14 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
+Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration.
+
+As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>" 
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
 ```
 
 You can input the following parameters for `proxy-server-configuration`:
@@ -162,7 +166,7 @@ You can input the following parameters for `proxy-server-configuration`:
 | **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
 | **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
 | **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-| **cert_file_path**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
+| **cert_file_path**  |Select the certificate file used to establish trust with your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
@@ -174,7 +178,7 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 ```
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
+<!--Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
 
 - For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
 
@@ -184,11 +188,14 @@ Depending on the PowerShell version you're running on your VM, you may need to e
 
     After the proxy is enabled, you can then [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management).
 
-- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.
+- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.-->
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal of your Azure Local.
+Follow these steps in Azure portal for your Azure Local.
+
+> [!IMPORTANT]
+> Setting the proxy server during VM creation is supported for Ubuntu Server VMs.
 
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
@@ -236,16 +243,31 @@ Follow these steps in Azure portal of your Azure Local.
 
     1. **Memory type** – Specify the memory type as static or dynamic.
 
-1. In the **VM extensions** section, select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
-
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png":::
+1. In the **VM extensions** section, select the checkbox to enable guest management and input the following parameters. You can install extensions on VMs where the guest management is enabled.
 
     > [!NOTE]
-    > - You can't enable guest management via Azure portal if the Arc VM is already created.
     > - Add at least one network interface through the **Networking** tab to complete guest management setup.
     > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
+1. In the VM proxy configuration section, to configure a proxy for your Arc VM, input the following parameters:
+
+    > [!NOTE]]
+    > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png":::
+
+    - **Http proxy** - Provide an HTTP URL for the proxy server. An example URL is: `http://proxy.example.com:3128`.
+    - **Https proxy** - Provide an HTTPS URL for the proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`.
+    - **No proxy** - Specify URLs to bypass the proxy. Typical examples would be: `localhost,127.0.0.1`,`.svc,10.0.0.0/8`,`172.16.0.0/12`,`192.168.0.0/16`,`100.0.0.0/8`.
+    - **Certificate file** - Select the certificate file used to establish trust with your proxy server.
+
+    > [!NOTE]
+    > For proxy authentication, you can pass the username and password combined in a URL as follows: `http://username:password@proxyserver.contoso.com:3128`.
+
+
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
+
+    :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
