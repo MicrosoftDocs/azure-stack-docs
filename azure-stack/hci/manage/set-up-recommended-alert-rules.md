@@ -16,7 +16,7 @@ This article describes how to enable recommended alert rules for Azure Local.
 
 A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
 
-For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Local](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
+For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Local](./setup-system-alerts.md) and [Set up metric alerts for Azure Local](./setup-metric-alerts.md).
 
 ## Prerequisites
 

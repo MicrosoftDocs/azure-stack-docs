@@ -1,28 +1,28 @@
 ---
-title: Manage syslog forwarding for Azure Stack HCI
-description: Learn how to configure syslog forwarding for Azure Stack HCI security information and event management (SIEM).
+title: Manage syslog forwarding for Azure Local
+description: Learn how to configure syslog forwarding for Azure Local security information and event management (SIEM).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 10/22/2024
 ---
 
-# Manage syslog forwarding for Azure Stack HCI
+# Manage syslog forwarding for Azure Local
 
 [!Include [Applies to: Azure Stack HCI, version 23H2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Stack HCI, version 23H2 (preview).
+This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local, version 23H2 (preview).
 
-Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Stack HCI, version 23H2 (preview)](../concepts/security-features.md).
+Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Local, version 23H2 (preview)](../concepts/security-features.md).
 
 ## Configure syslog forwarding
 
-Syslog forwarding agents are deployed on every Azure Stack HCI host by default, ready to be configured. Each of the agents will forward security events in syslog format from the host to the customer-configured syslog server.
+Syslog forwarding agents are deployed on every Azure Local host by default, ready to be configured. Each of the agents will forward security events in syslog format from the host to the customer-configured syslog server.
 
 Syslog forwarding agents work independently from each other but can be managed all together on any one of the hosts. Use PowerShell cmdlets with administrative privileges on any host to control the behavior of all forwarder agents.
 
-The syslog forwarder in Azure Stack HCI supports the following configurations:
+The syslog forwarder in Azure Local supports the following configurations:
 
 - **Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption](#syslog-forwarding-with-tcp-mutual-authentication-client-and-server-and-tls-12-encryption).
 - **Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption:** In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption).
@@ -34,7 +34,7 @@ The syslog forwarder in Azure Stack HCI supports the following configurations:
 
 ### Cmdlets to configure syslog forwarding
 
-Configuring syslog forwarder requires access to the physical host using a domain administrator account. A set of PowerShell cmdlets has been added to all Azure Stack HCI hosts to control behavior of the syslog forwarder.
+Configuring syslog forwarder requires access to the physical host using a domain administrator account. A set of PowerShell cmdlets has been added to all Azure Local hosts to control behavior of the syslog forwarder.
 
 The `Set-AzSSyslogForwarder` cmdlet is used to set the syslog forwarder configuration for all hosts. If successful, an action plan instance will be started to config the syslog forwarder agents across all hosts. The action plan instance ID will be returned.
 
@@ -62,7 +62,7 @@ The following table provides parameters for the `Set-AzSSyslogForwarder` cmdlet:
 
 ### Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption
 
-In this configuration, the syslog client in Azure Stack HCI forwards messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
 
 This configuration is the most secure as it provides full validation of the identity of both the client and the server, and it sends messages over an encrypted channel.
 
@@ -82,7 +82,7 @@ Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -Server
 
 ### Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption
 
-In this configuration, the syslog forwarder in Azure Stack HCI forwards the messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
+In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
 This configuration prevents the client from sending messages to untrusted destinations. TCP using authentication and encryption is the default configuration and represents the minimum level of security that Microsoft recommends for a production environment.
 
@@ -90,7 +90,7 @@ This configuration prevents the client from sending messages to untrusted destin
 Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -ServerPort <Port number on which the syslog server is listening>
 ```
 
-If you want to test the integration of your syslog server with the Azure Stack HCI syslog forwarder by using a self-signed or untrusted certificate, use these flags to skip the server validation done by the client during the initial handshake.
+If you want to test the integration of your syslog server with the Azure Local syslog forwarder by using a self-signed or untrusted certificate, use these flags to skip the server validation done by the client during the initial handshake.
 
 1. Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server.
 
@@ -111,7 +111,7 @@ If you want to test the integration of your syslog server with the Azure Stack H
 
 ### Syslog forwarding with TCP and no encryption
 
-In this configuration, the syslog client in Azure Stack HCI forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
 
 ```powershell
 Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -NoEncryption
@@ -122,7 +122,7 @@ Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -Server
 
 ### Syslog forwarding with UDP and no encryption
 
-In this configuration, the syslog client in Azure Stack HCI forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
 
 ```powershell
 Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -ServerPort <Port number on which the syslog server is listening> -UseUDP
@@ -183,7 +183,7 @@ Cmdlet parameters for the `Get-AzSSyslogForwarder` cmdlet:
 |----|----|----|----|
 |Local |Show currently used configuration on current host. |Flag |No |
 |PerNode |Show currently used configuration on each host. |Flag |No |
-|Cluster |Show current global configuration on Azure Stack HCI. This is the default behavior if no parameter is provided. |Flag |No |
+|Cluster |Show current global configuration on Azure Local. This is the default behavior if no parameter is provided. |Flag |No |
 
 ## Remove syslog forwarding
 
@@ -199,7 +199,7 @@ The following reference material documents syslog message schema and event defin
 
 ### [Syslog message schema](#tab/syslog-message-schema)
 
-The syslog forwarder of the Azure Stack HCI infrastructure sends messages formatted following the BSD syslog protocol defined in RFC3164. CEF is also used to format the syslog message payload.
+The syslog forwarder of the Azure Local infrastructure sends messages formatted following the BSD syslog protocol defined in RFC3164. CEF is also used to format the syslog message payload.
 
 Each syslog message is structured based on this schema:
 Priority (PRI) | Time | Host | CEF payload |
@@ -214,7 +214,7 @@ CEF: |Version | Device Vendor | Device Product | Device Version | Signature ID |
 
 - Version: 0.0
 - Device Vendor: Microsoft
-- Device Product: Microsoft Azure Stack HCI
+- Device Product: Microsoft Azure Local
 - Device Version: 1.0
 
 ### [Windows event mapping and examples](#tab/windows-event-mapping-and-examples)
@@ -237,7 +237,7 @@ All Windows events use the PRI facility value 10.
 |6 |2 |Information |Value: 4. Indicates logs for an informational message. |
 |7 |0 |Verbose |Value: 5. Indicates logs for a verbose message. |
 
-#### Custom extensions and Windows events in Azure Stack HCI
+#### Custom extensions and Windows events in Azure Local
 
 |Custom extension name |Windows event |
 |----|----|
@@ -329,6 +329,6 @@ Miscellaneous events that are forwarded. These events can't be customized.
 
 Learn more about:
 
-- [Security baseline settings for Azure Stack HCI](/azure-stack/hci/concepts/secure-baseline).
-- [Windows Defender Application Control for Azure Stack HCI](/azure-stack/hci/concepts/security-windows-defender-application-control).
-- [BitLocker for Azure Stack HCI](/azure-stack/hci/concepts/security-bitlocker).
+- [Security baseline settings for Azure Local](/azure-stack/hci/concepts/secure-baseline).
+- [Windows Defender Application Control for Azure Local](/azure-stack/hci/concepts/security-windows-defender-application-control).
+- [BitLocker for Azure Local](/azure-stack/hci/concepts/security-bitlocker).

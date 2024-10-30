@@ -74,17 +74,17 @@ items:
       - name: May 2024
         href: security-update/security-update-may-2024.md
       - name: April 2024
-        href: security-update/hci-security-update-apr-2024.md
+        href: security-update/security-update-apr-2024.md
       - name: March 2024 
-        href: security-update/hci-security-update-mar-2024.md
+        href: security-update/security-update-mar-2024.md
       - name: February 2024 
-        href: security-update/hci-security-update-feb-2024.md      
+        href: security-update/security-update-feb-2024.md      
       - name: January 2024 
-        href: security-update/hci-security-update-jan-2024.md
+        href: security-update/security-update-jan-2024.md
       - name: December 2023 
-        href: security-update/hci-security-update-dec-2023.md
+        href: security-update/security-update-dec-2023.md
       - name: November 2023 
-        href: security-update/hci-security-update-nov-2023.md
+        href: security-update/security-update-nov-2023.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -462,7 +462,7 @@ items:
   - name: Billing
     items:
     - name: Azure Hybrid Benefit
-      href: concepts/azure-hybrid-benefit-hci.md
+      href: concepts/azure-hybrid-benefit.md
     - name: Billing and payment
       href: concepts/billing.md
 - name: Monitor
@@ -474,13 +474,13 @@ items:
     - name: Insights
       items:
       - name: Monitor a single cluster
-        href: manage/monitor-hci-single-23h2.md
+        href: manage/monitor-single-23h2.md
       - name: Monitor multiple clusters
-        href: manage/monitor-hci-multi-23h2.md
+        href: manage/monitor-multi-23h2.md
       - name: Monitor feature workbooks
         href: manage/monitor-features.md
       - name: Enable Insights at scale using Azure policies
-        href: manage/monitor-hci-multi-azure-policies.md
+        href: manage/monitor-multi-azure-policies.md
     - name: Metrics
       href: manage/monitor-cluster-with-metrics.md
     - name: Alerts
@@ -488,7 +488,7 @@ items:
       - name: Health alerts
         href: manage/health-alerts-via-azure-monitor-alerts.md
       - name: Log alerts
-        href: manage/setup-hci-system-alerts.md
+        href: manage/setup-system-alerts.md
       - name: Metric alerts
         href: manage/setup-metric-alerts.md
       - name: Recommended alert rules
@@ -540,7 +540,7 @@ items:
     - name: Hyper-V VMs
       items: 
       - name: Overview
-        href: migrate/migration-azure-migrate-hci-overview.md
+        href: migrate/migration-azure-migrate-overview.md
       - name: Prepare
         items:
         - name: Review requirements

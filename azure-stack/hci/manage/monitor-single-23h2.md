@@ -14,7 +14,7 @@ ms.date: 10/10/2024
 
 [!INCLUDE [applies-to-23H2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Insights to monitor a single Azure Local system. For multiple Azure Local systems, see [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md).
+This article describes how to use Insights to monitor a single Azure Local system. For multiple Azure Local systems, see [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md).
 
 Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system. You can view key metrics, health, and usage information regarding cluster, nodes, virtual machines, and storage.
 
@@ -44,7 +44,7 @@ Here are the prerequisites of using Insights for Azure Local:
 
 Enabling Insights helps you monitor all the Azure Local systems currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Local system.
 
-To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-multi-azure-policies.md).
 
 Follow these steps to enable Insights from the Azure portal:
 
@@ -183,7 +183,7 @@ Provides health faults on a cluster.
 |--|--|--|--|
 | Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | PoolCapacityThresholdExceeded |
 | Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
-| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {1245340c-780b-4afc-af3c-f9bdc4b12f8a}: SP:{c57f23d1-d784-4a42-8b59-4edd8e70e830} |
+| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1}: SP:{b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2} |
 | Severity | Severity of fault could be warning or critical. | No unit | Warning |
 | Initial fault time | Timestamp of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
@@ -247,6 +247,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 
 ## Next steps
 
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)

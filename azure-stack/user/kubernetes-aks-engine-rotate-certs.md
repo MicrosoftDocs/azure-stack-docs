@@ -88,9 +88,9 @@ For example:
   --linux-ssh-private-key "~/.ssh/id_rsa" \
   --ssh-host "my-cluster.westus2.cloudapp.azure.com"\
   --resource-group "my-cluster" \
-  --client-id "12345678-XXXX-YYYY-ZZZZ-1234567890ab" \
-  --client-secret "12345678-XXXX-YYYY-ZZZZ-1234567890ab" \
-  --subscription-id "12345678-XXXX-YYYY-ZZZZ-1234567890ab" \
+  --client-id "00001111-aaaa-2222-bbbb-3333cccc4444" \
+  --client-secret "00001111-aaaa-2222-bbbb-3333cccc4444" \
+  --subscription-id "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e" \
   --azure-env "AzureStackCloud" # optional if targeting AzureCloud
 ```
 
