@@ -534,7 +534,7 @@ items:
 - name: Migrate
   items:
   - name: Migration overview
-    href: migrate/migration-options-hci-overview.md
+    href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
     - name: Hyper-V VMs
