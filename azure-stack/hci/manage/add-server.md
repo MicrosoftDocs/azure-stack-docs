@@ -1,82 +1,82 @@
 ---
-title: Manage capacity by adding a server on Azure Local, version 23H2.
-description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a server.
+title: Manage capacity by adding a node on Azure Local, version 23H2.
+description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.date: 10/30/2024
 ---
 
-# Add a server on Azure Local, version 23H2
+# Add a node on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Local instance.
+This article describes how to manage capacity by adding a node (often called scale-out) to your Azure Local instance. In this article, each server is referred to as a node.
 
-## About add servers
+## About add nodes
 
-You can easily scale the compute and storage at the same time on Azure Local by adding machines to an existing cluster. Your Azure Local instance supports a maximum of 16 servers.
+You can easily scale the compute and storage at the same time on Azure Local by adding machines to an existing system. Your Azure Local instance supports a maximum of 16 nodes.
 
 Each new physical machine that you add to your system must closely match the rest of the machines in terms of CPU type, memory, number of drives, and the type and size of the drives.
 
-You can dynamically scale your Azure Local instance from 1 to 16 servers. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Local instance from 1 to 16 nodes. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 >
-> - In this release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once.
-> - It is not possible to permanently remove a server from a cluster.
+> - In this release, you can only add one node at any given time. You can however add multiple nodes sequentially so that the storage pool is rebalanced only once.
+> - It is not possible to permanently remove a node from a system.
 
-## Add server workflow
+## Add node workflow
 
-The following flow diagram shows the overall process to add a server:
+The following flow diagram shows the overall process to add a node:
 
-:::image type="content" source="./media/add-server/add-server-workflow.png" alt-text="Diagram illustrating process to add a server." lightbox="./media/add-server/add-server-workflow.png":::
+:::image type="content" source="./media/add-server/add-server-workflow.png" alt-text="Diagram illustrating process to add a node." lightbox="./media/add-server/add-server-workflow.png":::
 
-To add a server, follow these high-level steps:
+To add a node, follow these high-level steps:
 
 1. Install the operating system, drivers, and firmware on the new machine that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
-1. Add the prepared server via the `Add-server` PowerShell cmdlet.
-1. When adding a server to the instance, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
-1. Once the server is added, the instance is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+1. Add the prepared node via the `Add-server` PowerShell cmdlet.
+1. When adding a node to the instance, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
+1. Once the node is added, the instance is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
 
 > [!NOTE]
-> If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
+> If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is added.
 
 ## Supported scenarios
 
-For adding a server, the following scale-out scenarios are supported:
+For adding a node, the following scale-out scenarios are supported:
 
 | **Start scenario** | **Target scenario** | **Resiliency settings** | **Storage network architecture** | **Witness settings** |
 |--|--|--|--|--|
-| Single-server | Two-server cluster | Two-way mirror | Configured with and without a switch | Witness required for target scenario. |
-| Two-server cluster | Three-server cluster | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
-| Three-server cluster | N-server cluster | Three-way mirror | Switch only | Witness optional for target scenario. |
+| Single-node | Two-node system | Two-way mirror | Configured with and without a switch | Witness required for target scenario. |
+| Two-node system | Three-node system | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
+| Three-node system | N-node system | Three-way mirror | Switch only | Witness optional for target scenario. |
 
-When upgrading an instance from two to three servers, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When upgrading an instance from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
 
 ### Resiliency settings
 
-In this release, for add server operation, specific tasks aren't performed on the workload volumes created after the deployment.
+In this release, for add node operation, specific tasks aren't performed on the workload volumes created after the deployment.
 
-For add server operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you may just want a 2-way mirror volume regardless of the cluster scale).
+For add node operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you may just want a 2-way mirror volume regardless of the system scale).
 
 However, the default resiliency settings are updated at the storage pool level and so any new workload volumes that you created after the deployment will inherit the resiliency settings.
 
 ### Hardware requirements
 
-When adding a server, the system validates the hardware of the new, incoming server and ensures that the server meets the hardware requirements before it's added to the instance.
+When adding a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the instance.
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
 
 ## Prerequisites
 
-Before you add a server, you would need to complete the hardware and software prerequisites.
+Before you add a node, you would need to complete the hardware and software prerequisites.
 
 #### Hardware prerequisites
 
 Make sure to complete the following prerequisites:
 
-1. The first step is to acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your instance.
+1. The first step is to acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new node hardware for use in your instance.
 1. Place the new physical machine in the predetermined location, for example, a rack and cable it appropriately.
 1. Enable and adjust physical switch ports as applicable in your network environment.
 
@@ -86,11 +86,11 @@ Make sure to complete the following prerequisites:
 
 [!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
 
-## Add a server
+## Add a node
 
 This section describes how to add a machine using PowerShell, monitor the status of the `Add-Server` operation and troubleshoot, if there are any issues.
 
-### Add a server using PowerShell
+### Add a node using PowerShell
 
 Make sure that you have reviewed and completed the [prerequisites](#prerequisites).
 
@@ -137,7 +137,7 @@ On a machine that already exists on your instance, follow these steps:
 
 ### Monitor operation progress
 
-To monitor the progress of the add server operation, follow these steps:
+To monitor the progress of the add node operation, follow these steps:
 
 [!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
 

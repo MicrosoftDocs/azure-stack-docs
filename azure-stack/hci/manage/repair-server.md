@@ -1,19 +1,19 @@
 ---
-title: Repair a server on Azure Local, version 23H2
-description: Learn how to repair a server on your Azure Local, version 23H2 system.
+title: Repair a node on Azure Local, version 23H2
+description: Learn how to repair a node on your Azure Local, version 23H2 system.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/25/2024
+ms.date: 10/30/2024
 ---
 
-# Repair a server on Azure Local, version 23H2
+# Repair a node on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to repair a server on your Azure Local instance.
+This article describes how to repair a node on your Azure Local instance. In this article, each server is refrred to as a node.
 
-## About repair servers
+## About repair nodes
 
 Azure Local is a hyperconverged system that allows you to repair machines from existing instances. You may need to repair a machine in an instance if there's a hardware failure.
 
