@@ -39,7 +39,7 @@ Registers AKS hybrid with Azure.
 ### Register AKS hybrid using a subscription ID and resource group name
 
 ```powershell
-Set-AksHciRegistration -subscriptionId 57ac26cf-a9f0-4908-b300-9a4e9a0fb205 -resourceGroupName myresourcegroup
+Set-AksHciRegistration -subscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -resourceGroupName myresourcegroup
 ```
 
 ### Register with a device login or while running in a headless shell
