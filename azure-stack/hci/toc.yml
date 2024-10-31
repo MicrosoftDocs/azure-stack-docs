@@ -7,12 +7,6 @@ items:
     href: overview.md
   - name: What's new in Azure Local? 
     href: whats-new.md
-  - name: Azure Stack HCI OEM License
-    items: 
-    - name: OEM license information
-      href: oem-license.md
-    - name: FAQ
-      href: license-billing.yml
   - name: Release notes
     items:
     - name: Release information
@@ -85,6 +79,12 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
+  - name: Azure Stack HCI OEM License
+    items: 
+    - name: OEM license information
+      href: oem-license.md
+    - name: FAQ
+      href: license-billing.yml
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -94,7 +94,7 @@ items:
   items:
   - name: Virtual deployment
     href: deploy/deployment-virtual.md
-  - name: HCIBox in Azure
+  - name: Jumpstart
     href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
 
 - name: Plan
@@ -625,9 +625,9 @@ items:
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
     items:
-    - name: 0. Download the Azure Stack HCI software
+    - name: 0. Download the software
       href: deploy/download-software.md
-    - name: 1. Deploy the Azure Stack HCI OS
+    - name: 1. Deploy the OS
       href: deploy/operating-system.md
     - name: 2. Create a system
       href: deploy/create-cluster.md
@@ -877,10 +877,6 @@ items:
   items:
   - name: Azure Kubernetes Service on Azure Local and Windows Server 
     href: /azure/aks/hybrid/aks-overview
-  - name: Azure Stack family
-    href: ../index.yml
-  - name: Azure hybrid cloud
-    href: /hybrid
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
