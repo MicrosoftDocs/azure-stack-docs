@@ -1,10 +1,6 @@
 - name: AKS enabled by Azure Arc
   tocHref: /azure/aks/hybrid/
   topicHref: /azure/aks/hybrid/index
-  items:
-  - name: AKS enabled by Azure Arc
-    tocHref: /azure/aks/hybrid/
-    topicHref: /azure/aks/hybrid/index
 ###    items:
 ### For contextual TOC
   - name: AKS enabled by Azure Arc
