@@ -1,17 +1,16 @@
 ### YamlMime:Hub
 title: Azure Stack documentation 
-summary: Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+summary:  Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions by extending Azure to your datacenter or to the edge.
 brand: azure
 
 metadata:
   title: Azure Stack documentation 
-  description: Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+  description:  Azure Stack, including Azure Stack Hub and Azure Stack Edge, enables you to build better solutions by extending Azure to your datacenter or to the edge.
   ms.service: azure-stack
   ms.topic: hub-page
   author: ronmiab
   ms.author: robess
   ms.date: 10/31/2024
-  ms.custom: e2e-hybrid
 
 # highlightedContent section (optional)
 # Maximum of 8 items
