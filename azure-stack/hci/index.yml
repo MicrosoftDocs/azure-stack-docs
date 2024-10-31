@@ -89,13 +89,13 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Monitor via Insights
-            url: manage/monitor-hci-single-23h2.md
+            url: manage/monitor-single-23h2.md
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
             url: manage/health-alerts-via-azure-monitor-alerts.md
           - text: Log alerts
-            url: manage/setup-hci-system-alerts.md
+            url: manage/setup-system-alerts.md
           - text: Metric alerts
             url: manage/setup-metric-alerts.md
 
@@ -105,7 +105,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Migrate (preview)
-            url: migrate/migration-options-hci-overview.md
+            url: migrate/migration-options-overview.md
           - text: Microsoft Defender for Cloud (preview)
             url: manage/manage-security-with-defender-for-cloud.md
           - text: Azure Site Recovery (preview)
