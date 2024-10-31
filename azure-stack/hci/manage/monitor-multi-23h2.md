@@ -42,7 +42,7 @@ The visualization can be filtered across subscriptions. You can filter the resul
 
 This feature provides details of clusters that aren't monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-hci-multi-23h2/add-to-monitoring.png":::
+:::image type="content" source="media/monitor-multi-23h2/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-multi-23h2/add-to-monitoring.png":::
 
 | Column | Description | Example |
 |--|--|--|
@@ -52,11 +52,11 @@ This feature provides details of clusters that aren't monitored by the user. To 
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
 
-:::image type="content" source="media/monitor-hci-multi-23h2/grid-rows.png" alt-text="Screenshot showing the screen for setting grid values." lightbox="media/monitor-hci-multi-23h2/grid-rows.png":::
+:::image type="content" source="media/monitor-multi-23h2/grid-rows.png" alt-text="Screenshot showing the screen for setting grid values." lightbox="media/monitor-multi-23h2/grid-rows.png":::
 
 You can export the details in Excel by selecting **Export to Excel** as shown in the following image:
 
-:::image type="content" source="media/monitor-hci-multi-23h2/export.png" alt-text="Screenshot showing the link for exporting to Excel." lightbox="media/monitor-hci-multi-23h2/export.png":::
+:::image type="content" source="media/monitor-multi-23h2/export.png" alt-text="Screenshot showing the link for exporting to Excel." lightbox="media/monitor-multi-23h2/export.png":::
 
 Excel will provide Azure connection status as follows:
 
@@ -69,7 +69,7 @@ Excel will provide Azure connection status as follows:
 
 This view provides an overview of the health of clusters.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/cluster-health.png" alt-text="Screenshot showing cluster health overview information." lightbox="media/monitor-hci-multi-23h2/cluster-health.png":::
+:::image type="content" source="media/monitor-multi-23h2/cluster-health.png" alt-text="Screenshot showing cluster health overview information." lightbox="media/monitor-multi-23h2/cluster-health.png":::
 
 | Column | Description | Example |
 |--|--|--|
@@ -86,13 +86,13 @@ the **microsoft-windows-health/operational** log. Also make sure the clusters 
 
 This view provides an overview of node health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](/azure-stack/hci/manage/monitor-hci-multi#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and the node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/server-health.png" alt-text="Screenshot showing the health status of the nodes." lightbox="media/monitor-hci-multi-23h2/server-health.png":::
+:::image type="content" source="media/monitor-multi-23h2/server-health.png" alt-text="Screenshot showing the health status of the nodes." lightbox="media/monitor-multi-23h2/server-health.png":::
 
 #### Virtual machines
 
 This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](/azure-stack/hci/manage/monitor-hci-multi#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across nodes in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-hci-multi-23h2/virtual-machine-state.png":::
+:::image type="content" source="media/monitor-multi-23h2/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-multi-23h2/virtual-machine-state.png":::
 
 | Metric | Description | Example |
 |--|--|--|
@@ -109,7 +109,7 @@ This view provides the state of all the VMs in the selected cluster. The view is
 This view shows the health of volumes, usage, and performance across monitored clusters. Expand a cluster to see the state of individual
 volumes. This view is built using the [volume event ID 3002](/azure-stack/hci/manage/monitor-hci-multi#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. The tiles on the top provide an overview of the health of storage.
 
-:::image type="content" source="media/monitor-hci-multi-23h2/volume-health.png" alt-text="Screenshot showing health of storage volumes." lightbox="media/monitor-hci-multi-23h2/volume-health.png":::
+:::image type="content" source="media/monitor-multi-23h2/volume-health.png" alt-text="Screenshot showing health of storage volumes." lightbox="media/monitor-multi-23h2/volume-health.png":::
 
 | Metric | Description | Example |
 |--|--|--|
