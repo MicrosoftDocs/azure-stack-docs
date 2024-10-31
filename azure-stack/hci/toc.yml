@@ -115,9 +115,9 @@ items:
       href: plan/network-patterns-overview.md
     - name: Choose network reference pattern
       href: plan/choose-network-pattern.md
-    - name: Single-server deployment
+    - name: Single-node deployment
       items:
-      - name: Single-server deployment
+      - name: Single-node deployment
         href: plan/single-server-deployment.md
       - name: Pattern components
         href: plan/single-server-components.md
