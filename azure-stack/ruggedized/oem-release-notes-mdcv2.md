@@ -3,7 +3,7 @@ title: Azure Modular Data Center v2 OEM Release Notes
 description: OEM Release Notes for Azure Modular Data Center v2. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/28/2024
+ms.date: 10/31/2024
 ms.author: sethm
 ms.reviewer: danlewi
 ms.lastreviewed:
@@ -229,4 +229,3 @@ This document describes the contents of Azure Modular Data Center v2 first party
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2406  | 10.3.4a  | Upgrading to the latest recommend version of Cisco NX-OS.  |
-

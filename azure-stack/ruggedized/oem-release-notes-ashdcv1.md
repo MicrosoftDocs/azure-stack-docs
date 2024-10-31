@@ -3,7 +3,7 @@ title: Microsoft Azure Stack Hub DCv1 OEM Release Notes
 description: OEM Release Notes for Microsoft Azure Stack Hub DCv1. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/28/2024
+ms.date: 10/31/2024
 ms.author: sethm
 ms.reviewer: danlewi
 ms.lastreviewed:
@@ -248,4 +248,3 @@ This document describes the contents of Microsoft Azure Stack Hub DCv1 first par
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2406  | 10.5.6.1.100  | Latest Dell recommended version for OS10 switches with Azure Stack Hub as of May 2024.  |
-

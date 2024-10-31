@@ -7,7 +7,7 @@ ms.topic: overview
 ms.date: 01/31/2022
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 11/08/2019
+ms.lastreviewed: 10/31/2024
 
 # Intent: As an Azure Stack operator, I want an overview of what Azure Stack is so I can start using it.
 # Keyword: use azure stack
@@ -26,9 +26,6 @@ Azure provides a rich platform for developers to build modern apps. However, som
 - **Cloud apps that meet varied regulations**. Develop and deploy apps in Azure with full flexibility to deploy on-premises with Azure Stack Hub to meet regulatory or policy requirements. No code changes are needed. App examples include global audit, financial reporting, foreign exchange trading, online gaming, and expense reporting.
 
 - **Cloud app model on-premises**. Use Azure services, containers, serverless, and microservice architectures to update and extend existing apps or build new ones. Use consistent DevOps processes across Azure in the cloud and Azure Stack Hub on-premises to speed up app modernization for core mission-critical apps.
-
-For information on comparing Azure Stack Hub with other Azure offerings, see
-[Differences between global Azure, Azure Stack Hub, and Azure Stack HCI](compare-azure-azure-stack.md).
 
 ### Data residency
 
@@ -107,10 +104,8 @@ There are three optional PaaS resource providers that you can deploy and use wit
 
 ## Next steps
 
-[Differences between global Azure, Azure Stack Hub, and Azure Stack HCI](compare-azure-azure-stack.md)
+[Administration basics](azure-stack-manage-basics.md).
 
-[Administration basics](azure-stack-manage-basics.md)
-
-[Quickstart: use the Azure Stack Hub administration portal](azure-stack-manage-portals.md)
+[Quickstart: use the Azure Stack Hub administration portal](azure-stack-manage-portals.md).
 
 [Understand usage and billing](azure-stack-usage-reporting.md).
