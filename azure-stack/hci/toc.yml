@@ -210,7 +210,7 @@ items:
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
-      href: /azure/aks/hybrid/aks-create-clusters-cli?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on HCI
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
