@@ -28,11 +28,27 @@ This document assumes you have the Azure Stack HCI cluster deployed and VMs inst
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot." lightbox="media/attach-gpu-to-linux-vm/pciroot.png":::
 
-7. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 6.
+7. Core OS doesnt have MMC components and hence opening device manager is not possible, use command line to obtain the location information as explained below.
+    ```PowerShell
+    #Get the instance ID for NVIDIA Device from the list of devices printed using the command below.	
+    pnputil /enum-devices /class display
+    				
+    #Use the Instance ID as shown in the example command below:-
+    pnputil /enum-devices /instanceid "PCI\VEN_10DE&DEV_1CBA&SUBSYS_225F17AA&REV_A1\4&357120c5&0&0008" /properties | findstr -i pciroot
+    				
+    #Alternatively, if you do not wish to filter for this string, remove the | findstr -i pciroot to print all propertie.
+    pnputil /enum-devices /instanceid "PCI\VEN_10DE&DEV_1CBA&SUBSYS_225F17AA&REV_A1\4&357120c5&0&0008" /properties
+
+    #LocationPaths can be found under one of the sections shown in example excerpt below.
+    DEVPKEY_Device_LocationPaths [String List]:
+    	PCIROOT(0)#PCI(0100)#PCI(0000)
+    	ACPI(_SB_)#ACPI(PCI0)#ACPI(PEG0)#ACPI(PEGP)
+    ```
+8. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 6.
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
-8. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
+9. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="Dismounted Device Screenshot." lightbox="media/attach-gpu-to-linux-vm/dismounted.png":::
 
