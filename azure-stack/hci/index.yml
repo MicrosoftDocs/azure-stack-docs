@@ -50,13 +50,13 @@ landingContent:
   # Card
   - title: Update and Upgrade
     linkLists:
-      - linkListType: Update
+      - linkListType: update
         links:
           - text: About updates
             url: update/about-updates-23h2.md
           - text: Update via Azure portal
             url: update/azure-update-manager-23h2.md
-      - linkListType: Upgrade
+      - linkListType: upgrade
         links:
           - text: About upgrades
             url: upgrade/about-upgrades-23h2.md
@@ -118,8 +118,8 @@ landingContent:
         links:
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
-          - text: Deploy with Local Identity
-            yrl: index.yml
+          - text: Deploy with Local Identity (preview)
+            url: index.yml
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMWare (preview)
