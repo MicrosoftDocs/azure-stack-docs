@@ -376,7 +376,7 @@ items:
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
       
-  - name: Clusters
+  - name: Systems
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
@@ -629,13 +629,13 @@ items:
       href: deploy/download-software.md
     - name: 1. Deploy the Azure Stack HCI OS
       href: deploy/operating-system.md
-    - name: 2. Create a cluster
+    - name: 2. Create a system
       href: deploy/create-cluster.md
-    - name: 3. Set up a cluster witness
+    - name: 3. Set up a witness
       href: manage/witness.md    
     - name: 4. Register with Azure
       href: deploy/register-with-azure.md
-    - name: 5. Validate the cluster
+    - name: 5. Validate the system
       href: deploy/validate.md
     - name: Deploy with PowerShell
       items:
@@ -643,7 +643,7 @@ items:
         href: deploy/single-server.md
       - name: Single server scale-out
         href: manage/single-node-scale-out.md
-      - name: Create a cluster with PowerShell
+      - name: Create a system with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
         href: deploy/network-atc.md?pivots=azure-stack-hci
@@ -653,7 +653,7 @@ items:
         href: deploy/sdn-wizard.md
       - name: Deploy using SDN Express
         href: manage/sdn-express.md
-      - name: Deploy at cluster creation
+      - name: Deploy at system creation
         href: deploy/create-cluster.md#step-5-sdn-optional
     - name: Deploy and manage in VMM
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
@@ -697,39 +697,39 @@ items:
         href: manage/thin-provisioning-conversion.md
       - name: Adjustable storage repair speed
         href: manage/storage-repair-speed.md
-    - name: Monitor clusters
+    - name: Monitor systems
       items:
-      - name: Monitor single cluster with Insights
+      - name: Monitor single system with Insights
         href: manage/monitor-hci-single.md
-      - name: Monitor multiple clusters with Insights
+      - name: Monitor multiple systems with Insights
         href: manage/monitor-hci-multi.md
-      - name: Monitor clusters from Windows Admin Center
+      - name: Monitor systems from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads
         href: manage/diskspd-overview.md
-    - name: Manage clusters
+    - name: Manage systems
       items:
       - name: (Optional) Configure proxy settings
         href: manage/configure-proxy-settings.md
-      - name: Manage cluster registration
+      - name: Manage system registration
         href: manage/manage-cluster-registration.md
-      - name: Manage clusters with Windows Admin Center
+      - name: Manage systems with Windows Admin Center
         href: manage/cluster.md
-      - name: Manage clusters with PowerShell
+      - name: Manage systems with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
         href: manage/manage-network-atc.md?pivots=azure-stack-hci
-      - name: Update the cluster
+      - name: Update the system
         href: manage/update-cluster.md
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-    - name: Manage cluster servers
+    - name: Manage nodes
       items:
-      - name: Add or remove servers
+      - name: Add or remove nodes
         href: manage/add-cluster.md
       - name: Convert to stretched cluster
         href: manage/convert-to-stretched-cluster.md
-      - name: Take a server offline for maintenance
+      - name: Take a node offline for maintenance
         href: manage/maintain-servers.md
       - name: Change languages
         href: manage/languages.md
@@ -753,16 +753,16 @@ items:
         href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
-    - name: Cluster to same hardware
+    - name: System to same hardware
       href: migrate/migrate-cluster-same-hardware.md
-    - name: Cluster to new hardware
+    - name: System to new hardware
       href: migrate/migrate-cluster-new-hardware.md
       
   - name: Troubleshooting
     items:
-    - name: Troubleshoot cluster registration
+    - name: Troubleshoot system registration
       href: deploy/troubleshoot-hci-registration.md
-    - name: Troubleshoot cluster validation reporting
+    - name: Troubleshoot system validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
@@ -778,9 +778,9 @@ items:
       href: manage/support-tools.md
   - name: Concepts
     items:
-    - name: Storage and clusters
+    - name: Storage and systems
       items:
-      - name: Single-node clusters
+      - name: Single-node systems
         href: concepts/single-server-clusters.md
       - name: Choose drives
         href: concepts/choose-drives.md
@@ -800,7 +800,7 @@ items:
         href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: Cluster and storage pool quorum
+      - name: System and storage pool quorum
         href: concepts/quorum.md
       - name: Understand and deploy persistent memory
         href: concepts/deploy-persistent-memory.md
