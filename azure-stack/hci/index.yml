@@ -50,14 +50,12 @@ landingContent:
   # Card
   - title: Update and Upgrade
     linkLists:
-      - linkListType: update
+      - linkListType: how-to-guide
         links:
           - text: About updates
             url: update/about-updates-23h2.md
           - text: Update via Azure portal
             url: update/azure-update-manager-23h2.md
-      - linkListType: upgrade
-        links:
           - text: About upgrades
             url: upgrade/about-upgrades-23h2.md
           - text: Upgrade OS
