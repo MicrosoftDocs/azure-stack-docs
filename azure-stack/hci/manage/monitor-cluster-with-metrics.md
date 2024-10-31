@@ -202,5 +202,5 @@ To see in-depth information about how these metrics are collected, see [Performa
 
 ## Next steps
 
-- [Monitor a single Azure Local system with Insights](./monitor-hci-single-23h2.md)
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)

@@ -1,22 +1,22 @@
 ---
-title: Manage BitLocker encryption on Azure Stack HCI, version 23H2
-description: Learn how to manage BitLocker encryption on your Azure Stack HCI, version 23H2 system.
+title: Manage BitLocker encryption on Azure Local, version 23H2
+description: Learn how to manage BitLocker encryption on your Azure Local, version 23H2 system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 04/04/2024
+ms.date: 10/22/2024
 ---
 
-# Manage BitLocker encryption on Azure Stack HCI, version 23H2
+# Manage BitLocker encryption on Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to view and enable BitLocker encryption, and retrieve BitLocker recovery keys on your Azure Stack HCI system.
+This article describes how to view and enable BitLocker encryption, and retrieve BitLocker recovery keys on your Azure Local instance.
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local, version 23H2 instance that is deployed, registered, and connected to Azure.
 
 ## View BitLocker settings via Azure portal
 
@@ -28,7 +28,7 @@ BitLocker offers two types of protection: encryption for OS volumes and encrypti
 
 ## Manage BitLocker settings with PowerShell
 
-You can view, enable, and disable volume encryption settings on your Azure Stack HCI cluster.
+You can view, enable, and disable volume encryption settings on your Azure Local instance.
 
 ### PowerShell cmdlet properties
 
@@ -56,7 +56,7 @@ The following cmdlet properties are for volume encryption with BitLocker module:
 
 Follow these steps to view encryption settings:
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 
 1. Run the following PowerShell cmdlet using local administrator credentials:
 
@@ -68,7 +68,7 @@ Follow these steps to view encryption settings:
 
 Follow these steps to enable volume encryption with BitLocker:
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 
 1. Run the following PowerShell cmdlet using local administrator credentials:
 
@@ -83,7 +83,7 @@ Follow these steps to enable volume encryption with BitLocker:
 
 Follow these steps to disable volume encryption with BitLocker:
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 
 1. Run the following PowerShell cmdlet using local administrator credentials:
 
@@ -98,7 +98,7 @@ Follow these steps to disable volume encryption with BitLocker:
 
 Follow these steps to export the recovery keys for your cluster:
 
-1. Connect to your Azure Stack HCI cluster as local administrator. Run the following command in a local console session or local Remote Desktop Protocol (RDP) session or a Remote PowerShell session with CredSSP authentication:
+1. Connect to your Azure Local instance as local administrator. Run the following command in a local console session or local Remote Desktop Protocol (RDP) session or a Remote PowerShell session with CredSSP authentication:
 
 1. To get the recovery key information, run the following command in PowerShell:
 

@@ -14,7 +14,7 @@ ms.date: 10/15/2024
 
 This article describes how to set up metric alerts for Azure Local.
 
-For information about how to set up log alerts, see [Set up log alerts for Azure Local systems](./setup-hci-system-alerts.md).
+For information about how to set up log alerts, see [Set up log alerts for Azure Local systems](./setup-system-alerts.md).
 
 ## Prerequisites
 
