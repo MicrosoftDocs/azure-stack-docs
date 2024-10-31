@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/30/2024
+ms.date: 10/31/2024
 ---
 
 # Repair a node on Azure Local, version 23H2
@@ -27,7 +27,7 @@ The following flow diagram shows the overall process to repair a node.
 
 :::image type="content" source="./media/repair-server/repair-server-workflow-2.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
 
-\**Node may not be in a state where shutdown is possible or necessary*
+\*Node may not be in a state where shutdown is possible or necessary*
 
 To repair an existing node, follow these high-level steps:
 
@@ -50,7 +50,7 @@ Repairing a single node results in a redeployment with the option to persist the
 
 In this release, for a repair node operation, specific tasks aren't performed on the workload volumes that you created after the deployment. For a repair node operation, only the required infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs).
 
-The other workload volumes that you created after the deployment are still retained and you can discover these volumes by running the `Get-VirtuaDisk` cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
+The other workload volumes that you created after the deployment are still retained and you can discover these volumes by running the `Get-VirtualDisk` cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
 
 ### Hardware requirements
 
@@ -71,11 +71,11 @@ The following scenarios are supported during node replacement:
 |--|--|--|
 | New node | New disks | Yes |
 | New node | Current disks | Yes |
-| Current node (reimaged) | Current disks reformatted * | No |
+| Current node (reimaged) | Current disks reformatted ** | No |
 | Current node (reimaged) | New disks | Yes |
 | Current node (reimaged) | Current disks | Yes |
 
-**Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
+**Disks that have been used by Storage Spaces Direct require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
 > [!IMPORTANT]
 > If you replace a component during node repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the node joins the system.
@@ -97,12 +97,11 @@ The actual replacement steps for non hot-swappable components vary based on your
 Before you repair a node, you must ensure that:
 
 [!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
-
 - If needed, take the node that you have identified for repair offline. Follow the steps here:
 
-    - [Verify the node is healthy prior to taking it offline](maintain-servers.md#verify-its-safe-to-take-the-server-offline-1).
-    - [Pause and drain the node](maintain-servers.md#pause-and-drain-the-server-1).
-    - [Shut down the node](maintain-servers.md#shut-down-the-server-1).
+  1. [Verify the node is healthy prior to taking it offline](maintain-servers.md#verify-its-safe-to-take-the-server-offline-1).
+  1. [Pause and drain the node](maintain-servers.md#pause-and-drain-the-server-1).
+  1. [Shut down the node](maintain-servers.md#shut-down-the-server-1).
 
 ## Repair a node
 
@@ -120,7 +119,7 @@ Follow these steps on the node you're trying to repair.
 2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
-    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tenant.
 
 3. Assign the following permissions to the repaired node:
 

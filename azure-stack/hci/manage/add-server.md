@@ -1,10 +1,10 @@
 ---
-title: Manage capacity by adding a node on Azure Local, version 23H2.
+title: Manage capacity by adding a node on Azure Local, version 23H2
 description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/30/2024
+ms.date: 10/31/2024
 ---
 
 # Add a node on Azure Local, version 23H2
@@ -77,7 +77,7 @@ Before you add a node, you would need to complete the hardware and software prer
 Make sure to complete the following prerequisites:
 
 1. The first step is to acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new node hardware for use in your system.
-1. Place the new physical node in the predetermined location, for example, a rack and cable it appropriately.
+1. Place the new physical node in the predetermined location, for example, a rack, and cable it appropriately.
 1. Enable and adjust physical switch ports as applicable in your network environment.
 
 #### Software prerequisites
@@ -101,7 +101,7 @@ On the new node that you plan to add, follow these steps.
 2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
-    > You must use the same parameters as the existing node to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+    > You must use the same parameters as the existing node to register with Arc. For example: Resource Group name, Region, Subscription, and Tenant.
 
 3. Assign the following permissions to the newly added nodes:
 
@@ -159,7 +159,7 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 
 ### Troubleshoot issues
 
-If you experience failures or errors while adding a node, you can capture the output of the failures in a log file. On a node that already exists on your node, follow these steps:
+If you experience failures or errors while adding a node, you can capture the output of the failures in a log file. On a node that already exists on your system, follow these steps:
 
 - Sign in with the domain user credentials that you provided during the deployment of the system. Capture the issue in the log files.
 
