@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 10/31/2024
 ms.author: alkohli
 ---
 
@@ -65,6 +65,8 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 - The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
 - In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can't be migrated.
+
+- DAS and SMB shares on source system are not supported for migrations to Azure Stack HCI.
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
