@@ -1,11 +1,11 @@
 items:
-- name: Azure Stack HCI documentation
+- name: Azure Local documentation
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Stack HCI?
+  - name: What is Azure Local?
     href: overview.md
-  - name: What's new in Azure Stack HCI? 
+  - name: What's new in Azure Local? 
     href: whats-new.md
   - name: Azure Stack HCI OEM License
     items: 
@@ -155,7 +155,7 @@ items:
     items:
     - name: About security features
       href: concepts/security-features.md
-    - name: Download Azure Stack HCI security book
+    - name: Download Azure Local security book
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
@@ -235,7 +235,7 @@ items:
 
 - name: Upgrade 
   items:
-  - name: About Azure Stack HCI upgrades
+  - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
   - name: 1 - Upgrade to version 23H2 OS
     items: 
@@ -414,9 +414,9 @@ items:
 
   - name: Capacity
     items:
-    - name: Add a server
+    - name: Add a node
       href: manage/add-server.md
-    - name: Repair a server
+    - name: Repair a node
       href: manage/repair-server.md
 
   - name: SDN
@@ -473,9 +473,9 @@ items:
     items:
     - name: Insights
       items:
-      - name: Monitor a single cluster
+      - name: Monitor a single system
         href: manage/monitor-single-23h2.md
-      - name: Monitor multiple clusters
+      - name: Monitor multiple systems
         href: manage/monitor-multi-23h2.md
       - name: Monitor feature workbooks
         href: manage/monitor-features.md
@@ -497,9 +497,9 @@ items:
     items:
     - name: Health service
       items:
-      - name: Monitor clusters
+      - name: Monitor systems
         href: manage/health-service-overview.md
-      - name: Get cluster performance history
+      - name: Get system performance history
         href: manage/health-service-cluster-performance-history.md
       - name: View faults
         href: manage/health-service-faults.md
@@ -516,7 +516,7 @@ items:
     href: manage/troubleshoot-deployment.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
-  - name: Get support for Azure Stack HCI
+  - name: Get support for Azure Local
     href: manage/get-support.md
   - name: Get remote support
     href: manage/get-remote-support.md
@@ -534,7 +534,7 @@ items:
 - name: Migrate
   items:
   - name: Migration overview
-    href: migrate/migration-options-hci-overview.md
+    href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
     - name: Hyper-V VMs
@@ -586,7 +586,7 @@ items:
 
 - name: Concepts
   items: 
-  - name: Azure Stack HCI observability
+  - name: Azure Local observability
     href: concepts/observability.md
   - name: Host networking
     items:
@@ -835,25 +835,25 @@ items:
   items:
   - name: For Azure Arc VM management
     items:
-    - name: Azure Stack HCI VM PowerShell commands
+    - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
-  - name: For Azure Stack HCI cluster, service, and management
+  - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands
       href: /cli/azure/ext/stack-hci/stack-hci
     - name: Azure registration PowerShell commands
       href: /powershell/module/az.stackhci
-    - name: Go package for ARM Azure Stack HCI service API
+    - name: Go package for ARM Azure Local service API
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-    - name: Azure Stack HCI Java service classes and interfaces
+    - name: Azure Local Java service classes and interfaces
       href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-    - name: Azure Stack HCI management service Python package
+    - name: Azure Local management service Python package
       href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-    - name: Azure Stack HCI JavaScript package
+    - name: Azure Local JavaScript package
       href: /javascript/api/@azure/arm-azurestackhci
-    - name: Azure Stack HCI REST API reference
+    - name: Azure Local REST API reference
       href: /rest/api/stackhci
-    - name: .NET Namespaces for Azure Stack HCI
+    - name: .NET Namespaces for Azure Local
       href: /dotnet/api/overview/azure/stack-hci
   - name: For OS and storage management
     items:
@@ -875,7 +875,7 @@ items:
       href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+  - name: Azure Kubernetes Service on Azure Local and Windows Server 
     href: /azure/aks/hybrid/aks-overview
   - name: Azure Stack family
     href: ../index.yml
@@ -891,7 +891,7 @@ items:
   items:
   - name: Assurance
     items:
-    - name: Azure Stack HCI and security standards
+    - name: Azure Local and security standards
       href: assurance/azure-stack-security-standards.md
     - name: ISO/IEC 27001 guidance
       href: assurance/azure-stack-iso27001-guidance.md
@@ -901,18 +901,8 @@ items:
       href: assurance/azure-stack-hipaa-guidance.md
     - name: FedRAMP guidance
       href: assurance/azure-stack-fedramp-guidance.md
-  - name: Azure Stack HCI product page
+  - name: Azure Local product page
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Learning paths and modules
-    items:
-    - name: Azure Stack HCI foundations
-      href: /training/paths/azure-stack-hci-foundations/
-    - name: Operate and maintain Azure Stack HCI
-      href: /training/paths/operate-maintain-azure-stack-hci/
-    - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /training/modules/implement-firewall-load-balancer/
-    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /training/modules/plan-deploy-sdn-infrastructure/
   
