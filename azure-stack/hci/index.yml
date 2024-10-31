@@ -102,7 +102,7 @@ landingContent:
         links:
           - text: Monitor via Insights
             url: manage/monitor-single-23h2.md
-          - text: Enable Insignts at-scale
+          - text: Enable Insights at-scale
             url: manage/monitor-hci-multi-azure-policies.md          
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
