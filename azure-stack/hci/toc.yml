@@ -1,11 +1,11 @@
 items:
-- name: Azure Stack HCI documentation
+- name: Azure Local documentation
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Stack HCI?
+  - name: What is Azure Local?
     href: overview.md
-  - name: What's new in Azure Stack HCI? 
+  - name: What's new in Azure Local? 
     href: whats-new.md
   - name: Azure Stack HCI OEM License
     items: 
@@ -115,9 +115,9 @@ items:
       href: plan/network-patterns-overview.md
     - name: Choose network reference pattern
       href: plan/choose-network-pattern.md
-    - name: Single-server deployment
+    - name: Single-node deployment
       items:
-      - name: Single-server deployment
+      - name: Single-node deployment
         href: plan/single-server-deployment.md
       - name: Pattern components
         href: plan/single-server-components.md
@@ -155,7 +155,7 @@ items:
     items:
     - name: About security features
       href: concepts/security-features.md
-    - name: Download Azure Stack HCI security book
+    - name: Download Azure Local security book
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
@@ -235,7 +235,7 @@ items:
 
 - name: Upgrade 
   items:
-  - name: About Azure Stack HCI upgrades
+  - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
   - name: 1 - Upgrade to version 23H2 OS
     items: 
@@ -376,7 +376,7 @@ items:
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
       
-  - name: Clusters
+  - name: Systems
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
@@ -414,9 +414,9 @@ items:
 
   - name: Capacity
     items:
-    - name: Add a server
+    - name: Add a node
       href: manage/add-server.md
-    - name: Repair a server
+    - name: Repair a node
       href: manage/repair-server.md
 
   - name: SDN
@@ -473,9 +473,9 @@ items:
     items:
     - name: Insights
       items:
-      - name: Monitor a single cluster
+      - name: Monitor a single system
         href: manage/monitor-single-23h2.md
-      - name: Monitor multiple clusters
+      - name: Monitor multiple systems
         href: manage/monitor-multi-23h2.md
       - name: Monitor feature workbooks
         href: manage/monitor-features.md
@@ -497,9 +497,9 @@ items:
     items:
     - name: Health service
       items:
-      - name: Monitor clusters
+      - name: Monitor systems
         href: manage/health-service-overview.md
-      - name: Get cluster performance history
+      - name: Get system performance history
         href: manage/health-service-cluster-performance-history.md
       - name: View faults
         href: manage/health-service-faults.md
@@ -516,7 +516,7 @@ items:
     href: manage/troubleshoot-deployment.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
-  - name: Get support for Azure Stack HCI
+  - name: Get support for Azure Local
     href: manage/get-support.md
   - name: Get remote support
     href: manage/get-remote-support.md
@@ -586,7 +586,7 @@ items:
 
 - name: Concepts
   items: 
-  - name: Azure Stack HCI observability
+  - name: Azure Local observability
     href: concepts/observability.md
   - name: Host networking
     items:
@@ -629,13 +629,13 @@ items:
       href: deploy/download-software.md
     - name: 1. Deploy the Azure Stack HCI OS
       href: deploy/operating-system.md
-    - name: 2. Create a cluster
+    - name: 2. Create a system
       href: deploy/create-cluster.md
-    - name: 3. Set up a cluster witness
+    - name: 3. Set up a witness
       href: manage/witness.md    
     - name: 4. Register with Azure
       href: deploy/register-with-azure.md
-    - name: 5. Validate the cluster
+    - name: 5. Validate the system
       href: deploy/validate.md
     - name: Deploy with PowerShell
       items:
@@ -643,7 +643,7 @@ items:
         href: deploy/single-server.md
       - name: Single server scale-out
         href: manage/single-node-scale-out.md
-      - name: Create a cluster with PowerShell
+      - name: Create a system with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
         href: deploy/network-atc.md?pivots=azure-stack-hci
@@ -653,7 +653,7 @@ items:
         href: deploy/sdn-wizard.md
       - name: Deploy using SDN Express
         href: manage/sdn-express.md
-      - name: Deploy at cluster creation
+      - name: Deploy at system creation
         href: deploy/create-cluster.md#step-5-sdn-optional
     - name: Deploy and manage in VMM
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
@@ -697,39 +697,39 @@ items:
         href: manage/thin-provisioning-conversion.md
       - name: Adjustable storage repair speed
         href: manage/storage-repair-speed.md
-    - name: Monitor clusters
+    - name: Monitor systems
       items:
-      - name: Monitor single cluster with Insights
+      - name: Monitor single system with Insights
         href: manage/monitor-hci-single.md
-      - name: Monitor multiple clusters with Insights
+      - name: Monitor multiple systems with Insights
         href: manage/monitor-hci-multi.md
-      - name: Monitor clusters from Windows Admin Center
+      - name: Monitor systems from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads
         href: manage/diskspd-overview.md
-    - name: Manage clusters
+    - name: Manage systems
       items:
       - name: (Optional) Configure proxy settings
         href: manage/configure-proxy-settings.md
-      - name: Manage cluster registration
+      - name: Manage system registration
         href: manage/manage-cluster-registration.md
-      - name: Manage clusters with Windows Admin Center
+      - name: Manage systems with Windows Admin Center
         href: manage/cluster.md
-      - name: Manage clusters with PowerShell
+      - name: Manage systems with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
         href: manage/manage-network-atc.md?pivots=azure-stack-hci
-      - name: Update the cluster
+      - name: Update the system
         href: manage/update-cluster.md
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-    - name: Manage cluster servers
+    - name: Manage nodes
       items:
-      - name: Add or remove servers
+      - name: Add or remove nodes
         href: manage/add-cluster.md
       - name: Convert to stretched cluster
         href: manage/convert-to-stretched-cluster.md
-      - name: Take a server offline for maintenance
+      - name: Take a node offline for maintenance
         href: manage/maintain-servers.md
       - name: Change languages
         href: manage/languages.md
@@ -753,16 +753,16 @@ items:
         href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
-    - name: Cluster to same hardware
+    - name: System to same hardware
       href: migrate/migrate-cluster-same-hardware.md
-    - name: Cluster to new hardware
+    - name: System to new hardware
       href: migrate/migrate-cluster-new-hardware.md
       
   - name: Troubleshooting
     items:
-    - name: Troubleshoot cluster registration
+    - name: Troubleshoot system registration
       href: deploy/troubleshoot-hci-registration.md
-    - name: Troubleshoot cluster validation reporting
+    - name: Troubleshoot system validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
@@ -778,9 +778,9 @@ items:
       href: manage/support-tools.md
   - name: Concepts
     items:
-    - name: Storage and clusters
+    - name: Storage and systems
       items:
-      - name: Single-node clusters
+      - name: Single-node systems
         href: concepts/single-server-clusters.md
       - name: Choose drives
         href: concepts/choose-drives.md
@@ -800,7 +800,7 @@ items:
         href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: Cluster and storage pool quorum
+      - name: System and storage pool quorum
         href: concepts/quorum.md
       - name: Understand and deploy persistent memory
         href: concepts/deploy-persistent-memory.md
@@ -835,25 +835,25 @@ items:
   items:
   - name: For Azure Arc VM management
     items:
-    - name: Azure Stack HCI VM PowerShell commands
+    - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
-  - name: For Azure Stack HCI cluster, service, and management
+  - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands
       href: /cli/azure/ext/stack-hci/stack-hci
     - name: Azure registration PowerShell commands
       href: /powershell/module/az.stackhci
-    - name: Go package for ARM Azure Stack HCI service API
+    - name: Go package for ARM Azure Local service API
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-    - name: Azure Stack HCI Java service classes and interfaces
+    - name: Azure Local Java service classes and interfaces
       href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-    - name: Azure Stack HCI management service Python package
+    - name: Azure Local management service Python package
       href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-    - name: Azure Stack HCI JavaScript package
+    - name: Azure Local JavaScript package
       href: /javascript/api/@azure/arm-azurestackhci
-    - name: Azure Stack HCI REST API reference
+    - name: Azure Local REST API reference
       href: /rest/api/stackhci
-    - name: .NET Namespaces for Azure Stack HCI
+    - name: .NET Namespaces for Azure Local
       href: /dotnet/api/overview/azure/stack-hci
   - name: For OS and storage management
     items:
@@ -875,7 +875,7 @@ items:
       href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+  - name: Azure Kubernetes Service on Azure Local and Windows Server 
     href: /azure/aks/hybrid/aks-overview
   - name: Azure Stack family
     href: ../index.yml
@@ -891,7 +891,7 @@ items:
   items:
   - name: Assurance
     items:
-    - name: Azure Stack HCI and security standards
+    - name: Azure Local and security standards
       href: assurance/azure-stack-security-standards.md
     - name: ISO/IEC 27001 guidance
       href: assurance/azure-stack-iso27001-guidance.md
@@ -901,18 +901,8 @@ items:
       href: assurance/azure-stack-hipaa-guidance.md
     - name: FedRAMP guidance
       href: assurance/azure-stack-fedramp-guidance.md
-  - name: Azure Stack HCI product page
+  - name: Azure Local product page
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Learning paths and modules
-    items:
-    - name: Azure Stack HCI foundations
-      href: /training/paths/azure-stack-hci-foundations/
-    - name: Operate and maintain Azure Stack HCI
-      href: /training/paths/operate-maintain-azure-stack-hci/
-    - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /training/modules/implement-firewall-load-balancer/
-    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /training/modules/plan-deploy-sdn-infrastructure/
   
