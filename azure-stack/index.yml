@@ -16,7 +16,6 @@ metadata:
 # highlightedContent section (optional)
 # Maximum of 8 items
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
-
 # productDirectory section (optional)
 productDirectory:
   items:
