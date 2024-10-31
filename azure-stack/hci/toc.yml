@@ -79,7 +79,7 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
-  - name: Azure Stack HCI OEM License
+  - name: OEM License
     items: 
     - name: OEM license information
       href: oem-license.md
