@@ -26,6 +26,10 @@ landingContent:
         links:
           - text: What's new in Azure Local, version 23H2?
             url: whats-new.md
+          - text: Small Form Factor
+            url: index.yml
+          - text: Azure Local disconnected operations
+            url: index.yml  
 
   # Card 
   - title: Deploy
@@ -78,6 +82,8 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
+          - text: Manage at-scale
+            url: manage/manage-at-scale-dashboard.md          
           - text: Add node
             url: manage/add-server.md
           - text: Repair node
@@ -90,37 +96,38 @@ landingContent:
   # Card
   - title: Monitor
     linkLists:
+        linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local monitoring?
+            url: concepts/monitoring-overview.md
       - linkListType: how-to-guide
         links:
           - text: Monitor via Insights
             url: manage/monitor-single-23h2.md
+          - text: Enable Insignts at-scale
+            url: manage/monitor-hci-multi-azure-policies.md          
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
             url: manage/health-alerts-via-azure-monitor-alerts.md
-          - text: Log alerts
-            url: manage/setup-system-alerts.md
-          - text: Metric alerts
-            url: manage/setup-metric-alerts.md
 
   # Card
   - title: Try it out
     linkLists:
       - linkListType: overview
         links:
-          - text: Migrate (preview)
-            url: migrate/migration-options-overview.md
-          - text: Microsoft Defender for Cloud (preview)
-            url: manage/manage-security-with-defender-for-cloud.md
-          - text: Azure Site Recovery (preview)
-            url: manage/azure-site-recovery.md
-      - linkListType: quickstart
-        links:
-          - text: Community provided Bicep template
-            url: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md
-            
+          - text: Deploy Arc gateway (preview)
+            url: deploy/deployment-azure-arc-gateway-overview.md
+          - text: Deploy with Local Identity
+            yrl: index.yml
+          - text: Manage GPU via partitioning (preview)
+            url: manage/gpu-manage-via-partitioning.md
+          - text: Migrate VMWare (preview)
+            url: migrate/migration-azure-migrate-vmware-overview.md
+      
   # Card
-  - title: Azure Stack HCI concepts
+  - title: Concepts
     linkLists:
       - linkListType: concept
         links:
@@ -130,10 +137,6 @@ landingContent:
             url: concepts/security-features.md
           - text: Observability
             url: concepts/observability.md
-      - linkListType: training
-        links:
-          - text: Azure Stack HCI foundations
-            url: /training/paths/azure-stack-hci-foundations
 
   # Card
   - title: Troubleshoot
@@ -142,7 +145,7 @@ landingContent:
         links:
           - text: Collect logs
             url: manage/collect-logs.md
-          - text: Deployment issues
-            url: manage/get-support-for-deployment-issues.md
-          - text: Remote support
+          - text: Troubleshoot deployment issues
+            url: manage/troubleshoot-deployment.md
+          - text: Get support
             url: manage/get-remote-support.md
