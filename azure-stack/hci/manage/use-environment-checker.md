@@ -18,7 +18,7 @@ For a smooth deployment of the Azure Local solution, your IT environment must me
 
 ## About the Environment Checker tool
 
-The Environment Checker tool runs a series of tests on each machine in your Azure Local system, reports the result for each test, provides remediation guidance when available, and saves a log file and a detailed report file.
+The Environment Checker tool runs a series of tests on each machine in your Azure Local instance, reports the result for each test, provides remediation guidance when available, and saves a log file and a detailed report file.
 
 The Environment Checker tool consists of the following validators:
 
@@ -26,7 +26,7 @@ The Environment Checker tool consists of the following validators:
 - **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements-23h2.md). For example, all the machines in the system have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
-- **Arc integration validator.** Checks if the Azure Local system meets all the prerequisites for successful Arc onboarding.
+- **Arc integration validator.** Checks if Azure Local meets all the prerequisites for successful Arc onboarding.
 
 ## Why use Environment Checker?
 
@@ -55,7 +55,7 @@ Before you begin, complete the following tasks:
 
 - Review [Azure Local system requirements](../concepts/system-requirements-23h2.md).
 - Review [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
-- Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Local system.
+- Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Local instance.
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
 
