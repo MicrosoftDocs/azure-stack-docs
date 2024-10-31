@@ -1,4 +1,6 @@
-- name: AKS enabled by Azure Arc
+- name: Azure hybrid and multicloud documentation
+  tocHref: /azure/adaptive-cloud/
+  topicHref: /azure/adaptive-cloud/index
   items:
   - name: AKS enabled by Azure Arc
     tocHref: /azure/aks/hybrid/
