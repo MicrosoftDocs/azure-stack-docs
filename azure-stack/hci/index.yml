@@ -120,7 +120,7 @@ landingContent:
             url: index.yml
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
-          - text: Migrate VMWare (preview)
+          - text: Migrate VMware (preview)
             url: migrate/migration-azure-migrate-vmware-overview.md
       
   # Card
