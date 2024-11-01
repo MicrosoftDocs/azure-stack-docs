@@ -4,7 +4,7 @@ description: Learn how to troubleshoot no K8s versions or VM sizes listed when y
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/02/2024
+ms.date: 11/01/2024
 ms.reviewer: sumsmith
 
 ---
@@ -28,7 +28,7 @@ az aksarc vmsize list --custom-location $cl_id
 
 ## Validation
 
-Verify that the portal displays the correct list of supported K8s versions and VM sizes. See [this list of supported K8s versions](aks-whats-new-23h2.md#release-2408) for each Azure Stack HCI release.
+Verify that the portal displays the correct list of supported K8s versions and VM sizes. See [this list of supported K8s versions](aks-whats-new-23h2.md#release-2408) for each Azure Local release.
 
 ## Next steps
 

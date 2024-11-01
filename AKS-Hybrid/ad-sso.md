@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/07/2024
+ms.date: 11/01/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -77,7 +77,7 @@ Before you can install AD authentication, the workload cluster must be installed
 
 #### Option 1
 
-For a domain-joined Azure Stack HCI or Windows Server cluster, open PowerShell as an administrator and run the following command:
+For a domain-joined Azure Local or Windows Server cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob

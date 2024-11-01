@@ -2,7 +2,7 @@
 title: Upgrade an Azure Kubernetes Service (AKS) cluster
 description: Learn how to upgrade an Azure Kubernetes Service (AKS) cluster.
 ms.topic: overview
-ms.date: 02/27/2024
+ms.date: 11/01/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -141,5 +141,5 @@ Updating worker nodes to a newer version of the node image without changing the 
 
 ## Next steps
 
-- [What's new in AKS on Azure Stack HCI](aks-overview.md)
+- [What's new in AKS on Azure Local](aks-overview.md)
 - [Create AKS clusters](aks-create-clusters-cli.md)

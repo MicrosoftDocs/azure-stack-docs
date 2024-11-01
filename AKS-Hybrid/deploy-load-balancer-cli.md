@@ -3,7 +3,7 @@ title: Create a MetalLB load balancer using the Azure CLI
 description: Learn how to deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 04/02/2024
+ms.date: 11/01/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: xinyuhe
@@ -18,8 +18,8 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 
 ## Prerequisites
 
-- An Azure Arc enabled Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Stack HCI 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md). AKS on Azure Stack HCI 23H2 clusters are Arc enabled by default.
-- Make sure you have enough IP addresses for the load balancer. For AKS on Azure Stack HCI 23H2, ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for Kubernetes](aks-hci-network-system-requirements.md) and [IP address planning for Kubernetes](aks-hci-ip-address-planning.md).
+- An Azure Arc enabled Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Local, version 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md). AKS on Azure Local, version 23H2 clusters are Arc enabled by default.
+- Make sure you have enough IP addresses for the load balancer. For AKS on Azure Local, version 23H2, ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for Kubernetes](aks-hci-network-system-requirements.md) and [IP address planning for Kubernetes](aks-hci-ip-address-planning.md).
 - This how-to guide assumes you understand how Metal LB works. For more information, see the [overview for MetalLB for Kubernetes](load-balancer-overview.md).
 
 ## Install the Azure CLI extension
@@ -83,7 +83,7 @@ Microsoft.KubernetesRuntime  RegistrationRequired  Registered
 Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). In order to run the following command, you must be a `user` member of your Azure tenant. For more information about user and guest membership, see [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
 
 ```azurecli
-$objID = az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --query "[].id" --output tsv
+$objID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].id" --output tsv
 ```
 
 Once you have the $objID, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the below command, you need to have [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
