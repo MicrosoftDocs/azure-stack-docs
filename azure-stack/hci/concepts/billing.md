@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 11/01/2024
 ---
 
 # Azure Local billing and payment
@@ -23,7 +23,7 @@ No traditional on-premises software license is required for Azure Local, althoug
 
 Azure Local's cloud-style billing model is consistent, familiar, and easy for customers already using Azure or any other cloud service. Billing is based on a flat rate per physical processor core in an Azure Local instance (additional usage charges apply if you use other Azure services).
 
-The pricing model is different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Local: you still pay based on the number of physical cores that are present in the cluster.
+The pricing model is different from a usage-based or consumption-based billing that's based on the number of VMs. While the number of virtual processor cores (VCPUs) may vary over the course of the month, it doesn't affect the price you pay for Azure Local: you still pay based on the number of physical cores that are present in the system.
 
 ## Advantages of the Azure Local billing model
 
@@ -33,7 +33,7 @@ The pricing model is different from a usage-based or consumption-based billing t
 
 ## How the number of processor cores is assessed
 
-To determine how many cores are present in an instance, Azure Local periodically checks the number of physical cores and reports them to Azure. If you're only occasionally connected or your connection is interrupted, don't worry; it can always try again later. Days or weeks of core data can be uploaded at once. Customers must connect to Azure at least once every 30 days to allow for billing.
+To determine how many cores are present in a system, Azure Local periodically checks the number of physical cores and reports them to Azure. If you're only occasionally connected or your connection is interrupted, don't worry; it can always try again later. Days or weeks of core data can be uploaded at once. Customers must connect to Azure at least once every 30 days to allow for billing.
 
 To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 

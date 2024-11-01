@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
-ms.date: 10/29/2024
+ms.date: 11/01/2024
 ---
 
 # Azure Hybrid Benefit for Azure Local
@@ -21,7 +21,7 @@ This article describes Azure Hybrid Benefit and how to use it for Azure Local.
 
 If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for Azure Local. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Local. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-azure-stack-hci).
 
-This benefit waives the Azure Local host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Local, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+This benefit waives the Azure Local host service fee and Windows Server guest subscription on your system. Other costs associated with Azure Local, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
 > You can maximize cost savings by also using Azure Hybrid Benefit for AKS. For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
@@ -32,15 +32,18 @@ You can activate Azure Hybrid Benefit for Azure Local using the Azure portal.
 
 ### Prerequisites
 
-The following prerequisites are required to activate Azure Hybrid Benefit for Azure Local:
+The following prerequisites are required to activate Azure Hybrid Benefit for your Azure Local instance:
 
-- You have access to an Azure Local instance running version 23H2. Make sure the instance is deployed and registered with Azure. For more information, see [Deploy Azure Local via Azure portal](../deploy/deploy-via-portal.md).
+- Make sure your Azure Local instance is installed with the following:
 
-- Make sure that all machines in your instance are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure.
+  - Version 22H2 or later; or
+  - Version 21H2 with the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later.
 
-- Make sure that your cluster has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1)
+- Make sure that all nodes in your system are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure.
 
-- Make sure you have permission to write to the Azure Local resource. This is included if you're assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription
+- Make sure that your system has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1).
+
+- Make sure you have permission to write to the Azure Local resource. This is included if you're assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription.
 
 ### Activate Azure Hybrid Benefit
 
@@ -51,21 +54,21 @@ Follow these steps to activate Azure Hybrid Benefit for Azure Local via the Azur
 1. Go to your Azure Local resource page.
 1. Under **Settings**, select **Configuration**.
 1. Under **Azure Hybrid Benefit**, select the **Activate** link.
-1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, confirm the designated cluster and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
+1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, confirm the designated system and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
 
     > [!NOTE]
     > You can't deactivate Azure Hybrid Benefit for your system after activation. Proceed after you have confirmed the changes.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png":::
 
-1. When Azure Hybrid Benefit successfully activates for your instance, the Azure Local host fee is waived for the instance.
+1. When Azure Hybrid Benefit successfully activates for your system, the Azure Local host fee is waived for the system.
 
     > [!IMPORTANT]
-    > [Windows Server subscription](../manage/vm-activate.md) is a way to get unlimited virtualization rights on your cluster through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no additional cost.
+    > [Windows Server subscription](../manage/vm-activate.md) is a way to get unlimited virtualization rights on your system through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no additional cost.
 
 1. To enable Windows Server subscription at no additional cost, under the Windows Server subscription add-on feature in the same **Configuration** pane, select **Activate benefit**.
 
-1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
+1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the system.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
@@ -74,17 +77,17 @@ Azure PowerShell can be run in Azure Cloud Shell. This document details how to u
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and system name
     ```powershell
     $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     $resourceGroup = "hcicluster-rg" # Replace with your resource group name
-    $clusterName = "HCICluster" # Replace with your cluster name
+    $clusterName = "HCICluster" # Replace with your system name
 
     Set-AzContext -Subscription "${subscription}"
     ```
 
 
-1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+1. To view Azure Hybrid Benefits status on a system, run the following command:
     ```powershell
     Install-Module -Name Az.ResourceGraph
     Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
@@ -101,16 +104,16 @@ Azure CLI is available to install in Windows, macOS and Linux environments. It c
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and system name
     ```azurecli
     subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     resourceGroup="hcicluster-rg" # Replace with your resource group name
-    clusterName="HCICluster" # Replace with your cluster name
+    clusterName="HCICluster" # Replace with your system name
 
     az account set --subscription "${subscription}"
     ```
 
-1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+1. To view Azure Hybrid Benefits status on a system, run the following command:
     ```azurecli    
     az stack-hci cluster list \
     --resource-group "${resourceGroup}" \
@@ -131,13 +134,13 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 ## Maintain compliance for Azure Hybrid Benefit
 
-After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiry, you need to either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or de-provision the clusters that are using Azure Hybrid Benefit.
+After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiry, you need to either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or de-provision the systems that are using Azure Hybrid Benefit.
 
-You can perform an inventory of your clusters through the Azure portal and [Azure Resource Graph](/azure/governance/resource-graph/first-query-azurecli) as described in the following section.
+You can perform an inventory of your systems through the Azure portal and [Azure Resource Graph](/azure/governance/resource-graph/first-query-azurecli) as described in the following section.
 
-### Verify that your cluster is using Azure Hybrid Benefit
+### Verify that your system is using Azure Hybrid Benefit
 
-You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, PowerShell, or Azure CLI.
+You can verify if your system is using Azure Hybrid Benefit via Azure portal, PowerShell, or Azure CLI.
 
 # [Azure portal](#tab/azure-portal)
 
@@ -213,7 +216,7 @@ This section answers questions you might have about Azure Hybrid Benefit for Azu
 
 For more information about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
 
-### Can I opt in to Azure Hybrid Benefit for an existing cluster?
+### Can I opt in to Azure Hybrid Benefit for an existing system?
 
 Yes.
 
@@ -227,7 +230,7 @@ Consult your Account Manager or licensing partner.
 
 ### When would the new pricing benefit for Azure Hybrid Benefit take effect?
 
-The pricing benefit for Azure Local host fees takes effect immediately upon activation of Azure Hybrid Benefit for your cluster. The pricing benefit for Windows Server subscription takes effect immediately after you activate both Azure Hybrid Benefit and Windows Server subscription.
+The pricing benefit for Azure Local host fees takes effect immediately upon activation of Azure Hybrid Benefit for your system. The pricing benefit for Windows Server subscription takes effect immediately after you activate both Azure Hybrid Benefit and Windows Server subscription.
 
 ## Next steps
 
