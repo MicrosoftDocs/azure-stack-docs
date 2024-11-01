@@ -54,3 +54,7 @@
   items:
   - name: Recover from a regional outage
     href: amlfs-region-recovery.md
+- name: Troubleshooting
+  items:
+    - name: Troubleshoot cluster deployment failures
+      href: troubleshoot-deployment.md
