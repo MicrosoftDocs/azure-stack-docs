@@ -73,7 +73,7 @@ Install the Azure Local, version 23H2 operating system locally on each server in
 On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -eq "3D Video Controller"} 
+Get-PnpDevice  | select status, class, friendlyname, instanceid | where {$_.friendlyname -eq "3D Video Controller"}
 ```
 
 You should see the GPU devices appear in an error state as shown in this example output:
