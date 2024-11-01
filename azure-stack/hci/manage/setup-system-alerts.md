@@ -41,15 +41,15 @@ Follow these steps to set up log alerts using Insights. Ensure that you have rev
 
 1. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
 
-    :::image type="content" source="media/setup-hci-system-alerts/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/setup-hci-system-alerts/health-faults.png":::
+    :::image type="content" source="media/setup-system-alerts/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/setup-system-alerts/health-faults.png":::
 
 1. After the query loads, select **+ New alert rule**.
 
-    :::image type="content" source="media/setup-hci-system-alerts/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/setup-hci-system-alerts/new-alert-rule.png":::
+    :::image type="content" source="media/setup-system-alerts/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/setup-system-alerts/new-alert-rule.png":::
 
 1. From the alerts interface you can set up your alert conditions, actions, and more. For more information, see [Log query results](setup-system-alerts.md#log-query-results) and [Alert actions and details](setup-system-alerts.md#alert-actions-and-details).
 
-    :::image type="content" source="media/setup-hci-system-alerts/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/setup-hci-system-alerts/create-alert-rule.png":::
+    :::image type="content" source="media/setup-system-alerts/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/setup-system-alerts/create-alert-rule.png":::
 
 ## Set up alerts using sample log queries
 
@@ -61,11 +61,11 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. On your cluster **Overview** page, select **JSON View**.
 
-    :::image type="content" source="media/setup-hci-system-alerts/json-view.png" alt-text="Screenshot of the JSON View link to find ClusteArmId." lightbox="media/setup-hci-system-alerts/json-view.png":::
+    :::image type="content" source="media/setup-system-alerts/json-view.png" alt-text="Screenshot of the JSON View link to find ClusteArmId." lightbox="media/setup-system-alerts/json-view.png":::
 
 1. Copy the ClusterArmId detail from the **Resource ID** box.
 
-    :::image type="content" source="media/setup-hci-system-alerts/resource-id.png" alt-text="Screenshot of the Resource JSON page to copy ClusteArmId information." lightbox="media/setup-hci-system-alerts/resource-id.png":::
+    :::image type="content" source="media/setup-system-alerts/resource-id.png" alt-text="Screenshot of the Resource JSON page to copy ClusteArmId information." lightbox="media/setup-system-alerts/resource-id.png":::
 
 1. From the Azure portal, navigate to or search for **Monitor** and select **Logs**.
 
@@ -73,7 +73,7 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. Choose **Azure Local** for a populated list of Azure Local system sample logs.
 
-    :::image type="content" source="media/setup-hci-system-alerts/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/setup-hci-system-alerts/azure-monitor-logs.png":::
+    :::image type="content" source="media/setup-system-alerts/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/setup-system-alerts/azure-monitor-logs.png":::
 
 1. Select **Load to Editor** to open the query workspace.
 
@@ -81,7 +81,7 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
-    :::image type="content" source="media/setup-hci-system-alerts/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm ID query." lightbox="media/setup-hci-system-alerts/cluster-arm-id.png":::
+    :::image type="content" source="media/setup-system-alerts/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm ID query." lightbox="media/setup-system-alerts/cluster-arm-id.png":::
 
 1. Select **Run**.
 
@@ -91,7 +91,7 @@ After the information appears, you can examine the logs and create alerts based 
 
 To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('ClusterArmId1', 'ClusterArmId2', 'ClusterArmId3')`
 
-:::image type="content" source="media/setup-hci-system-alerts/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/setup-hci-system-alerts/multiple-clusters.png":::
+:::image type="content" source="media/setup-system-alerts/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/setup-system-alerts/multiple-clusters.png":::
 
 ## Log query results
 
@@ -108,25 +108,25 @@ When creating a new alert rule, you must set conditional details to summarize yo
 
 In this example, when the measure value Memoryusageint with an aggregation type of maximum reaches the threshold of 15 minutes, you get an alert.
 
-:::image type="content" source="media/setup-hci-system-alerts/measure-detail.png" alt-text="Screenshot of the log query detail to specify." lightbox="media/setup-hci-system-alerts/measure-detail.png":::
+:::image type="content" source="media/setup-system-alerts/measure-detail.png" alt-text="Screenshot of the log query detail to specify." lightbox="media/setup-system-alerts/measure-detail.png":::
 
 Once your details are set, you can review your conditions for alert accuracy.
 
-:::image type="content" source="media/setup-hci-system-alerts/alert-preview.png" alt-text="Screenshot of the alert conditions to set." lightbox="media/setup-hci-system-alerts/alert-preview.png":::
+:::image type="content" source="media/setup-system-alerts/alert-preview.png" alt-text="Screenshot of the alert conditions to set." lightbox="media/setup-system-alerts/alert-preview.png":::
 
 ## Alert actions and details
 
 To determine how you receive notifications for your cluster alerts, use the **Actions** tab as shown in the image. You can create new action groups or set an alert rule for existing ones. You can choose to receive notifications through email, Event Hubs, and more.
 
-:::image type="content" source="media/setup-hci-system-alerts/action-groups.png" alt-text="Screenshot of the action groups action options." lightbox="media/setup-hci-system-alerts/action-groups.png":::
+:::image type="content" source="media/setup-system-alerts/action-groups.png" alt-text="Screenshot of the action groups action options." lightbox="media/setup-system-alerts/action-groups.png":::
 
 Once you have set your actions, the **Details** tab allows you to set the alert severity, name, description, and region. Select **Review + Create** for a final review of all your alert settings and to create your alert.
 
-:::image type="content" source="media/setup-hci-system-alerts/alert-details.png" alt-text="Screenshot of the action details for alerts." lightbox="media/setup-hci-system-alerts/alert-details.png":::
+:::image type="content" source="media/setup-system-alerts/alert-details.png" alt-text="Screenshot of the action details for alerts." lightbox="media/setup-system-alerts/alert-details.png":::
 
 After your alerts are set up, you can monitor your alert rules, action groups, and more in the **Alerts** tab.
 
-:::image type="content" source="media/setup-hci-system-alerts/alert-rules-monitoring.png" alt-text="Screenshot of the monitoring alerts." lightbox="media/setup-hci-system-alerts/alert-rules-monitoring.png":::
+:::image type="content" source="media/setup-system-alerts/alert-rules-monitoring.png" alt-text="Screenshot of the monitoring alerts." lightbox="media/setup-system-alerts/alert-rules-monitoring.png":::
 
 ## Log collection frequency
 

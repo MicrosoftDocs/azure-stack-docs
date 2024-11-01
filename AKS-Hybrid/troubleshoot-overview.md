@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 # Troubleshooting overview
 
-This overview describes how to find solutions for issues you encounter when using Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Known issues and errors topics are organized by functional area. You can use the links provided in this topic to find the solutions and workarounds to resolve them.
+This overview describes how to find solutions for issues you encounter in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Known issues and errors topics are organized by functional area. You can use the links provided in this topic to find the solutions and workarounds to resolve them.
 
 For some troubleshooting operations, you may need to use a secure SSH connection to access Windows or Linux worker nodes, which allows you to securely access the nodes for maintenance, log collection, and troubleshooting. For more information, see [Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting](ssh-connection.md).  
 
