@@ -1,16 +1,16 @@
 ---
-title: Overview of Network Controller in Azure Stack HCI and Windows Server
-description: Use this topic to learn about Network Controller for Software Defined Networking in Azure Stack HCI and Windows Server.
+title: Overview of Network Controller in Azure Local and Windows Server
+description: Use this topic to learn about Network Controller for Software Defined Networking in Azure Local and Windows Server.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack-hci
-ms.date: 04/17/2024
+ms.date: 10/21/2024
 ---
 
 # What is Network Controller?
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Network Controller is the cornerstone of Software Defined Networking (SDN) management. It's a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
@@ -44,7 +44,7 @@ Using the Northbound API, you can define the firewall rules for both incoming an
 
 ## Software Load Balancer management
 
-[Software Load Balancer](software-load-balancer.md) allows you to enable multiple servers to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), and outbound access to the Internet for workloads connected to traditional VLAN networks and virtual networks.
+[Software Load Balancer](software-load-balancer.md) allows you to enable multiple machines to host the same workload, providing high availability and scalability. With Software Load Balancer, you can configure and manage load balancing, inbound Network Address Translation (NAT), and outbound access to the Internet for workloads connected to traditional VLAN networks and virtual networks.
 
 ## Gateway management
 
@@ -78,4 +78,4 @@ For related information, see also:
 
 - [Plan to deploy Network Controller](network-controller.md)
 - [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
+- [SDN in Azure Local and Windows Server](software-defined-networking-23h2.md)

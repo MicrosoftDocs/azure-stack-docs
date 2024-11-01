@@ -1,18 +1,18 @@
 ---
-title: Change deployment user password on Azure Stack HCI, version 23H2
-description: This article describes how to manage internal secret rotation on Azure Stack HCI, version 23H2.
+title: Change deployment user password on Azure Local, version 23H2
+description: This article describes how to manage internal secret rotation on Azure Local, version 23H2.
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 09/05/2024
+ms.date: 10/22/2024
 ms.service: azure-stack-hci
 ---
 
-# Rotate secrets on Azure Stack HCI, version 23H2
+# Rotate secrets on Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how you can change the password associated with the deployment user on Azure Stack HCI.
+This article describes how you can change the password associated with the deployment user on Azure Local.
 
 ## Change deployment user password
 
@@ -64,14 +64,14 @@ PS C:\Users\MGMT>
 This section describes how you can change the service principal used for deployment. 
 
 > [!NOTE]
-> This scenario applies only when you upgraded Azure Stack HCI 2306 software to Azure Stack HCI, version 23H2.
+> This scenario applies only when you upgraded Azure Local 2306 software to Azure Local, version 23H2.
 
 Follow these steps in to change the deployment service principal:
 
 1. Sign on to your Microsoft Entra ID.
-1. Locate the service principal that you used when deploying the Azure Stack HCI cluster. Create a new client secret for the service principal.
+1. Locate the service principal that you used when deploying the Azure Local instance. Create a new client secret for the service principal.
 1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
-1. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
+1. Sign on to one of your Azure Local machines using the deployment user credentials.
 1. Sign in to Azure. Run the following PowerShell command:
 
     ```powershell
@@ -103,7 +103,7 @@ To change the deployment service principal, follow these steps:
 1. Locate the service principal for Azure resource bridge. The name of the service principal includes **DefaultARBApplication**.
 1. Create a new client secret for the service principal.
 1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
-1. Sign in to one of your Azure Stack HCI server nodes using the deployment user credentials.
+1. Sign in to one of your Azure Local machines using the deployment user credentials.
 1. Run the following PowerShell command:
 
    ```powershell
@@ -117,4 +117,4 @@ To change the deployment service principal, follow these steps:
 
 ## Next steps
 
-[Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
+[Complete the prerequisites and checklist and install Azure Local, version 23H2](../deploy/deployment-prerequisites.md).

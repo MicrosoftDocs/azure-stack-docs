@@ -14,7 +14,7 @@ ms.date: 10/10/2024
 
 [!INCLUDE [applies-to-23H2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Insights to monitor a single Azure Local system. For multiple Azure Local systems, see [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md).
+This article describes how to use Insights to monitor a single Azure Local system. For multiple Azure Local systems, see [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md).
 
 Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system. You can view key metrics, health, and usage information regarding cluster, nodes, virtual machines, and storage.
 
@@ -44,21 +44,21 @@ Here are the prerequisites of using Insights for Azure Local:
 
 Enabling Insights helps you monitor all the Azure Local systems currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Local system.
 
-To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+To enable Insights at scale, see [Enable Insights for Azure Local at scale using Azure policies](./monitor-multi-azure-policies.md).
 
 Follow these steps to enable Insights from the Azure portal:
 
 1. In the Azure portal, browse to your Azure Local resource page, then select your system. Under the **Capabilities** tab, select **Insights**.
 
-   :::image type="content" source="media/monitor-hci-single-23h2/insights-tile.png" alt-text="Screenshot showing the Insights tile." lightbox="media/monitor-hci-single-23h2/insights-tile.png":::
+   :::image type="content" source="media/monitor-single-23h2/insights-tile.png" alt-text="Screenshot showing the Insights tile." lightbox="media/monitor-single-23h2/insights-tile.png":::
 
 1. On the **Insights** page, select **Get Started**.
 
-    :::image type="content" source="media/monitor-hci-single-23h2/get-started.png" alt-text="Screenshot showing the Get Started button." lightbox="media/monitor-hci-single-23h2/get-started.png":::
+    :::image type="content" source="media/monitor-single-23h2/get-started.png" alt-text="Screenshot showing the Get Started button." lightbox="media/monitor-single-23h2/get-started.png":::
 
 1. On the **Insights configuration** page, select an existing DCR from the **Data collection rule** dropdown. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace. Insights creates a default DCR if one doesn't already exist. Only the DCRs that are enabled for Insights are included.
 
-   :::image type="content" source="media/monitor-hci-single-23h2/data-collection-rule.png" alt-text="Screenshot showing the Insights configuration window." lightbox="media/monitor-hci-single-23h2/data-collection-rule.png":::
+   :::image type="content" source="media/monitor-single-23h2/data-collection-rule.png" alt-text="Screenshot showing the Insights configuration window." lightbox="media/monitor-single-23h2/data-collection-rule.png":::
 
 1. (Optional) You can also create a new DCR by selecting **Create New** on the **Insights configuration** page.
 
@@ -70,7 +70,7 @@ Follow these steps to enable Insights from the Azure portal:
       > [!NOTE]
       > If you're using private links on the agent, you must add DCEs. For more information about AMA network settings, see [Define Azure Monitor Agent network settings](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows).
 
-      :::image type="content" source="media/monitor-hci-single-23h2/data-collection-rule-2.png" alt-text="Screenshot showing the data collection rule window." lightbox="media/monitor-hci-single-23h2/data-collection-rule-2.png":::
+      :::image type="content" source="media/monitor-single-23h2/data-collection-rule-2.png" alt-text="Screenshot showing the data collection rule window." lightbox="media/monitor-single-23h2/data-collection-rule-2.png":::
 
    1. Select the **Review + create** button.
 
@@ -78,13 +78,13 @@ Follow these steps to enable Insights from the Azure portal:
 
 1. Review the final screen with a summary of DCR name, number of event logs, performance counters, and name of the Log Analytics workspace in which data is stored. Select **Set up**.
 
-      :::image type="content" source="media/monitor-hci-single-23h2/data-collection-rule-3.png" alt-text="Screenshot showing the data collection rule dropdown selector." lightbox="media/monitor-hci-single-23h2/data-collection-rule-3.png":::
+      :::image type="content" source="media/monitor-single-23h2/data-collection-rule-3.png" alt-text="Screenshot showing the data collection rule dropdown selector." lightbox="media/monitor-single-23h2/data-collection-rule-3.png":::
 
    After selecting **Set up**, you're redirected to the **Extensions** page, where you can see the status of your agent installation. By configuring Insights, AMA is automatically installed on all nodes of the cluster.
 
 1. Go to your Azure Local resource page, and then select your system. Insights now shows as **Configured** on the **Capabilities** tab:
 
-   :::image type="content" source="media/monitor-hci-single-23h2/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-hci-single-23h2/insights-configured.png":::
+   :::image type="content" source="media/monitor-single-23h2/insights-configured.png" alt-text="Screenshot showing the Insights tile as Configured." lightbox="media/monitor-single-23h2/insights-configured.png":::
 
 ### Data collection rules
 
@@ -100,7 +100,7 @@ When you enable Insights on a machine with the Azure Monitor Agent, you must spe
 
 The `Microsoft-windows-sddc-management/operational` and `Microsoft-windows-health/operational` Windows event channel is added to your Log Analytics workspace under **Windows event logs**.
 
-:::image type="content" source="media/monitor-hci-single-23h2/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-hci-single-23h2/event-channel.png":::
+:::image type="content" source="media/monitor-single-23h2/event-channel.png" alt-text="Screenshot showing Add data source window." lightbox="media/monitor-single-23h2/event-channel.png":::
 
 By collecting these logs, Insights shows the health status of the individual nodes, drives, volumes, and VMs. By default, five performance counters are added.
 
@@ -108,7 +108,7 @@ By collecting these logs, Insights shows the health status of the individual nod
 
 By default, five performance counters are added:
 
-:::image type="content" source="media/monitor-hci-single-23h2/performance-counters.png" alt-text="Screenshot showing performance counters added." lightbox="media/monitor-hci-single-23h2/performance-counters.png":::
+:::image type="content" source="media/monitor-single-23h2/performance-counters.png" alt-text="Screenshot showing performance counters added." lightbox="media/monitor-single-23h2/performance-counters.png":::
 
 The following table describes the performance counters that are monitored:
 
@@ -122,7 +122,7 @@ The following table describes the performance counters that are monitored:
 
 After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you're able to see a rich visualization of the health of your cluster from the **Insights** menu on the left pane:
 
-:::image type="content" source="media/monitor-hci-single-23h2/insights-visualization.png" alt-text="Screenshot showing Insight visualizations." lightbox="media/monitor-hci-single-23h2/insights-visualization.png":::
+:::image type="content" source="media/monitor-single-23h2/insights-visualization.png" alt-text="Screenshot showing Insight visualizations." lightbox="media/monitor-single-23h2/insights-visualization.png":::
 
 ## Disable Insights
 
@@ -131,7 +131,7 @@ To disable Insights, follow these steps:
 1. Select **Insights** under the **Capabilities** tab.
 2. Select **Disable Insights**.
 
-   :::image type="content" source="media/monitor-hci-single-23h2/disable-insights-new.png" alt-text="Screenshot showing the Disable Insights window." lightbox="media/monitor-hci-single-23h2/disable-insights-new.png":::
+   :::image type="content" source="media/monitor-single-23h2/disable-insights-new.png" alt-text="Screenshot showing the Disable Insights window." lightbox="media/monitor-single-23h2/disable-insights-new.png":::
 
 When you disable the Insights feature, the association between the data collection rule and the cluster is deleted and the Health Service and SDDC Management logs are no longer collected; however, existing data isn't deleted. If you'd like to delete that data, go into your DCR and Log Analytics workspace and delete the data manually.
 
@@ -149,7 +149,7 @@ To enable Insights again, follow these steps:
 
 1. Select **Update** to see the visualizations again.
 
-   :::image type="content" source="media/monitor-hci-single-23h2/update-insights.png" alt-text="Screenshot showing the Update Insights window." lightbox="media/monitor-hci-single-23h2/update-insights.png":::
+   :::image type="content" source="media/monitor-single-23h2/update-insights.png" alt-text="Screenshot showing the Update Insights window." lightbox="media/monitor-single-23h2/update-insights.png":::
 
 ## Troubleshoot
 
@@ -159,7 +159,7 @@ This section gives guidance for resolving the issues with using Insights for Azu
 
 **Issue.** You see a blank **Workbooks** page with no data populated, as shown in the following screenshot:
 
-:::image type="content" source="media/monitor-hci-single-23h2/blank-workbooks-page.png" alt-text="Screenshot of a blank Workbooks page." lightbox="media/monitor-hci-single-23h2/blank-workbooks-page.png":::
+:::image type="content" source="media/monitor-single-23h2/blank-workbooks-page.png" alt-text="Screenshot of a blank Workbooks page." lightbox="media/monitor-single-23h2/blank-workbooks-page.png":::
 
 **Possible causes.** There could be several causes for this issue, such as recent configuration of Insights or improper configuration of the associated DCR.
 
@@ -183,7 +183,7 @@ Provides health faults on a cluster.
 |--|--|--|--|
 | Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | PoolCapacityThresholdExceeded |
 | Faulting resource type | The type of resource that encountered a fault. | No unit | StoragePool |
-| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {1245340c-780b-4afc-af3c-f9bdc4b12f8a}: SP:{c57f23d1-d784-4a42-8b59-4edd8e70e830} |
+| Faulting resource ID | Unique ID for the resource that encountered a health fault. | Unique ID | {a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1}: SP:{b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2} |
 | Severity | Severity of fault could be warning or critical. | No unit | Warning |
 | Initial fault time | Timestamp of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
@@ -247,6 +247,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 
 ## Next steps
 
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)

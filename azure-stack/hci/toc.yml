@@ -1,18 +1,12 @@
 items:
-- name: Azure Stack HCI documentation
+- name: Azure Local documentation
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Stack HCI?
+  - name: What is Azure Local?
     href: overview.md
-  - name: What's new in Azure Stack HCI? 
+  - name: What's new in Azure Local? 
     href: whats-new.md
-  - name: Azure Stack HCI OEM License
-    items: 
-    - name: OEM license information
-      href: azure-stack-hci-oem-license.md
-    - name: FAQ
-      href: azure-stack-hci-license-billing.yml
   - name: Release notes
     items:
     - name: Release information
@@ -66,27 +60,33 @@ items:
       - name: October 2024
         href: security-update/hci-security-update-oct-2024.md
       - name: September 2024
-        href: security-update/hci-security-update-sep-2024.md
+        href: security-update/security-update-sep-2024.md
       - name: August 2024
-        href: security-update/hci-security-update-aug-2024.md
+        href: security-update/security-update-aug-2024.md
       - name: July 2024
-        href: security-update/hci-security-update-jul-2024.md
+        href: security-update/security-update-jul-2024.md
       - name: June 2024 
-        href: security-update/hci-security-update-jun-2024.md
+        href: security-update/security-update-jun-2024.md
       - name: May 2024
-        href: security-update/hci-security-update-may-2024.md
+        href: security-update/security-update-may-2024.md
       - name: April 2024
-        href: security-update/hci-security-update-apr-2024.md
+        href: security-update/security-update-apr-2024.md
       - name: March 2024 
-        href: security-update/hci-security-update-mar-2024.md
+        href: security-update/security-update-mar-2024.md
       - name: February 2024 
-        href: security-update/hci-security-update-feb-2024.md      
+        href: security-update/security-update-feb-2024.md      
       - name: January 2024 
-        href: security-update/hci-security-update-jan-2024.md
+        href: security-update/security-update-jan-2024.md
       - name: December 2023 
-        href: security-update/hci-security-update-dec-2023.md
+        href: security-update/security-update-dec-2023.md
       - name: November 2023 
-        href: security-update/hci-security-update-nov-2023.md
+        href: security-update/security-update-nov-2023.md
+  - name: OEM License
+    items: 
+    - name: OEM license information
+      href: oem-license.md
+    - name: FAQ
+      href: license-billing.yml
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -96,7 +96,7 @@ items:
   items:
   - name: Virtual deployment
     href: deploy/deployment-virtual.md
-  - name: HCIBox in Azure
+  - name: Jumpstart
     href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
 
 - name: Plan
@@ -117,9 +117,9 @@ items:
       href: plan/network-patterns-overview.md
     - name: Choose network reference pattern
       href: plan/choose-network-pattern.md
-    - name: Single-server deployment
+    - name: Single-node deployment
       items:
-      - name: Single-server deployment
+      - name: Single-node deployment
         href: plan/single-server-deployment.md
       - name: Pattern components
         href: plan/single-server-components.md
@@ -157,7 +157,7 @@ items:
     items:
     - name: About security features
       href: concepts/security-features.md
-    - name: Download Azure Stack HCI security book
+    - name: Download Azure Local security book
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
@@ -211,9 +211,9 @@ items:
   
   - name: Deploy workloads
     items:
-    - name: Run AKS on HCI
-      href: /azure/aks/hybrid/aks-create-clusters-cli?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Run Azure Virtual Desktop on HCI
+    - name: Run AKS on Azure Local
+      href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Run Azure Virtual Desktop on Azure Local
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
       href: manage/create-arc-virtual-machines.md
@@ -237,7 +237,7 @@ items:
 
 - name: Upgrade 
   items:
-  - name: About Azure Stack HCI upgrades
+  - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
   - name: 1 - Upgrade to version 23H2 OS
     items: 
@@ -378,7 +378,7 @@ items:
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
       
-  - name: Clusters
+  - name: Systems
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
@@ -416,9 +416,9 @@ items:
 
   - name: Capacity
     items:
-    - name: Add a server
+    - name: Add a node
       href: manage/add-server.md
-    - name: Repair a server
+    - name: Repair a node
       href: manage/repair-server.md
 
   - name: SDN
@@ -464,7 +464,7 @@ items:
   - name: Billing
     items:
     - name: Azure Hybrid Benefit
-      href: concepts/azure-hybrid-benefit-hci.md
+      href: concepts/azure-hybrid-benefit.md
     - name: Billing and payment
       href: concepts/billing.md
 - name: Monitor
@@ -475,14 +475,14 @@ items:
     items:
     - name: Insights
       items:
-      - name: Monitor a single cluster
-        href: manage/monitor-hci-single-23h2.md
-      - name: Monitor multiple clusters
-        href: manage/monitor-hci-multi-23h2.md
+      - name: Monitor a single system
+        href: manage/monitor-single-23h2.md
+      - name: Monitor multiple systems
+        href: manage/monitor-multi-23h2.md
       - name: Monitor feature workbooks
         href: manage/monitor-features.md
       - name: Enable Insights at scale using Azure policies
-        href: manage/monitor-hci-multi-azure-policies.md
+        href: manage/monitor-multi-azure-policies.md
     - name: Metrics
       href: manage/monitor-cluster-with-metrics.md
     - name: Alerts
@@ -490,7 +490,7 @@ items:
       - name: Health alerts
         href: manage/health-alerts-via-azure-monitor-alerts.md
       - name: Log alerts
-        href: manage/setup-hci-system-alerts.md
+        href: manage/setup-system-alerts.md
       - name: Metric alerts
         href: manage/setup-metric-alerts.md
       - name: Recommended alert rules
@@ -499,9 +499,9 @@ items:
     items:
     - name: Health service
       items:
-      - name: Monitor clusters
+      - name: Monitor systems
         href: manage/health-service-overview.md
-      - name: Get cluster performance history
+      - name: Get system performance history
         href: manage/health-service-cluster-performance-history.md
       - name: View faults
         href: manage/health-service-faults.md
@@ -518,7 +518,7 @@ items:
     href: manage/troubleshoot-deployment.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
-  - name: Get support for Azure Stack HCI
+  - name: Get support for Azure Local
     href: manage/get-support.md
   - name: Get remote support
     href: manage/get-remote-support.md
@@ -536,13 +536,13 @@ items:
 - name: Migrate
   items:
   - name: Migration overview
-    href: migrate/migration-options-hci-overview.md
+    href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
     - name: Hyper-V VMs
       items: 
       - name: Overview
-        href: migrate/migration-azure-migrate-hci-overview.md
+        href: migrate/migration-azure-migrate-overview.md
       - name: Prepare
         items:
         - name: Review requirements
@@ -588,8 +588,12 @@ items:
 
 - name: Concepts
   items: 
-  - name: Azure Stack HCI observability
+  - name: Azure Local observability
     href: concepts/observability.md
+  - name: Host networking
+    items:
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
   - name: SDN
     items:
     - name: SDN technical reference
@@ -623,17 +627,17 @@ items:
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
     items:
-    - name: 0. Download the Azure Stack HCI software
+    - name: 0. Download the software
       href: deploy/download-software.md
-    - name: 1. Deploy the Azure Stack HCI OS
+    - name: 1. Deploy the OS
       href: deploy/operating-system.md
-    - name: 2. Create a cluster
+    - name: 2. Create a system
       href: deploy/create-cluster.md
-    - name: 3. Set up a cluster witness
+    - name: 3. Set up a witness
       href: manage/witness.md    
     - name: 4. Register with Azure
       href: deploy/register-with-azure.md
-    - name: 5. Validate the cluster
+    - name: 5. Validate the system
       href: deploy/validate.md
     - name: Deploy with PowerShell
       items:
@@ -641,7 +645,7 @@ items:
         href: deploy/single-server.md
       - name: Single server scale-out
         href: manage/single-node-scale-out.md
-      - name: Create a cluster with PowerShell
+      - name: Create a system with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
         href: deploy/network-atc.md?pivots=azure-stack-hci
@@ -651,7 +655,7 @@ items:
         href: deploy/sdn-wizard.md
       - name: Deploy using SDN Express
         href: manage/sdn-express.md
-      - name: Deploy at cluster creation
+      - name: Deploy at system creation
         href: deploy/create-cluster.md#step-5-sdn-optional
     - name: Deploy and manage in VMM
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
@@ -695,39 +699,39 @@ items:
         href: manage/thin-provisioning-conversion.md
       - name: Adjustable storage repair speed
         href: manage/storage-repair-speed.md
-    - name: Monitor clusters
+    - name: Monitor systems
       items:
-      - name: Monitor single cluster with Insights
+      - name: Monitor single system with Insights
         href: manage/monitor-hci-single.md
-      - name: Monitor multiple clusters with Insights
+      - name: Monitor multiple systems with Insights
         href: manage/monitor-hci-multi.md
-      - name: Monitor clusters from Windows Admin Center
+      - name: Monitor systems from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads
         href: manage/diskspd-overview.md
-    - name: Manage clusters
+    - name: Manage systems
       items:
       - name: (Optional) Configure proxy settings
         href: manage/configure-proxy-settings.md
-      - name: Manage cluster registration
+      - name: Manage system registration
         href: manage/manage-cluster-registration.md
-      - name: Manage clusters with Windows Admin Center
+      - name: Manage systems with Windows Admin Center
         href: manage/cluster.md
-      - name: Manage clusters with PowerShell
+      - name: Manage systems with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
         href: manage/manage-network-atc.md?pivots=azure-stack-hci
-      - name: Update the cluster
+      - name: Update the system
         href: manage/update-cluster.md
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-    - name: Manage cluster servers
+    - name: Manage nodes
       items:
-      - name: Add or remove servers
+      - name: Add or remove nodes
         href: manage/add-cluster.md
       - name: Convert to stretched cluster
         href: manage/convert-to-stretched-cluster.md
-      - name: Take a server offline for maintenance
+      - name: Take a node offline for maintenance
         href: manage/maintain-servers.md
       - name: Change languages
         href: manage/languages.md
@@ -751,16 +755,16 @@ items:
         href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
-    - name: Cluster to same hardware
+    - name: System to same hardware
       href: migrate/migrate-cluster-same-hardware.md
-    - name: Cluster to new hardware
+    - name: System to new hardware
       href: migrate/migrate-cluster-new-hardware.md
       
   - name: Troubleshooting
     items:
-    - name: Troubleshoot cluster registration
+    - name: Troubleshoot system registration
       href: deploy/troubleshoot-hci-registration.md
-    - name: Troubleshoot cluster validation reporting
+    - name: Troubleshoot system validation reporting
       href: manage/validate-qos.md
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
@@ -776,9 +780,9 @@ items:
       href: manage/support-tools.md
   - name: Concepts
     items:
-    - name: Storage and clusters
+    - name: Storage and systems
       items:
-      - name: Single-node clusters
+      - name: Single-node systems
         href: concepts/single-server-clusters.md
       - name: Choose drives
         href: concepts/choose-drives.md
@@ -798,7 +802,7 @@ items:
         href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: Cluster and storage pool quorum
+      - name: System and storage pool quorum
         href: concepts/quorum.md
       - name: Understand and deploy persistent memory
         href: concepts/deploy-persistent-memory.md
@@ -808,8 +812,6 @@ items:
         href: concepts/nested-virtualization.md
     - name: Host networking
       items:
-      - name: Network ATC overview
-        href: concepts/network-atc-overview.md?pivots=azure-stack-hci
       - name: Network HUD overview
         href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
@@ -835,25 +837,25 @@ items:
   items:
   - name: For Azure Arc VM management
     items:
-    - name: Azure Stack HCI VM PowerShell commands
+    - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
-  - name: For Azure Stack HCI cluster, service, and management
+  - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands
       href: /cli/azure/ext/stack-hci/stack-hci
     - name: Azure registration PowerShell commands
       href: /powershell/module/az.stackhci
-    - name: Go package for ARM Azure Stack HCI service API
+    - name: Go package for ARM Azure Local service API
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-    - name: Azure Stack HCI Java service classes and interfaces
+    - name: Azure Local Java service classes and interfaces
       href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-    - name: Azure Stack HCI management service Python package
+    - name: Azure Local management service Python package
       href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-    - name: Azure Stack HCI JavaScript package
+    - name: Azure Local JavaScript package
       href: /javascript/api/@azure/arm-azurestackhci
-    - name: Azure Stack HCI REST API reference
+    - name: Azure Local REST API reference
       href: /rest/api/stackhci
-    - name: .NET Namespaces for Azure Stack HCI
+    - name: .NET Namespaces for Azure Local
       href: /dotnet/api/overview/azure/stack-hci
   - name: For OS and storage management
     items:
@@ -875,12 +877,8 @@ items:
       href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+  - name: Azure Kubernetes Service on Azure Local and Windows Server 
     href: /azure/aks/hybrid/aks-overview
-  - name: Azure Stack family
-    href: ../index.yml
-  - name: Azure hybrid cloud
-    href: /hybrid
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
@@ -891,7 +889,7 @@ items:
   items:
   - name: Assurance
     items:
-    - name: Azure Stack HCI and security standards
+    - name: Azure Local and security standards
       href: assurance/azure-stack-security-standards.md
     - name: ISO/IEC 27001 guidance
       href: assurance/azure-stack-iso27001-guidance.md
@@ -901,66 +899,8 @@ items:
       href: assurance/azure-stack-hipaa-guidance.md
     - name: FedRAMP guidance
       href: assurance/azure-stack-fedramp-guidance.md
-  - name: Azure Stack HCI product page
+  - name: Azure Local product page
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Learning paths and modules
-    items:
-    - name: Azure Stack HCI foundations
-      href: /training/paths/azure-stack-hci-foundations/
-    - name: Operate and maintain Azure Stack HCI
-      href: /training/paths/operate-maintain-azure-stack-hci/
-    - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /training/modules/implement-firewall-load-balancer/
-    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /training/modules/plan-deploy-sdn-infrastructure/
-  - name: Evaluation guide
-    href: guided-quick-deploy-eval.yml 
-  - name: Earlier versions
-    items:
-    - name: What's new in version 22H2
-      href: whats-new-in-hci-22h2.md
-    - name: What's new in version 21H2
-      href: whats-new-in-hci-21h2.md
-    - name: Known issues in 2310
-      href: known-issues-2310.md
-    - name: 22H2 Supplemental Package
-      items:
-      - name: What's in preview?
-        items:
-        - name: 2306 release - Current
-          href: manage/whats-new-2306-preview.md
-        - name: 2306 updates
-          items:
-          - name: 2306.7 release
-            href: manage/whats-new-2306-7-preview.md
-          - name: 2306.5 release
-            href: manage/whats-new-2306-5-preview.md
-          - name: 2306.4 release
-            href: manage/whats-new-2306-4-preview.md
-          - name: 2306.3 release
-            href: manage/whats-new-2306-3-preview.md
-          - name: 2306.2 release
-            href: manage/whats-new-2306-2-preview.md
-          - name: 2306.1 release
-            href: manage/whats-new-2306-1-preview.md
-      - name: View known issues
-        items:
-        - name: 2306.7 update release - Current
-          href: hci-known-issues-2306-7.md
-        - name: 2306.5 update release
-          href: hci-known-issues-2306-5.md
-        - name: 2306.4 update release
-          href: hci-known-issues-2306-4.md 
-        - name: 2306.3 update release
-          href: hci-known-issues-2306-3.md 
-        - name: 2306.2 update release
-          href: hci-known-issues-2306-2.md 
-        - name: 2306.1 update release
-          href: hci-known-issues-2306-1.md 
-        - name: 2306 release
-          href: hci-known-issues-2306.md 
-      - name: 22H2 Supplemental Package plan, deploy, and manage
-        items:
-        - name: Deployment and management guide
+  

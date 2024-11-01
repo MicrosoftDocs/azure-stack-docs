@@ -1,16 +1,16 @@
 ---
 title: Configure Software Load Balancer for high availability ports
 description: Learn how to configure Software Load Balancer for high availability ports.
-ms.author: sethm
+ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
-author: sethmanheim
-ms.date: 04/18/2024
+author: alkohli
+ms.date: 10/28/2024
 ---
 
 # Configure Software Load Balancer for high availability ports
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article provides an overview of high availability ports rule and their purpose. It also describes the prerequisites for setting up such rules, the configuration steps, supported configurations, and associated limitations.
 

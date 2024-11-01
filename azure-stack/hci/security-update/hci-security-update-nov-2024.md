@@ -1,20 +1,18 @@
 ---
-title:  November 2024 security update (KB 5046618) for Azure Stack HCI, version 23H2
-description: Read about the November 2024 security update (KB 5046618) for Azure Stack HCI, version 23H2.
+title:  November 2024 security update (KB 5046618) for Azure Local, version 23H2
+description: Read about the November 2024 security update (KB 5046618) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/23/2024
+ms.date: 11/01/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# November OS security update (KB) for Azure Stack HCI, version 23H2
+# November OS security update (KB) for Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1246.
-
-<!--For an overview of Azure Stack HCI, version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
+This article describes the OS security update for Azure Local, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1246.
 
 ## Improvements
 
@@ -40,7 +38,7 @@ Microsoft is not currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
+To install the LCU on your Azure Local instance, see [Update Azure Stack HCI instances](../update/about-updates-23h2.md).
 
 ## File list
 
@@ -50,5 +48,5 @@ For a list of the files that are provided just in the servicing stack update, do
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local, version 23H2.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local, version 23H2.
