@@ -3,7 +3,7 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 05/29/2024
+ms.date: 11/01/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -98,7 +98,7 @@ You can use one minor version older or newer of `kubectl` relative to your **kub
 
 For example, if your **kube-apiserver** is at 1.17, then you can use versions 1.16 to 1.18 of `kubectl` with that **kube-apiserver**.
 
-To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI and Windows Server install-cli`.
+To install or update your version of `kubectl`, run `az AKS on Azure Local and Windows Server install-cli`.
 
 ## Release and deprecation process
 

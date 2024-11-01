@@ -2,13 +2,13 @@
 title: Tutorial - Prepare an application for AKS enabled by Azure Arc 
 description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS.
 ms.topic: tutorial
-ms.date: 01/05/2024
+ms.date: 11/01/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS on Azure Stack HCI deployment.
+# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS on Azure Local deployment.
 # Keyword: multi-container Kubernetes service
 
 ---
