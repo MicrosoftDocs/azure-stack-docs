@@ -105,11 +105,11 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 ### Release 2311
 
-Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure.
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local instance. AKS on Azure Local, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure.
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of AKS Arc, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local, version 23H2 deployment. For more information, see [Deploy an Azure Local, version 23H2 system using the Azure portal](/azure-stack/hci/deploy/deploy-via-portal).
+- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of AKS Arc, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local, version 23H2 deployment. For more information, see [Deploy an Azure Local, version 23H2 instance using the Azure portal](/azure-stack/hci/deploy/deploy-via-portal).
 - **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Local, version 23H2. For more information, see [Infrastructure component updates](infrastructure-components.md).
 - **New CLI consistent with Azure**. Starting with this release, a new consistent command-line experience is available to create and manage Kubernetes clusters.
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as the Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).

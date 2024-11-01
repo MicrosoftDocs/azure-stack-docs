@@ -83,7 +83,7 @@ Microsoft.KubernetesRuntime  RegistrationRequired  Registered
 Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). In order to run the following command, you must be a `user` member of your Azure tenant. For more information about user and guest membership, see [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
 
 ```azurecli
-$objID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].id" --output tsv
+$objID = az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --query "[].id" --output tsv
 ```
 
 Once you have the $objID, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the below command, you need to have [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.

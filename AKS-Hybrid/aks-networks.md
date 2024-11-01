@@ -21,7 +21,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - Install and configure Azure Local, version 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
 - Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md).
-- Make sure you have an external VM switch that can be accessed by all the servers in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
+- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
 
 Run the following command to get the name of the external VM switch on your Azure Local cluster:
 
