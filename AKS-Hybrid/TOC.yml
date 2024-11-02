@@ -110,7 +110,7 @@
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Integrate Azure Container Registry with a Kubernetes cluster
+    - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
       items:    
@@ -133,7 +133,7 @@
     - name: Troubleshoot & known issues
       href: aks-troubleshoot.md
     - name: K8sVersionValidation
-    - href: cluster-k8s-version.md
+      href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
