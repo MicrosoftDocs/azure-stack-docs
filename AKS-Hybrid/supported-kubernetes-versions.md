@@ -45,10 +45,10 @@ View the current supported Kubernetes version releases on AKS Arc.
 |  K8s version | Supported Azure Stack HCI versions | Current status | End of Life |
 |--------------|-------------------|--------------|------------|
 | 1.30 | TBD | Upcoming | TBD |
-| 1.29 | [2408](aks-whats-new-23h2#release-2408) | Generally available | TBD |
-| 1.28 | [2408](aks-whats-new-23h2#release-2408), [2405](aks-whats-new-23h2#release-2405) | Generally available | TBD |
-| 1.27 | [2408](aks-whats-new-23h2#release-2408), [2405](aks-whats-new-23h2#release-2405), [2402](aks-whats-new-23h2#release-2402) | Generally available | Feb 2025 |
-| 1.26 | [2405](aks-whats-new-23h2#release-2405), [2402](aks-whats-new-23h2#release-2402) and older | End of life | N/A |
+| 1.29 | [2408](aks-whats-new-23h2.md#release-2408) | Generally available | TBD |
+| 1.28 | [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405) | Generally available | TBD |
+| 1.27 | [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | Generally available | Feb 2025 |
+| 1.26 | [2405](aks-whats-new-23h2.md#release-2405), 2402 and older | End of life | N/A |
 
 
 ## Kubernetes version support policy
