@@ -76,4 +76,4 @@ Azure Stack HCI supports specific Kubernetes versions in each of its releases. A
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot)
+[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
