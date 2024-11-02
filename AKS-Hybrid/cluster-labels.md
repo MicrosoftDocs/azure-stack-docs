@@ -39,7 +39,7 @@ This article describes how to use labels in a Kubernetes cluster on AKS enabled 
    The following example creates a node pool named `labelnp` with the label `dept=HR`:
 
    ```azurecli
-   az aksarc nodepool add –resource-group myResourceGroup –cluster-name myAKSCluster –name labelnp –node-count 1 –labels dept=HR –no-wait
+   az aksarc nodepool add --resource-group myResourceGroup --cluster-name myAKSCluster --name labelnp --node-count 1 --labels dept=HR –no-wait
    ```
 
    The following example output from the [`az aksarc nodepool list`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-list) command shows the `labelnp` node pool creates nodes with the specified `nodeLabels`:
