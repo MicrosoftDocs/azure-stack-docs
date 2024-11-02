@@ -60,7 +60,7 @@
         href: resource-manager-quickstart.md
     - name: Networking
       items:
-      - name: Create logical networks for Kubernetes clusters
+      - name: Create logical networks
         href: aks-networks.md
       - name: Use MetalLB load balancer
         items:
@@ -70,6 +70,8 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
+    - name: Use Arc Gateway
+      href: arc-gateway-aks-arc.md
     - name: Authentication and authorization
       items:
       - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
