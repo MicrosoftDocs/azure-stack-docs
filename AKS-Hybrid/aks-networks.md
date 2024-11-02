@@ -9,36 +9,30 @@ ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
 ---
 
-# Create logical networks for Kubernetes clusters on Azure Stack HCI 23H2
-
+# Create logical networks for AKS enabled by Azure Arc clusters
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-After you install and configure Azure Stack HCI 23H2, you must create Arc VM logical networks. AKS on Azure Stack HCI uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
+After you install and configure Azure Stack HCI, you must create Arc VM logical networks. AKS Arc uses static logical networks to provide IP addresses to the underlying VMs of the Kubernetes clusters.
 
 ## Before you begin
 
 Before you begin, make sure you have the following prerequisites:
 
-- Install and configure Azure Stack HCI 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
+- Install and configure Azure Azure Stack HCI. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
 - Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md).
 - Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use to associate with the logical network you will create.
+- You need to ensure that the DNS server of the logical network can resolve the FQDN of the Azure Stack HCI cluster. DNS name resolution is required for all Azure Stack HCI nodes to be able to communicate with the AKS VMs.
 
-Run the following command to get the name of the external VM switch on your Azure Stack HCI cluster:
-
-```powershell
-Get-VmSwitch -SwitchType External
-```
-
-Make a note of the name of the switch. You use this information when you create a logical network. For example:
+Run the following command to get the name of the external VM switch on your Azure Stack HCI cluster. You use this information when you create a logical network.
 
 ```powershell
 Get-VmSwitch -SwitchType External
 ```
 
 ```output
-Name                               SwitchType       NetAdapterInterfaceDescription
-----                               ----------       ----------------------------
-ConvergedSwitch(management_compute_storage) External        Teamed-Interface
+Name                                           SwitchType      NetAdapterInterfaceDescription
+----                                           ----------      ----------------------------
+ConvergedSwitch(management_compute_storage)    External        Teamed-Interface
 ```
 
 ## Create the logical network
@@ -64,6 +58,7 @@ For static IP, the required parameters are as follows:
 | `--ip-allocation-method`   | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | 
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
+
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```
