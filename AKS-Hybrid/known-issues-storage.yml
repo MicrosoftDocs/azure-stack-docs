@@ -71,7 +71,7 @@ sections:
           
           ### Mitigation
           
-          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your AKS-HCI host.
+          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your Azure Local host.
           
           For more information about AKS Arc releases, and all the latest AKS on Azure Local news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
           
