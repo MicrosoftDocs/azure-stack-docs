@@ -449,7 +449,7 @@ sections:
           or [prestage a VCO for the cloud agent generic cluster service](./prestage-cluster-service-host-create.md).
           
           If you are a domain administrator, it is still possible that your OU or container does not have the required permissions. 
-          For example, Enforcement mode, introduced in [KB5008383](https://prod.support.services.microsoft.com/topic/kb5008383-active-directory-permissions-updates-cve-2021-42291-536d5555-ffba-4248-a60e-d6cbc849cde1?), 
+          For example, Enforcement mode, introduced in [KB5008383](https://support.microsoft.com/topic/kb5008383-active-directory-permissions-updates-cve-2021-42291-536d5555-ffba-4248-a60e-d6cbc849cde1), 
           may be enabled in Active Directory. Try the following before attempting a reinstall.
           
           1. Navigate to **Active Directory Users and Computers**.
