@@ -104,7 +104,7 @@ When you install updates for Azure Local, version 23H2 don't use the following i
 - SConfig
 - Windows Admin Center
 - Azure Update Manager from the Machines pane in the Azure portal
-- Updates from the Operations resource pane in the Azure portal
+- Updates pane from the server resource page in the Azure portal
 - Manual runs of Cluster-Aware Updating
 
 Using these interfaces can install out-of-band updates, which aren't supported within the lifecycle and may cause various issues on the system. Additionally, there may be billing for update operations on the machines.
