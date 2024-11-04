@@ -97,6 +97,17 @@ The PowerShell procedures apply to both single-node and multi-node systems that 
 
 You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](./azure-update-manager-23h2.md).
 
+### Unsupported interfaces for updates
+
+When you install updates for Azure Local, version 23H2 don't use the following interfaces:
+
+- SConfig
+- Windows Admin Center
+- Azure Update Manager for Machines
+- Manual runs of Cluster-Aware Updates
+
+Using these interfaces can install out-of-band updates, which aren't supported within the lifecycle and may cause various issues on the system. Additionally, there may be billing for update operations on the machines.
+
 ## Next steps
 
 Learn to [Understand update phases](./update-phases-23h2.md).
