@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/24/2024
+ms.date: 10/31/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -71,13 +71,17 @@ The 2408 update has the following expected runtimes based on our internal testin
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2406 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2408 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-<!-- ### Improvements -->
+> [!IMPORTANT]
+> [See this known 2408 update issue](known-issues.md#update).
+
+- With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
+- We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
 
 ### Changes
 
