@@ -97,6 +97,17 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](./azure-update-manager-23h2.md)
 
+### Unsupported interfaces for updates
+
+When you install updates for Azure Stack HCI, version 23H2 don't use the following interfaces:
+
+- SConfig
+- Windows Admin Center
+- Azure Update Manager for Machines
+- Manual runs of Cluster-Aware Updates
+
+Using these interfaces can install out-of-band updates, which aren't supported within the lifecycle and may cause various issues on the cluster. Additionally, there may be billing for update operations on the servers.
+
 ## Next steps
 
 Learn to [Understand update phases](./update-phases-23h2.md).
