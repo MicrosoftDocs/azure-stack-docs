@@ -104,7 +104,7 @@ When you install updates for Azure Stack HCI, version 23H2 don't use the followi
 - SConfig
 - Windows Admin Center
 - Azure Update Manager from the Machines pane in the Azure portal
-- Updates pane from server (Machine-Azure Arc) resource page from the portal
+- Updates pane from server (Machine-Azure Arc) resource page from the Azure portal
 - Manual runs of Cluster-Aware Updating
 
 Using these interfaces can install out-of-band updates, which aren't supported within the lifecycle and may cause various issues on the cluster. Additionally, billing for update operations like periodic assessment, checking for updates, using the scheduler, and installing updates on the server resource (Machine-Azure Arc) may occur.
