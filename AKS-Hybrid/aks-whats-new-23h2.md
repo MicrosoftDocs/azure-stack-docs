@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Local, version 23H2
 description: Learn about what's new in AKS on Azure Local, version 23H2.
 ms.topic: overview
-ms.date: 11/01/2024
+ms.date: 10/09/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu

@@ -3,7 +3,7 @@ title: Create and use a custom load balancer with Azure Kubernetes Service on Az
 description: Learn how to create and use a custom load balancer with Azure Kubernetes Service on Azure Local.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 04/27/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane

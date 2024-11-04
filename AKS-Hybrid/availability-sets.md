@@ -3,7 +3,7 @@ title: Availability sets in AKS enabled by Azure Arc
 description: Learn how to enable availability sets in AKS enabled by Arc to improve the availability and distribution of your Kubernetes workloads.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 11/01/2024
+ms.date: 09/06/2024
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 08/15/2024

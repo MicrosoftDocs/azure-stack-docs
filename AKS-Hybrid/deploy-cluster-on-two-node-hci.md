@@ -4,7 +4,7 @@ description: Availability scenarios for Azure Kubernetes Service (AKS) enabled b
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 01/09/2024
 ---
 
 # Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local

@@ -3,7 +3,7 @@ title: Encrypt etcd secrets for Azure Kubernetes Service clusters
 description: Learn how to encrypt etcd secrets in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa

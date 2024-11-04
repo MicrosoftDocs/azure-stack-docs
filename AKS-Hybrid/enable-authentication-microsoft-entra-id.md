@@ -8,7 +8,7 @@ ms.reviewer: abha
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/01/2024
+ms.date: 07/26/2024
 
 # Intent: As an IT Pro, I need to learn how to enable Microsoft Entra ID authentication for Kubernetes clusters
 # Keyword: Microsoft Entra ID

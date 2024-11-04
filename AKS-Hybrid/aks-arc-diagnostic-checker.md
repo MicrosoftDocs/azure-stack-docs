@@ -4,7 +4,7 @@ description: Learn how to diagnose common causes for failures
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/01/2024
+ms.date: 06/17/2024
 ms.reviewer: abha
 
 #Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure. 

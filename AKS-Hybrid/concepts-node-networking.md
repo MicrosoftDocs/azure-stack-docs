@@ -2,7 +2,7 @@
 title: Node virtual machine networking in AKS enabled by Azure Arc
 description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek

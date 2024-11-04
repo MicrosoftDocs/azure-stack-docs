@@ -6,7 +6,7 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 11/01/2024
+ms.date: 07/26/2024
 ms.lastreviewed: 07/26/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.

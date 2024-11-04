@@ -4,7 +4,7 @@ description: Learn about automatically scaling node pools in AKS Arc on Azure Lo
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.date: 11/01/2024
+ms.date: 01/29/2024
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling

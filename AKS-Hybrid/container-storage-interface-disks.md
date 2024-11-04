@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azur
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 03/14/2024
 ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha

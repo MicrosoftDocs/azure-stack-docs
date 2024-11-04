@@ -4,7 +4,7 @@ description: Learn how to troubleshoot no K8s versions or VM sizes listed when y
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/01/2024
+ms.date: 10/02/2024
 ms.reviewer: sumsmith
 
 ---

@@ -3,7 +3,7 @@ title: Use GPUs for compute-intensive workloads (AKS on Azure Local, version 23H
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 02/29/2024
 ms.author: sethm 
 ms.lastreviewed: 06/05/2024
 ms.reviewer: baziwane

@@ -3,7 +3,7 @@ title: Security concepts in AKS enabled by Azure Arc
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl

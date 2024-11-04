@@ -2,7 +2,7 @@
 title: IP address planning for AKS 
 description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production. 
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 10/08/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha

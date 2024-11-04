@@ -3,7 +3,7 @@ title: Application availability in AKS enabled by Azure Arc
 description: Learn about application availability in AKS enabled by Arc
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 04/17/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane

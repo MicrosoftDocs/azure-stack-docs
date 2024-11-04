@@ -2,7 +2,7 @@
 title: AKS Arc on VMware and workload cluster architecture
 description: Learn about AKS Arc on VMware workload cluster architecture.
 ms.topic: overview
-ms.date: 11/01/2024
+ms.date: 03/18/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane

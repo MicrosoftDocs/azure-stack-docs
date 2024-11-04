@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 08/07/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri

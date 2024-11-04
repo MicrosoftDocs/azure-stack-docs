@@ -3,7 +3,7 @@ title: Azure Hybrid Benefit for AKS enabled by Azure Arc (AKS on Azure Local, ve
 description: Activate Azure Hybrid Benefit for AKS enabled by Arc on Azure Local, version 23H2.
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/01/2024
+ms.date: 01/30/2024
 ms.topic: conceptual
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024

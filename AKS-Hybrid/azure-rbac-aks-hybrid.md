@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/01/2024
+ms.date: 06/28/2024
 ms.reviewer: sulahiri
 ms.lastreviewed: 06/28/2024
 

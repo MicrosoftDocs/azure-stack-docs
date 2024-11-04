@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 11/01/2024
+ms.date: 04/02/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
