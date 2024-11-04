@@ -2,7 +2,7 @@
 title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell
 description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell.
 ms.topic: article
-ms.date: 11/01/2024
+ms.date: 06/27/2024
 author: sethmanheim
 ms.author: sethm 
 

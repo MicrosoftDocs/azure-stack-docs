@@ -3,7 +3,7 @@ title: Quickstart to set up AKS enabled by Azure Arc using Windows Admin Center
 description: Learn how to set up AKS enabled by Azure Arc using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 11/01/2024
+ms.date: 12/27/2023
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite

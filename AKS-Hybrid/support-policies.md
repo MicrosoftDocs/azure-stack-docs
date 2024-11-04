@@ -2,7 +2,7 @@
 title: Support policies for AKS enabled by Azure Arc
 description: Learn about AKS enabled by Arc support policies, shared responsibility, and features that are in preview.
 ms.topic: article
-ms.date: 11/01/2024
+ms.date: 07/11/2024
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023

@@ -3,7 +3,7 @@ title: How to use AKS enabled by Arc with SDN and virtual networking infrastruct
 description: Learn how to use AKS enabled by Azure Arc with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 11/20/2023
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul

@@ -3,7 +3,7 @@ title: Process for restoring a Kubernetes cluster from a disaster
 description: Learn how to restore Kubernetes clusters after a disaster.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane

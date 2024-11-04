@@ -3,7 +3,7 @@ title: Validation tests in AKS enabled by Azure Arc
 description: Learn how to validate your environment and configuration prior to installing AKS enabled by Arc.
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 11/01/2024
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 04/19/2023
 ms.reviewer: waltero

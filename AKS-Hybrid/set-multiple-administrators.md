@@ -3,7 +3,7 @@ title: Set up multiple administrators on AKS enabled by Arc
 description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 12/11/2023
 ms.author: sethm 
 ms.lastreviewed: 10/12/2022
 ms.reviewer: scooley

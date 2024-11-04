@@ -3,7 +3,7 @@ title: Troubleshooting overview for Azure Kubernetes Service on Azure Local and 
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Azure Local and Windows Server. 
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 11/01/2024
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 04/08/2022
 ms.reviewer: abha

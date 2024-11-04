@@ -2,7 +2,7 @@
 title: Deploy a workload cluster on AKS enabled by Azure Arc
 description: In this tutorial, learn how to create a Kubernetes cluster and use kubectl to connect to the Kubernetes master node in AKS enabled by Arc.
 ms.topic: tutorial
-ms.date: 11/01/2024
+ms.date: 01/05/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan

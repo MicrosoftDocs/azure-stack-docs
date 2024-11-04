@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the "failed to either reach kube-apiserve
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/01/2024
+ms.date: 06/20/2024
 ms.reviewer: abha
 
 # Customer intent: As an Azure Kubernetes user, I want to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" error code so that I can successfully start or create and deploy an Azure Kubernetes Service Arc cluster.

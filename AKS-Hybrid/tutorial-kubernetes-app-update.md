@@ -2,7 +2,7 @@
 title:  Tutorial - Update an application in AKS enabled by Azure Arc
 description: In this tutorial, learn how to update an existing application deployment with a new version of the application code.
 ms.topic: tutorial
-ms.date: 11/01/2024
+ms.date: 01/05/2024
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 1/14/2022

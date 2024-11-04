@@ -5,7 +5,7 @@ description: Learn about detailed pricing information for AKS enabled by Azure A
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.date: 11/01/2024
+ms.date: 06/24/2024
 ms.lastreviewed: 05/31/2023
 ms.reviewer: rbaziwane
 

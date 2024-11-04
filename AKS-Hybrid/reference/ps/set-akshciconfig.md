@@ -2,7 +2,7 @@
 title: Set-AksHciConfig for AKS hybrid
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 11/01/2024
+ms.date: 04/11/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 04/11/2023

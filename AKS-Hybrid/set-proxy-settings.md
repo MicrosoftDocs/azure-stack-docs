@@ -2,7 +2,7 @@
 title: Proxy server settings in AKS enabled by Azure Arc
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) enabled by Arc.
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 01/10/2024
 ms.author: sethm 
 ms.lastreviewed: 05/25/2022
 ms.reviewer: mikek

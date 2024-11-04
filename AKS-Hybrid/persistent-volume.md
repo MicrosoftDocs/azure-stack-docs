@@ -3,9 +3,9 @@ title: Use persistent volumes with AKS enabled by Azure Arc
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/01/2024
+ms.date: 07/03/2024
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to create and use persistent storage volumes in a Windows container and prepare Windows nodes.

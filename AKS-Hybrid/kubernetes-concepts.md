@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 06/24/2024
 ms.reviewer: daschott
 ms.topic: conceptual
-ms.date: 11/01/2024
+ms.date: 05/16/2022
 
 # Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Azure Arc.
 # Keyword: Kubernetes cluster architecture
