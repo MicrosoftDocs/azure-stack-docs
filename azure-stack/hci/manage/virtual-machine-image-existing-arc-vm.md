@@ -1,19 +1,19 @@
 ---
-title: Create Azure Stack HCI VM image from an existing Arc VM
-description: Learn how to create Azure Stack HCI VM images using an existing Arc VM via Azure CLI.
+title: Create Azure Local VM image from an existing Arc VM
+description: Learn how to create Azure Local VM images using an existing Arc VM via Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/23/2024
+ms.date: 11/05/2024
 ---
 
-# Create Azure Stack HCI VM image using existing Arc VMs
+# Create Azure Local VM image using existing Arc VMs
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using existing Arc VMs via the Azure CLI. The operating system (OS) disk of the Arc VM is used to create a gallery image on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for your Azure Local using existing Arc VMs via the Azure CLI. The operating system (OS) disk of the Arc VM is used to create a gallery image on your Azure Local.
 
 
 ## Prerequisites
@@ -21,12 +21,12 @@ This article describes how to create virtual machine (VM) images for your Azure 
 Before you begin, make sure that:
 
 - You've reviewed and completed the [Arc VM management prerequisites](./azure-arc-vm-management-prerequisites.md).
-- You've connected to your Azure Stack HCI using the instructions in [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- You've connected to your Azure Local using the instructions in [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
 ## Create VM image from existing Arc VM
 
-You create a VM image starting from the OS disk of the Arc VM and then use this image to deploy VMs on your Azure Stack HCI.
+You create a VM image starting from the OS disk of the Arc VM and then use this image to deploy VMs on your Azure Local.
 
 Follow these steps to create a VM image using the Azure CLI.
 
@@ -41,8 +41,8 @@ Set your subscription, resource group, location, path to the image in local shar
 ```azurecli
 $subscription = "<Subscription ID>"
 $resource_group = "<Resource group>"
-$location = "<Location for your Azure Stack HCI>"
-$custom_location = "<Custom location for your Azure Stack HCI>"
+$location = "<Location for your Azure Local>"
+$custom_location = "<Custom location for your Azure Local>"
 $osType = "<OS of source VM>"
 $imageName = "<VM image name>"
 $sourceVmName = "<Name of source VM  in the Storage account>"
@@ -52,10 +52,10 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Subscription for Azure Stack HCI cluster that you associate with this image.        |
-| `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
-| `custom-location`| Custom location ID for your Azure Stack HCI cluster.  |
+| `subscription`   | Subscription for the Azure Local system that you associate with this image.        |
+| `resource_group` | Resource group for the Azure Local system that you associate with this image.        |
+| `location`       | Location for your Azure Local system. For example, this could be `eastus`. |
+| `custom-location`| Custom location ID for your Azure Local system.  |
 | `name`           | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
 | `source-vm`      | Name of an existing Arc VM that you'll use to create the VM image. |
 | `os-type`        | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -64,11 +64,11 @@ Here's a sample output:
 
 ```
 PS C:\Users\azcli> $subscription = "mysub-id"
-PS C:\Users\azcli> $resource_group = "myhci-rg"
+PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
-PS C:\Users\azcli> $custom_location = "myhci-cl"
+PS C:\Users\azcli> $custom_location = "mylocal-cl"
 PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "myhci-image"
+PS C:\Users\azcli> $imageName = "mylocal-image"
 PS C:\Users\azcli> $sourceVmName = "mysourcevm"
 ```
 
@@ -88,12 +88,12 @@ Here's a sample output:
 ```
 {
   "extendedLocation": {
-    "name": "/subscriptions/mysub-id/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+    "name": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/myloca-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/mysub-id/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryImages/myhci-image",
+  "id": "/subscriptions/mysub-id/resourceGroups/myloca-rg/providers/Microsoft.AzureStackHCI/galleryImages/myloca-image",
   "location": "eastus",
-  "name": "myhci-image",
+  "name": "myloca-image",
   "properties": {
     "cloudInitDataSource": null,
     "containerId": null,
@@ -102,7 +102,7 @@ Here's a sample output:
     "imagePath": null,
     "osType": "Windows",
     "provisioningState": "Succeeded",
-    "sourceVirtualMachineId": "/subscriptions/mysub-id/resourceGroups/myhci-rg/providers/Microsoft.HybridCompute/machines/mysourcevm/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+    "sourceVirtualMachineId": "/subscriptions/mysub-id/resourceGroups/myloca-rg/providers/Microsoft.HybridCompute/machines/mysourcevm/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
     "status": {
       "downloadStatus": {
         "downloadSizeInMb": null
@@ -126,7 +126,7 @@ Here's a sample output:
       }
     }
   },
-  "resourceGroup": "myhci-rg",
+  "resourceGroup": "myloca-rg",
   "systemData": {
     "createdAt": "2024-09-26T20:16:17.625002+00:00",
     "createdBy": "a5e473cb-e3e7-4035-b4da-290a65350ae1",

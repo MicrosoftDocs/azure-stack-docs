@@ -1,26 +1,26 @@
 ---
-title: Prepare Ubuntu image for Azure Stack HCI VM via Azure CLI 
-description: Learn how to prepare Ubuntu images to create an Azure Stack HCI VM image.
+title: Prepare Ubuntu image for Azure Local VM via Azure CLI 
+description: Learn how to prepare Ubuntu images to create an Azure Local VM image.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 07/22/2024
+ms.date: 11/05/2024
 ---
 
-# Prepare an Ubuntu image for Azure Stack HCI virtual machines
+# Prepare an Ubuntu image for Azure Local virtual machines
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare an Ubuntu image to create a virtual machine (VM) on your Azure Stack HCI cluster. You use the Azure CLI for the VM image creation.
+This article describes how to prepare an Ubuntu image to create a virtual machine (VM) on your Azure Local system. You use the Azure CLI for the VM image creation.
 
 ## Prerequisites
 
 Before you begin, meet the following prerequisites:
 
-- Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*. You prepare this image to create a VM image.
+- Have access to an Azure Local system. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
+- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*. You prepare this image to create a VM image.
 
 ## Workflow
 
@@ -36,10 +36,10 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from an Ubuntu image
 
 > [!IMPORTANT]
-> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
 > - We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
 
-Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
+Follow these steps on your Azure Local system to create a VM image by using the Azure CLI.
 
 ### Step 1: Create an Ubuntu VM
 
@@ -69,7 +69,7 @@ To use the downloaded Ubuntu image to provision a VM:
 
 ### Step 2: Configure the VM
 
-Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
+Follow these steps on your Azure Local system to configure the VM that you provisioned earlier:
 
 1. Sign in to the VM. See the steps in [Connect to a Linux VM](/azure/databox-online/azure-stack-edge-gpu-deploy-virtual-machine-portal#connect-to-a-linux-vm).
 1. To download all the latest package lists from the repositories, run the following command:
@@ -98,7 +98,7 @@ Follow these steps on your Azure Stack HCI cluster to configure the VM that you 
 
 ### Step 3: Clean up the residual configuration
 
-Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration.
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Local system to clean up the residual configuration.
 
 > [!NOTE]
 > Depending on the version of Ubuntu you are using, some of these files may not exist.
@@ -135,4 +135,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
+- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local system.

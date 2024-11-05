@@ -1,27 +1,27 @@
 ---
-title: Prepare Red Hat Enterprise Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to prepare a Red Hat Enterprise Linux image to create an Azure Stack HCI VM image (preview).
+title: Prepare Red Hat Enterprise Linux image for Azure Local VM via Azure CLI (preview)
+description: Learn how to prepare a Red Hat Enterprise Linux image to create an Azure Local VM image (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 05/15/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
+ms.date: 11/05/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Local.
 ---
 
-# Prepare a Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)
+# Prepare a Red Hat Enterprise image for Azure Local virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine (VM) on your Azure Stack HCI cluster. You use the Azure CLI for the VM image creation.
+This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine (VM) on your Azure Local system. You use the Azure CLI for the VM image creation.
 
 ## Prerequisites
 
 Before you begin, meet the following prerequisites:
 
-- Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
+- Have access to an Azure Local system. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
+- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local system. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
@@ -38,10 +38,10 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from a Red Hat Enterprise image
 
 > [!IMPORTANT]
-> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
-Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
+Follow these steps on your Azure Local system to create a VM image by using the Azure CLI.
 
 ### Step 1: Create a Red Hat Enterprise VM
 
@@ -189,7 +189,7 @@ To configure the VM:
 
 ### Step 4: Clean up the residual configuration
 
-Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration.
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Local system to clean up the residual configuration.
 
 1. Clean `cloud-init` default configurations.
 
@@ -249,7 +249,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 1. Shut down the VM. In Hyper-V Manager, go to **Action** > **Shut Down**.
 
 1. Export a VHDX or copy the VHDX from your VM. You can use the following methods:
-    - Copy the VHDX to a user storage on the cluster shared volume on your Azure Stack HCI.
+    - Copy the VHDX to a user storage on the cluster shared volume on your Azure Local.
     - Alternatively, copy the VHDX as a page blob to a container in an Azure Storage account.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot that shows exporting a virtual machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
@@ -260,4 +260,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
+- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local system.
