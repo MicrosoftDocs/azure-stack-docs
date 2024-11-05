@@ -10,11 +10,11 @@ ms.date: 10/28/2024
 
 # Collect diagnostic logs for Azure Local (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect diagnostic logs for Azure Local and send them to Microsoft via the Azure portal or PowerShell. These diagnostic logs help identify and fix any issues with your Azure Local solution.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## About on-demand log collection
 
@@ -24,13 +24,13 @@ On-demand log collection refers to the process of manually gathering and sending
 
 You can perform on-demand log collection in the following scenarios:
 
-- When Microsoft Support requests logs for an open case
-- When a system is connected and registered
-- When observability components are operational and installed
-- When a system is only partially registered
-- For issues unrelated to registration failures
+- When Microsoft Support requests logs for an open case.
+- When a system is connected and registered.
+- When observability components are operational and installed.
+- When a system is only partially registered.
+- For issues unrelated to registration failures.
 
-For more information on other log collection methods in Azure Local and their appropriate use cases, see [Diagnostics](../concepts/observability.md#diagnostics).
+To explore additional log collection methods in Azure Local and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
@@ -113,7 +113,7 @@ FromDate in UTC is now 12/04/2023 19:14:18. ToDate in UTC is now 12/04/2023 21:1
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/<cluster-name>
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/<cluster-name>
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/<v-host-name>
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -279,7 +279,7 @@ All
 
 ### CollectSddc
 
-This parameter helps determine whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for systems](./collect-diagnostic-data.md).
+Determines whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for systems](./collect-diagnostic-data.md).
 
 **Syntax**
 
@@ -395,13 +395,13 @@ The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
 
 You can use it in the following ways:
 
-In this scenario, with `SaveToPath`, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
+With `SaveToPath`. In this scenario, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
 
 ```powershell
 Send-DiagnosticData [-SupplementaryLogs <string>] -SaveToPath <path>
 ```
 
-Here, with `NoLogCollection`, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
+With `NoLogCollection`. Here, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
 
 ```powershell
 Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection
@@ -590,11 +590,11 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | NC | Information related to the network infrastructure. |
 | ObservabilityLogmanTraces | Collects logs for the observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
 | ObservabilityVolume | Collects logs for the observability volume. |
-| OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your machine, such as BIOS, drivers, sensors, and more. |
+| OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
 | OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local nodes, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ---
 
