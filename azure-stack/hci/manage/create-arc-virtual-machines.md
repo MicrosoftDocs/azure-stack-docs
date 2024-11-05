@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/30/2024
+ms.date: 11/05/2024
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -267,7 +267,7 @@ Follow these steps in Azure portal for your Azure Local.
 
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-adminacct-domainjoin.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
