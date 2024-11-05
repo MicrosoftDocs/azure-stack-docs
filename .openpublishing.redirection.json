@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/operator/compare-azure-azure-stack.md",
+      "redirect_url":"/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/guided-quick-deploy-eval.md",
       "redirect_url":"/azure-stack/hci/deploy/deployment-introduction",
       "redirect_document_id": false
