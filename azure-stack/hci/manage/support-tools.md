@@ -9,13 +9,13 @@ ms.date: 11/06/2024
 
 # Use the Azure Local Support Diagnostic Tool to troubleshoot issues
 
-This article provides information to download and use the Azure Local Support Diagnostic Tool. Use the tool to troubleshoot and diagnose complex issues on Azure Local. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
+This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
 This tool isn't a substitute for expert knowledge. If you encounter any issues, contact Microsoft Support
 
 ## Benefits
 
-The Azure Local Support Diagnostic Tool simplifies support and troubleshooting using simple commands to identify issues without expert product knowledge.
+The Azure Local Support Diagnostic Tool uses simple commands to identify issues without expert product knowledge.
 
 The tool provides:
 
