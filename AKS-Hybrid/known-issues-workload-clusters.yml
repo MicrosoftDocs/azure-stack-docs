@@ -10,7 +10,7 @@ metadata:
 
 title: Troubleshoot Kubernetes management and workload cluster issues in AKS Arc
 summary: |
-  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
+  **Applies to: AKS on Azure Local, AKS on Windows Server**
   Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS Arc.
   
 sections:
@@ -90,10 +90,10 @@ sections:
           
           To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS Arc build.
       - question: | 
-          Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
+          Moving virtual machines between Azure Local cluster nodes quickly leads to VM startup failures
 
         answer: | 
-          When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
+          When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Local cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
           
           This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
           
@@ -135,7 +135,7 @@ sections:
           
           If this script displays a date that is earlier than the current date, then the **kubeconfig** file has expired.
           
-          To mitigate the issue, copy the **admin.conf** file, which is inside the management control plane VM, to the HCI host:
+          To mitigate the issue, copy the **admin.conf** file, which is inside the management control plane VM, to the Azure Local host:
           
           - SSH to the management control plane VM:
             - Get the management control plane VM IP:
@@ -227,7 +227,7 @@ sections:
           The workload cluster isn't found
 
         answer: | 
-          The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
+          The workload cluster may not be found if the IP address pools of two AKS on Azure Local deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
           
           The error message you receive will look similar to the example shown below.
           
@@ -256,9 +256,9 @@ sections:
           The API server isn't responsive after several days
 
         answer: | 
-          When attempting to bring up an AKS on Azure Stack HCI deployment after a few days, `Kubectl` didn't execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message `rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates`.
+          When attempting to bring up an AKS on Azure Local deployment after a few days, `Kubectl` didn't execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message `rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates`.
           
-          The [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) cmdlet fails if the API server is down. If AKS on Azure Stack HCI hasn't been upgraded for 60 or more days, when you try to restart the KMS plug-in, it won't start. This failure also causes the API server to fail.
+          The [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) cmdlet fails if the API server is down. If AKS on Azure Local hasn't been upgraded for 60 or more days, when you try to restart the KMS plug-in, it won't start. This failure also causes the API server to fail.
           
           To fix this issue, you need to manually rotate the token and then restart the KMS plug-in and container to get the API server backup. To do this, run the following steps:
           
@@ -303,7 +303,7 @@ sections:
           Creating a workload cluster fails with the error "A parameter cannot be found that matches parameter name nodePoolName"
 
         answer: | 
-          On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error "A parameter can't be found that matches parameter name 'nodePoolName'." This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+          On an AKS on Azure Local installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error "A parameter can't be found that matches parameter name 'nodePoolName'." This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
           
           To resolve this issue, do one of the following:
           
@@ -315,7 +315,7 @@ sections:
           When running 'kubectl get pods', pods were stuck in a 'Terminating' state
 
         answer: | 
-          When you deploy AKS on Azure Stack HCI, and then run `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node is likely experiencing high memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
+          When you deploy AKS on Azure Local, and then run `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node is likely experiencing high memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
           
           To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then ensure the nodes have sufficient CPU and memory amounts. You can find more information in [system requirements](system-requirements.md).
           
@@ -332,15 +332,15 @@ sections:
           When creating a new workload cluster, the error "Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded" occurs
 
         answer: | 
-          This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
+          This is a known issue with the AKS on Azure Local July Update (version 1.0.2.10723). The error occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
           
-          To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md).
+          To resolve this issue, you should [upgrade to the latest AKS on Azure Local release](update-akshci-host-powershell.md).
           
       - question: | 
           The Windows or Linux node count can't be seen when Get-AksHciCluster is run
 
         answer: | 
-          If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output will be an empty string or null value.
+          If you provision an AKS cluster on Azure Local with zero Linux or Windows nodes, when you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output will be an empty string or null value.
           
           Null is an expected return for zero nodes.
       - question: | 
@@ -360,7 +360,7 @@ sections:
         answer: | 
           When scaling out a workload cluster, the corresponding Linux and Windows VMs were added as worker nodes, but they weren't configured as highly available VMs. When running the [Get-ClusterGroup](/powershell/module/failoverclusters/get-clustergroup?view=windowsserver2019-ps&preserve-view=true) command, the newly created Linux VM wasn't configured as a Cluster Group.
           
-          This is a known issue. After a reboot, the ability to configure VMs as highly available is sometimes lost. The current workaround is to restart `wssdagent` on each of the Azure Stack HCI nodes. 
+          This is a known issue. After a reboot, the ability to configure VMs as highly available is sometimes lost. The current workaround is to restart `wssdagent` on each of the Azure Local nodes. 
           This works only for new VMs that are generated by creating node pools when performing a scale-out operation or when creating new Kubernetes clusters after restarting the `wssdagent` on the nodes. However, you'll have to manually add the existing VMs to the failover cluster. 
           
           When you scale down a cluster, the high-availability cluster resources are in a failed state while the VMs are removed. The workaround for this issue is to manually remove the failed resources.
