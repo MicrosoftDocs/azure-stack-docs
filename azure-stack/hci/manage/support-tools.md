@@ -1,17 +1,17 @@
 ---
-title: Support tool for Azure Stack HCI (22H2)
-description: This article provides guidance on the Azure Stack HCI Support Diagnostic Tool for Azure Stack HCI, version 22H2.
+title: Support tool for Azure Local, version 22H2
+description: This article provides guidance on the Azure Local Support Diagnostic Tool for Azure Local, version 22H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/06/2024
+ms.date: 11/06/2024
 ---
 
-# Use the Azure Stack HCI Support Diagnostic tool to troubleshoot issues 
+# Use the Azure Local Support Diagnostic tool to troubleshoot issues
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
 
-This article provides information on the Azure Stack HCI Support Diagnostic Tool that helps you troubleshoot and diagnose complex issues on your Azure Stack HCI. The tool consists of a set of PowerShell commands that simplify data collection, troubleshooting, and resolution of common issues in Azure Stack HCI.
+This article provides information on the Azure Local Support Diagnostic Tool that helps you troubleshoot and diagnose complex issues on Azure Local. The tool is a set of PowerShell commands that simplify data collection, troubleshooting, and resolution of common issues in Azure Local.
 
 > [!NOTE]
 > This tool is currently only available for Azure Stack HCI, version 22H2.
