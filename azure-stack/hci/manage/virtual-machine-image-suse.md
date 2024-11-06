@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/05/2024
+ms.date: 11/06/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Local.
 ---
 
@@ -15,13 +15,13 @@ ms.date: 11/05/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Local system. You use Azure CLI for the VM image creation.
+This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Local. You use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
 Before you begin, meet the following prerequisites:
 
-- Have access to an Azure Local system. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+- Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
 - [Download the SUSE QCOW2](https://download.opensuse.org/repositories/Cloud:/Images:/Leap_15.6/images/openSUSE-Leap-15.6.x86_64-NoCloud.qcow2) image file to your local system. Alternatively, you can run the following PowerShell command to download the image:
 
@@ -85,4 +85,4 @@ Now, you're ready to create your VM image.
 
 ## Related content
 
-- [Create logical networks for Azure Local](../manage/create-logical-networks.md) on your Azure Local system.
+- [Create logical networks for Azure Local](../manage/create-logical-networks.md) on your Azure Local instance.

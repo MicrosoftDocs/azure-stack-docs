@@ -3,7 +3,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 11/05/2024
+ms.date: 11/06/2024
 ---
 
 Follow these steps on your Azure Local to create the VM image from the VHDX that you created earlier.
@@ -38,9 +38,9 @@ Use the Azure CLI to create the VM image:
 
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Subscription associated with your Azure Local system.        |
-    | `Resource_Group` | Resource group for the Azure Local system that you associate with this image.        |
-    | `Location`       | Location for your Azure Local system. For example, the location could be `eastus` or `westreurope`. |
+    | `Subscription`   | Subscription associated with your Azure Local instance.        |
+    | `Resource_Group` | Resource group for the Azure Local instance that you associate with this image.        |
+    | `Location`       | Location for your Azure Local instance. For example, the location could be `eastus` or `westreurope`. |
     | `OsType`         | Operating system associated with the source image. This system can be Windows or Linux.           |
 
 1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on Azure Local.

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/05/2024
+ms.date: 11/06/2024
 ---
 
 # Create Azure Local VM image using existing Arc VMs
@@ -52,10 +52,10 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Subscription for the Azure Local system that you associate with this image.        |
-| `resource_group` | Resource group for the Azure Local system that you associate with this image.        |
-| `location`       | Location for your Azure Local system. For example, this could be `eastus`. |
-| `custom-location`| Custom location ID for your Azure Local system.  |
+| `subscription`   | Subscription for the Azure Local instance that you associate with this image.        |
+| `resource_group` | Resource group for the Azure Local instance that you associate with this image.        |
+| `location`       | Location for your Azure Local. For example, this could be `eastus`. |
+| `custom-location`| Custom location ID for your Azure Local.  |
 | `name`           | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
 | `source-vm`      | Name of an existing Arc VM that you'll use to create the VM image. |
 | `os-type`        | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -88,12 +88,12 @@ Here's a sample output:
 ```
 {
   "extendedLocation": {
-    "name": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/myloca-cl",
+    "name": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/mysub-id/resourceGroups/myloca-rg/providers/Microsoft.AzureStackHCI/galleryImages/myloca-image",
+  "id": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryImages/mylocal-image",
   "location": "eastus",
-  "name": "myloca-image",
+  "name": "mylocal-image",
   "properties": {
     "cloudInitDataSource": null,
     "containerId": null,
@@ -102,7 +102,7 @@ Here's a sample output:
     "imagePath": null,
     "osType": "Windows",
     "provisioningState": "Succeeded",
-    "sourceVirtualMachineId": "/subscriptions/mysub-id/resourceGroups/myloca-rg/providers/Microsoft.HybridCompute/machines/mysourcevm/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+    "sourceVirtualMachineId": "/subscriptions/mysub-id/resourceGroups/mylocal-rg/providers/Microsoft.HybridCompute/machines/mysourcevm/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
     "status": {
       "downloadStatus": {
         "downloadSizeInMb": null
@@ -126,7 +126,7 @@ Here's a sample output:
       }
     }
   },
-  "resourceGroup": "myloca-rg",
+  "resourceGroup": "mylocal-rg",
   "systemData": {
     "createdAt": "2024-09-26T20:16:17.625002+00:00",
     "createdBy": "a5e473cb-e3e7-4035-b4da-290a65350ae1",
