@@ -6,7 +6,7 @@ ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/22/2024
+ms.date: 11/06/2024
 ---
 
 # What is SDN Multisite?
@@ -19,10 +19,7 @@ ms.date: 10/22/2024
 
 :::zone pivot="windows-server"
 
->Applies to: Windows Server 2025 (preview)
-
-> [!IMPORTANT]
-> SDN Multisite in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+>Applies to: Windows Server 2025
 
 ::: zone-end
 
