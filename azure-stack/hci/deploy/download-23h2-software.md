@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/14/2024
+ms.date: 11/06/2024
 ---
 
 # Download version 23H2 operating system for Azure Local deployment
@@ -46,7 +46,7 @@ Follow these steps to download the software:
 
     :::image type="content" source="media/download-23h2-software/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-23h2-software/get-started-page-with-download-button.png":::
     
-1. On the **Download Azure Stack HCI Operating System** page on the right, do the following:
+1. On the **Download Azure Local software** page on the right, do the following:
 
     :::image type="content" source="media/download-23h2-software/download-23h2-software-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page with the various ISO options." lightbox="media/download-23h2-software/download-23h2-software-2.png":::
 
