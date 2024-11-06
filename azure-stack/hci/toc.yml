@@ -753,13 +753,6 @@ items:
       items:
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md   
-  - name: Migrate
-    items:
-    - name: System to same hardware
-      href: migrate/migrate-cluster-same-hardware.md
-    - name: System to new hardware
-      href: migrate/migrate-cluster-new-hardware.md
-      
   - name: Troubleshooting
     items:
     - name: Troubleshoot system registration

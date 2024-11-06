@@ -4,7 +4,7 @@ description: This technical reference serves as a one-stop-shop to access learni
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/18/2024
+ms.date: 11/06/2024
 ---
 
 # Technical reference for Software Defined Networking in Azure Local
