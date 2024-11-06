@@ -70,23 +70,25 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
   - In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
   - Use that version to identify the corresponding `stack-hci-vm extension` version from the [Arc VM release tracking table](https://aka.ms/arcvm-rel). You'll install this version on the client that you are using to connect to your Azure Local.
+  - Check if there is a version of the extension installed on the client. Run the following command:
+  
+    ```azurecli
+    az extension list --output table
+    ```
+
+  - If there is an older version installed, remove it and install the new version. Run the following command:
+  
+    ```azurecli
+    az extension remove --name "stack-hci-vm"
+    ```
+
   - To install the extension, follow these steps:
   
     ```azurecli
     az extension add --name "stack-hci-vm" --version "<version>"
     ```
 
-  - To verify that the extension is installed, run the following command:
-  
-    ```azurecli
-    az extension list --output table
-    ```
-
-  - To remove the extension, run the following command:
-  
-    ```azurecli
-    az extension remove --name "stack-hci-vm"
-    ```
+  - To verify that the extension is installed, use the `list` command again.
 
 
 ## Next steps
