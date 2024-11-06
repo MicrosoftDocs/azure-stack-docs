@@ -401,7 +401,7 @@ With `SaveToPath`. In this scenario, both diagnostic logs and ad-hoc logs are co
 Send-DiagnosticData [-SupplementaryLogs <string>] -SaveToPath <path>
 ```
 
-Here, with `NoLogCollection`, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
+With `NoLogCollection`. Here, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
 
 ```powershell
 Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection
