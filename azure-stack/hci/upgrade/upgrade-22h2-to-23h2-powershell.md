@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 11/06/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -24,7 +24,7 @@ Throughout this article, we refer to OS version 23H2 as the *new* version and ve
 
 ## High-level workflow for the OS upgrade
 
-The Azure Local operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
+The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
 
 To upgrade the OS on your system, follow these high-level steps:
 
