@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.date: 11/06/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -66,12 +66,27 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Local extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command:
+- The Azure Local extension `stack-hci-vm`.
 
-  ```PowerShell
-  az extension add --name "stack-hci-vm"
-  ```
+  - In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
+  - Use that version to identify the corresponding `stack-hci-vm extension` version from the Arc VM release tracking table. You'll install this version on the client that you are using to connect to your Azure Local.
+  - To install the extension, follow these steps:
+  
+    ```azurecli
+    az extension add --name "stack-hci-vm" --version "<version>"
+    ```
 
+  - To verify that the extension is installed, run the following command:
+  
+    ```azurecli
+    az extension list --output table
+    ```
+
+  - To remove the extension, run the following command:
+  
+    ```azurecli
+    az extension remove --name "stack-hci-vm"
+    ```
 
 
 ## Next steps
