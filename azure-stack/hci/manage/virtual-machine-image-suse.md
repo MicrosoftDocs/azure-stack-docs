@@ -1,27 +1,27 @@
 ---
-title: Prepare SUSE Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to prepare SUSE Linux images to create an Azure Stack HCI VM image (preview) by using Azure CLI.
+title: Prepare SUSE Linux image for Azure Local VM via Azure CLI (preview)
+description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview) by using Azure CLI.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 08/01/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Stack HCI.
+ms.date: 11/06/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Local.
 ---
 
-# Prepare SUSE Linux image for Azure Stack HCI virtual machines (preview)
+# Prepare SUSE Linux image for Azure Local virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Stack HCI cluster. You use Azure CLI for the VM image creation.
+This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Local. You use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
 Before you begin, meet the following prerequisites:
 
-- Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+- Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
 - [Download the SUSE QCOW2](https://download.opensuse.org/repositories/Cloud:/Images:/Leap_15.6/images/openSUSE-Leap-15.6.x86_64-NoCloud.qcow2) image file to your local system. Alternatively, you can run the following PowerShell command to download the image:
 
@@ -37,7 +37,7 @@ To convert the QCOW2 image to VHDX and create a VM image from the VHDX image.
 2. [Create a SUSE VM image](#step-2-create-a-suse-vm-image).
 
 > [!IMPORTANT]
-> Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Stack HCI.
+> Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -85,4 +85,4 @@ Now, you're ready to create your VM image.
 
 ## Related content
 
-- [Create logical networks for Azure Stack HCI](../manage/create-logical-networks.md) on your Azure Stack HCI cluster.
+- [Create logical networks for Azure Local](../manage/create-logical-networks.md) on your Azure Local instance.
