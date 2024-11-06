@@ -395,13 +395,13 @@ The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
 
 You can use it in the following ways:
 
-With `SaveToPath`. In this scenario, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
+In this scenario, with `SaveToPath`, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
 
 ```powershell
 Send-DiagnosticData [-SupplementaryLogs <string>] -SaveToPath <path>
 ```
 
-With `NoLogCollection`. Here, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
+Here, with `NoLogCollection`, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
 
 ```powershell
 Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection
