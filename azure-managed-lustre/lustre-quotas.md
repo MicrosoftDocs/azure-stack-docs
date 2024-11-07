@@ -57,7 +57,7 @@ The command uses the following parameters:
 - `-i` specifies the soft limit for inode quotas. `-I` specifies the hard limit for inode quotas.
 - `/mount_point` specifies the mount point of the file system.
 
-### [User quotas](#user-quotas)
+### [User quotas](#tab/user-quotas)
 
 The following example sets a block quota with a soft limit of 1 TB and a hard limit of 2 TB for the user `user1` on the file system mounted to `/mnt/fs1`:
 
@@ -65,7 +65,7 @@ The following example sets a block quota with a soft limit of 1 TB and a hard li
 lfs setquota -u user1 -b 1T -B 2T /mnt/fs1
 ```
 
-### [Group quotas](#group-quotas)
+### [Group quotas](#tab/group-quotas)
 
 The following example sets an inode quota with a soft limit of 2500 and a hard limit of 5000 for the group `group1` on the file system mounted to `/mnt/fs1`:
 
@@ -73,7 +73,7 @@ The following example sets an inode quota with a soft limit of 2500 and a hard l
 lfs setquota -g group1 -i 2500 -I 5000 /mnt/fs1
 ```
 
-### [Project quotas](#project-quotas)
+### [Project quotas](#tab/project-quotas)
 
 The following example sets a block quota with a hard limit of 1 TB and an inode quota with a hard limit of 5000 for the project `project1` on the file system mounted to `/mnt/fs1`:
 
