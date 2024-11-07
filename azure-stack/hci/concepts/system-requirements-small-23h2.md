@@ -13,7 +13,7 @@ ms.date: 11/07/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase small class hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
+This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
@@ -21,7 +21,7 @@ This article describes the requirements for machines, storage, and networking fo
 
 Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class referenced as *small* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
-The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) as small form factor hardware.
+The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) as *small form factor* hardware.
 
 ## Device requirements
 
