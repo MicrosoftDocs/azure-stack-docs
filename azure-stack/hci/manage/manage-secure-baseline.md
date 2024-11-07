@@ -1,22 +1,22 @@
 ---
-title: Manage security defaults on Azure Stack HCI, version 23H2
-description: Learn how to manage security default settings available for Azure Stack HCI, version 23H2.
+title: Manage security defaults on Azure Local, version 23H2
+description: Learn how to manage security default settings available for Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 05/29/2024
+ms.date: 10/22/2024
 ---
 
-# Manage security defaults for Azure Stack HCI, version 23H2
+# Manage security defaults for Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage default security settings for your Azure Stack HCI cluster. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
+This article describes how to manage default security settings for your Azure Local instance. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local, version 23H2 system that is deployed, registered, and connected to Azure.
 
 ## View security default settings in the Azure portal
 
@@ -26,15 +26,15 @@ You can use the security default settings to manage cluster security, drift cont
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
-View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems.
+View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Local instance and other systems.
 
 :::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the SMB signing status in the Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
 
 ## View security baseline compliance in the Azure portal
 
-After you enroll your Azure Stack HCI system with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Stack HCI server is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
+After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local machine is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
-For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of 288 rules - that is, 281 out of 288 rules are compliant.
+For an Azure Local machine, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of 288 rules - that is, 281 out of 288 rules are compliant.
 
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
@@ -43,10 +43,10 @@ The following table explains the rules that aren't compliant and the rationale o
 | Interactive logon: Message text for users attempting to log on| Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
 | Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
 | Minimum password length |Expected: 14 | Actual: 0 | Operator: <br> GREATEROREQUAL| We expect you to define this value with no drift control in place that aligns with your organization's policy.|
-| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: <br> EQUALS|This control doesn't apply to Azure Stack HCI.|
+| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: <br> EQUALS|This control doesn't apply to Azure Local.|
 | Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: <br> EQUALS | This control is a part of the Windows Defender protections, not enabled by default. <br> You can evaluate whether you want to enable.|
-| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS | Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
-|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS |Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
+| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS | Azure Local is more restrictive. <br> This rule can be safely ignored.|
+|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS |Azure Local is more restrictive. <br> This rule can be safely ignored.|
 
 ## Manage security defaults with PowerShell
 
@@ -60,7 +60,7 @@ Start with the initial security baseline and then modify drift control and prote
 
 Use the following steps to enable drift control:
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 1. Run the following cmdlet:
 
     ```PowerShell
@@ -74,7 +74,7 @@ Use the following steps to enable drift control:
 
 Use the following steps to disable drift control:
 
-1. Connect to your Azure Stack HCI node.
+1. Connect to your Azure Local machine.
 1. Run the following cmdlet:
 
     ```PowerShell
@@ -91,7 +91,7 @@ Use the following steps to disable drift control:
 
 As part of deployment, you can modify drift control and other security settings that constitute the security baseline on your cluster.
 
-The following table describes security settings that can be configured on your Azure Stack HCI cluster during deployment.
+The following table describes security settings that can be configured on your Azure Local instance during deployment.
 
 | Feature area | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
@@ -114,7 +114,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
 - `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
   - **Local** - Provides boolean value (true/False) on local node. Can be run from a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
-  - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+  - **Report** - Requires CredSSP or an Azure Local machine using a remote desktop protocol (RDP) connection.
     - AllNodes – Provides boolean value (true/False) computed across nodes.
     - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
 

@@ -4,12 +4,12 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 03/29/2024
+ms.date: 10/24/2024
 ---
 
 # Manage tenant virtual networks
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete Hyper-V Network Virtualization (HNV) virtual networks after you have deployed Software Defined Networking (SDN).
 
@@ -20,7 +20,7 @@ Use the following steps in Windows Admin Center to create a virtual network.
 
 :::image type="content" source="./media/tenant-virtual-networks/create-virtual-network.png" alt-text="Screenshot of Windows Admin Center home screen showing pane in which to create a Virtual network name and address prefix." lightbox="./media/tenant-virtual-networks/create-virtual-network.png":::
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to create the virtual network on.
+1. On the Windows Admin Center home screen, under **All connections**, select the system that you want to create the virtual network on.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
 1. Under **Virtual networks**, select the **Inventory** tab, and then select **New**.
 1. In the **Virtual networks** pane, type a name for the virtual network.
@@ -34,13 +34,13 @@ Use the following steps in Windows Admin Center to create a virtual network.
 1. In the **Virtual networks** list, verify that the state of the virtual network is **Healthy**.
 
 ## Get a list of virtual networks
-You can easily see all the virtual networks in your cluster.
+You can easily see all the virtual networks in your system.
 
 :::image type="content" source="./media/tenant-virtual-networks/list-virtual-networks.png" alt-text="Screenshot of Windows Admin Center showing list of virtual networks." lightbox="./media/tenant-virtual-networks/list-virtual-networks.png":::
 
-1. On the Windows Admin Center home screen, under **All connections**, select the cluster on which you want to view virtual networks.
+1. On the Windows Admin Center home screen, under **All connections**, select the system on which you want to view virtual networks.
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
-1. The **Inventory** tab lists all virtual networks available on the cluster, and provides commands to manage individual virtual networks. You can:
+1. The **Inventory** tab lists all virtual networks available on the system, and provides commands to manage individual virtual networks. You can:
     - View the list of virtual networks.
     - View virtual network settings, the state of each virtual network, and the number of virtual machines (VMs) connected to each virtual network.
     - Change the settings of a virtual network.
@@ -85,4 +85,4 @@ You can delete a virtual network if you no longer need it.
 
 ## Next steps
 For more information, see also:
-- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking-23h2.md)
+- [Software Defined Networking (SDN) in Azure Local](../concepts/software-defined-networking-23h2.md)

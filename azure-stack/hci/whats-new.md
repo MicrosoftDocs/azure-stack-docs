@@ -111,7 +111,7 @@ This is primarily a bug fix release with a few improvements.
 
 - **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Local hardware including the Azure Local Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
 
-  For more information, see [Azure Stack HCI OEM license overview](./azure-stack-hci-oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](./azure-stack-hci-license-billing.yml).
+  For more information, see [Azure Stack HCI OEM license overview](./oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](./license-billing.yml).
 
 ## Features and improvements in 2405.1
 
