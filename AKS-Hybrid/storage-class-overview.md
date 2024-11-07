@@ -17,9 +17,9 @@ Storage is key to most applications. Kubernetes uses *storage classes* to descri
 
 *Container Storage Interface (CSI)* is the interface that Kubernetes uses to handle different storage classes. Different storage types provide storage addons that implement the CSI for specific storage classes.
 
-The following diagram shows the relationships among pods, volumes, storage classes, storage addons and actual storage infrastructures:
+The following diagram shows the relationships among pods, volumes, storage classes, storage addons, and actual storage infrastructures:
 
-:::image type="content" source="media/storage-class-overview/pods-storage-classes.png" alt-text="Diagram showing relationships among pods, volumes, storage classes, storage addons and actual storage infrastructures." lightbox="media/storage-class-overview/pods-storage-classes.png":::
+:::image type="content" source="media/storage-class-overview/pods-storage-classes.png" alt-text="Diagram showing relationships among pods, volumes, storage classes, storage addons, and actual storage infrastructures." lightbox="media/storage-class-overview/pods-storage-classes.png":::
 
 ## Create storage classes on top of existing storage
 
@@ -27,7 +27,7 @@ By default, a new Kubernetes cluster only supports the local disk storage class,
 
 Storage is important for any running systems, so most companies might have already set up storage infrastructures for existing systems. The Arc storage service provides a unified experience for creating storage classes on top of existing storage. With the Arc Storage Class service, cluster administrators only need to specify the name and type of the storage class to be created, and Arc Storage Class installs storage classes and their respective CSI components into their clusters. The installed components are managed by Azure, so updates are automatically installed and security vulnerabilities are automatically fixed.
 
-:::image type="content" source="media/storage-class-overview/create-storage-class.gif" alt-text="Screenshot showing to to create a storage class on Azure portal.":::
+:::image type="content" source="media/storage-class-overview/create-storage-class.gif" alt-text="Screenshot showing how to create a storage class on Azure portal.":::
 
 ### Scenario 1: Connect to existing NAS
 
