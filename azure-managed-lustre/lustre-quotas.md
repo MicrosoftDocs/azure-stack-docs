@@ -62,7 +62,7 @@ The command uses the following parameters:
 The following example sets a block quota with a soft limit of 1 TB and a hard limit of 2 TB for the user `user1` on the file system mounted to `/mnt/fs1`:
 
 ```bash
-lfs setquota -u user1 -b 1T -B 2T /mnt/fs1
+sudo lfs setquota -u user1 -b 1T -B 2T /mnt/fs1
 ```
 
 ### [Group quotas](#tab/group-quotas)
@@ -70,7 +70,7 @@ lfs setquota -u user1 -b 1T -B 2T /mnt/fs1
 The following example sets an inode quota with a soft limit of 2500 and a hard limit of 5000 for the group `group1` on the file system mounted to `/mnt/fs1`:
 
 ```bash
-lfs setquota -g group1 -i 2500 -I 5000 /mnt/fs1
+sudo lfs setquota -g group1 -i 2500 -I 5000 /mnt/fs1
 ```
 
 ### [Project quotas](#tab/project-quotas)
@@ -78,7 +78,7 @@ lfs setquota -g group1 -i 2500 -I 5000 /mnt/fs1
 The following example sets a block quota with a hard limit of 1 TB and an inode quota with a hard limit of 5000 for the project `project1` on the file system mounted to `/mnt/fs1`:
 
 ```bash
-lfs setquota -p project1 -B 1T -I 5000 /mnt/fs1
+sudo lfs setquota -p project1 -B 1T -I 5000 /mnt/fs1
 ```
 
 ---
@@ -116,7 +116,7 @@ The grace period setting can vary for user, group, and project quotas, but the c
 To set a grace period for a quota, use the following syntax:
 
 ```bash
-lfs setquota -t {-u|-g|-p}
+sudo lfs setquota -t {-u|-g|-p}
              [-b block_grace]
              [-i inode_grace]
              /mount_point
@@ -132,17 +132,31 @@ The command uses the following parameters:
 
 No values are allowed after `-u`, `-g`, or `-p`. By default, the grace period is one week.
 
+### [User quotas](#tab/user-quotas)
+
 The following example sets the block quota grace period to five days (`5d`) for all users in the file system `fs1`:
 
 ```bash
-lfs setquota -t -u -b 5d /mnt/fs1
+sudo lfs setquota -t -u -b 5d /mnt/fs1
 ```
+
+### [Group quotas](#tab/group-quotas)
 
 The following example sets the inode quota grace period to one week, three days (`1w3d`) for all groups in the file system `fs1`:
 
 ```bash
-lfs setquota -t -g -i 1w3d /mnt/fs1
+sudo lfs setquota -t -g -i 1w3d /mnt/fs1
 ```
+
+### [Project quotas](#tab/project-quotas)
+
+The following example sets the block quota grace period to two weeks (`2w`) for all projects in the file system `fs1`:
+
+```bash
+sudo lfs setquota -t -p -b 2w /mnt/fs1
+```
+
+---
 
 ## Next steps
 
