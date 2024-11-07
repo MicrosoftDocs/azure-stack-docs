@@ -1,7 +1,7 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 10/29/2024
+ms.date: 11/07/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -11,7 +11,7 @@ ms.reviewer: alkohli
 
 # Azure Local and ISO/IEC 27001:2022
 
-This article outlines how Azure Local helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Stack and other security standards at [Azure Stack and security standards](azure-stack-security-standards.md).
+This article outlines how Azure Local helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Local and other security standards at [Azure Local and security standards](azure-stack-security-standards.md).
 
 ## ISO/IEC 27001:2022
 
@@ -132,7 +132,7 @@ The monitoring functionality described in this section can assist you in meeting
 
 #### Insights for Azure Local
 
-Insights for Azure Local enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Insights for Azure Local enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for both single node and multi-node systems from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
 #### Metrics for Azure Local
 
@@ -140,7 +140,7 @@ Metrics for Azure Local stores numeric data from monitored resources into a time
 
 #### Log alerts
 
-To indicate problems in real time, you may set up alerts for Azure Local systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Local systems](/azure-stack/hci/manage/setup-hci-system-alerts).
+To indicate problems in real time, set up alerts for Azure Local, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Local systems](/azure-stack/hci/manage/setup-hci-system-alerts).
 
 #### Metric alerts
 
@@ -237,4 +237,4 @@ Azure Local uses hyperconverged models of Storage Spaces Direct to deploy worklo
 
 #### Failover clusters
 
-Azure Local instances are failover clusters. If a server that is part of Azure Local fails or becomes unavailable, another server in the same failover cluster takes over the task of providing the services offered by the failed node. You create a failover cluster by enabling Storage Spaces Direct on multiple servers running Azure Local.
+Azure Local instances are failover clusters. If a server that is part of Azure Local fails or becomes unavailable, another server in the same failover cluster takes over the task of providing the services offered by the failed node. You create a failover cluster by enabling Storage Spaces direct on multiple machines running Azure Local.

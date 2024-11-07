@@ -1,7 +1,7 @@
 ---
 title: PCI DSS guidance for Azure Local
 description: Learn about PCI DSS compliance using Azure Local.
-ms.date: 10/29/2024
+ms.date: 11/07/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -101,7 +101,7 @@ Windows Defender Application Control (WDAC) is enabled by default on Azure Local
 
 #### Microsoft Defender for Cloud
 
-Microsoft Defender for Cloud with Endpoint Protection (enabled through server plans) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
+Microsoft Defender for Cloud with Endpoint Protection (enabled through the [Defender for Servers plan](/azure/defender-for-cloud/plan-defender-for-servers-select-plan)) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
 
 ### Requirement 6: Develop and maintain secure systems and software
 
@@ -119,7 +119,7 @@ It is your responsibility to identify roles and their access needs based on the 
 
 ### Requirement 8: Identify users and authenticate access to system components
 
-Azure Local provides full and direct access to the underlying system running on cluster nodes via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multifactor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
+Azure Local provides full and direct access to the underlying system running on machines via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multifactor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
 
 Learn more about local identity and access management at [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) and [Privileged Access Management for Active Directory Domain Services](/microsoft-identity-manager/pam/privileged-identity-management-for-active-directory-domain-services). Learn more about cloud-based identity and access management at [Microsoft Entra ID](/entra/fundamentals/whatis).
 
@@ -139,7 +139,7 @@ Azure Local Lifecycle Manager creates and stores activity logs for any action pl
 
 #### Cloud activity logs
 
-By registering your clusters with Azure, you can use [Azure Monitor activity logs](/azure/azure-monitor/essentials/activity-log) to record operations on each resource at the subscription layer to determine the what, who, and when for any write operations (put, post, or delete) taken on the resources in your subscription.
+By registering your systems with Azure, you can use [Azure Monitor activity logs](/azure/azure-monitor/essentials/activity-log) to record operations on each resource at the subscription layer to determine the what, who, and when for any write operations (put, post, or delete) taken on the resources in your subscription.
 
 #### Cloud identity logs
 
@@ -151,7 +151,7 @@ Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with 
 
 #### Azure Local Insights
 
-Azure Local Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Azure Local Insights enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for both single node and multi-node systems from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
 #### Azure Local Metrics
 

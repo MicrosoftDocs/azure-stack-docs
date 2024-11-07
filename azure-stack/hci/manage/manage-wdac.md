@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 11/07/2024
 ms.service: azure-stack-hci
 ---
 
@@ -32,7 +32,7 @@ You can Use WDAC policies to control which drivers and apps are allowed to run o
 
 You can enable WDAC during or after deployment. Use PowerShell to enable or disable WDAC after deployment.
 
-Connect to one of the cluster nodes and use the following cmdlets to enable the desired WDAC policy in "Audit" or "Enforced" mode.
+Connect to one of the machines and use the following cmdlets to enable the desired WDAC policy in "Audit" or "Enforced" mode.
 
 In this build release there are two cmdlets:
 
