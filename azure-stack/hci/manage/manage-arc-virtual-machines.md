@@ -795,6 +795,74 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 </details>
 
+## Change administrator account password
+
+Follow these steps to change the administrator account passwords for the two accounts created after the Arc VM is deployed on your Azure Local. The steps are different for Windows and Linux VMs.
+
+### [Windows](#tab/windows)
+
+1. Sign in to the Arc VM.
+1. Run the following PowerShell command:
+
+    ```powershell
+    # Define the username
+    $username = "Administrator"
+    
+    # Prompt the user to enter the new password securely
+    $newPassword = Read-Host -AsSecureString "Enter the new password for $username"
+    
+    # Prompt the user to re-enter the new password securely for verification
+    $verifyPassword = Read-Host -AsSecureString "Re-enter the new password for verification"
+    
+    # Convert the secure strings to plain text for comparison
+    $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($newPassword))
+    $plainVerifyPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($verifyPassword))
+    
+    # Check if the passwords match and change the password if they match. Fail if the passwords don’t match.
+    if ($plainPassword -eq $plainVerifyPassword) {
+        $account = [ADSI]"WinNT://./$username,user"
+        $account.SetPassword($plainPassword)
+        $account.SetInfo()
+    
+        Write-Host "Password for user $username has been reset successfully." -ForegroundColor Green
+    } else {
+        Write-Host "The passwords do not match. Please try again." -ForegroundColor Red
+    }    
+    ```
+
+### [Linux](#tab/linux)
+
+If Bash is located in a different directory, make sure to change this line `#!/bin/bash` accordingly.
+
+1. Sign in to the Arc VM.
+1. Run the following script from where Bash is installed:
+
+    ```Bash
+    #!/bin/bash
+    
+    # Define the username
+    username="AccountName"
+    
+    # Prompt the user to enter the new password securely
+    echo -n "Enter the new password for $username: "
+    read -s newPassword
+    echo
+    
+    # Prompt the user to re-enter the new password securely for verification
+    echo -n "Re-enter the new password for verification: "
+    read -s verifyPassword
+    echo
+    
+    # Check if the passwords match
+    if [ "$newPassword" == "$verifyPassword" ]; then
+        # Reset the password for the local account
+        echo "$username:$newPassword" | sudo chpasswd
+        echo -e "\e[32mPassword for user $username has been reset successfully.\e[0m"
+    else
+        echo -e "\e[31mThe passwords do not match. Please try again.\e[0m"
+    fi
+---
+
 ## Delete a VM
 
 Follow these steps in the Azure portal of your Azure Local to remove a VM.
