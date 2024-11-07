@@ -56,7 +56,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2408.
 - Cause: The A-series VMs are deprecated in Azure, so they cannot be used in Azure Stack Hub.
-- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc). Therefore, you should use a different VM SKU when you are ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
