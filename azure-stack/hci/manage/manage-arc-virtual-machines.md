@@ -797,7 +797,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 ## Change administrator account password
 
-Follow these steps to change the administrator account passwords for the two accounts created after the Arc VM is deployed on your Azure Local. The steps are different for Windows and Linux VMs.
+Follow these steps to change the local account passwords for an Arc VM deployed on your Azure Local. The steps are different for Windows and Linux VMs.
 
 ### [Windows](#tab/windows)
 
@@ -806,7 +806,7 @@ Follow these steps to change the administrator account passwords for the two acc
 
     ```powershell
     # Define the username
-    $username = "Administrator"
+    $username = "AccountName"
     
     # Prompt the user to enter the new password securely
     $newPassword = Read-Host -AsSecureString "Enter the new password for $username"
