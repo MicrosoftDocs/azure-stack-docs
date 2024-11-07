@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/31/2024
+ms.date: 11/07/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -50,6 +50,13 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2311 and later.
 - Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### A-series VMs deprecated
+
+- Applicable: This issue applies to release 2408.
+- Cause: The A-series VMs are deprecated in Azure, so they cannot be used in Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc). Therefore, you should use a different VM SKU when you are ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
