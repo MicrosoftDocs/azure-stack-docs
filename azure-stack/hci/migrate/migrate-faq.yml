@@ -68,7 +68,7 @@ sections:
 
           ### I have Linux VMs running on my source environment. Can I migrate these VMs to Azure Local?
 
-          Yes. There are many Linux distributions that can run on VMs that are migrated to Azure Local. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems).
+          Yes. There are many Linux distributions that can run on VMs that are migrated to Azure Local. For the full list, see [Supported configurations](migrate-hyperv-requirements.md#supported-configurations).
 
           ### I'm located in a geography that isn't in the listed supported geographies. Does this mean I can't use this migration solution?
 
