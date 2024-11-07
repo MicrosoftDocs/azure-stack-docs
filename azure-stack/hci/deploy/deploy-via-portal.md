@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 11/07/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -22,7 +22,7 @@ This article helps you deploy an Azure Local instance, version 23H2 using the Az
 
 ## Start the wizard and fill out the basics
 
-1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Local**. On the **Get started** tab, select **Deploy cluster**.
+1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Local**. On the **Get started** tab, select **Create instance**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
@@ -197,7 +197,7 @@ Choose whether to create a new configuration for this system or to load deployme
 
 1. Review the settings that will be used for deployment and then select **Review + create** to deploy the system.
 
-    <!-->:::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::-->
+    <!--:::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::-->
 
 The **Deployments** page then appears, which you can use to monitor the deployment progress.
 
@@ -267,7 +267,7 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Disable-ASRemoteDesktop
     ```
 
-### Lock Arc Resource bridge
+### Lock Arc Resource Bridge
 
 The Arc Resource Bridge enables the Azure Arc services to manage your Azure Local instance. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge resource.
 Follow these steps to configure the resource locks:
