@@ -3,9 +3,9 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 11/29/2023
+ms.date: 11/07/2024
 ms.author: sethm 
-ms.reviewer: JasonGerend 
+ms.reviewer: anirbanpaul 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
@@ -48,24 +48,21 @@ The following requirements must be met for a successful SDN deployment:
 
 [!INCLUDE [download-vhdx](../../includes/hci-download-vhdx.md)]
 
-## Download the GitHub repository
+> [!NOTE]
+> The SDN Express script files are no longer available on GitHub.
 
-The SDN Express script files live in GitHub. The first step is to get the necessary files and folders onto your deployment computer.
-
-1. Go to the [Microsoft SDN GitHub](https://github.com/microsoft/SDN) repository.
-
-1. In the repository, expand the **Code** drop-down list, and then choose either **Clone** or **Download ZIP** to download the SDN files to your designated deployment computer.
-
-    > [!NOTE]
-    > The designated deployment computer must be running Windows Server 2016 or later.
-
-1. Extract the ZIP file and copy the `SDNExpress` folder to your deployment computer's `C:\` folder.
+## Install the SDN Express PowerShell module
+Run the following command to install the latest version of the SDN Express PowerShell module on the machine where you want to run the SDN installation:
+```powershell
+Install-Module -Name SDNExpress
+```
+The files automatically install in the default PowerShell module directory: `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic.
+The PowerShell `MultiNodeSampleConfig.psd1` configuration data file (located at the above mentioned install path) contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic.
 
-Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
+Navigate to the 'C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
 
 ### General settings and parameters
 
