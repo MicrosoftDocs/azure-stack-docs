@@ -795,7 +795,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
 </details>
 
-## Change administrator account password
+## Change local account password
 
 Follow these steps to change the local account passwords for an Arc VM deployed on your Azure Local. The steps are different for Windows and Linux VMs.
 
