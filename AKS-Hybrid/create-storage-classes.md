@@ -4,7 +4,7 @@ title: Create and use storage classes in AKS enabled by Arc (preview)
 description: Learn how to create and use storage classes in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/24/2024
+ms.date: 11/07/2024
 ms.topic: conceptual
 ms.custom: references_regions
 

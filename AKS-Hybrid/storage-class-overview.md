@@ -4,7 +4,7 @@ title: Storage Class and Container Storage Interface (CSI) (preview)
 description: Learn about Storage Class and the Container Storage Interface (CSI) in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/24/2024
+ms.date: 11/07/2024
 ms.topic: conceptual
 
 ---
