@@ -68,27 +68,31 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
 - The Azure Local extension `stack-hci-vm`.
 
-  - In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
-  - Use that version to identify the corresponding `stack-hci-vm extension` version from the [Arc VM release tracking table](https://aka.ms/arcvm-rel). You'll install this version on the client that you are using to connect to your Azure Local.
-  - Check if there is a version of the extension installed on the client. Run the following command:
+    1. In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
   
-    ```azurecli
-    az extension list --output table
-    ```
+      :::image type="content" source="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png" alt-text="Screenshot of the Updates page in the Azure Local resource showing current software version." lightbox="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png":::
 
-  - If there is an older version installed, remove it and install the new version. Run the following command:
+    1. Use that version to identify the corresponding `stack-hci-vm extension` version from the [Arc VM release tracking table](https://aka.ms/arcvm-rel). You'll install this version on the client that you are using to connect to your Azure Local.
+    
+    1. Check if there is a version of the extension installed on the client. Run the following command:
   
-    ```azurecli
-    az extension remove --name "stack-hci-vm"
-    ```
+      ```azurecli
+      az extension list --output table
+      ```
 
-  - To install the extension, follow these steps:
+    1. If there is an older version installed, remove it and install the new version. Run the following command:
   
-    ```azurecli
-    az extension add --name "stack-hci-vm" --version "<version>"
-    ```
+      ```azurecli
+      az extension remove --name "stack-hci-vm"
+      ```
 
-  - To verify that the extension is installed, use the `list` command again.
+    1. To install the extension, run the following command:
+      
+      ```azurecli
+      az extension add --name "stack-hci-vm" --version "<version>"
+      ```
+
+    1. To verify that the extension is installed, use the `list` command again.
 
 
 ## Next steps
