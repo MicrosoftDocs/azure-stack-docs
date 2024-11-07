@@ -26,7 +26,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 ::: moniker range="<azs-2311"
 > [!IMPORTANT]  
-> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
 <!---------------------------------------------------------->
@@ -54,7 +54,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ### A-series VMs deprecated
 
-- Applicable: This issue applies to releases 2406 and 2408.
+- Applicable: This issue applies to release 2406 and later.
 - Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
 - Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
@@ -106,7 +106,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ### A-series VMs deprecated
 
-- Applicable: This issue applies to releases 2406 and 2408.
+- Applicable: This issue applies to release 2406 and later.
 - Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
 - Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
