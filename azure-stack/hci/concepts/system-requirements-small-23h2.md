@@ -1,6 +1,6 @@
 ---
-title: System requirements for small deployments of Azure Local, version 23H2
-description: How to choose machines, storage, and networking components for small deployments of Azure Local, version 23H2.
+title: System requirements for small deployments of Azure Local, version 23H2 (preview)
+description: How to choose machines, storage, and networking components for small deployments of Azure Local, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,12 +9,13 @@ ms.custom: references_regions
 ms.date: 11/07/2024
 ---
 
-# System requirements for small deployment of Azure Local, version 23H2
+# System requirements for small deployment of Azure Local, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
 This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase small class hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 ## About the small hardware class
 
