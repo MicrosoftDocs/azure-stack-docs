@@ -9,7 +9,7 @@ ms.custom: references_regions
 ms.date: 11/07/2024
 ---
 
-# System requirements for small deployment of Azure Local, version 23H2 (preview)
+# System requirements for Small Form Factor deployment of Azure Local, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
