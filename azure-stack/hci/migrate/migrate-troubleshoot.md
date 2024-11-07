@@ -165,15 +165,16 @@ The target system fails to validate because the FQDN is not DNS-resolvable by de
 
 **Recommended resolution**
 
-Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts.*.
+Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
 
-Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>
+Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>.
 
 
 ### Deleting or changing target system information from Source Appliance Configuration Manager doesn't work.
 
 **Root cause** 
 When providing information in the Source Appliance Configuration Manager, the target system name can't be changed once entered.
+
 
 **Recommended resolution**
 Follow these steps to delete or change the target system from the Source Appliance Configuration Manager:
@@ -343,6 +344,6 @@ $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 
 Depending upon the phase of migration you are in, you may need to review one of the following articles to troubleshoot issues:
 
-- [Troubleshoot discovery issues](/azure/migrate/troubleshoot-discovery)
+- [Troubleshoot discovery issues](/azure/migrate/troubleshoot-discovery).
 - [Troubleshoot Azure Migrate projects](/azure/migrate/troubleshoot-general).
 - [Troubleshoot with appliance diagnostics](/azure/migrate/troubleshoot-appliance-diagnostic).
