@@ -132,16 +132,16 @@ The command uses the following parameters:
 
 No values are allowed after `-u`, `-g`, or `-p`. By default, the grace period is one week.
 
-The following example sets the block quota grace period to five days for the user `user1` in the file system `fs1`:
+The following example sets the block quota grace period to five days (`5d`) for all users in the file system `fs1`:
 
 ```bash
-lfs setquota -t -u user1 -b 5d /mnt/fs1
+lfs setquota -t -u -b 5d /mnt/fs1
 ```
 
-The following example sets the inode quota grace period to one week, three days for the group `group1` in the file system `fs1`:
+The following example sets the inode quota grace period to one week, three days (`1w3d`) for all groups in the file system `fs1`:
 
 ```bash
-lfs setquota -t -g group1 -i 1w3d /mnt/fs1
+lfs setquota -t -g -i 1w3d /mnt/fs1
 ```
 
 ## Next steps
