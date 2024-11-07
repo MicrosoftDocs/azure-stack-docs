@@ -16,28 +16,18 @@ This article describes how to create and use storage classes in AKS enabled by A
 
 ## Prerequisites
 
-Storage classes in AKS enabled by Azure Arc are supported in the following regions:
+To use the storage classes feature, you must have an AKS Arc cluster in the following currently available regions:
 
-- eastus2euap (canary)
-- eastus
-- eastus2
-- westus
-- westus2
+- East US (eastus)
+- West Europe (westeurope)
+- Australia East (australiaeast)
+- Southeast Asia (southeastasia)
+- Central India (centralindia)
+- Canada Central (canadacentral)
+- Japan East (japaneast)
+- South Central US (southcentralus)
 
-During the preview, we recommend that you have an AKS Arc cluster in order to use this feature. If you don't have an AKS Arc cluster, you can also try this feature with any Arc-connected cluster. The following Azure CLI commands create an AKS instance and a connected cluster on top of that instance:
-
-```azurecli
-$rg = "<rg>"
-$location = "eastus2euap"
-$aksName = "testcanaryaks3"
-$arcName = "$aksName-arc"
-
-az aks create --location $location --resource-group $rg --name $aksName --os-sku AzureLinux
-az aks get-credentials --name $aksName --resource-group $rg 
-az connectedk8s connect --name $arcName --resource-group $rg --location $location
-```
-
-To use the feature with Azure CLI, you must also have Azure CLI installed and set up on your machine, and install the `k8s-runtime` extension via the following command:
+If you want to use the storage classes feature with Azure CLI, you must also have Azure CLI installed and set up on your machine, and install the `k8s-runtime` extension via the following command:
 
 ```azurecli
 az extension add --name k8s-runtime
@@ -45,9 +35,7 @@ az extension add --name k8s-runtime
 
 ## [Azure portal](#tab/portal)
 
-During the preview, our publicly available portal extension only targets provisioned clusters and is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` extension. [Use this link to show the link for provisioned clusters](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true). The example in this article uses a provisioned cluster for demonstration purposes.
-
-If you have other connected clusters, you can [use this link to access the cluster](https://ms.portal.azure.com/?microsoft_azure_managedstorageclass_assettypeoptions=%7B%22ConnectedClusterWithStorageClassPlus%22%3A%7B%22options%22%3A%22%22%7D%7D&microsoft_azure_managedstorageclass=stagepreview&feature.canmodifyextensions=true&microsoft_azure_hybridcompute_assettypeoptions=%7B%22ConnectedClusters%22%3A%7B%22options%22%3A%22HideAssetType%2CHideInstances%22%7D%7D#home). This link overrides the original connected cluster blade with our custom blade, with a link to the Storage Class feature for all connected clusters.
+During the preview, our publicly available portal extension is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` extension. [Use this link to show the link for provisioned clusters](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true). The example in this article uses a provisioned cluster for demonstration purposes.
 
 ### Enable the service
 
@@ -89,7 +77,7 @@ az k8s-runtime storage-class list --resource-uri <connecter cluster resource id>
 
 ## Create a storage class
 
-This section describes how to create a storage class using the portal, or CLI.
+This section describes how to create a storage class using the Azure portal, or Azure CLI.
 
 ### NFS
 
@@ -256,108 +244,6 @@ You can create a storage class that uses custom disks. This process is only for 
 | `type` | `AksArcDisk` | N/A | Specify this is the AksArcDisk type. |
 | `storagePathId` | `string` | No | The resource ID for the storage path. |
 | `fsType` | `string` \| `undefined` | No | `fsType` parameters for the storage class. If the storage class contains Linux workloads, set it to `ext4`. Otherwise, leave it undefined. |
-
-## Other features
-
-### Get attribute detection results
-
-Current detections include:
-
-| Attribute | Azure property | Annotation key | Values | Description |
-| -- | -- | -- | -- | -- |
-| Performance | `performance` | `performance` | `Ultra` \| `Premium` \| `Standard` \| `NotAvailable` | The performance of the storage class. |
-| Failover speed | `failoverSpeed` | `failover` | `Slow` \| `Fast` \| `Super` \| `NotAvailable` | How fast a pod using a volume of the storage class can recover when the pod is migrated to another node. |
-| Access mode | `accssModes` | `accessModes` | Array of `ReadWriteOnce` \| `ReadWriteMany` \| `ReadOnlyMany`.  | If a storage class supports an access mode, a volume of the storage class can be bound to the PVC if PVC specifies its `spec.accessModes` to the access mode. |
-
-You can see the attribute detection results of a storage class in the cloud as described in the next section. If any detection failed or timed out, the property isn't available.
-
-#### Azure portal
-
-The attribute detection results are available in the list.
-
-#### REST CLI
-
-```azurecli
-> az rest --method get `
->>     --resource https://management.azure.com `
->>     --uri "https://eastus2euap.management.azure.com/subscriptions/$sub/resourceGroups/$rg/providers/Microsoft.Kubernetes/connectedClusters/$arcName/providers/Microsoft.KubernetesRuntime/storageClasses/${scName}?api-version=2023-10-01-preview"
-{
-  "id": "/subscriptions/<sub id>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/ConnectedClusters/<arcName>/providers/Microsoft.KubernetesRuntime/storageClasses/<scName>",
-  "name": "<scName>",
-  "properties": {
-    "allowVolumeExpansion": "Allow",
-    "failoverSpeed": "Super",
-    "performance": "Standard",
-    "provisioner": "blob.csi.azure.com",
-    "provisioningState": "Succeeded",
-    "typeProperties": {
-      "azureStorageAccountName": "<azure storage account name>",
-      "type": "Blob"
-    },
-    "volumeBindingMode": "WaitForFirstConsumer"
-  },
-  "systemData": {
-    "createdAt": "2023-12-26T05:54:50.0087086Z",
-    "createdBy": "3549f238-d80b-4764-af69-14f5b1ae1ff7",
-    "createdByType": "Application",
-    "lastModifiedAt": "2023-12-26T06:08:14.0742639Z",
-    "lastModifiedBy": "3549f238-d80b-4764-af69-14f5b1ae1ff7",
-    "lastModifiedByType": "Application"
-  },
-  "type": "microsoft.kubernetesruntime/storageclasses"
-}
-```
-
-The result is also available in the `metadata.annotations` field of the storage class. To see the annotations of a storage class using `kubectl`, run the following command. If a detection fails or times out, the annotation is missing:
-
-```powershell
-# needs jq to be installed
-> kubectl get sc $scName -o jsonpath='{.metadata.annotations}' | jq 
-{
-  "arcsc.microsoft.com/created-by-azure": "true",
-  "arcsc.microsoft.com/failover": "Super",
-  "arcsc.microsoft.com/last-push": "{\"time\":\"2024-01-05T08:42:08Z\",\"properties\":{\"allowVolumeExpansion\":null,\"mountOptions\":null,\"provisioner\":\"blob.csi.azure.com\",\"volumeBindingMode\":\"WaitForFirstConsumer\",\"accessModes\":null,\"dataResilience\":null,\"failoverSpeed\":\"Super\",\"limitations\":null,\"performance\":null,\"priority\":null}}",
-  "arcsc.microsoft.com/performance": "NotAvailable"
-}
-```
-
-## Requirement-based PVC storage class selection
-
-When you create a Persistent Volume Claim (PVC), you can add the following annotations to the PVC, and the operator updates the storage class of the PVC with a storage class that has a capability equal to and higher than the level the annotation specifies.
-
-| Annotation | Acceptable values (ordered) |
-| -- | -- |
-| `arcsc.microsoft.com/require-performance` | `Standard`, `Premium`, `Ultra` |
-| `arcsc.microsoft.com/require-failover` | `Slow`, `Fast`, `Super` |
-
-This feature also considers **access modes**. If the PVC specifies `spec.accessModes`, the service only chooses storage classes that either support all of the PVC's `spec.accessModes`, or that didn't detect their supported access modes.
-
-For example, the following YAML code creates a PVC that requires a storage class that has at least the `Standard` performance level, and supports the `ReadWriteOnce` access mode.
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mypvc
-  namespace: tst
-  annotations:
-    arcsc.microsoft.com/require-performance: Standard
-spec:
-  resources:
-    requests:
-      storage: 10G
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-```
-
-If there are multiple storage classes that match the criteria, the priority indicated by the `arcsc.microsoft.com/priority` annotation is used, and the one with the highest priority wins. If the annotation value doesn't exist or isn't a valid `int64` value, the priority is `0`. If there are multiple matching storage classes with the same priority, the names of the storage classes are sorted alphabetically, and the first one wins.
-
-If there are no storage classes that match the criteria, the PVC creation is rejected, and generates an error message:
-
-```output
-Error from server: error when creating ".\\requirements.yaml": admission webhook "mpvc.kb.io" denied the request: No storage class found for specified requirement annotations
-```
 
 ## Next steps
 
