@@ -96,7 +96,7 @@ Follow these steps in Azure portal of your Azure Local.
 ## Add a network interface
 
 > [!NOTE]
-> Adding a network interface with static IP after the VM is provisioned is not supported.
+> After you add a network interface to a provisioned VM on a static logical network, you can configure the desired static IP within the VM to ensure accurate static IP settings.
 
 Follow these steps in Azure portal of your Azure Local.
 
