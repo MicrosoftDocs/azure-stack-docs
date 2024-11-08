@@ -61,7 +61,7 @@ To access the options to send telemetry data, follow these steps:
 
 ## Diagnostic data collection
 
-To identify and fix issues with your Azure Local solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Local machines. We recommend that you use this cmdlet to upload diagnostic data before opening a support case.
+To identify and fix issues with your Azure Local solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Local machine. We recommend that you use this cmdlet to upload diagnostic data before opening a support case.
 
 For more information, see [Collect diagnostic logs](../manage/collect-logs.md).
 
