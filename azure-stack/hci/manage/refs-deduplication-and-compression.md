@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/29/2024
+ms.date: 11/08/2024
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
@@ -45,23 +45,23 @@ You can use ReFS deduplication and compression via Windows Admin Center or Power
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
-In Windows Admin Center, you can create a schedule for ReFS deduplication and compression to run on an existing volume or a new volume during volume creation.
+In Windows Admin Center, you can create a schedule for ReFS deduplication to run on an existing volume or a new volume during volume creation. However, enabling compression is supported only via PowerShell.
 
-Follow these steps to enable ReFS deduplication and compression via Windows Admin Center and set a schedule when it should run:
+Follow these steps to enable ReFS deduplication via Windows Admin Center and set a schedule when it should run:
 
 1. Connect to a system, and then on the **Tools** pane on the left, select **Volumes**.
 
-1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**. To turn on ReFS deduplication and compression for a new volume, select **+ Create**.
+1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**. To turn on ReFS deduplication for a new volume, select **+ Create**.
 
-1. On the **Volume settings** pane on the right, under **More options** dropdown, select the **Use ReFS deduplication and compression** checkbox.
+1. On the **Volume settings** pane on the right, under **More options** dropdown, select the **Use ReFS deduplication** checkbox.
 
-1. Select the days of the week when ReFS deduplication and compression should run, the time for a job to start running, and maximum duration (default is unlimited), and then select **Save**.
+1. Select the days of the week when ReFS deduplication should run, the time for a job to start running, and maximum duration (default is unlimited), and then select **Save**.
 
-    The following screenshot shows that ReFS deduplication and compression runs on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
+    The following screenshot shows that ReFS deduplication will run on Friday and Saturday at 10:00 PM with a maximum duration of 2 hours, starting from Friday 9/27/2024. If the **Start** date was changed to Monday 9/30/2024, the first run will be 10/4/2024 10:00 PM as that's the first Friday after 9/30/2024.
 
-    :::image type="content" source="media/refs-deduplication-and-compression/select-refs-deduplication-compression-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication and compression settings." lightbox="media/refs-deduplication-and-compression/select-refs-deduplication-compression-settings.png":::
+    :::image type="content" source="media/refs-deduplication-and-compression/select-refs-deduplication-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication settings." lightbox="media/refs-deduplication-and-compression/select-refs-deduplication-settings.png":::
 
-1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts under the **Performance** section.
+1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts under the **Performance** section. If compression is enabled via PowerShell, its savings will also show up on the **Properties** section.
 
     :::image type="content" source="media/refs-deduplication-and-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox="media/refs-deduplication-and-compression/volume-properties.png":::
 
@@ -309,10 +309,12 @@ Suspended                    : True
 
 Disabling ReFS deduplication and compression on a volume stops any runs that are in progress and cancels future scheduled jobs. In addition, related volume metadata isn't  retained, and file change tracking is stopped.
 
-When you disable this feature, it doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Over time, the data returns to its original state as the volume incurs reads and writes.
-
 > [!NOTE]
-> You can perform decompression operations using [`ReFSUtil`](/windows-server/administration/windows-commands/refsutil).
+> When you disable this feature, it doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Over time, deduplicated data returns to its original state as the volume incurs reads and writes. To decompress the data, ensure there is enough capacity available and use [ReFSUtil](/windows-server/administration/windows-commands/refsutil) to perform the following operation.
+>
+> ```powershell
+> refsutil compression /c /f NONE <vol>
+> ```
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
@@ -322,7 +324,7 @@ Follow these steps to disable the feature using Windows Admin Center:
 
 1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
 
-1. On the **Volume settings** pane on the right, under **More options** dropdown, deselect the **Use ReFS deduplication and compression** checkbox, and then select **Save**.
+1. On the **Volume settings** pane on the right, under **More options** dropdown, deselect the **Use ReFS deduplication** checkbox, and then select **Save**.
 
 # [PowerShell](#tab/powershell)
 
