@@ -45,7 +45,7 @@ The following table lists the requirements for the small hardware:
 
 ## Storage requirements
 
-The storage subsystem for an Azure Local running Windows is layered on top of Storage Space Direct. When building a solution using class *small* hardware:
+The storage subsystem for an Azure Local running Azure Stack HCI OS is layered on top of Storage Space Direct. When building a solution using class *small* hardware:
 
 - A minimum of one data drive is required to create a storage pool. 
 - All drives in the pool must be of the same type, either NVMe or SSD.
