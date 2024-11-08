@@ -4,12 +4,12 @@ description: Learn how to troubleshoot Software Load Balancer for SDN in Azure L
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 10/08/2024
+ms.date: 11/08/2024
 ---
 
 # Troubleshoot Software Load Balancer for SDN
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot some common issues in SLB for SDN.
 
@@ -293,13 +293,13 @@ Move the primary of SlbManager service and ControllerService and restart the hos
 
 - To move the primary of the SlbManager and ControllerService, on a Network Controller VM, run the following commands:
 
-    1. To determine which node the Network Controller service modules use as primary, run the following command:
+    1. To determine which machine the Network Controller service modules use as primary, run the following command:
 
         ```powershell
         Get-NetworkControllerReplica
         ```
 
-    1. Locate the NodeName for the SlbManagerService and ControllerService. Go to the respective nodes and run the following command:
+    1. Locate the MachineName for the SlbManagerService and ControllerService. Go to the respective machines and run the following command:
 
         ```powershell
         Get-Process Sdnctlr| Stop-Process and Get-Process SdnSlbm | Stop-Process

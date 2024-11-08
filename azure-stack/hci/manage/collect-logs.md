@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/28/2024
+ms.date: 11/08/2024
 ---
 
 # Collect diagnostic logs for Azure Local
@@ -184,7 +184,7 @@ Follow these steps to save logs to a local share:
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
 
-1. Run the following command on each node of the system to collect logs and save them locally:
+1. Run the following command on each machine of the system to collect logs and save them locally:
 
    ```powershell
    Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
@@ -209,7 +209,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of Cluster>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of system>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
@@ -287,7 +287,7 @@ All
 
 ### BypassObsAgent
 
-When bypassing the observability agent, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
+When bypassing the observability agent, logs are collected only on the machine where the log collection was initiated. No record of the collection is kept in the history.
 
 **Syntax**
 ```powershell
@@ -567,7 +567,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
 | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
 | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
-| ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
+| ECE | Manages lifecycle workflows, including deployment, update, add-node, and machine replacement. |
 | Extension | Data related to Azure managed extensions. |
 | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
 | HCICloudService | An Azure cloud service that provides core functionality for Azure Local. It combines Azure power with the flexibility of on-premises machines. |
@@ -579,10 +579,10 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | ObservabilityLogmanTraces | Collects logs for the observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
 | ObservabilityVolume | Collects logs for the observability volume. |
 | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
-| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local nodes, useful for troubleshooting update-related issues. |
+| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local machines, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add machine, repair machine, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ---
 
@@ -610,7 +610,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of Cluster>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of system>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
@@ -618,4 +618,4 @@ When requested, share the following information with Microsoft Support. Get this
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
+- [Contact Microsoft Support](get-support.md).

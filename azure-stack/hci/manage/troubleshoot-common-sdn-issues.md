@@ -4,12 +4,12 @@ description: Learn how to collect network traces and logs to troubleshoot common
 ms.topic: how-to
 ms.author: arudell
 author: arudell
-ms.date: 10/23/2024
+ms.date: 11/08/2024
 ---
 
 # Collect traces and logs to troubleshoot common SDN issues
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article describes what data to collect to troubleshoot common issues in Software Defined Networking (SDN) on Azure Local. Use this information to perform initial troubleshooting before contacting Microsoft Support.
 
@@ -19,7 +19,7 @@ Before you begin, make sure that:
 
 - The client computer that you use for log collection has access to the SDN environment. For example, a management computer running Windows Admin Center that can access SDN.
 
-- You have installed the `SdnDiagnostics` module. For more information, see [Collect Software Defined Networking logs on Azure Stack HCI](./sdn-log-collection.md).
+- You have installed the `SdnDiagnostics` module. For more information, see [Collect Software Defined Networking logs on Azure Local](./sdn-log-collection.md).
 
 ## Troubleshoot provisioning or configuration state failures
 
@@ -132,11 +132,11 @@ This section addresses scenarios where you encounter the following issues:
 
 In these scenarios, traffic flow isn't expected to route through a Virtual Gateway or Network Virtual Appliance (NVA) and is handled directly by the Load Balancer Muxes.
 
-The [Enable-SdnVipTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Enable-SdnVipTrace) automates the process of enabling tracing on the datapath nodes that the traffic traverses. Once tracing is enabled, the cmdlet pauses to allow you to reproduce the issue. After you reproduce the issue, press any key to continue to disable the traces.
+The [Enable-SdnVipTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Enable-SdnVipTrace) automates the process of enabling tracing on the datapath machines that the traffic traverses. Once tracing is enabled, the cmdlet pauses to allow you to reproduce the issue. After you reproduce the issue, press any key to continue to disable the traces.
 
 Follow these steps to collect trace files for troubleshooting Load Balancer VIP or Inbound/Outbound NAT:
 
-1. To automate enabling tracing on the datapath nodes, run the following command:
+1. To automate enabling tracing on the datapath machines, run the following command:
 
     ```powershell
     Enable-SdnVipTrace -VirtualIP xx.xx.xx.xx -NcUri 'https://nc.contoso.com'
@@ -164,10 +164,10 @@ Follow these steps to collect trace files for troubleshooting East/West traffic 
 1. Identify the Hyper-V host that the VMs you're troubleshooting are hosted on. Once you identify the Hyper-V hosts, perform network tracing using [Start-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnNetshTrace) and [Stop-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Stop-SdnNetshTrace):
 
     ```powershell
-    Start-SdnNetshTrace -ComputerName 'server01.contoso.com','server02.contoso.com' -Role:Server
+    Start-SdnNetshTrace -ComputerName 'machine01.contoso.com','machine02.contoso.com' -Role:Server
 
     # repro your scenario
-    Stop-SdnNetshTrace -ComputerName 'server01.contoso.com','server02.contoso.com'
+    Stop-SdnNetshTrace -ComputerName 'machine01.contoso.com','machine02.contoso.com'
     ```
 
 1. After the tracing completes, to manually retrieve trace files, use [Copy-SdnFileFromComputer](https://github.com/microsoft/SdnDiagnostics/wiki/Copy-SdnFileFromComputer) to copy the .etl files over to your workstation.
@@ -175,7 +175,7 @@ Follow these steps to collect trace files for troubleshooting East/West traffic 
     Alternatively, to automatically retrieve network traces, use [Start-SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection), by running the following command:
 
     ```powershell
-    Start-SdnDataCollection -ComputerName 'server01.contoso.com','server02.contoso.com' -IncludeLogs -FromDate (Get-Date).AddHours(-1)
+    Start-SdnDataCollection -ComputerName 'machine01.contoso.com','machine02.contoso.com' -IncludeLogs -FromDate (Get-Date).AddHours(-1)
     ```
 
 ## Next steps

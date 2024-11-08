@@ -15,12 +15,12 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
-## Supported operating systems
+## Supported configurations
 
 The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that your'e migrating.
 
 
-|Component  |Supported OS |
+|Component  |Supported configurations |
 |---------|---------|
 |Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
 |Source appliance     |Windows Server 2022        |

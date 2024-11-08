@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/25/2024
+ms.date: 11/08/2024
 ---
 
 # Get support for Azure Local deployment issues
@@ -74,7 +74,7 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 
 ## Get remote support
 
-In the pre-deployment or pre-registration scenarios, you are prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the cluster, see [Get remote support for Azure Local](./get-remote-support.md).
+In the pre-deployment or pre-registration scenarios, you are prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the system, see [Get remote support for Azure Local](./get-remote-support.md).
 
 The high-level workflow to get remote support in the pre-deployment or pre-registration scenario is as follows:
 
@@ -85,10 +85,10 @@ The high-level workflow to get remote support in the pre-deployment or pre-regis
 
 Follow these steps to enable remote support:
 
-1. Establish a remote PowerShell session with the cluster node. Run PowerShell as administrator and run the following command:
+1. Establish a remote PowerShell session with the machine. Run PowerShell as administrator and run the following command:
 
    ```powershell
-   Enter-PsSession -ComputerName <NodeName> -Credential $cred
+   Enter-PsSession -ComputerName <MachineName> -Credential $cred
    ```
 
 1. Run the following command to enable remote support. The sample Shared Access Signature (SAS) is provided by the Microsoft support team.
@@ -100,9 +100,9 @@ Follow these steps to enable remote support:
    > [!NOTE]
    > When you run the command to enable remote support, you may get the following error:
    >
-   > `Processing data from remote server <NodeName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
+   > `Processing data from remote server <MachineName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
    >
-   > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. To resolve this error, wait for a few minutes before reconnecting to the remote node and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
+   > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the machine. To resolve this error, wait for a few minutes before reconnecting to the remote machine and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
    >
 
 For remote support usage scenarios, see [Remote support examples](./get-remote-support.md#remote-support-examples).

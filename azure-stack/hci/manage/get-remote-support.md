@@ -5,14 +5,14 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 10/25/2024
+ms.date: 11/08/2024
 ---
 
 # Get remote support for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides guidance on how to get remote support for your Azure Stack HCI Operating System.
+This article provides guidance on how to get remote support for your Azure Stack HCI Operating System for Azure Local.
 
 You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
