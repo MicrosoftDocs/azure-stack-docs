@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
-ms.date: 11/01/2024
+ms.date: 11/08/2024
 ---
 
 # Azure Hybrid Benefit for Azure Local
@@ -39,7 +39,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
   - Version 22H2 or later; or
   - Version 21H2 with the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later.
 
-- Make sure that all nodes in your system are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure.
+- Make sure that all machines in your system are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure.
 
 - Make sure that your system has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1).
 
@@ -80,8 +80,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
 1. Set up parameters from your subscription, resource group, and system name
     ```powershell
     $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-    $resourceGroup = "hcicluster-rg" # Replace with your resource group name
-    $clusterName = "HCICluster" # Replace with your system name
+    $resourceGroup = "local-rg" # Replace with your resource group name
+    $clusterName = "MyLocal" # Replace with your system name
 
     Set-AzContext -Subscription "${subscription}"
     ```
