@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 10/08/2024
+ms.date: 11/07/2024
 ---
 
 # Use the dashboard to manage Azure Local (preview)
@@ -22,23 +22,33 @@ The Azure Local dashboard displays overview and detailed information about your 
 
 To access the dashboard chart view, follow these steps in the Azure portal:
 
-1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Local** > **Overview (preview)**.
+1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **Overview (preview)**.
 
-   You can filter the dashboard display by **Subscription**, **Resource group**, and **Region**.
+   You can filter the dashboard display by **Subscription**, **Resource group**, **Region**, and **Sites**.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-overview.png" alt-text="Screenshot of the Azure Local dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-overview.png":::
 
-   To view top alerts, select **Top alerts** in the Alerts tile.
+1. In each tile, you can select the **View details** link or other labeled hyperlinks to open the corresponding dashbord or view more details.
 
-   :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png" alt-text="Screenshot of the Azure Local dashboard alert details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png":::
+   Here are some sample screens that appear when you select different links on the various tiles:
 
-   To view VM workload details, select **Virtual machines**.
+   - **Security recommendations** tile. Select the **View details** link to open the **Microsoft Defender for Cloud > Recommendations** dashboard.
 
-   :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png" alt-text="Screenshot of the Azure Local dashboard VM workloads." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png":::
+      :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-recommendations-dashboard.png" alt-text="Screenshot of the Microsoft Defender for Cloud Recommendations dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-recommendations-dashboard.png":::
 
-   You are taken to the list view of VMs running on your Azure Local.
+      Select any of the hyperlinked labels in the **Security recommendations** tile to open the **All clusters** tab:
 
-   :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Local dashboard VM workload details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png":::
+   - **Alerts** tile. To view top alerts, select **Top alerts** in the Alerts tile.
+
+      :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png" alt-text="Screenshot of the Azure Local dashboard alert details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png":::
+
+   - **Security alerts** tile. Select the **View details** link to open the **Microsoft Defender for Cloud > Security alerts** dashboard.
+
+      :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-security-alerts-dashboard.png" alt-text="Screenshot of the Microsoft Defender for Cloud Security alerts dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-security-alerts-dashboard.png":::
+
+   - **Total machines** and **Workloads** tile. To view VM workload details, select **Virtual machines**. You are taken to the list view of VMs running on your Azure Local.
+
+      :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Local dashboard VM workload details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png":::
 
 ## View the all systems list
 
@@ -46,13 +56,13 @@ The Azure Local **All systems** list view displays information about your system
 
 To view the dashboard list view, follow these steps in the Azure portal:
 
-1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Local** > **All systems (preview)**. The **All systems** page is enhanced to include an hierarchical view of all your workloads within a system.
+1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **All systems (preview)**. The **All systems** page presents a hierarchical view of all your workloads within a system.
 
-   All columns can be sorted by selecting a column header. You can filter the dashboard display by subscription, resource group, and region. You can also group display results by using the grouping control at the top right.
+   All columns can be sorted by selecting a column header. You can filter the dashboard display by subscription, resource group, region, and sites. You can also group display results by using the grouping control at the top right.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png" alt-text="Screenshot of the Azure Local dashboard list view." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png":::
 
-   Select a system name to view details about a system, or select a parameter to view details about system status.
+1. Select a system name to view details about a system, or select a parameter to view details about system status.
 
 ## Troubleshooting
 
