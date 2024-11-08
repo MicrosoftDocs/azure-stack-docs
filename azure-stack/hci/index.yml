@@ -1,36 +1,38 @@
 ### YamlMime:Landing
 
-title: Azure Stack HCI documentation
-summary: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+title: Azure Local documentation
+summary: Azure Local is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
 
 metadata:
-  title: Azure Stack HCI documentation
-  description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
+  title: Azure Local documentation
+  description: Azure Local is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
 #  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 01/31/2023
+  ms.date: 10/31/2024
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
 landingContent:
   # Card (optional)
-  - title: About Azure Stack HCI
+  - title: About Azure Local
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Stack HCI?
+          - text: What is Azure Local?
             url: overview.md
       - linkListType: whats-new
         links:
-          - text: What's new in Azure Stack HCI, version 23H2?
+          - text: What's new in Azure Local, version 23H2?
             url: whats-new.md
-          - text: Software Defined Networking (SDN) technical reference
-            url: manage/sdn-technical-reference.md
+          - text: Small Form Factor
+            url: index.yml
+          - text: Azure Local disconnected operations
+            url: index.yml  
 
   # Card 
-  - title: Deploy the cluster
+  - title: Deploy
     linkLists:
       - linkListType: deploy
         links:
@@ -40,22 +42,26 @@ landingContent:
             url: deploy/deployment-install-os.md
           - text: 3. Register with Arc
             url: deploy/deployment-arc-register-server-permissions.md
-          - text: 4. Deploy via the portal
+          - text: 4A. Deploy via the portal
             url: deploy/deploy-via-portal.md
+          - text: 4B. Deploy via ARM template
+            url: deploy/deployment-azure-resource-manager-template.md
 
   # Card
-  - title: Update the cluster
+  - title: Update and Upgrade
     linkLists:
-      - linkListType: overview
+      - linkListType: how-to-guide
         links:
           - text: About updates
             url: update/about-updates-23h2.md
-      - linkListType: how-to-guide
-        links:
           - text: Update via Azure portal
             url: update/azure-update-manager-23h2.md
-          - text: Updates via PowerShell
-            url: update/update-via-powershell-23h2.md
+          - text: About upgrades
+            url: upgrade/about-upgrades-23h2.md
+          - text: Upgrade OS
+            url: upgrade/upgrade-22h2-to-23h2-powershell.md
+          - text: Upgrade solution
+            url: upgrade/install-solution-upgrade.md
 
   # Card
   - title: Deploy workloads
@@ -63,60 +69,62 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Deploy Azure Kubernetes Service clusters
-            url: /azure/aks/hybrid/aks-create-clusters-cli
+            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
             url: /azure-stack/hci/manage/create-arc-virtual-machines
 
   # Card
-  - title: Manage the cluster
+  - title: Manage
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Add server
+          - text: Manage at-scale
+            url: manage/manage-at-scale-dashboard.md          
+          - text: Add node
             url: manage/add-server.md
-          - text: Repair server
+          - text: Repair node
             url: manage/repair-server.md
-          - text: Manage via PowerShell
-            url: manage/cluster-powershell.md
-          - text: Manage Arc extensions
-            url: manage/arc-extension-management.md
+          - text: Manage Arc VMs
+            url: manage/manage-arc-virtual-machines.md
+          - text: Manage SDN Multisite
+            url: manage/manage-sdn-multisite.md?pivots=azure-stack-hci
 
   # Card
-  - title: Monitor the cluster
+  - title: Monitor
     linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local monitoring?
+            url: concepts/monitoring-overview.md
       - linkListType: how-to-guide
         links:
           - text: Monitor via Insights
-            url: manage/monitor-hci-single-23h2.md
+            url: manage/monitor-single-23h2.md
+          - text: Enable Insights at-scale
+            url: manage/monitor-hci-multi-azure-policies.md          
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
             url: manage/health-alerts-via-azure-monitor-alerts.md
-          - text: Log alerts
-            url: manage/setup-hci-system-alerts.md
-          - text: Metric alerts
-            url: manage/setup-metric-alerts.md
 
   # Card
   - title: Try it out
     linkLists:
       - linkListType: overview
         links:
-          - text: Migrate (preview)
-            url: migrate/migration-options-hci-overview.md
-          - text: Microsoft Defender for Cloud (preview)
-            url: manage/manage-security-with-defender-for-cloud.md
-          - text: Azure Site Recovery (preview)
-            url: manage/azure-site-recovery.md
-      - linkListType: quickstart
-        links:
-          - text: Community provided Bicep template
-            url: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md
-            
+          - text: Deploy Arc gateway (preview)
+            url: deploy/deployment-azure-arc-gateway-overview.md
+          - text: Deploy with Local Identity (preview)
+            url: index.yml
+          - text: Manage GPU via partitioning (preview)
+            url: manage/gpu-manage-via-partitioning.md
+          - text: Migrate VMware (preview)
+            url: migrate/migration-azure-migrate-vmware-overview.md
+      
   # Card
-  - title: Azure Stack HCI concepts
+  - title: Concepts
     linkLists:
       - linkListType: concept
         links:
@@ -126,10 +134,6 @@ landingContent:
             url: concepts/security-features.md
           - text: Observability
             url: concepts/observability.md
-      - linkListType: training
-        links:
-          - text: Azure Stack HCI foundations
-            url: /training/paths/azure-stack-hci-foundations
 
   # Card
   - title: Troubleshoot
@@ -138,7 +142,7 @@ landingContent:
         links:
           - text: Collect logs
             url: manage/collect-logs.md
-          - text: Deployment issues
-            url: manage/get-support-for-deployment-issues.md
-          - text: Remote support
+          - text: Troubleshoot deployment issues
+            url: manage/troubleshoot-deployment.md
+          - text: Get support
             url: manage/get-remote-support.md

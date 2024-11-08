@@ -1,18 +1,18 @@
 ---
-title: Storage thin provisioning in Azure Stack HCI, version 23H2
-description: How to use storage thin provisioning on Azure Stack HCI, version 23H2 clusters by using Windows PowerShell.
+title: Storage thin provisioning in Azure Local, version 23H2
+description: How to use storage thin provisioning on Azure Local, version 23H2 by using Windows PowerShell.
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 05/09/2024
+ms.date: 10/29/2024
 ---
 
-# Storage thin provisioning in Azure Stack HCI, version 23H2
+# Storage thin provisioning in Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
-This article describes how thin provisioning works on your Azure Stack HCI cluster, version 23H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+This article describes how thin provisioning works on your Azure Local instance, version 23H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
 ## Capacity management: thin vs. fixed provisioned volumes
 
@@ -30,7 +30,7 @@ When a thin-provisioned volume is created, the footprint is smaller than the spe
 
 :::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="Diagram showing that as data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
 
-Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
+Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of systems. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
 
 You can create volumes that exceed the total available storage capacity by overprovisioning. An alert is sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
 
@@ -74,11 +74,11 @@ Set-StoragePool -FriendlyName <name of storage pool> -ThinProvisioningAlertThres
 
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 23H2.
+This section answers frequently asked questions about thin provisioning on Azure Local, version 23H2.
 
 ### Can existing fixed volumes be converted to thin?
 
-Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Stack HCI](../manage/thin-provisioning-conversion.md).
+Yes. Converting from a fixed volume to a thin volume is supported, see [Convert fixed to thin provisioned volumes on Azure Local](../manage/thin-provisioning-conversion.md).
 
 ### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
@@ -90,7 +90,7 @@ Yes, it's possible to have a mix of both fixed and thin volumes in one pool.
 
 ### Will space be given back to the pool immediately after files are deleted?
 
-No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the cluster, it may take longer for all of the space to be returned to the pool.
+No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the system, it may take longer for all of the space to be returned to the pool.
 
 ## Next steps
 

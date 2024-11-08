@@ -17,7 +17,7 @@ This article describes how to upgrade the operating system (OS) version 22H2 to 
 
 While the recommended method is to [Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via Windows Admin Center or other methods.
 
-Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
+Throughout this article, we refer to OS version 23H2 as the new version and version 22H2 as the old version.
 
 > [!IMPORTANT]
 > To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update applies to all Azure Local running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
@@ -41,7 +41,7 @@ Before you begin, make sure that:
 - You have access to version 23H2 OS software update.
 - The system is registered in Azure.
 - Make sure that all the machines in your Azure Local are healthy and show as **Online**.
-- You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 
 > [!NOTE]

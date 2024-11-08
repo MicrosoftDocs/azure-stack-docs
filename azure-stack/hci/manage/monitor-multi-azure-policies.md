@@ -692,7 +692,7 @@ To create a policy definition, follow these steps:
    | **POLICY RULE** | The JSON edit box is prepopulated with a policy definition template. Replace this template with the policy definition template you want to apply. For the definition templates for Insights policies in JSON format, see the [About using Azure policies to enable Insights at scale](#about-using-azure-policies-to-enable-insights-at-scale) section. |
    | **Role definitions** | This field is displayed after you copy and paste the policy definition into the **POLICY RULE** field. Select the **Guest Configuration Resource Contributor** role from the list. |
 
-      :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-definition.png":::
+      :::image type="content" source="./media/monitor-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-multi-azure-policies/policy-definition.png":::
 
 1. Select **Save**.
 
@@ -706,7 +706,7 @@ To create a policy assignment, follow these steps:
 
 1. On the **Policy | Definitions** page for the policy definition you created in the previous step, select **Assign policy**.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/assign-policy.png" alt-text="Screenshot of the Policy Definitions page for the new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/assign-policy.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/assign-policy.png" alt-text="Screenshot of the Policy Definitions page for the new policy definition." lightbox="./media/monitor-multi-azure-policies/assign-policy.png":::
 
 1. On the **Assign policy** page > **Basic** tab, specify the following values:
 
@@ -718,17 +718,17 @@ To create a policy assignment, follow these steps:
    | **Assignment name** | This field is prepopulated with the name of the selected policy definition. You can change it if necessary. |
    | **Policy enforcement** | Defaults to *Enabled*. For more information, see [enforcement mode](/azure/governance/policy/concepts/assignment-structure#enforcement-mode). |
  
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign.png" alt-text="Screenshot of the Assign policy page to assign the policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/policy-assign.png" alt-text="Screenshot of the Assign policy page to assign the policy definition." lightbox="./media/monitor-multi-azure-policies/policy-assign.png":::
 
 1. Select **Next** to view the **Parameters** tab. If the policy definition you selected on the **Basics** tab included parameters, they show up on the **Parameters** tab.
 
     For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc connected machines in the policy assignment.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign-parameters-tab.png" alt-text="Screenshot of the Parameters tab on Assign policy page to define or modify parameters." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign-parameters-tab.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png" alt-text="Screenshot of the Parameters tab on Assign policy page to define or modify parameters." lightbox="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png":::
 
 1. Select **Next** to view the **Remediation** tab. No action is needed on this tab. The policy definition templates support the *deployIfNotExists* effect, so the resources that aren't compliant with the policy rule get automatically remediated. Additionally, notice that the **Create a Managed Identity** parameter is selected by default since the policy definition templates use the *deployIfNotExists* effect.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign-remediation-tab.png" alt-text="Screenshot of the Remediation tab on the Assign policy page to define remediation task if necessary." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign-remediation-tab.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/policy-assign-remediation-tab.png" alt-text="Screenshot of the Remediation tab on the Assign policy page to define remediation task if necessary." lightbox="./media/monitor-multi-azure-policies/policy-assign-remediation-tab.png":::
 
 1. Select **Review + create** to review the assignment.
 
@@ -746,11 +746,11 @@ To view the compliance status of the policy, follow these steps:
 1. Select **Compliance**.
 1. Filter the results for the name of the policy assignment that you created in the [Create a policy assignment](#create-a-policy-assignment) step. The **Compliance state** column displays the compliance state as **Compliant** or **Non-compliant**.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status.png" alt-text="Screenshot of the Policy Compliance page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/compliance-status.png" alt-text="Screenshot of the Policy Compliance page showing the compliance status." lightbox="./media/monitor-multi-azure-policies/compliance-status.png":::
 
 1. Select the policy assignment name to view the **Resource Compliance** status. For example, the compliance report for the repair AMA policy shows the nodes that need to be repaired:
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png" alt-text="Screenshot of the Policy Compliance status page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/compliance-status-resources.png" alt-text="Screenshot of the Policy Compliance status page showing the compliance status." lightbox="./media/monitor-multi-azure-policies/compliance-status-resources.png":::
 
 1. Once you know which resources are non-compliant, you can create the remediation task to bring them into compliance.
 
@@ -763,15 +763,15 @@ To remediate non-compliant resources and track remediation task progress, follow
 1. The **Remediation** page displays the list of assigned policies that have non-compliant resources. Filter the results for the name of the policy assignment that you created in the [Create a policy assignment](#create-a-policy-assignment) step.
 1. Select the **Policy Definition** link.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-remediation.png" alt-text="Screenshot of the Policy Remediation page showing the policies to remediate." lightbox="./media/monitor-hci-multi-azure-policies/policy-remediation.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/policy-remediation.png" alt-text="Screenshot of the Policy Remediation page showing the policies to remediate." lightbox="./media/monitor-multi-azure-policies/policy-remediation.png":::
 
 1. The **New remediation task** page displays the resources that need remediation. Select the **Re-evaluate resource compliance before remediating** checkbox and then select **Remediate**.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/new-remediation-task.png" alt-text="Screenshot of New remediation task page." lightbox="./media/monitor-hci-multi-azure-policies/new-remediation-task.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/new-remediation-task.png" alt-text="Screenshot of New remediation task page." lightbox="./media/monitor-multi-azure-policies/new-remediation-task.png":::
 
 1. You get a notification that a remediation task is created, and you are directed to the **Remediation tasks** tab. This tab shows the status of different remediation tasks. The one you created might be in the **Evaluating** or **In Progress** state.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png" alt-text="Screenshot of the Policy Remediation tab showing the status of the remediation task." lightbox="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png":::
+    :::image type="content" source="./media/monitor-multi-azure-policies/policy-remediation-state.png" alt-text="Screenshot of the Policy Remediation tab showing the status of the remediation task." lightbox="./media/monitor-multi-azure-policies/policy-remediation-state.png":::
 
       Once the remediation is complete, the state changes to **Complete**.
 
@@ -779,4 +779,4 @@ To remediate non-compliant resources and track remediation task progress, follow
 
 ## Next steps
 
-- [Monitor multiple Azure Local systems with Insights](./monitor-hci-multi-23h2.md)
+- [Monitor multiple Azure Local systems with Insights](./monitor-multi-23h2.md)

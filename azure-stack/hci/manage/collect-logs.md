@@ -14,7 +14,7 @@ ms.date: 10/28/2024
 
 This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with Azure Local.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
 On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
@@ -38,7 +38,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 - You must have access to Azure.
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
-## Collect logs for Azure Stack HCI
+## Collect logs for Azure Local
 
 You can perform on-demand log collection using any of the following methods:
 
@@ -78,7 +78,7 @@ FromDate in UTC is now 12/04/2023 19:14:18. ToDate in UTC is now 12/04/2023 21:1
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/<cluster-name>
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/<cluster-name>
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/<v-host-name>
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -184,7 +184,7 @@ Follow these steps to save logs to a local share:
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
 
-1. Run the following command on each node of the cluster to collect logs and save them locally:
+1. Run the following command on each node of the system to collect logs and save them locally:
 
    ```powershell
    Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
@@ -267,7 +267,7 @@ All
 
 ### CollectSddc
 
-This parameter helps determine whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
+Determines whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for systems](./collect-diagnostic-data.md).
 
 **Syntax**
 
@@ -383,13 +383,13 @@ The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
 
 You can use it in the following ways:
 
-In this scenario, with `SaveToPath`, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
+With `SaveToPath`. In this scenario, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
 
 ```powershell
 Send-DiagnosticData [-SupplementaryLogs <string>] -SaveToPath <path>
 ```
 
-Here, with `NoLogCollection`, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
+With `NoLogCollection`. Here, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
 
 ```powershell
 Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection
@@ -570,7 +570,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
 | Extension | Data related to Azure managed extensions. |
 | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
-| HCICloudService | An Azure cloud service that provides core functionality for Azure Local. It combines Azure power with the flexibility of on-premises servers. |
+| HCICloudService | An Azure cloud service that provides core functionality for Azure Local. It combines Azure power with the flexibility of on-premises machines. |
 | DownloadService | Part of infra service to download update content. |
 | Health | Collects health, performance, and usage data from various sources, such as event logs and performance counters. |
 | HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
@@ -610,7 +610,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
@@ -618,5 +618,4 @@ When requested, share the following information with Microsoft Support. Get this
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md).
-- [Review known issues in Azure Local](../known-issues-2311-2.md).
+- [Contact Microsoft Support](get-support.md)

@@ -3,11 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-<<<<<<< HEAD
 ms.date: 10/28/2024
-=======
-ms.date: 10/16/2024
->>>>>>> 6ccd049b8dfaf32eae81713dfc26ad0359e4cfb1
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
