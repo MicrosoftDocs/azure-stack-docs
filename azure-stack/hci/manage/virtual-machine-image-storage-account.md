@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/28/2024
+ms.date: 11/07/2024
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
@@ -29,11 +29,13 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
-- Make sure that you're uploading your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
 
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../../hci/includes/hci-vm-image-prerequisites-storage-account.md)]
+
+
+- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
 ---
 

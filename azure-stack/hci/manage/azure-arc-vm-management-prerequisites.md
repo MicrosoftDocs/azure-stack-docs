@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.date: 11/06/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -27,11 +27,11 @@ The Azure requirements include:
 
 ## Azure Local requirements
 
-- You have access to an Azure Local that is deployed, has an Arc Resource Bridge, and a custom location.
+- You have access to an Azure Local instance that is deployed, has an Arc Resource Bridge, and a custom location.
 
   - Go to the **Overview > Server** page in the Azure Local resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your system.
     
-       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
+      :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
 ## Arc VM image requirements
 
@@ -66,12 +66,33 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Local extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command:
+- The Azure Local extension `stack-hci-vm`.
 
-  ```PowerShell
-  az extension add --name "stack-hci-vm"
-  ```
+    1. In the Azure portal, go to your Azure Local resource and then go to **Operations > Updates**. In the right pane, note the **Current version** that your system is running.
+  
+        :::image type="content" source="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png" alt-text="Screenshot of the Updates page in the Azure Local resource showing current software version." lightbox="./media/azure-arc-vm-management-prerequisites/identify-software-version-1.png":::
 
+    1. Match the **Current version** from the Azure portal to **Release build in** the [Arc VM release tracking table](https://aka.ms/arcvm-rel). Then identify the corresponding `stack-hci-vm extension` version from the table. You'll install this version on the client that you are using to connect to your Azure Local.
+    
+    1. Check if there is a version of the extension installed on the client. Run the following command:
+  
+        ```azurecli
+        az extension list --output table
+        ```
+
+    1. If there is an older version installed, remove it and install the new version. Run the following command:
+  
+        ```azurecli
+        az extension remove --name "stack-hci-vm"
+        ```
+
+    1. To install the extension, run the following command:
+      
+        ```azurecli
+        az extension add --name "stack-hci-vm" --version "<version>"
+        ```
+
+    1. To verify that the extension is installed, use the `list` command again.
 
 
 ## Next steps

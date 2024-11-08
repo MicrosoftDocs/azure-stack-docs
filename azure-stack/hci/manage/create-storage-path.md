@@ -81,7 +81,7 @@ Follow these steps on one of the machines of your Azure Local instance to create
     $subscription="<Subscription ID>"
     $resource_group="<Resource group name>"
     $customLocName="<Custom location of your Azure Local>"
-    $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$reource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
+    $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location="<Azure region where the system is deployed>"
     ```
 
