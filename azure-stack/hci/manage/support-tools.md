@@ -1,17 +1,17 @@
 ---
-title: Support tool for Azure Local
-description: This article provides guidance on the Azure Local Support Diagnostic Tool for Azure Local.
+title: Support tool for Azure Local instance running version 22H2
+description: This article provides guidance on the Support Diagnostic Tool for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 11/08/2024
 ---
 
-# Use the Azure Local Support Diagnostic Tool to troubleshoot issues
+# Use the Support Diagnostic Tool to troubleshoot Azure Local issues
 
 This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
-This tool isn't a substitute for expert knowledge. If you encounter any issues, contact Microsoft Support
+This tool isn't a substitute for expert knowledge. If you encounter any issues, contact Microsoft Support for assistance.
 
 ## Benefits
 
@@ -23,7 +23,7 @@ The tool provides:
 
 - **Diagnostic checks**: Provides diagnostic checks based on common issues, incidents, and telemetry data.
 
-- **Automatic data collection**: Automatically collects important data to provide to Microsoft Customer Support.
+- **Automatic data collection**: Automatically collects important data to provide to Microsoft Support.
 
 - **Regular updates**: Updates with new checks and useful commands to manage, troubleshoot, and diagnose issues on Azure Local.
 
@@ -39,7 +39,7 @@ Before you use the PowerShell module, make sure to:
 
 ## Install and use the Azure Local Support Diagnostic Tool
 
-Run the following commands in PowerShell:
+Run PowerShell as an administrator and then run the following commands:
 
 To install the tool, run the following command:
 
@@ -83,7 +83,7 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 
 ## Example scenario
 
-To troubleshoot Azure Local core products, run the following command:
+To troubleshoot Azure Local, run the following command:
 
 #### For registration issues
 
@@ -91,7 +91,7 @@ To troubleshoot Azure Local core products, run the following command:
 Invoke-AzsSupportDiagnosticCheck -ProductName Registration
 ```
 
-Here's example output for a registration issue:
+Here's an example of output for a registration issue:
 
 ```output
 PS C:\temp> Invoke-AzsSupportDiagnosticCheck -ProductName Registration
