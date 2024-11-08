@@ -52,6 +52,11 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
+> [!NOTE]
+> - The SSH key value is the public key for accessing nodes in the provisioned cluster. By default, this key is located at `~/.ssh/id_rsa.pub`. You can specify a different location using the `--ssh-key-value` parameter during cluster creation.
+> - The `--generate-ssh-keys` parameter is required if there's no pre-existing SSH key on your local machine. If you don't include this parameter during cluster creation and no SSH key exists, you receive an error message.
+> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
+
 ## Connect to the Kubernetes cluster
 
 Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your development machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
