@@ -10,7 +10,7 @@ ms.date: 11/08/2024
 
 # Deploy and configure Workload Identity on an AKS enabled by Azure Arc cluster (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../../../gitrepos/azure-stack-docs-pr/AKS-Hybrid/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you quickly deploy and manage Kubernetes clusters. This article describes how to perform the following tasks:
 
@@ -117,130 +117,77 @@ It might take some time for the workload identity extension to be deployed after
 az connectedk8s show -n $aks_cluster_name -g $resource_group_name
 ```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Output</strong></p>
-<p># agentState = "Succeeded"</p>
-<p>"agentPublicKeyCertificate": "",</p>
-<p>"agentVersion": "1.21.10",</p>
-<p>"arcAgentProfile": {</p>
-<p>"agentAutoUpgrade": "Enabled",</p>
-<p>"agentErrors": [],</p>
-<p>"agentState": "Succeeded",</p>
-<p>"desiredAgentVersion": "",</p>
-<p>"systemComponents": null</p>
-<p># oidcIssuerProfile "enabled": true and "issuerUrl" present</p>
-<p>"oidcIssuerProfile": {</p>
-<p>"enabled": true,</p>
-<p>"issuerUrl": "https://oidcdiscovery-{location}-endpoint-1111111111111111.000.azurefd.net/00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111/",</p></td>
-</tr>
-</tbody>
-</table>
+```json
+# agentState = "Succeeded" 
+"agentPublicKeyCertificate": "", 
+  "agentVersion": "1.21.10", 
+  "arcAgentProfile": { 
+    "agentAutoUpgrade": "Enabled", 
+    "agentErrors": [], 
+    "agentState": "Succeeded", 
+    "desiredAgentVersion": "", 
+    "systemComponents": null 
 
-In the Azure Portal, you can view the "wiextension" extension under the
-"Properties" section of your Kubernetes cluster.
+# oidcIssuerProfile "enabled": true and "issuerUrl" present 
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Important</strong></p>
-<p>Once workload identity is enabled on AKS Arc clusters, the Kubernetes service account token will automatically rotate every 90 days as a security best practice. Previously, these tokens were set to be valid for one year by default. With this token rotation enhancement, the maximum token expiry will be reduced to 24 hours.</p></td>
-</tr>
-</tbody>
-</table>
+"oidcIssuerProfile": { 
+    "enabled": true, 
+    "issuerUrl": "https://oidcdiscovery-{location}-endpoint-1111111111111111.000.azurefd.net/00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111/"}
+```
 
-## Save the OIDC issuer URL to an environmental variable
+In the Azure portal, you can view the **wiextension** extension under the **Properties** section of your Kubernetes cluster.
 
-Once AKS cluster is created successfully, you can get the OIDC issuer
-URL and save it to an environmental variable, run the following command:
+> [!IMPORTANT]
+> Once workload identity is enabled on AKS Arc clusters, the Kubernetes service account token automatically rotates every 90 days as a security best practice. Previously, by default these tokens were set to be valid for one year. With this token rotation enhancement, the maximum token expiry is reduced to 24 hours.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Az CLI</strong></p>
-<p>$SERVICE_ACCOUNT_ISSUER =$(az connectedk8s show --n $aks_cluster_name --resource-group $resource_group_name --query "oidcIssuerProfile.issuerUrl" --output tsv)</p></td>
-</tr>
-</tbody>
-</table>
+### Save the OIDC issuer URL to an environment variable
 
-# Step2 Create a Kubernetes service account and bind it to the Azure Managed Identity
+Once AKS cluster is created successfully, you can get the OIDC issuer URL and save it to an environment variable. Run the following command:
 
-## Create a managed identity
+```azurecli
+$SERVICE_ACCOUNT_ISSUER =$(az connectedk8s show --n $aks_cluster_name --resource-group $resource_group_name --query "oidcIssuerProfile.issuerUrl" --output tsv)
+```
 
-Call the [az identity
-create](https://learn.microsoft.com/en-us/cli/azure/identity#az-identity-create) command
-to create a managed identity.
+## Step 2: Create a Kubernetes service account and bind it to the Azure Managed Identity
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Azure CLI</strong></p>
-<p>az identity create --name $MSIName --resource-group $resource_group_name --location $Location --subscription $AZSubscriptionID</p></td>
-</tr>
-</tbody>
-</table>
+First, create a managed identity. Run the [az identity create](/cli/azure/identity#az-identity-create) command:
 
-Next, create variables for the managed identity's client ID.
+```azurecli
+az identity create --name $MSIName --resource-group $resource_group_name --location $Location --subscription $AZSubscriptionID
+```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Azure CLI</strong></p>
-<p>$MSIId=$(az identity show --resource-group $resource_group_name --name $MSIName --query 'clientId' --output tsv)</p>
-<p>$MSIPrincipalId=$(az identity show --resource-group $resource_group_name --name $MSIName --query 'principalId' --output tsv)</p></td>
-</tr>
-</tbody>
-</table>
+Next, create variables for the managed identity's client ID:
 
-## Create a Kubernetes service account
+```azurecli
+$MSIId=$(az identity show --resource-group $resource_group_name --name $MSIName --query 'clientId' --output tsv)
+$MSIPrincipalId=$(az identity show --resource-group $resource_group_name --name $MSIName --query 'principalId' --output tsv)
+```
 
-Create a Kubernetes service account and annotate it with the client ID
-of the managed identity created in the previous step.
+### Create a Kubernetes service account
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Azure CLI</strong></p>
-<p>az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name</p></td>
-</tr>
-</tbody>
-</table>
+Create a Kubernetes service account and annotate it with the client ID of the managed identity created in the previous step:
 
-Open a new window. Copy and paste the following multi-line input in the
-Azure CLI.
+```azurecli
+az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
+```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Azure CLI</strong></p>
-<p>$yaml = @" apiVersion: v1 kind: ServiceAccount metadata: annotations: azure.workload.identity/client-id: $MSIId name: $SERVICE_ACCOUNT_NAME namespace: $SERVICE_ACCOUNT_NAMESPACE "@ $yaml = $yaml -replace '\$MSIId', $MSIId ` -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE $yaml | kubectl apply -f -</p></td>
-</tr>
-</tbody>
-</table>
+Open a new window. Copy and paste the following CLI commands:
+
+```azurecli
+$yaml = @" apiVersion: v1 kind: ServiceAccount metadata: annotations: azure.workload.identity/client-id: $MSIId name: $SERVICE_ACCOUNT_NAME namespace: $SERVICE_ACCOUNT_NAMESPACE "@ $yaml = $yaml -replace '\$MSIId', $MSIId ` -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE $yaml | kubectl apply -f -
+```
 
 The following output shows successful creation of the workload identity:
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><strong>Output</strong></p>
-<p>serviceaccount/workload-identity-sa created</p></td>
-</tr>
-</tbody>
-</table>
+```output
+serviceaccount/workload-identity-sa created
+```
 
-# Step 3 Create a federated credential on the managed identity to trust the OIDC issuer
+## Step 3: Create a federated credential on the managed identity to trust the OIDC issuer
 
-## Create a federated identity credential
-
-Call the [az identity federated-credential
-create](https://learn.microsoft.com/en-us/cli/azure/identity/federated-credential#az-identity-federated-credential-create) command
-to create the federated identity credential between the managed
-identity, the service account issuer, and the subject. For more
-information about federated identity credentials in Microsoft Entra,
-see [Overview of federated identity credentials in Microsoft Entra
-ID](https://learn.microsoft.com/en-us/graph/api/resources/federatedidentitycredentials-overview).
+First, create a federated identity credential. Call the [az identity federated-credential create](/cli/azure/identity/federated-credential#az-identity-federated-credential-create) command
+to create the federated identity credential between the managed identity, the service account issuer, and the subject. For more information about federated identity credentials in Microsoft Entra,
+see [Overview of federated identity credentials in Microsoft Entra ID](/graph/api/resources/federatedidentitycredentials-overview).
 
 <table>
 <tbody>
@@ -263,7 +210,7 @@ ID](https://learn.microsoft.com/en-us/graph/api/resources/federatedidentitycrede
 </tbody>
 </table>
 
-# Optional: Grant permissions to access Azure Key Vault
+## Optional: Grant permissions to access Azure Key Vault
 
 The instructions in this step show how to access secrets, keys, or
 certificates in an Azure key vault from the pod. The examples in this
@@ -276,7 +223,7 @@ control (Azure RBAC) permission model to grant the pod access to the key
 vault. For more information about the Azure RBAC permission model for
 Azure Key Vault, see [Grant permission to applications to access an
 Azure key vault using Azure
-RBAC](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide).
+RBAC](/azure/key-vault/general/rbac-guide).
 
 1.  Create a key vault with purge protection and RBAC authorization
     enabled. You can also use an existing key vault if it is configured
@@ -294,7 +241,7 @@ RBAC](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide).
 </table>
 
 2.  Assign yourself the RBAC [Key Vault Secrets
-    Officer](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role
+    Officer](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role
     so that you can create a secret in the new key vault. New role
     assignments can take up to five minutes to propagate and be updated
     by the authorization server.
@@ -320,7 +267,7 @@ RBAC](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide).
 </table>
 
 4.  Assign the [Key Vault Secrets
-    User](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role
+    User](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role
     to the user-assigned managed identity that you created previously.
     This step gives the managed identity permission to read secrets from
     the key vault:
@@ -383,7 +330,7 @@ RBAC](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide).
 </tbody>
 </table>
 
-# Step 4 Deploy your application
+## Step 4 Deploy your application
 
 When you deploy your application pods, the manifest should reference the
 service account created in the **Create Kubernetes service
@@ -431,17 +378,16 @@ for &lt;containerName&gt;:
 </tbody>
 </table>
 
-# Next steps
+## Next steps
 
 In this article, you deployed a Kubernetes cluster and configured it to
 use a workload identity in preparation for application workloads to
 authenticate with that credential. Now you're ready to deploy your
 application and configure it to use the workload identity with the
-latest version of the [Azure
-Identity](https://learn.microsoft.com/en-us/azure/active-directory/develop/reference-v2-libraries) client
+latest version of the [Azure Identity](/azure/active-directory/develop/reference-v2-libraries) client
 library.
 
 - [Deploy and configure an AKS cluster with workload identity - Azure
     Kubernetes Service \| Microsoft
-    Learn](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster)
+    Learn](/azure/aks/workload-identity-deploy-cluster)
 
