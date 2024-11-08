@@ -8,7 +8,7 @@ ms.service: azure-stack-hci
 ms.date: 10/24/2024
 ---
 
-# Use Role-based Access Control to manage Azure Local Virtual Machines 
+# Use Role-based Access Control to manage Azure Local virtual machines 
 
 [!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
 
