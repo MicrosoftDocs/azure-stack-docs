@@ -586,7 +586,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 
 ---
 
-## Provide required information in a support case
+## Provide required information for a support case
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 
