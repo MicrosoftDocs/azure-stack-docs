@@ -16,12 +16,12 @@ This article lists the system requirements for migrating VMware virtual machines
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
-## Supported operating systems
+## Supported configurations
 
 The following operating systems (OSs) are supported for the VMware source appliance, target appliance, and for the guest VMs that you are migrating.
 
 
-|Component  |Supported OS |
+|Component  |Supported configurations |
 |---------|---------|
 |Source environment     |VMware vCenter Server version 8.0 <br>VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
 |Source appliance     |Windows Server 2022          |
