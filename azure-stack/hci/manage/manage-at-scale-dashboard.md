@@ -36,9 +36,7 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
       :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-recommendations-dashboard.png" alt-text="Screenshot of the Microsoft Defender for Cloud Recommendations dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-recommendations-dashboard.png":::
 
-      Select any of the hyperlinked labels in the **Security recommendations** tile to open the **All clusters** tab:
-
-   - **Alerts** tile. To view top alerts, select **Top alerts** in the Alerts tile.
+   - **Alerts** tile. Select **Top alerts** to view top alerts.
 
       :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png" alt-text="Screenshot of the Azure Local dashboard alert details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-alert-details.png":::
 
@@ -46,7 +44,7 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
       :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-security-alerts-dashboard.png" alt-text="Screenshot of the Microsoft Defender for Cloud Security alerts dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-microsoft-defender-for-cloud-security-alerts-dashboard.png":::
 
-   - **Total machines** and **Workloads** tile. To view VM workload details, select **Virtual machines**. You are taken to the list view of VMs running on your Azure Local.
+   - **Total machines** and **Workloads** tile. Select **Virtual machines** to view VMs running on your Azure Local.
 
       :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Local dashboard VM workload details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png":::
 
