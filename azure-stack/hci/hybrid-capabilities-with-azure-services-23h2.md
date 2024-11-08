@@ -18,7 +18,7 @@ Your on-premises Azure Local solution integrates with Azure cloud via several cl
 
 ## Azure Local cloud service
 
-The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc machines and Arc virtual machines (VMs).
+The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc servers and Arc virtual machines (VMs).
 
 The Azure Local cloud service extends the hybrid capabilities for Azure Local by enabling the following cloud-based functionalities:
 

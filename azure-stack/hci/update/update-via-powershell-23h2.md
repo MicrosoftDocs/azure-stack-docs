@@ -29,7 +29,7 @@ When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
 1. Identify the software version running on your cluster.
-1. Connect to your Azure Stack HCI cluster via remote PowerShell.
+1. Connect to your Azure Local instance via remote PowerShell.
 1. Discover the updates that are available and filter the ones that you can apply to your cluster.
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.

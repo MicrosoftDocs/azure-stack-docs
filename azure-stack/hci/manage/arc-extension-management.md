@@ -1,6 +1,6 @@
 ---
 title:  Azure Arc extension management on Azure Local
-description: This article describes how to manage Azure Arc extensions on Azure Local machines.
+description: This article describes how to manage Azure Arc extensions on Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.date: 10/22/2024
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Local machines.
+This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Local.
 
 ## Customer-managed Azure Arc extensions on Azure Local
 
@@ -42,7 +42,7 @@ You can install extensions from the **Capabilities** tab for your Azure Local Ar
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
-When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all machines of the system. If you add more machines to your system, all the extensions installed on your system are automatically added to the new servers.
+When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all nodes of the system. If you add more nodes to your system, all the extensions installed on your system are automatically added to the new servers.
 
 ### [Azure CLI](#tab/azurecli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
@@ -385,7 +385,7 @@ New-AzStackHciExtension `
 
 ### Manual extension upgrade via the Azure portal
 
-The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all machines in the system to that version.
+The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all nodes in the cluster to that version.
 
 On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
 
@@ -393,7 +393,7 @@ Use the manual workflow in these scenarios:
 
 - A new version of the extension is available and you want to upgrade it manually.
 
-- The extension's automatic upgrade option is disabled and there's a version mismatch across different machines of the Azure Local.
+- The extension's automatic upgrade option is disabled and there's a version mismatch across different nodes of the Azure Local.
 
 To manually upgrade an extension, follow these steps:
 
@@ -419,7 +419,7 @@ You can disable automatic upgrades for certain extensions in the Azure portal. T
 
 ### Check the extension upgrade history
 
-You can view the Activity Log tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions to check the history of automatic extension upgrades for individual machines. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
+You can view the Activity Log tab on individual Azure Arc-enabled server resources, resource groups, and subscriptions to check the history of automatic extension upgrades for individual nodes. For more information, see [Check automatic extension upgrade history](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#check-automatic-extension-upgrade-history).
 
 ### Availability-first updates
 
@@ -439,7 +439,7 @@ If you continue to have trouble with an extension upgrade, you can [disable auto
 
 ### Upgrades with multiple extensions
 
-If multiple extension upgrades are available for a machine, they might be batched together. However, each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
+If multiple extension upgrades are available for a node, they might be batched together. However, each extension upgrade is applied individually on the node. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
 ## Uninstall an extension
 

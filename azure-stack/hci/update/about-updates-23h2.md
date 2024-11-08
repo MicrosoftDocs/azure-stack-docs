@@ -111,7 +111,7 @@ Using these interfaces can install out-of-band updates, which aren't supported w
 
 ### Unsupported interfaces for updates
 
-When you install updates for Azure Stack HCI, version 23H2 don't use the following interfaces:
+When you install updates for Azure Local, version 23H2 don't use the following interfaces:
 
 - SConfig
 - Windows Admin Center
