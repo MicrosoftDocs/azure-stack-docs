@@ -7,14 +7,12 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/29/2024
+ms.date: 11/08/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
-
-::: zone-end
 
 :::zone pivot="windows-server"
 
@@ -85,7 +83,7 @@ After you have created a logical network in Windows Admin Center, you can create
 :::zone pivot="azure-stack-hci"
 
 > [!NOTE]
-> Unlike in 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
+> Unlike in Azure Local, version 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
 ::: zone-end
 
