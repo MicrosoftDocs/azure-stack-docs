@@ -16,7 +16,7 @@ This article describes how to create and use Azure Arc-enabled storage classes f
 
 ## Prerequisites
 
-To use the storage classes feature, you must have an AKS Arc cluster running, and in the following currently available regions:
+To use the storage classes feature, you must have an AKS Arc cluster running, in the following currently available regions:
 
 - East US (eastus)
 - West Europe (westeurope)
@@ -27,7 +27,7 @@ To use the storage classes feature, you must have an AKS Arc cluster running, an
 - Japan East (japaneast)
 - South Central US (southcentralus)
 
-If you want to use the storage classes feature with Azure CLI, you must also have Azure CLI installed and set up on your machine, and install the `k8s-runtime` extension via the following command:
+If you want to use the storage classes feature with Azure CLI, you must also have Azure CLI installed and set up on your machine, and install the `k8s-runtime` extension using the following command:
 
 ```azurecli
 az extension add --name k8s-runtime
