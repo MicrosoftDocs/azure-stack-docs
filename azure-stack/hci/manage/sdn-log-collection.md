@@ -4,12 +4,12 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 10/23/2024
+ms.date: 11/08/2024
 ---
 
 # Collect logs for Software Defined Networking on Azure Local
 
-> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) on Azure Local.
 
@@ -93,7 +93,7 @@ Follow these steps in a new PowerShell window to install the `SdnDiagnostics` mo
     Get-SdnInfrastructureInfo -NetworkController 'nc01.contoso.com'
     ```
     - The environment details will be stored into global variable that can be accessed at any time in the current PowerShell runpsace by accessing `Global:SdnDiagnostics`.
-1. To install the `SdnDiagnostics` module on the SDN infrastructure nodes, run the following cmdlet:
+1. To install the `SdnDiagnostics` module on the SDN infrastructure machines, run the following cmdlet:
 
     ```powershell
     Install-SDNDiagnostics -ComputerName $Global:SdnDiagnostics.EnvironmentInfo.FabricNodes
@@ -145,17 +145,17 @@ Start-SdnDataCollection [-NetworkController <String>] [-NcUri <Uri>] -Role <SdnR
 
 For more information about the parameters and specifications, see the [Start-SdnDataCollection](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnDataCollection) wiki page.
 
-## Collect logs from large SDN clusters
-Some SDN clusters can be exceptionally large with the number of nodes for each role. In these scenarios, `Start-SdnDataCollection` will limit how much data to collect which is enforced by the `-Limit` parameter. This parameter is optional and currently defaults to 16, meaning that the data collection will be limited to the first 16 nodes per role. This is designed to prevent excessive amounts of data being collected.
+## Collect logs from large SDN systems
+Some SDN systems can be exceptionally large with the number of machines for each role. In these scenarios, `Start-SdnDataCollection` will limit how much data to collect which is enforced by the `-Limit` parameter. This parameter is optional and currently defaults to 16, meaning that the data collection will be limited to the first 16 machines per role. This is designed to prevent excessive amounts of data being collected.
 
-You can update the `-Limit` parameter, however there is no control on which node(s) will be selected as it will typically pick the first ones in the array alphabetically.
+You can update the `-Limit` parameter, however there is no control on which machines will be selected as it will typically pick the first ones in the array alphabetically.
 
-### Target specific nodes for data collection
+### Target specific machines for data collection
 
-To be more specific about which nodes the data is collected for, you can instead define the `-ComputerName` parameter which is a string array. The `SdnDiagnostics` module will automatically perform the mapping to identify the appropriate roles for each, and then process as normal.
+To be more specific about which machines the data is collected for, you can instead define the `-ComputerName` parameter which is a string array. The `SdnDiagnostics` module will automatically perform the mapping to identify the appropriate roles for each, and then process as normal.
 
 ```powershell
-# this command is being executed on a Network Controller node directly
+# this command is being executed on a Network Controller machine directly
 Get-SdnInfrastructureInfo
 $computers = @()
 $computers += $Global:SdnDiagnostics.EnvironmentInfo.NetworkController # will add all the network controllers
