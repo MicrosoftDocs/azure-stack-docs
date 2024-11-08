@@ -42,7 +42,7 @@ To suspend a machine, follow these steps:
     > [!NOTE]
     > Running this command may take some time, depending on the number of VMs that need to be migrated.
 
-1. Confirm that the node is successfully suspended.
+1. Confirm that the machine is successfully suspended.
 
     ```powershell
     Get-Clusternode
@@ -97,7 +97,7 @@ To resume a machine, follow these steps:
     > [!NOTE]
     > Running this command may take some time, depending on the number of VMs that need to be migrated.
 
-1. Confirm that the node is successfully resumed.
+1. Confirm that the machine is successfully resumed.
 
     ```powershell
     Get-Clusternode
@@ -114,7 +114,7 @@ To resume a machine, follow these steps:
     ASRRlS3lRl5Ull      Up           Node
     ```
 
-1. Add the node to the active Arc VM Configuration. **This step can only be done using PowerShell**.
+1. Add the machine to the active Arc VM Configuration. **This step can only be done using PowerShell**.
 
     ```powershell
     New-MocPhysicalNode -nodeName “MachineName”

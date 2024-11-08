@@ -1,6 +1,6 @@
 ---
 title:  Azure Local Remote Support Arc extension overview
-description: This article describes the remote support arc extension and how to enable it for your Azure Local machines.
+description: This article describes the remote support arc extension and how to enable it for your Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
@@ -61,7 +61,7 @@ To enable remote support on your Azure Local, follow these steps:
 
 1. On the client you're using to connect to your system, run PowerShell as an administrator.
 
-2. Open a remote PowerShell session to a node on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
+2. Open a remote PowerShell session to a node on your Azure Local. Run the following command and provide the credentials of your node when prompted:
 
     ```powershell
     $cred = Get-credential

@@ -47,8 +47,8 @@ Before you migrate your VMs:
 
 
 1. On the **Migrate** page:
-    1. Review the details of the VM(s) that you want to migrate.
-    1. Select whether or not you would like to shut down VM(s) before migration. We recommend that you shut down VMs as that ensures no data is lost.
+    1. Review the details of the VMs that you want to migrate.
+    1. Select whether or not you would like to shut down VMs before migration. We recommend that you shut down VMs as that ensures no data is lost.
     1. Select **Migrate** to start the migration. A notification appears that the migration has started.
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3a.png" alt-text="Screenshot of Migrate page with context menu in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3a.png":::
@@ -71,7 +71,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 > [!IMPORTANT]
 > After verifying the status of the migrated VM, be sure to **complete migration** as detailed below. Failing to do so may lead to unexpected behavior.
 
-1. In the Azure portal, go to your **Azure Local resource > Virtual machines**.
+1. In the Azure portal, go to your Azure Local resource, then select **Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMs that you migrated are present.
 
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png" alt-text="Screenshot of Azure Local > Virtual machines in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png":::

@@ -1,13 +1,13 @@
 ---
-title: Plan to deploy Network Controller on your Azure Stack HCI, version 23H2 cluster
-description: This article covers how to plan to deploy Network Controller on your Azure Stack HCI via Windows Admin Center on a set of virtual machines (VMs).
+title: Plan to deploy Network Controller on Azure Local, version 23H2
+description: This article covers how to plan to deploy Network Controller on Azure Local via Windows Admin Center on a set of virtual machines (VMs).
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 05/22/2024
+ms.date: 11/06/2024
 ---
 
-# Plan to deploy Network Controller for Azure Stack HCI, version 23H2
+# Plan to deploy Network Controller on Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
 
@@ -20,10 +20,10 @@ Planning to deploy Network Controller via Windows Admin Center requires a set of
 
 The following are required before you deploy the Network Controller:
 
-- A virtual hard disk (VHDX) for the Azure Stack HCI, version 23H2 operating system to create Network Controller VMs. Download the [VHDX file](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
-- A domain name and credentials to join Network Controller VMs to a domain. These are the same domain name and credentials that were used for management settings during the [Azure Stack HCI deployment via Azure portal]( ../deploy/deploy-via-portal.md#specify-management-settings).
-- At least one virtual switch that you configure using the Cluster Creation wizard in Windows Admin Center. If using a single network intent for management and compute, you can also use the default switch created during the Azure Stack HCI deployment.
-- A physical network configuration that matches one of the [Supported topology options for Azure Stack HCI, version 23H2 deployment](../deploy/deployment-introduction.md#supported-network-topologies).
+- A virtual hard disk (VHDX) for the Azure Stack HCI operating system, version 23H2 to create Network Controller VMs. Download the [VHDX file](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
+- A domain name and credentials to join Network Controller VMs to a domain. These are the same domain name and credentials that were used for management settings during the [Azure Local deployment via Azure portal]( ../deploy/deploy-via-portal.md#specify-management-settings).
+- At least one virtual switch that you configure using the Cluster Creation wizard in Windows Admin Center. If using a single network intent for management and compute, you can also use the default switch created during the Azure Local deployment.
+- A physical network configuration that matches one of the [Supported topology options for Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md#supported-network-topologies).
 - You can also team the management physical adapters to use the same management switch. In this case, we still recommend using one of supported topology options.
 - Management network information that Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
 - Either DHCP-based or static network-based addressing for Network Controller VMs.
@@ -71,7 +71,7 @@ Now you’re ready to deploy Network Controller on VMs.
 
 ## See also
 
-- [Deploy an Azure Stack HCI cluster](../deploy/deploy-via-portal.md)
+- [Deploy an Azure Local cluster](../deploy/deploy-via-portal.md)
 - [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
 - [What is Network Controller?](network-controller-overview.md)
 - [Network Controller High Availability](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability)
