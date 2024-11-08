@@ -393,7 +393,7 @@ Use the manual workflow in these scenarios:
 
 - A new version of the extension is available and you want to upgrade it manually.
 
-- The extension's automatic upgrade option is disabled and there's a version mismatch across different nodes of the Azure Local.
+- The extension's automatic upgrade option is disabled and there's a version mismatch across different nodes of Azure Local.
 
 To manually upgrade an extension, follow these steps:
 
