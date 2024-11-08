@@ -12,11 +12,11 @@ ms.custom: references_regions
 
 # Create and use storage classes (preview)
 
-This article describes how to create and use storage classes in AKS enabled by Arc.
+This article describes how to create and use Azure Arc-enabled storage classes for AKS on Azure Stack HCI 23H2.
 
 ## Prerequisites
 
-To use the storage classes feature, you must have an AKS Arc cluster in the following currently available regions:
+To use the storage classes feature, you must have an AKS Arc cluster running, and in the following currently available regions:
 
 - East US (eastus)
 - West Europe (westeurope)
@@ -35,7 +35,7 @@ az extension add --name k8s-runtime
 
 ## [Azure portal](#tab/portal)
 
-During the preview, our publicly available portal extension is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` extension. [Use this link to show the link for provisioned clusters](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true). The example in this article uses a provisioned cluster for demonstration purposes.
+During the preview, our publicly available portal extension only targets [provisioned clusters](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true) and is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` extension.
 
 ### Enable the service
 
@@ -235,7 +235,7 @@ When a storage class is updated, if all the properties that changed are updatabl
 | `password` | `string` \| `undefined` (secret) | **Yes** | Server password. |
 | `domain` | `string` \| `undefined` | **Yes** | Server domain. |
 
-### AksArcDisk (only for AKS Arc clusters)
+### AksArcDisk
 
 You can create a storage class that uses custom disks. This process is only for AKS Arc clusters. See [Create custom storage class for disks](container-storage-interface-disks.md?tabs=23H2#create-custom-storage-class-for-disks).
 
