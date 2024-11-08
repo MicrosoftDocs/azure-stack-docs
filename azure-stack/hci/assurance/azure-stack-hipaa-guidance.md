@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 10/24/2024
+ms.date: 11/08/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -15,7 +15,7 @@ This article provides guidance on how organizations can most efficiently navigat
 
 ## Healthcare compliance
 
-The [Health Insurance Portability and Accountability Act of 1996](https://www.cdc.gov/phlp/php/resources/health-insurance-portability-and-accountability-act-of-1996-hipaa.html) (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients' protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors' offices, hospitals, and health insurers ("covered entities") create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate that provides information technology services like Azure Local to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Local capabilities help organizations meet these requirements.
+The Health Insurance Portability and Accountability Act of 1996 (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients' protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors' offices, hospitals, and health insurers ("covered entities") create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate that provides information technology services like Azure Local to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Local capabilities help organizations meet these requirements.
 
 ## Shared responsibilities
 
@@ -96,7 +96,7 @@ Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with 
 
 #### Azure Local Insights
 
-Azure Local Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Azure Local Insights enables you to monitor health, performance, and usage information for systems that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for single node or multi-node systems from your Azure Local resource page or Azure Monitor. Learn more at [Monitor Azure Local with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
 #### Azure Local Metrics
 
@@ -126,7 +126,7 @@ Windows Defender Application Control (WDAC) is enabled by default on Azure Local
 
 #### Microsoft Defender for Cloud
 
-Microsoft Defender for Cloud with Endpoint Protection (enabled through server plans) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
+Microsoft Defender for Cloud with Endpoint Protection (enabled through the [Defender for Servers plan](/azure/defender-for-cloud/plan-defender-for-servers-select-plan)) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
 
 ### Backup and recovery
 
@@ -147,7 +147,7 @@ This service allows you to replicate workloads running on your on-premises Azure
 This service enables you to back up Azure Local virtual machines, specifying a desired frequency and retention period. You can use MABS to back up most of your resources across the environment, including:
 
 - System State/Bare-Metal Recovery (BMR) of Azure Local host
-- Guest VMs in a cluster that has local or directly attached storage
+- Guest VMs in a system that has local or directly attached storage
 - Guest VMs on Azure Local instance with CSV storage
 - VM Move within a cluster
 

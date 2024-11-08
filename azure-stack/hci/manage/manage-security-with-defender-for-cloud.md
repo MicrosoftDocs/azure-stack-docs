@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/25/2024
+ms.date: 11/07/2024
 ms.service: azure-stack-hci
 ---
 
@@ -87,11 +87,11 @@ After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-c
 
 1. On the left pane, scroll down to the **Security (preview)** section and select **Microsoft Defender for Cloud**.
 
-1. On the **Microsoft Defender for Cloud** page, under **Recommendations**, you can view the current security recommendations for the selected Azure Local system and its workloads. By default, the recommendations are grouped by resource type.
+1. On the **Microsoft Defender for Cloud** page, under **Recommendations**, you can view the current security recommendations for the selected Azure Local instance and its workloads. By default, the recommendations are grouped by resource type.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/security-recommendations.png" alt-text="Screenshot of the Microsoft Defender for Cloud page showing the security recommendations on Azure Local." lightbox="./media/manage-security-with-defender-for-cloud/security-recommendations.png" :::
 
-1. (Optional) To view the security recommendations for multiple Azure Local systems, select the **View in Defender for Cloud** link. This opens the **Recommendations** page in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including Azure Local.
+1. (Optional) To view the security recommendations for multiple Azure Local instances, select the **View in Defender for Cloud** link. This opens the **Recommendations** page in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including Azure Local.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" alt-text="Screenshot of the Recommendations page in the Defender for Cloud portal." lightbox="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" :::
 

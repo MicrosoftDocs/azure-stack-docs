@@ -3,7 +3,7 @@ title: Assign a public IP address to a virtual machine
 description: Learn how to assign a public IP address to a virtual machine in an SDN environment.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/29/2024
+ms.date: 11/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -43,7 +43,7 @@ Before you start assigning public IP address to a VM, make sure the following pr
 Follow these steps to assign a public IP address to a VM:
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Virtual Machines**.
-1. The **Inventory** tab on the right lists all VMs available on the current server or the cluster. Select the specific VM to which you want to assign a public IP address and then select **Settings**.
+1. The **Inventory** tab on the right lists all VMs available on the current node or the system. Select the specific VM to which you want to assign a public IP address and then select **Settings**.
 1. Under **Settings**, select **Networks** to manage network adapter settings, including adding, removing, or modifying them.
 1. If the VM already has a network adapter and an IP address, you can skip to the next step. Otherwise, follow these steps to add a network adapter and an IP address:
     1. Select **Add network adapter**.

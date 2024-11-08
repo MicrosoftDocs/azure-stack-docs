@@ -16,7 +16,7 @@ This article describes how to collect diagnostic logs and send them to Microsoft
 
 [!INCLUDE [important](../../hci/includes/hci-preview.md)]
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any machine within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -42,12 +42,12 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 You can perform on-demand log collection using any of the following methods:
 
-Run the `Send-DiagnosticData` cmdlet from any machine on your Azure Local instance to perform on-demand log collection.
+Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local instance to perform on-demand log collection.
 
 - **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
-- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of machine in your Azure Local environment.
-- If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all machines for the previous one-hour duration.
+- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Local environment.
+- If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
 
 Here's the syntax of `Send-DiagnosticData`:
 
@@ -586,7 +586,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 
 ---
 
-## Provide required information for a support case
+## Provide the required information in a support case
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 

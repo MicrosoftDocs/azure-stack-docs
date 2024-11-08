@@ -7,14 +7,12 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/29/2024
+ms.date: 11/08/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
-
-::: zone-end
 
 :::zone pivot="windows-server"
 
