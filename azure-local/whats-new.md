@@ -216,9 +216,9 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 
 This release includes the following updates to the security documentation:
 
-- The compliance score for Azure Local machine is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
+- The compliance score for Azure Local machine is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
 - The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
-- Updated the [Windows Defender Application Control](../hci/concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Local, version 23H2](../hci/concepts/security-features.md) article.
+- Updated the [Windows Defender Application Control](./concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Local, version 23H2](./concepts/security-features.md) article.
 
 ### AKS on Azure Local, version 23H2
 
@@ -278,7 +278,7 @@ We're also releasing new documentation that provides guidance on network conside
 
 This release includes the following updates to the security documentation:
 
-- Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](../hci/manage/manage-security-with-defender-for-cloud.md).
+- Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](./manage/manage-security-with-defender-for-cloud.md).
 - Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
 - Published the [Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
 
@@ -431,7 +431,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 The new installations with this release of Azure Local start with a *secure-by-default* strategy. The new version #has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default. This release provides:
 
-- A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Local](../hci/concepts/secure-baseline.md).
+- A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Local](./concepts/secure-baseline.md).
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Local](./concepts/security-bitlocker.md).
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Local](./concepts/security-windows-defender-application-control.md).
 
