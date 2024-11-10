@@ -141,6 +141,7 @@
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json",
     ".openpublishing.redirection.aks.json",
-    ".openpublishing.redirection.aks-edge.json"
+    ".openpublishing.redirection.aks-edge.json",
+    ".openpublishing.redirection.azure-local.json"
   ]
 }
