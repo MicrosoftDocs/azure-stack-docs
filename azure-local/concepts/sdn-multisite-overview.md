@@ -11,7 +11,7 @@ ms.date: 10/25/2024
 
 # What is SDN Multisite?
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 ::: zone-end
 

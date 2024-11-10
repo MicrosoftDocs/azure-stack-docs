@@ -11,11 +11,11 @@ ms.custom: linux-related-content
 
 # Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to migrate Hyper-V virtual machines (VMs) to Azure Local using Azure Migrate and includes the steps to verify the migration.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Before you begin
 

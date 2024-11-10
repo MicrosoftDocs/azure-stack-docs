@@ -12,7 +12,7 @@ ms.date: 10/22/2024
 ---
 # Azure Local telemetry and diagnostics extension
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Local.
 

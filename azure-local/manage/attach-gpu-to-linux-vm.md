@@ -11,9 +11,9 @@ ms.date: 10/23/2024
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
+[!INCLUDE [hci-arc-vm](../includes/hci-arc-vm.md)]
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) in Azure Local using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM). You must have an Azure Local instance already deployed and VMs installed.
 

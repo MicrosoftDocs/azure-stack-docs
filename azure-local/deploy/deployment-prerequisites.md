@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Review deployment prerequisites for Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article discusses the security, software, hardware, and networking prerequisites, and the deployment checklist in order to deploy Azure Local instance, version 23H2.
 

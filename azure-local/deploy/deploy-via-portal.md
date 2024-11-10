@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Deploy Azure Local, version 23H2 using the Azure portal
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article helps you deploy an Azure Local instance, version 23H2 using the Azure portal.
 

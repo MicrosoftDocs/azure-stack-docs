@@ -14,7 +14,7 @@ ms.service: azure-stack-hci
 
 # Azure verification for VMs on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Local extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 

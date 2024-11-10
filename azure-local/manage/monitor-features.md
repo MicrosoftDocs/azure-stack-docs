@@ -11,7 +11,7 @@ ms.date: 10/10/2024
 
 # Monitor Azure Local features with Insights
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Insights to monitor key Azure Local features, such as Resilient File System (ReFS) deduplication and compression.
 

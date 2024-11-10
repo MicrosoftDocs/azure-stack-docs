@@ -12,7 +12,7 @@ ms.service: azure-stack-hci
 
 # Install and enable Network ATC on Azure Local, version 22H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides information on how to install and enable Network ATC on an existing Azure Local instance running version 22H2. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
 

@@ -13,7 +13,7 @@ ms.author: alkohli
 
 Windows Admin Center can be used to create and manage your virtual machines (VMs) on Azure Local.
 
-[!INCLUDE [hci-arc-vm-wac](../../hci/includes/hci-arc-vm-windows-admin-center.md)]
+[!INCLUDE [hci-arc-vm-wac](../includes/hci-arc-vm-windows-admin-center.md)]
 
 ## Create a new VM
 

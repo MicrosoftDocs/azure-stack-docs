@@ -10,7 +10,7 @@ ms.date: 11/08/2024
 
 # Get remote support for Azure Local
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides guidance on how to get remote support for your Azure Stack HCI Operating System for Azure Local.
 

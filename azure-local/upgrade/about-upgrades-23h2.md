@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # About Azure Local upgrades
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides an overview of upgrading Azure Local, version 22H2 to version 23H2.
 

@@ -11,7 +11,7 @@ ms.date: 10/17/2024
 
 # System requirements for Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
 

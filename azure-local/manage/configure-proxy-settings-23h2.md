@@ -9,7 +9,7 @@ ms.date: 10/17/2024
 
 # Configure proxy settings for Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to configure proxy settings for Azure Local, version 23H2 cloud deployment if your network uses a proxy server for internet access.
 

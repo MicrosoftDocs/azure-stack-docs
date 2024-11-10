@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Perform post operating system upgrade steps on Azure Local via PowerShell
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the Azure Local instance.
 

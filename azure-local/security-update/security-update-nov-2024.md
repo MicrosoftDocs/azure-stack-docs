@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # November OS security update (KB) for Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the OS security update for Azure Local, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1246.
 

@@ -12,7 +12,7 @@ ms.service: azure-stack-hci
 
 # Install solution upgrade on Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to install the solution upgrade on your Azure Local instance after the operating system (OS) was upgraded from version 22H2 to version 23H2.
 

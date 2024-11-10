@@ -9,7 +9,7 @@ ms.date: 10/08/2024
 
 # Get support for Azure Local
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 This topic provides guidance on how to get support for the Azure Stack HCI Operating System. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
 

@@ -16,7 +16,7 @@ This article describes how to set up an Azure Arc Gateway for existing deploymen
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. You can enable the Arc gateway for new deployments or for existing deployments. 
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -74,7 +74,7 @@ Next step is to verify that the setup was successful.
 
 ## Step 4: Verify that setup succeeded
 
-[!INCLUDE [hci-gateway-verify-setup-successful](../../hci/includes/hci-gateway-verify-setup-successful.md)]
+[!INCLUDE [hci-gateway-verify-setup-successful](../includes/hci-gateway-verify-setup-successful.md)]
 
 ## Troubleshooting  
 

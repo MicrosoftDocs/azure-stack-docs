@@ -11,7 +11,7 @@ ms.custom: devx-track-azurepowershell
 
 # Custom Active Directory configuration for your Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the permissions and the DNS records required for the Azure Local, version 23H2 deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
 

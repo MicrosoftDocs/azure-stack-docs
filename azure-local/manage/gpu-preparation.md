@@ -10,7 +10,7 @@ ms.service: azure-stack-hci
 
 # Prepare GPUs for Azure Local (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to prepare graphical processing units (GPUs) on your Azure Local for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 

@@ -10,7 +10,7 @@ ms.service: azure-stack-hci
 
 # Azure Local observability
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes observability in Azure Local and the data sources through which it is achieved.
 

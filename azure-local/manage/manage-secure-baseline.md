@@ -10,7 +10,7 @@ ms.date: 11/07/2024
 
 # Manage security defaults for Azure Local, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage default security settings for your Azure Local instance. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 

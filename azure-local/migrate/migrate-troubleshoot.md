@@ -11,11 +11,11 @@ ms.custom: linux-related-content
 
 # Troubleshoot issues migrating Hyper-V VMs to Azure Local via Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V VMs to your Azure Local using Azure Migrate.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Check if required services are running
 

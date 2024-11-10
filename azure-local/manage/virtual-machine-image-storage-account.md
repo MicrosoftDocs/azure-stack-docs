@@ -12,7 +12,7 @@ ms.date: 11/07/2024
 
 # Create Azure Local VM image using image in Azure Storage account
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
@@ -23,7 +23,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-image-prerequisites-storage-account](../../hci/includes/hci-vm-image-prerequisites-storage-account.md)]
+[!INCLUDE [hci-vm-image-prerequisites-storage-account](../includes/hci-vm-image-prerequisites-storage-account.md)]
 
 - If using a client to connect to your Azure Local instance, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
@@ -32,7 +32,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-image-prerequisites-storage-account](../../hci/includes/hci-vm-image-prerequisites-storage-account.md)]
+[!INCLUDE [hci-vm-image-prerequisites-storage-account](../includes/hci-vm-image-prerequisites-storage-account.md)]
 
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
@@ -49,7 +49,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set some parameters
 
@@ -218,12 +218,12 @@ You need to view the list of VM images to choose an image to manage.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-list-vm-image-azure-cli](../../hci/includes/hci-list-vm-image-azure-cli.md)]
+[!INCLUDE [hci-list-vm-image-azure-cli](../includes/hci-list-vm-image-azure-cli.md)]
 
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-list-vm-image-portal](../../hci/includes/hci-list-vm-image-portal.md)]
+[!INCLUDE [hci-list-vm-image-portal](../includes/hci-list-vm-image-portal.md)]
 
 ---
 
@@ -233,11 +233,11 @@ You might want to view the properties of VM images before you use the image to c
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-view-vm-image-properties-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-view-vm-image-properties-portal](../../hci/includes/hci-view-vm-image-properties-portal.md)]
+[!INCLUDE [hci-view-vm-image-properties-portal](../includes/hci-view-vm-image-properties-portal.md)]
 
 ---
 
@@ -248,11 +248,11 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-delete-vm-image-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-delete-vm-image-portal](../../hci/includes/hci-delete-vm-image-portal.md)]
+[!INCLUDE [hci-delete-vm-image-portal](../includes/hci-delete-vm-image-portal.md)]
 
 ---
 

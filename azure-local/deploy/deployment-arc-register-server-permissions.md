@@ -11,7 +11,7 @@ ms.custom: devx-track-azurepowershell
 
 # Register your machines and assign permissions for Azure Local, version 23H2 deployment
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local, version 23H2.
 

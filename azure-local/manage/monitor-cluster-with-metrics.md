@@ -11,7 +11,7 @@ ms.date: 10/15/2024
 
 # Monitor Azure Local with Azure Monitor Metrics
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to monitor your Azure Local system with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Local.
 

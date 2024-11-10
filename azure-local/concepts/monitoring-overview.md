@@ -9,7 +9,7 @@ ms.date: 10/09/2024
 
 # What is Azure Local monitoring?
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of Azure Local monitoring.
 

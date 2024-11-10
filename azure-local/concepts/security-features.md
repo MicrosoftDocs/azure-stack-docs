@@ -10,7 +10,7 @@ ms.date: 04/30/2024
 
 # Security features for Azure Stack HCI, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 

@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Overview of Azure Migrate based VMware migration for Azure Local (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of how to migrate VMware virtual machines (VMs) to your Azure Local instance using Azure Migrate.
 
@@ -18,7 +18,7 @@ Azure Migrate is a central hub for tools to discover, assess, and migrate on-pre
 
 For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Benefits
 

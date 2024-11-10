@@ -10,7 +10,7 @@ ms.date: 11/06/2024
 
 # Azure Arc VM management prerequisites
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article lists the requirements and prerequisites for Azure Arc VM management on Azure Local. We recommend that you review the requirements and complete the prerequisites before you manage your Arc VMs.
 

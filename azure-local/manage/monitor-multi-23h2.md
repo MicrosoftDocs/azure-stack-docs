@@ -11,7 +11,7 @@ ms.date: 10/10/2024
 
 # Monitor multiple Azure Local, version 23H2 systems with Insights
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article explains how to use Insights to monitor multiple Azure Local systems. For a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-single-23h2.md).
 

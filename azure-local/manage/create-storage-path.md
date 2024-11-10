@@ -10,7 +10,7 @@ ms.date: 10/24/2024
 
 # Create storage path for Azure Local 
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create storage path for VM images used on your Azure Local instance. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your system. You can create a storage path using the Azure CLI.
 
@@ -69,7 +69,7 @@ Follow these steps on one of the machines of your Azure Local instance to create
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set parameters
 

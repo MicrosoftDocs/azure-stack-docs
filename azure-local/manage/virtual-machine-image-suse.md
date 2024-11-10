@@ -13,7 +13,7 @@ ms.date: 11/06/2024
 
 # Prepare SUSE Linux image for Azure Local virtual machines (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Local. You use Azure CLI for the VM image creation.
 
@@ -81,7 +81,7 @@ Now, you're ready to create your VM image.
 
 ## Step 2: Create a SUSE VM image
 
-[!INCLUDE [hci-create-a-vm-image](../../hci/includes/hci-create-a-vm-image.md)]
+[!INCLUDE [hci-create-a-vm-image](../includes/hci-create-a-vm-image.md)]
 
 ## Related content
 

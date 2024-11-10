@@ -10,13 +10,13 @@ ms.date: 02/23/2024
 
 # Protect VM workloads with Azure Site Recovery on Azure Local (preview)
 
-[!INCLUDE [hci-applies-to-22h2-later](../../hci/includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-22h2-later](../includes/hci-applies-to-22h2-later.md)]
 
 This guide describes how to protect Windows and Linux VM workloads running on your Azure Local if there's a disaster. You can use Azure Site Recovery to replicate your on-premises Azure Local virtual machines (VMs) into Azure and protect your business critical workloads.
 
 This feature is enabled on Azure Local running the May 2023 cumulative update of version 22H2 and later.
 
-[!INCLUDE [hci-preview](../../hci/includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Azure Site Recovery with Azure Local
 

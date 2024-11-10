@@ -13,7 +13,7 @@ ms.date: 10/22/2024
 
 # Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local, version 23H2. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Local marketplace or an image in Azure Marketplace.
 

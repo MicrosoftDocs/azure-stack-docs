@@ -12,7 +12,7 @@ ms.date: 10/08/2024
 
 # Suspend and resume Azure Local machines for maintenance
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to suspend an Azure Local machine for planned maintenance, such as powering off the machine to replace non-hot-pluggable components. It also provides instructions on how to resume the machine once maintenance is complete. 
 

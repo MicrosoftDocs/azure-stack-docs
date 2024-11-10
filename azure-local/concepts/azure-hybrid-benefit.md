@@ -11,7 +11,7 @@ ms.date: 11/08/2024
 
 # Azure Hybrid Benefit for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Local.
 

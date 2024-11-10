@@ -10,7 +10,7 @@ ms.date: 02/26/2024
 
 # Respond to Azure Local health alerts using Azure Monitor alerts
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Local health alerts.
 

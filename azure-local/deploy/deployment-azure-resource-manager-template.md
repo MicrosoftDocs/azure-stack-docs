@@ -12,7 +12,7 @@ ms.custom: devx-track-arm-template
 
 # Deploy Azure Local, version 23H2 via Azure Resource Manager deployment template
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 

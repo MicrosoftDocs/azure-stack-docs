@@ -9,7 +9,7 @@ ms.date: 10/31/2024
 
 # Add a node on Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage capacity by adding a node (often called scale-out) to your Azure Local instance. In this article, each server is referred to as a node.
 
@@ -66,7 +66,7 @@ However, the default resiliency settings are updated at the storage pool level a
 
 When adding a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the system.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server.md)]
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ Make sure to complete the following prerequisites:
 
 Make sure to complete the following prerequisites:
 
-[!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
+[!INCLUDE [hci-prerequisites-add-repair-server](../includes/hci-prerequisites-add-repair-server.md)]
 
 ## Add a node
 
@@ -139,7 +139,7 @@ On a node that already exists on your system, follow these steps:
 
 To monitor the progress of the add node operation, follow these steps:
 
-[!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
+[!INCLUDE [hci-monitor-add-repair-server](../includes/hci-monitor-add-repair-server.md)]
 
 The newly added node shows in the Azure portal in your Azure Local instance list after several hours. To force the node to show up in Azure portal, run the following command:
 

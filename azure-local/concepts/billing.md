@@ -10,7 +10,7 @@ ms.date: 11/01/2024
 
 # Azure Local billing and payment
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 Azure Local is an Azure service that goes on your Azure subscription bill just like any other Azure service. It's priced on a per core basis on your on-premises servers. For current pricing, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/). Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
 

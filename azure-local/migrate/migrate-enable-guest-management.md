@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Enable guest management for migrated VMs (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Local, version 23H2.
 
@@ -18,7 +18,7 @@ For more information on other scenarios, see [Manage Arc VMs on Azure Local](../
 
 The output properties may vary depending on whether VMs were migrated or not.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 

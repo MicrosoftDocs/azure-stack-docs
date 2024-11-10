@@ -10,11 +10,11 @@ ms.reviewer: alkohli
 
 # About options to migrate VM workloads to Azure Local (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of some of the common options available for migrating virtual machine (VM) workloads to your Azure Local instance.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 
 ## Migration options

@@ -9,7 +9,7 @@ ms.date: 11/08/2024
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes the Resilient File System (ReFS) deduplication and compression feature and how to use this feature in Azure Local to optimize storage.
 

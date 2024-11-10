@@ -9,7 +9,7 @@ ms.date: 10/31/2024
 
 # Repair a node on Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a node on your Azure Local instance. In this article, each server is referred to as a node.
 
@@ -56,7 +56,7 @@ The other workload volumes that you created after the deployment are still retai
 
 When repairing a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the system.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../../hci/includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server.md)]
 
 ### Node replacement
 
@@ -96,7 +96,7 @@ The actual replacement steps for non hot-swappable components vary based on your
 
 Before you repair a node, you must ensure that:
 
-[!INCLUDE [hci-prerequisites-add-repair-server](../../hci/includes/hci-prerequisites-add-repair-server.md)]
+[!INCLUDE [hci-prerequisites-add-repair-server](../includes/hci-prerequisites-add-repair-server.md)]
 - If needed, take the node that you have identified for repair offline. Follow the steps here:
 
   1. [Verify the node is healthy prior to taking it offline](maintain-servers.md#verify-its-safe-to-take-the-server-offline-1).
@@ -157,7 +157,7 @@ Follow these steps on another node that is a member of the same Azure Local inst
 
 To monitor the progress of the add node operation, follow these steps:
 
-[!INCLUDE [hci-monitor-add-repair-server](../../hci/includes/hci-monitor-add-repair-server.md)]
+[!INCLUDE [hci-monitor-add-repair-server](../includes/hci-monitor-add-repair-server.md)]
 
 ### Recovery scenarios
 

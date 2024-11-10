@@ -11,7 +11,7 @@ ms.date: 10/15/2024
 
 # Set up log alerts for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to set up log alerts for Azure Local systems: using Insights for Azure Local and using pre-existing sample log queries, such as average node CPU, available memory, available volume capacity, and more.
 

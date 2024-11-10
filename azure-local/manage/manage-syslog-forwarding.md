@@ -10,7 +10,7 @@ ms.date: 11/07/2024
 
 # Manage syslog forwarding for Azure Local
 
-[!Include [Applies to: Azure Stack HCI, version 23H2](../../hci/includes/hci-applies-to-23h2.md)]
+[!Include [Applies to: Azure Stack HCI, version 23H2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local, version 23H2.
 

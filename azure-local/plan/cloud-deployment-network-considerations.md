@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Network considerations for cloud deployments of Azure Local, version 23H2
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article discusses how to design and plan an Azure Local, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
 

@@ -10,7 +10,7 @@ ms.date: 10/22/2024
 
 # What's new in Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 

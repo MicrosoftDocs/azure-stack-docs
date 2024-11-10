@@ -10,7 +10,7 @@ ms.reviewer: anirbanpaul
 
 # Deploy SDN using Windows Admin Center for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Local, version 23H2 via the Azure portal.
 
@@ -49,7 +49,7 @@ The following requirements must be met for a successful SDN deployment:
 
 ## Download the VHDX file
 
-[!INCLUDE [download-vhdx](../../hci/includes/hci-download-vhdx.md)]
+[!INCLUDE [download-vhdx](../includes/hci-download-vhdx.md)]
 
 ## Deploy SDN Network Controller
 

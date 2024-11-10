@@ -9,7 +9,7 @@ ms.date: 10/17/2024
 
 # Deploy SQL Server on Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This topic provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
 

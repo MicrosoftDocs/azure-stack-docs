@@ -11,7 +11,7 @@ ms.date: 10/17/2024
 
 # Review single-server storage reference pattern components for Azure Local
 
-[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes which network components are deployed for the single-server reference pattern, as shown in the following diagram:
 

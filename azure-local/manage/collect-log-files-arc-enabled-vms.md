@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Collect log files for Azure Arc VMs on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) on your Azure Local instance.
 

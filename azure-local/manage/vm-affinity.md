@@ -11,11 +11,11 @@ ms.service: azure-stack-hci
 
 # Create machine and site affinity rules for VMs
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 Using either Windows Admin Center or Windows PowerShell, you can easily create affinity and anti-affinity rules for virtual machines (VMs) in your Azure Local instance.
 
-[!INCLUDE [hci-arc-vm](../../hci/includes/hci-arc-vm.md)]
+[!INCLUDE [hci-arc-vm](../includes/hci-arc-vm.md)]
 
 Affinity is a rule that establishes a relationship between two or more resource groups or roles, such as VMs, to keep them together on the same machine, system, or site. Anti-affinity is the opposite in that it's used to keep the specified VMs or resource groups apart from each other, such as two domain controllers placed on separate machines, or in separate sites for disaster recovery.
 

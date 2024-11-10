@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Troubleshoot Azure Local upgrade
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to identify and troubleshoot common Azure Local upgrade issues.
 

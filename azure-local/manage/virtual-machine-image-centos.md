@@ -14,7 +14,7 @@ ms.date: 11/06/2024
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that's reached end-of-life (EOL). Consider your use of CentOS and plan accordingly. For more information, see [CentOS end-of-life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to prepare a CentOS Linux image to create a virtual machine (VM) on your Azure Local. You use the Azure CLI for the VM image creation.
 
@@ -172,7 +172,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ### Step 5: Create a VM image
 
-[!INCLUDE [hci-create-a-vm-image](../../hci/includes/hci-create-a-vm-image.md)]
+[!INCLUDE [hci-create-a-vm-image](../includes/hci-create-a-vm-image.md)]
 
 ## Related content
 

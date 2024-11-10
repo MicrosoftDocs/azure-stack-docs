@@ -11,7 +11,7 @@ ms.date: 09/12/2024
 
 # Enable Insights for Azure Local at scale using Azure policies
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This document describes how to enable Insights for Azure Local systems at scale using Azure policies. To enable Insights for a single Azure Local system, see [Monitor a single Azure Local system with Insights](./monitor-hci-single-23H2.md#enable-insights).
 

@@ -10,7 +10,7 @@ ms.date: 10/15/2024
 
 # Enable recommended alert rules for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable recommended alert rules for Azure Local.
 

@@ -10,7 +10,7 @@ ms.date: 10/24/2024
 
 # Manage resources for Arc VMs on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virtual machine (VM) running on your Azure Local instance.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
 

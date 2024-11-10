@@ -11,7 +11,7 @@ ms.date: 10/24/2024
 
 # What is Azure Arc VM management?
 
-[!INCLUDE [hci-applies-to-23h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article provides a brief overview of the Azure Arc VM management feature on Azure Local including the benefits, its components, and high-level workflow.  
 

@@ -9,7 +9,7 @@ ms.date: 11/06/2024
 
 # Technical reference for Software Defined Networking in Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 This technical reference provides comprehensive learning resources to enhance your understanding of Software Defined Networking (SDN) in Azure Local.
 

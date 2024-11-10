@@ -10,9 +10,9 @@ ms.reviewer: shsathee
 
 # Create an Azure Local instance using Windows Admin Center
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
-[!INCLUDE [warning-22h2](../../hci/includes/hci-warning-deploy-22h2.md)]
+[!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
 Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Local instance that uses Storage Spaces Direct, and, optionally, Software Defined Networking. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Local instance using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 

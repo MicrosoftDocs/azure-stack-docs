@@ -13,7 +13,7 @@ zone_pivot_groups: windows-os
 
 :::zone pivot="azure-stack-hci"
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 Deployment and operation of Azure Local networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across Azure Local machines is important as it leads to a more reliable experience. Network ATC is the complete product name and not an acronym.
 

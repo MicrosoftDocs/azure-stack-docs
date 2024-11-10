@@ -11,7 +11,7 @@ ms.date: 10/17/2024
 
 # Review two-node storage switched, fully converged deployment network reference pattern for Azure Local
 
-[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Local solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local in their datacenters.
 

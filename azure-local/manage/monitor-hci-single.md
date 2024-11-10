@@ -12,7 +12,7 @@ ms.date: 11/06/2023
 
 # Monitor a single Azure Stack HCI cluster with Insights
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 This article explains how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
 

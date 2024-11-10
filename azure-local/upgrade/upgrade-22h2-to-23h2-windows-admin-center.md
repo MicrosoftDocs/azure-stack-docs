@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admin Center
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to upgrade the operating system (OS) version 22H2 to version 23H2 on your Azure Local via the Windows Admin Center.
 

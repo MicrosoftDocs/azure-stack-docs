@@ -9,7 +9,7 @@ ms.author: dacuo
 
 # Host network requirements for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between machines, see [Physical network requirements](physical-network-requirements.md).
 

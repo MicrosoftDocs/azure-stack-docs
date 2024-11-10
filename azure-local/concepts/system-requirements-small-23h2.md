@@ -11,11 +11,11 @@ ms.date: 11/07/2024
 
 # System requirements for Small Form Factor deployment of Azure Local, version 23H2 (preview)
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the small hardware class
 

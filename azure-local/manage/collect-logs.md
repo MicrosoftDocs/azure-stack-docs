@@ -10,11 +10,11 @@ ms.date: 11/08/2024
 
 # Collect diagnostic logs for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with Azure Local.
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 

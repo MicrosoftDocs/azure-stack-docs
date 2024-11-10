@@ -11,7 +11,7 @@ ms.date: 10/17/2024
 
 # Network reference patterns overview for Azure Local
 
-[!INCLUDE [includes](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
 

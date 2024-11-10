@@ -10,7 +10,7 @@ ms.service: azure-stack-hci
 
 # Manage system security with Microsoft Defender for Cloud (preview)
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article discusses how to use Microsoft Defender for Cloud to protect Azure Local from various cyber threats and vulnerabilities.
 
@@ -18,7 +18,7 @@ Defender for Cloud helps improve the security posture of Azure Local, and can pr
 
 For more information about Microsoft Defender for Cloud, see [Microsoft Defender for Cloud documentation](/azure/defender-for-cloud/).
 
-[!INCLUDE [important](../../hci/includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 

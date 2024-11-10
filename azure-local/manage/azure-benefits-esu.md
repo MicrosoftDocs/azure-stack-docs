@@ -12,7 +12,7 @@ ms.service: azure-stack-hci
 
 # Free Extended Security Updates (ESU) through Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Local comes with additional benefits and implementation steps. This article explains the specifics for Azure Local.
 

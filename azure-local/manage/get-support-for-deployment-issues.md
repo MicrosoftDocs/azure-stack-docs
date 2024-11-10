@@ -10,7 +10,7 @@ ms.date: 11/08/2024
 
 # Get support for Azure Local deployment issues
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to get Microsoft support for Azure Local deployment issues, including log collection and remote support.
 

@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # View known issues in Azure Stack HCI 2311 release (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2311 release.
 
@@ -19,7 +19,7 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md#features-and-improvements-in-2311).
 
-[!INCLUDE [important](../hci/includes/hci-preview.md)]
+[!INCLUDE [important](./includes/hci-preview.md)]
 
 ## Issues for version 2311
 

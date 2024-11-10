@@ -13,7 +13,7 @@ ms.date: 10/21/2024
 
 # Solution Builder Extension updates for your Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of the Solution Builder Extension updates and explains how to identify and install them on your Azure Local, version 23H2 systems. Additionally, it offers insights into the extension’s advanced capabilities.
 

@@ -9,7 +9,7 @@ ms.date: 10/21/2024
 
 # Review update phases of Azure Local, version 23H2
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes the various phases of solution updates that are applied to your Azure Local to keep it up-to-date. This information is applicable to Azure Local, version 23H2.
 

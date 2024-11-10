@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # View known issues in Azure Stack HCI 2402.2 release
 
-[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.2 release.
 

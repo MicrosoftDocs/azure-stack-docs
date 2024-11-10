@@ -11,7 +11,7 @@ ms.date: 11/06/2024
 
 # Create Azure Local VM image using existing Arc VMs
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Local using existing Arc VMs via the Azure CLI. The operating system (OS) disk of the Arc VM is used to create a gallery image on your Azure Local.
 
@@ -32,7 +32,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../../hci/includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set some parameters
 
@@ -144,20 +144,20 @@ Here's a sample output:
 
 You need to view the list of VM images to choose an image to manage.
 
-[!INCLUDE [hci-list-vm-image-azure-cli](../../hci/includes/hci-list-vm-image-azure-cli.md)]
+[!INCLUDE [hci-list-vm-image-azure-cli](../includes/hci-list-vm-image-azure-cli.md)]
 
 ## View VM image properties
 
 You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-view-vm-image-properties-azure-cli.md)]
 
 
 ## Delete VM image
 
 You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../hci/includes/hci-delete-vm-image-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../includes/hci-delete-vm-image-azure-cli.md)]
 
 ## Next steps
 
