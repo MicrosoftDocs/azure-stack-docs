@@ -1530,5 +1530,115 @@
         "redirect_url": "/azure/azure-local/upgrade/validate-solution-upgrade-readiness", 
         "redirect_document_id": false
       },
+      {
+        "source_path": "azure-stack/hci/manage/network-atc-faq.md",
+        "redirect_url": "/azure-local/whats-new?tabs=2405releases",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/deploy/download-azure-stack-hci-23h2-software.md",
+        "redirect_url": "/azure-local/deploy/download-23h2-software",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/create-virtual-networks.md",
+        "redirect_url": "/azure-local/manage/create-logical-networks",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/bitlocker-on-csv.md",
+        "redirect_url": "/azure-local/manage/manage-bitlocker",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/manage-virtual-machines-in-azure-portal.md",
+        "redirect_url": "/azure-local/manage/create-arc-virtual-machines",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/monitor-hci-single-23h2.md",
+        "redirect_url": "/azure-local/manage/monitor-single-23h2",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/preview-channel.md",
+        "redirect_url": "/azure-local/deploy/download-azure-stack-hci-23h2-software",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/deploy/deployment-checklist.md",
+        "redirect_url": "/azure-local/deploy/deployment-prerequisites",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/deploy/tutorial-private-forest.md",
+        "redirect_url": "/azure-local/",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/concepts/other-security-features.md",
+        "redirect_url": "/azure-local/concepts/security-features",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/azure-arc-vm-management-networking.md",
+        "redirect_url": "/azure-local/manage/azure-arc-vm-management-overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/deploy/migrate-cluster-same-hardware.md",
+        "redirect_url": "/azure-local/migrate/migrate-cluster-same-hardware",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/deploy/migrate-cluster-new-hardware.md",
+        "redirect_url": "/azure-local/migrate/migrate-cluster-new-hardware",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/whats-new-in-hci-22h2.md",
+        "redirect_url": "/azure-local/whats-new?tabs=2408releases",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/concepts/secure-baseline.md",
+        "redirect_url": "/azure-local/manage/manage-secure-baseline",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/concepts/security-bitlocker.md",
+        "redirect_url": "/azure-local/manage/manage-bitlocker",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/concepts/security-windows-defender-application-control.md",
+        "redirect_url": "/azure-local/manage/manage-wdac",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/processor-compatibility-mode.md",
+        "redirect_url": "/windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md",
+        "redirect_url": "/azure-local/upgrade/troubleshoot-upgrade-to-23h2",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/manage/monitor-hci-multi-azure-policies.md",
+        "redirect_url": "/azure-local/manage/monitor-multi-azure-policies",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/known-issues-2310.md",
+        "redirect_url": "/azure-local/known-issues-2311",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-stack/hci/concepts/azure-hybrid-benefit-hci.md",
+        "redirect_url": "/azure-local/concepts/azure-hybrid-benefit",
+        "redirect_document_id": false
+      }
     ]
   }
