@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/08/2024
+ms.date: 11/11/2024
 ---
 
 # Use the dashboard to manage Azure Local (preview)
