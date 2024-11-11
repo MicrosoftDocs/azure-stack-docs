@@ -9,7 +9,7 @@ ms.date: 01/09/2024
 
 # Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local
 
-[!INCLUDE [applies-to](../azure-stack/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../azure-local/includes/hci-applies-to-22h2.md)]
 
 This article describes the architecture for deploying a Kubernetes cluster on a two-node Azure Local cluster. The article describes various failure scenarios that can occur, their impact on the cluster, and recoverability from these failure scenarios.
 
