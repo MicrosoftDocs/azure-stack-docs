@@ -38,7 +38,7 @@ Microsoft is not aware of any fixed issues in this release.
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Feature <!--ADO--> | Describe the issue in couple of sentences. |Document steps to work around this issue if any.|-->
+| Feature ADO | Describe the issue in couple of sentences. |Document steps to work around this issue if any.|-->
 
 
 ## Known issues in this release
@@ -47,7 +47,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the opreation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
+| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 
 
 
