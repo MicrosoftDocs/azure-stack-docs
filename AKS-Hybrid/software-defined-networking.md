@@ -177,7 +177,6 @@ Next, you can [create workload clusters][] and [deploy your applications][]. All
 [Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
 [SDN Express]: /azure-stack/hci/manage/sdn-express
 [Windows Admin Center]: /azure-stack/hci/deploy/sdn-wizard
-[Software Load Balancer.psd1]: https://github.com/microsoft/SDN/blob/master/SDNExpress/scripts/Sample%20-%20Software%20Load%20Balancer.psd1
 [Troubleshooting SDN]: /windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking
 [how to create and attach VMs to an SDN virtual network]: /azure-stack/hci/manage/vm
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
