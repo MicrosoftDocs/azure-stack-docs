@@ -2,7 +2,7 @@
 title: Use quotas in Azure Managed Lustre file systems
 description: Learn how to set and configure quotas for Azure Managed Lustre file systems. 
 ms.topic: how-to
-ms.date: 11/05/2024
+ms.date: 11/11/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: blepore
