@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/31/2024
+ms.date: 11/11/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -156,8 +156,8 @@ To access known issues for a different version, use the version selector dropdow
 ### Outbound ICMP to internet is blocked by default for tenant VM
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: The issue is caused by a change in default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior as well as Azure behavior.
-- Remediation: You can add inbound NSG rule to allow outbound ICMP packet to internet. Microsoft is aware of the issue and is working on a fix in future builds. 
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue. 
 - Occurrence: Common.
 
 <!-- ## Alerts -->
