@@ -3,7 +3,7 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI and Windows Server.
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 11/06/2024
 ms.author: dacuo
 ms.reviewer: jgerend
 zone_pivot_groups: windows-os
@@ -19,10 +19,7 @@ This article guides you through the requirements, best practices, and deployment
 
 :::zone pivot="windows-server"
 
->Applies to: Windows Server 2025 (preview)
-
-> [!IMPORTANT]
-> Network ATC in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+>Applies to: Windows Server 2025
 
 This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Windows Server clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, please see [Network ATC overview](../concepts/network-atc-overview.md).
 

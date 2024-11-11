@@ -6,7 +6,7 @@ ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 10/25/2024
+ms.date: 11/06/2024
 ---
 
 # What is SDN Multisite?
@@ -17,10 +17,7 @@ ms.date: 10/25/2024
 
 :::zone pivot="windows-server"
 
->Applies to: Windows Server 2025 (preview)
-
-> [!IMPORTANT]
-> SDN Multisite in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+>Applies to: Windows Server 2025
 
 ::: zone-end
 
@@ -167,7 +164,7 @@ In SDN Multisite, if there's no VM migration between locations, data packets are
 
 #### Load balancing in SDN Multisite with migrating workload VMs
 
-If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you're trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Local instance. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
+If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you're trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Local instance. As workload VMs move, the configurations on the MUXes aren't global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
 
 :::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken.gif" alt-text="Animation that shows load balancing in an SDN Multisite environment with migrating workloads." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken.gif" :::
 

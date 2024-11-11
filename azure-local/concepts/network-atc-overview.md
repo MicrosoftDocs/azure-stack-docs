@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 10/28/2024
+ms.date: 11/06/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 zone_pivot_groups: windows-os
@@ -21,10 +21,7 @@ Deployment and operation of Azure Local networking can be a complex and error-pr
 
 :::zone pivot="windows-server"
 
->Applies to: Windows Server 2025 (preview)
-
-> [!IMPORTANT]
-> Network ATC in Windows Server 2025 is in PREVIEW. This information relates to a prerelease product that may be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+>Applies to: Windows Server 2025
 
 Deployment and operation of Windows Server cluster networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Network ATC applies a consistency configuration across Windows Server cluster nodes to create a more reliable experience. As Network ATC is designed for Windows Server clusters, it requires Windows Server Datacenter edition and the Failover Clustering feature. Network ATC is the complete product name and not an acronym.
 
