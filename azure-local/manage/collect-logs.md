@@ -1,32 +1,34 @@
 ---
-title: Collect diagnostic logs for Azure Local
-description: How to collect diagnostic logs and share them with Microsoft.
+title: Collect diagnostic logs for Azure Local (preview)
+description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/08/2024
+ms.date: 11/11/2024
 ---
 
-# Collect diagnostic logs for Azure Local
+# Collect diagnostic logs for Azure Local (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with Azure Local.
+This article describes how to collect diagnostic logs for Azure Local and send them to Microsoft via the Azure portal or PowerShell. These diagnostic logs help identify and fix any issues with your Azure Local solution.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within Azure Local. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+## About on-demand log collection
+
+On-demand log collection refers to the process of manually gathering and sending diagnostic logs to Microsoft. These logs are stored in the Kusto database, where Microsoft Support can access them to help resolve your reported issues. The collected diagnostic data is retained for up to 30 days and is managed according to Microsoft’s [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
 You can perform on-demand log collection in the following scenarios:
 
-- Microsoft Support requests for logs based on an open case.
-- Logs are collected when a system is connected and registered.
-- Logs are collected when the Observability components are operational and installed.
-- Logs are collected when a system is only partly registered.
-- Logs are collected for issues not related to registration failures.
+- When Microsoft Support requests logs for an open case.
+- When a system is connected and registered.
+- When observability components are operational and installed.
+- When a system is only partially registered.
+- For issues unrelated to registration failures.
 
 To explore additional log collection methods in Azure Local and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
@@ -34,19 +36,52 @@ To explore additional log collection methods in Azure Local and understand when 
 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
-- You must have access to Azure Local.
-- You must have access to Azure.
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have access to an Azure Local instance that is deployed and registered.
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
 
 You can perform on-demand log collection using any of the following methods:
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Local instance to perform on-demand log collection.
+- **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the system level.
 
 - **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
-- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Local environment.
+Keep in mind the following information before you start log collection:
+
+- The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
+- Log collections longer than 24 hours aren't supported.
+- Attempting multiple log collections simultaneously will result in a failure.
+
+### [Azure portal (recommended)](#tab/azureportal)
+
+Follow these steps to collect diagnostic logs for your Azure Local instance via the Azure portal:
+
+1. In [the Azure portal](https://portal.azure.com/), go to the Azure Local instance resource.
+
+1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
+
+1. To collect and send logs now, select **Send logs**.
+
+   :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
+
+1. In the **Send diagnostic logs to Microsoft** pane, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button.
+
+   :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
+
+   You get a notification that it can take up to 30 minutes to collect diagnostic logs.
+
+1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
+
+   :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
+
+## [PowerShell](#tab/powershell)
+
+To use PowerShell for log collection, run the `Send-DiagnosticData` cmdlet from any node within the Azure Local instance. This cmdlet temporarily copies the logs locally. The copied logs are parsed, sent to Microsoft, and then deleted from your system.
+
+Here are some important points to consider when collecting logs using PowerShell:
+
+- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, the time duration specified, and the number of nodes in your Azure Local environment.
 - If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
 
 Here's the syntax of `Send-DiagnosticData`:
@@ -78,7 +113,7 @@ FromDate in UTC is now 12/04/2023 19:14:18. ToDate in UTC is now 12/04/2023 21:1
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/<cluster-name>
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/<cluster-name>
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/<v-host-name>
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -109,7 +144,7 @@ FromDate in UTC is now 12/04/2023 20:41:21. ToDate in UTC is now 12/04/2023 21:4
 The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
-AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureLocal/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
 AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/v-Host1
 CorrelationId: <Correlation-ID>
 Observability Agent is running.
@@ -184,7 +219,7 @@ Follow these steps to save logs to a local share:
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
 
-1. Run the following command on each machine of the system to collect logs and save them locally:
+1. Run the following command on each node of the system to collect logs and save them locally:
 
    ```powershell
    Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
@@ -192,32 +227,9 @@ Follow these steps to save logs to a local share:
 
    If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
 
-```powershell
-Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
-```
-
-## Provide required information in a support case
-
-If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
-
-You can obtain this information from either the output of the `Send-DiagnosticData` cmdlet or directly from the problematic page in the Azure portal.
-
-### Provide information from the `Send-DiagnosticData` output
-
-When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you need to share with Microsoft Support. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
-
-When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
-
-- `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of system>`.
-- `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
-- `CorrelationId`: A unique identifier to locate the logs.
-
-### Provide information from the Azure portal page where issue occurs
-
-On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
-
-If you're on any of the Azure Local blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
+   ```powershell
+   Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
+   ```
 
 ## `Send-DiagnosticData` command reference
 
@@ -287,7 +299,7 @@ All
 
 ### BypassObsAgent
 
-When bypassing the observability agent, logs are collected only on the machine where the log collection was initiated. No record of the collection is kept in the history.
+When bypassing the observability agent, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
 
 **Syntax**
 ```powershell
@@ -567,7 +579,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
 | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
 | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
-| ECE | Manages lifecycle workflows, including deployment, update, add-node, and machine replacement. |
+| ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
 | Extension | Data related to Azure managed extensions. |
 | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
 | HCICloudService | An Azure cloud service that provides core functionality for Azure Local. It combines Azure power with the flexibility of on-premises machines. |
@@ -579,21 +591,18 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | ObservabilityLogmanTraces | Collects logs for the observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
 | ObservabilityVolume | Collects logs for the observability volume. |
 | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
-| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local machines, useful for troubleshooting update-related issues. |
+| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Local nodes, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add machine, repair machine, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ---
 
-## Provide the required information in a support case
+## Provide required information in a support case
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 
-1. Connect to Windows Admin Center in the Azure portal. For more information, see [Manage Azure Local using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
-1. In the left pane, under **Extensions**, select **Diagnostics**.
-1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
-1. Select **Send manually**. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
+### [Azure portal](#tab/azureportal)
 
 Follow these steps to provide the required information in the Azure portal:
 
@@ -610,7 +619,7 @@ When you use `Send-DiagnosticData` to collect logs, it also provides key details
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureLocal/clusters/<Name of system>`.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
@@ -618,4 +627,4 @@ When requested, share the following information with Microsoft Support. Get this
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md).
+- [Contact Microsoft Support](get-support.md)
