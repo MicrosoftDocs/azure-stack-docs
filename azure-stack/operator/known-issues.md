@@ -151,6 +151,15 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior as well as Azure behavior.
+- Remediation: You can add inbound NSG rule to allow outbound ICMP packet to internet. Microsoft is aware of the issue and is working on a fix in future builds. 
+- Occurrence: Common.
+
 <!-- ## Alerts -->
 
 ## Portal
