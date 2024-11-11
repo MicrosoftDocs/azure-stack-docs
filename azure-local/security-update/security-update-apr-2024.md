@@ -20,7 +20,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update supports daylight saving time (DST) changes in Palestine. To learn more, see [Interim guidance for DST changes](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-dst-changes-announced-by-palestinian/ba-p/4048966) announced by Palestinian Authority for 2024, 2025.
+- This update supports daylight saving time (DST) changes in Palestinian Authority. To learn more, see [Interim guidance for DST changes](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-dst-changes-announced-by-palestinian/ba-p/4048966) announced by Palestinian Authority for 2024, 2025.
 
 - This update supports DST changes in Kazakhstan. To learn more, see [Interim guidance for Kazakhstan time zone changes 2024](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-kazakhstan-time-zone-changes-2024/ba-p/4048963).  
 

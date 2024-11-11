@@ -1,18 +1,18 @@
 ---
-title: Release notes with fixed and known issues in Azure Local 2408.1 baseline release
-description: Read about the known issues and fixed issues in Azure Local 2408.1 baseline release.
-author: ronmiab
+title: Release notes with fixed and known issues in Azure Local 2411 baseline release
+description: Read about the known issues and fixed issues in Azure Local 2411 baseline release.
+author: alkohli
 ms.topic: conceptual
-ms.date: 11/11/2024
-ms.author: robess
+ms.date: 10/31/2024
+ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Known issues in the Azure Local 2408.1 release
+# Known issues in the Azure Local 2411 release
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../hci/includes/hci-applies-to-23h2.md)]
 
-This article identifies critical known issues and their workarounds in the Azure Local 2408.1 release.
+This article identifies critical known issues and their workarounds in the Azure Local 2411 release.
 
 These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Local instance, carefully review the information contained here.
 
@@ -21,9 +21,9 @@ These release notes are continuously updated, and as critical issues requiring a
 
 For more information about new features in this release, see [What's new in 23H2](whats-new.md).
 
-## Known issues for version 2408.1
+## Known issues for version 2411
 
-This software release maps to software version number **2408.1.9**.
+This software release maps to software version number **2411.0.0**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -32,24 +32,24 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-The following issues are fixed in this release:
+Microsoft is not aware of any fixed issues in this release.
+
+<!--The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM management | The MAC address of the VM network interface wouldn't appear if the customer didn't pass the mac address at the time of creation. ||
-| Update <!--28489253--> | MOC node agent would get stuck in a restart pending stage during the update MOC step. ||
-| Update <!--29075839--> | Required permissions weren't granted when upgrading which caused update to fail later. ||
-| Upgrade <!--29346181--> | Added validation to check for an IPv6 address. ||
-| Update | SBE interfaces wouldn't execute on all the machines if the hostname in the cluster was a subset of another hostname. ||
+| Feature <!--ADO--> | Describe the issue in couple of sentences. |Document steps to work around this issue if any.|-->
+
 
 ## Known issues in this release
 
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------| -->
+|---------|---------|---------|
+| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the opreation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 
-Microsoft isn't aware of any known issues in this release.
+
 
 ## Known issues from previous releases
 
@@ -59,7 +59,6 @@ The following table lists the known issues from previous releases:
 |---------|---------|---------|
 | Repair server <!--29281897--> | After you repair a node and run the command `Set-AzureStackLCMUserPassword`, you may encounter the following error: </br><br>`CloudEngine.Actions.InterfaceInvocationFailedException: Type 'ValidateCredentials' of Role 'SecretRotation' raised an exception: Cannot load encryption certificate. The certificate setting 'CN=DscEncryptionCert' does not represent a valid base-64 encoded certificate, nor does it represent a valid certificate by file, directory, thumbprint, or subject name. at Validate-Credentials` | Follow these steps to mitigate the issue: <br><br> `$NewPassword = <Provide new password as secure string>` <br><br> `$OldPassword = <Provide the old/current password as secure string>` <br><br> `$Identity = <LCM username>` <br><br> `$credential = New-Object -TypeName PSCredential -ArgumentList $Identity, $NewPassword` <br><br> 1. Import the necessary module: <br><br> `Import-Module "C:\Program Files\WindowsPowerShell\Modules\Microsoft.AS.Infra.Security.SecretRotation\PasswordUtilities.psm1" -DisableNameChecking` <br><br> 2. Check the status of the ECE cluster group: <br><br> `$eceClusterGroup = Get-ClusterGroup` \| `Where-Object {$_.Name -eq "Azure Stack HCI Orchestrator Service Cluster Group"}` <br><br> `if ($eceClusterGroup.State -ne "Online") {Write-AzsSecurityError -Message "ECE cluster group is not in an Online state. Cannot continue with password rotation." -ErrRecord $_}` <br><br> 3. Update the ECE with the new password: <br><br> `Write-AzsSecurityVerbose -Message "Updating password in ECE" -Verbose` <br><br> `$eceContainersToUpdate = @("DomainAdmin", "DeploymentDomainAdmin", "SecondaryDomainAdmin", "TemporaryDomainAdmin", "BareMetalAdmin", "FabricAdmin", "SecondaryFabric", "CloudAdmin") <br><br> foreach ($containerName in $eceContainersToUpdate) {Set-ECEServiceSecret -ContainerName $containerName -Credential $credential 3>$null 4>$null} <br><br> Write-AzsSecurityVerbose -Message "Finished updating credentials in ECE." -Verbose` <br><br> 4. Update the password in Active Directory: <br><br>`Set-ADAccountPassword -Identity $Identity -OldPassword $OldPassword -NewPassword $NewPassword`|
 | Arc VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Arc VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the opreation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 | Networking <!--29180461--> | When a node is configured with a proxy server that has capital letters in its address, such as **HTTPS://10.100.000.00:8080**, Arc extensions fail to install or update on the node in existing builds, including version 2408.1. However, the node remains Arc connected. | Follow these steps to mitigate the issue: </br><br> 1. Set the environment values in lowercase. `[System.Environment]::SetEnvironmentVariable("HTTPS_PROXY", "https://10.100.000.00:8080", "Machine")`. </br><br> 2. Validate that the values were set. `[System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine").` </br><br> 3. Restart Arc services. </br><br> `Restart-Service himds` </br><br> `Restart-Service ExtensionService` </br><br> `Restart-Service GCArcService` </br><br> 4. Signal the AzcmaAgent with the lowercase proxy information. </br><br> `& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config set proxy.url https://10.100.000.00:8080` </br><br>`& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' config list` |
 | Networking <!--29229789--> | When Arc machines go down, the "**All Clusters**" page, in the new portal experience shows a "**PartiallyConnected**" or "**Not Connected Recently** status. Even when the Arc machines become healthy, they may not show a "**Connected**" status. | There's no known workaround for this issue. To check the connectivity status, use the old experience to see if it shows as "**Connected**". |
 | Security <!--29333930--> | The SideChannelMitigation security feature may not show an enabled state even if it's enabled. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
