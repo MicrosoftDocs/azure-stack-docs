@@ -41,7 +41,14 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: If you have more than 8 node stamps, it's advised that you delay your updates if possible, until a hotfix/inline fix is released.
 - Occurrence: Common.
 
-<!-- ## Networking -->
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue. 
+- Occurrence: Common.
 
 ## Compute
 
