@@ -276,7 +276,7 @@ $yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE
 $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
 ```
 
-## Step 4 Deploy your application
+## Step 4: Deploy your application
 
 When you deploy your application pods, the manifest should reference the service account created in the **Create Kubernetes service account** step. The following manifest shows how to reference the account, specifically the `metadata\namespace` and `spec\serviceAccountName` properties. Make sure to specify an image for `image` and a container name
 for `containerName`:
@@ -314,6 +314,6 @@ $yaml | kubectl apply -f -
 ## Next steps
 
 In this article, you deployed a Kubernetes cluster and configured it to use a workload identity in preparation for application workloads to
-authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity](/azure/active-directory/develop/reference-v2-libraries) client library.
+authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
 
 - [Deploy and configure an AKS cluster with workload identity](/azure/aks/workload-identity-deploy-cluster)
