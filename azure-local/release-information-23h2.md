@@ -26,6 +26,8 @@ The Azure Local, version 23H2 includes multiple release trains: 2311, 2402, 2405
 
 - **Cumulative build**: An cumulative update build includes the incremental updates from the most recent feature build.
 
+- **Baseline release**: A version that is available to be installed direclty as part of a fresh deployment.  Starting with 2408.0, every release (both feature and cumulative builds) is a baseline release.
+
 The following diagram illustrates the release trains, their associated feature builds, and update paths.
 
 :::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local, version 23H2 release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
@@ -34,7 +36,7 @@ The following diagram illustrates the release trains, their associated feature b
 
 Follow these guidelines to move to the next release train:
 
-- Consider a fresh deployment with the next release train. For example, deploy the 2408.2 feature build to move to the 2411 release train.
+- Consider a fresh deployment with **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
 
 - Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2402 release train, to get to the 2405 release train:
 
@@ -46,7 +48,7 @@ Follow these guidelines to move to the next release train:
 
 Follow these guidelines to move within the same release train:
 
-- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 update builds such as 2405.1, 2405.2, or 2405.3.
+- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 cumulative update builds such as 2405.1, 2405.2, or 2405.3.
 
 - To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within 6 months.
 
@@ -58,10 +60,10 @@ The following table summarizes the release information for Azure Local, version 
 
 |Update| Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 2024.11 Feature update | Version: 10.2411.0.0 <br><br> OS build: 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
-| 2024.10 Feature update | Version: 10.2408.2.7 <br><br> OS build: 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
-| 2024.09 Feature update |  Version: 10.2408.1.9 <br><br> OS build: 25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
-| 2024.08 Feature update | Version: 10.2408.0.29 <br><br> OS build: 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
+| 2024.11 Baseline update | Version: 10.2411.0.0 <br><br> OS build: 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
+| 2024.10 Baseline update | Version: 10.2408.2.7 <br><br> OS build: 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
+| 2024.09 Baseline update |  Version: 10.2408.1.9 <br><br> OS build: 25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
+| 2024.08 Baseline update | Version: 10.2408.0.29 <br><br> OS build: 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
 | 2024.08 Cumulative update | Version: 10.2405.3.7 <br><br> OS build: 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
 | 2024.07 Cumulative update | Version: 10.2405.2.7 <br><br> OS build: 25398.1009 | [July OS security update](./security-update/security-update-jul-2024.md) <br><br> Availability date: 2024-07-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-24052) | [Known issues](./known-issues-2405-2.md) |
 | 2024.06 Cumulative update | Version: 10.2405.1.4 <br><br> OS build: 25398.950 | [June OS security update](./security-update/security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
