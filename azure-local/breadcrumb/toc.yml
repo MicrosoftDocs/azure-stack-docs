@@ -1,0 +1,17 @@
+- name: Azure Local
+  tocHref: /azure-local
+  topicHref: /azure-local/index
+
+### For contextual TOC
+    - name: Azure Local
+      tocHref: /windows-server/
+      topicHref: /azure-local/index
+    - name: Azure Local
+      tocHref: /system-center/
+      topicHref: /azure-local/index
+    - name: Azure Local
+      tocHref: /azure/
+      topicHref: /azure-local/index
+    - name: Azure Local
+      tocHref: /troubleshoot/
+      topicHref: /azure-local/index

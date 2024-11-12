@@ -350,13 +350,13 @@ items:
       - name: VM load balancing
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-stack/context/hci-context
+        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-stack/context/context
       - name: Use GPUs with clustered VMs
-        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-stack/context/hci-context
+        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-stack/context/context
       - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-stack/context/hci-context
+        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-stack/context/context
       - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-stack/context/hci-context
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-stack/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -744,7 +744,7 @@ items:
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
       - name: Use BitLocker with Cluster Shared Volumes
-        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?context=/azure-stack/context/hci-context
+        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?context=/azure-stack/context/context
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
@@ -752,7 +752,7 @@ items:
       - name: Register Windows Admin Center with Azure
         href: manage/register-windows-admin-center.md
       - name: Use Windows Admin Center in Azure
-        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?context=/azure-stack/context/hci-context
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?context=/azure-stack/context/context
       - name: Use Azure portal
         href: manage/azure-portal.md
     - name: Manage SDN 
@@ -768,11 +768,11 @@ items:
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
     - name: Troubleshoot live migration
-      href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?context=/azure-stack/context/hci-context
+      href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?context=/azure-stack/context/context
     - name: Troubleshoot Storage Spaces Direct
-      href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?context=/azure-stack/context/hci-context
+      href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?context=/azure-stack/context/context
     - name: Troubleshoot storage health
-      href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure-stack/context/hci-context
+      href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure-stack/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
     - name: Use the Diagnostic Support tool
