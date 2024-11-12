@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 11/08/2024
+ms.date: 11/12/2024
 ---
 
 # Azure Stack HCI, version 22H2 release information
