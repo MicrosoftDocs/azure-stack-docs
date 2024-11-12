@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.service: azure-stack-hci
 ---
 
-# Storage thin provisioning in Azure Stack HCI
+# Download managed data disks to Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
