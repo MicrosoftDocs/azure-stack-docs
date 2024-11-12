@@ -1,35 +1,35 @@
 ---
-title: Disconnected operations for Azure Local overview
-description: Use Disconnected operations to deploy and manage your Azure Local.
+title: Disconnected operations for Azure Local overview (preview)
+description: Use Disconnected operations (preview) to deploy and manage your Azure Local.
 ms.topic: article
 author: ronmiab
 ms.author: robess
 ms.date: 11/12/2024
 ---
 
-# Disconnected operations for Azure Local
+# Disconnected operations for Azure Local (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
+This article describes disconnected operations (preview) and how they can be used in the deployment and management of your Azure Local.
 
 ## Overview
 
-Disconnected operations for Azure Local enable the deployment and management of Azure Local instances. This allows users to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc services. Additionally, it provides an Azure experience with a local control plane, without needing to connect to the Azure public cloud.
+Disconnected operations (preview) for Azure Local enable the deployment and management of Azure Local instances. This allows users to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc services. Additionally, it provides an Azure experience with a local control plane, without needing to connect to the Azure public cloud.
 
-## Why use disconnected operations?
+## Why use disconnected operations (preview)?
 
 Here are some scenarios for choosing Azure Local operating disconnected:
 
-- Data sovereignty and compliance: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When operating disconnected, data remains within designated organizational boundaries.
+- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When operating disconnected, data remains within designated organizational boundaries.
 
-- Remote or isolated locations: In areas with limited network infrastructure, such as remote or protected regions, disconnected operations allow an organization to use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
+- **Remote or isolated locations**: In areas with limited network infrastructure, such as remote or protected regions, disconnected operations allow an organization to use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
-- Security: For industries with stringent security requirements, disconnected operations can help reduce the attack surface by not exposing systems to external networks.
+- **Security**: For industries with stringent security requirements, disconnected operations can help reduce the attack surface by not exposing systems to external networks.
 
 ## Supported services
 
-The following table lists the services supported by the disconnected operations feature for Azure Local.
+The following table lists the services supported by the disconnected operations (preview) feature for Azure Local.
 
 |Service                            | Description                                  |
 |-----------------------------------|----------------------------------------------|
@@ -63,7 +63,7 @@ Before you begin, make sure you review and apply the appropriate hardware, integ
 
 ### Hardware requirements
 
-The virtual appliance for disconnected operations runs on Azure Local instances, version 2411 or higher.
+The virtual appliance for disconnected operations (preview) runs on Azure Local instances, version 2411 or higher.
 
 The following checklist provides the hardware requirements needed to operate disconnected during preview:
 
@@ -80,7 +80,7 @@ The following checklist provides the hardware requirements needed to operate dis
 
 You must integrate with existing datacenter assets that need to be pre-deployed and configured before starting the disconnected operations deployment process.
 
-The following table lists the requirements to successfully deploy and run disconnected operations on Azure Local instances.
+The following table lists the requirements to successfully deploy and run disconnected operations (preview) on Azure Local instances.
 
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
