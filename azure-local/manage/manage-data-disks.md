@@ -163,3 +163,5 @@ Once the image is created, you can check the newly created image in Azure portal
 
 
 ## Next steps
+
+[Create Azure Local VM image using images in a local share](virtual-machine-image-local-share.md)
