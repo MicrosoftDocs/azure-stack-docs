@@ -1,6 +1,6 @@
 ---
-title: Deploy and configure Workload Identity on an AKS Edge Essentials cluster (preview)
-description: Learn how to deploy and configure an AKS Edge Essentials cluster with workload identity.
+title: Configure Workload Identity on an AKS Edge Essentials cluster (preview)
+description: Learn how to configure an AKS Edge Essentials cluster with workload identity.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
@@ -8,18 +8,16 @@ ms.date: 11/12/2024
 
 ---
 
-# Deploy and configure Workload Identity on an AKS Edge Essentials cluster (preview)
-
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+# Configure Workload Identity on an AKS Edge Essentials cluster (preview)
 
 Azure Kubernetes Service (AKS) Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes how to perform the following tasks:
 
 - Create a Kubernetes service account and bind it to the Azure Managed Identity.
 - Create a federated credential on the managed identity to trust the OIDC issuer.
-- Optional: Grant a pod in the cluster access to secrets in an Azure key vault.
 - Deploy your application.
+- Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
-<!-- For a conceptual overview of using Workload Identity federation with Azure Arc-enabled Kubernetes clusters, see [Deploy and configure Workload Identity on an AKS enabled by Azure Arc cluster (preview)](workload-identity.md). -->
+For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](azure/azure-arc/kubernetes/conceptual-workload-identity.md).
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
@@ -151,7 +149,43 @@ az identity federated-credential show --name $FedIdCredentialName --resource-gro
 > [!NOTE]
 > After you add a federated identity credential, it takes a few seconds to propagate. Token requests made immediately afterward might fail until the cache refreshes. To prevent this issue, consider adding a brief delay after creating the federated identity credential.
 
-## Optional: Grant permissions to access Azure Key Vault
+
+## Step 3: Deploy your application
+
+When you deploy your application pods, the manifest should reference the service account created in the **Create Kubernetes service account** step. The following manifest shows how to reference the account, specifically the `metadata\namespace` and `spec\serviceAccountName` properties. Make sure to specify an image for `image` and a container name
+for `containerName`:
+
+```azurecli
+$image = "<image>"  # Replace <image> with the actual image name 
+$containerName = "<containerName>"  # Replace <containerName> with the actual container name 
+
+$yaml = @" 
+apiVersion: v1 
+kind: Pod 
+metadata: 
+  name: sample-quick-start 
+  namespace: $SERVICE_ACCOUNT_NAMESPACE 
+  labels: 
+    azure.workload.identity/use: "true" # Required. Only pods with this label can use workload identity. 
+spec: 
+  serviceAccountName: $SERVICE_ACCOUNT_NAME 
+  containers: 
+    - image: $image 
+      name: $containerName 
+"@ 
+
+# Replace variables within the YAML content 
+$yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE ` 
+                -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME 
+
+# Apply the YAML configuration 
+$yaml | kubectl apply -f - 
+```
+
+> [!IMPORTANT]
+> Ensure that the application pods using workload identity include the label `azure.workload.identity/use: "true"` in the pod spec. Otherwise the pods fail after they restart.
+
+## Example: Grant permissions to access Azure Key Vault
 
 The instructions in this step describe how to access secrets, keys, or certificates in an Azure key vault from the pod. The examples in this section configure access to secrets in the key vault for the workload identity, but you can perform similar steps to configure access to keys or certificates.
 
@@ -225,41 +259,6 @@ $yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE
 $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
 ```
 
-## Step 3: Deploy your application
-
-When you deploy your application pods, the manifest should reference the service account created in the **Create Kubernetes service account** step. The following manifest shows how to reference the account, specifically the `metadata\namespace` and `spec\serviceAccountName` properties. Make sure to specify an image for `image` and a container name
-for `containerName`:
-
-```azurecli
-$image = "<image>"  # Replace <image> with the actual image name 
-$containerName = "<containerName>"  # Replace <containerName> with the actual container name 
-
-$yaml = @" 
-apiVersion: v1 
-kind: Pod 
-metadata: 
-  name: sample-quick-start 
-  namespace: $SERVICE_ACCOUNT_NAMESPACE 
-  labels: 
-    azure.workload.identity/use: "true" # Required. Only pods with this label can use workload identity. 
-spec: 
-  serviceAccountName: $SERVICE_ACCOUNT_NAME 
-  containers: 
-    - image: $image 
-      name: $containerName 
-"@ 
-
-# Replace variables within the YAML content 
-$yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE ` 
-                -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME 
-
-# Apply the YAML configuration 
-$yaml | kubectl apply -f - 
-```
-
-> [!IMPORTANT]
-> Ensure that the application pods using workload identity include the label `azure.workload.identity/use: "true"` in the pod spec. Otherwise the pods fail after they restart.
-
 ## Next steps
 
-In this article, you deployed a Kubernetes cluster and configured it to use a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
+In this article, you configured it to use a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
