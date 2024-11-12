@@ -34,21 +34,20 @@ The following diagram illustrates the release trains, their associated feature b
 
 Follow these guidelines to move to the next release train:
 
-- Consider a fresh deployment with the next release train. For example, deploy the 2402 feature build to move to 2402 release train.
+- Consider a fresh deployment with the next release train. For example, deploy the 2408.2 feature build to move to 2411 release train.
 
-- Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2311 release train, to get to the 2402 release train:
+- Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2402 release train, to get to the 2405 release train:
 
-  - Update from 2408.2 --> 2411
-  - Update path from 2402.3 to 2408.2:
-    - 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2
   - Update from 2402 --> 2402.3 --> 2405.
   - Update from 2402 --> 2402.4 --> 2405.1.
+  - Update path from 2402.3 to 2408.2:
+    - 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2
   
 #### Move within the same release train
 
 Follow these guidelines to move within the same release train:
 
-- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2408 baseline builds such as 2405.1, 2405.2, or 2405.3 and so on.
+- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 update builds such as 2405.1, 2405.2, or 2405.3.
 
 - To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within 6 months.
 
