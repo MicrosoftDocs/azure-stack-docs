@@ -12,7 +12,7 @@ ms.date: 11/19/2024
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
-Feature updates for Azure Local are released periodically to enhance customer experience. Azure Local also releases Cummulative (OS) updates that contain monthly quality and security updates. Azure Local will always list which updates are available to each instance to allow you to keep devices protected and productive.
+Feature updates for Azure Local are released periodically to enhance customer experience. Azure Local also releases Cumulative (OS) updates that contain monthly quality and security updates. Azure Local always lists which updates are available to each instance to allow you to keep devices protected and productive.
 
 To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
@@ -22,11 +22,11 @@ This article presents the release information for Azure Local, version 23H2, inc
 
 The Azure Local, version 23H2 includes multiple release trains: 2311, 2402, 2405, 2408, and 2411. Each release train includes a feature build and subsequent cumulative updates.
 
-- **Feature build**: The feature build is the initial version of the software on a release train. Feature releases update more than just quality and security fixes and will include product enhancements including updates for Azure Local services and agents.
+- **Feature build**: The feature build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
-- **Cumulative build**: An cumulative update build includes the incremental updates from the most recent feature build.
+- **Cumulative build**: A cumulative update build includes the incremental updates from the most recent feature build.
 
-- **Baseline release**: A version that is available to be installed direclty as part of a fresh deployment.  Starting with 2408.0, every release (both feature and cumulative builds) is a baseline release.
+- **Baseline release**: A version that is available to be installed directly as part of a fresh deployment. Starting with 2408.0, every release (both feature and cumulative builds) is a baseline release.
 
 The following diagram illustrates the release trains, their associated feature builds, and update paths.
 
@@ -48,9 +48,9 @@ Follow these guidelines to move to the next release train:
 
 Follow these guidelines to move within the same release train:
 
-- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 cumulative update builds such as 2405.1, 2405.2, or 2405.3.
+- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 cumulative update builds, such as 2405.1, 2405.2, or 2405.3.
 
-- To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within 6 months.
+- To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within six months.
 
 ## Azure Local, version 23H2 release information summary
 
