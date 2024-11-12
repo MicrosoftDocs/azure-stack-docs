@@ -20,6 +20,8 @@ Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes serv
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
+For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-workload-identity).
+
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
