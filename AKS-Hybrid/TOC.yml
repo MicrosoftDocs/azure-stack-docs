@@ -32,8 +32,6 @@
       href: concepts-security-access-identity.md
     - name: Deploy and configure Workload Identity for AKS enabled by Arc clusters
       href: workload-identity.md
-    - name: Deploy and configure Workload Identity for AKS Edge Essentials clusters
-      href: aks-edge-workload-identity.md
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
