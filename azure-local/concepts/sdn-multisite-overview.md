@@ -11,7 +11,7 @@ ms.date: 11/12/2024
 
 # What is SDN Multisite?
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -27,7 +27,7 @@ This article provides an overview of SDN Multisite, including its benefits and c
 
 SDN Multisite allows you to expand the capabilities of traditional SDN deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci).
 
@@ -57,7 +57,7 @@ The SDN Multisite feature currently has a few limitations:
 
 ## Multisite peering
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. After a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci#establish-peering).  
 
@@ -97,7 +97,7 @@ In a multisite SDN environment, one site is designated as the primary and the ot
 
 When you enable SDN Multisite, not all resources from each site are synchronized across all sites. Here are the lists of resources that are synchronized and that remain unsynchronized.
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - **Synchronized resources**
 
@@ -186,7 +186,7 @@ SDN multisite doesn't sync local resources such as gateway connections across si
 
 ## Next steps
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 [Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci)
 
