@@ -116,7 +116,7 @@ To be eligible to participate in the preview, you must meet the following criter
 
 1. **Enterprise agreement**: A current enterprise agreement with Microsoft, typically covering a period of at least three years.
 
-2. **Business needs to operate disconnected**: The disconnected operations feature is for customers who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
+2. **Business needs to operate disconnected**: The disconnected operations feature is for customers who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations-preview)
 
 3. **Technical prerequisites**: Organizations must meet technical requirements to ensure secure and reliable operation when operating disconnected on Azure Local. For more information, see [Prerequisites](../manage/disconnected-operations-overview.md#prerequisites).
 
