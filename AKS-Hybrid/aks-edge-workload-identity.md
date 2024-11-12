@@ -17,7 +17,7 @@ Azure Kubernetes Service (AKS) Edge Essentials is an on-premises Kubernetes impl
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
-For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](azure/azure-arc/kubernetes/conceptual-workload-identity.md).
+<!-- For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-workload-identity.md). -->
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
@@ -148,7 +148,6 @@ az identity federated-credential show --name $FedIdCredentialName --resource-gro
 
 > [!NOTE]
 > After you add a federated identity credential, it takes a few seconds to propagate. Token requests made immediately afterward might fail until the cache refreshes. To prevent this issue, consider adding a brief delay after creating the federated identity credential.
-
 
 ## Step 3: Deploy your application
 
