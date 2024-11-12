@@ -9,7 +9,7 @@ ms.date: 11/12/2024
 
 # Disconnected operations for Azure Local
 
-[!INCLUDE [applies-to](../../hci/includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
