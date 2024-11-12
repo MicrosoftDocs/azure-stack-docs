@@ -25,15 +25,15 @@ The following diagram shows the relationships among pods, volumes, storage class
 
 By default, a new Kubernetes cluster only supports the local disk storage class, which stores data in a local disk. This class has limitations and can't be directly used in most production scenarios. For example, local disk volumes can only support `ReadWriteOnce` access mode, meaning the volumes can only be accessed by one pod at a time. However, [SQL Managed Instance enabled by Azure Arc](/azure/azure-arc/data/managed-instance-overview) requires [its backup volume to support the ReadWriteMany(RWX) access mode](/azure/azure-arc/data/create-sql-managed-instance?tabs=directly-connected-mode#create-an-azure-arc-enabled-sql-managed-instance), meaning the volume should support simultaneous reads and writes from multiple pods.
 
-Storage is important for any running systems, so most companies might have already set up storage infrastructures for existing systems. The Arc storage service provides a unified experience for creating storage classes on top of existing storage. With the Arc Storage Class service, cluster administrators only need to specify the name and type of the storage class to be created, and Arc Storage Class installs storage classes and their respective CSI components into their clusters. The installed components are managed by Azure, so updates are automatically installed and security vulnerabilities are automatically fixed.
+Storage is important for any running systems, so most companies might have already set up storage infrastructures for existing systems. The Arc-enabled storage class service provides a unified experience for creating storage classes on top of existing storage. With the Arc-enabled storage class service, cluster administrators only need to specify the name and type of the storage class to be created, and Arc-enabled storage class service installs storage classes and their respective CSI components into their clusters. The installed components are managed by Azure, so updates are automatically installed and security vulnerabilities are automatically fixed.
 
 ### Scenario 1: Connect to existing NAS
 
-You might be already using network-attached storage (NAS) for storage pool and high availability capabilities. By default, Kubernetes can't use NAS for storage. With the Arc Storage Class service, you can easily create an NFS storage class that connects to your existing NAS using the standard NFS protocol that NAS devices should support. You can also create multiple NFS storage classes to connect to different NAS devices.
+You might be already using network-attached storage (NAS) for storage pool and high availability capabilities. By default, Kubernetes can't use NAS for storage. With the Arc-enabled storage class service, you can easily create an NFS storage class that connects to your existing NAS using the standard NFS protocol that NAS devices should support. You can also create multiple NFS storage classes to connect to different NAS devices.
 
 ### Scenario 2: Connect to existing Windows Server clusters
 
-If your company runs Windows Server clusters like HCI, these clusters usually use SMB drives for storage. Arc Storage Class provides SMB storage classes so these existing clusters can be easily used by your new Arc-connected Kubernetes cluster.
+If your company runs Windows Server clusters like HCI, these clusters usually use SMB drives for storage. Arc-enabled storage class service provides SMB storage classes so these existing clusters can be easily used by your new Arc-connected Kubernetes cluster.
 
 ## Next steps
 
