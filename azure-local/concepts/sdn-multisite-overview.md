@@ -57,7 +57,7 @@ The SDN Multisite feature currently has a few limitations:
 
 :::zone pivot="azure-stack-hci"
 
-Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. Once a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci#establish-peering).  
+Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. After a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md?pivot=azure-stack-hci#establish-peering).  
 
 ::: zone-end
 
