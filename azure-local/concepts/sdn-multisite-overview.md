@@ -194,6 +194,6 @@ SDN multisite doesn't sync local resources such as gateway connections across si
 
 :::zone pivot="windows-server"
 
-[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)Local
+[Manage SDN Multisite for Azure Local](../manage/manage-sdn-multisite.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
 
 ::: zone-end
