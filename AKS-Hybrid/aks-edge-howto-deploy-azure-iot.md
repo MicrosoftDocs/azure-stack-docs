@@ -21,10 +21,9 @@ To run the script, you need the following prerequisites:
 
 - An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
-- Install the latest version of the following extensions for Azure CLI:
+- Install the latest version of the **connectedk8s** extensions for Azure CLI:
 
    ```bash
-   az extension add --upgrade --name azure-iot-ops
    az extension add --upgrade --name connectedk8s 
    ```
 
@@ -70,7 +69,7 @@ To run the quickstart script, perform the following steps:
    |---------|---------|
    |SUBSCRIPTION_ID     |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).   |
    |TENANT_ID  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
-   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created.      |
+   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created. Only one Azure IoT Operations instance is supported per resource group.     |
    |LOCATION     |      An Azure region close to you. For the list of Azure IoT Operations's supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
    |CLUSTER_NAME     |    A name for the new cluster to be created.     |
    |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
@@ -87,12 +86,6 @@ To run the quickstart script, perform the following steps:
    In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
 
 ## Verify your cluster
-
-To verify that your cluster is ready for Azure IoT Operations deployment, you can use the [verify-host](/cli/azure/iot/ops#az-iot-ops-verify-host) helper command in the Azure IoT Operations extension for Azure CLI. When you run this command on the cluster host, it checks connectivity to Azure Resource Manager and Microsoft Container Registry endpoints:
-
-```azurecli
-az iot ops verify-host
-```
 
 To verify that your Kubernetes cluster is Azure Arc-enabled, run the following command:
 
