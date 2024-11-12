@@ -6,10 +6,12 @@ ms.topic: conceptual
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 11/06/2024
+ms.date: 11/12/2024
 ---
 
 # What is SDN Multisite?
+
+:::zone pivot="azure-stack-hci"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
