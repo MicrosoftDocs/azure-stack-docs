@@ -78,8 +78,8 @@ groups:
   title: Products
   prompt: "Choose your product:"
   pivots:
-  - id: azure-stack-hci
-    title: Azure Stack HCI
+  - id: azure-local
+    title: Azure Local
   - id: windows-server
     title: Windows Server
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
