@@ -30,6 +30,8 @@
         href: load-balancer-overview.md      
     - name: Access and identity
       href: concepts-security-access-identity.md
+    - name: Deploy and configure Workload Identity
+      href: workload-identity.md
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
