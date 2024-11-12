@@ -4,7 +4,7 @@ title: Create and use storage classes in AKS enabled by Arc (preview)
 description: Learn how to create and use storage classes in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/07/2024
+ms.date: 11/12/2024
 ms.topic: conceptual
 ms.custom: references_regions
 
@@ -35,7 +35,7 @@ az extension add --name k8s-runtime
 
 ## [Azure portal](#tab/portal)
 
-During the preview, our publicly available portal extension only targets AKS Arc clusters and is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` portal extension. Please use [this link](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true) to open Azure Portal and navigate to your AKS Arc cluster resource.
+During the preview, our publicly available portal extension only targets AKS Arc clusters and is behind the feature flag `managedstorageclass` of the `Microsoft_Azure_HybridCompute` portal extension. [Visit this Azure portal link](https://portal.azure.com/?Microsoft_Azure_HybridCompute_managedstorageclass=true) to open the portal and navigate to your AKS Arc cluster resource.
 
 ### Enable the service
 
@@ -43,7 +43,7 @@ Select your cluster, then select **Storage classes (preview)** from menu to ente
 
 :::image type="content" source="media/create-storage-classes/enable-service.png" alt-text="Screenshot showing enable storage classes service on portal." lightbox="media/create-storage-classes/enable-service.png":::
 
-It might take a few minutes to enable the service in your cluster. When it's ready, the UI looks similar to the following screenshot. Your storage classes are being uploaded to the cloud.
+It might take a few minutes to enable the service in your cluster. When it's ready, the UI looks similar to the following screenshot. Your storage classes are uploaded to the cloud:
 
 :::image type="content" source="media/create-storage-classes/storage-classes-summary.png" alt-text="Screenshot showing summary of storage classes on portal." lightbox="media/create-storage-classes/storage-classes-summary.png":::
 
