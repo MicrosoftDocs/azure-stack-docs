@@ -40,7 +40,7 @@ Follow these guidelines to move to the next release train:
 
   - Update from 2402 --> 2402.3 --> 2405.
   - Update from 2402 --> 2402.4 --> 2405.1.
-  - Update path from 2402.3 to 2408.2: 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2
+  - Update from 2402.3 --> 2408.2 follow this path: 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2
   
 #### Move within the same release train
 
