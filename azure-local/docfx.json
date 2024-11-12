@@ -46,7 +46,8 @@
       "ms.service": "azure-stack-hci",
       "titleSuffix": "Azure Stack HCI",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8",
-      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci"
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
     },
     "fileMetadata": {},
     "template": []
