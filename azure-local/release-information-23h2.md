@@ -34,7 +34,7 @@ The following diagram illustrates the release trains, their associated feature b
 
 Follow these guidelines to move to the next release train:
 
-- Consider a fresh deployment with the next release train. For example, deploy the 2408.2 feature build to move to 2411 release train.
+- Consider a fresh deployment with the next release train. For example, deploy the 2408.2 feature build to move to the 2411 release train.
 
 - Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2402 release train, to get to the 2405 release train:
 
