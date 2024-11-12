@@ -204,7 +204,6 @@ az identity federated-credential show --name $FedIdCredentialName --resource-gro
 > [!NOTE]
 > After you add a federated identity credential, it takes a few seconds to propagate. Token requests made immediately afterward might fail until the cache refreshes. To prevent this issue, consider adding a brief delay after creating the federated identity credential.
 
-
 ## Step 4: Deploy your application
 
 When you deploy your application pods, the manifest should reference the service account created in the **Create Kubernetes service account** step. The following manifest shows how to reference the account, specifically the `metadata\namespace` and `spec\serviceAccountName` properties. Make sure to specify an image for `image` and a container name
@@ -248,71 +247,71 @@ The following example shows how to use the Azure role-based access control (Azur
 
 1. Create a key vault with purge protection and RBAC authorization enabled. You can also use an existing key vault if it is configured for both purge protection and RBAC authorization:
 
-```azurecli
-az keyvault create --name $KVName --resource-group $resource_group_name --location $Location --enable-purge-protection --enable-rbac-authorization
+   ```azurecli
+   az keyvault create --name $KVName --resource-group $resource_group_name --location $Location --enable-purge-protection --enable-rbac-authorization
 
-# retrieve the key vault ID for role assignment
-$KVId=$(az keyvault show --resource-group $resource_group_name --name $KVName --query id --output tsv)
-```
+   # retrieve the key vault ID for role assignment
+   $KVId=$(az keyvault show --resource-group $resource_group_name --name $KVName --query id --output tsv)
+   ```
 
-2. Assign the RBAC [Key Vault Secrets Officer](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role to yourself so that you can create a secret in the new key vault. New role assignments can take up to five minutes to propagate and be updated by the authorization server.
+1. Assign the RBAC [Key Vault Secrets Officer](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role to yourself so that you can create a secret in the new key vault. New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 
-```azurecli
-az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
-```
+   ```azurecli
+   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
+   ```
 
-3. Create a secret in the key vault:
+1. Create a secret in the key vault:
 
-```azurecli
-az keyvault secret set --vault-name $KVName --name $KVSecretName --value "Hello!"
-```
+   ```azurecli
+   az keyvault secret set --vault-name $KVName --name $KVSecretName --value "Hello!"
+   ```
 
-4. Assign the [Key Vault Secrets User](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role to the user-assigned managed identity that you created previously. This step gives the managed identity permission to read secrets from the key vault:
+1. Assign the [Key Vault Secrets User](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role to the user-assigned managed identity that you created previously. This step gives the managed identity permission to read secrets from the key vault:
 
-```azurecli
-az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
-```
+   ```azurecli
+   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
+   ```
 
-5. Create an environment variable for the key vault URL:
+1. Create an environment variable for the key vault URL:
 
-```azurecli
-$KVUrl=$(az keyvault show --resource-group $resource_group_name --name $KVName --query properties.vaultUri --output tsv)
-```
+   ```azurecli
+   $KVUrl=$(az keyvault show --resource-group $resource_group_name --name $KVName --query properties.vaultUri --output tsv)
+   ```
 
-6. Deploy a pod that references the service account and key vault URL:
+1. Deploy a pod that references the service account and key vault URL:
 
-```azurecli
-$yaml = @" 
-apiVersion: v1 
-kind: Pod 
-metadata: 
-  name: sample-quick-start 
-  namespace: $SERVICE_ACCOUNT_NAMESPACE 
-  labels: 
-    azure.workload.identity/use: "true" 
-spec: 
-  serviceAccountName: $SERVICE_ACCOUNT_NAME 
-  containers: 
-    - image: ghcr.io/azure/azure-workload-identity/msal-go 
-      name: oidc 
-      env: 
-      - name: KEYVAULT_URL 
-        value: $KVUrl 
-      - name: SECRET_NAME 
-        value: $KVSecretName 
-  nodeSelector: 
-    kubernetes.io/os: linux 
-"@ 
+   ```azurecli
+   $yaml = @" 
+   apiVersion: v1 
+   kind: Pod 
+   metadata: 
+     name: sample-quick-start 
+     namespace: $SERVICE_ACCOUNT_NAMESPACE 
+     labels: 
+       azure.workload.identity/use: "true" 
+   spec: 
+     serviceAccountName: $SERVICE_ACCOUNT_NAME 
+     containers: 
+       - image: ghcr.io/azure/azure-workload-identity/msal-go 
+         name: oidc 
+         env: 
+         - name: KEYVAULT_URL 
+           value: $KVUrl 
+         - name: SECRET_NAME 
+           value: $KVSecretName 
+     nodeSelector: 
+       kubernetes.io/os: linux 
+   "@ 
 
-# Replace variables within the YAML content 
-$yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE ` 
-                -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` 
-                -replace '\$KVUrl', $KVUrl ` 
-                -replace '\$KVSecretName', $KVSecretName 
+   # Replace variables within the YAML content 
+   $yaml = $yaml -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE ` 
+                   -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` 
+                   -replace '\$KVUrl', $KVUrl ` 
+                   -replace '\$KVSecretName', $KVSecretName 
 
-# Apply the YAML configuration 
-$yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
-```
+   # Apply the YAML configuration 
+   $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
+   ```
 
 ## Next steps
 
