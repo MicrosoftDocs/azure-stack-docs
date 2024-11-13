@@ -58,16 +58,16 @@ Follow these guidelines to move within the same release train:
 
 The following table summarizes the release information for Azure Local, version 23H2, across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
-|Version| Build |Security update| What's new | Known issues |
+|Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| Version: 10.2411.0.0 | OS build: 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
-| Version: 10.2408.2.7 | OS build: 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
-| Version: 10.2408.1.9 |  OS build: 25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
-| Version: 10.2408.0.29 | OS build: 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
-| Version: 10.2405.3.7 | OS build: 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
-| Version: 10.2405.2.7  | OS build: 25398.1009 | [July OS security update](./security-update/security-update-jul-2024.md) <br><br> Availability date: 2024-07-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-24052) | [Known issues](./known-issues-2405-2.md) |
-| Version: 10.2405.1.4 | OS build: 25398.950 | [June OS security update](./security-update/security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
-| Version: 10.2402.4.4 | OS build: 25398.950 | [June OS security update](./security-update/security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-24024) | [Known issues](./known-issues-2402-4.md) |
+| 10.2411.0.0 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
+| 10.2408.2.7 | 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
+| 10.2408.1.9 |  25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
+| 10.2408.0.29 | 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
+| 10.2405.3.7 | 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-08-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-24053) | [Known issues](./known-issues-2405-3.md) |
+| 10.2405.2.7  | 25398.1009 | [July OS security update](./security-update/security-update-jul-2024.md) <br><br> Availability date: 2024-07-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-24052) | [Known issues](./known-issues-2405-2.md) |
+| 10.2405.1.4 | 25398.950 | [June OS security update](./security-update/security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
+| 10.2402.4.4 | 25398.950 | [June OS security update](./security-update/security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-24024) | [Known issues](./known-issues-2402-4.md) |
 
 ### Older versions of Azure Local
 
@@ -75,15 +75,15 @@ The following table summarizes the release information for Azure Local, version 
 
 |Version| Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| Version: 10.2405.0.24 | OS build: 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
-| Version: 10.2402.3.10 | OS build: 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
-| Version: 10.2402.2.12 | OS build: 25398.830 | [April OS security update](./security-update/security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |
-| Version: 10.2311.5.6 | OS build: 25398.830 | [April OS security update](./security-update/security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-23115) | [Known issues](./known-issues-2311-5.md) |
-| Version: 10.2402.1.5 | OS build: 25398.762 | [March OS security update](./security-update/security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
-| Version: 10.2311.4.6 | OS build: 25398.762 | [March OS security update](./security-update/security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-23114) | [Known issues](./known-issues-2311-4.md) |
-| Version: 10.2402.0.23 | OS build: 25398.709 | [Feb OS security update](./security-update/security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
-| Version: 10.2311.3.12 | OS build: 25398.709 | [Feb OS security update](./security-update/security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 |  [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-2311-3.md) |
-| Version: 10.2311.2.7 | OS build: 25398.643 | [Jan OS security update](./security-update/security-update-jan-2024.md) <br><br> Availability date: 2024-01-09 | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
+| 10.2405.0.24 | 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
+| 10.2402.3.10 | 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
+| 10.2402.2.12 | 25398.830 | [April OS security update](./security-update/security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |
+| 10.2311.5.6 | 25398.830 | [April OS security update](./security-update/security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | [Features and improvements](./whats-new.md#features-and-improvements-in-23115) | [Known issues](./known-issues-2311-5.md) |
+| 10.2402.1.5 | 25398.762 | [March OS security update](./security-update/security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
+| 10.2311.4.6 | 25398.762 | [March OS security update](./security-update/security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | [Features and improvements](./whats-new.md#features-and-improvements-in-23114) | [Known issues](./known-issues-2311-4.md) |
+| 10.2402.0.23 | 25398.709 | [Feb OS security update](./security-update/security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
+| 10.2311.3.12 | 25398.709 | [Feb OS security update](./security-update/security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 |  [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-2311-3.md) |
+| 10.2311.2.7 | 25398.643 | [Jan OS security update](./security-update/security-update-jan-2024.md) <br><br> Availability date: 2024-01-09 | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
 
 ## Next steps
 
