@@ -36,7 +36,7 @@ The following diagram illustrates the release trains, their associated feature b
 
 Follow these guidelines to move to the next release train:
 
-- Consider a fresh deployment with **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
+- Consider a fresh deployment with the **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
 
 - Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2402 release train, to get to the 2405 release train:
 
