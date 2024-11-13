@@ -83,7 +83,7 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 
 ## Example scenario
 
-To troubleshoot Azure Local, run the following command:
+To troubleshoot Azure Local, run the following commands:
 
 ### For deployment issues
 
@@ -232,8 +232,8 @@ Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-X
 
 ## Questions or Feedback?
 
-Do you have an issue? Would like to share feedback with us about the Azure Local Support Diagnostic Tool?
-We Listen! To submit feedback, use "contact owners" option inside PSGallery.
+Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
+We Listen! To submit feedback, use the "contact owners" option inside PSGallery.
 
 ## Next steps
 
