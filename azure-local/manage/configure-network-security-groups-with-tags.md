@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 11/08/2024
+ms.date: 11/13/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -28,7 +28,7 @@ With network security tags, you can create custom user-defined tags, attach thos
 
 Complete the following prerequisites to use network security groups with tags:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - You have Azure Stack HCI operating system, version 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
 
@@ -189,7 +189,7 @@ After you create a network security group, you're ready to create network securi
 
 You can apply a network security group to:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - [Virtual network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-virtual-network)
 - [Logical network subnet](use-datacenter-firewall-windows-admin-center.md#apply-a-network-security-group-to-a-logical-network)
@@ -231,7 +231,7 @@ To apply a network security group to a network security tag via Windows Admin Ce
 
 For related information, see also:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md)
 - [Configure network security groups with Windows Admin Center](use-datacenter-firewall-windows-admin-center.md)

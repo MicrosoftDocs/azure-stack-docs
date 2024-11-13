@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 11/06/2024
+ms.date: 11/13/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 zone_pivot_groups: windows-os
@@ -11,7 +11,7 @@ zone_pivot_groups: windows-os
 
 # Network ATC overview
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
@@ -40,7 +40,7 @@ Network ATC provides the following features:
 
 - **Windows Admin Center deployment**: Network ATC is integrated with Windows Admin Center to provide an easy-to-use experience for deploying host networking.
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Beginning with Azure Local, version 22H2, Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
 
@@ -64,7 +64,7 @@ Network ATC provides the following features:
 
   - Assigns VLANs
 
-  :::zone pivot="azure-stack-hci"
+  :::zone pivot="azure-local"
 
   - Beginning with Azure Local, version 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
 
@@ -127,7 +127,7 @@ The following video provides an overview of Network ATC using the [Copy-NetInten
 
 To get started with Network ATC, review the following articles:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
 - Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
