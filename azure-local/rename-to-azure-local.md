@@ -42,13 +42,16 @@ Azure Local product icons continue to be the same as those for Azure Stack HCI.
 
 The following table lists what isn't impacted by the rename.
 
-| Correct terminology | Details |
+| Components/Terms | Details |
 |---------------------|---------|
 | Azure Stack HCI APIs/namespace  | No breaking changes were made to Azure Stack HCI APIs/namespaces and won’t require you to update code. |
-| PowerShell          | The `Microsoft.AzureStackHCI` resource provider name remains the same. |
+| Azure Stack HCI resource provider        | The `Microsoft.AzureStackHCI` resource provider name remains the same. |
+| Azure Stack HCI PowerShell cmdlets | The Azure Stack HCI PowerShell cmdlets remain the same. |
+| Azure Stack HCI CLI | The Azure CLI commands for Azure Stack HCI and Arc VM management continue to remain the same.  |
 | Azure Stack HCI OS  | The Azure Stack HCI Operating System (OS) which is a component of the Azure Local, will remain the same. |
 | Azure Stack HCI OEM License | The license name remains the same. |
-| Azure Stack HCI, version 22H2 documentation | Documentation for older versions of Azure Stack HCI, for example, version 22H2 only, will continue to reference Azure Stack HCI and not reflect the name change. |
+
+In addition, documentation for older versions of Azure Stack HCI, for example, 22H2 only, will continue to reference Azure Stack HCI and not reflect the name change.
 
 ## Frequently asked questions
 
@@ -76,9 +79,9 @@ No. Prices, terms, and service level agreements (SLAs) remain the same.
 
 The Azure billing meters for Azure Stack HCI will be renamed with meter ID updates. This change will be completed early next year. The meter name and ID changes don’t affect prices. However, you might notice some changes in how your Azure consumption is shown on your invoice, price sheet, API, usage details file, and **Cost Management + Billing** experiences.
 
-### Are PowerShell cmdlets being renamed?
+### Are PowerShell cmdlets and Azure CLI commands being renamed?
 
-No. Today, we offer two modules: one for the Arc VM management and another for Azure Stack HCI cluster, service, and management. The `stack-hci-vm` PowerShell module for Arc to manage Arc VMs on Azure Stack HCI won't be renamed.
+No. Both the PowerShell cmdlets and Azure CLI commands for Arc VM management and for Azure Stack HCI cluster, service, and management continue to remain the same.
 
 ### How and when are customers being notified?
 
