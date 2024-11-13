@@ -73,7 +73,7 @@ The following table summarizes the release information for Azure Local, version 
 
 The following table summarizes the release information for Azure Local, version 23H2, across older versions.
 
-|Version| Build |Security update| What's new | Known issues |
+|Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 10.2405.0.24 | 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
 | 10.2402.3.10 | 25398.887 | [May OS security update](./security-update/security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
