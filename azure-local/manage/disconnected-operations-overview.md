@@ -13,6 +13,8 @@ ms.date: 11/19/2024
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
+[!INCLUDE [IMPORTANT](../includes/hci-preview.md)]
+
 ## Overview
 
 Disconnected operations for Azure Local enable the deployment and management of Azure Local instances. These instances allow you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc services. You can also use Azure with a local control plane, without needing to connect to the Azure public cloud.
@@ -86,7 +88,7 @@ The following table lists the requirements to successfully deploy and run discon
 | --------------| -------------------------| -----------------------------|
 | Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
 | Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required Active Directory Certificate Services (ADCS) validation | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
-| Network Time Protocol (NTP) optional  | Local or Public time server | Time server for synchronizing system clock. |
+| Network Time Protocol (NTP) optional  | Local or Public time server | Time server to synchronize the system clock. |
 | Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
 For information on deploying and configuring the integration components, refer to:
