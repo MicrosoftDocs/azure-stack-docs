@@ -13,7 +13,7 @@ ms.lastreviewed: 01/30/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Kubernetes clusters in Azure Stack HCI using the Azure portal. The workflow is as follows:
+This article describes how to create Kubernetes clusters in Azure Local using the Azure portal. The workflow is as follows:
 
 - How to create a Kubernetes cluster using the Azure portal. By default, the cluster is Azure Arc-connected.
 - While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
@@ -81,5 +81,5 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 
 ## Next steps
 
-- [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-whats-new-23h2.md)
+- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](aks-whats-new-23h2.md)

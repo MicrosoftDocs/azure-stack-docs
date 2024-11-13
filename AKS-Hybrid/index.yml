@@ -1,11 +1,11 @@
 ### YamlMime:Landing
 
 title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
-summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
 
 metadata:
   title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
-  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
@@ -22,7 +22,7 @@ landingContent:
         links:
           - text: Create clusters
             url: aks-create-clusters-cli.md
-  - title: Get started with AKS on Azure Stack HCI (23H2)
+  - title: Get started with AKS on Azure Local (version 23H2)
     linkLists:
       - linkListType: overview
         links:
@@ -96,7 +96,7 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Known issues in 23H2
+          - text: Known issues in version 23H2
             url: aks-known-issues.md
           - text: Troubleshooting overview (22H2)
             url: troubleshoot-overview.md

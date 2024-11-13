@@ -8,4 +8,4 @@ ms.reviewer: alkohli
 ms.lastreviewed: 10/13/2023
 ---
 
-> Applies to: Azure Stack HCI, version 23H2
+> Applies to: Azure Local, version 23H2
