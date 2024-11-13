@@ -4,12 +4,14 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: article
 author: alkohli
-ms.date: 10/09/2024
+ms.date: 11/13/2024
 ---
 
 # What is Azure Local monitoring?
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of Azure Local monitoring.
 

@@ -5,12 +5,14 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/11/2024
+ms.date: 11/13/2024
 ---
 
 # What's new in Azure Local, version 23H2
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 

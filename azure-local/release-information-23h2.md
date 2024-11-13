@@ -5,12 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 10/23/2024
+ms.date: 11/13/2024
 ---
 
 # Azure Local, version 23H2 release information
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 Feature updates for Azure Local are released periodically to enhance customer experience. Azure Local also releases monthly quality and security updates. These releases are cumulative, containing all previous updates to keep devices protected and productive.
 

@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Local (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/28/2024
+ms.date: 11/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,8 @@ ms.reviewer: alkohli
 # About options to migrate VM workloads to Azure Local (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of some of the common options available for migrating virtual machine (VM) workloads to your Azure Local instance.
 

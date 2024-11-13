@@ -5,12 +5,14 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 10/21/2024
+ms.date: 11/13/2024
 ---
 
 # About updates for Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
 
