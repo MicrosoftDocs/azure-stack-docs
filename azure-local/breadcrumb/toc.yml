@@ -2,7 +2,7 @@ items:
 - name: Learn
   tocHref: /
   topicHref: /
-	items:
+  items:
   - name: Azure
     tocHref: /azure/
     topicHref: /azure/index
