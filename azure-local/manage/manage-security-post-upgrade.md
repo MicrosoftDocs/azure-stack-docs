@@ -16,11 +16,11 @@ This article describes how to manage security settings after upgrading Azure Loc
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local, version 23H2 system that has completed upgrade from version 22H2.
+Before you begin, make sure that you have access to an Azure Local, version 23H2 system that was upgraded from version 22H2.
 
 ## Post upgrade security changes
 
-When your Azure Local is upgraded from version 22H2 to version 23H2, the security posture of your system isn't modified. We strongly recommended that you take extra steps to avail of the security benefits by updating security posture after upgrade.
+When your Azure Local is upgraded from version 22H2 to version 23H2, the security posture of your system isn't modified. We strongly recommend that you take extra steps to avail of the security benefits by updating security posture after upgrade.
 
 Updating the security settings provides you the following benefits:
 
@@ -38,19 +38,17 @@ Each of these steps is described in detail in the following sections.
 
 ### Apply security baselines
 
-A new deployment of Azure Local introduces two baselines documents injected by our security management layer, while upgraded cluster doesn't.
+A new deployment of Azure Local introduces two baselines documents injected by the security management layer, while the upgraded cluster doesn't.
 
 > [!IMPORTANT]
-> After applying the security baselines documents, a new mechanism is used to apply and maintain the [Security baseline settings]((https://aka.ms/hci-securitybase).
+> After applying the security baseline documents, a new mechanism is used to apply and maintain the [Security baseline settings]((https://aka.ms/hci-securitybase).
 
 1. If your servers are inheriting any baseline settings using mechanisms such as GPO, DSC, Scripts, we recommend that you:
 
     - Remove these duplicate settings from such mechanisms.
     - Alternatively, after applying the security baseline, [Disable the drift control mechanism](./manage-secure-baseline.md).
 
-    The resultant new security posture of your servers are:
-
-    **Previous Settings + New Settings + Overlapping settings with updated values = New security posture**
+    The resultant new security posture of your servers will be a combination of the previous settings, the new settings, and the overlapping settings with updated values.
 
     > [!NOTE]
     > Microsoft tests and vaildates the Azure Local, version 23H2 security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with the new product scenarios, and could require extensive testing and troubleshooting on your part.
@@ -80,13 +78,13 @@ Get-AzSSecuritySettingsConfiguration
 Get-AzSSecuredCoreConfiguration
 ```
 
-You'll get an output for each of them with the baseline information.
+You'll get an output for each cmdlet with the baseline information.
 
 Example of the SecureSettingsConfiguration baseline output:
 
 ### Enable encryption at-rest
 
-During the upgrade process, Microsoft detects if your system nodes had BitLocker enabled. If BitLocker is enabled, you're prompted to suspend it.
+During the upgrade, Microsoft detects if your system nodes has BitLocker enabled. If enabled, you're prompted to suspend it.
 If you previously enabled BitLocker across your volumes, after you resume the protection, no further steps are required from you.
 
 To verify the status of encryption across your volumes, run the following commands:
@@ -96,7 +94,7 @@ Get-AsBitlocker -VolumeType BootVolume
 Get-AsBitlocker -VolumeType ClusterSharedVolume
 ```
 
-If you need to enable BitLocker on any of your volumes, see [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md).
+If you need to enable BitLocker on any of your volumes, see how to [Manage BitLocker encryption on Azure Local](../manage/manage-bitlocker.md).
 
 ### Enable Application Control
 
@@ -104,17 +102,17 @@ Application control for business (formerly known as Windows Defender Application
 
 After you've upgraded to version 23H2, consider enabling WDAC. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
 
-For this reason, for new deployments, WDAC is enabled in enforced mode (blocking nontrusted binaries), whereas for upgraded systems. we recommend that follow these steps: 
+For this reason, for new deployments, WDAC is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
 
-1. [Enable WDAC in Audit mode (assuming unknown software might be present)](./manage-wdac.md).
+1. [Enable WDAC in *Audit* mode](./manage-wdac.md)(assuming unknown software might be present).
 1. [Monitor WDAC events](./manage-wdac.md).
 1. [Create the necessary supplemental policies](./manage-wdac.md).
-1. Repeat steps #2 and #3 as necessary until no further audit events are observed, then you can proceed to switch to Enforced mode.
+1. Repeat steps #2 and #3 as necessary until no further audit events are observed, then you can proceed to switch to *Enforced* mode.
 
     > [!WARNING]
-    Failing to create the necessary AppControl policies to enable additional 3rd party software will prevent such software from running.
+    Failure to create the necessary AppControl policies to enable additional third party software will prevent that software from running.
 
-For instructions to enable in Enforced mode, see [Manage Windows Defender Application Control for Azure Local](./manage-wdac.md).
+For instructions to enable in *Enforced* mode, see [Manage Windows Defender Application Control for Azure Local](./manage-wdac.md).
 
 ## Next steps
 
