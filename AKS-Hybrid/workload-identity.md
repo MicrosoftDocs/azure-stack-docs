@@ -60,7 +60,7 @@ $customlocation_ID = $(az customlocation show --name "<your-custom-location-name
 # Azure Resource Manager ID of the logical network on Azure Stack HCI 
 $logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)
 
-# Include these variables to access key vault secrets from a pod in the cluster
+# To access key vault secrets from a pod in the cluster, include these variables 
 $KVName = "KV-workload-id" 
 $KVSecretName= "KV-secret"
 ```
