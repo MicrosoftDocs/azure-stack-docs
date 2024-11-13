@@ -4,7 +4,7 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/08/2024
+ms.date: 11/13/2024
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
@@ -85,7 +85,21 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 
 To troubleshoot Azure Local, run the following command:
 
-#### For registration issues
+### For deployment issues
+
+To generate a detailed report about your deployment, including successfully executed steps, skipped steps, and error details, run the following command:
+
+```powershell
+Get-AzsSupportEceDeploymentDetails
+```
+
+### For update or upgrade issues
+
+```powershell
+Get-AzsSupportEceUpdateDetails
+```
+
+### For registration issues
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName Registration
@@ -145,7 +159,7 @@ Successfully created archive C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\log-co
 Data collection done . Please upload the file to the Microsoft Workspace.
 ```
 
-#### For base Azure Local system issues
+### For base Azure Local system issues
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
@@ -188,7 +202,7 @@ Afterwards, a comprehensive overview of the different components that are requir
 
 To collect data, refer to the following two example scenarios:
 
-#### For automatic data collection
+### For automatic data collection
 
 ```powershell
 New-AzsSupportDataBundle -Component OS
@@ -196,7 +210,7 @@ New-AzsSupportDataBundle -Component OS
 Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-XXXX.zip . Please upload the file to the Microsoft Workspace
 ```
 
-#### For manual data collection
+### For manual data collection
 
 ```powershell
 $ClusterCommands = @()
