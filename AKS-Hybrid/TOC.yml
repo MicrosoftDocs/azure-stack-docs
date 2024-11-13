@@ -82,7 +82,7 @@
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
-      - name: Deploy and configure Workload Identity for AKS enabled by Arc clusters
+      - name: Deploy and configure Workload Identity
         href: workload-identity.md
     - name: Storage
       items:
