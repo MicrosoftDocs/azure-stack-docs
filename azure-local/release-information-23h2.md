@@ -22,7 +22,7 @@ This article presents the release information for Azure Local, version 23H2, inc
 
 The Azure Local, version 23H2 includes multiple release trains: 2311, 2402, 2405, 2408, and 2411. Each release train includes a feature build and subsequent cumulative updates.
 
-- **Feature build**: The feature build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
+- **Feature build**: The feature update build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
 - **Cumulative build**: A cumulative update build includes the incremental updates from the most recent feature build.
 
