@@ -84,10 +84,10 @@ The following table lists the requirements to successfully deploy and run discon
 
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
-| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) providing group membership and synchronization. <br><br> ADFS authenticating users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required Active Directory Certificate Services (ADCS) validation | Issue certificates for securing Azure Local disconnected operations endpoints (TLS). |
+| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
+| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required Active Directory Certificate Services (ADCS) validation | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
 | Network Time Protocol (NTP) optional  | Local or Public time server | Time server for synchronizing system clock. |
-| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network for resolving Azure Local-disconnected operations endpoints to configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
+| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
 For information on deploying and configuring the integration components, refer to:
 
@@ -101,26 +101,26 @@ For information on deploying and configuring the integration components, refer t
 
 ### Access requirements
 
-To successfully configure disconnected operations and create the necessary resources,
+To successfully configure disconnected operations and create the necessary resources:
 
 | Component    | Access required    |
 |--------------|--------------------|
 | AD + ADFS   | Create a service account with read access for the organizational unit to facilitate LDAP integration. <br><br> Export the configuration for ADFS (OIDC). |
 | DNS         | Access to create DNS records or zones to provide lookups for a disconnected operations endpoint. |
-| PKI         | Ability to create and export certificates for securing disconnected operations endpoints (TLS). |
+| PKI         | Ability to create and export certificates to secure disconnected operations endpoints (TLS). |
 | Network     | Access to the firewall (if a local firewall is implemented) to ensure necessary changes can be done. |
 
 ## Preview participation criteria
 
-To be eligible to participate in the preview, you must meet the following criteria:
+To participate in the preview, you must meet the following criteria:
 
 - **Enterprise agreement**: A current enterprise agreement with Microsoft, typically covering a period of at least three years.
 
-- **Business needs to operate disconnected**: The disconnected operations feature might be for your organization if you can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
+- **Business needs to operate disconnected**: The disconnected operations feature is for those who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
-- **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected on Azure Local. For more information, see [Prerequisites](../manage/disconnected-operations-overview.md#prerequisites).
+- **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected for Azure Local. For more information, see [Prerequisites](../manage/disconnected-operations-overview.md#prerequisites).
 
-- **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring their own validated Azure Local hardware for preview. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+- **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring their own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
 ## Get started
 
