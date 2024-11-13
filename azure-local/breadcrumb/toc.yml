@@ -1,0 +1,12 @@
+items:
+- name: Learn
+  tocHref: /
+  topicHref: /
+  items:
+  - name: Azure
+    tocHref: /azure/
+    topicHref: /azure/index
+    items:
+    - name: Azure Local
+      tocHref: /azure/azure-local/
+      topicHref: /azure/azure-local/index
