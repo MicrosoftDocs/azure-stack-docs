@@ -1,7 +1,7 @@
 ---
-title: Get-AksHciUpdates for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciUpdates for AKS on Azure Local and Windows Server
 author: sethmanheim
-description: The Get-AksHciUpdates PowerShell command lists the available updates for AKS on Azure Stack HCI and Windows Server.
+description: The Get-AksHciUpdates PowerShell command lists the available updates for AKS on Azure Local and Windows Server.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: sethm 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Get-AksHciUpdates
 
 ## Synopsis
-List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Local and Windows Server.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksHciUpdates
 ```
 
 ## Description
-List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Local and Windows Server.
 
 ## Examples
 

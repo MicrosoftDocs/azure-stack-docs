@@ -25,7 +25,7 @@ To deploy a Resource Manager template, you need write access on the resources yo
 ### Prerequisites
 
 - An Azure account with an active subscription.
-- An Azure Stack HCI 23H2 cluster.
+- An Azure Local, version 23H2 cluster.
 - The latest Azure CLI version.
 
 ## Step 1: prepare your Azure account
