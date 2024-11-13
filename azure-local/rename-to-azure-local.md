@@ -20,8 +20,7 @@ All features and capabilities are still available in the product. Pricing, licen
 
 To make the transition seamless, all existing sign in URLs, APIs, and PowerShell cmdlets stay the same, as do developer experiences and tooling.
 
-
-For self-service support, look for the article path of Azure Local.
+<!--For self-service support, look for the topic path of Azure Local. - verify with CSS -->
 
 The product name is changing, and features are now branded as Azure Local instead of Azure Stack HCI. If you're updating the name to Azure Local in your own content or experiences, see [Naming changes and exceptions](#naming-changes-and-exceptions).
 
@@ -79,7 +78,7 @@ The Azure billing meters for Azure Stack HCI will be renamed with meter ID updat
 
 ### Are PowerShell cmdlets being renamed?
 
-No. Today, we offer two modules: one for Arc VM management and another for Azure Stack HCI cluster, service, and management. The `stack-hci-vm` PowerShell module for Arc to manage Arc VMs on Azure Stack HCI won't be renamed.
+No. Today, we offer two modules: one for the Arc VM management and another for Azure Stack HCI cluster, service, and management. The `stack-hci-vm` PowerShell module for Arc to manage Arc VMs on Azure Stack HCI won't be renamed.
 
 ### How and when are customers being notified?
 
