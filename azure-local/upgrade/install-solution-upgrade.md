@@ -134,6 +134,7 @@ After the solution upgrade is complete, you may need to perform additional tasks
 - You may need to connect to the system via Remote Desktop Protocol (RDP) to deploy workloads. For more information, see [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
 - To prevent the accidental deletion of resources, you can lock resources. We recommend that you lock the Arc Resource Bridge. For more information, see [Lock Arc Resource Bridge](../deploy/deploy-via-portal.md#lock-arc-resource-bridge).
 - You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- You need to upgrade the security posture. For more information, see [Update security posture on Azure Local after upgrade](../manage/manage-secure-baseline.md)
 
 ## Next steps
 
