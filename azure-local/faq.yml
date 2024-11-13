@@ -6,7 +6,7 @@ metadata:
   author: cosmosdarwin
   ms.author: cosdar
   ms.service: azure-stack-hci
-  ms.date: 10/21/2024
+  ms.date: 11/13/2024
 title: Azure Local FAQ
 summary: The Azure Local FAQ provides information about Azure Local connectivity with the cloud, and how Azure Local relates to Windows Server.
 
@@ -52,7 +52,7 @@ sections:
 
       - question: What happens if my network connection to the cloud temporarily goes down?
         answer: |
-          While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. However, you wouldn't be able to use features that directly rely on cloud services. Information in the Azure portal may also become out-of-date until Azure Local is able to sync again.
+          While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. However, you wouldn't be able to use features that directly rely on cloud services. Information in the Azure portal may also become out-of-date until Azure Local is able to sync again. Configuration changes made to Arc VMs using edge-local tools won't automatically sync with Azure.
 
       - question: How long can Azure Local run with the connection down?
         answer: |
