@@ -124,6 +124,6 @@ To be eligible to participate in the preview, you must meet the following criter
 
 ## Get started
 
-To access the preview, you must complete this [form](https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=v4j5cvGGr0GRqy180BHbR1qfdA-2UqFBozr8CTJ5MMBUODNaOVVPU0kxUzhIWVU2RllFNUMyTElRUCQlQCN0PWcu&analysis=false) and wait for approval. You should be informed of your status, approved, rejected, queued, or need more information, within 10 business days of submitting the form.
+To access the preview, you must complete this [form](https://aka.ms/az-local-disconnected-operations-prequalify) and wait for approval. You should be informed of your status, approved, rejected, queued, or need more information, within 10 business days of submitting the form.
 
 If approved, you receive further instructions on how to acquire, download, and operate disconnected for Azure Local.
