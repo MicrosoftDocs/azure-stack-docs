@@ -8,8 +8,8 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 
-# Intent: As an IT Pro, I need to understand how disruptions can impact the availability of applications on my AKS deployments on Azure Stack HCI and Windows Server.
-# Keyword: AKS on Azure Stack HCI and Windows Server architecture live migration disruption Kubernetes container orchestration
+# Intent: As an IT Pro, I need to understand how disruptions can impact the availability of applications on my AKS deployments on Azure Local and Windows Server.
+# Keyword: AKS on Azure Local and Windows Server architecture live migration disruption Kubernetes container orchestration
 ---
 
 # Application availability in AKS enabled by Azure Arc
@@ -18,7 +18,7 @@ ms.reviewer: rbaziwane
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
-The AKS architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This architecture means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Azure Stack HCI or Windows Server, gets similar (or better) uptime than what's currently experienced on a legacy VM application.
+The AKS architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This architecture means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Azure Local or Windows Server, gets similar (or better) uptime than what's currently experienced on a legacy VM application.
 
 This article describes some fundamental concepts for users who want to run containerized applications on AKS Arc with live migration enabled in order to ensure applications are available during a disruption. Kubernetes terminology, such as *voluntary disruption* and *involuntary disruption*, is used to refer to downtime of an application running in a pod.
 
@@ -26,9 +26,9 @@ This article describes some fundamental concepts for users who want to run conta
 
 [*Live migration*](/windows-server/virtualization/hyper-v/manage/live-migration-overview) is a Hyper-V feature that allows you to transparently move running virtual machines from one Hyper-V host to another without perceived downtime. The primary benefit of live migration is flexibility; running virtual machines is not tied to a single host machine. This allows users to perform actions such as draining a specific host of virtual machines before decommissioning or upgrading the host. When paired with Windows Failover Clustering, live migration enables the creation of highly available and fault tolerant systems.
 
-The current architecture of AKS on Azure Stack HCI and Windows Server assumes that you enabled live migration in your Azure Stack HCI clustered environment. Therefore, all Kubernetes worker node VMs are created with live migration configured. These nodes can be moved around physical hosts in the event of a disruption to ensure the platform is highly available.
+The current architecture of AKS on Azure Local and Windows Server assumes that you enabled live migration in your Azure Local clustered environment. Therefore, all Kubernetes worker node VMs are created with live migration configured. These nodes can be moved around physical hosts in the event of a disruption to ensure the platform is highly available.
 
-:::image type="content" source="media/app-availability/cluster-architecture.png" alt-text="Diagram showing AKS on Azure Stack HCI and Windows Server with Failover Clustering enabled." lightbox="media/app-availability/cluster-architecture.png":::
+:::image type="content" source="media/app-availability/cluster-architecture.png" alt-text="Diagram showing AKS on Azure Local and Windows Server with Failover Clustering enabled." lightbox="media/app-availability/cluster-architecture.png":::
 
 When you run a legacy application as a singleton on top of Kubernetes, this architecture meets your high availability needs. Kubernetes manages the scheduling of pods on available worker nodes while live migration manages the scheduling of worker node VMs on available physical hosts.
 
@@ -36,7 +36,7 @@ When you run a legacy application as a singleton on top of Kubernetes, this arch
 
 ## Application disruption scenarios
 
-A comparative study of the recovery times for applications running in VMs on AKS on Azure Stack HCI and Windows Server clearly shows that there is minimal impact on the application when common disruption events occur. Three example disruption scenarios include:
+A comparative study of the recovery times for applications running in VMs on AKS on Azure Local and Windows Server clearly shows that there is minimal impact on the application when common disruption events occur. Three example disruption scenarios include:
 
 - Applying an update that results in a reboot of the physical machine.
 - Applying an update that involves recreating the worker node.
@@ -45,7 +45,7 @@ A comparative study of the recovery times for applications running in VMs on AKS
 > [!NOTE]
 > These scenarios assume that the application owner still uses Kubernetes affinity and anti-affinity settings to ensure proper scheduling of pods across worker nodes.
 
-| Disruption event  | Running applications in VMs on Azure Stack HCI |       Running applications in VMs on AKS on Azure Stack HCI or Windows Server            |
+| Disruption event  | Running applications in VMs on Azure Local |       Running applications in VMs on AKS on Azure Local or Windows Server            |
 | ------------------------------------------------------------ | ---------------------------- | ----------------- |
 | Apply an update that results in a reboot of the physical machine | No  impact                   | No  impact        |
 | Apply an update that involves recreating the worker node (or rebooting the VM) | No impact                    | Varies            |
@@ -68,8 +68,8 @@ In this scenario, an involuntary disruption event occurs to a physical machine h
 
 ## Conclusion
 
-AKS failover clustering technologies are designed to ensure that computing environments in both Azure Stack HCI and Windows Server are highly available and fault tolerant. However, the application owner still has to configure deployments to use Kubernetes features, such as `Deployments`, `Affinity Mapping`, `RelicaSets`, to ensure that the pods are resilient in disruption scenarios.
+AKS failover clustering technologies are designed to ensure that computing environments in both Azure Local and Windows Server are highly available and fault tolerant. However, the application owner still has to configure deployments to use Kubernetes features, such as `Deployments`, `Affinity Mapping`, `RelicaSets`, to ensure that the pods are resilient in disruption scenarios.
 
 ## Next steps
 
-[AKS on Windows Server and Azure Stack HCI overview](overview.md)
+[AKS on Windows Server and Azure Local overview](overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Stack HCI 23H2)
-description: Learn how to restrict SSH access in AKS Arc on HCI 23H2.
+title: Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Local, version 23H2)
+description: Learn how to restrict SSH access in AKS Arc on Azure Local, version 23H2.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 01/29/2024
@@ -13,7 +13,7 @@ ms.reviewer: oadeniji
 
 ---
 
-# Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Stack HCI 23H2)
+# Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Local, version 23H2)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -40,5 +40,5 @@ This command does two things: it limits the scope of the command, and it also li
 
 ## Next steps
 
-- [Restrict SSH access (AKS on Azure Stack HCI 22H2)](restrict-ssh-access-22h2.md)
+- [Restrict SSH access (AKS on Azure Local 22H2)](restrict-ssh-access-22h2.md)
 - [AKS enabled by Arc overview](aks-overview.md)

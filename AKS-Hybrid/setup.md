@@ -77,7 +77,7 @@ Now that you verified the system settings, follow these steps:
 
    [![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png)](.\media\setup\host-configuration-static.png#lightbox)
 
-   (Optional) Configure proxy settings as required for the AKS host. These settings are dependent on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
+   (Optional) Configure proxy settings as required for the AKS host. These settings are dependent on the proxy settings that are provisioned on the Azure Local host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
    [![Screenshot that shows the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png#lightbox)
 
