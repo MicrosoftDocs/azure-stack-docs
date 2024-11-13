@@ -65,7 +65,7 @@ Before you begin, make sure you review and apply the appropriate hardware, integ
 
 ### Hardware requirements
 
-The virtual appliance for disconnected operations runs on Azure Local instances, version 2411 or higher.
+The virtual appliance for disconnected operations runs on Azure Local instances.
 
 This checklist provides you with the hardware requirements needed to operate disconnected.
 
