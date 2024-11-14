@@ -12,9 +12,9 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2
 
-[!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
-
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
+[!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
 Azure Stack HCI version 22H2 supports inline fault domain and resiliency changes for single-server cluster scale-out. This article describes how you can scale out your Azure Stack HCI cluster.
 

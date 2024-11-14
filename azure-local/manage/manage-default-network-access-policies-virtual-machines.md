@@ -12,6 +12,8 @@ ms.date: 05/22/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 
 This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
