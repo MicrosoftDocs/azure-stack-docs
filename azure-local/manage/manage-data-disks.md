@@ -14,6 +14,14 @@ ms.service: azure-stack-hci
 
 This article describes how to download an Azure managed disk from Azure to your Azure Local instance. You can then use the disk to create an image or to attach it to your Arc virtual machines (VMs) as needed.
 
+## Prerequisites
+
+Before you begin, make sure to complete the following prerequisites:
+
+- You have access to an Azure Local instance that is deployed and registered.
+- There is already a managed disk in Azure.
+
+
 ## Download an Azure managed disk
 
 To download a data disk from Azure, first generate a SAS URL of the disk using Azure CLI:  
@@ -93,96 +101,6 @@ Download Uri for VHD is: https://*****
   "tags": null, 
   " 
 ```
-
-### Create an image using an existing Arc VM 
-
-You can create a gallery image using an existing Arc VM. The OS disk of the Arc VM is used to create a gallery image on your Azure Local instance:
-
-```azurecli
-az stack-hci-vm image create -resource-group $rg --location eastus2euap --custom-location $cl --os-type "Windows" --source-vm "testvm001" --name image03
-```
-
-Set parameters for your subscription, resource group, location, disk, and SAS URL. Replace the parameters in `< >` with the appropriate values.
-
-```azurecli
-$subscription = "<Subscription ID>"
-$resource-group = "<Resource group>"
-$name = "<Data disk name>"
-$customLocation = "<Custom location resource ID>"
-$disk-file-format = "<Data disk file format>"
-$download-url = "<SAS URL>"
-```
-
-The parameters are described in the following table:
-
-| Parameter | Description |
-| --- | --- |
-| subscription | Subscription associated with your Azure Local. 
-| resource-group | Resource group for Azure Local that you associate with this image. |
-| name | Name of the data disk for Azure Local. | 
-| customLocation | Resource ID of the custom location for Azure Local. |
-| disk-file-format | File format of the data disk. This can be .vhd or .vhdx format. |
-| download-url | SAS URL of the Azure managed disk.| 
-
-Here is an example output:
-
-```azurecli
-{ 
-  "extendedLocation": { 
-    "name": "/subscriptions/resourceGroups/providers/Microsoft.ExtendedLocation/customLocations/", 
-    "type": "CustomLocation" 
-  }, 
-  "id": "/subscriptions/resourceGroups/providers/Microsoft.AzureStackHCI/galleryImages/image03", 
-  "location": "eastus2euap", 
-  "name": "image03", 
-  "properties": { 
-    "cloudInitDataSource": null, 
-    "containerId": null, 
-    "hyperVGeneration": null, 
-    "identifier": null, 
-    "imagePath": null, 
-    "osType": "Windows", 
-    "provisioningState": "Succeeded", 
-    "sourceVirtualMachineId": "/subscriptions/resourceGroups/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", 
-    "status": { 
-      "downloadStatus": { 
-        "downloadSizeInMb": null 
-      }, 
-      "errorCode": "", 
-      "errorMessage": "", 
-      "progressPercentage": null, 
-      "provisioningStatus": { 
-        "operationId": null, 
-        "status": null 
-      } 
-    }, 
-    "version": { 
-      "name": null, 
-      "properties": { 
-        "storageProfile": { 
-          "osDiskImage": { 
-            "sizeInMb": null 
-          } 
-        } 
-      } 
-    } 
-  }, 
-  "resourceGroup": "myresourcegrou", 
-  "systemData": { 
-    "createdAt": "2024-09-26T20:16:17.625002+00:00", 
-    "createdBy": "mycreatedby", 
-    "createdByType": "Application", 
-    "lastModifiedAt": "2024-09-26T20:16:17.625002+00:00", 
-    "lastModifiedBy": "mylastmodifiedby", 
-    "lastModifiedByType": "Application" 
-  }, 
-  "tags": null, 
-  "type": "microsoft.azurestackhci/galleryimages" 
-}
-```
-
-Once the image is created, you can check the newly created image in Azure portal.  
-
 
 ## Next steps
 
