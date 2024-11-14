@@ -1,9 +1,9 @@
 ---
-title: Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
+title: Use GPUs for compute-intensive workloads (AKS on Azure Local, version 23H2)
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/05/2024
+ms.date: 02/29/2024
 ms.author: sethm 
 ms.lastreviewed: 06/05/2024
 ms.reviewer: baziwane
@@ -12,18 +12,18 @@ ms.reviewer: baziwane
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
+# Use GPUs for compute-intensive workloads (AKS on Azure Local, version 23H2)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 > [!NOTE]
-> For information about GPUs in AKS on Azure Stack HCI 22H2, see [Use GPUs (HCI 22H2)](deploy-gpu-node-pool-22h2.md).
+> For information about GPUs in AKS on Azure Local 22H2, see [Use GPUs (Azure Local 22H2)](deploy-gpu-node-pool-22h2.md).
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
 ## Supported GPU models
 
-The following GPU models are supported by AKS on Azure Stack HCI 23H2:
+The following GPU models are supported by AKS on Azure Local, version 23H2:
 
 | Manufacturer | GPU model | Supported version |
 |--------------|-----------|-------------------|
@@ -33,7 +33,7 @@ The following GPU models are supported by AKS on Azure Stack HCI 23H2:
 
 ## Supported VM sizes
 
-The following VM sizes for each GPU models are supported by AKS on Azure Stack HCI 23H2. 
+The following VM sizes for each GPU models are supported by AKS on Azure Local, version 23H2. 
 
 ### Nvidia T4 is supported by NK T4 SKUs
 
@@ -66,7 +66,7 @@ To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before
 
 ### Step 1: install the OS
 
-Install the Azure Stack HCI, version 23H2 operating system locally on each server in your Azure Stack HCI cluster.
+Install the Azure Local, version 23H2 operating system locally on each server in your Azure Local cluster.
 
 ### Step 2: uninstall the NVIDIA host driver
 
@@ -119,7 +119,7 @@ mkdir nvidia-mitigation-driver
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder that contains the extracted files, and select the GPU driver file based on the actual GPU type installed on your Azure Stack HCI hosts. For example, if the type is **A2 GPU**, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
+To install the mitigation driver, navigate to the folder that contains the extracted files, and select the GPU driver file based on the actual GPU type installed on your Azure Local hosts. For example, if the type is **A2 GPU**, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
 
 You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
 
@@ -141,15 +141,15 @@ OK       Nvidia A2_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 
 ### Step 5: repeat steps 1 to 4
 
-Repeat steps 1 to 4 for each server in your HCI cluster.
+Repeat steps 1 to 4 for each server in your Azure Local cluster.
 
-### Step 6: continue deployment of the Azure Stack HCI cluster
+### Step 6: continue deployment of the Azure Local cluster
 
-Continue the deployment of the Azure Stack HCI cluster by following the steps in [Azure Stack HCI, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
+Continue the deployment of the Azure Local cluster by following the steps in [Azure Local, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
 
 ### Get a list of available GPU-enabled VM SKUs
 
-Once the Azure Stack HCI cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
+Once the Azure Local cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
 
 ```azurecli
 az aksarc vmsize list --custom-location <custom location ID> -g <resource group name>
@@ -277,5 +277,5 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
-- [Use GPUs (AKS on Azure Stack HCI 22H2)](deploy-gpu-node-pool-22h2.md)
+- [Use GPUs (AKS on Azure Local 22H2)](deploy-gpu-node-pool-22h2.md)
 - [AKS overview](aks-hybrid-options-overview.md)
