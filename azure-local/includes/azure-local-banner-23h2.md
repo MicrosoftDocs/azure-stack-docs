@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 11/13/2024
+ms.date: 11/14/2024
 ms.reviewer: alkohli
 ---
 

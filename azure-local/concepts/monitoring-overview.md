@@ -11,7 +11,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of Azure Local monitoring.
 

@@ -13,7 +13,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article discusses Azure, machine and storage, networking, and other requirements for Azure Local. If you purchase Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
 

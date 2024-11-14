@@ -12,7 +12,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article describes how to deploy a virtualized Azure Local instance running version 23H2 on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).
 

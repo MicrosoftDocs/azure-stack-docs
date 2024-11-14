@@ -13,7 +13,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Local.
 

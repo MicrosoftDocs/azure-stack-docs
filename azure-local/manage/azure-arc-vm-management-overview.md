@@ -13,7 +13,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides a brief overview of the Azure Arc VM management feature on Azure Local including the benefits, its components, and high-level workflow.  
 

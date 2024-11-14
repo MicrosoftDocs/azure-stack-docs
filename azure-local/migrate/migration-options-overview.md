@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of some of the common options available for migrating virtual machine (VM) workloads to your Azure Local instance.
 
