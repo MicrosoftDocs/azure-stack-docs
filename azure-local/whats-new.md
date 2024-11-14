@@ -27,14 +27,14 @@ This is a baseline release with the following features and improvements:
 - **Rebranding of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio. 
 
     For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
-- **Azure Local for Small Form Factor**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. 
+- **Azure Local for Small Form Factor**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
     For more information, see [System requirements for Azure Local for small form factor](./concepts/system-requirements-small-23h2.md).
 - **Azure Local for disconnected operations** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
 
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
-    For more information, see [Azure Local for Disconnected Operations](disconnected-operations-overview.md).
+    For more information, see [Azure Local for Disconnected Operations](./manage/disconnected-operations-overview.md).
 - **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by reducing dependencies on Active Directory systems and simplifying firewall configurations.
 
     For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
@@ -44,7 +44,7 @@ This is a baseline release with the following features and improvements:
         For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Arc VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
     - **Add network inteface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you are required to configure the desired static IP from within the VM.
         
-        For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md/#add-a-network-interface).
+        For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
 
 ## [2408 releases](#tab/2408releases)
