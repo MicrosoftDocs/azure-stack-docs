@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 11/06/2024
+ms.date: 11/13/2024
 ---
 
 # Manage SDN Multisite for Azure Local and Windows Server
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -27,7 +27,7 @@ This article describes how to deploy and manage the Software Defined Networking 
 
 ::: zone-end
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 For an overview of SDN Multisite, it's current capabilities and limitations, see [Overview of SDN Multisite](../concepts/sdn-multisite-overview.md?pivot=azure-stack-hci).
 
@@ -43,7 +43,7 @@ For an overview of SDN Multisite, it's current capabilities and limitations, see
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - You must have access to Azure Local, version 23H2 or later clusters deployed at two separate physical sites.
 
@@ -186,7 +186,7 @@ If you intend to re-establish your multisite connection after its removal, your 
 
 For redeployment after SDN Multisite removal, ensure the following are removed:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - Virtual networks. See [Delete a virtual network](./tenant-virtual-networks.md#delete-a-virtual-network)
 - Network Security Groups. See [Delete a network security group](./use-datacenter-firewall-windows-admin-center.md#delete-a-network-security-group)
@@ -204,7 +204,7 @@ For redeployment after SDN Multisite removal, ensure the following are removed:
 
 - [Read the blog about SDN Multisite](https://techcommunity.microsoft.com/t5/azure-stack-blog/software-defined-networking-multisite-a-tale-of-2-sdn-sites/ba-p/3990521)
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - [Software Defined Networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md)
 
