@@ -17,7 +17,7 @@ This article describes disconnected operations and how they can be used in the d
 
 ## Overview
 
-Disconnected operations for Azure Local enable the deployment and management of Azure Local instances. These instances allow you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc services. You can also use Azure with a local control plane, without needing to connect to the Azure public cloud.
+Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
 ## Why use disconnected operations?
 
