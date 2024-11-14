@@ -35,7 +35,7 @@ This is a baseline release with the following features and improvements:
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
     For more information, see [Azure Local for Disconnected Operations](disconnected-operations-overview.md).
-- **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. This integration with Key Vault allows you to securely manage and store secrets without relying on Active Directory (AD). 
+- **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by reducing dependencies on Active Directory systems and simplifying firewall configurations.
 
     For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 - **Arc VM changes**: The following changes were made to Arc VM management:
@@ -368,7 +368,7 @@ In this release:
 
 ### Migration of Hyper-V VMs to Azure Local (preview)
 
-You can now migrate Hyper-V VMs to Azure Local using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Local (preview)](./index.yml).
+You can now migrate Hyper-V VMs to Azure Local using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Local (preview)](./migrate/migration-azure-migrate-overview.md).
 
 ### Monitoring changes
 
