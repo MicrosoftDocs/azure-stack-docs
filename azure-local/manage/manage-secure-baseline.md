@@ -115,7 +115,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
   
       > [!IMPORTANT]
-      > Enable or Disable AzsSecurity cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly ingested into nodes. For more information, see [Modify security settings after deployment](#modify-security-settings-after-deployment).
+      > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes. For more information, see [Modify security settings after deployment](#modify-security-settings-after-deployment).
 
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
