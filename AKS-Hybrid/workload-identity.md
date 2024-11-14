@@ -12,7 +12,10 @@ ms.date: 11/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you quickly deploy and manage Kubernetes clusters. This article describes how to perform the following tasks:
+Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage.
+<!-- For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-workload-identity). -->
+
+Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you easily deploy workload identity enabled Kubernetes clusters. This article describes how to perform the following tasks:
 
 - Create an AKS Arc cluster with workload identity enabled (preview).
 - Create a Kubernetes service account and bind it to the Azure Managed Identity.
@@ -20,7 +23,6 @@ Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes serv
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
-<!-- For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-workload-identity). -->
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
@@ -53,12 +55,6 @@ $SERVICE_ACCOUNT_NAME = "workload-identity-sa"
 
 $FedIdCredentialName = "myFedIdentity" 
 $MSIName = "myIdentity" 
-
-# Azure Resource Manager ID of the custom location, set up during the Azure Stack HCI cluster deployment 
-$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv) 
-
-# Azure Resource Manager ID of the logical network on Azure Stack HCI 
-$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)
 
 # To access key vault secrets from a pod in the cluster, include these variables 
 $KVName = "KV-workload-id" 
@@ -100,8 +96,11 @@ The following example output shows the successful creation of a resource group:
 ```
 
 ## Step 1: Create an AKS Arc cluster with workload identity enabled
+To create an AKS Arc cluster, you'll need both the `$customlocation_ID` and `$logicnet_Id`. 
+- `$customlocation_ID`: Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)` , if the infrastructure admin provides a custom location name and resource group name.
+- `$logicnet_Id`: Azure Resource Manager ID of the Azure Stack HCI logical network created following [these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
-To create an AKS Arc cluster, run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
+Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your <entra-admin-group-object-ids> and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
 
 ```azurecli
 az aksarc create  
@@ -180,7 +179,7 @@ Open a new window. Copy and paste the following CLI commands:
 $yaml = @" apiVersion: v1 kind: ServiceAccount metadata: annotations: azure.workload.identity/client-id: $MSIId name: $SERVICE_ACCOUNT_NAME namespace: $SERVICE_ACCOUNT_NAMESPACE "@ $yaml = $yaml -replace '\$MSIId', $MSIId ` -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE $yaml | kubectl apply -f -
 ```
 
-The following output shows successful creation of the workload identity:
+The following output shows successful creation of the service account:
 
 ```output
 serviceaccount/workload-identity-sa created
