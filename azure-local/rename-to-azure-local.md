@@ -57,7 +57,7 @@ In addition, documentation for older versions of Azure Stack HCI, for example, 2
 
 ### When is the name change happening?
 
-The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages will occur on November 19, 2024. The names in the text strings in the Azure portal will be completed early 2025.
+The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages will occur on November 19, 2024. The names in the text strings in the Azure portal will be completed by early 2025.
 
 ### Why is the name being changed?
 
@@ -77,7 +77,7 @@ No, only the name Azure Stack HCI is going away. The product capabilities remain
 
 No. Prices, terms, and service level agreements (SLAs) remain the same.
 
-The Azure billing meters for Azure Stack HCI will be renamed with meter ID updates. This change will be completed early next year. The meter name and ID changes don’t affect prices. However, you might notice some changes in how your Azure consumption is shown on your invoice, price sheet, API, usage details file, and **Cost Management + Billing** experiences.
+The Azure billing meters for Azure Stack HCI will be renamed with meter ID updates. This change will be completed by early 2025. The meter name and ID changes don’t affect prices. However, you might notice some changes in how your Azure consumption is shown on your invoice, price sheet, API, usage details file, and **Cost Management + Billing** experiences.
 
 ### Are PowerShell cmdlets and Azure CLI commands being renamed?
 
