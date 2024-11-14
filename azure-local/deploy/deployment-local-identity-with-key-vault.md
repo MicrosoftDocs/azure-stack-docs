@@ -29,7 +29,7 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 - **Secret store.** Key Vault securely manages and stores secrets, such as BitLocker keys, node passwords, and other sensitive information. This reduces the risk of unauthorized access and enhances the overall security posture.
 
-- **Maintain simplified management.** By integrating with Key Vault, organizatios can streamline the management of secrets and credentials. This includes storing deployment and local identity secrets in a single vault, making it easier to manage and access these secrets.
+- **Maintain simplified management.** By integrating with Key Vault, organizations can streamline the management of secrets and credentials. This includes storing deployment and local identity secrets in a single vault, making it easier to manage and access these secrets.
 
 - **Simplified deployment.** During the system deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This option streamlines the deployment process by ensuring all necessary secrets are securely stored within Key Vault. The deployment becomes more efficient by reducing dependencies on existing AD systems or other systems that run AD, which require ongoing maintenance. Additionally, this approach simplifies firewall configurations for Operational Technology networks, making it easier to manage and secure these environments.
 
@@ -107,7 +107,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 1. Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
 
-      :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." border="false" lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
+      :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
 ### Management tab
 
@@ -115,7 +115,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 1. To create a new Key Vault, select **Create a new Key Vault**. Enter the required details in the right context pane and then select **Create**.
 1. In **Key vault name**, enter the new Key Vault name.
 
-    :::image type="content" source="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png" alt-text="Screenshot of Create a Key Vault page." border="false" lightbox="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png" alt-text="Screenshot of Create a Key Vault page." lightbox="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png":::
 
 ## Post-deployment steps
 
@@ -144,7 +144,7 @@ After deploying the system, confirm the deployment was without AD (AD-less).
 
 This ensures that all critical information is stored safely and can be easily retrieved when needed, providing an additional layer of security and reliability for our infrastructure.
 
-:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of the Secrets page." border="false" lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
+:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of the Secrets page." lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
 
 ## Update Key Vault on Azure Local
 
@@ -156,7 +156,7 @@ Follow these steps to update your backup Key Vault configuration of a system to 
 
 1. Set up the appropriate access controls for the new Key Vault. This includes granting necessary permissions to the node identity. Ensure your Key Vault is assigned the **Key Vaults Secret Officer** role. For instructions, see [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-guide?tabs=azure-portal).
 
-    :::image type="content" source="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png" alt-text="Screenshot of Add role assignment page." border="false" lightbox="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png" alt-text="Screenshot of Add role assignment page." lightbox="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png":::
 
 1. Update the system configuration.
 
@@ -179,11 +179,11 @@ Follow these steps to update your backup Key Vault configuration of a system to 
 
     Here's a sample screenshot of **Resource JSON** where you can update the Key Vault:
 
-    :::image type="content" source="media/deployment-local-identity-with-key-vault/resource-json.png" alt-text="Screenshot of the Resource JSON where you can update the Key Vault." border="false" lightbox="media/deployment-local-identity-with-key-vault/resource-json.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/resource-json.png" alt-text="Screenshot of the Resource JSON where you can update the Key Vault." lightbox="media/deployment-local-identity-with-key-vault/resource-json.png":::
 
 1. Check secrets in the new Key Vault. Confirm that all backup secrets are properly stored in the new Key Vault.
 
-1. Clean up old Key Vault. The old Key Vault and its secrets aren't deleted automatically. After you verified that the new Key Vault is configured correctly and all secrets are stored as expected, you can delete the old Key Vault if necessary.
+1. Clean up the old Key Vault. The old Key Vault and its secrets aren't deleted automatically. After you've verified that the new Key Vault is configured correctly and all secrets are stored as expected, you can delete the old Key Vault if necessary.
 
 ## Recover a deleted Key Vault and resume backup
 
