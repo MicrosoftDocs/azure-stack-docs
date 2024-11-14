@@ -9,7 +9,7 @@ ms.date: 11/19/2024
 
 # Disconnected operations for Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2411 and higher
+Applies to: Azure Local, version 23H2, release 2411 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
@@ -71,7 +71,7 @@ This checklist provides you with the hardware requirements needed to operate dis
 
 | Hardware validation                  | Minimum validated nodes required |
 | -------------------------------------| --------------------------------|
-| Minimum number of nodes              | Three nodes                     |
+| Minimum number of nodes              | 3 nodes                     |
 | Minimum memory per node              | 64 GB                           |
 | Minimum cores per node               | 24 physical cores               |
 | Minimum storage per node             | 2 TB SSD/NVME                   |
