@@ -12,9 +12,13 @@ ms.date: 11/13/2024
 
 # Use default network access policies on virtual machines on Azure Local, version 23H2
 
+:::zone pivot="azure-local"
+
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-:::zone pivot="azure-local"
+::: zone-end
+
+:::zone pivot="windows-server"
 
 >Applies to: Windows Server 2025
 

@@ -12,15 +12,19 @@ ms.date: 11/13/2024
 
 # Configure network security groups with tags in Windows Admin Center
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
-
 :::zone pivot="azure-local"
 
->Applies to: Windows Server 2025
+[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
 ::: zone-end
 
+:::zone pivot="windows-server"
+
+>Applies to: Windows Server 2025
+
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
+
+::: zone-end
 
 With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
