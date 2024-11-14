@@ -10,17 +10,17 @@ ms.lastreviewed: 05/29/2024
 
 ---
 
-# AKS on Azure Stack HCI 23H2 architecture
+# AKS on Azure Local, version 23H2 architecture
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
+Azure Kubernetes Service (AKS) on Azure Local is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
-## AKS architecture on Azure Stack HCI
+## AKS architecture on Azure Local
 
-AKS clusters on Azure Stack HCI use **Arc Resource Bridge** (also known as **Arc appliance**) to provide the core orchestration mechanism and interface for deploying and managing one or more AKS clusters. Containerized applications are deployed into AKS clusters.
+AKS clusters on Azure Local use **Arc Resource Bridge** (also known as **Arc appliance**) to provide the core orchestration mechanism and interface for deploying and managing one or more AKS clusters. Containerized applications are deployed into AKS clusters.
 
 :::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
 
@@ -31,7 +31,7 @@ AKS Arc uses a predefined configuration to deploy Kubernetes clusters effectivel
 
 ### Arc Resource Bridge
 
-The Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure. Arc Resource Bridge includes the following core AKS Arc components:
+The Arc Resource Bridge connects a private cloud (for example, Azure Local, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure. Arc Resource Bridge includes the following core AKS Arc components:
 
 - **AKS Arc cluster extensions**: A cluster extension is the on-premises equivalent of an Azure Resource Manager resource provider. Just as the **Microsoft.ContainerService** resource provider manages AKS clusters in Azure, the AKS Arc cluster extension, once added to your Arc Resource Bridge, helps manage Kubernetes clusters via Azure.
 - **Custom location**: A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying Azure service instances.
@@ -70,13 +70,13 @@ Azure Arc is automatically enabled on all your Kubernetes clusters created using
 
 ## Cloud-based updates for infrastructure components
 
-Azure Stack HCI 23H2 consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
+Azure Local, version 23H2 consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
 
-AKS is now part of Azure Stack HCI starting from version 23H2. The lifecycle management of AKS enabled by Azure Arc infrastructure follows the same approach as any other components on Azure Stack HCI 23H2. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS enabled by Arc infrastructure components, as part of solution extensions, are updated by the update package of Azure Stack HCI 23H2.
+AKS is now part of Azure Local starting from version 23H2. The lifecycle management of AKS enabled by Azure Arc infrastructure follows the same approach as any other components on Azure Local, version 23H2. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Local solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS enabled by Arc infrastructure components, as part of solution extensions, are updated by the update package of Azure Local, version 23H2.
 
-For more information, see the [Update overview for Azure Stack HCI, version 23H2](/azure-stack/hci/update/about-updates-23h2).
+For more information, see the [Update overview for Azure Local, version 23H2](/azure-stack/hci/update/about-updates-23h2).
 
 ## Next steps
 
-- [What's new in AKS on Azure Stack HCI](aks-overview.md)
+- [What's new in AKS on Azure Local](aks-overview.md)
 - [Create and manage Kubernetes clusters on-premises using Azure CLI](aks-create-clusters-cli.md)

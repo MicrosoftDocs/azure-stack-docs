@@ -1,6 +1,6 @@
 ---
 title: Cluster autoscaling in AKS enabled by Azure Arc
-description: Learn about automatically scaling node pools in AKS Arc on Azure Stack HCI
+description: Learn about automatically scaling node pools in AKS Arc on Azure Local
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
