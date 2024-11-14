@@ -28,7 +28,7 @@ az aksarc vmsize list --custom-location $cl_id
 
 ## Validation
 
-Verify that the portal displays the correct list of supported K8s versions and VM sizes. See [this list of supported K8s versions](aks-whats-new-23h2.md#release-2408) for each Azure Stack HCI release.
+Verify that the portal displays the correct list of supported K8s versions and VM sizes. See [this list of supported K8s versions](aks-whats-new-23h2.md#release-2408) for each Azure Local release.
 
 ## Next steps
 
