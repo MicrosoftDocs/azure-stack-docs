@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/07/2024
+ms.date: 11/14/2024
 ---
 
-# System requirements for Small Form Factor deployment of Azure Local, version 23H2 (preview)
+# System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
+This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the small form factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -32,8 +32,8 @@ The following table lists the requirements for the small hardware:
 | Component | Description |
 |-----------|-------|
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
-| CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 16 physical cores |
-| Memory | A minimum of 32 GB per machine with EEC. |
+| CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
+| Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with EEC. |
 | Host network adapters | Two network adapters listed in the [Windows Server Catalog](https://www.windowsservercatalog.com/).<br> RDMA isn't required for storage intent.<br> Minimum link speed must be 1 Gbit/s. |
 | BIOS | Intel VT or AMD-V must be turned on.|
 | Boot drive | A minimum size of 200 GB.|
