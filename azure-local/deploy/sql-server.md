@@ -11,6 +11,8 @@ ms.date: 08/26/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; SQL Server (all supported versions)
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic provides guidance on how to plan, configure, and deploy SQL Server on the Azure Stack HCI operating system. The operating system is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment.
 
 ## Solution overview
