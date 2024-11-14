@@ -28,10 +28,10 @@ The Azure Local solution updates can consist of platform, service, and solution 
 When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
-1. Identify the software version running on your cluster.
+1. Identify the software version running on your system.
 1. Connect to your Azure Local instance via remote PowerShell.
-1. Discover the updates that are available and filter the ones that you can apply to your cluster.
-1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
+1. Discover the updates that are available and filter the ones that you can apply to your system.
+1. Download the updates, assess the update readiness of your system and once ready, install the updates on your system. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
 The time taken to install the updates might vary based on the following factors:
@@ -42,12 +42,12 @@ The time taken to install the updates might vary based on the following factors:
 - Type of the hardware used.
 - Solution Builder Extension used.
 
-The approximate time estimates for a typical single server and 4-server cluster are summarized in the following table:
+The approximate time estimates for a typical single or multi-node system are summarized in the following table:
 
-|Cluster/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
+|System/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
-|Single server     | 0:01:44	        |1:25:42         |
-|4-server cluster    | 0:01:58	        |3:53:09         |
+|Single node     | 0:01:44	        |1:25:42         |
+|4-nodes    | 0:01:58	        |3:53:09         |
 
 ## Prerequisites
 
