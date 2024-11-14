@@ -47,7 +47,6 @@ Disconnected operations for Azure Local support the following services:
 | Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
 | Policy                            | Enforce standard and compliance through policies when creating new resources. |
-| Monitor (System Center Operations Manager (SCOM)) | Use management packs to monitor Azure Local and guest VM workloads. |
 
 ## Supported regions
 
