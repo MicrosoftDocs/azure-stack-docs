@@ -12,6 +12,8 @@ ms.date: 09/16/2021
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article explains and gives the steps required to create a stretched cluster by adding new server nodes to an existing single-site cluster. You use Windows PowerShell commands to accomplish this.
 
 Single-site clusters use Windows Admin Center to [Add or remove servers](add-cluster.md) for an Azure Stack HCI cluster. The PowerShell commands described here do the same thing when converting a single-site cluster to a stretched cluster.

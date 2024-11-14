@@ -11,6 +11,8 @@ ms.date: 04/17/2023
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 Here’s how to change the privacy settings on a server running either the Azure Stack HCI operating system or Windows Server. To manage privacy settings with Group Policy on either multiple servers at once or in your enterprise as a whole, see [Manage enterprise diagnostic data](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#manage-enterprise-diagnostic-data).
 
 ## Azure Stack HCI or Server Core

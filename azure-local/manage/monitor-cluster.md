@@ -12,6 +12,8 @@ ms.date: 02/26/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article provides instructions for connecting to an Azure Stack HCI cluster and monitoring both cluster and storage performance using Windows Admin Center.
 
 ## Install Windows Admin Center

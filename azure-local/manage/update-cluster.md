@@ -11,6 +11,8 @@ ms.date: 12/19/2023
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 [!INCLUDE [WARNING](../includes/hci-applies-to-22h2-cluster-updates.md)]
 
 This article describes how to install, monitor, and troubleshoot updates on multi-node clusters. To update single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters).

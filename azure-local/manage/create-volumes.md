@@ -11,6 +11,8 @@ ms.date: 02/26/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
 > [!TIP]

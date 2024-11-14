@@ -12,6 +12,7 @@ ms.date: 05/22/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+
 This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
 Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.

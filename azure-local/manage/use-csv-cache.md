@@ -12,6 +12,8 @@ ms.date: 04/19/2023
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic describes how to use system memory to boost the performance of Azure Stack HCI and Windows Server by caching frequent reads. Writes cannot be cached in memory.
 
 Azure Stack HCI and Windows Server are compatible with the Cluster Shared Volume (CSV) in-memory read cache. Using system memory to cache reads can improve performance for applications like Hyper-V, which uses unbuffered I/O to access VHD or VHDX files. (Unbuffered I/Os are any operations that are not cached by the Windows Cache Manager.)

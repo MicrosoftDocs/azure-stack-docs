@@ -12,6 +12,8 @@ ms.date: 05/16/2022
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 
 We'll create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
