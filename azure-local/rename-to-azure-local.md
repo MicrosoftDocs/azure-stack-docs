@@ -16,7 +16,9 @@ Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack 
 
 If you're currently using Azure Stack HCI today or previously deployed Azure Stack HCI in your organizations, you can continue to use the service without interruption. All existing deployments, configurations, and integrations continue to function as they do today without any action from you.
 
-All features and capabilities are still available in the product. Pricing, licensing, terms, service-level agreements, product certifications, and support remain the same. Details on pricing and what’s included are available on the [Pricing page](https://aka.ms/azloc-pricing).
+All features and capabilities are still available in the product. Pricing, licensing, service-level agreements, product certifications, and support remain the same. Details on pricing and what’s included are available on the [Pricing page](https://aka.ms/azloc-pricing).
+
+The product terms for existing Azure Stack HCI are the same but new terms will apply for Azure Local. Microsoft will publish the new terms later this year.
 
 To make the transition seamless, all existing sign in URLs, APIs, and PowerShell cmdlets stay the same, as do developer experiences and tooling.
 
@@ -75,7 +77,9 @@ No, only the name Azure Stack HCI is going away. The product capabilities remain
 
 ### Are licenses changing? Are there any changes to pricing?
 
-No. Prices, terms, and service level agreements (SLAs) remain the same.
+No. Prices and service level agreements (SLAs) remain the same.
+
+The product terms for existing Azure Stack HCI remain the same. A new set of product terms for Azure Local will be published later this year. The new terms will apply to the customers who will update to 2411 release.
 
 The Azure billing meters for Azure Stack HCI will be renamed with meter ID updates. This change will be completed by early 2025. The meter name and ID changes don’t affect prices. However, you might notice some changes in how your Azure consumption is shown on your invoice, price sheet, API, usage details file, and **Cost Management + Billing** experiences.
 

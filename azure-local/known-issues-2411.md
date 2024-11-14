@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2411 baseline re
 description: Read about the known issues and fixed issues in Azure Local 2411 baseline release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/31/2024
+ms.date: 11/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new in 23H2
 
 ## Known issues for version 2411
 
-This software release maps to software version number **2411.0.0**.
+This software release maps to software version number **2411.0.22**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -32,14 +32,11 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-Microsoft is not aware of any fixed issues in this release.
-
-<!--The following issues are fixed in this release:
+The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Feature ADO | Describe the issue in couple of sentences. |Document steps to work around this issue if any.|-->
-
+| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 
 ## Known issues in this release
 
@@ -47,9 +44,8 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
-
-
+| Security vulnerability <!--ADO--> |Microsoft has identified a security vulnerability that could expose the local admin credentials used during the creation of Arc VMs on Azure Stack HCI to non-admin users on the VM and on the hosts. <br> Arc VMs running on releases prior to Azure Stack HCI 2411 release are vulnerable.  |To identify the Arc VMs that require this change and to change the account passwords, see detailed instructions in: https:\/\/aka.ms\/CVE-2024-49060.|
+| Update <!--ADO--> | With the 2411 release, applying a Solution Builder Extension package requires a separate update run. Solution and Solution Builder Extension update are not combined in a single update run. ||
 
 ## Known issues from previous releases
 
