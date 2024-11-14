@@ -37,9 +37,9 @@ This is a baseline release with the following features and improvements:
     For more information, see [Azure Local for Disconnected Operations](disconnected-operations-overview.md).
 - **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. This integration with Key Vault allows you to securely manage and store secrets without relying on Active Directory (AD). 
 
-    For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](index.yml).
+    For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 - **Arc VM changes**: The following changes were made to Arc VM management:
-    - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates. 
+    - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates.
     
         For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Arc VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
     - **Add network inteface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you are required to configure the desired static IP from within the VM.
