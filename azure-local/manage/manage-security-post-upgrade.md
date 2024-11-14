@@ -84,8 +84,7 @@ Example of the SecureSettingsConfiguration baseline output:
 
 ### Enable encryption at-rest
 
-During the upgrade, Microsoft detects if your system nodes has BitLocker enabled. If enabled, you're prompted to suspend it.
-If you previously enabled BitLocker across your volumes, after you resume the protection, no further steps are required from you.
+During the upgrade, Microsoft detects if your system nodes have BitLocker enabled. If BitLocker is enabled, you're prompted to suspend it. If you previously enabled BitLocker across your volumes, resume the protection. No further steps are required.
 
 To verify the status of encryption across your volumes, run the following commands:
 
@@ -102,12 +101,12 @@ Application control for business (formerly known as Windows Defender Application
 
 After you've upgraded to version 23H2, consider enabling WDAC. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
 
-For this reason, for new deployments, WDAC is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
+For new deployments, WDAC is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
 
-1. [Enable WDAC in *Audit* mode](./manage-wdac.md)(assuming unknown software might be present).
+1. [Enable WDAC in *Audit* mode (assuming unknown software might be present)](./manage-wdac.md).
 1. [Monitor WDAC events](./manage-wdac.md).
 1. [Create the necessary supplemental policies](./manage-wdac.md).
-1. Repeat steps #2 and #3 as necessary until no further audit events are observed, then you can proceed to switch to *Enforced* mode.
+1. Repeat steps #2 and #3 as necessary until no further audit events are observed. Switch to *Enforced* mode.
 
     > [!WARNING]
     Failure to create the necessary AppControl policies to enable additional third party software will prevent that software from running.
