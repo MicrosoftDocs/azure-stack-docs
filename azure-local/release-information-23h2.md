@@ -38,12 +38,14 @@ Follow these guidelines to move to the next release train:
 
 - Consider a fresh deployment with the **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
 
-- Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2402 release train, to get to the 2405 release train:
+- Update the existing deployment to a build that allows you to move to the next release train. The following table provides examples of how to move between release trains:
 
-  - Update from 2402 --> 2402.3 --> 2405.
-  - Update from 2402 --> 2402.4 --> 2405.1.
-  - Update from 2402.3 --> 2408.2 via this path: 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2.
-  
+  | Update scenario       | Timeframe           | Update path                                      |
+  |-----------------------|---------------------|--------------------------------------------------|
+  | From 2402 to 2405     | May 2024            | 2402 --> 2402.3 --> 2405                         |
+  | From 2402 to 2405.1   | June 2024  or later | 2402 --> 2402.4 --> 2405.1                       |
+  | From 2402.3 to 2408.2 | August 2024         | 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2 |
+
 #### Move within the same release train
 
 Follow these guidelines to move within the same release train:
