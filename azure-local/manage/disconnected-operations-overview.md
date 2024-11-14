@@ -63,7 +63,7 @@ The following Azure regions are supported for disconnected operations.
 Before you begin, make sure you review and apply the appropriate hardware and requirements for Azure Local:
 
 - [System requirements for Azure Local](../concepts/system-requirements-23h2.md).
-- Validated nodes or higher, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/)
+- Validated nodes or higher, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/).
 
 The next sections provide details on the hardware, integration, and access requirements to operate disconnected.
 
@@ -80,7 +80,7 @@ This checklist provides you with the minimum hardware requirements each node nee
 | Minimum cores per node               | 24 physical cores                |
 | Minimum storage per node             | 2 TB SSD/NVME                    |
 | Minimum boot drive storage           | 480 GB SSD/NVME                  |
-| Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local, version 23H2](../plan/cloud-deployment-network-considerations.md). <br><br> Note: Switchless configurations work for cluster size of three nodes only. |
+| Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local, version 23H2](../plan/cloud-deployment-network-considerations.md) <br><br> Note: Switchless configurations work for cluster size of three nodes only. |
 
 ### Integration requirements
 
@@ -91,8 +91,8 @@ The following table lists the requirements to successfully deploy and run discon
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
 | Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required. Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
-| Network Time Protocol (NTP) optional  | Local or Public time server | Time server to synchronize the system clock. |
+| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
+| Network Time Protocol (NTP) optional  | Local or Public time server | Time server synchronizes the system clock. |
 | Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
 For information on deploying and configuring the integration components, refer to:
@@ -109,8 +109,8 @@ For information on deploying and configuring the integration components, refer t
 
 To successfully configure disconnected operations and create the necessary resources, you need appropriate access and permissions to create and modify the following resources:
 
-| Component    | Access required    |
-|--------------|--------------------|
+| Component   | Access required    |
+|-------------|--------------------|
 | AD + ADFS   | Create a service account with read access for the organizational unit to facilitate LDAP integration. <br><br> Export the configuration for ADFS (OIDC). |
 | DNS         | Access to create DNS records or zones to provide lookups for a disconnected operations endpoint. |
 | PKI         | Ability to create and export certificates to secure disconnected operations endpoints (TLS). |
