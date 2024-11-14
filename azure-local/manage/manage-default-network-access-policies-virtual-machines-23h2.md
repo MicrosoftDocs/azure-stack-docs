@@ -7,12 +7,16 @@ ms.topic: article
 author: alkohli
 ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 11/08/2024
+ms.date: 11/13/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Local, version 23H2
 
+:::zone pivot="azure-local"
+
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+::: zone-end
 
 :::zone pivot="windows-server"
 
@@ -31,7 +35,7 @@ Default network policies can be used to protect virtual machines running from ex
 
 Complete the following prerequisites to use network access policies:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - You have Azure Stack HCI operating system, version 23H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
 
@@ -78,7 +82,7 @@ Depending on the type of network you want to attach your VM to, steps might be d
 
 After you have created a logical network in Windows Admin Center, you can create a VM in Windows Admin Center and attach it to the logical network. As part of VM creation, select the **Isolation Mode** as **Logical Network**, select the appropriate **Logical Subnet** under the Logical Network, and provide an IP address for the VM.
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 > [!NOTE]
 > Unlike in Azure Local, version 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
@@ -161,7 +165,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
         Set-SdnVMNetworkAdapterPortProfile -VMName <VMName> -MacAddress <MACAddress> -ProfileId ([guid]::Empty) -ProfileData 2
         ```
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
 
@@ -189,7 +193,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
 Learn more about:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - [Configure network security groups with tags](../concepts/datacenter-firewall-overview.md)
 
