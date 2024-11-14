@@ -98,7 +98,7 @@ You can use one minor version older or newer of `kubectl` relative to your **kub
 
 For example, if your **kube-apiserver** is at 1.17, then you can use versions 1.16 to 1.18 of `kubectl` with that **kube-apiserver**.
 
-To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI and Windows Server install-cli`.
+To install or update your version of `kubectl`, run `az AKS on Azure Local and Windows Server install-cli`.
 
 ## Release and deprecation process
 
