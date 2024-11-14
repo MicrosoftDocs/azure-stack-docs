@@ -30,11 +30,11 @@ This is a baseline release with the following features and improvements:
 - **Azure Local for Small Form Factor**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. 
 
     For more information, see [System requirements for Azure Local for small form factor](./concepts/system-requirements-small-23h2.md).
-- **Azure Local for disconnected operations** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. 
+- **Azure Local for disconnected operations** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
 
-    This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience. 
+    This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
-    For more information, see [Azure Local for Disconnected Operations](index.yml).
+    For more information, see [Azure Local for Disconnected Operations](disconnected-operations-overview.md).
 - **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. This integration with Key Vault allows you to securely manage and store secrets without relying on Active Directory (AD). 
 
     For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](index.yml).
