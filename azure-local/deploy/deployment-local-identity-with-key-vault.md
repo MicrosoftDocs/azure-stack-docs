@@ -105,7 +105,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 ### Networking tab
 
-1. Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-for-azure-local) section.
+1. Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
 
       :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." border="false" lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
@@ -144,7 +144,7 @@ After deploying the system, confirm the deployment was without AD (AD-less).
 
 This ensures that all critical information is stored safely and can be easily retrieved when needed, providing an additional layer of security and reliability for our infrastructure.
 
-    :::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of Create a Key Vault page." border="false" lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
+:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of Create a Key Vault page." border="false" lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
 
 ## Update Key Vault on Azure Local
 
