@@ -80,7 +80,16 @@ Get-AzSSecuredCoreConfiguration
 
 You'll get an output for each cmdlet with the baseline information.
 
-Example of the SecureSettingsConfiguration baseline output:
+Here is an example of the baseline output:
+
+```powershell
+OsConfiguration": {
+"Document": {
+"schemaversion": "1.0",
+"id": "<GUID>", "version": "1.0",
+"context": "device",
+"scenario": "ApplianceSecurityBaselineConfig"
+```
 
 ### Enable encryption at-rest
 
