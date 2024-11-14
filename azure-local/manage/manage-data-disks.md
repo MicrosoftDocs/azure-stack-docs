@@ -3,7 +3,7 @@ title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/12/2024
+ms.date: 11/14/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -28,7 +28,18 @@ Once the SAS URL is generated, use the following command to download it to your 
 az stack-hci-vm disk create -resource-group $rg --disk-file-format vhd --custom-location $cl --download-url $encodedUrl --name httpvhd02
 ```
 
-The parameters used are described in the table:
+Set parameters for your subscription, resource group, location, disk, and SAS URL. Replace the parameters in `< >` with the appropriate values.
+
+```azurecli
+$subscription = "<Subscription ID>"
+$resource-group = "<Resource group>"
+$name = "<Data disk name>"
+$customLocation = "<Custom location resource ID>"
+$disk-file-format = "<Data disk file format>"
+$download-url = "<SAS URL>"
+```
+
+The parameters are described in the following table:
 
 | Parameter | Description |
 | --- | --- |
@@ -39,21 +50,21 @@ The parameters used are described in the table:
 | disk-file-format | File format of the data disk. This can be .vhd or .vhdx format. |
 | download-url | SAS URL of the Azure managed disk.| 
 
-See the following example output:
+Here is an example output:
 
 ```azurecli
 Download Uri for VHD is: https://***** 
 { 
   "extendedLocation": { 
-    "name": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation", 
+    "name": "/subscriptions/resourceGroups/providers/Microsoft.ExtendedLocation/customLocations/", 
     "type": "CustomLocation" 
   }, 
-  "id": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.AzureStackHCI/virtualHardDisks/httpvhd02", 
+  "id": "/subscriptions/resourceGroups/providers/Microsoft.AzureStackHCI/virtualHardDisks/httpvhd02", 
   "location": "eastus2euap", 
   "name": "httpvhd02", 
   "properties": { 
     "blockSizeBytes": null, 
-    "containerId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage4-96856aae75a54391b4180dea4609b0f8", 
+    "containerId": "/subscriptions/resourceGroups/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage", 
     "diskFileFormat": "vhd", 
     "diskSizeGb": null, 
     "downloadUrl": null, 
@@ -70,13 +81,13 @@ Download Uri for VHD is: https://*****
       "uploadStatus": null 
     } 
   }, 
-  "resourceGroup": "EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or", 
+  "resourceGroup": "myresourcegroup", 
   "systemData": { 
     "createdAt": "2024-09-25T20:41:27.685358+00:00", 
-    "createdBy": "a5e473cb-e3e7-4035-b4da-290a65350ae1", 
+    "createdBy": "mycreatedby", 
     "createdByType": "Application", 
     "lastModifiedAt": "2024-09-25T20:41:41.082674+00:00", 
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+    "lastModifiedBy": "mylastmodifiedby", 
     "lastModifiedByType": "Application" 
   }, 
   "tags": null, 
@@ -91,7 +102,18 @@ You can create a gallery image using an existing Arc VM. The OS disk of the Arc 
 az stack-hci-vm image create -resource-group $rg --location eastus2euap --custom-location $cl --os-type "Windows" --source-vm "testvm001" --name image03
 ```
 
-The parameters used are described in the table:
+Set parameters for your subscription, resource group, location, disk, and SAS URL. Replace the parameters in `< >` with the appropriate values.
+
+```azurecli
+$subscription = "<Subscription ID>"
+$resource-group = "<Resource group>"
+$name = "<Data disk name>"
+$customLocation = "<Custom location resource ID>"
+$disk-file-format = "<Data disk file format>"
+$download-url = "<SAS URL>"
+```
+
+The parameters are described in the following table:
 
 | Parameter | Description |
 | --- | --- |
@@ -102,15 +124,15 @@ The parameters used are described in the table:
 | disk-file-format | File format of the data disk. This can be .vhd or .vhdx format. |
 | download-url | SAS URL of the Azure managed disk.| 
 
-Here is example output:
+Here is an example output:
 
 ```azurecli
 { 
   "extendedLocation": { 
-    "name": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation", 
+    "name": "/subscriptions/resourceGroups/providers/Microsoft.ExtendedLocation/customLocations/", 
     "type": "CustomLocation" 
   }, 
-  "id": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.AzureStackHCI/galleryImages/image03", 
+  "id": "/subscriptions/resourceGroups/providers/Microsoft.AzureStackHCI/galleryImages/image03", 
   "location": "eastus2euap", 
   "name": "image03", 
   "properties": { 
@@ -121,7 +143,7 @@ Here is example output:
     "imagePath": null, 
     "osType": "Windows", 
     "provisioningState": "Succeeded", 
-    "sourceVirtualMachineId": "/subscriptions/17ee8ecb-b995-4a26-b4d5-c281538f9a99/resourceGroups/EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", 
+    "sourceVirtualMachineId": "/subscriptions/resourceGroups/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default", 
     "status": { 
       "downloadStatus": { 
         "downloadSizeInMb": null 
@@ -145,13 +167,13 @@ Here is example output:
       } 
     } 
   }, 
-  "resourceGroup": "EDGECI-REGISTRATION-HC1n25r1501-4GhAg3Or", 
+  "resourceGroup": "myresourcegrou", 
   "systemData": { 
     "createdAt": "2024-09-26T20:16:17.625002+00:00", 
-    "createdBy": "a5e473cb-e3e7-4035-b4da-290a65350ae1", 
+    "createdBy": "mycreatedby", 
     "createdByType": "Application", 
     "lastModifiedAt": "2024-09-26T20:16:17.625002+00:00", 
-    "lastModifiedBy": "a5e473cb-e3e7-4035-b4da-290a65350ae1", 
+    "lastModifiedBy": "mylastmodifiedby", 
     "lastModifiedByType": "Application" 
   }, 
   "tags": null, 
