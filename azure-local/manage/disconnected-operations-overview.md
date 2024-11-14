@@ -1,10 +1,12 @@
 ---
 title: Disconnected operations for Azure Local overview (preview)
 description: Use Disconnected operations to deploy and manage your Azure Local (preview).
-ms.topic: article
+ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.date: 11/19/2024
+
+#customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
 
 # Disconnected operations for Azure Local (preview)
@@ -47,16 +49,6 @@ Disconnected operations for Azure Local support the following services:
 | Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
 | Policy                            | Enforce standards through policies when creating new resources. |
-
-## Supported regions
-
-The following Azure regions are supported for disconnected operations.
-
-- West US (West US3)  
-- West Europe  
-- UK South
-- Singapore
-- Australia East
 
 ## Prerequisites
 
