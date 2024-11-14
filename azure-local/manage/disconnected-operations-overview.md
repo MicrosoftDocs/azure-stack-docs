@@ -23,7 +23,7 @@ Disconnected operations for Azure Local enable the deployment and management of 
 
 Here are some scenarios for running disconnected operations on Azure Local:
 
-- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When operating disconnected, data remains within the designated organizational boundaries.
+- **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When operating disconnected, data and control remain within the designated organizational boundaries.
 
 - **Remote or isolated locations**: In areas with limited network infrastructure, such as remote or protected regions, disconnected operations allow you to use Azure Arc services and run workloads without relying on internet connectivity. For example, oil rigs and manufacturing sites.
 
@@ -46,7 +46,7 @@ Disconnected operations for Azure Local support the following services:
 | Azure Local device management     | Create and manage Azure Local instances, such as update, add, and remove nodes. |
 | Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
-| Policy                            | Enforce standard and compliance through policies when creating new resources. |
+| Policy                            | Enforce standards through policies when creating new resources. |
 
 ## Supported regions
 
@@ -60,21 +60,26 @@ The following Azure regions are supported for disconnected operations.
 
 ## Prerequisites
 
-Before you begin, make sure you review and apply the appropriate hardware, integration, and access requirements:
+Before you begin, make sure you review and apply the appropriate hardware and requirements for Azure Local:
+
+- [System requirements for Azure Local](../concepts/system-requirements-23h2.md).
+- Validated nodes or higher, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/)
+
+The next sections provide details on the hardware, integration, and access requirements to operate disconnected.
 
 ### Hardware requirements
 
-The virtual appliance for disconnected operations runs on Azure Local instances.
+The virtual appliance for disconnected operations runs on Azure Local instances. To operate Azure Local with disconnected operations, you need to plan for extra capacity for the virtual appliance. Additionally, you must meet higher minimum hardware requirements to deploy and operate Azure Local disconnected, as it hosts a local control plane.
 
-This checklist provides you with the hardware requirements needed to operate disconnected.
+This checklist provides you with the minimum hardware requirements each node needs to support the disconnected operations virtual appliance. You should factor in extra capacity for VM or AKS workloads in your capacity planning.
 
-| Hardware validation                  | Minimum validated nodes required |
-| -------------------------------------| --------------------------------|
-| Minimum number of nodes              | 3 nodes                     |
-| Minimum memory per node              | 64 GB                           |
-| Minimum cores per node               | 24 physical cores               |
-| Minimum storage per node             | 2 TB SSD/NVME                   |
-| Minimum boot drive storage           | 480 GB                          |
+| Specification                        | Minimum configuration            |
+| -------------------------------------| ---------------------------------|
+| Minimum number of nodes              | 3 nodes                          |
+| Minimum memory per node              | 64 GB                            |
+| Minimum cores per node               | 24 physical cores                |
+| Minimum storage per node             | 2 TB SSD/NVME                    |
+| Minimum boot drive storage           | 480 GB SSD/NVME                  |
 | Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local, version 23H2](../plan/cloud-deployment-network-considerations.md). <br><br> Note: Switchless configurations work for cluster size of three nodes only. |
 
 ### Integration requirements
@@ -102,7 +107,7 @@ For information on deploying and configuring the integration components, refer t
 
 ### Access requirements
 
-To successfully configure disconnected operations and create the necessary resources:
+To successfully configure disconnected operations and create the necessary resources, you need appropriate access and permissions to create and modify the following resources:
 
 | Component    | Access required    |
 |--------------|--------------------|
