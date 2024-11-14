@@ -100,7 +100,7 @@ To create an AKS Arc cluster, you'll need both the `$customlocation_ID` and `$lo
 - `$customlocation_ID`: Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)` , if the infrastructure admin provides a custom location name and resource group name.
 - `$logicnet_Id`: Azure Resource Manager ID of the Azure Stack HCI logical network created following [these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
-Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your <entra-admin-group-object-ids> and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
+Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your **entra-admin-group-object-ids** and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
 
 ```azurecli
 az aksarc create  
@@ -140,7 +140,7 @@ az connectedk8s show -n $aks_cluster_name -g $resource_group_name
 In the Azure portal, you can view the **wiextension** extension under the **Properties** section of your Kubernetes cluster.
 
 > [!IMPORTANT]
-> Once workload identity is enabled on AKS Arc clusters, the Kubernetes service account token automatically rotates every 90 days as a security best practice. Previously, by default these tokens were set to be valid for one year. With this token rotation enhancement, the maximum token expiry is reduced to 24 hours.
+> As part of the security enhancement for AKS Arc clusters, workload identity enablement triggers two changes. First, the Kubernetes service account signing key automatically rotates every 45 days and remains valid for 90 days. Second, the `--service-account-extend-token-expiration` flag is disabled, reducing token validity from one year to a maximum of 24 hours.
 
 ### Save the OIDC issuer URL to an environment variable
 
