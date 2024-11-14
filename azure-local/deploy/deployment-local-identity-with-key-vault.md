@@ -99,7 +99,7 @@ Follow these steps to configure DNS for Azure Local:
 
 ## Deploy Azure Local via the portal using local identity with Key Vault
 
-During the system deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This means that instead of relying on AD for authentication, you can use a local identity with Key Vault to manage and store secrets securely.
+During deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This allows you to use a local identity with Key Vault to securely manage and store secrets instead of relying on AD for authentication.
 
 The general deployment steps are the same as those outlined in [Deploy an Azure Local, version 23H2 system using the Azure portal](./deploy-via-portal.md). However, when using local identity with Key Vault, you need to perform specific steps on the **Networking** and **Management** tabs.
 
@@ -119,7 +119,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 ## Post-deployment steps
 
-After deploying the system, confirm the deployment was without AD (AD-less) and verify secrets are getting backed up to Key Vault.
+After deploying the system, confirm the deployment was AD-less and verify that secrets are being backed up to Key Vault.
 
 ### Confirm the system was deployed without Active Directory
 
@@ -144,7 +144,7 @@ After deploying the system, confirm the deployment was without AD (AD-less).
 
 This ensures that all critical information is stored safely and can be easily retrieved when needed, providing an additional layer of security and reliability for our infrastructure.
 
-:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of Create a Key Vault page." border="false" lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
+:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of the Secrets page." border="false" lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
 
 ## Update Key Vault on Azure Local
 
