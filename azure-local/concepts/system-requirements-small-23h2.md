@@ -44,7 +44,7 @@ The following table lists the requirements for the small hardware:
 | GPU | Optional |
 
 >[!IMPORTANT]
-> For 2411 release, Update, `Add-server`, and `Remove-server` operations aren't supported for the small hardware class.
+> For 2411 release, Update, `Add-server`, and `Repair-server` operations aren't supported for the small hardware class.
 
 ## Storage requirements
 
