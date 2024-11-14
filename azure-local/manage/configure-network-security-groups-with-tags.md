@@ -14,7 +14,7 @@ ms.date: 11/13/2024
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-:::zone pivot="windows-server"
+:::zone pivot="azure-local"
 
 >Applies to: Windows Server 2025
 

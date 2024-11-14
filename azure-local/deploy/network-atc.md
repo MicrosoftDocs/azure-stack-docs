@@ -11,6 +11,8 @@ zone_pivot_groups: windows-os
 
 # Deploy host networking with Network ATC
 
+:::zone pivot="azure-local"
+
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
 This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. Network ATC provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, please see [Network ATC overview](../concepts/network-atc-overview.md).
