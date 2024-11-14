@@ -12,6 +12,8 @@ ms.date: 02/21/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article provides guidance on how to choose drives to meet your performance and capacity requirements.
 
 ## Drive types
