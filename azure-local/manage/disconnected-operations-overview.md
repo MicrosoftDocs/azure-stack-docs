@@ -21,7 +21,7 @@ Disconnected operations for Azure Local enable the deployment and management of 
 
 ## Why use disconnected operations?
 
-Here are some scenarios for running disconnected operations on Azure Local:
+Here are some scenarios for running Azure Local with disconnected operations:
 
 - **Data sovereignty and compliance**: In sectors like government, healthcare, and finance, there's a necessity to meet data residency or compliance requirements. When operating disconnected, data and control remain within the designated organizational boundaries.
 
@@ -91,7 +91,7 @@ The following table lists the requirements to successfully deploy and run discon
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
 | Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required Active Directory Certificate Services (ADCS) validation | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
+| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required. Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
 | Network Time Protocol (NTP) optional  | Local or Public time server | Time server to synchronize the system clock. |
 | Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
