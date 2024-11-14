@@ -9,6 +9,8 @@ ms.date: 11/08/2024
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
 This tool isn't a substitute for expert knowledge. If you encounter any issues, contact Microsoft Support for assistance.
