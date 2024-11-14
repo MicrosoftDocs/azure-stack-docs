@@ -69,7 +69,7 @@ The next sections provide details on the hardware, integration, and access requi
 
 ### Hardware requirements
 
-The virtual appliance for disconnected operations runs on Azure Local instances. To operate Azure Local with disconnected operations, you need to plan for extra capacity for the virtual appliance. Additionally, you must meet higher minimum hardware requirements to deploy and operate Azure Local disconnected, as it hosts a local control plane.
+The virtual appliance for disconnected operations runs on Azure Local instances. To operate Azure Local with disconnected operations, you need to plan for extra capacity for the virtual appliance. Additionally, you must meet higher minimum hardware requirements to deploy and operate Azure Local with disconnected operations, as it hosts a local control plane.
 
 This checklist provides you with the minimum hardware requirements each node needs to support the disconnected operations virtual appliance. You should factor in extra capacity for VM or AKS workloads in your capacity planning.
 
