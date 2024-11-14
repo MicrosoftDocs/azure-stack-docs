@@ -39,9 +39,12 @@ The following table lists the requirements for the small hardware:
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
-| Secure boot | Secure Boot must be present and turned on. |
+| Secure Boot | Secure Boot must be present and turned on. |
 | Storage Controller | Pass-through. <br> RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) aren't supported. |
 | GPU | Optional |
+
+>[!IMPORTANT]
+> For 2411 release, Update, `Add-server`, and `Remove-server` operations aren't supported for the small hardware class.
 
 ## Storage requirements
 
