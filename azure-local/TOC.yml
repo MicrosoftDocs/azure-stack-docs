@@ -7,6 +7,8 @@ items:
     href: overview.md
   - name: What's new in Azure Local? 
     href: whats-new.md
+  - name: Renaming to Azure Local
+    href: rename-to-azure-local.md
   - name: Release notes
     items:
     - name: Release information
@@ -85,6 +87,8 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
+  - name: Disconnected operations (Preview)
+    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
