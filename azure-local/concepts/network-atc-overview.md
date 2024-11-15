@@ -70,8 +70,6 @@ Network ATC provides the following features:
 
   :::zone-end
 
-<br />
-
   :::zone pivot="windows-server"
 
   - Network ATC automatically assigns IP Addresses for storage adapters.
