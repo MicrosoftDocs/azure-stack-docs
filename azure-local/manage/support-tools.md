@@ -37,7 +37,7 @@ Before you use the PowerShell module, make sure to:
 
 - Import the module into an elevated PowerShell window using an account with administrator privileges on the local system. For more information, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module).
 
-- Install the module on each node of the Azure Local system. For information about connecting to a node, see [Enable RDP](.././deploy/deploy-via-portal.md#enable-rdp.md).
+- Install the module on each node of the Azure Local system. For information about connecting to a node, see [Enable RDP](.././deploy/deploy-via-portal.md#enable-rdp).
 
 ## Install and use the Azure Local Support Diagnostic Tool
 
