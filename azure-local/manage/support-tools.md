@@ -4,10 +4,12 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2024
+ms.date: 11/15/2024
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
+
+> Applies to: Azure Local, version 23H2
 
 This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
@@ -33,9 +35,9 @@ Before you use the PowerShell module, make sure to:
 
 - Download the Azure Local Support Diagnostic Tool from the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=hci).
 
-- Import the module into an elevated PowerShell window using an account with administrator privileges on the local system.
+- Import the module into an elevated PowerShell window using an account with administrator privileges on the local system. For more information, see [Importing a PowerShell Module](https://learn.microsoft.com/powershell/scripting/developer/module/importing-a-powershell-module).
 
-- Install the module on each node of the Azure Local system.
+- Install the module on each node of the Azure Local system. For information about connecting to a node, see [Enable RDP](../deploy/deploy-via-portal#enable-rdp.md).
 
 ## Install and use the Azure Local Support Diagnostic Tool
 
