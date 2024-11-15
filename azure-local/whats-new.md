@@ -37,7 +37,7 @@ This is a baseline release with the following features and improvements:
     For more information, see [Azure Local for Disconnected Operations](./manage/disconnected-operations-overview.md).
 - **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by reducing dependencies on Active Directory systems and simplifying firewall configurations.
 
-    For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+    <!--For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).-->
 - **Arc VM changes**: The following changes were made to Arc VM management:
     - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates.
     
