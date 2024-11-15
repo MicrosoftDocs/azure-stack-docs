@@ -24,7 +24,7 @@ There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 240
 
 This is a baseline release with the following features and improvements:
 
-- **Rebranding of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio. 
+- **Rebranding of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
 
     For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
 - **Azure Local for Small Form Factor**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
