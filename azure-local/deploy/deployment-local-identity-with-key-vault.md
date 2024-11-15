@@ -41,7 +41,7 @@ Before you start, make sure that you:
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
-- Maintain a separate break glass account during deployment as an emergency access mechanism. This ensures you can regain control of the system in case of unforeseen issues or access problems, maintaining security and operational continuity, even if primary administrative accounts become inaccessible. <!--Add link-->
+- Create a local user account with the same credentials across all nodes and add it to the local administrators group, instead of using the built-in administrator account.
 
 - Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
 
