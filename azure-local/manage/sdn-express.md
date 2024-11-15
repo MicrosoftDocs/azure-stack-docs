@@ -12,6 +12,8 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure using Windows Admin Center or using System Center Virtual Machine Manager (VMM). For more information, see [Create a cluster - Step 5: SDN](../deploy/create-cluster.md#step-5-sdn-optional) and see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).

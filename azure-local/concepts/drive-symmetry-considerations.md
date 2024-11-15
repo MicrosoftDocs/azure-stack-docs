@@ -12,6 +12,8 @@ ms.date: 02/22/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 Azure Stack HCI and Windows Server clusters work best when every server has exactly the same drives.
 
 In reality, we recognize this is not always practical. Today, you may buy spacious 3 TB hard drives; next year, it may become impossible to find drives that small. Therefore, some amount of mixing-and-matching is expected and supported. Keep in mind, however, that more symmetry is always better.

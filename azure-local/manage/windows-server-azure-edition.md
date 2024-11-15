@@ -15,6 +15,8 @@ ms.date: 11/13/2023
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
 
 Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).

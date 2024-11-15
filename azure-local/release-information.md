@@ -5,12 +5,14 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 11/08/2024
+ms.date: 11/14/2024
 ---
 
 # Azure Stack HCI, version 22H2 release information
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-22h2.md)]
+
+[!INCLUDE [azure-local-banner-22h2](./includes/azure-local-banner-22h2.md)]
 
 Feature updates for Azure Stack HCI are released periodically to enhance customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
 

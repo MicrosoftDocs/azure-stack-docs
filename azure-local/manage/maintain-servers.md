@@ -12,6 +12,8 @@ ms.date: 04/17/2023
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
 
 Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in a failover cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
