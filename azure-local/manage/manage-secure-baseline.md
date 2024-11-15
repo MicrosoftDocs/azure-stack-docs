@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/14/2024
+ms.date: 11/15/2024
 ---
 
 # Manage security defaults for Azure Local, version 23H2
@@ -115,7 +115,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
   
       > [!IMPORTANT]
-      > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes. For more information, see [Modify security settings after deployment](#modify-security-settings-after-deployment).
+      > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes.
 
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
