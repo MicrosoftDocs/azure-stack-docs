@@ -56,6 +56,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
+|GPU | Optional<br>Up to 192 GB memory per machine. |
 
 The machines should also meet this extra requirement:
 

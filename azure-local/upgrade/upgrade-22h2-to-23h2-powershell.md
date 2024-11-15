@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 11/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -41,7 +41,7 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local running version 22H2.
 - The system is registered in Azure.
-- Make sure that all the machines  in your Azure Local, version 22H2 cluster are healthy and show as **Online**.
+- Make sure that all the machines  in your Azure Local, version 22H2 instance are healthy and show as **Online**.
 - You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 
@@ -89,7 +89,7 @@ To install the new OS using PowerShell, follow these steps:
 1. To test whether the system is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which notifies you of any warnings or errors:
 
    ```PowerShell
-   Test-CauSetup -ClusterName <Cluster name>
+   Test-CauSetup -ClusterName <System name>
    ```
 
 1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
@@ -101,7 +101,7 @@ To install the new OS using PowerShell, follow these steps:
 1. Check for the available updates:
 
    ```PowerShell
-   Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
+   Invoke-CauScan -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
    ```
 
    Inspect the output of the above cmdlet and verify that each machine is offered the same Feature Update, which should be the case. <!--ASK-->
@@ -112,13 +112,13 @@ To install the new OS using PowerShell, follow these steps:
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
 
    ```PowerShell
-   Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
+   Invoke-CauRun -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
 1. If the system isn't connected to Windows Update and the Azure Local install media is available on a local share, CAU can also be used to upgrade the system. Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
 
    ```powershell
-   Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
+   Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
    ```
 
 1. Check for any further updates and install them.
@@ -130,7 +130,7 @@ Wait for the update to complete and check the status of the update.
 To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
 
 ```PowerShell
-Get-CauRun -ClusterName <ClusterName>
+Get-CauRun -ClusterName <SystemName>
 ```
 
 Here's a sample output: <!--ASK-->

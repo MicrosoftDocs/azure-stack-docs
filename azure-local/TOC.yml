@@ -87,6 +87,8 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
+  - name: Disconnected operations
+    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -385,6 +387,8 @@ items:
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+    - name: Manage security post upgrade
+      href: manage/manage-security-post-upgrade.md
       
   - name: Systems
     items:
@@ -524,6 +528,8 @@ items:
     href: manage/collect-logs.md
   - name: Troubleshoot deployment validation issues
     href: manage/troubleshoot-deployment.md
+  - name: Use the Diagnostic Support tool
+    href: manage/support-tools.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support for Azure Local
@@ -777,8 +783,6 @@ items:
       href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
-    - name: Use the Diagnostic Support tool
-      href: manage/support-tools.md
   - name: Concepts
     items:
     - name: Storage and systems

@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/07/2024
+ms.date: 11/14/2024
 ---
 
-# System requirements for Small Form Factor deployment of Azure Local, version 23H2 (preview)
+# System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the Small Form Factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
+This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use the small form factor hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -32,22 +32,25 @@ The following table lists the requirements for the small hardware:
 | Component | Description |
 |-----------|-------|
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
-| CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 16 physical cores |
-| Memory | A minimum of 32 GB per machine with EEC. |
+| CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
+| Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with EEC. |
 | Host network adapters | Two network adapters listed in the [Windows Server Catalog](https://www.windowsservercatalog.com/).<br> RDMA isn't required for storage intent.<br> Minimum link speed must be 1 Gbit/s. |
 | BIOS | Intel VT or AMD-V must be turned on.|
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
-| Secure boot | Secure Boot must be present and turned on. |
+| Secure Boot | Secure Boot must be present and turned on. |
 | Storage Controller | Pass-through. <br> RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) aren't supported. |
-| GPU | Optional |
+| GPU | Optional<br>Up to 192 GB memory per machine. |
+
+>[!IMPORTANT]
+> For 2411 release, Update, `Add-server`, and `Repair-server` operations aren't supported for the small hardware class.
 
 ## Storage requirements
 
 The storage subsystem for an Azure Local running Azure Stack HCI OS is layered on top of Storage Space Direct. When building a solution using class *small* hardware:
 
-- A minimum of one data drive is required to create a storage pool. 
+- A minimum of one data drive is required to create a storage pool.
 - All drives in the pool must be of the same type, either NVMe or SSD.
 - Remember that mixing drive types for caching (NVMe and SSD, or SSD and HDD) isn't supported.
 
