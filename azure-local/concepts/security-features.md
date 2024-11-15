@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 04/30/2024
+ms.date: 11/15/2024
 ---
 
 # Security features for Azure Local, version 23H2
