@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/14/2024
+ms.date: 11/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -37,7 +37,7 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 Before you start, make sure that you:
 
-- Sign the [Local Identity with Azure Key Vault Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__v7SnuFUNjBYOTVZTjRaTUtVVFVWSU1EM1dWWFpSOC4u&route=shorturl) to participate in the limited public preview.
+- Sign the [Local Identity with Azure Key Vault Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__v7SnuFUNjBYOTVZTjRaTUtVVFVWSU1EM1dWWFpSOC4u&route=shorturl) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
@@ -125,7 +125,19 @@ After deploying the system, confirm the deployment was AD-less and verify that s
 
 After deploying the system, confirm the deployment was without AD (AD-less).
 
-1. Confirm the node isn't joined to an AD domain. <!--steps-->
+1. Confirm the node isn't joined to an AD domain by running the following command. If the output shows `WORKGROUP`, the node isn't domain-joined.
+
+    ```powershell
+    Get-WmiObject Win32_ComputerSystem.Domain
+    ```
+    
+    Here's a sample output:
+
+    ```output
+    [host]: PS C:\Users\LocalAdmin\Documents> (Get-WmiObject Win32_ComputerSystem).Domain 
+    WORKGROUP
+    ```
+
 1. Verify a cluster is a Workgroup cluster functional without AD. Run the following command and check the value of the `ADAware` parameter:
 
     ```powershell
@@ -141,6 +153,10 @@ After deploying the system, confirm the deployment was without AD (AD-less).
     ```
 
 ### Verify secrets are getting backed up to Key Vault
+
+BitLocker keys and recovery admin passwords are securely backed up to Azure and are rotated to ensure maximum security.
+
+In scenarios where AD isn't available, you can utilize a dedicated recovery admin user to restore the system. The designated username for this purpose is `RecoveryAdmin`. The corresponding password can be securely retrieved from the Azure Key Vault, ensuring that you have the necessary credentials to perform system recovery operations effectively.
 
 This ensures that all critical information is stored safely and can be easily retrieved when needed, providing an additional layer of security and reliability for our infrastructure.
 
