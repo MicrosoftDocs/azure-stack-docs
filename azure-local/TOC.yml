@@ -87,7 +87,7 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
-  - name: Disconnected operations (Preview)
+  - name: Disconnected operations (preview)
     href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
