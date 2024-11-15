@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 11/15/2024
 ms.service: azure-stack-hci
 ---
 
@@ -22,7 +22,7 @@ Before you begin, make sure that you have access to an Azure Local, version 23H2
 
 To view the WDAC settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
-You can Use WDAC policies to control which drivers and apps are allowed to run on your system. You can only view the WDAC settings via Azure portal. To manage the settings, see [Manage WDAC settings with PowerShell](manage-wdac.md#manage-wdac-settings-with-powershell).
+You can use WDAC policies to control which drivers and apps are allowed to run on your system. You can only view the WDAC settings via Azure portal. To manage the settings, see [Manage WDAC settings with PowerShell](manage-wdac.md#manage-wdac-settings-with-powershell).
 
 :::image type="content" source="media/manage-wdac/manage-wdac.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-wdac/manage-wdac.png":::
 

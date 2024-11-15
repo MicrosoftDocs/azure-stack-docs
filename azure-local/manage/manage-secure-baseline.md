@@ -22,7 +22,7 @@ Before you begin, make sure that you have access to an Azure Local, version 23H2
 
 To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
-You can use the security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
+You can use the security default settings to manage system security, drift control, and Secured core settings on your system.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
@@ -32,7 +32,7 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 ## View security baseline compliance in the Azure portal
 
-After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local machine is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
+After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local instance is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
 For an Azure Local machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 321 out of 324 rules - that is, 99% of the rules are compliant.
 
