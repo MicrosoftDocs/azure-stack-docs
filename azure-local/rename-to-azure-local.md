@@ -57,8 +57,6 @@ The following table lists what isn't impacted by the rename.
 | Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Learn) were made for the entire portfolio. Screenshot and conceptual diagrams are a work in progress and will be finished in coming months. <br><br> Documentation for older versions of Azure Stack HCI, for example, 22H2 only, will continue to reference Azure Stack HCI and not reflect the name change. <br><br> Release notes and security updates that are more than 6 months older, will also not reflect the name change.|
 
 
-
-
 ## Frequently asked questions
 
 ### When is the name change happening?
