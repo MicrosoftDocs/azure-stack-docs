@@ -54,16 +54,16 @@ The following table lists what isn't impacted by the rename.
 | Azure Stack HCI CLI | The Azure CLI commands for Azure Stack HCI and Arc VM management continue to remain the same.  |
 | Azure Stack HCI OS  | The Azure Stack HCI Operating System (OS) which is a component of the Azure Local, will remain the same. |
 | Azure Stack HCI OEM License | The license name remains the same. |
-| Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Learn) were made for the entire portfolio. Screenshot and conceptual diagrams are a work in progress and will be finished in coming months. |
+| Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Learn) were made for the entire portfolio. Screenshot and conceptual diagrams are a work in progress and will be finished in coming months. <br><br> Documentation for older versions of Azure Stack HCI, for example, 22H2 only, will continue to reference Azure Stack HCI and not reflect the name change. <br><br> Release notes and security updates that are more than 6 months older, will also not reflect the name change.|
 
 
-In addition, documentation for older versions of Azure Stack HCI, for example, 22H2 only, will continue to reference Azure Stack HCI and not reflect the name change. Release notes and security updates that are more than 6 months older, will also not reflect the name change.
+
 
 ## Frequently asked questions
 
 ### When is the name change happening?
 
-The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages will occur on November 19, 2024. The names in the text strings in the Azure portal will be completed by early 2025. Screenshot changes across the Learn pages will be completed by early 2025.
+The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages is effective from November 19, 2024. The names in the text strings in the Azure portal will be completed by early 2025. Screenshot changes across the Learn pages will be completed by early 2025.
 
 ### Why is the name being changed?
 
@@ -88,13 +88,13 @@ The Azure billing meters for Azure Stack HCI will be renamed with meter ID updat
 
 ### Are PowerShell cmdlets and Azure CLI commands being renamed?
 
-No. Both the PowerShell cmdlets and Azure CLI commands for Arc VM management and for Azure Stack HCI cluster, service, and management continue to remain the same.
+No. Both the PowerShell cmdlets and Azure CLI commands for Arc VM management and for Azure Stack HCI system, service, and management continue to remain the same.
 
 ### How and when are customers being notified?
 
-The name changes will be publicly announced on November 19, 2024.
+The name changes were publicly announced on November 19, 2024.
 
-Banners, alerts, and message center posts will notify users of the name change. The change will also be displayed on the Azure Local overview page in the Azure portal, Azure Stack HCI Catalog pages, and Microsoft Learn.
+Banners, alerts, and message center posts will notify users of the name change. The change will also be displayed on the Azure Local overview page in the Azure portal, Azure Local Catalog pages, and Microsoft Learn.
 
 ### What if I use the Azure Local name in my content?
 
