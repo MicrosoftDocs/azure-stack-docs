@@ -53,9 +53,9 @@ Follow these steps to add and connect to an Azure Local machine via Windows Admi
 
 1. Select **+ Add** under **All Connections**.
 1. Scroll down to **Server clusters** and select **Add**.
-1. Type the name of the cluster and, if prompted, the credentials to use.
+1. Type the name of the system and, if prompted, the credentials to use.
 1. Select **Add** to finish.
-1. The cluster and nodes are added to your connection list on the **Overview** page. Select the cluster to connect to it.
+1. The system and machines are added to your connection list on the **Overview** page. Select the system to connect to it.
 
 ## Step 2: Install operating system and hardware updates using Windows Admin Center
 
@@ -73,7 +73,7 @@ Follow these steps to install updates:
 
 1. If you're updating your system for the first time, Windows Admin Center checks if the system is properly configured to run CAU. If not, it prompts you to allow Windows Admin Center to configure CAU, which includes installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Add Cluster-Aware-Updating role**.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Screenshot of Windows Admin Center automatically configuring the cluster to run Cluster-Aware Updating." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Screenshot of Windows Admin Center automatically configuring the system to run Cluster-Aware Updating." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
 
    > [!NOTE]
    > To use the CAU tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
@@ -96,7 +96,7 @@ Follow these steps to install updates:
 
 1. Select **Next: Install** to review the list of updates to be installed to each machine. Then, select **Install** to begin installing the operating system updates. One by one, each machine downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, machines are restarted one at a time, moving roles such as VMs between machines to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign in to Windows Admin Center multiple times.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the cluster." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png" alt-text="Screenshot of selecting Install to install operating system updates on each machine in the system." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/final-confirmation.png":::
 
    > [!NOTE]
    > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more machines indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
@@ -112,7 +112,7 @@ Follow these steps to install updates:
 1. Windows Admin Center checks the system for installed extensions that support your specific machine hardware. Select **Next: Install** to install the hardware updates on each machine in the system. If no extensions or updates are found, select **Exit**.
 
 1. As per security best practices, disable CredSSP as soon as you're finished installing the updates:
-    - In Windows Admin Center, under **All connections**, select the first machine in your cluster and then select **Connect**.
+    - In Windows Admin Center, under **All connections**, select the first machine in your system and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then, on the **Disable CredSSP** pop-up window, select **Yes**.
 
 You're now ready to perform the post-upgrade steps for your system.

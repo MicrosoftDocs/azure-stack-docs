@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 11/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -40,7 +40,7 @@ Before you install the solution upgrade, make sure that you:
 
 You install the solution upgrade via the Azure portal.
 
-1. Go to your Azure Local cluster resource in Azure portal.
+1. Go to your Azure Local resource in Azure portal.
 1. In the **Overview** page, you can see a banner indicating that a solution upgrade is available. Select the **Upgrade** link in the banner.
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-banner.png" alt-text="Screenshot of Azure Local Overview page with upgrade available banner." lightbox="./media/install-solution-upgrade/upgrade-banner.png":::
@@ -75,7 +75,7 @@ On the **Basics** tab, specify the following information:
 
 ### Validation tab
 
-On the **Validation** tab, the operation automatically creates Azure resources like the cluster and the service principal, and also configures permissions and the audit login.
+On the **Validation** tab, the operation automatically creates Azure resources and also configures permissions and the audit login.
 
 1. Select **Start validation** to begin the operation. This operation involves running the Environment Checker to check external connectivity and storage requirements and that the environment is ready for solution upgrade. To learn more about validation, see [Validate solution upgrade readiness of your Azure Local instance](./validate-solution-upgrade-readiness.md).
 
@@ -114,7 +114,7 @@ Follow these steps to verify that the upgrade was successful:
     
     | Resource type | Number of resources   |
     |---------|---------|
-    | Machine - Azure Arc     | 1 per server         |
+    | Machine - Azure Arc     | 1 per machine         |
     | Azure Local         | 1       |
     | Arc Resource Bridge     | 1, *-arcbridge* suffix by default       |
     | Custom location         | 1, *-cl* suffix by default       |
@@ -135,6 +135,8 @@ After the solution upgrade is complete, you may need to perform additional tasks
 - To prevent the accidental deletion of resources, you can lock resources. We recommend that you lock the Arc Resource Bridge. For more information, see [Lock Arc Resource Bridge](../deploy/deploy-via-portal.md#lock-arc-resource-bridge).
 - You need to upgrade the security posture. For more information, see [Update security posture on Azure Local after upgrade](../manage/manage-security-post-upgrade.md).
 - You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+
+- If you haven't used Cluster-Aware Updating (CAU) for patching your system, you must ensure the permissions are set correctly. For more information, see [Cluster aware updating (CAU)](../plan/configure-custom-settings-active-directory.md#cluster-aware-updating-cau)
 
 
 ## Next steps
