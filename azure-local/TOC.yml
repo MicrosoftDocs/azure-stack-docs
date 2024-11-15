@@ -387,6 +387,8 @@ items:
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+    - name: Manage security post upgrade
+      href: manage/manage-security-post-upgrade.md
       
   - name: Systems
     items:
