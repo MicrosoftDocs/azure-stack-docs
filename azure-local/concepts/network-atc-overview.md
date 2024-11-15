@@ -129,9 +129,9 @@ To get started with Network ATC, review the following articles:
 
 :::zone pivot="azure-local"
 
-- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-local).
 - Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
-- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
+- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-local).
 - [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
 - To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
 

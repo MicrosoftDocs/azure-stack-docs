@@ -89,7 +89,7 @@ landingContent:
           - text: Manage Arc VMs
             url: manage/manage-arc-virtual-machines.md
           - text: Manage SDN Multisite
-            url: manage/manage-sdn-multisite.md?pivots=azure-stack-hci
+            url: manage/manage-sdn-multisite.md?pivots=azure-local
 
   # Card
   - title: Monitor
