@@ -26,9 +26,9 @@ landingContent:
         links:
           - text: What's new in Azure Local, version 23H2?
             url: whats-new.md
-          - text: Small Form Factor
+          - text: Small Form Factor (preview)
             url: concepts/system-requirements-small-23h2.md
-          - text: Azure Local disconnected operations
+          - text: Azure Local disconnected operations (preview)
             url: manage/disconnected-operations-overview.md  
 
   # Card 
