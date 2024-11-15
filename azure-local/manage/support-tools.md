@@ -4,10 +4,12 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/08/2024
+ms.date: 11/15/2024
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
+
+> Applies to: Azure Local, version 23H2
 
 This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
@@ -33,9 +35,9 @@ Before you use the PowerShell module, make sure to:
 
 - Download the Azure Local Support Diagnostic Tool from the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=hci).
 
-- Import the module into an elevated PowerShell window using an account with administrator privileges on the local system.
+- Import the module into an elevated PowerShell window using an account with administrator privileges on the local system. For more information, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module).
 
-- Install the module on each node of the Azure Local system.
+- Install the module on each node of the Azure Local system. For information about connecting to a node, see [Enable RDP](.././deploy/deploy-via-portal.md#enable-rdp).
 
 ## Install and use the Azure Local Support Diagnostic Tool
 
@@ -83,9 +85,23 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 
 ## Example scenario
 
-To troubleshoot Azure Local, run the following command:
+To troubleshoot Azure Local, run the following commands:
 
-#### For registration issues
+### For deployment issues
+
+To generate a detailed report about your deployment, including successfully executed steps, skipped steps, and error details, run the following command:
+
+```powershell
+Get-AzsSupportEceDeploymentDetails
+```
+
+### For update or upgrade issues
+
+```powershell
+Get-AzsSupportEceUpdateDetails
+```
+
+### For registration issues
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName Registration
@@ -145,7 +161,7 @@ Successfully created archive C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\log-co
 Data collection done . Please upload the file to the Microsoft Workspace.
 ```
 
-#### For base Azure Local system issues
+### For base Azure Local system issues
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
@@ -188,7 +204,7 @@ Afterwards, a comprehensive overview of the different components that are requir
 
 To collect data, refer to the following two example scenarios:
 
-#### For automatic data collection
+### For automatic data collection
 
 ```powershell
 New-AzsSupportDataBundle -Component OS
@@ -196,7 +212,7 @@ New-AzsSupportDataBundle -Component OS
 Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-XXXX.zip . Please upload the file to the Microsoft Workspace
 ```
 
-#### For manual data collection
+### For manual data collection
 
 ```powershell
 $ClusterCommands = @()
@@ -218,8 +234,8 @@ Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-X
 
 ## Questions or Feedback?
 
-Do you have an issue? Would like to share feedback with us about the Azure Local Support Diagnostic Tool?
-We Listen! To submit feedback, use "contact owners" option inside PSGallery.
+Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
+We Listen! To submit feedback, use the "contact owners" option inside PSGallery.
 
 ## Next steps
 
