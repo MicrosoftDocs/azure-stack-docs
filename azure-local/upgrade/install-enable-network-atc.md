@@ -22,7 +22,7 @@ This article provides information on how to install and enable Network ATC on an
 
 ## About Network ATC
 
-Network ATC stores information in the cluster database, which is then replicated to other nodes in the cluster. From the initial node, other nodes in the cluster see the change in the cluster database and create a new intent. Here, we set up the cluster to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on nodes that have virtual machines (VM) on them.
+Network ATC stores information in the system database, which is then replicated to other machines in the system. From the initial machine, other machines in the system see the change in the system database and create a new intent. Here, we set up the system to receive a new intent. Additionally, we control the rollout of the new intent by stopping or disabling the Network ATC service on machines that have virtual machines (VM) on them.
 
 ## Benefits
 
@@ -30,7 +30,7 @@ For Azure Local, Network ATC provides the following benefits:
 
 - Reduces host networking deployment time, complexity, and errors.
 - Deploys the latest Microsoft validated and supported best practices.
-- Ensures configuration consistency across the cluster.
+- Ensures configuration consistency across the system.
 - Eliminates configuration drift.
 
 ## Before you begin
@@ -64,7 +64,7 @@ Stop-Service -Name NetworkATC
 
 ### Step 3: Pause one machine in the system
 
-When you pause one machine in the system, all workloads are moved to other machines, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your machine, use the following command:
+When you pause one machine in the system, all workloads are moved to other machines, making your machine available for changes. The paused machine is then migrated to Network ATC. To pause your machine, use the following command:
 
 ```powershell
 Suspend-ClusterNode
@@ -96,11 +96,11 @@ LBFO isn't supported in Azure Local. However, if you accidentally deployed an LB
 Get-NetLBFOTeam | Remove-NetLBFOTeam -Confirm:$true
 ```
 
-If your nodes were configured via Virtual Machine Manager (VMM), those configuration objects may need to be removed as well.
+If your machines were configured via Virtual Machine Manager (VMM), those configuration objects may need to be removed as well.
 
 ### Step 5: Start the Network ATC service
 
-As a precaution, to control the speed of the rollout, we paused the machine and then stopped and disabled the Network ATC service in the previous steps. Since Network ATC intents are implemented cluster-wide, perform this step only once.
+As a precaution, to control the speed of the rollout, we paused the machine and then stopped and disabled the Network ATC service in the previous steps. Since Network ATC intents are implemented system-wide, perform this step only once.
 
 To start the Network ATC service, on the paused machine only, run the following command:
 
@@ -237,10 +237,10 @@ In this step, you move from the machine deployed with Network ATC to the next ma
 Renaming the virtual switch is a non-disruptive change and can be done on all the machines simultaneously. Run the following command:
 
 ```powershell
-#Run on the node where you configured Network ATC
+#Run on the machine where you configured Network ATC
 Get-VMSwitch | ft Name
 
-#Run on the next node to rename the virtual switch
+#Run on the next machine to rename the virtual switch
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
@@ -257,7 +257,7 @@ You don't change the Network ATC `VMSwitch` for two reasons:
 - Network ATC ensures that all machines in the system have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
 
-### Step 9: Resume the node
+### Step 9: Resume the machine
 
 To reenter or put your system back in service, run the following command:
 

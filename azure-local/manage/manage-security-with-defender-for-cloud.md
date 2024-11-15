@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 11/15/2024
 ms.service: azure-stack-hci
 ---
 
@@ -32,15 +32,15 @@ Before you begin, make sure that the following prerequisites are completed:
 Follow these steps to enable Defender for Cloud for Azure Local.
 
 - Step 1: Turn on Foundational CSPM.
-- Step 2: Turn on Defender for Servers for individual servers and Arc VMs.
+- Step 2: Turn on Defender for Servers for individual machines and Arc VMs.
 
 ### Step 1: Turn on Foundational CSPM
 
 This step turns on the basic Defender for Cloud plan—at no extra cost. This plan lets you monitor and identify the steps that you can take to secure Azure Local, along with other Azure and Arc resources. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
 
-### Step 2: Turn on Defender for Servers for individual servers and Arc VMs
+### Step 2: Turn on Defender for Servers for individual machines and Arc VMs
 
-This step gets you enhanced security features including security alerts for individual servers and Arc VMs.
+This step gets you enhanced security features including security alerts for individual machines and Arc VMs.
 
 To do so, follow all the instructions in the [Enable the Defender for Servers plan](/azure/defender-for-cloud/tutorial-enable-servers-plan#enable-the-defender-for-servers-plan) section, which includes:
 
