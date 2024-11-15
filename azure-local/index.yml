@@ -27,9 +27,9 @@ landingContent:
           - text: What's new in Azure Local, version 23H2?
             url: whats-new.md
           - text: Small Form Factor
-            url: index.yml
+            url: concepts/system-requirements-small-23h2.md
           - text: Azure Local disconnected operations
-            url: index.yml  
+            url: manage/disconnected-operations-overview.md  
 
   # Card 
   - title: Deploy
@@ -116,8 +116,8 @@ landingContent:
         links:
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
-          - text: Deploy with Local Identity (preview)
-            url: index.yml
+#          - text: Deploy with local identity (preview)
+#            url: index.yml
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMware (preview)
