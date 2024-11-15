@@ -26,10 +26,10 @@ landingContent:
         links:
           - text: What's new in Azure Local, version 23H2?
             url: whats-new.md
-          - text: Small Form Factor
-            url: index.yml
-          - text: Azure Local disconnected operations
-            url: index.yml  
+          - text: Small Form Factor (preview)
+            url: concepts/system-requirements-small-23h2.md
+          - text: Azure Local disconnected operations (preview)
+            url: manage/disconnected-operations-overview.md  
 
   # Card 
   - title: Deploy
@@ -69,11 +69,11 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Deploy Azure Kubernetes Service clusters
-            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
-            url: /azure-stack/hci/manage/create-arc-virtual-machines
+            url: /manage/create-arc-virtual-machines.md
 
   # Card
   - title: Manage
@@ -103,7 +103,7 @@ landingContent:
           - text: Monitor via Insights
             url: manage/monitor-single-23h2.md
           - text: Enable Insights at-scale
-            url: manage/monitor-hci-multi-azure-policies.md          
+            url: manage/monitor-multi-azure-policies.md          
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
@@ -116,8 +116,8 @@ landingContent:
         links:
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
-          - text: Deploy with Local Identity (preview)
-            url: index.yml
+#          - text: Deploy with local identity (preview)
+#            url: index.yml
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMware (preview)
