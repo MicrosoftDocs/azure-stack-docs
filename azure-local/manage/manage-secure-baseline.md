@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/07/2024
+ms.date: 11/15/2024
 ---
 
 # Manage security defaults for Azure Local, version 23H2
@@ -34,19 +34,15 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 After you enroll your Azure Local instance with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Local machine is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
-For an Azure Local machine, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of 288 rules - that is, 281 out of 288 rules are compliant.
+For an Azure Local machine, when all the hardware requirements for Secured-core are met, the default expected compliance score is 321 out of 324 rules - that is, 99% of the rules are compliant.
 
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
-| Rule name           | Expected    | Actual   | Logic    | Comments    |
-|---------------------|---------------|---------|----------|------------|
-| Interactive logon: Message text for users attempting to log on| Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
-| Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
-| Minimum password length |Expected: 14 | Actual: 0 | Operator: <br> GREATEROREQUAL| We expect you to define this value with no drift control in place that aligns with your organization's policy.|
-| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: <br> EQUALS|This control doesn't apply to Azure Local.|
-| Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: <br> EQUALS | This control is a part of the Windows Defender protections, not enabled by default. <br> You can evaluate whether you want to enable.|
-| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS | Azure Local is more restrictive. <br> This rule can be safely ignored.|
-|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS |Azure Local is more restrictive. <br> This rule can be safely ignored.|
+| Rule name           | Compliance state    | Reason   | Comments    |
+|---------------------|---------------------|----------|------------|
+| Interactive logon: Message text for users attempting to log on| Not compliant | Warning - ""is equal to"" | This must be defined by customer, it does not have drift control enabled.|
+| Interactive logon: Message title for users attempting to log on| Not Compliant | Warning - "" is equal to "" |This must be defined by customer, it does not have drift control enabled.|
+| Minimum password length | Not Compliant | Critical - Seven is less than the minumum value of 14. | This must be defined by customer, it does not have drift control enabled in order to allow this setting to align with your organization's policies.|
 
 ## Manage security defaults with PowerShell
 
@@ -117,6 +113,9 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
   - **Report** - Requires CredSSP or an Azure Local machine using a remote desktop protocol (RDP) connection.
     - AllNodes – Provides boolean value (true/False) computed across nodes.
     - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
+  
+      > [!IMPORTANT]
+      > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes.
 
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
