@@ -234,7 +234,7 @@ Ensure that all the machines are up and that the system is *Online*. Use the Fai
 To verify all machines of the system are online, run the following PowerShell command:
 
 ```powershell
-Get-ClusterNode -Cluster "mycluster" 
+Get-ClusterNode -Cluster "mysystem" 
 ```
 
 ## Remediation 3: Suspend BitLocker
@@ -347,8 +347,8 @@ Follow these steps to confirm the storage pool configuration:
 1. To finish the conversion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
 
    ```powershell
-   Get-ClusterSharedVolume -Name "Cluster Disk 1" | Stop-ClusterResource
-   Get-ClusterSharedVolume -Name "Cluster Disk 1" | Start-ClusterResource
+   Get-ClusterSharedVolume -Name "System Disk 1" | Stop-ClusterResource
+   Get-ClusterSharedVolume -Name "System Disk 1" | Start-ClusterResource
    ```
 
 1. To confirm that the actual footprint on the storage pool has changed, run the following PowerShell command:
