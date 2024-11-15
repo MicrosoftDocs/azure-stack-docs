@@ -15,7 +15,7 @@ Applies to: Azure Local, version 23H2, release 2411 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
-[!INCLUDE [IMPORTANT](../includes/hci-preview.md)]
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
