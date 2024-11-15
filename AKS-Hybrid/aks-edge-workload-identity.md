@@ -4,7 +4,7 @@ description: Learn how to configure an AKS Edge Essentials cluster with workload
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/12/2024
+ms.date: 11/15/2024
 
 ---
 
@@ -16,8 +16,6 @@ Azure Kubernetes Service (AKS) Edge Essentials is an on-premises Kubernetes impl
 - Create a federated credential on the managed identity to trust the OIDC issuer.
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
-
-<!-- For a conceptual overview of using Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-workload-identity.md). -->
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
