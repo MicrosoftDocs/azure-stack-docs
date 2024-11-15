@@ -105,14 +105,14 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
-1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the system.
+1. Stop the system to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the system.
 1. Set the cluster service to **Disabled** by running the PowerShell command below on each machine. This prevents the cluster service from starting up while being updated.
 
    ```
    Set-Service -Name clussvc -StartupType Disabled
    ```
    
-1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all machines. You can update all machines at the same time: there's no need to wait because the cluster is down.
+1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all machines. You can update all machines at the same time: there's no need to wait because the system is down.
 1. Restart the machines and ensure everything looks good.
 1. Set the cluster service back to **Automatic** by running the PowerShell command below on each machine.
 
