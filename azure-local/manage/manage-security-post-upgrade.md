@@ -118,7 +118,7 @@ For new deployments, WDAC is enabled in *Enforced* mode (blocking nontrusted bin
 1. Repeat steps #2 and #3 as necessary until no further audit events are observed. Switch to *Enforced* mode.
 
     > [!WARNING]
-    Failure to create the necessary AppControl policies to enable additional third party software will prevent that software from running.
+    > Failure to create the necessary AppControl policies to enable additional third party software will prevent that software from running.
 
 For instructions to enable in *Enforced* mode, see [Manage Windows Defender Application Control for Azure Local](./manage-wdac.md).
 
