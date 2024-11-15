@@ -541,7 +541,6 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 :::zone pivot="azure-local"
 
 - Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=azure-local).
-- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
 
 ::: zone-end
@@ -549,7 +548,6 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 :::zone pivot="windows-server"
 
 - Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
-- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
 
 ::: zone-end
