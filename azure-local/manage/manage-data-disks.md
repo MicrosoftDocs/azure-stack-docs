@@ -3,7 +3,7 @@ title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/14/2024
+ms.date: 11/15/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -24,28 +24,28 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Download an Azure managed disk
 
-To download a data disk from Azure, first generate a SAS URL of the disk using Azure CLI:  
+Download an Azure managed disk as follows:
 
-```azurecli
-az disk grant-access --access-level Read --duration-in-seconds 3600 --name MyManagedDisk --resource-group $rg
-```
+1. Set parameters for your subscription, resource group, disk name, and custom location. Replace the parameters in `< >` with the appropriate values:
 
-Once the SAS URL is generated, use the following command to download it to your Azure Local:  
+    ```azurecli
+    $subscription = "<Subscription ID>"
+    $resource-group = "<Resource group>"
+    $name = "<Data disk name>"
+    $customLocation = "<Custom location resource ID>"
+    ```
 
-```azurecli
-az stack-hci-vm disk create -resource-group $rg --disk-file-format vhd --custom-location $cl --download-url $encodedUrl --name httpvhd02
-```
+1. Generate a SAS URL of the disk using Azure CLI:  
 
-Set parameters for your subscription, resource group, location, disk, and SAS URL. Replace the parameters in `< >` with the appropriate values.
+    ```azurecli
+    az disk grant-access --access-level Read --duration-in-seconds 3600 --name MyManagedDisk --resource-group $rg
+    ```
 
-```azurecli
-$subscription = "<Subscription ID>"
-$resource-group = "<Resource group>"
-$name = "<Data disk name>"
-$customLocation = "<Custom location resource ID>"
-$disk-file-format = "<Data disk file format>"
-$download-url = "<SAS URL>"
-```
+1. Once the SAS URL is generated, use the following command to download it to your Azure Local:  
+
+    ```azurecli
+    az stack-hci-vm disk create -resource-group $rg --disk-file-format vhd --custom-location $cl --download-url $encodedUrl --name httpvhd02
+    ```
 
 The parameters are described in the following table:
 
