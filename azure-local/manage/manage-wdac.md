@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 11/16/2024
+ms.date: 11/17/2024
 ms.service: azure-stack-hci
 ---
 
