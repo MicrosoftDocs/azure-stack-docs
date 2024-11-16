@@ -54,7 +54,7 @@ $SERVICE_ACCOUNT_NAME = "workload-identity-sa"
 $FedIdCredentialName = "myFedIdentity" 
 $MSIName = "myIdentity" 
 
-# To access key vault secrets from a pod in the cluster, include these variables 
+# To access key vault secrets from a pod in the cluster, include these variables:
 $KVName = "KV-workload-id" 
 $KVSecretName= "KV-secret"
 ```
