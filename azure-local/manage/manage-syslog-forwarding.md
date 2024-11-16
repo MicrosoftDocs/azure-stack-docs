@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/07/2024
+ms.date: 11/16/2024
 ---
 
 # Manage syslog forwarding for Azure Local
@@ -24,13 +24,14 @@ Syslog forwarding agents work independently from each other but can be managed a
 
 The syslog forwarder in Azure Local supports the following configurations:
 
-- **Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption](#syslog-forwarding-with-tcp-mutual-authentication-client-and-server-and-tls-12-encryption).
-- **Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption:** In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption).
+- **Syslog forwarding with TCP, mutual authentication (client and server), and TLS encryption:** In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication (client and server), and TLS encryption](#syslog-forwarding-with-tcp-mutual-authentication-client-and-server-and-tls-encryption).
+- **Syslog forwarding with TCP, server authentication, and TLS encryption:** In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-encryption).
 - **Syslog forwarding with TCP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Syslog forwarding with TCP and no encryption](#syslog-forwarding-with-tcp-and-no-encryption).
 - **Syslog with UDP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Syslog forwarding with UDP and no encryption](#syslog-forwarding-with-udp-and-no-encryption).
 
   >[!IMPORTANT]
   > To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments.
+  > TLS encryption version depends on the handshake between the endpoints. Both, TLS 1.2 and TLS 1.3, are supported by default.
 
 ### Cmdlets to configure syslog forwarding
 
@@ -60,16 +61,16 @@ The following table provides parameters for the `Set-AzSSyslogForwarder` cmdlet:
 |OutputSeverity |Level of output logging. Values are Default or Verbose. Default includes severity levels: warning, critical, or error. Verbose includes all severity levels: verbose, informational, warning, critical, or error. |String |No |
 |Remove |Remove current syslog forwarder configuration and stop syslog forwarder. |Flag |No |
 
-### Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption
+### Syslog forwarding with TCP, mutual authentication (client and server), and TLS encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
 
 This configuration is the most secure as it provides full validation of the identity of both the client and the server, and it sends messages over an encrypted channel.
 
 > [!IMPORTANT]
 > Microsoft recommends that you use this configuration for production environments.
 
-To configure syslog forwarder with TCP, mutual authentication, and TLS 1.2 encryption, configure the server and provide certificate to the client to authenticate against the server.
+To configure syslog forwarder with TCP, mutual authentication, and TLS encryption, configure the server and provide certificate to the client to authenticate against the server.
 
 Run the following cmdlet against a physical host:
 
@@ -80,9 +81,9 @@ Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -Server
 > [!IMPORTANT]
 > The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.
 
-### Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption
+### Syslog forwarding with TCP, server authentication, and TLS encryption
 
-In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
+In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
 This configuration prevents the client from sending messages to untrusted destinations. TCP using authentication and encryption is the default configuration and represents the minimum level of security that Microsoft recommends for a production environment.
 
