@@ -13,6 +13,8 @@ ms.date: 12/01/2022
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes how to upgrade existing Windows Server virtual machines (VMs) running on your Azure Stack HCI cluster to Windows Server Azure Edition.
 
 ## Prerequisites

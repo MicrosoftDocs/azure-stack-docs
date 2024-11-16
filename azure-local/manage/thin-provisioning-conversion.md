@@ -12,6 +12,8 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes how you can use Windows PowerShell to convert existing fixed provisioned volumes to thin provisioned volumes inline on your Azure Stack HCI cluster.
 
 ## Fixed versus thin provisioning

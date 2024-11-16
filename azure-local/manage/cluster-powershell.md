@@ -12,6 +12,8 @@ ms.reviewer: stevenek
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI and Windows Server clusters.
 
 You manage clusters from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.

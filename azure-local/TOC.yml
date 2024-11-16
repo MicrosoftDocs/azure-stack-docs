@@ -87,7 +87,7 @@ items:
         href: security-update/security-update-dec-2023.md
       - name: November 2023 
         href: security-update/security-update-nov-2023.md
-  - name: Disconnected operations (Preview)
+  - name: Disconnected operations
     href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
@@ -353,14 +353,14 @@ items:
         href: manage/vm-affinity.md
       - name: VM load balancing
         href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: Use GPUs with clustered VMs
-        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Dynamic CPU compatibility
+    #    href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Use GPUs with clustered VMs
+    #    href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: GPU Partitioning
+    #    href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Partition and assign GPUs to a virtual machine
+    #    href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-local/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -387,6 +387,8 @@ items:
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+    - name: Manage security post upgrade
+      href: manage/manage-security-post-upgrade.md
       
   - name: Systems
     items:
@@ -526,6 +528,8 @@ items:
     href: manage/collect-logs.md
   - name: Troubleshoot deployment validation issues
     href: manage/troubleshoot-deployment.md
+  - name: Use the Diagnostic Support tool
+    href: manage/support-tools.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support for Azure Local
@@ -603,7 +607,7 @@ items:
   - name: Host networking
     items:
     - name: Network ATC overview
-      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
+      href: concepts/network-atc-overview.md?pivots=azure-local
   - name: SDN
     items:
     - name: SDN technical reference
@@ -658,7 +662,7 @@ items:
       - name: Create a system with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
-        href: deploy/network-atc.md?pivots=azure-stack-hci
+        href: deploy/network-atc.md?pivots=azure-local
     - name: Deploy SDN 
       items:
       - name: Deploy using Windows Admin Center
@@ -730,7 +734,7 @@ items:
       - name: Manage systems with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
-        href: manage/manage-network-atc.md?pivots=azure-stack-hci
+        href: manage/manage-network-atc.md?pivots=azure-local
       - name: Update the system
         href: manage/update-cluster.md
       - name: Manage quick restarts
@@ -779,8 +783,6 @@ items:
       href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
-    - name: Use the Diagnostic Support tool
-      href: manage/support-tools.md
   - name: Concepts
     items:
     - name: Storage and systems

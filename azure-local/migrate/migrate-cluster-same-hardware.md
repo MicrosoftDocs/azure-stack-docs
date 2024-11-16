@@ -12,6 +12,8 @@ ms.reviewer: kerimha
 
 > Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new operating system for Azure Local and retains your existing system settings and storage, and imports your VMs.
 
 The following diagram depicts migrating your Windows Server cluster in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).

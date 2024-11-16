@@ -4,12 +4,14 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 12/19/2023
+ms.date: 11/15/2024
 ---
 
 # Update Azure Stack HCI clusters, version 22H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
+
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
 [!INCLUDE [WARNING](../includes/hci-applies-to-22h2-cluster-updates.md)]
 
