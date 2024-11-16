@@ -138,7 +138,7 @@ For more information, see [Manage secrets rotation](../manage/manage-secrets-rot
 
 ## Syslog forwarding of security events
 
-For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
+For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local, version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Local has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 
