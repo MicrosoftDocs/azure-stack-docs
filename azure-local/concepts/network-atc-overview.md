@@ -55,13 +55,9 @@ Network ATC provides the following features:
 - **Storage adapter configuration**: Network ATC automatically configures the following components for your storage network.
 
   - Physical adapter properties
-
   - Data Center Bridging
-
   - Determines if a virtual switch is needed, and if so, creates the required virtual adapters
-
   - Maps the virtual adapters to the appropriate physical adapter
-
   - Assigns VLANs
 
   :::zone pivot="azure-local"
@@ -81,11 +77,8 @@ Network ATC provides the following features:
 - **Live Migration guidelines**: Network ATC keeps you up to date with the recommended guidelines for Live Migration based on the operating system version (you can always override). Network ATC manages the following Live Migration settings:
 
   - The maximum number of simultaneous live migrations
-
   - The live migration network
-
   - The live migration transport
-
   - The maximum amount of SMBDirect (RDMA) bandwidth used for live migration
 
 - **Proxy configuration**: Network ATC can help you configure all cluster nodes with the same proxy configuration information if your environment requires it.
