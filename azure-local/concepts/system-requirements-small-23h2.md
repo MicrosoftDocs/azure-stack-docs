@@ -41,7 +41,7 @@ The following table lists the requirements for the small hardware:
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
 | Secure Boot | Secure Boot must be present and turned on. |
 | Storage Controller | Pass-through. <br> RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) aren't supported. |
-| GPU | Optional<br>Up to 192 GB memory per machine. |
+| GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
 >[!IMPORTANT]
 > For 2411 release, Update, `Add-server`, and `Repair-server` operations aren't supported for the small hardware class.
