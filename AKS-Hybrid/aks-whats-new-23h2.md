@@ -46,11 +46,12 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Workload Identity**. You can now deploy AKS Arc clusters with workload identity enabled and deploy application pods with the workload identity label to access Microsoft Entra ID protected resources, such as Azure Key Vault. For more information, see <LINK>.
-- **Arc Gateway integration**. You can now deploy AKS Arc clusters with pod-level Arc Proxy and communicate with the Arc gateway, reducing the list of outbound URLs to configure in an isolated network environment. For more information, see <LINK>.
-- **Control Plane IP**. You can now deploy AKS Arc clusters without specifying the control plane IP. The IP address is assigned automatically. For more information, see <Link>.
-- **Disable Windows image download**. You can now disable Windows image downloads by disabling the Windows node pool after cluster creation, reducing network traffic over HTTP connections and providing better support for low bandwidth environments. For more information, see <Link>.
-- **Terraform**. You can now create AKS Arc clusters with Terraform modules and smart defaults. For more information, see <Link>.
+- **Workload Identity in AKS Arc**. You can now deploy AKS Arc clusters with workload identity enabled and deploy application pods with the workload identity label to access Microsoft Entra ID protected resources, such as Azure Key Vault. For more information, see TBD.
+- **Workload Identity in AKS Edge Essentials**. You can now deploy AKS Arc clusters in AKS Edge Essentials, with workload identity enabled. For more information, see [Configure Workload Identity on an AKS Edge Essentials cluster (preview)](aks-edge-workload-identity.md).
+- **Arc Gateway integration**. You can now deploy AKS Arc clusters with pod-level Arc Proxy and communicate with the Arc gateway, reducing the list of outbound URLs to configure in an isolated network environment. For more information, see TBD.
+- **Control Plane IP**. You can now deploy AKS Arc clusters without specifying the control plane IP. The IP address is assigned automatically. For more information, see TBD.
+- **Disable Windows image download**. You can now disable Windows image downloads by disabling the Windows node pool after cluster creation, reducing network traffic over HTTP connections and providing better support for low bandwidth environments. For more information, see TBD.
+- **Terraform**. You can now create AKS Arc clusters with Terraform modules and smart defaults. For more information, see TBD.
 - **Error handling**. Error handling is now improved to prevent logical network deletions with dependent cluster resources, GPU misconfigurations, and more.
 
 To get started with these features in the 2411 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
