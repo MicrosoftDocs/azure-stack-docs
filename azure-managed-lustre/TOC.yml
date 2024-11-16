@@ -38,6 +38,8 @@
   items:
     - name: Configure root squash settings
       href: root-squash-configure-settings.md
+    - name: Set and configure Lustre quotas
+      href: lustre-quotas.md
 - name: Security
   items:
     - name: Configure a network security group
@@ -54,3 +56,7 @@
   items:
   - name: Recover from a regional outage
     href: amlfs-region-recovery.md
+- name: Troubleshooting
+  items:
+    - name: Troubleshoot cluster deployment failures
+      href: troubleshoot-deployment.md

@@ -3,7 +3,7 @@ title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
 author: jasongerend
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 11/06/2024
 ms.author: jgerend
 zone_pivot_groups: windows-os
 ---
@@ -20,7 +20,7 @@ This article discusses how to manage Network ATC after it has been deployed. Net
 
 :::zone pivot="windows-server"
 
->Applies to: Windows Server 2025 (preview)
+>Applies to: Windows Server 2025
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Windows Server clusters. You use Windows PowerShell to manage Network ATC.
 

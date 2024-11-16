@@ -9,5 +9,5 @@ ms.lastreviewed:
 ---
 
 ```bash
-sudo apt install amlfs-lustre-client-2.15.5-41-gc010524=$(uname -r)
+sudo apt install -y amlfs-lustre-client-2.15.5-41-gc010524=$(uname -r)
 ```

@@ -22,7 +22,7 @@ This section describes the errors related to Azure Arc VM management and their r
 
 When trying to run the command to enable guest management, you see the following error:
 
-**Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
+**Error:** `Deployment failed. Correlation ID: aaaa0000-bb11-2222-33cc-444444dddddd. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
 This failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
 

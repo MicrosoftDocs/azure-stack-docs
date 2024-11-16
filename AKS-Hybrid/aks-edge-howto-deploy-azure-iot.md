@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Operations with AKS Edge Essentials
-description: Learn how to use Azure IoT Operations with AKS Edge Essentials.
+description: Learn how to run the quickstart script that creates an Arc-enabled AKS Edge Essentials Kubernetes cluster that can run Azure IoT Operations.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
@@ -8,30 +8,28 @@ ms.date: 10/23/2024
 ms.custom: template-how-to
 ---
 
-# Deploy Azure IoT Operations on AKS Edge Essentials
+# Create and configure an AKS Edge Essentials cluster that can run Azure IoT Operations
 
-[Azure IoT Operations](/azure/iot-operations/overview-iot-operations) requires an Arc-enabled Kubernetes cluster. You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it, as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configuration applicable for Azure IoT Operations.
+Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc.
 
 > [!NOTE]
-> Azure IoT Operations is generally available on AKS Edge Essentials when deployed on single machine clusters. Deploying clusters on multiple machines is an experimental feature.
+> Azure IoT Operations supports AKS Edge Essentials when deployed on single machine clusters. Deploying clusters on multiple machines is an experimental feature.
 
 ## Prerequisites for running the script
 
 To run the script, you need the following prerequisites:
 
-- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. For more information about managing resource groups, see the [Azure Resource Manager documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal). If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
-- Install the latest version of the following extensions for Azure CLI:
+- Install the latest version of the **connectedk8s** extensions for Azure CLI:
 
    ```bash
-   az extension add --upgrade --name azure-iot-ops
    az extension add --upgrade --name connectedk8s 
    ```
 
-- Hardware requirements: ensure that your machine has a minimum of 16-GB available RAM, 8 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
-- If you deploy Azure IoT Operations to a multi-node cluster with fault tolerance enabled, review the hardware and storage requirements in [Prepare Linux for Edge Volumes](/azure/azure-arc/container-storage/prepare-linux-edge-volumes).
+- Hardware requirements: ensure that your machine has a minimum of 16-GB available RAM, 4 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
 
-## Create an AKS Edge Essentials cluster for Azure IoT Operations
+## Create an Arc-enabled cluster
 
 The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1) script automates the process of creating and connecting a cluster, and is the recommended path for deploying Azure IoT Operations on AKS Edge Essentials. The script performs the following tasks:
 
@@ -39,6 +37,7 @@ The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/to
 - Installs AKS Edge Essentials, and deploys and creates a single machine Kubernetes cluster on your Windows machine.
 - Connects to the Azure subscription, creates a resource group if it doesn't already exist, and connects the cluster to Arc to create an Arc-enabled Kubernetes cluster.
 - Enables the custom location feature on the Arc-enabled Kubernetes cluster.
+- Enables the workload identity federation feature on the Arc-enabled Kubernetes cluster.
 - Deploys the local path provisioning.
 - Configures firewall rules on the host Windows machine for the MQTT broker.
 - On the Linux VM, which serves as the Kubernetes control plane node:
@@ -47,7 +46,7 @@ The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/to
     - `sudo iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 9110 -j ACCEPT`
     - `sudo iptables -A INPUT -p tcp --dport (10124, 8420, 2379, 50051) -j ACCEPT`
 
-After you download the script, perform the following steps:
+To run the quickstart script, perform the following steps:
 
 1. Open an elevated PowerShell window and change the directory to a working folder.
 1. Get the `objectId` of the Microsoft Entra ID application that the Azure Arc service uses in your tenant. Run the following command exactly as written, without changing the GUID value.
@@ -70,29 +69,23 @@ After you download the script, perform the following steps:
    |---------|---------|
    |SUBSCRIPTION_ID     |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).   |
    |TENANT_ID  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
-   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created.      |
-   |LOCATION     |      An Azure region close to you. For the list of currently supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
+   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created. Only one Azure IoT Operations instance is supported per resource group.     |
+   |LOCATION     |      An Azure region close to you. For the list of Azure IoT Operations's supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
    |CLUSTER_NAME     |    A name for the new cluster to be created.     |
    |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
 
-If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
+   If there are issues during deployment, like if your machine reboots as part of this process, run the set of commands again.
 
-Run the following commands to check that the deployment was successful:
+1. Run the following commands to check that the deployment was successful:
 
-```powershell
-Import-Module AksEdge
-Get-AksEdgeDeploymentInfo
-```
+   ```powershell
+   Import-Module AksEdge
+   Get-AksEdgeDeploymentInfo
+   ```
 
-In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
+   In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
 
 ## Verify your cluster
-
-To verify that your cluster is ready for Azure IoT Operations deployment, you can use the [verify-host](/cli/azure/iot/ops#az-iot-ops-verify-host) helper command in the Azure IoT Operations extension for Azure CLI. When you run this command on the cluster host, it checks connectivity to Azure Resource Manager and Microsoft Container Registry endpoints:
-
-```azurecli
-az iot ops verify-host
-```
 
 To verify that your Kubernetes cluster is Azure Arc-enabled, run the following command:
 
