@@ -1,6 +1,6 @@
 ---
-title: Configure Workload Identity on an AKS Edge Essentials cluster (preview)
-description: Learn how to configure an AKS Edge Essentials cluster with workload identity.
+title: Create Kubernetes clusters using Terraform (preview)
+description: Learn how to create Kubernetes clusters using Terraform.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
