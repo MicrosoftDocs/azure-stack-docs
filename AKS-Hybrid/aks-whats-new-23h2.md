@@ -47,7 +47,6 @@ This section lists the new features and improvements in AKS Arc in each release 
 The following Kubernetes cluster deployment and management capabilities are available:
 
 - **Workload Identity in AKS Arc**. You can now deploy AKS Arc clusters with workload identity enabled and deploy application pods with the workload identity label to access Microsoft Entra ID protected resources, such as Azure Key Vault. For more information, see TBD.
-- **Workload Identity in AKS Edge Essentials**. You can now deploy AKS Arc clusters in AKS Edge Essentials, with workload identity enabled. For more information, see [Configure Workload Identity on an AKS Edge Essentials cluster (preview)](aks-edge-workload-identity.md).
 - **Arc Gateway integration**. You can now deploy AKS Arc clusters with pod-level Arc Proxy and communicate with the Arc gateway, reducing the list of outbound URLs to configure in an isolated network environment. For more information, see TBD.
 - **Control Plane IP**. You can now deploy AKS Arc clusters without specifying the control plane IP. The IP address is assigned automatically. For more information, see TBD.
 - **Disable Windows image download**. You can now disable Windows image downloads by disabling the Windows node pool after cluster creation, reducing network traffic over HTTP connections and providing better support for low bandwidth environments. For more information, see TBD.
@@ -56,12 +55,9 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 To get started with these features in the 2411 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
 
-#### Supported component versions for 2411
+#### Supported Kubernetes versions for 2411
 
-| Component           | Version                                       |
-|---------------------|--------------------------------------------------|
-| AKS Arc             | 1.3.218                                     |
-| Kubernetes versions | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4 |
+The Kubernetes versions supported in the 2411 release are 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
 
 ### Release 2408
 
