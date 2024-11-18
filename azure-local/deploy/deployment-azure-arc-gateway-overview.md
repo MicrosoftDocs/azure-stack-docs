@@ -153,8 +153,6 @@ You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azu
 
 The gateway creation process takes nine to ten minutes to complete.
 
-You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
-
 
 # [CLI](#tab/cli)
 
