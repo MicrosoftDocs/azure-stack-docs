@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/13/2024
+ms.date: 11/18/2024
 ---
 
 # Manage security after upgrading Azure Local
@@ -20,7 +20,7 @@ Before you begin, make sure that you have access to an Azure Local, version 23H2
 
 ## Post upgrade security changes
 
-When you upgrade you  Azure Local from version 22H2 to version 23H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
+When you upgrade your Azure Local from version 22H2 to version 23H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
 
 Here are the benefits of updating the security settings:
 
@@ -108,13 +108,13 @@ If you need to enable BitLocker on any of your volumes, see [Manage BitLocker en
 
 Application control for business (formerly known as Windows Defender Application Control or WDAC) provides a great layer of defense against running untrusted code.
 
-After you've upgraded to version 23H2, consider enabling WDAC. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
+After you've upgraded to version 23H2, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
 
-For new deployments, WDAC is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
+For new deployments, Application Control is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
 
-1. [Enable WDAC in *Audit* mode (assuming unknown software might be present)](./manage-wdac.md).
-1. [Monitor WDAC events](./manage-wdac.md).
-1. [Create the necessary supplemental policies](./manage-wdac.md).
+1. [Enable Application Control in *Audit* mode (assuming unknown software might be present)](./manage-wdac.md#switch-wdac-policy-modes).
+1. [Monitor Application Control events](/windows/security/application-security/application-control/app-control-for-business/operations/event-id-explanations).
+1. [Create the necessary supplemental policies](./manage-wdac.md#create-a-wdac-supplemental-policy).
 1. Repeat steps #2 and #3 as necessary until no further audit events are observed. Switch to *Enforced* mode.
 
     > [!WARNING]
@@ -124,4 +124,4 @@ For instructions to enable in *Enforced* mode, see [Manage Windows Defender Appl
 
 ## Next steps
 
-- [Understand BitLocker encryption](.././concepts/security-bitlocker.md).
+- [Understand BitLocker encryption](../manage/manage-secure-baseline.md).
