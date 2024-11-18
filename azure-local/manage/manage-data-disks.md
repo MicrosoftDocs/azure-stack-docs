@@ -26,13 +26,13 @@ Before you begin, make sure to complete the following prerequisites:
 
 Download an Azure managed disk as follows:
 
-1. Set parameters for your subscription, resource group, disk name, and custom location. Replace the parameters in `< >` with the appropriate values:
+1. Set parameters for `subscription`, `resource-group`, `name`, and `custom-location`. Replace the parameters in `< >` with the appropriate values:
 
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource-group = "<Resource group>"
     $name = "<Data disk name>"
-    $customLocation = "<Custom location resource ID>"
+    $custom-location = "<Custom location resource ID>"
     ```
 
 1. Generate a SAS URL of the disk using Azure CLI:  
@@ -44,19 +44,19 @@ Download an Azure managed disk as follows:
 1. Once the SAS URL is generated, use the following command to download it to your Azure Local:  
 
     ```azurecli
-    az stack-hci-vm disk create -resource-group $resource-group --disk-file-format vhd --custom-location $customLocation --download-url $download-url --name $name
+    az stack-hci-vm disk create -resource-group $resource-group --disk-file-format vhd --custom-location $custom-location --download-url $download-url --name $name
     ```
 
 The parameters are described in the following table:
 
 | Parameter | Description |
 | --- | --- |
-| subscription | Subscription associated with your Azure Local. 
-| resource-group | Resource group for Azure Local that you associate with this image. |
-| name | Name of the data disk for Azure Local. | 
-| customLocation | Resource ID of the custom location for Azure Local. |
-| disk-file-format | File format of the data disk. This can be `vhd` or `vhdx`. |
-| download-url | SAS URL of the Azure managed disk.| 
+| `subscription` | Subscription associated with your Azure Local. 
+| `resource-group` | Resource group for Azure Local that you associate with this image. |
+| `name` | Name of the data disk for Azure Local. | 
+| `custom-location` | Resource ID of the custom location for Azure Local. |
+| `disk-file-format` | File format of the data disk. This can be `vhd` or `vhdx`. |
+| `download-url` | SAS URL of the Azure managed disk.| 
 
 Here is an example output:
 
