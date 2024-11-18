@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/16/2024
+ms.date: 11/18/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -48,6 +48,7 @@ This is a baseline release with the following features and improvements:
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## [2408 releases](#tab/2408releases)
 

@@ -3,16 +3,13 @@ author: ManikaDhiman
 ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 11/18/2024
 ms.reviewer: alkohli
 ---
 
 1. Connect to your Azure Local machine.
 
 1. Run the following PowerShell command using local administrator credentials or deployment user (AzureStackLCMUser) credentials.
-
-   > [!IMPORTANT]
-   > Cmdlets that require to be signed in as deployment user (AzureStackLCMUser) need proper credentials authorization via the security group (PREFIX-ECESG) and CredSSP (when using remote PowerShell) or Console session (RDP).
 
 1. Run the following cmdlet to check the WDAC policy mode that is currently enabled:
 
