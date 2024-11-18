@@ -14,6 +14,8 @@ ms.date: 02/07/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 [!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
 Now that you've deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register it with Azure.

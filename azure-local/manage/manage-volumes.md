@@ -12,6 +12,8 @@ ms.date: 07/10/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes how to expand, move, or delete volumes in Azure Stack HCI and Windows Server by using either Windows Admin Center or PowerShell.
 
 ## Prerequisites

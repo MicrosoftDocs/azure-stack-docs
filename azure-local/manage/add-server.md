@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/31/2024
+ms.date: 11/16/2024
 ---
 
 # Add a node on Azure Local, version 23H2
@@ -111,7 +111,7 @@ On the new node that you plan to add, follow these steps.
 
 On a node that already exists on your system, follow these steps:
 
-1. Sign in with the domain user credentials that you provided during the deployment of the system.
+1. Sign in with the domain user credentials (AzureStaclLCMUser or another user with equivalent permissions) that you provided during the deployment of the system. 
 
 1. (Optional) Before you add the node, make sure to get an updated authentication token. Run the following command:
 
@@ -125,7 +125,7 @@ On a node that already exists on your system, follow these steps:
     Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
-1. Run the following command to add the new incoming node:
+1. Run the following command to add the new incoming node using a local adminsitrator credential for the new node: 
 
     ```powershell
     $HostIpv4 = "<IPv 4 for the new node>"
@@ -175,4 +175,4 @@ If you experience failures or errors while adding a node, you can capture the ou
 
 ## Next steps
 
-Learn more about how to [Repair a node](./repair-server.md).
+- Learn more about how to [Repair a node](./repair-server.md).

@@ -3,7 +3,7 @@ title:  November 2024 security update (KB 5046618) for Azure Local, version 23H2
 description: Read about the November 2024 security update (KB 5046618) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/05/2024
+ms.date: 11/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1246.
+This article describes the OS security update for Azure Local, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1251.
 
 ## Improvements
 

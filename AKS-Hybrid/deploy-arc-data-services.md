@@ -17,7 +17,7 @@ ms.reviewer: rbaziwane
 
 This article provides a checklist of prerequisites you can follow to deploy Azure Arc-enabled data services on Azure Kubernetes Service (AKS) enabled by Azure Arc. You must have [AKS](kubernetes-walkthrough-powershell.md) installed before using the checklist.
 
-## Prerequisites for AKS on Azure Stack HCI and Windows Server
+## Prerequisites for AKS on Azure Local and Windows Server
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md).

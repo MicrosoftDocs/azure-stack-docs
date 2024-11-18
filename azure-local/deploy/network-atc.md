@@ -3,13 +3,15 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI and Windows Server.
 author: dcuomo
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 11/13/2024
 ms.author: dacuo
 ms.reviewer: jgerend
 zone_pivot_groups: windows-os
 ---
 
 # Deploy host networking with Network ATC
+
+:::zone pivot="azure-local"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
@@ -29,7 +31,7 @@ If you have feedback or encounter any issues, review the Requirements and best p
 
 ## Prerequisites
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -168,7 +170,7 @@ For this intent, compute, storage, and management networks are deployed and mana
 
 :::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent" lightbox="media/network-atc/network-atc-2-full-converge.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -200,7 +202,7 @@ Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02
 
 :::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -235,7 +237,7 @@ For this intent, compute, storage, and management networks are all managed on di
 
 :::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -273,7 +275,7 @@ For this intent, only storage is managed. Management and compute adapters aren't
 
 :::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -305,7 +307,7 @@ For this intent, compute and management networks are managed, but not storage.
 
 :::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -337,7 +339,7 @@ For this intent, multiple compute switches are managed.
 
 :::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -372,7 +374,7 @@ This section lists some of the key default values used by Network ATC.
 
 ### Default values
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 This section covers additional default values that Network ATC will be setting in versions 22H2 and later.
 
@@ -386,7 +388,7 @@ This section covers additional default values that Network ATC will be setting.
 
 #### Default VLANs
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 Applies to: Azure Stack HCI 21H2, 22H2
 
@@ -409,7 +411,7 @@ Network ATC uses the following VLANs by default for adapters with the _storage_ 
 
 Consider the following command:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 # [22H2](#tab/22H2)
 
@@ -442,7 +444,7 @@ The physical NIC (or virtual NIC if necessary) is configured to use VLANs 711, 7
 
 #### Automatic storage IP addressing
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 Applies to: Azure Stack HCI 22H2
 
@@ -471,7 +473,7 @@ Add-NetIntent -Name MyIntent -Storage -Compute -AdapterName 'pNIC01', 'pNIC02' -
 
 #### Cluster network settings
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 Applies to: Azure Stack HCI 22H2
 
@@ -572,10 +574,10 @@ This message will occur when RoCE RDMA is in use and you have overridden the def
 
 ## Next steps
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
-- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=azure-stack-hci).
+- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=azure-local).
+- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=azure-local).
 
 ::: zone-end
 

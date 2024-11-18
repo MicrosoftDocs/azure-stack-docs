@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This article introduces Network ATC for Azure Local and Windows Server.
 author: parammahajan5
 ms.topic: overview
-ms.date: 11/06/2024
+ms.date: 11/13/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 zone_pivot_groups: windows-os
@@ -11,7 +11,7 @@ zone_pivot_groups: windows-os
 
 # Network ATC overview
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
@@ -40,7 +40,7 @@ Network ATC provides the following features:
 
 - **Windows Admin Center deployment**: Network ATC is integrated with Windows Admin Center to provide an easy-to-use experience for deploying host networking.
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
 - **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Beginning with Azure Local, version 22H2, Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
 
@@ -55,22 +55,16 @@ Network ATC provides the following features:
 - **Storage adapter configuration**: Network ATC automatically configures the following components for your storage network.
 
   - Physical adapter properties
-
   - Data Center Bridging
-
   - Determines if a virtual switch is needed, and if so, creates the required virtual adapters
-
   - Maps the virtual adapters to the appropriate physical adapter
-
   - Assigns VLANs
 
-  :::zone pivot="azure-stack-hci"
+  :::zone pivot="azure-local"
 
   - Beginning with Azure Local, version 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
 
   :::zone-end
-
-<br />
 
   :::zone pivot="windows-server"
 
@@ -83,11 +77,8 @@ Network ATC provides the following features:
 - **Live Migration guidelines**: Network ATC keeps you up to date with the recommended guidelines for Live Migration based on the operating system version (you can always override). Network ATC manages the following Live Migration settings:
 
   - The maximum number of simultaneous live migrations
-
   - The live migration network
-
   - The live migration transport
-
   - The maximum amount of SMBDirect (RDMA) bandwidth used for live migration
 
 - **Proxy configuration**: Network ATC can help you configure all cluster nodes with the same proxy configuration information if your environment requires it.
@@ -127,11 +118,11 @@ The following video provides an overview of Network ATC using the [Copy-NetInten
 
 To get started with Network ATC, review the following articles:
 
-:::zone pivot="azure-stack-hci"
+:::zone pivot="azure-local"
 
-- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md?pivots=azure-local).
 - Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
-- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
+- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md?pivots=azure-local).
 - [Migrate an existing cluster to Network ATC](https://techcommunity.microsoft.com/t5/networking-blog/migrate-an-existing-cluster-to-network-atc/ba-p/3843606).
 - To learn more about the latest networking announcements, build your skills, and connect with the Microsoft Edge Networking community, see the [Tech Community Networking Blog](https://techcommunity.microsoft.com/t5/networking-blog/bg-p/NetworkingBlog).
 
