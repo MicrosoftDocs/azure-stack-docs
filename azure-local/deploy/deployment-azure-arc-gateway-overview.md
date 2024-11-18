@@ -3,14 +3,16 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2024
+ms.date: 11/18/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
 
 # About Azure Arc gateway for Azure Local, version 23H2 (preview)
 
-Applies to: Azure Local, version 23H2, release 2408 or later
+Applies to: Azure Local, version 23H2, release 2411
+
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of the Azure Arc gateway for Azure Local, version 23H2. The Arc gateway can be enabled on new deployments of Azure Local running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
@@ -28,7 +30,7 @@ The Arc gateway works by introducing the following components:
 
 - **Arc proxy** – A new component that is added to the Arc Agentry. This component runs as a service (Called  the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
 
-Once you integrate the Arc gateway with release 2408 of Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
+Once you integrate the Arc gateway with release 2411 of Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
 
 When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
 
