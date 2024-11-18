@@ -114,8 +114,6 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - AllNodes – Provides boolean value (true/False) computed across nodes.
     - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
   
-      > [!IMPORTANT]
-      > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes.
 
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
@@ -128,6 +126,9 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Side Channel Mitigation
     - SMB Signing
     - SMB Cluster encryption
+    
+  > [!IMPORTANT]
+  > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes.
 
 The following table documents supported security features, whether they support drift control, and whether a reboot is required to implement the feature.
 
