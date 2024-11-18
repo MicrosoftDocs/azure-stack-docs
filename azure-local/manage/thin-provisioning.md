@@ -12,6 +12,8 @@ ms.date: 12/09/2022
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
 ## Capacity management: thin vs. fixed provisioned volumes

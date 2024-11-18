@@ -12,6 +12,8 @@ ms.date: 04/12/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 [!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
 The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](./download-software.md) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.

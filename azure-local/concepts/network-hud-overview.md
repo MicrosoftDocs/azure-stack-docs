@@ -12,6 +12,8 @@ ms.reviewer: dacuo
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 Network HUD enables visibility across the network, simplifying operational network diagnostics. It performs real-time analysis of network issues and provides prescriptive alerts or auto-remediation of the issue when possible. These capabilities can increase stability and optimize network performance for workloads running on Azure Stack HCI.
 
 ## About Network HUD

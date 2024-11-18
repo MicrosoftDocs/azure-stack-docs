@@ -11,6 +11,8 @@ ms.date: 04/17/2023
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. The guidance positions your organization to run complex, highly available workloads in virtual machines (VMs) and containers in remote branch office and edge deployments. Computing at the edge shifts most data processing from a centralized system to the edge of the network, closer to a device or system that requires data quickly.
 
 Use Azure Stack HCI to run virtualized applications and workloads with high availability on recommended hardware. The hardware supports clusters consisting of two servers configured with nested resiliency for storage, a simple, low-cost USB thumb drive cluster witness, and administration via the browser-based Windows Admin Center. For details on creating a USB device cluster witness, see [Deploy a file share witness](/windows-server/failover-clustering/file-share-witness).

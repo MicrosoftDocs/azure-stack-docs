@@ -12,6 +12,8 @@ ms.reviewer: johnmar
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 > [!IMPORTANT]
 > Stretched clusters are not yet supported in Azure Stack HCI version 23H2.
 

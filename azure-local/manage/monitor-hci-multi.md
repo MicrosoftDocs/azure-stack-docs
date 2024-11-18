@@ -13,6 +13,8 @@ ms.date: 01/31/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
 
 > [!IMPORTANT]

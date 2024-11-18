@@ -52,10 +52,8 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
-> [!NOTE]
-> - The SSH key value is the public key for accessing nodes in the provisioned cluster. By default, this key is located at `~/.ssh/id_rsa.pub`. You can specify a different location using the `--ssh-key-value` parameter during cluster creation.
-> - The `--generate-ssh-keys` parameter is required if there's no pre-existing SSH key on your local machine. If you don't include this parameter during cluster creation and no SSH key exists, you receive an error message.
-> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
+[!NOTE]
+To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster}(workload-identity.md).
 
 ## Connect to the Kubernetes cluster
 

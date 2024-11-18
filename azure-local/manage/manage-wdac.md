@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 11/17/2024
 ms.service: azure-stack-hci
 ---
 
@@ -83,12 +83,16 @@ Use the following steps to create a supplemental policy:
 1. Run the following cmdlet to modify the metadata of your supplemental policy:
 
    ```powershell
+
+    # Path of new created XML)
+    $policyPath = "c:\wdac\Contoso-policy.xml"
+
    # Set Policy Version (VersionEx in the XML file)
     $policyVersion = "1.0.0.1"
     Set-CIPolicyVersion -FilePath $policyPath -Version $policyVersion
 
     # Set Policy Info (PolicyName, PolicyID in the XML file)
-    Set-CIPolicyIdInfo -FilePath c:\wdac\Contoso-policy.xml -PolicyID "Contoso-Policy_$policyVersion" -PolicyName "Contoso-Policy"
+    Set-CIPolicyIdInfo -FilePath $policyPath -PolicyID "Contoso-Policy_$policyVersion" -PolicyName "Contoso-Policy"
    ```
 
 1. Run the following cmdlet to deploy the policy:
