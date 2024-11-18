@@ -10,7 +10,7 @@ ms.service: azure-stack-hci
 
 # About Azure Arc gateway for Azure Local, version 23H2 (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2411, and later
+Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, and 2411
 
 This article provides an overview of the Azure Arc gateway for Azure Local, version 23H2. The Arc gateway can be enabled on new deployments of Azure Local running software version 2408 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
@@ -50,13 +50,13 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. Once the traffic reaches Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
-**Traffic flow for Arc VMs in version 2408**
+**Traffic flow for Arc VMs**
 
 *Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in this version.
 
 Traffic flows are illustrated in the following diagram:
 
-:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture for version 2408." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
+:::image type="content" source="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway architecture." lightbox="./media/deployment-azure-arc-gateway-overview/arc-gateway-component-diagram.png":::
 
 <!-- ## Arc-enabled server endpoints redirected via the Arc gateway in limited Public Preview
 
