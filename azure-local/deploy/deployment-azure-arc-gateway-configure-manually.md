@@ -41,7 +41,7 @@ To register new version 2408 or version 2411 machines in Azure Arc, you run the 
 ```azurecli
 #Define the subscription where you want to register your server as Arc device. 
 
-$Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" 
+$Subscription = "yoursubscription>" 
 
 #Define the resource group where you want to register your server as Arc device.
 
@@ -49,7 +49,7 @@ $RG = "yourresourcegroupname"
 
 #Define the tenant you will use to register your server as Arc device. 
 
-$Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
+$Tenant = "yourtenant" 
 
 #Define Proxy Server if necessary 
 
@@ -57,7 +57,7 @@ $ProxyServer = "http://x.x.x.x:port"
 
 #Define the Arc gateway resource ID from Azure 
 
-$ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+$ArcgwId = "/subscriptions/yoursubscription/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 
 #Connect to your Azure account and subscription 
 

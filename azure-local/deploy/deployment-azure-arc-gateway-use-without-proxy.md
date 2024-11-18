@@ -48,7 +48,7 @@ Install-Module AzsHCI.ARCinstaller
 
 #Define the subscription where you want to register your server as Arc device.
 
-$Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+$Subscription = "yoursubscription"
 
 #Define the resource group where you want to register your server as Arc device.
 
@@ -56,11 +56,11 @@ $RG = "yourresourcegroupname"
 
 #Define the tenant you will use to register your server as Arc device.
 
-$Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+$Tenant = "yourtenant"
  
 #Define the Arc gateway resource ID from Azure
 
-$ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname"
 
 #Define the bypass list for the proxy. Use semicolon to separate each item from the list.
 
