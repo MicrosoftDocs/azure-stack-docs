@@ -11,6 +11,8 @@ ms.date: 02/22/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
 >[!NOTE]

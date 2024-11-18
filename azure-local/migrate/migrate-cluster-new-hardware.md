@@ -12,6 +12,8 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2 or later to new Azure Local hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one machine to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
 > [!NOTE]

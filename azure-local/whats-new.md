@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/11/2024
+ms.date: 11/16/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -14,9 +14,9 @@ ms.date: 11/11/2024
 
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 
-Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Local, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
+Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Local, see [What's new in Azure Local, version 22H2](./whats-new-in-hci-22h2.md).
 
-There are currently four release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2411 releases](#tab/2411releases)
 
@@ -24,13 +24,27 @@ There are currently four release trains for Azure Local, version 23H2: 2411, 240
 
 This is a baseline release with the following features and improvements:
 
-- **Rebranding of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. For more information, see [Renaming Azure Stack HCI to Azure Local](./index.yml).
-- **Azure Local for Small Form Factor**- Beginning this release, Azure Local supprts a new class of "small" devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. For more information, see [Azure Local for Small Form Factor](index.yml).
-- **Azure Local for disconnected operations** - Azure Local is now available for disconnected operations. For more information, see [Azure Local for Disconnected Operations](index.yml).
-- **Deploy Azure Local with Local Identity** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. This integration with Key Vault allows you to securely manage and store secrets without relying on Active Directory (AD). For more information, see [Deploy Azure Local with Local Identity and Azure Key Vault](index.yml).
+- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
+
+    For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
+- **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
+
+    For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](./concepts/system-requirements-small-23h2.md).
+- **Azure Local for disconnected operations (Preview)** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
+
+    This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
+
+    For more information about this Preview feature, see [Azure Local for Disconnected Operations (Preview)](./manage/disconnected-operations-overview.md).
+- **Deploy Azure Local with Local Identity (Preview)** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by reducing dependencies on Active Directory systems and simplifying firewall configurations.
+
+    <!--For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).-->
 - **Arc VM changes**: The following changes were made to Arc VM management:
-    - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates. For more information, see [Create logical networks](index.yml) and [Create Arc VMs](index.yml) using Terraform templates.
-    - **Add network inteface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you are required to configure the desired static IP from within the VM. For more information, see [Add a network interface on static logical network](index.yml).
+    - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates.
+    
+        For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Arc VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+    - **Add network inteface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you are required to configure the desired static IP from within the VM.
+        
+        For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
 
 ## [2408 releases](#tab/2408releases)
@@ -354,7 +368,7 @@ In this release:
 
 ### Migration of Hyper-V VMs to Azure Local (preview)
 
-You can now migrate Hyper-V VMs to Azure Local using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Local (preview)](./index.yml).
+You can now migrate Hyper-V VMs to Azure Local using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Local (preview)](./migrate/migration-azure-migrate-overview.md).
 
 ### Monitoring changes
 

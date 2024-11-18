@@ -354,14 +354,14 @@ items:
         href: manage/vm-affinity.md
       - name: VM load balancing
         href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: Use GPUs with clustered VMs
-        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-local/context/context
-      - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Dynamic CPU compatibility
+    #    href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Use GPUs with clustered VMs
+    #    href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: GPU Partitioning
+    #    href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&context=/azure-local/context/context
+    #  - name: Partition and assign GPUs to a virtual machine
+    #    href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&context=/azure-local/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -608,7 +608,7 @@ items:
   - name: Host networking
     items:
     - name: Network ATC overview
-      href: concepts/network-atc-overview.md?pivots=azure-stack-hci
+      href: concepts/network-atc-overview.md?pivots=azure-local
   - name: SDN
     items:
     - name: SDN technical reference
@@ -663,7 +663,7 @@ items:
       - name: Create a system with PowerShell
         href: deploy/create-cluster-powershell.md
       - name: Host networking with Network ATC
-        href: deploy/network-atc.md?pivots=azure-stack-hci
+        href: deploy/network-atc.md?pivots=azure-local
     - name: Deploy SDN 
       items:
       - name: Deploy using Windows Admin Center
@@ -735,7 +735,7 @@ items:
       - name: Manage systems with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
-        href: manage/manage-network-atc.md?pivots=azure-stack-hci
+        href: manage/manage-network-atc.md?pivots=azure-local
       - name: Update the system
         href: manage/update-cluster.md
       - name: Manage quick restarts

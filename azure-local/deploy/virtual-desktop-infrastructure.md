@@ -11,6 +11,8 @@ ms.date: 05/22/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This topic provides guidance on how to plan, configure, and deploy virtual desktop infrastructure (VDI) on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to deliver centralized, highly available, simplified, and secure management for the users in your organization. Use this guidance to enable scenarios like bring-your-own-device (BYOD) for your users, while providing them with a consistent and reliable experience for business-critical applications without sacrificing security.
 
 For information about how to deploy Azure Virtual Desktop on Azure Stack HCI, version 23H2, see [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal).
