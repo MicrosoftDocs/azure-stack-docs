@@ -12,6 +12,8 @@ ms.date: 11/16/2024
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 
 Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Local, see [What's new in Azure Local, version 22H2](./whats-new-in-hci-22h2.md).

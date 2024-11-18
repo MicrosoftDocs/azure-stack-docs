@@ -13,6 +13,8 @@ ms.service: azure-stack-hci
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
+
 This article provides an overview of upgrading Azure Local, version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
