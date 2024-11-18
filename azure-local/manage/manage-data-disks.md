@@ -3,7 +3,7 @@ title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 11/18/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
@@ -38,13 +38,13 @@ Download an Azure managed disk as follows:
 1. Generate a SAS URL of the disk using Azure CLI:  
 
     ```azurecli
-    az disk grant-access --access-level Read --duration-in-seconds 3600 --name MyManagedDisk --resource-group $rg
+    az disk grant-access --access-level Read --duration-in-seconds 3600 --name $name --resource-group $resource-group
     ```
 
 1. Once the SAS URL is generated, use the following command to download it to your Azure Local:  
 
     ```azurecli
-    az stack-hci-vm disk create -resource-group $rg --disk-file-format vhd --custom-location $cl --download-url $encodedUrl --name httpvhd02
+    az stack-hci-vm disk create -resource-group $resource-group --disk-file-format vhd --custom-location $customLocation --download-url $download-url --name $name
     ```
 
 The parameters are described in the following table:
@@ -55,7 +55,7 @@ The parameters are described in the following table:
 | resource-group | Resource group for Azure Local that you associate with this image. |
 | name | Name of the data disk for Azure Local. | 
 | customLocation | Resource ID of the custom location for Azure Local. |
-| disk-file-format | File format of the data disk. This can be .vhd or .vhdx format. |
+| disk-file-format | File format of the data disk. This can be `vhd` or `vhdx`. |
 | download-url | SAS URL of the Azure managed disk.| 
 
 Here is an example output:
