@@ -12,8 +12,6 @@ ms.service: azure-stack-hci
 
 Applies to: Azure Local, version 23H2, release 2411
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
 This article provides an overview of the Azure Arc gateway for Azure Local, version 23H2. The Arc gateway can be enabled on new deployments of Azure Local running software version 2408 or later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
