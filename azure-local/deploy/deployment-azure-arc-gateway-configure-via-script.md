@@ -3,14 +3,14 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 11/18/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408.1 and 2408
+Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, and 2411
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to configure the Arc proxy before Arc registration using a registration script for the Arc gateway on Azure Local.
 
@@ -26,63 +26,32 @@ Make sure the following prerequisites are met before proceeding:
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
-> [!Warning]
-> Only the standard ISO OS image available at https://aka.ms/PVenEREWEEW should be used to test the Arc gateway public preview on Azure Local, version 2408. Do not use the ISO image available in Azure portal.
-
 ## Step 1: Get the ArcGatewayID  
 
-You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machine. To get the ArcGatewayID value, run the `az connectedmachine gateway list` command described previously. Do not run this command from any Azure Local machines:
+You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway id on the Azure portal overview page of the resource.
 
-```azurecli
-PS C:\> az connectedmachine gateway list 
-This command is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus 
-[ 
-  { 
-    "allowedFeatures": [ 
-      "*" 
-    ], 
-    "gatewayEndpoint": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx.gw.arc.azure.com", 
-    "gatewayId": "xxxxxxx-xxxx-xxx-xxxx-xxxxxxxxx", 
-    "gatewayType": "Public", 
-    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/yourresourcegroup/providers/Microsoft.HybridCompute/gateways/yourArcgateway", 
-    "location": "eastus", 
-    "name": " yourArcgateway", 
-    "provisioningState": "Succeeded", 
-    "resourceGroup": "yourresourcegroup", 
-    "type": "Microsoft.HybridCompute/gateways" 
-  } 
-] 
-```
+## Step 2: Register new machines in Azure Arc
 
-## Step 2: Register new Azure Local machines running version 2408
-
-You can run the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters.
+To register new version 2408 or version 2411 machines in Azure Arc, you run
+the initialization script by passing the `ArcGatewayID`, `Proxy server`, and `Proxy bypass list` parameters.
 
 Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once registration is completed, the Azure Local machines are registered in Azure Arc using the Arc gateway:
 
 ```azurecli
-#Install required PowerShell modules in your machine for registration 
-Install-Module Az.Accounts -RequiredVersion 2.13.2 
-Install-Module Az.Resources -RequiredVersion 6.12.0 
-Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2 
+#Define the subscription where you want to register your server as Arc device.
+$Subscription = "yoursubscription" 
 
-#Install Arc registration script from PSGallery  
-Install-Module AzsHCI.ARCinstaller 
-
-#Define the subscription where you want to register your machine as Arc device 
-$Subscription = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" 
-
-#Define the resource group where you want to register your machine as Arc device 
+#Define the resource group where you want to register your server as Arc device.
 $RG = "yourresourcegroupname" 
 
-#Define the tenant to use to register your machine as Arc device 
-$Tenant = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx" 
+#Define the tenant to use to register your server as Arc device. 
+$Tenant = "yourtenant" 
 
 #Define Proxy Server if necessary 
 $ProxyServer = "http://x.x.x.x:port" 
 
 #Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yourresourcegroupname /providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
+$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 
 #Define the bypass list for the proxy. Use semicolon to separate each item from the list.  
 # Use "localhost" instead of <local> 
@@ -91,7 +60,7 @@ $ArcgwId = "/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx /resourceGroups/ yo
 # Append * for domain names exclusions like *.contoso.com 
 # DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
 
-$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;Node1;Node2;Node3;Node4;Node5;192.168.*.*;HCI-cluster1"
+$ProxyBypassList = "localhost;127.0.0.1;*.contoso.com;machine1;machine2;machine3;machine4;machine5;192.168.*.*;AzureLocal-1" 
 
 #Connect to your Azure account and Subscription 
 Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode 
@@ -118,7 +87,7 @@ To check the Arc agent configuration and verify that it is using the gateway, ru
 
 The values displayed should be as follows:
 
-- **Agent version** is **1.45**.
+- **Agent version** is **1.45** or above.
 
 - **Agent Status** should show as **Connected**.
 
