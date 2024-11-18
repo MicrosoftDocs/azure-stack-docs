@@ -10,7 +10,7 @@ ms.custom: e2e-hybrid
 
 # Azure Stack HCI hybrid capabilities with Azure services
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](./includes/hci-applies-to-22h2.md)]
 
 [!INCLUDE [azure-local-banner-22h2](./includes/azure-local-banner-22h2.md)]
 
