@@ -2,11 +2,10 @@
 title: Deploy AKS engine on Windows in Azure Stack Hub 
 description: Learn how to use a Windows machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 02/13/2023
+ms.date: 11/18/2024
 ms.author: sethm
-ms.reviewer: waltero
+ms.reviewer: sumsmith
 ms.lastreviewed: 3/4/2021
 
 # Intent: As an Azure Stack Hub user, I want to learn how to host AKS engine on a Windows VM so that I can deploy AKS engine on Windows in Azure Stack Hub.
@@ -26,32 +25,30 @@ The AKS engine is a command-line tool used to deploy and manage your Kubernetes 
 When choosing your client machine, consider:
 
 1. Whether the client machine should be recoverable in a disaster.
-1. How you will connect to the client machine, and how the machine will interact with your cluster?
-
+1. How do you connect to the client machine, and how does the machine interact with your cluster?
 
 ## Install AKS Engine in a connected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub connected to the Internet.
 
+# [AKS Engine 0.81.0 or later](#tab/later)
+To install AKS Engine version 0.81.0 or later:
+
 1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md).
-2. Connect to your VM.
+1. Connect to your VM.
+1. Go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS Engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
-To install AKS Engine version 0.81.0 or later: 
+# [AKS Engine 0.80.2 or earlier](#tab/earlier)
 
-3. Go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+To install AKS Engine version 0.80.2 or earlier:
 
-To install AKS Engine version 0.80.2 or earlier: 
-
-3. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.org/install#install-with-powershellexe). 
-
-    According to the Chocolatey website: Chocolatey is a package manager for Windows, like apt-get or yum but for Windows. It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your door, err, computer.
-4. Install [Azure CLI](/cli/azure/install-azure-cli-windows). Select the download link, and choose "**Run**". Choose the setup steps as needed.
-5. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Engine must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command installs the latest version, which may need a VHD image that is not available in your marketplace.
+1. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.AKS Engine 0.81.0 or later-with-powershellexe)later1.Install [Azure CLI](/cli/azure/install-azure-cli-windows). Select the download link, and choose "**Run**". Choose the setup steps as needed.
+1. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Engine must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command installs the latest version, which may need a VHD image that is not available in your marketplace.
     > [!NOTE]  
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
-6. Run the following command from an elevated prompt and include the version number:
+1. Run the following command from an elevated prompt and include the version number:
 
-    > [!Note]
+    > [!NOTE]
     > For AKSe version 0.75.3 and above, the command to install AKS engine is `choco install aks-engine-azurestack`.
 
     ```PowerShell  
@@ -60,6 +57,8 @@ To install AKS Engine version 0.80.2 or earlier:
 
     > [!NOTE]  
     > If this method for installation fails, you can try the steps for a disconnected environment below.
+
+---
 
 ## Install AKS Engine in a disconnected environment
 
