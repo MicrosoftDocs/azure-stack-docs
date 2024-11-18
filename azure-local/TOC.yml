@@ -425,6 +425,8 @@ items:
       href: manage/manage-thin-provisioning-23h2.md
     - name: Use ReFS deduplication and compression
       href: manage/refs-deduplication-and-compression.md
+    - name: Download managed data disks
+      href: manage/manage-data-disks.md
 
   - name: Capacity
     items:

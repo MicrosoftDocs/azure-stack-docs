@@ -13,6 +13,8 @@ ms.custom: e2e-hybrid, linux-related-content
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2-22h2.md)]
 
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+
 Azure Local extends Azure to customer-owned infrastructure, enabling local execution of modern and traditional applications across distributed locations. This solution offers a unified management experience on a single control plane and supports a wide range of validated hardware from trusted Microsoft partners.
 
 Azure Local also accelerates cloud and AI innovation by seamlessly delivering new applications, workloads, and services from cloud to edge.
