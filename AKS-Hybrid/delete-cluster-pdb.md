@@ -9,7 +9,7 @@ ms.reviewer: leslielin
 
 ---
 
-# Workload cluster with PodDisruptionBudget (PDB) resources can't be fully removed
+# Can't fully remove workload cluster with PodDisruptionBudget (PDB) resources
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
