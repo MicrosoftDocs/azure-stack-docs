@@ -1,5 +1,5 @@
 ---
-title: Support tool for Azure Local instance running version 22H2
+title: Support tool for Azure Local instance running version 23H2
 description: This article provides guidance on the Support Diagnostic Tool for Azure Local.
 author: alkohli
 ms.author: alkohli

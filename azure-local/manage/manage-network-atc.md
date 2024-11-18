@@ -14,6 +14,8 @@ zone_pivot_groups: windows-os
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
 
 ::: zone-end
@@ -30,7 +32,7 @@ This article discusses how to manage Network ATC after it has been deployed. Net
 
 :::zone pivot="azure-local"
 
-You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci).
+You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md?pivots=azure-local).
 
 ::: zone-end
 
@@ -474,9 +476,9 @@ The tasks to complete following a Network ATC deployment is depending on the Azu
 
 Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see:
 
-- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci#automatic-storage-ip-addressing)
+- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-local#automatic-storage-ip-addressing)
 
-- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-stack-hci#cluster-network-settings)
+- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md?pivots=azure-local#cluster-network-settings)
 
 - **Stretch cluster configuration**: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md#step-54-set-up-stretch-clustering-with-network-atc)
 
@@ -540,8 +542,7 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 
 :::zone pivot="azure-local"
 
-- Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=azure-stack-hci).
-- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
+- Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=azure-local).
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
 
 ::: zone-end
@@ -549,7 +550,6 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 :::zone pivot="windows-server"
 
 - Learn more about [Network ATC](../concepts/network-atc-overview.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
-- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=windows-server&context=/windows-server/context/windows-server-edge-networking).
 
 ::: zone-end

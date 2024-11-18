@@ -576,8 +576,8 @@ This message will occur when RoCE RDMA is in use and you have overridden the def
 
 :::zone pivot="azure-local"
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=azure-stack-hci).
-- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=azure-stack-hci).
+- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md?pivots=azure-local).
+- Learn more about [Stretched clusters](../concepts/stretched-clusters.md?pivots=azure-local).
 
 ::: zone-end
 

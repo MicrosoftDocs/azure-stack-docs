@@ -11,6 +11,8 @@ ms.reviewer: robhind
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 [!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
 In this article, you learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).

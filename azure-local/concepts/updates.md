@@ -11,6 +11,8 @@ ms.date: 02/23/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 This article describes the lifecycle of updates and upgrades on Azure Stack HCI. 
 
 Azure Stack HCI solutions are designed to have a predictable update and upgrade experience:

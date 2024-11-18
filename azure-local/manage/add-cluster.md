@@ -12,6 +12,8 @@ ms.date: 02/23/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
+[!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
+
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
 Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. This applies to both non-stretched and stretched clusters.
