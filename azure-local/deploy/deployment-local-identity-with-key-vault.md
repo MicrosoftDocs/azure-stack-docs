@@ -45,7 +45,7 @@ Before you start, make sure that you:
 
 - Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
 
-- Download the Azure Local software. Instructions will be provided to those who have signed up for the preview on how to download the Azure local software.
+- Download the Azure Local software. Instructions on how to download the Azure Local software will be provided to those who signed up for the preview.
 
 ## Configure DNS server for Azure Local
 
@@ -59,7 +59,7 @@ Follow these steps to configure DNS for Azure Local:
 
     For each node in your Azure Local instance, create a DNS Host A record. This record maps the node's hostname to its IP address, allowing other devices on the network to locate and communicate with the node.
 
-    Additionally, create a DNS Host A record for the system itself. This record should use the first IP address from the network range you have allocated for the system.
+    Additionally, create a DNS Host A record for the system itself. This record should use the first IP address from the network range you've allocated for the system.
 
 1. **Verify DNS records.**
 
