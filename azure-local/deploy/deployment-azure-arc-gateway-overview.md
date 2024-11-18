@@ -135,9 +135,11 @@ Consider the following limitations of Arc gateway in this release:
 
 ## Create the Arc gateway resource in Azure
 
-You can create an Arc gateway resource in Azure portal as follows:
+You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
 
-1. Sign in to Azure portal.
+# [Portal](#tab/portal)
+
+1. Sign in to [Azure portal](https://ms.portal.azure.com/).
 1. Go to the **Azure Arc > Azure Arc gateway** page, then select **Create**.
 1. Select the subscription and resource group where you want the Arc gateway resource to be managed within Azure. An Arc gateway resource can be used by any Arc-enabled resource in the same Azure tenant.
 1. For **Name**, enter the name for the Arc gateway resource.
@@ -148,6 +150,41 @@ You can create an Arc gateway resource in Azure portal as follows:
 1. Review your details, and then select **Create**.
 
 The gateway creation process takes nine to ten minutes to complete.
+
+You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
+
+
+# [CLI](#tab/cli)
+
+1. Add the arc gateway extension to your Azure CLI:
+
+    `az extension add -n arcgateway`
+
+1. On a machine with access to Azure, run the following commands to create your Arc gateway resource:
+
+    ```azurecli
+    az arcgateway create --name [gateway name] --resource-group [resource group] --location [location]
+    ```
+
+    The gateway creation process takes 9-10 minutes to complete.
+
+# [PowerShell](#tab/powershell)
+
+On a machine with access to Azure, run the following PowerShell command to create your Arc gateway resource:
+
+```azurepowershell
+New-AzArcgateway 
+-name <gateway name> 
+-resource-group <resource group> 
+-location <region> 
+-subscription <subscription name or id> 
+-gateway-type public  
+-allowed-features *
+```
+
+The gateway creation process takes 9-10 minutes to complete.
+
+---
 
 ## Detach or change the Arc gateway association from the machine
 
