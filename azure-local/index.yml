@@ -117,7 +117,7 @@ landingContent:
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
           - text: Deploy using local identity with Key Vault (preview)
-            url: deploy/deployment-local-identity-with-key-vault.mdl
+            url: deploy/deployment-local-identity-with-key-vault.md
           - text: Manage GPU via partitioning (preview)
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMware (preview)
