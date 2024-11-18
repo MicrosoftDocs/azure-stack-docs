@@ -12,6 +12,8 @@ ms.date: 11/19/2024
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
+[!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
+
 To enhance your Azure Local experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 
 To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.

@@ -211,7 +211,8 @@ items:
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
-
+  - name: Deploy using local identiy with Key Vault
+    href: deploy/deployment-local-identity-with-key-vault.md
   - name: Deploy SDN
     items:
     - name: Using Express scripts
@@ -425,6 +426,8 @@ items:
       href: manage/manage-thin-provisioning-23h2.md
     - name: Use ReFS deduplication and compression
       href: manage/refs-deduplication-and-compression.md
+    - name: Download managed data disks
+      href: manage/manage-data-disks.md
 
   - name: Capacity
     items:
