@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/15/2024
+ms.date: 11/18/2024
 ---
 
 # Manage security defaults for Azure Local, version 23H2
@@ -127,8 +127,8 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - SMB Signing
     - SMB Cluster encryption
     
-  > [!IMPORTANT]
-  > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after the security baselines are properly applied to nodes.
+    > [!IMPORTANT]
+    > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after security baselines are properly applied to nodes. For more information, see [Manage security after upgrading Azure Local](manage-security-post-upgrade.md).
 
 The following table documents supported security features, whether they support drift control, and whether a reboot is required to implement the feature.
 
