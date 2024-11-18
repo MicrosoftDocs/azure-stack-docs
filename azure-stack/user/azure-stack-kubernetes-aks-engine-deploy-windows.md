@@ -42,7 +42,8 @@ To install AKS Engine version 0.81.0 or later:
 
 To install AKS Engine version 0.80.2 or earlier:
 
-1. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.AKS Engine 0.81.0 or later-with-powershellexe)later1.Install [Azure CLI](/cli/azure/install-azure-cli-windows). Select the download link, and choose "**Run**". Choose the setup steps as needed.
+1. [Install Chocolatey using the PowerShell instructions](https://chocolatey.org/install#install-with-powershellexe).
+1. Install [Azure CLI](/cli/azure/install-azure-cli-windows). Select the download link, and choose "**Run**". Choose the setup steps as needed.
 1. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Engine must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command installs the latest version, which may need a VHD image that is not available in your marketplace.
     > [!NOTE]  
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
