@@ -761,7 +761,7 @@ items:
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
       - name: Use BitLocker with Cluster Shared Volumes
-        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?context=/azure-local/context/context
+        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?context=/azure/azure-local/context/context
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
@@ -769,7 +769,7 @@ items:
       - name: Register Windows Admin Center with Azure
         href: manage/register-windows-admin-center.md
       - name: Use Windows Admin Center in Azure
-        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?context=/azure-local/context/context
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?context=/azure/azure-local/context/context
       - name: Use Azure portal
         href: manage/azure-portal.md
     - name: Manage SDN 
@@ -785,11 +785,11 @@ items:
     - name: Troubleshoot CredSSP
       href: manage/troubleshoot-credssp.md
     - name: Troubleshoot live migration
-      href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?context=/azure-local/context/context
+      href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?context=/azure/azure-local/context/context
     - name: Troubleshoot Storage Spaces Direct
-      href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?context=/azure-local/context/context
+      href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?context=/azure/azure-local/context/context
     - name: Troubleshoot storage health
-      href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure-local/context/context
+      href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
   - name: Concepts
