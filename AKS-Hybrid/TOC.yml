@@ -11,10 +11,10 @@
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
-- name: AKS on Azure Stack HCI 23H2
+- name: AKS on Azure Local, version 23H2
   expanded: true
   items:
-  - name: What's new in AKS on Azure Stack HCI 23H2
+  - name: What's new in AKS on Azure Local, version 23H2
     href: aks-whats-new-23h2.md
   - name: Concepts
     items:
@@ -53,7 +53,9 @@
       - name: Azure portal
         href: aks-create-clusters-portal.md
       - name: Bicep
-        href: create-clusters-bicep.md   
+        href: create-clusters-bicep.md
+      - name: Terraform
+        href: create-clusters-terraform.md
       - name: Deploy to Azure using a quickstart template
         href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
@@ -82,6 +84,8 @@
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
+      - name: Deploy and configure Workload Identity
+        href: workload-identity.md
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -142,6 +146,8 @@
       href: cluster-k8s-version.md
     - name: Deleted cluster still visible in portal
       href: deleted-cluster-visible.md
+    - name: Can't fully remove workload cluster with PodDisruptionBudget (PDB) resources
+      href: delete-cluster-pdb.md
     - name: Kubernetes version x.x.x is not available
       href: webhook-denied-request.md
   - name: Reference
@@ -152,7 +158,7 @@
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
     items:
-    - name: Azure Stack HCI
+    - name: Azure Local
       href: /azure-stack/hci/index
     - name: Azure hybrid cloud
       href: /hybrid
@@ -357,7 +363,7 @@
           href: create-replicasets.md
         - name: Create a StatefulSet
           href: create-statefulset.md
-    - name: Availability with 2-node HCI cluster
+    - name: Availability with 2-node Azure Local cluster
       href: deploy-cluster-on-two-node-hci.md
     - name: Security
       items:
@@ -559,11 +565,11 @@
       href: known-issues-uninstall.yml
     - name: Other
       href: known-issues.yml
-    - name: Azure Stack HCI issues
+    - name: Azure Local issues
       items:
-      - name: Cluster validation reporting in Azure Stack HCI
+      - name: Cluster validation reporting in Azure Local
         href: /azure-stack/hci/manage/validate-qos
-      - name: CredSSP in Azure Stack HCI
+      - name: CredSSP in Azure Local
         href: /azure-stack/hci/manage/troubleshoot-credssp
     - name: Support policies
       href: support-policies.md
