@@ -47,7 +47,7 @@ az aksarc get-versions --custom-location $cl_id
 az aksarc vmsize list --custom-location $cl_id
 ```
 
-If the above command says that the K8s versions are ready, and you're running Azure Local, [release 2411](/azure/aks/hybrid/aks-whats-new-23h2#release-2411) or newer, file a [support request](/help-support.md).
+If the above command says that the K8s versions are ready, and you're running Azure Local, [release 2411](/azure/aks/hybrid/aks-whats-new-23h2#release-2411) or newer, file a [support request](help-support.md).
 
 If you're running Azure Local, release 2408 or older, proceed to the below section. **We highly recommend you upgrade your Azure Local deployment to the latest version to get the latest bug fixes and security updates.**
 
