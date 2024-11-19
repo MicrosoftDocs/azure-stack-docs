@@ -45,7 +45,7 @@ Disconnected operations for Azure Local support the following services:
 | Arc VMs for Azure Local           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes (K8s)      | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local virtual machines, enabling unified configuration and management. |
 | Azure Kubernetes Service enabled by Arc for Azure Local | Set up and manage Azure Kubernetes (AKS) on Azure Local. |
-| Azure Local device management     | Create and manage Azure Local instances, such as update, add, and remove nodes. |
+| Azure Local device management     | Create and manage Azure Local instances, add, and remove nodes. |
 | Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
 | Policy                            | Enforce standards through policies when creating new resources. |
