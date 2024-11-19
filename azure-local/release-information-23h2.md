@@ -64,7 +64,7 @@ The following table summarizes the release information for Azure Local, version 
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 10.2411.0.0 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
+| 10.2411.0.22 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) <br><br> Availability date: 2024-11-19 | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2408.2.7 | 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) <br><br> Availability date: 2024-10-23 |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
 | 10.2408.1.9 |  25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) <br><br> Availability date: 2024-09-25 | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
 | 10.2408.0.29 | 25398.1085 | [August OS security update](./security-update/security-update-aug-2024.md) <br><br> Availability date: 2024-09-05 | [Features and improvements](./whats-new.md#features-and-improvements-in-2408) | [Known issues](./known-issues-2408.md) |
