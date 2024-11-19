@@ -101,7 +101,7 @@ Select **Review + Create** at the bottom of the tab, wait for validation to comp
 
 After the Azure Resource Manager deployment completes, a new storage class with specified name is created in the cluster.
 
-:::image type="content" source="media/create-storage-classes/storage-summary.png" alt-text="Screenshot of portal showing storage summary":::
+:::image type="content" source="media/create-storage-classes/storage-summary.png" alt-text="Screenshot of portal showing storage summary.":::
 
 #### [Azure CLI](#tab/cli)
 
