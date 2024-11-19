@@ -17,7 +17,7 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 
 ## Workaround
 
-Before you delete the AKS Arc cluster, access the Kubernetes cluster's **kubeconfig** and delete the PDB:
+Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete the PDB:
 
 1. Access the AKS Arc cluster:
 
