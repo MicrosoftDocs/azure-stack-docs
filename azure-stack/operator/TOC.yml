@@ -4,8 +4,6 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: Comparing the Azure ecosystem
-    href: compare-azure-azure-stack.md
   - name: Release notes
     items:
     - name: Security updates
@@ -14,6 +12,8 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2408.1.38
+        href: hotfix-1-2408-1-38.md            
       - name: Hotfix 1.2406.1.16
         href: hotfix-1-2406-1-16.md      
       - name: Hotfix 1.2406.1.15

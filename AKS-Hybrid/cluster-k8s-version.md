@@ -93,7 +93,6 @@ az aksarc vmsize list --custom-location $cl_id
 
 Azure Local supports specific Kubernetes versions in each of its releases. As stated in the error message, navigate to https://aka.ms/aksarcsupportedversions for list of supported Kubernetes versions based on your deployed Azure Local release.
 
-
 ## Next steps
 
 [Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)

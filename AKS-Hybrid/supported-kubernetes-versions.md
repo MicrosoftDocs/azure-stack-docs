@@ -102,7 +102,8 @@ New Supported Version List
 
 You can use one minor version older or newer of `kubectl` relative to your **kube-apiserver** version, consistent with the [Kubernetes support policy for kubectl](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
 
-For example, if your **kube-apiserver** is at 1.28, then you can use versions 1.29 to 1.27 of `kubectl` with that **kube-apiserver**.
+For example, if your **kube-apiserver** is at 1.17, then you can use versions 1.16 to 1.18 of `kubectl` with that **kube-apiserver**.
+To install or update your version of `kubectl`, run `az aks install-cli`.
 
 ## Release and deprecation process
 
