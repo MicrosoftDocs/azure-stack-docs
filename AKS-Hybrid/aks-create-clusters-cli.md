@@ -47,7 +47,7 @@ az extension add -n connectedk8s --upgrade
 Use the `az aksarc create` command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
