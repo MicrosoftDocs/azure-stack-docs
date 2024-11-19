@@ -12,7 +12,7 @@ ms.date: 11/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage.
+Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage. 
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you easily deploy workload identity enabled Kubernetes clusters. This article describes how to perform the following tasks:
 
@@ -22,6 +22,7 @@ Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes serv
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
+For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity).
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
@@ -311,6 +312,18 @@ The following example shows how to use the Azure role-based access control (Azur
    # Apply the YAML configuration 
    $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
    ```
+
+## Delete AKS Arc cluster
+1. To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command,:
+
+   ```azurecli
+   az aksarc delete -n $aks_cluster_name -g $resource_group_name
+   ```
+   
+> [!NOTE]
+> There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. We're working on a fix and will release it as soon as it's available.
+> 
+> PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, please follow our [troubleshooting guide](delete-cluster-pdb.md).
 
 ## Next steps
 
