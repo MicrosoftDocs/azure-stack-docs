@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 04/02/2024
+ms.date: 11/19/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
@@ -20,7 +20,7 @@ In this conceptual article, the following key components are introduced. These c
 - Logical network for AKS Arc VMs and control plane IP
 - Load balancer for containerized applications
 
-## Logical network for AKS Arc VMs and control plane IP
+## Logical networks for AKS Arc VMs and control plane IP
 
 Kubernetes nodes are deployed as specialized virtual machines in AKS enabled by Arc. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS Arc uses Azure Local logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about logical networks, see [Logical networks for Azure Local](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node VM in your Azure Local environment.
 

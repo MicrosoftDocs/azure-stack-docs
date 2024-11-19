@@ -3,7 +3,7 @@ title: Availability sets in AKS enabled by Azure Arc
 description: Learn how to enable availability sets in AKS Arc to improve the availability and distribution of your Kubernetes workloads.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 09/06/2024
+ms.date: 11/19/2024
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 08/15/2024
@@ -22,12 +22,9 @@ Availability sets offer several benefits for AKS on Azure Local users, such as:
 - Optimizes the resource usage and performance of your cluster by ensuring that VMs are evenly distributed across the available nodes and not concentrated on a single node or a subset of nodes.
 - Aligns with the best practices and expectations of your customers and partners who are looking for a reliable and consistent on-premises Kubernetes experience.
 
-
 ## Enable availability sets
 
-**With AKS on Azure Local, version 23H2, the availability sets feature is enabled by default when you create a node pool.** 
-With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster. For example: `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
-
+With AKS on Azure Local, version 23H2, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
 
 ## How availability sets work in AKS enabled by Azure Arc
 

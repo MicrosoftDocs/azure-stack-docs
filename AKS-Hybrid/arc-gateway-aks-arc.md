@@ -12,9 +12,9 @@ ms.lastreviewed: 11/18/2024
 
 # Simplify network configuration requirements with Azure Arc Gateway (preview)
 
-If you use enterprise proxies to manage outbound traffic, the Azure Arc gateway (preview) can help simplify the process of enabling connectivity.
+If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity.
 
-The Azure Arc gateway (preview) lets you:
+The Azure Arc gateway (currently in preview) lets you:
 
 - Connect to Azure Arc by opening public network access to only seven fully qualified domain names (FQDNs).
 - View and audit all traffic that the Arc agents send to Azure via the Arc gateway.
@@ -28,59 +28,59 @@ The Azure Arc gateway (preview) lets you:
 
 The Arc gateway works by introducing two new components:
 
-- The **Arc gateway resource** is an Azure Resource that serves as a common front end for Azure traffic. The gateway resource is served on a specific domain/URL. You must create this resource by following the steps outlined in this article. After you successfully create the gateway resource, this domain/URL is included in the success response.
-- The **Arc Proxy** is a new component that runs as its own pod (called "Azure Arc Proxy"). This component acts as a forward proxy used by Azure Arc agents and extensions. There is no configuration required on your part for the Azure Arc Proxy. 
+- The **Arc gateway resource** is an Azure resource that serves as a common front end for Azure traffic. The gateway resource is served on a specific domain/URL. You must create this resource by following the steps described in this article. After you successfully create the gateway resource, this domain/URL is included in the success response.
+- The **Arc Proxy** is a new component that runs as its own pod (called *Azure Arc Proxy*). This component acts as a forward proxy used by Azure Arc agents and extensions. There is no configuration required on your part for the Azure Arc Proxy.
 
-Visit [how the Azure Arc gateway works](https://learn.microsoft.com/azure/azure-arc/kubernetes/arc-gateway-simplify-networking?tabs=azure-cli) to learn more.
+For more information, see [how the Azure Arc gateway works](/azure/azure-arc/kubernetes/arc-gateway-simplify-networking?tabs=azure-cli).
 
 > [!IMPORTANT]
-> Note that Azure Local and AKS do not support TLS terminating proxies, ExpressRoute/site-to-site VPN or private endpoints.
-> In addition, there is a limit of five Arc gateway resources per Azure subscription.
+> Azure Local and AKS do not support TLS terminating proxies, ExpressRoute/site-to-site VPN or private endpoints. Also, there is a limit of five Arc gateway resources per Azure subscription.
 
 ## Before you begin
-- Ensure you've gone through the [pre-requisites for creating AKS clusters on Azure Local](/aks-hci-network-system-requirements.md)
-- **The following Azure permissions are required** to create Arc gateway resources and manage their association with AKS Arc clusters:
-    - `Microsoft.Kubernetes/connectedClusters/settings/default/write`
-    - `Microsoft.hybridcompute/gateways/read`
-    - `Microsoft.hybridcompute/gateways/write`
-- **An Arc gateway resource** can be created using Azure CLI or Azure portal. Visit [create the Arc gateway resource in Azure](/hci/deploy/deployment-azure-arc-gateway-overview#create-the-arc-gateway-resource-in-azure) for more information on how to create an Arc gateway resource for your AKS clusters and Azure Local. Once you've created the Arc gateway resource, get the gateway resource ID by running the following command:
 
-```
-$gatewayId = "(az arcgateway show --name <gateway's name> --resource-group <resource group> --query id -o tsv)"
-```
+- Ensure you've completed the [pre-requisites for creating AKS clusters on Azure Local](/aks-hci-network-system-requirements.md)
+- The following Azure permissions are required to create Arc gateway resources and manage their association with AKS Arc clusters:
+  - `Microsoft.Kubernetes/connectedClusters/settings/default/write`
+  - `Microsoft.hybridcompute/gateways/read`
+  - `Microsoft.hybridcompute/gateways/write`
+- You can create an Arc gateway resource using Azure CLI or the Azure portal. For more information about how to create an Arc gateway resource for your AKS clusters and Azure Local, see [create the Arc gateway resource in Azure](/hci/deploy/deployment-azure-arc-gateway-overview#create-the-arc-gateway-resource-in-azure). When you create the Arc gateway resource, get the gateway resource ID by running the following command:
 
+  ```azurecli
+  $gatewayId = "(az arcgateway show --name <gateway's name> --resource-group <resource group> --query id -o tsv)"
+  ```
 
 ## Confirm access to required URLs
 
-Ensure your Arc gateway URL and all of the URLs below are allowed through your enterprise firewall: 
+Ensure your Arc gateway URL and all of the URLs below are allowed through your enterprise firewall:
 
 |URL  |Purpose  |
 |---------|---------|
-|`[Your URL prefix].gw.arc.azure.com`       | Your gateway URL. This URL can be obtained by running `az arcgateway list` after you create the resource.         |
-|`management.azure.com`    |Azure Resource Manager Endpoint, required for ARM control channel.         |
+|`[Your URL prefix].gw.arc.azure.com`       | Your gateway URL. You can obtain this URL by running `az arcgateway list` after you create the resource.         |
+|`management.azure.com`    |Azure Resource Manager endpoint, required for the Azure Resource Manager control channel.         |
 |`<region>.obo.arc.azure.com`     |Required when [Cluster connect](conceptual-cluster-connect.md) is configured.         |
 |`login.microsoftonline.com`, `<region>.login.microsoft.com`     | Microsoft Entra ID endpoint, used for acquiring identity access tokens.         |
-|`gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`   |The cloud service endpoint for communicating with Arc Agents. Uses short names, for example `eus` for East US.          |
+|`gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`   |The cloud service endpoint for communicating with Arc Agents. Uses short names; for example `eus` for East US.          |
 |`mcr.microsoft.com`, `*.data.mcr.microsoft.com`     |Required to pull container images for Azure Arc agents.         |
 
 ## Create AKS Arc clusters with Arc gateway enabled
+
 Run the following command to create AKS Arc clusters with Arc gateway enabled
 
-```azcli
+```azurecli
 az aksarc create -n $clusterName -g $resourceGroup --custom-location $customlocationID --vnet-ids $arcVmLogNetId --aad-admin-group-object-ids $aadGroupID --gateway-id $gatewayId --generate-ssh-keys
 ```
 
 ## Monitor traffic
 
-To audit your gateway's traffic, view the gateway router's logs:
+To audit your gateway traffic, view the gateway router logs:
 
-1. Run `kubectl get pods -n azure-arc`
-2. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
-3. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`
+1. Run `kubectl get pods -n azure-arc`.
+1. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
+1. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
 
-## Additional scenarios
+## Other scenarios
 
-During the public preview, Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for additional Arc-enabled scenarios. Based on the scenarios you adopt, additional endpoints are still required to be allowed in your proxy.
+During the public preview, Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for additional Arc-enabled scenarios. Based on the scenarios you adopt, additional endpoints must still be allowed in your proxy.
 
 All endpoints listed for the following scenarios must be allowed in your enterprise proxy when Arc gateway is in use:
 
@@ -102,4 +102,5 @@ All endpoints listed for the following scenarios must be allowed in your enterpr
   - `*.monitoring.azure.com`
 
 ## Next steps
-- [Deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters](/deploy-load-balancer-cli.md).
+
+- [Deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters](deploy-load-balancer-cli.md).

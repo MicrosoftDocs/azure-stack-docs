@@ -2,7 +2,7 @@
 title: IP address planning for AKS 
 description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production. 
 ms.topic: conceptual
-ms.date: 10/08/2024
+ms.date: 11/19/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
@@ -15,16 +15,15 @@ ms.lastreviewed: 10/08/2024
 
 IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading this article.
 
-
 ## Simple IP address planning for Kubernetes clusters and applications
 
 In the following scenario walk-through, you reserve IP addresses from a single network for your Kubernetes clusters and services. This example is the most straightforward and simple scenario for IP address assignment.
 
 | IP address requirement    | Minimum number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
-| AKS Arc VM IPs | Reserve one IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need to have 9 IP addresses in your IP pool. | Reserve IP addresses through IP pools in Arc VM logical network. |
-| AKS Arc K8s version upgrade IPs | Because AKS Arc performs rolling upgrades, reserve one IP address for every AKS Arc cluster for Kubernetes version upgrade operations. | Reserve IP addresses through IP pools in Arc VM logical network. |
-| Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you want to create 5 clusters in total, reserve 5 IP addresses, one for each Kubernetes cluster. | Reserve IP addresses through IP pools in Arc VM logical network. |
+| AKS Arc VM IPs | Reserve one IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 IP addresses in your IP pool. | Reserve IP addresses through IP pools in the Arc VM logical network. |
+| AKS Arc K8s version upgrade IPs | Because AKS Arc performs rolling upgrades, reserve one IP address for every AKS Arc cluster for Kubernetes version upgrade operations. | Reserve IP addresses through IP pools in the Arc VM logical network. |
+| Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you want to create 5 clusters in total, reserve 5 IP addresses, one for each Kubernetes cluster. | Reserve IP addresses through IP pools in the Arc VM logical network. |
 | Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve one IP address for every Kubernetes service. | Reserve IP addresses in the same subnet as the Arc VM logical network, but outside the IP pool. |
 
 ### Example walkthrough for IP address reservation for Kubernetes clusters and applications
@@ -80,7 +79,7 @@ AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS 
 
 The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
 - ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
-- NodePort: Exposes the service on a specific port on each node’s IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
+- NodePort: Exposes the service on a specific port on each node's IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
 - LoadBalancer: This type creates a cloud-provider-managed load balancer and exposes the service externally. The cloud provider typically manages the external IP assignment, while the internal ClusterIP remains within the service network CIDR.
 
 AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations for the service network CIDR today.
