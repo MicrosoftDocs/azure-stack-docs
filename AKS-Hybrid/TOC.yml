@@ -142,6 +142,8 @@
       href: cluster-k8s-version.md
     - name: Deleted cluster still visible in portal
       href: deleted-cluster-visible.md
+    - name: Can't fully remove workload cluster with PodDisruptionBudget (PDB) resources
+      href: delete-cluster-pdb.md
     - name: Kubernetes version x.x.x is not available
       href: webhook-denied-request.md
   - name: Reference
