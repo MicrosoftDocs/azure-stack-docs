@@ -197,12 +197,16 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 ### 23H2
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
+| [M4350](https://www.downloads.netgear.com/files/GDC/M4350/M4350_Datasheet.pdf) <br>(1, 2.5, 5, 10, 25, 100 GbE)|Version 14.0.2.26 or later   |&check;| | &check;| |
 | [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 ### 22H2
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
+| [M4350](https://www.downloads.netgear.com/files/GDC/M4350/M4350_Datasheet.pdf) <br>(1, 2.5, 5, 10, 25, 100 GbE)|Version 14.0.2.26 or later   |&check;| | &check;| |
 | [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
