@@ -217,7 +217,7 @@ items:
         href: deploy/deployment-azure-arc-gateway-configure-via-script.md
       - name: Configure without a proxy
         href: deploy/deployment-azure-arc-gateway-use-without-proxy.md
-  - name: Deploy using local identiy with Key Vault
+  - name: Deploy using local identity with Key Vault
     href: deploy/deployment-local-identity-with-key-vault.md
   - name: Deploy SDN
     items:
