@@ -54,7 +54,7 @@ This is a baseline release with the following features and improvements:
   
     For more information, see [Manage security after upgrading Azure Local from version 22H2 to version 23H2](./manage/manage-security-post-upgrade.md).
 
-  - **Improved security for cloud monitoring** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline. The compliance for these settings can then be viewed in the Azure portal.
+  - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
     
