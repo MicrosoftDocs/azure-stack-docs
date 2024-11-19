@@ -16,7 +16,7 @@ This article describes how to find solutions for issues you encounter when using
 
 ## Open a support request
 
-See the [Get support](/azure/aks/hybrid/help-support?tabs=aksee) article for information about how to use the Azure portal to get support or open a support request for AKS Edge Essentials.
+See the [get support](/azure/aks/hybrid/help-support?tabs=aksee) article for information about how to use the Azure portal to get support or open a support request for AKS Arc.
 
 ## Upgrade
 
@@ -28,5 +28,5 @@ If you continually see an [Azure Advisor](/azure/advisor/) upgrade recommendatio
 - If you use any of the Azure SDKs, ensure that you are using the latest version of that SDK. You can find the Azure SDKs by searching for "HybridContainerService" on the [Azure SDK releases](https://azure.github.io/azure-sdk/) page.
 
 ## Next steps
-
-- [AKS enabled by Azure Arc known issues](aks-known-issues.md)
+- [Troubleshoot K8sVersionValidation error](cluster-k8s-version.md)
+- [Use diagnostic checker](aks-arc-diagnostic-checker.md)
