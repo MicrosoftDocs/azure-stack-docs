@@ -14,7 +14,7 @@ ms.lastreviewed: 11/18/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-When you install Azure Local, three virtual hard disks (VHDs) - Azure Linux, Windows Server 2019 and Windows Server 2022 - are automatically downloaded. VHDs are needed to deploy AKS on Azure Local because they serve as the base operating system images for the Kubernetes nodes within your AKS cluster. For a mixed-OS environment (both Windows and Linux nodes), a Windows Server 2019 or Windows Server 2022 VHD is necessary for provisioning a Windows Server 2019, or 2022 nodepool. The Linux nodepool uses the Azure Linux VHD that's been optimized for running Kubernetes. In environments where only Linux containers are being used, however, the Windows VHD is unnecessary, and disabling the Windows nodepool feature helps avoid downloading and storing this large file, saving bandwidth and storage space.
+When you install Azure Local, three virtual hard disks (VHDs) - Azure Linux, Windows Server 2019 and Windows Server 2022 - are automatically downloaded. VHDs are needed to deploy AKS on Azure Local because they serve as the base operating system images for the Kubernetes nodes within your AKS cluster. For a mixed-OS environment (both Windows and Linux nodes), a Windows Server 2019 or Windows Server 2022 VHD is necessary for provisioning a Windows Server 2019, or 2022 nodepool. The Linux nodepool uses the Azure Linux VHD optimized for running Kubernetes. In environments where only Linux containers are being used, however, the Windows VHD is unnecessary, and disabling the Windows nodepool feature helps avoid downloading and storing this large file, saving bandwidth and storage space.
 
 This how-to article walks you through how to disable the Windows nodepool feature for Azure Kubernetes Service (AKS) on Azure Local. Disabling this feature prevents the automatic download of Windows Virtual Hard Disks (VHDs), which are approximately 20 GB in size and required for creating Windows-based nodepools. By doing so, enterprises with limited internet bandwidth can avoid unnecessary downloads, especially if their workloads are exclusively using Linux containers. This feature helps optimize bandwidth usage and simplifies resource management for environments where Windows nodes are not needed.
 
@@ -25,7 +25,7 @@ Before you begin, make sure you have the following prerequisites in place:
 - **Azure Local deployed**: This article is only applicable if you already deployed Azure Local. You cannot run the commands in this article before you deploy Azure Local. We currently do not support the ability to make this change before the initial Azure Local deployment.
 - **Custom Location ID**: Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Stack HCI system resource. You should see a custom location for your cluster.
 - **Azure resource group**: The Azure resource group where Azure Local is deployed.
-- Azure RBAC permissions to update Azure Stack HCI configuration. Make sure you have the following roles. For more information, see [required permissions for deployment](/hci/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
+- Azure RBAC permissions to update Azure Stack HCI configuration. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
   - Azure Stack HCI Administrator
   - Reader
 
@@ -37,10 +37,10 @@ Set the custom location and the resource group values in environment variables.\
 
 ```azurecli
 $customlocationID = <The custom location ARM ID for Azure Local>
-$resourceGroup = <The Azure resource group where Azure Local has been deployed>
+$resourceGroup = <The Azure resource group where Azure Local is deployed>
 ```
 
-Next, run the following command to obtain the `clusterName` parameter. This parameter is the name of the Arc Resource Bridge that is deployed on Azure Local:
+Next, run the following command to obtain the `clusterName` parameter. This parameter is the name of the Arc Resource Bridge that you deployed on Azure Local:
 
 ```azurecli
 az customlocation show -n $customlocationID -g $resourceGroup --query hostResourceId
@@ -52,13 +52,13 @@ Expected output:
 /subscriptions/f3dwer-00000-4383-2345-00000/resourceGroups/SanJose/providers/Microsoft.ResourceConnector/appliances/sanjose-arcbridge
 ```
 
-In this output, `sanjose-arcbridge` is the name of the Arc resource bridge that's deployed on the Azure local cluster. This name is different for your deployment.
+In this output, `sanjose-arcbridge` is the name of the Arc resource bridge you deployed on the Azure local cluster. This name is different for your deployment.
 
 ```azurecli
 $clusterName = <Name of Arc resource bridge deployed on the Azure Local cluster>
 ```
 
-Next, obtain the name of the AKS Arc extension that's deployed to the custom location. To get this name, run the following command to list the extensions installed on the custom location:
+Next, obtain the name of the AKS Arc extension you deployed to the custom location. To get this name, run the following command to list the extensions installed on the custom location:
 
 ```azurecli
 az customlocation show -n $customlocationID -g $resourceGroup --query clusterExtensionIds -o tsv
@@ -74,7 +74,7 @@ Expected output:
 You should have two extensions installed on your custom location: AKS Arc and Arc VM management. Copy the extension name for AKS into an environment variable. In the example output, the extension name is `hybridaksextension`. It might be different from what you see:
 
 ```azurecli
-$extensionName = <Name of AKS Arc extension that's been deployed on the custom location>
+$extensionName = <Name of AKS Arc extension you deployed on the custom location>
 ```
 
 Once you have the extension name, create variables for the following parameters.

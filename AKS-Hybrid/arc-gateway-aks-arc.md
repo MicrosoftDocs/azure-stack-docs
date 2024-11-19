@@ -38,12 +38,12 @@ For more information, see [how the Azure Arc gateway works](/azure/azure-arc/kub
 
 ## Before you begin
 
-- Ensure you've completed the [pre-requisites for creating AKS clusters on Azure Local](/aks-hci-network-system-requirements.md)
+- Ensure you've completed the [pre-requisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md)
 - The following Azure permissions are required to create Arc gateway resources and manage their association with AKS Arc clusters:
   - `Microsoft.Kubernetes/connectedClusters/settings/default/write`
   - `Microsoft.hybridcompute/gateways/read`
   - `Microsoft.hybridcompute/gateways/write`
-- You can create an Arc gateway resource using Azure CLI or the Azure portal. For more information about how to create an Arc gateway resource for your AKS clusters and Azure Local, see [create the Arc gateway resource in Azure](/hci/deploy/deployment-azure-arc-gateway-overview#create-the-arc-gateway-resource-in-azure). When you create the Arc gateway resource, get the gateway resource ID by running the following command:
+- You can create an Arc gateway resource using Azure CLI or the Azure portal. For more information about how to create an Arc gateway resource for your AKS clusters and Azure Local, see [create the Arc gateway resource in Azure](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview?tabs=portal#create-the-arc-gateway-resource-in-azure). When you create the Arc gateway resource, get the gateway resource ID by running the following command:
 
   ```azurecli
   $gatewayId = "(az arcgateway show --name <gateway's name> --resource-group <resource group> --query id -o tsv)"
@@ -57,7 +57,7 @@ Ensure your Arc gateway URL and all of the URLs below are allowed through your e
 |---------|---------|
 |`[Your URL prefix].gw.arc.azure.com`       | Your gateway URL. You can obtain this URL by running `az arcgateway list` after you create the resource.         |
 |`management.azure.com`    |Azure Resource Manager endpoint, required for the Azure Resource Manager control channel.         |
-|`<region>.obo.arc.azure.com`     |Required when [Cluster connect](conceptual-cluster-connect.md) is configured.         |
+|`<region>.obo.arc.azure.com`     |Required when Cluster Connect is configured.         |
 |`login.microsoftonline.com`, `<region>.login.microsoft.com`     | Microsoft Entra ID endpoint, used for acquiring identity access tokens.         |
 |`gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`   |The cloud service endpoint for communicating with Arc Agents. Uses short names; for example `eus` for East US.          |
 |`mcr.microsoft.com`, `*.data.mcr.microsoft.com`     |Required to pull container images for Azure Arc agents.         |
