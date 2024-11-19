@@ -32,7 +32,7 @@ Before you install the solution upgrade, make sure that you:
 
 - Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential. For more information, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).  
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
-- Have Azure subscription permissions for [Azure Local Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
+- Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
     :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade." lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
 
