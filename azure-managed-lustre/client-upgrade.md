@@ -34,18 +34,18 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Uninstall the existing Lustre client version using the following command:
 
     ```bash
-    sudo dnf remove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
+    sudo dnf remove *lustre*
     ```
 
 1. Install the current version of the Lustre client using the following command:
 
     [!INCLUDE [client-upgrade-version-rhel-alma](./includes/client-upgrade-version-rhel-alma.md)]
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
 
 1. Verify that old kernel modules are removed using the following command:
 
@@ -59,7 +59,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, rebooting the system is recommended.
+    If the output shows an old version of the Lustre kernel module, rebooting (sudo reboot) the system is recommended.
 
 ### [Ubuntu](#tab/ubuntu)
 
@@ -72,18 +72,18 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Uninstall the existing Lustre client version using the following command:
 
     ```bash
-    sudo apt autoremove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
+    sudo apt autoremove *lustre* -y
     ```
 
 1. Install the current version of the Lustre client using the following command:
 
     [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu.md)]
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
 
 1. Verify that old kernel modules are removed using the following command:
 
@@ -97,7 +97,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, rebooting the system is recommended.
+    If the output shows an old version of the Lustre kernel module, rebooting (sudo reboot) the system is recommended.
 
 ---
 

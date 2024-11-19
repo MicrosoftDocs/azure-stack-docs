@@ -26,7 +26,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 ::: moniker range="<azs-2311"
 > [!IMPORTANT]  
-> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
 <!---------------------------------------------------------->
@@ -38,7 +38,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2408.
 - Cause: An internal failure of Live Update forces the update method to use FRU instead, which significantly extends the overall update period. Due to this issue, each node update takes an additional 5 hours to complete (approximately).
-- Remediation: If you have more than 8 node stamps, it's advised that you delay your updates if possible, until a hotfix/inline fix is released.
+- Remediation: If you have more than eight node stamps, you should delay your updates if possible, until a hotfix/inline fix is released.
 - Occurrence: Common.
 
 ## Networking
@@ -55,8 +55,15 @@ To access known issues for a different version, use the version selector dropdow
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### A-series VMs deprecated
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
@@ -93,7 +100,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 
@@ -102,6 +109,13 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2406 and later.
 - Cause: The Standard Load Balancer portal blades for **Logs** and **Diagnostic settings** both show errors displaying the content.
 - Remediation: The Standard Load Balancer in Azure Stack Hub does not support any diagnostic features.
+- Occurrence: Common.
+
+### A-series VMs deprecated
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: The A-series VMs are deprecated in Azure, so they shouldn't be used in Azure Stack Hub.
+- Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
@@ -138,7 +152,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 

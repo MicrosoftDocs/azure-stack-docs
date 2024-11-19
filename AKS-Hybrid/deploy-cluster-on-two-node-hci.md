@@ -1,23 +1,23 @@
 ---
-title: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node HCI
-description: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Arc on a two-node Azure Stack HCI deployment.
+title: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local
+description: Availability scenarios for Azure Kubernetes Service (AKS) enabled by Arc on a two-node Azure Local deployment.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
 ms.date: 01/09/2024
 ---
 
-# Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node HCI
+# Availability scenarios for Azure Kubernetes Service (AKS) enabled by Azure Arc on two-node Azure Local
 
-[!INCLUDE [applies-to]( ../azure-stack/includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../azure-local/includes/hci-applies-to-22h2.md)]
 
-This article describes the architecture for deploying a Kubernetes cluster on a two-node Azure Stack HCI cluster. The article describes various failure scenarios that can occur, their impact on the cluster, and recoverability from these failure scenarios.
+This article describes the architecture for deploying a Kubernetes cluster on a two-node Azure Local cluster. The article describes various failure scenarios that can occur, their impact on the cluster, and recoverability from these failure scenarios.
 
 ## Architecture
 
-Traditional Kubernetes deployments require three physical machines to mitigate a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS enabled by Arc can be deployed on a two-node Azure Stack HCI system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Availability scenarios and their impact on two-node AKS cluster](#availability-scenarios-and-their-impact-on-two-node-aks-cluster).
+Traditional Kubernetes deployments require three physical machines to mitigate a single failure. This requirement usually means a higher Total Cost of Ownership (TCO). For cost-sensitive deployments, AKS enabled by Arc can be deployed on a two-node Azure Local system, as shown below, with a few trade-offs in availability. These trade-offs are described in [Availability scenarios and their impact on two-node AKS cluster](#availability-scenarios-and-their-impact-on-two-node-aks-cluster).
 
-:::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Stack HCI cluster." lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png":::
+:::image type="content" source="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png" alt-text="Illustration showing architecture of an AKS cluster that runs on a two-node Azure Local cluster." lightbox="media/deploy-cluster-on-two-node-hci/hci-two-node-architecture.png":::
 
 For more information about architecture, cluster deployment strategies, reliability considerations, and cost optimization for AKS, see [Azure Kubernetes Service (AKS) baseline architecture](/azure/architecture/example-scenario/hybrid/aks-baseline).
 
@@ -27,9 +27,9 @@ This article uses the following terminology:
 
 | Term                | Definition                                                                        |
 |---------------------|-----------------------------------------------------------------------------------|
-| Physical HCI Host   | The physical HCI cluster node that hosts the VMs needed to run AKS enabled by Arc. |
+| Physical Azure Local Host   | The physical Azure Local cluster node that hosts the VMs needed to run AKS enabled by Arc. |
 | Guest OS            | Operating system running inside the control plane virtual machine (VM), load balancer VM, or node pool VMs. |
-| Failover Clustering | Failover Clustering for Azure Stack HCI and Windows Server provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as **failover**. |
+| Failover Clustering | Failover Clustering for Azure Local and Windows Server provides infrastructure features that support high availability of VMs and applications. If a cluster node or service fails, the VMs or applications that are hosted on that node can be automatically or manually transferred to another available node in a process known as **failover**. |
 | Workload cluster    | A Kubernetes cluster that is deployed by Azure Kubernetes Service (AKS) to host the containerized end-user application or workload, also known as a **target cluster**. |
 | Management cluster (AKS host) | Provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters. The management cluster contains a single control plane VM. |
 | Load balancer       | A single dedicated Linux VM with a load-balancing rule for the API server. |
@@ -38,7 +38,7 @@ This article uses the following terminology:
 
 ## Availability scenarios and their impact on two-node AKS cluster
 
-The scaled-down architecture in an Azure Stack HCI deployment with two physical nodes involves some availability trade-offs. This section describes node behavior during the following failure modes and during updates:
+The scaled-down architecture in an Azure Local deployment with two physical nodes involves some availability trade-offs. This section describes node behavior during the following failure modes and during updates:
 
 - [Updates](#updates)
 - [Host hardware failure](#hardware-failure-on-host)
@@ -50,12 +50,12 @@ The scaled-down architecture in an Azure Stack HCI deployment with two physical 
 
 ### Updates
 
-Use the following table to determine the potential impact of Azure Stack HCI and AKS updates on workloads:
+Use the following table to determine the potential impact of Azure Local and AKS updates on workloads:
 
 | Existing workloads | CRUD on workload clusters | New workload cluster lifecycle | API server availability |
 |--------------------|---------------------------|--------------------------------|-------------------------|
 | No disruption | No disruption | No disruption | No disruption |
-| Cluster-Aware Updating on Azure Stack HCI live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this migration. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster-Aware Updating on Azure Stack HCI live-migrates the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
+| Cluster-Aware Updating on Azure Local live-migrates the worker nodes to the other node before rebooting. Applications aren't disrupted during this migration. | Cluster-Aware Updating on Azure Local live-migrates the control plane VM of the workload cluster to the other node before rebooting. Existing workloads can be scaled without disruption during an update. | Cluster-Aware Updating on Azure Local live-migrates the control plane VM of the management cluster to the other node before rebooting. New workloads can be created without disruption during an update. | Cluster-Aware Updating on Azure Local live-migrates the control plane VM of the workload cluster to the other node before rebooting. The API server cluster remains available during an update. |
 
 ### Hardware failure on host
 
