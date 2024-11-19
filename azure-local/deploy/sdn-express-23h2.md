@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/28/2024
+ms.date: 11/18/2024
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
@@ -17,7 +17,7 @@ In this article, you deploy an end-to-end Software Defined Network (SDN) infrast
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on Azure Stack HCI, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you are deploying SDN on Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 

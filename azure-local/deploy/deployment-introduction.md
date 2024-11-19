@@ -40,7 +40,7 @@ Follow this sequence to deploy Azure Local in your environment:
 | [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your machines are cabled. You will define the network settings based on this topology. |
 | [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Local deployment. |
-| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-23h2-software.md) | Download Azure Stack HCI Operating System, version 23H2 from Azure portal. |
+| Step 2: [Download Azure Stack HCI OS, version 23H2](./download-23h2-software.md) | Download Azure Stack HCI Operating System, version 23H2 from Azure portal. |
 | Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI OS locally on each machine in your system. |
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Local if your network uses a proxy server for internet access. |
 | Step 4A: [Register machines with Arc and assign permissions via command line](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the machines that you intend to cluster.<br> Assign required permissions for the deployment. |
