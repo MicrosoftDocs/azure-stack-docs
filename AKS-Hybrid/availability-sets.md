@@ -16,15 +16,18 @@ ms.lastreviewed: 08/15/2024
 
 ## Overview
 
-Availability sets offer several benefits for AKS enabled by Azure Arc users, such as:
+Availability sets offer several benefits for AKS on Azure Local users, such as:
 
 - Improves the availability and resilience of your applications by avoiding scenarios in which multiple VMs within the same node pool or control plane go down or become unbalanced due to a single node failure.
 - Optimizes the resource usage and performance of your cluster by ensuring that VMs are evenly distributed across the available nodes and not concentrated on a single node or a subset of nodes.
 - Aligns with the best practices and expectations of your customers and partners who are looking for a reliable and consistent on-premises Kubernetes experience.
 
-With AKS on Azure Stack HCI 23H2, the availability sets feature is enabled by default when you create a new node pool.
 
-With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create a workload cluster. For example: `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
+## Enable availability sets
+
+**With AKS on Azure Local, version 23H2, the availability sets feature is enabled by default when you create a node pool.** 
+With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster. For example: `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
+
 
 ## How availability sets work in AKS enabled by Azure Arc
 
@@ -32,7 +35,7 @@ When you create a new AKS Arc cluster, AKS Arc automatically creates availabilit
 
 Once the availability sets are created and the VMs assigned, the system automatically places them on the appropriate physical nodes. If a node fails, the system also automatically fails over the VMs to other nodes and rebalances them when the node recovers. This way, you can achieve high availability and optimal distribution of your Kubernetes workloads without manual intervention.
 
-Consider an AKS Arc cluster with two physical host machines, **Host A** and **Host B**, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue, which can cause the VM (virtual machine) to be temporarily placed on an alternative host.
+Consider an AKS on Azure Local, version 23H2 cluster with two physical host machines, **Host A** and **Host B**, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue, which can cause the VM (virtual machine) to be temporarily placed on an alternative host.
 
 In the following diagram, each color represents an anti-affinity group:  
 
@@ -55,7 +58,7 @@ Availability sets for AKS Arc can help to rebalance VMs once a host recovers fro
 
 ## Add or delete machines
 
-In a host deletion scenario, the host is no longer considered a part of the cluster. This deletion typically occurs when you replace a machine due to hardware issues, or scale down the physical cluster for other reasons. During a node outage, the node remains part of the physical cluster but appears as **Down**.
+In a host deletion scenario, the host is no longer considered a part of the cluster. This deletion typically occurs when you replace a machine due to hardware issues, or scale down the Azure Local cluster for other reasons. During a node outage, the node remains part of the Azure Local cluster but appears as **Down**.
 
 If a physical machine (fault domain) is permanently deleted from the cluster, the availability set configuration isn't modified to reduce the number of fault domains. In this scenario, the availability set enters an unhealthy state. We recommend that you redeploy your Kubernetes clusters so that the availability set is updated with the proper number of fault domains.
 

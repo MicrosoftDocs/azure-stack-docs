@@ -1,0 +1,148 @@
+### YamlMime:Landing
+
+title: Azure Local documentation
+summary: Azure Local is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
+
+metadata:
+  title: Azure Local documentation
+  description: Azure Local is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
+#  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page
+  author: ronmiab
+  ms.author: robess
+  ms.date: 10/31/2024
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+  # Card (optional)
+  - title: About Azure Local
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local?
+            url: overview.md
+      - linkListType: whats-new
+        links:
+          - text: What's new in Azure Local, version 23H2?
+            url: whats-new.md
+          - text: Small Form Factor (preview)
+            url: concepts/system-requirements-small-23h2.md
+          - text: Azure Local disconnected operations (preview)
+            url: manage/disconnected-operations-overview.md  
+
+  # Card 
+  - title: Deploy
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: 1. Download the software
+            url: deploy/download-23h2-software.md
+          - text: 2. Install the OS
+            url: deploy/deployment-install-os.md
+          - text: 3. Register with Arc
+            url: deploy/deployment-arc-register-server-permissions.md
+          - text: 4A. Deploy via the portal
+            url: deploy/deploy-via-portal.md
+          - text: 4B. Deploy via ARM template
+            url: deploy/deployment-azure-resource-manager-template.md
+
+  # Card
+  - title: Update and Upgrade
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: About updates
+            url: update/about-updates-23h2.md
+          - text: Update via Azure portal
+            url: update/azure-update-manager-23h2.md
+          - text: About upgrades
+            url: upgrade/about-upgrades-23h2.md
+          - text: Upgrade OS
+            url: upgrade/upgrade-22h2-to-23h2-powershell.md
+          - text: Upgrade solution
+            url: upgrade/install-solution-upgrade.md
+
+  # Card
+  - title: Deploy workloads
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Deploy Azure Kubernetes Service clusters
+            url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
+          - text: Run Azure Virtual Desktop
+            url: /azure/virtual-desktop/azure-stack-hci-overview
+          - text: Run Azure Arc Virtual Machines
+            url: /manage/create-arc-virtual-machines.md
+
+  # Card
+  - title: Manage
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage at-scale
+            url: manage/manage-at-scale-dashboard.md          
+          - text: Add node
+            url: manage/add-server.md
+          - text: Repair node
+            url: manage/repair-server.md
+          - text: Manage Arc VMs
+            url: manage/manage-arc-virtual-machines.md
+          - text: Manage SDN Multisite
+            url: manage/manage-sdn-multisite.md?pivots=azure-local
+
+  # Card
+  - title: Monitor
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Local monitoring?
+            url: concepts/monitoring-overview.md
+      - linkListType: how-to-guide
+        links:
+          - text: Monitor via Insights
+            url: manage/monitor-single-23h2.md
+          - text: Enable Insights at-scale
+            url: manage/monitor-multi-azure-policies.md          
+          - text: Azure Monitor Metrics
+            url: manage/monitor-cluster-with-metrics.md
+          - text: Health alerts
+            url: manage/health-alerts-via-azure-monitor-alerts.md
+
+  # Card
+  - title: Try it out
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Deploy Arc gateway (preview)
+            url: deploy/deployment-azure-arc-gateway-overview.md
+          - text: Deploy using local identity with Key Vault (preview)
+            url: deploy/deployment-local-identity-with-key-vault.md
+          - text: Manage GPU via partitioning (preview)
+            url: manage/gpu-manage-via-partitioning.md
+          - text: Migrate VMware (preview)
+            url: migrate/migration-azure-migrate-vmware-overview.md
+      
+  # Card
+  - title: Concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Network reference patterns overview
+            url: plan/network-patterns-overview.md
+          - text: Security features
+            url: concepts/security-features.md
+          - text: Observability
+            url: concepts/observability.md
+
+  # Card
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Collect logs
+            url: manage/collect-logs.md
+          - text: Troubleshoot deployment issues
+            url: manage/troubleshoot-deployment.md
+          - text: Get support
+            url: manage/get-remote-support.md

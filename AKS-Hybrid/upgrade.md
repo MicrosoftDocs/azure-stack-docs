@@ -25,7 +25,7 @@ Two types of updates are available for an Azure Kubernetes Service (AKS) workloa
 We recommend updating an AKS workload cluster at least once every 60 days. New Kubernetes version updates are available every 30 days. To avoid outages in workload availability, rolling updates are performed. When you bring a new node with a newer build into the cluster, resources move from the old node to the new node. When the resources are successfully moved, the old node is decommissioned and removed from the cluster.
 
 > [!IMPORTANT]
-> Updating the Azure Kubernetes Service on the AKS host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information about updating the AKS host, see [Update the AKS host on Azure Stack HCI](./update-akshci-host-powershell.md).
+> Updating the Azure Kubernetes Service on the AKS host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information about updating the AKS host, see [Update the AKS host on Azure Local](./update-akshci-host-powershell.md).
 
 ## Get available Kubernetes versions
 

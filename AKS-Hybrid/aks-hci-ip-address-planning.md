@@ -29,7 +29,7 @@ In the following scenario walk-through, you reserve IP addresses from a single n
 
 ### Example walkthrough for IP address reservation for Kubernetes clusters and applications
 
-Jane is an IT administrator just starting with AKS enabled by Azure Arc. Jane wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B. Jane also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All the AKS clusters and services are running in a single network, with a single subnet.
+Jane is an IT administrator just starting with AKS enabled by Azure Arc. Jane wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on the Azure Local cluster. Jane also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All the AKS clusters and services are running in a single network, with a single subnet.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes.
@@ -48,16 +48,16 @@ Continuing with this example, and adding it to the following table, you get:
 
 | Parameter    | Number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
-| AKS Arc VMs, K8s version upgrade and control plane IP  | Reserve 16 IP addresses | Make this reservation through IP pools in the Azure Stack HCI logical network. |
+| AKS Arc VMs, K8s version upgrade and control plane IP  | Reserve 16 IP addresses | Make this reservation through IP pools in the Azure Local logical network. |
 | Load balancer IPs | 3 IP address for Kubernetes services, for Jane's voting application. | These IP addresses are used when you install a load balancer on cluster A. You can use the MetalLB Arc extension, or bring your own 3rd party load balancer. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc VM logical network. |
 
 ### LNETs considerations for AKS clusters and Arc VMs
 
-Logical networks are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
+Logical networks on Azure Local are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
 - Share a logical network between AKS and Arc VMs.
 - Define separate logical networks for AKS clusters and Arc VMs.
 
-Sharing a logical network between AKS and Arc VMs offers the benefit of streamlined communication, cost savings, and simplified network management. However, this approach also introduces potential challenges such as resource contention, security risks, and complexity in troubleshooting.
+Sharing a logical network between AKS and Arc VMs on Azure Local offers the benefit of streamlined communication, cost savings, and simplified network management. However, this approach also introduces potential challenges such as resource contention, security risks, and complexity in troubleshooting.
 
 | **Criteria**                              | **Sharing a logical network**                                  | **Defining separate logical networks**     |
 |-------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------------|
@@ -87,4 +87,4 @@ AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. A
 
 ## Next steps
 
-[Create logical networks for Kubernetes clusters on Azure Stack HCI 23H2](aks-networks.md)
+[Create logical networks for Kubernetes clusters on Azure Local, version 23H2](aks-networks.md)
