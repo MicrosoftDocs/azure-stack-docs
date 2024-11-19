@@ -57,17 +57,33 @@ Ensure your Arc gateway URL and all of the URLs below are allowed through your e
 |---------|---------|
 |`[Your URL prefix].gw.arc.azure.com`       | Your gateway URL. You can obtain this URL by running `az arcgateway list` after you create the resource.         |
 |`management.azure.com`    |Azure Resource Manager endpoint, required for the Azure Resource Manager control channel.         |
-|`<region>.obo.arc.azure.com`     |Required when Cluster Connect is configured.         |
+|`<region>.obo.arc.azure.com`     |Required when `az connectedk8s proxy` is used.         |
 |`login.microsoftonline.com`, `<region>.login.microsoft.com`     | Microsoft Entra ID endpoint, used for acquiring identity access tokens.         |
 |`gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`   |The cloud service endpoint for communicating with Arc Agents. Uses short names; for example `eus` for East US.          |
 |`mcr.microsoft.com`, `*.data.mcr.microsoft.com`     |Required to pull container images for Azure Arc agents.         |
 
-## Create AKS Arc clusters with Arc gateway enabled
+## Create an AKS Arc cluster with Arc gateway enabled
 
 Run the following command to create AKS Arc clusters with Arc gateway enabled
 
 ```azurecli
 az aksarc create -n $clusterName -g $resourceGroup --custom-location $customlocationID --vnet-ids $arcVmLogNetId --aad-admin-group-object-ids $aadGroupID --gateway-id $gatewayId --generate-ssh-keys
+```
+
+## Update an AKS Arc cluster and enable Arc gateway
+
+Run the following command to create AKS Arc clusters with Arc gateway enabled:
+
+```azurecli
+az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
+```
+
+## Disable Arc gateway on an AKS Arc cluster
+
+Run the following command to create AKS Arc clusters with Arc gateway enabled:
+
+```azurecli
+az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
 ```
 
 ## Monitor traffic
