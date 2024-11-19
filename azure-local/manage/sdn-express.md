@@ -3,27 +3,31 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 11/29/2023
+ms.date: 11/07/2024
 ms.author: sethm 
-ms.reviewer: JasonGerend 
+ms.reviewer: anirbanpaul 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
+<<<<<<< HEAD:azure-local/manage/sdn-express.md
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+=======
+This article describes how to deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW). The scripts support a phased deployment, in which you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+>>>>>>> main:azure-stack/hci/manage/sdn-express.md
 
-You can also deploy an SDN infrastructure using Windows Admin Center or using System Center Virtual Machine Manager (VMM). For more information, see [Create a cluster - Step 5: SDN](../deploy/create-cluster.md#step-5-sdn-optional) and see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
+You can also deploy an SDN infrastructure using Windows Admin Center or using System Center Virtual Machine Manager (VMM). For more information, see [Create a cluster - Step 5: SDN](../deploy/create-cluster.md#step-5-sdn-optional) and [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
 > You can't use Microsoft System Center Virtual Machine Manager 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022.
 
 ## Before you begin
 
-Before you begin an SDN deployment, plan out and configure your physical and host network infrastructure. Reference the following articles:
+Before you begin an SDN deployment, plan out and configure your physical and host network infrastructure. See the following articles:
 
 - [Physical network requirements](../concepts/physical-network-requirements.md)
 - [Host network requirements](../concepts/host-network-requirements.md)
@@ -31,7 +35,7 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 - [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md)
 - [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md)
 
-You do not have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
+You don't have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
 
 Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md) on how to do this.
 
@@ -50,28 +54,28 @@ The following requirements must be met for a successful SDN deployment:
 
 [!INCLUDE [download-vhdx](../includes/hci-download-vhdx.md)]
 
-## Download the GitHub repository
+> [!NOTE]
+> The SDN Express script files are no longer available on GitHub.
 
-The SDN Express script files live in GitHub. The first step is to get the necessary files and folders onto your deployment computer.
+## Install the SDN Express PowerShell module
 
-1. Go to the [Microsoft SDN GitHub](https://github.com/microsoft/SDN) repository.
+Run the following command to install the latest version of the SDN Express PowerShell module on the machine on which you want to run the SDN installation:
 
-1. In the repository, expand the **Code** drop-down list, and then choose either **Clone** or **Download ZIP** to download the SDN files to your designated deployment computer.
+```powershell
+Install-Module -Name SDNExpress
+```
 
-    > [!NOTE]
-    > The designated deployment computer must be running Windows Server 2016 or later.
-
-1. Extract the ZIP file and copy the `SDNExpress` folder to your deployment computer's `C:\` folder.
+The files automatically install in the default PowerShell module directory: **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\**.
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic.
+The PowerShell `MultiNodeSampleConfig.psd1` configuration data file (located at the above mentioned install path) contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
 
-Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
+Navigate to the **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\** folder and open the **MultiNodeSampleConfig.psd1** file in a text editor. Change specific parameter values to fit your infrastructure and deployment, as described in the next section.
 
 ### General settings and parameters
 
-The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
+These settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
 - **VHDFile** - VHDX file name used by all SDN infrastructure VMs
@@ -96,7 +100,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **Locale** - if not specified, locale of deployment computer is used
 - **TimeZone** - if not specified, local time zone of deployment computer is used
 
-Passwords can be optionally included if stored encrypted as text-encoded secure strings.  Passwords will only be used if SDN Express scripts are run on the same computer where passwords were encrypted, otherwise it will prompt for these passwords:
+Passwords can be optionally included if stored encrypted as text-encoded secure strings. Passwords are only used if SDN Express scripts are run on the same computer where passwords were encrypted, otherwise it prompts for these passwords:
 
 - **DomainJoinSecurePassword** - for domain account
 - **LocalAdminSecurePassword** - for local administrator account
@@ -106,7 +110,7 @@ Passwords can be optionally included if stored encrypted as text-encoded secure 
 
 A minimum of three Network Controller VMs are recommended for SDN.
 
-The `NCs = @()` section is used for the Network Controller VMs. Make sure that the MAC address of each NC VM is outside the `SDNMACPool` range listed in the General settings.
+The `NCs = @()` section is used for the Network Controller VMs. Make sure that the MAC address of each NC VM is outside the `SDNMACPool` range listed in the general settings.
 
 - **ComputerName** - name of NC VM
 - **HostName** - host name of server where the NC VM is located
@@ -117,7 +121,7 @@ The `NCs = @()` section is used for the Network Controller VMs. Make sure that t
 
 A minimum of two Software Load Balancer VMs are recommended for SDN.
 
-The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddress` and `PAMACAddress` parameters of each SLB VM are outside the `SDNMACPool` range listed in the General settings. Ensure that you get the `PAIPAddress` parameter from outside the PA Pool specified in the configuration file, but part of the PASubnet specified in the configuration file.
+The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddress` and `PAMACAddress` parameters of each SLB VM are outside the `SDNMACPool` range listed in the general settings. Ensure that you get the `PAIPAddress` parameter from outside the PA Pool specified in the configuration file, but part of the PASubnet specified in the configuration file.
 
 Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
@@ -145,7 +149,7 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 
 ### Additional settings for SLB and Gateway
 
-The following additional parameters are used by SLB and Gateway VMs. Leave these values blank if you are not deploying SLB or Gateway VMs:
+The following additional parameters are used by SLB and Gateway VMs. Leave these values empty if you are not deploying SLB or Gateway VMs:
 
 - **SDNASN** - Autonomous System Number (ASN) used by SDN to peer with network switches
 - **RouterASN** - Gateway router ASN
@@ -153,15 +157,16 @@ The following additional parameters are used by SLB and Gateway VMs. Leave these
 - **PrivateVIPSubnet** -  virtual IP address (VIP) for the private subnet
 - **PublicVIPSubnet** - virtual IP address for the public subnet
 
-The following additional parameters are used by Gateway VMs only. Leave these values blank if you are not deploying Gateway VMs:
+The following additional parameters are only used by Gateway VMs. Leave these values blank if you are not deploying Gateway VMs:
 
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
 - **Capacity** - capacity in Kbps for each Gateway VM in the pool
 - **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway move to the redundant gateway and the redundant gateway becomes active.
 
-    > [!NOTE]
-    > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
+   > [!NOTE]
+   > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the
+   > **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
