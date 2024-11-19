@@ -235,7 +235,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. Go through the tabs and assign the following role permissions to the user who deploys the instance:
 
-    - **Azure Local Administrator**
+    - **Azure Stack HCI Administrator**
     - **Reader**
 
 1. In the Azure portal, go to the resource group used to register the machines on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
