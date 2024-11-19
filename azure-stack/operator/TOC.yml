@@ -4,8 +4,6 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: Comparing the Azure ecosystem
-    href: compare-azure-azure-stack.md
   - name: Release notes
     items:
     - name: Security updates
