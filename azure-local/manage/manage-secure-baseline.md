@@ -48,7 +48,7 @@ The following table explains the rules that aren't compliant and the rationale o
 
 To fix the compliance for the rules, run the following commands or use any other tool you prefer: 
 
-1. **Legal notice**: Create a notice when users are logging in the `Servers : Values` defined in your oranization. Run the following commands:
+1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
 
   ```PowerShell
   Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeCaption" -Value "Legal Notice"
