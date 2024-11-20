@@ -17,7 +17,7 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 
 ## Workaround
 
-Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all the PDB:
+Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all PDBs:
 
 1. Access the AKS Arc cluster:
 
@@ -31,7 +31,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
    kubectl get pdb -A 
    ```
 
-1. Delete all the PDB:
+1. Delete all PDBs. Here's an example of deleting PDB generated from workload identity enablement:
 
     ```bash
     kubectl delete pdb azure-wi-webhook-controller-manager -n arc-workload-identity 
