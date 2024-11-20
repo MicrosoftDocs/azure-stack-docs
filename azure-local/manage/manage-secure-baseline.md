@@ -50,16 +50,16 @@ To fix the compliance for the rules, run the following commands or use any other
 
 1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
 
-  ```PowerShell
-  Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeCaption" -Value "Legal Notice"
-  Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeText" -Value "LegalNoticeText"
-  ```
+    ```PowerShell
+    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeCaption" -Value "Legal Notice"
+    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeText" -Value "LegalNoticeText"
+    ```
 
 1. **Minimum password length**: Set the minimum password length policy to 14 characthers on the Azure Local machine. The default value is 7, and any value below 14 is still flagged by the monitoring baseline policy. Run the following commands:
 
-  ```PowerShell
-  net accounts /minpwlen:14
-  ```
+    ```PowerShell
+    net accounts /minpwlen:14
+    ```
 
 ## Manage security defaults with PowerShell
 
