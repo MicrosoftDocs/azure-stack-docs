@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/14/2024
+ms.date: 11/19/2024
 ---
 
 # System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
@@ -19,13 +19,13 @@ This article describes the requirements for machines, storage, and networking fo
 
 ## About the small hardware class
 
-Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class referenced as *small* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
+Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class referenced as *small* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
-The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) as *small form factor* hardware.
+The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Device requirements
 
-The device must be listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) which indicates that the device has passed the Windows Server certification and the extra qualifications from the SDDC and WSSD program.
+The device must be listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) which indicates that the device has passed the Windows Server certification and the extra qualifications.
 
 The following table lists the requirements for the small hardware:
 
@@ -34,7 +34,7 @@ The following table lists the requirements for the small hardware:
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
 | CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
 | Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with EEC. |
-| Host network adapters | Two network adapters listed in the [Windows Server Catalog](https://www.windowsservercatalog.com/).<br> RDMA isn't required for storage intent.<br> Minimum link speed must be 1 Gbit/s. |
+| Host network adapters | 1 network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intend is not required.<br> Minimum link speed must be 1 Gbit/s. |
 | BIOS | Intel VT or AMD-V must be turned on.|
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
@@ -71,11 +71,11 @@ The supported volume configuration for the system is:
 
 ## Networking requirements
 
-Network adapters must meet the Windows Server certification requirements. This requirement ensures compatibility and reliability with Hyper-V and also controls how the adapter properties are exposed by the driver (VLAN ID, RSS, VMQ).
+Network adapters must meet the Azure Local host network requirements. This requirement ensures compatibility and reliability with Hyper-V and also controls how the adapter properties are exposed by the driver (VLAN ID, RSS, VMQ).
 
 The reduced networking requirements are as follows:
 
-- Storage intent doesn't require RDMA.
+- Storage intent doesn't require RDMA to be enabled.
 - Single link is needed.
 - Minimum link speed of 1 Gbit/s is required.
 - A Layer 2 switch with VLAN support is required.
