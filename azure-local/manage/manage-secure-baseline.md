@@ -44,6 +44,23 @@ The following table explains the rules that aren't compliant and the rationale o
 | Interactive logon: Message title for users attempting to log on| Not Compliant | Warning - "" is equal to "" |This must be defined by customer, it does not have drift control enabled.|
 | Minimum password length | Not Compliant | Critical - Seven is less than the minumum value of 14. | This must be defined by customer, it does not have drift control enabled in order to allow this setting to align with your organization's policies.|
 
+### Fixing the compliance for the rules
+
+To fix the compliance for the rules, run the following commands or use any other tool you prefer: 
+
+1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
+
+    ```PowerShell
+    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeCaption" -Value "Legal Notice"
+    Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "LegalNoticeText" -Value "LegalNoticeText"
+    ```
+
+1. **Minimum password length**: Set the minimum password length policy to 14 characthers on the Azure Local machine. The default value is 7, and any value below 14 is still flagged by the monitoring baseline policy. Run the following commands:
+
+    ```PowerShell
+    net accounts /minpwlen:14
+    ```
+
 ## Manage security defaults with PowerShell
 
 With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [Security Baseline](https://aka.ms/hci-securitybase).

@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/18/2024
+ms.date: 11/19/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -48,6 +48,16 @@ This is a baseline release with the following features and improvements:
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
+- **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
+
+  - **Security posture following Azure Local, version 22H2 to version 23H2 upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2 to version 23H2.
+  
+    For more information, see [Manage security after upgrading Azure Local from version 22H2 to version 23H2](./manage/manage-security-post-upgrade.md).
+
+  - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
+  
+    For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
+    
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## [2408 releases](#tab/2408releases)
