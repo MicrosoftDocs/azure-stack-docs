@@ -142,12 +142,14 @@
     items:
     - name: Troubleshoot & known issues
       href: aks-troubleshoot.md
-    - name: K8sVersionValidation
-      href: cluster-k8s-version.md
+    - name: K8sVersionValidation error
+      href: tsg-check-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
+    - name: Cannot see VM SKUs on Azure portal
+      href: tsg-check-vm-skus.md
     - name: Deleted Kubernetes cluster still visible on Azure portal
       href: deleted-cluster-visible.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
