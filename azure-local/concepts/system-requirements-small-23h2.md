@@ -21,7 +21,7 @@ This article describes the requirements for machines, storage, and networking fo
 
 Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class referenced as *small* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
-The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) as *small form factor* hardware.
+The certified devices are listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Device requirements
 
