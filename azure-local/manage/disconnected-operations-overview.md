@@ -40,7 +40,7 @@ Disconnected operations for Azure Local support the following services:
 | Azure portal                      | Delivers an Azure portal experience that's similar to Azure Public. |
 | Azure Resource Manager (ARM)      | Manage and utilize subscriptions, resource groups, ARM templates, and Azure Command-Line Interface (CLI). |
 | Role Based Access Control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
-| Managed Service Identity (MSI)    | Access resources with MSI support for user workloads. |
+| Managed Service Identity (MSI)    | Use System Assigned Identity for resource types supporting Managed Service Identity (MSI). |
 | Arc-enabled servers               | Manage VM Guests for Arc VMs on Azure Local. |
 | Arc VMs for Azure Local           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes (K8s)      | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local virtual machines, enabling unified configuration and management. |
