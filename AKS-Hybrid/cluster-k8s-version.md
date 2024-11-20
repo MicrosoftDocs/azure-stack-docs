@@ -41,10 +41,9 @@ To check if the image download is in progress or has finished, run the below com
 ```azurecli
 $cl_id = "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.ExtendedLocation/customLocations/<custom_location_name>"
           
-# Get the kubernetes version or the VM sizes using CLI (it automatically creates the **kubernetesVersions/default** or the **skus/default** azure resource).
+# Get the kubernetes version using CLI (it automatically creates the **kubernetesVersions/default** Azure resource).
 
 az aksarc get-versions --custom-location $cl_id
-az aksarc vmsize list --custom-location $cl_id
 ```
 
 If the above command says that the K8s versions are ready, and you're running Azure Local, [release 2411](/azure/aks/hybrid/aks-whats-new-23h2#release-2411) or newer, file a [support request](help-support.md).
@@ -83,10 +82,9 @@ To resolve this issue, run the following command:
 ```azurecli
 $cl_id = "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.ExtendedLocation/customLocations/<custom_location_name>"
           
-# Get the kubernetes version or the VM sizes using CLI (it automatically creates the **kubernetesVersions/default** or the **skus/default** azure resource).
+# Get the kubernetes version using CLI (it automatically creates the **kubernetesVersions/default** Azure resource).
 
 az aksarc get-versions --custom-location $cl_id
-az aksarc vmsize list --custom-location $cl_id
 ```
 
 ### Kubernetes version 1.26.12 is not supported. Please go to https://aka.ms/aksarcsupportedversions for details about the supported Kubernetes version on this platform.
