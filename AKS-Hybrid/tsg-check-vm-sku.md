@@ -31,4 +31,4 @@ Verify that Azure portal now displays the correct list of VM sizes.
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot)
+[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
