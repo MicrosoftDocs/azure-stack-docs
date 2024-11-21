@@ -48,7 +48,7 @@ This is a baseline release with the following features and improvements:
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
-    - Download data disks - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machines (VMs) image or attach the image to your VMs  as needed.
+    - Download data disks - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
   
         For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
 
