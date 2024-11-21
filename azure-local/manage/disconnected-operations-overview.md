@@ -40,12 +40,12 @@ Disconnected operations for Azure Local support the following services:
 | Azure portal                      | Delivers an Azure portal experience that's similar to Azure Public. |
 | Azure Resource Manager (ARM)      | Manage and utilize subscriptions, resource groups, ARM templates, and Azure Command-Line Interface (CLI). |
 | Role Based Access Control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
-| Managed Service Identity (MSI)    | Access resources with MSI support for user workloads. |
+| Managed Identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
 | Arc-enabled servers               | Manage VM Guests for Arc VMs on Azure Local. |
 | Arc VMs for Azure Local           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes (K8s)      | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local virtual machines, enabling unified configuration and management. |
 | Azure Kubernetes Service enabled by Arc for Azure Local | Set up and manage Azure Kubernetes (AKS) on Azure Local. |
-| Azure Local device management     | Create and manage Azure Local instances, add, and remove nodes. |
+| Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
 | Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
 | Policy                            | Enforce standards through policies when creating new resources. |
@@ -82,10 +82,10 @@ The following table lists the requirements to successfully deploy and run discon
 
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
-| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   | Both Private and Public PKI are supported and required <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
-| Network Time Protocol (NTP) optional  | Local or Public time server | Time server synchronizes the system clock. |
-| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
+| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022. | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
+| Public Key Infrastructure (PKI)   | Private and Public PKIs are supported. <br><br> If you use a public PKI, the certificate revocation list (CRL) endpoints must be reachable from your infrastructure. <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
+| Network Time Protocol (NTP) optional  | Local or Public time server. | Time server synchronizes the system clock. |
+| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server. | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
 For information on deploying and configuring the integration components, refer to:
 
@@ -114,7 +114,7 @@ To participate in the preview, you must meet the following criteria:
 
 - **Enterprise agreement**: A current enterprise agreement with Microsoft, typically covering a period of at least three years.
 
-- **Business needs to operate disconnected**: The disconnected operations feature is for those who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
+- **Business needs to operate disconnected**: The disconnected operations feature is for those who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations).
 
 - **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected for Azure Local. For more information, see [Prerequisites](../manage/disconnected-operations-overview.md#prerequisites).
 

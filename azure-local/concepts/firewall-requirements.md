@@ -15,7 +15,7 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
 
-If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings.md).
+If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 > [!IMPORTANT]
 > Azure Express Route and Azure Private Link are not supported for Azure Local, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Local, version 23H2.
@@ -182,3 +182,4 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 For more information, see also:
 
 - The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
+- See [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md)
