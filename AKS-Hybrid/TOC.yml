@@ -88,12 +88,6 @@
         href: workload-identity.md
     - name: Storage
       items:
-      - name: Storage Class and Container Storage Interface (CSI)
-        items:
-        - name: Overview
-          href: storage-class-overview.md
-        - name: Create storage classes
-          href: create-storage-classes.md
       - name: CSI storage drivers
         items: 
         - name: Use disk CSI drivers
