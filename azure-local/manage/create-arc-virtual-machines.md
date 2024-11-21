@@ -14,7 +14,7 @@ ms.date: 11/05/2024
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create an Arc virtual machine (VM) starting with the VM images that you created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Local resource
 
@@ -36,7 +36,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a network interface that you have created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
+- Access to a network interface that you created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -56,6 +56,19 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 - Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
+# [Terraform template](#tab/terraformtemplate)
+
+- Access to an Azure subscription with the appropriate Role Based Access Control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+- Access to a resource group where you want to provision the VM.
+- Access to one or more VM images on your Azure Local. You can use one of the following procedures to create these VM images:
+    - [VM image using Azure Marketplace images](../manage/virtual-machine-image-azure-marketplace.md).
+    - [VM image using an image in Azure Storage account](../manage/virtual-machine-image-storage-account.md).
+    - [VM image using an image in a local storage](../manage/virtual-machine-image-local-share.md).
+- A custom location for your Azure Local that you can use to provision VMs. The custom location shows up in the **Overview** page for Azure Local.
+- Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
+- Download the sample Terraform template: (https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2)
+- Make sure Terraform is installed and up to date. To verify your Terraform version, run the `terraform-v` command.
+- Make sure Git is installed and up to date.
 ---
 
 ## Create Arc VMs
@@ -122,9 +135,6 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ```
 
-
-
-
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 > [!NOTE]
@@ -176,6 +186,7 @@ Here's a sample command:
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
 ```
+
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
 <!--Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
@@ -633,6 +644,20 @@ Follow these steps to deploy the Resource Manager template:
 1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
    :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
+
+# [Terraform template](#tab/terraformtemplate)
+
+You can use the Azure Verified Module (AVM) that contains the terraform template for creating Logical Networks. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Logical Networks on your cluster.
+
+### Steps to use the Terraform template
+
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+2. Choose the appropriate folder for your deployment needs.
+    - **default**: Creates one virtual machine instance.
+    - **multi**: Creates multiple virtual machine instances.
+3. Run the `terraform init` command to initialize Terraform in your folder from step 2.
+4. Run the `terraform apply` command to apply the configuration that deploys the logical network.
+5. After the deployment is complet.e, verify the logical networks via the Azure portal. Navigate to **Resources** > **Virtual machines**.
 
 ---
 
