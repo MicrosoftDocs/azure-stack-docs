@@ -82,10 +82,10 @@ The following table lists the requirements to successfully deploy and run discon
 
 | Area          | Supported system         | Use                          |
 | --------------| -------------------------| -----------------------------|
-| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022 | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   |Private and Public PKIs are supported. <br><br> If you use a public PKI, the certificate revocation list (CRL) endpoint must be reachable from your infrastructure. <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
-| Network Time Protocol (NTP) optional  | Local or Public time server | Time server synchronizes the system clock. |
-| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
+| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022. | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
+| Public Key Infrastructure (PKI)   | Private and Public PKIs are supported. <br><br> If you use a public PKI, the certificate revocation list (CRL) endpoints must be reachable from your infrastructure. <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
+| Network Time Protocol (NTP) optional  | Local or Public time server. | Time server synchronizes the system clock. |
+| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server. | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
 
 For information on deploying and configuring the integration components, refer to:
 
