@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/18/2024
+ms.date: 11/19/2024
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
@@ -134,4 +134,5 @@ Some Microsoft partners are developing software that extends the capabilities of
 
 ## Next steps
 
+- Read the blog post: [Introducing Azure Local: cloud infrastructure for distributed locations enabled by Azure Arc](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
 - Learn more about [Azure Local, version 23H2 deployment](./deploy/deployment-introduction.md).
