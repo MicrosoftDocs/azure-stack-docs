@@ -310,7 +310,7 @@ The following example shows how to use the Azure role-based access control (Azur
                    -replace '\$KVSecretName', $KVSecretName 
 
    # Apply the YAML configuration 
-   $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
+   $yaml | kubectl --kubeconfig /path/to/aks-cluster-kubeconfig apply -f -
    ```
 
 ## Delete AKS Arc cluster
