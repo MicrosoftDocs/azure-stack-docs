@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/28/2024
+ms.date: 11/21/2024
 ---
 
 # Create Azure Local VM image using images in a local share
@@ -251,4 +251,4 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 ## Next steps
 
-- [Create logical networks](./create-virtual-networks.md)
+- [Create logical networks](create-logical-networks.md).
