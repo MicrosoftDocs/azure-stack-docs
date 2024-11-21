@@ -12,7 +12,7 @@ SDN uses a VHDX file containing either the Azure Stack HCI or Windows Server ope
 > [!NOTE]
 > The version of the OS in your VHDX must match the version used by the Azure Local Hyper-V machines. This VHDX file is used by all SDN infrastructure components.
 
-To download an English-language version of the VHDX file, see [Download the operating system from the Azure portal](../deploy/download-azure-stack-hci-23h2-software.md). Make sure to select **English VHDX** from the **Choose language** dropdown list.
+To download an English-language version of the VHDX file, see [Download the operating system from the Azure portal](../deploy/download-23h2-software.md). Make sure to select **English VHDX** from the **Choose language** dropdown list.
 
 Currently, a non-English VHDX file isn't available for download. If you require a non-English version, download the corresponding ISO file and convert it to VHDX using the `Convert-WindowsImage` cmdlet. You must run this script from a Windows client computer. You'll probably need to run this script as Administrator and modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
 
