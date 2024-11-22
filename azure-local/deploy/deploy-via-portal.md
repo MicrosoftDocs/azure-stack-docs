@@ -267,8 +267,6 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Disable-ASRemoteDesktop
     ```
 
-### 
-
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
