@@ -76,16 +76,16 @@ To run the quickstart script, perform the following steps:
 
    There are additional optional flags that can be included while running the AksEdgeQuickStartForAio.ps1. Please find the optional flags below: 
 
-    |Optional Flags|Value  |
+   |Optional Flags|Value  |
    |---------|---------|
-   | enableWorkloadIdentity (preview) | Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage. |
-   | proxy-https | Provide the proxy value: https://<proxy-server-ip-address>:<port> |
-   | proxy-http | Provide the proxy value: http://<proxy-server-ip-address>:<port> |
+   | enableWorkloadIdentity (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. Follow [this document](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-workload-identity) to configure workload identity federation. |
+   | proxy-https | Provide the proxy value: `https://<proxy-server-ip-address>:<port>` |
+   | proxy-http | Provide the proxy value: `http://<proxy-server-ip-address>:<port>` |
    | proxy-skip-range | Provide hte proxy skip range: <excludedIP>,<excludedCIDR>. If http(s)_proxy is provided, then no_proxy should also be updated to "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc,169.254.169.254" |
 
    These flags can be added as shown in the following example:
    ```
-   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>" --enableWorkloadIdentity
+   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>" --enableWorkloadIdentity:false
    ``` 
 
    > [!IMPORTANT]
