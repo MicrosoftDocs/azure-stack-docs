@@ -23,7 +23,7 @@ This how-to article walks you through how to disable the Windows nodepool featur
 Before you begin, make sure you have the following prerequisites in place:
 
 - **Azure Local deployed**. This article is only applicable if you already deployed Azure Local, release 2411. You cannot run the commands in this article before you deploy Azure Local release 2411. We currently do not support the ability to make this change before the initial Azure Local release 2411 deployment.
-- **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
+- **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
   - Azure Stack HCI Administrator
   - Reader
 - **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
