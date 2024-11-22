@@ -364,7 +364,7 @@ You can use the Azure Verified Module (AVM) that contains the terraform template
     - **multi**: Creates multiple logical network instances.
 3. Choose the appropriate folder for your deployment.
 4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
-5. To apply the configuration that deploys your logical network, run the `terraform apply` command.
+5. To apply the configuration that deploys logical networks, run the `terraform apply` command.
 6. After the deployment is complete, verify your logical networks via the Azure portal. 
     -  Navigate to **Resources** > **Logical networks**.
 ---
