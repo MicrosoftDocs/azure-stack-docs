@@ -9,7 +9,7 @@ ms.reviewer: abha
 ms.lastreviewed: 10/08/2024
 ---
 
-# AKS enabled by Azure Arc IP address planning requirements
+# IP address planning requirements
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -90,6 +90,8 @@ Sharing a logical network between AKS and Arc VMs on Azure Local offers the bene
 | **Impact of network failures** | A failure in the shared network can affect both AKS and Arc VMs simultaneously.   | A failure in one network affects only the workloads within that network, reducing overall risk. |
 
 ## IP address range allocation for pod CIDR and service CIDR
+
+This section describes the IP address ranges used by Kubernetes for pod and service communication within a cluster. These IP address ranges are defined during the AKS cluster creation process and are used to assign unique IP addresses to pods and services within the cluster.
 
 ### Pod network CIDR
 
