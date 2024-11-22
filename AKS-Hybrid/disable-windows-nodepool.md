@@ -14,7 +14,7 @@ ms.lastreviewed: 11/18/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-When you install Azure Local, three virtual hard disks (VHDs) - Azure Linux, Windows Server 2019 and Windows Server 2022 - are automatically downloaded. VHDs are needed to deploy AKS on Azure Local because they serve as the base operating system images for the Kubernetes nodes within your AKS cluster. For a mixed-OS environment (both Windows and Linux nodes), a Windows Server 2019 or Windows Server 2022 VHD is necessary for provisioning a Windows Server 2019, or 2022 nodepool. The Linux nodepool uses the Azure Linux VHD optimized for running Kubernetes. In environments where only Linux containers are being used, however, the Windows VHD is unnecessary, and disabling the Windows nodepool feature helps avoid downloading and storing this large file, saving bandwidth and storage space.
+When you install Azure Local, three virtual hard disks (VHDs) - Azure Linux, Windows Server 2019 and Windows Server 2022 - are automatically downloaded. VHDs are needed to deploy AKS on Azure Local because they serve as the base operating system images for the Kubernetes nodes within your AKS cluster. For a mixed-OS environment (both Windows and Linux nodes), a Windows Server 2019 or Windows Server 2022 VHD is necessary for provisioning a Windows Server 2019, or 2022 nodepool. The Linux nodepool uses the Azure Linux VHD optimized for running Kubernetes. In environments where only Linux containers are used, however, the Windows VHD is unnecessary. You can disable the Windows nodepool feature to avoid downloading and storing this large file, which saves bandwidth and storage space.
 
 This how-to article walks you through how to disable the Windows nodepool feature for Azure Kubernetes Service (AKS) on Azure Local. Disabling this feature prevents the automatic download of Windows Virtual Hard Disks (VHDs), which are approximately 20 GB in size and required for creating Windows-based nodepools. By doing so, enterprises with limited internet bandwidth can avoid unnecessary downloads, especially if their workloads are exclusively using Linux containers. This feature helps optimize bandwidth usage and simplifies resource management for environments where Windows nodes are not needed.
 
@@ -24,7 +24,7 @@ Before you begin, make sure you have the following prerequisites in place:
 
 - **Azure Local deployed**. This article is only applicable if you already deployed Azure Local, release 2411. You cannot run the commands in this article before you deploy Azure Local release 2411. We currently do not support the ability to make this change before the initial Azure Local release 2411 deployment.
 - **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
-  - Azure Stack HCI Administrator
+  - Azure Local Administrator
   - Reader
 - **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
 - **Azure resource group**. The Azure resource group in which Azure Local is deployed.
