@@ -50,9 +50,32 @@ Continuing with this example, and adding it to the following table, you get:
 | AKS Arc VMs, K8s version upgrade and control plane IP  | Reserve 16 IP addresses | Make this reservation through IP pools in the Azure Local logical network. |
 | Load balancer IPs | 3 IP address for Kubernetes services, for Jane's voting application. | These IP addresses are used when you install a load balancer on cluster A. You can use the MetalLB Arc extension, or bring your own 3rd party load balancer. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc VM logical network. |
 
+#### Example CLI commands for IP address reservation for Kubernetes clusters and applications
+
+This section describes the set of commands Jane runs for her scenario. First, create a logical network with an IP pool that has at least 16 IP addresses. We created the IP pool with 20 IP addresses to provide the option to scale on day N. For detailed information about parameter options in logical networks, see [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create):
+
+```azurecli
+$ipPoolStart = "10.220.32.18"
+$ipPoolEnd = "10.220.32.37"
+az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
+```
+
+Next, create an AKS Arc cluster with the previous logical network:
+
+```azurecli
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $lnetName --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys
+```
+
+Now you can enable MetalLB load balancer with an IP pool of 3 IP addresses, in the same subnet as the Arc VM logical network. You can add more IP pools later if your application needs an increase. For detailed requirements, see the [MetalLB Arc extension overview](load-balancer-overview).
+
+```azurecli
+az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.Kubernetes/connectedClusters/metallb-demo --addresses 172.25.28.145-172.25.28.147 --advertise-mode ARP
+```
+
 ### LNETs considerations for AKS clusters and Arc VMs
 
 Logical networks on Azure Local are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
+
 - Share a logical network between AKS and Arc VMs.
 - Define separate logical networks for AKS clusters and Arc VMs.
 
@@ -65,7 +88,6 @@ Sharing a logical network between AKS and Arc VMs on Azure Local offers the bene
 | **Network policy management**  | Easier to manage with one set of network policies, but harder to isolate workloads. | Easier to isolate workloads, as separate policies can be applied per logical network. |
 | **Security considerations**    | Increased risk of cross-communication vulnerabilities if not properly segmented.  | Better security as each network can be segmented and isolated more strictly. |
 | **Impact of network failures** | A failure in the shared network can affect both AKS and Arc VMs simultaneously.   | A failure in one network affects only the workloads within that network, reducing overall risk. |
-
 
 ## IP address range allocation for pod CIDR and service CIDR
 

@@ -37,6 +37,8 @@ The following parameters are required in order to use a logical network for AKS 
 | `--gateway`         | Gateway. The gateway IP address must be within the scope of the address prefix. Usage: `--gateway 10.220.32.16`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--ip-allocation-method`         | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | ![Supported](media/aks-hybrid-networks/check.png) |
+| `--ip-pool-start`     | If you use MetalLB or any other third party load balancer in L2/ARP mode, we highly recommend using IP pools to separate AKS Arc IP requirements from load balancer IPs. This recommendation is to help avoid IP address conflicts that can lead to unintended and hard-to-diagnose failures. This value is the start IP address of your IP pool. The address must be in the range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | Optional, but highly recommended. |
+| `--ip-pool-end`       | If you use MetalLB or any other third party load balancer in L2/ARP mode, we highly recommend using IP pools to separate AKS Arc IP requirements from load balancer IPs. This recommendation is to help avoid IP address conflicts that can lead to unintended and hard-to-diagnose failures. This value is the end IP address of your IP pool. The address must be in the range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  | Optional, but highly recommended. |
 
 ### Control plane IP
 

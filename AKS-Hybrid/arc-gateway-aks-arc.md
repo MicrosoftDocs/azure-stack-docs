@@ -38,7 +38,8 @@ For more information, see [how the Azure Arc gateway works](/azure/azure-arc/kub
 
 ## Before you begin
 
-- Ensure you've completed the [pre-requisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md)
+- Ensure you complete the [prerequisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md).
+- This article requires version 1.4.23 or later of Azure CLI. If you use Azure CloudShell, the latest version is already installed.
 - The following Azure permissions are required to create Arc gateway resources and manage their association with AKS Arc clusters:
   - `Microsoft.Kubernetes/connectedClusters/settings/default/write`
   - `Microsoft.hybridcompute/gateways/read`
@@ -64,7 +65,7 @@ Ensure your Arc gateway URL and all of the URLs below are allowed through your e
 
 ## Create an AKS Arc cluster with Arc gateway enabled
 
-Run the following command to create AKS Arc clusters with Arc gateway enabled
+Run the following command to create an AKS Arc cluster with the Arc gateway enabled:
 
 ```azurecli
 az aksarc create -n $clusterName -g $resourceGroup --custom-location $customlocationID --vnet-ids $arcVmLogNetId --aad-admin-group-object-ids $aadGroupID --gateway-id $gatewayId --generate-ssh-keys
@@ -72,7 +73,7 @@ az aksarc create -n $clusterName -g $resourceGroup --custom-location $customloca
 
 ## Update an AKS Arc cluster and enable Arc gateway
 
-Run the following command to create AKS Arc clusters with Arc gateway enabled:
+Run the following command to update an AKS Arc cluster and enable the Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
@@ -80,7 +81,7 @@ az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
 
 ## Disable Arc gateway on an AKS Arc cluster
 
-Run the following command to create AKS Arc clusters with Arc gateway enabled:
+Run the following command to disable an AKS Arc cluster:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --disable-gateway

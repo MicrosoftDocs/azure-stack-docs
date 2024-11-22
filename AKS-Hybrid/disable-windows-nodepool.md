@@ -22,28 +22,28 @@ This how-to article walks you through how to disable the Windows nodepool featur
 
 Before you begin, make sure you have the following prerequisites in place:
 
-- **Azure Local deployed**: This article is only applicable if you already deployed Azure Local. You cannot run the commands in this article before you deploy Azure Local. We currently do not support the ability to make this change before the initial Azure Local deployment.
-- **Custom Location ID**: Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Stack HCI system resource. You should see a custom location for your cluster.
-- **Azure resource group**: The Azure resource group where Azure Local is deployed.
-- Azure RBAC permissions to update Azure Stack HCI configuration. Make sure you have the following roles. For more information, see [required permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
+- **Azure Local deployed**. This article is only applicable if you already deployed Azure Local, release 2411. You cannot run the commands in this article before you deploy Azure Local release 2411. We currently do not support the ability to make this change before the initial Azure Local release 2411 deployment.
+- **Azure RBAC permissions to update Azure Local configuration**. Make sure you have the following roles. To learn more, visit [required permissions for deployment](/hci/deploy/deployment-arc-register-server-permissions?tabs=powershell#assign-required-permissions-for-deployment):
   - Azure Stack HCI Administrator
   - Reader
+- **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview > Server** page in the Azure Local system resource. You should see a custom location for your cluster.
+- **Azure resource group**. The Azure resource group in which Azure Local is deployed.
 
-## Set environment variables
+## Recommended option: disable Windows nodepool from an Azure CloudShell session
 
 To help simplify configuration, the following steps define environment variables that are referenced in this article. Remember to replace the values shown with your own values.
 
-Set the custom location and the resource group values in environment variables.\:
+Set the custom location and the resource group values in environment variables:
 
 ```azurecli
-$customlocationID = <The custom location ARM ID for Azure Local>
-$resourceGroup = <The Azure resource group where Azure Local is deployed>
+$customlocationName = <The custom location name for Azure Local>
+$resourceGroup = <The Azure resource group in which Azure Local is deployed>
 ```
 
 Next, run the following command to obtain the `clusterName` parameter. This parameter is the name of the Arc Resource Bridge that you deployed on Azure Local:
 
 ```azurecli
-az customlocation show -n $customlocationID -g $resourceGroup --query hostResourceId
+az customlocation show -n $customlocationName -g $resourceGroup --query hostResourceId
 ```
 
 Expected output:
@@ -77,22 +77,23 @@ You should have two extensions installed on your custom location: AKS Arc and Ar
 $extensionName = <Name of AKS Arc extension you deployed on the custom location>
 ```
 
-Once you have the extension name, create variables for the following parameters.
+After you have the extension name, create variables for the following parameters, and then disable the Windows nodepool feature:
 
 ```azurecli
 $extensionVersion = "$(az k8s-extension show -n $extensionName  -g $resourceGroup -c $clusterName --cluster-type appliances --query version -o tsv)"
 $releaseTrain = "$(az k8s-extension show -n $extensionName -g $resourceGroup -c $clusterName --cluster-type appliances --query releaseTrain -o tsv)"
+az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --version $extensionVersion --release-train $releaseTrain --config disable-windows-nodepool=true --yes
 ```
 
-## Update the AKS Arc extension to disable the Windows nodepool feature
+## Alternate option: disable Windows nodepool after connecting to an Azure Local physical node via Remote Desktop
 
-After you set the environment variables, you can run the following command from an Azure CloudShell session to update the AKS Arc k8s extension. This command disables the Windows nodepool feature and deletes any associated VHDs:
+If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable Windows nodepool, you can disable Windows nodepool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure:
 
 ```azurecli
 az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --version $extensionVersion --release-train $releaseTrain --config disable-windows-nodepool=true --yes 
 ```
 
-## Validate if the Windows nodepool feature is disabled
+### Validate if the Windows nodepool feature is disabled
 
 You can check if the configuration settings were applied by running `az k8s-extension show`, as follows:
 
@@ -111,7 +112,7 @@ Expected output:
 Next, check if Windows nodepools were disabled by running the following command:
 
 ```azurecli
-az aksarc get-versions --resource-group $resourceGroup --custom-location $customlocationID
+az aksarc get-versions --resource-group $resourceGroup --custom-location $customlocationName
 ```
 
 The output for `osType=Windows` should say "Windows nodepool feature is disabled" and the `ready` state should be `false`, for each Kubernetes version option:
@@ -154,5 +155,5 @@ The Windows VHDs that were previously downloaded are automatically deleted if th
 
 ## Next steps
 
-- [What's new in AKS on Azure Stack HCI](aks-overview.md)
+- [What's new in AKS on Azure Local](aks-overview.md)
 - [Create AKS clusters](aks-create-clusters-cli.md)
