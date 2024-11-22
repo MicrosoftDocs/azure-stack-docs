@@ -43,9 +43,11 @@ Before you start, make sure that you:
 
 - Create a local user account with the same credentials across all nodes and add it to the local administrators group, instead of using the built-in administrator account.
 
-- Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
-
 - Download the Azure Local software. Instructions on how to download the Azure Local software will be provided to those who signed up for the preview.
+
+- For this preview, the nodes require static IP addresses and don't support DHCP. After the OS is installed, use SConfig to set the static IP address, subnet, gateway, and DNS.
+
+- Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
 
 ## Configure DNS server for Azure Local
 
