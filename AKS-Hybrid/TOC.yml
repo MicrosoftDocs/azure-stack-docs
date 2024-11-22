@@ -142,7 +142,7 @@
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: Cannot see VM SKUs on Azure portal
+    - name: Can't see VM SKUs on Azure portal
       href: tsg-check-vm-sku.md
     - name: Deleted AKS Arc cluster still visible on Azure portal
       href: deleted-cluster-visible.md

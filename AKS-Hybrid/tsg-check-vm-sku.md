@@ -4,14 +4,14 @@ description: Learn how to troubleshoot no VM sizes listed on Azure portal when y
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/02/2024
+ms.date: 11/22/2024
 ms.reviewer: sumsmith
 
 ---
 
 # Troubleshoot no VM sizes listed on Azure portal when you create an AKS Arc cluster
 
-When you try creating an AKS Arc cluster from Azure portal, you see that there are no VM sizes listed. This can happen if **skus/default** resource in Azure is not yet created, or was deleted for some reason. This scenario can happen in Azure Local releases 2408 or older, when the default resource was not created as a part of the Azure Local deployment.
+When you try to create an AKS Arc cluster from the Azure portal, you can see that there are no VM sizes listed. This can happen if the **skus/default** resource in Azure is not yet created, or was deleted for some reason. This scenario can happen in Azure Local releases 2408 or older, when the default resource was not created as a part of the Azure Local deployment.
 
 ## Workaround
 

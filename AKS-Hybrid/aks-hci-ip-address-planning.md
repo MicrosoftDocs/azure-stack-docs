@@ -55,6 +55,7 @@ Continuing with this example, and adding it to the following table, you get:
 ### LNETs considerations for AKS clusters and Arc VMs
 
 Logical networks on Azure Local are used by both AKS clusters and Arc VMs. You can configure logical networks in one of the following 2 ways:
+
 - Share a logical network between AKS and Arc VMs.
 - Define separate logical networks for AKS clusters and Arc VMs.
 
@@ -81,7 +82,7 @@ AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS 
 
 The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
 - ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
-- NodePort: Exposes the service on a specific port on each node’s IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
+- NodePort: Exposes the service on a specific port on each node's IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
 - LoadBalancer: This type creates a cloud-provider-managed load balancer and exposes the service externally. The cloud provider typically manages the external IP assignment, while the internal ClusterIP remains within the service network CIDR.
 
 AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. AKS does not support customizations for the service network CIDR today.
