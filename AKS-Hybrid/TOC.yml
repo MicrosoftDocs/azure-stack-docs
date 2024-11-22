@@ -114,7 +114,7 @@
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Integrate Azure Container Registry with a Kubernetes cluster
+    - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
       items:    
@@ -134,22 +134,20 @@
             href: get-on-demand-logs.md
   - name: Troubleshooting
     items:
-    - name: Known issues
-      href: aks-known-issues.md
-    - name: Troubleshoot
+    - name: Troubleshoot & known issues
       href: aks-troubleshoot.md
+    - name: K8sVersionValidation error
+      href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: No K8s versions or VM sizes listed for cluster creation
-      href: cluster-k8s-version.md
-    - name: Deleted cluster still visible in portal
+    - name: Cannot see VM SKUs on Azure portal
+      href: tsg-check-vm-sku.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
       href: deleted-cluster-visible.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
       href: delete-cluster-pdb.md
-    - name: Kubernetes version x.x.x is not available
-      href: webhook-denied-request.md
   - name: Reference
     items:
     - name: Azure CLI
