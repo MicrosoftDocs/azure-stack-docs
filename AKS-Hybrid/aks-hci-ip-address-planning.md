@@ -1,6 +1,6 @@
 ---
-title: IP address planning for AKS 
-description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production. 
+title: IP address planning for AKS enabled by Azure Arc
+description: Learn about how to plan for IP addresses and reservation, to deploy AKS Arc in production. 
 ms.topic: conceptual
 ms.date: 11/19/2024
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.lastreviewed: 10/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-IP address planning for AKS involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading this article.
+IP address planning for AKS enabled by Azure Arc involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](aks-hci-network-system-requirements.md) before reading this article.
 
 ## Simple IP address planning for Kubernetes clusters and applications
 
@@ -102,6 +102,7 @@ AKS provides a **default value of 10.244.0.0/16** for the pod network CIDR. AKS 
 ### Service network CIDR
 
 The Service network CIDR is the range of IP addresses reserved for Kubernetes services like LoadBalancers, ClusterIP, and NodePort within a cluster. Kubernetes supports the following service types:
+
 - ClusterIP: The default service type, which exposes the service within the cluster. The IP assigned from the Service network CIDR is only accessible within the Kubernetes cluster.
 - NodePort: Exposes the service on a specific port on each node's IP address. The ClusterIP is still used internally, but external access is through the node IPs and a specific port.
 - LoadBalancer: This type creates a cloud-provider-managed load balancer and exposes the service externally. The cloud provider typically manages the external IP assignment, while the internal ClusterIP remains within the service network CIDR.
