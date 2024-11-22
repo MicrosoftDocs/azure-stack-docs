@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc network requirements
 description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 04/02/2024
+ms.date: 11/19/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
@@ -17,11 +17,10 @@ This article introduces core networking concepts for your VMs and applications i
 
 In this conceptual article, the following key components are introduced. These components need a static IP address in order for the AKS Arc cluster and applications to create and operate successfully:
 
-- AKS cluster VMs
-- AKS control plane IP
+- Logical network for AKS Arc VMs and control plane IP
 - Load balancer for containerized applications
 
-## Networking for AKS cluster VMs
+## Logical networks for AKS Arc VMs and control plane IP
 
 Kubernetes nodes are deployed as specialized virtual machines in AKS enabled by Arc. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS Arc uses Azure Local logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about logical networks, see [Logical networks for Azure Local](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node VM in your Azure Local environment.
 
@@ -37,16 +36,15 @@ The following parameters are required in order to use a logical network for AKS 
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--gateway`         | Gateway. The gateway IP address must be within the scope of the address prefix. Usage: `--gateway 10.220.32.16`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--ip-allocation-method`         | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. | ![Supported](media/aks-hybrid-networks/check.png) |
-| `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | ![Supported](media/aks-hybrid-networks/check.png) |
-| `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | ![Supported](media/aks-hybrid-networks/check.png) |
+| `--ip-pool-start`     | If you use MetalLB or any other third party load balancer in L2/ARP mode, we highly recommend using IP pools to separate AKS Arc IP requirements from load balancer IPs. This recommendation is to help avoid IP address conflicts that can lead to unintended and hard-to-diagnose failures. This value is the start IP address of your IP pool. The address must be in the range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | Optional, but highly recommended. |
+| `--ip-pool-end`       | If you use MetalLB or any other third party load balancer in L2/ARP mode, we highly recommend using IP pools to separate AKS Arc IP requirements from load balancer IPs. This recommendation is to help avoid IP address conflicts that can lead to unintended and hard-to-diagnose failures. This value is the end IP address of your IP pool. The address must be in the range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  | Optional, but highly recommended. |
 
-## Control plane IP
+### Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. AKS Arc automatically chooses a control plane IP for you from the logical network passed during the Kubernetes cluster create operation.
 
-> [!NOTE]
-> The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap with anything else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. The control plane IP also must be within the scope of the address prefix of the logical network, but outside the IP pool. This is because the IP pool is only used for VMs, and if you choose an IP address from the IP pool for the control plane, an IP address conflict can result. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your environment.
+You also have the option of passing a control plane IP. In such cases, the control plane IP must be within the scope of the address prefix of the logical network. You must ensure that the control plane IP address does not overlap with anything else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your environment.
 
 ## Load balancer IPs for containerized applications
 
@@ -60,7 +58,7 @@ Whether you choose the Arc extension for MetalLB, or bring your own load balance
 - Provide IP addresses for your services from the same subnet as the AKS Arc VMs.
 - Use a different network and list of IP addresses if your application needs external load balancing.
 
-Regardless of the option you choose, you must ensure that the IP addresses allocated to the load balancer don't conflict with the IP addresses in the logical network or control plane IPs for your Kubernetes clusters. Conflicting IP addresses can lead to unforeseen failures in your AKS deployment and applications.
+Regardless of the option you choose, you must ensure that the IP addresses allocated to the load balancer don't conflict with the IP addresses in the logical network. Conflicting IP addresses can lead to unforeseen failures in your AKS deployment and applications.
 
 ## Proxy settings
 
