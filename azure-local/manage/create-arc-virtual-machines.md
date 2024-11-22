@@ -85,7 +85,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ### Create a Windows VM
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation.
 
 > [!NOTE]
 > If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
@@ -144,7 +144,7 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
-### Create a Linux VM 
+### Create a Linux VM
 
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
@@ -179,7 +179,6 @@ You can input the following parameters for `proxy-server-configuration`:
 | **cert_file_path**  |Select the certificate file used to establish trust with your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
-
 
 Here's a sample command:
 
@@ -275,7 +274,6 @@ Follow these steps in Azure portal for your Azure Local.
     > [!NOTE]
     > For proxy authentication, you can pass the username and password combined in a URL as follows: `http://username:password@proxyserver.contoso.com:3128`.
 
-
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
     :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
@@ -333,7 +331,6 @@ Follow these steps in Azure portal for your Azure Local.
     :::image type="content" source="./media/create-arc-virtual-machines/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::
 
 1. Select **Create**. It should take a few minutes to provision the VM.
-
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
@@ -619,7 +616,7 @@ Follow these steps to deploy the Resource Manager template:
             }
         ]
     }
-   ``` 
+   ```
 
 1. Select **Save**.
 
@@ -658,7 +655,6 @@ You can use the Azure Verified Module (AVM) that contains the terraform template
 3. Run the `terraform init` command to initialize Terraform in your folder from step 2.
 4. Run the `terraform apply` command to apply the configuration that deploys the logical network.
 5. After the deployment is complet.e, verify the logical networks via the Azure portal. Navigate to **Resources** > **Virtual machines**.
-
 ---
 
 ## Use managed identity to authenticate Arc VMs

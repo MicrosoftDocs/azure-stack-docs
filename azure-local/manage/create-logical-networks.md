@@ -48,15 +48,16 @@ Before you begin, make sure to complete the following prerequisites:
 
 The prerequisites for the Azure portal are the same as those for the Azure CLI. See [Azure CLI](./create-logical-networks.md?tabs=azurecli#tabpanel_1_azurecli).
 
-# [Terraform template](#tab/terraform)
+# [Terraform template](#tab/terraformtemplate)
 
 - Make sure Terraform is installed and up to date.
 
   - To verify your version of Terraform, run the `terraform -v` command from the command prompt.
 
-- Make sure Git is installed and up to date
+- Make sure Git is installed and up to date.
   
 ---
+
 
 ## Create the logical network
 
