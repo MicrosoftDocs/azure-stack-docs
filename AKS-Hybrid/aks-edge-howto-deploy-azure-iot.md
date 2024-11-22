@@ -74,6 +74,23 @@ To run the quickstart script, perform the following steps:
    |CLUSTER_NAME     |    A name for the new cluster to be created.     |
    |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
 
+   There are additional optional flags that can be included while running the AksEdgeQuickStartForAio.ps1. Please find the optional flags below: 
+
+    |Optional Flags|Value  |
+   |---------|---------|
+   | enableWorkloadIdentity (preview) | Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage. |
+   | proxy-https | Provide the proxy value: https://<proxy-server-ip-address>:<port> |
+   | proxy-http | Provide the proxy value: http://<proxy-server-ip-address>:<port> |
+   | proxy-skip-range | Provide hte proxy skip range: <excludedIP>,<excludedCIDR>. If http(s)_proxy is provided, then no_proxy should also be updated to "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc,169.254.169.254" |
+
+   These flags can be added as shown in the following example:
+   ```
+   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>" --enableWorkloadIdentity
+   ``` 
+
+   > [!IMPORTANT]
+> Preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. AKS Edge Essentials previews are partially covered by customer support on a best-effort basis.
+
    If there are issues during deployment, like if your machine reboots as part of this process, run the set of commands again.
 
 1. Run the following commands to check that the deployment was successful:
