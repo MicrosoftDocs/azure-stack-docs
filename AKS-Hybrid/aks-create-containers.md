@@ -1,6 +1,6 @@
 ---
 title: Create Windows Server containers
-description: Learn how to create Windows Server containers in Azure Stack HCI.
+description: Learn how to create Windows Server containers in Azure Local.
 ms.topic: how-to
 author: sethmanheim
 ms.date: 07/15/2024

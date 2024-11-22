@@ -1,6 +1,6 @@
 ---
 title: Manage node pools for an AKS cluster
-description: Learn how to manage multiple node pools in AKS on Azure Stack HCI 23H2.
+description: Learn how to manage multiple node pools in AKS on Azure Local, version 23H2.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 06/03/2024
@@ -16,7 +16,7 @@ ms.lastreviewed: 06/03/2024
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 > [!NOTE]
-> For information about managing node pools in AKS on Azure Stack HCI 22H2, see [Manage node pools](manage-node-pools-22h2.md).
+> For information about managing node pools in AKS on Azure Local 22H2, see [Manage node pools](manage-node-pools-22h2.md).
 
 In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for an AKS cluster.
 
@@ -25,7 +25,7 @@ In AKS enabled by Azure Arc, nodes of the same configuration are grouped togethe
 To get started, create a Kubernetes cluster with a single node pool:
 
 ```azurecli
-az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet id> --generate-ssh-keys --load-balancer-count <load balancer count>
+az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet id> --generate-ssh-keys
 ```
 
 ## Add a node pool
@@ -111,5 +111,5 @@ az aksarc nodepool delete --cluster-name <cluster name> -n <node pool name> -g <
 
 ## Next steps
 
-- [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](/azure-stack/hci/whats-new)
+- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](/azure-stack/hci/whats-new)

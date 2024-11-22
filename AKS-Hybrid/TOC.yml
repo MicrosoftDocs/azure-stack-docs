@@ -11,10 +11,10 @@
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
-- name: AKS on Azure Stack HCI 23H2
+- name: AKS on Azure Local, version 23H2
   expanded: true
   items:
-  - name: What's new in AKS on Azure Stack HCI 23H2
+  - name: What's new in AKS on Azure Local, version 23H2
     href: aks-whats-new-23h2.md
   - name: Concepts
     items:
@@ -24,7 +24,7 @@
       items:
       - name: Networking concepts and requirements
         href: aks-hci-network-system-requirements.md
-      - name: IP address planning for Kubernetes
+      - name: IP address planning
         href: aks-hci-ip-address-planning.md
       - name: Load balancer
         href: load-balancer-overview.md      
@@ -53,15 +53,23 @@
       - name: Azure portal
         href: aks-create-clusters-portal.md
       - name: Bicep
-        href: create-clusters-bicep.md   
-      - name: Deploy to Azure using a quickstart template
+        href: create-clusters-bicep.md
+      - name: Terraform
+        href: create-clusters-terraform.md
+      - name: Quickstart template
         href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
     - name: Networking
       items:
-      - name: Create logical networks for Kubernetes clusters
+      - name: Create logical networks
         href: aks-networks.md
+      - name: Simplify outbound connectivity
+        href: arc-gateway-aks-arc.md
+      - name: Deploy in environments with low internet bandwidth 
+        items: 
+        - name: Disable Windows nodepool
+          href: disable-windows-nodepool.md        
       - name: Use MetalLB load balancer
         items:
         - name: Azure CLI
@@ -82,6 +90,12 @@
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
+      - name: Deploy and configure Workload Identity
+        href: workload-identity.md
+      - name: High availability
+        items: 
+        - name: Use availability sets
+          href: availability-sets.md        
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -102,15 +116,13 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-      - name: Use availability sets
-        href: availability-sets.md
-    - name: Scale a Kubernetes cluster
+    - name: Use auto-scaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Integrate Azure Container Registry with a Kubernetes cluster
+    - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
       items:    
@@ -130,20 +142,20 @@
             href: get-on-demand-logs.md
   - name: Troubleshooting
     items:
-    - name: Known issues
-      href: aks-known-issues.md
-    - name: Troubleshoot
+    - name: Troubleshoot & known issues
       href: aks-troubleshoot.md
+    - name: K8sVersionValidation error
+      href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: No K8s versions or VM sizes listed for cluster creation
-      href: cluster-k8s-version.md
-    - name: Deleted cluster still visible in portal
+    - name: Can't see VM SKUs on Azure portal
+      href: tsg-check-vm-sku.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
       href: deleted-cluster-visible.md
-    - name: Kubernetes version x.x.x is not available
-      href: webhook-denied-request.md
+    - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+      href: delete-cluster-pdb.md
   - name: Reference
     items:
     - name: Azure CLI
@@ -152,7 +164,7 @@
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
     items:
-    - name: Azure Stack HCI
+    - name: Azure Local
       href: /azure-stack/hci/index
     - name: Azure hybrid cloud
       href: /hybrid
@@ -206,6 +218,8 @@
       href: aks-edge-howto-more-configs.md
     - name: Use GPU acceleration
       href: aks-edge-gpu.md
+    - name: Configure Workload Identity
+      href: aks-edge-workload-identity.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
@@ -355,7 +369,7 @@
           href: create-replicasets.md
         - name: Create a StatefulSet
           href: create-statefulset.md
-    - name: Availability with 2-node HCI cluster
+    - name: Availability with 2-node Azure Local cluster
       href: deploy-cluster-on-two-node-hci.md
     - name: Security
       items:
@@ -557,11 +571,11 @@
       href: known-issues-uninstall.yml
     - name: Other
       href: known-issues.yml
-    - name: Azure Stack HCI issues
+    - name: Azure Local issues
       items:
-      - name: Cluster validation reporting in Azure Stack HCI
+      - name: Cluster validation reporting in Azure Local
         href: /azure-stack/hci/manage/validate-qos
-      - name: CredSSP in Azure Stack HCI
+      - name: CredSSP in Azure Local
         href: /azure-stack/hci/manage/troubleshoot-credssp
     - name: Support policies
       href: support-policies.md

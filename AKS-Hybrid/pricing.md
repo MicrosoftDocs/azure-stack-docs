@@ -17,9 +17,9 @@ ms.reviewer: rbaziwane
 
 # AKS enabled by Azure Arc pricing details
 
-[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Stack HCI 23H2
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Local, version 23H2
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day is applied.
+Azure Kubernetes Service (AKS) enabled by Azure Arc is a subscription-based Kubernetes offering that can be run on Azure Local or Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day is applied.
 
 > [!IMPORTANT]
 > Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS enabled by Arc. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
@@ -64,4 +64,4 @@ If you enable hyper-threading on your physical computer, AKS also enables hyper-
 
 ## Next steps
 
-[AKS on Azure Stack HCI pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci)
+[AKS on Azure Local pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci)
