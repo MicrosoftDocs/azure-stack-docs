@@ -3,7 +3,7 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/29/2023
+ms.date: 11/22/2024
 ms.author: sethm
 ms.reviewer: sumsmith
 ms.lastreviewed: 09/23/2022
@@ -20,7 +20,7 @@ ms.lastreviewed: 09/23/2022
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. This article isn't intended to document the release information for AKS engine for global Azure.
 
-### Upgrade considerations
+## Upgrade considerations
 
 - Are you using the correct marketplace items, AKS Base Ubuntu 20.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-image-and-aks-engine).
 - Are you using the correct cluster specification (**apimodel.json**) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
@@ -98,13 +98,11 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2406                                           | 0.80.2*, 0.81.1* |
 | 2408                                           | 0.80.2*, 0.81.1* |
 
-> [!NOTE]  
-> *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
+*Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
 ### AKS engine and corresponding image mapping
 
 You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub in the following table. Don't use the aks-engine `get-versions` command, which returns versions supported in global Azure as well as in Azure Stack Hub.
-
 
 |      AKS engine     |      AKS base image     |      Kubernetes versions     |      API model samples     |
 |-|-|-|-|

@@ -65,17 +65,15 @@ To install AKS Engine version 0.80.2 or earlier:
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
-1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+1. From a machine with access to the Internet, go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
-2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
+1. Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
-3. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md)
+1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md)
 
-4. Connect to your VM.
+1. Connect to your VM.
 
-5.  From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
-
-
+1. From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
 
 ## Verify the installation
 
