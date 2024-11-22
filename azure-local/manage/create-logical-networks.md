@@ -352,7 +352,7 @@ These steps are the same for both static and DHCP network deployments.
 
 # [Terraform template](#tab/terraformtemplate)
 
-You can use the Azure Verified Module (AVM) that contains the terraform template for creating Logical Networks. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Logical Networks on your cluster.
+You can use the Azure Verified Module (AVM) that contains the Terraform template for creating Logical Networks. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Logical Networks on your cluster.
 
 ### Steps to use the Terraform template
 
