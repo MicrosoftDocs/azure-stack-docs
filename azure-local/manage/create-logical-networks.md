@@ -358,15 +358,15 @@ You can use the Azure Verified Module (AVM) that contains the terraform template
 
 1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0)
 2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
-
     - **default**: Creates one logical network with a static IP configuration.
     - **static**: Creates one logical network with a static IP configuration.
     - **dhcp**: Creates one logical network with a dynamic IP configuration.
     - **multi**: Creates multiple logical network instances.
-3. Choose the appropriate folder for your deployment needs.
-4. Run the `terraform init` command to initialize Terraform in your folder from step 2.
-5. Run the `terraform apply` command to apply the configuration that deploys the logical network.
-6. After the deployment is complet.e, verify the logical networks via the Azure portal. Navigate to **Resources** > **Logical networks**.
+3. Choose the appropriate folder for your deployment.
+4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
+5. To apply the configuration that deploys the logical network, run the `terraform apply` command.
+6. After the deployment is complete, verify the logical networks via the Azure portal. 
+    -  Navigate to **Resources** > **Logical networks**.
 ---
 
 ## Next steps

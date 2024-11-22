@@ -649,12 +649,14 @@ You can use the Azure Verified Module (AVM) that contains the terraform template
 ### Steps to use the Terraform template
 
 1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
-2. Choose the appropriate folder for your deployment needs.
+2. Navigate to the **examples** folder in the repository, and look for the following subfolders
     - **default**: Creates one virtual machine instance.
     - **multi**: Creates multiple virtual machine instances.
-3. Run the `terraform init` command to initialize Terraform in your folder from step 2.
-4. Run the `terraform apply` command to apply the configuration that deploys the logical network.
-5. After the deployment is complete, verify the logical networks via the Azure portal. Navigate to **Resources** > **Virtual machines**.
+3. Choose the appropriate folder for your deployment.
+4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
+5. To apply the configuration that deploys the logical network, run the `terraform apply` command.
+6. After the deployment is complete, verify the logical networks via the Azure portal.
+    - Navigate to **Resources** > **Virtual machines**.
 ---
 
 ## Use managed identity to authenticate Arc VMs
