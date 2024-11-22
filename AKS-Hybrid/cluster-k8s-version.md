@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot K8sVersionValidation error code
-description: Learn how to troubleshoot troubleshoot the K8sVersionValidation error code.
+description: Learn how to troubleshoot the K8sVersionValidation error code.
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
@@ -15,7 +15,7 @@ This article describes how to identify and resolve the K8sVersionValidation erro
 
 ## Symptoms
 
-When you try to create an AKS Arc cluster, you receive one of the following error message(s):
+When you try to create an AKS Arc cluster, you receive one of the following error messages:
 
 - `Kubernetes version 1.27.7 is not ready for use on Linux. Please go to https://aka.ms/aksarccheckk8sversions for details of how to check the readiness of Kubernetes versions`
 - `Kubernetes version 1.26.12 is not supported. Please go to https://aka.ms/aksarcsupportedversions for details about the supported Kubernetes version on this platform.`
@@ -29,7 +29,7 @@ This section describes the error messages that you might see when you encounter 
 
 This error message is caused by an incomplete Linux VHD download.
 
-When you install Azure Local, you download a Linux VHD of approximately 4-5GB in size. This Linux VHD is used to create the underlying VMs for the Kubernetes nodes in your AKS Arc cluster. The error message can occur when your Linux VHD has not finished downloading. To resolve this issue, you should wait until your internet connection finishes downloading the Linux VHD image.
+When you install Azure Local, you download a Linux VHD of approximately 4-5 GB in size. This Linux VHD is used to create the underlying VMs for the Kubernetes nodes in your AKS Arc cluster. The error message can occur when your Linux VHD didn't finish downloading. To resolve this issue, you should wait until your internet connection finishes downloading the Linux VHD image.
 
 To check if the image download is in progress or finished, run the following command:
 
