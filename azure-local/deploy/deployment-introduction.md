@@ -48,6 +48,9 @@ Follow this sequence to deploy Azure Local in your environment:
 | Step 5A: [Deploy the system via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to create Azure Local instance. |
 | Step 5B: [Deploy the system via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Resource Manager deployment template and the parameter file to deploy an Azure Local instance. |
 
+> [!NOTE]
+> As part of Azure Local, an Arc resource bridge appliance VM is automatically deployed during setup. The resource bridge is what enables Azure Arc capabilities and hybrid connectivity to Azure.  
+
 ## Validated network topologies
 
 When you deploy Azure Local from Azure portal, the network configuration options vary depending on the number of machines and the type of storage connectivity. Azure portal guides you through the supported options for each configuration.
