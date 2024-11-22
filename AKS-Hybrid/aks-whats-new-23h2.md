@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Local, version 23H2
 description: Learn about what's new in AKS on Azure Local, version 23H2.
 ms.topic: overview
-ms.date: 10/09/2024
+ms.date: 11/19/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
@@ -41,6 +41,23 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 ## Features and improvements
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local, version 23H2.
+
+### Release 2411
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Workload Identity (preview)**. You can now deploy AKS Arc clusters with workload identity enabled and deploy application pods with the workload identity label to access Microsoft Entra ID protected resources, such as Azure Key Vault. For more information, see [Deploy and configure Workload Identity](workload-identity.md).
+- **Arc Gateway integration (preview)**. You can now deploy AKS Arc clusters with pod-level Arc Proxy and communicate with the Arc gateway, reducing the list of outbound URLs to configure in an isolated network environment. For more information, see [Simplify network configuration requirements with Azure Arc Gateway](arc-gateway-aks-arc.md).
+- **Control Plane IP**. You can now deploy AKS Arc clusters without specifying the control plane IP. The IP address is assigned automatically. For more information, see [this section in the network system requirements article](aks-hci-network-system-requirements.md#logical-networks-for-aks-arc-vms-and-control-plane-ip).
+- **Disable Windows image download**. You can now disable Windows image downloads by disabling the Windows node pool after cluster creation, reducing network traffic over HTTP connections and providing better support for low bandwidth environments. For more information, see [Disable Windows nodepool feature on Azure Local](disable-windows-nodepool.md).
+- **Terraform (preview)**. You can now create AKS Arc clusters with Terraform modules and smart defaults. For more information, see [Create clusters using Terraform](create-clusters-terraform.md).
+- **Error handling**. Error handling is now improved to prevent logical network deletions with dependent cluster resources, GPU misconfigurations, and more.
+
+To get started with these features in the 2411 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.4.23 or higher.
+
+#### Supported Kubernetes versions for 2411
+
+The Kubernetes versions supported in the 2411 release are 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
 
 ### Release 2408
 
