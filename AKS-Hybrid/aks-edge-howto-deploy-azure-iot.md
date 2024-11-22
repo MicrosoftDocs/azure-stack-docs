@@ -54,6 +54,12 @@ To run the quickstart script, perform the following steps:
    ```azurecli
    az ad sp show --id bc313c14-388c-4e7d-a58e-70017303ee3b --query id -o tsv
    ```
+   
+1b. [Optional] [Azure Arc gateway (preview)](https://learn.microsoft.com/en-us/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only seven (7) endpoints. To use Azure Arc Gateway with AIO on AKS EE:
+   - [follow step 1 to create an Arc gateway resource](https://learn.microsoft.com/en-us/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
+   - Note the [URLs listed in step 2](https://learn.microsoft.com/en-us/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-skip-range` in step 2.
+   - Follow [step 3a in the Arc gateway documentation](https://learn.microsoft.com/en-us/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway id.
+   - In AksEdgeQuickStartForAio.ps1, set the value of "GatewayResourceId" to the gateway id saved from the previous step.
 
 1. Run the following commands, replacing the placeholder values with your information:
 
