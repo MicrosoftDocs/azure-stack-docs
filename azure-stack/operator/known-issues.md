@@ -91,9 +91,8 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 
 ::: moniker range="azs-2406"
-<!-- ## Update -->
 
-<!-- ## Networking -->
+<!-- ## Update -->
 
 ## Compute
 
@@ -143,6 +142,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 
 ::: moniker range="azs-2311"
+
 <!-- ## Update -->
 
 <!-- ## Networking -->
@@ -178,7 +178,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2311 and later.
 - Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
-- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue. 
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
 - Occurrence: Common.
 
 <!-- ## Alerts -->

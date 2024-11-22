@@ -25,7 +25,7 @@ In AKS enabled by Azure Arc, nodes of the same configuration are grouped togethe
 To get started, create a Kubernetes cluster with a single node pool:
 
 ```azurecli
-az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet id> --generate-ssh-keys --load-balancer-count <load balancer count>
+az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet id> --generate-ssh-keys
 ```
 
 ## Add a node pool
