@@ -66,8 +66,8 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
     - [VM image using an image in a local storage](../manage/virtual-machine-image-local-share.md).
 - A custom location for your Azure Local that you can use to provision VMs. The custom location shows up in the **Overview** page for Azure Local.
 - Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
-- Download the sample Terraform template: (https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2)
-- Make sure Terraform is installed and up to date. To verify your Terraform version, run the `terraform-v` command.
+- Make sure Terraform is installed and up to date.
+    - To verify your Terraform version, run the `terraform-v` command.
 - Make sure Git is installed and up to date.
 ---
 
@@ -654,7 +654,7 @@ You can use the Azure Verified Module (AVM) that contains the terraform template
     - **multi**: Creates multiple virtual machine instances.
 3. Run the `terraform init` command to initialize Terraform in your folder from step 2.
 4. Run the `terraform apply` command to apply the configuration that deploys the logical network.
-5. After the deployment is complet.e, verify the logical networks via the Azure portal. Navigate to **Resources** > **Virtual machines**.
+5. After the deployment is complete, verify the logical networks via the Azure portal. Navigate to **Resources** > **Virtual machines**.
 ---
 
 ## Use managed identity to authenticate Arc VMs
