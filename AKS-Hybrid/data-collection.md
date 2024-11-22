@@ -25,7 +25,7 @@ There are three separate tiers to consider when curating data collection and exc
 
 - Tier 1: Azure Arc-enabled services such as Azure Monitor, Azure Defender, Event Grid, etc.
 - Tier 2: Kubernetes clusters: AKS enabled by Arc.
-- Tier 3: Physical host, such as Windows Server or Azure Stack HCI.
+- Tier 3: Physical host, such as Windows Server or Azure Local.
 
 ## Data collection and residency
 
@@ -46,7 +46,7 @@ AKS collects the following types of data:
 
 - **Events related to the Hyper-V host operating systems**: Details such as the operating system name, version, and model. Identifiers include event names and event dates for precise event tracking. Various flags, both integer and Boolean, denote specific conditions or statuses, device, and operating system attributes. These flags include the name, device ID, and ISO country code. The data schema for these events incorporates a range of data types, including strings, integers, datetimes, and Booleans.
 - **Events associated with the Kubernetes clusters control plane**: Specific metrics include cluster creation timestamps, pods, and node counts, and resource metrics including vCore counts. This data is used for monitoring and management of the Kubernetes cluster. The data schema for these events includes a range of data types, including Boolean, string, integer, and double.
-- **Events pertaining to Hyper-V host operating system**: Emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended to the Windows Server and Azure Stack HCI platforms.
+- **Events pertaining to Hyper-V host operating system**: Emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended to the Windows Server and Azure Local platforms.
 - **Events pertaining to Mariner Linux VMs**: Includes system boot and shutdown, service status changes, kernel messages, application errors, and user authentication activities only for system namespaces.
 - **Billing events**: Events related to metering or billing of core usage. This set of events includes the event datetime and the quantity of cores. The data types include datetime for the event timing, and a floating-point number for the quantity.
 - **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. These events enable tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema employs string data types to encapsulate this important information.

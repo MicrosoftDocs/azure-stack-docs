@@ -23,9 +23,9 @@ Security in AKS enabled by Azure Arc involves securing the infrastructure and th
 
 AKS enabled by Arc applies various security measures to secure its infrastructure. The following diagram highlights these measures:
 
-:::image type="content" source="media/concepts-security/security-infrastructure.png" alt-text="Illustration showing the infrastructure security of Azure Kubernetes Service on Azure Stack HCI." lightbox="media/concepts-security/security-infrastructure.png":::
+:::image type="content" source="media/concepts-security/security-infrastructure.png" alt-text="Illustration showing the infrastructure security of Azure Kubernetes Service on Azure Local." lightbox="media/concepts-security/security-infrastructure.png":::
 
-The following table describes the security-hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS deployment, see [Clusters and workloads](./kubernetes-concepts.md).
+The following table describes the security-hardening aspects of AKS on Azure Local that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS deployment, see [Clusters and workloads](./kubernetes-concepts.md).
 
 | Security aspect |  Description  |
 | ------  | --------|
@@ -33,9 +33,9 @@ The following table describes the security-hardening aspects of AKS on Azure Sta
 | 2 | To reduce deployment cost and complexity, workload clusters share the underlying Windows Server. However, depending on the security needs, admins can choose to deploy a workload cluster on a dedicated Windows Server. When workload clusters share the underlying Windows Server, each cluster is deployed as a virtual machine, which ensures strong isolation guarantees between the workload clusters. |
 | 3 |  Customer workloads are deployed as containers and share the same virtual machine. The containers are process-isolated from one another, which is a weaker form of isolation compared to strong isolation guarantees offered by virtual machines.  |
 | 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. Calico policy support on AKS Arc is only for Linux containers, and is supported as-is. |
-| 5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
+| 5 | Communication between built-in Kubernetes components of AKS on Azure Local, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
 | 6 | Communication with the API server from Windows client machines is secured using Microsoft Entra credentials for users.  |
-| 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.  |
+| 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Local and applies the appropriate security patches when needed.  |
 
 ## Application security
 

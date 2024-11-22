@@ -26,16 +26,16 @@ sections:
           Only the user who set up the AKS host can create clusters
 
         answer: | 
-          When deploying Azure Kubernetes Service on Azure Stack HCI through Windows Admin Center, only the user who set up the AKS host can create Kubernetes clusters.
+          When deploying Azure Kubernetes Service on Azure Local through Windows Admin Center, only the user who set up the AKS host can create Kubernetes clusters.
           
           To work around this issue, copy the _wssd_ folder from the profile of the user who set up the AKS host to the profile of the user who will be creating the new Kubernetes clusters.
       - question: | 
-          Recovering from a failed AKS on Azure Stack HCI deployment
+          Recovering from a failed AKS on Azure Local deployment
 
         answer: | 
           You are experiencing deployment issues or want to reset your deployment.
           
-          Close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.  
+          Close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Local before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.  
           
       - question: | 
           The Setup or Cluster Create wizard displays an error about a wrong configuration
@@ -52,7 +52,7 @@ sections:
           
           N/A
       - question: | 
-          On Windows Admin Center, the message "error occurred while creating service principal" appears while installing an AKS host on Azure Stack HCI
+          On Windows Admin Center, the message "error occurred while creating service principal" appears while installing an AKS host on Azure Local
 
         answer: | 
           You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign-in pop-up is blocked and causes the service principal error.
@@ -67,17 +67,17 @@ sections:
           To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the Windows Admin Center gateway, run the following command: 
           
           ```
-          Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
+          Setspn /Q WSMAN/<FQDN on the Azure Local machine> 
           ```
           
-          Next, if any of the servers in the environment return the message `No Such SPN Found`, then log in to that server and run the following commands:  
+          Next, if any of the machines in the environment return the message `No Such SPN Found`, then log in to that machine and run the following commands:  
           
           ```
-          Setspn /S WSMAN/<server name> <server name> 
-          Setspn /S WSMAN/<FQDN of server> <server name> 
+          Setspn /S WSMAN/<machine name> <machine name> 
+          Setspn /S WSMAN/<FQDN of machine> <machine name> 
           ```
           
-          Finally, on the Windows Admin Center gateway, run the following to ensure that it gets new server information from the domain controller:
+          Finally, on the Windows Admin Center gateway, run the following to ensure that it gets new machine information from the domain controller:
           
           ```
           Klist purge 
@@ -236,9 +236,9 @@ sections:
           
           `Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
           
-          This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. 
+          This error message typically occurs when AKS on Azure Local is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. 
           
-          To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+          To resolve this error, set up AKS on Azure Local [using the proxy PowerShell command](set-proxy-settings.md).
       - question: | 
           Deployment: Connecting to remote server localhost failed
 
@@ -255,7 +255,7 @@ sections:
         answer: | 
           If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires).
           
-          Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the AKS on Azure Stack HCI [release notes.](https://github.com/Azure/aks-hci/releases).
+          Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the AKS on Azure Local [release notes.](https://github.com/Azure/aks-hci/releases).
           
       - question: | 
           During deployment, the error "No match was found for the specified search criteria for the provider **NuGet**" appears
@@ -310,10 +310,10 @@ sections:
           You can safely ignore this error. It is part of the validation step, and the cluster has already been created. 
           
       - question: | 
-          Restarting Azure Stack HCI nodes causes timing issue
+          Restarting Azure Local nodes causes timing issue
 
         answer: | 
-          Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the Windows Admin Center dashboard. 
+          Restarting the Azure Local cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the Windows Admin Center dashboard. 
           
           To work around this issue, pause and drain the nodes before you plan to restart them. Sometimes, the workload clusters may just take longer to appear in the dashboard.
           

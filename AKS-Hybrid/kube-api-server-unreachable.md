@@ -42,6 +42,6 @@ If the problem persists, collect the following information before [creating a su
 ## Next steps
 
 - [Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
-- [Review AKS on Azure Stack HCI 23H2 architecture](cluster-architecture.md)
-- [Review Azure Stack HCI network considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations)
-- [Review networking prerequisities for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local, version 23H2 architecture](cluster-architecture.md)
+- [Review Azure Local network considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations)
+- [Review networking prerequisities for AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md)

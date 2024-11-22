@@ -141,5 +141,5 @@ Updating worker nodes to a newer version of the node image without changing the 
 
 ## Next steps
 
-- [What's new in AKS on Azure Stack HCI](aks-overview.md)
+- [What's new in AKS on Azure Local](aks-overview.md)
 - [Create AKS clusters](aks-create-clusters-cli.md)
