@@ -58,7 +58,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 > - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
 
 > [!IMPORTANT]
-> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster}(workload-identity.md).
+> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
 
 ## Connect to the Kubernetes cluster
 
