@@ -73,7 +73,7 @@ az aksarc create -n $clusterName -g $resourceGroup --custom-location $customloca
 
 ## Update an AKS Arc cluster and enable Arc gateway
 
-Run the following command to update an AKS Arc cluster and enable the Arc gateway:
+Run the following command to update an AKS Arc cluster to enable Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
@@ -81,7 +81,7 @@ az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
 
 ## Disable Arc gateway on an AKS Arc cluster
 
-Run the following command to disable an AKS Arc cluster:
+Run the following command to disable Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
@@ -92,8 +92,8 @@ az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
 To audit your gateway traffic, view the gateway router logs:
 
 1. Run `kubectl get pods -n azure-arc`.
-1. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
-1. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
+2. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
+3. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
 
 ## Other scenarios
 
