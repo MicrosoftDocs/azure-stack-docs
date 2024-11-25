@@ -12,7 +12,7 @@ ms.date: 11/08/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage. 
+Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage.
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you easily deploy workload identity enabled Kubernetes clusters. This article describes how to perform the following tasks:
 
