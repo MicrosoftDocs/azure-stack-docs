@@ -128,7 +128,7 @@ The Azure Stack Hub 2406 update build number is **1.2406.0.8**.
 
 The Azure Stack Hub 2406 update build type is **Full**. This build contains only important security updates.
 
-The 2406 update has the following expected runtimes based on our internal testing:
+The 2408 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours

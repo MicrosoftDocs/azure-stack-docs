@@ -47,7 +47,7 @@ az extension add -n connectedk8s --upgrade
 Use the `az aksarc create` command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
@@ -58,7 +58,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 > - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
 
 > [!IMPORTANT]
-> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster}(workload-identity.md).
+> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
 
 ## Connect to the Kubernetes cluster
 

@@ -16,6 +16,8 @@ ms.date: 10/24/2024
 
 This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
+> [!IMPORTANT]
+> The latest updates may take some time to reflect on your VM images as additional validations are performed.
 
 ## Prerequisites
 

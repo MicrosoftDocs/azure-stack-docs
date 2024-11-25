@@ -267,22 +267,6 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Disable-ASRemoteDesktop
     ```
 
-### Lock Arc Resource Bridge
-
-The Arc Resource Bridge enables the Azure Arc services to manage your Azure Local instance. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge resource.
-Follow these steps to configure the resource locks:
-
-1. In the Azure portal, navigate to the resource group into which you deployed your Azure Local instance.
-1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
-1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the *Azure Stack HCI Administrator* role for the resource group.
-1. In the right pane, select **Add**.
-1. Specify a **Lock name**. Make sure to choose **Delete** as **Lock type** for the Arc Resource Bridge, and then select **OK**.
-
-> [!NOTE]
-> Remove the lock on the Arc Resource Bridge before you apply any solution updates.
-
-For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
-
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).

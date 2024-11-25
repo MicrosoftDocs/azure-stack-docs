@@ -110,7 +110,7 @@ items:
   items:
   - name: Virtual deployment
     href: deploy/deployment-virtual.md
-  - name: Jumpstart
+  - name: Azure Local jumpstart
     href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
 
 - name: Plan

@@ -75,6 +75,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
@@ -88,6 +89,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |

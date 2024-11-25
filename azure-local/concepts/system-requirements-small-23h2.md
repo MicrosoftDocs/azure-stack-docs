@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/19/2024
+ms.date: 11/25/2024
 ---
 
 # System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
@@ -33,7 +33,7 @@ The following table lists the requirements for the small hardware:
 |-----------|-------|
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
 | CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
-| Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with EEC. |
+| Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with Error-Correcting Code (ECC). |
 | Host network adapters | 1 network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intend is not required.<br> Minimum link speed must be 1 Gbit/s. |
 | BIOS | Intel VT or AMD-V must be turned on.|
 | Boot drive | A minimum size of 200 GB.|
