@@ -64,7 +64,9 @@ This is a baseline release with the following features and improvements:
 
   - **ECC memory requirements** - Beginning this release, the EE memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
-- **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
+- **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
+
+    For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
