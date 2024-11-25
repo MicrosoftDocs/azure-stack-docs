@@ -4,12 +4,12 @@ title: Nested resiliency for Storage Spaces Direct
 ms.author: jgerend
 ms.topic: article
 author: cosmosdarwin
-ms.date: 02/22/2024
+ms.date: 11/25/2024
 ---
 
 # Nested resiliency for Storage Spaces Direct
 
->Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
+>Applies to: Azure Stack HCI, versions 22H2 and later; Windows Server 2022 and Windows Server 2019
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
@@ -19,7 +19,7 @@ Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/co
 
 **Consider nested resiliency if:**
 
-- Your cluster runs one of these operating systems: Azure Stack HCI, version 20H2 or newer, Windows Server 2019 or newer; **and**
+- Your cluster runs one of these operating systems: Azure Stack HCI, version 22H2 or later, Windows Server 2019 or later; **and**
 - Your cluster has exactly two server nodes.
 
 **You can't use nested resiliency if:**
