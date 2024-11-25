@@ -16,7 +16,8 @@ ms.lastreviewed: 09/23/2022
 # Release notes for AKS engine on Azure Stack Hub
 
 ::: moniker range=">=azs-2206"
-*Applies to version v0.80.2 of the AKS engine.*
+
+> Applies to version v0.80.2 of the AKS engine.
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. This article isn't intended to document the release information for AKS engine for global Azure.
 
@@ -42,8 +43,6 @@ Sometimes unexpected factors interrupt the upgrade of the cluster. An interrupti
 ### Estimated upgrade time
 
 The estimated upgrade time is 12 to 15 minutes per VM in the cluster. For example, a 20-node cluster can take about 5 hours to upgrade.
-
-## Instructions to use AKS engine 0.70.0 and above
 
 ### Download new image and AKS engine
 
