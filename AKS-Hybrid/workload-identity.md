@@ -310,20 +310,21 @@ The following example shows how to use the Azure role-based access control (Azur
                    -replace '\$KVSecretName', $KVSecretName 
 
    # Apply the YAML configuration 
-   $yaml | kubectl --kubeconfig /path/to/aks-cluster-kubeconfig apply -f -
+   $yaml | kubectl --kubeconfig <path-to-aks-cluster-kubeconfig> apply -f -
    ```
 
 ## Delete AKS Arc cluster
-1. To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command,:
 
-   ```azurecli
-   az aksarc delete -n $aks_cluster_name -g $resource_group_name
-   ```
+To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command,:
+
+```azurecli
+az aksarc delete -n $aks_cluster_name -g $resource_group_name
+```
    
 > [!NOTE]
-> There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. We're working on a fix and will release it as soon as it's available.
+> There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
 > 
-> PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, please follow our [troubleshooting guide](delete-cluster-pdb.md).
+> PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
 
 ## Next steps
 
