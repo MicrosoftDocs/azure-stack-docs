@@ -73,7 +73,7 @@ az aksarc create -n $clusterName -g $resourceGroup --custom-location $customloca
 
 ## Update an AKS Arc cluster and enable Arc gateway
 
-Run the following command to update an AKS Arc cluster and enable the Arc gateway:
+Run the following command to update an AKS Arc cluster to enable Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
@@ -81,7 +81,7 @@ az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
 
 ## Disable Arc gateway on an AKS Arc cluster
 
-Run the following command to disable an AKS Arc cluster:
+Run the following command to disable Arc gateway:
 
 ```azurecli
 az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
