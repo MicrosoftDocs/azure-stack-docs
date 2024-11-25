@@ -69,7 +69,7 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 Now you can enable MetalLB load balancer with an IP pool of 3 IP addresses, in the same subnet as the Arc VM logical network. You can add more IP pools later if your application needs an increase. For detailed requirements, see the [MetalLB Arc extension overview](load-balancer-overview.md).
 
 ```azurecli
-az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.Kubernetes/connectedClusters/metallb-demo --addresses 172.25.28.145-172.25.28.147 --advertise-mode ARP
+az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.Kubernetes/connectedClusters/metallb-demo --addresses 10.220.32.47-10.220.32.49 --advertise-mode ARP
 ```
 
 ### LNETs considerations for AKS clusters and Arc VMs

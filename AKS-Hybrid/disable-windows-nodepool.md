@@ -87,10 +87,16 @@ az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterN
 
 ## Alternate option: disable Windows nodepool after connecting to an Azure Local physical node via Remote Desktop
 
-If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable Windows nodepool, you can disable Windows nodepool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure:
+If for some reason you're not able to use Azure CloudShell or a machine with connectivity to Azure in order to disable Windows nodepool, you can disable Windows nodepool after connecting to any one of the Azure Local physical nodes with Remote Desktop. You must first sign in to Azure.
 
-```azurecli
-az k8s-extension update --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --name $extensionName --version $extensionVersion --release-train $releaseTrain --config disable-windows-nodepool=true --yes 
+```powershell
+az login --use-device-code --tenant-id <Azure tenant ID>
+ 
+az account set -s <subscription ID>
+ 
+$res=get-archcimgmt
+ 
+az k8s-extension update --resource-group $res.HybridaksExtension.resourceGroup --cluster-name $res.ResourceBridge.name --cluster-type appliances --name $res.HybridaksExtension.name --version $res.HybridaksExtension.version --release-train  $res.HybridaksExtension.releaseTrain --config disable-windows-nodepool=true --yes 
 ```
 
 ### Validate if the Windows nodepool feature is disabled
