@@ -60,7 +60,8 @@ The following diagram illustrates the Azure Local upgrade process:
 ## Supported workloads and configurations
 
 > [!IMPORTANT]
-> Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
+> - Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
+> - Upgrading your Azure Local from version 22H2 to version 23H2, is only supported for regions where Azure Local, version 23H2 is available.
 
 Azure Local upgrade supports the following services and workloads:
 
