@@ -50,11 +50,10 @@ The prerequisites for the Azure portal are the same as those for the Azure CLI. 
 
 # [Terraform template](#tab/terraformtemplate)
 
-- Make sure Terraform is installed and up to date.
-
-  - To verify your version of Terraform, run the `terraform -v` command from the command prompt.
-
-- Make sure Git is installed and up to date.
+- Make sure Terraform is installed and up to date on your machine.
+  - To verify your version of Terraform, run the `terraform -v` command.
+- Make sure Git is installed and up to date on your machine.
+  - To verify your version of Git, run the `git --version` command.
   
 ---
 
