@@ -45,7 +45,7 @@ This article describes how to enable and use Microsoft Entra ID authentication f
 1. Create an AKS Arc cluster and enable admin access for your Microsoft Entra group using the `--aad-admin-group-object-ids` parameter in the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command:
 
     ```azurecli
-    az aksarc create -n $aks_cluster_name -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --control-plane-ip $controlplaneIP
+    az aksarc create -n $aks_cluster_name -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys
     ```
 
 ### Use an existing cluster with Microsoft Entra authentication

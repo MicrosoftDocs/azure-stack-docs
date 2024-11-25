@@ -24,7 +24,7 @@
       items:
       - name: Networking concepts and requirements
         href: aks-hci-network-system-requirements.md
-      - name: IP address planning for Kubernetes
+      - name: IP address planning
         href: aks-hci-ip-address-planning.md
       - name: Load balancer
         href: load-balancer-overview.md      
@@ -56,14 +56,20 @@
         href: create-clusters-bicep.md
       - name: Terraform
         href: create-clusters-terraform.md
-      - name: Deploy to Azure using a quickstart template
+      - name: Quickstart template
         href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
     - name: Networking
       items:
-      - name: Create logical networks for Kubernetes clusters
+      - name: Create logical networks
         href: aks-networks.md
+      - name: Simplify outbound connectivity
+        href: arc-gateway-aks-arc.md
+      - name: Deploy in environments with low internet bandwidth 
+        items: 
+        - name: Disable Windows nodepool
+          href: disable-windows-nodepool.md        
       - name: Use MetalLB load balancer
         items:
         - name: Azure CLI
@@ -86,6 +92,10 @@
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity
         href: workload-identity.md
+      - name: High availability
+        items: 
+        - name: Use availability sets
+          href: availability-sets.md        
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -106,15 +116,13 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-      - name: Use availability sets
-        href: availability-sets.md
-    - name: Scale a Kubernetes cluster
+    - name: Use auto-scaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Integrate Azure Container Registry with a Kubernetes cluster
+    - name: Integrate Azure Container Registry
       href: deploy-container-registry.md
     - name: Monitoring and logging
       items:    
@@ -134,22 +142,20 @@
             href: get-on-demand-logs.md
   - name: Troubleshooting
     items:
-    - name: Known issues
-      href: aks-known-issues.md
-    - name: Troubleshoot
+    - name: Troubleshoot & known issues
       href: aks-troubleshoot.md
+    - name: K8sVersionValidation error
+      href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: No K8s versions or VM sizes listed for cluster creation
-      href: cluster-k8s-version.md
-    - name: Deleted cluster still visible in portal
+    - name: Can't see VM SKUs on Azure portal
+      href: tsg-check-vm-sku.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
       href: deleted-cluster-visible.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
       href: delete-cluster-pdb.md
-    - name: Kubernetes version x.x.x is not available
-      href: webhook-denied-request.md
   - name: Reference
     items:
     - name: Azure CLI
