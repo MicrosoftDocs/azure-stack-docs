@@ -58,13 +58,8 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 # [Terraform template](#tab/terraformtemplate)
 
-- Access to an Azure subscription with the appropriate Role Based Access Control (RBAC) role and permissions assigned. For more information, see [RBAC roles for Azure Local Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
-- Access to a resource group where you want to provision the VM.
-- Access to one or more VM images on your Azure Local. You can use one of the following procedures to create these VM images:
-    - [VM image using Azure Marketplace images](../manage/virtual-machine-image-azure-marketplace.md).
-    - [VM image using an image in Azure Storage account](../manage/virtual-machine-image-storage-account.md).
-    - [VM image using an image in a local storage](../manage/virtual-machine-image-local-share.md).
-- A custom location for your Azure Local that you can use to provision VMs. The custom location shows up in the **Overview** page for Azure Local.
+[!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
+
 - Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - Make sure Terraform is installed and up to date.
     - To verify your Terraform version, run the `terraform-v` command.
