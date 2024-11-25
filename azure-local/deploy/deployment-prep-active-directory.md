@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 11/25/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -24,7 +24,7 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, enforced GPO's aren't blocked. Ensure that any applicable GPO, which are enforced, are also blocked using other methods, for example, using [WMI Filters](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648) or [security groups](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012).
+> - When group policy inheritance is blocked at the OU level, enforced GPO's aren't blocked. Ensure that any applicable GPO, which are enforced, are also blocked using other methods, for example, using [WMI Filters](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648).
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
