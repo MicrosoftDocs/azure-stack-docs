@@ -48,6 +48,10 @@ This is a baseline release with the following features and improvements:
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
+    - Download data disks - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
+  
+        For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
+
 - **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
 
   - **Security posture following Azure Local, version 22H2 to version 23H2 upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2 to version 23H2.
