@@ -1,6 +1,6 @@
 ---
-title: Scale requirements for AKS on Azure Stack HCI
-description: Learn about scale requirements for AKS on Azure Stack HCI.
+title: Scale requirements for AKS on Azure Local
+description: Learn about scale requirements for AKS on Azure Local.
 ms.topic: conceptual
 ms.date: 03/26/2024
 author: sethmanheim
@@ -10,23 +10,23 @@ ms.lastreviewed: 03/26/2024
 
 ---
 
-# Scale requirements for AKS on Azure Stack HCI
+# Scale requirements for AKS on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes the maximum and minimum supported scale count for AKS on Azure Stack HCI clusters and node pools.
+This article describes the maximum and minimum supported scale count for AKS on Azure Local clusters and node pools.
 
-## Support count for AKS on HCI
+## Support count for AKS on Azure Local
 
 | Scale item   | Minimum  | Maximum |
 |--------------|----------|---------|
-| Number of physical nodes in an Azure Stack HCI cluster  | 1  | 16 |
+| Number of physical nodes in an Azure Local cluster  | 1  | 16 |
 | Count of control plane nodes (Allowed values are 1, 3, and 5)  | 1 | 5 |
 | Number of nodes in default node pool created during cluster create  | 1 | 200 |
 | Number of node pools in an AKS cluster  | 1  | 16  |
 | Number of nodes in a node pool (empty node pools not supported)  | 1 | 64 |
 | Total number of nodes in an AKS cluster across nodepools | 1 | 200 |
-| Number of AKS clusters per Azure Stack HCI cluster | 0| 32 |
+| Number of AKS clusters per Azure Local cluster | 0| 32 |
 
 ## Concurrency for AKS enabled by Arc
 
@@ -68,5 +68,5 @@ For more worker node sizes with GPU support, see [Use GPUs](deploy-gpu-node-pool
 
 ## Next steps
 
-- [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-whats-new-23h2.md)
+- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](aks-whats-new-23h2.md)

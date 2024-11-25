@@ -15,7 +15,7 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It's important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you can't perform day-2 operations. For example, you can't create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
+In AKS on Azure Local or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It's important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you can't perform day-2 operations. For example, you can't create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
 
 The management cluster is a VM that's tracked in Windows failover clustering. It's also resilient to host-level disruptions. In other words, during a host machine failure, Windows failover clustering restarts the VM on a healthy host machine. This article provides guidance on how to perform the following tasks:
 
@@ -40,7 +40,7 @@ Prepare the cold standby in advance of a disaster by creating a management clust
   - For SMB: [Use Container Storage Interface (CSI) file drivers](/azure/aks/hybrid/container-storage-interface-files).
   - For local storage: [Use Container Storage Interface (CSI) disk drivers](/azure/aks/hybrid/container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk).
 - Workload cluster backups are available: [Back up, restore workload clusters using Velero](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
-- An AKS management cluster is installed on new hardware, or you can install a new management cluster on new hardware using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Stack HCI clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
+- An AKS management cluster is installed on new hardware, or you can install a new management cluster on new hardware using steps 1-5 of this article: [Use PowerShell to set up Kubernetes on Azure Local clusters](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
 - An empty workload cluster is required to restore the backups. See [Back up, restore workload clusters using Velero](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-restore-a-workload-cluster).
 
 ## Recover from management cluster corruption

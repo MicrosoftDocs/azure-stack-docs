@@ -10,7 +10,7 @@ metadata:
 
 title: Fix known issues and errors when configuring a network in AKS Arc
 summary: |
-  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
+  **Applies to: AKS on Azure Local, AKS on Windows Server**
   Use this topic to help you troubleshoot and resolve networking-related issues with AKS Arc.
   
 sections:
@@ -213,7 +213,7 @@ sections:
           The workload cluster is not found 
 
         answer: | 
-          The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster because the API server will be assigned the same IP address in both clusters, resulting in a conflict.
+          The workload cluster may not be found if the IP address pools of two AKS on Azure Local deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster because the API server will be assigned the same IP address in both clusters, resulting in a conflict.
           
           The error message you receive will look similar to the example shown below.
           
@@ -283,10 +283,10 @@ sections:
              ```
           
       - question: | 
-          When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
+          When you deploy AKS on Azure Local with a misconfigured network, deployment timed out at various points
 
         answer: | 
-          When you deploy AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
+          When you deploy AKS on Azure Local, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
           
           For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
           
@@ -303,7 +303,7 @@ sections:
           { Get-DownloadSdkRelease -Name "mocstack-stable"}
           ```
           
-          This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
+          This indicates that the physical Azure Local node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
           
           To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
           

@@ -16,7 +16,7 @@ ms.date: 07/26/2024
 
 # Control access using Microsoft Entra ID and Kubernetes RBAC
 
-Applies to: AKS on Azure Stack HCI 23H2
+Applies to: AKS on Azure Local, version 23H2
 
 You can configure Azure Kubernetes Service (AKS) to use Microsoft Entra ID for user authentication. In this configuration, you sign in to a Kubernetes cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 

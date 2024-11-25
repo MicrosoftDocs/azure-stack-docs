@@ -29,7 +29,7 @@ AKS Arc uses a set of predefined configuration options to deploy Kubernetes clus
 
 ### Arc Resource Bridge
 
-The Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Once connected, you can configure the container orchestration platform in AKS on a vSphere environment, which is the VMware virtualization platform. The two main components of [vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) are [ESXi](https://www.vmware.com/products/esxi-and-esx.html) and [vCenter](https://www.vmware.com/products/vcenter.html).
+The Arc Resource Bridge connects a private cloud (for example, Azure Local, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Once connected, you can configure the container orchestration platform in AKS on a vSphere environment, which is the VMware virtualization platform. The two main components of [vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) are [ESXi](https://www.vmware.com/products/esxi-and-esx.html) and [vCenter](https://www.vmware.com/products/vcenter.html).
 
 Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure. Arc Resource Bridge includes the following core AKS Arc components:
 
