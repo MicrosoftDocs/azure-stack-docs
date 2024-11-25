@@ -47,7 +47,7 @@ The following table lists the current supported Kubernetes released versions on 
 | 1.30 | TBD | Upcoming | TBD |
 | 1.29 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408) | Generally available | TBD |
 | 1.28 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405) | Generally available | TBD |
-| 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | Generally available | 2502 release |
+| 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | Generally available | 2411 release |
 | 1.26 | [2405](aks-whats-new-23h2.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
 
 ## Kubernetes version support policy
