@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/19/2024
+ms.date: 11/25/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -48,7 +48,7 @@ This is a baseline release with the following features and improvements:
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
-    - Download data disks - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
+    - **Download data disks** - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
   
         For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
 
@@ -61,7 +61,11 @@ This is a baseline release with the following features and improvements:
   - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
-    
+
+  - **ECC memory requirements** - Beginning this release, the EE memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
+
+- **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
+
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## [2408 releases](#tab/2408releases)
