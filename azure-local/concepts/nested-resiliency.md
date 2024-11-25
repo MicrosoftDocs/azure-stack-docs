@@ -19,7 +19,7 @@ Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/co
 
 **Consider nested resiliency if:**
 
-- Your cluster runs one of these operating systems: Azure Stack HCI, version 21H2, Azure Stack HCI, version 20H2, Windows Server 2022, or Windows Server 2019; and
+- Your cluster runs one of these operating systems: Azure Stack HCI, version 20H2 or newer, Windows Server 2019 or newer; **and**
 - Your cluster has exactly two server nodes.
 
 **You can't use nested resiliency if:**
