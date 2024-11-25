@@ -92,8 +92,8 @@ az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
 To audit your gateway traffic, view the gateway router logs:
 
 1. Run `kubectl get pods -n azure-arc`.
-2. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
-3. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
+1. Identify the Arc Proxy pod (its name will begin with `arc-proxy-`).
+1. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
 
 ## Other scenarios
 
