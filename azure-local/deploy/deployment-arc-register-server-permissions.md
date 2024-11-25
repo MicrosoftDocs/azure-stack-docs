@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 11/25/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -112,7 +112,8 @@ Before you begin, make sure you've completed the following prerequisites:
     #Define the resource group where you want to register your machine as Arc device
     $RG = "YourResourceGroupName"
 
-    #Define the region you will use to register your machine as Arc device
+    #Define the region to use to register your server as Arc device
+    #Do not use spaces or capital letters when defining region
     $Region = "eastus"
     
     #Define the tenant you will use to register your machine as Arc device
