@@ -1,6 +1,6 @@
 ---
 title: Use the autoscaler profile to configure cluster autoscaling in AKS enabled by Arc
-description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service (AKS) on Azure Local.
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm 

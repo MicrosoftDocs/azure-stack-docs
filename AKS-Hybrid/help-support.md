@@ -20,10 +20,10 @@ If you encounter an issue with AKS enabled by Azure Arc or AKS Edge Essentials, 
 
 Select the product you're using to see the relevant instructions on opening a support request.
 
-# [AKS on Azure Stack HCI](#tab/akshci)
+# [AKS on Azure Local](#tab/akshci)
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Stack HCI. Select the subscription to open its dashboard.
+1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Local. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
     :::image type="content" source="media/help-support/new-support-request-sidebar.png" alt-text="Screenshot of the Azure portal Help and Support sidebar." lightbox="media/help-support/new-support-request-sidebar.png":::
@@ -34,7 +34,7 @@ Select the product you're using to see the relevant instructions on opening a su
 
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown.
 
-1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Stack HCI (AKS-HCI)** service in the **Compute** category.
+1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Local (AKS-HCI)** service in the **Compute** category.
 
     :::image type="content" source="media/help-support/service-type.png" alt-text="Screenshot showing service selection." lightbox="media/help-support/service-type.png":::
 

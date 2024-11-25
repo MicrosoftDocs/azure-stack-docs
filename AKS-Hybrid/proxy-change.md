@@ -1,6 +1,6 @@
 ---
 title: Update noProxy settings, certificates in Azure Kubernetes Service
-description: Learn how to update proxy settings and certificates in AKS on Azure Stack HCI or AKS on Windows Server.
+description: Learn how to update proxy settings and certificates in AKS on Azure Local or AKS on Windows Server.
 ms.topic: how-to
 ms.date: 07/12/2024
 ms.author: sethm

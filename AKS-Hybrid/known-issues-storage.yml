@@ -19,7 +19,7 @@ sections:
           Configuring persistent volume claims results in the error: "Unable to initialize agent. Error: mkdir /var/log/agent: permission denied"
 
         answer: | 
-          This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class doesn't specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
+          This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Local since the default storage class doesn't specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
           
           To resolve this issue, [define a custom storage class](container-storage-interface-disks.md) that you can use to provision PVCs.
           
@@ -71,9 +71,9 @@ sections:
           
           ### Mitigation
           
-          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your AKS-HCI host.
+          The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your Azure Local host.
           
-          For more information about AKS Arc releases, and all the latest AKS-HCI news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
+          For more information about AKS Arc releases, and all the latest AKS on Azure Local news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
           
           If upgrading is not an option, you can turn off the **mdsd** service. For each Mariner node:
           

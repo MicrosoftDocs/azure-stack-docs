@@ -47,7 +47,7 @@ Create a new Azure Kubernetes Service on an AKS hybrid cluster.
 
 ## Examples
 
-### New AKS on Azure Stack HCI and Windows Server cluster with required parameter
+### New AKS on Azure Local and Windows Server cluster with required parameter
 
 ```powershell
 New-AksHciCluster -name mycluster
@@ -68,7 +68,7 @@ ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
 
-### New AKS-HCI cluster with new parameter set's default values
+### New AKS on Azure Local cluster with new parameter set's default values
 
 ```powershell
 PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1
@@ -89,67 +89,67 @@ Name                  : mycluster
 
 This command deploys a cluster with its default values. The deployed cluster is the same cluster as the second example command.
 
-### New AKS-HCI cluster with a Linux node pool
+### New AKS on Azure Local cluster with a Linux node pool
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
 ```
 
-### New AKS-HCI cluster with a Windows node pool
+### New AKS on Azure Local cluster with a Windows node pool
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType Windows -osSku Windows2022
 ```
 
-### New AKS-HCI cluster with a Linux node pool and taints
+### New AKS on Azure Local cluster with a Linux node pool and taints
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -taints sku=gpu:NoSchedule
 ```
 
-### New AKS-HCI cluster with a Linux node pool and max pod count
+### New AKS on Azure Local cluster with a Linux node pool and max pod count
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -nodeMaxPodCount 100
 ```
 
-### New AKS-HCI cluster with custom VM sizes
+### New AKS on Azure Local cluster with custom VM sizes
 
 ```powershell
 New-AksHciCluster -name mycluster -controlPlaneVmSize Standard_D4s_v3 -loadBalancerVmSize Standard_A4_v2 -nodePoolName nodepool1 -nodeCount 3 -nodeVmSize Standard_D8s_v3
 ```
 
-### New AKS-HCI cluster with highly available control plane nodes
+### New AKS on Azure Local cluster with highly available control plane nodes
 
 ```powershell
 New-AksHciCluster -name mycluster -controlPlaneNodeCount 3 -nodePoolName nodepool1 -nodeCount 3
 ```
 
-### New AKS-HCI cluster with monitoring enabled
+### New AKS on Azure Local cluster with monitoring enabled
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableMonitoring
 ```
 
-### New AKS-HCI cluster with AD auth enabled
+### New AKS on Azure Local cluster with AD auth enabled
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAdAuth
 ```
 
-### New AKS-HCI cluster with a specific Kubernetes version
+### New AKS on Azure Local cluster with a specific Kubernetes version
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
 ```
 
-### New AKS-HCI cluster with autoscaler enabled and the default autoscaler configuration profile
+### New AKS on Azure Local cluster with autoscaler enabled and the default autoscaler configuration profile
 
 ```powershell
 New-AksHciCluster -name mycluster -enableAutoScaler $true
 ```
 
-### New AKS-HCI cluster with autoscaler enabled and a named autoscaler configuration profile
+### New AKS on Azure Local cluster with autoscaler enabled and a named autoscaler configuration profile
 
 ```powershell
 New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
