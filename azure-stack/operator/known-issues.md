@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/07/2024
+ms.date: 11/25/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -43,7 +43,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 
