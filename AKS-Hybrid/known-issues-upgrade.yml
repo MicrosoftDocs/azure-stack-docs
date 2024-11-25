@@ -10,7 +10,7 @@ metadata:
 
 title: Resolve issues when upgrading AKS Arc
 summary: |
-  This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service (AKS) Arc deployments to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
+  This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service (AKS) Arc deployments to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Local](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
@@ -107,7 +107,7 @@ sections:
                 + FullyQua1ifiedErrorId : NoProcess FoundForGivenName , Microsoft.PowerShell.Commands.Getprocesscommand
             ```
           
-          1. Repeat steps 1, 2, and 3 at each node of the HCI cluster that has this issue.
+          1. Repeat steps 1, 2, and 3 at each node of the Azure Local cluster that has this issue.
           
           1. After confirming the wssdagent is not running, start the cloudagent if it isn't running.
             ```powershell
@@ -132,7 +132,7 @@ sections:
           MOC agents don't start after an upgrade failure
 
         answer: | 
-          When AKS-HCI fails to upgrade from the May release to the June release, the expectation is that AKS-HCI should revert to the May release and continue to function. But it leaves MOC agents in a stopped state, and manual attempts to start the agent don't activate them.
+          When AKS on Azure Local fails to upgrade from the May release to the June release, the expectation is that AKS on Azure Local should revert to the May release and continue to function. But it leaves MOC agents in a stopped state, and manual attempts to start the agent don't activate them.
           
           > [!NOTE]  
           > This issue is only relevant when upgrading from the May release to the June release.
@@ -140,11 +140,11 @@ sections:
           ### Steps to reproduce
           
           1. Install AKS-HCI PowerShell module version 1.1.36.
-          2. Upgrade AKS-HCI. If the upgrade fails, AKS-HCI falls back to May, but MOC agents are down.
+          2. Upgrade AKS on Azure Local. If the upgrade fails, AKS on Azure Local falls back to May, but MOC agents are down.
           
           ### Expected behavior
           
-          If the Aks-Hci upgrade fails, the expectation is that AksHci reverts to the previous release and continues to function without any issues.
+          If the AKS on Azure Local upgrade fails, the expectation is that AKS on Azure Local reverts to the previous release and continues to function without any issues.
           
           ### Symptoms
           
@@ -204,11 +204,11 @@ sections:
           > [!NOTE]
           > This issue is fixed in the May 2022 release and later.
           
-          If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This loss of vNICs causes the VMs to lose network connectivity, and the cluster falls into a bad state.
+          If Azure Local nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This loss of vNICs causes the VMs to lose network connectivity, and the cluster falls into a bad state.
           
           **To Reproduce**
           
-          1. Reboot one Azure Stack HCI node.
+          1. Reboot one Azure Local node.
           2. Wait for the node to complete the reboot. The node needs to be marked `Up` in the failover cluster.
           3. Reboot the other nodes.
           4. Repeat.
@@ -281,26 +281,26 @@ sections:
           
           `Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
           
-          This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center doesn't have support to install modules in a proxy environment. 
+          This error message typically occurs when AKS on Azure Local is deployed in an environment that has a proxy configured. Currently, Windows Admin Center doesn't have support to install modules in a proxy environment. 
           
-          To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+          To resolve this error, set up AKS on Azure Local [using the proxy PowerShell command](set-proxy-settings.md).
       - question: | 
           When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
         answer: | 
           When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and be unable to complete. This issue can occur because the policy agent is configured to prevent pulling container images from private registries.
           
-          To resolve this issue, if you upgrade clusters deployed with an OPA, make sure that your policies allow for pulling images from Azure Container Registry. For an AKS on Azure Stack HCI upgrade, you should add the following endpoint in your policy's list: _ecpacr.azurecr.io_.
+          To resolve this issue, if you upgrade clusters deployed with an OPA, make sure that your policies allow for pulling images from Azure Container Registry. For an AKS on Azure Local upgrade, you should add the following endpoint in your policy's list: _ecpacr.azurecr.io_.
       - question: | 
-          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity
+          Update of host OS HCI to HCIv2 breaks AKS on Azure Local installation: OutOfCapacity
 
         answer: | 
-          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes fail.
+          Running an OS update on a host with an AKS on Azure Local deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes fail.
           
           > [!NOTE]
           > This issue only happens occasionally.
           
-          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2, an AKS operation such as `New-AksHciCluster` may fail. The error message states that the MOC nodes are **OutOfCapacity**. For example:
+          To reproduce: When you update a cluster with an existing AKS deployment from HCI to HCIv2 OS, an AKS operation such as `New-AksHciCluster` may fail. The error message states that the MOC nodes are **OutOfCapacity**. For example:
           
           ```PowerShell
           System.Collections.Hashtable.generic_non_zero1 [Error: failed to create nic test-load-balancer-whceb-nic for machinetest-load-balancer-whceb: unable to create VM network interface: failed to create network interface test-load-balancer-whceb-nic in resource group clustergroup-test: rpc error: code = Unknown desc = Location 'MocLocation' doesn't expose any nodes to create VNIC 'test-load-balancer-whceb-nic' on: OutOfCapacity]
@@ -345,12 +345,12 @@ sections:
           
           After running this ssh command, the remaining nodes with the old Kubernetes version should be deleted and the upgrade will proceed.
       - question: | 
-          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
+          Update of host OS HCI to HCIv2 breaks AKS on Azure Local installation: Cannot reach management cluster
 
         answer: | 
-          Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, which renders the management cluster's API server unreachable and fails day two operations. The `kube-vip` pod cannot apply the VIP configuration to the interface, and as a result the VIP is unreachable.
+          Running an OS update on a host with an AKS on Azure Local deployment can cause the deployment to enter a bad state, which renders the management cluster's API server unreachable and fails day two operations. The `kube-vip` pod cannot apply the VIP configuration to the interface, and as a result the VIP is unreachable.
           
-          To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster fails with errors such as:
+          To reproduce: Update a cluster with an existing AKS HCI OS deployment from HCI to HCIv2. Then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster fails with errors such as:
           
           ```powershell
           PS C:\Users\wolfpack> Get-AksHciCluster
@@ -420,10 +420,10 @@ sections:
                 kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
                 ```
       - question: | 
-          When upgrading AKS on Azure Stack HCI from the February 2022 Update to April 2022 Update, the CSI deployment disappears and causes the upgrade to stall
+          When upgrading AKS on Azure Local from the February 2022 Update to April 2022 Update, the CSI deployment disappears and causes the upgrade to stall
 
         answer: | 
-          When you upgrade clusters from the AKS on Azure Stack HCI February 2022 Update to the April 2022 Update, the update may be stuck upgrading for an indefinite period of time. There may be be pods stuck in either the `Terminating` or `CrashLoopBackoff` state.
+          When you upgrade clusters from the AKS on Azure Local February 2022 Update to the April 2022 Update, the update may be stuck upgrading for an indefinite period of time. There may be be pods stuck in either the `Terminating` or `CrashLoopBackoff` state.
           
           You may see that some of the AksHci CSI addon resources are missing. These resources pods deployed using the `csi-akshcicsi-controller` or from the `csi-akshcicsi-node` daemonset.
           
@@ -448,7 +448,7 @@ sections:
           When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
         answer: | 
-          The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
+          The June 1.0.1.10628 build of AKS on Azure Local creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
           
           If you experience this issue, run the following steps:
           

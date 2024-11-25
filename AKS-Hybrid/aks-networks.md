@@ -1,29 +1,29 @@
 ---
-title: Create logical networks for Kubernetes clusters on Azure Stack HCI 23H2
+title: Create logical networks for Kubernetes clusters on Azure Local, version 23H2
 description: Learn how to create Arc-enabled logical networks for AKS.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 04/02/2024
+ms.date: 11/19/2024
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
 ---
 
-# Create logical networks for Kubernetes clusters on Azure Stack HCI 23H2
+# Create logical networks for Kubernetes clusters on Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-After you install and configure Azure Stack HCI 23H2, you must create Arc VM logical networks. AKS on Azure Stack HCI uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
+After you install and configure Azure Local, version 23H2, you must create Arc VM logical networks. AKS on Azure Local uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
 
 ## Before you begin
 
 Before you begin, make sure you have the following prerequisites:
 
-- Install and configure Azure Stack HCI 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
-- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md).
-- Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use to associate with the logical network you will create.
+- Install and configure Azure Local, version 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
+- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md).
+- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
 
-Run the following command to get the name of the external VM switch on your Azure Stack HCI cluster:
+Run the following command to get the name of the external VM switch on your Azure Local cluster:
 
 ```powershell
 Get-VmSwitch -SwitchType External
@@ -36,9 +36,9 @@ Get-VmSwitch -SwitchType External
 ```
 
 ```output
-Name                               SwitchType       NetAdapterInterfaceDescription
-----                               ----------       ----------------------------
-ConvergedSwitch(management_compute_storage) External        Teamed-Interface
+Name                                           SwitchType      NetAdapterInterfaceDescription
+----                                           ----------      ----------------------------
+ConvergedSwitch(management_compute_storage)    External        Teamed-Interface
 ```
 
 ## Create the logical network
@@ -53,10 +53,10 @@ For static IP, the required parameters are as follows:
 
 | Required parameters | Description |
 |------------|-------------|
-| `--name`  | Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [rules for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking). You can't rename a logical network after it's created. |
+| `--name`  | Name for the logical network that you create for your Azure Local cluster. Make sure to provide a name that follows the [rules for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking). You can't rename a logical network after it's created. |
 | `--resource-group` | Name of the resource group where you create the logical network. |
-| `--subscription` | Name or ID of the subscription where your Azure Stack HCI is deployed. |
-| `--custom-location` | Provide the custom location associated with your Azure Stack HCI cluster where you're creating the logical network. |
+| `--subscription` | Name or ID of the subscription where your Azure Local is deployed. |
+| `--custom-location` | Provide the custom location associated with your Azure Local cluster where you're creating the logical network. |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | 
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | 
@@ -64,6 +64,7 @@ For static IP, the required parameters are as follows:
 | `--ip-allocation-method`   | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | 
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
+
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```

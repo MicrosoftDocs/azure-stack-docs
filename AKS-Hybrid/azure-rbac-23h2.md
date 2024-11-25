@@ -16,7 +16,7 @@ ms.lastreviewed: 07/26/2024
 
 # Use Azure role-based access control (RBAC) for Kubernetes authorization
 
-Applies to: AKS on Azure Stack HCI 23H2
+Applies to: AKS on Azure Local, version 23H2
 
 Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the **kubectl** tool based on the given permissions. Azure CLI provides an easy way to get the access credentials and kubeconfig configuration file to connect to your AKS clusters using **kubectl**.
 
@@ -30,7 +30,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 
 Before you begin, make sure you have the following prerequisites:
 
-- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
+- AKS on Azure Local, version 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - Install the latest version of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
   ```azurecli
@@ -62,7 +62,7 @@ Before you begin, make sure you have the following prerequisites:
 You can create an Azure RBAC-enabled Kubernetes cluster for authorization and a Microsoft Entra ID for authentication.
 
 ```azurecli
-az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
+az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --enable-azure-rbac
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
