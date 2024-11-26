@@ -55,7 +55,7 @@ Before you begin, make sure you've completed the following prerequisites:
 ## Register machines with Azure Arc
 
 > [!IMPORTANT]
-> Run these steps on every Azure Local machine that you intend to cluster.
+> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
 <!-- 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery. **This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
 
