@@ -48,6 +48,8 @@ To create a GPU nodepool using the Azure portal, follow these steps:
 1. Sign in to the Azure portal and find your AKS Arc cluster.
 1. Under **Settings** and **Node pools**, select **Add**. Note that during the preview, we only support Linux. Fill in the other required fields and create the nodepool resource.
 
+   :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of nodepools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
+
 To create a GPU nodepool using the Azure CLI, run the following command:
 
 ```azurecli
@@ -58,11 +60,15 @@ az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --
 
 After the nodepool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
 
+:::image type="content" source="media/deploy-ai-model/output-get-nodes.png" alt-text="Screenshot of output of get nodes command." lightbox="media/deploy-ai-model/output-get-nodes.png":::
+
 You should also ensure that the node has allocatable GPU cores:
 
 ```bash
 kubectl get node moc-l1i9uh0ksne -o yaml | grep -A 10 "allocatable:"
 ```
+
+:::image type="content" source="media/deploy-ai-model/allocatable-nodes.png" alt-text="Screenshot of allocatable GPU cores." lightbox="media/deploy-ai-model/allocatable-nodes.png":::
 
 ## Deploy KAITO operator from GitHub
 
@@ -85,10 +91,42 @@ To deploy the AI model, follow these steps:
    - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. The `instanceType` value is used by the **NodeController** for GPU auto-provisioning, which is not currently supported on AKS Arc.
    - Make sure to replace the other placeholders with your own information.
 
+   ```yaml
+   apiVersion: kaito.sh/v1alpha1
+   kind: Workspace
+   metadata:
+     name: <Your_Deployment_Name>
+   resource:
+     labelSelector:
+       matchLabels:
+         {Your_Node_Label}: {Your_Node_Label_Value}
+     preferredNodes:
+     - {Your_Node_Name}
+   inference:
+     preset:
+       name: {Your_Preset_Name}
+   ```
+
 1. Label your GPU node **Kubectl label node samplenode YourNodeLabel=YourNodeLabelValue**, then apply the YAML file:
 
    ```bash
    kubectl apply -f sampleyamlfile.yaml
+   ```
+
+   ```yaml
+   apiVersion: kaito.sh/v1alpha1
+   kind: Workspace
+   metadata:
+     name: workspace-falcon-7b
+   resource:
+     labelSelector:
+       matchLabels:
+         app: llm-inference
+     preferredNodes:
+     - moc-le4aoguwyd9
+   inference:
+     preset:
+       name: "falcon-7b-instruct"
    ```
 
 ## Validate the model deployment
@@ -96,6 +134,9 @@ To deploy the AI model, follow these steps:
 To validate the model deployment, follow these steps:
 
 1. Validate the workspace using the `kubectl get workspace` command. Also make sure that both the `ResourceReady` and `InferenceReady` fields are set to **True** before testing with the sample prompt.
+
+   :::image type="content" source="media/deploy-ai-model/validate.png" alt-text="Screenshot of command line showing get workspace command." lightbox="media/deploy-ai-model/validate.png":::
+
 1. Test the model with the following sample prompt:
 
    ```bash
@@ -103,6 +144,8 @@ To validate the model deployment, follow these steps:
 
    kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"<sample_prompt>\"}"
    ```
+
+   :::image type="content" source="media/deploy-ai-model/sample-prompt.png" alt-text="Screenshot of command line showing sample prompt." lightbox="media/deploy-ai-model/sample-prompt.png":::
 
 ## Troubleshooting
 
