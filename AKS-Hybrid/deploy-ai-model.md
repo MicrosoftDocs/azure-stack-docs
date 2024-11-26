@@ -31,7 +31,7 @@ Before you begin, make sure you have the following prerequisites:
 1. The following details from your infrastructure administrator:
 
    - An AKS Arc cluster that's up and running.
-   - We recommend using a Linux machine for this feature.
+   - We recommend using a computer running Linux for this feature.
    - Your local **kubectl** environment configured to point to your AKS Arc cluster.
      - Run `az aksarc get-credentials --resource-group <ResourceGroupName> --name <ClusterName>  --admin` to download the **kubeconfig** file.
 
