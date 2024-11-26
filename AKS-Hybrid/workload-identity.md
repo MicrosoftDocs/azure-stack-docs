@@ -22,12 +22,13 @@ Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes serv
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
+For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity).
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
 > [!NOTE]
-> In public preview, AKS on Azure Stack HCI supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
+> In public preview, AKS on Azure Local, version 23H2 supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
 
 ## Prerequisites
 
@@ -96,7 +97,7 @@ The following example output shows the successful creation of a resource group:
 
 To create an AKS Arc cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
 
-- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
+- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local, version 23H2 cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
 - `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
 Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your **entra-admin-group-object-ids** and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
@@ -309,8 +310,21 @@ The following example shows how to use the Azure role-based access control (Azur
                    -replace '\$KVSecretName', $KVSecretName 
 
    # Apply the YAML configuration 
-   $yaml | kubectl --kubeconfig $aks_cluster_name apply -f -
+   $yaml | kubectl --kubeconfig <path-to-aks-cluster-kubeconfig> apply -f -
    ```
+
+## Delete AKS Arc cluster
+
+To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command,:
+
+```azurecli
+az aksarc delete -n $aks_cluster_name -g $resource_group_name
+```
+   
+> [!NOTE]
+> There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
+> 
+> PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
 
 ## Next steps
 
