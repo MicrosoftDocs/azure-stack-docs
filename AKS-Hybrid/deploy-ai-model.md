@@ -60,7 +60,12 @@ az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --
 
 After the nodepool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
 
-:::image type="content" source="media/deploy-ai-model/output-get-nodes.png" alt-text="Screenshot of output of get nodes command." lightbox="media/deploy-ai-model/output-get-nodes.png":::
+```output
+NAME            STATUS   ROLES                  AGE   VERSION
+moc-l09jexqpg2k Ready    <none>                 31d   v1.29.4
+moc-l1i9uh0ksne Ready    <none>                 26s   v1.29.4
+moc-lkp2603zcvg Ready    control-plane          31d   v1.29.4
+```
 
 You should also ensure that the node has allocatable GPU cores:
 
@@ -68,7 +73,19 @@ You should also ensure that the node has allocatable GPU cores:
 kubectl get node moc-l1i9uh0ksne -o yaml | grep -A 10 "allocatable:"
 ```
 
-:::image type="content" source="media/deploy-ai-model/allocatable-nodes.png" alt-text="Screenshot of allocatable GPU cores." lightbox="media/deploy-ai-model/allocatable-nodes.png":::
+```output
+allocatable:
+  cpu: 15740m
+  ephemeral-storage: "95026644016"
+  hugepages-1Gi: "0"
+  hugepages-2Mi: "0"
+  memory: 59730884Ki
+  nvidia.com/gpu: "2"
+  pods: "110"
+capacity:
+  cpu: "16"
+  ephemeral-storage: 103110508Ki
+```
 
 ## Deploy KAITO operator from GitHub
 
@@ -135,7 +152,10 @@ To validate the model deployment, follow these steps:
 
 1. Validate the workspace using the `kubectl get workspace` command. Also make sure that both the `ResourceReady` and `InferenceReady` fields are set to **True** before testing with the sample prompt.
 
-   :::image type="content" source="media/deploy-ai-model/validate.png" alt-text="Screenshot of command line showing get workspace command." lightbox="media/deploy-ai-model/validate.png":::
+   ```output
+   NAME                 INSTANCE               RESOURCEREADY   INFERENCEREADY   JOBSTARTED   WORKSPACESUCCEEDED   AGE
+   workspace-falcon-7b  Standard_NC12s_v3      True            True                          True                 18h
+   ```
 
 1. Test the model with the following sample prompt:
 
@@ -145,7 +165,20 @@ To validate the model deployment, follow these steps:
    kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"<sample_prompt>\"}"
    ```
 
-   :::image type="content" source="media/deploy-ai-model/sample-prompt.png" alt-text="Screenshot of command line showing sample prompt." lightbox="media/deploy-ai-model/sample-prompt.png":::
+   ```bash
+   usera@quke-desktop: $ kubectl run -it -rm -restart=Never curl -image=curlimages/curl - curl -X POST http
+   ://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"Write a short story about a person who discovers a hidden room in their house .? \"}"
+   If you don't see a command prompt, try pressing enter.
+   {"Result": "Write a short story about a person who discovers a hidden room in their house .? ?\nThe door is lo
+   cked from both the inside and outside, and there appears not to be any other entrance. The walls of the room
+   seem to be made of stone, although there are no visible seams, or any other indication of where the walls e
+   nd and the floor begins. The only furniture in the room is a single wooden chair, a small candle, and what a
+   ppears to be a bed. (The bed is covered entirely with a sheet, and is not visible from the doorway. )\nThe on
+   ly light in the room comes from a single candle on the floor of the room. The door is solid and does not app
+   ear to have hinges or a knob. The walls seem to go on forever into the darkness, and there is a chill, wet f
+   eeling in the air that makes the hair stand up on the back of your neck. \nThe chair sits on the floor direct
+   ly across from the door. The chair"}pod "curl" deleted
+   ```
 
 ## Troubleshooting
 
