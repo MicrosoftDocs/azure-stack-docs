@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 11/26/2024
 ---
 
 # Troubleshoot solution updates for Azure Local, version 23H2
@@ -47,7 +47,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
 1. In the system list, view the **Critical state of Update** readiness.
 
-    :::image type="content" source="./media/update-troubleshooting-23h2/.png" alt-text="Screenshot of system list." lightbox="./media/update-troubleshooting-23h2/.png":::
+    :::image type="content" source="./media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="./media/troubleshoot-updates/update-manager.png":::
 
 1. Select one or more systems from the list, then select **One-time Update**.  
 
@@ -57,7 +57,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
     - When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
-    :::image type="content" source="./media/update-troubleshooting-23h2/.png" alt-text="Screenshot of details box." lightbox="./media/update-troubleshooting-23h2/.png":::
+    :::image type="content" source="./media/troubleshoot-updates/install-updates.png" alt-text="Screenshot of Install updates page." lightbox="./media/troubleshoot-updates/install-updates.png":::
 
 Follow the remediation instructions to resolve the failures.
 
@@ -78,7 +78,7 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     - When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
-    :::image type="content" source="./media/update-troubleshooting-23h2/.png" alt-text="Screenshot of Check readiness page." lightbox="./media/update-troubleshooting-23h2/.png":::
+    :::image type="content" source="./media/troubleshoot-updates/update-progress.png" alt-text="Screenshot of Update progress page." lightbox="./media/troubleshoot-updates/update-progress.png":::
 
 Allow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
@@ -271,7 +271,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 
 To collect logs for updates using the Azure portal, see [Use Azure Update Manager to update your Azure Local, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
 
-To collect logs for the update failures see [Collect diagnostic logs for Azure Local, version 23H2](../manage/collect-logs?tabs=azureportal.md).
+To collect logs for the update failures see [Collect diagnostic logs for Azure Local, version 23H2](../manage/collect-logs.md?tabs=azureportal.md).
 
 To view a detailed summary report using PowerShell, follow these steps on the client that you're using to access your system:
 
@@ -329,7 +329,7 @@ To view a detailed summary report using PowerShell, follow these steps on the cl
     PS C:\Users\lcmuser> Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID 6bcc63af-b1df-4926-b2bc-26e06f460ab0
     ```
 
-   :::image type="content" source="./media/update-troubleshooting-23h2/.png" alt-text="Screenshot of code output." lightbox="./media/update-troubleshooting-23h2/.png":::
+   :::image type="content" source="./media/troubleshoot-updates/collect-logs-powershell.png" alt-text="Screenshot of Powershell collect logs output." lightbox="./media/troubleshoot-updates/collect-logs-powershell.png":::
 
 
 ## Resume an update
@@ -340,7 +340,7 @@ To resume a previously failed update run, you can retry the update run via the A
 
 We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
-[![A screenshot of the retry a failed update button.](./media/troubleshoot-updates/try-again-update.png)](media/troubleshoot-updates/try-again-update.png#lightbox)
+:::image type="content" source="./media/troubleshoot-updates/try-again-update.png" alt-text="Screenshot of the retry failed update button." lightbox="./media/troubleshoot-updates/try-again-update.png":::
 
 ### PowerShell
 
