@@ -33,7 +33,7 @@ Both system and pre-update readiness checks perform similar validation and categ
 
 - **Critical** failures must be remediated before updates can be installed.
 
-- **Warning** failures may impact updates and Microsoft recommends that they be remediated unless you are certain they are safe to ignore. If you wish to ignore the warnings and proceed with the update, you must initiate the update using PowerShell.  
+- **Warning** failures may impact updates and Microsoft recommends that they be remediated unless you are certain they are safe to ignore. If you wish to ignore the warnings and proceed with the update, you must initiate the [update using PowerShell](update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates).  
 
 - **Informational** failures will not block or even typically impact the updates. These health check results are provided for your awareness only. 
 
@@ -45,7 +45,7 @@ The troubleshooting steps differ depending on which scenario the readiness check
 
 This scenario occurs when preparing to install system updates in Azure Update Manager:
 
-1. In the system list, view the **Critical state of Update** readiness.
+1. In the system list, view the **Critical** state of **Update readiness**.
 
     :::image type="content" source="./media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="./media/troubleshoot-updates/update-manager.png":::
 
@@ -53,18 +53,18 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
 1. On the **Check readiness** page, review the list of readiness checks and their results.
 
-    - Select the **View details** links under **Affected systems**.
+    1. Select the **View details** links under **Affected systems**.
 
-    - When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
+    1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
     :::image type="content" source="./media/troubleshoot-updates/install-updates.png" alt-text="Screenshot of Install updates page." lightbox="./media/troubleshoot-updates/install-updates.png":::
 
-Follow the remediation instructions to resolve the failures.
+    Follow the remediation instructions to resolve the failures.
 
-> [!NOTE]
-> The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures.
+    > [!NOTE]
+    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures.
 
-To further troubleshoot, see the PowerShell troubleshooting section.
+    To further troubleshoot, see the PowerShell section.
 
 **Scenario 2: Update readiness checks**
  
@@ -74,15 +74,15 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
 1. On the **Check readiness** page, review the list of readiness checks and their results.
 
-    - Select the **View details** links under **Affected systems**.
+    1. Select the **View details** links under **Affected systems**.
 
-    - When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
+    1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
     :::image type="content" source="./media/troubleshoot-updates/update-progress.png" alt-text="Screenshot of Update progress page." lightbox="./media/troubleshoot-updates/update-progress.png":::
 
-Allow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
+    Follow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
-To further troubleshoot, see the PowerShell troubleshooting section.
+    To further troubleshoot, see the PowerShell section.
 
 ### Using PowerShell
 
@@ -256,13 +256,13 @@ If there is an issue that causes an update to fail, reviewing the detailed step 
 
 Microsoft recommends using the Azure portal to identify the failing step information as shown at [Troubleshoot updates](azure-update-manager-23h2.md#troubleshoot-updates).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
 
-See the table below for a update failure scenarios and remediation guidelines.
+See the table below for update failure scenarios and remediation guidelines.
 
-| Steps | Type of issue | Remediation |
+| Step names | Type of issue | Remediation |
 | --- | --- | --- |
-| Any | Interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
-| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there is an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
-| Any | memory, power supply, boot driver, or similar critical failure on one or more machines. | See [Repair a machine](../manage/repair-server.md) for how to repair the failing machine.<br>Once the machine has been repaired the update can be resumed. |
+| Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
+| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there is an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
+| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local, version 23H2](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
 
 
 ## Collect update logs
@@ -293,7 +293,7 @@ To view a detailed summary report using PowerShell, follow these steps on the cl
     $Failure = $update | Get-SolutionUpdateRun
     ```
 
-1. Identify the `ResourceID` for the Update.
+1. Identify the `ResourceID` for the update.
 
     ```powershell
     $Failure
