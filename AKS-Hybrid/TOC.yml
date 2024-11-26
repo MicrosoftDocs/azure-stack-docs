@@ -30,6 +30,10 @@
         href: load-balancer-overview.md      
     - name: Access and identity
       href: concepts-security-access-identity.md
+    - name: High availability
+      items: 
+      - name: Use availability sets
+        href: availability-sets.md   
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
@@ -91,11 +95,7 @@
       - name: Restrict SSH access
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity
-        href: workload-identity.md
-      - name: High availability
-        items: 
-        - name: Use availability sets
-          href: availability-sets.md        
+        href: workload-identity.md     
     - name: Storage
       items:
       - name: CSI storage drivers
