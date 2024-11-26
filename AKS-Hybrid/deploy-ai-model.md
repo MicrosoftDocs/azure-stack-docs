@@ -14,7 +14,7 @@ ms.date: 11/26/2024
 
 This article describes how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO). The AI toolchain operator (KAITO) is an add-on for AKS Arc, and it simplifies the experience of running OSS AI models on your AKS Arc clusters. To enable this feature, follow this workflow:
 
-1. Create a Node pool with GPU.
+1. Create a nodepool with GPU.
 1. Deploy KAITO operator.
 1. Deploy AI model.
 1. Validate the model deployment.
@@ -46,7 +46,7 @@ Before you begin, make sure you have the following prerequisites:
 To create a GPU nodepool using the Azure portal, follow these steps:
 
 1. Sign in to the Azure portal and find your AKS Arc cluster.
-1. Under **Settings** and **Node pools**, select **Add**. Note that during the preview, we only support Linux. Fill in the other required fields and create the nodepool resource.
+1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux. Fill in the other required fields and create the nodepool resource.
 
    :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of nodepools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
 
@@ -85,10 +85,10 @@ To deploy the KAITO operator, follow these steps:
 
 To deploy the AI model, follow these steps:
 
-1. Create a YAML file with the following template. Note that KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
+1. Create a YAML file with the following template. KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
 
    - The **PresetName** is used to specify which model to deploy, and its value can be found from the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml) in the repo.
-   - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. The `instanceType` value is used by the **NodeController** for GPU auto-provisioning, which is not currently supported on AKS Arc.
+   - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. The `instanceType` value is used by the **NodeController** for GPU auto-provisioning, which isn't currently supported on AKS Arc.
    - Make sure to replace the other placeholders with your own information.
 
    ```yaml
@@ -149,7 +149,7 @@ To validate the model deployment, follow these steps:
 
 ## Troubleshooting
 
-If the pod does not get deployed, **ResourceReady** is empty or **false** when **kubectl** retrieves workspaces, it's usually because the preferred node is not labeled correctly. Check the node label by running `kubectl get node <yourNodeName> --show-labels`.
+If the pod does not get deployed, **ResourceReady** is empty or **false** when **kubectl** retrieves workspaces, it's usually because the preferred node isn't labeled correctly. Check the node label by running `kubectl get node <yourNodeName> --show-labels`.
 
 For example, in your YAML file, the following code means that the node needs to have the label `apps=falcon-7b`:
 
