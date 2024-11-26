@@ -18,7 +18,7 @@ To enhance your Azure Local experience, we periodically release feature updates 
 
 To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
-This article presents the release information for Azure Local, version 23H2, including the release build and OS build information.  
+This article provides the release information for Azure Local, version 23H2, including the release build and OS build information.  
 
 ## About Azure Local, version 23H2 releases
 
@@ -37,8 +37,6 @@ The following diagram illustrates the release trains, their associated feature b
 #### Move to the next release train
 
 Follow these guidelines to move to the next release train:
-
-- Consider a fresh deployment with the **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
 
 - Update the existing deployment to a build that allows you to move to the next release train. The following table provides examples of how to move between release trains:
 
