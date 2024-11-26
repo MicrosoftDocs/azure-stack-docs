@@ -3,7 +3,7 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 11/25/2024
+ms.date: 11/26/2024
 ---
 
 Follow these steps on your Azure Local to create the VM image from the VHDX that you created earlier.
@@ -31,7 +31,7 @@ Use the Azure CLI to create the VM image:
     $resource_group = "<Resource group>"
     $customLocation = "<Custom location>"
     $location = "<Location for your Azure Local>"
-    $OsType = "<OS of source image>"
+    $osType = "<OS of source image>"
     ```
 
     Parameters are described in the following table.
@@ -41,7 +41,7 @@ Use the Azure CLI to create the VM image:
     | `subscription`   | Subscription associated with your Azure Local instance.        |
     | `resource_group` | Resource group for the Azure Local instance that you associate with this image.        |
     | `location`       | Location for your Azure Local instance. For example, the location could be `eastus` or `westreurope`. |
-    | `os-Type`         | Operating system associated with the source image. This system can be Windows or Linux.           |
+    | `os-type`         | Operating system associated with the source image. This system can be Windows or Linux.           |
 
 1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Azure Arc virtual machines on Azure Local.
 
@@ -49,10 +49,10 @@ Use the Azure CLI to create the VM image:
 
     ```powershell
     $imagePath = "Path to user storage in CSV" 
-
     $imageName = "mylinuxvmimg" 
+    $osType = "Linux"
 
-    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $customLocation --location $location --image-path $imagePath --name $imageName --debug --os-type 'Linux' 
+    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $customLocation --location $location --image-path $imagePath --name $imageName --debug --os-type $osType 
     ```
 
 1. Verify that the image is created.
