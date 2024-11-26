@@ -151,7 +151,7 @@ To validate the model deployment, follow these steps:
 
 If the pod does not get deployed, or **ResourceReady** is empty or **false** when **kubectl** retrieves workspaces, it's usually because the preferred node isn't labeled correctly. Check the node label by running `kubectl get node <yourNodeName> --show-labels`.
 
-For example, in your YAML file, the following code means that the node needs to have the label `apps=falcon-7b`:
+For example, in your YAML file, the following code specifies that the node must have the label `apps=falcon-7b`:
 
 ```yaml
 labelSelector:
