@@ -14,7 +14,7 @@ ms.date: 11/26/2024
 
 This article describes how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO). The AI toolchain operator (KAITO) is an add-on for AKS Arc, and it simplifies the experience of running OSS AI models on your AKS Arc clusters. To enable this feature, follow this workflow:
 
-1. Create a nodepool with GPU.
+1. Create a node pool with GPU.
 1. Deploy KAITO operator.
 1. Deploy AI model.
 1. Validate the model deployment.
@@ -35,30 +35,30 @@ Before you begin, make sure you have the following prerequisites:
    - Your local **kubectl** environment configured to point to your AKS Arc cluster.
      - Run `az aksarc get-credentials --resource-group <ResourceGroupName> --name <ClusterName>  --admin` to download the **kubeconfig** file.
 
-1. Make sure your AKS Arc cluster is enabled with GPUs. You can ask your infrastructure administrator to set it up for you. You must also identify the right VM SKUs for your AKS Arc cluster before you create the nodepool. For instructions, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
+1. Make sure your AKS Arc cluster is enabled with GPUs. You can ask your infrastructure administrator to set it up for you. You must also identify the right VM SKUs for your AKS Arc cluster before you create the node pool. For instructions, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
 1. Make sure that **helm** and **kubectl** are installed on your local machine.
 
    - If you need to install or upgrade, see [Install Helm](https://helm.sh/docs/intro/install/).
    - If you need to install **kubectl**, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-## Create a GPU nodepool
+## Create a GPU node pool
 
-To create a GPU nodepool using the Azure portal, follow these steps:
+To create a GPU node pool using the Azure portal, follow these steps:
 
 1. Sign in to the Azure portal and find your AKS Arc cluster.
-1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux. Fill in the other required fields and create the nodepool resource.
+1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux. Fill in the other required fields and create the node pool resource.
 
-   :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of nodepools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
+   :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of node pools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
 
-To create a GPU nodepool using the Azure CLI, run the following command:
+To create a GPU node pool using the Azure CLI, run the following command:
 
 ```azurecli
 az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" –node-vm-size "samplenodepoolsize" –os-type "Linux"
 ```
 
-### Validate the GPU nodepool
+### Validate the GPU node pool
 
-After the nodepool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
+After the node pool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
 
 ```output
 NAME            STATUS   ROLES                  AGE   VERSION
