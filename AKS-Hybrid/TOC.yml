@@ -82,10 +82,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-      - name: AI and Machine Learning
-        items:
-        - name: Deploy an AI model with the AI toolchain operator
-          href: deploy-ai-model.md
+    - name: AI and Machine Learning
+      items:
+      - name: Deploy an AI model with the AI toolchain operator
+        href: deploy-ai-model.md
     - name: Authentication and authorization
       items:
       - name: Enable Microsoft Entra ID authentication for Kubernetes clusters

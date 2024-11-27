@@ -30,10 +30,10 @@ Before you begin, make sure you have the following prerequisites:
 
 1. The following details from your infrastructure administrator:
 
-   - An AKS Arc cluster that's up and running.
+   - An AKS Arc cluster that's up and running. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).
    - We recommend using a computer running Linux for this feature.
    - Your local **kubectl** environment configured to point to your AKS Arc cluster.
-     - Run `az aksarc get-credentials --resource-group <ResourceGroupName> --name <ClusterName>  --admin` to download the **kubeconfig** file.
+     - Run `az connectedk8s proxy` to connect to your AKS Arc cluster from your development machine.
 
 1. Make sure your AKS Arc cluster is enabled with GPUs. You can ask your infrastructure administrator to set it up for you. You must also identify the right VM SKUs for your AKS Arc cluster before you create the node pool. For instructions, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
 1. Make sure that **helm** and **kubectl** are installed on your local machine.
@@ -45,20 +45,32 @@ Before you begin, make sure you have the following prerequisites:
 
 To create a GPU node pool using the Azure portal, follow these steps:
 
+### [Azure portal](#tab/portal)
+
 1. Sign in to the Azure portal and find your AKS Arc cluster.
 1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux. Fill in the other required fields and create the node pool resource.
 
    :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of node pools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
 
-To create a GPU node pool using the Azure CLI, run the following command:
+### [Azure CLI](#tab/azurecli)
+
+To create a GPU node pool using the Azure CLI, run the following command. The GPU VM SKU used below is for A16; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-vm-sizes).
 
 ```azurecli
-az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" –node-vm-size "samplenodepoolsize" –os-type "Linux"
+az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" –node-vm-size "Standard_NC32_A16" –os-type "Linux"
 ```
+
+---
 
 ### Validate the GPU node pool
 
 After the node pool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
+
+```bash
+kubectl get nodes
+```
+
+Expected output:
 
 ```output
 NAME            STATUS   ROLES                  AGE   VERSION
@@ -72,6 +84,8 @@ You should also ensure that the node has allocatable GPU cores:
 ```bash
 kubectl get node moc-l1i9uh0ksne -o yaml | grep -A 10 "allocatable:"
 ```
+
+Expected output:
 
 ```output
 allocatable:
@@ -124,11 +138,9 @@ To deploy the AI model, follow these steps:
        name: {Your_Preset_Name}
    ```
 
-1. Label your GPU node **Kubectl label node samplenode YourNodeLabel=YourNodeLabelValue**, then apply the YAML file:
+1. To start the model deployment, label the GPU node before applying the YAML. For example:
 
-   ```bash
-   kubectl apply -f sampleyamlfile.yaml
-   ```
+   Sample YAML file:
 
    ```yaml
    apiVersion: kaito.sh/v1alpha1
@@ -146,11 +158,22 @@ To deploy the AI model, follow these steps:
        name: "falcon-7b-instruct"
    ```
 
+   ```bash
+   kubectl apply -f sampleyamlfile.yaml
+   kubectl label node moc-le4aoguwyd9 app=llm-inference
+   ```
+
 ## Validate the model deployment
 
 To validate the model deployment, follow these steps:
 
 1. Validate the workspace using the `kubectl get workspace` command. Also make sure that both the `ResourceReady` and `InferenceReady` fields are set to **True** before testing with the sample prompt.
+
+   ```bash
+   kubectl get workspace
+   ```
+
+   Expected output:
 
    ```output
    NAME                 INSTANCE               RESOURCEREADY   INFERENCEREADY   JOBSTARTED   WORKSPACESUCCEEDED   AGE
@@ -164,6 +187,8 @@ To validate the model deployment, follow these steps:
 
    kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"<sample_prompt>\"}"
    ```
+
+   Expected output:
 
    ```bash
    usera@quke-desktop: $ kubectl run -it -rm -restart=Never curl -image=curlimages/curl - curl -X POST http
