@@ -3,7 +3,7 @@ title: About Azure Local upgrade to version 23H2
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/25/2024
+ms.date: 11/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -60,7 +60,8 @@ The following diagram illustrates the Azure Local upgrade process:
 ## Supported workloads and configurations
 
 > [!IMPORTANT]
-> Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
+> - Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
+> - Upgrading your Azure Local from version 22H2 is only supported for regions where Azure Local, version 23H2 is available. For more information, see [Azure Local region availability](../concepts/system-requirements-23h2.md#azure-requirements).
 
 Azure Local upgrade supports the following services and workloads:
 
@@ -69,7 +70,7 @@ Azure Local upgrade supports the following services and workloads:
 |---------|---------|
 | Azure Kubernetes (AKS) on Azure Local     | See notes <br> Kubernetes versions are incompatible between Azure Local, version 22H2, and version 23H2. <br> Remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade.        |
 | Arc VMs on Azure Local     | See notes <br> Preview versions of Arc VMs can't be upgraded.        |
-| Stretched clusters on Azure Local     | Yes <br> You must upgrade to Azure Stack HCI Operating System, version 23H2 to maintain your cluster in a supported state. <br> The solution upgrade isn't available for stretched clusters.      |
+| Stretched clusters on Azure Local     | Yes <br> You must upgrade to Azure Stack HCI Operating System, version 23H2 to maintain your cluster in a supported state. <br> The solution upgrade isn't applicable for stretched clusters.      |
 | System Center Virtual Machine Manager (SCVMM)    | Yes <br> If your Azure Local instance running version 22H2 is managed by SCVMM 2025, the OS upgrade is supported.          |
 | Azure Local, version 22H2SP    | No <br> This upgrade process isn't supported for upgrading from Azure Local, version 22H2 Supplemental Package clusters.        |
 

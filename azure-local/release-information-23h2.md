@@ -18,7 +18,7 @@ To enhance your Azure Local experience, we periodically release feature updates 
 
 To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
-This article presents the release information for Azure Local, version 23H2, including the release build and OS build information.  
+This article provides the release information for Azure Local, version 23H2, including the release build and OS build information.  
 
 ## About Azure Local, version 23H2 releases
 
@@ -37,8 +37,6 @@ The following diagram illustrates the release trains, their associated feature b
 #### Move to the next release train
 
 Follow these guidelines to move to the next release train:
-
-- Consider a fresh deployment with the **latest release** instead of performing updates as described in the next bullet. For example, if 2408.2 is the current latest release you could consider a fresh deployment of 2408.2 (no update steps needed).  
 
 - Update the existing deployment to a build that allows you to move to the next release train. The following table provides examples of how to move between release trains:
 
@@ -64,6 +62,7 @@ The following table summarizes the release information for Azure Local, version 
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
+| 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |
 | 10.2408.1.9 <br><br> Availability date: 2024-09-25 |  25398.1128 | [September OS Security update](./security-update/security-update-sep-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24081) | [Known issues](./known-issues-2408-1.md) |
