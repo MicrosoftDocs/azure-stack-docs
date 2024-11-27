@@ -115,7 +115,12 @@ Follow these steps on the node you're trying to repair.
     1. Go to the resource group used to deploy your Azure Local instance. In the resource group, identify the Azure Arc machine resource for the faulty node that you wish to repair.
     1. In the Azure Arc machine resource, go to **Settings > Locks**. In the right-pane, you see a resource lock.
     1. Select the lock and then select the trash can icon to delete the lock.
+    
+    :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resource lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
+
     1. On the **Overview** page of the Azure Arc machine resource, in the right-pane, select Delete. This action should delete the faulty machine node.  
+
+    :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
 1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
