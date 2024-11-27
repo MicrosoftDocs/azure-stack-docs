@@ -87,9 +87,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Starting with Azure Stack Hub 2311, we are not releasing updated Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
 
-### Fixes
-
-- Fixed an issue in which an internal failure of Live Update forced the update method to use FRU instead, which significantly extended the overall update period if you had more than eight node stamps.
+<!-- ### Fixes -->
 
 ## Security updates
 
