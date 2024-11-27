@@ -116,7 +116,7 @@ Follow these steps on the node you're trying to repair.
     1. In the Azure Arc machine resource, go to **Settings > Locks**. In the right-pane, you see a resource lock.
     1. Select the lock and then select the trash can icon to delete the lock.
     
-    :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resourece lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
+    :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resource lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
 
     1. On the **Overview** page of the Azure Arc machine resource, in the right-pane, select Delete. This action should delete the faulty machine node.  
 
