@@ -77,9 +77,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-> [!IMPORTANT]
-> [See this known 2408 update issue](known-issues.md#update).
-
 - With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
 - We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
 
