@@ -43,9 +43,11 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Create a GPU node pool
 
-To create a GPU node pool using the Azure portal, follow these steps:
+To create a GPU node pool using the Azure portal or Azure CLI, follow these steps:
 
 ### [Azure portal](#tab/portal)
+
+To create a GPU node pool using the Azure portal, follow these steps:
 
 1. Sign in to the Azure portal and find your AKS Arc cluster.
 1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux. Fill in the other required fields and create the node pool resource.
