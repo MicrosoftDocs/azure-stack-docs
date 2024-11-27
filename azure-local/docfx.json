@@ -38,12 +38,12 @@
     ],
     "overwrite": [],
     "externalReference": [],
-    "globalMetadata": {
+    "globalMetadata": {S
       "uhfHeaderId": "Azure",
       "breadcrumb_path": "../azure-local/breadcrumb/toc.yml",
       "feedback_system": "Standard",
       "permissioned-type": "public",
-      "ms.service": "azure-stack-hci",
+      "ms.service": "azure-local",
       "titleSuffix": "Azure Local",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8",
       "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
