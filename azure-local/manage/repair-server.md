@@ -120,7 +120,7 @@ Follow these steps on the node you're trying to repair.
 
     1. On the **Overview** page of the Azure Arc machine resource, in the right-pane, select Delete. This action should delete the faulty machine node.  
 
-    :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resourece lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
+    :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
 1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
