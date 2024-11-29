@@ -42,10 +42,10 @@ After you have procured the hardware that you intend to use to set up your Azure
 - Make sure that your subscription is registered against the following resource providers. You need to be an owner or contributor on your subscription to register. You can also ask an administrator to register. Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
    ```powershell
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute"
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration"
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity"
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
+   Register-azResourceProvider -ProviderNamespace "Microsoft.HybridCompute"
+   Register-azResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration"
+   Register-azResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity"
+   Register-azResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI"
    ```
 
 - [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
