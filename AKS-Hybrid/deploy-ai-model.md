@@ -59,14 +59,14 @@ To create a GPU node pool using the Azure portal, follow these steps:
 To create a GPU node pool using the Azure CLI, run the following command. The GPU VM SKU used below is for A16; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-vm-sizes).
 
 ```azurecli
-az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" –node-vm-size "Standard_NC32_A16" –os-type "Linux"
+az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "samplenodepoolsize" --os-type "Linux"
 ```
 
 ---
 
 ### Validate the GPU node pool
 
-After the node pool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. The new node is displayed, and you can know which node is new by looking at the **AGE** value:
+After the node pool creation command succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. In the following example, the GPU node is **moc-l1i9uh0ksne**:
 
 ```bash
 kubectl get nodes
@@ -120,7 +120,7 @@ To deploy the AI model, follow these steps:
 
 1. Create a YAML file with the following template. KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
 
-   - The **PresetName** is used to specify which model to deploy, and its value can be found from the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml) in the repo.
+   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml), in the GitHub repo.
    - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. The `instanceType` value is used by the **NodeController** for GPU auto-provisioning, which isn't currently supported on AKS Arc.
    - Make sure to replace the other placeholders with your own information.
 
@@ -182,7 +182,7 @@ To validate the model deployment, follow these steps:
    workspace-falcon-7b  Standard_NC12s_v3      True            True                          True                 18h
    ```
 
-1. Test the model with the following sample prompt:
+1. In the previous example, the inference service **workspace-falcon-7b** is exposed internally and can be accessed with the cluster IP. You can test the model with the following sample prompt. For more information about features in the Kaito inference, see the [instructions in the KAITO repo](https://github.com/kaito-project/kaito/blob/main/docs/inference/README.md#inference-workload).
 
    ```bash
    export CLUSTERIP=$(kubectl get svc workspace-falcon-7b -o jsonpath="{.spec.clusterIPs[0]}") 
