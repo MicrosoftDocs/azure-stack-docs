@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 12/02/2024
 ---
 
 # Update Azure Stack HCI clusters, version 22H2
@@ -99,19 +99,19 @@ Microsoft recommends installing new feature updates as soon as possible, using t
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. Any new feature updates will be displayed.
 
-   :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
+   :::image type="content" source="media/update-cluster/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/update-cluster/feature-updates.png":::
 
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
-   :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
+   :::image type="content" source="media/update-cluster/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/update-cluster/readiness-check.png":::
 
 3. When the readiness check is complete, you're ready to install the updates. Unless you want the ability to roll back the updates, check the optional **Update the cluster functional level to enable new features** checkbox; otherwise, you can update the cluster functional level post-installation using PowerShell. Review the updates listed and select **Install** to start the update.
 
-   :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
+   :::image type="content" source="media/update-cluster/install-updates.png" alt-text="Review the updates and install them" lightbox="media/update-cluster/install-updates.png":::
 
 4. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
-   :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
+   :::image type="content" source="media/update-cluster/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/update-cluster/updates-in-progress.png":::
 
    > [!NOTE]
    > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).

@@ -200,8 +200,8 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
 For more detailed information, see also:
 
-- [Manage clusters with PowerShell](cluster-powershell.md)
-- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [Register a cluster with Azure](../deploy/register-with-azure.md)
-- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci)
-- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster)
+- [Manage clusters with PowerShell](cluster-powershell.md).
+- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+- [Register a cluster with Azure](../deploy/register-with-azure.md).
+- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci).
+- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster).
