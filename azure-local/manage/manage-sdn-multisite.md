@@ -4,7 +4,7 @@ description: Learn how to manage a multisite SDN solution for Azure Local and Wi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.subservice: core-os
+ms.subservice: 
 zone_pivot_groups: windows-os
 ms.date: 11/13/2024
 ---

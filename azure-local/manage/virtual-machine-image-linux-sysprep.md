@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 11/06/2024
+ms.date: 11/25/2024
 ---
 
 # Prepare an Ubuntu image for Azure Local virtual machines

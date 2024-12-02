@@ -16,9 +16,6 @@ ms.date: 10/24/2024
 
 This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
 
-> [!IMPORTANT]
-> The latest updates may take some time to reflect on your VM images as additional validations are performed.
-
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed.
@@ -27,12 +24,15 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
+- Make sure you have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
+
 - If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 # [Azure portal](#tab/azureportal)
 
-Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
+- Make sure you have the **Azure Connected Machine Resource Manager** role. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal).
 ---
 
 ## Add VM image from Azure Marketplace
@@ -271,6 +271,9 @@ You might want to view the properties of VM images before you use the image to c
 
 ## Update VM image
 
+> [!IMPORTANT]
+> The latest updates may take some time to reflect on your VM images as additional validations are performed.
+
 When a new updated image is available in Azure Marketplace, the VM images on your Azure Local become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
 
 To update a VM image, use the following steps in Azure portal.
@@ -294,9 +297,6 @@ To update a VM image, use the following steps in Azure portal.
    :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/virtual-machine-image-azure-marketplace/create-image.png":::
 
    After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
-
-   > [!NOTE]
-   > In this release, you can't delete a VM image if the VM associated with that image is running. Stop the VM and then delete the VM image.
 
 ## Delete VM image
 
