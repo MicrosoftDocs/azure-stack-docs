@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 11/27/2024
+ms.date: 12/02/2024
 ---
 
 # Repair a node on Azure Local, version 23H2
@@ -171,7 +171,7 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 
 | Scenario description | Mitigation | Supported? |
 |--|--|--|
-| Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
+| Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Repair-Server -Rerun`. | Yes |
 | Repair node operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
 
 ### Troubleshooting
