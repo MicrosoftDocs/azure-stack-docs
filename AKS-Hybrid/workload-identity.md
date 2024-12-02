@@ -34,7 +34,7 @@ For a conceptual overview of Workload identity federation, see [Workload identi
 
 Before you deploy a Kubernetes cluster with Azure Arc enabled, you must have the following prerequisites:
 
-- If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin.
+- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin.
 - This article requires version 1.4.23 or later of the Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed.
 
 ### Export environment variables
@@ -315,15 +315,15 @@ The following example shows how to use the Azure role-based access control (Azur
 
 ## Delete AKS Arc cluster
 
-To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command,:
+To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command:
 
 ```azurecli
 az aksarc delete -n $aks_cluster_name -g $resource_group_name
 ```
-   
+
 > [!NOTE]
 > There's a known issue when deleting an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources: the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
-> 
+>
 > PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
 
 ## Next steps
