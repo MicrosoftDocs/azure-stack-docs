@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/25/2024
+ms.date: 11/27/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -72,12 +72,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 
 ::: moniker range="azs-2408"
-## Update
-
-- Applicable: This issue applies to release 2408.
-- Cause: An internal failure of Live Update forces the update method to use FRU instead, which significantly extends the overall update period. Due to this issue, each node update takes an additional 5 hours to complete (approximately).
-- Remediation: If you have more than eight node stamps, you should delay your updates if possible, until a hotfix/inline fix is released.
-- Occurrence: Common.
+<!-- ## Update -->
 
 ## Networking
 
