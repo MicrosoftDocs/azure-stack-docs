@@ -25,8 +25,6 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
    > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrades](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 (original release) to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
    >
    > If you're currently using System Center 2019, do not install feature updates to Azure Stack HCI yet. Upgrade to [System Center 2022](/system-center/vmm/whats-new-in-vmm#new-features-in-vmm-2022) before updating to Azure Stack HCI, version 21H2. After you've upgraded to System Center 2022, you can update to Azure Stack HCI, version 21H2 using any available option: Windows Admin Center, PowerShell, or the cluster rolling upgrade feature in Virtual Machine Manager.
-   >
-   > Please do not enroll the clusters managed by Virtual Machine Manager to the [Azure Stack HCI preview channel](/azure-stack/hci/manage/preview-channel). System Center 2022 does not support Azure Stack HCI preview versions. You can monitor the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) if you're interested in Azure Stack HCI previews.
 
 This article focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
@@ -426,17 +424,13 @@ This CredSSP error is seen when Windows Admin Center is running on a local PC an
 
 To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC and then sign back in, and the error should go away.
 
-### Naming mismatch on operating system versions
-
-Although the update header says Azure Stack HCI 22H2, if a cluster hasn't joined the preview channel, it will only receive the publicly offered 21H2 GA update. This is a hard-coding mismatch.
-
 ## Next steps
 
 For related information, see also:
 
-- [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating)
-- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
-- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx)
-- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md)
-- [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
-- [Validate an Azure Stack HCI cluster](../deploy/validate.md)
+- [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating).
+- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements).
+- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx).
+- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md).
+- [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware).
+- [Validate an Azure Stack HCI cluster](../deploy/validate.md).
