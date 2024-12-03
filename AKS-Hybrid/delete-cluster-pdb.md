@@ -31,7 +31,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
    kubectl get pdb -A 
    ```
 
-1. Delete all PDBs. Here's an example of deleting PDB generated from workload identity enablement:
+1. Delete all PDBs. Here's an example of deleting a PDB generated from workload identity enablement:
 
     ```bash
     kubectl delete pdb azure-wi-webhook-controller-manager -n arc-workload-identity 

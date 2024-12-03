@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 02/01/2024
+ms.date: 12/03/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -28,7 +28,7 @@ To deploy a Resource Manager template, you need write access on the resources yo
 - An Azure Local, version 23H2 cluster.
 - The latest Azure CLI version.
 
-## Step 1: prepare your Azure account
+## Step 1: Prepare your Azure account
 
 1. Sign in to Azure: open your terminal or command prompt and sign in to your Azure account using the Azure CLI:
 
@@ -42,7 +42,7 @@ To deploy a Resource Manager template, you need write access on the resources yo
    az account set --subscription "<your-subscription-id>"
    ```
 
-## Step 2: create an SSH key pair using Azure CLI
+## Step 2: Create an SSH key pair using Azure CLI
 
 ```azurecli
 az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
@@ -334,6 +334,75 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
    aks-agentpool-27442051-vmss000001   Ready    agent   10m   v1.27.7
    aks-agentpool-27442051-vmss000002   Ready    agent   11m   v1.27.7
    ```
+
+## Step 7: Deploy node pool using an Azure Resource Manager template (optional)
+
+You can also deploy the node pool resource using an Azure Resource Manager template. Save the following template locally as **azuredeploy.json**:
+
+```json
+{
+   "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "provisionedClusterName":{
+         "type":"string"
+      },
+      "agentName":{
+         "type":"string"
+      },
+      "agentVMSize":{
+         "type":"string"
+      },
+      "agentCount":{
+         "type":"int"
+      },
+      "agentOsType":{
+         "type":"string"
+      },
+      "location":{
+         "type":"string"
+      }
+   },
+   "resources":[
+      {
+         "type":"Microsoft.Kubernetes/connectedClusters",
+         "apiVersion":"2024-01-01",
+         "name":"[parameters('provisionedClusterName')]",
+         "location":"[parameters('location')]",
+         "condition":false
+      },
+      {
+         "type":"Microsoft.HybridContainerService/provisionedClusterInstances/agentPools",
+         "apiVersion":"2024-01-01",
+         "name":"[concat('default/', parameters('agentName'))]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Kubernetes/connectedClusters', parameters('provisionedClusterName'))]"
+         ],
+         "properties":{
+            "count":"[parameters('agentCount')]",
+            "osType":"[parameters('agentOsType')]",
+            "vmSize":"[parameters('agentVMSize')]"
+         }
+      }
+   ]
+}
+```
+
+### Deploy the template and validate results using Azure CLI (optional)
+
+Review and apply the template. This process takes a few minutes to complete. You can use the Azure CLI to validate that the node pool is created successfully:
+
+```azurecli
+az deployment group create \
+--name "<deployment-name>" \
+--resource-group "<resource-group-name>" \
+--template-file "azuredeploy.json" \
+--parameters provisionedClusterName=<cluster-name> agentName=<nodepool-name> agentVMSize=Standard_A4_v2 agentCount=3 agentOsType=Linux location=eastus
+```
+
+```azurecli
+az aksarc nodepool show --cluster-name "<cluster-name>" --resource-group "<resource-group-name>" --name "<nodepool-name>"
+```
 
 ## Template resources
 
