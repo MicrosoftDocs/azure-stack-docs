@@ -66,7 +66,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
     
     Here's an example of sample output:
     ```output
-    PS C:\Users\username\terraform-azure-avm-virtualmachineinstance> terraform -v 
+    PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
     Terraform vi.9.8 on windows_amd64
     + provider registry.terraform.io/azure/azapi vl.15.0 
     + provider registry.terraform.io/azure/modtm V0.3.2 
