@@ -655,7 +655,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 ### Steps to use the Terraform template
 
 1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
-2. Navigate to the **examples** folder in the repository, and look for the following subfolders
+2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one virtual machine instance.
     - **multi**: Creates multiple virtual machine instances.
 3. Choose the appropriate folder for your deployment.

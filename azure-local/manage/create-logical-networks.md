@@ -366,7 +366,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ### Steps to use the Terraform template
 
-1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0)
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0).
 2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
     - **default**: Creates one logical network with a static IP configuration.
     - **static**: Creates one logical network with a static IP configuration.
