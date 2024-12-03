@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: stevenek
-ms.date: 02/26/2024
+ms.date: 12/02/2024
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -192,16 +192,12 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
         :::image type="content" source="media/cluster/azure-benefits.png" alt-text="Screenshot of the cluster Azure benefits screen." lightbox="media/cluster/azure-benefits.png":::
 
-    - To opt in as a customer to install the next version of the Azure Stack HCI OS, before it's officially released, select **Join the preview channel**. For more information on this program, see [Join the Azure Stack HCI preview channel](../manage/preview-channel.md).
-
-        :::image type="content" source="media/cluster/join-the-preview-channel.png" alt-text="Screenshot of the cluster Join the preview channel screen." lightbox="media/cluster/join-the-preview-channel.png":::
-
 ## Next steps
 
 For more detailed information, see also:
 
-- [Manage clusters with PowerShell](cluster-powershell.md)
-- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [Register a cluster with Azure](../deploy/register-with-azure.md)
-- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci)
-- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster)
+- [Manage clusters with PowerShell](cluster-powershell.md).
+- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+- [Register a cluster with Azure](../deploy/register-with-azure.md).
+- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci).
+- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster).
