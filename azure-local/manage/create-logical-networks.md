@@ -377,7 +377,8 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 5. To apply the configuration that deploys logical networks, run the `terraform apply` command.
 6. After the deployment is complete, verify your logical networks via the Azure portal. Navigate to **Resources** > **Logical networks**.
 
-:::image type="content" source="./media/create-logical-networks/terraform-logical-networks.png" alt-text="Screenshot of select Logical networks after deployment." lightbox="./media/create-logical-networks/terraform-logical-networks.png":::
+  :::image type="content" source="./media/create-logical-networks/terraform-logical-networks.png" alt-text="Screenshot of select Logical networks after deployment." lightbox="./media/create-logical-networks/terraform-logical-networks.png":::
+
 ---
 
 ## Next steps

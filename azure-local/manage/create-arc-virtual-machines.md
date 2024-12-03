@@ -75,6 +75,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
     ```
 - Make sure Git is installed and up to date on your machine.
     -  To verify your version of Git, run the `git --version` command.
+
 ---
 
 ## Create Arc VMs
@@ -663,7 +664,8 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 5. To apply the configuration that deploys virtual machines, run the `terraform apply` command.
 6. After the deployment is complete, verify your virtual machines via the Azure portal. Navigate to **Resources** > **Virtual machines**.
 
-:::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
+
 ---
 
 ## Use managed identity to authenticate Arc VMs
