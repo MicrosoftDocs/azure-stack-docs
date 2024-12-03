@@ -52,6 +52,17 @@ The prerequisites for the Azure portal are the same as those for the Azure CLI. 
 
 - Make sure Terraform is installed and up to date on your machine.
   - To verify your version of Terraform, run the `terraform -v` command.
+
+    Here's an example of sample output:
+    ```output
+    PS C:\Users\username\terraform-azure-avm-virtualmachineinstance> terraform -v 
+    Terraform vi.9.8 on windows_amd64
+    + provider registry.terraform.io/azure/azapi vl.15.0 
+    + provider registry.terraform.io/azure/modtm V0.3.2 
+    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
+    + provider registry.terraform.io/hashicorp/random V3.6.3
+    ```
+
 - Make sure Git is installed and up to date on your machine.
   - To verify your version of Git, run the `git --version` command.
   
@@ -366,8 +377,7 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 5. To apply the configuration that deploys logical networks, run the `terraform apply` command.
 6. After the deployment is complete, verify your logical networks via the Azure portal. Navigate to **Resources** > **Logical networks**.
 
-:::image type="content" source="./media/create-logical-network/terraform-logical-networks.png" alt-text="Screenshot of select Logical networks after deployment." lightbox="./media/create-logical-network/terraform-logical-networks.png":::
-
+:::image type="content" source="./media/create-logical-networks/terraform-logical-networks.png" alt-text="Screenshot of select Logical networks after deployment." lightbox="./media/create-logical-networks/terraform-logical-networks.png":::
 ---
 
 ## Next steps

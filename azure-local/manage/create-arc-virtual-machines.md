@@ -62,7 +62,17 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - Make sure Terraform is installed and up to date on your machine.
-    - To verify your Terraform version, run the `terraform-v` command.
+    - To verify your Terraform version, run the `terraform -v` command.
+    
+    Here's an example of sample output:
+    ```output
+    PS C:\Users\username\terraform-azure-avm-virtualmachineinstance> terraform -v 
+    Terraform vi.9.8 on windows_amd64
+    + provider registry.terraform.io/azure/azapi vl.15.0 
+    + provider registry.terraform.io/azure/modtm V0.3.2 
+    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
+    + provider registry.terraform.io/hashicorp/random V3.6.3
+    ```
 - Make sure Git is installed and up to date on your machine.
     -  To verify your version of Git, run the `git --version` command.
 ---
