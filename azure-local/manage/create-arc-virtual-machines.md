@@ -640,7 +640,7 @@ Follow these steps to deploy the Resource Manager template:
 
 # [Terraform template](#tab/terraformtemplate)
 
-You can use the Azure Verified Module (AVM) that contains the Terraform template for creating Logical Networks. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Logical Networks on your cluster.
+You can use the Azure Verified Module (AVM) that contains the Terraform template for creating Virtual Machines. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Virtual Machines on your cluster.
 
 ### Steps to use the Terraform template
 
@@ -652,11 +652,13 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
 5. To apply the configuration that deploys virtual machines, run the `terraform apply` command.
 6. After the deployment is complete, verify your virtual machines via the Azure portal. Navigate to **Resources** > **Virtual machines**.
+
+:::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
 ---
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs.
 
 The Arc VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
