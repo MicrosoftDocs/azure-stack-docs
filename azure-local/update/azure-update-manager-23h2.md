@@ -28,6 +28,14 @@ Here are some benefits of the Azure Update Manager:
 - You can view the status of updates while they're in progress.
 - Once complete, you can view the results and history of updates.
 
+## About readiness checks
+
+Readiness checks are essential for ensuring that your updates are applied smoothly, that your systems are up-to-date, and that your systems are functioning correctly. These checks are categorized into three types: Critical, Warning, and Informational.
+
+- **Critical**: Readiness checks that prevent you from applying the update. This status indicates issues that must be resolved before proceeding with the update.
+- **Warning**: Readiness checks that also prevent you from applying the update, but you can bypass these using [PowerShell](../update/update-via-powershell-23h2.md). This status indicates potential issues that might not be severe enough to halt the update, but should be addressed to ensure a smooth update process.
+- **Informational**: Readiness checks that don't block the update. This status provides information about the system's state and any potential issues that shouldn't affect the update process directly. These checks are for your awareness and might not require immediate action.
+
 ## Prerequisites
 
 - An Azure Local, version 23H2 system deployed and registered with Azure.
@@ -43,6 +51,9 @@ To browse for available system updates using Azure Update Manager, follow these 
    - Filter by Subscription, Resource group, Location, Status, Update readiness, Current version, and/or Tags to view a list of systems.
 3. In the systems list, view the update Status, Update readiness, Current version, and the date and time of the Last successful update.
 
+    > [!NOTE]
+    > It can take up to 15 minutes for system values to update in the Azure portal.
+
     [![Screenshot to browse for system updates in Azure Update Manager.](./media/azure-update-manager/main-link.png)](media/azure-update-manager/main-link.png#lightbox)
 
 ## Install system updates
@@ -56,7 +67,9 @@ To install system updates using Azure Update Manager, follow these steps:
     [![Screenshot to install system updates in Azure Update Manager.](./media/azure-update-manager/install-update.png)](media/azure-update-manager/install-update.png#lightbox)
 
 4. On the **Check readiness** page, review the list of readiness checks and their results.
-   - You can select the links under **Affected systems** to view more details and individual system results.
+    - You receive the results of these readiness checks from system health checks performed **every 24 hours**. If any readiness checks fail, you need to acknowledge the potential impact.
+    - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
+
 5. Select **Next**.
 
     [![Screenshot on the check readiness of updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
@@ -77,42 +90,28 @@ To install system updates using Azure Update Manager, follow these steps:
 
     [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
 
-## Track system update progress
+## Track system update progress and history
 
 When you install system updates via Azure Update Manager, you can check the progress of those updates.
 
 > [!NOTE]
-> After you trigger an update, it can take up to 5 minutes for the update run to show up in the Azure portal.
+> After you trigger an update, it can take up to 15 minutes for the update run to show up in the Azure portal.
 
 To view the progress of your update installation, and completion results, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
 2. Under the **Manage** dropdown, select **History**.
-3. Select an update run from the list with a status of **In Progress**.
+3. Select an update run that you want to monitor or review:
+    - Select an **In Progress** update to monitor a current updates progress.
+    - Select a **Failed to update** or **Successfully updated** update to review historical results.
 
     [![Screenshot to view progress about system updates in Azure Update Manager.](./media/azure-update-manager/update-in-progress.png)](media/azure-update-manager/update-in-progress.png#lightbox)
 
 4. On the **Download updates** page, review the progress of the download and preparation, and then select **Next**.
-5. On the **Check readiness** page, review the progress of the checks, and then select **Next**.
+5. On the **Check readiness** page, review the progress of the checks. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks). Then select **Next**.
 6. On the **Install** page, review the progress of the update installation.
 
     [![Screenshot to view update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
-
-## Browse system update job history
-
-To browse the update history of your systems, follow these steps:
-
-1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under the **Manage** dropdown, select **History**.
-3. Select an update run with a status of “**Failed to update**” or “**Successfully updated**”.
-
-    [![Screenshot to view update history in Azure Update Manager.](./media/azure-update-manager/update-history-progress.png)](media/azure-update-manager/update-history-progress.png#lightbox)
-
-4. On the **Download updates** page, review the results of the download and preparation and then select **Next**.
-5. On the **Check readiness** page, review the results and then select **Next**.
-   - Under the Affected systems column, if you have an error, select **View Details** for more information.
-6. On the **Install** page, review the results of the installation.
-   - Under the Result column, if you have an error, select **View Details** for more information.
 
 ## Update via the Azure Local resource page
 
