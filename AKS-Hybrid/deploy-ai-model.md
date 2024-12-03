@@ -4,7 +4,7 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/26/2024
+ms.date: 12/03/2024
 
 ---
 
@@ -120,49 +120,35 @@ To deploy the AI model, follow these steps:
 
 1. Create a YAML file with the following template. KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
 
-   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml), in the GitHub repo.
-   - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. The `instanceType` value is used by the **NodeController** for GPU auto-provisioning, which isn't currently supported on AKS Arc.
-   - Make sure to replace the other placeholders with your own information.
+   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml), in the GitHub repo. In the following example, `falcon-7b-instruct` is used for the model deployment.
+   - We recommend using `labelSelector` and `preferredNodes` to select the GPU nodes. In the following example, `app: llm-inference` is used for the GPU node `moc-le4aoguwyd9`. You can choose any node label you want; the next steps shows the node labeling command.
 
    ```yaml
    apiVersion: kaito.sh/v1alpha1
    kind: Workspace
    metadata:
-     name: <Your_Deployment_Name>
+    name: workspace-falcon-7b
    resource:
-     labelSelector:
-       matchLabels:
-         {Your_Node_Label}: {Your_Node_Label_Value}
-     preferredNodes:
-     - {Your_Node_Name}
+    labelSelector:
+      matchLabels:
+        app: llm-inference
+    preferredNodes:
+    - moc-le4aoguwyd9
    inference:
-     preset:
-       name: {Your_Preset_Name}
+    preset:
+      name: "falcon-7b-instruct"
    ```
 
-1. To start the model deployment, label the GPU node before applying the YAML. For example:
+1. Label the GPU node using **kubectl**, so that the YAML file knows which node can be used for deployment:
 
-   Sample YAML file:
-
-   ```yaml
-   apiVersion: kaito.sh/v1alpha1
-   kind: Workspace
-   metadata:
-     name: workspace-falcon-7b
-   resource:
-     labelSelector:
-       matchLabels:
-         app: llm-inference
-     preferredNodes:
-     - moc-le4aoguwyd9
-   inference:
-     preset:
-       name: "falcon-7b-instruct"
+   ```bash
+   kubectl label node moc-le4aoguwyd9 app=llm-inference
    ```
+
+1. Apply the YAML file and wait until the workplace deployment is completed:
 
    ```bash
    kubectl apply -f sampleyamlfile.yaml
-   kubectl label node moc-le4aoguwyd9 app=llm-inference
    ```
 
 ## Validate the model deployment
