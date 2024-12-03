@@ -3,14 +3,14 @@
 - name: Overview
   expanded: true
   items:
-  - name: What is AKS enabled by Arc?
+  - name: What is AKS enabled by Azure Arc?
     href: aks-overview.md
-  - name: Compare AKS enabled by Arc deployment options
-    href: https://techcommunity.microsoft.com/t5/azure-arc-blog/comparing-feature-sets-for-aks-enabled-by-azure-arc-deployment/ba-p/4188163
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
+  - name: Blogs and announcements
+    href: blogs-announcements.md
 - name: AKS on Azure Local, version 23H2
   expanded: true
   items:
