@@ -163,7 +163,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
 For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
-To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+To troubleshoot other update run issues, see [Troubleshoot solution updates](../update/update-troubleshooting-23h2.md).
 
 ## Next steps
 
