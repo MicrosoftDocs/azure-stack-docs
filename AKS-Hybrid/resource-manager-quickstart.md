@@ -66,7 +66,7 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-The template used in this quickstart is from the Azure Quickstart Templates repo:
+Please create a file in your local machine with name **azuredeploy.json** and modify default values as needed such as controlPlaneNodeCount or controlPlaneVMSize.
 
 ```json
 {
@@ -307,7 +307,7 @@ To deploy the template, run the following command to deploy the Kubernetes clust
 az deployment group create \
 --name "<deployment-name>" \
 --resource-group "<resource-group-name>" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.kubernetes/aks-arc/azuredeploy.json" \
+--template-file "azuredeploy.json" \
 --parameters provisionedClusterName="<cluster-name> location="eastus" sshRSApublicKey="" etc..."
 ```
 
