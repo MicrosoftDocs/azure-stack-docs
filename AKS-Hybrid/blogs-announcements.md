@@ -8,7 +8,7 @@ ms.topic: conceptual
 
 ---
 
-# Azure Kubernetes Service (AKS) enabled by Azure Arc blogs and announcements
+# Blogs and announcements
 
 This article provides a list of blogs and announcements for Azure Kubernetes Service (AKS) enabled by Azure Arc.
 
