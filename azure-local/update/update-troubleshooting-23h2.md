@@ -93,6 +93,22 @@ We highly recommend using the Azure portal, to browse to your failed update and 
 
 [![A screenshot of the retry a failed update button.](./media/troubleshoot-updates/try-again-update.png)](media/troubleshoot-updates/try-again-update.png#lightbox)
 
+If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
+
+1. Select the **View details** of an error.
+
+2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
+
+    [![Screenshot to download error logs.](./media/troubleshoot-updates/download-error-logs.png)](media/troubleshoot-updates/download-error-logs.png#lightbox)
+
+    For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
+
+3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
+
+    [![Screenshot to open a support ticket.](./media/troubleshoot-updates/open-support-ticket.png)](media/troubleshoot-updates/open-support-ticket.png#lightbox)
+
+For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+
 ### PowerShell
 
 If you're using PowerShell and need to resume a previously failed update run, use the following command:

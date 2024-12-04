@@ -6,6 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
 ms.date: 10/21/2024
+
 ---
 
 # Use Azure Update Manager to update your Azure Local, version 23H2
@@ -133,37 +134,17 @@ To view the progress of your update installation, and completion results, follow
 
     [![Screenshot to view update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
 
-## Update your hardware via Windows Admin Center
+## Install hardware updates
 
-In addition to system updates using Azure Update Manager or the Azure Local resource page, you can use Windows Admin Center to check for and install available hardware (firmware and driver) updates for your Azure Local.
+Hardware updates for Azure Local may be available through Azure Update Manager if your Azure Local instance has a solution builder extension.
 
-Here's an example of the Windows Admin Center updates tool for systems running Azure Local, version 23H2.
+For systems that support solution builder extensions:
+- Azure Update Manager automatically includes the appropriate solution builder extension updates when installing Azure Local Feature updates.
+- Azure Update Manager allows the installation of solution builder extension updates separately (hardware updates can be installed without a combined Azure Local update).
 
-[![Screenshot to install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-windows-admin-center-23h2.png)](media/azure-update-manager/updates-os-windows-admin-center-23h2.png#lightbox)
+Azure update manager doesn't support the installation of hardware updates for systems that don't support solution builder extension.  If your hardware doesn't support a solution builder extension update experience, the process for updating your hardware is like that of Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
 
-## Troubleshoot updates
-
-To resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
-
-[![Screenshot to retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
-
-If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
-
-1. Select the **View details** of an error.
-
-2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
-
-    [![Screenshot to download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
-
-    For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
-
-3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
-
-    [![Screenshot to open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
-
-For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
-
-To troubleshoot other update run issues, see [Troubleshoot solution updates](../update/update-troubleshooting-23h2.md).
+To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
 
 ## Next steps
 

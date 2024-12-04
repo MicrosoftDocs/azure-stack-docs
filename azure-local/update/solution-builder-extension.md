@@ -54,6 +54,10 @@ Starting with Azure Local, version 23H2, any new Integrated Systems or Premier S
 
 If your hardware doesn't support a Solution Builder Extension update experience, the process for updating your hardware is like that of Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Local, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
+Here's an example of the Windows Admin Center updates tool for systems running Azure Local, version 23H2.
+
+[![Screenshot to install hardware updates in Windows Admin Center.](./media/solution-builder-extension/updates-os-windows-admin-center-23h2.png)](media/solution-builder-extension/updates-os-windows-admin-center-23h2.png#lightbox)
+
 Your firmware and driver updates may need to be performed separately, if your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center. Follow the recommendations of your hardware vendor.
 
 The following table provides the hardware update method for different hardware vendors along with their respective platform series and generations.
