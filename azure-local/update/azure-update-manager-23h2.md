@@ -60,6 +60,8 @@ To browse for available system updates using Azure Update Manager, follow these 
 
 ## Install system updates
 
+# [Azure Update Manager](#tab/azureupdatemanager)
+
 To install system updates using Azure Update Manager, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
@@ -77,23 +79,28 @@ To install system updates using Azure Update Manager, follow these steps:
 
     [![Screenshot on the check readiness of updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
 
-5. Select **Next**.
+[!INCLUDE[azure-portal-install-updates](../includes/azure-portal-install-updates.md)]
 
-6. On the **Select updates** page, specify the updates you want to include in the deployment.
-    1. View and select the available updates to install on your Azure Local machines.
-    2. Select the **Version** link to view the update components, versions, and update release notes.
+# [Azure Local resource page](#tab/azurelocalresourcepage)
 
-7. Select **Next**.
+In addition to using Azure Update Manager, you can update individual systems from the Azure Local resource page.
 
-    [![Screenshot to specify system updates in Azure Update Manager.](./media/azure-update-manager/select-updates.png)](media/azure-update-manager/select-updates.png#lightbox)
+To install updates on a single system from the resource page, follow these steps:
 
-8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
+1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
 
-    [![Screenshot to review and install system updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
+2. Under the **Resources** dropdown, select **Azure Local**.
 
-   You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
+3. Select the system name from the list, the update, and then select **One-time update**.
 
-    [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
+      [![Screenshot of a one-time system update in Azure Update Manager.](./media/azure-update-manager/update-single-cluster.png)](media/azure-update-manager/update-single-cluster.png#lightbox)
+
+4. On the **Check readiness** page, review the list of readiness checks and their results.
+    - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
+
+[!INCLUDE[azure-portal-install-updates](../includes/azure-portal-install-updates.md)]
+
+---
 
 ## Track system update progress and history
 
@@ -125,40 +132,6 @@ To view the progress of your update installation, and completion results, follow
 7. On the **Install** page, review the progress of the update installation.
 
     [![Screenshot to view update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
-
-## Update via the Azure Local resource page
-
-In addition to using Azure Update Manager, you can update individual systems from the Azure Local resource page.
-
-To install updates on a single system from the resource page, follow these steps:
-
-1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-
-2. Under the **Resources** dropdown, select **Azure Local**.
-
-3. Select the system name from the list.
-
-4. Select the update and then select **One-time update**.
-
-      [![Screenshot of a one-time system update in Azure Update Manager.](./media/azure-update-manager/update-single-cluster.png)](media/azure-update-manager/update-single-cluster.png#lightbox)
-
-5. On the **Check readiness** page, review the list of readiness checks and their results.
-    - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
-
-6. Select **Next**.
-
-7. On the **Select updates** page, specify the updates you want to include in the deployment.
-   1. View and select the available updates to install on your Azure Local machines.
-   2. Select the **Version** link to view the update components and their versions.
-   3. Select the Details, **View details** link, to view the update release notes.
-
-8. Select **Next**.
-
-9. On the **Review + install** page, verify your update deployment options, and select **Install**.
-
-    [![Screenshot to install a one-time system update in Azure Update Manager.](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
-
-You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
 ## Update your hardware via Windows Admin Center
 
