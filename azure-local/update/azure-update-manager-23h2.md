@@ -75,7 +75,7 @@ To install system updates using Azure Update Manager, follow these steps:
 4. On the **Check readiness** page, review the list of readiness checks and their results.
 
     - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
-    - For failed readiness checks, review the details and remediation messages. To further troubleshoot, see [Troubleshoot updates](./azure-update-manager-23h2.md#troubleshoot-updates) before proceeding.
+    - For failed readiness checks, review the details and remediation messages via the **View details** links. To further troubleshoot, see [Troubleshoot updates](./azure-update-manager-23h2.md#troubleshoot-updates) before proceeding.
 
     [![Screenshot on the check readiness of updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
 
@@ -125,7 +125,7 @@ To view the progress of your update installation, and completion results, follow
 
 5. On the **Check readiness** page, review the list of readiness checks and their results.
     - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
-    - For failed readiness checks, review the details and remediation messages. To further troubleshoot, see [Troubleshoot updates](./azure-update-manager-23h2.md#troubleshoot-updates) before proceeding.
+    - For failed readiness checks, review the details and remediation messages via the **View details** links. To further troubleshoot, see [Troubleshoot updates](./azure-update-manager-23h2.md#troubleshoot-updates) before proceeding.
 
 6. Select **Next**.
 
@@ -154,6 +154,8 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
 
     [![Screenshot to download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
+
+    For more information on how to retrieve logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
 3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
 
