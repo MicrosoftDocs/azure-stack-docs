@@ -192,13 +192,13 @@ When update readiness checks fail, this causes the update to fail on the system.
 1. To validate that the update readiness checks failed, run the following command on one of the machines in your system:
 
     ```powershell
-   Get-SolutionUpdate| FT Version,State,HealthCheckResult
+   Get-SolutionUpdate | FT Version,State,HealthCheckResult
     ```
 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdate| FT Version,State,HealthCheckResult 
+    PS C:\Users\lcmuser> Get-SolutionUpdate | FT Version,State,HealthCheckResult 
 
     Version     State              HealthCheckResult 
     -------     -----              ----------------- 
