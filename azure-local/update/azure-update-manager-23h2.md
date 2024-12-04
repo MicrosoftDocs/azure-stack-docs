@@ -155,7 +155,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
     [![Screenshot to download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
 
-    For more information on how to retrieve logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
+    For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
 3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
 
