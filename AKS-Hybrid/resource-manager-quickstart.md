@@ -66,7 +66,9 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-Please create a file in your local machine with name **azuredeploy.json** and modify default values as needed such as controlPlaneNodeCount or controlPlaneVMSize.
+Please create one file in your local machine with name **azuredeploy.json** and another one with name **parameters.json**. Make sure all the default values and input parameters are correct:
+
+azuredeploy.json
 
 ```json
 {
@@ -75,7 +77,7 @@ Please create a file in your local machine with name **azuredeploy.json** and mo
     "parameters": {
       "provisionedClusterName": {
           "type": "string",
-          "defaultValue": "",
+          "defaultValue": "aksarc-armcluster",
           "metadata": {
               "description": "The name of the AKS Arc cluster resource."
           }
@@ -299,16 +301,49 @@ Please create a file in your local machine with name **azuredeploy.json** and mo
   }
 ```
 
+parameters.json
+```json
+{
+   "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "provisionedClusterName":{
+         "value":"AKSArc_Cluster_Name"
+      },
+      "location":{
+         "value":"eastus"
+      },
+      "sshRSAPublicKey":{
+         "value":"Your_SSH_RSA_Public_Key"
+      },
+      "provisionedClustersApiVersion":{
+         "value":"2024-01-01"
+      },
+      "connectedClustersApiVersion":{
+         "value":"2024-07-15-preview"
+      },
+      "vnetSubnetIds":{
+         "value":[
+            "VNET_Subnet_ARM_ID"
+         ]
+      },
+      "customLocation":{
+         "value":"Custom_Location_ARM_ID"
+      }
+   }
+}
+```
+
 ## Step 4: Deploy the template
 
-To deploy the template, run the following command to deploy the Kubernetes cluster:
+Run the following command to deploy the Kubernetes cluster:
 
 ```azurecli
 az deployment group create \
 --name "<deployment-name>" \
 --resource-group "<resource-group-name>" \
 --template-file "azuredeploy.json" \
---parameters provisionedClusterName="<cluster-name> location="eastus" sshRSApublicKey="" etc..."
+--parameters "parameters.json"
 ```
 
 It takes a few minutes to create the cluster. Wait for the cluster to be successfully deployed before you move on to the next step.
