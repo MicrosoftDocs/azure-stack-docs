@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/26/2024
+ms.date: 12/04/2024
 ---
 
 # Troubleshoot solution updates for Azure Local, version 23H2
@@ -31,11 +31,11 @@ It is not uncommon for the results of the system health checks and update readin
 
 Both system and pre-update readiness checks perform similar validation and categorize severity of failures as Critical, Warning, or Informational:
 
-- **Critical** failures must be remediated before updates can be installed.
+- **Critical -** failures must be remediated before updates can be installed.
 
-- **Warning** failures may impact updates and Microsoft recommends that they be remediated unless you are certain they are safe to ignore. If you wish to ignore the warnings and proceed with the update, you must initiate the [update using PowerShell](update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates).  
+- **Warning -** failures may impact updates and Microsoft recommends that they be remediated unless you are certain they are safe to ignore. If you wish to ignore the warnings and proceed with the update, you must initiate the [update using PowerShell](update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates).  
 
-- **Informational** failures will not block or even typically impact the updates. These health check results are provided for your awareness only. 
+- **Informational -** failures will not block or even typically impact the updates. These health check results are provided for your awareness only. 
 
 The troubleshooting steps differ depending on which scenario the readiness checks are from.
 
@@ -62,9 +62,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     Follow the remediation instructions to resolve the failures.
 
     > [!NOTE]
-    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures.
-
-    To further troubleshoot, see the PowerShell section.
+    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the PowerShell section.
 
 **Scenario 2: Update readiness checks**
  
@@ -194,13 +192,13 @@ When update readiness checks fail, this causes the update to fail on the system.
 1. To validate that the update readiness checks failed, run the following command on one of the machines in your system:
 
     ```powershell
-   Get-SolutionUpdate|ft Version,State,HealthCheckResult
+   Get-SolutionUpdate| FT Version,State,HealthCheckResult
     ```
 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,HealthCheckResult 
+    PS C:\Users\lcmuser> Get-SolutionUpdate| FT Version,State,HealthCheckResult 
 
     Version     State              HealthCheckResult 
     -------     -----              ----------------- 
