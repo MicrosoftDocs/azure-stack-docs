@@ -20,7 +20,7 @@ If your system was created via a new deployment of Azure Local, version 23H2, th
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry will resolve the issue.
 
-### Troubleshoot readiness checks
+## Troubleshoot readiness checks
 
 [!INCLUDE [about-readiness-checks](../includes/about-readiness-checks.md)]
 
@@ -229,7 +229,7 @@ When update readiness checks fail, this causes the update to fail on the system.
     Get-SolutionUpdate -Id <some ID> | Start-SolutionUpdate -PrepareOnly
     ```
 
-### Troubleshoot update failures
+## Troubleshoot update failures
 
 If there is an issue that causes an update to fail, reviewing the detailed step progress to identify where it failed is often the best way to determine if the issue is something that can be remediated through a simple repair (and resume) or a support engagement is required to resolve the issue. Key items to note for the failing step include:
 
@@ -248,7 +248,6 @@ See the table below for update failure scenarios and remediation guidelines.
 | Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
 | CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there is an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
 | Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local, version 23H2](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
-
 
 ## Collect update logs
 
