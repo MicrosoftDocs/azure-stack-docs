@@ -66,7 +66,9 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-The template used in this quickstart is from the Azure Quickstart Templates repo:
+Please create one file in your local machine with name **azuredeploy.json** and another one with name **parameters.json**. Make sure all the default values and input parameters are correct:
+
+azuredeploy.json
 
 ```json
 {
@@ -77,20 +79,29 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
           "type": "string",
           "defaultValue": "aksarc-armcluster",
           "metadata": {
-              "description": "The name of the AKS Arc Cluster resource."
+              "description": "The name of the AKS Arc cluster resource."
           }
       },
       "location": {
           "type": "string",
           "defaultValue": "eastus",
           "metadata": {
-              "description": "The location of the AKS Arc Cluster resource."
+              "description": "The location of the AKS Arc cluster resource."
           }
       },
       "resourceTags": {
             "type": "object",
             "defaultValue": {}
         },
+        "connectedClustersApiVersion": {
+            "type": "String",
+            "defaultValue": ""
+        },
+        "provisionedClustersApiVersion": {
+            "type": "String",
+            "defaultValue": ""
+        },
+
       "sshRSAPublicKey": {
           "type": "string",
           "metadata": {
@@ -115,7 +126,7 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
             "type": "string",
             "defaultValue": "Standard_A4_v2",
             "metadata": {
-                  "description": "The VM size for node pools."
+                  "description": "The VM size for node pool."
             }
         },
         "agentCount": {
@@ -124,14 +135,14 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
               "minValue": 1,
               "maxValue": 50,
               "metadata": {
-                  "description": "The number of nodes for the cluster."
+                  "description": "The size of the node pool"
               }
           },
           "agentOsType": {
               "type": "string",
               "defaultValue": "Linux",
               "metadata": {
-                  "description": "The OS Type for the agent pool. Values are Linux and Windows."
+                  "description": "The OS Type for the node pool, the values can be Linux or Windows"
               }
           },
          "loadBalancerCount": {
@@ -153,21 +164,21 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
               "minValue": 1,
               "maxValue": 5,
               "metadata": {
-                  "description": "The number of control plane nodes for the cluster."
+                  "description": "The number of control plane nodes."
               }
           },
           "controlPlaneIp": {
             "type": "string",
             "defaultValue": "<default_value>",
               "metadata": {
-                  "description": "Control plane IP address."
+                  "description": "Control plane IP address, this parameter is optional."
               }
          },
           "controlPlaneVMSize": {
               "type": "string",
               "defaultValue": "Standard_A4_v2",
               "metadata": {
-                  "description": "The VM size for control plane."
+                  "description": "The VM size for control plane nodes."
               }
           },
           "vnetSubnetIds": {
@@ -180,26 +191,26 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
             "type": "string",
             "defaultValue": "10.244.0.0/16",
             "metadata": {
-                  "description": "The VM size for control plane."
+                  "description": "The CIDR notation IP ranges from which to assign pod IPs."
               }
           },
           "networkPolicy": {
             "type": "string",
             "defaultValue": "calico",
             "metadata": {
-                  "description": "Network policy to use for Kubernetes pods. Only options supported is calico."
+                  "description": "Network policy to use for Kubernetes pods. Calico is the only supported option."
               }
           },
           "customLocation": {
             "type": "string",
             "metadata": {
-                  "description": "Fully qualified custom location resource Id."
+                  "description": "The ARM ID of the custom location in the target Azure local cluster"
               }
           }
       },
       "resources": [
       {
-          "apiVersion": "2024-01-01",
+          "apiVersion": "[parameters('connectedClustersApiVersion')]",
           "type": "Microsoft.Kubernetes/ConnectedClusters",
           "kind": "ProvisionedCluster",
           "location": "[parameters('location')]",
@@ -212,11 +223,19 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
               "agentPublicKeyCertificate":"" ,
               "aadProfile": {
                   "enableAzureRBAC": false
+              },
+              "securityProfile": {
+                   "workloadIdentity": {
+                        "enabled": true
+                    }
+              },
+              "oidcIssuerProfile" : {
+                "enabled" : true
               }
           }
       },
       {
-          "apiVersion": "2024-01-01",
+          "apiVersion": "[parameters('provisionedClustersApiVersion')]",
           "type": "microsoft.hybridcontainerservice/provisionedclusterinstances",
           "name": "default",
           "scope": "[concat('Microsoft.Kubernetes/ConnectedClusters', '/', parameters('provisionedClusterName'))]",
@@ -266,32 +285,65 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
         },
         "storageProfile": {
           "nfsCsiDriver": {
-            "enabled": false
+            "enabled": true
           },
           "smbCsiDriver": {
-            "enabled": false
+            "enabled": true
           }
         }
         },
-        "extendedLocation": {
-            "name": "[parameters('customLocation')]",
-            "type": "CustomLocation"
+         "extendedLocation": {
+             "name": "[parameters('customLocation')]",
+             "type": "CustomLocation"
         }
       }
     ]
   }
 ```
 
+parameters.json
+```json
+{
+   "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "provisionedClusterName":{
+         "value":"AKSArc_Cluster_Name"
+      },
+      "location":{
+         "value":"eastus"
+      },
+      "sshRSAPublicKey":{
+         "value":"Your_SSH_RSA_Public_Key"
+      },
+      "provisionedClustersApiVersion":{
+         "value":"2024-01-01"
+      },
+      "connectedClustersApiVersion":{
+         "value":"2024-07-15-preview"
+      },
+      "vnetSubnetIds":{
+         "value":[
+            "VNET_Subnet_ARM_ID"
+         ]
+      },
+      "customLocation":{
+         "value":"Custom_Location_ARM_ID"
+      }
+   }
+}
+```
+
 ## Step 4: Deploy the template
 
-To deploy the template, run the following command to deploy the Kubernetes cluster:
+Run the following command to deploy the Kubernetes cluster:
 
 ```azurecli
 az deployment group create \
 --name "<deployment-name>" \
 --resource-group "<resource-group-name>" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.kubernetes/aks-arc/azuredeploy.json" \
---parameters provisionedClusterName="<cluster-name> location="eastus" sshRSApublicKey="" etc..."
+--template-file "azuredeploy.json" \
+--parameters "parameters.json"
 ```
 
 It takes a few minutes to create the cluster. Wait for the cluster to be successfully deployed before you move on to the next step.
