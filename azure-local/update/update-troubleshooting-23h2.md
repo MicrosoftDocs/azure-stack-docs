@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/05/2024
+#customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
 ---
 
 # Troubleshoot solution updates for Azure Local, version 23H2
@@ -51,7 +52,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the PowerShell section.
 
 **Scenario 2: Update readiness checks**
- 
+
 This scenario occurs when installing and tracking system updates in Azure Update Manager:
 
 1. In **History**, select the failed update run from the list.
@@ -238,7 +239,7 @@ If there is an issue that causes an update to fail, reviewing the detailed step 
 
 - Failure message string (may pinpoint the issue to a specific known issue with documented remediation).
 
-Microsoft recommends using the Azure portal to identify the failing step information as shown at [Troubleshoot updates](azure-update-manager-23h2.md#troubleshoot-updates).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
+Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](./update-troubleshooting-23h2.md#the-azure-portal).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
 
 See the table below for update failure scenarios and remediation guidelines.
 
@@ -315,12 +316,11 @@ To view a detailed summary report using PowerShell, follow these steps on the cl
 
    :::image type="content" source="./media/troubleshoot-updates/collect-logs-powershell.png" alt-text="Screenshot of Powershell collect logs output." lightbox="./media/troubleshoot-updates/collect-logs-powershell.png":::
 
-
 ## Resume an update
 
 To resume a previously failed update run, you can retry the update run via the Azure portal or PowerShell.
 
-### Azure portal
+### The Azure portal
 
 We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
