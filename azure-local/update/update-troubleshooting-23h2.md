@@ -49,7 +49,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     Follow the remediation instructions to resolve the failures.
 
     > [!NOTE]
-    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the PowerShell section.
+    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](update-troubleshooting-23h2.md#using-powershell) section.
 
 **Scenario 2: Update readiness checks**
 
