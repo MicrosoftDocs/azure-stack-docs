@@ -54,9 +54,10 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 | Access type | Required network settings |
 |-------------|---------------------------|
 | DNS access  | Use the default Azure-based DNS server. |
-| Access between hosts | Allow inbound and outbound access between hosts within the Azure Managed Lustre subnet. As an example, access to TCP port 22 (SSH) is necessary for cluster deployment. |
-| Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview). |
-| Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023. No other services can reserve or use these ports on your Lustre clients.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement. |
+| Access between hosts on the Azure Managed Lustre subnet | Allow inbound and outbound access between hosts within the Azure Managed Lustre subnet. As an example, access to TCP port 22 (SSH) is necessary for cluster deployment. |
+| Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the Azure Managed Lustre subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview). |
+| Lustre access<br>(TCP ports 988, 1019-1023) | Your network security group must allow inbound and outbound traffic for TCP port 988 and TCP port range 1019-1023. These rules need to be allowed between hosts on the Azure Managed Lustre subnet, as well as between any client subnets and the Azure Managed Lustre subnet. No other services can reserve or use these ports on your Lustre clients. The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement. |
+
 
 For detailed guidance about configuring a network security group for Azure Managed Lustre file systems, see [Create and configure a network security group](configure-network-security-group.md#create-and-configure-a-network-security-group).
 
@@ -64,7 +65,7 @@ For detailed guidance about configuring a network security group for Azure Manag
 
 The following known limitations apply to virtual network settings for Azure Managed Lustre file systems:
 
-- Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. The deployment fails if you try to create an Azure Managed Lustre file system in a subnet that currently contains, or has previously contained, Azure NetApp Files resources.
+- Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. The deployment fails if you try to create an Azure Managed Lustre file system in a subnet that contains, or has contained, Azure NetApp Files resources.
 - If you use the `ypbind` daemon on your clients to maintain Network Information Services (NIS) binding information, you must ensure that `ypbind` doesn't reserve port 988. You can either manually adjust the ports that `ypbind` reserves, or ensure that your system startup infrastructure starts your Lustre client mount before starting `ypbind`.
 
 > [!NOTE]
@@ -76,7 +77,7 @@ If you plan to integrate your Azure Managed Lustre file system with Azure Blob S
 
 To learn more about blob integration, see [Use Azure Blob storage with an Azure Managed Lustre file system](blob-integration.md).
 
-Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
+Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
 
 - For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
 - For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate, empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
