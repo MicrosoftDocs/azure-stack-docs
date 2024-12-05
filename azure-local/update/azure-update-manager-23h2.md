@@ -31,11 +31,7 @@ Here are some benefits of the Azure Update Manager:
 
 ## About readiness checks
 
-Readiness checks are essential for ensuring that your updates are applied smoothly, that your systems are up-to-date, and that your systems are functioning correctly. The results from the update readiness checks are executed *after* the update content is downloaded and *before* the update begins to install. You receive the results of these readiness checks from system health checks performed **every 24 hours**. There are three types of readiness checks: Critical, Warning, and Informational.
-
-- **Critical**: Readiness checks that prevent you from applying the update. This status indicates issues that must be resolved before proceeding with the update.
-- **Warning**: Readiness checks that also prevent you from applying the update, but you can bypass these using [PowerShell](../update/update-via-powershell-23h2.md#troubleshoot-updates). This status indicates potential issues that might not be severe enough to stop the update, but should be addressed to ensure a smooth update process.
-- **Informational**: Readiness checks that don't block the update. This status provides information about the system's state and any potential issues that shouldn't affect the update process directly. These checks are for your awareness and might not require immediate action.
+[!INCLUDE [about-readiness-checks](../includes/about-readiness-checks.md)]
 
 ## Prerequisites
 
