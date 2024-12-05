@@ -101,7 +101,7 @@ To install updates on a single system from the resource page, follow these steps
 
 ## Track system update progress and history
 
-When you install system updates via Azure Update Manager, you can check the progress of those updates.
+You can use Azure Update Manager to track the progress of Azure Local updates, regardless of the method you use to start the updates. This means you can check the progress of updates started via PowerShell, the Azure Local resource page, or Azure Update Manager.
 
 > [!NOTE]
 > After you trigger an update, it can take up to 15 minutes for the update run to show up in the Azure portal.
@@ -138,7 +138,7 @@ For systems that support solution builder extensions:
 - Azure Update Manager automatically includes the appropriate solution builder extension updates when installing Azure Local Feature updates.
 - Azure Update Manager allows the installation of solution builder extension updates separately (hardware updates can be installed without a combined Azure Local update).
 
-Azure update manager doesn't support the installation of hardware updates for systems that don't support solution builder extension.  If your hardware doesn't support a solution builder extension update experience, the process for updating your hardware is like that of Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
+Azure update manager only supports the installation of hardware updates via solution builder extensions. If your hardware doesn't support the solution builder extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
 
 To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
 
