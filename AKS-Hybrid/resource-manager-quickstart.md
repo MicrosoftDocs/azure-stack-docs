@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 12/03/2024
+ms.date: 12/05/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -66,9 +66,9 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-Please create one file in your local machine with name **azuredeploy.json** and another one with name **parameters.json**. Make sure all the default values and input parameters are correct:
+Create one file on your local machine named **azuredeploy.json** and another one named **parameters.json**. Make sure all the default values and input parameters are correct:
 
-azuredeploy.json
+### azuredeploy.json
 
 ```json
 {
@@ -142,7 +142,7 @@ azuredeploy.json
               "type": "string",
               "defaultValue": "Linux",
               "metadata": {
-                  "description": "The OS Type for the node pool, the values can be Linux or Windows"
+                  "description": "The OS Type for the node pool. The values can be Linux or Windows."
               }
           },
          "loadBalancerCount": {
@@ -171,7 +171,7 @@ azuredeploy.json
             "type": "string",
             "defaultValue": "<default_value>",
               "metadata": {
-                  "description": "Control plane IP address, this parameter is optional."
+                  "description": "Control plane IP address. This parameter is optional."
               }
          },
           "controlPlaneVMSize": {
@@ -184,7 +184,7 @@ azuredeploy.json
           "vnetSubnetIds": {
               "type": "array",
               "metadata": {
-                  "description": "List of subnet Ids for the AKS cluster."
+                  "description": "List of subnet IDs for the AKS cluster."
               }
           },
           "podCidr": {
@@ -204,7 +204,7 @@ azuredeploy.json
           "customLocation": {
             "type": "string",
             "metadata": {
-                  "description": "The ARM ID of the custom location in the target Azure local cluster"
+                  "description": "The Azure Resource Manager ID of the custom location in the target Azure Local cluster."
               }
           }
       },
@@ -301,7 +301,8 @@ azuredeploy.json
   }
 ```
 
-parameters.json
+### parameters.json
+
 ```json
 {
    "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
@@ -336,7 +337,7 @@ parameters.json
 
 ## Step 4: Deploy the template
 
-Run the following command to deploy the Kubernetes cluster:
+To deploy the Kubernetes cluster, run the following command:
 
 ```azurecli
 az deployment group create \
