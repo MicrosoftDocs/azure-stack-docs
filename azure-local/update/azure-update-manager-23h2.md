@@ -138,7 +138,7 @@ For systems that support solution builder extensions:
 - Azure Update Manager automatically includes the appropriate solution builder extension updates when installing Azure Local Feature updates.
 - Azure Update Manager allows the installation of solution builder extension updates separately (hardware updates can be installed without a combined Azure Local update).
 
-Azure update manager only supports the installation of hardware updates via solution builder extensions. If your hardware doesn't support the solution builder extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
+Azure Update Manager only supports the installation of hardware updates via solution builder extensions. If your hardware doesn't support the solution builder extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
 
 To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
 
