@@ -14,13 +14,13 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This quickstart shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
+This quickstart shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager (ARM) template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
 
 ## Before you begin
 
 This article assumes a basic understanding of Kubernetes concepts.
 
-To deploy a Resource Manager template, you need write access on the resources you're deploying, and access to all operations on the **Microsoft.Resources/deployments** resource type. For example, to deploy a virtual machine, you need **Microsoft.Compute/virtualMachines/write** and **Microsoft.Resources/deployments/\*** permissions. For a list of roles and permissions, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
+To deploy an ARM template, you need write access on the resources you're deploying, and access to all operations on the **Microsoft.Resources/deployments** resource type. For example, to deploy a virtual machine, you need **Microsoft.Compute/virtualMachines/write** and **Microsoft.Resources/deployments/\*** permissions. For a list of roles and permissions, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 ### Prerequisites
 
@@ -337,7 +337,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 ## Step 7: Deploy node pool using an Azure Resource Manager template (optional)
 
-You can also deploy the node pool resource using an Azure Resource Manager template. Save the following template locally as **azuredeploy.json**:
+You can also deploy the node pool resource using an ARM template. Save the following template locally as **azuredeploy.json**:
 
 ```json
 {
