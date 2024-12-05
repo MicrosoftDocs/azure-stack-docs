@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/04/2024
+ms.date: 12/05git/2024
 ---
 
 # Troubleshoot solution updates for Azure Local, version 23H2
@@ -21,21 +21,7 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 ### Troubleshoot readiness checks
 
-There are two scenarios in which the readiness checks are performed, and they are reported separately:
-
-- System health checks run once every 24 hours.
-
-- Update readiness checks run after the update content is downloaded and before it begins installing.
-
-It is not uncommon for the results of the system health checks and update readiness checks to differ. This is because the validation for update readiness checks use the latest validation logic from the solution update to be installed. Conversely, the system health checks always use validation logic from the installed version.
-
-Both system and pre-update readiness checks perform similar validation and categorize severity of failures as Critical, Warning, or Informational:
-
-- **Critical -** failures must be remediated before updates can be installed.
-
-- **Warning -** failures may impact updates and Microsoft recommends that they be remediated unless you are certain they are safe to ignore. If you wish to ignore the warnings and proceed with the update, you must initiate the [update using PowerShell](update-via-powershell-23h2.md#step-3-download-check-readiness-and-install-updates).  
-
-- **Informational -** failures will not block or even typically impact the updates. These health check results are provided for your awareness only. 
+[!INCLUDE [about-readiness-checks](../includes/about-readiness-checks.md)]
 
 The troubleshooting steps differ depending on which scenario the readiness checks are from.
 
