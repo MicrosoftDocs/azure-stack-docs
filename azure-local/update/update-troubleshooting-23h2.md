@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/05git/2024
+ms.date: 12/05/2024
 ---
 
 # Troubleshoot solution updates for Azure Local, version 23H2
