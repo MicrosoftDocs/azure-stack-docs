@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 12/04/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -145,7 +145,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
 
     #Get the Access Token for the registration
-    $ARMtoken = (Get-AzAccessToken).Token
+    $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
 
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   
