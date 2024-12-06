@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 12/04/2024
 ---
 
 # Update your Azure Local, version 23H2 via PowerShell
@@ -28,10 +28,11 @@ The Azure Local solution updates can consist of platform, service, and solution 
 When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
-1. Identify the software version running on your system.
 1. Connect to your Azure Local instance via remote PowerShell.
+1. Confirm current installed software versions and verify that your cluster is in good health.
 1. Discover the updates that are available and filter the ones that you can apply to your system.
-1. Download the updates, assess the update readiness of your system and once ready, install the updates on your system. Track the progress of the updates. If needed, you can also monitor the detailed progress.
+1. (Recommended) Pre-download the updates and assess the update readiness of your system.
+1. Install the updates and track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
 The time taken to install the updates might vary based on the following factors:
@@ -39,8 +40,8 @@ The time taken to install the updates might vary based on the following factors:
 - Content of the update.
 - Load on your system.
 - Number of machines in your system.
-- Type of the hardware used.
-- Solution Builder Extension used.
+- Type of hardware used.
+- Solution Extension used.
 
 The approximate time estimates for a typical single or multi-node system are summarized in the following table:
 
@@ -53,9 +54,9 @@ The approximate time estimates for a typical single or multi-node system are sum
 
 Before you begin, make sure that:
 
-- You have access to an Azure Local, version 23H2 system that is running 2310 or higher. The system should be registered in Azure.
-- You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
-- You have access to the solution update package over the network. You sideload or copy these updates to the machines in your system.
+- You have access to an Azure Local, version 23H2 system that is running 2311 or higher. The system should be registered in Azure.
+- You have access to a client that can connect to your Azure Local. <!--This client should be running PowerShell 5.0 or later.-->
+- You have access to the solution update over the network. A typical quarterly update downloads around XX GB of files.
 
 ## Connect to your Azure Local
 
@@ -72,6 +73,12 @@ Follow these steps on your client to connect to one of the machines in your Azur
     > [!NOTE]
     > You should sign in using your deployment user account credentials: which is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used during the deployment of Azure Local.
 
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+
     Here's an example output:
 
     ```Console
@@ -84,9 +91,11 @@ Follow these steps on your client to connect to one of the machines in your Azur
     [100.100.100.10]: PS C:\Users\Administrator\Documents>
     ```
 
-## Step 1: Identify the stamp version on your system
+    </details>
 
-Before you discover the updates, make sure that the system was deployed using the Azure Local, version 23H2, software version 2310.  
+## Step 1: Confirm software and verify system health
+
+Before you discover the updates, make sure that your system is running Azure Local, version 23H2, software version 2311 or later.  
 
 1. Make sure that you're connected to the machine using the deployment user account. Run the following command:
 
@@ -94,69 +103,173 @@ Before you discover the updates, make sure that the system was deployed using th
     whoami
     ```
 
-2. To ensure that the system was deployed running Azure Local, version 23H2, run the following command on one of the machines of your system:
+2. To ensure that the system is running Azure Local, version 23H2, run the following command on one of the machines of your system:
+
 
     ```powershell
-    Get-StampInformation
+    Get-SolutionUpdateEnvironment
     ```
 
-    Here's a sample output:
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
 
     ```console
-    PS C:\Users\lcmuser> Get-StampInformation
-    Deployment ID             : b4457f25-6681-4e0e-b197-a7a433d621d6
-    OemVersion                : 2.1.0.0
-    PackageHash               :
-    StampVersion              : 10.2303.0.31
-    InitialDeployedVersion    : 10.2303.0.26
-    PS C:\Users\lcmuser>
+    PS C:\Users\lcmuser> Get-SolutionUpdateEnvironment
+    ResourceId : redmond 
+    SbeFamily : GenA 
+    HardwareModel : Contoso680 
+    LastChecked : 10/2/2024 12:38:21 PM 
+    PackageVersions : {Solution: 10.2408.0.29, Services: 10.2408.0.29, Platform: 1.0.0.0, SBE: 4.1.2409.1} 
+    CurrentVersion : 10.2408.0.29 
+    CurrentSbeVersion : 4.1.2409.1 
+    LastUpdated : 
+    State : UpdateAvailable 
+    HealthState : Success 
+    HealthCheckResult : {Storage Subsystem Summary, Storage Pool Summary, Storage Services Physical Disks Summary, Storage 
+    Services Physical Disks Summary...} 
+    HealthCheckDate : 10/2/2024 10:46:44 AM 
+    AdditionalData : 
     ```
 
-3. Make a note of the `StampVersion` on your system. The stamp version reflects the solution version that your system is running.
+    </details>
 
+1. Make a note of the `CurrentVersion` on your system. The current version reflects the solution version that your system is running.
+
+1. Review the `HealthState` on your system and verify that your system is in good health. If the HealthState is `Failure`, `Error`, or `Warning`, see [Troubleshoot readiness checks]() before you proceed.
 
 ## Step 2: Discover the updates
 
-You can discover updates in one of the following two ways:
-
-- **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local and discover the updates locally.
-
-### Discover solution updates online (recommended)
-
-Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
-
+1. You can discover what updates are available to your cluster at any time using `Get-SolutionUpdate`.
 1. Connect to a machine on your Azure Local using the deployment user account.
-2. Verify that the Update service discovers the update package.
+1. Review details of updates that are `Ready` to install using `Get-SolutionUpdate`.
 
     ```powershell
-    Get-SolutionUpdate | ft DisplayName, State 
+    Get-SolutionUpdate | Where-Object {$_.State -like "Ready*" -or $_.State -like "Additional*"} | FL DisplayName, Description, ResourceId, State, PackageType 
     ```
 
-3. Optionally review the versions of the update package components.
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+
+    Here's an example output:
+
+    ```console    
+    PS C:\Users\lcmuser> Get-SolutionUpdate | Where-Object {$_.State -like "Ready*" -or $_.State -like "Additional*"} | FL DisplayName, Description, ResourceId, State, PackageType
+
+    DisplayName           : 2024.10 Cumulative Update
+    ResourceId            : redmond/Solution10.2408.2.2
+    Version               : 10.2408.2.2
+    State                 : Ready
+    PackageType           : Solution
+    
+    DisplayName           : SBE_Contoso_GenA_4.1.2410.5
+    ResourceId            : redmond/SBE4.1.2410.5
+    Version               : 4.1.2410.5
+    State                 : AdditionalContentRequired
+    PackageType           : SBE
+    ```
+    </details>
+
+    This may list one or more options including entries for both full `Solution` updates (that may also include a Solution Builder Extension) as well as standalone `SBE` updates.
+
+    If you do not see an expected update listed, remove the filter from the command to see if it is listed in `non-ready` state:
+    
+    ```powershell
+    Get-SolutionUpdate | FL DisplayName, Description, ResourceId, State, PackageType 
+    ```
+    For more information, see [About Update phases](./update-phases-23h2.md) for details on update states.
+
+1. Select the update you wish to install and note it’s `ResourceId` and review the details of that update to confirm you have selected the desired update to install.  
 
     ```powershell
-    $Update = Get-SolutionUpdate | ? Version -eq "10.2302.0.31"
-    $Update.ComponentVersions
+    $Update = Get-SolutionUpdate –Id <ResourceId>
+    $Update
     ```
+    
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
 
     Here's an example output:
 
     ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? Version -eq "10.2302.0.31"
-     PS C:\Users\lcmuser> $Update.ComponentVersions
+    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate –Id redmond/Solution10.2408.2.2
+    PS C:\Users\lcmuser> $Update
+    ResourceId            : redmond/Solution10.2408.2.2
+    InstalledDate         : 
+    Description           :
+    State                 : Ready
+    KbLink                : https://learn.microsoft.com/en-us/azure-stack/hci/
+    MinVersionRequired    : 10.2408.0.0
+    MinSbeVersionRequired : 2.0.0.0
+    PackagePath           : C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\Updates\Packages\Solution10.2408
+                            .2.2
+    PackageSizeInMb       : 1278
+    DisplayName           : 2024.10 Cumulative Update
+    Version               : 10.2408.2.2
+    SbeVersion            : 4.1.2410.5
+    Publisher             : Microsoft
+    ReleaseLink           : https://learn.microsoft.com/en-us/azure-stack/hci/
+    AvailabilityType      : Online
+    PackageType           : Solution
+    Prerequisites         : {}
+    UpdateStateProperties : The update requires additional content distributed by the OEM.
+    AdditionalProperties  : {SBEReleaseLink, SBENotifyMessage, SBEFamily, SBEPublisher...}
+    ComponentVersions     : {Services: 10.2408.2.2, Platform: 10.2408.2.2, SBE: 4.1.2410.5}
+    RebootRequired        : Unknown
+    HealthState           : Unknown
+    HealthCheckResult     : 
+    HealthCheckDate       : 1/1/0001 12:00:00 AM
+    BillOfMaterials       : {PlatformUpdate, ServicesUpdate}
+    ```
+    </details>
+
+    > [!NOTE]
+    > It is normal for `HealthState` to be `Unknown` for an update has not yet been scheduled or prepared.
+
+1. Optionally review the versions of the update package components.
+
+
+    ```powershell
+    $Update = Get-SolutionUpdate -Id <ResourceID>
+    $Update.ComponentVersions
+    ```
+
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+
+    Here's an example output:
+
+    ```console
+    PS C:\Users\lcmuser> $Update = $Get-SolutionUpdate -Id redmond/Solution10.2408.2.2
+    
+    PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
     ----------- -------      -----------
-    Services    10.2303.0.31
-    Platform    10.2303.0.31
-    SBE         4.1.2.3
-     PS C:\Users\lcmuser>
+    Services    10.2408.2.2
+    Platform    10.2408.2.2
+    SBE         4.1.2410.5
+    
+    PS C:\Users\lcmuser>
+
     ```
+
+    </details>
 
 You can now proceed to [Download and install the updates](#step-3-download-check-readiness-and-install-updates).
 
-### Sideload and discover solution updates
+<!--### Sideload and discover solution updates
 
 If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
@@ -222,88 +335,226 @@ If you're using solution extension updates from your hardware, you would need to
     SBE         4.1.2.3
      PS C:\Users\lcmuser>
     ```
+-->
 
-## Step 3: Download, check readiness, and install updates
+## Step 3: [Recommended] Pre-download and check update readiness
 
-You can download the updates, perform a set of checks to verify your system's update readiness, and start installing the updates.
+You can download the update and perform a set of checks to verify your cluster’s update readiness without starting the installation.
 
-1. You can only download the update without starting the installation or download and install the update.
-
-    - To download and install the update, run the following command:
-
-        ```powershell
-        Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate
-        ```
-
-    - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
-
-2. To track the update progress, monitor the update state. Run the following command:
+1. To download the updates without starting the installation, run the following command:
 
     ```powershell
-    Get-SolutionUpdate | ft Version,State,UpdateStateProperties,HealthState 
+    Get-SolutionUpdate -Id <ResourceId> | Start-SolutionUpdate –PrepareOnly
+    ```
+
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    </details>
+
+    Here’s an example output:
+    
+    ```console    
+    PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | Start-SolutionUpdate –PrepareOnly
+    ```
+    ---
+
+1. To track the update progress, monitor the update state. Run the following command:
+
+
+    ```powershell
+    Get-SolutionUpdate -Id <ResourceId> | ft Version,State,UpdateStateProperties,HealthState
     ```
 
     When the update starts, the following actions occur:
 
     - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
 
+    #### Example output
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    </details>
+    
+    Here's an example output when the updates are being downloaded:
+
+        ```console
+        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | ft Version,State,HealthState
+
+        Version              State UpdateStateProperties HealthState
+        -------              ----- --------------------- -----------
+        10.2408.2.2 Downloading                        InProgress
+        ```
+        ---
+
+1. Once the package is downloaded, readiness checks are performed to assess the update readiness of your system. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+
+    #### Example output
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+
+    ```console
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+
+    Version              State UpdateStateProperties HealthState
+    -------              ----- --------------------- -----------
+    10.2303.4.1 HealthChecking                        InProgress
+    ```
+    </details>
+
+1. When the readiness checks are done, the system is ready to install updates. The `State` of the update will show as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
+
+
+## Step 4: Start the update
+
+During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
+
+You can start an update by selecting a single update and passing it to `Start-SolutionUpdate`.
+
+```powershell
+$InstanceId = Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
+```
+
+> [!NOTE]
+> If step 3 was skipped (and you did not make a similar call to Start-SolutionUpdate -PrepareOnly) calling Start-SolutionUpdate will first download the updates and perform a set of checks to verify your cluster's update readiness prior to starting the update install.
+
+#### Example output
+
+<details>
+<summary>Expand this section to see an example output.</summary>
+
+```console
+PS C:\Users\lcmuser> $InstanceId = Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | Start-SolutionUpdate
+```
+
+</details>
+
+This will start the process to install the update.
+
+> [!TIP]
+> Save the `$InstanceId` as you could use it later to [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
+
+
+# Step 5: Track update progress
+
+Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it is not subject to the disruptions in status reporting as discussed below.
+
+>[!TIP]
+> If monitoring via PowerShell, we recommend that you connect your PowerShell session to the last server in your cluster to avoid disconnections early in the update process. Once your session disconnects (because the server you were connected to is being updated), you can connect to the first server in the cluster (that was already updated) to monitor the remaining update steps and avoid further disruptions until the next rolling update starts.  We recommend that you track cluster update progress in the Azure portal to avoid having to reconnect to PowerShell sessions following a machine reboot.
+
+Follow these steps to track update progress using PowerShell.
+
+1. To track the update progress, monitor the update state. Run the following command:
+
+    ```powershell
+    Get-SolutionUpdate -Id <ResourceId> | ft Version,State,UpdateStateProperties,HealthState
+    ```
+
+    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local-version-23h2).
+
+    Using the above command the following examples show how to monitor the update as it progresses through those phases using the State and `UpdateStateProperties` properties.
+
+    - **Downloading state**
+    
+        Shortly after Start-SolutionUpdate is called, the download of the updates begins.Depending on the size of the download package and the network bandwidth, the download might take several minutes.
+    
+        #### Example output
+    
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+    
+    
         Here's an example output when the updates are being downloaded:
-
+    
         ```console
-          PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-
+        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 |ft Version,State,UpdateStateProperties,HealthState
+    
         Version              State UpdateStateProperties HealthState
         -------              ----- --------------------- -----------
-        10.2303.4.1 Downloading                        InProgress
+        10.2408.2.2            Downloading               Unknown
         ```
+        </details>
 
-    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your system. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+    - **Preparing state**
+    
+        Once the updates are downloaded, the updates need be prepared. In the preparation state, the update files hashes are confirmed and files are extracted to prepare and stage update files.
 
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+    
+    
+        Here's an example output when the updates are being downloaded:
+    
         ```console
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-
-        Version              State UpdateStateProperties HealthState
-        -------              ----- --------------------- -----------
-        10.2303.4.1 HealthChecking                        InProgress
+        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 |ft Version,State,HealthState
+    
+        Version              State       HealthState
+        -------              -----       -----------
+        10.2408.2.2          Preparing   Unknown
         ```
+        </details>
 
-    - When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage of the installation that was completed.
+    - **HealthChecking state**
+    
+        Once the updates are prepared, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging).
 
-        > [!IMPORTANT]
-        > During the install, machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
-
-        Here's a sample output while the updates are being installed.
-
+        During this phase, the State of the update shows as `HealthChecking`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](./update-troubleshooting-23h2.md) before you proceed.
+        
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+    
+    
+        Here's an example output when the updates are undergoing `HealthChecking`:
+    
         ```console
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 6% complete.              Success
-        
-        
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 25% complete.             Success
-
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 40% complete.             Success
-
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 89% complete.             Success
+        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 |ft Version,State,HealthState
+    
+        Version              State       HealthState
+        -------              -----       -----------
+        10.2408.2.2          HealthChecking   Unknown
         ```
+        </details>
 
+    - **Installing state**
+        When the system is ready, the update transitions to the installing state. During this phase, the State of the updates shows as Installing and UpdateStateProperties shows the percentage of the installation that was completed.
+
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+    
+    
+        Here's an example output when the updates are undergoing `HealthChecking`:
+    
+        ```console
+        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 |ft Version,State,HealthState
+    
+        Version              State       HealthState
+        -------              -----       -----------
+        10.2408.2.2          Installing   Unknown
+        ```
+        </details>
+
+ 
 Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
-## Step 4: Verify the installation
+## Step 6: Restart the update (if needed)
+
+To resume a previously failed update run via PowerShell, use the following command:
+
+```powershell
+Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
+```
+To resume a previously failed update due to update readiness checks in a Warning state, use the following command:
+
+```powershell
+Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings    
+```
+
+To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+
+
+## Step 7: Verify the installation
 
 After the updates are installed, verify the solution version of the environment and the operating system version.
 
@@ -313,22 +564,29 @@ After the updates are installed, verify the solution version of the environment 
     Get-SolutionUpdateEnvironment | ft State, CurrentVersion
     ```
 
-    Here's a sample output:
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
 
     ```console
     PS C:\Users\lcmuser> Get-SolutionUpdateEnvironment | ft State, CurrentVersion
     
     State               CurrentVersion
     -----               --------------
-    AppliedSuccessfully 10.2303.0.31
+    AppliedSuccessfully 10.2408.2.2
         
     ```
+
+    </details>
 
 2. Check the operating system version to confirm it matches the recipe you installed. Run the following command:
 
     ```powershell
     cmd /c ver
     ```
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
     Here's a sample output:
 
@@ -339,22 +597,9 @@ After the updates are installed, verify the solution version of the environment 
     PS C:\Users\lcmuser>
     ```
 
-## Troubleshoot updates
-
-To resume a previously failed update run via PowerShell, use the following command:
-
-```powershell
-Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate
-```
-
-To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
-
-```powershell
-Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
-```
-
-To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+    </details>
 
 ## Next step
 
-Learn more about how to [Update Azure Local, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
+- If you run into issues during the update process, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+- Learn more about how to [Update Azure Local, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
