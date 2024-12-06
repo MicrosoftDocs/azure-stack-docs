@@ -92,7 +92,7 @@ Follow these steps on your client to connect to one of the machines in your Azur
 
     </details>
 
-## Step 1: Confirm software and verify system health
+## [Step 1: Confirm software and verify system health](#step1) 
 
 Before you discover the updates, make sure that your system is running Azure Local, version 23H2, software version 2311 or later.  
 
@@ -137,7 +137,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
 
 1. Review the `HealthState` on your system and verify that your system is in good health. If the HealthState is `Failure`, `Error`, or `Warning`, see [Troubleshoot readiness checks]() before you proceed.
 
-## Step 2: Discover the updates
+## [Step 2: Discover the updates](#step2)
 
 1. You can discover what updates are available to your cluster at any time using `Get-SolutionUpdate`.
 1. Connect to a machine on your Azure Local using the deployment user account.
@@ -331,7 +331,7 @@ If you're using solution extension updates from your hardware, you would need to
     ```
 -->
 
-## Step 3: [Recommended] Pre-download and check update readiness
+## [Step 3: [Recommended] Pre-download and check update readiness](#step3)
 
 You can download the update and perform a set of checks to verify your clusterâ€™s update readiness without starting the installation.
 
@@ -402,7 +402,7 @@ You can download the update and perform a set of checks to verify your clusterâ€
 1. When the readiness checks are done, the system is ready to install updates. The `State` of the update will show as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
 
 
-## Step 4: Start the update
+## [Step 4: Start the update](#step4)
 
 During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
 
@@ -431,7 +431,7 @@ This will start the process to install the update.
 > Save the `$InstanceId` as you could use it later to [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
 
 
-# Step 5: Track update progress
+## [Step 5: Track update progress](#step5)
 
 Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it is not subject to the disruptions in status reporting as discussed below.
 
@@ -532,7 +532,7 @@ Follow these steps to track update progress using PowerShell.
  
 Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
-## Step 6: Restart the update (if needed)
+## [Step 6: Restart the update (if needed)](#step6)
 
 To resume a previously failed update run via PowerShell, use the following command:
 
@@ -548,7 +548,7 @@ Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings
 
 To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
 
-## Step 7: Verify the installation
+## [Step 7: Verify the installation](#step7)
 
 After the updates are installed, verify the solution version of the environment and the operating system version.
 
