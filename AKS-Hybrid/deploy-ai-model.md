@@ -4,7 +4,7 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 12/06/2024
 ms.reviewer: haojiehang
 ms.lastreviewed: 12/03/2024
 
@@ -31,7 +31,7 @@ Before you begin, make sure you have the following prerequisites:
 1. The following details from your infrastructure administrator:
 
    - An AKS Arc cluster that's up and running. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).
-   - Make sure that the AKS Arc cluster runs on the Azure Local cluster with a supported GPU model. You must also identify the right GPU VM SKUs based on the model before you create the node pool. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
+   - Make sure that the AKS Arc cluster runs on the Azure Local cluster with a supported GPU model. Before you create the node pool, you must also identify the correct GPU VM SKUs based on the model. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
    - We recommend using a computer running Linux for this feature.
    - Use `az connectedk8s proxy` to connect to your AKS Arc cluster.
 
@@ -53,7 +53,7 @@ You must have a running AKS Arc cluster with a default node pool. To deploy the 
 
 ## Add a GPU node pool
 
-Before you add a GPU node, make sure that Azure Local is enabled with a supported GPU model, and the GPU drivers are installed on all the host nodes. To create a GPU node pool using the Azure portal or Azure CLI, follow these steps:
+Before you add a GPU node, make sure that Azure Local is enabled with a supported GPU model, and that the GPU drivers are installed on all the host nodes. To create a GPU node pool using the Azure portal or Azure CLI, follow these steps:
 
 ### [Azure portal](#tab/portal)
 
@@ -76,7 +76,7 @@ az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --
 
 ### Validate the node pool deployment
 
-After the node pool creation succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. In the following example, the GPU node is **moc-l1i9uh0ksne** and the other node is from the default node pool that was created during the cluster creation:
+After the node pool creation succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. In the following example, the GPU node is **moc-l1i9uh0ksne**. The other node is from the default node pool that was created during the cluster creation:
 
 ```bash
 kubectl get nodes
