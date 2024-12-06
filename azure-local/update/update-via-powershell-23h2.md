@@ -73,7 +73,6 @@ Follow these steps on your client to connect to one of the machines in your Azur
     > [!NOTE]
     > You should sign in using your deployment user account credentials: which is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used during the deployment of Azure Local.
 
-    #### Example output
 
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -109,8 +108,6 @@ Before you discover the updates, make sure that your system is running Azure Loc
     ```powershell
     Get-SolutionUpdateEnvironment
     ```
-
-    #### Example output
 
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -150,8 +147,6 @@ Before you discover the updates, make sure that your system is running Azure Loc
     Get-SolutionUpdate | Where-Object {$_.State -like "Ready*" -or $_.State -like "Additional*"} | FL DisplayName, Description, ResourceId, State, PackageType 
     ```
 
-    #### Example output
-
     <details>
     <summary>Expand this section to see an example output.</summary>
 
@@ -173,6 +168,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
     State                 : AdditionalContentRequired
     PackageType           : SBE
     ```
+
     </details>
 
     This may list one or more options including entries for both full `Solution` updates (that may also include a Solution Builder Extension) as well as standalone `SBE` updates.
@@ -190,8 +186,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
     $Update = Get-SolutionUpdate â€“Id <ResourceId>
     $Update
     ```
-    
-    #### Example output
+
 
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -229,6 +224,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
     HealthCheckDate       : 1/1/0001 12:00:00 AM
     BillOfMaterials       : {PlatformUpdate, ServicesUpdate}
     ```
+
     </details>
 
     > [!NOTE]
@@ -241,8 +237,6 @@ Before you discover the updates, make sure that your system is running Azure Loc
     $Update = Get-SolutionUpdate -Id <ResourceID>
     $Update.ComponentVersions
     ```
-
-    #### Example output
 
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -347,11 +341,9 @@ You can download the update and perform a set of checks to verify your clusterâ€
     Get-SolutionUpdate -Id <ResourceId> | Start-SolutionUpdate â€“PrepareOnly
     ```
 
-    #### Example output
-
     <details>
     <summary>Expand this section to see an example output.</summary>
-    </details>
+    
 
     Hereâ€™s an example output:
     
@@ -359,6 +351,8 @@ You can download the update and perform a set of checks to verify your clusterâ€
     PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | Start-SolutionUpdate â€“PrepareOnly
     ```
     ---
+
+    </details>
 
 1. To track the update progress, monitor the update state. Run the following command:
 
@@ -371,11 +365,10 @@ You can download the update and perform a set of checks to verify your clusterâ€
 
     - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
 
-    #### Example output
 
     <details>
     <summary>Expand this section to see an example output.</summary>
-    </details>
+
     
     Here's an example output when the updates are being downloaded:
 
@@ -388,9 +381,10 @@ You can download the update and perform a set of checks to verify your clusterâ€
         ```
         ---
 
+    </details>
+
 1. Once the package is downloaded, readiness checks are performed to assess the update readiness of your system. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
 
-    #### Example output
     <details>
     <summary>Expand this section to see an example output.</summary>
 
@@ -402,6 +396,7 @@ You can download the update and perform a set of checks to verify your clusterâ€
     -------              ----- --------------------- -----------
     10.2303.4.1 HealthChecking                        InProgress
     ```
+
     </details>
 
 1. When the readiness checks are done, the system is ready to install updates. The `State` of the update will show as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
@@ -420,7 +415,6 @@ $InstanceId = Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
 > [!NOTE]
 > If step 3 was skipped (and you did not make a similar call to Start-SolutionUpdate -PrepareOnly) calling Start-SolutionUpdate will first download the updates and perform a set of checks to verify your cluster's update readiness prior to starting the update install.
 
-#### Example output
 
 <details>
 <summary>Expand this section to see an example output.</summary>
@@ -460,8 +454,6 @@ Follow these steps to track update progress using PowerShell.
     
         Shortly after Start-SolutionUpdate is called, the download of the updates begins.Depending on the size of the download package and the network bandwidth, the download might take several minutes.
     
-        #### Example output
-    
         <details>
         <summary>Expand this section to see an example output.</summary>
     
@@ -475,6 +467,7 @@ Follow these steps to track update progress using PowerShell.
         -------              ----- --------------------- -----------
         10.2408.2.2            Downloading               Unknown
         ```
+
         </details>
 
     - **Preparing state**
@@ -524,7 +517,7 @@ Follow these steps to track update progress using PowerShell.
         <summary>Expand this section to see an example output.</summary>
     
     
-        Here's an example output when the updates are undergoing `HealthChecking`:
+        Here's an example output when the updates are undergoing `Installing`:
     
         ```console
         PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 |ft Version,State,HealthState
@@ -533,6 +526,7 @@ Follow these steps to track update progress using PowerShell.
         -------              -----       -----------
         10.2408.2.2          Installing   Unknown
         ```
+
         </details>
 
  
@@ -545,6 +539,7 @@ To resume a previously failed update run via PowerShell, use the following comma
 ```powershell
 Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
 ```
+
 To resume a previously failed update due to update readiness checks in a Warning state, use the following command:
 
 ```powershell
@@ -552,7 +547,6 @@ Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings
 ```
 
 To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
-
 
 ## Step 7: Verify the installation
 
