@@ -201,5 +201,4 @@ For more information, see [Discover Solution Builder Extension updates](./soluti
 
 ## Next steps
 
-- [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
 - [Understand update phases of Azure Local, version 23H2](../update/update-phases-23h2.md).
