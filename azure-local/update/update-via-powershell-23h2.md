@@ -261,7 +261,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
 
     </details>
 
-You can now proceed to [Download and install the updates](#step-3-download-check-readiness-and-install-updates).
+You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
 <!--### Sideload and discover solution updates
 
@@ -372,14 +372,13 @@ You can download the update and perform a set of checks to verify your clusterâ€
     
     Here's an example output when the updates are being downloaded:
 
-        ```console
-        PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | ft Version,State,HealthState
+    ```console
+    PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.2 | ft Version,State,HealthState
 
-        Version              State UpdateStateProperties HealthState
-        -------              ----- --------------------- -----------
-        10.2408.2.2 Downloading                        InProgress
-        ```
-        ---
+    Version              State UpdateStateProperties HealthState
+    -------              ----- --------------------- -----------
+    10.2408.2.2 Downloading                        InProgress
+    ```
 
     </details>
 
