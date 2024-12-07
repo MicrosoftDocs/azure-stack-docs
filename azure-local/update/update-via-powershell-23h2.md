@@ -30,7 +30,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Connect to your Azure Local instance via remote PowerShell.
 1. Confirm current installed software versions and verify that your cluster is in good health.
 1. Discover the updates that are available and filter the ones that you can apply to your system.
-1. (Recommended) Pre-download the updates and assess the update readiness of your system.
+1. (Recommended) Predownload the updates and assess the update readiness of your system.
 1. Install the updates and track the progress of the updates. Monitor the detailed progress as needed.
 1. Verify the version of the updates installed.
 
@@ -171,9 +171,9 @@ Follow these steps to discover the available updates for your system:
 
     </details>
 
-    This may list one or more options including entries for both full `Solution` updates (that may also include a Solution Builder Extension) as well as standalone `SBE` updates.
+    This may list one or more options including entries for both full `Solution` updates (that may also include a Solution Builder Extension) and standalone `SBE` updates.
 
-    If you do not see an expected update listed, remove the filter from the command to see if it is listed in `non-ready` state:
+    If you don't see an expected update listed, remove the filter from the command to see if it's listed in `non-ready` state:
     
     ```powershell
     Get-SolutionUpdate | FL DisplayName, Description, ResourceId, State, PackageType 
@@ -181,7 +181,7 @@ Follow these steps to discover the available updates for your system:
 
     For more information, see [About Update phases](./update-phases-23h2.md) for details on update states.
 
-1. Select the update you wish to install and note it’s `ResourceId`. Review the details of the update to confirm you have selected the desired update to install.  
+1. Select the update you wish to install and note its `ResourceId`. Review the details of the update to confirm you have selected the desired update to install.  
 
     ```powershell
     $Update = Get-SolutionUpdate –Id <ResourceId>
@@ -332,7 +332,7 @@ If you're using solution extension updates from your hardware, you would need to
     ```
 -->
 
-## Step 3: (Recommended) Pre-download and check update readiness
+## Step 3: (Recommended) Predownload and check update readiness
 
 You can download the update and perform a set of checks to verify your cluster’s update readiness without starting the installation.
 
@@ -399,12 +399,12 @@ You can download the update and perform a set of checks to verify your cluster�
 
     </details>
 
-1. When the readiness checks are done, the system is ready to install updates. The `State` of the update will show as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
+1. When the readiness checks are done, the system is ready to install updates. The `State` of the update shows as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
 
 
 ## Step 4: Start the update
 
-During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local will experience a downtime.
+During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local experiences a downtime.
 
 Start an update by selecting a single update and passing it to `Start-SolutionUpdate`.
 
@@ -425,7 +425,7 @@ PS C:\Users\lcmuser> $InstanceId = Get-SolutionUpdate -Id redmond/Solution10.240
 
 </details>
 
-This will start the process to install the update.
+This starts the process to install the update.
 
 > [!TIP]
 > Save the `$InstanceId` as you could use it later to [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
@@ -433,7 +433,7 @@ This will start the process to install the update.
 
 ## Step 5: Track update progress
 
-Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it is not subject to the disruptions in status reporting as discussed below.
+Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it isn't subject to the disruptions in status reporting as discussed below.
 
 >[!TIP]
 > - If monitoring via PowerShell, we recommend that you connect your PowerShell session to the last server in your cluster to avoid disconnections early in the update process. Once your session disconnects (because the server you were connected to is being updated), connect to the first server in the cluster (that was already updated) to monitor the remaining update steps and avoid further disruptions until the next rolling update starts.  
@@ -453,7 +453,7 @@ Follow these steps to track update progress using PowerShell.
 
     - **Downloading state**
     
-        Shortly after Start-SolutionUpdate is called, the download of the updates begins.Depending on the size of the download package and the network bandwidth, the download might take several minutes.
+        Shortly after Start-SolutionUpdate is called, the download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
     
         <details>
         <summary>Expand this section to see an example output.</summary>
