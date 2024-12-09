@@ -1,10 +1,10 @@
 ---
 title: Create Kubernetes clusters using Azure CLI
-description: Learn how to create Kubernetes clusters in Azure Stack HCI using Azure CLI.
+description: Learn how to create Kubernetes clusters in Azure Local using Azure CLI.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 02/05/2024
+ms.date: 11/18/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
@@ -14,9 +14,9 @@ ms.reviewer: guanghu
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Kubernetes clusters in Azure Stack HCI using Azure CLI. The workflow is as follows:
+This article describes how to create Kubernetes clusters in Azure Local using Azure CLI. The workflow is as follows:
 
-1. Create a Kubernetes cluster in Azure Stack HCI 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
+1. Create a Kubernetes cluster in Azure Local, version 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
 1. While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
 1. Access the cluster using kubectl and your Microsoft Entra ID.
 1. Run a sample multi-container application with a web front end and a Redis instance in the cluster.
@@ -24,10 +24,10 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 ## Before you begin
 
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
-  - **Azure subscription ID** - The Azure subscription ID where Azure Stack HCI is used for deployment and registration.
-  - **Custom Location ID** - Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
-  - **Network ID** - Azure Resource Manager ID of the Azure Stack HCI logical network created following [these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
-- You can run the steps in this article in a local development machine to create a Kubernetes cluster on your remote Azure Stack HCI deployment. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your development machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
+  - **Azure subscription ID** - The Azure subscription ID where Azure Local is used for deployment and registration.
+  - **Custom Location ID** - Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
+  - **Network ID** - Azure Resource Manager ID of the Azure Local logical network created following [these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
+- You can run the steps in this article in a local development machine to create a Kubernetes cluster on your remote Azure Local deployment. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your development machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 - To connect to the Kubernetes cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you cannot access the Kubernetes cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
 - [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your development machine. The Kubernetes command-line tool, kubectl, enables you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
 
@@ -47,10 +47,18 @@ az extension add -n connectedk8s --upgrade
 Use the `az aksarc create` command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
+
+> [!NOTE]
+> - The SSH key value is the public key for accessing nodes in the provisioned cluster. By default, this key is located at `~/.ssh/id_rsa.pub`. You can specify a different location using the `--ssh-key-value` parameter during cluster creation.
+> - The `--generate-ssh-keys` parameter is required if there's no pre-existing SSH key on your local machine. If you don't include this parameter during cluster creation and no SSH key exists, you receive an error message.
+> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
+
+> [!IMPORTANT]
+> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
 
 ## Connect to the Kubernetes cluster
 
@@ -123,7 +131,7 @@ apiVersion: apps/v1
             "kubernetes.io/os": linux 
           containers: 
           - name: azure-vote-back 
-            image: mcr.microsoft.com/oss/bitnami/redis:6.0.8 
+            image: <path to image>/oss/bitnami/redis:6.0.8 
             env: 
             - name: ALLOW_EMPTY_PASSWORD 
               value: "yes" 
@@ -166,7 +174,7 @@ apiVersion: apps/v1
             "kubernetes.io/os": linux 
           containers: 
           - name: azure-vote-front 
-            image: mcr.microsoft.com/azuredocs/azure-vote-front:v1 
+            image: <path to image>/azure-vote-front:v1 
             resources: 
               requests: 
                 cpu: 100m 

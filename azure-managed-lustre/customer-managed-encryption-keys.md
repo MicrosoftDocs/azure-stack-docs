@@ -4,7 +4,7 @@ description: Use an Azure Key Vault to create and manage your own encryption key
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 06/28/2023
+ms.date: 11/11/2024
 
 ---
 
@@ -29,7 +29,7 @@ After you create the file system, you can't change between customer-managed keys
 
 ## Prerequisites
 
-You can use either a pre-existing key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key. 
+You can use either a pre-existing key vault and key, or you can create new ones to use with Azure Managed Lustre. See the following required settings to ensure you have a properly configured key vault and key.
 
 ### Create a key vault and key
 
@@ -41,38 +41,37 @@ The following settings are required for use with Azure Managed Lustre. You can c
 
 Basics:
 
-* **Subscription** - Use the same subscription that is used for the Azure Managed Lustre cluster.
-* **Region** - The key vault must be in the same region as the Azure Managed Lustre cluster.
-* **Pricing tier** - Standard tier is sufficient for use with Azure Managed Lustre.
-* **Soft delete** - Azure Managed Lustre enables soft delete if it isn't already configured on the key vault.
-* **Purge protection** - Enable purge protection.
+- **Subscription** - Use the same subscription that is used for the Azure Managed Lustre cluster.
+- **Region** - The key vault must be in the same region as the Azure Managed Lustre cluster.
+- **Pricing tier** - Standard tier is sufficient for use with Azure Managed Lustre.
+- **Soft delete** - Azure Managed Lustre enables soft delete if it isn't already configured on the key vault.
+- **Purge protection** - Enable purge protection.
 
 Access policy:
 
-* **Access Configuration** - Set to Azure role-based access control.
+- **Access Configuration** - Set to Azure role-based access control.
 
 Networking:
 
-* **Public Access** - Must be enabled.
-* **Allow Access** - Select either **All networks** or, if you need to restrict access, select **Selected networks**
+- **Public Access** - Must be enabled.
+- **Allow Access** - Select either **All networks** or, if you need to restrict access, select **Selected networks**
 
-  - If **Selected networks** is chosen, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section below. 
-
-
+  - If **Selected networks** is chosen, you must enable the **Allow trusted Microsoft services to bypass this firewall** option in the **Exception** section below.
 
 :::image type="content" source="./media/customer-managed-encryption-keys/keyvault-network-config.png" alt-text="Screenshot showing how to restrict key vault access to selected networks, while allowing access to trusted Microsoft services." lightbox="./media/customer-managed-encryption-keys/keyvault-network-config.png":::
+
 > [!NOTE]
 > If you are using an existing key vault, you can review the network settings section to confirm that **Allow access from** is set to **Allow public access from all networks**, or make changes if necessary.
 
 #### Key properties
 
-* **Key type** - RSA
-* **RSA key size** - 2048
-* **Enabled** - Yes
+- **Key type** - RSA
+- **RSA key size** - 2048
+- **Enabled** - Yes
 
 Key vault access permissions:
 
-* The user that creates the Azure Managed Lustre system must have permissions equivalent to the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor). The same permissions are needed to set up and manage Azure Key Vault.
+- The user that creates the Azure Managed Lustre system must have permissions equivalent to the [Key Vault contributor role](/azure/role-based-access-control/built-in-roles#key-vault-contributor). The same permissions are needed to set up and manage Azure Key Vault.
 
   For more information, see [Secure access to a key vault](/azure/key-vault/general/security-features).
 
@@ -91,7 +90,7 @@ Create this identity before you create the file system, and give it access to th
 
 For more information, see the managed identities documentation:
 
-* [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
+- [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
 
 ## Create the Azure Managed Lustre file system with customer-managed encryption keys
 
@@ -107,9 +106,9 @@ Select the link in **Customer Key settings** to select the key vault, key, and v
 
 If your Azure Key Vault doesn't appear in the list, check these requirements:
 
-* Is the file system in the same subscription as the key vault?
-* Is the file system in the same region as the key vault?
-* Is there network connectivity between the Azure portal and the key vault?
+- Is the file system in the same subscription as the key vault?
+- Is the file system in the same region as the key vault?
+- Is there network connectivity between the Azure portal and the key vault?
 
 After selecting a vault, select the individual key from the available options, or create a new key. The key must be a 2048-bit RSA key.
 
@@ -125,5 +124,5 @@ After you configure these encryption key settings, proceed to the **Review + cre
 
 These articles explain more about using Azure Key Vault and customer-managed keys to encrypt data in Azure:
 
-* [Azure storage encryption overview](/azure/storage/common/storage-service-encryption)
-* [Disk encryption with customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys)
+- [Azure storage encryption overview](/azure/storage/common/storage-service-encryption)
+- [Disk encryption with customer-managed keys](/azure/virtual-machines/disk-encryption#customer-managed-keys)

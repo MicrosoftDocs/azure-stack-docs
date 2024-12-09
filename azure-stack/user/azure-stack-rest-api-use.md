@@ -41,7 +41,7 @@ POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 **Tenant ID** is either:
 
 - Your tenant domain, such as `fabrikam.onmicrosoft.com`
-- Your tenant ID, such as `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+- Your tenant ID, such as `aaaabbbb-0000-cccc-1111-dddd2222eeee`
 - Default value for tenant-independent keys: `common`
 
 ### Post body
@@ -171,9 +171,9 @@ Response:
 
 ```bash  
 offerId : /delegatedProviders/default/offers/92F30E5D-F163-4C58-8F02-F31CFE66C21B
-id : /subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8
-subscriptionId : 800c4168-3eb1-406b-a4ca-919fe7ee42e8
-tenantId : 9fea4606-7c07-4518-9f3f-8de9c52ab628
+id : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
+subscriptionId : aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
+tenantId : bbbbcccc-1111-dddd-2222-eeee3333ffff
 displayName : Default Provider Subscription
 state : Enabled
 subscriptionPolicies : @{locationPlacementId=AzureStack}
@@ -207,7 +207,7 @@ https://adminmanagement.local.azurestack.external/{subscription id}/resourcegrou
 ### Query URI example
 
 ```bash
-https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
+https://adminmanagement.local.azurestack.external/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
 ```
 
 ## Next steps

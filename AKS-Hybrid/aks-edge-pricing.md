@@ -1,8 +1,8 @@
 ---
 title: About AKS Edge Essentials pricing
 description: Learn about AKS Edge Essentials pricing details.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: overview
 ms.date: 10/26/2023
 ms.custom: template-overview

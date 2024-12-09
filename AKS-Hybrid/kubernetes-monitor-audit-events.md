@@ -26,7 +26,7 @@ Install the Arc K8S extension by running the following command:
 az k8s-extension create -g <resouerce-group-name> -c <cluster-name> --cluster-type connectedClusters --extension-type Microsoft.AKSArc.AzureMonitor --name "aksarc-azuremonitor" --auto-upgrade true
 ```
 
-After the extension installs successfully, follow the instructions in [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings#resource-logs) to create a diagnostic setting using the Azure portal, Azure CLI, or PowerShell. During this process, you can specify which categories of logs to collect. The categories for AKS Arc are listed in the [Azure Monitor reference](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-arc-enabled-kubernetes).
+After the extension installs successfully, follow the instructions in [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings#resource-logs) to create a diagnostic setting using the Azure portal, Azure CLI, or PowerShell. During this process, you can specify which categories of logs to collect. The categories for AKS Arc are listed in the [Azure Monitor reference](/azure/azure-monitor/logs/manage-logs-tables).
 
 The example command is as follows:
 

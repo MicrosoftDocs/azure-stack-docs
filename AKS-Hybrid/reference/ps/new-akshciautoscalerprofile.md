@@ -1,10 +1,10 @@
 ---
 title: New-AksHciAutoScalerProfile for AKS hybrid
-author: mkostersitz
+author: sethmanheim
 description: The New-AksHciAutoScalerProfile PowerShell command creates an autoscaler configuration profile
 ms.topic: reference
 ms.date: 04/15/2022
-ms.author: mikek 
+ms.author: sethm 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: jeguan
 

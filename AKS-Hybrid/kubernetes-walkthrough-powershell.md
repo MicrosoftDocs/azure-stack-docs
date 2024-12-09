@@ -1,5 +1,5 @@
 ---
-title: Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server clusters 
+title: Use PowerShell to set up Kubernetes on Azure Local and Windows Server clusters 
 description: Learn how to set up an AKS host and create Kubernetes clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
@@ -12,20 +12,20 @@ ms.custom:
   - kr2b-contr-experiment
   - devx-track-azurepowershell
 
-# Intent: As an IT Pro, I want to use Windows PowerShell to create an AKS on Azure Stack HCI and Windows Server cluster.
+# Intent: As an IT Pro, I want to use Windows PowerShell to create an AKS on Azure Local and Windows Server cluster.
 # Keyword: AKS setup PowerShell 
 ---
 
-# Set up an Azure Kubernetes Service host on Azure Stack HCI and Windows Server and deploy a workload cluster using PowerShell
+# Set up an Azure Kubernetes Service host on Azure Local and Windows Server and deploy a workload cluster using PowerShell
 
-> Applies to: Azure Stack HCI or Windows Server Datacenter
+> Applies to: Azure Local or Windows Server Datacenter
 
-This quickstart guides you through setting up an Azure Kubernetes Service (AKS) host. You create Kubernetes clusters on Azure Stack HCI and Windows Server using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
+This quickstart guides you through setting up an Azure Kubernetes Service (AKS) host. You create Kubernetes clusters on Azure Local and Windows Server using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
 
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 > - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](set-proxy-settings.md).
-> - Installing AKS on Azure Stack HCI after setting up Arc VMs is not supported. For more information, see [known issues with Arc VMs](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues). If you want to install AKS on Azure Stack HCI, you must uninstall Arc Resource Bridge and then install AKS on Azure Stack HCI. You can deploy a new Arc Resource Bridge again after you clean up and install AKS, but it won't remember the VM entities you created previously.
+> - Installing AKS on Azure Local after setting up Arc VMs is not supported. For more information, see [known issues with Arc VMs](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues). If you want to install AKS on Azure Local, you must uninstall Arc Resource Bridge and then install AKS on Azure Local. You can deploy a new Arc Resource Bridge again after you clean up and install AKS, but it won't remember the VM entities you created previously.
 
 ## Before you begin
 
@@ -70,7 +70,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 
 ## Step 1: Prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements to install AKS enabled by Arc are satisfied. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command on all nodes in your Azure Stack HCI and Windows Server cluster:
+Run checks on every physical node to see if all the requirements to install AKS enabled by Arc are satisfied. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command on all nodes in your Azure Local and Windows Server cluster:
 
 ```powershell
 Initialize-AksHciNode
@@ -78,7 +78,7 @@ Initialize-AksHciNode
 
 ## Step 2: Create a virtual network
 
-Run the following commands on any one node in your Azure Stack HCI and Windows Server cluster.
+Run the following commands on any one node in your Azure Local and Windows Server cluster.
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External":
 
@@ -106,7 +106,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 ## Step 3: Configure your deployment
 
-Run the following commands on any one node in your Azure Stack HCI and Windows Server cluster.
+Run the following commands on any one node in your Azure Local and Windows Server cluster.
 
 To create the configuration settings for the AKS host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -134,11 +134,11 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ### Option 2: Use an Azure service principal
 
-If you don't have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Stack HCI and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
+If you don't have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Local and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
 
 ## Step 5: Start a new deployment
 
-Run the following command on any one node in your Azure Stack HCI or Windows Server cluster.
+Run the following command on any one node in your Azure Local or Windows Server cluster.
 
 After you configure your deployment, you must start it in order to install the AKS agents/services and the AKS host. To begin deployment, run the following command:
 
@@ -225,7 +225,7 @@ Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ```
 
 > [!NOTE]
-> In previous versions of AKS on Azure Stack HCI and Windows Server, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. Now that AKS is introducing node pools in workload clusters, you can only use this command to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster).
+> In previous versions of AKS on Azure Local and Windows Server, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. Now that AKS is introducing node pools in workload clusters, you can only use this command to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster).
 
 To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
 

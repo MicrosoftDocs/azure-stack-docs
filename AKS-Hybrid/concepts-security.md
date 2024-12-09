@@ -3,7 +3,7 @@ title: Security concepts in AKS enabled by Azure Arc
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/10/2024
+ms.date: 10/21/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl
@@ -23,19 +23,19 @@ Security in AKS enabled by Azure Arc involves securing the infrastructure and th
 
 AKS enabled by Arc applies various security measures to secure its infrastructure. The following diagram highlights these measures:
 
-:::image type="content" source="media/concepts-security/security-infrastructure.png" alt-text="Illustration showing the infrastructure security of Azure Kubernetes Service on Azure Stack HCI." lightbox="media/concepts-security/security-infrastructure.png":::
+:::image type="content" source="media/concepts-security/security-infrastructure.png" alt-text="Illustration showing the infrastructure security of Azure Kubernetes Service on Azure Local." lightbox="media/concepts-security/security-infrastructure.png":::
 
-The following table describes the security-hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS deployment, see [Clusters and workloads](./kubernetes-concepts.md).
+The following table describes the security-hardening aspects of AKS on Azure Local that are shown in the previous diagram. For conceptual background information on the infrastructure for an AKS deployment, see [Clusters and workloads](./kubernetes-concepts.md).
 
 | Security aspect |  Description  |
 | ------  | --------|
 | 1  | Because the AKS host has access to all of the workload (target) clusters, this cluster can be a single point of compromise. However, access to the AKS host is carefully controlled as the management cluster's purpose is limited to provisioning workload clusters and collecting aggregated cluster metrics. |
 | 2 | To reduce deployment cost and complexity, workload clusters share the underlying Windows Server. However, depending on the security needs, admins can choose to deploy a workload cluster on a dedicated Windows Server. When workload clusters share the underlying Windows Server, each cluster is deployed as a virtual machine, which ensures strong isolation guarantees between the workload clusters. |
 | 3 |  Customer workloads are deployed as containers and share the same virtual machine. The containers are process-isolated from one another, which is a weaker form of isolation compared to strong isolation guarantees offered by virtual machines.  |
-| 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. [Calico](./calico-networking-policy.md) supports both Windows and Linux containers and is an open-source product that is supported as-is.   |
- 5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
- 6 | Communication with the API server from Windows client machines is secured using Microsoft Entra credentials for users.  |
- 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Stack HCI and applies the appropriate security patches when needed.  |
+| 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. Calico policy support on AKS Arc is only for Linux containers, and is supported as-is. |
+| 5 | Communication between built-in Kubernetes components of AKS on Azure Local, including communication between the API server and the container host, is encrypted via certificates. AKS offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
+| 6 | Communication with the API server from Windows client machines is secured using Microsoft Entra credentials for users.  |
+| 7 | For every release, Microsoft provides the VHDs for AKS VMs on Azure Local and applies the appropriate security patches when needed.  |
 
 ## Application security
 
@@ -61,7 +61,7 @@ This section describes the built-in security features that are currently availab
 | Rotate encryption keys of the Kubernetes secret store (etcd) using the Key Management Server (KMS) plug-in. | Plug-in for integrating and orchestrating key rotation with specified KMS provider. To learn more, see [Encrypt etcd secrets](./encrypt-secrets.md). |
 | Real-time threat monitoring for containers that supports workloads for both Windows and Linux containers.  | Integration with Azure Defender for Kubernetes connected to Azure Arc, which is offered as a public preview feature until the GA release of Kubernetes threat detection for Kubernetes connected to Azure Arc. For more information, see [Defend Azure Arc enabled Kubernetes clusters](/azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc). |
 | Microsoft Entra identity for Windows workloads.  | Use [gMSA integration for Windows workloads](./prepare-windows-nodes-gmsa.md) to configure the Microsoft Entra identity. |
-| Support for Calico policies to secure traffic between pods  | To use Calico policies, see [Secure traffic between pods using network policies](./calico-networking-policy.md). |
+| Support for Calico policies to secure traffic between pods  | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. Calico policy support on AKS Arc is only for Linux containers, and is supported as-is. |
 
 ## Next steps
 
@@ -69,4 +69,3 @@ In this topic, you learned about the concepts for securing AKS enabled by Azure 
 
 - [Secure communication with certificates](./secure-communication.md)
 - [Encrypt etcd secrets](./encrypt-secrets.md)
-- [Secure traffic between pods using network policies](./calico-networking-policy.md)

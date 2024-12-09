@@ -1,6 +1,6 @@
 ---
-title: Create a MetalLB load balancer using the Azure portal
-description: Learn how to create a MetalLB load balancer on your Kubernetes cluster using an Arc extension and the Azure portal.
+title: Deploy extension for MetalLB for Azure Arc enabled Kubernetes using the Azure portal
+description: Learn how to deploy extension for MetalLB for Azure Arc enabled Kubernetes using the Azure portal
 ms.topic: how-to
 ms.date: 04/02/2024
 author: sethmanheim
@@ -10,17 +10,17 @@ ms.lastreviewed: 04/02/2024
 
 ---
 
-# Create a MetalLB load balancer using Azure Arc and the Azure portal
+# Deploy extension for MetalLB for Azure Arc enabled Kubernetes using the Azure portal
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the **Arc Networking** k8s-extension.
+The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the **extension for MetalLB for Azure Arc enabled Kubernetes**
 
 ## Prerequisites
 
-- A Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Stack HCI 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md).
-- Make sure you have enough IP addresses for the load balancer. Ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md).
-- This how-to guide assumes you understand how Metal LB works. For more information, see the [overview for MetalLB in Arc Kubernetes clusters](load-balancer-overview.md).
+- An Azure Arc enabled Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Local, version 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md). AKS on Azure Local, version 23H2 clusters are Arc enabled by default.
+- Make sure you have enough IP addresses for the load balancer. For AKS on Azure Local, version 23H2, ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for Kubernetes](aks-hci-network-system-requirements.md) and [IP address planning for Kubernetes](aks-hci-ip-address-planning.md).
+- This how-to guide assumes you understand how Metal LB works. For more information, see the [overview for MetalLB for Kubernetes](load-balancer-overview.md).
 
 ## Deploy MetalLB load balancer using the Azure Arc extension
 

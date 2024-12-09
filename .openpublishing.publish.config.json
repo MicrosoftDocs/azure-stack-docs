@@ -16,6 +16,19 @@
       "template_folder": "_themes"
     },
     {
+      "docset_name": "AzureLocal",
+      "build_source_folder": "azure-local",
+      "build_output_subfolder": "AzureLocal",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
+    },
+    {
       "docset_name": "azure-managed-lustre",
       "build_source_folder": "azure-managed-lustre",
       "build_output_subfolder": "azure-managed-lustre",
@@ -93,12 +106,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "azure-reference-other-repo",
-      "url": "https://github.com/MicrosoftDocs/azure-reference-other-pr",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "quickstart-templates",
       "url": "https://github.com/Azure/azure-quickstart-templates",
       "branch": "master",
@@ -128,6 +135,7 @@
     ".openpublishing.redirection.json",
     ".openpublishing.redirection.pep.json",
     ".openpublishing.redirection.aks.json",
-    ".openpublishing.redirection.aks-edge.json"
+    ".openpublishing.redirection.aks-edge.json",
+    ".openpublishing.redirection.azure-local.json"
   ]
 }

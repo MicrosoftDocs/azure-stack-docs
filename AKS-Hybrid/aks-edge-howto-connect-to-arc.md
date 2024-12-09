@@ -1,24 +1,24 @@
 ---
 title: Arc-connected AKS Edge Essentials
 description: Connect your AKS Edge Essentials clusters to Arc
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 09/27/2024
 ms.custom: template-how-to
 ---
 
 # Connect your AKS Edge Essentials cluster to Arc
 
-This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the GitHub repo to connect your cluster to Arc [as described here.](./aks-edge-howto-more-configs.md)
+This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the GitHub repo to connect your cluster to Arc [as described here](./aks-edge-howto-more-configs.md).
 
 ## Prerequisites
 
-In addition to these prerequisites, be sure to meet all [network requirements for Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/network-requirements).
-
-- You need an Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription on the Azure portal, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. See [the Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
-- Enable all required resource providers in the Azure subscription, such as **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, **Microsoft.ExtendedLocation**, and **Microsoft.KubernetesConfiguration**.
-- Create and verify a resource group for AKS Edge Essentials Azure resources.
+- Before connecting to Arc, infrastructure administrators who are the owner or contributor role of the subscription will have to:
+  1. Enable all required resource providers in the Azure subscription, such as **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, **Microsoft.ExtendedLocation**, and **Microsoft.KubernetesConfiguration**.
+  1. Create and verify a resource group for AKS Edge Essentials Azure resources.
+- To connect to Arc, Kubernetes operators need a [**Kubernetes Cluster - Azure Arc Onboarding**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-cluster---azure-arc-onboarding) role for the identity at the resource group level. To disconnect from Arc, operators need an [**Azure Kubernetes Service Arc Contributor Role**](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role for the identity at the resource group level. To check your access level, navigate to your subscription on the Azure portal, select **Access control (IAM)** on the left-hand side, and then select **View my access**. See [the Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups. Infrastructure administrators with owner or contributor roles can also perform actions to connect or disconnect from Arc.
+- In addition to these prerequisites, make sure you meet all [network requirements for Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/network-requirements).
 
 > [!NOTE]
 > You need the **Contributor** role to be able to delete the resources within the resource group. Commands to disconnect from Arc will fail without this role assignment.
@@ -29,7 +29,7 @@ In addition to these prerequisites, be sure to meet all [network requirements fo
 
 Run the following commands in an elevated PowerShell window to install the dependencies in PowerShell:
 
-```PowerShell
+```powershell
 Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
 Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop 
 Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber -ErrorAction Stop  
@@ -41,21 +41,21 @@ Provide details of your Azure subscription in the [**aksedge-config.json**](http
 
 > [!IMPORTANT]
 > Client secrets are a form of password. Proper management is critical to the security of your environment.
-> * When you create the client secret, set a very short expiration time, based on the registration timing and scope for your deployment.
-> * Be sure to protect the client secret value and the configuration file from general access.
-> * Consider that if a cluster's configuration file is backed up while it has the client secret stored, the client secret is available to anyone with access to the backup.
-> * Once you register a cluster, remove the client secret from the configuration file for that cluster.
-> * Once you register all clusters in scope for your task, you should rotate the client secret and/or delete the service principal from your Microsoft Entra ID environment.
+> - When you create the client secret, set a very short expiration time, based on the registration timing and scope for your deployment.
+> - Be sure to protect the client secret value and the configuration file from general access.
+> - Consider that if a cluster's configuration file is backed up while it has the client secret stored, the client secret is available to anyone with access to the backup.
+> - Once you register a cluster, remove the client secret from the configuration file for that cluster.
+> - Once you register all clusters in scope for your task, you should rotate the client secret and/or delete the service principal from your Microsoft Entra ID environment.
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
-|`ClusterName` | string | Provide a name for your cluster. The default value is `hostname_cluster`. |
+|`ClusterName` | string | The name of your cluster. The default value is `hostname_cluster`. |
 |`Location` | string | The location of your resource group. Choose the location closest to your deployment. |
 |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
-|`TenantId` | GUID | Your tenant ID. In the Azure portal, search Microsoft Entra ID, which should take you to the **Default Directory** page. From here, you can copy/paste the tenant ID string into the JSON. |
+|`TenantId` | GUID | Your tenant ID. In the Azure portal, search **Microsoft Entra ID**, which should take you to the **Default Directory** page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-|`ClientId` | GUID | Provide the application ID of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Microsoft Entra resource page on the Azure portal, to list and manage the service principals in a tenant. Be aware that the service principal requires the **Kubernetes Cluster - Azure Arc Onboarding** role at either the subscription or resource group level. For more information, see [Microsoft Entra identity requirements for service principals](/azure/azure-arc/kubernetes/system-requirements#microsoft-entra-identity-requirements). |
-|`ClientSecret` | string | Provide the password for the service principal. |
+|`ClientId` | GUID | Provide the application ID of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Microsoft Entra resource page on the Azure portal to list and manage the service principals in a tenant. Be aware that the service principal requires the **Kubernetes Cluster - Azure Arc Onboarding** role at either the subscription or resource group level. For more information, see [Microsoft Entra identity requirements for service principals](/azure/azure-arc/kubernetes/system-requirements#microsoft-entra-identity-requirements). |
+|`ClientSecret` | string | The password for the service principal. |
 
 > [!NOTE]
 > You only need to perform this configuration once per Azure subscription. You don't need to repeat the procedure for each Kubernetes cluster.
@@ -70,7 +70,7 @@ Connect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
 ```
 
 > [!NOTE]
-> This step can take up to 10 minutes and PowerShell may become stuck on **Establishing Azure Connected Kubernetes for `your cluster name`**. PowerShell outputs `True` and returns to the prompt when the process is complete.
+> This step can take up to 10 minutes and PowerShell might become stuck on **Establishing Azure Connected Kubernetes for `your cluster name`**. PowerShell outputs `True` and returns to the prompt when the process is complete.
 
 :::image type="content" source="media/aks-edge/aks-edge-ps-arc-connection.png" alt-text="Screenshot showing PowerShell prompt while connecting to Arc." lightbox="media/aks-edge/aks-edge-ps-arc-connection.png":::
 

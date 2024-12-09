@@ -4,7 +4,7 @@ description: Learn how Azure Stack users are billed for resource usage in a Modu
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: sethm

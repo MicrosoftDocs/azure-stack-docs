@@ -4,7 +4,7 @@ description: Follow these best practices when you deploy and manage Azure Stack 
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 10/13/2021
 ms.author: sethm

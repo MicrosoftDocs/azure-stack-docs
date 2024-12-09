@@ -22,14 +22,14 @@ It can be difficult to identify environment-related issues, such as networking c
 
 Before you begin, make sure you have the following prerequisites. If you don't meet the requirements for running the diagnostic checker tool, [file a support request](aks-troubleshoot.md#open-a-support-request):
 
-- Direct access to the Azure Stack HCI cluster where you created the AKS cluster. This access can be through remote desktop (RDP), or you can also sign in to one of the Azure Stack HCI physical nodes.
+- Direct access to the Azure Local cluster where you created the AKS cluster. This access can be through remote desktop (RDP), or you can also sign in to one of the Azure Local physical nodes.
 - Review the [networking concepts for creating an AKS cluster](aks-hci-network-system-requirements.md) and the [AKS cluster architecture](cluster-architecture.md).
 - The name of the logical network attached to the AKS cluster.
 - An SSH private key for the AKS cluster, used to sign in to the AKS cluster [control plane node](cluster-architecture.md#control-plane-nodes) VM.
 
 ## Obtain control plane node VM IP of the AKS cluster
 
-Run the following command from any one physical node in your Azure Stack HCI cluster. Ensure that you're passing the name, and not the Azure Resource Manager ID of the AKS cluster:
+Run the following command from any one physical node in your Azure Local cluster. Ensure that you're passing the name, and not the Azure Resource Manager ID of the AKS cluster:
 
 ```powershell
 invoke-command -computername (get-clusternode) -script {get-vmnetworkadapter -vmname *} | Where-Object {$_.Name -like "$cluster_name*control-plane-*"} | select vmname, ipaddresses
@@ -53,7 +53,7 @@ If you see a control plane VM, and it has:
 
 ## Run the diagnostic checker script
 
-Copy the following PowerShell script `run_diagnostic.ps1` into any one node of your Azure Stack HCI cluster:
+Copy the following PowerShell script `run_diagnostic.ps1` into any one node of your Azure Local cluster:
 
 ```powershell
 <#
@@ -98,7 +98,7 @@ $urlArray = @(
     "https://management.azure.com",
     "https://eastus.dp.kubernetesconfiguration.azure.com",
     "https://login.microsoftonline.com",
-    "https://eastus.log in.microsoft.com",
+    "https://eastus.login.microsoft.com",
     "https://login.windows.net",
     "https://mcr.microsoft.com",
     "https://gbl.his.arc.azure.com",

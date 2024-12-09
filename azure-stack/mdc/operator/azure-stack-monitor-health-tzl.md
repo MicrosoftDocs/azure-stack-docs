@@ -4,7 +4,7 @@ description: Learn how to monitor health and alerts in Azure Stack for a Modular
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 10/26/2020
 ms.author: sethm

@@ -1,14 +1,14 @@
 ---
 title: Access and identity options for Azure Kubernetes Service (AKS) Arc
-description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Stack HCI.
-author: leslielin
+description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Local.
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 07/30/2024
-ms.author: leslielin
+ms.author: sethm
 ms.lastreviewed: 07/30/2024
-ms.reviewer: abha
+ms.reviewer: leslielin
 
-# Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
+# Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Local deployment(s).
 # Keyword: security concepts infrastructure security
 
 
@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 # Access and identity options for AKS enabled by Azure Arc
 
-Applies to: AKS on Azure Stack HCI 23H2
+Applies to: AKS on Azure Local, version 23H2
 
 You can authenticate, authorize, secure, and control access to Kubernetes clusters in various ways:
 

@@ -4,7 +4,7 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 03/15/2024
+ms.date: 11/11/2024
 ms.reviewer: dsundarraj
 
 # Intent: As an IT Pro, XXX.
@@ -26,7 +26,6 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
 - **To achieve advertised performance**:
   - Clients must reside in the same Availability Zone in which the cluster resides.
   - [Enable accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled) on all client VMs. If this option isn't enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
-- **Security type** - When selecting the security type for the VM, choose the Standard Security Type. Choosing Trusted Launch or Confidential types prevent the Lustre module from being properly installed on the client.
 
 The basic workflow is as follows:
 

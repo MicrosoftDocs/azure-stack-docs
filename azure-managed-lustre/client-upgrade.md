@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 03/15/2024
+ms.date: 10/25/2024
 
 ---
 
@@ -34,19 +34,17 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Uninstall the existing Lustre client version using the following command:
 
     ```bash
-    sudo dnf remove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
+    sudo dnf remove *lustre*
     ```
 
 1. Install the current version of the Lustre client using the following command:
 
+    [!INCLUDE [client-upgrade-version-rhel-alma](./includes/client-upgrade-version-rhel-alma.md)]
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
+
     ```bash
-    sudo dnf install amlfs-lustre-client-2.15.4_42_gd6d405d-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+    sudo lustre_rmmod
     ```
 
 1. Verify that old kernel modules are removed using the following command:
@@ -61,7 +59,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
+    If the output shows an old version of the Lustre kernel module, rebooting (sudo reboot) the system is recommended.
 
 ### [Ubuntu](#tab/ubuntu)
 
@@ -74,19 +72,17 @@ Follow these steps to upgrade the Lustre client to the current version:
 1. Uninstall the existing Lustre client version using the following command:
 
     ```bash
-    sudo apt autoremove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
+    sudo apt autoremove *lustre* -y
     ```
 
 1. Install the current version of the Lustre client using the following command:
 
+    [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu.md)]
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
+
     ```bash
-    sudo apt install amlfs-lustre-client-2.15.4-42-gd6d405d=$(uname -r)
+    sudo lustre_rmmod
     ```
 
 1. Verify that old kernel modules are removed using the following command:
@@ -95,13 +91,13 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should look similar to the following:
+    The output should look similar to the following example:
 
     ```bash
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
+    If the output shows an old version of the Lustre kernel module, rebooting (sudo reboot) the system is recommended.
 
 ---
 

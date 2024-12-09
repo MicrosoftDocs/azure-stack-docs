@@ -4,8 +4,7 @@ description: Describes how to automount Lustre clients using fstab.
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 07/26/2023
-ms.lastreviewed: 07/26/2023
+ms.date: 11/11/2024
 ms.reviewer: dsundarraj
 
 ---
@@ -37,6 +36,7 @@ To update the **/etc/fstab** file in your Lustre client VM:
 ```bash
 <MGS IP Address>@tcp:/lustrefs </mount_point> lustre defaults,noatime,flock,_netdev,x-systemd.automount,x-systemd.requires=network.service 0 0
 ```
+
 > [!NOTE]
 > You can copy the example and input the appropriate MGS IP address and mount point for a functional default setup.
 
@@ -72,4 +72,3 @@ Your Lustre client VM is now configured to mount AMLFS whenever it restarts.
 In some cases, your Lustre client VM might need to start regardless of the status of your mounted AMLFS file system. In these cases, add the nofail option to your file system's entry in your /etc/fstab file.
 
 The fields in the line of code that you added to the /etc/fstab file do the following.
-

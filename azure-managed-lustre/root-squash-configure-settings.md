@@ -2,7 +2,7 @@
 title: Configure root squash settings for Azure Managed Lustre file systems
 description: Learn how to configure root squash settings for Azure Managed Lustre file systems. 
 ms.topic: how-to
-ms.date: 05/03/2024
+ms.date: 11/11/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop

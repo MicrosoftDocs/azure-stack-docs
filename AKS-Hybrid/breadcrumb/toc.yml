@@ -1,6 +1,6 @@
-- name: Azure Stack
-  tocHref: /azure-stack/
-  topicHref: /azure-stack/index
+- name: Azure hybrid and multicloud documentation
+  tocHref: /azure/adaptive-cloud/
+  topicHref: /azure/adaptive-cloud/index
   items:
   - name: AKS enabled by Azure Arc
     tocHref: /azure/aks/hybrid/

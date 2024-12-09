@@ -1,10 +1,10 @@
 ---
 title: What is Azure Managed Lustre?
-description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
+description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system for cloud-based high-performance computing jobs.
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/14/2024
+ms.date: 11/11/2024
 ms.reviewer: mayabishop
 ms.custom: references_regions
 
@@ -15,7 +15,7 @@ ms.custom: references_regions
 
 # What is Azure Managed Lustre?
 
-The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
+The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system for cloud-based high-performance computing jobs.
 
 Lustre is an open-source parallel file system that can scale to massive storage sizes while also providing high performance throughput. Lustre is used by the world's fastest supercomputers and in data-centric workflows for many types of industries. For more information, see [https://www.lustre.org](https://www.lustre.org).
 
@@ -38,7 +38,7 @@ All information in an Azure Managed Lustre file system also is protected by VM h
 
 Your Azure Managed Lustre file system uses Azure managed disks as object storage target (OST) data disks.
 
-All Azure Managed Lustre file systems that are created as a "durable" file system type use Azure Premium SSD (solid state drive) disks configured as locally redundant storage (LRS). LRS disk contents are replicated three times within the local datacenter to protect against drive and server rack failures.
+All Azure Managed Lustre file systems that are created as a "durable" file system type use Azure Premium SSD (solid state drive) disks configured as locally redundant storage (LRS). LRS disk contents are replicated three times within the local data center to protect against drive and server rack failures.
 
 The Azure Managed Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 

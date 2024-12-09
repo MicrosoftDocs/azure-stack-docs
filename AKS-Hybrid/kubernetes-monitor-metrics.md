@@ -49,7 +49,7 @@ The following table lists all the Azure Monitor log tables relevant to AKS Arc:
 
 | Resource Type     | Notes                                                                                            |
 |-------------------|--------------------------------------------------------------------------------------------------|
-| [ConnectedCluster](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-arc-enabled-kubernetes)  | Follow this link for a list of all tables used by AKS Arc, and a description of their structure.  |
+| [ConnectedCluster](/azure/azure-monitor/logs/manage-logs-tables)  | Follow this link for a list of all tables used by AKS Arc, and a description of their structure.  |
 
 ## Azure Activity log
 

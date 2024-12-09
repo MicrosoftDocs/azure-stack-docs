@@ -4,7 +4,7 @@ description: Learn how to configure deployment sources (Git, GitHub, BitBucket, 
 author: sethmanheim
 ms.topic: article
 ms.date: 10/24/2022
-ms.author: anwestg
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
 zone_pivot_groups: version-2022h1-previous

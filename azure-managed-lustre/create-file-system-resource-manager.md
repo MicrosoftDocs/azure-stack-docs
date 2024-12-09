@@ -2,10 +2,10 @@
 title: Create an Azure Managed Lustre file system by using Azure Resource Manager templates
 description: Learn how to use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
-ms.date: 08/16/2024
+ms.date: 11/11/2024
 author: pauljewellmsft
 ms.author: pauljewell
-ms.lastreviewed: 08/16/2024
+ms.lastreviewed: 11/11/2024
 ms.reviewer: ronhogue
 
 ---
@@ -187,7 +187,7 @@ This section shows example contents for a JSON template file. You can remove opt
             "identity": {
               "type": "UserAssigned",
               "userAssignedIdentities": {
-                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>": {}
+                "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>": {}
               }
             },
             "properties": {
@@ -195,15 +195,15 @@ This section shows example contents for a JSON template file. You can remove opt
                 "keyEncryptionKey": {
                   "keyUrl": "https://<keyvault-name>.vault.azure.net/keys/kvk/<key>",
                   "sourceVault": {
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>"
+                    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>"
                   }
                 }
               },
-              "filesystemSubnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>",
+              "filesystemSubnet": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>",
               "hsm": {
                 "settings": {
-                  "container": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<container-name>",
-                  "loggingContainer": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<logging-container-name>",
+                  "container": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<container-name>",
+                  "loggingContainer": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<logging-container-name>",
                   "importPrefixesInitial": [
                     "/"
                   ]
@@ -247,7 +247,7 @@ resource filesystem 'Microsoft.StorageCache/amlFilesystems@2024-03-01' = {
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>': {}
+      '/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>': {}
     }
   }
   properties: {
@@ -255,18 +255,18 @@ resource filesystem 'Microsoft.StorageCache/amlFilesystems@2024-03-01' = {
       keyEncryptionKey: {
         keyUrl: 'https://<keyvault-name>.vault.azure.net/keys/kvk/<key>'
         sourceVault: {
-          id: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>'
+          id: '/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>'
         }
       }
     }
-    filesystemSubnet: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>'
+    filesystemSubnet: '/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>'
     hsm: {
       settings: {
-        container: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<container-name>'
+        container: '/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<container-name>'
         importPrefixesInitial: [
           '/'
         ]
-        loggingContainer: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<logging-container-name>'
+        loggingContainer: '/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>/blobServices/default/containers/<logging-container-name>'
       }
     }
     maintenanceWindow: {

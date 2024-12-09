@@ -44,21 +44,21 @@ You describe a DaemonSet by using a YAML file, and then create it using the `kub
 The following example describes the features of a DaemonSet configuration file using an nginx image:
 
 ```yaml
-apiVersion: apps/v1  
-kind: DaemonSet  
-metadata: 
-      labels: 
-         app: nginx
-      name: example-daemon
-spec:  
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: nginx
+  name: example-daemon
+spec:
   template:
-    metadata:
+    metadata: null
     labels:
-             app: nginx
-          spec:  
-    containers:  
-        -name: nginx  
-         image: nginx
+      app: nginx
+containers: null
+name: nginx
+image: nginx
 ```
 
 To view the current state of the DaemonSet, use the `kubectl describe` command (for example, `kubectl describe daemonset example-daemon`).

@@ -4,7 +4,7 @@ author: sethmanheim
 description: The Uninstall-AksHci PowerShell command removes AKS hybrid.
 ms.topic: reference
 ms.date: 11/04/2022
-ms.author: mikek 
+ms.author: sethm 
 ms.lastreviewed: 11/04/2022
 ms.reviewer: mikek
 

@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials update (online)
 description: Learn how to update AKS Edge Essentials clusters.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 07/12/2024
+ms.date: 09/10/2024
 ms.custom: template-how-to
 ---
 
@@ -72,7 +72,7 @@ On-premises updates using WSUS is supported for AKS Edge Essentials updates. For
 
 ## Upgrade to newer versions
 
-AKS Edge Essentials currently supports Kubernetes version 1.24.3 on both K3s and K8s. As we continue to add support to newer versions, you can use over-the-air updates to the newer versions. To upgrade your clusters to newer versions, set the `Set-AksEdgeUpgrade` command to `true`:
+For a list of currently supported Kubernetes versions on both K3s and K8s, see the table in [Download AKS Edge Essentials](aks-edge-howto-setup-machine.md#download-aks-edge-essentials). As we continue to add support to newer versions, you can use over-the-air updates to the newer versions. To upgrade your clusters to newer versions, set the `Set-AksEdgeUpgrade` command to `true`:
 
 ```powershell
 Set-AksEdgeUpgrade – AcceptUpgrade $true

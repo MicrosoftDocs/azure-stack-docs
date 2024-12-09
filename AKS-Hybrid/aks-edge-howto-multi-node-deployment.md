@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials full Kubernetes
 description: Describes how to create a cluster with multiple machines in AKS Edge Essentials.
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 07/11/2024
 ms.custom: template-how-to
@@ -48,6 +48,10 @@ The key parameters to note for a scalable Kubernetes deployment are:
     :::image type="content" source="media/aks-edge/hyper-v-external-switch.png" alt-text="Screenshot of Hyper-V switch manager." lightbox="media/aks-edge/hyper-v-external-switch.png":::
 
 - **IP addresses**: You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. See the [AKS Edge Essentials networking overview](./aks-edge-concept-networking.md) for more details. For example, in a local network with the 192.168.1.0/24 IP address range, you might have 1.151 and above outside of the DHCP scope, and therefore are likely to be free. AKS Edge Essentials currently supports IPv4 addresses only. Ideally, you will know what free IP addresses you can use; however, you can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file: `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, and `DnsServers`.
+
+> [!IMPORTANT]
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
+
 - The `Network.NetworkPlugin` value by default is `flannel`. Flannel is the default CNI for a K3S cluster. In a K8S cluster, change the `NetworkPlugin` to `calico`.
 - In addition to the previous parameters, you can set the following parameters according to your deployment configuration, [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `LinuxNode.Ip4Address`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `WindowsNode.Ip4Address`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
 

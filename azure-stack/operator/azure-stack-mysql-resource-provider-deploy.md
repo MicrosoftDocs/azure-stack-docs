@@ -4,7 +4,7 @@ description: Learn how to deploy the MySQL resource provider adapter and MySQL d
 author: sethmanheim
 ms.topic: article 
 ms.date: 09/02/2021
-ms.author: caoyang
+ms.author: sethm
 ms.reviewer: jiadu
 ms.lastreviewed: 09/02/2021
 

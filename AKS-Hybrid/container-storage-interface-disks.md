@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 # Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azure Arc
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Stack HCI 23H2
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Local, version 23H2
 
 This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Arc.
 
@@ -56,13 +56,13 @@ volumeBindingMode: Immediate
 allowVolumeExpansion: true  
 ```
 
-If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that's backed by high-performing SSDs/NVMe or a cost-optimized volume backed by HDDs.
+If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Local, this new location could be a volume that's backed by high-performing SSDs/NVMe or a cost-optimized volume backed by HDDs.
 
 Creating a custom storage class is a two-step process:
 
-### [AKS on Azure Stack HCI 23H2](#tab/23H2)
+### [AKS on Azure Local, version 23H2](#tab/23H2)
 
-1. Create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
+1. Create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Local cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
 
    For `$path`, create a storage path named `$storagepathname`; for example, **C:\ClusterStorage\test-storagepath**:
 
@@ -107,7 +107,7 @@ Creating a custom storage class is a two-step process:
        storageclass.storage.k8s.io/aks-hci-disk-custom created
       ```
 
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+### [AKS on Azure Local 22H2](#tab/22H2)
 
 1. Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 

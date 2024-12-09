@@ -3,7 +3,7 @@ title: Modular Data Center (MDC) networking appendix
 description: Appendices for MDC networking. 
 author: sethmanheim
 ms.author: sethm
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.lastreviewed: 12/30/2019

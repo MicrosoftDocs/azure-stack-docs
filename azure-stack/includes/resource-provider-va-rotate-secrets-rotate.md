@@ -26,27 +26,27 @@ Open an elevated PowerShell console and complete the following steps to determin
 
    ```powershell
    PS C:\WINDOWS\system32> Get-AzsProductDeployment -AsJson
-   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
+   VERBOSE: GET https://adminmanagement.myregion.mycompany.com/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/productDeployments?api-version=2019-01-01 with 0-char payload
    VERBOSE: Received 2656-char response, StatusCode = OK
    {
        "value":  [
                      {
-                         "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
+                         "id":  "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/microsoft.eventhub",
                          "name":  "global/microsoft.eventhub",
                          "type":  "Microsoft.Deployment.Admin/locations/productDeployments",
                          "properties":  {
                                             "status":  "DeploymentSucceeded",
-                                            "subscriptionId":  "b37ae55a-a6c6-4474-ba97-81519412adf5",
+                                            "subscriptionId":  "bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f",
                                             "deployment":  {
                                                                "version":  "1.2003.0.0",
-                                                               "actionPlanInstanceResourceId":"/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/actionplans/abcdfcd3-fef0-z1a3-z85d-z6ceb0f31e36",
+                                                               "actionPlanInstanceResourceId":"/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/actionplans/cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a",
                                                                "parameters":  {
    
                                                                               }
                                                            },
                                             "lastSuccessfulDeployment":  {
                                                                              "version":  "1.2003.0.0",
-                                                                             "actionPlanInstanceResourceId":"/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/actionplans/abcdfcd3-fef0-z1a3-z85d-z6ceb0f31e36",
+                                                                             "actionPlanInstanceResourceId":"/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/actionplans/cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a",
                                                                              "parameters":  {
    
                                                                                             }
@@ -70,12 +70,12 @@ Open an elevated PowerShell console and complete the following steps to determin
     ```powershell
     PS C:\WINDOWS\system32> Get-AzsProductSecret -PackageId 'microsoft.eventhub.1.2003.0.0' -AsJson
     VERBOSE: GET
-    https://adminmanagement.myregion.mycompany.com/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
+    https://adminmanagement.myregion.mycompany.com/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets?api-version=2019-01-01 with 0-char payload
     VERBOSE: Received 617-char response, StatusCode = OK
     {
         "value":  [
                         {
-                            "id":  "/subscriptions/ze22ca96-z546-zbc6-z566-z35f68799816/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
+                            "id":  "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Deployment.Admin/locations/global/productPackages/microsoft.eventhub.1.2003.0.0/secrets/aseh-ssl-gateway-pfx",
                             "name":  "global/microsoft.eventhub.1.2003.0.0/aseh-ssl-gateway-pfx",
                             "type":  "Microsoft.Deployment.Admin/locations/productPackages/secrets",
                             "properties":  {
@@ -131,4 +131,3 @@ Open an elevated PowerShell console and complete the following steps to determin
    You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
 
    [![secret-rotation-progress](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png)](media/resource-provider-va-rotate-secrets-rotate/secret-rotation-in-progress.png#lightbox)
-

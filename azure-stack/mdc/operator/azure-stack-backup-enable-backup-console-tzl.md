@@ -4,7 +4,7 @@ description: Learn how to enable the Infrastructure Backup Service from the admi
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/16/2021
 ms.author: sethm

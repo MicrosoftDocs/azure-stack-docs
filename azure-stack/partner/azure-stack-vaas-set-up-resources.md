@@ -74,7 +74,7 @@ For portal application consent:
 
 For agent application consent:
 
-1. Complete the **{your-tenant-id}** in the following application admin consent URL: `https://login.microsoftonline.com/{your-tenant-id}/adminconsent?client_id=1cb1f8f6-a492-4155-9aaf-59a444e8cd3c`
+1. Complete the **{your-tenant-id}** in the following application admin consent URL: `https://login.microsoftonline.com/{your-tenant-id}/adminconsent?client_id=ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0`
 
 2. Access the link from the browser.
 

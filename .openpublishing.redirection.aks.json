@@ -1401,6 +1401,26 @@
         "redirect_document_id": false
       },
       {
+        "source_path": "AKS-Hybrid/calico-networking-policy.md",
+        "redirect_url": "/azure/aks/hybrid/concepts-security",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/webhook-denied-request.md",
+        "redirect_url": "/azure/aks/hybrid/troubleshoot-overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/create-storage-classes.md",
+        "redirect_url": "/azure/aks/hybrid/overview",
+        "redirect_document_id": false
+      },      
+      {
+        "source_path": "AKS-Hybrid/storage-class-overview.md",
+        "redirect_url": "/azure/aks/hybrid/overview",
+        "redirect_document_id": false
+      },
+      {
         "source_path": "AKS-Hybrid/infrastructure-components.md",
         "redirect_url": "/azure/aks/hybrid/cluster-architecture",
         "redirect_document_id": false

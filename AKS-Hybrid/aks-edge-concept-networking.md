@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials networking 
 description: Basic networking concepts for AKS Edge Essentials 
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: conceptual
 ms.date: 07/11/2024
 ms.custom: template-concept
@@ -47,6 +47,9 @@ If AKS Edge Essentials is deployed using a single machine cluster or a scalable 
 | **Service IP range** | If the `ServiceIPRangeSize` parameter is defined, starts at **192.168.0.4**. | Both the `ServiceIPRangeStart` and `ServiceIPRangeSize` parameters can be defined. |
 | **Static MAC Address** | Supported using the `MacAddress` parameter. | Supported using the `MacAddress` parameter. |
 | **Maximum transmission unit (MTU)** | Supported using the `MTU` parameter. | Supported using the `MTU` parameter. |
+
+> [!IMPORTANT]
+> The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
 ## Single machine cluster
 

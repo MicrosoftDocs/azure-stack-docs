@@ -4,7 +4,7 @@ description: Learn how to deploy a multi-container Linux app to your Kubernetes 
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 06/27/2024
+ms.date: 09/24/2024
 ms.author: sethm 
 ms.lastreviewed: 06/27/2022
 ms.reviewer: abha
@@ -103,7 +103,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+        image: <path to image>/azure-vote-front:v1
         resources:
           requests:
             cpu: 100m

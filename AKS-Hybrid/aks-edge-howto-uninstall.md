@@ -1,8 +1,8 @@
 ---
 title: Uninstall AKS Edge Essentials
 description: Learn how to uninstall AKS Edge Essentials. 
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 07/11/2024
 ms.custom:

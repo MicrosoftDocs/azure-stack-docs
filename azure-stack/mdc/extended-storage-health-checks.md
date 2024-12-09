@@ -4,7 +4,7 @@ description: This article provides guidance for how to perform health checks in 
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: sethm

@@ -4,8 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: conceptual
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/30/2024
-ms.lastreviewed: 06/05/2023
+ms.date: 11/11/2024
 ms.reviewer: brianl
 
 # Intent: As an IT Pro, I want to be able to seamlessly use Azure Blob Storage for long-term storage of files in my Azure Managed Lustre file system.

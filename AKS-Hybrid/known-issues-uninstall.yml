@@ -4,14 +4,12 @@ metadata:
   description: Get help to troubleshoot issues and errors when uninstalling AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
-  ms.service: azure-stack
-  ms.subservice: aks-hci
+  ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 07/11/2024
-
 title: Fix known issues and errors when uninstalling AKS Arc
 summary: |
-  **Applies to: AKS on Azure Stack HCI, AKS on Windows Server** 
+  **Applies to: AKS on Azure Local, AKS on Windows Server** 
   Use this topic to help you troubleshoot and resolve issues when uninstalling AKS Arc.
   
 sections:
@@ -88,10 +86,10 @@ sections:
           
           Check to make sure you have used the correct information for removing the cluster.
       - question: | 
-          Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
+          Error occurs when running Uninstall-AksHci and AKS on Azure Local is not installed
 
         answer: | 
-          If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. 
+          If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Local is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. 
           
           You can safely ignore the error message as there is no functional impact.
   

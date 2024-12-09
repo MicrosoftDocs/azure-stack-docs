@@ -4,7 +4,7 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 06/13/2024
+ms.date: 11/11/2024
 ms.lastreviewed: 06/06/2023
 ms.reviewer: mayabishop
 

@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 07/18/2024
+ms.date: 10/24/2024
 ms.reviewer: unknown
 ms.lastreviewed: 4/28/2021
 
@@ -43,19 +43,19 @@ NCv3-series VMs are powered by NVIDIA Tesla V100 GPUs. Customers can take advant
 The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With the NVv4-series, Azure Stack Hub introduces virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only the Windows guest operating system. 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
-| --- | --- | --- | --- | --- | --- | --- | --- |   
-| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
 | Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
 | Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 |
 | Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 |
 
 ## NCasT4_v3
 
-| Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
+| Size | vCPU | Memory: GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
-| Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 | 
+| Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 |
+| Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 |
+| Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 |
 | Standard_NC64as_T4_v3 |64 |440 | 4 | 64 | 32 | 8 |
 
 ## NC_A100 v4
@@ -66,6 +66,13 @@ The NC_A100 series VMs are powered by NVIDIA Ampere A100 GPUs, the successor of 
 |-------------------------------|-----------|------------------|-------------------------|---------------------|-----------|---------------------|---------------|
 |     Standard_NC24ads_A100_v4  |   24      |   220            |   1123                  |   12                |   1       |   80                |   2           |
 |     Standard_NC48ads_A100_v4  |   48      |   440            |   2246                  |   24                |   2       |   160               |   4           |
+
+## NC_L40S v4
+
+|       Size                    |     vCPU  |     Memory: GiB  |     Temp storage (GiB)  |     Max data disks  |     GPU   |     GPU memory GiB  |     Max NICs  |
+|-------------------------------|-----------|------------------|-------------------------|---------------------|-----------|---------------------|---------------|
+|     Standard_NC24ads_L40S_v4  |   24      |   220            |   1123                  |   8                 |   1       |   80                |   2           |
+|     Standard_NC48ads_L40S_v4  |   48      |   440            |   2246                  |   16                |   2       |   160               |   4           |
 
 ## GPU system considerations
 

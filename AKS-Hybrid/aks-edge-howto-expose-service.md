@@ -1,8 +1,8 @@
 ---
 title: Expose services with AKS Edge Essentials
 description: Learn how to expose a Kubernetes service with AKS Edge Essentials.
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 07/12/2024
 ms.custom: template-how-to

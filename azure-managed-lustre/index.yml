@@ -62,6 +62,8 @@ landingContent:
         links:
           - text: Configure root squash settings
             url: root-squash-configure-settings.md
+          - text: Set and configure Lustre quotas
+            url: lustre-quotas.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

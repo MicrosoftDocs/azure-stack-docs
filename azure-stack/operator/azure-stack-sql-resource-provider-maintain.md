@@ -5,7 +5,7 @@ description: Learn about SQL resource provider maintenance operations on Azure S
 author: sethmanheim
 ms.topic: article
 ms.date: 08/19/2021
-ms.author: caoyang
+ms.author: sethm
 ms.reviewer: jiadu
 ms.lastreviewed: 08/20/2021
 

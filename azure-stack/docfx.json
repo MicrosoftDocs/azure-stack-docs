@@ -206,18 +206,20 @@
       "recommendations": true
     },
     "fileMetadata": {
+      "ms.service": {
+        "asdk/**/*.md": "azure-stack-hub",
+        "mdc/**/*.md": "azure-stack-hub",
+        "operator/**/*.md": "azure-stack-hub",
+        "partner/**/*.md": "azure-stack-hub",
+        "reference/**/*.md": "azure-stack-hub",
+        "user/**/*.md": "azure-stack-hub"
+      },
       "titleSuffix": {
         "**/*.md": "Azure Stack Hub",
         "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
-        "hci/**/*.md": "Azure Stack HCI",
         "hybrid/**/*.md": "Azure Stack"
       },
-      "feedback_product_url": {
-        "hci/**/*.md": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8"
-      },
       "feedback_help_link_url": {
-        "hci/**/*.md": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
-        "hci/**/*.yml": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
         "operator/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "user/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "mdc/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
@@ -227,12 +229,7 @@
       },
       "ms.subservice": {
         "asdk/**/*.md": "azure-stack-hub-asdk",
-        "hci/**/*.md": "azure-stack-hci",
-        "mdc/**/*.md": "azure-stack-hub-mdc",
-        "operator/**/*.md": "azure-stack-hub",
-        "partner/**/*.md": "azure-stack-hub",
-        "reference/**/*.md": "azure-stack-hub",
-        "user/**/*.md": "azure-stack-hub"
+        "mdc/**/*.md": "azure-stack-hub-mdc"
       }
     },
     "template": [],

@@ -85,7 +85,7 @@ Sample response:
                      ],
           "publisher":  "MicrosoftWindowsServer",
           "resourceGroupName":  "IMDS",
-          "resourceId":  "/subscriptions/1cf1cb48-fad3-4872-9366-c5c51fe748e6/resourceGroups/IMDS/providers/Microsoft.Compute/virtualMachines/IMDSVALI",
+          "resourceId":  "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/IMDS/providers/Microsoft.Compute/virtualMachines/IMDSVALI",
           "securityProfile":  {
                                   "secureBootEnabled":  "",
                                   "virtualTpmEnabled":  ""
@@ -115,7 +115,7 @@ Sample response:
                                                               "uri":  ""
                                                           },
                                                 "managedDisk":  {
-                                                                    "id":  "/subscriptions/1cf1cb48-fad3-4872-9366-c5c51fe748e6/resourceGroups/IMDS/providers/Mi
+                                                                    "id":  "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/IMDS/providers/Mi
 crosoft.Compute/disks/IMDSVALI_OsDisk_1_589d8d9cdd8a4c34a004b0dcecd68b05",
                                                                     "storageAccountType":  "Premium_LRS"
                                                                 },
@@ -130,7 +130,7 @@ crosoft.Compute/disks/IMDSVALI_OsDisk_1_589d8d9cdd8a4c34a004b0dcecd68b05",
                                                       "size":  ""
                                                   }
                              },
-          "subscriptionId":  "1cf1cb48-fad3-4872-9366-c5c51fe748e6",
+          "subscriptionId":  "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
           "tags":  "",
           "tagsList":  [
 

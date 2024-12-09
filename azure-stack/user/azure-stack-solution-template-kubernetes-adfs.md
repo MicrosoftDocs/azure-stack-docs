@@ -44,7 +44,7 @@ You need to work with your Azure Stack Hub administrator to set up your service 
 
      ```Text  
        ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-       ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+       ClientId              : 00001111-aaaa-2222-bbbb-3333cccc4444
        ClientSecret          : <your client secret>
        Thumbprint            : <often this value is empty>
        ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342

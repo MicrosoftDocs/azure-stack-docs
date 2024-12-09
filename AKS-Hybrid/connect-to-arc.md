@@ -100,7 +100,7 @@ Make sure the service principal used in this command has the Owner role assigned
 If you want to enable custom locations on your cluster along with Azure Arc, run the following command to get the object ID of the custom location application, and then connect to Azure Arc using a service principal:
 
 ```powershell
-$objectID = (Get-AzADServicePrincipal -ApplicationId "bc313c14-388c-4e7d-a58e-70017303ee3b").Id
+$objectID = (Get-AzADServicePrincipal -ApplicationId "00001111-aaaa-2222-bbbb-3333cccc4444").Id
 Enable-AksHciArcConnection -name $clusterName -subscriptionId $subscriptionId -resourceGroup $resourceGroup -credential $Credential -tenantId $tenantId -location -customLocationsOid $objectID
 ```
 

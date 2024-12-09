@@ -4,7 +4,7 @@ description: Learn about different features and considerations when working with
 services: azure-stack
 author: sethmanheim
 manager: femila
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 2/1/2021
 ms.author: sethm

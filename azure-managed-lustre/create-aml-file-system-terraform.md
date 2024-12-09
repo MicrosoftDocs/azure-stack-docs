@@ -6,7 +6,7 @@ author: pauljewellmsft
 ms.service: azure-stack
 ms.topic: how-to
 ms.custom: devx-track-terraform
-ms.date: 10/25/2023
+ms.date: 11/11/2024
 ms.author: pauljewell
 content_well_notification: 
   - AI-contribution

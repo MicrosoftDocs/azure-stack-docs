@@ -3,7 +3,7 @@ title: Introduction to Modular Datacenter (MDC) networking
 description: Learn about networking for the Azure Modular Datacenter device. 
 author: sethmanheim
 ms.author: sethm
-ms.service: azure-stack
+ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.lastreviewed: 12/31/2019

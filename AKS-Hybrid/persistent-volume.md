@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 07/03/2024
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to create and use persistent storage volumes in a Windows container and prepare Windows nodes.
@@ -47,7 +47,7 @@ spec:
    storage: 10Gi
 ```
 
-To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Local cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
 
 ```bash
 kubectl create -f pvc-akshci-csi.yaml 

@@ -1,8 +1,8 @@
 ---
 title: Quickstart for AKS Edge Essentials
 description: Learn how to bring up an AKS Edge Essentials cluster and connect it to Azure Arc. 
-author: rcheeran
-ms.author: rcheeran
+author: sethmanheim
+ms.author: sethm
 ms.topic: quickstart
 ms.date: 07/11/2024
 ms.custom: template-how-to
