@@ -65,7 +65,9 @@ items:
             href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: November 2024 - Current
+      - name: December 2024 - Current
+        href: security-update/security-update-dec-2024.md
+      - name: November 2024
         href: security-update/security-update-nov-2024.md
       - name: October 2024
         href: security-update/security-update-oct-2024.md
