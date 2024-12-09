@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Local instance using Windows Admin Center
-description: Learn how to create an Azure Local instance using Windows Admin Center
+title: Create an Azure Stack HCI cluster using Windows Admin Center
+description: Learn how to create an Azure Stack HCI cluster using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
 ms.date: 10/23/2024
@@ -8,7 +8,7 @@ ms.author: jgerend
 ms.reviewer: shsathee
 ---
 
-# Create an Azure Local instance using Windows Admin Center
+# Create an Azure Stack HCI cluster using Windows Admin Center
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
@@ -16,12 +16,12 @@ ms.reviewer: shsathee
 
 [!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
-Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Local instance that uses Storage Spaces Direct, and, optionally, Software Defined Networking. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Local instance using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and, optionally, Software Defined Networking. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 > [!NOTE]
-> If you are doing a single server installation of Azure Local 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster.
+> If you are doing a single server installation of Azure Stack HCI 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster.
 
-To create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Local, see [Create a VM-based lab for Azure Local](tutorial-private-forest.md).
+To create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI, see [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md).
 
 ## Cluster creation workflow
 
@@ -38,9 +38,9 @@ Here's the workflow for creating a cluster in Windows Admin Center:
 
 After you're done creating a cluster in the **Create Cluster** wizard, complete these post-cluster creation steps:
 
-- [Set up a cluster witness](../manage/witness.md). This is highly recommended for all instances with at least two nodes.
-- [Register with Azure](register-with-azure.md). Your instance is not fully supported until your registration is active.
-- [Validate an Azure Local instance](validate.md). Your instance is ready to work in a production environment after completing this step.
+- [Set up a cluster witness](../manage/witness.md). This is highly recommended for all clusters with at least two nodes.
+- [Register with Azure](register-with-azure.md). Your cluster is not fully supported until your registration is active.
+- [Validate an Azure Stack HCI cluster](validate.md). Your cluster is ready to work in a production environment after completing this step.
 
 ## Prerequisites
 
@@ -57,13 +57,13 @@ Before you run the **Create Cluster** wizard in Windows Admin Center, you must c
 
 - Obtain an account that's a member of the local Administrators group on each server.
 
-- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead deploy Azure Stack HCI on a single server, see [Deploy Azure Local on a single server](single-server.md).
+- Have at least two servers to cluster; four if creating a stretched cluster (two in each site). To instead deploy Azure Stack HCI on a single server, see [Deploy Azure Stack HCI on a single server](single-server.md).
 
 - Ensure all servers are in the same time zone as your local domain controller.
 
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 
-- Ensure that Windows Admin Center and your domain controller are not installed on the same system. Also, ensure that the domain controller is not hosted on the Azure Local instance or one of the machines in the instance.
+- Ensure that Windows Admin Center and your domain controller are not installed on the same system. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the machines in the cluster.
 
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 
@@ -80,7 +80,7 @@ To start the Create Cluster wizard in Windows Admin Center:
 1. Log in to Windows Admin Center.
 1. Under **All connections**, click **Add**.
 1. In the **Add or create resources** panel, under **Server clusters**, select **Create new**.
-1. Under **Choose the cluster type**, select **Azure Local**.
+1. Under **Choose the cluster type**, select **Azure Stack HCI**.
 
     :::image type="content" source="media/create-cluster/create-cluster-type.png" alt-text="Create cluster wizard - HCI option" lightbox="media/create-cluster/create-cluster-type.png":::
 
@@ -126,8 +126,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps. 
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
-    - **Use Network ATC to deploy and manage networking (Recommended)**. We recommend using this option for configuring host networking. Network ATC provides an intent-based approach to host network deployment and helps simplify the deployment and network configuration management for Azure Local instances. For more information about using Network ATC, see [Network ATC](network-atc.md).
-    - **Manually configure host networking**. Select this option to manually configure host networking. For more information about configuring RDMA and Hyper-V host networking for Azure Local, see [Host network requirements](../concepts/host-network-requirements.md).
+    - **Use Network ATC to deploy and manage networking (Recommended)**. We recommend using this option for configuring host networking. Network ATC provides an intent-based approach to host network deployment and helps simplify the deployment and network configuration management for Azure Stack HCI clusters. For more information about using Network ATC, see [Network ATC](network-atc.md).
+    - **Manually configure host networking**. Select this option to manually configure host networking. For more information about configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 1. Select **Next: Networking** to proceed to [Step 2: Networking](#step-2-networking).
 
 ## Step 2: Networking
@@ -344,7 +344,7 @@ You can also deploy Network Controller using SDN Express scripts. See [Deploy an
 :::image type="content" source="media/create-cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/create-cluster/create-cluster-network-controller.png":::
 
 1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
-1. Download the Azure Local VHDX file. For more information, see [Download the VHDX file](../manage/sdn-express.md#download-the-vhdx-file).
+1. Download the Azure Stack HCI VHDX file. For more information, see [Download the VHDX file](../manage/sdn-express.md#download-the-vhdx-file).
 1. Specify the path where you downloaded the VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.

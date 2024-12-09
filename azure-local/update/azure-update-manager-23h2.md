@@ -23,7 +23,7 @@ Azure Update Manager is an Azure service that allows you to apply, view, and man
 
 Here are some benefits of the Azure Update Manager:
 
-- The update agent checks Azure Local for update health and available updates daily.
+- The update agent checks Azure Local instances for update health and available updates daily.
 - You can view the update status and readiness for each system.
 - You can update multiple systems at the same time.
 - You can view the status of updates while they're in progress.
