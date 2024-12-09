@@ -25,7 +25,7 @@ Azure App Service on Azure Stack Hub 2024 R1 brings new updates to Azure Stack H
 
 - Kestrel and YARP now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
 - Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat and more.
-- Tenants can make use of the [Health check feature](https://learn.microsoft.com/azure/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
+- Tenants can make use of the [Health check feature](/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
 
 ## Prerequisites
 
