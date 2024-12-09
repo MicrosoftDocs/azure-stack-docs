@@ -23,8 +23,8 @@ The App Service on Azure Stack Hub 24R1 build number is **102.0.2.4**
 
 Azure App Service on Azure Stack Hub 24 R1 brings new updates to Azure Stack Hub.
 
-- Kestrel and [YARP: Yet Another Reverse Proxy](https://microsoft.github.io/reverse-proxy/) now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
-- Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat, and more.
+- Kestrel and [YARP (Yet Another Reverse Proxy)](https://microsoft.github.io/reverse-proxy/) now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud. For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
+- Updates to many application stacks, bringing latest Long Term Support (LTS) releases of .NET, Java, Tomcat, and more.
 - Tenants can make use of the [Health check feature](/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
 
 ## Prerequisites
@@ -174,15 +174,25 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
 ## Issues fixed in this release
 
 - Some customers experienced database performance issues relating to locking of App Service Hosting tables, performance improvements are included this release.
+
 - Ownership improvements in usage records service, to harden service when working with multiple roles and large number of workers
+
 - Stuck windows updates due to continually attempting to apply Windows Server 2016 updates to Windows Server 2022 and vice versa
+
 - Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
+
 - Installer failures resolved when customers using newer versions of the Custom Script Extension
-- Trace messages from App Service roles have been reviewed and trimmed to improve the quality of the information provided and to reduce the burden on the database
-- Centralized SSL Certificate Support feature is now installed on Front Ends as part of deployment and doesn't require Operator intervention and Tenants can bind certificates without Operator intervention
+
+- Trace messages from App Service roles were reviewed and trimmed to improve the quality of the information provided and to reduce the burden on the database
+
+- Centralized SSL Certificate Support feature is installed on Front Ends as part of deployment and Tenants can bind certificates without Operator intervention
+
 - Virtual Network Integration options are now disabled in portal by default.
+
 - Resolved issues enabling blob storage for application logging
+
 - Improved swap experience when swapping slots to prevent timeouts
+
 - Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
 
 ## Pre-Update steps
@@ -198,15 +208,15 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins were not successfully migrated to contained users.
+- In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
 
-Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and did not successfully migrated the database logins to contained users, may experience upgrade failures.  
+Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, may experience upgrade failures.  
 
 Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
 
 This script must be run under the following conditions:
 
-- By a user that has the system administrator privilege, for example the SQL SA Account;
+- By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
 - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
 
     - appservice_hosting_FileServer
@@ -276,9 +286,9 @@ This script must be run under the following conditions:
 
 ## Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network, and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
 
-  If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -289,7 +299,7 @@ This script must be run under the following conditions:
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you've used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example if you've used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
@@ -306,7 +316,7 @@ This script must be run under the following conditions:
 
 - Custom domains aren't supported in disconnected environments.
 
-  App Service performs domain ownership verification against public DNS endpoints. As a result, custom domains aren't supported in disconnected scenarios.
+  App Service performs domain ownership verification against public DNS (Domain Name System) endpoints. As a result, custom domains aren't supported in disconnected scenarios.
 
 - Virtual Network integration for Web and Function Apps isn't supported.
 
