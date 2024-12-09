@@ -33,7 +33,7 @@ Refer to the [Before You Get Started documentation](azure-stack-app-service-befo
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
-- Ensure your **Azure Stack Hub** is updated to **1.2406.0.8** or **1.2311.1.22**.
+- Ensure your **Azure Stack Hub** is updated to **1.2311.1.22** or later.
 
 - Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal.
 
