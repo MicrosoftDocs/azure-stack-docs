@@ -299,7 +299,7 @@ This script must be run under the following conditions:
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example if you've used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when workers are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you have used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
