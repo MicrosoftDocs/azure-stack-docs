@@ -24,7 +24,7 @@ The App Service on Azure Stack Hub 2024 R1 build number is **102.0.2.4**
 Azure App Service on Azure Stack Hub 2024 R1 brings new updates to Azure Stack Hub.
 
 - Kestrel and YARP now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
-- Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat and more.
+- Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat, and more.
 - Tenants can make use of the [Health check feature](/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
 
 ## Prerequisites
@@ -170,22 +170,21 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
-- Synchronisation of Cipher Suites in place and preserves any modifications performed as result of customer intervention with support.
+- Synchronization of Cipher Suites in place and preserves any modifications performed as result of customer intervention with support.
 
 ## Issues fixed in this release
 
-- Some customers experienced database performance issues relating to locking of App Service Hosting tables, improvements have been brought to this release including a number of new indexes to improve performance
+- Some customers experienced database performance issues relating to locking of App Service Hosting tables, improvements have been brought to this release including a number of new indexes to improve performance.
 - Ownership improvements in usage records service, to harden service when working with multiple roles and large number of workers
 - Stuck windows updates due to continually attempting to apply Windows Server 2016 updates to Windows Server 2022 and vice versa
+- Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
 - Installer failures resolved when customers using newer versions of the Custom Script Extension
 - Overly verbose trace messages from role information have been reviewed and trimmed in order to improve the quality of the trace information produced and to reduce the burden on the database
-- Centralized SSL Certificate Support feature now installed on Front Ends as part of deployment and does not require Operator intervention.  This resolves the previous issue whereby Tenant Applications were unable to successfully bind certificates without Operator intervention due to the missing feature on the App Service Front End Roles
-- Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
-- Virtual Network Integration options not available for App Service on Azure Stack Hub tenants as this feature is not supported on Azure Stack Hub due to lack of platform support.
+- Centralized SSL Certificate Support feature is now installed on Front Ends as part of deployment and doesn't require Operator intervention. This resolves the previous issue whereby Tenant Applications were unable to successfully bind certificates without Operator intervention due to the missing feature on the App Service Front End Roles
+- Virtual Network Integration options not available for App Service on Azure Stack Hub tenants as this feature isn't supported on Azure Stack Hub due to lack of platform support.
 - Resolved issues enabling blob storage for application logging
 - Improved swap experience when swapping slots to prevent timeouts
 - Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
-
 
 ## Pre-Update steps
 
@@ -204,7 +203,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, may experience upgrade failures.  
 
-Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  **This script is non-destructive and will not cause downtime**.
+Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
 
 This script must be run under the following conditions:
 
@@ -304,60 +303,15 @@ This script must be run under the following conditions:
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
-- Tenant Applications are unable to bind certificates to applications after upgrade.
-
-  The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
-
-  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
-
-  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
-
-  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
-  1. Return to the **CN0-VM** remote desktop session.
-  1. In an Administrator PowerShell session run:
-      
-      > [!IMPORTANT] 
-      > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
-      > that instance will be rebooted, use the pause in the script to maintain Front End availability.  Operators must ensure at least one Front End instance is "Ready" at all times
-      > to ensure tenant applications can receive traffic and not experience downtime.
-
-      ```powershell
-      $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
-      $spwd = ConvertTo-SecureString -String $c.Password -AsPlainText -Force
-      $cred = New-Object System.Management.Automation.PsCredential ($c.UserName, $spwd)
-
-      Get-AppServiceServer -ServerType LoadBalancer | ForEach-Object {
-          $lb = $_
-          $session = New-PSSession -ComputerName $lb.Name -Credential $cred
-
-          Invoke-Command -Session $session {
-            $f = Get-WindowsFeature -Name Web-CertProvider
-            if (-not $f.Installed) {
-                Write-Host Install feature on $env:COMPUTERNAME
-                Install-WindowsFeature -Name Web-CertProvider
-
-                Shutdown /t 5 /r /f 
-            }
-      }
-
-      Remove-PSSession -Session $session
-
-      Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
-      ```
-
-  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
-
-  1. Modify the **Inbound_Rdp_3389** rule to deny access. 
-
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
 - Custom domains aren't supported in disconnected environments.
 
   App Service performs domain ownership verification against public DNS endpoints. As a result, custom domains aren't supported in disconnected scenarios.
 
-- Virtual Network integration for Web and Function Apps is not supported.
+- Virtual Network integration for Web and Function Apps isn't supported.
 
-  The ability to add virtual network integration to Web and Function apps shows in the Azure Stack Hub portal and if a tenant attempts to configure, they receive an internal server error. This feature is not supported in Azure App Service on Azure Stack Hub.
+  The ability to add virtual network integration to Web and Function apps shows in the Azure Stack Hub portal and if a tenant attempts to configure, they receive an internal server error. This feature isn't supported in Azure App Service on Azure Stack Hub.
 
 ## Next steps
 
