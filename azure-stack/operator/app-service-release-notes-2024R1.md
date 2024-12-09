@@ -1,7 +1,7 @@
 ---
 title: App Service on Azure Stack Hub 2024 R1 release notes 
 description: Learn about what's new in the 2024 R1 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
-author: anwestg
+author: apwestgarth
 ms.topic: article
 ms.date: 12/09/2024
 ms.author: anwestg
