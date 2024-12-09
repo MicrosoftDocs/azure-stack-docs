@@ -14,5 +14,5 @@ ms.lastreviewed: 10/28/2020
 > | Supported Minimum Azure Stack Hub version | App Service RP version |
 > |-----|---|
 > | 
-> | 2311 and newer | 24R1 [Installer](https://aka.ms/appsvcupdate24R1installer) ([release notes](../operator/app-service-release-notes-2024R1.md)) | 
+> | 2311 and later | 24R1 [Installer](https://aka.ms/appsvcupdate24R1installer) ([release notes](../operator/app-service-release-notes-2024R1.md)) | 
 
