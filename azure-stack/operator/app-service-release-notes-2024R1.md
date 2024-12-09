@@ -1,6 +1,6 @@
 ---
-title: App Service on Azure Stack Hub 2024 R1 release notes 
-description: Learn about what's new in the 2024 R1 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+title: App Service on Azure Stack Hub 24R1 release notes 
+description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
 author: apwestgarth
 ms.topic: article
 ms.date: 12/09/2024
@@ -9,21 +9,21 @@ ms.reviewer:
 
 ---
 
-# App Service on Azure Stack Hub 2024 R1 release notes
+# App Service on Azure Stack Hub 24R1 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2024 R1 release notes and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 24R1 release notes and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2024 R1 build number is **102.0.2.4**
+The App Service on Azure Stack Hub 24R1 build number is **102.0.2.4**
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 2024 R1 brings new updates to Azure Stack Hub.
+Azure App Service on Azure Stack Hub 24 R1 brings new updates to Azure Stack Hub.
 
-- Kestrel and YARP now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
+- Kestrel and [YARP: Yet Another Reverse Proxy](https://microsoft.github.io/reverse-proxy/) now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
 - Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat, and more.
 - Tenants can make use of the [Health check feature](/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
 
@@ -31,7 +31,7 @@ Azure App Service on Azure Stack Hub 2024 R1 brings new updates to Azure Stack H
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 2024 R1:
+Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
 - Ensure your **Azure Stack Hub** is updated to **1.2406.0.8** or **1.2311.1.22**.
 
@@ -53,7 +53,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2024 R1:
 
 ## Updates
 
-Azure App Service on Azure Stack Update 2024 R1 includes the following improvements and fixes:
+Azure App Service on Azure Stack Update 24R1 includes the following improvements and fixes:
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
@@ -62,7 +62,6 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - 2024-09 Cumulative Update for .NET Framework 3.5 and 4.8 for Microsoft server operating system version 21H2 for x64 (KBxxxxx).
   - .NET Framework 4.8.1
   - ASP.NET Core 
     - 8.0.7
@@ -174,21 +173,21 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
 
 ## Issues fixed in this release
 
-- Some customers experienced database performance issues relating to locking of App Service Hosting tables, improvements have been brought to this release including a number of new indexes to improve performance.
+- Some customers experienced database performance issues relating to locking of App Service Hosting tables, performance improvements are included this release.
 - Ownership improvements in usage records service, to harden service when working with multiple roles and large number of workers
 - Stuck windows updates due to continually attempting to apply Windows Server 2016 updates to Windows Server 2022 and vice versa
 - Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
 - Installer failures resolved when customers using newer versions of the Custom Script Extension
-- Overly verbose trace messages from role information have been reviewed and trimmed in order to improve the quality of the trace information produced and to reduce the burden on the database
-- Centralized SSL Certificate Support feature is now installed on Front Ends as part of deployment and doesn't require Operator intervention. This resolves the previous issue whereby Tenant Applications were unable to successfully bind certificates without Operator intervention due to the missing feature on the App Service Front End Roles
-- Virtual Network Integration options not available for App Service on Azure Stack Hub tenants as this feature isn't supported on Azure Stack Hub due to lack of platform support.
+- Trace messages from App Service roles have been reviewed and trimmed to improve the quality of the information provided and to reduce the burden on the database
+- Centralized SSL Certificate Support feature is now installed on Front Ends as part of deployment and doesn't require Operator intervention and Tenants can bind certificates without Operator intervention
+- Virtual Network Integration options are now disabled in portal by default.
 - Resolved issues enabling blob storage for application logging
 - Improved swap experience when swapping slots to prevent timeouts
 - Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
 
 ## Pre-Update steps
 
-- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation prior to upgrade.
+- As of Azure App Service on Azure Stack Hub 2022 H1 Update, the letter K is now a reserved SKU Letter, if you have a custom SKU defined utilizing the letter K, contact support to assist resolving this situation before upgrading.
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
@@ -199,9 +198,9 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins haven't been successfully migrated to contained users.
+- In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins were not successfully migrated to contained users.
 
-Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, may experience upgrade failures.  
+Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and did not successfully migrated the database logins to contained users, may experience upgrade failures.  
 
 Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
 
