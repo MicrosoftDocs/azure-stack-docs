@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on December 10, 2024 and applies to OS build 25398.1304.
+This article describes the OS security update for Azure Local, version 23H2 that was released on December 12, 2024 and applies to OS build 25398.1304.
 
 ## Improvements
 
