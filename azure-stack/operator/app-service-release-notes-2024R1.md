@@ -23,8 +23,9 @@ The App Service on Azure Stack Hub 2024 R1 build number is **102.0.2.4**
 
 Azure App Service on Azure Stack Hub 2024 R1 brings new updates to Azure Stack Hub.
 
-- All roles are now powered by Windows Server 2022 Datacenter.
-- As of the Azure App Service on Azure Stack Hub 2022 H1 update, the letter **K** is now a reserved SKU letter. If you have a custom SKU defined that uses the letter K, contact support to assist with resolving this situation prior to upgrade.
+- Kestrel and YARP now power App Service on Azure Stack Hub front ends in alignment with investments made in public cloud.  For more information on what this means and how it impacted the public cloud service, read the detailed information on the App Service Team Blog - ["A Heavy Lift: Bringing Kestrel + YARP to Azure App Services"](https://azure.github.io/AppService/2022/08/16/A-Heavy-Lift.html)
+- Updates to many application stacks, bringing latest LTS versions of .NET, Java, Tomcat and more.
+- Tenants can make use of the [Health check feature](https://learn.microsoft.com/azure/app-service/monitor-instances-health-check?tabs=dotnet) for monitoring of instance health 
 
 ## Prerequisites
 
@@ -160,6 +161,7 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
     - 11.0.0
   - Git 2.43.0
   - Updated Kudu to 102.10502.001.
+  - Continual accessibility and usability updates
 
 - **Updates to underlying operating system of all roles**:
   - [2024-10 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5044281)](https://support.microsoft.com/help/5044281)
@@ -168,9 +170,22 @@ Azure App Service on Azure Stack Update 2024 R1 includes the following improveme
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
+- Synchronisation of Cipher Suites in place and preserves any modifications performed as result of customer intervention with support.
+
 ## Issues fixed in this release
 
-- 
+- Some customers experienced database performance issues relating to locking of App Service Hosting tables, improvements have been brought to this release including a number of new indexes to improve performance
+- Ownership improvements in usage records service, to harden service when working with multiple roles and large number of workers
+- Stuck windows updates due to continually attempting to apply Windows Server 2016 updates to Windows Server 2022 and vice versa
+- Installer failures resolved when customers using newer versions of the Custom Script Extension
+- Overly verbose trace messages from role information have been reviewed and trimmed in order to improve the quality of the trace information produced and to reduce the burden on the database
+- Centralized SSL Certificate Support feature now installed on Front Ends as part of deployment and does not require Operator intervention.  This resolves the previous issue whereby Tenant Applications were unable to successfully bind certificates without Operator intervention due to the missing feature on the App Service Front End Roles
+- Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
+- Virtual Network Integration options not available for App Service on Azure Stack Hub tenants as this feature is not supported on Azure Stack Hub due to lack of platform support.
+- Resolved issues enabling blob storage for application logging
+- Improved swap experience when swapping slots to prevent timeouts
+- Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
+
 
 ## Pre-Update steps
 
@@ -260,50 +275,6 @@ This script must be run under the following conditions:
             END
         GO
 ```
-
-- Tenant Applications are unable to bind certificates to applications after upgrade.
-
-  The cause of this issue is due to a missing feature on Front-Ends after upgrade to Windows Server 2022.  Operators must follow this procedure to resolve the issue.
-
-  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
-
-  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
-
-  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
-  1. Return to the **CN0-VM** remote desktop session.
-  1. In an Administrator PowerShell session run:
-      
-      > [!IMPORTANT] 
-      > During the execution of this script there will be a pause for each instance in the Front End scaleset.  If there is a message indicating the feature is being installed,
-      > that instance will be rebooted, use the pause in the script to maintain Front End availability.  Operators must ensure at least one Front End instance is "Ready" at all times
-      > to ensure tenant applications can receive traffic and not experience downtime.
-
-      ```powershell
-      $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
-      $spwd = ConvertTo-SecureString -String $c.Password -AsPlainText -Force
-      $cred = New-Object System.Management.Automation.PsCredential ($c.UserName, $spwd)
-
-      Get-AppServiceServer -ServerType LoadBalancer | ForEach-Object {
-          $lb = $_
-          $session = New-PSSession -ComputerName $lb.Name -Credential $cred
-
-          Invoke-Command -Session $session {
-            $f = Get-WindowsFeature -Name Web-CertProvider
-            if (-not $f.Installed) {
-                Write-Host Install feature on $env:COMPUTERNAME
-                Install-WindowsFeature -Name Web-CertProvider
-
-                Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
-                Shutdown /t 5 /r /f 
-            }
-      }
-
-      Remove-PSSession -Session $session     
-      ```
-
-  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
-
-  1. Modify the **Inbound_Rdp_3389** rule to deny access. 
 
 ## Known issues (post-installation)
 
