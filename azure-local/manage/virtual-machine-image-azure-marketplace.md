@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/24/2024
+ms.date: 12/10/2024
 ---
 
 # Create Azure Local VM image using Azure Marketplace images
@@ -98,14 +98,15 @@ Follow these steps to create a VM image using the Azure CLI.
 
     | Name | Publisher | Offer | SKU |
     |------|-----------|-------|------|
-    | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-21h2-avd-m365<br>win11-23h2-avd-m365 |
+    | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-23h2-avd-m365 |
     | Windows 10 Enterprise multi-session + Microsoft 365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365<br>win10-22h2-avd-m365 |
-    | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-21h2-pro<br>win11-22h2-pro<br>win11-23h2-pro |
-    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-21h2-ent<br>win11-22h2-ent<br>win11-23h2-ent |
-    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-21h2-avd<br>win11-22h2-avd<br>win11-23h2-avd |
+    | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-23h2-pro |
+    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-22h2-ent<br>win11-23h2-ent |
+    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-22h2-avd<br>win11-23h2-avd<br>win11-24h2-avd |
     | Windows 10 Pro | microsoftwindowsdesktop | windows-10 | win10-22h2-pro-g2 |
     | Windows 10 Enterprise | microsoftwindowsdesktop | windows-10 | win10-22h2-ent-g2 |
     | Windows 10 Enterprise multi-session | microsoftwindowsdesktop | windows-10 | win10-22h2-avd |
+    | Windows Server 2025 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | 2025-datacenter-azure-edition-smalldisk<br>2025-datacenter-azure-edition-core<br>2025-datacenter-azure-edition |
     | Windows Server 2022 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | 2022-datacenter-azure-edition-hotpatch<br>2022-datacenter-azure-edition-core<br>2022-datacenter-azure-edition |
     | Windows Server 2019 | microsoftwindowsserver | windowsserver | 2019-datacenter-gensecond<br>2019-datacenter-core-g2 |
     | SQL Server 2022 Enterprise on Windows Server 2022 | microsoftsqlserver | sql2022-ws2022 | enterprise-gen2<br>standard-gen2 |
