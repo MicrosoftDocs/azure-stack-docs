@@ -101,7 +101,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | Windows 11 Enterprise multi-session + Microsoft 365 | microsoftwindowsdesktop | office-365 | win11-23h2-avd-m365 |
     | Windows 10 Enterprise multi-session + Microsoft 365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365<br>win10-22h2-avd-m365 |
     | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-23h2-pro |
-    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-22h2-ent<br>win11-23h2-ent |
+    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-22h2-ent<br>win11-23h2-ent<br>win11-24h2-ent |
     | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-22h2-avd<br>win11-23h2-avd<br>win11-24h2-avd |
     | Windows 10 Pro | microsoftwindowsdesktop | windows-10 | win10-22h2-pro-g2 |
     | Windows 10 Enterprise | microsoftwindowsdesktop | windows-10 | win10-22h2-ent-g2 |
