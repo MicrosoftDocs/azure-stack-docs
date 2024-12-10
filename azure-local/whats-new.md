@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/25/2024
+ms.date: 12/10/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -21,6 +21,14 @@ Azure Local, version 23H2 is the latest version of the Azure Local solution. Thi
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2411 releases](#tab/2411releases)
+
+## Features and improvements in 2411.1
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VMs** - Starting this release, the deletion for attached resources (network interfce, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./index.yml) and [Delete a data disk](./index.yml).
+- **Updates** - A check is added to ensure that the solution extension content is copied correctly.
+
 
 ## Features and improvements in 2411
 
