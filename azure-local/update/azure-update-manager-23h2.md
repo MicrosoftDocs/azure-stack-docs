@@ -107,7 +107,7 @@ To install updates on a single system from the resource page, follow these steps
 
 8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
 
-    [![Screenshot to review and install system updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](./media/azure-update-manager/review-plus-install-1.png#lightbox)
+    [![Screenshot to review and install system updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-single-system.png)](./media/azure-update-manager/review-plus-install-single-system.png#lightbox)
 
     You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 

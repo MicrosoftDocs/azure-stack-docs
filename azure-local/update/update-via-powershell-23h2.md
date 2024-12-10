@@ -174,7 +174,7 @@ If you're using solution extension updates from your hardware, you would need to
 3. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
 
     ```powershell
-    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload -ItemType Directory 
+    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory 
     ```
 
 4. Copy the update package to the folder you created in the previous step.
