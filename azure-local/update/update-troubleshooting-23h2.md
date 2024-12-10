@@ -330,13 +330,13 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
 1. Select the **View details** of an error.
 
-2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
+2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, you can click on the **How to collect logs** link near the Open a support ticket button.
 
     [![Screenshot to download error logs.](./media/troubleshoot-updates/download-error-logs.png)](media/troubleshoot-updates/download-error-logs.png#lightbox)
 
     For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
-3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
+3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your logs so that they're available to Microsoft Support.
 
     [![Screenshot to open a support ticket.](./media/troubleshoot-updates/open-support-ticket.png)](media/troubleshoot-updates/open-support-ticket.png#lightbox)
 
