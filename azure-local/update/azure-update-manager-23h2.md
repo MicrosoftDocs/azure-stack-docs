@@ -78,6 +78,14 @@ To install system updates using Azure Update Manager, follow these steps:
 
 [!INCLUDE[azure-portal-install-updates](../includes/azure-portal-install-updates.md)]
 
+8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
+
+    [![Screenshot to review and install system updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
+
+    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
+
+    [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-portal-install-updates/installation-notification.png)](media/azure-portal-install-updates/installation-notification.png#lightbox)
+
 # [Azure Local resource page](#tab/azurelocalresourcepage)
 
 In addition to using Azure Update Manager, you can update individual systems from the Azure Local resource page.
@@ -96,6 +104,14 @@ To install updates on a single system from the resource page, follow these steps
     - You can select the links under **Affected systems** to view more details and individual system results. For information on the check types, see [About readiness checks](azure-update-manager-23h2.md#about-readiness-checks).
 
 [!INCLUDE[azure-portal-install-updates](../includes/azure-portal-install-updates.md)]
+
+8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
+
+    [![Screenshot to review and install system updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
+
+    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
+
+    [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
 
 ---
 
