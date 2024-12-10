@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 10/25/2024
+ms.date: 12/09/2024
 ---
 
 # Manage Software Load Balancer for SDN
