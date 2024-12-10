@@ -84,7 +84,7 @@ To install system updates using Azure Update Manager, follow these steps:
 
     You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
-    [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-portal-install-updates/installation-notification.png#lightbox)
+    [![Screenshot of the notification icon while installing system updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
 
 # [Azure Local resource page](#tab/azurelocalresourcepage)
 
