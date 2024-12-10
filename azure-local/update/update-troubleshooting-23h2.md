@@ -257,7 +257,9 @@ To collect logs for updates using the Azure portal, see [Resume an update](./upd
 
 To collect logs for the update failures see [Collect diagnostic logs for Azure Local, version 23H2](../manage/collect-logs.md?tabs=azureportal.md).
 
-To view a detailed summary report using PowerShell, follow these steps on the client that you're using to access your system:
+## View update summary report
+
+To view a detailed update summary report using PowerShell, follow these steps on the client that you're using to access your system:
 
 1. Establish a remote PowerShell session with the machine. Run PowerShell as administrator and run the following command:
 
@@ -304,7 +306,6 @@ To view a detailed summary report using PowerShell, follow these steps on the cl
 
     ```powershell
     Start-MonitoringActionplanInstanceToComplete -actionPlanInstanceID <Action Plan Instance ID>
-    notepad log.txt
     ```
 
     Here's sample output:
