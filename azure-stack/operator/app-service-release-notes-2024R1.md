@@ -17,7 +17,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 24R1 build number is **102.0.2.4**
+The App Service on Azure Stack Hub 24R1 build number is **102.0.2.5**
 
 ## What's new?
 
