@@ -72,9 +72,9 @@ Currently, the following throughput configurations are available:
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
-> Upon request, Azure Managed Lustre can support larger storage capacities up to 2.5 petabytes (PB). To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+> Azure Managed Lustre can support larger storage capacities up to 12.5 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 >
-> If you need cluster sizes greater than 2.5 PB, you can open a support ticket to discuss additional options.
+> If you need cluster sizes greater than 12.5 PiB, you can open a support ticket to discuss additional options.
 
 ### Maintenance window
 
