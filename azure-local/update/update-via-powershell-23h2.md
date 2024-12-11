@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 12/11/2024
 ---
 
 # Update your Azure Local, version 23H2 via PowerShell

@@ -5,7 +5,7 @@ ms.service: azure-local
 ms.topic: include
 ms.date: 12/05/2024
 ms.reviewer: alkohli
-ms.lastreviewed: 12/05/2024
+ms.lastreviewed: 12/11/2024
 ---
 
 Readiness checks are essential to ensure that you apply updates smoothly, keep your systems up-to-date, and maintain correct system functionality. Readiness checks are performed and reported separately in two scenarios:
