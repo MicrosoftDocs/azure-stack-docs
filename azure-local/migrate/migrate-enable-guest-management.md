@@ -38,6 +38,7 @@ Before you begin, complete the following:
         az extension add --name stack-hci-vm --upgrade 
         ```
 
+    - After installing the extension, logoff and sign in again to refresh $env:PATH
     - To verify the installation and check that the **stack-hci-vm** version is 1.1.5 or later:
 
         ```azurecli
