@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 12/11/2024
 ---
 
 # Manage BitLocker encryption on Azure Local, version 23H2
