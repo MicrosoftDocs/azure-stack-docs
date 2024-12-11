@@ -67,7 +67,7 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     Follow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
-    To further troubleshoot, see the PowerShell section.
+    To further troubleshoot, see the [PowerShell](#using-powershell) section.
 
 ### Using PowerShell
 

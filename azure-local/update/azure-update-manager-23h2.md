@@ -129,7 +129,7 @@ To view the progress of your update installation, and completion results, follow
 2. Under the **Manage** dropdown, select **History**.
 
 3. Select an update run that you want to monitor or review:
-    - Select an **In Progress** update to monitor a current updates progress.
+    - Select an **In progress** update to monitor a current updates progress.
     - Select a **Failed to update** or **Successfully updated** update to review historical results.
 
     [![Screenshot to view progress about system updates in Azure Update Manager.](./media/azure-update-manager/update-in-progress.png)](media/azure-update-manager/update-in-progress.png#lightbox)
