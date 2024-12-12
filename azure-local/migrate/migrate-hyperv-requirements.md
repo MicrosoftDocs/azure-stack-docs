@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/31/2024
+ms.date: 12/12/2024
 ms.author: alkohli
 ---
 
@@ -55,6 +55,10 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |-|-|
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
+
+For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1).
+
+:::image type="content" source="./media/migrate-hyperv-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-hyperv-requirements/migrate-resource-providers.png":::
 
 ## Source Hyper-V requirements
 
