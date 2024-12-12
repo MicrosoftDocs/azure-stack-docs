@@ -59,7 +59,7 @@ Refer to the section below on **Handle slow network connectivity**. It provides 
 
 #### 2. Download PIR image to local share in case of slow network traffic
 
-1. Download AzCopy from: [vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip).
+1. Download AzCopy from: [vaasexternaldependencies(AzCopy)](/azure/storage/common/storage-use-azcopy-v10).
 
 2. Extract AzCopy.zip and change to the directory containing `AzCopy.exe`.
 
