@@ -353,7 +353,7 @@ To resume a previously failed update due to update health checks in a **Warning*
 Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
 ```
 
-To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+To troubleshoot other update run issues, see [Troubleshoot solution updates for Azure Local, version 23H2](./update-troubleshooting-23h2.md).
 
 ## Next step
 
