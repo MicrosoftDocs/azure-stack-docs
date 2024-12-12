@@ -23,7 +23,7 @@ For more information about new features in this release, see [What's new in 23H2
 
 ## Known issues for version 2411.1
 
-This software release maps to software version number **2411.1.24**.
+This software release maps to software version number **2411.1.9**.
 
 > [!IMPORTANT]
 > The new deployments of this software will use the 2411.0.22 build whereas if you update from 2408.2, you'll get the 2411.0.24 build. No action is required if you have already updated from 2408.2 to 2411.0.22.
@@ -39,7 +39,7 @@ The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM Management <!--ADO--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
+| Arc VM Management <!--29763603--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
 | Upgrade <!--ADO--> | Resolved conflict with third party PowerShell modules. ||
 | Upgrade <!--ADO--> | Removed step to set Trusted Hosts. ||
 | Upgrade <!--ADO--> | Stopped indefinite logging of negligible error events. ||
