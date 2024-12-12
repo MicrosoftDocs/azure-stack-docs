@@ -560,6 +560,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: Maintain static IP addresses
+      href: migrate/migrate-maintain-ip-addresses.md
     - name: Hyper-V VMs
       items: 
       - name: Overview
