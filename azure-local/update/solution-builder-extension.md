@@ -202,7 +202,7 @@ Azure Local 2311 bundle          Solution    10.2311.0.26 4.1.2312.5     Additio
 
 To view information on the Solution Builder Extension update such as its release notes (via the `SBEReleaseLink`) and determine how to download the Solution Builder Extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
 
-For more information, see [Discover Solution Builder Extension updates](./solution-builder-extension.md#discover-solution-builder-extension-updates). You should download the Solution Builder Extension files following the hardware vendor's recommendations and license agreements.
+For more information, see [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates). You should download the Solution Builder Extension files following the hardware vendor's recommendations and license agreements.
 
 ## Next steps
 
