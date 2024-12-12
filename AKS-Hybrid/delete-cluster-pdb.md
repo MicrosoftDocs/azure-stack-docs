@@ -11,8 +11,7 @@ ms.reviewer: leslielin
 
 # Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
-> Applies to AKS Edge Essentials
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS Edge Essentials
 
 When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove the PDB resources. By default, PDB is installed in the workload identity-enabled AKS Arc cluster.
 
@@ -48,7 +47,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ### [AKS Edge Essentials](#tab/aks-edge-essentials)
 
-1. Delete the AKS Arc cluster:
+4. Delete the AKS Arc cluster:
 
     ```azurecli
     az connectedk8s delete -n <cluster_name> -g <resource_group>
