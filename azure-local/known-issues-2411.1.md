@@ -40,6 +40,7 @@ The following issues are fixed in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
+| Arc VM Management <!--ADO--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
 
 ## Known issues in this release
 
@@ -52,8 +53,6 @@ The following table lists the known issues in this release:
 | Update <!--30345067--> | When updating from version 2408.2.7 to 2411.0.24, the update process could fail with the following error message: `Type 'CauPreRequisites' of Role 'CAU' raised an exception: Could not finish cau prerequisites due to error 'Cannot remove item C:\UpdateDistribution\<any_file_name>: Access to the path is denied.'` |For detailed steps on how to mitigate this issue, see [Azure Local Troubleshooting Guide for Update](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/mitigation-for-cannot-remove-c-update-distribution-with-access-denied.md).|
 | Update <!--ADO--> | With the 2411 release, solution and Solution Builder Extension update are not combined in a single update run.  |To apply a Solution Builder Extension package, you need a separate update run.|
 | Update <!--30221399--> | When applying solution update in this release, the update can fail. This will occur only if the update was started prior to November 26. The issue that causes the failure can result in one of the following error messages: <br><br>**Error 1** - The step "update ARB and extension" error "Clear-AzContext failed with 0 and Exception calling "Initialize" with "1" argument(s): "Object reference not set to an instance of an object." at "Clear-AzPowerShellCache". <br><br>**Error 2** - The step "EvalTVMFlow" error "CloudEngine.Actions.InterfaceInvocationFailedException: Type 'EvalTVMFlow' of Role 'ArcIntegration' raised an exception: This module requires `Az.Accounts` version 3.0.5. An earlier version of `Az.Accounts` is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." <br><br> Depending on the version of PowerShell modules, the above error could be reported for both versions 3.0.4 and 3.0.5.|For detailed steps on how to mitigate this issue, go to: [https://aka.ms/azloc-update-30221399](https://aka.ms/azloc-update-30221399).     |
-
-
 
 ## Known issues from previous releases
 
