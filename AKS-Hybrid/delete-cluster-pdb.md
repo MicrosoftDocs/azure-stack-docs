@@ -39,7 +39,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ### [AKS on Azure Local](#tab/aks-on-azure-local)
 
-1. Delete the AKS Arc cluster:
+4. Delete the AKS Arc cluster:
 
     ```azurecli
     az aksarc delete -n $aks_cluster_name -g $resource_group_name
