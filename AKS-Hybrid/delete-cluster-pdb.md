@@ -4,7 +4,7 @@ description: Learn how to troubleshoot when deleted workload cluster resources c
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/18/2024
+ms.date: 12/12/2024
 ms.reviewer: leslielin
 
 ---
@@ -12,6 +12,7 @@ ms.reviewer: leslielin
 # Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+> Applies to AKS Edge Essentials
 
 When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove the PDB resources. By default, PDB is installed in the workload identity-enabled AKS Arc cluster.
 
@@ -37,11 +38,23 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
     kubectl delete pdb azure-wi-webhook-controller-manager -n arc-workload-identity 
     ```
 
+### [AKS on Azure Local](#tab/aks-on-azure-local)
+
 1. Delete the AKS Arc cluster:
 
     ```azurecli
     az aksarc delete -n $aks_cluster_name -g $resource_group_name
     ```
+
+### [AKS Edge Essentials](#tab/aks-edge-essentials)
+
+1. Delete the AKS Arc cluster:
+
+    ```azurecli
+    az connectedk8s delete -n <cluster_name> -g <resource_group>
+    ```
+
+---
 
 ## Next steps
 
