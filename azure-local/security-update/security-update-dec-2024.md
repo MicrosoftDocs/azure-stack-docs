@@ -3,7 +3,7 @@ title:  December 2024 security update (KB5048653) for Azure Local, version 23H2
 description: Read about the December 2024 security update (KB5048653) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/09/2024
+ms.date: 12/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on December 12, 2024 and applies to OS build 25398.1304.
+This article describes the OS security update for Azure Local, version 23H2 that was released on December 17, 2024 and applies to OS build 25398.1308.
 
 ## Improvements
 
@@ -36,7 +36,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5048653](https://go.microsoft.com/fwlink/?linkid=2299751).
 
-For a list of the files that are provided just in the servicing stack update, download the [file information for the SSU (KB5046717) - version 25398.1241](https://go.microsoft.com/fwlink/?linkid=2297213).
+For a list of the files that are provided just in the servicing stack update, download the [file information for the SSU (KB5048653) - version 25398.1308](https://go.microsoft.com/fwlink/?linkid=2297213).
 
 ## Next steps
 

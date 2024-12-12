@@ -26,8 +26,9 @@ There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 240
 
 This is a baseline release with the following features and improvements:
 
-- **Arc VMs** - Starting this release, the deletion for attached resources (network interfce, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./index.yml) and [Delete a data disk](./index.yml).
-- **Updates** - A check is added to ensure that the solution extension content is copied correctly.
+- **Arc VMs** - Starting this release, the deletion for attached resources (network interfce, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#azure-portal).
+
+- **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
 
 For more information, see the [Fixed issues in 2411.1](./known-issues-2411-1.md).
 
