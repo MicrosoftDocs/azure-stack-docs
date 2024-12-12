@@ -40,12 +40,11 @@ The following issues are fixed in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Arc VM Management <!--29763603--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
-| Upgrade <!--ADO--> | Resolved conflict with third party PowerShell modules. ||
-| Upgrade <!--ADO--> | Removed step to set Trusted Hosts. ||
-| Upgrade <!--ADO--> | Stopped indefinite logging of negligible error events. ||
-| Upgrade <!--ADO--> | Added validation to check for free memory. ||
-| Update <!--ADO-->  | Added check to ensure that solution extension content has been copied correctly.||
-| Deployment <br> Upgrade <!--30273426--> | Resolved if the timezone is not set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation. ||
+| Upgrade <!--29558170--> | Resolved conflict with third party PowerShell modules. ||
+| Upgrade <!--30024981--> | Stopped indefinite logging of negligible error events. ||
+| Upgrade <!--30197462--> | Added validation to check for free memory. ||
+| Update <!--30217441-->  | Added check to ensure that solution extension content has been copied correctly.||
+| Deployment <!--30273426--> <br> Upgrade | Resolved if the timezone is not set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation. ||
 
 ## Known issues in this release
 
