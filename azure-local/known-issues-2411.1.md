@@ -41,6 +41,11 @@ The following issues are fixed in this release:
 |------|------|----------|
 | Arc VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 | Arc VM Management <!--ADO--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
+| Upgrade <!--ADO--> | Resolved conflict with third party PowerShell modules. ||
+| Upgrade <!--ADO--> | Removed step to set Trusted Hosts. ||
+| Upgrade <!--ADO--> | Stopped indefinite logging of negligible error events. ||
+| Upgrade <!--ADO--> | Added validation to check for free memory. ||
+| Update <!--ADO-->  | Added check to ensure that solution extension content has been copied correctly.||
 
 ## Known issues in this release
 
