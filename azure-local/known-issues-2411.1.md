@@ -46,6 +46,7 @@ The following issues are fixed in this release:
 | Upgrade <!--ADO--> | Stopped indefinite logging of negligible error events. ||
 | Upgrade <!--ADO--> | Added validation to check for free memory. ||
 | Update <!--ADO-->  | Added check to ensure that solution extension content has been copied correctly.||
+| Deployment <!--30273426--> | Resolved validation issue with timezone not being set to UTC before deploying Azure Local. ||
 
 ## Known issues in this release
 
