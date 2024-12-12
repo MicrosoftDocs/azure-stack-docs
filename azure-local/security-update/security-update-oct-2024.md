@@ -44,7 +44,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5044288](https://go.microsoft.com/fwlink/?linkid=2289974).
 
-For a list of the files that are provided in just the servicing stack update, download the file information for [SSU update KB5044403 - version 25398.1182](https://go.microsoft.com/fwlink/?linkid=2290062).
+
 
 ## Next steps
 

@@ -37,7 +37,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5048653](https://go.microsoft.com/fwlink/?linkid=2299751).
 
 
-
 ## Next steps
 
 - [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local, version 23H2.
