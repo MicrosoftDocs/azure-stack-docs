@@ -49,7 +49,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     Follow the remediation instructions to resolve the failures.
 
     > [!NOTE]
-    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](update-troubleshooting-23h2.md#using-powershell) section.
+    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](#using-powershell) section.
 
 **Scenario 2: Update readiness checks**
 
@@ -67,7 +67,7 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     Follow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
-    To further troubleshoot, see the [PowerShell](#using-powershell) section.
+    To further troubleshoot, see the [PowerShell](#powershell) section.
 
 ### Using PowerShell
 
@@ -239,7 +239,7 @@ If there is an issue that causes an update to fail, reviewing the detailed step 
 
 - Failure message string (may pinpoint the issue to a specific known issue with documented remediation).
 
-Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](./update-troubleshooting-23h2.md#the-azure-portal).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
+Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](#the-azure-portal).  Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
 
 See the table below for update failure scenarios and remediation guidelines.
 
@@ -253,7 +253,7 @@ See the table below for update failure scenarios and remediation guidelines.
 
 You can also collect diagnostic logs to help Microsoft identify and fix the issues.
 
-To collect logs for updates using the Azure portal, see [Resume an update](./update-troubleshooting-23h2.md#the-azure-portal).
+To collect logs for updates using the Azure portal, see [Resume an update](#the-azure-portal).
 
 To collect logs for the update failures see [Collect diagnostic logs for Azure Local, version 23H2](../manage/collect-logs.md?tabs=azureportal.md).
 
