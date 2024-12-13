@@ -382,7 +382,7 @@ items:
     items:
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
-    - name: Manage application control
+    - name: Manage Application Control
       href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
