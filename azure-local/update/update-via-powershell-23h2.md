@@ -137,18 +137,7 @@ Before you discover the updates, make sure that your system is running Azure Loc
 
 ## Step 2: Discover the updates
 
-<<<<<<< HEAD
 Follow these steps to discover the available updates for your system: 
-=======
-You can discover updates in one of the following two ways:
-
-- **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Import and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then import the updates to an Azure Local and discover the updates locally.
-
-### Discover solution updates online (recommended)
-
-Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
->>>>>>> 353463fee2bdacc9e913a8219abcc73cb0f60bc6
 
 1. Connect to a machine on your Azure Local using the deployment user account.
 1. Review details of updates that are `Ready` to install using `Get-SolutionUpdate`.
@@ -272,7 +261,6 @@ Discovering solution updates using the online catalog is the *recommended* metho
 
     </details>
 
-<<<<<<< HEAD
 You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
 ### Step 3: Import and  rediscover updates
@@ -289,14 +277,6 @@ Follow these steps to import and discover your solution updates.
 
 1. Connect to a machine on your Azure Local using the deployment user account.
 1. Go to the network share and acquire the update package that you use. Verify that the update package you import contains the following files:
-=======
-### Import and discover solution updates
-
-If you're using solution extension updates from your hardware, you would need to import those updates. Follow these steps to import and discover your solution updates.
-
-1. Connect to a machine on your Azure Local using the deployment user account.
-2. Go to the network share and acquire the update package that you use. Verify that the update package you import contains the following files:
->>>>>>> 353463fee2bdacc9e913a8219abcc73cb0f60bc6
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
     - *AS_Update_10.2408.2.7.zip*
@@ -594,25 +574,7 @@ After the updates are installed, verify the solution version of the environment 
     PS C:\Users\lcmuser>
     ```
 
-<<<<<<< HEAD
     </details>
-=======
-## Troubleshoot updates
-
-To resume a previously failed update run via PowerShell, use the following command:
-
-```powershell
-Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate
-```
-
-To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
-
-```powershell
-Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
-```
-
-To troubleshoot other update run issues, see [Troubleshoot solution updates for Azure Local, version 23H2](./update-troubleshooting-23h2.md).
->>>>>>> 353463fee2bdacc9e913a8219abcc73cb0f60bc6
 
 ## Next step
 

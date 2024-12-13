@@ -206,8 +206,5 @@ For more information, see [Discover Solution Builder Extension updates](#discove
 
 ## Next steps
 
-<<<<<<< HEAD
-=======
 - [Import and discover solution updates](../update/update-via-powershell-23h2.md#import-and-discover-solution-updates).
->>>>>>> 353463fee2bdacc9e913a8219abcc73cb0f60bc6
 - [Understand update phases of Azure Local, version 23H2](../update/update-phases-23h2.md).
