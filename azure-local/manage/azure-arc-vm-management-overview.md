@@ -42,7 +42,7 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 Consider the following limitations when managing Arc VMs on Azure Local:
 
-- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools.
+- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager.
 - Updates to Arc VM configurations, such as vCPU, memory, adding network interface or data disk via on-premises tools won't reflect in the Azure portal.
 
 ## Components of Azure Arc VM management
