@@ -17,7 +17,7 @@ This article describes how to register your Azure Local machines and then set up
 
 ## Prerequisites
 
-::: moniker range=">=azloc-2408"
+::: moniker range="<=azloc-2408"
 Before you begin, make sure you've completed the following prerequisites:
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
