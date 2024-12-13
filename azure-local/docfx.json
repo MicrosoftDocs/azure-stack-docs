@@ -2,6 +2,25 @@
   "build": {
     "content": [
       {
+        "group": "version-azlocal",
+        "src" : "azure-local",
+        "dest" : "azure-local",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -50,6 +69,12 @@
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
     },
     "fileMetadata": {},
-    "template": []
+    "template": [],
+    "groups": {
+      "version-azlocal": {
+        "moniker_range": ">=azloc-24053",
+        "dest": "version-azlocal"
+      }
+    }
   }
 }
