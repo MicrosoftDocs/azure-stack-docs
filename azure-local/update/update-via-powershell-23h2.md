@@ -263,7 +263,7 @@ Follow these steps to discover the available updates for your system:
 
 You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
-### Import and  rediscover updates
+### Step 3: Import and  rediscover updates
 
 Importing updates could be required in one of the following scenarios:
 
@@ -290,10 +290,10 @@ Follow these steps to import and discover your solution updates.
 
     | Filename pattern                          | Example                         | Description                                         |
     |-------------------------------------------|---------------------------------|-----------------------------------------------------|
-    | SBE_Discovery_<Manufacturer>.xml          | SBE_Discovery_Contoso.xml       | A solution extension discovery manifest that enables update discovery.   |
-    | SBE_<Manufacturer>_<Family>_<Version>.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file with solution extension inventory and signed software Bill of Materials |
+    | SBE_Discovery_\<Manufacturer>\.xml          | SBE_Discovery_Contoso.xml       | A solution extension discovery manifest that enables update discovery.   |
+    | SBE_\<Manufacturer>\_\<Family>\_\<Version>\.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file with solution extension inventory and signed software Bill of Materials |
     |                                           |
-    | SBE_<Manufacturer>_<Family>_<Version>.zip | SBE_Contoso_GenA_4.1.2410.5.zip | A file with solution extension payload                                         |
+    | SBE_\<Manufacturer>\_\<Family>\_\<Version>\.zip | SBE_Contoso_GenA_4.1.2410.5.zip | A file with solution extension payload                                         |
 
 1. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
 
