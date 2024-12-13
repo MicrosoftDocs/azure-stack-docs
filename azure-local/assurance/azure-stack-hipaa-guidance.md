@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 11/08/2024
+ms.date: 12/12/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -66,7 +66,7 @@ On Azure Local instances, all data-at-rest can be encrypted via BitLocker XTS-AE
 
 #### Protecting external network traffic with TLS/DTLS
 
-By default, all host communications to local and remote endpoints are encrypted using TLS1.2, TLS1.3, and DTLS 1.2. The platform disables the use of older protocols/hashes such as TLS/DTLS 1.1 SMB1. Azure Stack HCI also supports strong cipher suites like [SDL-compliant](https://www.microsoft.com/securityengineering/sdl/) elliptic curves, limited to NIST curves P-256 and P-384 only.
+By default, all host communications to local and remote endpoints are encrypted using TLS1.2, TLS1.3, and DTLS 1.2. The platform disables the use of older protocols/hashes such as TLS/DTLS 1.1 SMB1. Azure Local also supports strong cipher suites like [SDL-compliant](https://www.microsoft.com/securityengineering/sdl/) elliptic curves, limited to NIST curves P-256 and P-384 only.
 
 #### Protecting internal network traffic with Server Message Block (SMB)
 
@@ -104,7 +104,7 @@ Metrics store numeric data from monitored resources into a time-series database.
 
 #### Log alerts
 
-To indicate problems in real time, you may set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Local systems](/azure-stack/hci/manage/setup-hci-system-alerts).
+To indicate problems in real time, you may set up alerts for Azure Local systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Local systems](/azure-stack/hci/manage/setup-hci-system-alerts).
 
 #### Metric alerts
 
@@ -120,9 +120,9 @@ Azure Local provides service-based alerts for connectivity, OS updates, Azure co
 
 Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Local. Microsoft recommends using Microsoft Defender Antivirus with Azure Local rather than third-party antivirus and malware detection software and services as they may impact the operating system's ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
-#### Windows Defender Application Control
+#### Application Control
 
-Windows Defender Application Control (WDAC) is enabled by default on Azure Local to control which drivers and applications are allowed to run directly on each server, helping prevent malware from accessing the system. Learn more about base policies included in Azure Local and how to create supplemental policies at [Manage Windows Defender Application Control for Azure Local](/azure-stack/hci/concepts/security-windows-defender-application-control).
+Application Control is enabled by default on Azure Local to control which drivers and applications are allowed to run directly on each server, helping prevent malware from accessing the system. Learn more about base policies included in Azure Local and how to create supplemental policies at [Manage Application Control for Azure Local](/azure-stack/hci/concepts/security-windows-defender-application-control).
 
 #### Microsoft Defender for Cloud
 
