@@ -4,7 +4,7 @@ description: Learn about common issues and workarounds in AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 07/22/2024
+ms.date: 12/12/2024
 ms.custom: template-concept
 ---
 
@@ -58,6 +58,10 @@ This script checks for the missing images and reimports them as needed.
    Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**.
 
    :::image type="content" source="media/aks-edge/aks-edge-azure-arc-proxy.png" alt-text="Screenshot showing internet options." lightbox="media/aks-edge/aks-edge-azure-arc-proxy.png":::
+
+## Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+
+For information about this known issue, see [Can't fully delete AKS Arc cluster with PDB resources](delete-cluster-pdb.md) in the AKS Arc documentation.
 
 ## Offline deployments
 
