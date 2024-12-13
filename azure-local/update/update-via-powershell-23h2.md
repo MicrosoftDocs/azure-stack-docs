@@ -282,8 +282,8 @@ Follow these steps to import and discover your solution updates.
     - *AS_Update_10.2408.2.7.zip*
 
     If a solution builder extension is part of the update package, you should also see the following files:
-    - *SBE_Content_4.1.2410.5.xml*
-    - *SBE_Content_4.1.2410.5.zip*
+    - *SBE_Contoso_GenA_4.1.2410.5.xml*
+    - *SBE_Contoso_GenA_4.1.2410.5.zip*
     - *SBE_Discovery_Contoso.xml*
 
 1. Download the files you intend to import to a location that your Azure Local instance can access. If you're importing a solution extension, you always download three files that matching the following naming pattern:
