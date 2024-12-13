@@ -38,7 +38,7 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 - The self-service capabilities of Arc VM management reduce the administrative overhead.
 
-## Limitations of Arc VM management
+## Limitations of Azure Arc VM management
 
 Consider the following limitations when managing Arc VMs on Azure Local:
 
