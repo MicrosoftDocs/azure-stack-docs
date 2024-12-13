@@ -52,14 +52,12 @@ Arc VM management comprises several components including the Arc Resource Bridge
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
 
-## Arc VM management via on-premises tools
+## Arc VM management limitations
 
-You can also manage Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager.
+Consider the following limitations when managing Arc VMs on Azure Local:
 
-Consider the following limitations when managing Arc VMs on Azure Local via on-premises tools:
-
-- Taking checkpoints on Arc VMs running on Azure Local using on-premises tools isn't supported.
-- Updates to Arc VM configurations (such as vCPU, memory, adding network interface or data disk) via on-premises tools won't reflect in the Azure portal.
+- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools.
+- Updates to Arc VM configurations, such as vCPU, memory, adding network interface or data disk via on-premises tools won't reflect in the Azure portal.
 
 ## Azure Arc VM management workflow
 
