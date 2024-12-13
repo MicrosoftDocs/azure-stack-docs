@@ -38,6 +38,13 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 - The self-service capabilities of Arc VM management reduce the administrative overhead.
 
+## Limitations of Arc VM management
+
+Consider the following limitations when managing Arc VMs on Azure Local:
+
+- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools.
+- Updates to Arc VM configurations, such as vCPU, memory, adding network interface or data disk via on-premises tools won't reflect in the Azure portal.
+
 ## Components of Azure Arc VM management
 
 Arc VM management comprises several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
@@ -51,13 +58,6 @@ Arc VM management comprises several components including the Arc Resource Bridge
 - **Kubernetes Extension for VM Operator**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It is a Kubernetes controller that uses custom resources to manage your VMs.
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
-
-## Arc VM management limitations
-
-Consider the following limitations when managing Arc VMs on Azure Local:
-
-- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools.
-- Updates to Arc VM configurations, such as vCPU, memory, adding network interface or data disk via on-premises tools won't reflect in the Azure portal.
 
 ## Azure Arc VM management workflow
 
