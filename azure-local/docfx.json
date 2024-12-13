@@ -3,8 +3,8 @@
     "content": [
       {
         "group": "version-azlocal",
-        "src" : "azure-local",
-        "dest" : "azure-local",
+        "src" : "deploy",
+        "dest" : "deploy",
         "files": [
           "**/*.md",
           "**/*.yml"
