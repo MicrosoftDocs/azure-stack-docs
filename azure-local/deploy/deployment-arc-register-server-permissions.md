@@ -25,7 +25,7 @@ Before you begin, make sure you've completed the following prerequisites:
 - [Install the Azure Stack HCI operating system, version 23H2](./deployment-install-os.md) on each machine.
 ::: moniker-end
 
-::: moniker range="azloc-2411.1"
+::: moniker range="azloc-24111"
 Don't do anything!
 ::: moniker-end
 
