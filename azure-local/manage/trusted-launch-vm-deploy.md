@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 10/23/2024
+ms.date: 12/11/2024
 ---
 
 # Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
@@ -13,7 +13,6 @@ ms.date: 10/23/2024
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2.
-
 
 ## Prerequisites
 
