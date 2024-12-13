@@ -263,75 +263,55 @@ Follow these steps to discover the available updates for your system:
 
 You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
-<!--### Import and discover solution updates
+### Import and  rediscover updates
 
-If you're using solution extension updates from your hardware, you would need to import those updates. Follow these steps to import and discover your solution updates.
+Importing updates could be required in one of the following scenarios:
+
+- The update you wish to install reports an `AdditionalContentRequired` state. Some additional content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
+
+- The update you wish to install is not listed because Support is providing you a private release to address an issue you are experiencing.
+
+- The update is listed as `Ready`, but as your system has limited network connectivity, you want to avoid the online download phase of the solution extension update.
+
+Follow these steps to import and discover your solution updates.
 
 1. Connect to a machine on your Azure Local using the deployment user account.
-2. Go to the network share and acquire the update package that you use. Verify that the update package you import contains the following files:
+1. Go to the network share and acquire the update package that you'll use. Verify that the update package you import contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
-    - *AS_Update_10.2303.4.1.zip*
+    - *AS_Update_10.2408.2.7.zip*
 
     If a solution builder extension is part of the update package, you should also see the following files:
-    - *SBE_Content_4.1.2.3.xml*
-    - *SBE_Content_4.1.2.3.zip*
+    - *SBE_Content_4.1.2410.5.xml*
+    - *SBE_Content_4.1.2410.5.zip*
     - *SBE_Discovery_Contoso.xml*
 
-3. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
+1. Download the files you intend to import to a location that can be accessed by your Azure Local instance. If you are importing a solution extension, you'll always download 3 files that matching the following naming pattern:
+
+    | Filename pattern                          | Example                         | Description                                         |
+    |-------------------------------------------|---------------------------------|-----------------------------------------------------|
+    | SBE_Discovery_<Manufacturer>.xml          | SBE_Discovery_Contoso.xml       | A solution extension discovery manifest that enables update discovery.   |
+    | SBE_<Manufacturer>_<Family>_<Version>.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file wiht solutione extension inventory and signed software Bill of Materials |
+    |                                           |
+    | SBE_<Manufacturer>_<Family>_<Version>.zip | SBE_Contoso_GenA_4.1.2410.5.zip | A file with solution extension payload                                         |
+
+1. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
 
     ```powershell
     New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload -ItemType Directory 
     ```
 
-4. Copy the update package to the folder you created in the previous step.
-5. Manually discover the update package using the Update service. Run the following command:
+1. Copy the update files to the folder you created in the previous step.
+
+1. Manually discover the update package using the Update service. Run the following command:
 
     ```powershell
     Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload
     ```
 
-6. Verify that the Update service discovers the update package and that it's available to start preparation and installation.
+1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. Repeat the earlier step to rediscover the updates.
 
-    ```powershell
-    Get-SolutionUpdate | ft DisplayName, Version, State 
-    ```
-
-    Here's an example output:
-
-    ```console
-     PS C:\Users\lcmuser> Get-SolutionUpdate | ft DisplayName, Version, State
-    
-    DisplayName                 Version      State
-    -----------                 -------      -----
-    2023.03 Feature Update 10.2303.0.31 Ready
-
-     PS C:\Users\lcmuser>
-    ```
-
-7. Optionally check the version of the update package components. Run the following command:
-
-    ```powershell
-    $Update = Get-SolutionUpdate | ? Version -eq "10.2302.0.31"
-    $Update.ComponentVersions 
-    ```
-
-    Here's an example output:
-
-    ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? Version -eq "10.2302.0.31"
-     PS C:\Users\lcmuser> $Update.ComponentVersions
-    
-    PackageType Version      LastUpdated
-    ----------- -------      -----------
-    Services    10.2303.0.31
-    Platform    10.2303.0.31
-    SBE         4.1.2.3
-     PS C:\Users\lcmuser>
-    ```
--->
-
-## Step 3: (Recommended) Predownload and check update readiness
+## Step 4: (Recommended) Predownload and check update readiness
 
 You can download the update and perform a set of checks to verify your clusterâ€™s update readiness without starting the installation.
 
@@ -401,7 +381,7 @@ You can download the update and perform a set of checks to verify your clusterâ€
 1. When the readiness checks are done, the system is ready to install updates. The `State` of the update shows as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
 
 
-## Step 4: Start the update
+## Step 5: Start the update
 
 During the install, the system machines may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single machine, your Azure Local experiences a downtime.
 
@@ -430,7 +410,7 @@ This starts the process to install the update.
 > Save the `$InstanceId` as you could use it later to [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
 
 
-## Step 5: Track update progress
+## Step 6: Track update progress
 
 Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it isn't subject to the disruptions in status reporting as discussed below.
 
@@ -535,7 +515,7 @@ Follow these steps to track update progress using PowerShell.
  
 Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
-## Step 6: Resume the update (if needed)
+## Step 7: Resume the update (if needed)
 
 To resume a previously failed update run via PowerShell, use the following command:
 
@@ -551,7 +531,7 @@ Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings
 
 To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
 
-## Step 7: Verify the installation
+## Step 8: Verify the installation
 
 After the updates are installed, verify the solution version of the environment and the operating system version.
 
