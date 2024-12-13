@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 12/11/2024
 ms.service: azure-stack-hci
 ---
 
