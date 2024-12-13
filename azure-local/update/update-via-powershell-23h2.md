@@ -39,7 +39,7 @@ The time taken to install the updates varies based on the following factors:
 - Load on your system.
 - Number of machines in your system.
 - Type of hardware used.
-- Solution Extension used.
+- Solution extension used.
 
 The approximate time estimates for a typical single or multi-node system are summarized in the following table:
 
@@ -267,16 +267,16 @@ You can now proceed to [Download and install the updates](#step-2-discover-the-u
 
 Importing updates could be required in one of the following scenarios:
 
-- The update you wish to install reports an `AdditionalContentRequired` state. Some additional content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
+- The update you wish to install reports an `AdditionalContentRequired` state. Some extra content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
 
-- The update you wish to install is not listed because Support is providing you a private release to address an issue you are experiencing.
+- The update you wish to install isn't listed because Support is providing you with a private release to address an issue you're experiencing.
 
 - The update is listed as `Ready`, but as your system has limited network connectivity, you want to avoid the online download phase of the solution extension update.
 
 Follow these steps to import and discover your solution updates.
 
 1. Connect to a machine on your Azure Local using the deployment user account.
-1. Go to the network share and acquire the update package that you'll use. Verify that the update package you import contains the following files:
+1. Go to the network share and acquire the update package that you use. Verify that the update package you import contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
     - *AS_Update_10.2408.2.7.zip*
@@ -286,12 +286,12 @@ Follow these steps to import and discover your solution updates.
     - *SBE_Content_4.1.2410.5.zip*
     - *SBE_Discovery_Contoso.xml*
 
-1. Download the files you intend to import to a location that can be accessed by your Azure Local instance. If you are importing a solution extension, you'll always download 3 files that matching the following naming pattern:
+1. Download the files you intend to import to a location that your Azure Local instance can access. If you're importing a solution extension, you always download three files that matching the following naming pattern:
 
     | Filename pattern                          | Example                         | Description                                         |
     |-------------------------------------------|---------------------------------|-----------------------------------------------------|
     | SBE_Discovery_<Manufacturer>.xml          | SBE_Discovery_Contoso.xml       | A solution extension discovery manifest that enables update discovery.   |
-    | SBE_<Manufacturer>_<Family>_<Version>.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file wiht solutione extension inventory and signed software Bill of Materials |
+    | SBE_<Manufacturer>_<Family>_<Version>.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file with solution extension inventory and signed software Bill of Materials |
     |                                           |
     | SBE_<Manufacturer>_<Family>_<Version>.zip | SBE_Contoso_GenA_4.1.2410.5.zip | A file with solution extension payload                                         |
 
@@ -412,7 +412,7 @@ This starts the process to install the update.
 
 ## Step 6: Track update progress
 
-Microsoft recommends tracking cluster update progress in the Azure portal for user convenience after the update has been started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it isn't subject to the disruptions in status reporting as discussed below.
+Microsoft recommends tracking cluster update progress in the Azure portal after the update has started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it isn't subject to the disruptions in status reporting.
 
 >[!TIP]
 > - If monitoring via PowerShell, we recommend that you connect your PowerShell session to the last server in your cluster to avoid the session from disconnecting early. The sessions disconnect as the systems reboot so switching to monitor from an already updated server can minimize the frequency of disconnects. 
