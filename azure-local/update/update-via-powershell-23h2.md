@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 12/11/2024
 ---
 
 # Update your Azure Local, version 23H2 via PowerShell
@@ -55,7 +55,7 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local, version 23H2 system that is running 2310 or higher. The system should be registered in Azure.
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
-- You have access to the solution update package over the network. You sideload or copy these updates to the machines in your system.
+- You have access to the solution update package over the network. You import or copy these updates to the machines in your system.
 
 ## Connect to your Azure Local
 
@@ -120,7 +120,7 @@ Before you discover the updates, make sure that the system was deployed using th
 You can discover updates in one of the following two ways:
 
 - **Discover updates online** - The recommended option when your system has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Local and discover the updates locally.
+- **Import and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then import the updates to an Azure Local and discover the updates locally.
 
 ### Discover solution updates online (recommended)
 
@@ -156,12 +156,12 @@ Discovering solution updates using the online catalog is the *recommended* metho
 
 You can now proceed to [Download and install the updates](#step-3-download-check-readiness-and-install-updates).
 
-### Sideload and discover solution updates
+### Import and discover solution updates
 
-If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
+If you're using solution extension updates from your hardware, you would need to import those updates. Follow these steps to import and discover your solution updates.
 
 1. Connect to a machine on your Azure Local using the deployment user account.
-2. Go to the network share and acquire the update package that you use. Verify that the update package you sideload contains the following files:
+2. Go to the network share and acquire the update package that you use. Verify that the update package you import contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
     - *AS_Update_10.2303.4.1.zip*
@@ -174,7 +174,7 @@ If you're using solution extension updates from your hardware, you would need to
 3. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
 
     ```powershell
-    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload -ItemType Directory 
+    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory 
     ```
 
 4. Copy the update package to the folder you created in the previous step.
@@ -353,7 +353,7 @@ To resume a previously failed update due to update health checks in a **Warning*
 Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
 ```
 
-To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+To troubleshoot other update run issues, see [Troubleshoot solution updates for Azure Local, version 23H2](./update-troubleshooting-23h2.md).
 
 ## Next step
 

@@ -4,7 +4,7 @@ description: Learn how to troubleshoot Software Load Balancer for SDN in Azure L
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 11/08/2024
+ms.date: 12/09/2024
 ---
 
 # Troubleshoot Software Load Balancer for SDN
