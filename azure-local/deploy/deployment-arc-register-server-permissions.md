@@ -17,11 +17,17 @@ This article describes how to register your Azure Local machines and then set up
 
 ## Prerequisites
 
+::: moniker range=">=azloc-2408"
 Before you begin, make sure you've completed the following prerequisites:
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI operating system, version 23H2](./deployment-install-os.md) on each machine.
+::: moniker-end
+
+::: moniker range="azloc-2411.1"
+Don't do anything!
+::: moniker-end
 
 - Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
 
