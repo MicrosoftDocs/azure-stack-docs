@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 12/16/2024
 ms.author: alkohli
 ---
 
@@ -20,6 +20,8 @@ For more information on appliances for Azure Migrate and how to manage them, see
 ## Before you begin
 
 For both the source and target appliance, make sure that your hardware has sufficient resource to support the creation of a Windows Server 2022 VM with 16 GB RAM, 80 GB of disk storage, 8 vCPUs, and an external virtual switch.
+
+Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integration services](../manage/manage-hyper-v-integration-services.md) installed. Migration will fail if the VMs are not powered on and do not have Hyper-V integration services installed.
 
 ## Step 1: Create and configure the source appliance
 
@@ -46,6 +48,8 @@ Once the source appliance is installed, you are ready to [Configure the applianc
 After the appliance is configured, you start the VM discovery process.
 
 Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
+
+Ensure that all VMs you want to migrate are powered on and have [Hyper-V integration services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) installed before or during the discovery process.
 
 ## Step 2: Create and configure the target appliance
 
