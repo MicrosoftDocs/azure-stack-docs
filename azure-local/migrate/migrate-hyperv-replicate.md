@@ -21,7 +21,7 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 For both the source and target appliance, make sure that your hardware has sufficient resource to support the creation of a Windows Server 2022 VM with 16 GB RAM, 80 GB of disk storage, 8 vCPUs, and an external virtual switch.
 
-Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integration services](../manage/manage-hyper-v-integration-services.md) installed. Migration will fail if the VMs are not powered on and do not have Hyper-V integration services installed.
+Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integration services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) installed. Migration will fail if the VMs are not powered on and do not have Hyper-V integration services installed.
 
 ## Step 1: Create and configure the source appliance
 
