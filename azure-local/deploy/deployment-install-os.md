@@ -102,7 +102,11 @@ Follow these steps to configure the operating system using SConfig:
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
-1. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
+   > [!IMPORTANT]
+   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#DNS-Servers-Considerations).
+
+
+2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
 
    ```cmd
    w32tm /query /status
@@ -122,18 +126,18 @@ Follow these steps to configure the operating system using SConfig:
 
    Once the machine is domain joined, it synchronizes its time from the PDC emulator.
 
-1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
+3. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+4. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
-1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+5. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
     > [!NOTE]
     > This step doesn't apply to a machine repair operation.
 
-1. Restart the machines.
+6. Restart the machines.
 
-1. Set the local administrator credentials to be identical across all machines.
+7. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
