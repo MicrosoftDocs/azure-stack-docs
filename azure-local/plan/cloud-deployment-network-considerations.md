@@ -326,6 +326,19 @@ Here are the summarized considerations for the IP addresses:
 |4     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
 |5     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
 
+### DNS Servers Considerations
+
+Azure Local deployments based on Active Directory require a DNS Server that can resolve the On-Prem domain and the Internet public endpoints. As part of the deployment it is required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it is not supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
+
+Here are the summarized considerations for DNS servers addresses
+
+|#  | Considerations  |
+|---------|---------|
+|1     | DNS servers across all the nodes of the cluster must be the same.       |
+|2     | The infrastructure IP address range DNS servers must be the same used for the nodes.       |
+|3     | Azure Resource Bridge VM control plane and AKS control plane will use the DNS Servers configured on the infrastructure IP address range.      |
+|4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
+
 ### Proxy requirements
 
 A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Local supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before machine nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
