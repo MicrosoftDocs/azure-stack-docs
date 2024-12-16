@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/12/2024
+ms.date: 12/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -69,7 +69,7 @@ To use this method, you need domain administrator privileges and access to the G
 .\Prepare-MigratedVM.ps1 -StaticIPMigration  
 ```
 
-1. In Azure portal, follow the standard process to create a migration project, trigger discovery, and replicate the VM. For information on how to do this, see [Create an Azure Migrate project](migration-options-overview.md).
+1. In Azure portal, follow the standard process to create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each NIC on the source VM.
 
@@ -77,13 +77,13 @@ To use this method, you need domain administrator privileges and access to the G
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page ." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 
-    Failure to correctly assign the NICs to their corresponding logical networks will result in incorrect IP address information displayed in Azure Arc and Azure portal.
+    Failure to correctly assign the NICs to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
 
 1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**:
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/shutdown-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shutdown-vms.png":::
 
-1. After the VM is migrated, check the migrated VM to verify that the static IP settings have been migrated over.
+1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
 
 ## Setup IP migration using Group Policy
 
@@ -160,7 +160,7 @@ To setup static IP migration at scale on domain-joined VMs using Group Policy, f
 
     1. If the GPO is not already linked, right-click the desired OU in the Group Policy Management Console and select **Link an existing GPO**.
 
-    1. Select the GPO you just created.
+    1. Select the GPO you created.
 
 1. Wait for replication to complete. After 10-20 minutes, the Group Policy Object replicates to the respective domain controllers. You can also force the policy update by running the `gpupdate` cmdlet in PowerShell on a specific VM.
 
@@ -176,11 +176,11 @@ There are a couple of limitations regarding the network interface information di
 
 **Static network interfaces with static logical networks**
 
-For static network interfaces created using a static logical network, Azure portal may not display the correct IP address, even if the static IP migration scripts have been run and the correct IP addresses have been transferred to the migrated VM.
+For static network interfaces created using a static logical network, Azure portal may not display the correct IP address, even if the static IP migration scripts were run and the correct IP addresses were transferred to the migrated VM.
 
 The Arc Resource Bridge defaults to selecting the first IP address marked as available on the underlying logical network subnet and displays that in Azure portal. On-demand modification of this IP address is not supported at this time. This limitation does not apply to dynamic network interfaces created using a dynamic logical network. 
 
-Azure portal should display the correct IP address assigned to the DHCP-enabled NIC on the migrated VM, provided that the prerequisites are met and Hyper-V Manager is able to view the IP address of the network interface on the VM.
+Azure portal should display the correct IP address that were assigned to the DHCP-enabled NIC on the migrated VM, provided that the prerequisites are met and Hyper-V Manager is able to view the IP address of the network interface on the VM.
 
 **Old network adapter information in Device Manager**
 
