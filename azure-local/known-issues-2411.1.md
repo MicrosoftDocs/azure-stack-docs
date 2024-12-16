@@ -26,7 +26,7 @@ For more information about new features in this release, see [What's new in 23H2
 This software release maps to software version number **2411.1.10**.
 
 > [!IMPORTANT]
-> The new deployments of this software will use the 2411.1.10 build. If you update from 2408.2, you’ll get the 2411.0.24 build which you can then update to 2411.1.10. If you have already updated from 2408.1 to 2411.0.22, you can also update to 2411.1.10.
+> The new deployments of this software use the 2411.1.10 build. If you updated from 2408.2, you’ve received either the 2411.0.22 or 2411.0.24 build. Both builds can be updated to 2411.1.10.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
