@@ -49,7 +49,7 @@ The following issues are fixed in this release:
 
 ## Known issues in this release
 
-Microsoft is aware of the following issues in this release.
+Microsoft isn't aware of the following issues in this release.
 
 <!--The following table lists the known issues in this release:
 
