@@ -44,8 +44,8 @@ The following issues are fixed in this release:
 | Upgrade <!--30024981--> | Stopped indefinite logging of negligible error events. ||
 | Upgrade <!--30197462--> | Added validation to check for free memory. ||
 | Update <!--30217441-->  | Added check to ensure that solution extension content has been copied correctly.||
-| Deployment <!--30273426--> <br> Upgrade | Resolved if the timezone is not set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation. ||
-| Security vulnerability <!--ADO--> | Resolved a security vulnerability in releases prior to 2411 that could expose local admin credentials used during the creation of Arc VMs on Azure Local to non-admin users on the VM and the hosts. ||
+| Deployment <!--30273426--> <br> Upgrade | If the timezone is not set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation. ||
+| Security vulnerability <!--ADO--> | Microsoft has identified a security vulnerability that could expose the local admin credentials used during the creation of Arc VMs on Azure Local to non-admin users on the VM and on the hosts. <br> Arc VMs running on releases prior to Azure Local 2411 release are vulnerable. ||
 
 ## Known issues in this release
 
