@@ -57,7 +57,7 @@ Microsoft isn't aware of any issues in this release.
 |---------|---------|---------|-->
 
 ## Known issues from previous releases
-| AKS on Azure Local |AKS cluster creation fails with the `Error: Invalid AKS network resource id`. This issue can occur when the associated logical network name has an underscore. |Underscores aren't supported in logical network names. Make sure to not use underscore in the names for logical networks deployed on your Azure Local instance. |
+
 The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
