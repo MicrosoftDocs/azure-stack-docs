@@ -171,7 +171,7 @@
     - name: Azure Local
       href: /azure-local/index
     - name: Azure Adaptive Cloud
-      href: /adaptive-cloud
+      href: /azure/adaptive-cloud
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: AKS enabled by Arc roadmap
