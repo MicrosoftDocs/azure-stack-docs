@@ -10,7 +10,7 @@ ms.date: 11/15/2024
 
 # Create Kubernetes clusters using Terraform (preview)
 
-This article describes how to create Kubernetes cluster in Azure Local using Terraform and Azure Verified Module. The workflow is as follows:
+This article describes how to create Kubernetes clusters in Azure Local using Terraform and the Azure Verified Module. The workflow is as follows:
 
 - Create an SSH key pair.
 - Create a Kubernetes cluster in Azure Local 23H2 using Terraform. By default, the cluster is Azure Arc-connected.
