@@ -169,9 +169,9 @@
   - name: Resources
     items:
     - name: Azure Local
-      href: /azure-stack/hci/index
-    - name: Azure hybrid cloud
-      href: /hybrid
+      href: /azure-local/index
+    - name: Azure Adaptive Cloud
+      href: /adaptive-cloud
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: Azure roadmap
