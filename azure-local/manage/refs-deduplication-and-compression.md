@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/08/2024
+ms.date: 12/10/2024
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local

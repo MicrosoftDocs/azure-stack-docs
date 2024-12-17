@@ -362,8 +362,6 @@ items:
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
         href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: Use GPUs with clustered VMs
-        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
       - name: GPU Partitioning
         href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-local&context=/azure/azure-local/context/context
       - name: Partition and assign GPUs to a virtual machine
@@ -384,7 +382,7 @@ items:
     items:
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
-    - name: Manage application control (WDAC)
+    - name: Manage Application Control
       href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
@@ -700,6 +698,8 @@ items:
         href: manage/windows-server-azure-edition.md
       - name: Upgrade VMs to Windows Server Azure Edition
         href: manage/upgrade-vm-windows-server-azure-edition.md
+      - name: Use GPUs with clustered VMs
+        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
     - name: Manage storage
       items:
       - name: Create volumes

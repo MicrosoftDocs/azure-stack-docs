@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 11/18/2024
+ms.date: 12/12/2024
 ---
 
 # Manage security defaults for Azure Local, version 23H2

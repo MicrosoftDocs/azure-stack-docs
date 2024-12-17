@@ -28,7 +28,7 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
 
 This article focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
-If you are using Azure Stack HCI, version 23H2 (preview), the operating system updates are performed using Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2 (preview)](../update/azure-update-manager-23h2.md). Additionally, to check for and install available firmware and driver updates for Azure Stack HCI, version 23H2 (preview) using Windows Admin Center, see [Update your hardware via Windows Admin Center](../update/azure-update-manager-23h2.md#update-your-hardware-via-windows-admin-center).
+If you are using Azure Stack HCI, version 23H2, the operating system updates are performed using Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md). Additionally, to check for and install available firmware and driver updates for Azure Stack HCI, version 23H2 using Windows Admin Center, see [Identify a Solution Builder Extension update for your hardware](../update/solution-builder-extension.md#identify-a-solution-builder-extension-update-for-your-hardware).
 
 ## Install operating system and hardware updates using Windows Admin Center
 

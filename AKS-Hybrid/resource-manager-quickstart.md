@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 12/03/2024
+ms.date: 12/06/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -14,13 +14,13 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This quickstart shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
+This quickstart shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager (ARM) template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
 
 ## Before you begin
 
 This article assumes a basic understanding of Kubernetes concepts.
 
-To deploy a Resource Manager template, you need write access on the resources you're deploying, and access to all operations on the **Microsoft.Resources/deployments** resource type. For example, to deploy a virtual machine, you need **Microsoft.Compute/virtualMachines/write** and **Microsoft.Resources/deployments/\*** permissions. For a list of roles and permissions, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
+To deploy an ARM template, you need write access on the resources you're deploying, and access to all operations on the **Microsoft.Resources/deployments** resource type. For example, to deploy a virtual machine, you need **Microsoft.Compute/virtualMachines/write** and **Microsoft.Resources/deployments/\*** permissions. For a list of roles and permissions, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 ### Prerequisites
 
@@ -66,12 +66,12 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-Download the template and parameter files under aksarc from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) to your local machine. Please carefully review all the default values and ensure they are correct
+Download the template and parameter files under aksarc from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) to your local machine. Please carefully review all the default values and ensure they are correct.
 
 
 ## Step 4: Deploy the template
 
-Run the following command to deploy the Kubernetes cluster:
+To deploy the Kubernetes cluster, run the following command:
 
 ```azurecli
 az deployment group create \
@@ -124,7 +124,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 ## Step 7: Deploy node pool using an Azure Resource Manager template (optional)
 
-Similiar to Step 3, download the nodepool template and parameters from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
+Similiar to step 3, download the nodepool template and parameters from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
 
 
 ### Deploy the template and validate results using Azure CLI (optional)
