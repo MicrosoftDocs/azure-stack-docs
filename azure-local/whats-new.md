@@ -30,9 +30,9 @@ This is a baseline release with the following features and improvements:
 
 - **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
 
-- **4-node switchless support** - Starting this release, 4-node switchless support is supported for Azure Local.
+- **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information, see the [Fixed issues in 2411.1](./known-issues-2411-1.md).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md).
 
 ## Features and improvements in 2411
 
