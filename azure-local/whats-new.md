@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 12/11/2024
+ms.date: 12/17/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -29,6 +29,8 @@ This is a baseline release with the following features and improvements:
 - **Arc VMs** - Starting this release, the deletion for attached resources (network interfce, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
 
 - **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
+
+- **4-node switchless support** - Starting this release, 4-node switchless support is supported for Azure Local.
 
 For more information, see the [Fixed issues in 2411.1](./known-issues-2411-1.md).
 
