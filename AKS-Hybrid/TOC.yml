@@ -174,8 +174,8 @@
       href: /adaptive-cloud
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-    - name: Azure roadmap
-      href: https://azure.microsoft.com/roadmap/
+    - name: AKS enabled by Arc roadmap
+      href: https://github.com/Azure/aksArc/projects
 - name: AKS Edge Essentials
   items:
   - name: Overview
