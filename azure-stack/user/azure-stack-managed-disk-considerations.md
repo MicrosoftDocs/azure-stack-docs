@@ -29,7 +29,7 @@ Managed disks are enabled by default when creating VMs using the Azure Stack Hub
 | Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |Backup options | Azure Backup service |Not yet supported |
-|Disaster recovery options | Azure Site Recovery |Not yet supported|
+|Disaster recovery options | Azure Site Recovery |Azure Site Recovery on Azure Stack Hub|
 |Disks performance analytic |Aggregate metrics and per disk metrics supported. |Not yet supported |
 |Disk size  |Azure Premium Disk: P4 (32 GiB) to P80 (32 TiB)<br>Azure Standard SSD Disk: E10 (128 GiB) to E80 (32 TiB)<br>Azure Standard HDD Disk: S4 (32 GiB) to S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1023 GiB |
 |Disks snapshot copy|Snapshot Azure managed disks attached to a running VM supported.|Supported through backup vendors. Check with your vendor to verify support. |
