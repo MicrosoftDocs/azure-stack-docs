@@ -3,7 +3,7 @@ title:  December 2024 security update (KB5048653) for Azure Local, version 23H2
 description: Read about the December 2024 security update (KB5048653) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/12/2024
+ms.date: 12/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
