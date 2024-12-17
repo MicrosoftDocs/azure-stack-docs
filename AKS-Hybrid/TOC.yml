@@ -60,8 +60,6 @@
         href: create-clusters-bicep.md
       - name: Terraform
         href: create-clusters-terraform.md
-      - name: Quickstart template
-        href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
     - name: Networking
