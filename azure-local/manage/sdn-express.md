@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 11/07/2024
+ms.date: 12/16/2024
 ms.author: sethm 
 ms.reviewer: anirbanpaul 
 ---
@@ -14,7 +14,7 @@ ms.reviewer: anirbanpaul
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+This article describes how to deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW). The scripts support a phased deployment, in which you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure using Windows Admin Center or using System Center Virtual Machine Manager (VMM). For more information, see [Create a cluster - Step 5: SDN](../deploy/create-cluster.md#step-5-sdn-optional) and [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
@@ -61,13 +61,13 @@ Run the following command to install the latest version of the SDN Express Power
 Install-Module -Name SDNExpress
 ```
 
-The files automatically install in the default PowerShell module directory: **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\**.
+The files automatically install in the default PowerShell module directory: `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`.
 
 ## Edit the configuration file
 
 The PowerShell `MultiNodeSampleConfig.psd1` configuration data file (located at the above mentioned install path) contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
 
-Navigate to the **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\** folder and open the **MultiNodeSampleConfig.psd1** file in a text editor. Change specific parameter values to fit your infrastructure and deployment, as described in the next section.
+Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the **MultiNodeSampleConfig.psd1** file in a text editor. Change specific parameter values to fit your infrastructure and deployment, as described in the next section.
 
 ### General settings and parameters
 
@@ -161,8 +161,7 @@ The following additional parameters are only used by Gateway VMs. Leave these va
 - **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway move to the redundant gateway and the redundant gateway becomes active.
 
    > [!NOTE]
-   > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the
-   > **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
+   > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
