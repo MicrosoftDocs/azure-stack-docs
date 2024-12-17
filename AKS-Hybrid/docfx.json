@@ -53,7 +53,7 @@
       "feedback_help_link_url": "https://github.com/Azure/aksArc/issues",
       "feedback_help_link_type": "get-product-support",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7",
-      "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
+      "breadcrumb_path": "/azure/aks/aksarc/breadcrumb/toc.json",
       "extendBreadcrumb": false,
       "manager":"femila",
       "ms.service": "azure-stack",
@@ -66,8 +66,8 @@
         "./**/*.md": "azure-kubernetes-service-hybrid"
       },
       "titleSuffix": {
-        "**/*.md": "AKS hybrid",
-        "aks-hci/**/*.md": "AKS hybrid"
+        "**/*.md": "AKS enabled by Azure Arc",
+        "azure-local/**/*.md": "AKS enabled by Azure Arc"
       },
       "feedback_product_url": {
         "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
@@ -76,6 +76,6 @@
       }
     },
     "template": [],
-    "dest": "AKS-Hybrid"
+    "dest": "AKS-Arc"
   }
 }

@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 12/11/2024
+ms.date: 12/17/2024
 ---
 
 # What's new in Azure Local, version 23H2
@@ -21,6 +21,18 @@ Azure Local, version 23H2 is the latest version of the Azure Local solution. Thi
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2411 releases](#tab/2411releases)
+
+## Features and improvements in 2411.1
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
+
+- **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
+
+- **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
 
 ## Features and improvements in 2411
 
@@ -127,7 +139,7 @@ This release contains the following changes for Arc VM management:
 - 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
 - Logical network properties are properly updated. Previously, the logical network sometimes wouldn't have its properties (vLAN, IP Pools, etc.) filled.
-- The vLAN field on a logical network will be defaulted to '0' if not specified.
+- The vLAN field on a logical network will default to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
@@ -138,7 +150,7 @@ This release contains the following changes for SBE:
 
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Local deployment times.
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
-- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
+- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
 ## [2405 releases](#tab/2405releases)
 
@@ -310,7 +322,7 @@ This section lists the new features and improvements in the 2402 release of Azur
 
 This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
 
-The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
 To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
@@ -352,7 +364,7 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues-
 
 A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
 
-The role applies the concept of the least amount of privileges and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
+The role applies the concept of the least amount of privilege and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
 
 You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
