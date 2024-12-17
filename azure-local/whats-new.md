@@ -32,7 +32,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411.1.md#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
 
 ## Features and improvements in 2411
 
