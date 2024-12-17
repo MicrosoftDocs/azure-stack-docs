@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/12/2024
+ms.date: 12/17/2024
 ---
 
 # Update your Azure Local, version 23H2 via PowerShell
@@ -245,7 +245,7 @@ Follow these steps to discover the available updates for your system:
     Here's an example output:
 
     ```console
-    PS C:\Users\lcmuser> $Update = $Get-SolutionUpdate -Id redmond/Solution10.2408.2.7
+    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate -Id redmond/Solution10.2408.2.7
     
     PS C:\Users\lcmuser> $Update.ComponentVersions
     
@@ -306,10 +306,10 @@ Follow these steps to import and discover your solution updates.
 1. Manually discover the update package using the Update service. Run the following command:
 
     ```powershell
-    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload
+    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import
     ```
 
-1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. Repeat the earlier step to rediscover the updates.
+1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. Repeat the `Get-SolutionUpdate` command to rediscover the updates.
 
 ## Step 4: (Recommended) Predownload and check update readiness
 
@@ -329,6 +329,7 @@ You can download the update and perform a set of checks to verify your clusterâ€
     
     ```console
     PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2408.2.7 | Start-SolutionUpdate â€“PrepareOnly
+    redmond/SBE4.1.2410.9/<GUID>
     ```
 
 
@@ -414,9 +415,8 @@ This starts the process to install the update.
 
 Microsoft recommends tracking cluster update progress in the Azure portal after the update has started. The portal is a great option for tracking update progress even when the update is started via PowerShell as it isn't subject to the disruptions in status reporting.
 
->[!TIP]
+> [!TIP]
 > - If monitoring via PowerShell, we recommend that you connect your PowerShell session to the last server in your cluster to avoid the session from disconnecting early. The sessions disconnect as the systems reboot so switching to monitor from an already updated server can minimize the frequency of disconnects. 
-
 > - We recommend that you track cluster update progress in the Azure portal to avoid having to reconnect to PowerShell sessions following a machine reboot.
 
 Follow these steps to track update progress using PowerShell.
