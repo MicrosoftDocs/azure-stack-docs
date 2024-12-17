@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 12/06/2024
+ms.date: 12/17/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -66,8 +66,7 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Step 3: Review the template
 
-Download the template and parameter files under aksarc from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) to your local machine. Please carefully review all the default values and ensure they are correct.
-
+Download the template and parameter files from the [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) to your local machine. Review all the default values and ensure they are correct.
 
 ## Step 4: Deploy the template
 
@@ -124,8 +123,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 ## Step 7: Deploy node pool using an Azure Resource Manager template (optional)
 
-Similiar to step 3, download the nodepool template and parameters from [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
-
+Similiar to step 3, download the node pool template and parameters from the [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
 
 ### Deploy the template and validate results using Azure CLI (optional)
 
