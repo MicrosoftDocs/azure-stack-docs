@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 12/16/2024
+ms.date: 12/17/2024
 ---
 
 # What is Azure Arc VM management?
@@ -42,9 +42,9 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 Consider the following limitations when managing Arc VMs on Azure Local:
 
-- You can't take checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager.
-- Updates to Arc VM configurations, such as vCPU, memory, adding network interface or data disk via on-premises tools won't reflect in the Azure portal.
-- Resource group move isn't supported for Arc VMs on Azure Local and the associated resources. 
+- Taking checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely impact the management of these Arc VMs from Azure.
+- Updates to Arc VM configurations, such as vCPU, memory, adding/removing network interface or data disk via on-premises tools won't reflect on the Azure management plane.
+- Resource group move isn't supported for Arc VMs on Azure Local and its associated resources (such as network interfaces and disks). 
 
 ## Components of Azure Arc VM management
 
