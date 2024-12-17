@@ -322,7 +322,7 @@ This section lists the new features and improvements in the 2402 release of Azur
 
 This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
 
-The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
 To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
