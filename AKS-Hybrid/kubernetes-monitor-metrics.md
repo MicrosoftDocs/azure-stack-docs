@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 05/30/2024
 ms.author: sethm 
 ms.lastreviewed: 03/28/2024
-ms.reviewer: haojiehan
+ms.reviewer: haojiehang
 
 ---
 
@@ -16,16 +16,24 @@ This article provides an overview of the metrics and logs used to monitor Kubern
 
 ## Metrics
 
-The following table lists the platform metrics collected for AKS Arc. Follow each link for a detailed list of the metrics for each particular type.
+### Platform Metrics
+The following table lists the platform metrics supported for AKS Arc. In order to view these basic platform metrics, you may install the observability extension on your Kubernetes cluster and wait a few minutes to start automatic metrics ingestion. Follow each link for a detailed list of the metrics for each particular type.
 
 | Metric type           | Resource provider/type namespace                       |
 |-----------------------|--------------------------------------------------------|
 | Provisioned clusters  | [Microsoft.HybridContainerService/provisionedClusters](/azure/azure-monitor/reference/supported-metrics/microsoft-hybridcontainerservice-provisionedclusters-metrics)   |
 | Connected clusters    | [Microsoft.Kubernetes/connectedClusters](/azure/azure-monitor/reference/supported-metrics/microsoft-kubernetes-connectedclusters-metrics)                 |
 
-## Azure Monitor resource logs
+### Prometheus Metrics
+To view more granular metrics, it is recommended to enable Managed Prometheus extension in your Kubernetes and query Prometheus metrics in Metrics Explorer or Managed Grafana. The extension onboarding instructions can be found in [here](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli#enable-prometheus-and-grafana). 
 
-AKS Arc implements control plane logs (including audit logs) for clusters as [resource logs in Azure Monitor](/azure/azure-monitor/essentials/resource-logs). For more information about creating diagnostic settings to collect these logs, see [Monitor Kubernetes audit events](/azure/aks/hybrid/kubernetes-monitor-audit-events). The following table lists the resource log categories you can collect for AKS Arc:
+
+## Azure Monitor Logs
+AKS Arc supports two kinds of logs: Control Plane logs implemented as resource logs and container insights logs. For more information about exporting control plane logs such as audit logs using diagnostic settings, see [Monitor Kubernetes audit events](/azure/aks/hybrid/kubernetes-monitor-audit-events). For more information about enabling container insights, see [Enable Container Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli). 
+
+
+### Control Plane Logs
+The following table lists the log categories available for AKS Arc. This table can also be found in [Azure Monitor resource log reference](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-logs/microsoft-kubernetes-connectedclusters-logs).
 
 | Category                   | Description                                                                                                                                                                                                   | Table (resource-specific mode)  |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
@@ -43,23 +51,20 @@ AKS Arc implements control plane logs (including audit logs) for clusters as [re
 
 For more information, see the list of [all resource log category types supported in Azure Monitor](/azure/azure-monitor/essentials/resource-logs-schema).
 
-## Azure Monitor log tables
 
-The following table lists all the Azure Monitor log tables relevant to AKS Arc:
+### Azure Monitor Log Tables
 
-| Resource Type     | Notes                                                                                            |
-|-------------------|--------------------------------------------------------------------------------------------------|
-| [ConnectedCluster](/azure/azure-monitor/logs/manage-logs-tables)  | Follow this link for a list of all tables used by AKS Arc, and a description of their structure.  |
+For both control plane logs and container insights, you can analyze them in Log Analytics Workspace. The Log Analytics tables can be found in [Azure Monitor Reference](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables-index#azure-arc-enabled-kubernetes).
 
-## Azure Activity log
 
-The following table links to a few example operations related to AKS Arc that might be created in the [Activity log](/azure/azure-monitor/essentials/activity-log-insights). Use the activity log to track information such as when a cluster is created, or had its configuration change:
+## Activity log
+
+The following table lists a few example operations related to AKS that might be created in the Activity log. Use the Activity log to track information such as when a cluster is created or had its configuration change. You can view this information in the portal or by using other methods. You can also use it to create an Activity log alert to be proactively notified when an event occurs.
 
 | Resource Type                | Notes                                                                            |
 |------------------------------|----------------------------------------------------------------------------------|
 | [ProvisionedClusterInstances](/rest/api/hybridcontainer/provisioned-cluster-instances)  | Follow this link for a list and descriptions of operations used in AKS Arc.  |
 
-For more information about the schema of Activity log entries, see the [Activity log schema](/azure/azure-monitor/essentials/activity-log-schema).
 
 ## Next steps
 

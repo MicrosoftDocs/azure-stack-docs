@@ -125,7 +125,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 Similiar to step 3, download the node pool template and parameters from the [AKSArc repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) and review the default values.
 
-### Deploy the template and validate results using Azure CLI (optional)
+## Step 8: Deploy the template and validate the deployment (optional)
 
 Review and apply the template. This process takes a few minutes to complete. You can use the Azure CLI to validate that the node pool is created successfully:
 

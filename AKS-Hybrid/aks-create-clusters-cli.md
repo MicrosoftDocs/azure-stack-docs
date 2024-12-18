@@ -96,7 +96,7 @@ moc-l0ttdmaioew  Ready  control-plane,master 34m v1.24.11
 moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 ```
 
-## Deploy the application
+## Deploy the application and load balancer
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
@@ -214,6 +214,8 @@ service "azure-vote-back" created
 deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
+
+Now you need to deploy a MetalLB load balancer so it can assign an external IP for the application frontend. You can follow [the instructions](https://learn.microsoft.com/en-us/azure/aks/aksarc/deploy-load-balancer-cli) to deploy the MetalLB extension from Portal or CLI.
 
 ## Test the application
 
