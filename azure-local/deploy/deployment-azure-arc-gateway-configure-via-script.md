@@ -28,7 +28,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Get the ArcGatewayID  
 
-You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway id on the Azure portal overview page of the resource.
+You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal overview page of the resource.
 
 ## Step 2: Register new machines in Azure Arc
 
