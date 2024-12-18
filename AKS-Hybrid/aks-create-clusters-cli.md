@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters in Azure Local using Azure 
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 11/18/2024
+ms.date: 12/18/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
@@ -96,7 +96,7 @@ moc-l0ttdmaioew  Ready  control-plane,master 34m v1.24.11
 moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 ```
 
-## Deploy the application
+## Deploy the application and load balancer
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
@@ -214,6 +214,8 @@ service "azure-vote-back" created
 deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
+
+Deploy a MetalLB load balancer so it can assign an external IP for the application front end. You can [follow these instructions](deploy-load-balancer-cli.md) to deploy the MetalLB extension from the Azure portal, or using CLI.
 
 ## Test the application
 
