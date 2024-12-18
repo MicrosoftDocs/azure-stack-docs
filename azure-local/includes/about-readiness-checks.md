@@ -19,5 +19,5 @@ It is common for the results of system health checks and update readiness checks
 Both system and pre-update readiness checks perform similar validations and categorize three types of readiness checks: Critical, Warning, and Informational.
 
 - **Critical**: Readiness checks that prevent you from applying the update. This status indicates issues that you must resolve before proceeding with the update.
-- **Warning**: Readiness checks that also prevent you from applying the update, but you can bypass these using [PowerShell](../update/update-via-powershell-23h2.md#troubleshoot-updates). This status indicates potential issues that might not be severe enough to stop the update but should be addressed to ensure a smooth update process.
+- **Warning**: Readiness checks that also prevent you from applying the update, but you can bypass these using [PowerShell](../update/update-via-powershell-23h2.md). This status indicates potential issues that might not be severe enough to stop the update but should be addressed to ensure a smooth update process.
 - **Informational**: Readiness checks that don't block the update. This status provides information about the system's state and any potential issues that shouldn't affect the update process directly. These checks are for your awareness and might not require immediate action.
