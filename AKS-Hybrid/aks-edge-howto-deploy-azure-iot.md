@@ -27,7 +27,7 @@ To run the script, you need the following prerequisites:
    az extension add --upgrade --name connectedk8s 
    ```
 
-- Hardware requirements: ensure that your machine has a minimum of 16-GB available RAM, 4 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
+- Hardware requirements: ensure that your machine has a minimum of 10-GB available RAM, 4 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
 
 ## Create an Arc-enabled cluster
 
