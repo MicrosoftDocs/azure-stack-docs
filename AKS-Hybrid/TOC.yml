@@ -130,18 +130,18 @@
       items:    
           - name: Monitor Kubernetes object events
             href: kubernetes-monitor-object-events.md
-          - name: Monitor Kubernetes audit events
-            href: kubernetes-monitor-audit-events.md
-          - name: Monitor logs reference
-            href: kubernetes-monitor-metrics.md
-          - name: Enable Container Insights
-            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
-          - name: Use on-premises monitoring
-            href: aks-monitor-logging.md
           - name: Get kubelet logs
             href: aks-get-kubelet-logs.md
+          - name: Enable Container Insights
+            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+          - name: Monitor Kubernetes audit events
+            href: kubernetes-monitor-audit-events.md
+          - name: Use on-premises monitoring
+            href: aks-monitor-logging.md
           - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
+          - name: Monitoring data reference
+            href: kubernetes-monitor-metrics.md
   - name: Troubleshooting
     items:
     - name: Troubleshoot & known issues
