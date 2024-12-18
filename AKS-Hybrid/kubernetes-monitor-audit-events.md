@@ -36,17 +36,16 @@ az monitor diagnostic-settings create –name <Diagnostics_Setting_Name> --resou
 
 :::image type="content" source="media/kubernetes-monitor-audit-events/diagnostic-settings.png" alt-text="Screenshot of portal blade showing diagnostic settings." lightbox="media/kubernetes-monitor-audit-events/diagnostic-settings.png":::
 
-AKS supports either [Azure diagnostics mode](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode) or [resource-specific mode](/azure/azure-monitor/essentials/resource-logs#resource-specific) for resource logs. The mode specifies the tables in the Log Analytics workspace to which the data is sent. Azure diagnostics mode sends all data to the [AzureDiagnostics table](/azure/azure-monitor/reference/tables/azurediagnostics), while resource-specific mode sends data to [ArcK8SAudit](/azure/azure-monitor/reference/tables/arck8saudit), [ArcK8SAuditAdmin](/azure/azure-monitor/reference/tables/arck8sauditadmin), and [ArcK8SControlPlane](/azure/azure-monitor/reference/tables/arck8scontrolplane), as shown in the log category table in the next section.
+AKS supports either [Azure diagnostics mode](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode) or [resource-specific mode](/azure/azure-monitor/essentials/resource-logs#resource-specific) for resource logs. The mode specifies the tables in the Log Analytics workspace to which the data is sent. Azure diagnostics mode sends all data to the [AzureDiagnostics table](/azure/azure-monitor/reference/tables/azurediagnostics), while resource-specific mode sends data to [ArcK8SAudit](/azure/azure-monitor/reference/tables/arck8saudit), [ArcK8SAuditAdmin](/azure/azure-monitor/reference/tables/arck8sauditadmin), and [ArcK8SControlPlane](/azure/azure-monitor/reference/tables/arck8scontrolplane), as shown in the log category table in the next section.
 
 After you save the settings, it can take up to an hour to see the events in the Log Analytics workspace or other supported destination. You can write a KQL query to extract the insights based on the log categories you enabled.
-
 
 ## Delete and disable the diagnostics setting
 
 You can delete the diagnostics setting using the Azure portal, PowerShell, or Azure CLI:
 
 ```azurecli
-az monitor diagnostic-settings delete –name <diagnostics-setting-name> --resource <resource-name> -g <resource-group-name>
+az monitor diagnostic-settings delete -name <diagnostics-setting-name> --resource <resource-name> -g <resource-group-name>
 ```
 
 After you successfully delete the setting, you can then delete the extension using Azure CLI:
