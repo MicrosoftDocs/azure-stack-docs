@@ -3,7 +3,7 @@ title: Metrics and monitoring logs in AKS Arc
 description: Learn about metrics and logs used to monitor Kubernetes clusters in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/30/2024
+ms.date: 12/18/2024
 ms.author: sethm 
 ms.lastreviewed: 03/28/2024
 ms.reviewer: haojiehang
@@ -17,7 +17,8 @@ This article provides an overview of the metrics and logs used to monitor Kubern
 ## Metrics
 
 ### Platform Metrics
-The following table lists the platform metrics supported for AKS Arc. In order to view these basic platform metrics, you may install the observability extension on your Kubernetes cluster and wait a few minutes to start automatic metrics ingestion. Follow each link for a detailed list of the metrics for each particular type.
+
+The following table lists the platform metrics supported for AKS Arc. To view these basic platform metrics, you can install the observability extension on your Kubernetes cluster and wait a few minutes to start the automatic metrics ingestion. Follow each link for a detailed list of the metrics for each particular type:
 
 | Metric type           | Resource provider/type namespace                       |
 |-----------------------|--------------------------------------------------------|
@@ -25,15 +26,17 @@ The following table lists the platform metrics supported for AKS Arc. In order t
 | Connected clusters    | [Microsoft.Kubernetes/connectedClusters](/azure/azure-monitor/reference/supported-metrics/microsoft-kubernetes-connectedclusters-metrics)                 |
 
 ### Prometheus Metrics
-To view more granular metrics, it is recommended to enable Managed Prometheus extension in your Kubernetes and query Prometheus metrics in Metrics Explorer or Managed Grafana. The extension onboarding instructions can be found in [here](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli#enable-prometheus-and-grafana). 
+
+To view more granular metrics, it's recommended that you enable the Managed Prometheus extension in your Kubernetes, and then query Prometheus metrics in Metrics Explorer or Managed Grafana. For the extension onboarding instructions, [see this article](/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli#enable-prometheus-and-grafana). 
 
 
 ## Azure Monitor Logs
-AKS Arc supports two kinds of logs: Control Plane logs implemented as resource logs and container insights logs. For more information about exporting control plane logs such as audit logs using diagnostic settings, see [Monitor Kubernetes audit events](/azure/aks/hybrid/kubernetes-monitor-audit-events). For more information about enabling container insights, see [Enable Container Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli). 
 
+AKS Arc supports two types of logs: Control Plane logs implemented as resource logs, and container insights logs. For more information about exporting control plane logs such as audit logs using diagnostic settings, see [Monitor Kubernetes audit events](/azure/aks/hybrid/kubernetes-monitor-audit-events). For more information about enabling container insights, see [Enable Container Insights](/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli). 
 
 ### Control Plane Logs
-The following table lists the log categories available for AKS Arc. This table can also be found in [Azure Monitor resource log reference](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-logs/microsoft-kubernetes-connectedclusters-logs).
+
+The following table lists the log categories available for AKS Arc. You can also see this table in the [Azure Monitor resource log reference](/azure/azure-monitor/reference/supported-logs/microsoft-kubernetes-connectedclusters-logs):
 
 | Category                   | Description                                                                                                                                                                                                   | Table (resource-specific mode)  |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
@@ -51,15 +54,13 @@ The following table lists the log categories available for AKS Arc. This table c
 
 For more information, see the list of [all resource log category types supported in Azure Monitor](/azure/azure-monitor/essentials/resource-logs-schema).
 
+### Azure Monitor log tables
 
-### Azure Monitor Log Tables
-
-For both control plane logs and container insights, you can analyze them in Log Analytics Workspace. The Log Analytics tables can be found in [Azure Monitor Reference](https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables-index#azure-arc-enabled-kubernetes).
-
+You can analyze both the control plane logs and the container insights in Log Analytics Workspace. See the Log Analytics tables in the [Azure Monitor Reference](/azure/azure-monitor/reference/tables-index#azure-arc-enabled-kubernetes).
 
 ## Activity log
 
-The following table lists a few example operations related to AKS that might be created in the Activity log. Use the Activity log to track information such as when a cluster is created or had its configuration change. You can view this information in the portal or by using other methods. You can also use it to create an Activity log alert to be proactively notified when an event occurs.
+The following table lists a few example operations related to AKS that might be created in the activity log. Use the activity log to track information such as when a cluster is created, or had its configuration change. You can view this information in the portal or by using other methods. You can also use it to create an activity log alert to be proactively notified when an event occurs:
 
 | Resource Type                | Notes                                                                            |
 |------------------------------|----------------------------------------------------------------------------------|
