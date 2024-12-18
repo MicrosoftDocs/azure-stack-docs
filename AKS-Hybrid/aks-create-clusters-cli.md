@@ -215,7 +215,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-Now you need to deploy a MetalLB load balancer so it can assign an external IP for the application frontend. You can follow [the instructions](https://learn.microsoft.com/en-us/azure/aks/aksarc/deploy-load-balancer-cli) to deploy the MetalLB extension from Portal or CLI.
+Deploy a MetalLB load balancer so it can assign an external IP for the application front end. You can [follow these instructions](deploy-load-balancer-cli.md) to deploy the MetalLB extension from the Azure portal, or using CLI.
 
 ## Test the application
 
