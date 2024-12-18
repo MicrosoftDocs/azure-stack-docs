@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters in Azure Local using Azure 
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 11/18/2024
+ms.date: 12/18/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu

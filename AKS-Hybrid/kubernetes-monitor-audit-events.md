@@ -3,7 +3,7 @@ title: Monitor Kubernetes audit events in AKS enabled by Azure Arc
 description: Learn how to create a diagnostic setting to access Kubernetes audit logs.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/26/2024
+ms.date: 12/18/2024
 ms.author: sethm 
 ms.lastreviewed: 02/26/2024
 ms.reviewer: guanghu
