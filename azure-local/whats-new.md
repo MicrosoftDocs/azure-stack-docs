@@ -20,7 +20,7 @@ Azure Local, version 23H2 is the latest version of the Azure Local solution. Thi
 
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
-::: moniker range="=azloc-2411.1"
+::: moniker range="=azloc-24111"
 
 ## Features and improvements in 2411.1
 
@@ -164,6 +164,7 @@ This release contains the following changes for SBE:
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
+::: moniker-end
 
 ::: moniker range="=azloc-24053"
 
