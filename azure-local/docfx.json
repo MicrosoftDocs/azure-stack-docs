@@ -3,45 +3,7 @@
     "content": [
       {
         "group": "version-azlocal",
-        "src" : "deploy",
-        "dest" : "deploy",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      },
-      {
-        "group": "version-azlocal",
         "src" : "./",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      },
-      {
-        "group": "version-azlocal",
-        "src" : "concepts",
-        "dest" : "concepts",
         "files": [
           "**/*.md",
           "**/*.yml"
