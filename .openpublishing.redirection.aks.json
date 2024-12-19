@@ -1236,7 +1236,7 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-lite-overview.md",
+        "source_path": "AKS-Arc/aks-lite-overview.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-overview",
         "redirect_document_id": false
       },
@@ -1246,182 +1246,182 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-hybrid/certificates-update-after-sixty-days.md",
+        "source_path": "AKS-Arc/certificates-update-after-sixty-days.md",
         "redirect_url": "/azure/aks/hybrid/repair-certificates",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-edge-concept.md",
+        "source_path": "AKS-Arc/aks-edge-concept.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-edge-deployment-options.md",
+        "source_path": "AKS-Arc/aks-edge-deployment-options.md",
         "redirect_url": "/azure/aks/hybrid/aks-edge-concept-clusters-nodes",
         "redirect_document_id": false
       },     
       {
-        "source_path": "AKS-Hybrid/repair-certificates.md",
+        "source_path": "AKS-Arc/repair-certificates.md",
         "redirect_url": "/azure/aks/hybrid/certificates-overview",
         "redirect_document_id": false
       },     
       {
-        "source_path": "AKS-Hybrid/secure-communication.md",
+        "source_path": "AKS-Arc/secure-communication.md",
         "redirect_url": "/azure/aks/hybrid/certificates-overview",
         "redirect_document_id": false
       },     
       {
-        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-1.md",
+        "source_path": "AKS-Arc/aks-hci-evaluation-guide-1.md",
         "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
         "redirect_document_id": false
       },           
       {
-        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-2a.md",
+        "source_path": "AKS-Arc/aks-hci-evaluation-guide-2a.md",
         "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
         "redirect_document_id": false
       },                 
       {
-        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-2b.md",
+        "source_path": "AKS-Arc/aks-hci-evaluation-guide-2b.md",
         "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
         "redirect_document_id": false
       },                 
       {
-        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-3.md",
+        "source_path": "AKS-Arc/aks-hci-evaluation-guide-3.md",
         "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-hybrid-preview-overview.md",
+        "source_path": "AKS-Arc/aks-hybrid-preview-overview.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },      
       {
-        "source_path": "AKS-Hybrid/aks-hybrid-preview-requirements.md",
+        "source_path": "AKS-Arc/aks-hybrid-preview-requirements.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },            
       {
-        "source_path": "AKS-Hybrid/aks-hybrid-preview-azure-vm.md",
+        "source_path": "AKS-Arc/aks-hybrid-preview-azure-vm.md",
         "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                  
       {
-        "source_path": "AKS-Hybrid/deploy-aks-service-hci.md",
+        "source_path": "AKS-Arc/deploy-aks-service-hci.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                        
       {
-        "source_path": "AKS-Hybrid/deploy-arc-resource-bridge-windows-server.md",
+        "source_path": "AKS-Arc/deploy-arc-resource-bridge-windows-server.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                              
       {
-        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-networks.md",
+        "source_path": "AKS-Arc/create-aks-hybrid-preview-networks.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                                    
       {
-        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-cli.md",
+        "source_path": "AKS-Arc/create-aks-hybrid-preview-cli.md",
         "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                                          
       {
-        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-portal.md",
+        "source_path": "AKS-Arc/create-aks-hybrid-preview-portal.md",
         "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                                                
       {
-        "source_path": "AKS-Hybrid/troubleshoot-aks-hybrid-preview.md",
+        "source_path": "AKS-Arc/troubleshoot-aks-hybrid-preview.md",
         "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-hybrid-options-overview.md",
+        "source_path": "AKS-Arc/aks-hybrid-options-overview.md",
         "redirect_url": "/azure/aks/hybrid/overview",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-preview-overview.md",
+        "source_path": "AKS-Arc/aks-preview-overview.md",
         "redirect_url": "/azure/aks/hybrid/aks-whatsnew-23h2",
         "redirect_document_id": false
       },      
       {
-        "source_path": "AKS-Hybrid/view-logs.md",
+        "source_path": "AKS-Arc/view-logs.md",
         "redirect_url": "/azure/aks/hybrid/get-on-demand-logs",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/use-node-pools.md",
+        "source_path": "AKS-Arc/use-node-pools.md",
         "redirect_url": "/azure/aks/hybrid/manage-node-pools",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/manage-control-plane-nodes.md",
+        "source_path": "AKS-Arc/manage-control-plane-nodes.md",
         "redirect_url": "/azure/aks/hybrid/manage-node-pools",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/deploy-metallb.md",
+        "source_path": "AKS-Arc/deploy-metallb.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/get-kubelet-logs.md",
+        "source_path": "AKS-Arc/get-kubelet-logs.md",
         "redirect_url": "/azure/aks/hybrid/aks-get-kubelet-logs",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/reference/aks-edge-ps/set-aksedgebillingpodstate.md",
+        "source_path": "AKS-Arc/reference/aks-edge-ps/set-aksedgebillingpodstate.md",
         "redirect_url": "/azure/aks/hybrid/reference/aks-edge-ps/",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/reference/aks-edge-ps/set-aksedgenodeconnectivitymode.md",
+        "source_path": "AKS-Arc/reference/aks-edge-ps/set-aksedgenodeconnectivitymode.md",
         "redirect_url": "/azure/aks/hybrid/reference/aks-edge-ps/",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide.md",
+        "source_path": "AKS-Arc/aks-hci-evaluation-guide.md",
         "redirect_url": "/azure/aks/hybrid/overview",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/deploy-load-balancer.md",
+        "source_path": "AKS-Arc/deploy-load-balancer.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer-cli",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/offline-download.md",
+        "source_path": "AKS-Arc/offline-download.md",
         "redirect_url": "/azure/aks/hybrid/aks-whats-new-23h2",
         "redirect_document_id": false
       },      
       {
-        "source_path": "AKS-Hybrid/kubernetes-rbac-azure-ad.md",
+        "source_path": "AKS-Arc/kubernetes-rbac-azure-ad.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-rbac-entra-id",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/calico-networking-policy.md",
+        "source_path": "AKS-Arc/calico-networking-policy.md",
         "redirect_url": "/azure/aks/hybrid/concepts-security",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/webhook-denied-request.md",
+        "source_path": "AKS-Arc/webhook-denied-request.md",
         "redirect_url": "/azure/aks/hybrid/troubleshoot-overview",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/create-storage-classes.md",
+        "source_path": "AKS-Arc/create-storage-classes.md",
         "redirect_url": "/azure/aks/hybrid/overview",
         "redirect_document_id": false
       },      
       {
-        "source_path": "AKS-Hybrid/storage-class-overview.md",
+        "source_path": "AKS-Arc/storage-class-overview.md",
         "redirect_url": "/azure/aks/hybrid/overview",
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/infrastructure-components.md",
+        "source_path": "AKS-Arc/infrastructure-components.md",
         "redirect_url": "/azure/aks/hybrid/cluster-architecture",
         "redirect_document_id": false
       }
