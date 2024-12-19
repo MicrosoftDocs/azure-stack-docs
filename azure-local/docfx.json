@@ -22,8 +22,8 @@
       },
       {
         "group": "version-azlocal",
-        "src" : "azure-local",
-        "dest" : "azure-local",
+        "src" : "**/",
+        "dest" : "**/",
         "files": [
           "**/*.md",
           "**/*.yml"
