@@ -12,158 +12,180 @@
       href: release-notes.md
     - name: Hotfixes
       items:
-      - name: Hotfix 1.2408.1.39
-        href: hotfix-1-2408-1-39.md            
-      - name: Hotfix 1.2406.1.18
-        href: hotfix-1-2406-1-18.md      
-      - name: Hotfix 1.2408.1.38
-        href: hotfix-1-2408-1-38.md            
-      - name: Hotfix 1.2406.1.16
-        href: hotfix-1-2406-1-16.md      
-      - name: Hotfix 1.2406.1.15
-        href: hotfix-1-2406-1-15.md      
-      - name: Hotfix 1.2311.3.62
-        href: hotfix-1-2311-3-62.md
-      - name: Hotfix 1.2306.4.102
-        href: hotfix-1-2306-4-102.md      
-      - name: Hotfix 1.2406.1.14
-        href: hotfix-1-2406-1-14.md      
-      - name: Hotfix 1.2311.3.61
-        href: hotfix-1-2311-3-61.md
-      - name: Hotfix 1.2306.4.101
-        href: hotfix-1-2306-4-101.md      
-      - name: Hotfix 1.2311.3.50
-        href: hotfix-1-2311-3-50.md
-      - name: Hotfix 1.2306.4.98
-        href: hotfix-1-2306-4-98.md      
-      - name: Hotfix 1.2301.3.97
-        href: hotfix-1-2301-3-97.md
-      - name: Hotfix 1.2306.4.97
-        href: hotfix-1-2306-4-97.md      
-      - name: Hotfix 1.2301.3.96
-        href: hotfix-1-2301-3-96.md
-      - name: Hotfix 1.2311.3.44
-        href: hotfix-1-2311-3-44.md
-      - name: Hotfix 1.2311.2.23
-        href: hotfix-1-2311-2-23.md
-      - name: Hotfix 1.2306.4.74
-        href: hotfix-1-2306-4-74.md      
-      - name: Hotfix 1.2301.3.72
-        href: hotfix-1-2301-3-72.md
-      - name: Hotfix 1.2306.4.73
-        href: hotfix-1-2306-4-73.md      
-      - name: Hotfix 1.2206.2.77
-        href: hotfix-1-2206-2-77.md      
-      - name: Hotfix 1.2301.2.64
-        href: hotfix-1-2301-2-64.md
-      - name: Hotfix 1.2206.2.76
-        href: hotfix-1-2206-2-76.md      
-      - name: Hotfix 1.2301.2.63
-        href: hotfix-1-2301-2-63.md
-      - name: Hotfix 1.2301.2.60
-        href: hotfix-1-2301-2-60.md
-      - name: Hotfix 1.2206.2.66
-        href: hotfix-1-2206-2-66.md
-      - name: Hotfix 1.2108.2.130
-        href: hotfix-1-2108-2-130.md            
-      - name: Hotfix 1.2102.31.153
-        href: hotfix-1-2102-31-153.md      
-      - name: Hotfix 1.2206.2.52
-        href: hotfix-1-2206-2-52.md      
-      - name: Hotfix 1.2108.2.127
-        href: hotfix-1-2108-2-127.md            
-      - name: Hotfix 1.2102.31.152
-        href: hotfix-1-2102-31-152.md      
-      - name: Hotfix 1.2206.2.38
-        href: hotfix-1-2206-2-38.md   
-      - name: Hotfix 1.2108.2.113
-        href: hotfix-1-2108-2-113.md      
-      - name: Hotfix 1.2102.30.148
-        href: hotfix-1-2102-30-148.md      
-      - name: Hotfix 1.2206.1.25
-        href: hotfix-1-2206-1-25.md      
-      - name: Hotfix 1.2206.1.24
-        href: hotfix-1-2206-1-24.md
-      - name: Hotfix 1.2108.2.111
-        href: hotfix-1-2108-2-111.md      
-      - name: Hotfix 1.2102.30.146
-        href: hotfix-1-2102-30-146.md      
-      - name: Hotfix 1.2008.41.161
-        href: hotfix-1-2008-41-161.md
-      - name: Hotfix 1.2108.2.102
-        href: hotfix-1-2108-2-102.md
-      - name: Hotfix 1.2102.30.132
-        href: hotfix-1-2102-30-132.md
-      - name: Hotfix 1.2008.41.159
-        href: hotfix-1-2008-41-159.md
-      - name: Hotfix 1.2108.2.83
-        href: hotfix-1-2108-2-83.md
-      - name: Hotfix 1.2102.30.118
-        href: hotfix-1-2102-30-118.md              
-      - name: Hotfix 1.2008.40.156
-        href: hotfix-1-2008-40-156.md        
-      - name: Hotfix 1.2102.30.116
-        href: hotfix-1-2102-30-116.md
-      - name: Hotfix 1.2102.30.109
-        href: hotfix-1-2102-30-109.md      
-      - name: Hotfix 1.2102.30.106
-        href: hotfix-1-2102-30-106.md      
-      - name: Hotfix 1.2102.30.104
-        href: hotfix-1-2102-30-104.md
-      - name: Hotfix 1.2008.40.154
-        href: hotfix-1-2008-40-154.md
-      - name: Hotfix 1.2005.48.137
-        href: hotfix-1-2005-48-137.md      
-      - name: Hotfix 1.2102.30.102
-        href: hotfix-1-2102-30-102.md
-      - name: Hotfix 1.2008.40.151
-        href: hotfix-1-2008-40-151.md
-      - name: Hotfix 1.2005.47.135
-        href: hotfix-1-2005-47-135.md      
-      - name: Hotfix 1.2102.30.101
-        href: hotfix-1-2102-30-101.md
-      - name: Hotfix 1.2008.40.150
-        href: hotfix-1-2008-40-150.md      
-      - name: Hotfix 1.2005.46.133
-        href: hotfix-1-2005-46-133.md      
-      - name: Hotfix 1.2102.28.89
-        href: hotfix-1-2102-28-89.md              
-      - name: Hotfix 1.2008.40.148
-        href: hotfix-1-2008-40-148.md      
-      - name: Hotfix 1.2005.42.126
-        href: hotfix-1-2005-42-126.md
-      - name: Hotfix 1.2102.28.87
-        href: hotfix-1-2102-28-87.md
-      - name: Hotfix 1.2008.37.139
-        href: hotfix-1-2008-37-139.md
-      - name: Hotfix 1.2005.41.124
-        href: hotfix-1-2005-41-124.md     
-      - name: Hotfix 1.2002.69.179
-        href: hotfix-1-2002-69-179.md
-      - name: Hotfix 1.2008.33.131
-        href: hotfix-1-2008-33-131.md      
-      - name: Hotfix 1.2005.35.112
-        href: hotfix-1-2005-35-112.md
-      - name: Hotfix 1.2008.31.126
-        href: hotfix-1-2008-31-126.md      
-      - name: Hotfix 1.2005.33.108
-        href: hotfix-1-2005-33-108.md
-      - name: Hotfix 1.2008.27.118
-        href: hotfix-1-2008-27-118.md      
-      - name: Hotfix 1.2005.32.106
-        href: hotfix-1-2005-32-106.md      
-      - name: Hotfix 1.2002.67.175
-        href: hotfix-1-2002-67-175.md
-      - name: Hotfix 1.2008.26.116
-        href: hotfix-1-2008-26-116.md      
-      - name: Hotfix 1.2005.30.102
-        href: hotfix-1-2005-30-102.md
-      - name: Hotfix 1.2002.66.173
-        href: hotfix-1-2002-66-173.md      
-      - name: Hotfix 1.2008.25.114
-        href: hotfix-1-2008-25-114.md  
-      - name: Hotfix 1.2005.29.100
-        href: hotfix-1-2005-29-100.md
+      - name: 2408
+        items:
+        - name: Hotfix 1.2408.1.39
+          href: hotfix-1-2408-1-39.md            
+        - name: Hotfix 1.2408.1.38
+          href: hotfix-1-2408-1-38.md            
+      - name: 2406
+        items:
+        - name: Hotfix 1.2406.1.18
+          href: hotfix-1-2406-1-18.md      
+        - name: Hotfix 1.2406.1.16
+          href: hotfix-1-2406-1-16.md      
+        - name: Hotfix 1.2406.1.15
+          href: hotfix-1-2406-1-15.md      
+        - name: Hotfix 1.2406.1.14
+          href: hotfix-1-2406-1-14.md      
+      - name: 2311
+        items:
+        - name: Hotfix 1.2311.3.62
+          href: hotfix-1-2311-3-62.md
+        - name: Hotfix 1.2311.3.61
+          href: hotfix-1-2311-3-61.md
+        - name: Hotfix 1.2311.3.50
+          href: hotfix-1-2311-3-50.md
+        - name: Hotfix 1.2311.3.44
+          href: hotfix-1-2311-3-44.md
+        - name: Hotfix 1.2311.2.23
+          href: hotfix-1-2311-2-23.md
+      - name: 2306
+        items:
+        - name: Hotfix 1.2306.4.102
+          href: hotfix-1-2306-4-102.md      
+        - name: Hotfix 1.2306.4.101
+          href: hotfix-1-2306-4-101.md      
+        - name: Hotfix 1.2306.4.98
+          href: hotfix-1-2306-4-98.md      
+        - name: Hotfix 1.2306.4.97
+          href: hotfix-1-2306-4-97.md      
+        - name: Hotfix 1.2306.4.74
+          href: hotfix-1-2306-4-74.md      
+        - name: Hotfix 1.2306.4.73
+          href: hotfix-1-2306-4-73.md      
+      - name: 2301
+        items:
+        - name: Hotfix 1.2301.3.97
+          href: hotfix-1-2301-3-97.md
+        - name: Hotfix 1.2301.3.96
+          href: hotfix-1-2301-3-96.md
+        - name: Hotfix 1.2301.3.72
+          href: hotfix-1-2301-3-72.md
+        - name: Hotfix 1.2301.2.64
+          href: hotfix-1-2301-2-64.md
+        - name: Hotfix 1.2301.2.63
+          href: hotfix-1-2301-2-63.md
+        - name: Hotfix 1.2301.2.60
+          href: hotfix-1-2301-2-60.md
+      - name: 2206
+        items:
+        - name: Hotfix 1.2206.2.77
+          href: hotfix-1-2206-2-77.md      
+        - name: Hotfix 1.2206.2.76
+          href: hotfix-1-2206-2-76.md      
+        - name: Hotfix 1.2206.2.66
+          href: hotfix-1-2206-2-66.md
+        - name: Hotfix 1.2206.2.52
+          href: hotfix-1-2206-2-52.md      
+        - name: Hotfix 1.2206.2.38
+          href: hotfix-1-2206-2-38.md   
+        - name: Hotfix 1.2206.1.25
+          href: hotfix-1-2206-1-25.md      
+        - name: Hotfix 1.2206.1.24
+          href: hotfix-1-2206-1-24.md
+      - name: 2108
+        items:
+        - name: Hotfix 1.2108.2.130
+          href: hotfix-1-2108-2-130.md            
+        - name: Hotfix 1.2108.2.127
+          href: hotfix-1-2108-2-127.md            
+        - name: Hotfix 1.2108.2.113
+          href: hotfix-1-2108-2-113.md      
+        - name: Hotfix 1.2108.2.111
+          href: hotfix-1-2108-2-111.md      
+        - name: Hotfix 1.2108.2.102
+          href: hotfix-1-2108-2-102.md
+        - name: Hotfix 1.2108.2.83
+          href: hotfix-1-2108-2-83.md
+      - name: 2102
+        items:
+        - name: Hotfix 1.2102.31.153
+          href: hotfix-1-2102-31-153.md      
+        - name: Hotfix 1.2102.31.152
+          href: hotfix-1-2102-31-152.md      
+        - name: Hotfix 1.2102.30.148
+          href: hotfix-1-2102-30-148.md      
+        - name: Hotfix 1.2102.30.146
+          href: hotfix-1-2102-30-146.md      
+        - name: Hotfix 1.2102.30.132
+          href: hotfix-1-2102-30-132.md
+        - name: Hotfix 1.2102.30.118
+          href: hotfix-1-2102-30-118.md              
+        - name: Hotfix 1.2102.30.116
+          href: hotfix-1-2102-30-116.md
+        - name: Hotfix 1.2102.30.109
+          href: hotfix-1-2102-30-109.md      
+        - name: Hotfix 1.2102.30.106
+          href: hotfix-1-2102-30-106.md      
+        - name: Hotfix 1.2102.30.104
+          href: hotfix-1-2102-30-104.md
+        - name: Hotfix 1.2102.30.102
+          href: hotfix-1-2102-30-102.md
+        - name: Hotfix 1.2102.30.101
+          href: hotfix-1-2102-30-101.md
+        - name: Hotfix 1.2102.28.89
+          href: hotfix-1-2102-28-89.md              
+        - name: Hotfix 1.2102.28.87
+          href: hotfix-1-2102-28-87.md
+      - name: 2008
+        items:
+        - name: Hotfix 1.2008.41.161
+          href: hotfix-1-2008-41-161.md
+        - name: Hotfix 1.2008.41.159
+          href: hotfix-1-2008-41-159.md
+        - name: Hotfix 1.2008.40.156
+          href: hotfix-1-2008-40-156.md        
+        - name: Hotfix 1.2008.40.154
+          href: hotfix-1-2008-40-154.md
+        - name: Hotfix 1.2008.40.151
+          href: hotfix-1-2008-40-151.md
+        - name: Hotfix 1.2008.40.150
+          href: hotfix-1-2008-40-150.md      
+        - name: Hotfix 1.2008.40.148
+          href: hotfix-1-2008-40-148.md      
+        - name: Hotfix 1.2008.37.139
+          href: hotfix-1-2008-37-139.md
+        - name: Hotfix 1.2008.33.131
+          href: hotfix-1-2008-33-131.md      
+        - name: Hotfix 1.2008.31.126
+          href: hotfix-1-2008-31-126.md      
+        - name: Hotfix 1.2008.27.118
+          href: hotfix-1-2008-27-118.md      
+        - name: Hotfix 1.2008.26.116
+          href: hotfix-1-2008-26-116.md      
+        - name: Hotfix 1.2008.25.114
+          href: hotfix-1-2008-25-114.md
+      - name: 2005
+        items:
+        - name: Hotfix 1.2005.48.137
+          href: hotfix-1-2005-48-137.md      
+        - name: Hotfix 1.2005.47.135
+          href: hotfix-1-2005-47-135.md      
+        - name: Hotfix 1.2005.46.133
+          href: hotfix-1-2005-46-133.md      
+        - name: Hotfix 1.2005.42.126
+          href: hotfix-1-2005-42-126.md
+        - name: Hotfix 1.2005.41.124
+          href: hotfix-1-2005-41-124.md     
+        - name: Hotfix 1.2005.35.112
+          href: hotfix-1-2005-35-112.md
+        - name: Hotfix 1.2005.33.108
+          href: hotfix-1-2005-33-108.md
+        - name: Hotfix 1.2005.32.106
+          href: hotfix-1-2005-32-106.md      
+        - name: Hotfix 1.2005.30.102
+          href: hotfix-1-2005-30-102.md
+        - name: Hotfix 1.2005.29.100
+          href: hotfix-1-2005-29-100.md
+      - name: 2002
+        items:
+        - name: Hotfix 1.2002.69.179
+          href: hotfix-1-2002-69-179.md
+        - name: Hotfix 1.2002.67.175
+          href: hotfix-1-2002-67-175.md
+        - name: Hotfix 1.2002.66.173
+          href: hotfix-1-2002-66-173.md      
     - name: Known issues
       href: known-issues.md
   - name: Manage updates
