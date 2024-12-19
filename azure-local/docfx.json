@@ -21,6 +21,25 @@
         ]
       },
       {
+        "group": "version-azlocal",
+        "src" : "azure-local",
+        "dest" : "azure-local",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
         "files": [
           "**/*.md",
           "**/*.yml"
