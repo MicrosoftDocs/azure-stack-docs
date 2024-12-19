@@ -25,7 +25,9 @@ Azure Local also accelerates cloud and AI innovation by seamlessly delivering ne
 
 An Azure Local instance consists of a machine or a cluster of machines running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Local instances as well as view all the deployments of Azure Local. You can also manage Azure Local with your existing tools, including Windows Admin Center and PowerShell.
 
+::: moniker range="<=azloc-2408"
 You can [Download the operating system software](./deploy/download-23h2-software.md) from the Azure portal with a free 60-day trial.
+::: moniker-end
 
 To acquire the machines that support Azure Local, you can purchase validated hardware from a Microsoft hardware partner with the operating system pre-installed. See the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the sizing tool to estimate hardware requirements.
 
