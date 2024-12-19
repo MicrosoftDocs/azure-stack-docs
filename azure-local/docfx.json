@@ -91,6 +91,23 @@
           "**/docfx.json",
           "_repo.en-us/**"
         ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.svg",
+          "**/*.jpg",
+          "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ],
+        "src": "azure-local",
+        "group": "version-azlocal",
+        "dest": "azure-local"
       }
     ],
     "overwrite": [],
