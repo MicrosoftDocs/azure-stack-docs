@@ -85,8 +85,8 @@
     },
     "fileMetadata": {
       "monikerRange": {
-      "./*.md": "= >=azloc-24053 || =azloc-previous",
-      "./*.yml": "= >=azloc-24053 || =azloc-previous"
+      "./*.md": ">=azloc-24053 || =azloc-previous",
+      "./*.yml": ">=azloc-24053 || =azloc-previous"
       }
     },
     "template": [],
