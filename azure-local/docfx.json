@@ -22,8 +22,7 @@
       },
       {
         "group": "version-azlocal",
-        "src" : "azure-local",
-        "dest" : "azure-local",
+        "src" : "./",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -105,9 +104,8 @@
           "_themes/**",
           "_themes.pdf/**"
         ],
-        "src": "azure-local",
+        "src": "./",
         "group": "version-azlocal",
-        "dest": "azure-local"
       }
     ],
     "overwrite": [],
@@ -128,7 +126,7 @@
     "groups": {
       "version-azlocal": {
         "moniker_range": ">=azloc-24053",
-        "dest": "version-azlocal"
+        "dest": "azure-local"
       }
     }
   }
