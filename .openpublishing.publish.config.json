@@ -21,7 +21,9 @@
       "build_output_subfolder": "AzureLocal",
       "locale": "en-us",
       "monikers": [],
-      "moniker_ranges": [],
+      "moniker_ranges": [
+        ">=azloc-24053"
+      ],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
