@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-2408"
 ---
 
 # August 2024 OS security update (KB 5041573) for Azure Local, version 23H2

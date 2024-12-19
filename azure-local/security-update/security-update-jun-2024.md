@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-previous"
 ---
 
 # June 2024 OS security update (KB 5039236) for Azure Local, version 23H2

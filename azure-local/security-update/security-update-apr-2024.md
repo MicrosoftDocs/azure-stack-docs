@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 04/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-previous"
 ---
 
 # April 2024 OS security update (KB 5036910) for Azure Stack HCI, version 23H2

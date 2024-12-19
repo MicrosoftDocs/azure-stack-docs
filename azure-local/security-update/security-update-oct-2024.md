@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 10/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-24082"
 ---
 
 # October OS security update (KB 5044288) for Azure Local, version 23H2
