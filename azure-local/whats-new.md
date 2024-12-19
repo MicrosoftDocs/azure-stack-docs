@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 12/17/2024
+ms.date: 12/19/2024
 ---
 
 # What's new in Azure Local, version 23H2
