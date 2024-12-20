@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-monikerRange: "=azloc-24082"
+monikerRange: "=azloc-24081"
 ---
 
 # September OS security update (KB 5043055) for Azure Local, version 23H2
