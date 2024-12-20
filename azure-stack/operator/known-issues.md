@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/04/2024
+ms.date: 12/20/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -121,7 +121,16 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Alerts -->
 
-<!-- ## Portal -->
+::: moniker range="azs-2406 || azs-2408"
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when attempting to access the deployments for a subscription in the Administrator portal. Therefore, Azure Stack Hub deployments are not viewable in the Azure portal.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+::: moniker-end
 
 <!-- ## Datacenter integration -->
 
