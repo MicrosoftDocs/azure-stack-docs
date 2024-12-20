@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
+monikerRange: ">=azloc-2408"
 ---
 
 # About Azure Arc gateway for Azure Local, version 23H2 (preview)

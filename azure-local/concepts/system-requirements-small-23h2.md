@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
 ms.date: 11/25/2024
+monikerRange: ">=azloc-2411"
 ---
 
 # System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
