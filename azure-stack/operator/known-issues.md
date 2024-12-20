@@ -92,6 +92,17 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
+::: moniker range="azs-2406 || azs-2408"
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when attempting to access the deployments for a subscription in the Administrator portal. Therefore, Azure Stack Hub deployments are not viewable in the Azure portal.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+::: moniker-end
+
 ::: moniker range="azs-2406"
 
 <!-- ## Update -->
@@ -120,17 +131,6 @@ To access known issues for a different version, use the version selector dropdow
 - Occurrence: Common.
 
 <!-- ## Alerts -->
-
-::: moniker range="azs-2406 || azs-2408"
-## Portal
-
-### Deployments blade under subscription fails to load
-
-- Applicable: This issue applies to release 2406 and later.
-- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when attempting to access the deployments for a subscription in the Administrator portal. Therefore, Azure Stack Hub deployments are not viewable in the Azure portal.
-- Remediation: Microsoft is aware of the issue and is working on a fix.
-- Occurrence: Common.
-::: moniker-end
 
 <!-- ## Datacenter integration -->
 
