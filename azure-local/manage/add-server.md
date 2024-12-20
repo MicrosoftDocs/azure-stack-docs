@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 11/16/2024
+ms.date: 12/18/2024
 ---
 
 # Add a node on Azure Local, version 23H2
@@ -119,7 +119,7 @@ On a node that already exists on your system, follow these steps:
     Update-AuthenticationToken 
     ```
 
-1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
+1. If you are running a version prior to 2405.3, you must run the following command on the new node to clean up conflicting files:
 
     ```powershell
     Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
