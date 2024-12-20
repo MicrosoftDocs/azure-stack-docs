@@ -19,23 +19,23 @@ items:
         href: known-issues-2411-1.md
       - name: 2411 
         href: known-issues-2411.md
-      - name: 2408.2 - Current 
+      - name: 2408.2 
         href: known-issues-2408-2.md
       - name: 2408.1
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
+      - name: 2405.3 - 
+        href: known-issues-2405-3.md
       - name: Archived known issues 
         items:
-        - name: 2405.3 - Current
-          href: known-issues-2405-3.md
         - name: 2405.2
           href: known-issues-2405-2.md      
         - name: 2405.1
           href: known-issues-2405-1.md
         - name: 2405.0
           href: known-issues-2405.md
-        - name: 2402.4 - Current
+        - name: 2402.4 
           href: known-issues-2402-4.md
         - name: 2402.3
           href: known-issues-2402-3.md
@@ -45,7 +45,7 @@ items:
           href: known-issues-2402-1.md
         - name: 2402.0 
           href: known-issues-2402.md
-        - name: 2311.5 - Current
+        - name: 2311.5 
           href: known-issues-2311-5.md
         - name: 2311.4 
           href: known-issues-2311-4.md
