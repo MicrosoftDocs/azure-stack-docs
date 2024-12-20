@@ -15,56 +15,46 @@ items:
       href: release-information-23h2.md
     - name: Known issues 
       items:
-      - name: Known issues 2411
-        items:
-        - name: 2411.1 - Current
-          href: known-issues-2411-1.md
-        - name: 2411 
-          href: known-issues-2411.md
-      - name: Known issues 2408
-        items:
-        - name: 2408.2 - Current 
-          href: known-issues-2408-2.md
-        - name: 2408.1
-          href: known-issues-2408-1.md
-        - name: 2408
-          href: known-issues-2408.md
+      - name: 2411.1 - Current
+        href: known-issues-2411-1.md
+      - name: 2411 
+        href: known-issues-2411.md
+      - name: 2408.2 - Current 
+        href: known-issues-2408-2.md
+      - name: 2408.1
+        href: known-issues-2408-1.md
+      - name: 2408
+        href: known-issues-2408.md
       - name: Archived known issues 
         items:
-        - name: Known issues 2405 
-          items:
-          - name: 2405.3 - Current
-            href: known-issues-2405-3.md
-          - name: 2405.2
-            href: known-issues-2405-2.md      
-          - name: 2405.1
-            href: known-issues-2405-1.md
-          - name: 2405.0
-            href: known-issues-2405.md
-        - name: Known issues 2402 
-          items:
-          - name: 2402.4 - Current
-            href: known-issues-2402-4.md
-          - name: 2402.3
-            href: known-issues-2402-3.md
-          - name: 2402.2
-            href: known-issues-2402-2.md
-          - name: 2402.1
-            href: known-issues-2402-1.md
-          - name: 2402.0 
-            href: known-issues-2402.md
-        - name: Known issues 2311
-          items:
-          - name: 2311.5 - Current
-            href: known-issues-2311-5.md
-          - name: 2311.4 
-            href: known-issues-2311-4.md
-          - name: 2311.3 
-            href: known-issues-2311-3.md
-          - name: 2311.2 - GA
-            href: known-issues-2311-2.md
-          - name: 2311
-            href: known-issues-2311.md
+        - name: 2405.3 - Current
+          href: known-issues-2405-3.md
+        - name: 2405.2
+          href: known-issues-2405-2.md      
+        - name: 2405.1
+          href: known-issues-2405-1.md
+        - name: 2405.0
+          href: known-issues-2405.md
+        - name: 2402.4 - Current
+          href: known-issues-2402-4.md
+        - name: 2402.3
+          href: known-issues-2402-3.md
+        - name: 2402.2
+          href: known-issues-2402-2.md
+        - name: 2402.1
+          href: known-issues-2402-1.md
+        - name: 2402.0 
+          href: known-issues-2402.md
+        - name: 2311.5 - Current
+          href: known-issues-2311-5.md
+        - name: 2311.4 
+          href: known-issues-2311-4.md
+        - name: 2311.3 
+          href: known-issues-2311-3.md
+        - name: 2311.2 - GA
+          href: known-issues-2311-2.md
+        - name: 2311
+          href: known-issues-2311.md
     - name: Security updates
       items:
       - name: December 2024 - Current
