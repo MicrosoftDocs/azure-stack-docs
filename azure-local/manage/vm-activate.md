@@ -179,7 +179,7 @@ VM activation through host machines presents several benefits:
 
 Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWFdsF]
+> [!VIDEO 65545cda-9e79-413b-9cd0-116a51de0c18]
 
 ### AVMA prerequisites
 
