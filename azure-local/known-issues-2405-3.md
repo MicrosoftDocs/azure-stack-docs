@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: robess
 ms.reviewer: ronmiab
+monikerRange: "=azloc-24053"
 ---
 
 # View known issues in Azure Stack HCI 2405.3 release
