@@ -247,7 +247,7 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 Run the `az aksarc delete` command to clean up the cluster you created:
 
 ```azurecli
-az aksarc delete --resource-group $aksclustername --name $resource_group
+az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
 
 ## Next steps
