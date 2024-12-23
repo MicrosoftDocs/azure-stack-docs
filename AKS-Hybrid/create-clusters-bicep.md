@@ -36,7 +36,7 @@ Before you begin, make sure you have the following prerequisites:
 
 To create an SSH key pair (same as Azure AKS), use the following procedure:
 
-1. [Open a Cloud Shell session](https://shell.azure.com) in your browser or open a Terminal in your local machine.
+1. [Open a Cloud Shell session](https://shell.azure.com) in your browser or open a terminal on your local machine.
 1. Create an SSH key pair using `az sshkey create`:
 
    ```azurecli
@@ -49,7 +49,7 @@ To create an SSH key pair (same as Azure AKS), use the following procedure:
    ssh-keygen -t rsa -b 4096
    ```
 
-It is recommended to create a SSH key pair in Azure as you may use it later for node access or troubleshooting. For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed) and [Restrict SSH Access](https://learn.microsoft.com/en-us/azure/aks/aksarc/restrict-ssh-access).
+It's recommended that you create an SSH key pair in Azure, as you can use it later for node access or troubleshooting. For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed) and [Restrict SSH Access](restrict-ssh-access.md).
 
 ## Download and update the Bicep scripts
 
