@@ -53,9 +53,9 @@ It's recommended that you create an SSH key pair in Azure, as you can use it lat
 
 ## Download and update the Bicep scripts
 
-You need to download two files for your Bicep deployment: **main.bicep** and **aksarc.bicepparam** from [AKSArc Github repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates). Please update the parameters from aksarc.bicepparam as needed and make sure all the default values from main.bicep are correct.
+Download these two files from the [AKSArc Github repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates) for your Bicep deployment: **main.bicep** and **aksarc.bicepparam**. Update the parameters from **aksarc.bicepparam** as needed, and make sure all the default values from **main.bicep** are correct.
 
-The **Microsoft.HybridContainerService/provisionedClusterInstances** resource type is defined in file main.bicep. If you want to customize more properties for cluster creation, please see [provisionedClusterInstances API Reference](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-bicep).
+The **Microsoft.HybridContainerService/provisionedClusterInstances** resource type is defined in **main.bicep**. If you want to customize more properties for cluster creation, see the [**provisionedClusterInstances** API Reference](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-bicep).
 
 ## Deploy the Bicep templates
 
