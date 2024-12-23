@@ -4,7 +4,7 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: article
 author: alkohli
-ms.date: 11/13/2024
+ms.date: 12/23/2024
 ---
 
 # What is Azure Local monitoring?
@@ -34,21 +34,25 @@ The following diagram is an architectural representation of Azure Local monitori
 
 ## Monitoring capabilities in Azure Local
 
-This section describes the monitoring capabilities in Azure Local.
+Azure Local provides monitoring capabilities, which are fully integrated with Azure Monitor. These capabilities provide insights, helps visualize and analyze data, and empower you to respond to incoming monitoring data. The following section provides an overview of what capabilities are available and the benefits they provide.
 
 ### Insights
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Local system using logs. You can use Insights to monitor either a single Azure Local system or multiple systems simultaneously. Insights for Azure Local collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor one or more Azure Local systems, see [Monitor a single Azure Local system with Insights](../manage/monitor-single-23h2.md) or [Monitor multiple Azure Local systems with Insights](../manage/monitor-multi-23h2.md).
+Azure Local Insights collects key performance and health logs and visualizes this collected data in predefined dashboards. These dashboards provide you with a comprehensive visual representation of the overall health of your Azure Local system, including nodes, virtual machines (VMs), and storage. It gives performance and usage visibility into the Azure Local system through CPU and memory usage, network usage, and storage performance like IOPS, throughput, and latency. With Insights for Azure Local, you also get access to specialized workbooks created for monitoring key features of Azure Local, such as Resilient File System (ReFS) deduplication and compression and hardware monitoring for Dell. You can also customize existing workbooks to create new workbooks.
 
-With Insights for Azure Local, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Local. To learn more about these feature workbooks, see [Monitor Azure Local features with Insights](../manage/monitor-features.md).
+You can use Insights to monitor either a single Azure Local system or multiple systems simultaneously. Insights collects data using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor one or more Azure Local systems, see [Monitor a single Azure Local system with Insights](../manage/monitor-single-23h2.md) or [Monitor multiple Azure Local systems with Insights](../manage/monitor-multi-23h2.md).
+
+To learn more about these feature workbooks, see [Monitor Azure Local features with Insights](../manage/monitor-features.md).
 
 ### Metrics
 
-Azure Local enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
+Azure Local Metrics collects over 60 key metrics for monitoring your infrastructure, available out-of-the-box and at no extra cost. These metrics include CPU and memory usage, storage performance metrics, such as IOPS, latency and throughput, network throughput, and VM performance metrics. You can view these metrics in Azure Monitor through predefined charts. You can also create custom charts to visualize these metrics based on your preferences. Metrics enables you to store numeric data from your clusters in a dedicated time-series database. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
 
 ### Alerts
 
-Alerts proactively notify you when important conditions are found in your monitoring data. They allow you to identify and address issues before the users of your system notice them. The response could be a text or email to an administrator, or an automated process that attempts to correct an error condition. You can alert on any metric or log data collected from your Azure Local system.
+Azure Local provides alerting capabilities through Azure Monitor Alerts. Alerts proactively notify you when important conditions are found in your monitoring data. Alerts can be raised based on predefined health faults from the OS health service, or you can create custom alerts based on metrics or logs you collect. To simplify creation of custom alerts, we provide a set of recommended alerts that you can use as templates.
+
+Alerts allow you to identify and address issues before the users of your system notice them. The response could be a text or email to an administrator, or an automated process that attempts to correct an error condition.
 
 For more information on alerting, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview)
 
@@ -58,8 +62,8 @@ The following table provides a brief description and setup instructions for each
 
 | Alert type | Description | How to configure |
 | --- | --- | --- |
-| Health alerts | These are system-generated alerts and have no additional cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-local). |
-| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. | See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
+| Health alerts | The OS health service monitors for more than 80 health issues, including storage volume capacity, storage QoS, physical disk and network adapter hardware issues, server CPU and memory usage, and cluster configuration. <br>These are system-generated alerts and have no extra cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-local). |
+| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. <br> Predefined templates are available to get you started with Log alerts.| See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
 | Recommended alerts | These are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
 
