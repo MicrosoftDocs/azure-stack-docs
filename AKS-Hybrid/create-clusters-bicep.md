@@ -36,163 +36,38 @@ Before you begin, make sure you have the following prerequisites:
 
 To create an SSH key pair (same as Azure AKS), use the following procedure:
 
-1. [Open a Cloud Shell session](https://shell.azure.com) in your browser.
-1. Create an SSH key pair using the `az sshkey create` Azure CLI command or the `ssh-keygen` command:
+1. [Open a Cloud Shell session](https://shell.azure.com) in your browser or open a Terminal in your local machine.
+1. Create an SSH key pair using `az sshkey create`:
 
    ```azurecli
-   # Create an SSH key pair using Azure CLI
-   az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
+   az sshkey create --name <Public_SSH_Key> --resource-group <Resource_Group_Name>
    ```
 
-   Or, create an SSH key pair using `ssh-keygen`:
+   Or, create a local SSH key pair using `ssh-keygen`:
 
    ```bash  
    ssh-keygen -t rsa -b 4096
    ```
 
-For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed).
+It is recommended to create a SSH key pair in Azure as you may use it later for node access or troubleshooting. For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed) and [Restrict SSH Access](https://learn.microsoft.com/en-us/azure/aks/aksarc/restrict-ssh-access).
 
-## Update and review the Bicep scripts
+## Download and update the Bicep scripts
 
-This section shows the Bicep parameter and template files. These files are also available in an [Azure Quickstart template](https://github.com/Azure/azure-quickstart-templates).
+You need to download two files for your Bicep deployment: **main.bicep** and **aksarc.bicepparam** from [AKSArc Github repo](https://github.com/Azure/aksArc/tree/main/deploymentTemplates). Please update the parameters from aksarc.bicepparam as needed and make sure all the default values from main.bicep are correct.
 
-### Bicep parameter file: aksarc.bicepparam
+The **Microsoft.HybridContainerService/provisionedClusterInstances** resource type is defined in file main.bicep. If you want to customize more properties for cluster creation, please see [provisionedClusterInstances API Reference](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-bicep).
 
-```bicep
-using 'main.bicep'
-param aksClusterName = 'aksarc-bicep-new'
-param aksControlPlaneIP = 'x.x.x.x'
-param sshPublicKey = 'ssh_public_key'
-param hciLogicalNetworkName = 'lnet_name'
-param hciCustomLocationName = 'cl_name'
-param aksNodePoolOSType = 'Linux'
-param aksNodePoolNodeCount = 1
-```
+## Deploy the Bicep templates
 
-### Bicep template file: main.bicep
-
-```bicep
-@description('The name of AKS Arc cluster resource')
-param aksClusterName string
-param location string = 'eastus'
-
-// Default to 1 node CP
-@description('The name of AKS Arc cluster control plane IP, provide this parameter during deployment')
-param aksControlPlaneIP string
-param aksControlPlaneNodeSize string = 'Standard_A4_v2'
-param aksControlPlaneNodeCount int = 1
-
-// Default to 1 node NP
-param aksNodePoolName string = 'nodepool1'
-param aksNodePoolNodeSize string = 'Standard_A4_v2'
-param aksNodePoolNodeCount int = 1
-@allowed(['Linux', 'Windows'])
-param aksNodePoolOSType string = 'Linux'
-
-@description('SSH public key used for cluster creation, provide this parameter during deployment')
-param sshPublicKey string
-
-// Build LNet ID from LNet name
-@description('The name of LNet resource, provide this parameter during deployment')
-param hciLogicalNetworkName string
-resource logicalNetwork 'Microsoft.AzureStackHCI/logicalNetworks@2023-09-01-preview' existing = {
-  name: hciLogicalNetworkName
-}
-
-// Build custom location ID from custom location name
-@description('The name of custom location resource, provide this parameter during deployment')
-param hciCustomLocationName string
-var customLocationId = resourceId('Microsoft.ExtendedLocation/customLocations', hciCustomLocationName) 
-
-// Create the connected cluster. This is the Arc representation of the AKS cluster, used to create a Managed Identity for the provisioned cluster.
-resource connectedCluster 'Microsoft.Kubernetes/ConnectedClusters@2024-01-01' = {
-  location: location
-  name: aksClusterName
-  identity: {
-    type: 'SystemAssigned'
-  }
-  kind: 'ProvisionedCluster'
-  properties: {
-    agentPublicKeyCertificate: ''
-    aadProfile: {
-      enableAzureRBAC: false
-    }
-  }
-}
-
-// Create the provisioned cluster instance. This is the actual AKS cluster and provisioned on your Azure Local cluster via the Arc Resource Bridge.
-resource provisionedClusterInstance 'Microsoft.HybridContainerService/provisionedClusterInstances@2024-01-01' = {
-  name: 'default'
-  scope: connectedCluster
-  extendedLocation: {
-    type: 'CustomLocation'
-    name: customLocationId
-  }
-  properties: {
-    linuxProfile: {
-      ssh: {
-        publicKeys: [
-          {
-            keyData: sshPublicKey
-          }
-        ]
-      }
-    }
-    controlPlane: {
-      count: aksControlPlaneNodeCount
-      controlPlaneEndpoint: {
-        hostIP: aksControlPlaneIP
-      }
-      vmSize: aksControlPlaneNodeSize
-    }
-    networkProfile: {
-      loadBalancerProfile: {
-        count: 0
-      }
-      networkPolicy: 'calico'
-    }
-    agentPoolProfiles: [
-      {
-        name: aksNodePoolName
-        count: aksNodePoolNodeCount
-        vmSize: aksNodePoolNodeSize
-        osType: aksNodePoolOSType
-      }
-    ]
-    cloudProviderProfile: {
-      infraNetworkProfile: {
-        vnetSubnetIds: [
-          logicalNetwork.id
-        ]
-      }
-    }
-    storageProfile: {
-      nfsCsiDriver: {
-        enabled: true
-      }
-      smbCsiDriver: {
-        enabled: true
-      }
-    }
-  }
-}
-```
-
-The **Microsoft.HybridContainerService/provisionedClusterInstances** resource is defined in the Bicep file. If you want to explore more properties, [see the API reference](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-bicep).
-
-## Deploy the Bicep file
-
-1. Save the Bicep file as **main.bicep** to your local computer.
-1. Update the parameters defined in **aksarc.bicepparam** and save it to your local computer.
-1. Deploy the Bicep file using Azure CLI:
+Create a Bicep deployment using Azure CLI:
 
    ```azurecli
-   az deployment group create --name BicepDeployment --resource-group myResourceGroupName --template-file main.bicep –-parameters aksarc.bicepparam
+   az deployment group create --name BicepDeployment --resource-group <Resource_Group_Name> --parameters aksarc.bicepparam
    ```
 
-## Validate the Bicep deployment and connect to the cluster
+## Validate the deployment and connect to the cluster
 
-You can now connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your development machine. You can also use **kubectl** to see the node and pod status. Follow the same steps as described in [Connect to the Kubernetes cluster](aks-create-clusters-cli.md#connect-to-the-kubernetes-cluster).
+You can now connect to your Kubernetes cluster by running `az connectedk8s proxy` command from your development machine. You can also use **kubectl** to see the node and pod status. Follow the same steps as described in [Connect to the Kubernetes cluster](aks-create-clusters-cli.md#connect-to-the-kubernetes-cluster).
 
 ## Next steps
 
