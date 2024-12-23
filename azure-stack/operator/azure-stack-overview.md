@@ -7,7 +7,7 @@ ms.topic: overview
 ms.date: 12/23/2024
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 12/23/2024
+ms.lastreviewed: 11/08/2019
 
 # Intent: As an Azure Stack operator, I want an overview of what Azure Stack is so I can start using it.
 # Keyword: use azure stack
