@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2411.1 baseline 
 description: Read about the known issues and fixed issues in Azure Local 2411.1 baseline release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/17/2024
+ms.date: 12/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -49,12 +49,11 @@ The following issues are fixed in this release:
 
 ## Known issues in this release
 
-Microsoft isn't aware of any issues in this release.
-
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------|-->
+|---------|---------|---------|
+| Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, you must select **English (United States)** as the installation language, as well as the time and currency format. |
 
 ## Known issues from previous releases
 
