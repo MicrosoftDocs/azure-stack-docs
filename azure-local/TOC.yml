@@ -851,6 +851,8 @@ items:
     items:
     - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
+    - name: Azure Local Arc VMs Azure CLI commands
+      href: /cli/azure/stack-hci-vm
   - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands
