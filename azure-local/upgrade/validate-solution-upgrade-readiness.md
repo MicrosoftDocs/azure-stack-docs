@@ -267,7 +267,7 @@ To learn more about how to disable WDAC policies, see [Remove Windows Defender A
 
 Only systems installed using an English language are eligible to apply the solution upgrade. Make sure that your system was installed using English.
 
-If you used the English ISO but configured a different language during setup, you must change the language settings for the LCM upgrade user account as follows:
+If you used the English ISO but configured a different language during setup, you must change the language settings for the LCM Upgrade user account as follows:
 
 1. Sign in to each machine using the domain account you plan to use for the upgrade.
 
