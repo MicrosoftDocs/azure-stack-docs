@@ -16,7 +16,7 @@ The OS health service for Azure Local continuously monitors your Azure Local sys
 
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Local health alerts.
 
-## About Azure Local health alerts integration with Azure Monitor
+## Azure Local health alerts integration with Azure Monitor
 
 The integration of Azure Monitor alerts with Azure Local enhances the health alerts capability of Azure Local. With this integration, any health alerts generated within your on-premises Azure Local system are automatically forwarded to Azure Monitor alerts. You can link these alerts with your automated incident management systems, ensuring timely and efficient responses.
 
@@ -91,7 +91,7 @@ The **Alerts** blade has a high-level summary of alerts at each severity level. 
 
 ## Modify health alerts threshold
 
-You can modify the threshold of some health alerts, such as CPU, memory, storage usage via PowerShell.
+You can modify the threshold of some health alerts, such as CPU, memory, storage usage via PowerShell. For more information, see [Modify Health Service settings](./health-service-settings.md).
 
 To view the current threshold settings for different health faults, run the following command:
 
