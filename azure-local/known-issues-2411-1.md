@@ -53,7 +53,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, you must select **English (United States)** as the installation language, as well as the time and currency format. |
+| Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, select **English (United States)** as the installation language, as well as the time and currency format. |
 
 ## Known issues from previous releases
 
