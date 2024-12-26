@@ -4,7 +4,7 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: article
 author: alkohli
-ms.date: 12/23/2024
+ms.date: 12/26/2024
 ---
 
 # What is Azure Local monitoring?
@@ -21,17 +21,6 @@ To understand the current performance patterns, identify performance anomalies, 
   
 Azure Local utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline.  
 
-## High-level architecture
-
-Broadly, the architecture of Azure Local monitoring comprises the following key components:
-
-- Deploying extensions to collect log, metrics, telemetry, and alerts.
-- Using Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts to analyze, visualize, and respond to the data effectively.
-
-The following diagram is an architectural representation of Azure Local monitoring implementation.
-
-:::image type="content" source="./media/monitoring-overview/monitoring-architecture.png" alt-text="High-level architecture diagram of Azure Local monitoring. This diagram shows an Azure Local system with three nodes. Each node is installed with extensions for monitoring." lightbox="./media/monitoring-overview/monitoring-architecture.png" :::
-
 ## Monitoring capabilities in Azure Local
 
 Azure Local provides monitoring capabilities fully integrated with Azure Monitor. These capabilities provide insights, helps visualize and analyze data, and empower you to respond to incoming monitoring data. The following sections provide an overview of what capabilities are available and the benefits they provide.
@@ -44,7 +33,9 @@ You can use Insights to monitor either a single Azure Local system or multiple s
 
 ### Metrics
 
-Azure Local Metrics collects over 60 key metrics for monitoring your infrastructure, available out-of-the-box and at no extra cost. These metrics include CPU and memory usage, storage performance metrics, such as IOPS, latency and throughput, network throughput, and VM performance metrics. You can view these metrics in Azure Monitor through predefined charts. You can also create custom charts to visualize these metrics based on your preferences. Metrics enables you to store numeric data from your clusters in a dedicated time-series database. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
+Azure Local Metrics collects over 60 key metrics for monitoring your infrastructure, available out-of-the-box and at no extra cost. These metrics include CPU and memory usage, storage performance metrics, such as IOPS, latency and throughput, network throughput, and VM performance metrics. You can view these metrics in Azure Monitor through predefined charts. You can also create custom charts to visualize these metrics based on your preferences.
+
+Metrics enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [Monitor Azure Local with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
 
 ### Alerts
 
@@ -64,6 +55,17 @@ The following table provides a brief description and setup instructions for each
 | Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. <br> Predefined templates are available to get you started with Log alerts.| See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
 | Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
 | Recommended alerts | These are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
+
+## High-level architecture
+
+Broadly, the architecture of Azure Local monitoring comprises the following key components:
+
+- Deploying extensions to collect log, metrics, telemetry, and alerts.
+- Using Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts to analyze, visualize, and respond to the data effectively.
+
+The following diagram is an architectural representation of Azure Local monitoring implementation.
+
+:::image type="content" source="./media/monitoring-overview/monitoring-architecture.png" alt-text="High-level architecture diagram of Azure Local monitoring. This diagram shows an Azure Local system with three nodes. Each node is installed with extensions for monitoring." lightbox="./media/monitoring-overview/monitoring-architecture.png" :::
 
 ## Next steps
 
