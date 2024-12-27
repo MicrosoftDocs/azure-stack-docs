@@ -406,9 +406,11 @@ To remediate the blocking issues in this output, open the Active Directory tool 
 
 ### [Network](#tab/network)
 
-The IP addresses allocated to Azure Local might already be in use on the network. The network validator checks your network infrastructure to ensure the IP ranges reserved for deployment are valid. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range. It also checks storage connection, adapter driver readiness, and other host network configuration readiness.
+It is possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range. 
 
-You provide the network IP range reserved for Azure Local deployment as part of the answer file JSON, which you can use during network validation. Or, you can manually provide the individual parameters when running the validator cmdlet.
+Network validator also checks storage connection, adapter driver readiness, and other host network configuration readiness.
+
+You provide the answer file JSON as the input for network validator cmdlet call. Or you can manually provide the individual parameters when running the validator cmdlet.
 
 > [!NOTE]
 > You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
@@ -538,7 +540,7 @@ The information displayed on each readiness check report varies depending on the
 | **Diagnostics** | Displays the result of the diagnostic tests. For example, the health and availability of a DNS server. It also shows what information the validator collects for diagnostic purposes, such as WinHttp, IE proxy, and environment variable proxy settings. | Connectivity validator report|
 | Hardware | Displays the health status of all the physical machines and their hardware components. For information on the tests performed on each hardware, see the table under the "Hardware" tab in the [Run readiness checks](#run-readiness-checks) section. | Hardware validator report|
 | **AD OU Diagnostics** | Displays the result of the Active Directory organization unit test. Displays if the specified organizational unit exists and contains proper sub-organizational units. | Active Directory validator report|
-| Network range test | Displays the result of the network range test. If the test fails, it displays the IP addresses that belong to the reserved IP range. | Network validator report |
+| Network test | Display the result of the network test. If the test fails, it displays the results and corresponding remediations. | Network validator report |
 | **Summary** | Lists the count of successful and failed tests. Failed test results are expanded to show the failure details under **Needs Remediation**.| All reports |
 | **Remediation** | Displays only if a test fails. Provides a link to the article that provides guidance on how to remediate the issue. | All reports |
 | **Log location (contains PII)** | Provides the path where the log file is saved. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentChecker.log` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Environment Checker is run as part of the deployment process.<br><br> Each run of the validator overwrites the existing file.| All reports |
