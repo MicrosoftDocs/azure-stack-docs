@@ -1,7 +1,7 @@
 ---
 title: PCI DSS guidance for Azure Local
 description: Learn about PCI DSS compliance using Azure Local.
-ms.date: 12/17/2024
+ms.date: 12/27/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -10,6 +10,8 @@ ms.reviewer: alkohli
 ---
 
 # Azure Local and PCI DSS
+
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article explains how Microsoft Azure Local security features can help organizations in the payment card industry achieve the security control requirements of PCI DSS, both in the cloud and in their on-premises environments.
 

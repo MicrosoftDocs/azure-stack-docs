@@ -1,7 +1,7 @@
 ---
 title: HIPAA guidance for Azure Local
 description: Learn about HIPAA compliance using Azure Local.
-ms.date: 12/12/2024
+ms.date: 12/27/2024
 ms.topic: conceptual
 ms.service: azure-stack-hci
 ms.author: nguyenhung
@@ -10,6 +10,8 @@ ms.reviewer: alkohli
 ---
 
 # Azure Local and HIPAA
+
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how organizations can most efficiently navigate HIPAA compliance for solutions built with Azure Local.
 
