@@ -111,6 +111,9 @@ When you install updates for Azure Local, version 23H2 don't use the following i
 
 Using these interfaces can install out-of-band updates, which aren't supported within the lifecycle and may cause various issues on the system. Additionally, billing for update operations like periodic assessment, checking for updates, using the scheduler, and installing updates on the machine resource (Machine-Azure Arc) may occur.
 
+> [!IMPORTANT]
+> Use of 3rd party tools to install updates is not supported.
+
 ## Next steps
 
 Learn to [Understand update phases](./update-phases-23h2.md).
