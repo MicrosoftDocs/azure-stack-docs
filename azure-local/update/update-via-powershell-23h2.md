@@ -263,7 +263,7 @@ Follow these steps to discover the available updates for your system:
 
 You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
-### Step 3: Import and  rediscover updates
+## Step 3: Import and rediscover updates
 
 Importing updates could be required in one of the following scenarios:
 
