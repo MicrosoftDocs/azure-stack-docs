@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/29/2024
+ms.date: 12/27/2024
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Local, version 23H2
@@ -406,46 +406,69 @@ To remediate the blocking issues in this output, open the Active Directory tool 
 
 ### [Network](#tab/network)
 
-It is possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range.
+It is possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range. 
 
-You provide the network IP range reserved for Azure Local deployment as part of the answer file JSON, which you can use during network validation. Or, you can manually provide the starting and ending IP addresses when running the validator cmdlet.
+Network validator also checks storage connection, adapter driver readiness, and other host network configuration readiness.
+
+You provide the answer file JSON as the input for network validator cmdlet call. Or you can manually provide the individual parameters when running the validator cmdlet.
+
+> [!NOTE]
+> You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
 
 ### Run the network validator
 
-To run the network validator locally on the Azure Local machine node, the workstation, or the staging server with the answer file, follow these steps.
+To run the network validator locally on the Azure Local node with the answer file, use the following commands:
 
-1. Run one of the following cmdlets:
+```powershell
+$allServers = "<ARRAY OF SERVERS' IP>" # you need to use IP for the connection 
+$userName = "<LOCALADMIN>" 
+$secPassWord = ConvertTo-SecureString "<LOCALADMINPASSWORD>" -AsPlainText -Force 
+$hostCred = New-Object System.Management.Automation.PSCredential($userName, $secPassWord) 
+[System.Management.Automation.Runspaces.PSSession[]] $allServerSessions = @() 
+foreach ($currentServer in $allServers) { 
+   $currentSession = Microsoft.PowerShell.Core\New-PSSession -ComputerName $currentServer -Credential $hostCred -ErrorAction Stop 
+   $allServerSessions += $currentSession 
+} 
+$answerFilePath = "<ANSWERFILELOCATION>" # Like C:\MASLogs\Unattended-2024-07-18-20-44-48.json 
+Invoke-AzStackHciNetworkValidation -DeployAnswerFile $answerFilePath -PSSession $allServerSessions -ProxyEnabled $false 
+```
 
-    
-   - If using the answer file:
-   
-      ```powershell
-      Invoke-AzStackHciNetworkValidation -AnswerFile <Answerfilename>.json
-      ```
-   
-   - If entering the starting and ending IP addresses manually:
-       
-      ```powershell
-      Invoke-AzStackHciNetworkValidation -StartingAddress <StartingIPRangeAddress> -EndingAddress <EndingIPRangeAddress> 
-      ```
+To run the network validator locally on the Azure Local node using individual parameters, use the following commands:
 
-### Network validator output
+```powershell
+$answerFilePath = "<ANSWERFILELOCATION>" 
+$managementSubnetCIDR = "<CIDR string for management subnet>" 
+$logOutputPath = "<LOGFILELOCATION>" 
+$userName = "<LOCALADMIN>" 
+$secPassWord = ConvertTo-SecureString "<LOCALADMINPASSWORD>" -AsPlainText -Force 
+$sessionCredential = New-Object System.Management.Automation.PSCredential($userName, $secPassWord) 
+$answerFileContent = Get-Content $answerFilePath -Raw | ConvertFrom-Json 
+$ipPools = New-Object System.Collections.ArrayList 
+[System.Management.Automation.Runspaces.PSSession[]] $allServerSessions = @() 
+foreach ($ipPool in $answerFileContent.scaleUnits[0].deploymentData.infrastructureNetwork[0].ipPools) { 
+   $currentPoolObject = [PSCustomObject] @{ 
+     StartingAddress = $ipPool.StartingAddress 
+     EndingAddress = $ipPool.EndingAddress 
+   } 
+   $ipPools.Add($currentPoolObject) 
+} 
+[PSObject[]] $atcHostIntentsInfo = $answerFileContent.scaleUnits[0].deploymentData.hostNetwork.intents 
+[System.String[]] $allServers = $answerFileContent.scaleUnits[0].deploymentData.physicalNodes.Name 
+[System.Management.Automation.Runspaces.PSSession[]] $allServerSessions = @() 
+foreach ($currentServer in $allServers) { 
+   $currentSession = Microsoft.PowerShell.Core\New-PSSession -ComputerName $currentServer -Credential $sessionCredential -ErrorAction Stop 
+   $allServerSessions += $currentSession 
+} 
+Invoke-AzStackHciNetworkValidation -IpPools $ipPools -ManagementSubnetValue $managementSubnetCIDR -PSSession $allServerSessions -SessionCredential $sessionCredential -OutputPath $logOutputPath -AtcHostIntents $atcHostIntentsInfo 
+```
+  
+### Network validator sample output
 
-The following samples are the output from successful and unsuccessful runs of the network validator.
+Here's a sample output of an unsuccessful run of the network validator. The failure occurs because the network adapter has two IP addresses, when it should have only one.  
+
+:::image type="content" source="./media/use-environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-failed.png":::
 
 To learn more about different sections in the readiness check report, see [Understand readiness check report](#understand-readiness-check-report).
-
-**Sample output: Successful test**
-
-The following sample is the output from a successful run of the network validator. The output indicates no active host is using an IP address from the reserved IP range.
-
-   :::image type="content" source="./media/use-environment-checker/network-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-passed.png":::
-
-**Sample output: Failed test**
-
-The following sample is the output from a failed run of the network validator. This output shows two active hosts are using IP address from the reserved IP range.
-
-   :::image type="content" source="./media/use-environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-failed.png":::
 
 ### [Arc integration](#tab/arc-integration)
 
@@ -517,7 +540,7 @@ The information displayed on each readiness check report varies depending on the
 | **Diagnostics** | Displays the result of the diagnostic tests. For example, the health and availability of a DNS server. It also shows what information the validator collects for diagnostic purposes, such as WinHttp, IE proxy, and environment variable proxy settings. | Connectivity validator report|
 | Hardware | Displays the health status of all the physical machines and their hardware components. For information on the tests performed on each hardware, see the table under the "Hardware" tab in the [Run readiness checks](#run-readiness-checks) section. | Hardware validator report|
 | **AD OU Diagnostics** | Displays the result of the Active Directory organization unit test. Displays if the specified organizational unit exists and contains proper sub-organizational units. | Active Directory validator report|
-| Network range test | Displays the result of the network range test. If the test fails, it displays the IP addresses that belong to the reserved IP range. | Network validator report |
+| Network test | Displays the result of the network test. If the test fails, it displays the results and corresponding remediations. | Network validator report |
 | **Summary** | Lists the count of successful and failed tests. Failed test results are expanded to show the failure details under **Needs Remediation**.| All reports |
 | **Remediation** | Displays only if a test fails. Provides a link to the article that provides guidance on how to remediate the issue. | All reports |
 | **Log location (contains PII)** | Provides the path where the log file is saved. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentChecker.log` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Environment Checker is run as part of the deployment process.<br><br> Each run of the validator overwrites the existing file.| All reports |
