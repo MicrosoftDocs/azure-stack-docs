@@ -45,8 +45,11 @@ The approximate time estimates for a typical single or multi-node system are sum
 
 |System/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
 |------------------|-------------------------------------|---------|
-|Single node     | 0:01:44	        |1:25:42         |
-|4-nodes    | 0:01:58	        |3:53:09         |
+|Single node     | ~ 03:00        |~ 01:30         |
+|4-nodes    | ~ 05:00       |~ 04:00         |
+
+> [!IMPORTANT]
+> Use of 3rd party tools to install updates is not supported.
 
 ## Prerequisites
 
@@ -152,7 +155,7 @@ Follow these steps to discover the available updates for your system:
 
     Here's an example output:
 
-    ```console    
+    ```console
     PS C:\Users\lcmuser> Get-SolutionUpdate | Where-Object {$_.State -like "Ready*" -or $_.State -like "Additional*"} | FL DisplayName, Description, ResourceId, State, PackageType
 
     DisplayName           : 2024.10 Cumulative Update
@@ -263,11 +266,11 @@ Follow these steps to discover the available updates for your system:
 
 You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
-### Step 3: Import and  rediscover updates
+## Step 3: Import and rediscover updates
 
-Importing updates could be required in one of the following scenarios:
+This is an *optional* step. Importing updates could be required in one of the following scenarios:
 
-- The update you wish to install reports an `AdditionalContentRequired` state. Some extra content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
+- The update you wish to install reports an `AdditionalContentRequired`state. Some extra content may be required before you can schedule the update in the `AdditionalContentRequired`state. For details on this state and on solution extension updates, see [Solution  Extension updates on Azure Local, version 23H2](./solution-builder-extension.md).
 
 - The update you wish to install isn't listed because Support is providing you with a private release to address an issue you're experiencing.
 
@@ -292,7 +295,6 @@ Follow these steps to import and discover your solution updates.
     |-------------------------------------------|---------------------------------|-----------------------------------------------------|
     | SBE_Discovery_\<Manufacturer>\.xml          | SBE_Discovery_Contoso.xml       | A solution extension discovery manifest that enables update discovery.   |
     | SBE_\<Manufacturer>\_\<Family>\_\<Version>\.xml | SBE_Contoso_GenA_4.1.2410.5.xml | A file with solution extension inventory and signed software Bill of Materials |
-    |                                           |
     | SBE_\<Manufacturer>\_\<Family>\_\<Version>\.zip | SBE_Contoso_GenA_4.1.2410.5.zip | A file with solution extension payload                                         |
 
 1. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
@@ -393,7 +395,7 @@ $InstanceId = Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
 ```
 
 > [!NOTE]
-> If step 3 was skipped (and you did not make a similar call to Start-SolutionUpdate -PrepareOnly) calling Start-SolutionUpdate will first download the updates and perform a set of checks to verify your cluster's update readiness prior to starting the update install.
+> If step 4 was skipped (and you did not make a similar call to `Start-SolutionUpdate -PrepareOnly`) calling `Start-SolutionUpdate` first downloads the updates and performs a set of checks to verify your cluster's update readiness prior to starting the update install.
 
 
 <details>
@@ -429,11 +431,11 @@ Follow these steps to track update progress using PowerShell.
 
     The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local-version-23h2).
 
-    Using the above command the following examples show how to monitor the update as it progresses through those phases using the State and `UpdateStateProperties` properties.
+    Using the above command the following examples show how to monitor the update as it progresses through those phases using the `State` and `UpdateStateProperties` properties.
 
     - **Downloading state**
     
-        Shortly after Start-SolutionUpdate is called, the download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
+        Shortly after `Start-SolutionUpdate` is called, the download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
     
         <details>
         <summary>Expand this section to see an example output.</summary>
@@ -475,7 +477,7 @@ Follow these steps to track update progress using PowerShell.
     
         Once the updates are prepared, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging).
 
-        During this phase, the State of the update shows as `HealthChecking`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](./update-troubleshooting-23h2.md) before you proceed.
+        During this phase, the `State` of the update shows as `HealthChecking`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](./update-troubleshooting-23h2.md) before you proceed.
         
         <details>
         <summary>Expand this section to see an example output.</summary>
@@ -494,7 +496,7 @@ Follow these steps to track update progress using PowerShell.
         </details>
 
     - **Installing state**
-        When the system is ready, the update transitions to the installing state. During this phase, the State of the updates shows as Installing and UpdateStateProperties shows the percentage of the installation that was completed.
+        When the system is ready, the update transitions to `Installing`. During this phase, the `State` of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage of the installation that was completed.
 
         <details>
         <summary>Expand this section to see an example output.</summary>
@@ -523,7 +525,7 @@ To resume a previously failed update run via PowerShell, use the following comma
 Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate
 ```
 
-To resume a previously failed update due to update readiness checks in a Warning state, use the following command:
+To resume a previously failed update due to update readiness checks in a `Warning` state, use the following command:
 
 ```powershell
 Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings    
