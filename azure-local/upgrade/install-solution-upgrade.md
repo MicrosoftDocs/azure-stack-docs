@@ -40,6 +40,11 @@ Before you install the solution upgrade, make sure that you:
 
 You install the solution upgrade via the Azure portal.
 
+> [!IMPORTANT]
+> Use of 3rd party tools to install updates is not supported.
+
+Follow these steps to install the solution upgrade:
+
 1. Go to your Azure Local resource in Azure portal.
 1. In the **Overview** page, you can see a banner indicating that a solution upgrade is available. Select the **Upgrade** link in the banner.
 
