@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 01/02/2025
 ---
 
 # Firewall requirements for Azure Local
