@@ -57,6 +57,11 @@ To browse for available system updates using Azure Update Manager, follow these 
 
 ## Install system updates
 
+> [!IMPORTANT]
+> Use of 3rd party tools to install updates is not supported.
+
+You can install updates via the Azure Update Manager or from the Azure Local resource page.
+
 # [Azure Update Manager](#tab/azureupdatemanager)
 
 To install system updates using Azure Update Manager, follow these steps:
