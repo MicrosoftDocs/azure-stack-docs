@@ -112,7 +112,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Network Time Protocol (NTP) server. This server can be Active Directory domain controllers, or an NTP appliance | Allow | Azure Local | Network Time Protocol (NTP/SNTP) server | UDP | 123 |
+| Allow inbound/outbound connectivity to the Network Time Protocol (NTP) server. This server can be Active Directory domain controllers, or an NTP appliance. | Allow | Azure Local | Network Time Protocol (NTP/SNTP) server | UDP | 123 |
 
 ### Failover Clustering
 
