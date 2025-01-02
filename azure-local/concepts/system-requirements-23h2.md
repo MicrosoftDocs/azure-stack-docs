@@ -90,7 +90,7 @@ Azure Local deployments that exceed the following specifications are not support
 
 ## Support and diagnosability
 
-To ensure adequate support and diagnosability for large memory Azure Local machines (those with more than 768 GB of physical memory), we recommend that you install OS disks with a capacity of 400 GB or more. This additional disk capacity provides sufficient space to troubleshoot a hardware, driver, or software issue that requires a kernel memory dump to be written to the OS volume.
+To ensure adequate support and diagnosability for large memory Azure Local machines (those with more than 768 GB of physical memory), we recommend that you install OS disks with a capacity of 400 GB or more. This additional disk capacity provides sufficient space to troubleshoot hardware, driver, or software issues should they require a kernel memory dump to be written to the OS volume.
 
 ## Hardware requirements
 
