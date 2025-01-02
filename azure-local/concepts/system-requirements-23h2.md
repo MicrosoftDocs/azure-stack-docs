@@ -69,7 +69,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ## Networking requirements
 
-Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. For multi-machine deployments the Azure Local instances require a reliable high-bandwidth,  low-latency network connection between each machine.
+Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. Multi-machine deployments of Azure Local require a reliable high-bandwidth, low-latency network connection between each machine in the instance.
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
