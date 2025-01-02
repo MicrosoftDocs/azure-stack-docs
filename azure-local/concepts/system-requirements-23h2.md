@@ -52,7 +52,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
-|Boot drive|A minimum size of 200 GB, hardware RAID 1 (mirror) recommended.<br>400 GB size recommended for large memory systems for [support and diagnosability](#support-and-diagnosability).|
+|Boot drive|A minimum size of 200 GB.<br>400 GB size recommended for large memory systems for [support and diagnosability](#support-and-diagnosability).|
 |Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
