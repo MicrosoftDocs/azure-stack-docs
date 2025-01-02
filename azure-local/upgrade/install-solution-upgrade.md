@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/02/2024
+ms.date: 12/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -41,7 +41,7 @@ Before you install the solution upgrade, make sure that you:
 You install the solution upgrade via the Azure portal.
 
 > [!IMPORTANT]
-> Use of 3rd party tools to install updates is not supported.
+> Use of 3rd party tools to install upgrades is not supported.
 
 Follow these steps to install the solution upgrade:
 
