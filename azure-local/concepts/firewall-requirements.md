@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 01/02/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -31,7 +31,7 @@ Azure Local needs to periodically connect to Azure for:
 - Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors.
+> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions v1**](/entra/identity/enterprise-apps/tenant-restrictions) which is not supported for Azure Local management network communication.
 
 As shown in the following diagram, Azure Local can access Azure using more than one firewall potentially.
 
@@ -98,7 +98,6 @@ Ensure that the following firewall rules are configured in your on-premises fire
 >[!NOTE]
 > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
 
-
 ### Active Directory
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Active Directory (local security authority).
@@ -106,6 +105,14 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
 | Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Local | TCP | 9389 |
+
+### Network Time Protocol
+
+Ensure that the following firewall rules are configured in your on-premises firewall for Network Time Protocol (NTP).
+
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow inbound/outbound connectivity to the Network Time Protocol (NTP) server. This server can be Active Directory domain controllers, or an NTP appliance. | Allow | Azure Local | Network Time Protocol (NTP/SNTP) server | UDP | 123 |
 
 ### Failover Clustering
 
