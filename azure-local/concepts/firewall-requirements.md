@@ -31,7 +31,7 @@ Azure Local needs to periodically connect to Azure for:
 - Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions**](/entra/identity/enterprise-apps/tenant-restrictions) which is not supported for Azure Local management network communication.
+> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions v1**](/entra/identity/enterprise-apps/tenant-restrictions) which is not supported for Azure Local management network communication.
 
 As shown in the following diagram, Azure Local can access Azure using more than one firewall potentially.
 
