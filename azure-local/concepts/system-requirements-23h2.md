@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: references_regions
-ms.date: 11/25/2024
+ms.date: 01/02/2025
 ---
 
 # System requirements for Azure Local, version 23H2
@@ -52,7 +52,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
-|Boot drive|A minimum size of 200-GB size.|
+|Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
 |Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
@@ -69,7 +69,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ## Networking requirements
 
-An Azure Local instance requires a reliable high-bandwidth, low-latency network connection between each machine.
+Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. Multi-machine deployments of Azure Local require a reliable high-bandwidth, low-latency network connection between each machine in the instance.
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
@@ -80,13 +80,17 @@ Azure Local deployments that exceed the following specifications are not support
 | Resource | Maximum |
 | --- | --- |
 | Physical machines per system |16 |
-| Storage per system |	4 PB |
+| Storage per system | 4 PB |
 | Storage per machine | 400 TB |
-| Volumes per system |	64 |
-| Volume size |	64 TB |
-| Logical processors per host |	512 |
-| RAM per host | 24 TB
+| Volumes per system | 64 |
+| Volume size | 64 TB |
+| Logical processors per host | 512 |
+| RAM per host | 24 TB |
 | Virtual processors per host | 2,048 |
+
+## Support and diagnosability
+
+To ensure adequate support and diagnosability for large memory Azure Local instances (those with more than 768 GB of physical memory per machine), we recommend that you install OS disks with a capacity of 400 GB or more. This additional disk capacity provides sufficient space to troubleshoot hardware, driver, or software issues should they require a kernel memory dump to be written to the OS volume.
 
 ## Hardware requirements
 
