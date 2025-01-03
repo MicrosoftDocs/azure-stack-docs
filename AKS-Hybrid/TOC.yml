@@ -167,7 +167,7 @@
   - name: Resources
     items:
     - name: Azure Local
-      href: /azure-local/index
+      href: /azure/azure-local/whats-new
     - name: Azure Adaptive Cloud
       href: /azure/adaptive-cloud
     - name: Azure Arc Jumpstart
