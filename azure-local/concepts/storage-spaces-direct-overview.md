@@ -32,8 +32,6 @@ You can deploy Storage Spaces Direct on a cluster of physical servers or on virt
 
 Deploying Storage Spaces Direct on VM guest clusters delivers virtual shared storage across a set of VMs on top of a private or public cloud. In production environments, this deployment is supported only in Windows Server. For information about how to deploy Storage Spaces Direct on VM guest clusters in Windows Server, see [Using Storage Spaces Direct in guest virtual machine clusters](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm).
 
-For testing and evaluation purposes only, you can deploy Storage Spaces Direct on VM guest clusters in Azure Stack HCI test environments.
-
 ## How it works
 
 Storage Spaces Direct applies many of the features in Windows Server, such as Failover Clustering, the Cluster Shared Volume (CSV) file system, Server Message Block (SMB) 3, and Storage Spaces. It also introduces a new technology called Software Storage Bus.
