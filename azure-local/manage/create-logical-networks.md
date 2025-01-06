@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 01/06/2025
 ---
 
 # Create logical networks for Azure Local
@@ -127,6 +127,12 @@ Create a static logical network when you want to create virtual machines with ne
 
     > [!NOTE]
     > DNS server and gateway must be specified if you're creating a static logical network.
+ 
+
+    > [!NOTE]
+    > Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
+    >
+    > In addition, if a VLAN ID isn't specified, the value defaults to 0.
 
 1. Create a static logical network. Run the following cmdlet:
 
