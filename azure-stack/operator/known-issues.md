@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/23/2024
+ms.date: 01/06/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -240,8 +240,8 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
-::: moniker range="azs-2311"
-## 2311 archived known issues
+::: moniker range="azs-2306"
+## 2306 archived known issues
 ::: moniker-end
 ::: moniker range="azs-2301"
 ## 2301 archived known issues
