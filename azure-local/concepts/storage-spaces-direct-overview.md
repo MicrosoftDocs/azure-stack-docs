@@ -4,7 +4,7 @@ ms.author: cosdar
 manager: dongill
 ms.topic: article
 author: cosmosdarwin
-ms.date: 02/22/2024
+ms.date: 01/03/2025
 ms.assetid: 8bd0d09a-0421-40a4-b752-40ecb5350ffd
 description: An overview of Storage Spaces Direct, a feature of Windows Server and Azure Stack HCI that enables you to cluster servers with internal storage into a software-defined storage solution.
 ---
@@ -31,8 +31,6 @@ Storage Spaces Direct is a core technology of Azure Stack HCI, versions 21H2 and
 You can deploy Storage Spaces Direct on a cluster of physical servers or on virtual machine (VM) guest clusters. If deploying it on a hyperconverged cluster of physical servers, we recommend using Azure Stack HCI servers. To deploy Storage Spaces Direct as part of Azure Stack HCI, see [Deploy the Azure Stack HCI operating system](/azure-stack/hci/deploy/operating-system).
 
 Deploying Storage Spaces Direct on VM guest clusters delivers virtual shared storage across a set of VMs on top of a private or public cloud. In production environments, this deployment is supported only in Windows Server. For information about how to deploy Storage Spaces Direct on VM guest clusters in Windows Server, see [Using Storage Spaces Direct in guest virtual machine clusters](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm).
-
-For testing and evaluation purposes only, you can deploy Storage Spaces Direct on VM guest clusters in Azure Stack HCI test environments. For information about deploying it in Azure Stack HCI test environments, see [Tutorial: Create a VM-based lab for Azure Stack HCI](/azure-stack/hci/deploy/tutorial-private-forest).
 
 ## How it works
 
