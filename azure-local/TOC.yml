@@ -514,17 +514,15 @@ items:
         href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
-    - name: Health service
-      items:
-      - name: Monitor systems
+      - name: Monitor clusters with Health Service
         href: manage/health-service-overview.md
-      - name: Get system performance history
+      - name: Get cluster performance history
         href: manage/health-service-cluster-performance-history.md
-      - name: View faults
+      - name: View Health Service faults
         href: manage/health-service-faults.md
-      - name: Track actions
+      - name: Track Health Service actions
         href: manage/health-service-actions.md
-      - name: Modify settings
+      - name: Modify Health Service settings
         href: manage/health-service-settings.md
 
 - name: Troubleshoot
