@@ -119,7 +119,7 @@ To deploy the AI model, follow these steps:
 
 1. Create a YAML file using the following template. KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
 
-   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/Azure/kaito/blob/main/presets/models/supported_models.yaml) in the GitHub repo. In the following example, `falcon-7b-instruct` is used for the model deployment.
+   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/kaito-project/kaito/blob/main/presets/workspace/models/supported_models.yaml) in the GitHub repo. In the following example, `falcon-7b-instruct` is used for the model deployment.
    - We recommend using `labelSelector` and `preferredNodes` to explicitly select the GPU node by name. In the following example, `app: llm-inference` is used for the GPU node `moc-le4aoguwyd9`. You can choose any node label you want, as long as the labels match. The next step shows how to label the node.
 
    ```yaml
