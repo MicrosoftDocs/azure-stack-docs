@@ -514,7 +514,7 @@ items:
         href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
-      - name: Monitor clusters with the Health Service
+      - name: Monitor clusters with Health Service
         href: manage/health-service-overview.md
       - name: Get cluster performance history
         href: manage/health-service-cluster-performance-history.md
