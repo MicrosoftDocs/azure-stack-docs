@@ -85,6 +85,11 @@ Complete the following steps to create a logical network using Azure CLI.
 
 You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch for a DHCP or a static IP configuration. The parameters used to create a DHCP and a static logical network are different.
 
+> [!NOTE]
+> Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
+>
+> If a VLAN ID isn't specified, the value defaults to 0.
+
 #### Create a static logical network via CLI
 
 In this release, you can create virtual machines using a static IP only via the Azure CLI.
@@ -128,11 +133,6 @@ Create a static logical network when you want to create virtual machines with ne
     > [!NOTE]
     > DNS server and gateway must be specified if you're creating a static logical network.
  
-
-    > [!NOTE]
-    > Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
-    >
-    > In addition, if a VLAN ID isn't specified, the value defaults to 0.
 
 1. Create a static logical network. Run the following cmdlet:
 
