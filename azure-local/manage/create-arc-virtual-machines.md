@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/05/2024
+ms.date: 01/08/2025
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -150,6 +150,14 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
+
+### Additional parameters for Windows Server 2012 and Windows Server 2012R2 images
+
+When creating an Arc VM using the Windows Server 2012 and Windows Server 2012R2 images, specify the following additional parameters to create the VM:
+
+- `--enable-vm-agent`: Set this parameter to `true`. This parameter is required to enable the VM agent on the VM. The VM agent is required for the VM to communicate with Azure. The VM agent is installed by default on Windows Server 2016 and later images.
+- `--enable-vm-config`: Set this parameter to `false`. This parameter is required to enable the VM configuration agent on the VM. The VM configuration agent is required for the VM to communicate with Azure. The VM configuration agent is installed by default on Windows Server 2016 and later images.
+
 
 ### Create a Linux VM
 
