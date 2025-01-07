@@ -22,7 +22,7 @@ You can use the Azure Lustre CSI Driver for Kubernetes to access Azure Managed L
 
 The Azure Lustre CSI Driver for Kubernetes is compatible with [AKS](/azure/aks/). Other Kubernetes installations are not currently supported.
 
-AKS Kubernetes versions 1.21 and later are supported. This includes all versions currently available when you're creating a new AKS cluster.
+AKS Kubernetes versions 1.21 and later are supported. This support includes all versions currently available when you're creating a new AKS cluster.
 
 > [!IMPORTANT]
 > The Azure Lustre CSI Driver for Kubernetes currently works only with the Ubuntu Linux OS SKU for node pools of AKS.

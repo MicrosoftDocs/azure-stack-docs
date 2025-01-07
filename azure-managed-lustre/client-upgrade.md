@@ -99,7 +99,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
 ---
 
-After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-using-the-mount-command) to your Azure Managed Lustre file system.
+After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.
 
 ## Related content
 
