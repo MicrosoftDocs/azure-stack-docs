@@ -31,7 +31,7 @@ AKS Kubernetes versions 1.21 and later are supported. This includes all versions
 
 The Azure Lustre CSI Driver for Kubernetes is compatible with [Azure Managed Lustre](/azure/azure-managed-lustre). Other Lustre installations are not currently supported.  
 
-The Azure Lustre CSI Driver for Kubernetes versions 0.1.10 and later are supported with the current version of the Azure Managed Lustre service.
+Azure Lustre CSI Driver for Kubernetes versions 0.1.10 and later are supported with the current version of the Azure Managed Lustre service.
 
 ## Prerequisites
 
@@ -42,13 +42,13 @@ The Azure Lustre CSI Driver for Kubernetes versions 0.1.10 and later are support
 
 ## Plan your AKS deployment
 
-When you're deploying Azure Kubernetes Service, there are several options that affect the operation between AKS and Azure Managed Lustre.
+When you're deploying Azure Kubernetes Service, several options affect the operation between AKS and Azure Managed Lustre.
 
 ### Determine the network type to use with AKS
 
 Two network types are compatible with the Ubuntu Linux OS SKU: kubenet and the Azure Container Network Interface (CNI) driver. Both options work with the Azure Lustre CSI Driver for Kubernetes, but they have different requirements that you need understand when you're setting up virtual networking and AKS. For more information on determining the proper selection, see [Networking concepts for applications in Azure Kubernetes Service (AKS)](/azure/aks/concepts-network).
 
-### Determine network architecture for interconnectivity of AKS and Azure Managed Lustre
+### Determine the network architecture for interconnectivity of AKS and Azure Managed Lustre
 
 Azure Managed Lustre operates within a private virtual network. Your AKS instance must have network connectivity to the Azure Managed Lustre virtual network. There are two common ways to configure the networking between Azure Managed Lustre and AKS:
 
@@ -76,11 +76,11 @@ There is no privilege separation for network management when you're provisioning
 
 To enable the Azure Lustre CSI Driver for Kubernetes, perform these steps:
 
-1. [Create an Azure Managed Lustre file system](#create-an-azure-managed-lustre-file-system)
+1. [Create an Azure Managed Lustre file system cluster](#create-an-azure-managed-lustre-file-system-cluster).
 
-1. [Create an AKS cluster](#create-an-aks-cluster)
+1. [Create an AKS cluster](#create-an-aks-cluster).
 
-1. [Create a virtual network peering](#create-a-virtual-network-peering)
+1. [Create a virtual network peering](#create-a-virtual-network-peering).
 
 1. [Install the driver](#install-the-driver).
 
@@ -90,29 +90,29 @@ To enable the Azure Lustre CSI Driver for Kubernetes, perform these steps:
 
 The following sections describe each task in greater detail.
 
-### Create an Azure Managed Lustre file system
+### Create an Azure Managed Lustre file system cluster
 
-If you haven't already created your Azure Managed Lustre file system cluster, create the cluster now. For instructions, see [Create an Azure Managed Lustre file system in the Azure portal](create-file-system-portal.md). Currently, the driver can only be used with a existing Azure Managed Lustre file system.
+If you haven't already created your Azure Managed Lustre file system cluster, create the cluster now. For instructions, see [Create an Azure Managed Lustre file system by using the Azure portal](create-file-system-portal.md). Currently, the driver can be used only with an existing Azure Managed Lustre file system.
 
 ### Create an AKS cluster
 
-If you haven't already created your AKS cluster, create a cluster deployment. See [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+If you haven't already created your AKS cluster, create a cluster deployment. See [Deploy an Azure Kubernetes Service (AKS) cluster by using the Azure portal](/azure/aks/learn/quick-kubernetes-deploy-portal).
 
 ### Create a virtual network peering
 
 > [!NOTE]
-> Skip this network peering step if you installed AKS into a subnet on the Azure Managed Lustre virtual network.
+> Skip this network peering step if you installed AKS in a subnet on the Azure Managed Lustre virtual network.
 
 The AKS virtual network is created in a separate resource group from the AKS cluster's resource group. You can find the name of this resource group by going to your AKS cluster in the Azure portal, going to **Properties**, and finding the **Infrastructure** resource group. This resource group contains the virtual network that needs to be paired with the Azure Managed Lustre virtual network. It matches the pattern **MC\_\<aks-rg-name\>\_\<aks-cluster-name\>\_\<region\>**.
 
 To peer the AKS virtual network with your Azure Managed Lustre virtual network, consult [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
 > [!TIP]
-> Due to the naming of the MC_ resource groups and virtual networks, names of networks can be similar or the same across multiple AKS deployments. When you're setting up peering, pay close attention that you're choosing the AKS networks that you intend to choose.
+> Due to the naming of the MC_ resource groups and virtual networks, names of networks can be similar or the same across multiple AKS deployments. When you're setting up peering, be careful to choose the AKS networks that you intend to choose.
 
 ### Connect to the AKS cluster
 
-1. Open a terminal session with access to the Azure CLI tools and sign in to your Azure account.
+1. Open a terminal session with access to the Azure CLI tools and sign in to your Azure account:
 
    ```azurecli
    az login
@@ -120,7 +120,7 @@ To peer the AKS virtual network with your Azure Managed Lustre virtual network, 
 
 1. Sign in to [the Azure portal](https://portal.azure.com).
 
-1. Find your AKS cluster. Select the **Overview** pane, and then select the **Connect** button and copy the command for **Download cluster credentials**.
+1. Find your AKS cluster. On the **Overview** pane, select the **Connect** button, and then copy the command for **Download cluster credentials**.
 
 1. In your terminal session, paste in the command to download the credentials. The command is similar to:
 
@@ -128,7 +128,7 @@ To peer the AKS virtual network with your Azure Managed Lustre virtual network, 
    az aks get-credentials --subscription <AKS_subscription_id> --resource_group <AKS_resource_group_name> --name <name_of_AKS>
    ```
 
-1. Install kubectl if it's not present in your environment.
+1. Install kubectl if it's not present in your environment:
 
    ```azurecli
    az aks install-cli
@@ -149,7 +149,7 @@ To install the Azure Lustre CSI Driver for Kubernetes, run the following command
 curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
 ```
 
-For local installation command samples, see [Install Azure Lustre CSI Driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
+For local installation command samples, see [Install the Azure Lustre CSI driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
 
 ### Create and configure a persistent volume
 
@@ -157,21 +157,21 @@ To create a persistent volume for an existing Azure Managed Lustre file system:
 
 1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the driver](#install-the-driver), you have local copies available already.
 
-   - storageclass_existing_lustre.yaml
-   - pvc_storageclass.yaml
+   - **storageclass_existing_lustre.yaml**
+   - **pvc_storageclass.yaml**
 
    If you don't want to clone the entire repository, you can download each file individually. Open each of the following links, copy the file's contents, and then paste the contents into a local file with the same file name.
 
    - [storageclass_existing_lustre.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/storageclass_existing_lustre.yaml)
    - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/pvc_storageclass.yaml)
 
-1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the MSG IP address.
+1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the Lustre Management Service (MGS) IP address.
 
-   ![Screenshot of storageclass_existing_lustre.yaml file with values to replace highlighted.](media/use-csi-driver-kubernetes/storageclass-values-highlighted.png)
+   ![Screenshot of the storageclass_existing_lustre.yaml file with values to replace highlighted.](media/use-csi-driver-kubernetes/storageclass-values-highlighted.png)
 
-   Both settings are displayed in the Azure portal, on the **Client connection** page for your Azure Lustre file system.
+   Both settings are displayed in the Azure portal, on the **Client connection** pane for your Azure Lustre file system.
 
-   ![Screenshot of the Azure portal Client Connection page. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
+   ![Screenshot of the pane for client connection in the Azure portal. The MGS IP address and the "lustrefs" name in the mount command are highlighted.](media/use-csi-driver-kubernetes/portal-mount-values-highlighted.png)
 
    Make these updates:
 
@@ -179,9 +179,9 @@ To create a persistent volume for an existing Azure Managed Lustre file system:
 
      The suggested `mount` command includes the name highlighted in the following address string.
 
-     ![Screenshot of a sample address string on the Client Connection page. The internal name of the Lustre cluster is highlighted.](media/use-csi-driver-kubernetes/portal-mount-address-string.png)
+     ![Screenshot of a sample address string on the pane for client connection. The internal name of the Lustre cluster is highlighted.](media/use-csi-driver-kubernetes/portal-mount-address-string.png)
 
-   - Replace `EXISTING_LUSTRE_IP_ADDRESS` with the **MSG IP Address**.
+   - Replace `EXISTING_LUSTRE_IP_ADDRESS` with the MGS IP address.
 
 1. To create the storage class and the persistent volume claim, run the following `kubectl` command:
 
@@ -192,7 +192,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system:
 
 ### Check the installation
 
-If you want to check your installation, you can optionally use an echo pod to confirm the driver is working.
+If you want to check your installation, you can optionally use an echo pod to confirm that the driver is working.
 
 To view time stamps in the console during writes, run the following commands:
 
@@ -210,4 +210,4 @@ To view time stamps in the console during writes, run the following commands:
 
 ## Related content
 
-- [Create an export job to export data from Azure Managed Lustre](export-with-archive-jobs.md).
+- [Create an export job to export data from Azure Managed Lustre](export-with-archive-jobs.md)

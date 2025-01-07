@@ -80,7 +80,7 @@ sudo mount -t lustre -o noatime,flock <MGS_IP>@tcp:/lustrefs /<client_path>
 
 In the `mount` command:
 
-- The `lustrefs` value in the MSG IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own `mount` commands.
+- The `lustrefs` value in the MGS IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own `mount` commands.
 
 - Set the client path to any convenient mount path that exists on your clients. It doesn't need to be the name of the Azure Managed Lustre file system (which is the default value).
 
