@@ -237,6 +237,17 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
+::: moniker range="azs-2406 || azs-2408 || azs-2311"
+## Update
+
+### Update URL is changing
+
+- Applicable: This issue applies to all supported versions of Azure Stack Hub.
+- Cause: The update URL for Azure Stack Hub is changing from `https://azurestackhub.azureedge.net/PR/download` to `https://azurestackhub.download.prss.microsoft.com`.
+- Remediation: To enable the update process, you must update your client firewall rules to allow HTTPS traffic from the Azure Stack Hub base URL `https://azurestackhub.download.prss.microsoft.com`.
+- Occurrence: Common.
+::: moniker-end
+
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
