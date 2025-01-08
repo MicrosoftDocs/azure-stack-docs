@@ -5,7 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 10/16/2024
+ms.date: 1/08/2024
 ---
 
 # Register your Azure Local, version 23H2 machines via the local UI (preview)
