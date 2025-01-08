@@ -31,7 +31,7 @@ The basic workflow is as follows:
 
 1. [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) on each client.
 1. [Use the `mount` command](#start-the-lustre-client-by-using-the-mount-command) to make the Azure Managed Lustre file system available on the client.
-1. When a client is no longer needed, use the `umount` command without the `-f` (force) or `-l` (lazy) option to cleanly unmount the client before shutting it down. Failure to properly unmount a client before restarting or deprovisioning can result in performance issues for other clients.
+1. When a client is no longer needed, use the `umount` command without the `-f` (force) or `-l` (lazy) option to cleanly unmount the client before shutting it down. Failure to properly unmount a client before restarting or deprovisioning can result in performance problems for other clients.
 
 ## Install or upgrade Lustre client software
 
@@ -55,12 +55,12 @@ If you need to support a different distribution, contact the support team.
 If you need to upgrade an older Lustre client version on your Linux system, see [Upgrade Lustre client software to the current version](client-upgrade.md). You must remove old kernel modules and software packages as part of the upgrade.
 
 > [!NOTE]
-> Microsoft publishes new packages within one business day of a new kernel becoming available. If you experience any problems, please file a support ticket.
+> Microsoft publishes new packages within one business day after a new kernel becomes available. If you experience any problems, please file a support ticket.
 
 ## Start the Lustre client by using the mount command
 
 > [!NOTE]
-> Before you run the `mount` command, make sure that the client host can detect the Azure Managed Lustre file system's virtual network. Ping the file system's server IP address. If the ping command doesn't succeed, make the file system network a peer to your compute resource's network.
+> Before you run the `mount` command, make sure that the client host can detect the Azure Managed Lustre file system's virtual network. Ping the file system's server IP address. If the `ping` command doesn't succeed, make the file system network a peer to your compute resource's network.
 
 Mount all of your clients to the file system's Lustre Management Service (MGS) IP address. The **Client connection** pane in the Azure portal shows the IP address and gives a sample `mount` command that you can copy and use to mount clients.
 
@@ -97,7 +97,7 @@ After your clients are connected to the file system, you can use the Azure Manag
 - Start a compute job.
 
 > [!IMPORTANT]
-> When you no longer need a client, you must cleanly unmount the client without using the `-f` (force) or `-l` (lazy) options before shutting it down. Failure to properly unmount a client before restarting or deprovisioning can result in performance problems for other clients.
+> When you no longer need a client, you must cleanly unmount the client without using the `-f` (force) or `-l` (lazy) option before shutting it down. Failure to properly unmount a client before restarting or deprovisioning can result in performance problems for other clients.
 >
 > For more information, see the [blog post about how to unmount an Azure Managed Lustre file system by using scheduled events](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/how-to-unmount-azure-managed-lustre-filesystem-using-azure/ba-p/3917814).
 

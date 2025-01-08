@@ -20,7 +20,7 @@ For more information on connecting clients to a cluster, see [Connect clients to
 
 ::: zone pivot="alma-86"
 
-## Upgrade client software
+## Upgrade client software for AlmaLinux HPC 8.6
 
 This article shows how to install the client package to set up client VMs running AlmaLinux HPC 8.6.
 
@@ -297,7 +297,7 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone pivot="ubuntu-22"
 
 > [!IMPORTANT]
-> The Azure Marketplace image for the Ubuntu 22.04 LTS release uses the Hardware Enablement (HWE) kernel by default. However, these kernels are supported only for six-month periods, and Lustre support for these kernels is often not available when they're released. We recommend that you switch to the LTS kernel because it gives you more stability and it maintains a kernel version that's supported with the Lustre client.
+> The Azure Marketplace image for the Ubuntu 22.04 LTS release uses the Hardware Enablement (HWE) kernel by default. However, HWE kernels are supported only for six-month periods, and Lustre support for these kernels is often not available when they're released. We recommend that you switch to the LTS kernel because it gives you more stability and it maintains a kernel version that's supported with the Lustre client.
 
 1. Install the LTS kernel metapackage:
 
@@ -305,7 +305,7 @@ This article shows how to install the client package to set up client VMs runnin
    sudo apt update && sudo apt install linux-image-azure-lts-22.04
    ```
 
-1. Remove the default (HWE) kernel metapackage. The response to the following command will also ask you to remove the `linux-azure` metapackage.
+1. Remove the default (HWE) kernel metapackage. The response to the following command also asks you to remove the `linux-azure` metapackage.
 
    ```bash
    sudo apt remove linux-image-azure
@@ -325,7 +325,7 @@ This article shows how to install the client package to set up client VMs runnin
    sudo apt remove linux-image-5.15.0-1053-azure
    ```
 
-   You'll receive a warning about removing the kernels, but these steps work if you're following them on a newly provisioned host. If you have concerns, consult Ubuntu documentation on configuring kernels to ensure that they can start after a restart.
+   You receive a warning about removing the kernels, but these steps work if you're following them on a newly provisioned host. If you have concerns, consult Ubuntu documentation on configuring kernels to ensure that they can start after a restart.
 
 1. List installed kernels again to verify that you don't have kernels newer than the one mentioned in the LTS metapackage:
 

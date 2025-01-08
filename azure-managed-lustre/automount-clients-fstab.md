@@ -11,19 +11,19 @@ ms.reviewer: dsundarraj
 
 # Automatically mount clients to an Azure Managed Lustre file system by using fstab
 
-This article describes how to automount Lustre clients by using `fstab` so that you can automatically mount your Azure Managed Lustre directory when the Lustre client virtual machine (VM) restarts.
+This article describes how to automount Lustre clients by using fstab so that you can automatically mount your Azure Managed Lustre directory when the Lustre client virtual machine (VM) restarts.
 
 ## Prerequisites
 
-Before you can update the `/etc/fstab` file of your Azure Managed Lustre client, you must create your Azure Managed Lustre file system. For more information, see [Create an Azure Managed Lustre file system by using the Azure portal](create-file-system-portal.md).
+Before you can update the /etc/fstab file of your Azure Managed Lustre client, you must create your Azure Managed Lustre file system. For more information, see [Create an Azure Managed Lustre file system by using the Azure portal](create-file-system-portal.md).
 
 ## Procedure
 
-To update the `/etc/fstab` file in your Lustre client VM:
+To update the /etc/fstab file in your Lustre client VM:
 
-1. Connect to your Managed Lustre client VM and open the `/etc/fstab` file in an editor.
-1. Add the line detailed in this section to the `/etc/fstab` file.
-1. Save the `fstab` file.
+1. Connect to your Managed Lustre client VM and open the **/etc/fstab** file in an editor.
+1. Add the line detailed in this section to the **/etc/fstab** file.
+1. Save the file.
 
 ### Syntax
 
@@ -54,7 +54,7 @@ The following parameters are required.
 
 ### Mount options
 
-You can include mount options on the `fstab` line. Each value is comma separated. We recommend that you include the following options by default, unless you know that your setup requires a different configuration.
+You can include mount options on the fstab line. Each value is comma separated. We recommend that you include the following options by default, unless you know that your setup requires a different configuration.
 
 | Name  | Description |
 |----------|-----------|
@@ -63,10 +63,10 @@ You can include mount options on the `fstab` line. Each value is comma separated
 | `flock` | Mounts your file system with file locking enabled. If you don't want file locking enabled, remove this mount option. |
 | `_netdev` | Tells the operating system that the file system resides on a device that requires network access. This option prevents the instance from mounting the file system until the network is enabled on the client. |
 | `x-systemd.automount` | Helps ensure that the automatic mounter doesn't run until the network connectivity is online. This option is used with `x-systemd.requires=network.service`.|
-| `x-systemd.requires=network.service` | Helps ensure that the automatic mounter doesn't run until the network connectivity is online. This option is used with `x-systemd.automount`. Note that `network.service` might not be known to all distributions, which might cause problems with other file systems. You can exclude it from the `fstab` line if it's causing problems.|
+| `x-systemd.requires=network.service` | Helps ensure that the automatic mounter doesn't run until the network connectivity is online. This option is used with `x-systemd.automount`. Note that `network.service` might not be known to all distributions, which might cause problems with other file systems. You can exclude it from the fstab line if it's causing problems.|
 
 ## Conclusion
 
 Your Lustre client VM is now configured to mount an Azure Managed Lustre file system whenever it restarts.
 
-In some cases, your Lustre client VM might need to start regardless of the status of your mounted Azure Managed Lustre file system. In these cases, add the `nofail` option to your file system's entry in your `/etc/fstab` file.
+In some cases, your Lustre client VM might need to start regardless of the status of your mounted Azure Managed Lustre file system. In these cases, add the `nofail` option to your file system's entry in your /etc/fstab file.
