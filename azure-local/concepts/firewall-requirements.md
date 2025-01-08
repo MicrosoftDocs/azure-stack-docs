@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/02/2025
+ms.date: 01/08/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -55,6 +55,9 @@ For a consolidated list of endpoints for Canada Central that includes Azure Loca
 
 For a consolidated list of endpoints for India Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in India Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
+
+For a consolidated list of endpoints for Southeast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Southeast Asia for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
 
 ## Firewall requirements for additional Azure services
 
