@@ -44,16 +44,6 @@
         items:
         - name: Hotfix 1.2306.4.102
           href: hotfix-1-2306-4-102.md      
-        - name: Hotfix 1.2306.4.101
-          href: hotfix-1-2306-4-101.md      
-        - name: Hotfix 1.2306.4.98
-          href: hotfix-1-2306-4-98.md      
-        - name: Hotfix 1.2306.4.97
-          href: hotfix-1-2306-4-97.md      
-        - name: Hotfix 1.2306.4.74
-          href: hotfix-1-2306-4-74.md      
-        - name: Hotfix 1.2306.4.73
-          href: hotfix-1-2306-4-73.md      
       - name: 2301
         items:
         - name: Hotfix 1.2301.3.97
