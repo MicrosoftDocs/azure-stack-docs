@@ -184,7 +184,7 @@ This article shows how to install the client package to set up client VMs runnin
 
     The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
-   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
+   [!INCLUDE [client-install-version-rhel-8](./includes/client-install-version-rhel-8.md)]
 
 ::: zone-end
 
@@ -219,7 +219,7 @@ This article shows how to install the client package to set up client VMs runnin
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
-   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
+   [!INCLUDE [client-install-version-rhel-9](./includes/client-install-version-rhel-9.md)]
 
 ::: zone-end
 

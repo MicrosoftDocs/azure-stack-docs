@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot issues when migrating Hyper-V VMs to Azure Local using Azure Migrate (preview)
-description: Learn about how to troubleshoot issues when migrating Windows and Linux VMs to your Azure Local instance using Azure Migrate (preview).
+title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate (preview)
+description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 10/28/2024
@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 ms.custom: linux-related-content
 ---
 
-# Troubleshoot issues migrating Hyper-V VMs to Azure Local via Azure Migrate (preview)
+# Troubleshoot issues migrating VMs to Azure Local via Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V VMs to your Azure Local using Azure Migrate.
+This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V and VMware VMs to your Azure Local using Azure Migrate.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
