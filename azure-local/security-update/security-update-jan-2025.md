@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# January OS security update (KB5048653) for Azure Local, version 23H2
+# January OS security update (KB5049984) for Azure Local, version 23H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
