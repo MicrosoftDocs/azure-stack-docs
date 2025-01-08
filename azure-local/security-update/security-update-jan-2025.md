@@ -36,7 +36,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](https://go.microsoft.com/fwlink/?linkid=2299751).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](security-update-jan-2025.md).
 
 
 ## Next steps
