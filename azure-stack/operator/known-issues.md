@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/06/2025
+ms.date: 01/08/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -108,7 +108,21 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Alerts -->
 
-<!-- ## Portal -->
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 
@@ -157,6 +171,22 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
+
 <!-- ## Alerts -->
 
 <!-- ## Datacenter integration -->
@@ -177,17 +207,6 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Event Hubs -->
 
-::: moniker-end
-
-::: moniker range="azs-2406 || azs-2408"
-## Portal
-
-### Deployments blade under subscription fails to load
-
-- Applicable: This issue applies to release 2406 and later.
-- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
-- Remediation: Microsoft is aware of the issue and is working on a fix.
-- Occurrence: Common.
 ::: moniker-end
 
 ::: moniker range="azs-2311"
@@ -247,6 +266,13 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
 - Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 

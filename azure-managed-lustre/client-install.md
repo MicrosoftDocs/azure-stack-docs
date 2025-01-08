@@ -213,7 +213,7 @@ The instructions apply to client VMs running:
 
     The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
-   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
+   [!INCLUDE [client-install-version-rhel-8](./includes/client-install-version-rhel-8.md)]
 
 ::: zone-end
 
@@ -248,7 +248,7 @@ The instructions apply to client VMs running:
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
-   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
+   [!INCLUDE [client-install-version-rhel-9](./includes/client-install-version-rhel-9.md)]
 
 ::: zone-end
 
