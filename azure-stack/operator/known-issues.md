@@ -82,7 +82,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Nodes blade fails to load
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: The **Nodes** blade on the portal fails to load when a configuration hasn't set a GPU property.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
 - Remediation: Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Occasional.
 
@@ -145,7 +145,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Nodes blade fails to load
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: The **Nodes** blade on the portal fails to load when a configuration hasn't set a GPU property.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
 - Remediation: Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Occasional.
 
@@ -232,7 +232,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Nodes blade fails to load
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: The **Nodes** blade on the portal fails to load when a configuration hasn't set a GPU property.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
 - Remediation: Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Occasional.
 
