@@ -27,10 +27,6 @@ In this release, you can deploy Azure Local using one of the following methods:
 
     For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
 
-- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Local deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Local. 
-
-    For more information about this program, see https://aka.ms/fasttrackforazure
-
 ## Deployment sequence
 
 Follow this sequence to deploy Azure Local in your environment:
