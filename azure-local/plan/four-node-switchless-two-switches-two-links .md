@@ -135,7 +135,7 @@ For more information, see [Deploy host networking with Network ATC](../deploy/ne
 
 ## ARM template Storage intent networks configuration example
 
-You can use the [ARM template for 4-node storage switchless, dual TOR and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-DualLink).
+You can use the [ARM template for 4-node storage switchless, dual TOR and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-4Nodes-Switchless-DualLink).
 
 ```powershell
           "storageNetworkList": {
