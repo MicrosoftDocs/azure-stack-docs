@@ -13,7 +13,7 @@ ms.custom: template-how-to
 > [!CAUTION]
 > Full deployment on multiple machines is currently an experimental feature. We are actively working on this feature.
 
-You can configure an AKS Edge Essentials cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS on Azure Local. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration, you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, and so on.  
+You can configure an AKS Edge Essentials cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS on Azure Local. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines are secondary machines with the worker nodes. In this deployment scenario, we configure the K8S cluster using an external switch. With this configuration, you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, and so on.  
 
 ## Prerequisites
 
@@ -40,14 +40,14 @@ The key parameters to note for a scalable Kubernetes deployment are:
     Get-NetAdapter -Physical | Where-Object { $_.Status -eq 'Up' }
     ```
 
-    If you've created an external switch on your Hyper-V, you can choose to specify the vswitch details in your configuration file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS Edge Essentials automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+    If you created an external switch on your Hyper-V, you can choose to specify the vswitch details in your configuration file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS Edge Essentials automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
 
     > [!NOTE]
-    > In this release, there is a known issue with automatic creation of an external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager, map the switch to the Wi-fi adapter, and then provide the switch details in your configuration JSON as described below.
+    > In this release, there is a known issue with automatic creation of an external switch with the `New-AksEdgeDeployment` command if you are using a **Wi-Fi** adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager, map the switch to the Wi-fi adapter, and then provide the switch details in your configuration JSON as described in this section.
 
     :::image type="content" source="media/aks-edge/hyper-v-external-switch.png" alt-text="Screenshot of Hyper-V switch manager." lightbox="media/aks-edge/hyper-v-external-switch.png":::
 
-- **IP addresses**: You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. See the [AKS Edge Essentials networking overview](./aks-edge-concept-networking.md) for more details. For example, in a local network with the 192.168.1.0/24 IP address range, you might have 1.151 and above outside of the DHCP scope, and therefore are likely to be free. AKS Edge Essentials currently supports IPv4 addresses only. Ideally, you will know what free IP addresses you can use; however, you can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters will need to be provided in the `Network` section of the configuration file: `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, and `DnsServers`.
+- **IP addresses**: You must allocate free IP addresses from your network for the **Control Plane**, **Kubernetes services**, and **Nodes (VMs)**. See the [AKS Edge Essentials networking overview](./aks-edge-concept-networking.md) for more details. For example, in a local network with the 192.168.1.0/24 IP address range, you might have 1.151 and above outside of the DHCP scope, and therefore are likely to be free. AKS Edge Essentials currently supports IPv4 addresses only. Ideally, you know what free IP addresses you can use; however, you can use the [AksEdge-ListUsedIPv4s](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/network/AksEdge-ListUsedIPv4s.ps1) script from the [GitHub repo](https://github.com/Azure/AKS-Edge) to view IPs that are currently in use, to avoid using those IP addresses in your configuration. The following parameters must be provided in the `Network` section of the configuration file: `ControlPlaneEndpointIp`, `Ip4GatewayAddress`, `Ip4PrefixLength`, `ServiceIPRangeSize`, `ServiceIPRangeStart`, and `DnsServers`.
 
 > [!IMPORTANT]
 > The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
@@ -80,7 +80,7 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-A screenshot of a Kubernetes cluster is shown below:
+A screenshot of a Kubernetes cluster is as follows:
 
 :::image type="content" source="media/aks-edge/all-pods-running.png" alt-text="Diagram showing all pods running." lightbox="media/aks-edge/all-pods-running.png":::
 
