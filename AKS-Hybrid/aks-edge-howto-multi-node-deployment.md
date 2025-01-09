@@ -4,7 +4,7 @@ description: Describes how to create a cluster with multiple machines in AKS Edg
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 01/09/2025
 ms.custom: template-how-to
 ---
 
@@ -13,7 +13,7 @@ ms.custom: template-how-to
 > [!CAUTION]
 > Full deployment on multiple machines is currently an experimental feature. We are actively working on this feature.
 
-You can configure an AKS Edge Essentials cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS HCI. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration, you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, and so on.  
+You can configure an AKS Edge Essentials cluster to run on multiple machines to support a distributed microservices architecture. AKS Edge Essentials is for static configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management, unlike AKS in the cloud or AKS on Azure Local. AKS Edge Essentials has only one Linux VM per each machine, along with a Windows VM if needed. Each VM has a static allocation of RAM, storage, and physical CPU cores assigned at install time. In a multi-node deployment, one of the machines is the primary machine with Kubernetes control node, and the other machines will be secondary machines with the worker nodes. In this deployment scenario, we'll configure the K8S cluster using an external switch. With this configuration, you can run `kubectl` from another machine on your network, evaluate your workload performance on an external switch, and so on.  
 
 ## Prerequisites
 

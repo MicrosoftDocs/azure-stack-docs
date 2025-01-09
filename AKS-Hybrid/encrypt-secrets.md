@@ -22,10 +22,10 @@ A *secret* in Kubernetes is an object that contains a small amount of sensit
 
 ## Monitor and troubleshoot
 
-To simplify application deployment on Kubernetes clusters, review the [documentation and scripts](https://github.com/microsoft/AKS-HCI-Apps).
+To simplify application deployment on Kubernetes clusters, review the [documentation and scripts](https://github.com/microsoft/AKS-Arc-Apps).
 
-- To set up logging using Elasticsearch, Fluent Bit, and Kibana, follow the steps to [install the tools and set up logging](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging).
-- To use the monitoring tool Prometheus, follow the steps to [install Prometheus in a Kubernetes cluster](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#certs-and-keys-monitoring).
+- To set up logging using Elasticsearch, Fluent Bit, and Kibana, follow the steps to [install the tools and set up logging](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Logging).
+- To use the monitoring tool Prometheus, follow the steps to [install Prometheus in a Kubernetes cluster](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Monitoring#certs-and-keys-monitoring).
 
 > [!NOTE]
 > You can find the logs on the control plane node under **/var/log/pods**.

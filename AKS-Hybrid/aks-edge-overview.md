@@ -21,7 +21,7 @@ The following sections describe some of the key features of AKS Edge Essentials.
 
 ### Simplified Kubernetes experience
 
-Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS-HCI), AKS Edge Essentials is intended for static, pre-defined configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS Edge Essentials cluster can only have one Linux and/or Windows VM. The Linux VM acts as the control node and worker node for Linux workloads in the Kubernetes cluster. Each machine with AKS Edge Essentials has a VM with restricted RAM, storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side; that is, interoperable alongside the AKS Edge Essentials VMs.
+Unlike other Microsoft-supported platforms such as an Azure-hosted service (AKS) and on server-class hardware (AKS on Azure Local), AKS Edge Essentials is intended for static, pre-defined configurations and doesn't enable dynamic VM creation/deletion or cluster lifecycle management. Each machine in an AKS Edge Essentials cluster can only have one Linux and/or Windows VM. The Linux VM acts as the control node and worker node for Linux workloads in the Kubernetes cluster. Each machine with AKS Edge Essentials has a VM with restricted RAM, storage, and physical CPU cores according to a static allocation assigned at install time. This app-like configuration enables traditional Windows apps to run side-by-side; that is, interoperable alongside the AKS Edge Essentials VMs.
 
 While Kubernetes is an open-source orchestrator for automating container management at scale, AKS Edge Essentials simplifies on-premises Kubernetes deployment by making it easy to install, configure clusters, and manage application deployment across all clusters using a cloud-based management plane.
 
@@ -31,7 +31,7 @@ While Kubernetes is an open-source orchestrator for automating container managem
 
 AKS Edge Essentials includes the following features, managed by Microsoft:
 
-- A lightweight, CNCF-conformant K8S and K3S distribution that is supported and managed by Microsoft. The key difference between AKS on HCI and AKS on Windows is that AKS on Windows has minimal compute and memory requirements (4 GB RAM and 2 vCPUs).
+- A lightweight, CNCF-conformant K8S and K3S distribution that is supported and managed by Microsoft. The key difference between AKS on Azure Local and AKS on Windows Server is that AKS on Windows Server has minimal compute and memory requirements (4 GB RAM and 2 vCPUs).
 - Each Kubernetes node runs in its own Hyper-V isolated virtual machine and includes many features to help secure your container infrastructure.
 - Microsoft-maintained Linux and Windows worker nodes virtual machine images adhere to security best practices. Microsoft also refreshes these images monthly with the latest security updates.
 - Simplified installation experience with PowerShell cmdlets and agents to enable provisioning and control of VMs and infrastructure. Microsoft provides automatic updates for your Kubernetes deployment, so you stay up-to-date with the latest available Kubernetes versions.

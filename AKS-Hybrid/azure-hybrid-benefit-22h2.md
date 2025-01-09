@@ -34,7 +34,7 @@ For more information about Software Assurance and with which agreements it's ava
 The rest of this article describes how to activate this benefit for AKS on Azure Local or Windows Server.
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for Azure Local. For more information, see [Azure Hybrid Benefit for Azure Local](/azure-local/concepts/azure-hybrid-benefit).
+> You can maximize cost savings by also using Azure Hybrid Benefit for Azure Local. For more information, see [Azure Hybrid Benefit for Azure Local](/azure/azure-local/concepts/azure-hybrid-benefit).
 
 ## Activate Azure Hybrid Benefit for AKS
 
