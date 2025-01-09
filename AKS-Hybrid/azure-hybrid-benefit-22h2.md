@@ -18,7 +18,7 @@ ms.custom:
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS enabled by Arc, you can maximize the value of your on-premises licenses and modernize your applications at no additional cost.
+Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS enabled by Arc, you can maximize the value of your on-premises licenses and modernize your applications at no extra cost.
 
 ## What is Azure Hybrid Benefit for AKS?
 
@@ -66,7 +66,7 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 ---
 
 > [!NOTE]
-> You must have the **Microsoft.Kubernetes/connectedClusters/write** permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate the Azure Hybrid Benefit.
+> You must have the **Microsoft.Kubernetes/connectedClusters/write** permission to the Azure Arc-enabled Kubernetes cluster resource of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate the Azure Hybrid Benefit.
 
 ### Retrieve your management cluster name
 
@@ -84,7 +84,7 @@ You can verify the AKS host management cluster by running the following command 
 
 ### Verify that Azure Hybrid Benefit for AKS is not already enabled
 
-Check that the benefit has not already enabled on your management cluster. If the benefit has already been enabled, you should see the property `AzureHybridBenefit` set to `true`.
+Check that the benefit was not already enabled on your management cluster. If the benefit is enabled, you should see the property `AzureHybridBenefit` set to `true`.
 
 ```PowerShell
 Connect-AzAccount -Tenant <TenantId> -Subscription <SubscriptionId> -UseDeviceAuthentication
@@ -127,7 +127,7 @@ Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupN
 
 ### Activate Azure Hybrid Benefit
 
-To activate the benefit for an AKS cluster, run the following command in PowerShell and set the `AzureHybridBenefit` or `azure-hybrid-benefit` property to `true`. You will be prompted to confirm compliance with Azure Hybrid Benefit terms before proceeding.
+To activate the benefit for an AKS cluster, run the following command in PowerShell and set the `AzureHybridBenefit` or `azure-hybrid-benefit` property to `true`. You are prompted to confirm compliance with Azure Hybrid Benefit terms before proceeding.
 
 # [Azure PowerShell](#tab/powershell)
 
@@ -172,13 +172,13 @@ az connectedk8s show -n <management cluster name> -g <resource group>
 
 ## Maintain compliance for Azure Hybrid Benefit
 
-After activating Azure Hybrid Benefit for AKS, you must regularly check and maintain compliance for Azure Hybrid Benefit. You can perform an inventory of how many units you are running, and check this against the Software Assurance licenses you have. To determine how many clusters with Azure Hybrid Benefit for AKS you are running, you can look at your Microsoft Azure bill.
+After activating Azure Hybrid Benefit for AKS, you must regularly check and maintain compliance for Azure Hybrid Benefit. You can perform an inventory of how many units you're running, and check this list against the Software Assurance licenses you have. To determine how many clusters with Azure Hybrid Benefit for AKS you're running, you can look at your Microsoft Azure bill.
 
 To qualify for the Azure Hybrid Benefit for AKS, you must be running AKS on first-party Microsoft infrastructure such as Azure Local or Windows Server 2019/2022 and have the appropriate license to cover the underlying infrastructure. You can only use Azure Hybrid Benefit for AKS during the Software Assurance term. When the Software Assurance term is nearing expiry, you must either renew your agreement with Software Assurance, or deactivate the Azure Hybrid Benefit functionality.
 
 ### Verify that Azure Hybrid Benefit for AKS is applied to my Microsoft Azure Bill
 
-See **Cost Management and Billing** in the Azure portal to verify that the Azure Hybrid Benefit for AKS has been applied to your Microsoft Azure bill. Please note that billing does not apply in real time. There will be a delay of several hours from the time you've activated Azure Hybrid Benefit until it shows on your bill.
+See **Cost Management and Billing** in the Azure portal to verify that the Azure Hybrid Benefit for AKS was applied to your Microsoft Azure bill. Billing does not apply in real time; there's a delay of several hours from the time you activate Azure Hybrid Benefit before it shows on your bill.
 
 ### Deactivate Azure Hybrid Benefit for AKS
 

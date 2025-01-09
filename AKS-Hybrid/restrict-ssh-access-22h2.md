@@ -49,7 +49,7 @@ To enable SSH restrictions, perform the following steps:
    ```
 
    > [!NOTE]
-   > If the SSH keys are not passed, the management cluster SSH keys are reused.
+   > If the SSH keys aren't passed, the management cluster SSH keys are reused.
 
 1. Add the SSH configuration by running the [Set-AksHciConfig](reference/ps/set-akshciconfig.md) cmdlet, passing in the SSH configuration you created in the previous step:
 
@@ -59,7 +59,7 @@ To enable SSH restrictions, perform the following steps:
 
 ### Validation: target cluster
 
-Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
+Once you create the cluster, you can manually validate that the SSH restriction was added by trying to SSH into one of the VMs. For example:
 
 ```powershell
 ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
@@ -67,7 +67,7 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs has access. SSH attempts from outside the list do not have access.
 
-You can also run commands directly from SSH. This command returns the date. `Sudo` commands do not work:
+You can also run commands directly from SSH. This command returns the date. `Sudo` commands don't work:
 
 ```powershell
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
@@ -84,7 +84,7 @@ Get-AksHciLogs –virtualMachineLogs
 ### Considerations
 
 - Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) PowerShell cmdlet.
-- The restriction is only for Linux. Windows nodes do not have this restriction; you should be able to SSH successfully.
+- The restriction is only for Linux. Windows nodes don't have this restriction; you should be able to SSH successfully.
 - You can only set the configuration during the installation phase of AKS Arc.
 - You must perform a reinstall if you incorrectly configure any SSH settings.
 - There is no support for upgrades.
