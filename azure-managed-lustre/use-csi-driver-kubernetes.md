@@ -53,7 +53,7 @@ Two network types are compatible with the Ubuntu Linux OS SKU: kubenet and the A
 Azure Managed Lustre operates within a private virtual network. Your AKS instance must have network connectivity to the Azure Managed Lustre virtual network. There are two common ways to configure the networking between Azure Managed Lustre and AKS:
 
 - Install AKS in its own virtual network and create a virtual network peering with the Azure Managed Lustre virtual network.
-- Use the *Bring Your Own Network* option in AKS to install AKS in a new subnet on the Azure Managed Lustre virtual network.
+- Use the **Bring your own network** option in AKS to install AKS in a new subnet on the Azure Managed Lustre virtual network.
 
 > [!NOTE]
 > We don't recommend that you install AKS in the same subnet as Azure Managed Lustre.
@@ -66,7 +66,7 @@ The option to peer two virtual networks has the advantage of separating the mana
 
 #### Installing AKS in a subnet on the Azure Managed Lustre virtual network
 
-The option to install the AKS cluster in the Azure Managed Lustre virtual network with the *Bring Your Own Network* feature in AKS can be advantageous in scenarios where the network is managed singularly. You'll need to create an additional subnet, sized to meet your AKS networking requirements, in the Azure Managed Lustre virtual network.
+The option to install the AKS cluster in the Azure Managed Lustre virtual network with the **Bring your own network** feature in AKS can be advantageous in scenarios where the network is managed singularly. You'll need to create an additional subnet, sized to meet your AKS networking requirements, in the Azure Managed Lustre virtual network.
 
 There is no privilege separation for network management when you're provisioning AKS on the Azure Managed Lustre virtual network. The AKS service principal needs privileges on the Azure Managed Lustre virtual network.
 
