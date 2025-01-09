@@ -11,7 +11,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Service cluster to Kubernetes so I can extend those capabilities to my Kubernetes clusters.
-# Keyword: AKS cluster HCI cluster
+# Keyword: AKS cluster Azure Local cluster
 ---
 
 # Connect an Azure Kubernetes Service cluster to Azure Arc
