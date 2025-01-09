@@ -3,7 +3,7 @@ title: Stretched clusters overview
 description: Learn about stretched clusters
 author: jasongerend
 ms.topic: how-to
-ms.date: 12/10/2024
+ms.date: 01/08/2025
 ms.author: jgerend
 ms.reviewer: johnmar
 ---
@@ -15,7 +15,7 @@ ms.reviewer: johnmar
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
 > [!IMPORTANT]
-> Stretched clusters are not supported in Azure Local, version 23H2.
+> Stretched clusters are not supported in Azure Local.
 
 An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
