@@ -58,7 +58,7 @@ The objects and endpoints that the Prometheus solution scrapes include the follo
 - Node exporter to collect metrics for Linux nodes
 - Windows exporter to collect metrics for Windows nodes
 
-To view the Grafana dashboards available in AKS Arc, see [Grafana dashboards available in AKS Arc](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
+To view the Grafana dashboards available in AKS Arc, see [Grafana dashboards available in AKS Arc](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
 
 ## Deploy monitoring solution using PowerShell
 
@@ -101,7 +101,7 @@ The uninstall process removes everything, including the namespace, the StorageCl
 
 ## Deploy Grafana, and configure it to use Prometheus
 
-You can follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS Prometheus instance. This GitHub page also describes how to add Grafana dashboards that Microsoft makes available for AKS enabled by Arc.
+You can follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS Prometheus instance. This GitHub page also describes how to add Grafana dashboards that Microsoft makes available for AKS enabled by Arc.
 
 ## On-premises logging
 
@@ -111,9 +111,9 @@ Logging is crucial for troubleshooting and diagnostics. The logging solution in 
 - Elasticsearch is a distributed search and analytics engine capable of centrally storing the logs for fast searches and data analytics.  
 - Kibana provides interactive visualizations on a web dashboard. This tool lets you view and query logs stored in Elasticsearch, and then you can visualize them through graphs and dashboards.
 
-To set up an on-premises logging solution, see the steps to [set up logging to access Kibana](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging#easy-steps-to-setup-logging-to-use-local-port-forward-to-access-kibana). This article includes all the components required to collect, aggregate, and query container logs across the cluster.
+To set up an on-premises logging solution, see the steps to [set up logging to access Kibana](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Logging#easy-steps-to-setup-logging-to-use-local-port-forward-to-access-kibana). This article includes all the components required to collect, aggregate, and query container logs across the cluster.
 
-For advanced configuration steps, see [Windows logging](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging#detailed-steps-to-setup-logging).
+For advanced configuration steps, see [Windows logging](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Logging#detailed-steps-to-setup-logging).
 
 ## Next steps
 

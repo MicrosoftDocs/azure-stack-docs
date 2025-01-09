@@ -1,6 +1,6 @@
 ---
-title: Manage node pools for a cluster (AKS on Azure Stack HCI 22H2)
-description: Learn how to manage multiple node pools in AKS enabled by Azure Arc (AKS on Azure Stack HCI 22H2).
+title: Manage node pools for a cluster (AKS on Azure Local 22H2)
+description: Learn how to manage multiple node pools in AKS enabled by Azure Arc (AKS on Azure Local 22H2).
 ms.topic: how-to
 ms.custom:
 ms.date: 01/31/2024
@@ -10,12 +10,12 @@ ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
 ---
 
-# Manage node pools for a cluster (AKS on Azure Stack HCI 22H2)
+# Manage node pools for a cluster (AKS on Azure Local 22H2)
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 > [!NOTE]
-> For information about managing node pools in AKS on Azure Stack HCI 23H2, see [Manage node pools](manage-node-pools.md).
+> For information about managing node pools in AKS on Azure Local 23H2, see [Manage node pools](manage-node-pools.md).
 
 In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
 
@@ -165,8 +165,7 @@ Run the following command to make sure the node pool was successfully deployed w
 Get-AksHciNodePool -clusterName mycluster -name taintnp
 ```
 
-**Output**
-```
+```output
 Status       : {Phase, Details}
 ClusterName  : mycluster
 NodePoolName : taintnp
@@ -233,4 +232,4 @@ Events:
 
 ## Next steps
 
-- [Manage node pools (AKS on Azure Stack HCI 23H2)](manage-node-pools.md)
+- [Manage node pools (AKS on Azure Local 23H2)](manage-node-pools.md)
