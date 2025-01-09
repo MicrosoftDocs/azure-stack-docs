@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 01/09/2025
 ms.service: azure-stack-hci
 ---
 
@@ -49,14 +49,15 @@ Choose the deployment option that best suits your needs:
 
 The following table shows the guest operating systems that the different licensing methods can activate:
 
-| Version | AHB Windows Server 2019 license | AHB Windows Server 2022 license | Windows Server subscription |
-|--|--|--|--|
-| Windows Server 2012/R2 | X | X | X |
-| Windows Server 2016 | X | X | X |
-| Windows Server 2019 | X | X | X |
-| Windows Server 2022 |  | X | X |
-| Windows Server 2022: Azure Edition | Requires Software Assurance | Requires Software Assurance | X |
-| Future editions (Evergreen) |  |  | X |
+| Version | AHB Windows Server 2019 license | AHB Windows Server 2022 license | AHB Windows Server 2025 license |Windows Server subscription |
+|--|--|--|--| -- |
+| Windows Server 2012/R2 | X | X | | X |
+| Windows Server 2016 | X | X | | X |
+| Windows Server 2019 | X | X | | X |
+| Windows Server 2022 |  | X | | X |
+| Windows Server 2022: Azure Edition | Requires Software Assurance | Requires Software Assurance | | X |
+| Windows Server 2025 |  | | X | X |
+| Future editions (Evergreen) |  |  | | X |
 
 ## Activate Windows Server subscription
 
