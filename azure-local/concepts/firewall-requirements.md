@@ -59,6 +59,7 @@ For a consolidated list of endpoints for India Central that includes Azure Local
 For a consolidated list of endpoints for Southeast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in Southeast Asia for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
 
+
 ## Firewall requirements for additional Azure services
 
 Depending on additional Azure services you enable for Azure Local, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
