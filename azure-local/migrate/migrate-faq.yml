@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 12/10/2024
+  ms.date: 01/09/2025
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
 
@@ -86,7 +86,7 @@ sections:
 
           ### My source VMs use static IP addresses. Are these addresses preserved when I migrate my VMs to Azure Local?
         
-          Currently both VMware and Hyper-V migrations only support VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Local system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.
+          In this release, static IP addresses can be preserved during migration for Windows VMs on VMware and Hyper-V. Linux VMs are not yet supported. For more details, see [Maintain static IP addresses](migrate-maintain-ip-addresses.md).
 
           ### I use DHCP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
         
