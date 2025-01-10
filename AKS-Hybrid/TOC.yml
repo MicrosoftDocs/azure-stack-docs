@@ -90,6 +90,8 @@
         href: kubernetes-rbac-23h2.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
+      - name: Configure SSH keys for a cluster
+        href: configure-ssh-keys.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity

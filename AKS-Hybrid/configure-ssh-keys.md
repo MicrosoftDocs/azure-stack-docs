@@ -1,0 +1,89 @@
+﻿---
+title: Configure SSH keys for a cluster in AKS enabled by Azure Arc
+description: Learn how to configure SSH keys for an AKS Arc cluster.
+ms.date: 01/10/2025
+ms.topic: how-to
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: leslielin
+ms.lastreviewed: 01/10/2025
+---
+
+# Configure SSH keys for an AKS Arc cluster
+
+> Applies to: AKS on Azure Local, version 23H2
+
+[SSH](https://www.ssh.com/ssh/) is an encrypted connection protocol that provides secure sign-ins over unsecured connections. AKS enabled by Azure Arc on Azure Local supports access to a VM in your Kubernetes nodes over SSH using a public-private key pair, also known as *SSH keys*. For information about how to create and manage SSH keys, see [Create and manage SSH keys](/azure/virtual-machines/ssh-keys-azure-cli).
+
+An SSH key is required when deploying an AKS Arc cluster. When you create the cluster, you can either generate a new key pair or use an existing public key. This article explains how to use SSH keys for AKS Arc clusters from Azure CLI and the Azure portal.
+
+## Before you begin
+
+To create an AKS Arc cluster, ensure that you have the necessary details from your on-premises infrastructure administrator as described in [Create Kubernetes clusters](aks-create-clusters-cli.md#before-you-begin).
+
+## Azure CLI
+
+Use the [az aksarc create](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) command to create an AKS Arc cluster with an SSH public key. To generate a new key, pass the `--generate-ssh-key` parameter. To use an existing public key, specify the key or key file using the `--ssh-key-value` parameter. To restrict SSH access to specific IP addresses, use the `--ssh-auth-ips` argument. For instructions, see [restrict SSH access to virtual machines](restrict-ssh-access.md).
+
+| **SSH parameter** | **Description** | **Default value** |
+|-------------------------|-------------------------|-------------------------|
+| `--generate-ssh-key` | - Required parameter if no pre-existing SSH key exists on your local machine. When you specify `--generate-ssh-key`, Azure CLI automatically generates a set of SSH keys and saves them in the default directory **~/.ssh/**.</br> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this scenario, whether you specify `--generate-ssh-keys` or omit the parameter entirely, it has no effect. |  |
+| `--ssh-key-value` | - Public key path or key contents for SSH access to node VMs. For example: **ssh-rsa AAAAB ... UcyupgH azureuser@linuxvm**.</br> - By default, this key is located in **~/.ssh/id_rsa.pub**. You can specify a different location using the `--ssh-key-value` parameter during cluster creation. | **~/.ssh/id_rsa.pub** |
+| `--ssh-auth-ips` | A comma-separated list of IP addresses or CIDR ranges that are allowed to SSH into the cluster VM. |  |
+
+The following examples show how to use this command:
+
+- To create an AKS Arc cluster and use the default generated SSH keys:
+
+  ```azurecli
+  az aksarc create -n $<aks_cluster_name> -g $<resource_group_name> --custom-location $<customlocation_ID> --vnet-ids $<logicnet>_Id --aad-admin-group-object-ids <entra-admin-group-object-ids> --generate-ssh-keys
+  ```
+
+- To create an AKS Arc cluster using a pre-generated SSH key:
+
+  - Generate the SSH key. For more information, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys):
+
+  ```azurecli
+  az sshkey create --name "$pubkey.publickey" --resource-group $<resource_group_name>
+  ```
+
+  - Create an AKS Arc cluster with a pre-generated SSH key:
+
+    ```azurecli
+    az aksarc create -n $<aks_cluster_name> -g $<resource_group_name> --custom-location $<customlocation_ID> --vnet-ids $<logicnet_Id> --aad-admin-group-object-ids <entra-admin-group-object-ids> --ssh-key-value $pubkey.publickey
+    ```
+
+- To specify an SSH public key file, include the `--ssh-key-value` parameter:
+
+  ```azurecli
+  az aksarc create -n $<aks_cluster_name> -g $<resource_group_name> --custom-location $<customlocation_ID> --vnet-ids $<logicnet_Id> --aad-admin-group-object-ids <entra-admin-group-object-ids> --generate-ssh-keys --ssh-key-value ~/.ssh/id_rsa.pub
+  ```
+
+## Azure portal
+
+For information about how to create new SSH keys from the Azure portal, see [Create and manage SSH keys in the portal](/azure/virtual-machines/ssh-keys-portal#generate-new-keys).
+
+When you create an AKS Arc cluster from the Azure portal, see [Create a Kubernetes cluster](aks-create-clusters-portal.md#create-a-kubernetes-cluster) to provide the necessary information. You can configure your SSH key in the **Administrator account** section under the **Basic** tab.
+
+You have three options for SSH key configuration:
+
+1. Generate a new key pair.
+2. Use an existing key stored in Azure and select from the stored keys.
+3. Use an existing public key by providing the SSH public key value.
+
+## Error message
+
+If you don't provide valid SSH key information during cluster creation and no SSH key exists, you receive error messages like these:
+
+- An RSA key file or key value must be supplied to SSH Key Value.
+- Control Plane: Missing Security Keys in Cluster Configuration.
+- LinuxProfile SSH public keys should be valid and non-empty.
+- Global LinuxProfile SSH public keys should be valid and non-empty.
+
+To mitigate the issue, see [Create and manage SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, see [Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
+
+## Next steps
+
+- [Connect to Windows or Linux worker nodes with SSH](connect-to-worker-nodes-ssh.md)
+- [Restrict SSH access to specific IP addresses](restrict-ssh-access.md)
+- [Get on-demand logs for troubleshooting](get-on-demand-logs.md)
