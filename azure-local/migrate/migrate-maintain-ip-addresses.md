@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/07/2025
+ms.date: 01/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -20,7 +20,9 @@ Download the [Windows static IP migration package](https://aka.ms/hci-migrate-st
 
 The .zip file includes the following scripts:
 
-- **Prepare-MigratedVM.ps1** – Prepares the VM for static IP migration using the `-StaticIPMigration` cmdlet, which runs the *Initialize-StaticIPMigration.ps1* script.
+- **Prepare-MigratedVM.ps1** – Prepares the VM for static IP migration using the `-StaticIPMigration` cmdlet, which runs the *Initialize-StaticIPMigration.ps1* script. 
+
+    Logs are automatically created in the script's directory.
 
 - **Initialize-StaticIPMigration.ps1** - Collects the VM network interface information into a configuration file (*InterfaceConfigurations.json* in the local directory) and sets up a scheduled task to run the *Set-StaticIPConfiguration.ps1* script.
 
@@ -29,7 +31,7 @@ The .zip file includes the following scripts:
 - **Utilities.psm1** - Contains helper functions for the scripts.
 
 > [!NOTE]
-> Static IP address migration is currently available only for Windows VMs, and is not supported for Linux VMs.
+> Static IP address migration is currently available only for Windows VMs, and is not yet supported for Linux VMs.
 
 ## Prerequisites
 
@@ -174,19 +176,22 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 ## Known limitations
 
-There are a couple of limitations regarding the network interface information displayed in Azure portal.
-
-### Static network interfaces with static logical networks
-
-For static network interfaces created using a static logical network, Azure portal may not display the correct IP address, even if the static IP migration scripts were run and the correct IP addresses were transferred to the migrated VM.
-
-The Arc Resource Bridge defaults to selecting the first IP address marked as available on the underlying logical network subnet and displays that in Azure portal. On-demand modification of this IP address is not supported at this time. This limitation does not apply to dynamic network interfaces created using a dynamic logical network. 
-
-Azure portal should display the correct IP address that were assigned to the DHCP-enabled network interface on the migrated VM, provided that the prerequisites are met and Hyper-V Manager is able to view the IP address of the network interface on the VM.
+There are several limitations regarding the network interface information displayed in Azure portal.
 
 ### Old network adapter information in Device Manager
 
-Device Manager may still show the old network adapter information pre-migration. While this does not affect the new network adapter created post-migration and will not cause IP conflicts, the script doesn't currently delete this old registration, so it remains visible.
+After migration, Device Manager may still display the old network adapter information from pre-migration. While this does not affect the new network adapter created post-migration and will not cause IP conflicts, the script doesn't currently delete this old registration, so it remains visible.
+
+### Multiple IP addresses on a single network adapter
+
+When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Arc VMs in Azure Local will display only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
+
+### Multiple network adapters and types
+
+If the source VM has multiple network adapters with a mix of DHCP and static configurations, the migrated VM will preserve the correct number of network adapter, network adapter types, and static IP addresses on the static network adapter. However, the Arc portal view of the migrated VM may incorrectly display duplicate or inaccurate IPs on the network adapters. This is a known display issue in the Arc portal and doesn't impact the functionality of the IP addresses on the migrated VM. See the example below of a migrated VM with a DHCP network adapter and a static network adapter.
+
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/.png":::
+
 
 ## Next steps
 
