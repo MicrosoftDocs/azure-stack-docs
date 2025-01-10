@@ -92,6 +92,8 @@
         href: retrieve-admin-kubeconfig.md
       - name: Configure SSH keys for a cluster
         href: configure-ssh-keys.md
+      - name: Connect to Windows or Linux worker nodes with SSH
+        href: ssh-connect-to-windows-and-linux-worker-nodes.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
       - name: Deploy and configure Workload Identity

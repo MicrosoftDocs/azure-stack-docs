@@ -34,7 +34,7 @@ This article explains how to use SSH to connect to both Windows and Linux nodes.
 1. Run `ssh cloud@<IP address of the node>` to connect to a worker node:
 
    > [!NOTE]
-   > You must pass the correct location to your SSH private key. The following example uses the default location of **~/.ssh/id_rsa**, but you might need to change this location if you requested a different path. To change the location, see [COnfigure SSH keys](configure-ssh-keys.md) to specify the `--ssh-key-value` parameter when you create an AKS Arc cluster.
+   > You must pass the correct location to your SSH private key. The following example uses the default location of **~/.ssh/id_rsa**, but you might need to change this location if you requested a different path. To change the location, see [Configure SSH keys](configure-ssh-keys.md) to specify the `--ssh-key-value` parameter when you create an AKS Arc cluster.
 
    ```azurecli
    ssh -i $env:USERPROFILE\.ssh\id_rsa clouduser@<IP address of the node>
