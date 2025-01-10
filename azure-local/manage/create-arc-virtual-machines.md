@@ -153,11 +153,10 @@ If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is au
 
 ### Additional parameters for Windows Server 2012 and Windows Server 2012R2 images
 
-When creating an Arc VM using the Windows Server 2012 and Windows Server 2012R2 images, specify the following additional parameters to create the VM:
+When creating an Arc VM using the Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
 
-- `--enable-vm-agent`: Set this parameter to `true`. This parameter is required to enable the VM agent on the VM. The VM agent is required for the VM to communicate with Azure. The VM agent is installed by default on Windows Server 2016 and later images.
-- `--enable-vm-config`: Set this parameter to `false`. This parameter is required to enable the VM configuration agent on the VM. The VM configuration agent is required for the VM to communicate with Azure. The VM configuration agent is installed by default on Windows Server 2016 and later images.
-
+- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent and enable guest management on the Arc VMs.
+- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 do not support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM
 
