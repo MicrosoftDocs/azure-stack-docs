@@ -45,7 +45,7 @@ Consider the following limitations when managing Arc VMs on Azure Local:
 - Taking checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely impact the management of these Arc VMs from Azure.
 - Updates to Arc VM configurations, such as vCPU, memory, adding/removing network interface or data disk via on-premises tools won't reflect on the Azure management plane.
 - Resource group move isn't supported for Arc VMs on Azure Local and its associated resources (such as network interfaces and disks).
-- Creation of Arc VMs using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal and can only be done via the Azure CLI. For more information, see [Additional parameters required](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012r2-images) to provision Arc VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images.  
+- Creation of Arc VMs using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal and can only be done via the Azure CLI. For more information, see [Additional parameters required](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images) to provision Arc VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images.  
 
 ## Components of Azure Arc VM management
 
