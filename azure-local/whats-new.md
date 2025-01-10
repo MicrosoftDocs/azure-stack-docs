@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 01/03/2025
+ms.date: 01/09/2025
 ---
 
 # What's new in Azure Local, version 23H2
@@ -74,8 +74,6 @@ This is a baseline release with the following features and improvements:
   - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
-
-  - **ECC memory requirements** - Beginning this release, the EE memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
 

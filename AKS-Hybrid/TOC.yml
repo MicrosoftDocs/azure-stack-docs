@@ -36,12 +36,8 @@
         href: availability-sets.md   
     - name: Supported scale requirements
       href: scale-requirements.md
-    - name: Azure Hybrid Benefit
-      href: azure-hybrid-benefit.md
     - name: Billing
       items:
-      - name: Pricing overview
-        href: pricing.md
       - name: Pricing details
         href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Quickstarts
@@ -403,6 +399,8 @@
       href: node-repair.md
     - name: Billing
       items:
+      - name: Pricing overview
+        href: pricing.md      
       - name: Azure Hybrid Benefit
         href: azure-hybrid-benefit-22h2.md
   - name: How-to guides

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.custom: linux-related-content
-ms.date: 12/17/2024
+ms.date: 01/08/2025
 ---
 
 # What is Azure Arc VM management?
@@ -44,7 +44,8 @@ Consider the following limitations when managing Arc VMs on Azure Local:
 
 - Taking checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely impact the management of these Arc VMs from Azure.
 - Updates to Arc VM configurations, such as vCPU, memory, adding/removing network interface or data disk via on-premises tools won't reflect on the Azure management plane.
-- Resource group move isn't supported for Arc VMs on Azure Local and its associated resources (such as network interfaces and disks). 
+- Resource group move isn't supported for Arc VMs on Azure Local and its associated resources (such as network interfaces and disks).
+- Creation of Arc VMs using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal and can only be done via the Azure CLI. For more information, see [Additional parameters required](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images) to provision Arc VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images.  
 
 ## Components of Azure Arc VM management
 
@@ -56,7 +57,7 @@ Arc VM management comprises several components including the Arc Resource Bridge
 
 - **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
 
-- **Kubernetes Extension for VM Operator**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It is a Kubernetes controller that uses custom resources to manage your VMs.
+- **Kubernetes Extension for VM Operator**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
 
