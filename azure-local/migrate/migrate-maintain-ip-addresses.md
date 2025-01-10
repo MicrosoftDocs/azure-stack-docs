@@ -190,7 +190,7 @@ When the source VM has multiple static IP addresses assigned to a single network
 
 If the source VM has multiple network adapters with a mix of DHCP and static configurations, the migrated VM will preserve the correct number of network adapter, network adapter types, and static IP addresses on the static network adapter. However, the Arc portal view of the migrated VM may incorrectly display duplicate or inaccurate IPs on the network adapters. This is a known display issue in the Arc portal and doesn't impact the functionality of the IP addresses on the migrated VM. See the example below of a migrated VM with a DHCP network adapter and a static network adapter.
 
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/.png":::
+:::image type="content" source="./media/migrate-maintain-ip-addresses/.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/.png":::
 
 
 ## Next steps
