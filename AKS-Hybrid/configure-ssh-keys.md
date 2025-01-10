@@ -23,7 +23,7 @@ To create an AKS Arc cluster, ensure that you have the necessary details from yo
 
 ## Azure CLI
 
-Use the [az aksarc create](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) command to create an AKS Arc cluster with an SSH public key. To generate a new key, pass the `--generate-ssh-key` parameter. To use an existing public key, specify the key or key file using the `--ssh-key-value` parameter. To restrict SSH access to specific IP addresses, use the `--ssh-auth-ips` argument. For instructions, see [restrict SSH access to virtual machines](restrict-ssh-access.md).
+Use the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command to create an AKS Arc cluster with an SSH public key. To generate a new key, pass the `--generate-ssh-key` parameter. To use an existing public key, specify the key or key file using the `--ssh-key-value` parameter. To restrict SSH access to specific IP addresses, use the `--ssh-auth-ips` argument. For instructions, see [restrict SSH access to virtual machines](restrict-ssh-access.md).
 
 | **SSH parameter** | **Description** | **Default value** |
 |-------------------------|-------------------------|-------------------------|
@@ -84,6 +84,6 @@ To mitigate the issue, see [Create and manage SSH keys with the Azure CLI](/azur
 
 ## Next steps
 
-- [Connect to Windows or Linux worker nodes with SSH](connect-to-worker-nodes-ssh.md)
+<!-- - [Connect to Windows or Linux worker nodes with SSH](connect-to-worker-nodes-ssh.md) -->
 - [Restrict SSH access to specific IP addresses](restrict-ssh-access.md)
 - [Get on-demand logs for troubleshooting](get-on-demand-logs.md)
