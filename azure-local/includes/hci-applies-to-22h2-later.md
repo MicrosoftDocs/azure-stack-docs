@@ -3,9 +3,8 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack-hci
 ms.topic: include
-ms.date: 10/11/2024
+ms.date: 01/08/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 11/02/2022
 ---
 
-> Applies to: Azure Local, version 22H2 and later
+> Applies to: Azure Local 2311.2 and later

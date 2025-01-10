@@ -1,6 +1,6 @@
 ---
 title: Use GPUs for compute-intensive workloads
-description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on HCI 22H2.
+description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Local 22H2.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 02/29/2024
@@ -97,7 +97,7 @@ OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 Repeat steps 1 to 3 for each node in your failover cluster.
 
 > [!IMPORTANT]
-> GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Stack HCI.
+> GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Local.
 
 ## Install or update AKS
 
@@ -232,4 +232,4 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
-- [AKS on HCI and Windows Server overview](overview.md)
+- [AKS on Azure Local and Windows Server overview](overview.md)
