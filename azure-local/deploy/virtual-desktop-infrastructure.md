@@ -4,7 +4,7 @@ description: This topic provides guidance on how to plan, configure, and deploy 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/22/2024
+ms.date: 01/08/2025
 ---
 
 # Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI
@@ -15,7 +15,7 @@ ms.date: 05/22/2024
 
 This topic provides guidance on how to plan, configure, and deploy virtual desktop infrastructure (VDI) on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to deliver centralized, highly available, simplified, and secure management for the users in your organization. Use this guidance to enable scenarios like bring-your-own-device (BYOD) for your users, while providing them with a consistent and reliable experience for business-critical applications without sacrificing security.
 
-For information about how to deploy Azure Virtual Desktop on Azure Stack HCI, version 23H2, see [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal).
+For information about how to deploy Azure Virtual Desktop on Azure Local, see [Deploy Azure Virtual Desktop](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal).
 
 > [!NOTE]
 > This article focuses on deploying Remote Desktop Services (RDS) to Azure Stack HCI. You can also support VDI workloads using Azure Virtual Desktop for Azure Stack HCI. Learn more at [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
