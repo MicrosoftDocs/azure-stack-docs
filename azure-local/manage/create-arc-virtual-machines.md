@@ -151,12 +151,12 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
-### Additional parameters for Windows Server 2012 and Windows Server 2012R2 images
+### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
-When creating an Arc VM using the Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
+When creating an Arc VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
 
-- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent and enable guest management on the Arc VMs.
-- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 do not support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
+- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on Arc VMs.
+- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 do not support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM
 
