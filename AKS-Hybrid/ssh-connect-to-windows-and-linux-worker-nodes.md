@@ -17,7 +17,7 @@ During your AKS Arc cluster's lifecycle, you might need to directly access clust
 
 This article explains how to use SSH to connect to both Windows and Linux nodes.
 
-## Use SSH to connect to Windows and Linux worker nodes
+## Use SSH to connect to worker nodes
 
 1. To access the Kubernetes cluster with the specified permissions, you must retrieve the certificate-based admin **kubeconfig** file using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. For more information, see [Retrieve certificate-based admin kubeconfig](retrieve-admin-kubeconfig.md):
 
