@@ -4,7 +4,7 @@ description: This topic provides information on how to plan a Software Defined N
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 10/18/2024
+ms.date: 01/10/2025
 ---
 # Plan a Software Defined Network infrastructure for Azure Local, version 23H2
 
@@ -16,19 +16,22 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 There are several hardware and software prerequisites for an SDN infrastructure, including:
 
-- **Security groups and dynamic DNS registration**. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure security groups and dynamic DNS registration.
-
-    To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
-
 - **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, and options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
 - **Physical compute hosts**. These hosts run Hyper-V and are required to host an SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the next section.
+
+- **Dynamic DNS registration**. This step is optional if Network Controller is deployed on the host machines. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure dynamic DNS registration.
+
+    To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
 ### SDN hardware requirements
 
 This section provides hardware requirements for physical switches when planning an SDN environment.
 
 #### Switches and routers
+
+> [!NOTE]
+> If you're using a switch certified for Azure Local, it'll already meet all the necessary requirements. For more information, see [Network switches for Azure Local](./physical-network-requirements.md#network-switches-for-azure-local).
 
 When selecting a physical switch and router for your SDN environment, make sure it supports the following set of capabilities:
 - Switchport MTU settings \(required\)
@@ -77,6 +80,8 @@ All physical compute hosts must access the management logical network and the HN
 
 The HNV Provider network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network.
 
+HNV Provider network is required only for virtual networks, and not for logical networks.
+
 Here's how HNV Provider network allocates IP addresses. Use this to plan your address space for the HNV Provider network.
 
 - Allocates two IP addresses to each physical server
@@ -91,7 +96,6 @@ A DHCP server can automatically assign IP addresses for the management network, 
 | If... | Then... |
 |:-|:-|
 | The logical networks use VLANs, | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated. |
-| You are using Switched-Embedded Teaming (SET) and have multiple Network Interface Card (NIC) team members, such as network adapters, | you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain. |
 | The physical compute host is running additional infrastructure VMs, such as Network Controller, the SLB/Multiplexer (MUX), or Gateway, | ensure that the management logical network has sufficient IP addresses for each hosted VM. Also, ensure that the HNV Provider logical network has sufficient IP addresses to allocate to each SLB/MUX and gateway infrastructure VM. Although IP reservation is managed by the Network Controller, failure to reserve a new IP address due to unavailability may result in duplicate IP addresses on your network. |
 
 For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
@@ -112,10 +116,10 @@ Change the sample IP subnet prefixes and VLAN IDs for your environment.
 | Network name | Subnet | Mask | VLAN ID on trunk | Gateway | Reservation (examples) |
 |:-|:-|:-|:-|:-|:-|
 | Management | 10.184.108.0 | 24 | 7 | 10.184.108.1 | 10.184.108.1 - Router<br> 10.184.108.4 - Network Controller<br> 10.184.108.10 - Compute host 1<br> 10.184.108.11 - Compute host 2<br> 10.184.108.X - Compute host X |
-| HNV Provider | 10.10.56.0 | 23 | 11 | 10.10.56.1 | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1 |
-| Public VIP | 41.40.40.0 | 27 | NA | 41.40.40.1 | 41.40.40.1 - Router<br> 41.40.40.3 - IPSec S2S VPN VIP |
-| Private VIP | 20.20.20.0 | 27 | NA | 20.20.20.1 | 20.20.20.1 - Default GW (router) |
-| GRE VIP | 31.30.30.0 | 24 | NA | 31.30.30.1 | 31.30.30.1 - Default GW |
+| HNV Provider | 10.10.56.0 | 23 | 11 | 10.10.56.1 | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1<br> 10.10.56.6, 10.10.56.7 – Compute host 1 |
+| Public VIP | 41.40.40.0 | 27 | NA | 41.40.40.1 | 41.40.40.2 – Public VIP1<br> 41.40.40.3 - IPSec S2S VPN VIP |
+| Private VIP | 20.20.20.0 | 27 | NA | 20.20.20.1 | 20.20.20.2 – Private VIP1 |
+| GRE VIP | 31.30.30.0 | 24 | NA | 31.30.30.1 | 31.30.30.2 – GRE VIP1 |
 
 ## Routing infrastructure
 
@@ -137,24 +141,20 @@ You or your network administrator must configure the BGP router peer to accept c
 For more information, see [Border Gateway Protocol (BGP)](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp).
 
 ## Default gateways
-Machines configured to connect to multiple networks, such as the physical hosts, SLB/MUX, and gateway VMs must only have one default gateway configured. Use the following default gateways for the hosts and the infrastructure VMs:
+
+Machines configured to connect to multiple networks, such as the physical hosts, SLB/MUX, and gateway VMs must only have one default gateway configured. The SDN installation process through Windows Admin Center, SDN Express, or the Azure portal automatically configures the default gateways.
+
+Use the following default gateways for the hosts and the infrastructure VMs:
+
 - For Hyper-V hosts, use the management network as the default gateway.
 - For Network Controller VMs, use the management network as the default gateway.
 - For SLB/MUX VMs, use the management network as the default gateway.
 - For the gateway VMs, use the HNV Provider network as the default gateway. This should be set on the front-end NIC of the gateway VMs.
 
-## Switches and routers
-To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A readme file and tested command-line interface (CLI) commands for specific switches are provided.
-
-For detailed switch and router requirements, see the SDN hardware requirements section above.
-
 ## Compute
 All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the management logical network. The host must be reachable via a management IP address assigned to the management host vNIC.
 
 You can use any storage type that is compatible with Hyper-V, shared, or local.
-
-> [!TIP]
-> It is convenient to use the same name for all your virtual switches, but it isn't mandatory. If you plan to use scripts to deploy, see the comment associated with the `vSwitchName` variable in the config.psd1 file.
 
 ### Host compute requirements
 The following shows the minimum hardware and software requirements for the four physical hosts used in the example deployment.
@@ -171,7 +171,6 @@ The following shows the requirements for the VM roles.
 | Network Controller (three nodes) | 4 vCPUs | 4 GB minimum<br> (8 GB recommended) | 75 GB for operating system drive |
 | SLB/MUX (three nodes) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
 | RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
-| RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router) | 2 vCPUs | 2 GB | 75 GB for operating system drive |
 
 If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?preserve-view=true&view=sc-vmm-2019).
 
