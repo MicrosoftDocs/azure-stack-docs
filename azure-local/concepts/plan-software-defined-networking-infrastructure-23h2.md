@@ -142,7 +142,7 @@ For more information, see [Border Gateway Protocol (BGP)](/windows-server/remote
 
 ## Default gateways
 
-Machines configured to connect to multiple networks, such as the physical hosts, SLB/MUX, and gateway VMs must only have one default gateway configured. The SDN installation process through Windows Admin Center, SDN Express, or the Azure portal automatically configures the default gateways.
+Machines configured to connect to multiple networks, such as the physical hosts, SLB/MUX, and gateway VMs must only have one default gateway configured. The SDN installation through Windows Admin Center, SDN Express, or the Azure portal automatically configures the default gateways.
 
 Use the following default gateways for the hosts and the infrastructure VMs:
 
