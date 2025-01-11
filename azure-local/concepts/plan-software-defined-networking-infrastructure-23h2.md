@@ -16,11 +16,11 @@ Learn about deployment planning for a Software Defined Network (SDN) infrastruct
 
 There are several hardware and software prerequisites for an SDN infrastructure, including:
 
-- **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, and options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
+- **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, and options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) virtual machine (VM).
 
 - **Physical compute hosts**. These hosts run Hyper-V and are required to host an SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the next section.
 
-- **Dynamic DNS registration**. This step is optional if Network Controller is deployed on the host machines. You must prepare your datacenter for Network Controller deployment, which requires a set of virtual machines (VMs). Before you can deploy the Network Controller, you must configure dynamic DNS registration.
+- **Dynamic DNS registration**. This step is optional if Network Controller is deployed on host machines. For deployment on VMs, you must prepare your datacenter and optionally configure dynamic DNS registration.
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
