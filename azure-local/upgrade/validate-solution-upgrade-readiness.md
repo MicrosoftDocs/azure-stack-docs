@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 12/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -267,7 +267,16 @@ To learn more about how to disable WDAC policies, see [Remove Windows Defender A
 
 Only systems installed using an English language are eligible to apply the solution upgrade. Make sure that your system was installed using English.
 
-For more information, see [Verify OS language for Azure Local](../manage/languages.md#change-the-language-in-server-core).
+If you used the English ISO but configured a different language during setup, you must change the language settings for the LCM Upgrade user account as follows:
+
+1. Sign in to each machine using the domain account you plan to use for the upgrade.
+
+1. Run the following PowerShell commands:
+
+    ```powershell
+    $UserLanguageList = New-WinUserLanguageList -Language en-US
+    Set-WinUserLanguageList -LanguageList $UserLanguageList
+    ```
 
 ## Remediation 6: Check storage pool space
 

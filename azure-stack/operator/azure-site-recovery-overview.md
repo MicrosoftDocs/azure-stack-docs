@@ -47,9 +47,6 @@ Azure Site Recovery provides many features, as described in the following table.
 
 Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of Virtual Machines. To provide this service at a competitive rate, the cost of Azure Site Recovery is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
 
-> [!NOTE]
-> Until the 1st of June 2024, there is no cost for running the Azure Site Recovery service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
-
 When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
 
 [Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multi-tenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
@@ -57,6 +54,9 @@ When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free tri
 ## What can I replicate?
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
+
+> [!NOTE]
+> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 

@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 10/18/2024
+ms.date: 01/08/2025
 ---
 
 # Software Defined Networking (SDN) in Azure Local, version 23H2
@@ -17,9 +17,6 @@ Software defined networking (SDN) provides a way to centrally configure and mana
 Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtualization/hyper-v-virtual-switch/hyper-v-virtual-switch), [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization), [Software Load Balancing](/windows-server/networking/sdn/technologies/network-function-virtualization/software-load-balancing-for-sdn), and [RAS Gateway](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-for-sdn) are designed to be integral elements of your SDN infrastructure. You can also use your existing SDN-compatible devices to achieve deeper integration between your workloads running in virtual networks and the physical network.
 
 There are three major SDN components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
-
-   > [!NOTE]
-   > SDN is not supported on stretched (multi-site) clusters.
 
 ## Network Controller
 

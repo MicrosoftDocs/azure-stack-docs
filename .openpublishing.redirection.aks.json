@@ -1424,6 +1424,11 @@
         "source_path": "AKS-Arc/infrastructure-components.md",
         "redirect_url": "/azure/aks/hybrid/cluster-architecture",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/azure-hybrid-benefit.md",
+        "redirect_url": "/azure/aks/hybrid/pricing",
+        "redirect_document_id": false
       }
     ]
   }
