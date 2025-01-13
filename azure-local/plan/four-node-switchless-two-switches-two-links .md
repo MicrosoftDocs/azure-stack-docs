@@ -5,7 +5,7 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-arm-template
 ms.date: 01/09/2025
 ---
@@ -14,26 +14,28 @@ ms.date: 01/09/2025
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2.md)] and later
 
-In this article, learn about the four-node storage switchless with two TOR L3 switches and two full-mesh links network reference pattern that you can use to deploy your Azure Local solution.
+This article describes how you can use a four-node storage switchless network reference pattern with two TOR L3 switches and two full-mesh links to deploy your Azure Local solution.
 
 > [!NOTE]
-> The 4-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
+> The four-node switchless network reference patterns described in this article were tested and validated by Microsoft.
 
 ## Scenarios
 
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenters.
 
-Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
+Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components.
+
+SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
 :::image type="content" source="media/four-node-switchless-two-switches-dual-link/four-node-switchless-components-layout.png" alt-text="Diagram showing four-node switchless, two TOR, two link physical connectivity layout." lightbox="media/four-node-switchless-two-switches-dual-link/four-node-switchless-components-layout.png":::
 
 ## Physical connectivity components
 
-As illustrated in the diagram above, this pattern has the following physical network components:
+As illustrated in the following four-node network diagram, this pattern has the following physical network components:
 
 - For northbound and southbound communication, the Azure Local instance requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 
-- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
+- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each network interface port is connected to a different TOR.
 
 - Six RDMA NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage. Each node in the system has a redundant connection with two paths to the other node in the system.
 
@@ -55,9 +57,9 @@ When deploying four nodes in a switchless configuration, Network ATC has the fol
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you must specify the IPs on the Azure Resource Manager (ARM) template used to deploy the Azure Local instance from Azure.
 
-- For Azure Local, version 23H2 cloud deployments:
+- For Azure Local:
 
     - Scale out storage switchless systems aren't supported.
 
@@ -103,7 +105,7 @@ For four-node storage switchless patterns, two Network ATC intents are created. 
 
 ### Management and compute intent
 
-- Intent type: Management and Compute
+- Intent type: Management and compute
 - Intent mode: Cluster mode
 - Teaming: Yes. pNIC01 and pNIC02 team.
 - Default management VLAN: Configured VLAN for management adapters isn’t modified.
@@ -135,7 +137,7 @@ For more information, see [Deploy host networking with Network ATC](../deploy/ne
 
 ## ARM template Storage intent networks configuration example
 
-You can use the [ARM template for 4-node storage switchless, dual TOR and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-4Nodes-Switchless-DualLink).
+You can use the [ARM template for four-node storage switchless, dual TOR and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-4Nodes-Switchless-DualLink).
 
 ```powershell
           "storageNetworkList": {
