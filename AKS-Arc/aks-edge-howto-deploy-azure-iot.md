@@ -4,7 +4,7 @@ description: Learn how to run the quickstart script that creates an Arc-enabled 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/23/2024
+ms.date: 01/13/2025
 ms.custom: template-how-to
 ---
 
@@ -23,11 +23,11 @@ To run the script, you need the following prerequisites:
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the **connectedk8s** extensions for Azure CLI:
 
-   ```bash
-   az extension add --upgrade --name connectedk8s 
-   ```
+  ```azurecli
+  az extension add --upgrade --name connectedk8s 
+  ```
 
-- Hardware requirements: ensure that your machine has a minimum of 10-GB available RAM, 4 available vCPUs, and 52-GB free disk space reserved for Azure IoT Operations.
+- Hardware requirements: ensure that your machine has a minimum of 16 GB available RAM, 4 available vCPUs, and 52 GB free disk space reserved for Azure IoT Operations.
 
 ## Create an Arc-enabled cluster
 
@@ -55,13 +55,25 @@ To run the quickstart script, perform the following steps:
    az ad sp show --id bc313c14-388c-4e7d-a58e-70017303ee3b --query id -o tsv
    ```
 
-1. Run the following commands, replacing the placeholder values with your information:
+1. Run the following commands:
 
    ```powershell
    $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
    Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1
    Unblock-File .\AksEdgeQuickStartForAio.ps1
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+   ```
+
+1. [Optional] [Azure Arc gateway (preview)](/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only 7 endpoints. To use Azure Arc Gateway with Azure IoT Operations on AKS Edge Essentials:
+
+   - [Follow step 1 to create an Arc gateway resource](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
+   - Note the [URLs listed in step 2](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-skip-range` in step 2.
+   - Follow [step 3a in the Arc gateway documentation](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway ID.
+   - In **AksEdgeQuickStartForAio.ps1**, find the `$aideuserConfig` definition. Set the value of `GatewayResourceId` to the gateway ID saved from the previous step.
+
+1. Run the following command, and replace the placeholder values with your information:
+
+   ```powershell
    .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>"
    ```
 
@@ -74,9 +86,27 @@ To run the quickstart script, perform the following steps:
    |CLUSTER_NAME     |    A name for the new cluster to be created.     |
    |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
 
-   If there are issues during deployment, like if your machine reboots as part of this process, run the set of commands again.
+   There are other optional flags that you can include when you run **AksEdgeQuickStartForAio.ps1**. The optional flags are as follows: 
 
-1. Run the following commands to check that the deployment was successful:
+   |Optional flags|Value  |
+   |---------|---------|
+   | `enableWorkloadIdentity` (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
+   | `proxy-https` | Provide the proxy value: `https://<proxy-server-ip-address>:<port>`. |
+   | `proxy-http` | Provide the proxy value: `http://<proxy-server-ip-address>:<port>`. |
+   | `proxy-skip-range` | Provide the proxy skip range: `<excludedIP>`,`<excludedCIDR>`. If the `http(s)_proxy` is provided, then `no_proxy` should also be updated to `localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc,169.254.169.254`. |
+
+   You can add these flags as shown in the following example:
+
+   ```powershell
+   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>" --enableWorkloadIdentity:false
+   ``` 
+
+   > [!IMPORTANT]
+   > Preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. AKS Edge Essentials previews are partially covered by customer support on a best-effort basis.
+
+   If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
+
+   Run the following commands to check that the deployment was successful:
 
    ```powershell
    Import-Module AksEdge
