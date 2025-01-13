@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/10/2025
+ms.date: 01/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -20,7 +20,7 @@ Download the [Windows static IP migration package](https://aka.ms/hci-migrate-st
 
 The .zip file includes the following scripts:
 
-- **Prepare-MigratedVM.ps1** – Prepares the VM for static IP migration using the `-StaticIPMigration` cmdlet, which runs the *Initialize-StaticIPMigration.ps1* script. 
+- **Prepare-MigratedVM.ps1** – Prepares the VM for static IP migration using the `-StaticIPMigration` cmdlet, which runs the *Initialize-StaticIPMigration.ps1* script.
 
     Logs are automatically created in the script's directory.
 
@@ -37,19 +37,21 @@ The .zip file includes the following scripts:
 
 Before you begin, prepare the source and target environments for IP migration.
 
-### Prepare source environment for IP migration
+### Prepare source VMs for IP migration
 
-To migrate VMs with static IPs from Hyper-V or VMware, ensure the following are completed:
+To migrate VMs with static IPs from the source system (Hyper-V or VMware), follow these steps:
 
-- The VMs are powered on throughout the replication process and up to planned failover (migration).
+- Ensure the VMs are powered on throughout the replication process and up to planned failover (migration).
 
-- For VMware VMs, **VMware Tools** are installed.  
+- For VMware VMs, ensure that **VMware Tools** are installed.  
 
-- For Hyper-V VMs, that **Hyper-V Integration Services** are installed. For non-Windows VMs, that **Linux Integration Services** are installed. For more information, see [Manage Hyper-V Integration Services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+- For Hyper-V VMs, ensure that **Hyper-V Integration Services** are installed. For more information, see [Manage Hyper-V Integration Services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
 
-- The preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
+- For Linux VMs, ensure that **Linux Integration Services** are installed.
 
-### Prepare target Azure Local instance for IP migration
+- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
+
+### Prepare target VMs for IP migration
 
 On the target system, provision a static Azure Arc logical network to support the migration. This setup requires defining the IP address space, gateway address, DNS servers, and optionally an IP pool range.
 
@@ -176,7 +178,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 ## Known limitations
 
-There are several limitations regarding the network interface information displayed in Azure portal.
+These are the known limitations and display issues when migrating static IP addresses:  
 
 ### Old network adapter information in Device Manager
 
@@ -190,7 +192,7 @@ When the source VM has multiple static IP addresses assigned to a single network
 
 If the source VM has multiple network adapters with a mix of DHCP and static configurations, the migrated VM will preserve the correct number of network adapter, network adapter types, and static IP addresses on the static network adapter. However, the Arc portal view of the migrated VM may incorrectly display duplicate or inaccurate IPs on the network adapters. This is a known display issue in the Arc portal and doesn't impact the functionality of the IP addresses on the migrated VM. See the example below of a migrated VM with a DHCP network adapter and a static network adapter.
 
-:::image type="content" source="./media/migrate-maintain-ip-addresses/.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/.png":::
+:::image type="content" source="./media/migrate-maintain-ip-addresses/display-issue.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/display-issue.png":::
 
 
 ## Next steps
