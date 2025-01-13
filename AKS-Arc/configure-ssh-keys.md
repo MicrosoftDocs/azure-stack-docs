@@ -27,7 +27,7 @@ Use the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command to create
 
 | SSH parameter | Description |
 |-------------------------|-------------------------|
-| `--generate-ssh-key` | - Required parameter if no pre-existing SSH key exists on your local machine. When you specify `--generate-ssh-key`, Azure CLI automatically generates a set of SSH keys and saves them in the default directory **~/.ssh/**.</br> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this scenario, whether you specify `--generate-ssh-keys` or omit the parameter entirely, it has no effect. |
+| `--generate-ssh-key` | - Required parameter if no preexisting SSH key exists on your local machine. When you specify `--generate-ssh-key`, Azure CLI automatically generates a set of SSH keys and saves them in the default directory **~/.ssh/**.</br> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this scenario, whether you specify `--generate-ssh-keys` or omit the parameter entirely, it has no effect. |
 | `--ssh-key-value` | - Public key path or key contents for SSH access to node VMs. For example: **ssh-rsa AAAAB ... UcyupgH azureuser@linuxvm**.</br> - By default, this key is located in **~/.ssh/id_rsa.pub**. You can specify a different location using the `--ssh-key-value` parameter during cluster creation. |
 | `--ssh-auth-ips` | A comma-separated list of IP addresses or CIDR ranges that are allowed to SSH into the cluster VM. |
 
@@ -67,9 +67,9 @@ When you create an AKS Arc cluster using the Azure portal, provide the necessary
 
 You have three options for SSH key configuration:
 
-1. Generate a new key pair.
-2. Use an existing key stored in Azure and select from the stored keys.
-3. Use an existing public key by providing the SSH public key value.
+- Generate a new key pair.
+- Use an existing key stored in Azure and select from the stored keys.
+- Use an existing public key by providing the SSH public key value.
 
 ## Error message
 
