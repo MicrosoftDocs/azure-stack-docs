@@ -23,7 +23,7 @@ This article describes how to set up a nested virtualization environment to depl
 
 ## Deployment on Windows VM on VMware ESXi
 
-VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine.
+VMware ESXi [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine.
 
 To set up AKS Edge Essentials on a VMware ESXi Windows virtual machine, use the following steps:
 
