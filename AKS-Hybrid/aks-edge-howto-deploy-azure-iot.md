@@ -23,7 +23,7 @@ To run the script, you need the following prerequisites:
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the **connectedk8s** extensions for Azure CLI:
 
-  ```bash
+  ```azurecli
   az extension add --upgrade --name connectedk8s 
   ```
 
