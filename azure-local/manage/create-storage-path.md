@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.date: 12/02/2024
 ---
 
 # Create storage path for Azure Local 
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create storage path for VM images used on your Azure Local instance. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your system. You can create a storage path using the Azure CLI.
+This article describes how to create storage path for VM images used on your Azure Local instance. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your system. You can create a storage path using the Azure CLI or Azure portal.
 
 
 ## About storage path
@@ -36,7 +36,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Create a storage path on your system
 
-You can use the Azure CLI or the Azure portal to create a storage path on your system.
+You can use the Azure CLI or Azure portal to create a storage path on your system.
 
 
 # [Azure CLI](#tab/azurecli)

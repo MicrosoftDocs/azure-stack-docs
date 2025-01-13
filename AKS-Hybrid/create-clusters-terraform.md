@@ -10,7 +10,7 @@ ms.date: 11/15/2024
 
 # Create Kubernetes clusters using Terraform (preview)
 
-This article describes how to create Kubernetes cluster in Azure Local using Terraform and Azure Verified Module. Th workflow is as follows:
+This article describes how to create Kubernetes clusters in Azure Local using Terraform and the Azure Verified Module. The workflow is as follows:
 
 - Create an SSH key pair.
 - Create a Kubernetes cluster in Azure Local 23H2 using Terraform. By default, the cluster is Azure Arc-connected.
@@ -26,7 +26,7 @@ Before you begin, make sure you have the following prerequisites:
 1. Get the following details from your on-premises infrastructure administrator:
    - Azure subscription ID: the Azure subscription ID that uses Azure Local for deployment and registration.
    - Custom location name or ID: the Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required to create Kubernetes clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
-   - Logical network name or ID: the Azure Resource Manager ID of the Azure Stack HCI logical network that was created following these steps. Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
+   - Logical network name or ID: the Azure Resource Manager ID of the Azure Local logical network that was created following these steps. Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
 1. Make sure you have GitHub, [the latest version of Azure CLI](/cli/azure/install-azure-cli), and [the Terraform client](/azure/developer/terraform/quickstart-configure) installed on your development machine.  
 1. [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/) on your development machine.
 

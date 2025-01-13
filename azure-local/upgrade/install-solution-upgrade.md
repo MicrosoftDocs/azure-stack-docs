@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 12/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
@@ -30,7 +30,7 @@ Before you install the solution upgrade, make sure that you:
 
     :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on an Azure Local machine." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
 
-- Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential. For more information, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).  
+- Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.  
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
@@ -39,6 +39,11 @@ Before you install the solution upgrade, make sure that you:
 ## Install the solution upgrade via Azure portal
 
 You install the solution upgrade via the Azure portal.
+
+> [!IMPORTANT]
+> Use of 3rd party tools to install upgrades is not supported.
+
+Follow these steps to install the solution upgrade:
 
 1. Go to your Azure Local resource in Azure portal.
 1. In the **Overview** page, you can see a banner indicating that a solution upgrade is available. Select the **Upgrade** link in the banner.
@@ -132,7 +137,7 @@ Follow these steps to verify that the upgrade was successful:
 After the solution upgrade is complete, you may need to perform additional tasks to secure your system and ensure it's ready for workloads.
 
 - You may need to connect to the system via Remote Desktop Protocol (RDP) to deploy workloads. For more information, see [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
-- To prevent the accidental deletion of resources, you can lock resources. We recommend that you lock the Arc Resource Bridge. For more information, see [Lock Arc Resource Bridge](../deploy/deploy-via-portal.md#lock-arc-resource-bridge).
+- To prevent the accidental deletion of resources, you can lock resources.
 - You need to upgrade the security posture. For more information, see [Update security posture on Azure Local after upgrade](../manage/manage-security-post-upgrade.md).
 - You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 

@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 11/19/2024
+ms.date: 01/09/2025
 ---
 
 # What's new in Azure Local, version 23H2
@@ -16,11 +16,23 @@ ms.date: 11/19/2024
 
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 
-Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Local, see [What's new in Azure Local, version 22H2](./whats-new-in-hci-22h2.md).
+Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
 
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2411 releases](#tab/2411releases)
+
+## Features and improvements in 2411.1
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
+
+- **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
+
+- **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
 
 ## Features and improvements in 2411
 
@@ -29,7 +41,7 @@ This is a baseline release with the following features and improvements:
 - **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
 
     For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
-- **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supprts a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements as well as relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
+- **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
     For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](./concepts/system-requirements-small-23h2.md).
 - **Azure Local for disconnected operations (Preview)** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
@@ -37,16 +49,21 @@ This is a baseline release with the following features and improvements:
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
     For more information about this Preview feature, see [Azure Local for Disconnected Operations (Preview)](./manage/disconnected-operations-overview.md).
-- **Deploy Azure Local with Local Identity (Preview)** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by reducing dependencies on Active Directory systems and simplifying firewall configurations.
+- **Deploy Azure Local with Local Identity (Preview)** - Starting this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
 
-    <!--For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).-->
+    For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).
+
 - **Arc VM changes**: The following changes were made to Arc VM management:
     - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates.
     
         For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Arc VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
-    - **Add network inteface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you are required to configure the desired static IP from within the VM.
+    - **Add network interface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you're required to configure the desired static IP from within the VM.
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
+
+    - **Download data disks** - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
+  
+        For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
 
 - **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
 
@@ -57,7 +74,11 @@ This is a baseline release with the following features and improvements:
   - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
-    
+
+- **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
+
+    For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
+
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## [2408 releases](#tab/2408releases)
@@ -98,7 +119,7 @@ This is a baseline release with the following features and improvements:
 
 ### Upgrade from version 22H2 to version 23H2
 
-This release introduces the ability to upgrade your Azure Local instance from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+This release introduces the ability to upgrade your Azure Local instance from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade has a phased rollout.
 
 For more information, see [Upgrade Azure Local from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
 
@@ -115,8 +136,8 @@ This release contains the following changes for Arc VM management:
 
 - 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
-- Logical network properties are properly updated. Previously, the logical network sometimes would not have its properties (vLAN, IP Pools, etc.) filled.
-- The vLAN field on a logical network will be defaulted to '0' if not specified.
+- Logical network properties are properly updated. Previously, the logical network sometimes wouldn't have its properties (vLAN, IP Pools, etc.) filled.
+- The vLAN field on a logical network will default to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
 For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
@@ -127,7 +148,7 @@ This release contains the following changes for SBE:
 
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces are executed more efficiently leading to reduced Azure Local deployment times.
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
-- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions will include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
+- **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
 ## [2405 releases](#tab/2405releases)
 
@@ -145,7 +166,7 @@ This is primarily a bug fix release with a few improvements.
 
   - You can now view and delete VM network interfaces from the Azure portal.
   - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
-  - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you'll see a warning message: *Cannot delete logical network because it is currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
+  - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you see a warning message: *Can't delete logical network because it's currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
   - From this release onwards, a new URL needs to be added to the allowlist for `stack-hci-vm` Azure CLI installation. The URL has changed from: `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to: `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Local firewall requirements](./concepts/firewall-requirements.md).
   
 - **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
@@ -261,7 +282,7 @@ This release includes the following updates to the security documentation:
 
 - The compliance score for Azure Local machine is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
 - The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
-- Updated the [Windows Defender Application Control](./concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Local, version 23H2](./concepts/security-features.md) article.
+- Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local, version 23H2](./concepts/security-features.md) article.
 
 ### AKS on Azure Local, version 23H2
 
@@ -299,7 +320,7 @@ This section lists the new features and improvements in the 2402 release of Azur
 
 This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
 
-The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
 To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
@@ -341,7 +362,7 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues-
 
 A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
 
-The role applies the concept of the least amount of privileges and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
+The role applies the concept of the least amount of privilege and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
 
 You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 

@@ -62,7 +62,7 @@ Before you begin, make sure you have the following prerequisites:
 You can create an Azure RBAC-enabled Kubernetes cluster for authorization and a Microsoft Entra ID for authentication.
 
 ```azurecli
-az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
+az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --enable-azure-rbac
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.

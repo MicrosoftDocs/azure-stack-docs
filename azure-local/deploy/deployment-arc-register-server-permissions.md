@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 12/04/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -55,7 +55,7 @@ Before you begin, make sure you've completed the following prerequisites:
 ## Register machines with Azure Arc
 
 > [!IMPORTANT]
-> Run these steps on every Azure Local machine that you intend to cluster.
+> Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
 <!-- 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery. **This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
 
@@ -112,7 +112,8 @@ Before you begin, make sure you've completed the following prerequisites:
     #Define the resource group where you want to register your machine as Arc device
     $RG = "YourResourceGroupName"
 
-    #Define the region you will use to register your machine as Arc device
+    #Define the region to use to register your server as Arc device
+    #Do not use spaces or capital letters when defining region
     $Region = "eastus"
     
     #Define the tenant you will use to register your machine as Arc device
@@ -144,7 +145,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
 
     #Get the Access Token for the registration
-    $ARMtoken = (Get-AzAccessToken).Token
+    $ARMtoken = (Get-AzAccessToken -WarningAction SilentlyContinue).Token
 
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   

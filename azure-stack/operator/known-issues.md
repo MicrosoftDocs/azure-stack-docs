@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/11/2024
+ms.date: 01/08/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -34,12 +34,7 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-2408"
-## Update
-
-- Applicable: This issue applies to release 2408.
-- Cause: An internal failure of Live Update forces the update method to use FRU instead, which significantly extends the overall update period. Due to this issue, each node update takes an additional 5 hours to complete (approximately).
-- Remediation: If you have more than eight node stamps, you should delay your updates if possible, until a hotfix/inline fix is released.
-- Occurrence: Common.
+<!-- ## Update -->
 
 ## Networking
 
@@ -56,7 +51,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2311 and later.
 - Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
-- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
 ### A-series VMs deprecated
@@ -66,9 +61,30 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
+### ESv3 and DSv3 series don't have nested virtualization enabled
+
+- Applicable: This issue applies to release 2408.
+- Cause: Neither of the [newly introduced ESv3 or DSv3 series](../user/azure-stack-vm-sizes.md#esv3-series); for example, E20s_v3, has nested virtualization enabled.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
 <!-- ## Alerts -->
 
-<!-- ## Portal -->
+## Portal
+
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 
@@ -91,9 +107,8 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 
 ::: moniker range="azs-2406"
-<!-- ## Update -->
 
-<!-- ## Networking -->
+<!-- ## Update -->
 
 ## Compute
 
@@ -118,9 +133,23 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Although Azure Stack Hub isn't removing the A-series SKU, other undefined behavior might occur if you continue using it (such as with the load balancer, VMSS, etc.). Therefore, you should use a different VM SKU when you're ready. There is no cost difference in using different VM SKUs on Azure Stack Hub.
 - Occurrence: Common.
 
-<!-- ## Alerts -->
+## Portal
 
-<!-- ## Portal -->
+### Deployments blade under subscription fails to load
+
+- Applicable: This issue applies to release 2406 and later.
+- Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
+
+<!-- ## Alerts -->
 
 <!-- ## Datacenter integration -->
 
@@ -143,6 +172,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 
 ::: moniker range="azs-2311"
+
 <!-- ## Update -->
 
 <!-- ## Networking -->
@@ -178,12 +208,14 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2311 and later.
 - Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
-- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue. 
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
 
 ## Portal
+
+### Can't use Flow Timeout and BGP community string DNS options in the portal
 
 - Applicable: This issue applies to release 2311.
 - Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
@@ -196,6 +228,13 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
 - Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 
@@ -224,11 +263,22 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
+::: moniker range="azs-2406 || azs-2408 || azs-2311"
+## Update
+
+### Update URL is changing
+
+- Applicable: This issue applies to all supported versions of Azure Stack Hub.
+- Cause: The update URL for Azure Stack Hub is changing from `https://azurestackhub.azureedge.net/PR/download` to `https://azurestackhub.download.prss.microsoft.com`.
+- Remediation: To enable the update process, you must update your client firewall rules to allow HTTPS traffic from the Azure Stack Hub base URL `https://azurestackhub.download.prss.microsoft.com`.
+- Occurrence: Common.
+::: moniker-end
+
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
-::: moniker range="azs-2311"
-## 2311 archived known issues
+::: moniker range="azs-2306"
+## 2306 archived known issues
 ::: moniker-end
 ::: moniker range="azs-2301"
 ## 2301 archived known issues

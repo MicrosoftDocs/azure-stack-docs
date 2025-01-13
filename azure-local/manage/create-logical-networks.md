@@ -1,11 +1,11 @@
 ---
 title: Create logical networks for Azure Local 
-description: Learn how to create logical networks on Azure Local. The Arc VM running on your system used this logical network.
+description: Learn how to create logical networks on Azure Local. The Arc virtual machine (VM) running on your system used this logical network.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/22/2024
+ms.date: 01/06/2025
 ---
 
 # Create logical networks for Azure Local
@@ -24,7 +24,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 - Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Local, see [Connect to the system remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
-- Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local. By default, an external switch is created during the deployment of your Azure Local that you can use to associate with the logical network you will create.
+- Make sure that all the machines in your Azure Local can access and external virtual machine (VM) switch. By default, an external switch is created during the deployment of your Azure Local that you can use to associate with the logical network you create.
 
   Run the following command to get the name of the external VM switch on your system.
 
@@ -48,7 +48,26 @@ Before you begin, make sure to complete the following prerequisites:
 
 The prerequisites for the Azure portal are the same as those for the Azure CLI. See [Azure CLI](./create-logical-networks.md?tabs=azurecli#tabpanel_1_azurecli).
 
+# [Terraform template](#tab/terraformtemplate)
+
+- Make sure Terraform is installed and up to date on your machine.
+  - To verify your version of Terraform, run the `terraform -v` command.
+
+    Here's an example of sample output:
+    ```output
+    PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
+    Terraform vi.9.8 on windows_amd64
+    + provider registry.terraform.io/azure/azapi vl.15.0 
+    + provider registry.terraform.io/azure/modtm V0.3.2 
+    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
+    + provider registry.terraform.io/hashicorp/random V3.6.3
+    ```
+
+- Make sure Git is installed and up to date on your machine.
+  - To verify your version of Git, run the `git --version` command.
+  
 ---
+
 
 ## Create the logical network
 
@@ -66,12 +85,16 @@ Complete the following steps to create a logical network using Azure CLI.
 
 You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch for a DHCP or a static IP configuration. The parameters used to create a DHCP and a static logical network are different.
 
+> [!NOTE]
+> For both dynamic and static logical networks, the following apply:
+> - Creating logical networks with overlapping IP pools on the same VLAN isn't permitted.
+> - If a VLAN ID isn't specified, the value defaults to 0.
+
 #### Create a static logical network via CLI
 
 In this release, you can create virtual machines using a static IP only via the Azure CLI.
 
 Create a static logical network when you want to create virtual machines with network interfaces on these logical networks. Follow these steps in Azure CLI to configure a static logical network:
-
 
 1. Set the parameters. Here's an example:
 
@@ -109,6 +132,7 @@ Create a static logical network when you want to create virtual machines with ne
 
     > [!NOTE]
     > DNS server and gateway must be specified if you're creating a static logical network.
+ 
 
 1. Create a static logical network. Run the following cmdlet:
 
@@ -334,7 +358,7 @@ These steps are the same for both static and DHCP network deployments.
 
    :::image type="content" source="./media/create-logical-networks/deployment-in-progress.png" alt-text="Screenshot indicating that the deployment job is in progress." lightbox="./media/create-logical-networks/deployment-in-progress.png":::
 
-1. Verify the deployment job has successfully completed and then select either **Pin to dashboard** or **Go to resource group**:
+1. Verify the deployment job completed successfully and then select either **Pin to dashboard** or **Go to resource group**:
 
    :::image type="content" source="./media/create-logical-networks/deployment-succeeded.png" alt-text="Screenshot of successful completion of the deployment job." lightbox="./media/create-logical-networks/deployment-succeeded.png":::
 
@@ -342,8 +366,26 @@ These steps are the same for both static and DHCP network deployments.
 
    :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of the newly created logical network." lightbox="./media/create-logical-networks/verify-network-created.png":::
 
----
+# [Terraform template](#tab/terraformtemplate)
 
+You can use the Azure Verified Module (AVM) that contains the Terraform template for creating Logical Networks. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Logical Networks on your cluster.
+
+### Steps to use the Terraform template
+
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0).
+2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
+    - **default**: Creates one logical network with a static IP configuration.
+    - **static**: Creates one logical network with a static IP configuration.
+    - **dhcp**: Creates one logical network with a dynamic IP configuration.
+    - **multi**: Creates multiple logical network instances.
+3. Choose the appropriate folder for your deployment.
+4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
+5. To apply the configuration that deploys logical networks, run the `terraform apply` command.
+6. After the deployment is complete, verify your logical networks via the Azure portal. Navigate to **Resources** > **Logical networks**.
+
+    :::image type="content" source="./media/create-logical-networks/terraform-logical-networks.png" alt-text="Screenshot of select Logical networks after deployment." lightbox="./media/create-logical-networks/terraform-logical-networks.png":::
+
+---
 
 ## Next steps
 

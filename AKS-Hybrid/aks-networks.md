@@ -3,7 +3,7 @@ title: Create logical networks for Kubernetes clusters on Azure Local, version 2
 description: Learn how to create Arc-enabled logical networks for AKS.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 04/02/2024
+ms.date: 11/19/2024
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
@@ -36,9 +36,9 @@ Get-VmSwitch -SwitchType External
 ```
 
 ```output
-Name                               SwitchType       NetAdapterInterfaceDescription
-----                               ----------       ----------------------------
-ConvergedSwitch(management_compute_storage) External        Teamed-Interface
+Name                                           SwitchType      NetAdapterInterfaceDescription
+----                                           ----------      ----------------------------
+ConvergedSwitch(management_compute_storage)    External        Teamed-Interface
 ```
 
 ## Create the logical network
@@ -64,6 +64,7 @@ For static IP, the required parameters are as follows:
 | `--ip-allocation-method`   | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | 
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
+
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```

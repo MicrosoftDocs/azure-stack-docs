@@ -5,16 +5,18 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack-hci
-ms.date: 11/15/2024
+ms.date: 12/11/2024
 ---
 
 # Security features for Azure Local, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
+[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
+
 Azure Local is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article provides a brief conceptual overview of the various security features associated with your Azure Local instance. Features include security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
+This article provides a brief conceptual overview of the various security features associated with your Azure Local instance. Features include security defaults, Application Control, volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
 
 ## Security defaults
 
@@ -32,16 +34,16 @@ Secure baseline on Azure Local:
 
 For more information, see [Manage security defaults on Azure Local](../manage/manage-secure-baseline.md).
 
-## Windows Defender Application Control
+## Application Control
 
-WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Local, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
+Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local, version 23H2](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
 
-WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about WDAC-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
+Application Control provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about Application Control-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
 > [!IMPORTANT]
-> To minimize security risk, always run WDAC in Enforcement mode.
+> To minimize security risk, always run Application Control in Enforcement mode.
 
-### About WDAC policy design
+### About Application Control policy design
 
 Microsoft provides base signed policies on Azure Local for both Enforcement mode and Audit mode. Additionally, policies include a predefined set of platform behavior rules and block rules to apply to the application control layer.
 
@@ -55,7 +57,7 @@ Azure Local base policies include the following sections:
 
 #### Option rules
 
-This section discussed the option rules enabled by the base policy. 
+This section discussed the option rules enabled by the base policy.
 
 For the enforced policy, the following option rules are enabled by default:
 

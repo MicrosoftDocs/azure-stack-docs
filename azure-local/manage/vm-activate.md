@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 12/03/2024
 ms.service: azure-stack-hci
 ---
 
@@ -179,7 +179,7 @@ VM activation through host machines presents several benefits:
 
 Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWFdsF]
+> [!VIDEO 65545cda-9e79-413b-9cd0-116a51de0c18]
 
 ### AVMA prerequisites
 
@@ -305,10 +305,6 @@ Yes, but you must use either Windows Server subscription-based AVMA, or else bri
 
 - [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys)
 - [KMS client keys](/windows-server/get-started/kms-client-activation-keys#generic-volume-license-keys-gvlk)
-
-### Do I still need Windows Server CALs?
-
-Yes, you still need Windows Server CALs for AHB, but not for Windows Server subscription.
 
 ### Do I need to be connected to the internet?
 

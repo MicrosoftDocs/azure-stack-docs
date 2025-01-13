@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters in Azure Local using Azure 
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 11/18/2024
+ms.date: 12/18/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
@@ -47,7 +47,7 @@ az extension add -n connectedk8s --upgrade
 Use the `az aksarc create` command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
@@ -96,7 +96,7 @@ moc-l0ttdmaioew  Ready  control-plane,master 34m v1.24.11
 moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 ```
 
-## Deploy the application
+## Deploy the application and load balancer
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
@@ -215,6 +215,8 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
+Deploy a MetalLB load balancer so it can assign an external IP for the application front end. You can [follow these instructions](deploy-load-balancer-cli.md) to deploy the MetalLB extension from the Azure portal, or using CLI.
+
 ## Test the application
 
 When the application runs, a Kubernetes service exposes the application frontend to the internet. This process can take a few minutes to complete.
@@ -245,7 +247,7 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 Run the `az aksarc delete` command to clean up the cluster you created:
 
 ```azurecli
-az aksarc delete --resource-group $aksclustername --name $resource_group
+az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
 
 ## Next steps
