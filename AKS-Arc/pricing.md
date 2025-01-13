@@ -54,7 +54,7 @@ For detailed pricing information, see the [AKS pricing details](https://azure.mi
 - If you enable hyper-threading on the physical computer, this reduces the measured vCPU count by 50 percent.
 
 > [!NOTE]
-> Running Windows Server containers on AKS Arc requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid Benefits](azure-hybrid-benefit.md) might apply, thus reducing or eliminating the Windows Server license fees.
+> Running Windows Server containers on AKS Arc requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid Benefits](azure-hybrid-benefit-22h2.md) might apply, thus reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 
