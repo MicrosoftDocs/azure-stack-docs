@@ -3,7 +3,7 @@ title:  January 2025 security update (KB5049984) for Azure Local, version 23H2
 description: Read about the January 2025 security update (KB5049984) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/10/2025
+ms.date: 01/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on January 14, 2025 and applies to OS build 25398.1368.
+This article describes the OS security update for Azure Local, version 23H2 that was released on January 14, 2025 and applies to OS build 25398.1369.
 
 ## Improvements
 
