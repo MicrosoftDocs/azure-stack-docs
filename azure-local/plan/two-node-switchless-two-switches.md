@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
-ms.date: 10/17/2024
+ms.date: 12/26/2024
 ---
 
 # Review two-node storage switchless, two switches deployment network reference pattern for Azure Local
@@ -95,7 +95,7 @@ The storage adapters operate in different IP subnets. To enable a switchless con
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
-[!INCLUDE [includes](includes/hci-patterns-two-node.md)]
+[!INCLUDE [includes](../includes/hci-patterns-two-node.md)]
 
 ## Next steps
 

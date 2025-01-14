@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: conceptual
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 11/11/2024
+ms.date: 01/10/2025
 ms.reviewer: brianl
 
 # Intent: As an IT Pro, I want to be able to seamlessly use Azure Blob Storage for long-term storage of files in my Azure Managed Lustre file system.
@@ -196,12 +196,13 @@ When you export files from your Azure Managed Lustre system, not all files are c
 - Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
 - Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
 - Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
+- Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names), meaning that acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob naming rule, such as a file name that exceeds the maximum blob name length, results in an error when attempting to export that file.
 
 ### Running export jobs in active file systems
 
 In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 
-In file systems with a lot of activity, retries may fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+In file systems with a lot of activity, retries might fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
 
 If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
 
