@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 10/22/2024
+  ms.date: 01/14/2025
 title: Azure Arc VM management FAQ
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Local, version 23H2.
@@ -65,6 +65,11 @@ sections:
         Can I use SDN for Azure Local VMs created from the Azure portal?
       answer: |
         SDN is currently not supported for VMs created from the Azure portal.
+
+    - question: |
+        How can I perform live migration of Arc-enabled virtual machines?
+      answer: |
+        Live migration of Arc-enabled virtual machines (VMs) is not supported as a feature within Azure Local. To migrate VMs to Azure Local, use tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node).
 
     - question: |
         Is there a fee to use Arc management for VMs on Azure Local?
