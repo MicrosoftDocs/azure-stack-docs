@@ -99,7 +99,7 @@ Terraform only supports authenticating to Azure with the Azure CLI. Authenticati
    agent_pool_profiles = [{count=1}] 
    ssh_public_key =  "Your_SSH_Key"
 
-   # Optional parameters, please update them as needed
+   # Optional parameters, update them as needed
    enable_workload_identity = false 
    enable_oidc_issuer = false 
    rbac_admin_group_object_ids = ["<Admin_Group_Object_ID>"]
