@@ -169,8 +169,8 @@ items:
         href: plan/three-node-components.md
       - name: Pattern IP requirements
         href: plan/three-node-ip-requirements.md
-      - name: Four-node switchless deployments
-        items:
+    - name: Four-node switchless deployments
+      items:
       - name: Storage switchless, dual TOR, dual link
         href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations

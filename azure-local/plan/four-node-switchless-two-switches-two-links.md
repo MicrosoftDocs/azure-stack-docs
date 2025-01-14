@@ -12,7 +12,7 @@ ms.date: 01/14/2025
 
 # Review four-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local
 
-[!INCLUDE [includes](../includes/hci-applies-to-23h2.md)] and later
+[!INCLUDE [includes](../includes/hci-applies-to-23h2.md)]
 
 This article describes how you can use a four-node storage switchless network reference pattern with two TOR L3 switches and two full-mesh links to deploy your Azure Local solution.
 
