@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/13/2025
+ms.date: 01/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
