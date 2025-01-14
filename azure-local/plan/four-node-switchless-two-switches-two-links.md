@@ -17,7 +17,7 @@ ms.date: 01/14/2025
 This article describes how you can use a four-node storage switchless network reference pattern with two TOR L3 switches and two full-mesh links to deploy your Azure Local solution.
 
 > [!NOTE]
-> The four-node switchless network reference patterns described in this article were tested and validated by Microsoft.
+> Microsoft has tested and validated the four-node switchless network reference patterns described in this article.
 
 ## Scenarios
 
