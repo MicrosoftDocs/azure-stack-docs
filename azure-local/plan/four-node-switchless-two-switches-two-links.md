@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 01/09/2025
+ms.date: 01/14/2025
 ---
 
 # Review four-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local
