@@ -27,7 +27,7 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
-:::image type="content" source="media/four-node-switchless-two-switches-dual-link/four-node-switchless-components-layout.png" alt-text="Diagram showing four-node switchless, two TOR, two link physical connectivity layout." lightbox="media/four-node-switchless-two-switches-dual-link/four-node-switchless-components-layout.png":::
+:::image type="content" source="./media/four-node-switchless-two-switches-two-links/four-node-switchless-components-layout.png" alt-text="Diagram showing four-node switchless, two TOR, two link physical connectivity layout." lightbox="./media/four-node-switchless-two-switches-two-links/four-node-switchless-components-layout.png":::
 
 ## Physical connectivity components
 
