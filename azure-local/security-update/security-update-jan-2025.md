@@ -3,7 +3,7 @@ title:  January 2025 security update (KB5049984) for Azure Local, version 23H2
 description: Read about the January 2025 security update (KB5049984) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/13/2025
+ms.date: 01/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -36,7 +36,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](security-update-jan-2025.md).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5049984](https://go.microsoft.com/fwlink/?linkid=2300815).
 
 
 ## Next steps
