@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/10/2024
+ms.date: 01/15/2025
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
@@ -15,7 +15,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage and reduce storage cost.
+ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Deduplication is designed specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md), while compression is more suitable less active workloads.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the system size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
@@ -26,7 +26,7 @@ You can run ReFS deduplication and compression as a one-time job or automate it 
 Here are the benefits of using ReFS deduplication and compression:
 
 - **Storage savings for active workloads.** Designed for active workloads, such as VDI, ensuring efficient performance in demanding environments.
-- **Multiple modes.** Operates in three modes: deduplication only, compression only, and deduplication and compression (default mode), allowing optimization based on your needs.
+- **Multiple modes.** Operates in three modes: deduplication only (default mode), compression only, and deduplication and compression, allowing optimization based on your needs.
 - **Incremental deduplication.** Deduplicates only new or changed data as opposed to scanning the entire volume every time, optimizing job duration and reducing impact on system performance.
 
 ## Prerequisites
