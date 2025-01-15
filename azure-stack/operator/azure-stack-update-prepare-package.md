@@ -3,7 +3,7 @@ title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/24/2021
+ms.date: 01/14/2025
 ms.author: sethm
 ms.lastreviewed: 03/10/2021
 ms.reviewer: sranthar
@@ -46,7 +46,7 @@ SHA256 hashes are computed for the .zip file(s) with update package content and 
 
 ### Automatic download and preparation for update packages
 
-Azure Stack Hub software updates and hotfixes are prepared automatically for systems with connectivity to the **Azure Stack Hub automatic update endpoints**: `https://*.azureedge.net` and `https://aka.ms/azurestackautomaticupdate`. For more information about setting up connectivity to the **Azure Stack Hub automatic update endpoints**, see the **Patch and Update** endpoints described in [Azure Stack Hub firewall integration](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
+Azure Stack Hub software updates and hotfixes are prepared automatically for systems with connectivity to the **Azure Stack Hub automatic update endpoints**: `https://*.download.prss.microsoft.com` and `https://aka.ms/azurestackautomaticupdate`. For more information about setting up connectivity to the **Azure Stack Hub automatic update endpoints**, see the **Patch and Update** endpoints described in [Azure Stack Hub firewall integration](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 ### Where to download Azure Stack Hub update packages
 
