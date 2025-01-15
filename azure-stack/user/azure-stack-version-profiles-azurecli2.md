@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.custom:
   - devx-track-azurecli
-ms.date: 08/19/2024
+ms.date: 01/15/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
@@ -63,7 +63,7 @@ This section walks you through setting up CLI if you're using Microsoft Entra ID
       | Resource Manager endpoint | `https://management.contoso.onmicrosoft.com` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
       | Storage endpoint | local.contoso.onmicrosoft.com | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
       | Keyvault suffix | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-      | Endpoint active directory graph resource ID | https://graph.windows.net/ | The Active Directory resource ID. |
+      | Endpoint active directory graph resource ID | https://graph.microsoft.com/ | The Active Directory resource ID. |
     
       ```azurecli  
       az cloud register `
