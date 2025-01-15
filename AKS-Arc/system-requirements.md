@@ -77,7 +77,7 @@ For an Azure Local or Windows Server cluster, there are two supported storage co
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe.
 
-Systems that only have HDD-based storage aren't supported by Azure Local, and thus aren't recommended for running AKS on Azure Local and Windows Server. For more information about the recommended drive configurations, see the [Azure Local documentation](/azure/azure-local/concepts/choose-drives). All systems that are validated in the [Azure Local catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of these two supported storage configurations.
+Systems that only have HDD-based storage aren't supported by Azure Local, and thus aren't recommended for running AKS on Azure Local and Windows Server. For more information about the recommended drive configurations, see the [Azure Local documentation](/azure/azure-local/concepts/choose-drives). All systems that are validated in the [Azure Local catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog/#/) fall into one of these two supported storage configurations.
 
 Kubernetes uses *etcd* to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information, see [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
