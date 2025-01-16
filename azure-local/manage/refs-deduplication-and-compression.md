@@ -15,7 +15,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Use deduplication specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). For less performance-intensive workloads, you can use compression or a combination of deduplication and compression.
+ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Use deduplication specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). For less performance-intensive workloads, you can use a combination of deduplication and compression or only compression.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the system size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
@@ -41,7 +41,8 @@ Before you begin, make sure that the following prerequisites are completed:
 
 You can use ReFS deduplication and compression via Windows Admin Center or PowerShell. PowerShell allows both manual and automated jobs, whereas Windows Admin Center supports only scheduled jobs. Regardless of the method, you can customize job settings and utilize file change tracking for quicker subsequent runs.
 
-We recommend using only deduplication for workloads where performance is a consideration, rather than using compression or a combination of both.
+> [!NOTE]
+> We recommend using only deduplication for workloads where performance is a consideration, rather than using compression or a combination of both.
 
 ### Enable and run ReFS deduplication and compression
 
