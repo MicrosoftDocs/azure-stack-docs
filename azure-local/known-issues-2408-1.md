@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 11/18/2024
 ms.author: robess
 ms.reviewer: alkohli
+monikerRange: "=azloc-24081"
 ---
 
 # Known issues in the Azure Local 2408.1 release

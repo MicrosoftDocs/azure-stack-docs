@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 12/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-24111"
 ---
 
 # December OS security update (KB5048653) for Azure Local, version 23H2

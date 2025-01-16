@@ -20,7 +20,7 @@ Azure Local, version 23H2 is the latest version of the Azure Local solution. Thi
 
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
-## [2411 releases](#tab/2411releases)
+::: moniker range="=azloc-24111"
 
 ## Features and improvements in 2411.1
 
@@ -33,6 +33,10 @@ This is a baseline release with the following features and improvements:
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
 For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
+
+::: moniker-end
+
+::: moniker range="=azloc-2411"
 
 ## Features and improvements in 2411
 
@@ -81,12 +85,10 @@ This is a baseline release with the following features and improvements:
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
-## [2408 releases](#tab/2408releases)
+::: moniker-end
 
->[!NOTE]
-> A new ISO image is available that includes the Hyper-V role and all necessary Arc registration modules.
 
-This release train includes the following releases:
+::: moniker range="=azloc-24082"
 
 
 ## Features and improvements in 2408.2
@@ -100,6 +102,12 @@ This is a baseline release with the following features and improvements:
   - You can now create an image from an Arc VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
 
+
+::: moniker-end
+
+::: moniker range="=azloc-24081"
+
+
 ## Features and improvements in 2408.1
 
 This is a baseline release with the following features and improvements:
@@ -112,6 +120,10 @@ This is a baseline release with the following features and improvements:
   - [Manage GPUs via Discrete Device Assignment for Azure Local (preview)](./manage/gpu-manage-via-device.md)
 - **Improved CLI error messages** for deletion of VM network interfaces, data disks, and storage paths that are in use.
 - **Improved reliability** when installing open ssh client during solution deployment.
+
+::: moniker-end
+
+::: moniker range="=azloc-2408"
 
 ## Features and improvements in 2408
 
@@ -150,13 +162,19 @@ This release contains the following changes for SBE:
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
-## [2405 releases](#tab/2405releases)
+::: moniker-end
 
-The 2405 release train includes the following releases:
+::: moniker range="=azloc-24053"
+
 
 ## Features and improvements in 2405.3
 
 This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-3.md) to understand the bug fixes.
+
+::: moniker-end
+
+
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2405.2
 
@@ -288,9 +306,7 @@ This release includes the following updates to the security documentation:
 
 For a list of the changes and improvements in AKS on Azure Local, version 23H2, see [What's new in AKS on Azure Local, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
-## [2402 releases](#tab/2402releases)
 
-The 2402 release train includes the following releases:
 
 ## Features and improvements in 2402.4
 
@@ -346,9 +362,6 @@ This release includes the following updates to the security documentation:
 - Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
 - Published the [Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
 
-## [2311 releases](#tab/2311releases)
-
-The 2311 release train includes the following releases:
 
 ## Features and improvements in 2311.5
 
@@ -523,7 +536,7 @@ This release introduces the Resilient File System (ReFS) deduplication and compr
 
 For more information, see [Optimize storage with ReFS deduplication and compression in Azure Local](./manage/refs-deduplication-and-compression.md).
 
----
+::: moniker-end
 
 ## Next steps
 

@@ -7,6 +7,7 @@ ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack-hci
+monikerRange: "=azloc-previous"
 ---
 
 # View known issues in Azure Stack HCI 2311 release (preview)

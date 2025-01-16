@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 11/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-2408"
 ---
 
 # Known issues in the Azure Local 2408 release

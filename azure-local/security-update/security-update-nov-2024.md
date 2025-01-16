@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 11/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-2411"
 ---
 
 # November OS security update (KB) for Azure Local, version 23H2

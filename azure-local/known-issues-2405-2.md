@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-previous"
 ---
 
 # View known issues in Azure Stack HCI 2405.2 release

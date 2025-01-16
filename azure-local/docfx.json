@@ -67,7 +67,7 @@
           "_themes.pdf/**"
         ],
         "src": "./",
-        "group": "version-azlocal",
+        "group": "version-azlocal"
       }
     ],
     "overwrite": [],
@@ -83,11 +83,16 @@
       "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "monikerRange": {
+      "./*.md": ">=azloc-24053 || =azloc-previous",
+      "./*.yml": ">=azloc-24053 || =azloc-previous"
+      }
+    },
     "template": [],
     "groups": {
       "version-azlocal": {
-        "moniker_range": ">=azloc-24053",
+        "moniker_range": ">=azloc-24053 || =azloc-previous",
         "dest": "azure-local"
       }
     }

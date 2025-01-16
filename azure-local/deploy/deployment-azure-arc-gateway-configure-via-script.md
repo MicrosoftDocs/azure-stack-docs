@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
 ms.service: azure-stack-hci
+monikerRange: ">=azloc-2408"
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
