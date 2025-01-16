@@ -15,7 +15,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Deduplication is designed specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md), while compression is more suitable for less active workloads.
+ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Use deduplication specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md), and compression for low-intensity workloads.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the system size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
