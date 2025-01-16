@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 12/17/2024
+ms.date: 12/30/2024
 ---
 
 # Azure Local, version 23H2 release information
@@ -62,7 +62,7 @@ The following table summarizes the release information for Azure Local, version 
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](./security-update/security-update-dec-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24111) | [Known issues](./index.yml) |
+| 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](./security-update/security-update-dec-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24111) | [Known issues](./known-issues-2411-1.md) |
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](./security-update/security-update-oct-2024.md) |[Features and improvements](./whats-new.md#features-and-improvements-in-24082) | [Known issues](./known-issues-2408-2.md) |

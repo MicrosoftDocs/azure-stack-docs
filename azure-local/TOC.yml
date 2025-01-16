@@ -159,6 +159,10 @@ items:
         href: plan/three-node-components.md
       - name: Pattern IP requirements
         href: plan/three-node-ip-requirements.md
+    - name: Four-node switchless deployments
+      items:
+      - name: Storage switchless, dual TOR, dual link
+        href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -354,12 +358,6 @@ items:
         href: manage/vm-affinity.md
       - name: VM load balancing
         href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-local&context=/azure/azure-local/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -510,17 +508,15 @@ items:
         href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
-    - name: Health service
-      items:
-      - name: Monitor systems
+      - name: Monitor clusters with Health Service
         href: manage/health-service-overview.md
-      - name: Get system performance history
+      - name: Get cluster performance history
         href: manage/health-service-cluster-performance-history.md
-      - name: View faults
+      - name: View Health Service faults
         href: manage/health-service-faults.md
-      - name: Track actions
+      - name: Track Health Service actions
         href: manage/health-service-actions.md
-      - name: Modify settings
+      - name: Modify Health Service settings
         href: manage/health-service-settings.md
 
 - name: Troubleshoot
@@ -847,6 +843,8 @@ items:
     items:
     - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
+    - name: Azure Local Arc VMs Azure CLI commands
+      href: /cli/azure/stack-hci-vm
   - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands

@@ -11,7 +11,7 @@ monikerRange: ">=azloc-2408"
 
 # Configure Arc proxy manually for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, and 2411
+Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, 2411 and 2411.1
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to manually configure the Arc proxy before Arc registration.
 

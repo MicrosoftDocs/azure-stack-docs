@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 01/03/2025
 ms.author: robess
 ms.reviewer: robhind
 ---
@@ -35,8 +35,6 @@ In this article, we create an example cluster named Cluster1 that is composed of
 For the stretched cluster scenario, we use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
-
-To test Azure Stack HCI with minimal or no extra hardware, you can check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md). In this guide, we walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you begin
 

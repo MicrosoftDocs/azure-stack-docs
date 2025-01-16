@@ -2,7 +2,7 @@
   "docsets_to_publish": [
     {
       "docset_name": "AKS-Hybrid",
-      "build_source_folder": "AKS-Hybrid",
+      "build_source_folder": "AKS-Arc",
       "build_output_subfolder": "AKS-Hybrid",
       "locale": "en-us",
       "monikers": [],
@@ -138,6 +138,7 @@
     ".openpublishing.redirection.pep.json",
     ".openpublishing.redirection.aks.json",
     ".openpublishing.redirection.aks-edge.json",
-    ".openpublishing.redirection.azure-local.json"
+    ".openpublishing.redirection.azure-local.json",
+    ".openpublishing.redirection.hub-hotfixes.json"
   ]
 }
