@@ -2,11 +2,9 @@
 title: Use the administrator portal in Azure Stack Hub 
 description: Learn how to use the administrator portal in Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: quickstart
-ms.date: 06/07/2019
+ms.date: 01/15/2025
 ms.author: sethm
-ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
 
 # Intent: As an Azure Stack operator, I want to learn how to use the administrator portal so I can do my day-to-day operations.
@@ -21,24 +19,15 @@ There are two portals in Azure Stack Hub: the administrator portal and the user 
 
 ## Access the administrator portal
 
-To access the administrator portal, browse to the portal URL and sign in by using your Azure Stack Hub operator credentials. For an integrated system, the portal URL varies based on the region name and external fully qualified domain name (FQDN) of your Azure Stack Hub deployment. The administrator portal URL is always the same for Azure Stack Development Kit (ASDK) deployments.
-
-| Environment | Administrator Portal URL |   
-| -- | -- | 
-| ASDK| `https://adminportal.local.azurestack.external`  |
-| Integrated systems | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
-| | |
-
-> [!TIP]
-> For an ASDK environment, you need to first make sure that you can [connect to the development kit host](../asdk/asdk-connect.md) through Remote Desktop Connection or through a virtual private network (VPN).
+To access the administrator portal, browse to the portal URL and sign in using your Azure Stack Hub operator credentials. For an integrated system, the portal URL varies based on the region name and external fully qualified domain name (FQDN) of your Azure Stack Hub deployment; for example, `https://adminportal.<region>.<FQDN>`.
 
 [!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
- ![Azure Stack Hub administrator portal](media/azure-stack-manage-portals/admin-portal.png)
+![Azure Stack Hub administrator portal](media/azure-stack-manage-portals/admin-portal.png)
 
-The default time zone for all Azure Stack Hub deployments is set to Coordinated Universal Time (UTC).
+The default timezone for all Azure Stack Hub deployments is set to Coordinated Universal Time (UTC).
 
-In the administrator portal, you can do things like:
+In the administrator portal, you can do things such as:
 
 * [Register Azure Stack Hub with Azure](azure-stack-registration.md)
 * [Populate the marketplace](azure-stack-download-azure-marketplace-item.md)
@@ -50,19 +39,16 @@ The **Quickstart tutorial** tile provides links to online documentation for the 
 
 Although an operator can create resources such as virtual machines (VMs), virtual networks, and storage accounts in the administrator portal, you should [sign in to the user portal](../user/azure-stack-use-portal.md) to create and test resources.
 
->[!NOTE]
->The **Create a virtual machine** link in the quickstart tutorial tile has you create a VM in the administrator portal, but this is only intended to validate that Azure Stack Hub has been deployed successfully.
+> [!NOTE]
+> The **Create a virtual machine** link in the quickstart tutorial tile describes how to create a VM in the administrator portal, but this procedure is only intended to validate that Azure Stack Hub was deployed successfully.
 
 ## Understand subscription behavior
 
-There are three subscriptions created by default in the administrator portal: consumption, default provider, and metering. As an operator, you'll mostly use the *Default Provider Subscription*. You can't add any other subscriptions and use them in the administrator portal.
+There are three subscriptions created by default in the administrator portal: consumption, default provider, and metering. As an operator, you mostly use the **Default Provider Subscription**. You can't add any other subscriptions and use them in the administrator portal.
 
 Other subscriptions are created by users in the user portal based on the plans and offers you create for them. However, the user portal doesn't provide access to any of the administrative or operational capabilities of the administrator portal.
 
 The administrator and user portals are backed by separate instances of Azure Resource Manager. Because of this Azure Resource Manager separation, subscriptions don't cross portals. For example, if you, as an Azure Stack Hub operator, sign in to the user portal, you can't access the *Default Provider Subscription*. Although you don't have access to any administrative functions, you can create subscriptions for yourself from available public offers. As long as you're signed in to the user portal, you're considered a tenant user.
-
-  >[!NOTE]
-  >In an ASDK environment, if a user belongs to the same tenant directory as the Azure Stack Hub operator, they're not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions or add subscriptions to access offers that are available to them in the user portal.
 
 ## Administrator portal tips
 
@@ -78,10 +64,7 @@ To access the Azure Stack Hub operator documentation, use the help and support i
 
 ### Quick access to help and support
 
-If you click the help icon (question mark) in the upper-right corner of the administrator portal, click **Help + support**, and then click **New support request** under **Support**, one of the following results happens:
-
-- If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Support. Refer to [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
-- If you're using the ASDK, this action opens the [Azure Stack Hub forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Support.
+Click the help icon (question mark) in the upper-right corner of the administrator portal, then click **Help + support**, and then click **New support request** under **Support**. A page appears in which you can directly open a support ticket with Microsoft Support. See [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
 
 ### Quick access to the Azure roadmap
 
