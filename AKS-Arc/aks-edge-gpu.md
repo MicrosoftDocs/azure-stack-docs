@@ -1,9 +1,9 @@
 ---
-title: GPU acceleration for AKS Edge Essentials
+title: GPU acceleration for AKS Edge Essentials (preview)
 description: Learn how to expose a GPU to the virtual machine's Linux module.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/09/2024
+ms.date: 01/15/2025
 ms.author: sethm 
 ms.lastreviewed: 06/05/2024
 ms.reviewer: guanghu
@@ -12,7 +12,11 @@ ms.reviewer: guanghu
 # Keyword: GPU AKS Edge Essentials
 ---
 
-# Use GPU acceleration for AKS Edge Essentials
+# Use GPU acceleration for AKS Edge Essentials (preview)
+
+> [!IMPORTANT]
+> GPU acceleration for AKS Edge Essentials is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 GPUs are a popular choice for artificial intelligence computations, because they offer parallel processing capabilities and can often execute vision-based inferencing faster than CPUs. To better support artificial intelligence and machine learning applications, AKS Edge Essentials can expose a GPU to the virtual machine's Linux module.
 
