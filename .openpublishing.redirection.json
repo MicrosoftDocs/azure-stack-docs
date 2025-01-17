@@ -1053,7 +1053,7 @@
     },
     { 
       "source_path":"azure-stack/operator/azure-stack-train-and-cert.md", 
-      "redirect_url":"/azure-stack/operator", 
+      "redirect_url":"/azure-stack/operator/index", 
       "redirect_document_id":true 
     },
     { 
