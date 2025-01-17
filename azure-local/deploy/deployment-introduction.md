@@ -6,7 +6,7 @@ ms.topic: overview
 ms.date: 10/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # About Azure Local, version 23H2 deployment
