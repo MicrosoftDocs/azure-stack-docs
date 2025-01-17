@@ -19,7 +19,7 @@ This article describes how to manage GPU VMs on Azure Stack Hub.
 
 ## Partitioned GPU VM size
 
-The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With NVv4-series Azure Stack Hub is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only Windows guest operating system.
+The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With the NVv4-series, Azure Stack Hub introduces virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only Windows guest operating system.
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -27,12 +27,12 @@ The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. W
 
 ## Patch and Update, FRU behavior of VMs
 
-GPU VMs undergo downtime during operations such as patch and update (PnU) as well as hardware replacement (FRU) of Azure Stack Hub. The following table describes the state of the VM as observed during these activities as well as the manual action that the user can do to make these VMs available again post these operations.
+GPU VMs undergo downtime during operations such as patch and update (PnU), and hardware replacement (FRU) of Azure Stack Hub. The following table describes the state of the VM as observed during these activities and also the manual action that the user can do to make these VMs available again post these operations.
 
 | Operation | PnU - Express Update | PnU - Full Update, OEM update | FRU |
 | --- | --- | --- | --- |
 | VM state  | Unavailable during and post update without manual start operation | Unavailable during update. Available post update with manual operation | Unavailable during update. Available post update with manual operation|
-| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the "Restart" button. VM needs to be restarted post update from the portal using the "Restart" button | VM cannot be made available during the update. Post update completion, VM needs to be stop-deallocated using the "Stop" button and started back up using the "Start" button | VM cannot be made available during the update.Post update completion, VM needs to be stop-deallocated using the "Stop" button and started back up using the "Start" button.|
+| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the "Restart" button. The VM needs to be restarted post update from the portal using the "Restart" button | VM can't be made available during the update. After the update completes, the VM must be stop-deallocated using the "Stop" button and started backup using the "Start" button | VM can't be made available during the update. After the update completes, the VM needs to be stop-deallocated using the "Stop" button and started backup using the "Start" button.|
 
 ## Guest driver installation
 
