@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2025
+ms.date: 01/17/2025
 ms.service: azure-stack-hci
 ---
 
@@ -86,13 +86,16 @@ You can enable Windows Server subscription through different methods. Select one
 
 1. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 
-   :::image type="content" source="media/vm-activate/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activate/portal-purchase.png":::
+   :::image type="content" source="media/vm-activate/configuration-purchase.png" alt-text="Screenshot showing purchase confirmation" lightbox="media/vm-activate/configuration-purchase.png":::
 
-    > [!NOTE]
-    > For Azure Hybrid Benefit, you must activate Azure Hybrid Benefit and then select **Activate benefit** in this Windows Server subscription feature.  
+1. For Azure Hybrid Benefit, you must activate Azure Hybrid Benefit and then select **Activate**.  
 
-1. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
+   :::image type="content" source="media/vm-activate/configuration-error.png" alt-text="Screenshot showing Azure Hybrid Benefit not activated" lightbox="media/vm-activate/configuration-error.png":::
 
+1. When the Windows Server subscription add-on has been successfully purchased, you can start using Windows Server VMs on your system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
+
+
+   :::image type="content" source="media/vm-activate/configuration-all-on.png" alt-text="Screenshot showing subscription activations on." lightbox="media/vm-activate/configuration-all-on.png":::
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -193,6 +196,7 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 
 ### [Azure portal](#tab/azure-portal)
 
+To set up AVMA, see [Activate Azure Hybrid Benefit](/concepts/azure-hybrid-benefit?tabs=azure-portal#activate-azure-hybrid-benefit).
 
 ### [Azure CLI](#tab/azurecli)
 
