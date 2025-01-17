@@ -4,7 +4,6 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.subservice: 
 zone_pivot_groups: windows-os
 ms.date: 12/17/2024
 ---
