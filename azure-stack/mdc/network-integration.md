@@ -5,13 +5,13 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
 ms.topic: conceptual
-ms.date: 01/02/2020
+ms.date: 01/17/2025
 ms.lastreviewed: 01/02/2020
 ---
 
 # Network integration
 
-This article covers Azure Stack network integration for Azure Modular Datacenter.
+This article describes Azure Stack network integration for Azure Modular Datacenter.
 
 ## Border connectivity (uplink)
 
@@ -156,7 +156,6 @@ SSL traffic interception isn't supported and can lead to service failures when 
 >[!NOTE]
 >Azure Stack doesn't support using Azure ExpressRoute to reach the Azure services listed in the following table because ExpressRoute might not be able to route traffic to all of the endpoints.
 
-
 |Purpose|Destination URL|Protocol|Ports|Source network|
 |---------|---------|---------|---------|---------|
 |Identity|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>ManagementServiceUri = https:\//management.core.windows.net<br>ARMUri = https:\//management.azure.com<br>https:\//\*.msftauth.net<br>https:\//\*.msauth.net<br>https:\//\*.msocdn.com<br>**Azure Government**<br>https:\//login.microsoftonline.us/<br>https:\//graph.windows.net/<br>**Azure China 21Vianet**<br>https:\//login.chinacloudapi.cn/<br>https:\//graph.chinacloudapi.cn/<br>**Azure Germany**<br>https:\//login.microsoftonline.de/<br>https:\//graph.cloudapi.de/|HTTP<br>HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure network|
@@ -175,16 +174,16 @@ SSL traffic interception isn't supported and can lead to service failures when 
 |AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
 |Diagnostic log collection service|Azure Blob Storage-provided shared access signature URL|HTTPS|443|Public VIP - /27|
 |     |     |     |     |     |
-                                                                                                                                                                
+
 ### Inbound communication
 
 A set of infrastructure VIPs is required for publishing Azure Stack endpoints to external networks. The Endpoint (VIP) table shows each endpoint, the required port, and protocol. For endpoints that require additional resource providers, like the SQL resource provider, see the specific resource provider deployment documentation.
 
 Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack. User VIPs are dynamic and defined by the users themselves, with no control by the Azure Stack operator.
 
->[!NOTE]
+> [!NOTE]
 >
->IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls don't always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
+> IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls don't always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
 |---------|---------|---------|---------|
