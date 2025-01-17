@@ -5,6 +5,7 @@ ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
 zone_pivot_groups: windows-os
+ms.service: azure-local
 ms.date: 12/17/2024
 ---
 
