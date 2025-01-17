@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.date: 10/18/2024
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Azure Local observability
