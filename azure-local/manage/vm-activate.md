@@ -196,7 +196,7 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 
 ### [Azure portal](#tab/azure-portal)
 
-To set up AVMA, see [Activate Azure Hybrid Benefit](/concepts/azure-hybrid-benefit?tabs=azure-portal#activate-azure-hybrid-benefit).
+To set up AVMA, see [Activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit?tabs=azure-portal#activate-azure-hybrid-benefit).
 
 ### [Azure CLI](#tab/azurecli)
 
