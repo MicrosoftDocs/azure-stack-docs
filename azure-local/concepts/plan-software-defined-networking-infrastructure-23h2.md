@@ -4,11 +4,11 @@ description: This topic provides information on how to plan a Software Defined N
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 10/18/2024
+ms.date: 01/16/2025
 ---
 # Plan a Software Defined Network infrastructure for Azure Local, version 23H2
 
-> Applies to: Azure Local, versions 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
 
