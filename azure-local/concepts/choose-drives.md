@@ -4,7 +4,7 @@ description: How to choose drives for Azure Stack HCI and Windows Server cluster
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 02/21/2024
 ---
 
