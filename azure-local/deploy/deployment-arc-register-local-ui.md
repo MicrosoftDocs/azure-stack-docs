@@ -5,12 +5,12 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack-hci
-ms.date: 1/08/2025
+ms.date: 01/17/2025
 ---
 
 # Register your Azure Local, version 23H2 machines via the local UI (preview)
 
-Applies to: Azure Local, version 23H2, release 2405.1 and later
+> Applies to: Azure Local 2405.1 and later
 
 <!--[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]-->
 
