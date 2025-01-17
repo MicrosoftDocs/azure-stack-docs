@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/10/2024
+ms.date: 01/17/2025
 ---
 
 # Monitor Azure Local features with Insights
@@ -29,7 +29,7 @@ Enabling Insights on your Azure Local system provides access to a set of sample 
 
 You must complete the following prerequisites before you can use Insights for monitoring Azure Local features:
 
-- You must have access to an Azure Local, version 23H2 system that's deployed, registered, and connected to Azure.
+- You must have access to an Azure Local system that's deployed, registered, and connected to Azure.
 
 - Your system must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 

@@ -1,16 +1,16 @@
 ---
-title: Monitor a single Azure Local, version 23H2 system with Insights
-description: Enable logging and monitoring capabilities to monitor a single Azure Local, version 23H2 system using Insights.
+title: Monitor a single Azure Local system with Insights
+description: Enable logging and monitoring capabilities to monitor a single Azure Local system using Insights.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack-hci
-ms.date: 10/10/2024
+ms.date: 01/17/2025
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor a single Azure Local, version 23H2 system with Insights
+# Monitor a single Azure Local system with Insights
 
 [!INCLUDE [applies-to-23H2](../includes/hci-applies-to-23h2.md)]
 
