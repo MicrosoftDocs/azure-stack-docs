@@ -4,7 +4,7 @@ description: Use this topic to learn about BGP Route Reflector for Software Defi
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/22/2024
 ---
 
