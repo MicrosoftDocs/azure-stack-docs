@@ -1,7 +1,7 @@
 ---
 title: Understand and plan your identity for disconnected operations on Azure Local (preview)
 description: Integrate your identity with disconnected operations on Azure Local (preview).
-ms.topic: concept
+ms.topic: conceptual
 author: ronmiab
 ms.author: robess
 ms.date: 01/09/2025
@@ -153,7 +153,7 @@ The following parameters must be collected and available before deployment:
 | LdapsCertChainInfo                | Certificate chain information for Ldap. This is used to validate calls from the appliance to LDAP. Do not omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIIF ......  |
 |OidcCertChainInfo                  | Certificate chain information used for Oidc to validate tokens from OpenId Connect compliant endpoint. Do not omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIID ......  |
 
-For more information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [Understand and plan PKI](link).
+<!--For more information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [Understand and plan PKI](link).-->
 
 Example Configuration Object:
 

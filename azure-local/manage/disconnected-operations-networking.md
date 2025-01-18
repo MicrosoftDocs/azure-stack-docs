@@ -1,7 +1,7 @@
 ---
 title: Understand and plan your networking for disconnected operations on Azure Local (preview)
 description: Integrate your network with disconnected operations on Azure Local (preview).
-ms.topic: concept
+ms.topic: conceptual
 author: ronmiab
 ms.author: robess
 ms.date: 01/09/2025
@@ -32,7 +32,7 @@ The disconnected operations VM appliance uses two different vNICs that plug into
 
 You connect these vNICs to the virtual switch created for the management intent, which plugs into your physical network. Next, you configure these vNICs with an IP address that you set during deployment. Then, you use their interfaces to access disconnected operations for various scenarios such as bootstrapping, troubleshooting, operations, and regular usage via the Portal or CLI.
   
-:::image type="content" source="./media/disconnected-operations-manage/disconnected-operations-networking.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations-manage/disconnected-operations-networking.png":::
+:::image type="content" source="./media/disconnected-network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-network/network-overview.png":::
 
 ## Plan your Ingress IP  
 
@@ -92,6 +92,8 @@ The endpoints exposed through the Ingress IP include:
 - Agentserviceapi.FQDN  
 - *.edgeacr.FQDN  
 - *.vault.FQDN  
+
+Make sure your DNS server resovles these endpoints to the Ingress IP.
 
 > [!NOTE]
 > The wildcard endpoints serve as backing services where your users dynamically create services such as Azure Keyvault or Azure Container Registry. Therefore, your infrastructure needs to resolve a wildcard for these specific endpoints.
