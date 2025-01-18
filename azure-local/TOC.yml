@@ -605,15 +605,6 @@ items:
     - name: To new hardware
       href: migrate/migrate-cluster-new-hardware.md   
 
-- name: Disconnected operations
-  items:
-  - name: Overview
-    href: manage/disconnected-operations-overview.md
-  - name: Networking for disconnected operations
-    href: manage/disconnected-operations-networking.md
-  - name: Identity for disconnected operations
-    href: manage/disconnected-operations-identity.md 
-
 - name: Concepts
   items: 
   - name: Azure Local observability
@@ -644,6 +635,15 @@ items:
       href: concepts/route-reflector-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Networking for disconnected operations
+    href: manage/disconnected-operations-networking.md
+  - name: Identity for disconnected operations
+    href: manage/disconnected-operations-identity.md 
 
 - name: Version 22H2
   items:
