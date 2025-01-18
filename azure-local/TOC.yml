@@ -97,8 +97,6 @@ items:
           href: security-update/security-update-dec-2023.md
         - name: November 2023 
           href: security-update/security-update-nov-2023.md
-  - name: Disconnected operations
-    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -606,6 +604,15 @@ items:
       href: migrate/migrate-cluster-same-hardware.md
     - name: To new hardware
       href: migrate/migrate-cluster-new-hardware.md   
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Networking for disconnected operations
+    href: manage/disconnected-operations-networking.md
+  - name: Identity for disconnected operations
+    href: manage/disconnected-operations-identity.md 
 
 - name: Concepts
   items: 

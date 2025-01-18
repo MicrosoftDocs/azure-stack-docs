@@ -1,19 +1,19 @@
 ---
-title: Understand and plan your networking for disconnected operations on Azure Local (preview)
+title: Understand and plan your network for disconnected operations on Azure Local (preview)
 description: Integrate your network with disconnected operations on Azure Local (preview).
-ms.topic: conceptual
+ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 01/09/2025
+ms.date: 01/17/2025
 
 #customer intent: As a Senior Content Developer, I aim to provide customers with top-quality content to help them understand and plan their networking for Disconnected Operations on Azure Local.
 ---
 
-# Plan your networking for disconnected operations on Azure Local (preview) 
+# Networking for disconnected operations on Azure Local (preview) 
 
 [!INCLUDE [applies-to](../includes/release-2411-1-and-later.md)]
 
-This guide helps you integrate your network with disconnected operations on Azure Local and outlines essential design considerations.  
+This guide helps you integrate your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -126,5 +126,3 @@ If you plan to connect the appliance to Azure, make sure your DNS infrastructure
 - Confirm that the disconnected operations appliance can reach endpoints (IP + port) through the Ingress vNIC/IP.
 - Ensure an identity provider is routable and accessible from the disconnected operations appliance on the management network (intent).
 - Configure the external network to ensure workloads outside of the Azure Local cluster can resolve and route traffic to the disconnected operations Ingress IP (port 443).
-
-## Next steps

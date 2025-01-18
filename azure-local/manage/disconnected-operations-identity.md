@@ -1,10 +1,10 @@
 ---
 title: Understand and plan your identity for disconnected operations on Azure Local (preview)
 description: Integrate your identity with disconnected operations on Azure Local (preview).
-ms.topic: conceptual
+ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 01/09/2025
+ms.date: 01/17/2025
 
 #customer intent: As a Senior Content Developer, I aim to provide customers with top-quality content to help them understand and plan their identity for Disconnected Operations on Azure Local.
 ---
@@ -13,7 +13,7 @@ ms.date: 01/09/2025
 
 [!INCLUDE [applies-to](../includes/release-2411-1-and-later.md)]
 
-This guide helps you understand how to plan and integrate your identity with disconnected operations on Azure Local. We provide information on how to configure your identity solution to work with disconnected operations and understand the actions and roles available to operators.  
+This guide helps you plan and integrate your identity with disconnected operations on Azure Local. It explains how to configure your identity solution to work with disconnected operations and understand the actions and roles available to operators.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
