@@ -150,8 +150,8 @@ The following parameters must be collected and available before deployment:
 | LdapCredential (Username + Password) | Credentials (read-only) for LDAP integration.                             | Username: `ldapreader` Password: `******`         |  
 | RootOperatorUserPrincipalName     | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@contoso.com`        |  
 | SyncGroupIdentifier               | GUID to AD group to start syncing from. Example: | `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID  81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
-| LdapsCertChainInfo                | Certificate chain information for Ldap. This is used to validate calls from the appliance to LDAP. Do not omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIIF ......  |
-|OidcCertChainInfo                  | Certificate chain information used for Oidc to validate tokens from OpenId Connect compliant endpoint. Do not omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIID ......  |
+| LdapsCertChainInfo                | Certificate chain information for Ldap. This is used to validate calls from the appliance to LDAP. Don't omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIIF ......  |
+|OidcCertChainInfo                  | Certificate chain information used for Oidc to validate tokens from OpenId Connect compliant endpoint. Don't omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIID ......  |
 
 <!--For more information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [Understand and plan PKI](link).-->
 
@@ -170,7 +170,7 @@ $idpConfig = @{
 ```  
 
 > [!NOTE]
-> Identity endpoints must be secured with certificates that share the same root of trust as those used for the disconnected operations appliance. Multiple roots of trust are not supported.
+> Identity endpoints must be secured with certificates that share the same root of trust as those used for the disconnected operations appliance. Multiple roots of trust aren't supported.
 
 ## Current limitations
 
