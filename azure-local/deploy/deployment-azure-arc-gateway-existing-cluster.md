@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/10/2024
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Simplify outbound network requirements for existing Azure Local instances, version 23H2 through Azure Arc gateway (preview)

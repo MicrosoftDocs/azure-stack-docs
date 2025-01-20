@@ -1,7 +1,7 @@
 ---
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.topic: include
 ms.date: 10/11/2024
 ---
