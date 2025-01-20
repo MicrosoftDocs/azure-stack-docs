@@ -11,7 +11,7 @@ ms.date: 01/17/2025
 
 # Networking for disconnected operations on Azure Local (preview) 
 
-[!INCLUDE [applies-to](../includes/release-2411-1-and-later.md)]
+[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This guide helps you integrate your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
 
@@ -32,7 +32,7 @@ The disconnected operations VM appliance uses two different vNICs that plug into
 
 You connect these vNICs to the virtual switch created for the management intent, which plugs into your physical network. Next, you configure these vNICs with an IP address that you set during deployment. Then, you use their interfaces to access disconnected operations for various scenarios such as bootstrapping, troubleshooting, operations, and regular usage via the Portal or CLI.
   
-:::image type="content" source="./media/disconnected-network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-network/network-overview.png":::
+<!-->:::image type="content" source="./media/disconnected-network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-network/network-overview.png":::-->
 
 ## Plan your Ingress IP  
 

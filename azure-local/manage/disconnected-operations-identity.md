@@ -11,7 +11,7 @@ ms.date: 01/17/2025
 
 # Plan your identity for disconnected operations on Azure Local (preview) 
 
-[!INCLUDE [applies-to](../includes/release-2411-1-and-later.md)]
+[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This guide helps you plan and integrate your identity with disconnected operations on Azure Local. It explains how to configure your identity solution to work with disconnected operations and understand the actions and roles available to operators.
 
@@ -110,9 +110,7 @@ This is a comprehensive list of actions that should be available but note that i
 | Rotate secrets (external certificates) <sub>3</sub> | Y    |  
 
 <sub>1. Operator subscription cannot be deleted</sub>
-
 <sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
-
 <sub>3. Scoped for release in the future</sub>
 
 The Portal UX isn't available for each of these actions, and some backend capabilities aren't ready for public preview. The list is for completeness of what should be available, with some areas coming post public preview.
