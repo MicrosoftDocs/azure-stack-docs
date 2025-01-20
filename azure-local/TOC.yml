@@ -97,8 +97,6 @@ items:
           href: security-update/security-update-dec-2023.md
         - name: November 2023 
           href: security-update/security-update-nov-2023.md
-  - name: Disconnected operations
-    href: manage/disconnected-operations-overview.md
   - name: OEM License
     items: 
     - name: OEM license information
@@ -637,6 +635,15 @@ items:
       href: concepts/route-reflector-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Networking for disconnected operations
+    href: manage/disconnected-operations-networking.md
+  - name: Identity for disconnected operations
+    href: manage/disconnected-operations-identity.md 
 
 - name: Version 22H2
   items:
