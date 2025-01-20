@@ -4,7 +4,7 @@ description: Learn how to download Azure Local, version 23H2 software from the A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/06/2024
 ---
 
