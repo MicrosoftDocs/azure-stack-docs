@@ -3,7 +3,7 @@ title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
 ms.date: 12/27/2024
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
 ms.reviewer: alkohli

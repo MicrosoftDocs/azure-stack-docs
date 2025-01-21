@@ -5,8 +5,8 @@ author: alkohli
 ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
-ms.service: azure-stack-hci
 monikerRange: ">=azloc-2408"
+ms.service: azure-local
 ---
 
 # About Azure Arc gateway for Azure Local, version 23H2 (preview)
@@ -192,7 +192,7 @@ The gateway creation process takes 9-10 minutes to complete.
 To detach the gateway resource from your Arc-enabled server, set the gateway resource ID to `null`. If you want to attach your Arc-enabled server to another Arc gateway resource just update the name and resource ID with the new Arc gateway information:
 
 ```azurecli
-az arcgateway settings update --resource-group <Resource Group> --subscription <subscription name> --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name <Arc-Server’s name> --gateway-resource-id "
+az arcgateway settings update --resource-group <Resource Group> --subscription <subscription name> --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name <Arc-Server's name> --gateway-resource-id "
 ```
 
 ## Delete the Arc gateway resource

@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 11/25/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Prepare Active Directory for Azure Local, version 23H2 deployment

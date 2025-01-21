@@ -9,7 +9,7 @@ ms.custom:
 ms.reviewer: jlei
 ms.date: 10/22/2024
 ms.lastreviewed: 03/05/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Azure verification for VMs on Azure Local
