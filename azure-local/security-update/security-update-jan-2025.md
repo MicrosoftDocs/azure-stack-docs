@@ -3,26 +3,26 @@ title:  January 2025 security update (KB5049984) for Azure Local, version 23H2
 description: Read about the January 2025 security update (KB5049984) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/14/2025
+ms.date: 01/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# January OS security update (KB5049984) for Azure Local, version 23H2
+# January OS security update (KB5049984) for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on January 14, 2025 and applies to OS build 25398.1369.
+This article describes the OS security update for Azure Local that was released on January 14, 2025 and applies to OS build 25398.1369.
 
 ## Improvements
 
-This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
 - **[Virtual machine (VM) Fixed]**: A Windows guest machine fails to start up. This occurs when you turn on nested virtualization on a host that supports Advanced Vector Extensions 10 (AVX10).  
 
-- **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
+- **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]**: This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
-- **[Win32_NetworkAdapter and Win32_NetworkAdapterConfiguration]** Fixed: You can't retrieve LAN over USB details on a certain platform. This occurs when you install two drivers on a device, and one of them has a different class ID. If you still have this issue after you install this update, run the commands below with administrative rights.
+- **[Win32_NetworkAdapter and Win32_NetworkAdapterConfiguration Fixed]**: You can't retrieve LAN over USB details on a certain platform. This occurs when you install two drivers on a device, and one of them has a different class ID. If you still have this issue after you install this update, run the commands below with administrative rights.
     - `pnputil /remove-device <Instance ID>`
     - `pnputil /scan-device`
 
@@ -46,5 +46,5 @@ For a list of the files that are provided in this update, download the file info
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local.
