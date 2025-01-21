@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 10/21/2024
 ms.author: robess
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # View known issues in Azure Stack HCI 2311.5 release

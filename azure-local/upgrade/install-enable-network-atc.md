@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
 ms.date: 10/22/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Local, version 22H2 instance.
 ---
 
