@@ -1,7 +1,7 @@
 ---
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli
 ms.topic: include
 ms.date: 10/25/2024

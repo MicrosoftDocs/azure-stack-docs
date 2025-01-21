@@ -1,7 +1,7 @@
 ---
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
+ms.service: azure-local
 ms.topic: include
 ms.date: 10/25/2022
 ms.reviewer: alkohli
