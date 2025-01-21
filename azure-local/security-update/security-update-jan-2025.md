@@ -6,6 +6,7 @@ ms.topic: conceptual
 ms.date: 01/21/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: "=azloc-24112"
 ---
 
 # January OS security update (KB5049984) for Azure Local
