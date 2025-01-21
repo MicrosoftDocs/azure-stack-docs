@@ -4,7 +4,7 @@ description: How to choose machines, storage, and networking components for smal
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: references_regions
 ms.date: 11/25/2024
 ---

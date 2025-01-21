@@ -4,7 +4,7 @@ description: Learn how to connect Linux clients with supported software versions
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 11/11/2024
+ms.date: 01/10/2025
 ms.reviewer: dsundarraj
 
 # Intent: As an IT Pro, XXX.
