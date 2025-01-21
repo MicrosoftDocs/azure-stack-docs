@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/17/2025
+ms.date: 01/21/2025
 ms.service: azure-stack-hci
 ---
 
@@ -88,9 +88,9 @@ You can enable Windows Server subscription through different methods. Select one
 
    :::image type="content" source="media/vm-activate/configuration-purchase.png" alt-text="Screenshot showing purchase confirmation" lightbox="media/vm-activate/configuration-purchase.png":::
 
-1. For Azure Hybrid Benefit, you must activate Azure Hybrid Benefit and then select **Activate**.  
+1. For Azure Hybrid Benefit, you must [activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azure-portal) and then select **Activate**.  
 
-   :::image type="content" source="media/vm-activate/configuration-error.png" alt-text="Screenshot showing Azure Hybrid Benefit not activated" lightbox="media/vm-activate/configuration-error.png":::
+   :::image type="content" source="media/vm-activate/configuration-hybrid.png" alt-text="Screenshot showing Azure Hybrid Benefit" lightbox="media/vm-activate/configuration-hybrid.png":::
 
 1. When the Windows Server subscription add-on has been successfully purchased, you can start using Windows Server VMs on your system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
 
@@ -190,10 +190,6 @@ VM activation through host machines presents several benefits:
 
 You can set up AVMA through different methods. Select one of the following tabs based on your preferred method.
 
-Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
-
-> [!VIDEO 65545cda-9e79-413b-9cd0-116a51de0c18]
-
 ### [Azure portal](#tab/azure-portal)
 
 To set up AVMA, see [Activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azure-portal#activate-azure-hybrid-benefit).
@@ -205,6 +201,10 @@ Use either Windows Admin Center or PowerShell to set up AVMA.
 ### [Windows Admin Center](#tab/windows-admin-center)
 
 You can use Windows Admin Center to set up and manage product keys for your Azure Local.
+
+Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
+
+> [!VIDEO 65545cda-9e79-413b-9cd0-116a51de0c18]
 
 #### Apply activation keys
 
