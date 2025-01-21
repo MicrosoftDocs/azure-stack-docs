@@ -4,7 +4,7 @@ description: Learn about security features available for new deployments of Azur
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/11/2024
 ---
 

@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 01/17/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Use Azure Arc gateway without a proxy on Azure Local (preview)

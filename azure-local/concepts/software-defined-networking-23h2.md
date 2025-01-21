@@ -4,8 +4,8 @@ description: Software defined networking (SDN) provides a way to centrally confi
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.service: azure-stack-hci
-ms.date: 01/16/2025
+ms.service: azure-local
+ms.date: 01/08/2025
 ---
 
 # Software Defined Networking (SDN) in Azure Local, version 23H2

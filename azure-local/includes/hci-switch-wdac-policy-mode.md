@@ -1,7 +1,7 @@
 ---
 author: ManikaDhiman
 ms.author: alkohli
-ms.service: azure-stack
+ms.service: azure-local
 ms.topic: include
 ms.date: 12/10/2024
 ms.reviewer: alkohli

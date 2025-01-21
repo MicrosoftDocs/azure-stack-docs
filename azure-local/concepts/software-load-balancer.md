@@ -4,8 +4,8 @@ description: Use this article to learn about Software Load Balancer for Software
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack-hci
-ms.date: 01/16/2025
+ms.service: azure-local
+ms.date: 10/25/2024
 ---
 
 # What is Software Load Balancer (SLB) for SDN?

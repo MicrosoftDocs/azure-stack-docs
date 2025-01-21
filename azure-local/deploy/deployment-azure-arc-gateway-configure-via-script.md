@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 01/17/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)

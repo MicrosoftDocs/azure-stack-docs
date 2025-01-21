@@ -4,8 +4,8 @@ description: Use this topic to learn about Network Controller for Software Defin
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack-hci
-ms.date: 01/16/2025
+ms.service: azure-local
+ms.date: 10/21/2024
 ---
 
 # What is Network Controller?

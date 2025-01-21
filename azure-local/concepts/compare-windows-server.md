@@ -4,8 +4,8 @@ description: This topic helps you determine whether Azure Local or Windows Serve
 ms.topic: conceptual
 author: jasongerend
 ms.author: jgerend
-ms.service: azure-stack-hci
-ms.date: 01/16/2025
+ms.service: azure-local
+ms.date: 10/21/2024
 ---
 
 # Compare Azure Local to Windows Server
