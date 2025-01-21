@@ -5,7 +5,7 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 01/13/2025
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Rotate secrets on Azure Local, version 23H2
