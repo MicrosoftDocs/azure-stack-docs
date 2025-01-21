@@ -88,7 +88,7 @@ You can enable Windows Server subscription through different methods. Select one
 
    :::image type="content" source="media/vm-activate/configuration-purchase.png" alt-text="Screenshot showing purchase confirmation" lightbox="media/vm-activate/configuration-purchase.png":::
 
-1. For Azure Hybrid Benefit, you must [activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azure-portal) and then select **Activate**.  
+1. For Azure Hybrid Benefit, you must [activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azure-portal) and then select **Activate benefit**.  
 
    :::image type="content" source="media/vm-activate/configuration-hybrid.png" alt-text="Screenshot showing Azure Hybrid Benefit" lightbox="media/vm-activate/configuration-hybrid.png":::
 
