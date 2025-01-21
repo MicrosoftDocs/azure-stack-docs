@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 12/30/2024
+ms.date: 01/21/2025
 ---
 
-# Azure Local, version 23H2 release information
+# Azure Local release information
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
@@ -18,11 +18,11 @@ To enhance your Azure Local experience, we periodically release feature updates 
 
 To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
-This article provides the release information for Azure Local, version 23H2, including the release build and OS build information.  
+This article provides the release information for Azure Local, including the release build and OS build information.  
 
-## About Azure Local, version 23H2 releases
+## About Azure Local releases
 
-The Azure Local, version 23H2 includes multiple release trains: 2311, 2402, 2405, 2408, and 2411. Each release train includes a feature build and subsequent cumulative updates.
+The Azure Local includes multiple release trains: 2311, 2402, 2405, 2408, and 2411. Each release train includes a feature build and subsequent cumulative updates.
 
 - **Feature build**: The feature update build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
@@ -32,7 +32,7 @@ The Azure Local, version 23H2 includes multiple release trains: 2311, 2402, 2405
 
 The following diagram illustrates the release trains, their associated feature builds, and update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local, version 23H2 release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
 #### Move to the next release train
 
@@ -54,14 +54,15 @@ Follow these guidelines to move within the same release train:
 
 - To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within six months.
 
-## Azure Local, version 23H2 release information summary
+## Azure Local release information summary
 
 ### Supported versions of Azure Local
 
-The following table summarizes the release information for Azure Local, version 23H2, across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*
+The following table summarizes the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
+| 10.2411.2.10 <br><br> Availability date: 2025-01-22 | 25398.XXXX | [January OS security update](./security-update/security-update-jan-2025.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24112) | [Known issues](./known-issues-2411-2.md) |
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](./security-update/security-update-dec-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24111) | [Known issues](./known-issues-2411-1.md) |
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
@@ -75,7 +76,7 @@ The following table summarizes the release information for Azure Local, version 
 
 ### Older versions of Azure Local
 
-The following table summarizes the release information for Azure Local, version 23H2, across older versions.
+The following table summarizes the release information for Azure Local across older versions.
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
@@ -91,4 +92,4 @@ The following table summarizes the release information for Azure Local, version 
 
 ## Next steps
 
-- [What's new for Azure Local, version 23H2](./whats-new.md)
+- [What's new for Azure Local](./whats-new.md)
