@@ -180,7 +180,7 @@ This release contains the following changes for SBE:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24053"
+::: moniker range="=azloc-previous"
 
 
 ## Features and improvements in 2405.3
