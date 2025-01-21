@@ -11,7 +11,7 @@ ms.service: azure-stack-hci
 
 # Manage VMs on Azure Local using Windows PowerShell
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019
 
 This article describes how to create and manage virtual machines (VMs) on Azure Local using Windows PowerShell.
 
