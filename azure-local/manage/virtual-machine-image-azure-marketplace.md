@@ -4,7 +4,7 @@ description: Learn how to create Azure Local VM images using source images from 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
 ms.date: 12/10/2024
