@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/03/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # License Windows Server VMs on Azure Local
