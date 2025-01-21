@@ -4,7 +4,7 @@ description: Learn how to prepare SUSE Linux images to create an Azure Local VM 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
 ms.date: 11/06/2024

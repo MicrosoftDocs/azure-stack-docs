@@ -4,7 +4,7 @@ description: How to use the Environment Checker to assess if your environment is
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/27/2024
 ---
 
