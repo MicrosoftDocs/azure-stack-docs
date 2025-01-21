@@ -1,39 +1,39 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Arc VM management FAQ 
-  description: The Azure Arc VM management FAQ provides information on questions related to Azure Local, versions 23H2 and 22H2 (preview), and for customers looking to move to version 23H2.
+  description: The Azure Arc VM management FAQ provides information on questions related to Azure Local.
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 01/15/2025
+  ms.date: 01/21/2025
 title: Azure Arc VM management FAQ
 summary:
-  Frequently asked questions about Azure Arc VMs for Azure Local, version 23H2.
+  Frequently asked questions about Azure Arc VMs for Azure Local.
 
 sections:
   - name: ignored
     questions:
     - question: |
-        What is changing in Azure Arc Virtual Machine (VM) management on Azure Local, version 22H2?
+        What is changing in Azure Arc Virtual Machine (VM) management on Azure Stack HCI, version 22H2?
       answer: |
-        On 15 February 2024, the preview of Arc VM management on Azure Local, version 22H2 will encounter a breaking change.
-        With the upcoming release of Azure Local version 23H2, we're supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Local on version 22H2 will end on 15 February 2024.
+        On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change.
+        With the upcoming release of Azure Local, we're supporting Arc VM management exclusively on Azure Local. The support for Arc VM management preview on version 22H2 will end on 15 February 2024.
 
     - question: |
-        What does this breaking change on Azure Local, version 22H2 mean for me and my workloads? 
+        What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
       answer: |
-        The existing Arc VMs created on version 22H2 on your system will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Local, version 23H2. Keep in mind that there's no automated migration support for Arc VMs running on Azure Local, version 22H2. 
+        The existing Arc VMs created on version 22H2 on your system will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Local. Keep in mind that there's no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
 
     - question: |
-        What major improvements and features can I expect for Arc VMs in the upcoming Azure Local, version 23H2?
+        What major improvements and features can I expect for Arc VMs in Azure Local?
       answer: |
-        The upcoming Arc VM Management on Azure Local, version 23H2 has several enhancements and new features. Improvements include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, more VM Extensions, improvements to Azure CLI, and more.
+        Arc VM management on Azure Local has several enhancements and new features. Improvements include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, more VM Extensions, improvements to Azure CLI, and more.
 
     - question: |
         How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local, version 23H2 are handled automatically. For more information, see [Update overview for Azure Local, version 23H2](../update/about-updates-23h2.md).
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local 23H2 are handled automatically. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
 
     - question: | 
         Will I be charged when updating my Arc VM using the Azure Update Manager service?
@@ -42,12 +42,12 @@ sections:
         /azure/update-manager/update-manager-faq#pricing).
         
     - question: |
-        Why do I need to move to Azure Local, version 23H2?
+        Why do I need to move to Azure Local?
       answer: |
-        Moving to Azure Local, version 23H2 is essential to continue using Azure Arc VM management since version 22H2 will no longer be supported after 15 February 2024. Version 23H2 has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
+        Moving to Azure Local is essential to continue using Azure Arc VM management since Azure Stack HCI, version 22H2 will no longer be supported after 15 February 2024. Azure Local has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
 
     - question: |
-        How can I seek assistance during the transition from Azure Local, version 22H2 to Azure Local, version 23H2?
+        How can I seek assistance during the transition to Azure Local?
       answer: |
         The Microsoft Support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
 
@@ -59,7 +59,7 @@ sections:
     - question: |
         I used to be able to create virtual networks for my Arc VMs in past releases. Starting 2310 (November 2023), I can only create logical networks. What changed?
       answer: |
-        Starting with the 2310 release of Azure Local, version 23H2, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on the version 22H2 platform cannot be used with the 2310 release and beyond, and need to be manually deleted.
+        Starting with the 2310 release of Azure Local, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on Azure Local cannot be used with the 2310 release and beyond, and need to be manually deleted.
 
     - question: |
         Can I use SDN for Azure Local VMs created from the Azure portal?
@@ -69,7 +69,7 @@ sections:
     - question: |
         How can I perform live migration of Arc-enabled virtual machines?
       answer: |
-        Live migration of Arc VMs across Azure Local nodes is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
+        Live migration of Arc VMs across Azure Local machines is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
     - question: |
         Is there a fee to use Arc management for VMs on Azure Local?
