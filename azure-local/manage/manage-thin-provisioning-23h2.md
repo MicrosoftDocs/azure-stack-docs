@@ -4,7 +4,7 @@ description: How to use storage thin provisioning on Azure Local, version 23H2 b
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/29/2024
 ---
 

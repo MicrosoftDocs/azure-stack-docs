@@ -4,7 +4,7 @@ description: Select a network reference pattern for single-node and two-node Azu
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/17/2024
 ---
 
