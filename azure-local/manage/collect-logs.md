@@ -4,7 +4,7 @@ description: Learn how to collect diagnostic logs and share them with Microsoft 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/11/2024
 ---
 

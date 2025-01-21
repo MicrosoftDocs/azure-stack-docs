@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack-hci
 ms.date: 01/21/2025
+
 ---
 
 # Azure Arc VM management prerequisites
