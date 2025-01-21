@@ -1,6 +1,6 @@
 ---
 title: Manage Arc VMs on Azure Local
-description: Learn how to manage Arc VMs, including operations such as start, stop, restart, and view properties of Azure Arc VMs running on Azure Local, version 23H2.
+description: Learn how to manage Arc VMs, including operations such as start, stop, restart, and view properties of Azure Arc VMs running on Azure Local version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -12,15 +12,15 @@ ms.date: 01/15/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Arc virtual machines (VMs) running on Azure Local, version 23H2. It covers the procedures to enable guest management and to start, stop, restart, pause, save, and delete an Azure Arc VM.
+This article describes how to manage Azure Arc virtual machines (VMs) running on Azure Local version 23H2. It covers the procedures to enable guest management and to start, stop, restart, pause, save, and delete an Azure Arc VM.
 
 ## Prerequisites
 
-- Access to an Azure Local instance that's deployed and registered. During the deployment, an Azure Arc resource bridge and a custom location are also created.
+- Access to an Azure Local instance that's deployed and registered. The deployment of an Azure Local instance includes the creation of an Azure Arc resource bridge and a custom location.
 
-   Go to the resource group in Azure. You can see the custom location and the Azure Arc resource bridge created for Azure Local. Make a note of the subscription, the resource group, and the custom location. You use them later in this scenario.
+  Go to the resource group in Azure. The displayed information includes the custom location and the Azure Arc resource bridge created for Azure Local. Make a note of the subscription, the resource group, and the custom location. You use them later in this scenario.
 
-- One or more Azure Arc VMs running on your Azure Local instance. For more information, see [Create Azure Arc VMs on Azure Local](./create-arc-virtual-machines.md).
+- One or more Azure Arc VMs running on your Azure Local instance. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
 
 ## Enable guest management
 
@@ -28,7 +28,7 @@ It's important to understand two agents in the context of guest management: a VM
 
 When you enable guest management on an Azure Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). You use the Azure Connected Machine agent to manage Azure Arc VM extensions on your VM.
 
-Here are some key considerations for enabling guest management on a VM after provisioning it:
+Here are some key considerations for enabling guest management on a VM after you provision it:
 
 - Make sure that your Azure Local instance is running 2311 or later.
 - Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
@@ -36,7 +36,9 @@ Here are some key considerations for enabling guest management on a VM after pro
 
 ### Verify that guest agent is running
 
-1. To verify that the guest agent is running on the Arc VM, connect to the machine.
+To verify that the guest agent is running on the Azure Arc VM:
+
+1. Connect to the machine.
 1. Run the following command:
 
     ```azurecli
@@ -77,15 +79,17 @@ If your statuses don't match the preceding output, follow the steps in [Enable g
 
 ### Enable guest management on a VM when the guest agent is running
 
-To enable guest management on an Azure Arc VM that has guest agent running, run the following command:
+To enable guest management on an Azure Arc VM that has the guest agent running:
 
-```azurecli
-az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
-```
+1. Run the following command, which sets the `enable-agent` parameter to `true`:
 
-Guest management is enabled when the `enable-agent` parameter is set to `true`. Guest management should take a few minutes to become enabled.
+   ```azurecli
+   az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
+   ```
 
-Follow the steps in [Verify that guest management is enabled in the Azure portal](#verify-that-guest-management-is-enabled-in-the-azure-portal).
+   Guest management should take a few minutes to become enabled.
+
+1. Verify that guest management is enabled. Follow the steps in [Verify that guest management is enabled in the Azure portal](#verify-that-guest-management-is-enabled-in-the-azure-portal).
 
 ### Enable guest management on a VM when the guest agent is not running
 
@@ -117,24 +121,24 @@ If you're running an older version, `statuses` indicates `code` as `OK`, `displa
 
 Follow these steps:
 
-1. Connect to the VM by using the OS-specific steps. Run PowerShell as an administrator.
-1. Run one of the following commands to enable the guest agent on your VM, based on the OS type:
+1. Connect to the VM by using the OS-specific steps. Run Azure PowerShell as an administrator.
+1. Run one of the following commands to enable the guest agent on your VM, based on the OS type.
 
-    **Linux**:
+   Use this command for Linux:
   
-      ```azurecli
-      sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
-      ```
+   ```azurecli
+   sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
+   ```
 
-    **Windows**:
+    Use this command for Windows:
 
-      ```azurecli
-      $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
-      ```
+    ```azurecli
+    $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
+    ```
 
     Here's a sample output for a Linux VM that shows successful installation of the guest agent.
 
-    :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot that shows that the guest agent is successfully enabled on the VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot that shows that the guest agent is successfully enabled on a VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
 
 1. Connect to one of the machines. Run the following command to enable guest management:
 
@@ -142,11 +146,11 @@ Follow these steps:
    az stack-hci-vm update --name "mylocal-vm" --enable-agent true --resource-group "mylocal-rg"
    ```
 
-Follow the steps in [Verify that guest management is enabled in the Azure portal](#verify-that-guest-management-is-enabled-in-the-azure-portal).
+1. Verify that guest management is enabled. Follow the steps in [Verify that guest management is enabled in the Azure portal](#verify-that-guest-management-is-enabled-in-the-azure-portal).
 
 #### Status displayed as null
 
-The following sample output snippet shows a null status. This status indicates that the required `iso` for guest agent is missing.
+The following sample output snippet shows a null status. This status indicates that the required `iso` for the guest agent is missing.
 
 ```output
 "instanceView": {
@@ -159,6 +163,7 @@ The following sample output snippet shows a null status. This status indicates t
 Follow these steps:
 
 1. Connect to a machine.
+
 1. Run the following command:
 
     ```azurecli
@@ -167,13 +172,15 @@ Follow these steps:
 
     The `enable-vm-config-agent` parameter mounts the required `iso` for the guest agent.
 
-1. Wait a few minutes and rerun the `az stack-hci-vm show` command. When the status shows as `Connecting`, follow the steps in [Status displayed as connecting](#status-displayed-as-connecting).
+1. Wait a few minutes and rerun the `az stack-hci-vm show` command. When the status shows `Connecting`, follow the steps in [Status displayed as Connecting](#status-displayed-as-connecting).
 
 #### Verify that guest management is enabled in the Azure portal
 
 1. Go to the Azure portal.
+
 1. Go to **Your Azure Local** > **Virtual machines**, and then select the VM on which you enabled guest management.
-1. On the **Overview** page, on the **Properties** tab, go to **Configuration**. **Guest management** should show as **Enabled (Connected)**.
+
+1. On the **Overview** page, on the **Properties** tab, go to **Configuration**. **Guest management** should show **Enabled (Connected)**.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot of the Azure portal that shows the area for verifying that guest management is enabled." lightbox="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
 
@@ -189,7 +196,7 @@ To view VM properties for your Azure Local instance, follow these steps in the A
 
 1. On the **Overview** page, select the **Properties** tab to view the properties of your VM.
 
-   :::image type="content" source="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png" alt-text="Screenshot of properties of a selected Azure Arc virtual machine." lightbox="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png" alt-text="Screenshot of the properties of a selected Azure Arc virtual machine." lightbox="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png":::
 
 ## Start a VM
 
@@ -221,7 +228,7 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 
 1. Select **Yes**.
 
-1. Verify that the VM has stopped.
+1. Verify that the VM stopped.
 
 ## Restart a VM
 
@@ -237,11 +244,13 @@ To restart a VM, follow these steps in the Azure portal for your Azure Local ins
 
 1. Select **Yes**.
 
-1. Verify that the VM has restarted.
+1. Verify that the VM restarted.
 
 ## Pause a VM
 
-Pausing the VMs is useful to save compute resources when you're not using the VMs. Pausing a VM stops any CPU activity. You can pause only running VMs. After you pause a VM, you can resume it later.
+Pausing a VM is useful to save compute resources when you're not using the VM. Pausing a VM stops any CPU activity.
+
+You can pause only running VMs. After you pause a VM, you can resume it later.
 
 1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 
@@ -409,8 +418,7 @@ Pausing the VMs is useful to save compute resources when you're not using the VM
 #Start the VM after it was paused. 
 
 [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm start --name $vmName --resource-group $rg
-Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm0012024-02-01-preview/https://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/d
-efault/start?api-version=2024-02-01-preview
+Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm0012024-02-01-preview/https://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start?api-version=2024-02-01-preview
 
 #Show the current state of the VM. The VM should be running.
 
@@ -445,7 +453,7 @@ efault/start?api-version=2024-02-01-preview
               "code": "ProvisioningState/succeeded",
               "displayStatus": "Connected",
               "level": "Info",
-              "message": "Connection with mocguestagent was succesfully reestablished",
+              "message": "Connection with mocguestagent was successfully reestablished",
               "time": "2024-06-24T17:25:19+00:00"
             }
           ],
@@ -525,7 +533,7 @@ efault/start?api-version=2024-02-01-preview
 
 ## Save a VM
 
-Saving a VM stores the current state of the VM to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can save only running VMs.
+Saving a VM stores its current state to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can save only running VMs.
 
 1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
 
@@ -616,7 +624,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
               "code": "ProvisioningState/succeeded",
               "displayStatus": "Connected",
               "level": "Info",
-              "message": "Connection with mocguestagent was succesfully reestablished",
+              "message": "Connection with mocguestagent was successfully reestablished",
               "time": "2024-06-24T17:25:19+00:00"
             },
           ],
@@ -728,7 +736,7 @@ Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource g
               "code": "ProvisioningState/succeeded",
               "displayStatus": "Connected",
               "level": "Info",
-              "message": "Connection with mocguestagent was succesfully reestablished",
+              "message": "Connection with mocguestagent was successfully reestablished",
               "time": "2024-06-24T18:32:41+00:00"
             }
           ],
@@ -812,6 +820,7 @@ Follow these steps to change the local account passwords for an Azure Arc VM dep
 ### [Windows](#tab/windows)
 
 1. Sign in to the Azure Arc VM.
+
 1. Run the following Azure PowerShell command:
 
     ```powershell
@@ -842,9 +851,10 @@ Follow these steps to change the local account passwords for an Azure Arc VM dep
 
 ### [Linux](#tab/linux)
 
-If Bash is in a different directory, make sure to change the `#!/bin/bash` line accordingly.
+If Bash is in a different directory, be sure to change the `#!/bin/bash` line accordingly.
 
 1. Sign in to the Azure Arc VM.
+
 1. Run the following script from where Bash is installed:
 
     ```Bash
@@ -871,45 +881,47 @@ If Bash is in a different directory, make sure to change the `#!/bin/bash` line 
     else
         echo -e "\e[31mThe passwords do not match. Please try again.\e[0m"
     fi
+    ```
+
 ---
 
 ## Delete a VM
 
-Follow these steps in the Azure portal of your Azure Local to remove a VM.
+Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks and the network interfaces associated with the VM. You need to locate and delete these resources separately.
 
-1. Go to the Azure Local resource and then go to **Virtual machines**.
+To remove a VM, follow these steps in the Azure portal for your Azure Local instance:
 
-1. In the right pane, from the list of virtual machines, select a VM that you wish to remove from your system.
+1. Go to the Azure Local resource, and then go to **Virtual machines**.
 
-1. On the **Overview** page for the VM, from the top command bar in the right pane, select **Delete**, then select **Yes**.
+1. In the list of virtual machines, select a VM that you want to remove from your system.
 
-    You are now prompted to confirm the deletion. Select **Yes**. Verify the VM is removed.
+1. On the **Overview** page for the VM, on the command bar, select **Delete**.
 
-    Note that when a VM is deleted, all the resources associated with the VM are not deleted. For example, the data disks or the network interfaces associated with the VM are not deleted. You need to locate and delete these resources separately.
+1. You're prompted to confirm the deletion. Select **Yes**.
 
-    :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of warning when deleting VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of the warning for deleting a virtual machine." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
 
-1. You can now go to the resource group where this VM was deployed. You can see that the VM is removed from the list of resources in the resource group. You may need to select the option to **Show hidden types** to view the resources associated with this VM that were not deleted.
+1. Go to the resource group where this VM was deployed. Verify that the VM is removed from the list of resources in the resource group.
 
-    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
+1. Locate the associated resources, such as the network interfaces and data disks, and delete them. You might need to select **Show hidden types** to view the resources associated with this VM that weren't deleted.
 
-  Locate the associated resources such as the network interfaces and data disks, and delete them.
+    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
 
-## Live migration of Azure Arc-enabled virtual machines
+## Conduct live migration of Azure Arc virtual machines
 
 Live migration of Azure Arc VMs across Azure Local nodes is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
 ## Change cores and memory
 
-Follow these steps in the Azure portal of your Azure Local to change cores and memory.
+To change cores and memory, follow these steps in the Azure portal for your Azure Local instance:
 
-1. Go to your Azure Local resource and then go to **Virtual machines**.
+1. Go to your Azure Local resource, and then go to **Virtual machines**.
 
-1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
+1. In the list of VMs, select and go to the VM whose cores and memory you want to modify.
 
-1. Under **Settings**, select **Size**. Edit the **Virtual processor count** or **Memory (MB)** to change the cores and memory size for the VM. Only the memory size can be changed. The memory type can't be changed once a VM is created.
+1. Under **Settings**, select **Size**. Edit the **Virtual processor count** or **Memory (MB)** values to change the cores or memory size for the VM. Only the memory size can be changed. You can't change the memory type after a VM is created.
 
-   :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of Size page for a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of the pane for changing cores and memory size of a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
 
 ## Related content
 
