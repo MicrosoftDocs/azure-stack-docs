@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Known issues in the Azure Local 2411.1 release
+# Known issues in the Azure Local 2411.2 release
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
