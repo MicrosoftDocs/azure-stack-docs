@@ -4,7 +4,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 
 ---
 

@@ -5,8 +5,8 @@ author: alkohli
 ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
-ms.service: azure-stack-hci
 monikerRange: ">=azloc-2408"
+ms.service: azure-local
 ---
 
 # Configure Arc proxy manually for Azure gateway on Azure Local (preview)
@@ -21,7 +21,7 @@ After creating the Arc gateway resource in your Azure subscription, you can enab
 
 Make sure the following prerequisites are met before proceeding:
 
-- You’ve access to an Azure Local instance running version 23H2.
+- You've access to an Azure Local instance running version 23H2.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
