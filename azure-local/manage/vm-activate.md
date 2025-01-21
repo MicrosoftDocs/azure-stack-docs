@@ -4,13 +4,13 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 01/21/2025
 ms.service: azure-stack-hci
 ---
 
 # License Windows Server VMs on Azure Local
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
+> Applies to: Azure Local, version 22H2 and later; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
 Windows Server virtual machines (VMs) must be licensed and activated before you can use them on Azure Local. You can use any existing Windows Server licenses and activation methods that you already have. Optionally, Azure Local offers new licensing models and tools to help simplify this process. This article describes general licensing concepts and the new options that are available on Azure Local.
 
@@ -39,7 +39,7 @@ Choose the deployment option that best suits your needs:
 
 | Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
-| What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | All versions up to the latest version - includes versions of Windows Server that are supported by Azure Local. Specifically, the benefit is extended to Azure Local version 23H2 or 22H2. |
+| What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | All versions up to the latest version - includes versions of Windows Server that are supported by Azure Local. |
 | Does this option also allow me to use Windows Server: Azure edition? | Yes. | Need to have both Software Assurance (SA) and WS volume license keys. |
 | How do I activate my WS VMs? | No host-side keys – AVMA is automatically enabled. After it's enabled, you can then apply the generic AVMA keys on the client side. | To activate this benefit, you must exchange your 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Local. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure#getting-azure-hybrid-benefit-for-azure-stack-hci). |
 | What are the CAL requirements? | No CAL required – included in WS subscription. | No CAL required – included in SA/WS subscription. |
