@@ -4,7 +4,7 @@ description: Use this topic to learn about Datacenter Firewall in Azure Local an
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/25/2024
 ---
 
