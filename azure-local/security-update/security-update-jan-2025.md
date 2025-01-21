@@ -22,6 +22,11 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
+- **[Win32_NetworkAdapter and Win32_NetworkAdapterConfiguration]** Fixed: You can't retrieve LAN over USB details on a certain platform. This occurs when you install two drivers on a device, and one of them has a different class ID. If you still have this issue after you install this update, run the commands below with administrative rights.
+    - `pnputil /remove-device <Instance ID>`
+    - `pnputil /scan-device`
+
+
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [January 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Jan).
 
 ## Known issues
