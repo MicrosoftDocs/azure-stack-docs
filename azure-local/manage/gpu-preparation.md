@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 01/21/2025
 ms.service: azure-stack-hci
 ---
 
@@ -63,7 +63,7 @@ Your Azure Local host must meet the following requirements:
 
 - Your system must support an Azure Local solution with GPU support. To browse your options, see the [Azure Local Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
 
-- You've access to Azure Local, version 23H2.
+- You've access to Azure Local.
 
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
