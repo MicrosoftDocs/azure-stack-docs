@@ -5,6 +5,7 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
+ms.service: azure-local
 zone_pivot_groups: windows-os
 ms.date: 11/13/2024
 ---
