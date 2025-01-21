@@ -18,7 +18,7 @@ This article identifies critical known issues and their workarounds in the Azure
 These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Local, carefully review the information contained here.
 
 > [!IMPORTANT]
-> For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-version-23h2-releases).
+> For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about new features in this release, see [What's new in Azure Local, version 23H2](whats-new.md).
 

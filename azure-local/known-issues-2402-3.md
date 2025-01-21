@@ -18,7 +18,7 @@ This article identifies the critical known issues and their workarounds in Azure
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 > [!NOTE]
-> To understand the supported update paths for this release, see [Azure Stack HCI, version 23H2 releases](./release-information-23h2.md#about-azure-local-version-23h2-releases).
+> To understand the supported update paths for this release, see [Azure Stack HCI, version 23H2 releases](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
