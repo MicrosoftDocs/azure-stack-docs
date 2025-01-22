@@ -29,46 +29,44 @@ For a full list of supported VM extensions, see:
 
 ## Verify that guest management is enabled
 
-To manage VMs on Azure Local, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
+To manage VMs on Azure Local, you must enable guest management on the VMs. When you enable guest management on a VM, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation via the Azure portal. For more information on how to enable Domain Join extension when creating Azure Arc VMs, see [Create Azure Arc VMs in Azure Local](./create-arc-virtual-machines.md).
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
 
-Follow these steps to verify that guest management is enabled using the Azure portal:
+To verify that guest management is enabled:
 
-1. In the Azure portal of your Azure Local resource, go to **Resources** > **Virtual machines**.
+1. In the Azure portal for your Azure Local resource, go to **Resources** > **Virtual machines**.
 
-1. From the list of the VMs displayed in the right-pane, select the VM where you'll install the extension.
+1. In the list of VMs, select the VM where you want to install the extension.
 
-1. In the **Overview** blade, under **Properties > Configuration**, verify that the **Guest management** shows as **Enabled**.
+1. On the **Overview** pane, under **Properties** > **Configuration**, verify that **Guest management** shows **Enabled**.
 
-   :::image type="content" source="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png" alt-text="Screenshot showing guest management as enabled in the selected Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png":::
+   :::image type="content" source="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png" alt-text="Screenshot that shows guest management enabled for a selected Azure Arc virtual machine." lightbox="./media/virtual-machine-manage-extension/verify-guest-management-enablement-1.png":::
 
-## Add VM extension
+## Add a VM extension
 
-After the guest management enablement is verified, you can now add the VM extension.
+After you verify that guest management is enabled, follow these steps to add a VM extension:
 
-Follow these steps in Azure portal to add a VM extension.
+1. In the Azure portal for your Azure Local resource, go to **Resources** > **Virtual machines**.
 
-1. In the Azure portal of your Azure Local resource, go to **Resources > Virtual machines**.
+1. Select your VM, and then go to **Settings** > **Extensions**.
 
-1. Select your VM and go to **Settings > Extensions**.
+1. On the command bar, select **+ Add**.
 
-1. From the top of the command bar in the right-pane, select **+ Add**.
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png" alt-text="Screenshot that shows the command to add an extension on the chosen Azure Arc virtual machine." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png":::
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Azure Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png":::
+1. On the **Install extension** pane, choose from the available extensions. In this example, we'll deploy **Azure Monitor Agent for Windows (Recommended)**.
 
-1. In the **Install extension**, choose from the available extensions. In this example, we'll deploy the **Azure Monitor Agent for Windows (Recommended)**.
-
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png" alt-text="Screenshot showing the Azure Monitor Extension selected in the chosen Azure Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png" alt-text="Screenshot that shows the Azure Monitor extension selected for the chosen Azure Arc virtual machine." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png":::
 
 1. Provide the parameters to configure the selected VM extension.
 
-    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy server URL and port number.
+    In this example, you specify if you want to use a proxy for your VM. You also specify corresponding proxy settings, such as proxy server URL and port number.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png" alt-text="Screenshot showing configuration of Azure Monitor Extension installation in the chosen Azure Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png" alt-text="Screenshot that shows the configuration of Azure Monitor Extension installation for the chosen Azure Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png":::
 
 1. Select **Review + Create**.
 
@@ -76,37 +74,35 @@ The extension might take a few minutes to install. After the extension is instal
 
 ## List installed extensions
 
-You can get a list of all the VM extensions installed on your Azure Local.
+To list all the VM extensions installed on your Azure Local instance:
 
-Follow these steps in Azure portal to list the installed VM extensions.
+1. In the Azure portal for your Azure Local resource, go to **Resources** > **Virtual machines**.
 
-1. In the Azure portal of your Azure Local resource, go to **Resources > Virtual machines**.
+1. Select your VM, and then select **Extensions**.
 
-1. Select your VM and select **Extensions**.
+    The **Extensions** pane shows the list of extensions on your VM.
 
-1. In the right pane, you can view the list of extensions on your VM.
+    :::image type="content" source="./media/virtual-machine-manage-extension/list-virtual-machine-extension-1.png" alt-text="Screenshot that shows the list of installed extensions for the chosen Azure Arc virtual machine." lightbox="./media/virtual-machine-manage-extension/list-virtual-machine-extension-1.png":::
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/list-virtual-machine-extension-1.png" alt-text="Screenshot showing the list of installed extensions for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/list-virtual-machine-extension-1.png":::
+## Delete a VM extension
 
-## Delete VM extension
+You might want to delete a VM extension if the installation fails or if you no longer need the extension.
 
-You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
+1. In the Azure portal for your Azure Local resource, go to **Resources** > **Virtual machines**.
 
-1. In the Azure portal of your Azure Local resource, go to **Resources > Virtual machines**.
+1. Select your VM, and then select **Extensions**.
 
-1. Select your VM and select **Extensions**.
+1. In the list of extensions on your VM, select the extension that you want to delete.
 
-1. From the list of extensions on your VM, choose the extension you wish to remove. From the top command bar, select **Uninstall** to remove the extension.
+1. On the command bar, select **Uninstall** to delete the extension.
 
-    In this example, **AzureMonitorWindowsAgent** is selected.
+    In this example, **AzureMonitorWindowsAgent** is selected for deletion.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png":::
 
-The extension should take a couple minutes for removal.  
+Removal of the extension from the list should take a couple of minutes.  
 
 ## Related content
 
-Learn how to:
-
-- [Enable guest management when creating Azure Arc VMs](./create-arc-virtual-machines.md#create-arc-vms).
-- Troubleshoot [VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions).
+- [Enable guest management when creating Azure Arc VMs](./create-arc-virtual-machines.md#create-arc-vms)
+- [Troubleshoot VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)
