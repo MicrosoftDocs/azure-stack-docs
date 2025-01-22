@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Local 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/10/2024
+ms.date: 01/16/2025
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Local
@@ -15,7 +15,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage and reduce storage cost.
+ReFS deduplication and compression is a storage optimization feature that helps optimize storage usage and reduce storage cost. Use deduplication specifically for active, performance-sensitive, or read-heavy workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Local](../deploy/virtual-desktop-infrastructure.md). For less performance-intensive workloads, you can use a combination of deduplication and compression or only compression.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the system size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
@@ -26,7 +26,7 @@ You can run ReFS deduplication and compression as a one-time job or automate it 
 Here are the benefits of using ReFS deduplication and compression:
 
 - **Storage savings for active workloads.** Designed for active workloads, such as VDI, ensuring efficient performance in demanding environments.
-- **Multiple modes.** Operates in three modes: deduplication only, compression only, and deduplication and compression (default mode), allowing optimization based on your needs.
+- **Multiple modes.** Operates in three modes: deduplication only (default mode), compression only, and deduplication and compression, allowing optimization based on your needs.
 - **Incremental deduplication.** Deduplicates only new or changed data as opposed to scanning the entire volume every time, optimizing job duration and reducing impact on system performance.
 
 ## Prerequisites
@@ -40,6 +40,9 @@ Before you begin, make sure that the following prerequisites are completed:
 ## Use ReFS deduplication and compression
 
 You can use ReFS deduplication and compression via Windows Admin Center or PowerShell. PowerShell allows both manual and automated jobs, whereas Windows Admin Center supports only scheduled jobs. Regardless of the method, you can customize job settings and utilize file change tracking for quicker subsequent runs.
+
+> [!NOTE]
+> We recommend using only deduplication for workloads where performance is a consideration, rather than using compression or a combination of both.
 
 ### Enable and run ReFS deduplication and compression
 
@@ -97,8 +100,8 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
 
     where:
     `Type` is a required parameter and can take one of the following values:
-    - **Dedup**: Enables deduplication only.
-    - **DedupAndCompress**: Enables both deduplication and compression. This is the default option.
+    - **Dedup**: Enables deduplication only. This is the default option.
+    - **DedupAndCompress**: Enables both deduplication and compression.
     - **Compress**: Enables compression only.
 
     If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#disable-refs-deduplication-and-compression-on-a-volume) and then enable it again with the new `Type` parameter.

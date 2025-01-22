@@ -4,7 +4,7 @@ description: How to use storage thin provisioning on Azure Stack HCI clusters by
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/09/2022
 ---
 
