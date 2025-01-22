@@ -3,14 +3,14 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 11/18/2024
+ms.date: 01/16/2025
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
 
 # Deploy an SDN infrastructure using SDN Express for Azure Local
 
-> Applies to: Azure Local, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
