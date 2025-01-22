@@ -4,7 +4,7 @@ description: Learn how to prepare a Red Hat Enterprise Linux image to create an 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 11/06/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Local.

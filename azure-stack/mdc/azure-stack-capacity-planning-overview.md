@@ -1,14 +1,12 @@
 ---
-title: Overview - Capacity planning for Azure Stack Hub | Microsoft Docs
-description: Learn about capacity planning for Azure Stack Hub deployments, including compute and storage information.
+title: Overview - Capacity planning for Azure Stack Hub Modular Data Center (MDC) deployments
+description: Learn about capacity planning for Azure Stack Hub MDC deployments, including compute and storage information.
 services: azure-stack
 author: sethmanheim
-manager: femila
 ms.service: azure-stack-hub
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/17/2025
 ms.author: sethm
-ms.reviewer: prchint
 ms.lastreviewed: 01/10/2020
 ---
 

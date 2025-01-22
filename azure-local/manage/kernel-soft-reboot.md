@@ -4,7 +4,7 @@ description: How to enable and manage quick restarts by using Kernel Soft Reboot
 author: chcurlet-msft
 ms.author: chcurlet
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 03/17/2023
 ---
 

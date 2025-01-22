@@ -5,7 +5,7 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
 ms.date: 12/10/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Manage Application Control for Azure Local, version 23H2

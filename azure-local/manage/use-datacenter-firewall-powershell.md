@@ -4,7 +4,7 @@ description: Configure network security groups with PowerShell.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/24/2024
 ---
 
