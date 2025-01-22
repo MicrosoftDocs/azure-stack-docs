@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/23/2024
 ms.author: alkohli
 ms.reviewer: robhind
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Create machine and site affinity rules for VMs

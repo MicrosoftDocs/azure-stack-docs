@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 12/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Validate solution upgrade readiness for Azure Local

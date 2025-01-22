@@ -4,7 +4,7 @@ description: How billing and payment works in Azure Local.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/01/2024
 ---
 

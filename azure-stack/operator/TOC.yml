@@ -216,8 +216,6 @@
       items:
       - name: Install PowerShell Az
         href: powershell-install-az-module.md
-      - name: Install PowerShell AzureRM
-        href: azure-stack-powershell-install.md
       - name: Migrate PowerShell AzureRM to Az
         href: migrate-azurerm-az.md
       - name: Download tools
@@ -624,8 +622,6 @@
         href: ./relnotearchive/release-notes.md
       - name: Known issues
         href: ./relnotearchive/known-issues.md    
-    - name: Training and certification
-      href: azure-stack-train-and-cert.md
     - name: Azure Stack Hub road map
       href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
     - name: Azure Stack Hub Microsoft Q&A
