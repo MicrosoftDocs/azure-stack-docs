@@ -4,7 +4,7 @@ description: Find out what's new in Azure Local, version 23H2 release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 01/09/2025
 ---
 

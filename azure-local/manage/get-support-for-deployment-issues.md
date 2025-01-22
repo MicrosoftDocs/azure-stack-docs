@@ -4,7 +4,7 @@ description: Learn how to get Microsoft support for Azure Local deployment issue
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/17/2024
 ---
 

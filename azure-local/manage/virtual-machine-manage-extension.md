@@ -4,7 +4,7 @@ description: Learn how to enable guest management and then install and manage ex
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/24/2024
 ---
 
