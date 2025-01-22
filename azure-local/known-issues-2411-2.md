@@ -46,11 +46,13 @@ The following issues are fixed in this release:
 
 ## Known issues in this release
 
-The following table lists the known issues in this release:
+Microsoft is not aware of any known issues in this release.
+
+<!--The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| XX <!--X--> | XXX ||
+| XX  | ||-->
 
 ## Known issues from previous releases
 

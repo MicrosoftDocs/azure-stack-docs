@@ -62,7 +62,7 @@ The following table summarizes the release information for Azure Local across al
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 10.2411.2.10 <br><br> Availability date: 2025-01-22 | 25398.XXXX | [January OS security update](./security-update/security-update-jan-2025.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24112) | [Known issues](./known-issues-2411-2.md) |
+| 10.2411.2.10 <br><br> Availability date: 2025-01-22 | 25398.1369 | [January OS security update](./security-update/security-update-jan-2025.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24112) | [Known issues](./known-issues-2411-2.md) |
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](./security-update/security-update-dec-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-24111) | [Known issues](./known-issues-2411-1.md) |
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](./security-update/security-update-nov-2024.md) | [Features and improvements](./whats-new.md#features-and-improvements-in-2411) | [Known issues](./known-issues-2411.md) |
