@@ -4,7 +4,7 @@ description: Learn about Trusted launch for Azure Arc VMs on Azure Local, versio
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/23/2024
 ---
 

@@ -5,9 +5,8 @@ author: alkohli
 ms.topic: conceptual
 ms.date: 12/06/2024
 ms.author: alkohli
-ms.reviewer: alkohli
-ms.service: azure-stack-hci
 monikerRange: "=azloc-previous"
+ms.service: azure-local
 ---
 
 # View known issues in Azure Stack HCI 2311.2 General Availability release
