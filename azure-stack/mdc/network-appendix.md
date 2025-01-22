@@ -2,22 +2,22 @@
 title: Modular Data Center (MDC) networking appendix
 description: Appendices for MDC networking. 
 author: sethmanheim
-ms.author: sethm
 ms.service: azure-stack-hub
+ms.author: sethm
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 01/17/2025
 ms.lastreviewed: 12/30/2019
 ---
 
 # MDC network appendix
 
-The appendix provides device parameter and identity information for MDC hardware.
+This appendix provides device parameter and identity information for MDC hardware.
 
 ## Technical device parameters
 
 ### Cisco 93360YC-FX2 & Cisco 9348GC-FXP
 
-| **Feature** | **Cisco Nexus 93360YC-FX2** | **Cisco Nexus 9348GC-FXP** |
+| Feature | Cisco Nexus 93360YC-FX2 | Cisco Nexus 9348GC-FXP |
 |---|---|---|
 | Ports | 96 x 1/10/25-Gbps and 12 x 40/100-Gbps QSFP28 ports | 48 x 1-GBASE-T ports, 4 x 1/10/25-Gbps SFP28 ports and 2 x 40/100 QSFP28 ports |
 | Supported speeds | 1/10/25-Gbps on downlinks, 40/100-Gbps on uplinks, Breakout supported ports, 97-108: 4x10/25G | 100-Mbps and 1-Gbps speeds |
@@ -148,13 +148,13 @@ The appendix provides device parameter and identity information for MDC hardware
         NEBS
     :::column-end:::
     :::column span="2":::
-        • GR-1089-Core EMC and Electrical Safety
+        * GR-1089-Core EMC and Electrical Safety
 
-        • Common Bonding Network (CBN)
+        * Common Bonding Network (CBN)
 
-        • National Electrical Code (NEC)
+        * National Electrical Code (NEC)
 
-        • GR-63-Core Physical Protection
+        * GR-63-Core Physical Protection
     :::column-end:::
 :::row-end:::
 
@@ -180,20 +180,20 @@ Specifications:
 - S4112 (DC): -40V/5A, -48V/4.2A, -72V/2.8A 
 
 Maximum operating specifications:
+
 - Operating temperature: 41° to 104° F (5° to 40° C)
 - Operating humidity: 5% to 85% (RH), non- condensing 
 
 Maximum non-operating specifications:
+
 - Storage temperature: -40° to 149°F (-40° C to 65° C) 
 - Storage humidity: 5% to 95% (RH), non-condensing
-
 
 ## Identity
 
 All network devices are designed to work with Terminal Access Controller Access-Control System (TACACS). TACACS provides a centralized identity experience. The TACACS server must be supplied as part of the initial configuration.
 
 Notice once the TACACS server isn't available, the devices will fall back to the local identities listed below. During normal operation, those accounts are disabled.
-
 
 The following user accounts do exit per device:
 

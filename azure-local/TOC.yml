@@ -329,11 +329,11 @@ items:
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
-    - name: License Arc VMs
+    - name: Activate Arc VMs
       items:
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
-      - name: License Windows Server VMs
+      - name: Activate Windows Server VMs
         href: manage/vm-activate.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition-23h2.md
