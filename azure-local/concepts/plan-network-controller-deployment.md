@@ -4,7 +4,7 @@ description: This article covers how to plan to deploy Network Controller on Azu
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 01/10/2025
+ms.date: 01/22/2025
 ---
 
 # Plan to deploy Network Controller on Azure Local, version 23H2
@@ -12,9 +12,6 @@ ms.date: 01/10/2025
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to plan to deploy Network Controller on Azure Local via Windows Admin Center on a set of virtual machines (VMs).
-
-> [!IMPORTANT]
-> This article isn't required for the new SDN deployments because Network Controller is now directly integrated into the host machine, eliminating the need to deploy it on VMs.
 
 Planning to deploy Network Controller via Windows Admin Center requires a set of VMs running the Azure Stack HCI operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
