@@ -4,7 +4,7 @@ description: Learn how to manage BitLocker encryption on your Azure Local, versi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/11/2024
 ---
 

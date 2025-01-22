@@ -4,7 +4,7 @@ description: How to view and manage your Azure Stack HCI clusters using the Azur
 author: arduppal
 ms.author: arduppal
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 02/23/2024
 ---
 

@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/11/2024
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Manage VMs on Azure Local using Windows PowerShell
