@@ -3,14 +3,14 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/17/2025
+ms.date: 01/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
-# About Azure Arc gateway for Azure Local, version 23H2 (preview)
+# About Azure Arc gateway for Azure Local (preview)
 
-> Applies to: Azure Local 2408 and later
+> Applies to: Azure Local 2411.1 and later
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
@@ -78,55 +78,47 @@ The list of supported endpoints by the Arc gateway in Azure Local will increase 
 
 ## Supported and unsupported scenarios
 
-You can use the Arc gateway in the following scenario for Azure Local versions 2408 and 2411:
+You can use the Arc gateway in the following scenario for Azure Local versions 2411.1 or later:
 
-- Enable Arc gateway during deployment of new Azure Local instances running versions 2408 and 2411.
+- Enable Arc gateway during deployment of new Azure Local instances running versions 2411.1 or later.
 
-Unsupported scenarios for Azure Local, versions 2408 and 2411 include:
+Unsupported scenarios for Azure Local, versions 2408, 2411 and 2411.1 include:
 
 - Azure Local instances updated from versions 2402 or 2405 to versions 2408 or 2411 can't take advantage of all the new endpoints supported by this Arc gateway preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
 
-- Enabling Arc gateway after version 2408 or 2411 deployment cannot take advantage of all the new endpoints supported by this Arc gateway preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 or version 2411 deployment.
+- Enabling Arc gateway after deployment cannot take advantage of all the new endpoints supported by this Arc gateway preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
 
 ## Azure Local endpoints not redirected
 
-As part of the Azure Local version 2408 preview update, the endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Local instance. These version 2408 and 2411 endpoints are not redirected via the Arc gateway:
+As part of the Azure Local version 2411.1 preview update, the endpoints from the table are required and must be allowlisted in your proxy or firewall to deploy the Azure Local instance. These version 2408 and 2411 endpoints are not redirected via the Arc gateway:
 
 | Endpoint # | Required endpoint | Component  |
 | -- | -- | -- |
-| 1 | `http://go.microsoft.com:443` | Environment Checker |
-| 2 | `http://www.powershellgallery.com:443` | Environment Checker |
-| 3 | `http://psg-prod-eastus.azureedge.net:443` | Environment Checker |
-| 4 | `http://onegetcdn.azureedge.net:443` | Environment Checker |
-| 5 | `http://login.microsoftonline.com:443` | Environment Checker |
-| 6 | `http://aka.ms:443` | Environment Checker |
-| 7 | `http://azurestackreleases.download.prss.microsoft.com:443` | Environment Checker |
-| 8 | `http://download.microsoft.com:443` | Environment Checker |
-| 9 | `http://portal.azure.com:443` | Environment Checker |
-| 10 | `http://management.azure.com:443` | Environment Checker |
-| 11 | `http://www.office.com:443` | Environment Checker |
-| 12 | `http://gbl.his.arc.azure.com:443` | Arc agent |  
-| 13 | `http://<region>.his.arc.azure.com:443` | Arc agent |
-| 14 | `http://dc.services.visualstudio.com:443` | Arc agent |
-| 15 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
-| 16 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
-| 17 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 18 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 19 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 20 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 21 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 22 | `http://hciarcvmsstorage.z13.web.core.windows.net:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 23 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 24 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 25 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 26 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 27 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 28 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 29 | `http://dl.delivery.mp.microsoft.com` | LCM Binaries |
-| 30 | `http://*.tlu.dl.delivery.mp.microsoft.com` | LCM Binaries |
-| 31 | `http://*.windowsupdate.com` | Windows Update |
-| 32 | `http://*.windowsupdate.microsoft.com` | Windows Update |
-| 33 | `http://*.update.microsoft.com` | Windows Update |
+| 1 | `http://go.microsoft.com:443` | Arc registration |
+| 2 | `http://login.microsoftonline.com:443` | Arc registration |
+| 3 | `http://download.microsoft.com:443` | Arc registration |
+| 4 | `http://management.azure.com:443` | Arc registration |
+| 5 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
+| 6 | `http://<region>.his.arc.azure.com:443` | Arc registration |
+| 7 | `http://dc.services.visualstudio.com:443` | Arc registration |
+| 8 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
+| 9 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
+| 10 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
+| 11 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 12 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 13 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 14 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 15 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 16 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 17 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 19 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 20 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 21 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
+| 22 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
+| 23 | `http://*.windowsupdate.com` | Windows Update |
+| 24 | `http://*.windowsupdate.microsoft.com` | Windows Update |
+| 25 | `http://*.update.microsoft.com` | Windows Update |
 
 ## Restrictions and limitations
 

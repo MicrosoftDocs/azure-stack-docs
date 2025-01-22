@@ -4,7 +4,7 @@ description: Learn how to create Azure Local VM images using an existing Arc VM 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli
 ms.date: 11/06/2024
 ---

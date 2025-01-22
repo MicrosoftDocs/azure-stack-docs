@@ -4,7 +4,7 @@ description: Learn how to create storage path for use with VM images for your Az
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/02/2024
 ---
 

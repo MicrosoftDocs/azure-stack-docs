@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Collect log files for Azure Arc VMs on Azure Local
