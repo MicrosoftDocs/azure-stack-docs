@@ -4,7 +4,7 @@ description: Learn how to manage Arc VMs, including operations such as start, st
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 01/15/2025
 ---
 

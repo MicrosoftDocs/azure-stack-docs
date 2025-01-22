@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/17/2025
 ms.lastreviewed: 12/31/2019
 ---
 
@@ -316,7 +316,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 #### IKE Phase 1 (Main Mode) parameters
 
-| **Property** | **Value** |
+| Property | Value |
 |--------------|-----------|
 | IKE version | IKEv2 |
 | Diffie-Hellman Group | ECP384 |
@@ -326,7 +326,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 #### IKE Phase 2 (Quick Mode) parameters
 
-| **Property** | **Value** |
+| Property | Value |
 |--------------|-----------|
 | IKE version | IKEv2 |
 | Encryption & hashing algorithms (encryption) | GCMAES256 |
@@ -365,7 +365,7 @@ This section outlines the workflow required to create and update the IPsec/IKE p
 
 The following table lists the supported cryptographic algorithms and key strengths configurable by MDC customers.
 
-| **IPsec/IKEv2** | **Options** |
+| IPsec/IKEv2 | Options |
 |-----------------|-------------|
 | IKEv2 encryption | AES256, AES192, AES128, DES3, DES |
 | IKEv2 integrity | SHA384, SHA256, SHA1, MD5 |
@@ -401,7 +401,7 @@ In the preceding table:
 The following table lists the corresponding Diffie-Hellman Groups supported by
 the custom policy.
 
-| **Diffie-Hellman Group** | **DHGroup** | **PFSGroup** | **Key length** |
+| Diffie-Hellman Group | DHGroup | PFSGroup | Key length |
 |--------------------------|-------------|--------------|----------------|
 | 1 | DHGroup1 | PFS1 | 768-bit MODP |
 | 2 | DHGroup2 | PFS2 | 1024-bit MODP |
@@ -445,4 +445,3 @@ To connect MDC and Azure by using ExpressRoute, you must meet the following requ
 The following diagram shows the MDC and Azure environments after you finish setting up ExpressRoute using the examples in this article.
 
  ![Diagram that shows ExpressRoute network architecture.](media/network-introduction/expressroute-network-architecture-60.png)
-

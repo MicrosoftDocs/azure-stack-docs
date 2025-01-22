@@ -1052,6 +1052,16 @@
       "redirect_document_id":true 
     },
     { 
+      "source_path":"azure-stack/operator/azure-stack-train-and-cert.md", 
+      "redirect_url":"/azure-stack/operator/index", 
+      "redirect_document_id":true 
+    },
+    { 
+      "source_path":"azure-stack/operator/azure-stack-powershell-install.md", 
+      "redirect_url":"/azure-stack/operator/powershell-install-az-module", 
+      "redirect_document_id":true 
+    },
+    { 
       "source_path":"azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
       "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
       "redirect_document_id":true 

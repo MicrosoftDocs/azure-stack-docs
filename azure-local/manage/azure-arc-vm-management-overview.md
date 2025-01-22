@@ -4,7 +4,7 @@ description: Learn about using Azure Arc VM management to provision and manage o
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: linux-related-content
 ms.date: 01/08/2025
 ---
