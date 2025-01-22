@@ -4,8 +4,8 @@ description: Learn how to manage resource such as data disks, network interfaces
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.service: azure-local
+ms.date: 01/14/2025
 ---
 
 # Manage resources for Arc VMs on Azure Local
@@ -96,7 +96,7 @@ Follow these steps in Azure portal of your Azure Local.
 ## Add a network interface
 
 > [!NOTE]
-> After you add a network interface to a provisioned VM on a static logical network, you can configure the desired static IP within the VM to ensure accurate static IP settings.
+> After you add the network interface, sign in to the virtual machine and configure the desired static IP.
 
 Follow these steps in Azure portal of your Azure Local.
 

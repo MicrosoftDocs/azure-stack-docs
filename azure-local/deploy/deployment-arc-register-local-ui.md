@@ -4,8 +4,8 @@ description: Learn how to use the web UI to bootstrap and Arc register the Azure
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
-ms.date: 10/16/2024
+ms.service: azure-local
+ms.date: 1/08/2025
 ---
 
 # Register your Azure Local, version 23H2 machines via the local UI (preview)

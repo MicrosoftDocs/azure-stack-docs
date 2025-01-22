@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 11/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Upgrade Azure Stack HCI OS, version 22H2 via PowerShell

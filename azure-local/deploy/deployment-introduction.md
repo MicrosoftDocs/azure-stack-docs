@@ -6,7 +6,7 @@ ms.topic: overview
 ms.date: 10/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # About Azure Local, version 23H2 deployment
@@ -26,10 +26,6 @@ In this release, you can deploy Azure Local using one of the following methods:
 - **Deploy from an Azure Resource Manager template**: Select this option to deploy an Azure Local instance using an Azure Resource Manager deployment template and the corresponding parameters file. A Resource Manager template is a JSON file containing customized template expressions where you can define dynamic values and logic that determine the Azure resources to deploy.
 
     For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
-
-- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Local deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Local. 
-
-    For more information about this program, see https://aka.ms/fasttrackforazure
 
 ## Deployment sequence
 

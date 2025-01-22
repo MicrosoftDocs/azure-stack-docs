@@ -4,7 +4,7 @@ description: Learn how to manage GPUs via Discrete Device Assignment for Azure L
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/21/2024
 ---
 

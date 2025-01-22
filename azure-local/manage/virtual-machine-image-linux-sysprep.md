@@ -4,7 +4,7 @@ description: Learn how to prepare Ubuntu images to create an Azure Local VM imag
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 11/25/2024
 ---

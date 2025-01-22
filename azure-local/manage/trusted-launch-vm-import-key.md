@@ -4,7 +4,7 @@ description: Learn how to manage a Trusted launch Arc VM guest state protection 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.reviewer: alkohli
 ms.date: 10/23/2024
 ---
