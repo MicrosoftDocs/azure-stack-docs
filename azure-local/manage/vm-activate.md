@@ -86,11 +86,11 @@ You can enable Windows Server subscription through different methods. Select one
 
 1. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 
-   :::image type="content" source="media/vm-activate/configuration-purchase.png" alt-text="Screenshot showing purchase confirmation" lightbox="media/vm-activate/configuration-purchase.png":::
+   :::image type="content" source="media/vm-activate/configuration-purchase.png" alt-text="Screenshot showing purchase confirmation." lightbox="media/vm-activate/configuration-purchase.png":::
 
 1. For Azure Hybrid Benefit, you must [activate Azure Hybrid Benefit](../concepts/azure-hybrid-benefit.md?tabs=azure-portal) and then select **Activate benefit**.  
 
-   :::image type="content" source="media/vm-activate/configuration-hybrid.png" alt-text="Screenshot showing Azure Hybrid Benefit" lightbox="media/vm-activate/configuration-hybrid.png":::
+   :::image type="content" source="media/vm-activate/configuration-hybrid.png" alt-text="Screenshot showing Azure Hybrid Benefit." lightbox="media/vm-activate/configuration-hybrid.png":::
 
 1. When the Windows Server subscription add-on has been successfully purchased, you can start using Windows Server VMs on your system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
 
