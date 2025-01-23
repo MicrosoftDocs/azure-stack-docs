@@ -176,7 +176,21 @@ az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
 Open a new window. Copy and paste the following CLI commands:
 
 ```azurecli
-$yaml = @" apiVersion: v1 kind: ServiceAccount metadata: annotations: azure.workload.identity/client-id: $MSIId name: $SERVICE_ACCOUNT_NAME namespace: $SERVICE_ACCOUNT_NAMESPACE "@ $yaml = $yaml -replace '\$MSIId', $MSIId ` -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE $yaml | kubectl apply -f -
+$yaml = @"
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: $MSIId
+  name: $SERVICE_ACCOUNT_NAME
+  namespace: $SERVICE_ACCOUNT_NAMESPACE
+"@
+
+$yaml = $yaml -replace '\$MSIId', $MSIId `
+               -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME `
+               -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE
+
+$yaml | kubectl apply -f -
 ```
 
 The following output shows successful creation of the service account:
