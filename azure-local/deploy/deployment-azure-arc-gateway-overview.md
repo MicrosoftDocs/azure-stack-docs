@@ -96,29 +96,31 @@ As part of the Azure Local version 2411.1 preview update, the endpoints from the
 | -- | -- | -- |
 | 1 | `http://go.microsoft.com:443` | Arc registration |
 | 2 | `http://login.microsoftonline.com:443` | Arc registration |
-| 3 | `http://download.microsoft.com:443` | Arc registration |
-| 4 | `http://management.azure.com:443` | Arc registration |
-| 5 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
-| 6 | `http://<region>.his.arc.azure.com:443` | Arc registration |
-| 7 | `http://dc.services.visualstudio.com:443` | Arc registration |
-| 8 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
-| 9 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
-| 10 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 11 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 12 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 13 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 14 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 15 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 16 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 17 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 18 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 20 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 21 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
-| 22 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
-| 23 | `http://*.windowsupdate.com` | Windows Update |
-| 24 | `http://*.windowsupdate.microsoft.com` | Windows Update |
-| 25 | `http://*.update.microsoft.com` | Windows Update |
+| 3 | `http://<region>.login.microsoft.com:443` | Arc registration |
+| 4 | `http://download.microsoft.com:443` | Arc registration |
+| 5 | `http://management.azure.com:443` | Arc registration |
+| 6 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
+| 7 | `http://<region>.his.arc.azure.com:443` | Arc registration |
+| 8 | `http://dc.services.visualstudio.com:443` | Arc registration |
+| 9 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
+| 10 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
+| 11 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
+| 12 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 13 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 14 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 15 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 16 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 17 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 18 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 19 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 20 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 21 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 22 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
+| 23 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
+| 24 | `http://*.windowsupdate.com` | Windows Update |
+| 25 | `http://*.windowsupdate.microsoft.com` | Windows Update |
+| 26 | `http://*.update.microsoft.com` | Windows Update |
+
 
 ## Restrictions and limitations
 
