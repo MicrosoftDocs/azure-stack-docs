@@ -4,8 +4,8 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 11/19/2024
-monikerRange: ">=azloc-2411"
+ms.date: 01/23/2025
+monikerRange: ">=azloc-24112"
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
