@@ -5,16 +5,16 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 11/05/2024
+ms.date: 01/08/2025
 ---
 
 # Create Arc virtual machines on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create an Arc virtual machine (VM) starting with the VM images that you created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Local resource
 
@@ -36,7 +36,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - If using a client to connect to your Azure Local, see [Connect to Azure Local via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a network interface that you have created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
+- Access to a network interface that you created on a logical network associated with your Azure Local. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 # [Azure portal](#tab/azureportal)
 
@@ -56,6 +56,26 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 - Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
+# [Terraform template](#tab/terraformtemplate)
+
+[!INCLUDE[hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
+
+- Access to a logical network that you associate with the VM of your Azure Local. For more information, see [Create logical networks](../manage/create-logical-networks.md).
+- Make sure Terraform is installed and up to date on your machine.
+    - To verify your Terraform version, run the `terraform -v` command.
+    
+    Here's an example of sample output:
+    ```output
+    PS C:\Users\username\terraform-azurenn-avm-res-azurestackhci-virtualmachineinstance> terraform -v 
+    Terraform vi.9.8 on windows_amd64
+    + provider registry.terraform.io/azure/azapi vl.15.0 
+    + provider registry.terraform.io/azure/modtm V0.3.2 
+    + provider registry.terraform.io/hashicorp/azurerm v3.116.0 
+    + provider registry.terraform.io/hashicorp/random V3.6.3
+    ```
+- Make sure Git is installed and up to date on your machine.
+    -  To verify your version of Git, run the `git --version` command.
+
 ---
 
 ## Create Arc VMs
@@ -72,7 +92,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ### Create a Windows VM
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation.
 
 > [!NOTE]
 > If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
@@ -122,9 +142,6 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ```
 
-
-
-
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 > [!NOTE]
@@ -134,7 +151,14 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
-### Create a Linux VM 
+### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
+
+When creating an Arc VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
+
+- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on Arc VMs.
+- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 do not support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
+
+### Create a Linux VM
 
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
@@ -170,12 +194,12 @@ You can input the following parameters for `proxy-server-configuration`:
 <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
-
 Here's a sample command:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
 ```
+
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
 <!--Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
@@ -264,7 +288,6 @@ Follow these steps in Azure portal for your Azure Local.
     > [!NOTE]
     > For proxy authentication, you can pass the username and password combined in a URL as follows: `http://username:password@proxyserver.contoso.com:3128`.
 
-
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
     :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
@@ -322,7 +345,6 @@ Follow these steps in Azure portal for your Azure Local.
     :::image type="content" source="./media/create-arc-virtual-machines/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::
 
 1. Select **Create**. It should take a few minutes to provision the VM.
-
 
 # [Azure Resource Manager template](#tab/armtemplate)
 
@@ -608,7 +630,7 @@ Follow these steps to deploy the Resource Manager template:
             }
         ]
     }
-   ``` 
+   ```
 
 1. Select **Save**.
 
@@ -634,11 +656,28 @@ Follow these steps to deploy the Resource Manager template:
 
    :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
 
+# [Terraform template](#tab/terraformtemplate)
+
+You can use the Azure Verified Module (AVM) that contains the Terraform template for creating Virtual Machines. This module ensures your Terraform templates meet Microsoft's rigorous standards for quality, security, and operational excellence, enabling you to seamlessly deploy and manage on Azure. With this template, you can create one or multiple Virtual Machines on your cluster.
+
+### Steps to use the Terraform template
+
+1. Download the Terraform template from [Azure verified module](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+2. Navigate to the **examples** folder in the repository, and look for the following subfolders:
+    - **default**: Creates one virtual machine instance.
+    - **multi**: Creates multiple virtual machine instances.
+3. Choose the appropriate folder for your deployment.
+4. To initialize Terraform in your folder from step 2, run the `terraform init` command.
+5. To apply the configuration that deploys virtual machines, run the `terraform apply` command.
+6. After the deployment is complete, verify your virtual machines via the Azure portal. Navigate to **Resources** > **Virtual machines**.
+
+   :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
+
 ---
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs.
 
 The Arc VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 

@@ -4,8 +4,8 @@ description: Learn how to manage Arc VMs. This includes operations such as start
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.service: azure-local
+ms.date: 01/15/2025
 ---
 
 # Manage Arc VMs on Azure Local
@@ -884,6 +884,10 @@ Follow these steps in the Azure portal of your Azure Local to remove a VM.
     :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
 
   Locate the associated resources such as the network interfaces and data disks, and delete them.
+
+## Live migration of Arc-enabled virtual machines
+
+Live migration of Arc VMs across Azure Local nodes is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
 ## Change cores and memory
 

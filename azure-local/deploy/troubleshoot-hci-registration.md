@@ -7,7 +7,7 @@ ms.reviewer: arduppal
 ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 04/30/2024
+ms.date: 01/08/2025
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -17,7 +17,7 @@ ms.date: 04/30/2024
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
 > [!IMPORTANT]
-> Troubleshooting instructions provided in this article apply to an older version, Azure Stack HCI, version 22H2. To troubleshoot new deployments running the latest generally available version, Azure Stack HCI, version 23H2, see [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).
+> Troubleshooting instructions provided in this article apply to an older version, Azure Stack HCI, version 22H2. To troubleshoot new deployments running the latest generally available version of Azure Local, see [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).
 
 Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
 
