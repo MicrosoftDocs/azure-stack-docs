@@ -26,8 +26,8 @@ The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet 
 
 - The custom VNET must be in the same subscription as all of the other components of the Kubernetes cluster.
 - The control plane nodes pool and the agent nodes pool must be in the same virtual network. You can deploy your nodes into different subnets within the same virtual network.
-- The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range, see [Get the IP address block](#get-the-ip-address-blocks).
-- Consider that the recommended size of the node subnet(s) depends on the type of network plugin being used. As a general guideline, Azure CNI requires a larger number of IP addresses for the subnet supporting the agent node pools than kubenet. See the [kubenet](#kubenet-address-blocks-example) and [Azure CNI](#azure-cni-address-blocks-example) examples below.
+- The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range. See [Get the IP address block](#get-the-ip-address-blocks).
+- Consider that the recommended size of the node subnets depends on the type of network plugin being used. As a general guideline, Azure CNI requires a larger number of IP addresses for the subnet supporting the agent node pools than kubenet. See the following [kubenet](#kubenet-address-blocks-example) and [Azure CNI](#azure-cni-address-blocks-example) examples.
 - The `169.254.0.0/16` address space can't be used for custom VNETs for Kubernetes clusters.
 
 ## Create custom virtual network
@@ -66,9 +66,9 @@ The AKS engine supports deployment on an existing virtual network. When deployed
 
 A minimum of three address blocks are required when setting up a Kubernetes cluster:
 
-- Nodes address block: This is the address block used for assigning addresses to the cluster nodes. This can be a single address block for all cluster nodes or can be separate blocks (subnets) for control plane and agent pools. Take into consideration the node count in your cluster when selecting the address range for this block. For Azure CNI nodes and containers get their addresses from the same address block thus take into account the number of containers you want to deploy to your cluster when choosing the address range when using Azure CNI.
-- Services address block: This is the address block from which services deployed to the Kubernetes cluster will get their cluster address from. Take into consideration the maximum number of services you intend to run in your cluster when selecting the address range for this block.
-- Cluster address block: This is the address block from which pods will get their cluster address. Take into consideration the maximum number of pods you intend to run in your cluster when selecting the address range for this block. As mention earlier, for Azure CNI the cluster and nodes address blocks are the same.
+- Nodes address block: The address block used for assigning addresses to the cluster nodes. This can be a single address block for all cluster nodes or can be separate blocks (subnets) for control plane and agent pools. Take into consideration the node count in your cluster when selecting the address range for this block. For Azure CNI, nodes and containers get their addresses from the same address block thus take into account the number of containers you want to deploy to your cluster when choosing the address range when using Azure CNI.
+- Services address block: The address block from which services deployed to the Kubernetes cluster will get their cluster address from. Take into consideration the maximum number of services you intend to run in your cluster when selecting the address range for this block.
+- Cluster address block: The address block from which pods will get their cluster address. Take into consideration the maximum number of pods you intend to run in your cluster when selecting the address range for this block. As mention earlier, for Azure CNI the cluster and nodes address blocks are the same.
 
 In addition to the address blocks, for control plane nodes you will need to set two more values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
 AKS engine requires a range of up to 16 unused IP addresses when you use multiple control plane nodes. The cluster will use one IP address for each control plane up to five control plane nodes. AKS engine will also require the next 10 IP address after the last control plane node for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the control plane nodes and headroom reservation, for a total of 16.

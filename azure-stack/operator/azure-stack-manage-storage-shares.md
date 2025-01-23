@@ -480,7 +480,7 @@ For example, with a 12 node scale unit:
 
 With this information, you can calculate that an Azure Stack Hub with 12 nodes of 384 GB per host (Total 4,608 GB), has 2,137 GB reserved for resiliency if the largest VM has 112 GB memory.
 
-When you consult the **Capacity** blade for the physical memory as per the following image, the **Used** value includes the resiliency reserve. The graph is from a four node Azure Stack Hub instance:
+When you consult the **Capacity** blade for the physical memory as per the following image, the **Used** value includes the resiliency reserve. This graph is from a four node Azure Stack Hub instance:
 
 ![Capacity usage on a four node Azure Stack Hub](media/azure-stack-manage-storage-shares/azure-stack-hub-capacity-used.png)
 
