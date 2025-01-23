@@ -62,7 +62,7 @@ To browse for available system updates using Azure Update Manager, follow these 
 > - Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**.
 > - Use of 3rd party tools to install updates is not supported. 
 
-You can install updates via the Azure Update Manager or from the Azure Local resource page.
+You can install updates from the Azure Local resource page or via the **Azure Update Manager > Resources > Azure Local page**. Select the appropriate tab to view the detailed steps.
 
 # [Azure Update Manager](#tab/azureupdatemanager)
 
