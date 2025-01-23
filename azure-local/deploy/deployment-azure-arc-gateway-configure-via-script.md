@@ -3,14 +3,14 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 01/17/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, and 2411
+> Applies to: Azure Local 2408 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to configure the Arc proxy before Arc registration using a registration script for the Arc gateway on Azure Local.
 
@@ -28,7 +28,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Get the ArcGatewayID  
 
-You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway id on the Azure portal overview page of the resource.
+You need the proxy and the ArcGatewayID from Azure to run the registration script on Azure Local machines. You can find the Arc gateway ID on the Azure portal overview page of the resource.
 
 ## Step 2: Register new machines in Azure Arc
 

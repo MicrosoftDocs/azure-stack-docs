@@ -3,7 +3,7 @@ title: Azure Stack HCI OEM license overview
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
-ms.date: 10/21/2024
+ms.date: 12/31/2024
 ms.author: robess
 ms.reviewer: alkohli
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license is and how it can be beneficial to them.
@@ -77,8 +77,6 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Local]
 ## Mixed-node scenarios
 
 When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your machines don't have the OEM license, a notification in your monthly billing status details appears.
-
-:::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
 
 ***We have detected mixed nodes in your cluster. You will be billed monthly for each node in your cluster as one or more servers in your cluster do not have an OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
 

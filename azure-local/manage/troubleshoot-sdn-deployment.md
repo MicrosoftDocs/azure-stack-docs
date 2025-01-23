@@ -4,12 +4,12 @@ description: Learn how to troubleshoot the deployment of Software Defined Networ
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 11/08/2024
+ms.date: 01/16/2025
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
 This article provides guidance on how to troubleshoot issues that you may encounter while deploying the SDN components using Windows Admin Center. Use this guidance to troubleshoot the issues before creating a support ticket. This article also provides instructions on how to collect logs after successfully troubleshooting the issues to help diagnose the cause of deployment failure.
 

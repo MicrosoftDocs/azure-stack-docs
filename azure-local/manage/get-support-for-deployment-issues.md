@@ -4,8 +4,8 @@ description: Learn how to get Microsoft support for Azure Local deployment issue
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 11/08/2024
+ms.service: azure-local
+ms.date: 12/17/2024
 ---
 
 # Get support for Azure Local deployment issues
@@ -111,8 +111,9 @@ For remote support usage scenarios, see [Remote support examples](./get-remote-s
 
 For detailed remediation for common known issues, check out:
 > [!div class="nextstepaction"]
-> [Azure Stack HCI Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
+> [Azure Local Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability)
 
 Alternatively, you can:
+
 - [Collect diagnostic logs](collect-logs.md).
 - [Contact Microsoft Support](get-support.md).

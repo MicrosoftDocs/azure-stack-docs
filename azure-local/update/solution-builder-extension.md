@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.date: 10/21/2024
+ms.date: 12/11/2024
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Local up to date in the most efficient way.
 
@@ -36,7 +36,7 @@ In addition to installing hardware updates, Solution Builder Extension may also 
 | Advanced Solution Builder Extension Capability   |Description    |
 |---------------------------|---------------|
 | Health service integration | The Solution Builder Extension package can extend **Health Check** validation performed by Azure Local before various lifecycle actions (deployment, update, add node, repair node, and others) occur. The validation checks help to ensure issues are resolved before performing any specific lifecycle actions.<br/><br/> Hardware vendors typically use this integration to evaluate if there's a hardware issue that needs immediate attention. For example, it might identify problems with hardware vendor management software, a non-redundant power supply, or higher than expected temperatures. It could also identify SSD drive wear approaching a critical state. Be sure to review your hardware vendor's Solution Builder Extension documentation for details on hardware health checks supported by their extension. |
-| Solution builder extension download | The Solution Builder Extension package can implement **download connector** interfaces that allow Azure Local to download future SBE updates on behalf of the user. This feature enables new updates from your hardware vendor to show a **Ready** state instead of the [AdditionalContentRequired](solution-builder-extension.md#the-additionalcontentrequired-update-state) state mentioned later in this guide. Because these updates are ready to install without needing any files to be [sideloaded](update-via-powershell-23h2.md#sideload-and-discover-solution-updates) per an Azure Local instance, it makes it easy to install updates across multiple Azure Local instances simultaneously. <br><br> Hardware vendors often require customized SBE credentials for authentication to download their SBE extension files. Refer to your hardware vendor documentation for instructions on providing these credentials during [deployment on the Configuration](../deploy/deploy-via-portal.md#specify-the-deployment-settings) page or starting with Azure Local, version 2411, you can use the `Set-SolutionExtensionSecretLocation` cmdlet to update or add SBE credentials in Key Vault after deployment. |
+| Solution builder extension download | The Solution Builder Extension package can implement **download connector** interfaces that allow Azure Local to download future SBE updates on behalf of the user. This feature enables new updates from your hardware vendor to show a **Ready** state instead of the [AdditionalContentRequired](solution-builder-extension.md#the-additionalcontentrequired-update-state) state mentioned later in this guide. Because these updates are ready to install without needing any files to be [imported](update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) per an Azure Local instance, it makes it easy to install updates across multiple Azure Local instances simultaneously. <br><br> Hardware vendors often require customized SBE credentials for authentication to download their SBE extension files. Refer to your hardware vendor documentation for instructions on providing these credentials during [deployment on the Configuration](../deploy/deploy-via-portal.md#specify-the-deployment-settings) page or starting with Azure Local, version 2411, you can use the `Set-SolutionExtensionSecretLocation` cmdlet to update or add SBE credentials in Key Vault after deployment. |
 | Customized deployment | The Solution Builder Extension package can implement customized steps that are executed automatically as part of the system deployment process. <br/><br/> Hardware vendors typically use this capability to configure or install any value-add software via their Solution Builder Extension for the solution.  |
 | Customized solution update | The Solution Builder Extension package can implement customized steps that are performed both before and after the main portion of the solution update process. Even when it isn't performing a Solution Builder Extension update, Solution Builder Extension packages that implement this capability always run these extra steps. For example, the execution of hardware vendor specific steps before or after Azure Stack HCI Operating System updates, when no updates to the Solution Builder Extension are needed. <br/><br/> Hardware vendors typically use this capability to prepare nodes for any update related tasks that may involve rebooting machines. |
 
@@ -54,6 +54,10 @@ Starting with Azure Local, version 23H2, any new Integrated Systems or Premier S
 > Consult with your hardware vendor’s Azure Local documentation to determine if your machine model supports a Solution Builder Extension.
 
 If your hardware doesn't support a Solution Builder Extension update experience, the process for updating your hardware is like that of Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Local, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
+
+Here's an example of the Windows Admin Center updates tool for systems running Azure Local, version 23H2.
+
+[![Screenshot to install hardware updates in Windows Admin Center.](./media/solution-builder-extension/updates-os-windows-admin-center-23h2.png)](media/solution-builder-extension/updates-os-windows-admin-center-23h2.png#lightbox)
 
 Your firmware and driver updates may need to be performed separately, if your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center. Follow the recommendations of your hardware vendor.
 
@@ -79,7 +83,7 @@ Check to see if you have SBE installed on your registered Azure Local system by 
 
 ```powershell
 $Update = Get-SolutionUpdateEnvironment
-$Update = ft SbeFamily, HardwareModel, CurrentSbeVersion
+$Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
 ```
 
 Here's a sample output
@@ -175,9 +179,9 @@ As provided in the example, **SBEReleaseLink** and **SBENotifyMessage** may cont
 
 #### The AdditionalContentRequired update state
 
-While Azure Local can automatically discover Solution Builder Extension updates, in many cases, Solution Builder Extension packages must be downloaded from the hardware vendor’s support site and then sideloaded into the system.
+While Azure Local can automatically discover Solution Builder Extension updates, in many cases, Solution Builder Extension packages must be downloaded from the hardware vendor’s support site and then imported into the system.
 
-The **AdditionalContentRequired** state is used to identify files that must be sideloaded before the update can be installed.
+The **AdditionalContentRequired** state is used to identify files that must be imported before the update can be installed.
 
 ```powershell
 $Update = Get-SolutionUpdate 
@@ -198,9 +202,9 @@ Azure Local 2311 bundle          Solution    10.2311.0.26 4.1.2312.5     Additio
 
 To view information on the Solution Builder Extension update such as its release notes (via the `SBEReleaseLink`) and determine how to download the Solution Builder Extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
 
-For more information, see [Discover Solution Builder Extension updates](./solution-builder-extension.md#discover-solution-builder-extension-updates). You should download the Solution Builder Extension files following the hardware vendor's recommendations and license agreements.
+For more information, see [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates). You should download the Solution Builder Extension files following the hardware vendor's recommendations and license agreements.
 
 ## Next steps
 
-- [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
+- [Import and discover solution updates](../update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
 - [Understand update phases of Azure Local, version 23H2](../update/update-phases-23h2.md).

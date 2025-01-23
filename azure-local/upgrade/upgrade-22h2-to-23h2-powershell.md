@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 11/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Upgrade Azure Stack HCI OS, version 22H2 via PowerShell
@@ -47,6 +47,9 @@ Before you begin, make sure that:
 
 > [!NOTE]
 > The ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#step-1-connect-to-azure-local), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
+> Use of 3rd party tools to install upgrades is not supported.
+
+Follow these steps to install the solution upgrade:
 
 ## Step 1: Connect to Azure Local
 

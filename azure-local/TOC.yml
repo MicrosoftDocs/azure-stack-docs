@@ -17,7 +17,9 @@ items:
       items:
       - name: Known issues 2411
         items:
-        - name: 2411 - Current
+        - name: 2411.1 - Current
+          href: known-issues-2411-1.md
+        - name: 2411 
           href: known-issues-2411.md
       - name: Known issues 2408
         items:
@@ -65,7 +67,9 @@ items:
             href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: November 2024 - Current
+      - name: December 2024 - Current
+        href: security-update/security-update-dec-2024.md
+      - name: November 2024
         href: security-update/security-update-nov-2024.md
       - name: October 2024
         href: security-update/security-update-oct-2024.md
@@ -165,6 +169,10 @@ items:
         href: plan/three-node-components.md
       - name: Pattern IP requirements
         href: plan/three-node-ip-requirements.md
+    - name: Four-node switchless deployments
+      items:
+      - name: Storage switchless, dual TOR, dual link
+        href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -323,11 +331,11 @@ items:
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
-    - name: License Arc VMs
+    - name: Activate Arc VMs
       items:
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
-      - name: License Windows Server VMs
+      - name: Activate Windows Server VMs
         href: manage/vm-activate.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition-23h2.md
@@ -360,12 +368,6 @@ items:
         href: manage/vm-affinity.md
       - name: VM load balancing
         href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-local&context=/azure/azure-local/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -382,7 +384,7 @@ items:
     items:
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
-    - name: Manage application control (WDAC)
+    - name: Manage Application Control
       href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
@@ -516,17 +518,15 @@ items:
         href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
-    - name: Health service
-      items:
-      - name: Monitor systems
+      - name: Monitor clusters with Health Service
         href: manage/health-service-overview.md
-      - name: Get system performance history
+      - name: Get cluster performance history
         href: manage/health-service-cluster-performance-history.md
-      - name: View faults
+      - name: View Health Service faults
         href: manage/health-service-faults.md
-      - name: Track actions
+      - name: Track Health Service actions
         href: manage/health-service-actions.md
-      - name: Modify settings
+      - name: Modify Health Service settings
         href: manage/health-service-settings.md
 
 - name: Troubleshoot
@@ -855,6 +855,8 @@ items:
     items:
     - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
+    - name: Azure Local Arc VMs Azure CLI commands
+      href: /cli/azure/stack-hci-vm
   - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands
