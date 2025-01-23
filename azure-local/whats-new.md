@@ -554,8 +554,8 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 
 ## Next steps
 
-- [Read the blog announcing the general availability of Azure Local, version 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
+- [Read the blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - [Read the blog about What's new for Azure Local at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
-- For Azure Local, version 23H2 deployments:
+- For Azure Local deployments:
   - Read the [Deployment overview](./deploy/deployment-introduction.md).
-  - Learn how to [Deploy Azure Local, version 23H2 via the Azure portal](./deploy/deploy-via-portal.md).
+  - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).

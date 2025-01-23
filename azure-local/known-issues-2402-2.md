@@ -20,7 +20,7 @@ The release notes are continuously updated, and as critical issues requiring a w
 > [!NOTE]
 > To understand the supported update paths for this release, see [Azure Local releases](./release-information-23h2.md#about-azure-local-releases).
 
-For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
+For more information about the new features in this release, see [What's new in Azure Local](whats-new.md).
 
 ## Issues for version 2402.2
 
