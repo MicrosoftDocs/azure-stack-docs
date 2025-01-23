@@ -4,7 +4,8 @@ description: Learn how to deploy and configure an AKS Arc cluster with workload 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/08/2024
+ms.date: 01/23/2025
+ms.reviewer: leslielin
 
 ---
 
