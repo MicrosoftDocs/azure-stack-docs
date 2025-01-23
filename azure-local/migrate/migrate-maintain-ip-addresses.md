@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/14/2025
+ms.date: 01/23/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -31,7 +31,7 @@ The .zip file includes the following scripts:
 - **Utilities.psm1** - Contains helper functions for the scripts.
 
 > [!NOTE]
-> Static IP address migration is currently available only for Windows VMs, and is not yet supported for Linux VMs.
+> Static IP address migration is currently available only for Windows VMs, and is not supported for Linux VMs.
 
 ## Prerequisites
 
@@ -41,15 +41,15 @@ Before you begin, prepare the source and target environments for IP migration.
 
 To migrate VMs with static IPs from the source system (Hyper-V or VMware), follow these steps:
 
-- Ensure the VMs are powered on throughout the replication process and up to planned failover (migration).
+1. Ensure the VMs are powered on throughout the replication process and up to planned failover (migration).
 
-- For VMware VMs, ensure that **VMware Tools** are installed.  
+1. For VMware VMs, ensure that **VMware Tools** are installed.  
 
-- For Hyper-V VMs, ensure that **Hyper-V Integration Services** are installed. For more information, see [Manage Hyper-V Integration Services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+1. For Hyper-V VMs, ensure that **Hyper-V Integration Services** are installed. For more information, see [Manage Hyper-V Integration Services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
 
-- For Linux VMs, ensure that **Linux Integration Services** are installed.
+1. For Linux VMs, ensure that **Linux Integration Services** are installed.
 
-- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
+1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
 
 ### Prepare target VMs for IP migration
 
@@ -65,15 +65,15 @@ To use this method, you need domain administrator privileges and access to the G
 
 - The source VMs must have read-only access to a remote file share hosting the static IP migration package, which must be prepared and downloaded to the remote share in advance.
 
-## Setup IP migration manually
+## Set up IP migration manually
 
 1. Download the .zip file and install the static IP migration package contents onto a local folder on the VM.
 
 1. Open a PowerShell console and run the *Prepare-MigratedVM.ps1* script with the following command:
 
-```powershell
-.\Prepare-MigratedVM.ps1 -StaticIPMigration  
-```
+    ```powershell
+    .\Prepare-MigratedVM.ps1 -StaticIPMigration  
+    ```
 
 1. In Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
 
@@ -81,25 +81,25 @@ To use this method, you need domain administrator privileges and access to the G
 
 1. In the **Replications > General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
 
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page ." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 
     Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
 
 1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**.
 
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/shutdown-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shutdown-vms.png":::
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/shut-down-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shut-down-vms.png":::
 
 1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
 
-## Setup IP migration using group policy
+## Set up IP migration using group policy
 
 Follow these steps to set up static IP migration at scale on domain-joined VMs using group policy.
 
-1. Review the prerequisites listed for static IP migrations using group policy.
+- Review the prerequisites listed for static IP migrations using group policy.
 
 ### Create a group policy object
 
-1. Open the Group Policy Management Console for your Active Directory (AD)environment.
+1. Open the Group Policy Management Console for your Active Directory (AD) environment.
 
 1. In your AD forest, navigate to the location that contains the VMs you want to migrate with preserved static IPs.
 
@@ -107,7 +107,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 1. When prompted, assign a descriptive name to this GPO:
 
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/group-policy-management.png" alt-text="Screenshot of ." lightbox="././media/migrate-maintain-ip-addresses/group-policy-management.png":::
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/group-policy-management.png" alt-text="Screenshot of the GPO menu item." lightbox="././media/migrate-maintain-ip-addresses/group-policy-management.png":::
 
 1. Edit the GPO:
 
