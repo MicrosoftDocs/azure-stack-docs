@@ -24,9 +24,9 @@ There are multiple release trains for Azure Local: 2411, 2408, 2405, 2402, and 2
 
 This is a baseline release with the following features and improvements:
 
-- **Arc VMs**
+- **Arc VMs** - Here are the improvements made to Arc VMs in this release:
     - **Azure marketplace images**: Starting this release, 3 new Azure marketplace images are available in addition to the existing images. For more information, see the [List of Azure marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
-    - **Live migration**: Starting this release Live migration for Arc VMs via on-premises tools is available. For more information, see [D](./manage/manage-arc-virtual-machines.md#live-migration-of-arc-enabled-virtual-machines).
+    - **Live migration**: Starting this release, live migration is available for Arc VMs via on-premises tools. For more information, see [Live migration of Arc VMs](./manage/manage-arc-virtual-machines.md#live-migration-of-arc-enabled-virtual-machines).
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
