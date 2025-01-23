@@ -102,25 +102,25 @@ As part of the Azure Local version 2411.1 preview update, the endpoints from the
 | 6 | `http://gbl.his.arc.azure.com:443` | Arc registration |  
 | 7 | `http://<region>.his.arc.azure.com:443` | Arc registration |
 | 8 | `http://dc.services.visualstudio.com:443` | Arc registration |
-| 9 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
-| 10 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
-| 11 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
-| 12 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 13 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 14 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 15 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
-| 16 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
-| 17 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
-| 18 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
-| 19 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 20 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
-| 21 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
-| 22 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
-| 23 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
-| 24 | `http://*.windowsupdate.com` | Windows Update |
-| 25 | `http://*.windowsupdate.microsoft.com` | Windows Update |
-| 26 | `http://*.update.microsoft.com` | Windows Update |
-
+| 9 | `https://<region>.obo.arc.azure.com:8084` | AKS extensions |
+| 10 | `http://<yourarcgatewayId>.gw.arc.azure.com:443` | Arc gateway |
+| 11 | `http://<yourkeyvaultname>.vault.azure.net:443` | Azure Key Vault |
+| 12 | `http://<yourblobstorageforcloudwitnessname>.blob.core.windows.net:443` | Cloud Witness Storage Account |
+| 13 | `http://files.pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 14 | `http://pypi.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 15 | `http://raw.githubusercontent.com:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 16 | `http://pythonhosted.org:443` | Microsoft On-premises Cloud/ARB/AKS |
+| 17 | `http://ocsp.digicert.com`  | Certificate Revocation List for Arc extensions |
+| 18 | `http://s.symcd.com` | Certificate Revocation List for Arc extensions |
+| 19 | `http://ts-ocsp.ws.symantec.com` | Certificate Revocation List for Arc extensions |
+| 20 | `http://ocsp.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 21 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
+| 22 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
+| 23 | `http://dl.delivery.mp.microsoft.com` | Windows Update |
+| 24 | `http://*.tlu.dl.delivery.mp.microsoft.com` | Windows Update |
+| 25 | `http://*.windowsupdate.com` | Windows Update |
+| 26 | `http://*.windowsupdate.microsoft.com` | Windows Update |
+| 27 | `http://*.update.microsoft.com` | Windows Update |
 
 ## Restrictions and limitations
 
