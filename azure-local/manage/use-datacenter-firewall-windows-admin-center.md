@@ -4,12 +4,12 @@ description: Configure network security groups with Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 01/16/2025
 ---
 
 # Configure network security groups with Windows Admin Center
 
->Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+>Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create and configure network security groups (NSGs) to manage data traffic flow using Datacenter Firewall. It also provides instructions on managing network security groups on Software Defined Network (SDN) virtual and logical networks. You enable and configure Datacenter Firewall by creating network security groups and applying them to either a subnet or a network interface. To learn more, see [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md) To use PowerShell scripts to do this, see [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md).
 
