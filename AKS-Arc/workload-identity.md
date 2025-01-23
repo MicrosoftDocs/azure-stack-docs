@@ -167,9 +167,9 @@ $MSIPrincipalId=$(az identity show --resource-group $resource_group_name --name 
 
 ### Create a Kubernetes service account
 
-Create a Kubernetes service account and annotate it with the client ID of the managed identity you created in the previous step:
+In this step, you create a Kubernetes service account and annotate it with the client ID of the managed identity you created in the previous step.
 
-Use cluster connect to access your cluster from a client device. For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device).
+Use cluster connect to access your cluster from a client device. For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device):
 
 ```azurecli
 az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
