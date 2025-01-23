@@ -34,7 +34,7 @@ Here are some key considerations for enabling guest management on a VM after you
 - Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
 - The steps to enable guest management differ based on whether a guest agent is running on your Azure Arc VM.
 
-### Verify that guest agent is running
+### Verify that the guest agent is running
 
 To verify that the guest agent is running on the Azure Arc VM:
 
@@ -889,7 +889,7 @@ If Bash is in a different directory, be sure to change the `#!/bin/bash` line ac
 
 Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks and the network interfaces associated with the VM. You need to locate and delete these resources separately.
 
-To remove a VM, follow these steps in the Azure portal for your Azure Local instance:
+To delete a VM, follow these steps in the Azure portal for your Azure Local instance:
 
 1. Go to the Azure Local resource, and then go to **Virtual machines**.
 
@@ -907,7 +907,7 @@ To remove a VM, follow these steps in the Azure portal for your Azure Local inst
 
     :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
 
-## Conduct live migration of Azure Arc virtual machines
+## Conduct live migration of Azure Arc VMs
 
 Live migration of Azure Arc VMs across Azure Local nodes is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
@@ -919,7 +919,7 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
 1. In the list of VMs, select and go to the VM whose cores and memory you want to modify.
 
-1. Under **Settings**, select **Size**. Edit the **Virtual processor count** or **Memory (MB)** values to change the cores or memory size for the VM. Only the memory size can be changed. You can't change the memory type after a VM is created.
+1. Under **Settings**, select **Size**. Edit the **Virtual processor count** or **Memory (MB)** values to change the cores or the memory size for the VM. For memory, only the size can be changed. You can't change the memory type after a VM is created.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of the pane for changing cores and memory size of a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
 

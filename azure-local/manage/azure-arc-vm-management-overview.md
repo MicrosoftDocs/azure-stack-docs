@@ -25,13 +25,13 @@ To find answers to frequently asked questions about Azure Arc VM management on A
 
 ## Benefits of Azure Arc VM management
 
-Whereas Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools, including:
+Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools. These benefits include:
 
 - Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](./assign-vm-rbac-roles.md).
 - Azure Arc VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or the Azure CLI, including:
 
-  - Create, manage, update, and delete VMs. For more information, see [Create Azure Arc VMs](./create-arc-virtual-machines.md).
+  - Create, manage, update, and delete VMs. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
   - Create, manage, and delete VM resources such as virtual disks, logical networks, network interfaces, and VM images.
 
 - The self-service capabilities of Azure Arc VM management reduce administrative overhead.
@@ -66,13 +66,13 @@ In this release, the Azure Arc VM management workflow is as follows:
 1. During your deployment of Azure Local, one Azure Arc resource bridge is installed per cluster. A custom location is also created.
 1. You [assign built-in RBAC roles for Azure Arc VM management](./assign-vm-rbac-roles.md).
 1. You create VM resources such as:
-    1. [Storage paths](./create-storage-path.md) for VM disks.
-    1. VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
-    1. [Logical networks](./create-virtual-networks.md).  
-    1. [VM network interfaces](./create-network-interfaces.md).
+    - [Storage paths](./create-storage-path.md) for VM disks.
+    - VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
+    - [Logical networks](./create-virtual-networks.md).  
+    - [VM network interfaces](./create-network-interfaces.md).
 1. You use the VM resources to [create VMs](./create-arc-virtual-machines.md).
 
-To troubleshoot problems with your Azure Arc VMs or to learn about existing known issues and limitations, see [Troubleshoot Azure Arc VM management for Azure Local](troubleshoot-arc-enabled-vms.md).
+To troubleshoot problems with your Azure Arc VMs or to learn about known issues and limitations, see [Troubleshoot Azure Arc VM management for Azure Local](troubleshoot-arc-enabled-vms.md).
 
 ## Related content
 

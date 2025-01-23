@@ -18,7 +18,7 @@ You can add or delete the resources by using the Azure portal. For the task of a
 
 ## Prerequisites
 
-- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Arc VMs running on this system. For more information, see [Create Azure Arc VMs on Azure Local](./create-arc-virtual-machines.md).
+- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Arc VMs running on this system. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
 
 ## Add a data disk
 
@@ -145,11 +145,11 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
 1. Select **Apply** to apply the changes. The network interface is dissociated from the Azure Arc VM.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of the Apply button on the Networking pane for a virtual machine." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of the Apply button on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
 
 1. The list of network interfaces is updated with the deleted network interface.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of an updated network interface list on the Networking pane for a virtual machine." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of an updated network interface list on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
 ## Related content
 
