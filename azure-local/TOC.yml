@@ -71,6 +71,7 @@ items:
         href: security-update/security-update-sep-2024.md
       - name: August 2024
         href: security-update/security-update-aug-2024.md
+      - name: Archived Security updates
         items: 
         - name: July 2024
           href: security-update/security-update-jul-2024.md 
