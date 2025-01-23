@@ -590,6 +590,8 @@ items:
         href: migrate/migrate-vmware-migrate.md
       - name: Enable guest management
         href: migrate/migrate-enable-guest-management.md
+    - name: Maintain static IP addresses
+      href: migrate/migrate-maintain-ip-addresses.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
