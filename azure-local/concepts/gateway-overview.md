@@ -10,7 +10,7 @@ ms.custom: kr2b-contr-experiment
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article provides an overview of Remote Access Service (RAS) Gateway for Software Defined Networking (SDN) in Azure Local and Windows Server.
 
