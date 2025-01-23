@@ -15,7 +15,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 
       items:
-      - name: 2411.1 - Current
+      - name: 2411.2
+        href: known-issues-2411-2.md
+      - name: 2411.1
         href: known-issues-2411-1.md
       - name: 2411 
         href: known-issues-2411.md
@@ -25,10 +27,10 @@ items:
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
-      - name: 2405.3 - 
-        href: known-issues-2405-3.md
       - name: Archived known issues 
         items:
+        - name: 2405.3
+          href: known-issues-2405-3.md
         - name: 2405.2
           href: known-issues-2405-2.md      
         - name: 2405.1
@@ -69,12 +71,12 @@ items:
         href: security-update/security-update-sep-2024.md
       - name: August 2024
         href: security-update/security-update-aug-2024.md
-      - name: July 2024
-        href: security-update/security-update-jul-2024.md
-      - name: June 2024 
-        href: security-update/security-update-jun-2024.md
-      - name: Archived security updates 
-        items:  
+        items: 
+        - name: July 2024
+          href: security-update/security-update-jul-2024.md 
+        - name: June 2024 
+          href: security-update/security-update-jun-2024.md
+        - name: Archived security updates 
         - name: May 2024
           href: security-update/security-update-may-2024.md
         - name: April 2024
