@@ -4,12 +4,12 @@ description: Learn how to manage certificates for Network Controller Northbound 
 ms.topic: article
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 10/28/2024
+ms.date: 01/16/2025
 ---
 
 # Manage certificates for Software Defined Networking
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to manage certificates for Network Controller Northbound and Southbound communications when you deploy Software Defined Networking (SDN) and when you use System Center Virtual Machine Manager (SCVMM) as your SDN management client.
 

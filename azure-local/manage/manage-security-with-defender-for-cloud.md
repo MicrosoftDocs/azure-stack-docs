@@ -4,8 +4,8 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
-ms.service: azure-stack-hci
+ms.date: 12/11/2024
+ms.service: azure-local
 ---
 
 # Manage system security with Microsoft Defender for Cloud (preview)

@@ -3,10 +3,10 @@ title: About Azure Local upgrade to version 23H2
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/26/2024
+ms.date: 12/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # About Azure Local upgrades
@@ -62,6 +62,7 @@ The following diagram illustrates the Azure Local upgrade process:
 > [!IMPORTANT]
 > - Consult your hardware OEM before you upgrade Azure Local. Validate that your OEM supports the version and the upgrade.
 > - Upgrading your Azure Local from version 22H2 is only supported for regions where Azure Local, version 23H2 is available. For more information, see [Azure Local region availability](../concepts/system-requirements-23h2.md#azure-requirements).
+> - Use of 3rd party tools to install upgrades is not supported.
 
 Azure Local upgrade supports the following services and workloads:
 

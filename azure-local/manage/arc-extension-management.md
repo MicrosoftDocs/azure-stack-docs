@@ -321,7 +321,7 @@ When published by the extension publisher team, the extension upgrade process re
 Currently, automatic extension upgrades are only supported in the Windows Admin Center extension, but more extensions will be added in the future.
 
 > [!NOTE]
-> By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
+> By default, all extensions are set up to enable automatic upgrades, but this setting only works if the publisher supports it. If an extension isn’t set up to enable automatic upgrades, the upgrade happens during the solution update process. Over time, manual extension upgrades will transition to automatic upgrades.
 
 ### Enable automatic extension upgrade
 

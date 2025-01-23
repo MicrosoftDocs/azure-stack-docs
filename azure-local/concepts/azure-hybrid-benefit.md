@@ -4,9 +4,9 @@ description: Learn about Azure Hybrid Benefit for Azure Local.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurepowershell
-ms.date: 11/08/2024
+ms.date: 12/09/2024
 ---
 
 # Azure Hybrid Benefit for Azure Local

@@ -5,7 +5,7 @@ metadata:
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
-  ms.service: azure-stack-hci
+  ms.service: azure-local
   ms.date: 01/09/2025
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)

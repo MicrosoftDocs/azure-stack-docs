@@ -756,7 +756,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account options
@@ -964,7 +964,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1216,7 +1216,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1372,7 +1372,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1527,7 +1527,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Subscriptions Properties blade
@@ -1703,7 +1703,7 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Marketplace management
@@ -1861,7 +1861,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Docker extension
@@ -2021,7 +2021,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## Storage
 
 - Applicable: This issue applies to all supported releases.
-- Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
+- Cause: [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
 - Remediation: To convert your disks correctly, follow the [convert to managed disks guide](../../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## App Service
