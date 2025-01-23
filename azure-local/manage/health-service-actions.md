@@ -4,11 +4,11 @@ title: Track Health Service actions
 ms.author: alkohli
 ms.topic: article
 author: alkohli
-ms.date: 10/18/2024
+ms.date: 01/16/2025
 ---
 # Track Health Service actions
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. This topic describes workflows that the Health Service automates.
 

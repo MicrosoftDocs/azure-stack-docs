@@ -4,12 +4,12 @@ description: This article describes how to renew Network Controller certificates
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 01/16/2025
 ---
 
 # Renew certificates for Network Controller
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Network Controller certificates, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 

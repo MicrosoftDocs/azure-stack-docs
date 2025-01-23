@@ -5,12 +5,12 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 10/28/2024
+ms.date: 01/16/2025
 ---
 
 # Configure Software Load Balancer for high availability ports
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
 This article provides an overview of high availability ports rule and their purpose. It also describes the prerequisites for setting up such rules, the configuration steps, supported configurations, and associated limitations.
 
