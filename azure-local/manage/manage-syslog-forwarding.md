@@ -4,7 +4,7 @@ description: Learn how to configure syslog forwarding for Azure Local security i
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/16/2024
 ---
 
