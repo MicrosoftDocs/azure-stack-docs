@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
 ---
 
-# December 2023 OS security update (KB 5033383) for Azure Stack HCI, version 23H2
+# December 2023 OS security update (KB 5033383) for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the security update for Azure Stack HCI, version 23H2 that was released on December 12, 2023 and applies to OS build 25398.584.
+This article describes the security update for Azure Local that was released on December 12, 2023 and applies to OS build 25398.584.
 
 <!--For an overview of Azure Stack HCI version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 
@@ -64,5 +64,5 @@ For a list of the files that are provided in this update, download the file info
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local.

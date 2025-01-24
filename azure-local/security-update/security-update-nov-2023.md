@@ -1,6 +1,6 @@
 ---
-title:  November 2023 OS security update (KB 5032202) for Azure Stack HCI, version 23H2
-description: Read about the November 2023 OS security update (KB 5032202) for Azure Stack HCI, version 23H2.
+title:  November 2023 OS security update (KB 5032202) for Azure Local, version 23H2
+description: Read about the November 2023 OS security update (KB 5032202) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
 ms.date: 03/20/2024
@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
 ---
 
-# November 2023 OS security update (KB 5032202) for Azure Stack HCI, version 23H2
+# November 2023 OS security update (KB 5032202) for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This security update for Azure Stack HCI, version 23H2 was released on November 14, 2023 and applies to OS build 25398.531.
+This security update for Azure Local was released on November 14, 2023 and applies to OS build 25398.531.
 
 <!--For an overview of Azure Stack HCI version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 
@@ -72,5 +72,5 @@ For a list of the files that are provided in this update, download the file info
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local.

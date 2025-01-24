@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 monikerRange: "=azloc-2411"
 ---
 
-# November OS security update (KB) for Azure Local, version 23H2
+# November OS security update (KB) for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Local, version 23H2 that was released on November 12, 2024 and applies to OS build 25398.1251.
+This article describes the OS security update for Azure Local that was released on November 12, 2024 and applies to OS build 25398.1251.
 
 ## Improvements
 
@@ -49,5 +49,5 @@ For a list of the files that are provided in this update, download the file info
 
 ## Next steps
 
-- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local, version 23H2.
-- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local, version 23H2.
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Local.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Local.
