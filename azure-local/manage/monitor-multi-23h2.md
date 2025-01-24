@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 01/17/2025
+ms.service: azure-local
+ms.date: 10/10/2024
 ---
 
 # Monitor multiple Azure Local systems with Insights

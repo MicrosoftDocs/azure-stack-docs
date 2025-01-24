@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 12/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # About Azure Local upgrades

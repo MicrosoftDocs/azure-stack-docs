@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/24/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Troubleshoot Azure Arc VM management for Azure Local

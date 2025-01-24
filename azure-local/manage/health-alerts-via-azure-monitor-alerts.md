@@ -4,8 +4,8 @@ description: Learn how to use the Azure Monitor alerts to respond to Azure Local
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 01/17/2025
+ms.service: azure-local
+ms.date: 12/26/2024
 ---
 
 # Respond to Azure Local health alerts using Azure Monitor alerts

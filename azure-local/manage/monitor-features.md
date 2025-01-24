@@ -5,8 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 01/17/2025
+ms.service: azure-local
+ms.date: 10/10/2024
 ---
 
 # Monitor Azure Local features with Insights

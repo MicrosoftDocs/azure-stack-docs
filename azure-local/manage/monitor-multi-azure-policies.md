@@ -5,8 +5,8 @@ author: ManikaDhiman
 ms.author: v-manidhiman
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 01/17/2025
+ms.service: azure-local
+ms.date: 09/12/2024
 ---
 
 # Enable Insights for Azure Local at scale using Azure policies

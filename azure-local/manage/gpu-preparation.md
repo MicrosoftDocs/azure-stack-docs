@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/15/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Prepare GPUs for Azure Local (preview)
