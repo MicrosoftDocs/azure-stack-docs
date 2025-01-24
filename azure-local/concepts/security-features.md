@@ -88,7 +88,7 @@ For more information, see the full [List of option rules](/windows/security/appl
 Allow rules in the base policy allow all Microsoft components delivered by the OS and the cloud deployments to be trusted. Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
-> The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
+> The Allow and Deny rules in the base policy are updated regularly to improve product functionality and maximize protection of your solution.
 
 To learn more about Deny rules, see:
 
@@ -134,7 +134,7 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> Secret creation and rotation operations take about ten minutes to complete, depending on the size of the system.
+> Secret creation and rotation operations take about 10 minutes to complete, depending on the size of the system.
 
 For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
@@ -156,14 +156,16 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 ## Microsoft Defender Antivirus
 
-Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We recommend using Microsoft Defender Antivirus with the Azure Local instances. Third party Antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution funtionality. 
+Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
 
-Please check with your software vendor if they support Azure local, and you need to run Microsoft Defender Antivirus in Passive mode or complelety remove the feature. 
+Third-party Antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution functionality.
 
-For more information, see [Microsoft Defender Antivirus compatibility with other security products](https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-compatibility).
+Check with your software vendor if they support Azure local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
+
+For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
 
 > [!NOTE]
-> Microoft Defender Antivirs related settings inclided in the Security baseline of the solution will have no effect if you remove Microsoft Defender Antivirus feature.
+> Microoft Defender Antivirus related settings included in the security baseline of the solution won't have any effect if you remove the Microsoft Defender Antivirus feature.
 
 ## Microsoft Defender for Cloud (preview)
 
