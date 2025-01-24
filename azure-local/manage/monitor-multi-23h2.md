@@ -1,6 +1,6 @@
 ---
-title: Monitor multiple Azure Local systems with Insights
-description: How to use Insights to monitor the health, performance, and usage of multiple Azure Local systems.
+title: Monitor multiple Azure Local, version 23H2 systems with Insights
+description: How to use Insights to monitor the health, performance, and usage of multiple Azure Local, version 23H2 systems.
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
