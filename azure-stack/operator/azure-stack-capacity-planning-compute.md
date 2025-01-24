@@ -3,9 +3,8 @@ title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 11/19/2021
+ms.date: 01/23/2025
 ms.author: sethm
-ms.reviewer: kivenkat
 ms.lastreviewed: 03/02/2021
 
 # Intent: As an Azure Stack Hub operator, I want to learn about compute capacity planning for Azure Stack Hub deployments
@@ -16,11 +15,10 @@ ms.lastreviewed: 03/02/2021
 
 # Azure Stack Hub compute capacity
 
-The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
+The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
->[!IMPORTANT]
->The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance. The administrator portal shows a warning alert when the total system memory consumption has reached 85%. This alert can be remediated by [adding additional capacity](azure-stack-add-scale-node.md), or by removing virtual machines that are no longer required.
-
+> [!IMPORTANT]
+> The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance. The administrator portal shows a warning alert when the total system memory consumption has reached 85%. This alert can be remediated by [adding additional capacity](azure-stack-add-scale-node.md), or by removing virtual machines that are no longer required.
 
 ## VM placement
 
@@ -28,9 +26,9 @@ The Azure Stack Hub placement engine places tenant VMs across the available host
 
 Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview)?
 
-To achieve high availability of a multi-VM production workload in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. If possible, they'll be kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
+To achieve high availability of a multi-VM production workload in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain are restarted in other fault domains. If possible, they're kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs are rebalanced to maintain high availability.
 
-Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels before trying placement.
+Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there might be a situation where a virtual machine scale set of three instances fails at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels before trying placement.
 
 Azure Stack Hub doesn't overcommit memory. However, an overcommit of the number of physical cores is allowed.
 
@@ -38,17 +36,19 @@ Since placement algorithms don't look at the existing virtual to physical core o
 
 ## Consideration for total number of VMs
 
-There is a limit on the total number of VMs that can be created. The maximum number of VMs on Azure Stack Hub is 700 and 60 per scale unit node. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. 
+There is a limit on the total number of VMs that can be created. The maximum number of VMs on Azure Stack Hub is 700 and 60 per scale unit node. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp.
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 
 > [!NOTE]
 > A portion of the 700 VM maximum is reserved for Azure Stack Hub infrastructure VMs. For more information, refer to the [Azure Stack Hub capacity planner](https://aka.ms/azstackcapacityplanner).
+
 ## Consideration for batch deployment of VMs
 
 In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub onwards, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments. Start, Stop-deallocate, and update operations should be done at a batch size of 30, leaving 5 mins in between each batch.
 
 ## Consideration for GPU VMs
+
 Azure Stack hub reserves memory for the infrastructure and tenant VMs to failover. Unlike other VMs, GPU VMs run in a non-HA (high availability) mode and therefore do not failover. As a result, reserved memory for a GPU VM-only stamp is what is required by the infrastructure to failover, as opposed to accounting for HA tenant VM memory too.  
 
 ## Azure Stack Hub memory
@@ -202,4 +202,5 @@ Resiliency reserve = 512 + 230.4 + 224 = 966.4 GB
 > The capacity planning requirements for networking are minimal as only the size of the public VIP is configurable. For information about how to add more public IP addresses to Azure Stack Hub, see [Add public IP addresses](azure-stack-add-ips.md).
 
 ## Next steps
+
 Learn about [Azure Stack Hub storage](azure-stack-capacity-planning-storage.md)
