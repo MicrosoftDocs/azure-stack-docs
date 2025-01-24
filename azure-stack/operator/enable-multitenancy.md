@@ -3,7 +3,7 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to configure multi-tenancy for guest Microsoft Entra tenants in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: bryanr
 ms.lastreviewed: 11/05/2021
@@ -111,7 +111,7 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
 
 1. As the administrator of the guest directory (Mary in this scenario), run `Unregister-AzsWithMyDirectoryTenant`. The cmdlet uninstalls all the Azure Stack Hub apps from the new directory.
 
-    ``` PowerShell
+    ``` powershell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as management.<region>.<FQDN>.
     $tenantARMEndpoint = "https://management.local.azurestack.external"
         
@@ -126,7 +126,7 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
 
 1. As the service administrator of Azure Stack Hub (you in this scenario), run the `Unregister-AzSGuestDirectoryTenant` cmdlet:
 
-    ``` PowerShell
+    ``` powershell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint, formatted as adminmanagement.<region>.<FQDN>.
     $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
     
@@ -153,7 +153,6 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
 Replace the `<region>`, `<domain>`, and `<homeDirectoryTenant>` placeholders, then execute the following cmdlet as the Azure Stack Hub administrator.
 
 ```powershell
-
 $AdminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"
 $DirectoryName = "<homeDirectoryTenant>.onmicrosoft.com"
 $healthReport = Get-AzsHealthReport -AdminResourceManagerEndpoint $AdminResourceManagerEndpoint -DirectoryTenantName $DirectoryName
@@ -195,7 +194,7 @@ Multi-tenancy management using the administrator portal is only available for ve
 ::: zone pivot="management-tool-portal"
 ## Register a guest directory
 
-To register a guest directory for multi-tenancy, you need to configure both the home Azure Stack Hub directory and the guest directory.
+To register a guest directory for multi-tenancy, you must configure both the home Azure Stack Hub directory and the guest directory.
 
 #### Configure Azure Stack Hub directory
 
@@ -205,21 +204,21 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
    [![Screenshot that shows the list of directories.](./media/enable-multitenancy/directories.png)](./media/enable-multitenancy/directories-expanded.png#lightbox)
 
-2. Select **Add** to start the onboarding process. Enter the guest directory name "adatum.onmicrosoft.com", and then select **Add**.
+1. Select **Add** to start the onboarding process. Enter the guest directory name "adatum.onmicrosoft.com", and then select **Add**.
 
    [![Screenshot that shows how to add a new directory.](./media/enable-multitenancy/add-directory.png)](./media/enable-multitenancy/add-directory-expanded.png#lightbox)
 
-3. The guest directory appears in the list view, with a status of **unregistered**.
+1. The guest directory appears in the list view, with a status of **unregistered**.
 
    [![Screenshot that shows the new guest directory with an unregistered status.](./media/enable-multitenancy/unregistered.png)](./media/enable-multitenancy/unregistered-expanded.png#lightbox)
 
-4. Only Mary has the credentials to authenticate to the guest directory, so you must send her the link to complete the registration. Select the **adatum.onmicrosoft.com** checkbox, and then select **Register**.
+1. Only Mary has the credentials to authenticate to the guest directory, so you must send her the link to complete the registration. Select the **adatum.onmicrosoft.com** checkbox, and then select **Register**.
 
    [![Screenshot that shows selecting a directory to register.](./media/enable-multitenancy/register.png)](./media/enable-multitenancy/register-expanded.png#lightbox)
 
-5. A new browser tab opens. Select **Copy link** at the bottom of the page, and provide it to Mary.
+1. A new browser tab opens. Select **Copy link** at the bottom of the page, and provide it to Mary.
 
-6. If you have the credentials for the guest directory, you can complete the registration yourself by selecting **Sign in**.
+1. If you have the credentials for the guest directory, you can complete the registration yourself by selecting **Sign in**.
 
    [![Screenshot that shows selecting sign in.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
@@ -249,7 +248,7 @@ Mary received the email with the link to register the directory. She opens the l
 
    ![Screenshot that shows a registered directory.](./media/enable-multitenancy/manage-directory.png)
 
-1. Mary has successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://portal.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
+1. Mary successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://portal.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 > [!IMPORTANT]
 > It can take up to one hour for the Azure Stack operator to see the directory status updated in the admin portal.
@@ -271,26 +270,26 @@ Mary no longer uses services on Azure Stack Hub and must remove the objects. She
 
    [![Screenshot that shows selecting Sign In.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
-2. Mary sees the status of the directory.
+1. Mary sees the status of the directory.
 
    ![Screenshot that shows a registered directory.](./media/enable-multitenancy/manage-directory.png)
 
-3. Mary selects **Unregister** to start the action.
+1. Mary selects **Unregister** to start the action.
 
    ![Screenshot that shows selecing Unregister to unregister a directory.](./media/enable-multitenancy/unregister-directory.png)
 
-4. When the process has finished, the status is shown as **Not registered**:
+1. When the process finishes, the status is shown as **Not registered**:
 
    [![Screenshot that shows a directory that has been unregistered.](./media/enable-multitenancy/status-not-registered-2.png)](./media/enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
 
-   Mary has successfully unregistered the directory **adatum.onmicrosoft.com**.
+   Mary successfully unregistered the directory **adatum.onmicrosoft.com**.
 
    > [!NOTE]
-   > It can take up to one hour to show the directory as not registered in the Azure Stack admin portal.
+   > It can take up to one hour to show the directory as not registered in the Azure Stack administrator portal.
 
 #### Configure Azure Stack Hub directory
 
-As an Azure Stack Hub operator, you can remove the guest directory at any point, even if Mary has not previously unregistered the directory.
+As an Azure Stack Hub operator, you can remove the guest directory at any point, even if Mary didn't previously unregister the directory.
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
@@ -304,13 +303,13 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
    [![Screenshot that shows how to remove a directory.](./media/enable-multitenancy/remove-directory.png)](./media/enable-multitenancy/remove-directory-expanded.png#lightbox)
 
-   You have successfully removed the directory.
+   You've now successfully removed the directory.
 
 ## Managing required updates
 
 Azure Stack Hub updates can introduce support for new tools or services that might require an update of the home or guest directory.
 
-As an Azure Stack Hub operator, you get an alert in the admin portal that informs you about a required directory update. You can also determine whether an update is required for home or guest directories by viewing the directories pane in the admin portal. Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown.
+As an Azure Stack Hub operator, you get an alert in the administrator portal that informs you about a required directory update. You can also determine whether an update is required for home or guest directories by viewing the directories pane in the admin portal. Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown.
 
 #### Update the Azure Stack Hub directories
 
@@ -332,8 +331,7 @@ Mary, the owner of the guest directory, opens the URL that she received via emai
 
 1. Mary sees the status of the directory saying an update is required.
 
-1. The **Update** action is available for Mary to update the guest directory. It can take up to one hour to show the directory as registered
-in the Azure Stack admin portal.
+1. The **Update** action is available for Mary to update the guest directory. It can take up to one hour to show the directory as registered in the Azure Stack administrator portal.
 
 ## Additional capabilities
 
