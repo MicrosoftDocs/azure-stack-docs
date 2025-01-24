@@ -158,7 +158,7 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
 
-Third-party Antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution functionality.
+Third-party antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution functionality.
 
 Check with your software vendor if they support Azure Local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
 
