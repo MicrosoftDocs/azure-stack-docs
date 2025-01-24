@@ -160,12 +160,12 @@ Azure Local comes with Microsoft Defender Antivirus enabled and configured by de
 
 Third-party Antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution functionality.
 
-Check with your software vendor if they support Azure local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
+Check with your software vendor if they support Azure Local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
 
 For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
 
 > [!NOTE]
-> Microoft Defender Antivirus related settings included in the security baseline of the solution won't have any effect if you remove the Microsoft Defender Antivirus feature.
+> Microsoft Defender Antivirus related settings included in the security baseline of the solution won't have any effect if you remove the Microsoft Defender Antivirus feature.
 
 ## Microsoft Defender for Cloud (preview)
 
