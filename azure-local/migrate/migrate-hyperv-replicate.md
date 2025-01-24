@@ -207,7 +207,7 @@ This step applies only if you downloaded the .zip file.
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
     1. Select **Azure Local** for **Where do you want to migrate to ?**
-    1. Select **HYper-V** for the **Virtualization type**.
+    1. Select **Hyper-V** for the **Virtualization type**.
     1. Select the source appliance as the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
