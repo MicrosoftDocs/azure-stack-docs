@@ -13,7 +13,7 @@ monikerRange: "=azloc-previous"
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.1 release.
+This article identifies the critical known issues and their workarounds in Azure Local 2402.1 release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Local, carefully review the information contained in the release notes.
 

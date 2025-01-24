@@ -135,4 +135,4 @@ Some Microsoft partners are developing software that extends the capabilities of
 ## Next steps
 
 - Read the blog post: [Introducing Azure Local: cloud infrastructure for distributed locations enabled by Azure Arc](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
-- Learn more about [Azure Local, version 23H2 deployment](./deploy/deployment-introduction.md).
+- Learn more about [Azure Local deployment](./deploy/deployment-introduction.md).
