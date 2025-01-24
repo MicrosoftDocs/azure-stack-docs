@@ -31,14 +31,14 @@ For more information on Kubernetes concepts, check out the [Kubernetes documenta
 
 [Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: the [cloud operator](/azure-stack/operator/) and a [user](/azure-stack/user/). 
 
-The following tasks fall on the **Azure Stack Hub Operator**:
+The following tasks fall on the Azure Stack Hub operator:
 
 1. Make sure that the Azure Kubernetes Service base images are available in the Azure Stack Hub instance, this includes downloading them from Azure.
 2. Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
 3. Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
 4. For details on the Operator tasks see [Install and offer the Azure Kubernetes Service on Azure Stack Hub](../operator/aks-add-on.md)
 
-The following tasks correspond to the user, that is, the **Tenant AKS Cluster Administrator**:
+The following tasks correspond to the user; that is, the tenant AKS cluster administrator:
 
 1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
 2. Use the Azure Kubernetes Service facilities to manage the lifecycle of the cluster, that is creation, upgrade, and scale operations.
@@ -51,45 +51,45 @@ The following table provides an overview of features of AKS in global Azure comp
 
 | Area                         | Feature                                             | Azure AKS | Azure Stack Hub AKS |
 |------------------------------|-----------------------------------------------------|-----------|---------|
-| Access Security              |                                                     |           |         |
+| Access security              |                                                     |           |         |
 |                              | Kubernetes RBAC                                     | Yes       | Yes     |
-|                              | Security Center Integration                         | Yes       | Yes     |
+|                              | Security Center integration                         | Yes       | Yes     |
 |                              | Microsoft Entra auth/RBAC                                  | Yes       | No      |
-|                              | Calico Network Policy                               | Yes       | No      |
-| Monitoring & Logging         |                                                     |           |         |
-|                              | Integrated Azure Monitoring (Insights, Logs, Metrics, Alerts) | Yes       | No     |
-|                              | Monitoring and Remediation of Master Nodes          | Yes       | Yes     |
-|                              | Cluster Metrics                                     | Yes       | Yes     |
-|                              | Advisor Recommendations                             | Yes       | No      |
+|                              | Calico network policy                               | Yes       | No      |
+| Monitoring and logging         |                                                     |           |         |
+|                              | Integrated Azure monitoring (Insights, Logs, Metrics, Alerts) | Yes       | No     |
+|                              | Monitoring and remediation of master nodes          | Yes       | Yes     |
+|                              | Cluster metrics                                     | Yes       | Yes     |
+|                              | Advisor recommendations                             | Yes       | No      |
 |                              | Diagnostic settings                                 | Yes       | Yes     |
-|                              | Kubernetes Control Plane Logs                              | Yes       | Yes     |
+|                              | Kubernetes control plane logs                              | Yes       | Yes     |
 |                              | Workbooks                                           | Yes       | No      |
-| Clusters & Nodes             |                                                     |           |         |
-|                              | Automatic Node Scaling (Autoscaler)                 | Yes       | No      |
-|                              | Directed Node Scaling                               | Yes       | Yes     |
-|                              | Automatic Pod Scaling                               | Yes       | Yes     |
-|                              | GPU Enable Pods                                     | Yes       | No      |
-|                              | Storage Volume Support                              | Yes       | Yes     |
-|                              | Multi node pool Management                           | Yes       | No      |
-|                              | Azure Container Instance Integration & Virtual Node | Yes       | No      |
+| Clusters and nodes             |                                                     |           |         |
+|                              | Automatic node scaling (Autoscaler)                 | Yes       | No      |
+|                              | Directed node scaling                               | Yes       | Yes     |
+|                              | Automatic pod scaling                               | Yes       | Yes     |
+|                              | GPU enable pods                                     | Yes       | No      |
+|                              | Storage volume support                              | Yes       | Yes     |
+|                              | Multiple nodepool management                        | Yes       | No      |
+|                              | Azure Container Instance integration and virtual nodes | Yes       | No      |
 |                              | Uptime SLA                                          | Yes       | No      |
-|                              | Hidden Master Nodes                                 | Yes       | No      |
-| Virtual Networks and Ingress |                                                     |           |         |
+|                              | Hidden master nodes                                 | Yes       | No      |
+| Virtual Networks and ingress |                                                     |           |         |
 |                              | Default VNET                                        | Yes       | Yes     |
 |                              | Custom VNET                                         | Yes       | Yes     |
-|                              | HTTP Ingress                                        | Yes       | No      |
-| Development Tooling          |                                                     |           |         |
+|                              | HTTP ingress                                        | Yes       | No      |
+| Development tooling          |                                                     |           |         |
 |                              | Helm                                                | Yes       | Yes     |
 |                              | Dev Studio                                          | Yes       | No      |
 |                              | DevOps Starter                                      | Yes       | No      |
 |                              | Docker image support and private container registry | Yes       | Yes     |
 | Certifications               |                                                     |           |         |
 |                              | CNCF-certified                                      | Yes       | Yes     |
-| Cluster Lifecycle Management |                                                     |           |         |
+| Cluster lifecycle management |                                                     |           |         |
 |                              | AKS Ux                                              | Yes       | Yes     |
 |                              | AKS CLI (Windows and Linux)                        | Yes       | Yes     |
 |                              | AKS API                                             | Yes       | Yes     |
-|                              | AKS Templates                                       | Yes       | Yes     |
+|                              | AKS templates                                       | Yes       | Yes     |
 |                              | AKS PowerShell                                      | Yes       | No      |
 
 ## Differences between Azure and Azure Stack Hub
@@ -119,13 +119,13 @@ When you use the Azure CLI to connect to Azure, the CLI binary defaults to using
 Azure Stack Hub supports a subset of the features available in global Azure. Note the following differences:
 
 - No Standard Load Balancer. Azure Stack Hub only supports the basic load balancer. This implies that the following features, which depend on Standard Load Balancer, are not yet available with AKS on Azure Stack Hub:
-  - No parameter [API server authorized IP ranges](/azure/aks/api-server-authorized-ip-ranges).
-  - No parameter [load balancer managed ip count](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips).
-  - No parameter [enable private cluster](/azure/aks/private-clusters).
+  - No parameter for [API server authorized IP ranges](/azure/aks/api-server-authorized-ip-ranges).
+  - No parameter for [load balancer managed ip count](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips).
+  - No parameter for [enabling private cluster](/azure/aks/private-clusters).
   - No [cluster autoscaler](/azure/aks/cluster-autoscaler).
-  - [az aks update](/cli/azure/aks#az-aks-update) not available.
-  - No multiple node-pool support. The node pool commands are not available.
-  - UI support for multi-node-pool operations is not enabled.
+  - [az aks update](/cli/azure/aks#az-aks-update) isn't available.
+  - No multiple nodepool support. The nodepool commands aren't available.
+  - UI support for multiple nodepool operations isn't enabled.
 - No Azure regions or Availability Zones.
 - No Availability Sets, only virtual machine scale sets.
 - Review command list for supported and unsupported commands.
