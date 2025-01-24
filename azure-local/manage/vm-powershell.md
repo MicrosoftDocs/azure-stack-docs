@@ -3,15 +3,15 @@ title: Manage VMs using Windows PowerShell on Azure Local
 description: How to manage virtual machines on Azure Local using Windows PowerShell
 author: alkohli
 ms.topic: how-to 
-ms.date: 10/11/2024
+ms.date: 01/16/2025
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Manage VMs on Azure Local using Windows PowerShell
 
-> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
 This article describes how to create and manage virtual machines (VMs) on Azure Local using Windows PowerShell.
 

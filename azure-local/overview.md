@@ -4,7 +4,7 @@ description: Azure Local is a hyperconverged infrastructure (HCI) cluster soluti
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/19/2024
 ms.custom: e2e-hybrid, linux-related-content
 ---

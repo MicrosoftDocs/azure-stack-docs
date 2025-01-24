@@ -3,13 +3,13 @@ title: Manage VMs with Windows Admin Center on Azure Local
 description: Learn how to create and manage virtual machines on Azure Local using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/21/2024
+ms.date: 01/16/2025
 ms.author: alkohli
 ---
 
 # Manage VMs with Windows Admin Center on Azure Local
 
-> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
 Windows Admin Center can be used to create and manage your virtual machines (VMs) on Azure Local.
 

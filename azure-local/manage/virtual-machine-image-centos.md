@@ -4,7 +4,7 @@ description: Learn how to prepare CentOS Linux images to create an Azure Local V
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 11/06/2024
 ---

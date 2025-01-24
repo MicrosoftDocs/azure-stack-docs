@@ -4,7 +4,7 @@ description: Learn how to create logical networks on Azure Local. The Arc virtua
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 01/06/2025
 ---
 
