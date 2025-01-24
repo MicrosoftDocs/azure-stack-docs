@@ -154,6 +154,17 @@ The syslog forwarder in Azure Local supports various configurations based on whe
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
+## Microsoft Defender Antivirus
+
+Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We recommend using Microsoft Defender Antivirus with the Azure Local instances. Third party Antivirus and security software must be designed and supported for Azure Local. Other antivirus and malware detection software and services might impact the overall solution funtionality. 
+
+Please check with your software vendor if they support Azure local, and you need to run Microsoft Defender Antivirus in Passive mode or complelety remove the feature. 
+
+For more information, see [Microsoft Defender Antivirus compatibility with other security products](https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-compatibility).
+
+> [!NOTE]
+> Microoft Defender Antivirs related settings inclided in the Security baseline of the solution will have no effect if you remove Microsoft Defender Antivirus feature.
+
 ## Microsoft Defender for Cloud (preview)
 
 Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud through autoprovisioning and protection with Azure services, with no deployment overhead.
