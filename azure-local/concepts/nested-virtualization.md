@@ -4,7 +4,7 @@ description: Run Azure Stack HCI on virtual machines for evaluation and testing.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 04/17/2023
 ---
 

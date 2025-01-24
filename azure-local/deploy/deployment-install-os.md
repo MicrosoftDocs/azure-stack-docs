@@ -3,10 +3,10 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 12/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Install the Azure Stack HCI operating system, version 23H2
@@ -31,9 +31,9 @@ To install the operating system, version 23H2, follow these steps:
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the machine where you want to install the operating system.
 
-1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
+1. Select **English (United States)** as the installation language and the time and currency format. Select **Next**, and then on the next page of the wizard, select **Install now**.
 
-   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
+    :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
 
 1. On the **Applicable notices and license terms** page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 
@@ -102,7 +102,11 @@ Follow these steps to configure the operating system using SConfig:
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
-1. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
+   > [!IMPORTANT]
+   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-servers-considerations).
+
+
+2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
 
    ```cmd
    w32tm /query /status
@@ -122,18 +126,18 @@ Follow these steps to configure the operating system using SConfig:
 
    Once the machine is domain joined, it synchronizes its time from the PDC emulator.
 
-1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
+3. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+4. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
-1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+5. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
     > [!NOTE]
     > This step doesn't apply to a machine repair operation.
 
-1. Restart the machines.
+6. Restart the machines.
 
-1. Set the local administrator credentials to be identical across all machines.
+7. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.

@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create an Azure Stack HCI cluster using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 10/23/2024
+ms.date: 01/03/2025
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
@@ -20,8 +20,6 @@ Now that you've deployed the Azure Stack HCI operating system, you'll learn how 
 
 > [!NOTE]
 > If you are doing a single server installation of Azure Stack HCI 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster.
-
-To create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI, see [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md).
 
 ## Cluster creation workflow
 

@@ -73,7 +73,7 @@ landingContent:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
-            url: /manage/create-arc-virtual-machines.md
+            url: /azure/azure-local/manage/create-arc-virtual-machines
 
   # Card
   - title: Manage

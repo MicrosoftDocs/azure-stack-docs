@@ -4,9 +4,9 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.subservice: 
 zone_pivot_groups: windows-os
-ms.date: 11/25/2024
+ms.service: azure-local
+ms.date: 12/17/2024
 ---
 
 # What is SDN Multisite?

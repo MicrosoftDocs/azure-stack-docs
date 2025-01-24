@@ -4,9 +4,8 @@ description: Learn about Azure Stack network deployment for the MDC device.
 author: sethmanheim
 ms.service: azure-stack-hub
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/17/2025
 ms.author: sethm
-ms.reviewer: shisab
 ms.lastreviewed: 01/17/2020
 ---
 
@@ -20,14 +19,11 @@ The next sections cover permissions and IP address assignments.
 
 ### Physical switch access control list
 
-To protect the Azure Stack solution, we have implemented access control lists
-(ACLs) on the TOR switches. This section describes how this security is
-implemented. The table below shows the sources and destinations of every network
-inside the Azure Stack solution:
+To protect the Azure Stack solution, we have implemented access control lists (ACLs) on the TOR switches. This section describes how this security is implemented. The following table shows the sources and destinations of every network inside the Azure Stack solution:
 
 ![A diagram of access control lists on the TOR switches](media/network-deployment/acls.png)
 
-The table below correlates the ACL references with the Azure Stack networks.
+The following table correlates the ACL references with the Azure Stack networks.
 
 | Network                                      | Description |
 |----------------------------------------------|--------------|
@@ -37,7 +33,7 @@ The table below correlates the ACL references with the Azure Stack networks.
 | Switch Mgmt                                  | Dedicated Switch management interfaces.|
 | "Azure Stack Infrastructure"                 | Azure Stack Infrastructure services and VM's, restricted network|
 | Azure Stack Infrastructure Public (PEP/ERCS) | Azure Stack Protected Endpoint, Emergency Recovery Console Server. Customer can open ACL to permit traffic to their datacenter management network.|
-| Tor1,Tor2 RouterIP                           | Loopback interface of the switch used for BGP peering between the SLB and Switch/Router. The customer will have the discretion to firewall off these IPs at the border.|
+| Tor1,Tor2 RouterIP                           | Loopback interface of the switch used for BGP peering between the SLB and Switch/Router. The customer has the discretion to firewall off these IPs at the border.|
 | Storage                                      | Private IPs not routed outside of the Region|
 | Internal VIPs                                | Private IPs not routed outside of the Region|
 | Public VIPs                                  | Tenant network address space managed by the network controller.|
@@ -56,18 +52,13 @@ addresses to support the Azure Stack deployment process. The deployment team
 uses the Deployment Worksheet tool to break out the IP networks into all the
 smaller networks required by the system.
 
-In this example, we will fill the Network Settings tab of the Deployment
-Worksheet with the following values:
+In this example, we fill the Network Settings tab of the Deployment Worksheet with the following values:
 
--   BMC Network: 10.193.132.0 /27
-
--   Private Network Storage Network & Internal VIPs: 11.11.128.0 /20
-
--   Infrastructure Network: 12.193.130.0 /24
-
--   Public Virtual IP (VIP) Network: 13.200.132.0 /24
-
--   Switch Infrastructure Network: 10.193.132.128 /26
+- BMC Network: 10.193.132.0 /27
+- Private Network Storage Network & Internal VIPs: 11.11.128.0 /20
+- Infrastructure Network: 12.193.130.0 /24
+- Public Virtual IP (VIP) Network: 13.200.132.0 /24
+- Switch Infrastructure Network: 10.193.132.128 /26
 
 When you run the Generate function of the Deployment Worksheet tool, it creates
 two new tabs on the spreadsheet. The first tab is the Subnet Summary and it
@@ -75,7 +66,7 @@ shows how the supernets were split to create all the networks required by the
 system. In our example below there is only a subset of the columns found on this
 tab. The actual result has more details of each network listed:
 
-| **Rack** | **Subnet Type** | **Name**                                   | **IPv4 Subnet**   | **IPv4 Addresses** |
+| Rack | Subnet type | Name                                   | IPv4 Subnet   | IPv4 addresses |
 |----------|-----------------|--------------------------------------------|-------------------|--------------------|
 | Border   | P2P Link        | P2P_Border/Border1_To_Rack1/TOR1           | 10.193.132.128/30 | 4                  |
 | Border   | P2P Link        | P2P_Border/Border1_To_Rack1/TOR2           | 10.193.132.132/30 | 4                  |
@@ -105,10 +96,10 @@ rack. The hardware lifecycle host has multiple addresses assigned on this
 network and can be used to deploy, monitor, and support the rack. These IPs are
 distributed into 3 groups: DVM, InternalAccessible and ExternalAccessible.
 
-- Rack: Rack1         
-- Name: BMCMgmt      
+- Rack: Rack1
+- Name: BMCMgmt
 
-| **Assigned To**      | **IPv4 Address** |
+| Assigned To      | IPv4 address |
 |----------------------|------------------|
 | Network              | 10.193.132.0     |
 | Gateway              | 10.193.132.1     |
@@ -133,8 +124,8 @@ distributed into 3 groups: DVM, InternalAccessible and ExternalAccessible.
 
 #### Storage network
 
-The Storage network is a private network and isn’t intended to be routed beyond
-the rack. It’s the first half of the Private Network supernet and it’s used by
+The Storage network is a private network and isn't intended to be routed beyond
+the rack. It's the first half of the Private Network supernet and it's used by
 the switch distributed as shown on the table below. The gateway is the first IP
 in the subnet. The second half used for the Internal VIPs is a private pool of
 addresses that is managed by Azure Stack SLB, is not shown on the IP Address
@@ -142,10 +133,10 @@ Usage tab. These networks support Azure Stack and there are ACLs on the TOR
 switches that prevent these networks from been advertised and/or accessed
 outside the solution.
 
-- Rack: Rack1                                    
-- Name: CL01-RG01-SU01-Storage 
+- Rack: Rack1
+- Name: CL01-RG01-SU01-Storage
 
-| **Assigned To**              | **IPv4 Address** |
+| Assigned To              | IPv4 address |
 |------------------------------|------------------|
 | Network                      | 11.11.128.0      |
 | Gateway                      | 11.11.128.1      |
@@ -156,13 +147,13 @@ outside the solution.
 #### Azure Stack infrastructure network
 
 The infrastructure network supernet requires a /24 network and this continues to
-be a /24 after the Deployment Worksheet tool runs. The gateway will be the first
+be a /24 after the Deployment Worksheet tool runs. The gateway is the first
 IP in the subnet.
 
-- Rack: Rack1               
-- Name: CL01-RG01-SU01-Infra 
+- Rack: Rack1
+- Name: CL01-RG01-SU01-Infra
 
-| **Assigned To**            | **IPv4 Address** |
+| Assigned To            | IPv4 address |
 |----------------------------|------------------|
 | Network                    | 12.193.130.0     |
 | Gateway                    | 12.193.130.1     |
@@ -177,7 +168,7 @@ infrastructure. This is different from the Azure Stack Infrastructure which only
 supports the Azure Stack software. The Switch Infra Network supports only the
 physical switch infrastructure. The networks that are supported by infra are:
 
-| **Name**                                   | **IPv4 Subnet**   |
+| Name                                   | IPv4 Subnet   |
 |--------------------------------------------|-------------------|
 | P2P_Border/Border1_To_Rack1/TOR1           | 10.193.132.128/30 |
 | P2P_Border/Border1_To_Rack1/TOR2           | 10.193.132.132/30 |
@@ -193,23 +184,13 @@ physical switch infrastructure. The networks that are supported by infra are:
 | SwitchMgmt                                 | 10.193.132.168/29 |
 |                                            |                   |
 
--   Point-to-point (P2P): These networks allow connectivity between all
-    switches. The subnet size is a /30 network for each P2P. The lowest IP is
-    always assigned to the upstream (North) device on the stack.
-
--   Loopback: These addresses are /32 networks that are assigned to each switch
-    used in the rack. The border devices are not assigned a loopback since they
-    aren’t expected to be part of the Azure Stack solution.
-
--   Switch Mgmt or Switch Management: This /29 network supports the dedicated
-    management interfaces of the switches in the rack. The IPs are assigned as
-    follows; this table can also be found on the IP Address Usage tab of the
-    Deployment Worksheet:
-
-- Rack: Rack1      
+- Point-to-point (P2P): These networks allow connectivity between all switches. The subnet size is a /30 network for each P2P. The lowest IP is always assigned to the upstream (North) device on the stack.
+- Loopback: These addresses are /32 networks that are assigned to each switch used in the rack. The border devices are not assigned a loopback since they aren't expected to be part of the Azure Stack solution.
+- Switch Mgmt or Switch Management: This /29 network supports the dedicated management interfaces of the switches in the rack. The IPs are assigned as follows; this table can also be found on the IP Address Usage tab of the Deployment Worksheet:
+- Rack: Rack1
 - Name: SwitchMgmt
 
-| **Assigned To**  | **IPv4 Address** |
+| Assigned To  | IPv4 Address |
 |------------------|------------------|
 | Network          | 10.193.132.168   |
 | Gateway          | 10.193.132.169   |
@@ -226,51 +207,33 @@ The latest partner deployment toolkit does include the latest container image.
 The container image on the hardware lifecycle host can be replaced when it is
 necessary to generate an updated switch configuration.
 
-Here are the steps to update the container image:
+These steps update the container image:
 
-1.  Download the container image
-
-2.  Replace the container image at the following location
+1. Download the container image
+1. Replace the container image at the following location
 
 ## Generate configuration
 
-Here we will walk you through the steps of generating the JSON files and the
-Network Switch Configuration files:
+This section shows the steps to generate the JSON files and the Network Switch Configuration files.
 
-1.  Open the Deployment Worksheet
+1. Open the Deployment Worksheet
+1. Fill all the required fields on all tabs
+1. Invoke the **Generate** function on the Deployment Worksheet. Two extra tabs are created, displaying the generated IP subnets and assignments.
+1. Review the data and once confirmed, invoke the "Export" function. You are prompted to provide a folder in which to save the JSON files.
+1. Execute the container using the Invoke-SwitchConfigGenerator.ps1. This script requires an elevated PowerShell console to execute and requires the following parameters to execute.
 
-2.  Fill all the required fields on all tabs
+   - ContainerName – Name of the container that generates the switch configs.
+   - ConfigurationData – Path to the ConfigurationData.json file exported from the Deployment Worksheet.
+   - OutputDirectory – Path to the output directory.
+   - Offline – Signals that the script runs in offline mode.
 
-3.  Invoke the "Generate" function on the Deployment Worksheet.  
-    Two extra tabs will be created displaying the generated IP subnets and
-    assignments.
+   ```powershell
+   Invoke-SwitchConfigGenerate.ps1 -ContainerName generalonrampacr.azurecr.io/master -ConfigurationData .\ConfigurationData.json -OutputDirectory c:\temp -Offline
+   ```
 
-4.  Review the data and once confirmed, invoke the "Export" function.  
-    You will be prompted to provide a folder in which the JSON files will be
-    saved.
+When the script completes, it produces a .zip file with the prefix used in the worksheet.
 
-5.  Execute the container using the Invoke-SwitchConfigGenerator.ps1. This
-    script requires an elevated PowerShell console to execute and requires the
-    following parameters to execute.
-
-    -   ContainerName – Name of the container that will generate the switch
-        configs.
-
-    -   ConfigurationData – Path to the ConfigurationData.json file exported
-        from the Deployment Worksheet.
-
-    -   OutputDirectory – Path to the output directory.
-
-    -   Offline – Signals that the script runs in offline mode.
-
-    ```powershell
-    C:\WINDOWS\system32> .\Invoke-SwitchConfigGenerate.ps1 -ContainerName generalonrampacr.azurecr.io/master -ConfigurationData .\ConfigurationData.json -OutputDirectory c:\temp -Offline
-    ```
-
-When the script completes, it will produce a zip file with the prefix used in the worksheet. 
-
-```console
-C:\WINDOWS\system32> .\Invoke-SwitchConfigGenerate.ps1 -ContainerName generalonrampacr.azurecr.io/master -ConfigurationData .\ConfigurationData.json -OutputDirectory c:\temp -Offline                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+```output
 Seconds : 2
 Section : Validation
 Step    : WindowsRequirement
@@ -334,11 +297,10 @@ and BMC. The OEM uses the Azure Stack automation tool to validate that the
 required configurations are properly set on these devices. The configuration is
 based the information in your Azure Stack Deployment Worksheet. 
 
->[!NOTE]
->**Do not** alter the configuration without consent from either the OEM or the Microsoft Azure Stack engineering team. A change to the network device configuration can significantly impact the operation or troubleshooting of network issues in your Azure Stack instance. For more information about these functions on your network device, how to make these changes, please contact your OEM hardware provider or Microsoft support. Your OEM has the configuration file created by the automation tool based on your Azure Stack deployment worksheet. 
+> [!NOTE]
+> Don't alter the configuration without consent from either the OEM or the Microsoft Azure Stack engineering team. A change to the network device configuration can significantly impact the operation or troubleshooting of network issues in your Azure Stack instance. For more information about these functions on your network device, how to make these changes, please contact your OEM hardware provider or Microsoft support. Your OEM has the configuration file created by the automation tool based on your Azure Stack deployment worksheet.
 
-However, there are some values that can be added, removed, or changed on the
-configuration of the network switches.
+However, there are some values that can be added, removed, or changed on the configuration of the network switches.
 
 #### Password update
 
@@ -375,21 +337,20 @@ overview of how to configure the permissions for Switch Management access.
 
 The operator can change some access control list (ACL)s to allow access to
 network device management interfaces and the hardware lifecycle host (HLH) from
-a trusted datacenter network range. The operator can pick which component will
-be reachable and from where. With the access control list, The operator can
+a trusted datacenter network range. The operator can pick which component is reachable, and from where. With the access control list, The operator can
 allow their management jumpbox VMs within a specific network range to access the
 switch management interface, and the HLH OS, and the HLH BMC.
 
-For further details see [Physical switch access control list](#physical-switch-access-control-list).
+For more information, see [Physical switch access control list](#physical-switch-access-control-list).
 
 #### TACACS, RADIUS and Syslog
 
-The Azure Stack solution will not be shipped with a TACACS or RADIUS solution
+The Azure Stack solution is not shipped with a TACACS or RADIUS solution
 for access control of devices like the switches and routers, nor a Syslog
 solution to capture switch logs, but all these devices support those services.
 To help integrate with an existing TACACS, RADIUS and/or Syslog server on your
-environment, we will provide an extra file with the Network Switch Configuration
-which will allow the engineer onsite to customize the switch to the customer’s
+environment, we provide an extra file with the Network Switch Configuration
+which allows the engineer onsite to customize the switch to the customer's
 needs.
 
 ## Next steps

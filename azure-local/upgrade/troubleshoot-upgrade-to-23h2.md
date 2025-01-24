@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Troubleshoot Azure Local upgrade
@@ -23,7 +23,7 @@ When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encount
  
 You may encounter a failed Cluster-Aware Updating (CAU) run as live migrations start to fail. When the live migrations do not complete, they may hang at a certain percentage or stay queued. CAU may fail due to the node failing to drain.
 
-In these cases, follow the troubleshooting steps in the [Azure Local Supportability repository](https://github.com/Azure/AzureStackHCI-Supportability/blob/main/TSG/Upgrade/Known%252Dissue-%252D-Live-migrations-may-fail-when-upgrading-HCI-OS-from-22H2-to-23H2.md).
+In these cases, follow the troubleshooting steps in the [Azure Local Supportability repository](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Upgrade/Known%252Dissue-%252D-Live-migrations-may-fail-when-upgrading-OS-from-22H2-to-23H2.md).
 
 ### Registration failures
 

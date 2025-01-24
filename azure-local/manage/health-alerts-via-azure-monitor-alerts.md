@@ -4,21 +4,23 @@ description: Learn how to use the Azure Monitor alerts to respond to Azure Local
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 02/26/2024
+ms.service: azure-local
+ms.date: 12/26/2024
 ---
 
 # Respond to Azure Local health alerts using Azure Monitor alerts
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
+The OS health service for Azure Local continuously monitors your Azure Local system to detect over 80 health issues across various components, such as physical and virtual disk, storage pool capacity, volume capacity, network interface, storage QoS, virtual machines (VMs), and VHDs. It provides information about the affected component, including the cause, time of the issue, and recommendations to mitigate it. You can view health issues like unsupported hardware, unresponsive disk, bad block writes, detached drives, repair needs, exceeded CPU, memory and storage usage, and high latency. For a complete list of supported health faults, see [View Health Service faults](./health-service-faults.md).
+
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Local health alerts.
 
-## About integration of Azure Monitor and Azure Local alerts
+## Azure Local health alerts integration with Azure Monitor
 
 The integration of Azure Monitor alerts with Azure Local enhances the health alerts capability of Azure Local. With this integration, any health alerts generated within your on-premises Azure Local system are automatically forwarded to Azure Monitor alerts. You can link these alerts with your automated incident management systems, ensuring timely and efficient responses.
 
-For more information about Azure Monitor alerts, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview).
+For more information about Azure Monitor alerts, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview)
 
 ## Benefits
 
@@ -86,6 +88,35 @@ The **Alerts** blade has a high-level summary of alerts at each severity level. 
 <!--The **Overview** page of your Azure Local system resource page also displays the alerts.
 
    ![Screenshot of the Overview page of your Azure Local system resource page with the alerts displayed.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-5.png)-->
+
+## Modify health alerts threshold
+
+You can modify the threshold of some health alerts, such as CPU, memory, storage usage via PowerShell. For more information, see [Modify Health Service settings](./health-service-settings.md).
+
+To view the current threshold settings for different health faults, run the following command:
+
+```powershell
+Get-StorageSubSystem Cluster* | Get-StorageHealthSetting -Name <SettingName>
+```
+
+For example, to view the storage volume capacity warning and critical threshold, run the following commands:
+
+```powershell
+Get-StorageSubSystem Cluster* | Get-StorageHealthSetting -Name "System.Storage.Volume.CapacityThreshold.Warning"
+Get-StorageSubSystem Cluster* | Get-StorageHealthSetting -Name "System.Storage.Volume.CapacityThreshold.Critical"
+```
+
+To change the threshold to desirable setting, run the following command:
+
+```powershell
+Get-StorageSubSystem Cluster* | Set-StorageHealthSetting -Name <SettingName> -Value <Value>
+```
+
+For example, to change the storage volume capacity warning threshold, run the following command:
+
+```powershell
+Get-StorageSubSystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.Volume.CapacityThreshold.Warning" -Value 70
+```
 
 ## Disable health alerts
 

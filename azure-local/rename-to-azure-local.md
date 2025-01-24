@@ -4,7 +4,7 @@ description: This article provides the renaming information for Azure Stack HCI 
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/16/2024
 ---
 

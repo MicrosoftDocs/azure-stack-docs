@@ -1,15 +1,17 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 11/07/2024
+ms.date: 12/27/2024
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
 ms.reviewer: alkohli
 ---
 
 # Azure Local and ISO/IEC 27001:2022
+
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article outlines how Azure Local helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Local and other security standards at [Azure Local and security standards](azure-stack-security-standards.md).
 
