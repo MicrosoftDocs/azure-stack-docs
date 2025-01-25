@@ -1674,6 +1674,11 @@
       "source_path": "azure-stack/hci/security-update/hci-security-update-apr-2024.md",
       "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/concepts/network-hud-overview.md",
+      "redirect_url": "/azure/azure-local/concepts/network-atc-overview",
+      "redirect_document_id": false
     }
   ]
 }
