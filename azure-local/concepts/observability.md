@@ -111,15 +111,15 @@ The following table describes the types of data, their storage location, default
 
 ## Crash dump collection
 
-Crash dump collection is a feature in Azure Local that allows for the automatic collection, analysis, and debugging of crashes. The data collected from a crash, refered to as the crash dump, is used for analysis and debugging.
+Crash dump collection is a feature in Azure Local that allows for the automatic collection, analysis, and debugging of crashes. The data collected from a crash, referred to as the crash dump, is used for analysis and debugging.
 
 ### Key features
 
 Here are the key features of crash dump collection for Azure Local:
 
-- **Automatic collection and analysis.** Automatically gathers data from Azure Local crashes and analyzes it to pinpoint the root causes of failures, aiding in quick diagnosis and resolution. This minimizes downtime and enhance service reliability.
+- **Automatic collection and analysis.** Automatically gathers data from Azure Local crashes and analyzes it to pinpoint the root causes of failures, aiding in quick diagnosis and resolution. This minimizes downtime and enhances service reliability.
 - **Compliance and security.** Ensures crash data is handled securely and in compliance with data protection regulations across all Azure regions and national clouds.
-- **Customizable settings.** Enabled by default for optimal performance and reliability, but can be disabled using specific commands if necessary. However, it's recommended to keep it enabled to benefit from its diagnostic capabilities.
+- **Customizable settings.** Enabled by default for optimal performance and reliability, but can be disabled using specific commands if necessary. However, we recommend to keep it enabled to benefit from its diagnostic capabilities.
 
 ### Disable crash dump collection
 
