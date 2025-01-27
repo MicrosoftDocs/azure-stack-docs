@@ -169,6 +169,10 @@ items:
         href: plan/three-node-components.md
       - name: Pattern IP requirements
         href: plan/three-node-ip-requirements.md
+    - name: Four-node switchless deployments
+      items:
+      - name: Storage switchless, dual TOR, dual link
+        href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -327,11 +331,11 @@ items:
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
-    - name: License Arc VMs
+    - name: Activate Arc VMs
       items:
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
-      - name: License Windows Server VMs
+      - name: Activate Windows Server VMs
         href: manage/vm-activate.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition-23h2.md
@@ -586,6 +590,8 @@ items:
         href: migrate/migrate-vmware-migrate.md
       - name: Enable guest management
         href: migrate/migrate-enable-guest-management.md
+    - name: Maintain static IP addresses
+      href: migrate/migrate-maintain-ip-addresses.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
@@ -820,10 +826,6 @@ items:
         href: concepts/persistent-memory-health.md
       - name: Nested virtualization
         href: concepts/nested-virtualization.md
-    - name: Host networking
-      items:
-      - name: Network HUD overview
-        href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
       items:
       - name: SDN overview

@@ -4,8 +4,8 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
-ms.service: azure-stack-hci
+ms.date: 01/13/2025
+ms.service: azure-local
 ---
 
 # Rotate secrets on Azure Local, version 23H2
@@ -100,7 +100,7 @@ This section describes how you can change the service principal used for Azure r
 To change the deployment service principal, follow these steps:
 
 1. Sign in to your Microsoft Entra ID.
-1. Locate the service principal for Azure resource bridge. The name of the service principal includes **DefaultARBApplication**.
+1. Locate the service principal for Azure resource bridge. The name of the service principal has the format **ClusternameXX.arb**.
 1. Create a new client secret for the service principal.
 1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
 1. Sign in to one of your Azure Local machines using the deployment user credentials.

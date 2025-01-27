@@ -4,7 +4,7 @@ description: How to set up log alerts for various Azure Local system resources u
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.reviewer: kimlam
 ms.date: 10/15/2024
 ---

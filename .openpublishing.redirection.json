@@ -411,46 +411,6 @@
       "redirect_document_id":false
     }, 
     { 
-      "source_path":"azure-stack/operator/hotfix-v0.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2206-1-25", 
-      "redirect_document_id":false
-    },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-111.md", 
-      "redirect_url":"/azure-stack/operator", 
-      "redirect_document_id":false
-    },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2102-30-122.md", 
-      "redirect_url":"/azure-stack/operator", 
-      "redirect_document_id":false
-    },             
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-71.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
-    },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-73.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
-    },
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2108-2-81.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2108-2-83", 
-      "redirect_document_id":false
-    },        
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2008-41-163.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2008-41-161", 
-      "redirect_document_id":false
-    },            
-    { 
-      "source_path":"azure-stack/operator/hotfix-1-2301-2-58.md", 
-      "redirect_url":"/azure-stack/operator/hotfix-1-2301-2-64", 
-      "redirect_document_id":false
-    },            
-    { 
       "source_path":"azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url":"/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
       "redirect_document_id":false
@@ -1092,6 +1052,16 @@
       "redirect_document_id":true 
     },
     { 
+      "source_path":"azure-stack/operator/azure-stack-train-and-cert.md", 
+      "redirect_url":"/azure-stack/operator/index", 
+      "redirect_document_id":true 
+    },
+    { 
+      "source_path":"azure-stack/operator/azure-stack-powershell-install.md", 
+      "redirect_url":"/azure-stack/operator/powershell-install-az-module", 
+      "redirect_document_id":true 
+    },
+    { 
       "source_path":"azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
       "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
       "redirect_document_id":true 
@@ -1703,6 +1673,11 @@
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-apr-2024.md",
       "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/concepts/network-hud-overview.md",
+      "redirect_url": "/azure/azure-local/concepts/network-atc-overview",
       "redirect_document_id": false
     }
   ]

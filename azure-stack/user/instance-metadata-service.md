@@ -3,7 +3,7 @@ title: Azure Instance Metadata Service in Azure Stack Hub
 description: Learn about the Azure Instance Metadata Service in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/08/2022
+ms.date: 01/23/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2022

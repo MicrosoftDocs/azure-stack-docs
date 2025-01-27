@@ -4,7 +4,7 @@ description: This article describes the telemetry and diagnostics extension in A
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
-ms.service: azure-stack
+ms.service: azure-local
 ms.reviewer: shisab
 ms.date: 10/22/2024
 
