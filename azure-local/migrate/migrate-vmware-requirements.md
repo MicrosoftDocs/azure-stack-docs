@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 12/12/2024
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -56,6 +56,10 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |-|-|
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
+
+For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
+
+:::image type="content" source="./media/migrate-vmware-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-vmware-requirements/migrate-resource-providers.png":::
 
 ## Source VMware server requirements
 
