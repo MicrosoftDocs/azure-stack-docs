@@ -30,7 +30,7 @@ Kubernetes nodes are deployed as specialized virtual machines in AKS enabled by 
 
 The following parameters are required in order to use a logical network for AKS Arc cluster create operation:
 
-| Logical network parameter| Description| Required parameter for AKS Arc cluster|
+| [Az CLI logical networks parameter](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli) | Description| Required parameter for AKS Arc cluster|
 |------------------|---------|-----------|
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | ![Supported](media/aks-hybrid-networks/check.png) |
