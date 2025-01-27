@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 01/08/2025
+ms.date: 01/27/2025
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -140,11 +140,25 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
     **To create a Trusted launch Arc VM:**
 
-    Specify additional flags to enable secure boot, enable virtual TPM, and choose security type. Note, when you specify security type as Trusted launch, you must enable secure boot and vTPM, otherwise Trusted launch VM creation will fail.
+    1. Run the following cmdlet (on one of the cluster nodes) to find the owner node of the VM:
 
-    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
-    ```
+        ```azurecli
+        Get-ClusterGroup $vmName
+        ```
+
+    1. Run the following cmdlet on the owner node of the VM:
+
+        ```azurecli
+        (Get-VM $vmName).GuestStateIsolationType
+        ```
+
+    1. Ensure a value of `TrustedLaunch` is returned.
+
+    1. Specify additional flags to enable secure boot, enable virtual TPM, and choose security type. Note, when you specify security type as Trusted launch, you must enable secure boot and vTPM, otherwise Trusted launch VM creation will fail.
+
+        ```azurecli
+        az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
+        ```
 
     **To create a standard Arc VM:**
 
@@ -154,19 +168,6 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
 1. Once the VM is created, to verify the security type of the VM is `Trusted launch`, do the following.
 
-Run the following cmdlet (on one of the cluster nodes) to find the owner node of the VM:
-
-```azurecli
-Get-ClusterGroup $vmName
-```
-
-Run the following cmdlet on the owner node of the VM:
-
-```azurecli
-(Get-VM $vmName).GuestStateIsolationType
-```
-
-Ensure a value of `TrustedLaunch` is returned.
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
