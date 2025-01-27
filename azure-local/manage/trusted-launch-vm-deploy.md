@@ -1,22 +1,22 @@
 ---
-title: Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
-description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
+title: Deploy Trusted launch for Azure Arc VMs on Azure Local
+description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/08/2025
+ms.date: 01/27/2025
 ---
 
-# Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+# Deploy Trusted launch for Azure Arc VMs on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2.
+This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local.
 
 ## Prerequisites
 
-Make sure that you have access to an Azure Local, version 23H2 system that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
+Make sure that you have access to an Azure Local system that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
 
 ## Create a Trusted launch Arc VM
 
@@ -175,7 +175,7 @@ To create a Trusted launch Arc VM on Azure Local, follow the steps in the [Creat
 
 ## Automatic transfer of virtual TPM state
 
-The virtual TPM (vTPM) state is automatically transferred in the case of Trusted launch Arc VMs when the VM migrates or fails over to another machine in the system.
+The virtual TPM (vTPM) state is automatically transferred in the case of Trusted launch Arc VMs when the VM migrates, or fails over to another machine in the system.
 
 Enabling Trusted launch for Arc VMs preserves the vTPM state and allows applications that rely on the vTPM state to function normally, even when the VM migrates or fails over to another machine in the system. 
 
@@ -187,7 +187,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 
 1. Sign on to the Windows 11 guest and enable BitLocker encryption for the OS volume:
 
-    1. In the search box on the task bar, enter "Manage BitLocker", and then select it from the list of results.
+    1. In the search box on the task bar, enter "Manage BitLocker," and then select it from the list of results.
 
     1. Select **Turn on BitLocker** and then follow the instructions to encrypt the OS volume (C:). BitLocker uses vTPM as a key protector for the OS volume.
 
@@ -216,7 +216,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
     > [!NOTE]
     > If vTPM state wasn't preserved during VM migration, VM startup would've resulted in BitLocker recovery during guest boot up. That is, you would've been prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This happens because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
 
-1. Force the VM to failover to another machine in the system.
+1. Force the VM to fail over to another machine in the system.
 
     1. Confirm the owner node of the VM using this command.
 
@@ -241,7 +241,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 1. Verify that you can sign on to the Windows 11 guest in the VM, and if BitLocker encryption for the OS volume remains enabled. If true, this confirms that the vTPM state was preserved during VM failover.
 
     > [!NOTE]
-    > If vTPM state wasn't preserved during VM migration, VM startup would've resulted in BitLocker recovery during guest boot up. That is, you would've been prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This happens because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
+    > If vTPM state isn't preserved during VM migration, VM startup results in BitLocker recovery during guest boot up. That is, you are prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This prompt happens because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from the original VM.
 
 
 ## Next steps
