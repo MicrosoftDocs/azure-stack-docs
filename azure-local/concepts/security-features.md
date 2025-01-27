@@ -160,7 +160,7 @@ Azure Local comes with Microsoft Defender Antivirus enabled and configured by de
 
 Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, we advise selecting one that has been validated for Azure Local to minimize potential functionality issues.
 
-Check with your software vendor if they support Azure Local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
+SHOULD THIS SENTENCE BE KEPT? - Check with your software vendor if they support Azure Local, and you need to run Microsoft Defender Antivirus in Passive mode or completely remove the feature.
 
 For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
 
