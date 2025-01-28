@@ -3,7 +3,7 @@ title: Set up Azure Arc gateway for existing Azure Local instance running versio
 description: Learn how to deploy Azure Arc gateway for existing Azure Local deployments running software version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/10/2024
+ms.date: 01/16/2025
 ms.author: alkohli
 monikerRange: ">=azloc-24111"
 ms.service: azure-local

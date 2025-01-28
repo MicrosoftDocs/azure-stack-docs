@@ -3,7 +3,7 @@ title: Use Azure gateway without a proxy on Azure Local, version 2408 (preview)
 description: Learn how to use Azure gateway without a proxy, on Azure Local instance running version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 01/17/2025
 ms.author: alkohli
 monikerRange: ">=azloc-24111"
 ms.service: azure-local
@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Use Azure Arc gateway without a proxy on Azure Local (preview)
 
-Applies to: Azure Local 2411.1 and later
+> Applies to: Azure Local 2411.1 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features on your Azure Local. This article details how to use Azure gateway for Azure Local instances without a proxy.
 

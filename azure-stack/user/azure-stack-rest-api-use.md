@@ -2,9 +2,8 @@
 title: Make API requests to Azure Stack Hub
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 01/22/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
@@ -38,7 +37,7 @@ Create a request body formatted using the content type `x-www-form-urlencoded` t
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
-**Tenant ID** is either:
+`tenant id` is either:
 
 - Your tenant domain, such as `fabrikam.onmicrosoft.com`
 - Your tenant ID, such as `aaaabbbb-0000-cccc-1111-dddd2222eeee`
@@ -57,40 +56,36 @@ grant_type=password
 
 For each value:
 
-- **grant_type**:  
-   The type of authentication scheme you'll use. In this example, the value is `password`.
-
-- **resource**:  
-   The resource the token accesses. You can find the resource by querying the Azure Stack Hub management metadata endpoint. Look at the **audiences** section.
-
+- **grant_type**: The type of authentication scheme you'll use. In this example, the value is `password`.
+- **resource**: The resource the token accesses. You can find the resource by querying the Azure Stack Hub management metadata endpoint. Look at the **audiences** section.
 - **Azure Stack Hub management endpoint**:
 
    ```bash
    https://management.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
-  > [!NOTE]  
-  > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`.
+   > [!NOTE]  
+   > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`.
 
-  For example, with the Azure Stack Development Kit (ASDK) as an endpoint:
+   For example, with the Azure Stack Development Kit (ASDK) as an endpoint:
 
    ```bash
    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
    ```
 
-  Response:
+   Response:
 
-  ```bash
-  {
-  "galleryEndpoint":"https://adminportal.local.azurestack.external:30015/",
-  "graphEndpoint":"https://graph.windows.net/",
-  "portalEndpoint":"https://adminportal.local.azurestack.external/",
-  "authentication":{
-     "loginEndpoint":"https://login.windows.net/",
-     "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
-     }
-  }
-  ```
+   ```bash
+   {
+   "galleryEndpoint":"https://adminportal.local.azurestack.external:30015/",
+   "graphEndpoint":"https://graph.windows.net/",
+   "portalEndpoint":"https://adminportal.local.azurestack.external/",
+   "authentication":{
+      "loginEndpoint":"https://login.windows.net/",
+      "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
+      }
+   }
+   ```
 
 ### Example 1
 
