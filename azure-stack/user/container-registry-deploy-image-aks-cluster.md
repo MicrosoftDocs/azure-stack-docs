@@ -3,7 +3,7 @@ title: Deploy an image to an Azure Kubernetes Service (AKS) Cluster on Azure Sta
 description: Learn how to deploy an image to an AKS Cluster on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/26/2024
+ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
@@ -26,7 +26,7 @@ To deploy a sample app to your AKS cluster, see [Tutorial: Prepare an applicatio
 
 ## Considerations
 
-The following considerations to remember from the online guidance are:
+The following considerations from the online guidance are:
 
 - You need an SPN and must grant AcrPull access to the subscription, resource group, or container registry resource.
 - You must create a secret in Kubernetes using that same SPN:
@@ -43,7 +43,7 @@ The following considerations to remember from the online guidance are:
 
 - Update your YAML to reference the secret as part of the deployment:
 
-   ```powershell  
+   ```YAML  
    imagePullSecrets: `
      - name: <secret name>
    ```
