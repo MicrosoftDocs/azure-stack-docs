@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 11/01/2024
+ms.date: 01/28/2025
 ---
 
 # Azure Local billing and payment
@@ -39,7 +39,7 @@ To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 
 ## FAQ
 
-- If I already have an Azure subscription, can I use it for Azure Local **Yes**
+- If I already have an Azure subscription, can I use it for Azure Local? **Yes**
 - If my organization's finance department already approved spending on Azure, does that cover Azure Local? **Yes**
 - If I have an Azure commitment to spend, can I use that toward Azure Local? **Yes**
 - If I have Azure credits (for example, for students, or awarded as a prize) can I use that toward Azure Local? **Yes**

@@ -1,13 +1,13 @@
 ---
-title: Manage capacity by adding a node on Azure Local, version 23H2
-description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
+title: Manage capacity by adding a node on Azure Local
+description: Learn how to manage capacity on your Azure Local system by adding a node.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 12/18/2024
+ms.date: 01/28/2025
 ---
 
-# Add a node on Azure Local, version 23H2
+# Add a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -96,7 +96,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 
 On the new node that you plan to add, follow these steps.
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Local Operating System, version 23H2](../deploy/deployment-install-os.md).
+1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Local Operating System](../deploy/deployment-install-os.md).
 
 2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 

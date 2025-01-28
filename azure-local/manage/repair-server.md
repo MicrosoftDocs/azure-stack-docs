@@ -1,13 +1,13 @@
 ---
-title: Repair a node on Azure Local, version 23H2
-description: Learn how to repair a node on your Azure Local, version 23H2 system.
+title: Repair a node on Azure Local
+description: Learn how to repair a node on your Azure Local system.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 12/10/2024
+ms.date: 01/28/2025
 ---
 
-# Repair a node on Azure Local, version 23H2
+# Repair a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -122,7 +122,7 @@ Follow these steps on the node you're trying to repair.
 
         :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
-1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
     > If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
