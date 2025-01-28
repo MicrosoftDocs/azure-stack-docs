@@ -71,27 +71,24 @@ items:
         href: security-update/security-update-sep-2024.md
       - name: August 2024
         href: security-update/security-update-aug-2024.md
-      - name: Archived Security updates
-        items: 
-        - name: July 2024
-          href: security-update/security-update-jul-2024.md 
-        - name: June 2024 
-          href: security-update/security-update-jun-2024.md
-        - name: Archived security updates 
-        - name: May 2024
-          href: security-update/security-update-may-2024.md
-        - name: April 2024
-          href: security-update/security-update-apr-2024.md
-        - name: March 2024 
-          href: security-update/security-update-mar-2024.md
-        - name: February 2024 
-          href: security-update/security-update-feb-2024.md      
-        - name: January 2024 
-          href: security-update/security-update-jan-2024.md
-        - name: December 2023 
-          href: security-update/security-update-dec-2023.md
-        - name: November 2023 
-          href: security-update/security-update-nov-2023.md
+      - name: July 2024
+        href: security-update/security-update-jul-2024.md 
+      - name: June 2024 
+        href: security-update/security-update-jun-2024.md
+      - name: May 2024
+        href: security-update/security-update-may-2024.md
+      - name: April 2024
+        href: security-update/security-update-apr-2024.md
+      - name: March 2024 
+        href: security-update/security-update-mar-2024.md
+      - name: February 2024 
+        href: security-update/security-update-feb-2024.md      
+      - name: January 2024 
+        href: security-update/security-update-jan-2024.md
+      - name: December 2023 
+        href: security-update/security-update-dec-2023.md
+      - name: November 2023 
+        href: security-update/security-update-nov-2023.md
   - name: Disconnected operations
     href: manage/disconnected-operations-overview.md
   - name: OEM License
