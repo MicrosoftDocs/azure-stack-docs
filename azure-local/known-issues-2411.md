@@ -3,15 +3,13 @@ title: Release notes with fixed and known issues in Azure Local 2411 baseline re
 description: Read about the known issues and fixed issues in Azure Local 2411 baseline release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/30/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-2411"
 ---
 
 # Known issues in the Azure Local 2411 release
-
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article identifies critical known issues and their workarounds in the Azure Local 2411 release.
 

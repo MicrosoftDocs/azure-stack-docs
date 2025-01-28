@@ -3,15 +3,13 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2405 baselin
 description: Read about the known issues and fixed issues in Azure Stack HCI 2405 baseline update release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
 ---
 
 # View known issues in Azure Stack HCI 2405 release
-
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2405 release.
 

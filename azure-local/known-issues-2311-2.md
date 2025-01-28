@@ -3,15 +3,13 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.2 GA re
 description: Read about the known issues and fixed issues in Azure Local 2311 General Availability (GA) release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/06/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 monikerRange: "=azloc-previous"
 ms.service: azure-local
 ---
 
 # View known issues in Azure Local 2311.2 General Availability release
-
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Local 2311.2 General Availability (GA) release.
 

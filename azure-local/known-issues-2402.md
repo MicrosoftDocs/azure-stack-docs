@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2402 feature
 description: Read about the known issues and fixed issues in Azure Stack HCI 2402 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 monikerRange: "=azloc-previous"
 ms.service: azure-local
@@ -11,7 +11,6 @@ ms.service: azure-local
 
 # View known issues in Azure Stack HCI 2402 release
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402 release.
 

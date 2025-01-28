@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2402.1 update re
 description: Read about the known issues and fixed issues in Azure Local 2402.1 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
@@ -11,7 +11,6 @@ monikerRange: "=azloc-previous"
 
 # View known issues in Azure Local 2402.1 release
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Local 2402.1 release.
 

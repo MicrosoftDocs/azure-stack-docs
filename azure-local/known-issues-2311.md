@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Local  2311 release (preview)
 description: Read about the known issues and fixed issues in Azure Local  2311 releases (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 monikerRange: "=azloc-previous"
 ms.service: azure-local
@@ -11,7 +11,6 @@ ms.service: azure-local
 
 # View known issues in Azure Local  2311 release (preview)
 
-[!INCLUDE [hci-applies-to-23h2](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Local  2311 release.
 

@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local 2408.2 baseline 
 description: Read about the known issues and fixed issues in Azure Local 2408.2 baseline release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 11/16/2024
+ms.date: 01/28/2025
 ms.author: robess
 ms.reviewer: alkohli
 monikerRange: "=azloc-24082"
@@ -11,7 +11,6 @@ monikerRange: "=azloc-24082"
 
 # Known issues in the Azure Local 2408.2 release
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies critical known issues and their workarounds in the Azure Local 2408.2 release.
 
