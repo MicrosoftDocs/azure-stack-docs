@@ -816,10 +816,6 @@ items:
         href: concepts/persistent-memory-health.md
       - name: Nested virtualization
         href: concepts/nested-virtualization.md
-    - name: Host networking
-      items:
-      - name: Network HUD overview
-        href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
       items:
       - name: SDN overview
