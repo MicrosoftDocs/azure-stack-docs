@@ -6,12 +6,13 @@ ms.topic: how-to
 ms.date: 11/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+monikerRange: ">=azloc-2411"
 ms.service: azure-local
 ---
 
 # Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
 
 This article describes how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment.
 

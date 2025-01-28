@@ -5,13 +5,13 @@ author: alkohli
 ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
-monikerRange: ">=azloc-2408"
+monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 
 # About Azure Arc gateway for Azure Local (preview)
 
-Applies to: Azure Local, release 2411.1
+Applies to: Azure Local 2411.1 and later
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 

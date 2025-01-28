@@ -5,13 +5,13 @@ author: alkohli
 ms.topic: how-to
 ms.date: 11/18/2024
 ms.author: alkohli
-monikerRange: ">=azloc-2408"
+monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, 2411 and 2411.1
+Applies to: Azure Local 2411.1 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to configure the Arc proxy before Arc registration using a registration script for the Arc gateway on Azure Local.
 

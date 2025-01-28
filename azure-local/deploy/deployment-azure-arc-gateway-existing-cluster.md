@@ -5,13 +5,13 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/10/2024
 ms.author: alkohli
-monikerRange: ">=azloc-2408"
+monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 
 # Simplify outbound network requirements for existing Azure Local instances, version 23H2 through Azure Arc gateway (preview)
 
-Applies to: Azure Local, version 23H2
+Applies to: Azure Local 2411.1 and later
 
 This article describes how to set up an Azure Arc Gateway for existing deployments of Azure Local running software version 2405.
 
