@@ -121,6 +121,12 @@ Here are the key features of crash dump collection for Azure Local:
 - **Compliance and security.** Ensures crash data is handled securely and in compliance with data protection regulations across all Azure regions and national clouds.
 - **Customizable settings.** Enabled by default for optimal performance and reliability, but can be disabled using specific commands if necessary. However, we recommend to keep it enabled to benefit from its diagnostic capabilities.
 
+## Prerequisites
+
+To use the crash dump collection feature, make sure you complete the following prerequisites:
+
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension version 2.0.9.0 to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](./telemetry-and-diagnostics-overview.md).
+
 ### Disable crash dump collection
 
 To disable the crash dump collection capability, use the following command:
@@ -134,7 +140,6 @@ To re-enable it, use the following command:
 ```powershell
  Set-EdgeCrashDumpCollection- -Enable
 ```
-
 
 ## Next steps
 
