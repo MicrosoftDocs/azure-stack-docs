@@ -6,8 +6,8 @@ summary: Learn how to operate and use the Azure Modular Data Center (MDC).
 metadata:
   title: Azure Modular Data Center (MDC) Operator and User Documentation - Tutorials, Concepts, How to articles # Required; page title displayed in search results. Include the brand. < 60 chars.
   description: The Azure Modular Data Center (MDC) is a modular data center that contains Azure Stack Hub solutions and storage. You can provide Azure services and host large scale compute and storage on-premises or at the edge, either disconnected from Azure or connected to it. It’s optimized for use cases that require data sovereignty and on-premises control.
-  ms.service: azure-stack
-  ms.subservice: asdk 
+  ms.service: azure-stack-hub
+  ms.subservice: azure-stack-hub-mdc
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm
