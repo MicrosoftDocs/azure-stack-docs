@@ -34,7 +34,7 @@ Complete the following prerequisites to use network security groups with tags:
 
 :::zone pivot="azure-local"
 
-- You have Azure Stack HCI operating system, version 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system](../deploy/deployment-install-os.md).
+- You have Azure Stack HCI operating system, version 22H2 or later installed on your system. For more information, see how to [Install the Azure Stack HCI operating system, version 23H2](../deploy/deployment-install-os.md).
 
 - You have a Network Controller installed. Network Controller enforces the default network policies. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 

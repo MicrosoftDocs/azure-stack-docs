@@ -96,7 +96,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 
 On the new node that you plan to add, follow these steps.
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Local Operating System](../deploy/deployment-install-os.md).
+1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
 2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
