@@ -3,7 +3,7 @@ title:  November 2024 security update (KB 5046618) for Azure Local, version 23H2
 description: Read about the November 2024 security update (KB 5046618) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/15/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-2411"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-2411"
 
 # November OS security update (KB) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This article describes the OS security update for Azure Local that was released on November 12, 2024 and applies to OS build 25398.1251.
 
@@ -44,8 +44,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5046618](https://go.microsoft.com/fwlink/?linkid=2296832).
-
-
 
 ## Next steps
 

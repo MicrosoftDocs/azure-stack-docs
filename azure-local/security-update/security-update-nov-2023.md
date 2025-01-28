@@ -3,7 +3,7 @@ title:  November 2023 OS security update (KB 5032202) for Azure Local, version 2
 description: Read about the November 2023 OS security update (KB 5032202) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/20/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-previous"
 
 # November 2023 OS security update (KB 5032202) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This security update for Azure Local was released on November 14, 2023 and applies to OS build 25398.531.
 
