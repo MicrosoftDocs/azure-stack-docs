@@ -3,7 +3,7 @@ title:  August 2024 security update (KB 5041573) for Azure Local, version 23H2
 description: Read about the August 2024 security update (KB 5041573) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-2408"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-2408"
 
 # August 2024 OS security update (KB 5041573) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This article describes the OS security update for Azure Local that was released on August 13, 2024 and applies to OS build 25398.1085.
 

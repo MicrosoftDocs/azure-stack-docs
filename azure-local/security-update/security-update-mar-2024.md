@@ -3,7 +3,7 @@ title:  March 2024 security update (KB 5035856) for Azure Local, version 23H2
 description: Read about the March 2024 security update (KB 5035856) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/20/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-previous"
 
 # March 2024 OS security update (KB 5035856) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This article describes the OS security update for Azure Local that was released on March 20, 2024 and applies to OS build 25398.763.
 
@@ -52,8 +52,6 @@ To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI 
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [cumulative update 5035856](https://go.microsoft.com/fwlink/?linkid=2263215).
-
-
 
 ## Next steps
 

@@ -3,7 +3,7 @@ title:  January 2024 OS security update (KB 5034130) for Azure Local, version 23
 description: Read about the January 2024 OS security update (KB 5034130) for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/20/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-previous"
 
 # January 2024 OS security update (KB 5034130) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This article describes the security update for Azure Local that was released on January 9, 2024 and applies to OS build 25398.643.
 

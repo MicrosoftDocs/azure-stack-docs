@@ -3,7 +3,7 @@ title:  December 2023 OS security update (KB 5033383) for Azure Stack HCI, versi
 description: Read about the December 2023 OS security update (KB 5033383) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/20/2024
+ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 monikerRange: "=azloc-previous"
@@ -11,7 +11,7 @@ monikerRange: "=azloc-previous"
 
 # December 2023 OS security update (KB 5033383) for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+<!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
 
 This article describes the security update for Azure Local that was released on December 12, 2023 and applies to OS build 25398.584.
 
