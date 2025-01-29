@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 01/21/2025
-ms.service: azure-stack-local
+ms.service: azure-local
 ---
 
 # Activate Windows Server VMs on Azure Local
