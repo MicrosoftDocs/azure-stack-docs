@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 01/28/2025
+ms.date: 01/29/2025
 ---
 
 # Create Arc virtual machines on Azure Local
