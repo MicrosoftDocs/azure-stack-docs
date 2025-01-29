@@ -3,14 +3,14 @@ title: Set up Azure Arc gateway for existing Azure Local instance running versio
 description: Learn how to deploy Azure Arc gateway for existing Azure Local deployments running software version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/10/2024
+ms.date: 01/16/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
 
 # Simplify outbound network requirements for existing Azure Local instances, version 23H2 through Azure Arc gateway (preview)
 
-Applies to: Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to set up an Azure Arc Gateway for existing deployments of Azure Local running software version 2405.
 

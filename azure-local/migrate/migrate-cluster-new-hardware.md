@@ -3,14 +3,14 @@ title: Migrate to Azure Local on new hardware
 description: Learn how to migrate to Azure Local on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/29/2024 
+ms.date: 01/16/2025 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
 
 # Migrate to Azure Local on new hardware
 
-> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
