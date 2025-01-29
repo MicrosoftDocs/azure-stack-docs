@@ -1,18 +1,18 @@
 ---
-title: Overview for Trusted launch for Azure Arc VMs on Azure Local, version 23H2
-description: Learn about Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
+title: Overview for Trusted launch for Azure Arc VMs on Azure Local
+description: Learn about Trusted launch for Azure Arc VMs on Azure Local
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/07/2025
+ms.date: 01/29/2025
 ---
 
-# Introduction to Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+# Introduction to Trusted launch for Azure Arc VMs on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
+This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Local. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
 
 
 ## Introduction
@@ -52,4 +52,4 @@ All Windows 11 images from Azure Marketplace supported by Azure Arc VMs are supp
 
 ## Next steps
 
-- [Deploy Trusted launch Arc VMs](trusted-launch-vm-deploy.md).
+- [Create Trusted launch VMs](create-arc-virtual-machines.md).
