@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 11/25/2024
+ms.date: 01/23/2025
 ---
 
 # Prepare an Ubuntu image for Azure Local virtual machines
@@ -20,7 +20,7 @@ This article describes how to prepare an Ubuntu image to create a virtual machin
 Before you begin, meet the following prerequisites:
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*. You prepare this image to create a VM image.
+- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Local system. The supported OS versions are *20.04*, *22.04*, *24.04 LTS*. You prepare this image to create an Azure Local VM image.
 
 ## Workflow
 
