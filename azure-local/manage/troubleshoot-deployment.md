@@ -1,14 +1,14 @@
 ---
-title: Troubleshoot deployment validation issues in Azure Local, version 23H2 via Azure portal
-description: Learn how to troubleshoot the deployment validation failures for Azure Local, version 23H2 when deployed via the Azure portal.
+title: Troubleshoot deployment validation issues in Azure Local via Azure portal
+description: Learn how to troubleshoot the deployment validation failures for Azure Local when deployed via the Azure portal.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 01/17/2025
+ms.date: 01/28/2025
 ---
 
 
-# Troubleshoot Azure portal deployment validation issues for Azure Local, version 23H2
+# Troubleshoot Azure portal deployment validation issues for Azure Local
 
 > Applies to: Azure Local 2405 and later
 
@@ -16,7 +16,7 @@ This article provides guidance on how to troubleshoot deployment validation issu
 
 ## Error - deployment validation failure
 
-When deploying Azure Local, version 23H2 via the Azure portal, you might encounter a deployment validation failure.
+When deploying Azure Local via the Azure portal, you might encounter a deployment validation failure.
 The "Azure Local Network - Check network requirements" validation task fail with the following error:
 
 ```
