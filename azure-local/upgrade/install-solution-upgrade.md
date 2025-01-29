@@ -146,4 +146,4 @@ After the solution upgrade is complete, you may need to perform additional tasks
 
 ## Next steps
 
-If you run into issues during the upgrade process, see [Troubleshoot solution upgrade on Azure Local](./troubleshoot-upgrade-to-azure-stack-hci-23h2.md).
+If you run into issues during the upgrade process, see [Troubleshoot solution upgrade on Azure Local](./troubleshoot-upgrade-to-23h2.md).
