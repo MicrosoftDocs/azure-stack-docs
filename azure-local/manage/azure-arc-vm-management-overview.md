@@ -66,10 +66,10 @@ In this release, the Azure Arc VM management workflow is as follows:
 1. During your deployment of Azure Local, one Azure Arc resource bridge is installed per cluster. A custom location is also created.
 1. You [assign built-in RBAC roles for Azure Arc VM management](./assign-vm-rbac-roles.md).
 1. You create VM resources such as:
-    - [Storage paths](./create-storage-path.md) for VM disks.
-    - VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
-    - [Logical networks](./create-virtual-networks.md).  
-    - [VM network interfaces](./create-network-interfaces.md).
+    1. [Storage paths](./create-storage-path.md) for VM disks.
+    1. VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
+    1. [Logical networks](./create-virtual-networks.md).  
+    1. [VM network interfaces](./create-network-interfaces.md).
 1. You use the VM resources to [create VMs](./create-arc-virtual-machines.md).
 
 To troubleshoot problems with your Azure Arc VMs or to learn about known issues and limitations, see [Troubleshoot Azure Arc VM management for Azure Local](troubleshoot-arc-enabled-vms.md).

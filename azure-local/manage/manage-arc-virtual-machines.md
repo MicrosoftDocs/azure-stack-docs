@@ -1,6 +1,6 @@
 ---
 title: Manage Arc VMs on Azure Local
-description: Learn how to manage Arc VMs, including operations such as start, stop, restart, and view properties of Azure Arc VMs running on Azure Local version 23H2.
+description: Learn how to manage Arc VMs, including operations such as start, stop, restart, and view properties of Azure Arc VMs running on Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.date: 01/15/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Azure Arc virtual machines (VMs) running on Azure Local version 23H2. It covers the procedures to enable guest management and to start, stop, restart, pause, save, and delete an Azure Arc VM.
+This article describes how to manage Azure Arc virtual machines (VMs) running on Azure Local, version 23H2. It covers the procedures to enable guest management and to start, stop, restart, pause, save, and delete an Azure Arc VM.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ When you enable guest management on an Azure Arc VM, the guest agent installs th
 
 Here are some key considerations for enabling guest management on a VM after you provision it:
 
-- Make sure that your Azure Local instance is running 2311 or later.
+- Make sure that your Azure Local instance is running 2311.2 or later.
 - Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
 - The steps to enable guest management differ based on whether a guest agent is running on your Azure Arc VM.
 

@@ -12,7 +12,7 @@ ms.date: 01/14/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-After you deploy Azure Arc virtual machines (VMs), you might need to manage the VMs by adding or deleting resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Arc VM running on your Azure Local instance.
+After you deploy Azure Arc virtual machines (VMs), you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Arc VM running on your Azure Local instance.
 
 You can add or delete the resources by using the Azure portal. For the task of adding a data disk, you can also use the Azure CLI.
 
