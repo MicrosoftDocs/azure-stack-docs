@@ -83,7 +83,7 @@ In the event of a data loss on your Azure Local system where the GSP key for the
 
 Use the steps below to copy the VM GSP key from the backup key vault in the Azure Local system where the backup copy of the VM GSP key is stored to the key vault on the original Azure Local system where the VM needs to be restored.
 
-### 1. On the original Azure Local system
+### 1. On the source Azure Local system
 
 Run the following commands on the Azure Local system where the GSP key needs to be restored to.
 
@@ -129,15 +129,11 @@ Complete the following steps on the Azure Local system where the GSP key needs t
     Import-MocKey -name <VM ID> -importKeyFile <VM ID>.json -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -type AES -size 256
     ```
 
-1. Complete the steps above before starting the VM. This will ensure that the VM will use the restored VM GSP key. Otherwise, the VM creation will fail, and a new VM GSP key will be created by the system.
+Complete the steps above before starting the VM. This will ensure that the VM will use the restored VM GSP key. Otherwise, the VM creation will fail, and a new VM GSP key will be created by the system. If VM creation fails, delete the VM GSP key as follows and then repeat steps above to restore the VM GSP key.
 
-    > [!NOTE:]
-    > If VM creation fails, delete the VM GSP key as follows and then repeat steps above to restore the VM GSP key.
-    >
-    > ```azurecli
-    > Remove-MocKey -name <vm id> -group AzureStackHostAttestation -keyvaultName > AzureStackTvmKeyVault
-    > ```
-
+```azurecli
+Remove-MocKey -name <vm id> -group AzureStackHostAttestation -keyvaultName > AzureStackTvmKeyVault
+```
 
 ## Next steps
 
