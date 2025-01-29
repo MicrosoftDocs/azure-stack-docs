@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Migrate to Azure Local on new hardware
 
-> Applies to: Azure Local, Azure Stack HCI, version 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Local 2311.2 and later;, Azure Stack HCI, version 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 

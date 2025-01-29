@@ -56,6 +56,10 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
 
+For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
+
+:::image type="content" source="./media/migrate-hyperv-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-hyperv-requirements/migrate-resource-providers.png":::
+
 ## Source Hyper-V requirements
 
 - Hyper-V Server is supported for both standalone server and cluster configuration.
