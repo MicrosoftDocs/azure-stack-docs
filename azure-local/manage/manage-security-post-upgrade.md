@@ -20,7 +20,7 @@ Before you begin, make sure that you have access to an Azure Local system that w
 
 ## Post upgrade security changes
 
-When you upgrade your Azure Local from Azure Stack HCI, version 22H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
+When you upgrade your system from Azure Stack HCI, version 22H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
 
 Here are the benefits of updating the security settings:
 

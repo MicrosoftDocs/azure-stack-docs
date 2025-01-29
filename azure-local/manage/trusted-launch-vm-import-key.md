@@ -1,6 +1,6 @@
 ---
-title: Manage Trusted launch Arc VM guest state protection key on Azure Local
-description: Learn how to manage a Trusted launch Arc VM guest state protection key on Azure Local.
+title: Manage Trusted launch Arc VM guest state protection key on Azure Local, version 23H2
+description: Learn how to manage a Trusted launch Arc VM guest state protection key on Azure Local, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to

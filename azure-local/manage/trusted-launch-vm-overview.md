@@ -1,6 +1,6 @@
 ---
-title: Overview for Trusted launch for Azure Arc VMs on Azure Local
-description: Learn about Trusted launch for Azure Arc VMs on Azure Local.
+title: Overview for Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+description: Learn about Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli

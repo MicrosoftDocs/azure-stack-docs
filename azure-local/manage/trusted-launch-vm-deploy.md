@@ -1,6 +1,6 @@
 ---
-title: Deploy Trusted launch for Azure Arc VMs on Azure Local
-description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local.
+title: Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli

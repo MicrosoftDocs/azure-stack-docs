@@ -1,6 +1,6 @@
 ---
-title: Storage thin provisioning in Azure Local
-description: How to use storage thin provisioning on Azure Local by using Windows PowerShell.
+title: Storage thin provisioning in Azure Local, version 23H2
+description: How to use storage thin provisioning on Azure Local, version 23H2 by using Windows PowerShell.
 author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
