@@ -105,7 +105,6 @@ $urlArray = @(
     "https://k8connecthelm.azureedge.net",
     "https://guestnotificationservice.azure.com",
     "https://sts.windows.net",
-    "https://k8sconnectcsp.azureedge.net",
     "https://graph.microsoft.com"
 )
 $urlList=$urlArray -join ","

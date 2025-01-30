@@ -88,7 +88,7 @@ For more information, see the full [List of option rules](/windows/security/appl
 Allow rules in the base policy allow all Microsoft components delivered by the OS and the cloud deployments to be trusted. Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
-> The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
+> The Allow and Deny rules in the base policy are updated regularly to improve product functionality and maximize protection of your solution.
 
 To learn more about Deny rules, see:
 
@@ -134,7 +134,7 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> Secret creation and rotation operations take about ten minutes to complete, depending on the size of the system.
+> Secret creation and rotation operations take about 10 minutes to complete, depending on the size of the system.
 
 For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
@@ -153,6 +153,17 @@ Syslog forwarding agents are deployed on every Azure Local host to forward syslo
 The syslog forwarder in Azure Local supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there's unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
+
+## Microsoft Defender Antivirus
+
+Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
+
+Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local to minimize potential functionality issues.
+
+For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
+
+> [!NOTE]
+> If you remove the Microsoft Defender Antivirus feature, leave the settings associated with the feature from the security baseline as-is. You don't need to remove these settings.
 
 ## Microsoft Defender for Cloud (preview)
 
