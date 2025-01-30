@@ -180,7 +180,7 @@ items:
     - name: About security features
       href: concepts/security-features.md
     - name: Download Azure Local security book
-      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
+      href: https://github.com/Azure-Samples/AzureLocal/blob/main/SecurityBook/Azure%20Local%20Security%20Book_01172025.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings
