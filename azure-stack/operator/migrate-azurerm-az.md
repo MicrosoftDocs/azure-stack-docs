@@ -37,7 +37,7 @@ Get-InstalledModule -Name AzureRM -AllVersions
 
 This is the most important step! Run your existing scripts, and make sure that they work with the
 _latest_ release of AzureRM (__2.5.0__). If your scripts don't work, make sure to read
-the [AzureRM migration guide](/powershell/azure/azurerm/migration-guide.6.0.0).
+the [AzureRM migration guide](/powershell/azure/migrate-az-13.0.0).
 
 ## Install the Azure PowerShell Az module
 
