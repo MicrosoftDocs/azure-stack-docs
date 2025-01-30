@@ -16,8 +16,6 @@ ms.date: 01/28/2025
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
 
-There are multiple release trains for Azure Local: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
-
 ::: moniker range="=azloc-24112"
 
 ## Features and improvements in 2411.2
@@ -554,8 +552,8 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 
 ## Next steps
 
-- [Read the blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
-- [Read the blog about What's new for Azure Local at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
+- [Read the blog about What's new for Azure Local at Microsoft Ignite 2024](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
+- Read the blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - For Azure Local deployments:
   - Read the [Deployment overview](./deploy/deployment-introduction.md).
   - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).

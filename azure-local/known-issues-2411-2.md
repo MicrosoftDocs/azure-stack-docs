@@ -39,9 +39,9 @@ The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM Management <!--ADO--> | This release fixes an issue where the storage path couldn't be deleted with a pre-downloaded AKS required images.||
+| Arc VM Management <!--ADO--> | The storage path couldn't be deleted with a pre-downloaded AKS required images.||
 | Arc VM Management <!--ADO--> | Image deletion retry fails after the node restarts. | When the node goes down and if you try deleting an image, the deletion times out. When the node restarts and  retries deletion, the deletion fails again. |
-| Update <!--304749733--> |This release fixes an issue where a solution extension package was unintentionally applied into a solution update. ||
+| Update <!--304749733--> |A solution extension package was unintentionally applied into a solution update. ||
 
 
 ## Known issues in this release
