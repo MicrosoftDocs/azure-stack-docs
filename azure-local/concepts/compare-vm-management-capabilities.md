@@ -84,4 +84,4 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 
 ## Next steps
 
-- [Deploy a virtual Azure Local system](../deploy/deployment-virtual.md).
+- Review [Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
