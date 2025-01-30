@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: 
 zone_pivot_groups: windows-os
-ms.date: 11/13/2024
+ms.date: 01/28/2025
 ---
 
 # Manage SDN Multisite for Azure Local and Windows Server
@@ -45,7 +45,7 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 :::zone pivot="azure-local"
 
-- You must have access to Azure Local, version 23H2 or later clusters deployed at two separate physical sites.
+- You must have access to Azure Local clusters deployed at two separate physical sites.
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
