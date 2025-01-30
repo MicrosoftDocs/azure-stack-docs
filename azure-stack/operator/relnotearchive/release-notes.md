@@ -4,7 +4,7 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/30/2024
+ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -1809,15 +1809,15 @@ The following are post-installation known issues for this build version.
 - Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete the user subscriptions.
 
 <!-- 1663805 - IS ASDK --> 
-- You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 
 <!-- Daniel 3/28 -->
 - In the user portal, when you navigate to a blob within a storage account and try to open **Access Policy** from the navigation tree, the subsequent window fails to load. To work around this issue, the following PowerShell cmdlets enable creating, retrieving, setting and deleting access policies, respectively:
 
-  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
-  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
-  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
-  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+  - [New-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy)
+  - [Get-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/get-azstoragecontainerstoredaccesspolicy)
+  - [Set-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy)
+  - [Remove-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy)
 
   
 <!-- Daniel 3/28 -->
@@ -1912,7 +1912,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1903 update package from [here](https://aka.ms/azurestackupdatedownload).
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2102,10 +2102,10 @@ The following are post-installation known issues for this build version.
 <!-- Daniel 3/28 -->
 - In the user portal, when you navigate to a blob within a storage account and try to open **Access Policy** from the navigation tree, the subsequent window fails to load. To work around this issue, the following PowerShell cmdlets enable creating, retrieving, setting and deleting access policies, respectively:
 
-  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
-  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
-  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
-  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+  - [New-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy)
+  - [Get-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/get-azstoragecontainerstoredaccesspolicy)
+  - [Set-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy)
+  - [Remove-AzStorageContainerStoredAccessPolicy](/powershell/module/az.storage/remove-azstoragecontainerstoredaccesspolicy)
 
 <!-- ### Health and monitoring -->
 
@@ -2185,7 +2185,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1902 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2495,7 +2495,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1901 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2868,7 +2868,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1811 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -3776,7 +3776,7 @@ The following are post-installation known issues for this build version.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -3951,12 +3951,12 @@ The following are post-installation known issues for this build version.
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Overview** for a storage account in either the admin or user portals, the information from the *Essentials* pane does not display.  The Essentials pane displays information about the account like its *Resource group*, *Location*, and *Subscription ID*.  Other options for Overview  are accessible, like *Services* and *Monitoring*, as well as options to *Open in Explorer* or to *Delete storage account*. 
 
-  To view the unavailable information, use the [Get-azureRMstorageaccount](/powershell/module/azurerm.storage/get-azurermstorageaccount?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet. 
+  To view the unavailable information, use the [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) PowerShell cmdlet. 
 
 <!-- 2551834 - IS, ASDK --> 
 - When you select **Tags** for a storage account in either the admin or user portals, the information fails to load and does not display.  
 
-  To view the unavailable information, use the [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag?preserve-view=true&view=azurermps-6.2.0) PowerShell cmdlet.
+  To view the unavailable information, use the [Get-AzTag](/powershell/module/az.resources/get-aztag) PowerShell cmdlet.
 
 
 <!-- 2332636 - IS -->  
@@ -4031,7 +4031,7 @@ The following are post-installation known issues for this build version.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -4366,7 +4366,7 @@ The following are post-installation known issues for build  **20180513.1**.
     ```  
   - **Azure CLI:** You can use the [az vm create](/cli/azure/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) command and specify the VM size as a parameter, similar to `--size "Standard_F32s_v2"`.
 
-  - **PowerShell:** With PowerShell you can use [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
+  - **PowerShell:** With PowerShell you can use [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) with the parameter that specifies the VM size, similar to `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 
@@ -4607,7 +4607,7 @@ This update includes the following improvements and fixes for Azure Stack.
 - Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
 
 <!--  2253274 --> 
-- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet to view and manage this information.
+- The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) cmdlet to view and manage this information.
 
 - When you create a virtual machine, the message *Unable to display pricing* no longer appears when choosing a size for the VM size.
 
@@ -4940,7 +4940,7 @@ The following are post-installation known issues for build  **20180302.1**
     This alert can be safely ignored. 
 
 <!-- 2253274 --> 
-- In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet to view and  manage this information.
+- In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) cmdlet to view and  manage this information.
 
 - In both the admin portal and user portal, the Overview blade fails to load when you select the Overview blade for storage accounts that were created with an older API version (example: 2015-06-15). This includes system storage accounts like **updateadminaccount** that is used during patch and update. 
 

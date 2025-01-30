@@ -4,7 +4,7 @@ description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Local
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/11/2024
 ---
 

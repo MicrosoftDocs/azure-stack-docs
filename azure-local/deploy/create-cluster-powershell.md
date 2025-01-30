@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 01/03/2025
 ms.author: robess
 ms.reviewer: robhind
 ---
@@ -35,8 +35,6 @@ In this article, we create an example cluster named Cluster1 that is composed of
 For the stretched cluster scenario, we use ClusterS1 as the name and use the same four server nodes stretched across sites Site1 and Site2.
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
-
-To test Azure Stack HCI with minimal or no extra hardware, you can check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md). In this guide, we walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you begin
 
@@ -124,14 +122,13 @@ The next step is to install required Windows roles and features on every server 
 - RSAT-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - NetworkATC
-- NetworkHUD
 - SMB Bandwidth Limit
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -139,7 +136,7 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "FS-SMBBW", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "FS-SMBBW", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {

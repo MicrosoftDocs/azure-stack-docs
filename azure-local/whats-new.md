@@ -4,8 +4,8 @@ description: Find out what's new in Azure Local, version 23H2 release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
-ms.date: 12/17/2024
+ms.service: azure-local
+ms.date: 01/09/2025
 ---
 
 # What's new in Azure Local, version 23H2
@@ -16,7 +16,7 @@ ms.date: 12/17/2024
 
 This article lists the various features and improvements that are available in Azure Local, version 23H2.
 
-Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Local, see [What's new in Azure Local, version 22H2](./whats-new-in-hci-22h2.md).
+Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
 
 There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
@@ -74,8 +74,6 @@ This is a baseline release with the following features and improvements:
   - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
-
-  - **ECC memory requirements** - Beginning this release, the EE memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
 

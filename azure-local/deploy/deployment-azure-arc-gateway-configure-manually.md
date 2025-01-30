@@ -3,14 +3,14 @@ title: Configure Arc proxy manually for Azure gateway on Azure Local, version 24
 description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 01/17/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Configure Arc proxy manually for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, 2411 and 2411.1
+> Applies to: Azure Local 2408 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to manually configure the Arc proxy before Arc registration.
 

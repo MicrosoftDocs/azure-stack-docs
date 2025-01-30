@@ -4,7 +4,7 @@ description: How to enable recommended alert rules for Azure Local.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/15/2024
 ---
 

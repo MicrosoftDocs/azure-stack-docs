@@ -9,15 +9,15 @@ ms.lastreviewed: 10/18/2024
 ---
 
 ```bash
-sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.5_41_gc010524-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.6_39_g3e00a10-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```
 
 > [!NOTE]
-> The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+> The metapackage version doesn't always align with the kernel version. Use the preceding command to install the proper metapackage.
 
-If you want to upgrade *only* the kernel and not all packages, you must, at minimum, also upgrade the **amlfs-lustre-client** metapackage in order for the Lustre client to continue to work after the reboot. The command should look similar to the following example:
+If you want to upgrade *only* the kernel and not all packages, you must (at minimum) also upgrade the `amlfs-lustre-client` metapackage so that the Lustre client can continue to work after the restart. The command should look similar to the following example:
 
 ```bash
 export NEWKERNELVERSION=6.7.8
-sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.5_41_gc010524-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.6_39_g3e00a10-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```
