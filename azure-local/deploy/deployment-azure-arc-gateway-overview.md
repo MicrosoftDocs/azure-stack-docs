@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 01/22/2025
 ms.author: alkohli
-monikerRange: ">=azloc-2408"
+monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 

@@ -85,14 +85,14 @@
     },
     "fileMetadata": {
       "monikerRange": {
-      "./*.md": ">=azloc-24053 || =azloc-previous",
-      "./*.yml": ">=azloc-24053 || =azloc-previous"
+      "./*.md": ">=azloc-2408 || =azloc-previous",
+      "./*.yml": ">=azloc-2408 || =azloc-previous"
       }
     },
     "template": [],
     "groups": {
       "version-azlocal": {
-        "moniker_range": ">=azloc-24053 || =azloc-previous",
+        "moniker_range": ">=azloc-2408 || =azloc-previous",
         "dest": "azure-local"
       }
     }

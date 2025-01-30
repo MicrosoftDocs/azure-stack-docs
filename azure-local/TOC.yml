@@ -15,7 +15,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 
       items:
-      - name: 2411.1 - Current
+      - name: 2411.2
+        href: known-issues-2411-2.md
+      - name: 2411.1
         href: known-issues-2411-1.md
       - name: 2411 
         href: known-issues-2411.md
@@ -25,39 +27,39 @@ items:
         href: known-issues-2408-1.md
       - name: 2408
         href: known-issues-2408.md
-      - name: 2405.3 - 
+      - name: 2405.3
         href: known-issues-2405-3.md
-      - name: Archived known issues 
-        items:
-        - name: 2405.2
-          href: known-issues-2405-2.md      
-        - name: 2405.1
-          href: known-issues-2405-1.md
-        - name: 2405.0
-          href: known-issues-2405.md
-        - name: 2402.4 
-          href: known-issues-2402-4.md
-        - name: 2402.3
-          href: known-issues-2402-3.md
-        - name: 2402.2
-          href: known-issues-2402-2.md
-        - name: 2402.1
-          href: known-issues-2402-1.md
-        - name: 2402.0 
-          href: known-issues-2402.md
-        - name: 2311.5 
-          href: known-issues-2311-5.md
-        - name: 2311.4 
-          href: known-issues-2311-4.md
-        - name: 2311.3 
-          href: known-issues-2311-3.md
-        - name: 2311.2 - GA
-          href: known-issues-2311-2.md
-        - name: 2311
-          href: known-issues-2311.md
+      - name: 2405.2
+        href: known-issues-2405-2.md      
+      - name: 2405.1
+        href: known-issues-2405-1.md
+      - name: 2405.0
+        href: known-issues-2405.md
+      - name: 2402.4 
+        href: known-issues-2402-4.md
+      - name: 2402.3
+        href: known-issues-2402-3.md
+      - name: 2402.2
+        href: known-issues-2402-2.md
+      - name: 2402.1
+        href: known-issues-2402-1.md
+      - name: 2402.0 
+        href: known-issues-2402.md
+      - name: 2311.5 
+        href: known-issues-2311-5.md
+      - name: 2311.4 
+        href: known-issues-2311-4.md
+      - name: 2311.3 
+        href: known-issues-2311-3.md
+      - name: 2311.2 - GA
+        href: known-issues-2311-2.md
+      - name: 2311
+        href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: December 2024 - Current
+      - name: January 2025 - Current
+        href: security-update/security-update-jan-2025.md
+      - name: December 2024
         href: security-update/security-update-dec-2024.md
       - name: November 2024
         href: security-update/security-update-nov-2024.md
@@ -68,25 +70,23 @@ items:
       - name: August 2024
         href: security-update/security-update-aug-2024.md
       - name: July 2024
-        href: security-update/security-update-jul-2024.md
+        href: security-update/security-update-jul-2024.md 
       - name: June 2024 
         href: security-update/security-update-jun-2024.md
-      - name: Archived security updates 
-        items:  
-        - name: May 2024
-          href: security-update/security-update-may-2024.md
-        - name: April 2024
-          href: security-update/security-update-apr-2024.md
-        - name: March 2024 
-          href: security-update/security-update-mar-2024.md
-        - name: February 2024 
-          href: security-update/security-update-feb-2024.md      
-        - name: January 2024 
-          href: security-update/security-update-jan-2024.md
-        - name: December 2023 
-          href: security-update/security-update-dec-2023.md
-        - name: November 2023 
-          href: security-update/security-update-nov-2023.md
+      - name: May 2024
+        href: security-update/security-update-may-2024.md
+      - name: April 2024
+        href: security-update/security-update-apr-2024.md
+      - name: March 2024 
+        href: security-update/security-update-mar-2024.md
+      - name: February 2024 
+        href: security-update/security-update-feb-2024.md      
+      - name: January 2024 
+        href: security-update/security-update-jan-2024.md
+      - name: December 2023 
+        href: security-update/security-update-dec-2023.md
+      - name: November 2023 
+        href: security-update/security-update-nov-2023.md
   - name: Disconnected operations
     href: manage/disconnected-operations-overview.md
   - name: OEM License
