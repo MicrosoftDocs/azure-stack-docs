@@ -17,25 +17,35 @@ This article describes the types of virtual machines (VMs) that can run on Azure
 
 Here are the different types of VMs that you can run on your Azure Local system:
 
-- **Arc VMs.** Windows and Linux VMs hosted in an on-premises Azure Local environment. These VMs are created using [Arc VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal), registered to [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), and have the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-release-notes) installed. Arc VMs offer extensive management capabilities in the Azure portal, second only to native Azure VMs. They allow lifecycle management capabilities like starting, restarting, stopping, changing VM memory/vCPU, and adding or removing data disk and network interfaces with the help of Arc Resource Bridge. In addition, through the Arc Connected Machine agent, they can utilize Azure VM extensions like Defender for Cloud, Log Analytics, and Azure Monitor to help govern, protect, configure, and monitor VMs.
+- **Arc VMs:** Windows and Linux VMs hosted outside of Azure, on your corporate network, running on Azure Local.
+  - Created using [Arc VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal), registered to [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), and have the [Connected Machine agent](/azure/azure-arc/servers/agent-release-notes) installed.
+  - Offer extensive management capabilities in the Azure portal, second only to native Azure VMs.
+  - Provide lifecycle management capabilities like starting, stopping, changing VM memory/vCPU, and adding or removing data disk and network interfaces with the help of [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview).
+  - Utilize extensions for Azure Arc like Defender for Cloud, Log Analytics, Azure Monitor to help govern, protect, configure, and monitor VMs through the Connected Machine agent.
+  - Can be managed through the Azure portal.
 
-- **Arc-enabled servers.** Windows and Linux VMs running on Azure Local with the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-release-notes) installed. Like Arc VMs, these VMs can also utilize Azure VM extensions to help govern, protect, configure, and monitor VMs. However, they lack the lifecycle management capabilities that come with Arc VMs.
+- **[Arc-enabled servers](/azure/azure-arc/servers/overview):** Windows and Linux VMs hosted outside of Azure, on your corporate network, running on Azure Local with [Connected Machine agent](/azure/azure-arc/servers/agent-release-notes) installed.
+  - Utilize extensions for Azure Arc to help govern, protect, configure, and monitor VMs like Arc VMs.
+  - Lack the lifecycle management capabilities that come with Arc VMs.
+  - Can be managed through the Azure portal.
 
-- **Non-arc VMs.** Windows and Linux machines created and hosted in an on-premises Azure Local environment, not connected to Azure. You can't manage non-Arc VMs through the Azure portal.
+- **Non-Arc VMs:** Windows and Linux VMs created and hosted outside of Azure, on your corporate network, running on Azure Local.
+  - Aren't connected to Azure.
+  - Can't be managed through the Azure portal.
 
 The following table compares the provisioning and management methods for the various types of Azure Local VM:
 
 | VM provisioning and management methods | Arc VMs | Arc-enabled servers | Non-arc VMs |
-| ---- | ---- | ---- | ---- |
-| Provisioning method |  - (Recommended) [Arc VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal). Create Arc VMs using Azure CLI, Azure portal, or Azure Resource Manager template. Using ARM templates, you can also automate VM provisioning in a secure cloud environment. <br><br> - [Azure Migrate flow](../migrate/migration-azure-migrate-overview.md). Migrate existing Hyper-V VMs as Arc VMs to Azure Local using the migration flow. | Virtual machines on your Azure Local system managed through Azure Arc. Connect these machines to Azure by installing the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) on each machine. For example, each Azure Local host machine is Arc-enabled, facilitating management from the Azure portal. | On-premises provisioning flow. Use local tools like [Windows Admin Center](../manage/vm.md#create-a-new-vm), [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/provision-vms), [PowerShell](../manage/vm-powershell.md#create-a-vm), and Failover Cluster Manager available in your on-premises environment.|
+| :---- | :---- | :---- | :---- |
+| Provisioning method |  (Recommended) [Arc VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal). Create Arc VMs using Azure CLI, Azure portal, or Azure Resource Manager template. Using ARM templates, you can also automate VM provisioning in a secure cloud environment. <br><br> [Azure Migrate flow](../migrate/migration-azure-migrate-overview.md). Migrate existing Hyper-V VMs as Arc VMs to Azure Local using the migration flow. | Connect these machines to Azure by installing the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) on each machine. For example, each Azure Local host machine is Arc-enabled, facilitating management from the Azure portal. | On-premises provisioning flow. Use local tools like Failover Cluster Manager available in your on-premises environment, or use [Windows Admin Center](../manage/vm.md#create-a-new-vm), [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/provision-vms), or [PowerShell](../manage/vm-powershell.md#create-a-vm).|
 | Management method | Via [the Azure portal](../manage/manage-arc-virtual-machines.md). | Via the Azure portal. See [Management and monitoring for Azure Arc-enabled servers](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/eslz-management-and-monitoring-arc-server). | Via the local tools. Manage these VMs through the management consoles of the same local tools used for their creation. |
 
 ## Compare VM management capabilities
 
-The following table compares the management capabilities for Arc VMs, non-Arc VMs, and Arc-enabled servers across various operations and features available through the Azure portal:
+The following table compares the management capabilities for Arc VMs, Arc-enabled servers, and non-Arc VMs across various operations and features available through the Azure portal:
 
 | Management capability | Arc VMs | Arc-enabled servers | Non-Arc VMs |
-|--|--|--|--|
+|:--|:--:|:--:|:--:|
 | Start | Yes | No | No |
 | Restart | Yes | No | No |
 | Stop | Yes | No | No |
@@ -53,9 +63,7 @@ The following table compares the management capabilities for Arc VMs, non-Arc VM
 | Change Max memory | Yes | No | No |
 | Security recommendations | Yes | Yes | No |
 | Defender for Cloud | Yes | Yes | No |
-| Extension Support: | Yes | Yes | No |
-| Azure Automation Windows Hybrid Worker <br><br>- Azure Extension for SQL Server<br>- Azure Monitor Agent for Windows<br>- Custom Script Extension for Windows - Azure Arc<br>- Datadog Agent<br>- Dynatrace OneAgent<br>- Log Analytics Agent - Azure Arc<br>- Network Watcher Agent for Windows<br>- OpenSSH for Windows - Azure Arc | Yes | Yes | No |
-| Locks | Yes | Yes | No |
+| Extension Support | Yes | Yes | No |
 | Policies (RBAC, compliance) | Yes | Yes | No |
 | Machine Configuration | Yes | Yes | No |
 | Automanage | Yes | Yes | No |
@@ -70,7 +78,6 @@ The following table compares the management capabilities for Arc VMs, non-Arc VM
 | Metrics | Yes | No | No |
 | CLI/PS | Yes | Yes | No |
 | Tasks | Yes | Yes | No |
-| Export template | Yes | No | No |
 
 ## Next steps
 
