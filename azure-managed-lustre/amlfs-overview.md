@@ -19,10 +19,10 @@ Azure Managed Lustre is a managed file system that offers scalable, powerful, co
 
 Here are some key benefits of Azure Managed Lustre:
 
-- **Accelerate HPC workloads**: High-performance distributed parallel file system solution, ideal for HPC workloads that require high throughput, low latency, and Lustre protocol compatibility.
+- **Accelerate HPC workloads**: Offers a high-performance distributed parallel file system solution, ideal for HPC workloads that require high throughput, low latency, and Lustre protocol compatibility.
 - **Purpose-built managed service**: Provides the benefits of a Lustre parallel file system without the complexity of managing the underlying infrastructure. Azure Managed Lustre is a fully managed service that simplifies operations, reduces setup costs, and eliminates complex maintenance.
-- **Azure Blob Storage integration**: Connect Azure Managed Lustre file systems with Azure Blob Storage containers for optimal data placement and cost management. For more information, see [Azure Blob Storage integration](#azure-blob-storage-integration).
-- **Azure Kubernetes Service (AKS) integration**: Containerize workloads using the available AKS-compatible CSI driver. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
+- **Azure Blob Storage integration**: Allows you to connect Azure Managed Lustre file systems with Azure Blob Storage containers for optimal data placement and cost management. For more information, see [Azure Blob Storage integration](#azure-blob-storage-integration).
+- **Azure Kubernetes Service (AKS) integration**: Allows you to containerize workloads using the available AKS-compatible CSI driver. For more information, see [Use Azure Managed Lustre with Kubernetes](#use-azure-managed-lustre-with-kubernetes).
 
 Lustre is an open-source parallel file system that can scale to massive storage sizes while also providing high-performance throughput. Lustre is used by the world's fastest supercomputers and in data-centric workflows for many types of industries. For more information about Lustre, see [https://www.lustre.org](https://www.lustre.org).
 
