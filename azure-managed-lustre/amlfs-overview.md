@@ -17,7 +17,7 @@ ms.custom: references_regions
 
 Azure Managed Lustre is a managed file system that offers scalable, powerful, cost-effective storage for high-performance computing (HPC) workloads.
 
-Here are some key benefits of Azure Managed Lustre:
+Here are some key features and benefits of Azure Managed Lustre:
 
 - **Accelerate HPC workloads**: Offers a high-performance distributed parallel file system solution, ideal for HPC workloads that require high throughput, low latency, and Lustre protocol compatibility.
 - **Purpose-built managed service**: Provides the benefits of a Lustre parallel file system without the complexity of managing the underlying infrastructure. Azure Managed Lustre is a fully managed service that simplifies operations, reduces setup costs, and eliminates complex maintenance.
