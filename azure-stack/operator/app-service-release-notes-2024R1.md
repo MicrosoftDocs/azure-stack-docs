@@ -45,7 +45,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
 - Back up the Tenant App content file share.
 
-  > [!Important]
+  > [!IMPORTANT]
   > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
@@ -218,16 +218,16 @@ This script must be run under the following conditions:
 - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
 - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
 
-    - appservice_hosting_FileServer
-    - appservice_hosting_HostingAdmin
-    - appservice_hosting_LoadBalancer
-    - appservice_hosting_Operations
-    - appservice_hosting_Publisher
-    - appservice_hosting_SecurePublisher
-    - appservice_hosting_WebWorkerManager
-    - appservice_metering_Common
-    - appservice_metering_Operations
-    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+  - appservice_hosting_FileServer
+  - appservice_hosting_HostingAdmin
+  - appservice_hosting_LoadBalancer
+  - appservice_hosting_Operations
+  - appservice_hosting_Publisher
+  - appservice_hosting_SecurePublisher
+  - appservice_hosting_WebWorkerManager
+  - appservice_metering_Common
+  - appservice_metering_Operations
+  - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
 ```sql
         USE appservice_hosting
