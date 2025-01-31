@@ -15,7 +15,7 @@ ms.custom: references_regions
 
 # What is Azure Managed Lustre?
 
-Azure Managed Lustre is a managed, pay-as-you-go file system that offers scalable, powerful, and cost-effective storage for high-performance computing (HPC) workloads. Azure Managed Lustre provides the high-performance storage of Lustre with the control, consistency, and reliability of Azure.
+Azure Managed Lustre is a managed file system that offers scalable, powerful, cost-effective storage for high-performance computing (HPC) workloads.
 
 Here are some key benefits of Azure Managed Lustre:
 
