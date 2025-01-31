@@ -327,6 +327,7 @@ This script must be run under the following conditions:
   ```
 
   1. Close the session to the Privileged Endpoint
+---
 
 ## Known issues (post-installation)
 
