@@ -283,7 +283,7 @@ This script must be run under the following conditions:
         GO
 ```
 
-- An additional Redirect URL must be added to the Identity Application created in order to support SSO Scenarios (Kudu etc)
+- A new Redirect URL must be added to the Identity Application created in order to support Single Sign On(SSO) Scenarios (for example Kudu)
 
 # [Entra ID](#tab/EntraID)
 
@@ -294,7 +294,7 @@ This script must be run under the following conditions:
   1. Launch the **Web Cloud Management Console**.
   1. Check the **Web Cloud Management Console -> Web Cloud** screen and verify that both **Controllers** are **Ready**.
   1. Select **Settings**.
-  1. Next, find the **ApplicationClientId** setting.  Retrieve the value.
+  1. Find the **ApplicationClientId** setting. Retrieve the value.
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
   1. Modify the **Inbound_Rdp_3389** rule to deny access.
 
@@ -311,7 +311,7 @@ This script must be run under the following conditions:
 # [ADFS](#tab/ADFS)
 
   ## Retrieve the Identity Application
-  1. Open a [session to the Privileged Endpoint](azure-stack-privileged-endpoint)
+  1. Open a [session to the Privileged Endpoint](azure-stack-privileged-endpoint.md)
   1. Run the following command to retrieve the ADFS Graph Applications
 
   ``` PowerShell
