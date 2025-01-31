@@ -323,7 +323,7 @@ This script must be run under the following conditions:
 
   ``` PowerShell
   $RedirectURIs = "@("https://appservice.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://azsstamp.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://api.appservice.\<region\>.\<DomainName\>.\<extension\>:44300/manage")
-  Set-GraphApplication -ApplicationIdentifier <insert Identifier value -ClientRedirectUris $RedirectURIs
+  Set-GraphApplication -ApplicationIdentifier <insert Identifier value> -ClientRedirectUris $RedirectURIs
   ```
 
   1. Close the session to the Privileged Endpoint
