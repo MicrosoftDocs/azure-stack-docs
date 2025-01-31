@@ -306,7 +306,7 @@ This script must be run under the following conditions:
 1. Search your tenant for the `ApplicationClientId` you retrieved earlier.
 1. Select the application.
 1. Select **Authentication**.
-1. Add an additional **Redirect URI** to the existing list - **https://azsstamp.sso.appservice.\<region\>.\<DomainName\>.\<extension\>**.
+1. Add another **Redirect URI** to the existing list: `https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>`.
 
 # [ADFS](#tab/ADFS)
 
@@ -319,15 +319,15 @@ This script must be run under the following conditions:
    Get-GraphApplication
    ```
 
-1. Find the identifier for the AzureStack-AppService application.
+1. Find the identifier for the **AzureStack-AppService** application.
 1. Update the `RedirectURIs` for the application:
 
    ``` PowerShell
-   $RedirectURIs = "@("https://appservice.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://azsstamp.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://api.appservice.\<region\>.\<DomainName\>.\<extension\>:44300/manage")
+   $RedirectURIs = "@("https://appservice.sso.appservice.<region>.<DomainName>.<extension>", "https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>", "https://api.appservice.<region>.<DomainName>.<extension>:44300/manage")
    Set-GraphApplication -ApplicationIdentifier <insert Identifier value> -ClientRedirectUris $RedirectURIs
    ```
 
-1. Close the session to the Privileged Endpoint.
+1. Close the Privileged Endpoint session.
 
 ---
 
