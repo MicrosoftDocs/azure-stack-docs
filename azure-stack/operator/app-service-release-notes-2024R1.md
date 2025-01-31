@@ -3,10 +3,9 @@ title: App Service on Azure Stack Hub 24R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 12/09/2024
+ms.date: 01/31/2025
 ms.author: anwestg
 ms.reviewer:
-
 ---
 
 # App Service on Azure Stack Hub 24R1 release notes
@@ -283,6 +282,52 @@ This script must be run under the following conditions:
             END
         GO
 ```
+
+- A new Redirect URL must be added to the Identity Application created in order to support Single Sign On(SSO) Scenarios (for example Kudu)
+
+# [Entra ID](#tab/EntraID)
+
+  ## Retrieve the Identity Application Client ID
+  1. In the Azure Stack admin portal, navigate to the **ControllersNSG** Network Security Group.
+  1. By default, remote desktop access is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
+  1. Navigate to the resource group containing the App Service Resource Provider deployment. By default, the resource group is named with the format `AppService.<region>`, and connected to **CN0-VM**.
+  1. Launch the **Web Cloud Management Console**.
+  1. Check the **Web Cloud Management Console -> Web Cloud** screen and verify that both **Controllers** are **Ready**.
+  1. Select **Settings**.
+  1. Find the **ApplicationClientId** setting. Retrieve the value.
+  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+  1. Modify the **Inbound_Rdp_3389** rule to deny access.
+
+  ## Update the Entra ID Application with new Redirect URI
+  
+  1. Sign into the **Azure** Portal to access the Entra ID tenant you connected your Azure Stack Hub to at deployment time.
+  1. Using the **Azure** Portal and navigate to **Microsoft Entra ID**
+  1. Search your tenant for the ApplicationClientId you retrieved earlier.
+  1. Select the Application
+  1. Select **Authentication**
+  1. Add an additional Redirect URI to the existing list - **https://azsstamp.sso.appservice.\<region\>.\<DomainName\>.\<extension\>**
+
+
+# [ADFS](#tab/ADFS)
+
+  ## Retrieve the Identity Application
+  1. Open a [session to the Privileged Endpoint](azure-stack-privileged-endpoint.md)
+  1. Run the following command to retrieve the ADFS Graph Applications
+
+  ``` PowerShell
+  Get-GraphApplication
+  ```
+
+  1. Find the Identifier for the AzureStack-AppService application
+  1. Update the RedirectURIs for the application:
+
+  ``` PowerShell
+  $RedirectURIs = "@("https://appservice.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://azsstamp.sso.appservice.\<region\>.\<DomainName\>.\<extension\>", "https://api.appservice.\<region\>.\<DomainName\>.\<extension\>:44300/manage")
+  Set-GraphApplication -ApplicationIdentifier <insert Identifier value> -ClientRedirectUris $RedirectURIs
+  ```
+
+  1. Close the session to the Privileged Endpoint
+---
 
 ## Known issues (post-installation)
 
