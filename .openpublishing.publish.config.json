@@ -22,7 +22,7 @@
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [
-        ">=azloc-24053"
+        ">=azloc-2408"
       ],
       "open_to_public_contributors": true,
       "type_mapping": {
