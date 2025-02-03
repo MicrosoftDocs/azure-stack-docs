@@ -3,7 +3,7 @@ title: About Azure Local upgrade to version 23H2
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/30/2024
+ms.date: 02/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -18,6 +18,8 @@ ms.service: azure-local
 This article provides an overview of upgrading Azure Local, version 22H2 to version 23H2.
 
 Throughout this article, we refer to Azure Local, version 23H2 as the *new* version and Azure Local, version 22H2 as the *old* version.
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## About Azure Local, version 23H2
 
