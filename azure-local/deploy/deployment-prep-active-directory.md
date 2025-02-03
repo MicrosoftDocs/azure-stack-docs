@@ -105,7 +105,7 @@ The Lifecycle Manager (LCM) user account is utilized during Azure Local instance
 
 To mitigate the risk of a compromised LCM user account / password, it is advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
 
-It is recommended to create individual OU within Active Directory Domain Services (AD DS) for each Azure Local instance. This approach helps manage the instance / cluster computer account object (CNO), individual LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
+It is recommended to create an individual OU within Active Directory Domain Services (AD DS) for each Azure Local instance. This approach helps manage the instance / cluster computer account object (CNO), individual LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
 
 The recommendations to create an individual LCM user account and individual OU for each Azure Local instance are automated when using `New-HciAdObjectsPreCreation` cmdlet, as outlined in the [Active Directory preparation module](#active-directory-preparation-module) section.
 
