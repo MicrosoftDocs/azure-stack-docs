@@ -4,8 +4,8 @@ description: Learn how to manage Arc VMs. This includes operations such as start
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 01/21/2025
+ms.service: azure-local
+ms.date: 02/03/2025
 ---
 
 # Manage Arc VMs on Azure Local

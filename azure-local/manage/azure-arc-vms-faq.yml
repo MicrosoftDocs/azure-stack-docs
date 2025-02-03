@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack-hci
-  ms.date: 01/21/2025
+  ms.date: 02/03/2025
 title: Azure Arc VM management FAQ
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Local.
@@ -33,7 +33,7 @@ sections:
     - question: |
         How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local 23H2 are handled automatically. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local 2311.2 or later are handled automatically. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
 
     - question: | 
         Will I be charged when updating my Arc VM using the Azure Update Manager service?
@@ -44,7 +44,7 @@ sections:
     - question: |
         Why do I need to move to Azure Local?
       answer: |
-        Moving to Azure Local is essential to continue using Azure Arc VM management since Azure Stack HCI, version 22H2 will no longer be supported after 15 February 2024. Azure Local has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
+        Moving to Azure Local is essential to continue using Azure Arc VM management since version 22H2 will no longer be supported after 15 February 2024. Azure Local has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
 
     - question: |
         How can I seek assistance during the transition to Azure Local?
@@ -59,7 +59,7 @@ sections:
     - question: |
         I used to be able to create virtual networks for my Arc VMs in past releases. Starting 2310 (November 2023), I can only create logical networks. What changed?
       answer: |
-        Starting with the 2310 release of Azure Local, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on Azure Local cannot be used with the 2310 release and beyond, and need to be manually deleted.
+        Starting with the 2311.2 release Azure Local, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on earlier versions cannot be used with the Azure Local 2311.2 release and later, and need to be manually deleted.
 
     - question: |
         Can I use SDN for Azure Local VMs created from the Azure portal?

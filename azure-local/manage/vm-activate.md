@@ -4,11 +4,11 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/21/2025
-ms.service: azure-stack-hci
+ms.date: 02/03/2025
+ms.service: azure-local
 ---
 
-# License Windows Server VMs on Azure Local
+# Activate Windows Server VMs on Azure Local
 
 > Applies to: Azure Local, version 22H2 and later; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 

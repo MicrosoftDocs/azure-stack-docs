@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/22/2024
+ms.date: 02/03/2025
 ms.lastreviewed: 03/05/2024
 ms.service: azure-local
 ---
@@ -20,7 +20,7 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 *Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Local. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about the previous version of this feature on Azure Local, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
+For more information about the previous version of this feature, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Local
 
