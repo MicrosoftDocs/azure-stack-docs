@@ -4,7 +4,8 @@ description: Learn how to deploy and configure an AKS Arc cluster with workload 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/08/2024
+ms.date: 01/23/2025
+ms.reviewer: leslielin
 
 ---
 
@@ -167,16 +168,32 @@ $MSIPrincipalId=$(az identity show --resource-group $resource_group_name --name 
 
 ### Create a Kubernetes service account
 
-Create a Kubernetes service account and annotate it with the client ID of the managed identity created in the previous step:
+In this step, you create a Kubernetes service account and annotate it with the client ID of the managed identity you created in the previous step.
+
+Use cluster connect to access your cluster from a client device. For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device):
 
 ```azurecli
 az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
 ```
 
-Open a new window. Copy and paste the following CLI commands:
+Open a new CLI command window. Copy and paste the following commands:
 
 ```azurecli
-$yaml = @" apiVersion: v1 kind: ServiceAccount metadata: annotations: azure.workload.identity/client-id: $MSIId name: $SERVICE_ACCOUNT_NAME namespace: $SERVICE_ACCOUNT_NAMESPACE "@ $yaml = $yaml -replace '\$MSIId', $MSIId ` -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME ` -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE $yaml | kubectl apply -f -
+$yaml = @"
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: $MSIId
+  name: $SERVICE_ACCOUNT_NAME
+  namespace: $SERVICE_ACCOUNT_NAMESPACE
+"@
+
+$yaml = $yaml -replace '\$MSIId', $MSIId `
+               -replace '\$SERVICE_ACCOUNT_NAME', $SERVICE_ACCOUNT_NAME `
+               -replace '\$SERVICE_ACCOUNT_NAMESPACE', $SERVICE_ACCOUNT_NAMESPACE
+
+$yaml | kubectl apply -f -
 ```
 
 The following output shows successful creation of the service account:

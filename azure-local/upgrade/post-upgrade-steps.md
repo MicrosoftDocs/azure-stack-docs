@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Perform post operating system upgrade steps on Azure Local via PowerShell

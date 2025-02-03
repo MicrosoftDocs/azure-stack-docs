@@ -6,12 +6,12 @@ ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 10/22/2024
+ms.date: 01/16/2025
 ---
 
 # Secure the Network Controller
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to configure security for all communication between [Network Controller](../concepts/network-controller-overview.md) and other software and devices.
 

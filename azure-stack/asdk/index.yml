@@ -6,8 +6,8 @@ summary: Learn how to deploy and use the Azure Stack Development Kit.
 metadata:
   title: Azure Stack Development Kit Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
   description: The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK is meant to provide an environment in which you can evaluate Azure Stack and develop modern applications using APIs and tooling consistent with Azure in a non-production environment.
-  ms.service: azure-stack
-  ms.subservice: asdk 
+  ms.service: azure-stack-hub
+  ms.subservice: azure-stack-hub-asdk 
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm

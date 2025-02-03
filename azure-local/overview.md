@@ -4,7 +4,7 @@ description: Azure Local is a hyperconverged infrastructure (HCI) cluster soluti
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 11/19/2024
 ms.custom: e2e-hybrid, linux-related-content
 ---
@@ -102,7 +102,7 @@ You can use the Azure portal for an increasing number of tasks including:
 
 You can also subscribe to additional Azure hybrid services.
 
-For more details on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](./hybrid-capabilities-with-azure-services-23h2.md
+For more details on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](./hybrid-capabilities-with-azure-services-23h2.md).
 
 ## What you need for Azure Local
 
