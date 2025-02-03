@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 01/31/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -96,9 +96,19 @@ To create a dedicated OU, follow these steps:
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
-
 > [!NOTE]
 > If you are repairing a single machine, do not delete the existing OU. If the machine volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
+
+## Considerations for large scale deployments
+
+The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory Domain Services (AD DS), or for any add-node/repair operations 
+for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators group of the physical machines.
+
+To mitigate the risk of a compromised LCM user account / password, it is advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
+
+It is recommended to create individual Organizational Units (OU) within Active Directory Domain Services (AD DS) for each Azure Local instance. This approach helps manage the cluster computer account (CNO), LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
+
+The recommendations to create an individual LCM user account and individual OU for each Azure Local instance are automated when using `New-HciAdObjectsPreCreation` cmdlet, as outlined in the [Active Directory preparation module](#active-directory-preparation-module) section.
 
 ## Next steps
 
