@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: conceptual
 author: ManikaDhiman
 ms.author: v-manidhiman
-ms.date: 01/30/2025
+ms.date: 02/03/2025
 ---
 
 # Compare management capabilities of Azure Local VMs
@@ -20,19 +20,19 @@ Here are the different types of VMs that you can run on your Azure Local system:
 - **Arc VMs:** Windows and Linux VMs hosted outside of Azure, on your corporate network, running on Azure Local.
   - Are created using [Arc VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal), registered to [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), and have the [Connected Machine agent](/azure/azure-arc/servers/agent-overview) installed.
   - Offer extensive management capabilities in the Azure portal, second only to native Azure VMs.
-  - Through *Arc Resource Bridge*, Arc VMs provide lifecycle management capabilities like starting, stopping, changing VM memory/vCPU, and adding or removing data disk and network interfaces.
-  - Through the *Connected Machine agent*, Arc VMs leverage Azure Arc extensions such as Microsoft Defender for Cloud and Azure Monitor to govern, protect, configure, and monitor virtual machines.
-  - Can be managed through Azure. 
+  - Through Arc Resource Bridge, Arc VMs provide lifecycle management capabilities like starting, stopping, changing VM memory/vCPU, and adding or removing data disk and network interfaces.
+  - Through the Connected Machine agent, Arc VMs leverage Azure Arc extensions such as Microsoft Defender for Cloud and Azure Monitor to govern, protect, configure, and monitor virtual machines.
+  - Can be managed through Azure.
 
-- **[Arc-enabled servers](/azure/azure-arc/servers/overview):** Windows and Linux physical servers and virtual machines hosted outside of Azure, on your corporate network, or other cloud provider with Connected Machine agent installed. 
+- **[Arc-enabled servers](/azure/azure-arc/servers/overview):** Windows and Linux physical servers and virtual machines hosted outside of Azure, on your corporate network, or on other cloud providers with the Connected Machine agent installed.
   - Arc-enabled servers run on Azure Local as virtual machines.
   - Lack the lifecycle management capabilities that Arc VMs offer.
-  - Through the *Connected Machine agent*, Arc-enabled servers leverage Azure Arc extensions such as Microsoft Defender for Cloud and Azure Monitor to govern, protect, configure, and monitor virtual machines.
-  - Can be managed through Azure. 
+  - Through the Connected Machine agent, Arc-enabled servers leverage Azure Arc extensions such as Microsoft Defender for Cloud and Azure Monitor to govern, protect, configure, and monitor virtual machines.
+  - Can be managed through Azure.
 
 - **Non-Arc VMs:** Windows and Linux VMs created and hosted outside of Azure, on your corporate network, running on Azure Local.
   - Aren't connected to Azure.
-  - Can't be managed through Azure. 
+  - Can't be managed through Azure.
 
 The following table compares the provisioning and management methods for the various types of Azure Local VM:
 
@@ -49,9 +49,9 @@ The following table compares the provisioning and management methods for the var
 The following table compares the management capabilities for Arc VMs, Arc-enabled servers, and non-Arc VMs across various operations and features available through the Azure portal:
 
 |Management capability|Arc VMs|Arc-enabled servers|Non-Arc VMs|
-|:-----|:-----:|:-----:|:-----:| 
+|:-----|:-----:|:-----:|:-----:|
 | **Settings** |
-| - Start|✅|❌|❌|                   
+| - Start|✅|❌|❌|
 | - Restart |✅|❌|❌|
 | - Stop |✅|❌|❌|
 | - Delete |✅|✅|❌|
