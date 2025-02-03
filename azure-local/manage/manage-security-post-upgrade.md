@@ -1,26 +1,26 @@
 ---
-title: Manage security after upgrading your Azure Local from version 22H2 to version 23H2.
-description: Learn how to manage security posture after you have upgraded Azure Local to version 23H2.
+title: Manage security after upgrading your Azure Local from an Azure Stack HCI, version 22H2.
+description: Learn how to manage security posture after you upgrade Azure Local from an Azure Stack HCI, version 22H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 01/28/2025
 ---
 
 # Manage security after upgrading Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage security settings on an Azure Local that was upgraded from version 22H2 to version 23H2.
+This article describes how to manage security settings on an Azure Local that was upgraded from an Azure Stack HCI, version 22H2.
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local, version 23H2 system that was upgraded from version 22H2.
+Before you begin, make sure that you have access to an Azure Local system that was upgraded from an Azure Stack HCI, version 22H2.
 
 ## Post upgrade security changes
 
-When you upgrade your Azure Local from version 22H2 to version 23H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
+When you upgrade your system from Azure Stack HCI, version 22H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
 
 Here are the benefits of updating the security settings:
 
@@ -51,7 +51,7 @@ A new deployment of Azure Local introduces two baselines documents injected by t
     The new security posture of your servers will combine the previous settings, the new settings, and the overlapping settings with updated values.
 
     > [!NOTE]
-    > Microsoft tests and vaildates the Azure Local, version 23H2 security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with the new product scenarios, and could require extensive testing and troubleshooting on your part.
+    > Microsoft tests and vaildates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with the new product scenarios, and could require extensive testing and troubleshooting on your part.
 
 1. When running the followign commands, you'll find the documents aren't in place. These cmdlets won't return any output.
 
@@ -108,7 +108,7 @@ If you need to enable BitLocker on any of your volumes, see [Manage BitLocker en
 
 Application control for business (formerly known as Windows Defender Application Control or WDAC) provides a great layer of defense against running untrusted code.
 
-After you've upgraded to version 23H2, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
+After you upgrade your system, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
 
 For new deployments, Application Control is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
 
