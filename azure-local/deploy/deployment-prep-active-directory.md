@@ -101,8 +101,7 @@ To create a dedicated OU, follow these steps:
 
 ## Considerations for large scale deployments
 
-The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory Domain Services (AD DS), or for any add-node/repair operations 
-for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators group of the physical machines.
+The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory Domain Services (AD DS), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the target OU in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators group of the physical machines.
 
 To mitigate the risk of a compromised LCM user account / password, it is advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
 
