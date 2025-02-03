@@ -1,6 +1,6 @@
 ---
-title: What is Azure Arc VM management for Azure Local
-description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Local.
+title: What Is Azure Arc VM Management for Azure Local
+description: Learn about using Azure Arc VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -15,67 +15,65 @@ ms.date: 01/08/2025
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article provides a brief overview of the Azure Arc VM management feature on Azure Local including the benefits, its components, and high-level workflow.  
+This article provides a brief overview of the Azure Arc virtual machine (VM) management feature on Azure Local, including benefits, components, and a high-level workflow.  
 
-## About Azure Arc VM management
+Azure Arc VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
 
-Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. This feature enables IT admins create, modify, delete, and assign permissions and roles to app owners thereby enabling self-service VM management.
+Administrators can manage Azure Arc VMs on their Azure Local instances by using Azure management tools, including the Azure portal, the Azure CLI, Azure PowerShell, and [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates. By using Azure Resource Manager templates, you can also automate VM provisioning in a secure cloud environment.
 
-Administrators can manage Arc VMs on their Azure Local instances by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager templates. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, you can also automate VM provisioning in a secure cloud environment.
-
-To find answers to frequently asked questions about Arc VM management on Azure Local, see the [FAQ](./azure-arc-vms-faq.yml).
+To find answers to frequently asked questions about Azure Arc VM management on Azure Local, see the [FAQ](./azure-arc-vms-faq.yml).
 
 ## Benefits of Azure Arc VM management
 
-While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools including:
+Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools. These benefits include:
 
-- Role-based access control via builtin Azure Local roles ensures that only authorized users can perform VM management operations thereby enhancing security. For more information, see [Azure Local Arc VM management roles](./assign-vm-rbac-roles.md).
-- Arc VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
-- The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or Azure CLI including:
+- Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](./assign-vm-rbac-roles.md).
+- Azure Arc VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
+- The Azure portal acts as a single pane of glass to manage VMs on Azure Local and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or the Azure CLI, including:
 
-  - Create, manage, update, and delete VMs. For more information, see [Create Arc VMs](./create-arc-virtual-machines.md)
+  - Create, manage, update, and delete VMs. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
   - Create, manage, and delete VM resources such as virtual disks, logical networks, network interfaces, and VM images.
 
-- The self-service capabilities of Arc VM management reduce the administrative overhead.
+- The self-service capabilities of Azure Arc VM management reduce administrative overhead.
 
 ## Limitations of Azure Arc VM management
 
-Consider the following limitations when managing Arc VMs on Azure Local:
+Consider the following limitations when you're managing Azure Arc VMs on Azure Local:
 
-- Taking checkpoints on Arc VMs running on Azure Local using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely impact the management of these Arc VMs from Azure.
-- Updates to Arc VM configurations, such as vCPU, memory, adding/removing network interface or data disk via on-premises tools won't reflect on the Azure management plane.
-- Resource group move isn't supported for Arc VMs on Azure Local and its associated resources (such as network interfaces and disks).
-- Creation of Arc VMs using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal and can only be done via the Azure CLI. For more information, see [Additional parameters required](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images) to provision Arc VMs via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images.  
+- Taking checkpoints on Azure Arc VMs running on Azure Local by using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely affect the management of these Azure Arc VMs from Azure.
+- Updates to Azure Arc VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
+- Moving a resource group isn't supported for Azure Arc VMs on Azure Local and its associated resources (such as network interfaces and disks).
+- Creation of Azure Arc VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. For more information, see [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).  
 
 ## Components of Azure Arc VM management
 
-Arc VM management comprises several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
+Azure Arc VM management has several components, including:
 
-- **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy your Azure Local.
+- **Azure Arc resource bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local instance to the Azure cloud. The Azure Arc resource bridge is created automatically when you deploy Azure Local.
 
-    For more information, see the [Arc Resource Bridge overview](/azure/azure-arc/resource-bridge/overview).
+    For more information, see [What is Azure Arc resource bridge?](/azure/azure-arc/resource-bridge/overview).
 
-- **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
+- **Custom location**: Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, to integrate your on-premises setup more closely with Azure.
 
-- **Kubernetes Extension for VM Operator**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
+- **Kubernetes extension for VM operators**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
 
-By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
+By integrating these components, Azure Arc offers a unified and efficient VM management solution that bridges the gap between on-premises and cloud infrastructures.
 
 ## Azure Arc VM management workflow
 
-In this release, the Arc VM management workflow is as follows:
+In this release, the Azure Arc VM management workflow is as follows:
 
-1. During the deployment of your Azure Local, one Arc Resource Bridge is installed per cluster and a custom location is also created.
-1. [Assign builtin RBAC roles for Arc VM management](./assign-vm-rbac-roles.md).
-1. You can then create VM resources such as:
+1. During your deployment of Azure Local, one Azure Arc resource bridge is installed per cluster. A custom location is also created.
+1. You [assign built-in RBAC roles for Azure Arc VM management](./assign-vm-rbac-roles.md).
+1. You create VM resources such as:
     1. [Storage paths](./create-storage-path.md) for VM disks.
-    1. VM images starting with an [Image in Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in [Azure Storage account](./virtual-machine-image-storage-account.md), or in [Local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
+    1. VM images, starting with an image in [Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in an [Azure Storage account](./virtual-machine-image-storage-account.md), or in a [local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
     1. [Logical networks](./create-virtual-networks.md).  
     1. [VM network interfaces](./create-network-interfaces.md).
-1. Use the VM resources to [Create VMs](./create-arc-virtual-machines.md).
+1. You use the VM resources to [create VMs](./create-arc-virtual-machines.md).
 
-To troubleshoot issues with your Arc VMs or to learn about existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
+To troubleshoot problems with your Azure Arc VMs or to learn about known issues and limitations, see [Troubleshoot Azure Arc VM management for Azure Local](troubleshoot-arc-enabled-vms.md).
 
-## Next steps
+## Related content
 
-- Review [Azure Arc VM management prerequisites](azure-arc-vm-management-prerequisites.md)
+- [Azure Arc VM management prerequisites](azure-arc-vm-management-prerequisites.md)
