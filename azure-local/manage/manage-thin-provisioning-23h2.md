@@ -5,14 +5,14 @@ author: TinaWu-Msft
 ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/29/2024
+ms.date: 01/28/2025
 ---
 
-# Storage thin provisioning in Azure Local, version 23H2
+# Storage thin provisioning in Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how thin provisioning works on your Azure Local instance, version 23H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+This article describes how thin provisioning works on your Azure Local instance. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool's resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
 ## Capacity management: thin vs. fixed provisioned volumes
 
@@ -74,7 +74,7 @@ Set-StoragePool -FriendlyName <name of storage pool> -ThinProvisioningAlertThres
 
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Local, version 23H2.
+This section answers frequently asked questions about thin provisioning on Azure Local.
 
 ### Can existing fixed volumes be converted to thin?
 

@@ -4,10 +4,10 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 12/10/2024
+ms.date: 01/28/2025
 ---
 
-# Repair a node on Azure Local, version 23H2
+# Repair a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
