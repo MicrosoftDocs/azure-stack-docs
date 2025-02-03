@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/12/2024
+ms.date: 02/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -12,6 +12,8 @@ ms.service: azure-local
 # Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other methods
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 This article describes how to upgrade the operating system (OS) from version 22H2 to version 23H2 on your Azure Local using manual methods such a [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
