@@ -5,18 +5,18 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 01/28/2025
 ---
 
-# Deploy Trusted launch for Azure Arc VMs on Azure Local, version 23H2
+# Deploy Trusted launch for Azure Arc VMs on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local, version 23H2.
+This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Local.
 
 ## Prerequisites
 
-Make sure that you have access to an Azure Local, version 23H2 system that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
+Make sure that you have access to an Azure Local system that is deployed and registered with Azure. For more information, see [deploy using the Azure portal](../deploy/deploy-via-portal.md).
 
 ## Create a Trusted launch Arc VM
 
