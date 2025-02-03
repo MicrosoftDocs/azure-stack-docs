@@ -1,6 +1,18 @@
 {
   "docsets_to_publish": [
     {
+      "docset_name": "adaptive-cloud",
+      "build_source_folder": "adaptive-cloud",
+      "build_output_subfolder": "adaptive-cloud",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": false,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
+    },
+    {
       "docset_name": "AKS-Hybrid",
       "build_source_folder": "AKS-Arc",
       "build_output_subfolder": "AKS-Hybrid",
@@ -11,6 +23,20 @@
       "type_mapping": {
         "Conceptual": "Content",
         "ZonePivotGroups": "Toc"
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
+    },
+    {
+      "docset_name": "azure-managed-lustre",
+      "build_source_folder": "azure-managed-lustre",
+      "build_output_subfolder": "azure-managed-lustre",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
       },
       "build_entry_point": "docs",
       "template_folder": "_themes"
@@ -27,20 +53,6 @@
         "Conceptual": "Content"
       },
       "build_entry_point": "docs"
-    },
-    {
-      "docset_name": "azure-managed-lustre",
-      "build_source_folder": "azure-managed-lustre",
-      "build_output_subfolder": "azure-managed-lustre",
-      "locale": "en-us",
-      "monikers": [],
-      "moniker_ranges": [],
-      "open_to_public_contributors": true,
-      "type_mapping": {
-        "Conceptual": "Content"
-      },
-      "build_entry_point": "docs",
-      "template_folder": "_themes"
     },
     {
       "docset_name": "AzureStack",
