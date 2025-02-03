@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2024
+ms.date: 02/03/2025
 ms.service: azure-local
 ---
 
@@ -24,7 +24,7 @@ For more information about Microsoft Defender for Cloud, see [Microsoft Defender
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You have access to Azure Local, version 23H2 or Azure Local, version 22H2 that is deployed, registered, and connected to Azure.
+- You have access to Azure Local that is deployed, registered, and connected to Azure.
 - You have at least **Owner** or **Contributor** roles in your Azure subscription to turn on Foundational cloud security posture management (CSPM).
 
 ## Enable Defender for Cloud for Azure Local
@@ -116,4 +116,4 @@ Follow these steps to access the Microsoft Defender for Cloud portal's pages to 
 
 ## Next steps
 
-- [Review the deployment checklist and install Azure Local, version 23H2](../deploy/deployment-checklist.md).
+- [Review the deployment checklist and install Azure Local](../deploy/deployment-checklist.md).

@@ -5,16 +5,16 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/16/2024
+ms.date: 02/03/2025
 ---
 
 # Manage syslog forwarding for Azure Local
 
 [!Include [Applies to: Azure Stack HCI, version 23H2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local, version 23H2.
+This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local.
 
-Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Local, version 23H2](../concepts/security-features.md).
+Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Local](../concepts/security-features.md).
 
 ## Configure syslog forwarding
 
