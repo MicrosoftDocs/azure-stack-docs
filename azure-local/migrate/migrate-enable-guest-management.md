@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 01/22/2025
+ms.date: 02/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
