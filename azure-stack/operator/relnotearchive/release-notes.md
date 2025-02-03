@@ -4,7 +4,7 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/30/2024
+ms.date: 01/24/2025
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -1912,7 +1912,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1903 update package from [here](https://aka.ms/azurestackupdatedownload).
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2185,7 +2185,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1902 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2495,7 +2495,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1901 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 
@@ -2868,7 +2868,7 @@ The following are post-installation known issues for this build version.
 
 You can download the Azure Stack 1811 update package from [here](https://aka.ms/azurestackupdatedownload). 
 
-In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-an-update-is-available).
+In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. For more information, see [managing updates for Azure Stack](../azure-stack-updates.md#how-to-know-when-an-update-is-available).
 
 ## Next steps
 

@@ -10,7 +10,7 @@ ms.date: 10/24/2024
 
 # Configure network security groups on your Azure Local with PowerShell
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Local using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface.
 
