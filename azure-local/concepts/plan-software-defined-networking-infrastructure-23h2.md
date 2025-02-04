@@ -7,7 +7,7 @@ author: AnirbanPaul
 ms.date: 01/10/2025
 ms.service: azure-local
 ---
-# Plan a Software Defined Network infrastructure for Azure Local, version 23H2
+# Plan a Software Defined Network infrastructure for Azure Local
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
