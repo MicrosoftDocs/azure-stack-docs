@@ -47,7 +47,7 @@ productDirectory:
     # Card
     - title: Private cloud platforms for hosted, on-premises, and mobile data centers
       # imageSrc should be square in ratio with no whitespace
-      imageSrc: azure-stack-hub.svg
+      imageSrc: azure-stack-hub.png
       links:
         - url: /azure-stack/mdc
           text: Azure Modular Datacenter
@@ -60,7 +60,7 @@ productDirectory:
 # Card
     - title: Intelligent edge platforms for devices
       # imageSrc should be square in ratio with no whitespace
-      imageSrc: intelligent.svg
+      imageSrc: intelligent.png
       links:
         - url: /azure/iot-edge/
           text: Azure IoT Edge
