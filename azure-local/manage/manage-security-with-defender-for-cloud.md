@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/042025
+ms.date: 02/04/2025
 ms.service: azure-local
 ---
 
