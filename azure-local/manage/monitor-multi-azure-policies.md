@@ -656,7 +656,7 @@ Before you enable Insights for Azure Local at scale using Azure policies, comple
 To enable Insights at scale for Azure Local systems, apply the Azure policies in the following order:
 
 1. Repair AMA (for Azure Local, version 22H2 systems only):
-    - If you're using Azure Local, version 22H2 systems, start by applying the policy to repair AMA. This step isn't required for Azure Local, version 23H2 systems.
+    - If you're using Azure Stack HCI, version 22H2 systems, start by applying the policy to repair AMA. This step isn't required for Azure Local 2311.2 and later systems.
     - For policy definition template, see [Policy to repair AMA](#policy-to-repair-ama).
     
 1. Install AMA:
