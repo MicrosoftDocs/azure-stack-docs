@@ -5,20 +5,20 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/16/2024
+ms.date: 02/03/2025
 ---
 
 # Manage syslog forwarding for Azure Local
 
 [!Include [Applies to: Azure Stack HCI, version 23H2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local, version 23H2.
+This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Local.
 
-Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Local, version 23H2](../concepts/security-features.md).
+Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Local](../concepts/security-features.md).
 
 ## Configure syslog forwarding
 
-Syslog forwarding agents are deployed on every Azure Local host by default, ready to be configured. Each of the agents will forward security events in syslog format from the host to the customer-configured syslog server.
+Syslog forwarding agents are deployed on every Azure Local host by default, ready to be configured. Each agent forwards security events in syslog format from the host to the customer-configured syslog server.
 
 Syslog forwarding agents work independently from each other but can be managed all together on any one of the hosts. Use PowerShell cmdlets with administrative privileges on any host to control the behavior of all forwarder agents.
 
@@ -35,9 +35,9 @@ The syslog forwarder in Azure Local supports the following configurations:
 
 ### Cmdlets to configure syslog forwarding
 
-Configuring syslog forwarder requires access to the physical host using a domain administrator account. A set of PowerShell cmdlets has been added to all Azure Local hosts to control behavior of the syslog forwarder.
+Configuring syslog forwarder requires access to the physical host using a domain administrator account. A set of PowerShell cmdlets is added to all Azure Local hosts to control behavior of the syslog forwarder.
 
-The `Set-AzSSyslogForwarder` cmdlet is used to set the syslog forwarder configuration for all hosts. If successful, an action plan instance will be started to config the syslog forwarder agents across all hosts. The action plan instance ID will be returned.
+The `Set-AzSSyslogForwarder` cmdlet is used to set the syslog forwarder configuration for all hosts. If successful, an action plan instance is started to config the syslog forwarder agents across all hosts. The action plan instance ID is returned.
 
 Use the following cmdlet to pass the syslog server information to the forwarder and to configure the transport protocol, the encryption, the authentication, and the optional certificate used between the client and the server:
 
@@ -108,7 +108,7 @@ If you want to test the integration of your syslog server with the Azure Local s
    ```
 
    > [!IMPORTANT]
-   > Microsoft recommends that you do not use the `-SkipServerCertificateCheck` flag in production environments.
+   > Microsoft recommends that you don't use the `-SkipServerCertificateCheck` flag in production environments.
 
 ### Syslog forwarding with TCP and no encryption
 
@@ -119,7 +119,7 @@ Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -Server
 ```
 
 > [!IMPORTANT]
-> Microsoft recommends that you do not use this configuration in production environments.
+> Microsoft recommends that you don't use this configuration in production environments.
 
 ### Syslog forwarding with UDP and no encryption
 
@@ -132,7 +132,7 @@ Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -Server
 While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks or eavesdropping of messages.
 
 > [!IMPORTANT]
-> Microsoft recommends that you do not use this configuration in production environments.
+> Microsoft recommends that you don't use this configuration in production environments.
 
 ## Enable syslog forwarding
 
@@ -160,19 +160,19 @@ Parameter for `Enable-AzSSyslogForwarder` and `Disable-AzSSyslogForwarder` cmdle
 
 ## Verify syslog setup
 
-After you successfully connect the syslog client to your syslog server, you will start to receive event notifications. If you don’t see notifications, verify your cluster syslog forwarder configuration by running the following cmdlet:
+After you successfully connect the syslog client to your syslog server, you'll start to receive event notifications. If you don’t see notifications, verify your cluster syslog forwarder configuration by running the following cmdlet:
 
 ```powershell
 Get-AzSSyslogForwarder [-Local | -PerNode | -Cluster] 
 ```
 
-Each host has its own syslog forwarder agent that uses a local copy of the cluster configuration. They are always expected to be the same as the cluster configuration. You can verify the current configuration on each host by using the following cmdlet:
+Each host has its own syslog forwarder agent that uses a local copy of the cluster configuration. They're always expected to be the same as the cluster configuration. You can verify the current configuration on each host by using the following cmdlet:
 
 ```powershell
 Get-AzSSyslogForwarder -PerNode 
 ```
 
-You can also use the following cmdlet to verify the configuration on the host you are connected to:
+You can also use the following cmdlet to verify the configuration on the host you're connected to:
 
 ```powershell
 Get-AzSSyslogForwarder -Local
@@ -286,7 +286,7 @@ Miscellaneous events that are forwarded. These events can't be customized.
 |Process Create (4688) |query="Security!*[System[EventID=4688]]" |
 |Event log service events specific to Security channel |query="Security!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]" |
 |Special Privileges (Admin-equivalent Access) assigned to new logon, excluding LocalSystem |query="Security!*[System[(EventID=4672)] and EventData[Data[1] != 'S-1-5-18']]" |
-|New user added to local, global or universal security group |query="Security!*[System[(EventID=4732 or EventID=4728 or EventID=4756)]]" |
+|New user added to local, global, or universal security group |query="Security!*[System[(EventID=4732 or EventID=4728 or EventID=4756)]]" |
 |User removed from local Administrators group |query="Security!*[System[(EventID=4733)] and EventData[Data[@Name='TargetUserName']='Administrators']]" |
 |Certificate Services received certificate request (4886), Approved and Certificate issued (4887), Denied request (4888) |query="Security!*[System[(EventID=4886 or EventID=4887 or EventID=4888)]]" |
 |New User Account Created(4720), User Account Enabled (4722), User Account Disabled (4725), User Account Deleted (4726) |query="Security!*[System[(EventID=4720 or EventID=4722 or EventID=4725 or EventID=4726)]]" |
@@ -298,7 +298,7 @@ Miscellaneous events that are forwarded. These events can't be customized.
 |Other Log cleared events (104) |query="System!*[System[(EventID=104)]]" |
 |EMET/Exploit protection events |query="Application!*[System[Provider[@Name='EMET']]]" |
 |WER events for application crashes only | query="Application!*[System[Provider[@Name='Windows Error Reporting']] and EventData[Data[3]='APPCRASH']]" |
-|User logging on with Temporary profile (1511), cannot create profile, using temporary profile (1518) |query="Application!*[System[Provider[@Name='Microsoft-Windows-User Profiles Service'] and (EventID=1511 or EventID=1518)]]" |
+|User logging on with Temporary profile (1511), can't create profile, using temporary profile (1518) |query="Application!*[System[Provider[@Name='Microsoft-Windows-User Profiles Service'] and (EventID=1511 or EventID=1518)]]" |
 |Application crash/hang events, similar to WER/1001. These include full path to faulting EXE/Module. |query="Application!*[System[Provider[@Name='Application Error'] and (EventID=1000)] or System[Provider[@Name='Application Hang'] and (EventID=1002)]]" |
 |Task scheduler Task Registered (106),  Task Registration Deleted (141), Task Deleted (142) |query="Microsoft-Windows-TaskScheduler/Operational!*[System[Provider[@Name='Microsoft-Windows-TaskScheduler'] and (EventID=106 or EventID=141 or EventID=142 )]]" |
 |AppLocker packaged (Modern UI) app execution |query="Microsoft-Windows-AppLocker/Packaged app-Execution!*" |
