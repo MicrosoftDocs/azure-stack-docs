@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/042025
 ms.service: azure-local
 ---
 
@@ -96,7 +96,7 @@ After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-c
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" alt-text="Screenshot of the Recommendations page in the Defender for Cloud portal." lightbox="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" :::
 
    > [!NOTE]
-   > Azure Local-exclusive recommendations are available only on Azure Local, version 23H2. Azure Local, version 22H2 shows recommendations that are also available on Windows Server.
+   > Azure Local-exclusive recommendations are available only on Azure Local 2311 or later. Azure Stack HCI, version 22H2 shows recommendations that are also available on Windows Server.
 
    To learn more about the security recommendations specific to Azure Local, refer to the [Azure compute recommendations](/azure/defender-for-cloud/recommendations-reference-compute#azure-compute-recommendations) section in the [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) article.
 
