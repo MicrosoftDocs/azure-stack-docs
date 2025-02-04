@@ -10,7 +10,7 @@ ms.date: 10/10/2024
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor a single Azure Local, version 23H2 system with Insights
+# Monitor a single Azure Local system with Insights
 
 [!INCLUDE [applies-to-23H2](../includes/hci-applies-to-23h2.md)]
 
