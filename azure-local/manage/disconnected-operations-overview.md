@@ -5,12 +5,13 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.date: 01/23/2025
-monikerRange: ">=azloc-24112"
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
 
 # Disconnected operations for Azure Local (preview)
+
+::: moniker range=">=azloc-24112"
 
 Applies to: Azure Local, version 23H2, release 2411 and later
 
@@ -126,3 +127,11 @@ To participate in the preview, you must meet the following criteria:
 To access the preview, you must complete this [form](https://aka.ms/az-local-disconnected-operations-prequalify) and wait for approval. You should be informed of your status, approved, rejected, queued, or need more information, within 10 business days of submitting the form.
 
 If approved, you receive further instructions on how to acquire, download, and operate disconnected for Azure Local.
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end
