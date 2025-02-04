@@ -49,7 +49,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-24111
+::: moniker range="azloc-24111"
 
 ## December OS security update (KB5048653) for Azure Local
 
@@ -79,7 +79,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-2411
+::: moniker range="azloc-2411"
 
 ## November OS security update (KB) for Azure Local
 
@@ -119,7 +119,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-24082
+::: moniker range="azloc-24082"
 
 ## October OS security update (KB 5044288) for Azure Local
 
@@ -159,7 +159,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-24081
+::: moniker range="azloc-24081"
 
 ## September OS security update (KB 5043055) for Azure Local
 
@@ -201,7 +201,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-2408
+::: moniker range="azloc-2408"
 
 ## August 2024 OS security update (KB 5041573) for Azure Local
 
@@ -255,7 +255,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range=azloc-previous
+::: "moniker range="azloc-previous"
 
 ## July 2024 OS security update (KB 5040438) for Azure Local
 
