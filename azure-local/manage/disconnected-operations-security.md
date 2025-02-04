@@ -84,7 +84,7 @@ If your system's experiencing BitLocker issues, like Azure Local with disconnect
 
 You can manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. However, if BitLocker recovery keys aren't available, your only option is to redeploy the disconnected operations VM.
 
-<!--## Manage syslog forwarding in Azure Local with disconnected operations
+## Manage syslog forwarding in Azure Local with disconnected operations
 
 In this section, we explain how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using the syslog protocol for Azure Local with disconnected operations VM. Use syslog forwarding to integrate with security monitoring solutions and retrieve relevant security event logs for retention on your own SIEM platform.
 
@@ -471,6 +471,6 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 | Detect User-Mode drivers loaded - for potential BadUSB detection. | `query="Microsoft-Windows-DriverFrameworks-UserMode/Operational!*[System[(EventID=2004)]]"` |
 | Legacy PowerShell pipeline execution details (800) | `query="Windows PowerShell!*[System[(EventID=800)]]"` |
 | Defender stopped events | `query="System!*[System[(EventID=7036)] and EventData[Data[@Name='param1']='Microsoft Defender Antivirus Network Inspection Service'] and EventData[Data[@Name='param2']='stopped']]"` |
-| BitLocker Management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` | -->
+| BitLocker Management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` |
 
 <!--## Next steps-->
