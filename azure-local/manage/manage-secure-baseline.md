@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: o2/03/2025
+ms.date: 02/03/2025
 ---
 
 # Manage security defaults for Azure Local
