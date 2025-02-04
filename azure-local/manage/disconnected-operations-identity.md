@@ -5,29 +5,27 @@ ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 01/17/2025
-
-#customer intent: As a Senior Content Developer, I aim to provide customers with top-quality content to help them understand and plan their identity for Disconnected Operations on Azure Local.
 ---
 
-# Plan your identity for disconnected operations on Azure Local (preview) 
+# Plan your identity for disconnected operations on Azure Local (preview)
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This guide helps you plan and integrate your identity with disconnected operations on Azure Local. It explains how to configure your identity solution to work with disconnected operations and understand the actions and roles available to operators.
+This article helps you plan and integrate your existing identity with disconnected operations on Azure Local. The article describes how to configure your identity solution to work with disconnected operations and understand the various actions and roles available to the operators.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Understand and plan identity
 
-For disconnected operations, you need to integrate with an existing identity and access management solution. Before you deploy and configure disconnected operations, make sure you understand how the identity solution is integrated. Also, know the steps required for successful integration and how the identity solution is applied in disconnected operations.
+For disconnected operations, you need to integrate with an existing identity and access management solution. Before you deploy the disconnected operations, make sure that you understand the steps required to integrate and apply the identity solution.
 
-Disconnected operations has been validated for the following solutions:
+Disconnected operations is validated for the following solutions:
 
-- **AD (LDAP v3)**: Groups and memberships  
-- **ADFS (OIDC)**: Authentication  
+- Active Directory (AD): Groups and memberships  
+- Active Directory Federation Services (ADFS): Authentication  
 
 > [!NOTE]
-> While the system might work with other solutions, support during the preview is only available for these validated systems.
+> Only Universal groups are supported for AD. Ensure your group scope is set to Universal when you configure and set up group memberships.
 
 ## How identity integration works
 
@@ -42,78 +40,78 @@ On a high level, the OIDC endpoint authenticates users to disconnected operation
 
 ## Understanding the operator role and actions  
 
-You can assign more operators to the operator subscription, which allows operator-related actions (day-to-day operations) to be performed. The built-in role (Owner) on the operator subscription allows the following actions on the scope: `/Subscriptions/\<GUID>/Microsoft.WinfieldOperator/*`.  
+You can assign more operators to the operator subscription, which allows operator-related actions (day-to-day operations) to be performed. The built-in role (Owner) on the operator subscription allows the following actions on the scope: `/Subscriptions/\<GUID>/Microsoft.AzureLocalOperator/*`.  
 
-This is a comprehensive list of actions that should be available but note that it’s subject to change. Some areas are to be included in later releases.
+In this preview release, the following actions are available:
 
 ### Identity and access management
 
 | Action                                | Operator |  
 |---------------------------------------|----------|  
-| Assign more operators           | Y        |  
-| View group memberships (synced)       | Y        |  
-| View identity synchronization status  | Y        |  
-| View Identity configuration           | Y        |  
-| List SPNs                             | Y        |  
-| Create SPN                            | Y        |  
-| Delete SPN <sub>2</sub>               | Y        |  
-| Update SPN <sub>2</sub>               | Y        |
+| Assign more operators                 | Yes      |  
+| View group memberships (synced)       | Yes      |  
+| View identity synchronization status  | Yes      |  
+| View Identity configuration           | Yes      |  
+| List SPNs                             | Yes      |  
+| Create SPN                            | Yes      |  
+| Delete SPN <sub>2</sub>               | Yes      |  
+| Update SPN <sub>2</sub>               | Yes      |
 
 ### Subscription management
 
 | Action                                | Operator |
 |---------------------------------------|----------|
-| List all subscriptions                | Y        |  
-| Create subscriptions                  | Y        |  
-| Rename subscription                   | Y        |  
-| Suspend subscription <sub>3</sub>     | Y        |  
-| Resume subscription                   | Y        |  
-| Delete subscription <sub>1</sub>      | Y        |  
-| Reassign subscription ownership      | Y        |  
-| List alias                            | Y        |  
-| Create Alias                          | Y        |  
-| Delete Alias                          | Y        |  
+| List all subscriptions                | Yes      |  
+| Create subscriptions                  | Yes      |  
+| Rename subscription                   | Yes      |  
+| Suspend subscription <sub>3</sub>     | Yes      |  
+| Resume subscription                   | Yes      |  
+| Delete subscription <sub>1</sub>      | Yes      |  
+| Reassign subscription ownership       | Yes      |  
+| List alias                            | Yes      |  
+| Create Alias                          | Yes      |  
+| Delete Alias                          | Yes      |  
 
 ### Update
 
 | Action                                | Operator |
 |---------------------------------------|----------|  
-| Upload update <sub>3</sub>            | Y        |  
-| Trigger update <sub>3</sub>           | Y        |  
-| Get update status <sub>3</sub>        | Y        |  
-| Schedule update <sub>3</sub>          | Y        |  
-| View update history <sub>3</sub>      | Y        |
+| Upload update <sub>3</sub>            | Yes      |  
+| Trigger update <sub>3</sub>           | Yes      |  
+| Get update status <sub>3</sub>        | Yes      |  
+| Schedule update <sub>3</sub>          | Yes      |  
+| View update history <sub>3</sub>      | Yes      |
 
 ### Observability and diagnostics
 
 | Action                                          | Operator |
 |-------------------------------------------------|----------|  
-| Configure syslog forwarding                     | Y        |  
-| Collect logs                                    | Y        |  
-| Download logs                                   | Y        |  
-| Configure diagnostics and telemetry settings    | Y        |
+| Configure syslog forwarding                     | Yes      |  
+| Collect logs                                    | Yes      |  
+| Download logs                                   | Yes      |  
+| Configure diagnostics and telemetry settings    | Yes      |
 
 ### Usage / billing / registration
 
 | Action                                          | Operator |
 |-------------------------------------------------|----------|
-| Get usage data <sub>3</sub>                     | Y        |  
-| View instance license information <sub>3</sub>  | Y        |  
-| Register disconnected operations <sub>3</sub>   | Y        |
+| Get usage data <sub>3</sub>                     | Yes      |  
+| View instance license information <sub>3</sub>  | Yes      |  
+| Register disconnected operations <sub>3</sub>   | Yes      |
 
 ### Secrets management
 
 | Action                                          | Operator |
 |-------------------------------------------------|----------|
-| View external secrets expiration <sub>3</sub>   | Y        |  
-| Rotate secrets (internal) <sub>3</sub>          | Y        |  
-| Rotate secrets (external certificates) <sub>3</sub> | Y    |  
+| View external secrets expiration <sub>3</sub>   | Yes      |  
+| Rotate secrets (internal) <sub>3</sub>          | Yes      |  
+| Rotate secrets (external certificates) <sub>3</sub> | Yes  |  
 
 <sub>1. Operator subscription cannot be deleted</sub>
 <sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
 <sub>3. Scoped for release in the future</sub>
 
-The Portal UX isn't available for each of these actions, and some backend capabilities aren't ready for public preview. The list is for completeness of what should be available, with some areas coming post public preview.
+In this release, some of the actions in the preceding list are not available in the Azure portal.
 
 > [!NOTE]
 > Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated post preview if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
@@ -133,10 +131,10 @@ Identify IP addresses or a fully qualified domain name (FQDN) for the:
 
 If you use an FQDN for the LDAP endpoint:  
 
-- Ensure the disconnected operations appliance is configured and uses a domain name system (DNS) that can resolve the endpoint provided.  
+- Ensure the disconnected operations appliance is configured and uses a domain name system (DNS) that can resolve the provided endpoint.  
 - Create an account with read-only access on the LDAP v3 server (AD).  
 - Identify the root group for membership synchronization.  
-- Identify UPN: The user to be assigned the role of **Initial operator**.  
+- Identify UPN: This should be a user that is assigned the role of **Initial operator**.
 
 The following parameters must be collected and available before deployment:  
 
@@ -145,15 +143,15 @@ The following parameters must be collected and available before deployment:
 | Authority                         | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `https://adfs.contoso-winfield.com/adfs` |  
 | ClientID                          | AppID created when setting up the adfsclient app.                            | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`            |  
 | LdapServer                        | LDAP v3 endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.contoso.com`                                |  
-| LdapCredential (Username + Password) | Credentials (read-only) for LDAP integration.                             | Username: `ldapreader` Password: `******`         |  
+| LdapCredential (Username + Password) | Credentials (read-only) for LDAP integration.                             | Username: `ldapreader` Password:         |  
 | RootOperatorUserPrincipalName     | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@contoso.com`        |  
 | SyncGroupIdentifier               | GUID to AD group to start syncing from. Example: | `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID  81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
-| LdapsCertChainInfo                | Certificate chain information for Ldap. This is used to validate calls from the appliance to LDAP. Don't omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIIF ......  |
-|OidcCertChainInfo                  | Certificate chain information used for Oidc to validate tokens from OpenId Connect compliant endpoint. Don't omit this in production it can cause certificate validation for identity integration to be skipped. However, this can be omitted for demo purposes. | MIID ......  |
+| LdapsCertChainInfo                | Certificate chain information for LDAP. This is used to validate calls from the appliance to LDAP. You can omit the certificate chain information for demo purposes. | MIIF ......  |
+|OidcCertChainInfo                  | Certificate chain information used for OIDC to validate tokens from OpenId Connect compliant endpoint. You can omit the certificate chain information for demo purposes. | MIID ......  |
 
 <!--For more information on how to get LdapsCertChainInfo and OidcCertChainInfo, see [Understand and plan PKI](link).-->
 
-Example Configuration Object:
+Example of a configuration object:
 
 ```console  
 $idpConfig = @{  
@@ -168,16 +166,18 @@ $idpConfig = @{
 ```  
 
 > [!NOTE]
-> Identity endpoints must be secured with certificates that share the same root of trust as those used for the disconnected operations appliance. Multiple roots of trust aren't supported.
+> Make sure to secure identity endpoints with certificates that share the same root of trust as those used for the disconnected operations appliance. Multiple roots of trust aren't supported.
 
 ## Current limitations
+
+Here are some limitations to consider when planning your identity integration with disconnected operations:
 
 - **Users/Group removal after synchronization**: If users and groups with memberships are removed after the last sync, they aren't cleaned up in the disconnected operations graph. This can cause errors when querying group memberships.
 - **No force synchronization capability**: Sync runs every 6 hours.  
 - **No management groups or aggregate root level**: Not available for multiple subscriptions.  
-- **Supported validations**: Only AD + ADFS are validated for support.
-    - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
-    - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview)
+- **Supported validations**: Only AD ADFS are validated for support.
+  - [Install Active Directory Domain Services (Level 100)](/windows-server/identity/ad-ds/deploy/install-active-directory-domain-services--level-100-)
+  - [Active Directory Federation Services Overview](/windows-server/identity/ad-fs/ad-fs-overview)
 
 ## Mitigate issues with identity integration  
 
@@ -201,6 +201,7 @@ As a host administrator, with the disconnected operations module and certificate
 ## Appendix
 
 <details>
+
 <summary>Set up AD/ADDS for demo purposes</summary>
 
 Use PowerShell on Windows Server 2022 or newer:
@@ -236,9 +237,11 @@ Install-AdfsFarm `
     -FederationServiceDisplayName "Local Contoso ADFS" `
     -GroupServiceAccountIdentifier "Local.contoso\gmsa_adfs$"
 ```
+
 </details>
 
 <details>
+
 <summary>Create ADFS client app, sample users, and groups</summary>
 
 Use PowerShell on Windows Server 2022 or newer:
@@ -305,3 +308,7 @@ $group
 ```
 
 </details>
+
+## Next steps
+
+- [Deploy disconnected operations on Azure Local](./deploy-disconnected-operations.md)

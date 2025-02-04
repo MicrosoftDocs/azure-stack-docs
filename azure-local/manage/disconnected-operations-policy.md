@@ -1,0 +1,126 @@
+---
+title: Use Azure Policy in a disconnected Azure Local environment (preview)
+description: Learn how to use Azure Policy in a disconnected Azure Local environment (preview).
+ms.topic: conceptual
+author: ronmiab
+ms.author: robess
+ms.date: 01/07/2025
+---
+
+# Use Azure Policy in a disconnected Azure Local environment
+
+[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
+
+This article describes how to use Azure Policy in a disconnected Azure Local environment.
+
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+
+## About using Azure Policy in Azure Local disconnected
+
+Azure Policy ensures compliance with organizational standards by comparing resource properties to business rules. These rules, described in JSON format are known as policy definitions. You can assign these rules to various scopes, such as subscriptions or individual resources within the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
+
+For Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and servers. Selected built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators can enable these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement varies based on the policy type.
+
+## Benefits
+
+Azure Policy for Azure Local disconnected operations lets you consistently enforce policies across all supported Azure services, allowing you to manage and configure resources at scale.
+
+With Azure Policy in a disconnected Azure Local environment, you can:
+
+- Ensure resource creation is consistent and compliant.
+- Focus on high-sensitivity tasks, making Azure Local disconnected operations ideal for industries with strict regulations. Azure Policy is essential for the success of the disconnected operations feature offering.
+- Provide policy enforcement across all supported Arc services on disconnected operations.
+
+## Prerequisites
+
+A policy assignment must be created before resources can be created. This ensures the resources are checked for compliance.
+
+## Restrictions and limitations
+
+Consider these limitations when using Azure Policy:
+
+- Policy enforcement for disconnected operations is supported only on resource creation. Compliance and audit capabilities aren't supported.
+- Only preselected built-in policy definitions are available. Customer-defined policy definitions aren't supported.
+- Updating a policy assignment won't automatically trigger a compliance check for existing resources. However, the updated policy assignment applies to resources you create or update after the policy assignment is updated.
+
+> [!NOTE]
+> Custom policy definitions are considered out of scope for this preview due to potential dependencies and untested scenarios.
+
+## Supported built-in policies
+
+In this table, you can find the built-in policies that are supported for Azure Local disconnected operations.
+
+| Policy name | Policy ID | Description | Azure documentation link |
+|--|--|--|--|
+|Category: Tags |  |  |  |
+| Add or replace a tag on resources | 5ffd78d9-436d-4b41-a421-5baa819e3008 | - Adds or replaces the specified tag and value when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Doesn't modify tags on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Add or replace a tag on resource groups | d157c373-a6c4-483d-aaad-570756956268 | - Adds or replaces the specified tag and value when any resource group is created or updated.<br>- Existing resource groups can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Add or replace a tag on subscriptions | 61a4d60b-7326-440e-8051-9f94394d4dd1 | - Adds or replaces the specified tag and value on subscriptions via a remediation task.<br>- Existing resource groups can be remediated by triggering a remediation task. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Add a tag to resources | 4f9dc7db-30c1-420c-b61a-e1d640128d26 | - Adds the specified tag and value when any resource missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed.<br>- Doesn't modify tags on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Add a tag to resource groups | 726aca4c-86e9-4b04-b0c5-073027359532 | - Adds the specified tag and value when any resource group missing this tag is created or updated.<br>- Existing resource groups can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Add a tag to subscriptions | 96d9a89c-0d67-41fc-899d-2b9599f76a24 | - Adds the specified tag and value to subscriptions via a remediation task.<br>- If the tag exists with a different value, it isn't changed. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Inherit a tag from the resource group | cd3aa116-8754-49c9-a813-ad46512ece54 | - Adds or replaces the specified tag and value from the parent resource group when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Inherit a tag from the subscription if missing | 40df99da-1232-49b1-a39a-6da8d878f469 | - Adds the specified tag with its value from the containing subscription when any resource missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Inherit a tag from the resource group if missing | ea3f2387-9b95-492a-a190-fcdc54f7b070 | - Adds the specified tag with its value from the parent resource group when any resource missing this tag is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Existing resources can be remediated by triggering a remediation task.<br>- If the tag exists with a different value, it isn't changed. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value from the resource group | 9ea02ca2-71db-412d-8b00-7c7ca9fcd32d | - Appends the specified tag with its value from the resource group when any resource which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value to resources | 2a0e14a6-b0a6-4fab-991a-187a4f81c498 | - Appends the specified tag and value when any resource which is missing this tag is created or updated.<br>- Doesn't modify the tags of resources created before this policy was applied until those resources are changed.<br>- Doesn't apply to resource groups.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources (see https://aka.ms/modifydoc).| [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Append a tag and its value to resource groups | 49c88fc8-6fd1-46fd-a676-f12d1d3a4c71 | - Appends the specified tag and value when any resource group which is missing this tag is created or updated.<br>- Doesn't modify the tags of resource groups created before this policy was applied until those resource groups are changed.<br>- New 'modify' effect policies are available that support remediation of tags on existing resources. For more information, see [Modify effect policies](https://aka.ms/modifydoc). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Require a tag and its value on resources | 1e30110a-5ceb-460c-a204-c1c3969c6d62 | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Require a tag on resources | 871b6d14-10aa-478d-b590-94f262ecfa99 | Enforces existence of a tag. Doesn't apply to resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Require a tag and its value on resource groups | 8ce3da23-7156-49e4-b145-24f95f9dcb46 | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Require a tag on resource groups | 96670d01-0a4d-4649-9c89-2d3abc0a5025 | Enforces existence of a tag on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Category: Azure Kubernetes Service |  |  |  |
+| Kubernetes cluster containers CPU and memory resource limits shouldn't exceed the specified limits | e345eecc-fa47-480f-9e88-67dcc122b164 | - Enforce container CPU and memory resource limits to prevent resource exhaustion attacks in a Kubernetes cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
+| Kubernetes cluster containers should only use allowed images | febd0533-8e55-448f-b837-bd0e06f16469 | - Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues, and malicious images.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
+| Kubernetes cluster pod hostPath volumes should only use allowed host paths | 098fc59e-46c7-4d99-9b16-64990e543d75 | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
+| Category: Guest configuraton |  |  |  |
+| Configure Linux Server to disable local users. | cd22fc48-f2c9-4b86-98d3-ec1268b46a8a | - Creates a Guest Configuration assignment to configure disabling local users on Linux Server.<br>- This ensures that Linux Servers are only accessed by an Azure Active Directory (AAD) account or a list of explicitly allowed users by this policy, improving overall security posture. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
+| Configure secure communication protocols (TLS 1.1 or TLS 1.2) on Windows servers | 828ba269-bf7f-4082-83dd-633417bc391d | - Creates a Guest Configuration assignment to configure specified secure protocol version (TLS 1.1 or TLS 1.2) on Windows machine.|  [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
+| Configure time zone on Windows machines | 6141c932-9384-44c6-a395-59e4c057d7c9 | This policy creates a Guest Configuration assignment to set specified time zone on Windows virtual machines. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
+| Requires resources to not have a specific tag | 36fd7371-8eb7-4321-9c30-a7100022d048 |  |  |
+| Inherit a tag from the subscription | b27a0cbd-a167-4dfa-ae64-4337be671140 | - Adds or replaces the specified tag and value from the containing subscription when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
+| Windows web servers should be configured to use secure communication protocols | 5752e6d6-1206-46d8-8ab1-ecc2f71a8112 |    |    |
+
+## Enable Azure Policy
+
+You can use Azure Policy to enforce tags on resource groups created through disconnected operations. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps using the Azure Local portal:
+
+### Step 1: Set up the Basics
+
+1. Sign in to the Azure Local portal and navigate to **Policy**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page" lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
+
+2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page" lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
+
+3. Identify the **Scope**, **Policy definition**, and **Assignment name**.
+
+4. Toggle the **Policy enforcement** to **Enabled**.
+
+5. Select **Parameters** to proceed to the next step.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions" lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
+
+### Step 2: Set the parameters
+
+1. In the **Parameters** section, provide the required **Tag name**.
+
+2. Name your tag and select the **Review + create button**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name" lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
+
+After the policy is created, you're prevented from creating resource groups without the required tag.
+
+:::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups" lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
+
+## Unsupported features
+
+In this preview, the following features aren't supported:
+
+- Compliance dashboard.
+- Remediation actions.
+- Policy exemptions.
+
+<!--## Next steps->
