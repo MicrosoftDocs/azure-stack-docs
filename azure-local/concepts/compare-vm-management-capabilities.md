@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: conceptual
 author: ManikaDhiman
 ms.author: v-manidhiman
-ms.date: 02/03/2025
+ms.date: 02/04/2025
 ---
 
 # Compare management capabilities of Azure Local VMs
@@ -13,7 +13,7 @@ ms.date: 02/03/2025
 
 This article describes the types of virtual machines (VMs) available on Azure Local and compares their management capabilities in Azure.
 
-## Compare Azure Local VMs
+## Types of VMs on Azure Local
 
 Here are the different types of VMs that you can run on your Azure Local system:
 
@@ -79,7 +79,7 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Inventory |✅|✅|❌|
 | - Change tracking |✅|✅|❌|
 | **Windows management** |
-| - Windows Admin Center |✅|✅|❌|
+| - Windows Admin Center |❌|✅|❌|
 | - Best Practices Assessment |✅|✅|❌|
 | **Monitoring** |
 | - Azure Monitor |✅|✅|❌|
