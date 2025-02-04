@@ -66,7 +66,7 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 ### Key Management Service (KMS) Plugin (preview) for Secret Encryption
 
-AKS-EE supports **the Key Management Service (KMS) Plugin**, which provides **encryption at rest** for Kubernetes secrets stored in the **etcd key-value store**. By enabling the KMS Plugin, clusters can securely encrypt secrets using a **Key Encryption Key (KEK)** that is automatically rotated every **30 days**. For step-by-step instructions, see [**How to enable the KMS Plugin in AKS Edge Essentials**](https://www.notion.so/Key-rotation-61993c24b6b9409c823110cca96c3811?pvs=21).
+AKS Edge Essentials supports **the Key Management Service (KMS) Plugin**, which provides **encryption at rest** for Kubernetes secrets stored in the **etcd key-value store**. By enabling the KMS Plugin, clusters can securely encrypt secrets using a **Key Encryption Key (KEK)** that is automatically rotated every **30 days**. For step-by-step instructions, see [**How to enable the KMS Plugin in AKS Edge Essentials**](https://www.notion.so/Key-rotation-61993c24b6b9409c823110cca96c3811?pvs=21).
 
 ## Next steps
 
