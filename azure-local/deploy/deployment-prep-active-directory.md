@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2025
+ms.date: 02/04/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -24,17 +24,17 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, enforced GPO's aren't blocked. Ensure that any applicable GPO, which are enforced, are also blocked using other methods, for example, using [WMI Filters](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648).
+> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods, for example, create a [WMI Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648) and apply to the GPOs to exclude any Azure Local instances machine computer accounts from applying GPOs that have "enforced" enabled.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
 
 ## Prerequisites
 
-Before you begin, make sure you've done the following:
+Before you begin, make sure you've done the following tasks:
 
-- Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
-- [Download and install the version 2402 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402). Run the following command from the folder where the module is located:
+- Satisfied the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
+- Install version 2402 of the ['AsHciADArtifactsPreCreationTool'](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402) module. Run the following command to install the module from PowerShell Gallery:
 
     ```powershell
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
@@ -53,9 +53,8 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 
 |Parameter|Description|
 |--|--|
-|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name cannot be exactly the same as the local admin user. <br> The name can use *admin* as the username.|
-|`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
-
+|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name can't be exactly the same as the local admin user. <br> The name can use *admin* as the username.|
+|`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Local deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 
 > [!NOTE]
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
@@ -75,14 +74,13 @@ To create a dedicated OU, follow these steps:
     New-HciAdObjectsPreCreation -AzureStackLCMUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>"
 
 1. When prompted, provide the username and password for the deployment.
-    
-    1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
-    1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.** 
 
+    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
+    1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.**
 
-    Here is a sample output from a successful completion of the script:
+    Here's a sample output from a successful completion of the script:
 
-    ```
+    ```powershell
     PS C:\work> $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
     PS C:\work> $user = "ms309deployuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
@@ -97,15 +95,15 @@ To create a dedicated OU, follow these steps:
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
 > [!NOTE]
-> If you are repairing a single machine, do not delete the existing OU. If the machine volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
+> If you're repairing a single machine, don't delete the existing OU. If the machine volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
 
 ## Considerations for large scale deployments
 
-The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory Domain Services (AD DS), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators group of the physical machines.
+The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory Domain Services (AD DS), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators' group of the physical machines.
 
-To mitigate the risk of a compromised LCM user account / password, it is advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
+To mitigate the risk of a compromised LCM user account / password, it's advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
 
-It is recommended to create an individual OU within Active Directory Domain Services (AD DS) for each Azure Local instance. This approach helps manage each instances computer account / cluster name object (CNO), individual LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
+It's recommended to create an individual OU within Active Directory Domain Services (AD DS) for each Azure Local instance. This approach helps manage each instances computer account / cluster name object (CNO), individual LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
 
 The recommendations to create an individual LCM user account and individual OU for each Azure Local instance are automated when using `New-HciAdObjectsPreCreation` cmdlet, as outlined in the [Active Directory preparation module](#active-directory-preparation-module) section.
 
