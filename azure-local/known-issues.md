@@ -6,7 +6,6 @@ ms.topic: conceptual
 ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-monikerRange: "=azloc-24112"
 ---
 
 # Known issues in Azure Local
