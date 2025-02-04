@@ -1,2 +1,78 @@
-- name: Index
-  href: index.md
+- name: Hybrid and multicloud solutions documentation
+  href: index.yml
+- name: Overview
+  items:
+  - name: Solution patterns and examples
+    href: overview-patterns-solution-examples.md
+- name: Patterns
+  items:
+  - name: Single 
+    items:
+        - name: Cross-cloud scaling
+          href: pattern-cross-cloud-scale.md
+        - name: DevOps hybrid CI/CD
+          href: pattern-cicd-pipeline.md
+        - name: Geo-distributed app
+          href: pattern-geo-distributed.md
+        - name: Hybrid relay
+          href: pattern-hybrid-relay.md
+        - name: Tiered data
+          href: pattern-tiered-data-analytics.md
+        - name: Train ML model at the edge
+          href: pattern-train-ml-model-at-edge.md
+  - name: Multi
+    items:
+    - name: Cross-cloud scaling (on-premises data)
+      href: pattern-cross-cloud-scale-onprem-data.md
+    - name: Footfall detection (retail)
+      href: pattern-retail-footfall-detection.md
+    - name: High availability Kubernetes cluster
+      href: pattern-highly-available-kubernetes.md      
+    - name: Out-of-stock detection at the edge
+      href: pattern-out-of-stock-at-edge.md
+- name: Solution deployment guides
+  items:
+  - name: Cross-cloud scaling 
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-cross-cloud-scaling?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Cross-cloud scaling (on-premises data)
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-cross-cloud-scaling-onprem-data?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: DevOps hybrid CI/CD 
+    href: https://aka.ms/hybriddevopsdeploy
+  - name: Footfall detection (retail)
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-retail-footfall-detection?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Geo-distributed app
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-geo-distributed?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: High availability Kubernetes cluster
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-highly-available-kubernetes?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Hybrid connectivity
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-connectivity?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Hybrid identity
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-identity?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Hybrid relay
+    href: https://aka.ms/hybridrelaydeployment
+  - name: Tiered data
+    href: https://aka.ms/tiereddatadeploy
+  - name: High-availability MongoDB
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-mongodb-ha?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: High-availability SQL Server 2016
+    href: /azure/architecture/hybrid/deployments/solution-deployment-guide-sql-ha?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json
+  - name: Out-of-stock at the edge
+    href: https://aka.ms/edgeinferencingdeploy
+  - name: Training ML models at the edge
+    href: https://aka.ms/edgetrainingdeploy 
+- name: Concepts
+  items:
+  - name: App design considerations
+    href: overview-app-design-considerations.md
+- name: Related
+  items:
+  - name: Azure documentation
+    href: /azure
+  - name: Azure Stack documentation
+    href: /azure-stack
+- name: Resources
+  items:
+  - name: Microsoft Learn training
+    href: /training
+  - name: Microsoft Q&A
+    href: /answers/products/
