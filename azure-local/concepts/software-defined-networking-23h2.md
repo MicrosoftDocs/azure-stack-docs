@@ -5,10 +5,10 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 01/08/2025
+ms.date: 01/29/2025
 ---
 
-# Software Defined Networking (SDN) in Azure Local, version 23H2
+# Software Defined Networking (SDN) in Azure Local
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
@@ -50,4 +50,4 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](./plan-software-defined-networking-infrastructure-23h2.md)
-- [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md) <!--update this link for 23H2 version-->
+- [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
