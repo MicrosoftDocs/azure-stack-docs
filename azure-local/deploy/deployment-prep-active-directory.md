@@ -31,10 +31,10 @@ To manually assign the required permissions for Active Directory, create an OU, 
 
 ## Prerequisites
 
-Before you begin, ensure you have completed the following tasks:
+Before you begin, ensure to complete the following prerequisites:
 
-- Satisfied the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
-- Installed version 2402 of the ['AsHciADArtifactsPreCreationTool'](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402) module. Run the following command to install the module from PowerShell Gallery:
+- Complete the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
+- Install version 2402 of the ['AsHciADArtifactsPreCreationTool'](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402) module. Run the following command to install the module from PowerShell Gallery:
 
     ```powershell
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
@@ -43,7 +43,7 @@ Before you begin, ensure you have completed the following tasks:
     > [!NOTE]
     > Make sure to uninstall any previous versions of the module before installing the new version.
 
-- You have obtained permissions to create an Organizational Unit (OU). If you don't have permissions, contact your Active Directory administrator.
+- You require permissions to create an Organizational Unit (OU). If you don't have permissions, contact your Active Directory administrator.
 
 - If you have a firewall between your Azure Local system and Active Directory, ensure that the proper firewall rules are configured. For specific guidance, see [Firewall requirements for Active Directory Web Services and Active Directory Gateway Management Service](../concepts/firewall-requirements.md). See also [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts#windows-server-2008-and-later-versions).
 
