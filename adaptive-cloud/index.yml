@@ -6,7 +6,7 @@ brand: azure
 metadata:
   title: Azure hybrid and multicloud cloud documentation 
   description: Resources for building and operating hybrid and multicloud solutions that span the global cloud, datacenter, and edge.
-  ms.service: multiple
+  ms.service: azure-stack
   ms.topic: hub-page
   author: ronmiab 
   ms.author: robess
