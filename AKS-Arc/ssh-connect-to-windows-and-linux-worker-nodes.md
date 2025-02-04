@@ -1,4 +1,4 @@
-﻿---
+---
 title: Connect to Windows or Linux worker nodes with SSH
 description: Learn how to use SSH to connect to Windows or Linux worker nodes in an AKS Arc cluster.
 ms.date: 01/10/2025
@@ -31,13 +31,21 @@ This article explains how to use SSH to connect to both Windows and Linux nodes.
    kubectl --kubeconfig /path/to/aks-cluster-kubeconfig get nodes -o wide |
    ```
 
-1. Run `ssh cloud@<IP address of the node>` to connect to a worker node:
+1. Run `ssh` to connect to a worker node:
 
    > [!NOTE]
    > You must pass the correct location to your SSH private key. The following example uses the default location of **~/.ssh/id_rsa**, but you might need to change this location if you requested a different path. To change the location, see [Configure SSH keys](configure-ssh-keys.md) to specify the `--ssh-key-value` parameter when you create an AKS Arc cluster.
 
+   For a Linux worker node, run the following command:
+
    ```azurecli
    ssh -i $env:USERPROFILE\.ssh\id_rsa clouduser@<IP address of the node>
+   ```
+   
+   For a Windows worker node, run the following command:
+   
+   ```azurecli
+   ssh -i $env:USERPROFILE\.ssh\id_rsa Administrator@<IP address of the node>
    ```
 
 If you encounter SSH login issues, verify that your IP address is included in the **--ssh-auth-ip list**. To check this list, run `az aksarc show --name "$<aks_cluster_name>" --resource-group "$<resource_group_name>"` and look for `authorizedIpRanges` under `clusterVmAccessProfile`.
