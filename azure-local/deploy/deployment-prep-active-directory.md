@@ -24,7 +24,7 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods. For example, create a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648), apply the filter to the GPO(s) to exclude your Azure Local instances machine computer accounts, to prevent them applying GPOs that have "enforced" enabled.
+> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods. For example, create a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648), apply the filter to the GPOs to exclude your Azure Local instances machine computer accounts, to prevent them applying GPOs that have "enforced" enabled.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
@@ -88,9 +88,9 @@ To create a dedicated OU, follow these steps:
     PS C:\work>
     ```
 
-1. Verify that the OU is created.  If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
+1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name should be created and within that OU, you'll see the deployment user.
+1. An OU with the specified name should be created and within that OU, which will contain the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
