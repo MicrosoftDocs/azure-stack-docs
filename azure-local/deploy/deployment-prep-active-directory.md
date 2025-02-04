@@ -58,7 +58,7 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 
 > [!NOTE]
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
-> - Moving the computer objects to a different OU after deployment has completed is not supported.
+> - Moving the computer objects to a different OU post deployment is not supported.
 
 ## Prepare Active Directory
 
@@ -90,7 +90,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name should be created and within that OU, which will contain the new LCM deployment user account.
+1. An OU with the specified name should be created, which will contain the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
