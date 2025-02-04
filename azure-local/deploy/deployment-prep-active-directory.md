@@ -58,7 +58,7 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 
 > [!NOTE]
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
-> - Moving the computer objects to a different OU after the deployment is complete is also not supported.
+> - Moving the computer objects to a different OU after deployment has completed is not supported.
 
 ## Prepare Active Directory
 
