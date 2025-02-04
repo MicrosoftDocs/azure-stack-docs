@@ -24,14 +24,14 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods, for example, create a [WMI Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648), apply the filter to the GPO to exclude your Azure Local instances machine computer accounts from applying any GPOs that have "enforced" enabled.
+> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods. For example, create a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648), apply the filter to the GPO(s) to exclude your Azure Local instances machine computer accounts, to prevent them applying GPOs that have "enforced" enabled.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
 
 ## Prerequisites
 
-Before you begin, make sure you've done the following tasks:
+Before you begin, ensure you have completed the following tasks:
 
 - Satisfied the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
 - Install version 2402 of the ['AsHciADArtifactsPreCreationTool'](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402) module. Run the following command to install the module from PowerShell Gallery:
