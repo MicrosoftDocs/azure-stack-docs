@@ -3,10 +3,9 @@ title: App Service on Azure Stack Hub 24R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 12/09/2024
+ms.date: 01/31/2025
 ms.author: anwestg
 ms.reviewer:
-
 ---
 
 # App Service on Azure Stack Hub 24R1 release notes
@@ -46,7 +45,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
 - Back up the Tenant App content file share.
 
-  > [!Important]
+  > [!IMPORTANT]
   > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
@@ -219,16 +218,16 @@ This script must be run under the following conditions:
 - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
 - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
 
-    - appservice_hosting_FileServer
-    - appservice_hosting_HostingAdmin
-    - appservice_hosting_LoadBalancer
-    - appservice_hosting_Operations
-    - appservice_hosting_Publisher
-    - appservice_hosting_SecurePublisher
-    - appservice_hosting_WebWorkerManager
-    - appservice_metering_Common
-    - appservice_metering_Operations
-    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+  - appservice_hosting_FileServer
+  - appservice_hosting_HostingAdmin
+  - appservice_hosting_LoadBalancer
+  - appservice_hosting_Operations
+  - appservice_hosting_Publisher
+  - appservice_hosting_SecurePublisher
+  - appservice_hosting_WebWorkerManager
+  - appservice_metering_Common
+  - appservice_metering_Operations
+  - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
 ```sql
         USE appservice_hosting
@@ -283,6 +282,54 @@ This script must be run under the following conditions:
             END
         GO
 ```
+
+- A new Redirect URL must be added to the identity application created in order to support Single Sign On(SSO) Scenarios (for example Kudu)
+
+# [Entra ID](#tab/EntraID)
+
+## Retrieve the Identity Application Client ID
+
+1. In the Azure Stack admin portal, navigate to the **ControllersNSG** Network Security Group.
+1. By default, remote desktop access is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
+1. Navigate to the resource group containing the App Service Resource Provider deployment. By default, the resource group is named with the format `AppService.<region>`, and connected to **CN0-VM**.
+1. Launch the **Web Cloud Management Console**.
+1. Check the **Web Cloud Management Console -> Web Cloud** screen and verify that both **Controllers** are **Ready**.
+1. Select **Settings**.
+1. Find the **ApplicationClientId** setting. Retrieve the value.
+1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+1. Modify the **Inbound_Rdp_3389** rule to deny access.
+
+## Update the Entra ID Application with new Redirect URI
+  
+1. Sign into the Azure portal to access the Entra ID tenant you connected your Azure Stack Hub to at deployment time.
+1. Using the Azure portal and navigate to **Microsoft Entra ID**.
+1. Search your tenant for the `ApplicationClientId` you retrieved earlier.
+1. Select the application.
+1. Select **Authentication**.
+1. Add another **Redirect URI** to the existing list: `https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>`.
+
+# [ADFS](#tab/ADFS)
+
+## Retrieve the identity application
+
+1. Open a [session to the Privileged Endpoint](azure-stack-privileged-endpoint.md).
+1. Run the following command to retrieve the AD FS Graph applications:
+
+   ``` PowerShell
+   Get-GraphApplication
+   ```
+
+1. Find the identifier for the **AzureStack-AppService** application.
+1. Update the `RedirectURIs` for the application:
+
+   ``` PowerShell
+   $RedirectURIs = "@("https://appservice.sso.appservice.<region>.<DomainName>.<extension>", "https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>", "https://api.appservice.<region>.<DomainName>.<extension>:44300/manage")
+   Set-GraphApplication -ApplicationIdentifier <insert Identifier value> -ClientRedirectUris $RedirectURIs
+   ```
+
+1. Close the Privileged Endpoint session.
+
+---
 
 ## Known issues (post-installation)
 

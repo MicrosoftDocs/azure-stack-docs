@@ -7,10 +7,10 @@ ms.topic: article
 author: alkohli
 ms.service: azure-local
 zone_pivot_groups: windows-os
-ms.date: 11/13/2024
+ms.date: 01/28/2025
 ---
 
-# Use default network access policies on virtual machines on Azure Local, version 23H2
+# Use default network access policies on virtual machines on Azure Local
 
 :::zone pivot="azure-local"
 
