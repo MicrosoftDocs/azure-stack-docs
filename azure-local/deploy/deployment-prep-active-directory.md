@@ -24,7 +24,7 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods, for example, create a [WMI Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648) and apply to the GPOs to exclude any Azure Local instances machine computer accounts from applying GPOs that have "enforced" enabled.
+> - When group policy inheritance is blocked at the OU level, enforced GPOs aren't blocked. Ensure that any applicable GPOs, which have "enforced" enabled are blocked using other methods, for example, create a [WMI Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648), apply the filter to the GPO to exclude your Azure Local instances machine computer accounts from applying any GPOs that have "enforced" enabled.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
