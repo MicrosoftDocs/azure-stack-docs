@@ -255,7 +255,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: "moniker range="azloc-previous"
+::: moniker range="azloc-previous"
 
 ## July 2024 OS security update (KB 5040438) for Azure Local
 
@@ -764,7 +764,6 @@ Running [Windows Update Standalone Installer](https://support.microsoft.com/topi
 For a list of the files that are provided in this update, download the file information for [cumulative update 5032202](https://go.microsoft.com/fwlink/?linkid=2252437).
 
 <!--For a list of the files that are provided in the servicing stack update, download the file information for the [SSU - version 25398.521](https://go.microsoft.com/fwlink/?linkid=2252176).-->
-
 
 ::: moniker-end
 
