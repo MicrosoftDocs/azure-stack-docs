@@ -44,7 +44,7 @@ The following issues are fixed in this release:
 | Update <!--304749733--> |A solution extension package was unintentionally applied into a solution update. ||
 
 
-### Known issues in this release
+## Known issues in this release
 
 Microsoft is not aware of any known issues in this release.
 

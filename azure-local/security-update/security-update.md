@@ -16,7 +16,7 @@ This article lists the various security updates that are available in Azure Loca
 
 ## January OS security update (KB5049984) for Azure Local
 
-This section describes the OS security update for Azure Local that was released on January 14, 2025 and applies to OS build 25398.1369.
+This article describes the OS security update for Azure Local that was released on January 14, 2025 and applies to OS build 25398.1369.
 
 ## Improvements
 
