@@ -24,7 +24,7 @@ Active Directory requirements for Azure Local include:
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, GPOs with enforced option enabled, aren't blocked. Ensure that any applicable GPOs, that have enforced option enabled, are blocked using other methods. For example, using a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648). Apply the WMI filter to any enforced GPOs, to exclude machine computer accounts for your Azure Local instances from applying the GPOs. Once the filter is applied, enforced GPOs won't be applied based on the logic you define in the WMI filter.
+> - When group policy inheritance is blocked at the OU level, GPOs with enforced option enabled aren't blocked. If this is applicable, ensure that these GPOs are blocked using other methods, for example using a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648). Apply the WMI filter to any enforced GPOs, to exclude machine computer accounts for your Azure Local instances from applying the GPOs. Once the filter is applied, enforced GPOs won't apply, based on the logic defined in the WMI filter.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
@@ -97,7 +97,7 @@ To create a dedicated OU, follow these steps:
 
 ## Considerations for large scale deployments
 
-The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory (AD), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators' group of the physical machines.
+The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory (AD), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators' group of the physical machines.
 
 To mitigate the risk of a compromised LCM user account credential, we advise that for each Azure Local instance, you have a dedicated LCM user account with a unique password.
 
