@@ -87,7 +87,7 @@ If there are still errors then the machine running the AKS EE cluster could have
     Repair-Kms
    ```
 4. Contact Customer Support 
-If you are still encountering errors contact [Customer Support](AKS-Arc\aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md)
+If you are still encountering errors contact [Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md)
 
 
 ## Next steps
