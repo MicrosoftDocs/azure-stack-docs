@@ -41,7 +41,8 @@
       "type_mapping": {
         "Conceptual": "Content"
       },
-      "build_entry_point": "docs"
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
     },
     {
       "docset_name": "azure-managed-lustre",
@@ -56,19 +57,6 @@
       },
       "build_entry_point": "docs",
       "template_folder": "_themes"
-    },
-    {
-      "docset_name": "AzureLocal",
-      "build_source_folder": "azure-local",
-      "build_output_subfolder": "AzureLocal",
-      "locale": "en-us",
-      "monikers": [],
-      "moniker_ranges": [],
-      "open_to_public_contributors": true,
-      "type_mapping": {
-        "Conceptual": "Content"
-      },
-      "build_entry_point": "docs"
     },
     {
       "docset_name": "AzureStack",
