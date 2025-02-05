@@ -64,6 +64,10 @@ With AKS Edge Essentials, you get the benefit of having a fully supported stack 
 
 Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the Azure platform to the edge with core services such as governance, monitoring, application, ML, and data services. It also helps bring DevOps practices anywhere and build iteratively using GitOps and Flux to seamlessly manage application deployments.
 
+### Key Management Service (KMS) Plugin (preview) for Secret Encryption
+
+AKS Edge Essentials supports **the Key Management Service (KMS) Plugin**, which provides **encryption at rest** for Kubernetes secrets stored in the **etcd key-value store**. By enabling the KMS Plugin, clusters can securely encrypt secrets using a **Key Encryption Key (KEK)** that is automatically rotated every **30 days**. For step-by-step instructions, see [**How to enable the KMS Plugin in AKS Edge Essentials**](hyperlink to how to: KMS).
+
 ## Next steps
 
 - Read about [deployment options](./aks-edge-concept-clusters-nodes.md)
