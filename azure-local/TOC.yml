@@ -281,6 +281,8 @@ items:
     items:
     - name: What is Azure Arc VM management?
       href: manage/azure-arc-vm-management-overview.md
+    - name: Compare VM management capabilities
+      href: concepts/compare-vm-management-capabilities.md
     - name: Review prerequisites
       href: manage/azure-arc-vm-management-prerequisites.md
     - name: Assign RBAC role

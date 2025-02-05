@@ -4,19 +4,19 @@ description: This article describes how to use Application Control on Azure Loca
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 12/10/2024
+ms.date: 02/03/2025
 ms.service: azure-local
 ---
 
-# Manage Application Control for Azure Local, version 23H2
+# Manage Application Control for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Application Control to reduce the attack surface of Azure Local. For more information, see [Manage baseline security settings on Azure Local, version 23H2](../whats-new.md).
+This article describes how to use Application Control to reduce the attack surface of Azure Local. For more information, see [Manage baseline security settings on Azure Local](../whats-new.md).
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local, version 23H2 instance that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local instance that is deployed, registered, and connected to Azure.
 
 ## View Application Control settings via Azure portal
 
@@ -133,4 +133,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
-- [Complete the prerequisites and deployment checklist and install Azure Local, version 23H2](../deploy/deployment-prerequisites.md).
+- [Complete the prerequisites and deployment checklist and install Azure Local](../deploy/deployment-prerequisites.md).

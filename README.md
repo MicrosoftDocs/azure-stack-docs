@@ -2,9 +2,11 @@
 
 Welcome to the open source [documentation for Azure Stack](https://learn.microsoft.com/azure-stack). Azure Stack is a portfolio of products that extend Azure services and capabilities to your environment of choice—from the datacenter to edge locations and remote offices. Azure Stack portfolio includes the following products:
 
+- Azure Local
 - Azure Stack HCI
 - Azure Kubernetes Service (AKS) enabled by Azure Arc
 - Azure Stack Hub
+- Azure Managed Lustre File System
 
 ## Contribute to the Azure Stack documentation
 
