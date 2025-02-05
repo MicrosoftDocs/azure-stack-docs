@@ -11,7 +11,7 @@ ms.date: 01/17/2025
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This document helps you understand your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.  
+This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.  
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -26,7 +26,6 @@ You need a public certificate authority (CA) to issue your certificates or they 
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, make sure you understand the following requirements:
 
 - Store all 26 certificates in one folder.
-- The only supported FQDN is *autonomous.cloud.private*.
 - Use certificates issued by an enterprise CA. Self-signed certificates aren’t supported.
 - Define **Subject name** and **SAN**, as required by most browsers.
 - Ensure all certificates share the same trust chain.
@@ -70,7 +69,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Management endpoint certificate  | Required certificate subject  | Required certificate subject alternative names (SAN) |
 |----------------------|------------------|-----------------------|
 | Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s subject name must match exactly. For example, *Subject = 192.168.100.25*| Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s SAN must match exactly. For example, *SAN = 192.168.100.25* |
-| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *Subject = ManagementEndpointClientAuth*.  | Use a certificate SAN that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *SAN = ManagementEndpointClientAuth*.                                                                                     |
+| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *Subject = ManagementEndpointClientAuth*.  | Use a certificate SAN that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *SAN = ManagementEndpointClientAuth*. |
 
 ## Create certificates to secure endpoints
 
