@@ -42,7 +42,7 @@ The KMS plugin will be supported for all AKS EE clusters version 1.10.xxx.0 and 
   }
    ```
 A new deployment has been created when you see the following message:
-    :::image type="content" source="media/aks-edge/aks-ee-successful-deployement.jpg" alt-text="Screenshot showing Visual Studio create new solution." lightbox="media/aks-edge/aks-ee-successful-deployement.jpg":::
+    :::image type="content" source="media/aks-edge/aks-ee-successful-deployement.jpg" alt-text="Screenshot showing new deployement." lightbox="media/aks-edge/aks-ee-successful-deployement.jpg":::
 
 2. Validating KMS Installation
 The following sections describe how to validate the KMS plugin installation for AKS EE cluster 
@@ -59,7 +59,7 @@ The following sections describe how to validate the KMS plugin installation for 
     kubectl get secret db-user-pass -o jsonpath='{.data}'
    ```
 If successful the terminal will show the following output:
-    :::image type="content" source="media/aks-edge/aks-ee-successful-secret-create.jpg" alt-text="Screenshot showing Visual Studio create new solution." lightbox="media/aks-edge/aks-ee-successful-secret-create.jpg":::
+    :::image type="content" source="media/aks-edge/aks-ee-successful-secret-create.jpg" alt-text="Screenshot showing secret creation and retrieval." lightbox="media/aks-edge/aks-ee-successful-secret-create.jpg":::
 
 
 ## Troubleshooting
@@ -77,7 +77,7 @@ If the problem persists, then validate that installation succeeded and to check 
     kubectl get --raw='/readyz?verbose'
    ```
 
-:::image type="content" source="media/aks-edge/aks-ee-kms-plugin-ok.jpg" alt-text="Screenshot showing Visual Studio create new solution." lightbox="media/aks-edge/aks-ee-kms-plugin-ok.jpg":::
+:::image type="content" source="media/aks-edge/aks-ee-kms-plugin-ok.jpg" alt-text="Screenshot showing readyz api." lightbox="media/aks-edge/aks-ee-kms-plugin-ok.jpg":::
 
 If you receive [-] before the output then collect Diagnostic Logs for debugging. Refer to the link instructions [here](aks-get-kubelet-logs.md) for more information. 
 
