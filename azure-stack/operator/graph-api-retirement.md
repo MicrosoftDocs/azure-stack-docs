@@ -15,15 +15,15 @@ The Microsoft Entra ID (formerly Azure Active Directory or Azure AD) [Graph API 
 
 ## Mitigation steps
 
-The Graph API retirement affects all Azure Stack Hub customers, and requires you to run the script included in this article for all affected applications. If you have applications that need continued access to the Graph APIs, the script configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+The Graph API retirement affects all Azure Stack Hub customers, and requires you to run the script included in this article for all impacted applications. If you have applications that need continued access to the Graph APIs, the script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
 
-The script provided in this article sets a flag for each application to configure the Graph API extension for your connected Azure Stack environments.
+The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for your connected Azure Stack environments.
 
 To ensure that your connected Azure Stack environments continue functioning through the June cutoff date and beyond, you should run this script by the end of February 2025.
 
 ## Run the script
 
-Run the following script in your Azure Stack Hub environment to configure the Graph API extension. You can run the script after your environment is deployed. The script interacts with Azure, so you don't need to run it on a specific machine. However, you need to have administrator access to run the script, and you must run it in each of your directory tenants.
+Run the following PowerShell script in your Azure Stack Hub environment to configure the Graph API extension. You can run the script after your environment is deployed. The script interacts with Azure, so you don't need to run it on a specific machine. However, you need administrator privileges to run the script, and you must run it in each of your directory tenants.
 
 Make sure to run the following script with administrator privileges:
 
@@ -114,9 +114,9 @@ Found '14' total Azure Stack applications which need permission to continue call
 Run the script a second time to verify that all applications were updated. The script should return the following output if all applications were successfully updated:
 
 ```output
-Looking-up all applications in directory '104edf09-7fc1-459f-8c4e-b062db480b90'...
-Found '3164' total applications in directory '104edf09-7fc1-459f-8c4e-b062db480b90'
-Found '102' total Azure Stack deployments in directory '104edf09-7fc1-459f-8c4e-b062db480b90'
+Looking-up all applications in directory '<ID>'...
+Found '3164' total applications in directory '<ID>>'
+Found '102' total Azure Stack deployments in directory '<ID>>'
 Found '0' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service 
 ```
 
