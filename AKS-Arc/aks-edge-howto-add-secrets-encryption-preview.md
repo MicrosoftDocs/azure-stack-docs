@@ -29,7 +29,7 @@ The KMS plugin will be supported for all AKS EE clusters version 1.10.xxx.0 and 
 > You can only enable or disable the KMS Plugin when creating a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
 
 1. Installing the KMS Plugin
-- Install the single machine deployment using the [Single Machine Kubernetes guide](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-edge-howto-single-node-deployment#step-1-single-machine-configuration-parameters) guide
+- Install the single machine deployment using the [Single Machine Kubernetes guide](AKS-Arc/aks-edge-concept-clusters-nodes.md) guide
 - During the first step in the single machine deployment process, create an **aksedge-config.json** file 
 - Replace the value of KMS from 'false' to 'true'. 
 - In your **aksedge-config file**, in the Init section, set Init.KmsPlugin.Enable to True as shown below:
@@ -66,7 +66,7 @@ If successful the terminal will show the following output:
 If there are errors with the KMS plugin, please run the following commands. 
 
 1. Check that the AKS version is **1.10.xxx.0** and later
-Use the following command to check for upgrades for Kubernetes Cluster. Please refer to [upgrade an AKS Cluster](https://learn.microsoft.com/en-us/azure/aks/upgrade-aks-cluster?tabs=azure-cli) for more information.
+Use the following command to check for upgrades for Kubernetes Cluster. Please refer to [upgrade an AKS Cluster](AKS-Arc\aks-edge-howto-update.md) for more information.
 
    ```shell
     az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -79,7 +79,7 @@ If the problem persists, then validate that installation succeeded and to check 
 
 :::image type="content" source="media/aks-edge/aks-ee-kms-plugin-ok.jpg" alt-text="Screenshot showing Visual Studio create new solution." lightbox="media/aks-edge/aks-ee-kms-plugin-ok.jpg":::
 
-If you receive [-] before the output then collect Diagnostic Logs for debugging. Refer to the link instructions [here](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-edge-resources-logs) for more information. 
+If you receive [-] before the output then collect Diagnostic Logs for debugging. Refer to the link instructions [here](AKS-Arc/aks-get-kubelet-logs.md) for more information. 
 
 3. Repair KMS 
 If there are still errors then the machine running the AKS EE cluster could have been paused or turned off for extended periods of time (over 30 days) the Repair-Kms command can be run to rehydrates any necessary tokens to get KMS back in a healthy state.
@@ -87,7 +87,7 @@ If there are still errors then the machine running the AKS EE cluster could have
     Repair-Kms
    ```
 4. Contact Customer Support 
-If you are still encountering errors contact [Customer Support](https://learn.microsoft.com/en-us/azure/aks/aks-support-help) and [collect logs](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-edge-resources-logs)
+If you are still encountering errors contact [Customer Support](AKS-Arc\aks-edge-troubleshoot-overview.md) and [collect logs](AKS-Arc/aks-get-kubelet-logs.md)
 
 
 ## Next steps
