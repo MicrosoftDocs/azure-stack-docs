@@ -1,11 +1,7 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+- name: Adaptive Cloud documentation
+  tocHref: /azure/adaptive-cloud/
+  topicHref: /azure/adaptive-cloud/index
   items:
-  - name: Hybrid and multicloud
-    tocHref: /hybrid/
-    topicHref: /hybrid/
-    items:
-    - name: App solutions
-      tocHref: /hybrid/app-solutions/
-      topicHref: /hybrid/app-solutions/index
+  - name: Azure hybrid and multicloud patterns and solutions documentation
+    tocHref: /azure/adaptive-cloud/app-solutions/
+    topicHref: /azure/adaptive-cloud/app-solutions/index
