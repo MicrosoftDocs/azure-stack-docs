@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/04/2025
+ms.date: 02/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -31,8 +31,6 @@ To manually assign the required permissions for Active Directory, create an OU, 
 
 ## Prerequisites
 
-Before you begin, ensure to complete the following prerequisites:
-
 - Complete the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Local.
 - Install version 2402 of the ['AsHciADArtifactsPreCreationTool'](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402) module. Run the following command to install the module from PowerShell Gallery:
 
@@ -43,7 +41,7 @@ Before you begin, ensure to complete the following prerequisites:
     > [!NOTE]
     > Make sure to uninstall any previous versions of the module before installing the new version.
 
-- You require permissions to create an Organizational Unit (OU). If you don't have permissions, contact your Active Directory administrator.
+- You require permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
 
 - If you have a firewall between your Azure Local system and Active Directory, ensure that the proper firewall rules are configured. For specific guidance, see [Firewall requirements for Active Directory Web Services and Active Directory Gateway Management Service](../concepts/firewall-requirements.md). See also [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts#windows-server-2008-and-later-versions).
 
@@ -58,7 +56,7 @@ The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool 
 
 > [!NOTE]
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
-> - Moving the computer objects to a different OU post deployment is not supported.
+> - After the deployment is complete, moving the computer objects to a different OU isn't supported.
 
 ## Prepare Active Directory
 
@@ -90,7 +88,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name should be created, which will contain the new LCM deployment user account.
+1. An OU with the specified name is created. This OU contains the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
@@ -101,11 +99,16 @@ To create a dedicated OU, follow these steps:
 
 The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory (AD), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity has been delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators' group of the physical machines.
 
-To mitigate the risk of a compromised LCM user account / password, it's advisable to maintain a one-to-one relationship between each Azure Local instance and its LCM user account. This means having an individual LCM user account per instance, with each LCM user account having a unique password.
+To mitigate the risk of a compromised LCM user account credential, we advise that for each Azure Local instance, you have a dedicated LCM user account with a unique password.
 
-It's recommended to create an individual OU within Active Directory (AD) for each Azure Local instance. This approach helps manage each instances computer account / cluster name object (CNO), individual LCM user account, and physical machine computer accounts within the scope of a single OU. When deploying multiple instances at scale, create each instance OU under a single parent OU for easier management within your OU structure and disable GPO inheritance at the parent OU level.
+We recommend that you follow these best practices for OU creation:
 
-The recommendations to create an individual LCM user account and individual OU for each Azure Local instance are automated when using `New-HciAdObjectsPreCreation` cmdlet, as outlined in the [Active Directory preparation module](#active-directory-preparation-module) section.
+- For each Azure Local instance, create an individual OU within Active Directory. This approach helps manage computer account, CNO, LCM user account, and physical machine computer accounts within the scope of a single OU for each instance.
+- When deploying multiple instances at-scale, for easier management:
+  - Create an OU under a single parent OU for each instance.
+  - Disable GPO inheritance at the parent OU level.
+
+The preceding recommendations are automated, when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
 
 ## Next steps
 
