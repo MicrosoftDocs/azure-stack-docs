@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/13/2024
+ms.date: 02/05/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -51,6 +51,9 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ## Download the update
 
 You can download the Azure Stack Hub update package using [the Azure Stack Hub update downloader tool](https://aka.ms/azurestackupdatedownload).
+
+> [!IMPORTANT]
+> The Microsoft Entra ID Graph API service is being retired. This retirement affects all Azure Stack Hub customers, and requires you to [run the script included in this article](graph-api-retirement.md) for all affected applications.
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
