@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/13/2024
+ms.date: 02/05/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -33,6 +33,9 @@ To access release notes for a different version, use the version selector dropdo
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
+
+> [!IMPORTANT]
+> The Microsoft Entra ID Graph API service is being retired. This retirement affects all Azure Stack Hub customers, and requires you to [run the script included in this article](graph-api-retirement.md) for all affected applications.
 
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance does not have an active support contract with the hardware partner, it's considered out of compliance. You must [have an active support contract for the hardware to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
