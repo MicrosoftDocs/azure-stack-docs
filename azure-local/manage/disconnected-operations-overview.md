@@ -48,13 +48,6 @@ Disconnected operations for Azure Local support the following services:
 | Key Vault                         | Create and manage Key Vaults to store and access secrets. |
 | Policy                            | Enforce standards through policies when creating new resources. |
 
-## Prerequisites
-
-Before you begin, make sure you review and apply the appropriate hardware and requirements for Azure Local:
-
-- [System requirements for Azure Local](../concepts/system-requirements-23h2.md).
-- Validated nodes or higher, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/).
-
 <!--### Hardware requirements
 
 The virtual appliance for disconnected operations runs on Azure Local instances. To operate Azure Local with disconnected operations, you need to plan for extra capacity for the virtual appliance. Additionally, you must meet higher minimum hardware requirements to deploy and operate Azure Local with disconnected operations, as it hosts a local control plane.
@@ -112,7 +105,7 @@ To participate in the preview, you must meet the following criteria:
 
 - **Business needs to operate disconnected**: The disconnected operations feature is for those who can't connect to Azure due to connectivity issues or regulatory restrictions. To be eligible for the preview, you must demonstrate a valid business need for operating disconnected. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
-- **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected for Azure Local. For more information, see [Prerequisites](../manage/disconnected-operations-overview.md#prerequisites).
+- **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected for Azure Local. For more information, see [System requirements](../concepts/system-requirements-23h2.md).
 
 - **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring their own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
 
@@ -129,23 +122,23 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | Step # | Description |
 |------------|------------------|
 | Read the overview | Review the overview to understand the disconnected operations feature and its benefits. |
-| Review prerequisites | Review the requirements and complete all the prerequisites before you begin the deployment. |
+| Review the participation criteria | Review the participation criteria before you get started. |
 | **Plan** |        |
-| Step 1: [Hardware requirements for disconnected operations](disconnected-operations-hardware.md). | Ensure that you have the necessary hardware. |
-| Step 2: [Network requirements for disconnected operations](disconnected-operations-network.md). | Configure the required network settings. |
-| Step 3: [Identity integration for disconnected operations](disconnected-operations-identity.md). | Understand and configure your identity solution. |
-| Step 4: [Security controls for disconnected operations](disconnected-operations-security.md). | Configure PKI and secure the endpoints. |
-| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
-| Step 6: [Set up disconnected operations](disconnected-operations-virtual-appliance.md). | Ensure you have the necessary access and permissions to set up disconnected operations. |
-| Step 7: [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
+| Step 1: [Hardware requirements for disconnected operations](index.yml). | Ensure that you have the necessary hardware. |
+| Step 2: [Network requirements for disconnected operations](index.yml). | Configure the required network settings. |
+| Step 3: [Identity integration for disconnected operations](index.yml). | Understand and configure your identity solution. |
+| Step 4: [Security controls for disconnected operations](index.yml). | Configure PKI and secure the endpoints. |
+| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](index.yml). | Configure PKI and secure the endpoints. |
+| Step 6: [Set up disconnected operations](index.yml). | Ensure you have the necessary access and permissions to set up disconnected operations. |
+| Step 7: [Deploy Azure Local with disconnected operations](index.yml). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
 | [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
 | [Arc VMs for disconnected operations](disconnected-operations-arc-vms.md). | Manage Arc VMs on Azure Local. |
 | [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
-| [Fallback log collection for disconnected operations](disconnected-operations-fallback-log-collection.md). | Collect logs for troubleshooting. |
+| [Fallback log collection for disconnected operations](index.yml). | Collect logs for troubleshooting. |
 
 ## Next steps
 
-- [Hardware requirements for disconnected operations](disconnected-operations-hardware.md).
+- [Hardware requirements for disconnected operations](index.yml).
