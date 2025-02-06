@@ -19,6 +19,10 @@ This article describes disconnected operations and how they can be used in the d
 
 Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
+To run Azure Local with disconnected operations, it is essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher due to the need to host a local control plane. Proper planning is important to ensure smooth operations.
+
+For more information, see technical prerequisites and hardware in the [Preview participation criteria](./disconnected-operations-overview.md#preview-participation-criteria) section.
+
 ## Why use disconnected operations?
 
 Here are some scenarios for running Azure Local with disconnected operations:
@@ -59,6 +63,16 @@ To participate in the preview, you must meet the following criteria:
 - **Technical prerequisites**: Your organization must meet the technical requirements to ensure secure and reliable operation when operating disconnected for Azure Local. For more information, see [System requirements](../concepts/system-requirements-23h2.md).
 
 - **Hardware**: The disconnected operations feature is supported on validated Azure Local hardware during preview. You must bring their own validated Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+
+  - In addition to the Azure Local hardware requirements, each node must meet the following minimum hardware specifications to run the disconnected operations appliance:
+
+    | Specification                | Minimum configuration            |
+    | -----------------------------| ---------------------------------|
+    | Number of nodes              | 3 nodes                          |
+    | Memory per node              | 64 GB                            |
+    | Cores per node               | 24 physical cores                |
+    | Storage per node             | 2 TB SSD/NVME                    |
+    | Boot disk                    | 480 GB SSD/NVME                  |
 
 ## Get started
 
