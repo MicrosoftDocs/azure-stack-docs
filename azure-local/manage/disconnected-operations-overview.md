@@ -89,7 +89,7 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | Read the overview | Review the overview to understand the disconnected operations feature and its benefits. |
 | Review the participation criteria | Review the participation criteria before you get started. |
 | **Plan** |        |
-| Step 1: [Hardware requirements for disconnected operations](../index.yml). | Ensure that you have the necessary hardware. |
+| Step 1: [Hardware requirements for disconnected operations](../manage/disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
 | Step 2: [Network requirements for disconnected operations](../index.yml). | Configure the required network settings. |
 | Step 3: [Identity integration for disconnected operations](../index.yml). | Understand and configure your identity solution. |
 | Step 4: [Security controls for disconnected operations](../index.yml). | Configure PKI and secure the endpoints. |
@@ -103,7 +103,3 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | [Azure Container Registry for disconnected operations](../index.yml). | Manage Azure Container Registry on Azure Local. |
 | [Azure Policy for disconnected operations](../index.yml). | Enforce standards through policies when creating new resources. |
 | [Log collection for disconnected operations](../index.yml). | Collect logs for troubleshooting. |
-
-## Next steps
-
-- [Hardware requirements for disconnected operations](../index.yml).
