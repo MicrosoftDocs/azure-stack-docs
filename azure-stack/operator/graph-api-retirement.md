@@ -17,15 +17,18 @@ The Microsoft Entra ID (formerly Azure Active Directory or Azure AD) [Graph API 
 
 The Graph API retirement affects all Azure Stack Hub customers, and requires you to run the script included in this article for all impacted applications. If you have applications that need continued access to the Graph APIs, the script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
 
-The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for your connected Azure Stack environments.
+The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for each Entra ID identity provider of Azure Stack Hub.
 
-To ensure that your connected Azure Stack environments continue functioning through the June cutoff date and beyond, you should run this script by the end of February 2025.
+To ensure that your Azure Stack Hub environments that use Entra ID as an identity provider continue functioning, you should run this script by the end of February 2025.
+
+> [!NOTE]  
+> If you delay adding this flag beyond February 2025, authentication will fail. You can then run this script to ensure your Azure Stack Hub functions as needed.
 
 ## Run the script
 
-Run the following PowerShell script in your Azure Stack Hub environment to configure the Graph API extension. You can run the script after your environment is deployed. The script interacts with Azure, so you don't need to run it on a specific machine. However, you need administrator privileges to run the script, and you must run it in each of your directory tenants.
+Run the following PowerShell script in your Entra ID environment that is used by Azure Stack Hub as the "home directory" (the main identity provider of your Azure Stack Hub). The script interacts with Azure, so you don't need to run it on a specific machine. However, you need at least "application administrator" privileges in the respective Entra ID tenant to run the script.
 
-Make sure to run the following script with administrator privileges:
+Make sure to run the following script with administrator privileges on the local machine:
 
 ```powershell
 # Install the graph modules if necessary
@@ -92,31 +95,33 @@ The script displays the following sample output:
 
 ```output
 Looking-up all applications in directory '<ID>'... 
-Found '3164' total applications in directory '<ID>'
-Found '102' total Azure Stack deployments in directory '<app ID>'
-Found '14' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service
-1/14 - Updating application 'Azure Stack - AKS' (appId=<app ID>) (id=<ID>)
-2/14 - Updating application 'Azure Stack - Hubs' (appId=<app ID>) (id=<ID>)
-3/14 - Updating application 'Azure Stack - Portal Administration' (appId=<app ID>) (id=<app>)
-4/14 - Updating application 'Azure Stack - RBAC Administration' (appId=<app ID>) (id=ID)
-5/14 - Updating application 'Azure Stack - Container Registry' (appId=<app ID>) (id=ID)
-6/14 - Updating application 'Azure Stack - RBAC' (appId=<app ID>) (id=ID)
-7/14 - Updating application 'Azure Stack - Hubs Administration' (appId=<app ID>) (id=ID)
-8/14 - Updating application 'Azure Stack - Deployment Provider' (appId=<app ID>) (id=ID)
-9/14 - Updating application 'Azure Stack - Deployment' (appId=<app ID>) (id=ID)
-10/14 - Updating application 'Azure Stack - KeyVault' (appId=<app ID>) (id=ID)
-11/14 - Updating application 'Azure Stack' (appId=<app ID>) (id=ID)
-12/14 - Updating application 'Azure Stack - Administration' (appId=<app ID>) (id=ID)
-13/14 - Updating application 'Azure Stack - Policy Administration' (appId=<app ID>) (id=ID)
-14/14 - Updating application 'Azure Stack - Policy' (appId=<app ID>) (id=ID) 
+Found '###' total applications in directory '<ID>'
+Found '1' total Azure Stack deployments in directory '<app ID>'
+Found '16' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service
+1/16 - Updating application 'Azure Stack - AKS' (appId=<app ID>) (id=<ID>)
+2/16 - Updating application 'Azure Stack - Hubs' (appId=<app ID>) (id=<ID>)
+3/16 - Updating application 'Azure Stack - Portal Administration' (appId=<app ID>) (id=<app>)
+4/16 - Updating application 'Azure Stack - RBAC Administration' (appId=<app ID>) (id=ID)
+5/16 - Updating application 'Azure Stack - Container Registry' (appId=<app ID>) (id=ID)
+6/16 - Updating application 'Azure Stack - RBAC' (appId=<app ID>) (id=ID)
+7/16 - Updating application 'Azure Stack - Hubs Administration' (appId=<app ID>) (id=ID)
+8/16 - Updating application 'Azure Stack - Deployment Provider' (appId=<app ID>) (id=ID)
+9/16 - Updating application 'Azure Stack - Deployment' (appId=<app ID>) (id=ID)
+10/16 - Updating application 'Azure Stack - KeyVault' (appId=<app ID>) (id=ID)
+11/16 - Updating application 'Azure Stack' (appId=<app ID>) (id=ID)
+12/16 - Updating application 'Azure Stack - Administration' (appId=<app ID>) (id=ID)
+13/16 - Updating application 'Azure Stack - Policy Administration' (appId=<app ID>) (id=ID)
+14/16 - Updating application 'Azure Stack - Policy' (appId=<app ID>) (id=ID)
+15/16 - Updating application 'Azure Stack - Portal' (appId=<app ID>) (id=ID)
+16/16 - Updating application 'Azure Stack - KeyVault Administration ' (appId=<app ID>) (id=ID) 
 ```
 
 Run the script a second time to verify that all applications were updated. The script should return the following output if all applications were successfully updated:
 
 ```output
 Looking-up all applications in directory '<ID>'...
-Found '3164' total applications in directory '<ID>>'
-Found '102' total Azure Stack deployments in directory '<ID>>'
+Found '####' total applications in directory '<ID>>'
+Found '1' total Azure Stack deployments in directory '<ID>>'
 Found '0' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service 
 ```
 
