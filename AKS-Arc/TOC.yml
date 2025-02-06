@@ -225,7 +225,7 @@
       - name: Access TPM secrets
         href: aks-edge-howto-access-tpm.md
       - name: Add secrets encryption with the KMS plugin
-        href: aks-edge-howto-secrets-encryption.md
+        href: aks-edge-howto-secret-encryption.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
