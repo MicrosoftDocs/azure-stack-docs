@@ -17,15 +17,18 @@ The Microsoft Entra ID (formerly Azure Active Directory or Azure AD) [Graph API 
 
 The Graph API retirement affects all Azure Stack Hub customers, and requires you to run the script included in this article for all impacted applications. If you have applications that need continued access to the Graph APIs, the script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
 
-The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for your connected Azure Stack environments.
+The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for each Entra ID identity provider of Azure Stack Hub.
 
-To ensure that your connected Azure Stack environments continue functioning through the June cutoff date and beyond, you should run this script by the end of February 2025.
+To ensure that your Azure Stack Hub environments that use Entra ID as an identity provider continue functioning, you should run this script by the end of February 2025.
+
+> [!NOTE]  
+> If you delay adding this flag beyond February 2025, authentication will fail. You can then run this script to ensure your Azure Stack Hub functions as needed.
 
 ## Run the script
 
-Run the following PowerShell script in your Azure Stack Hub environment to configure the Graph API extension. You can run the script after your environment is deployed. The script interacts with Azure, so you don't need to run it on a specific machine. However, you need administrator privileges to run the script, and you must run it in each of your directory tenants.
+Run the following PowerShell script in your Azure Entra ID environment that is used by Azure Stack Hub as the "home directory" (the main identity provider of your Azure Stack Hub). The script interacts with Azure, so you don't need to run it on a specific machine. However, you need at least "application administrator" privileges in the respective Entra ID tenant to run the script.
 
-Make sure to run the following script with administrator privileges:
+Make sure to run the following script with administrator privileges on the local machine:
 
 ```powershell
 # Install the graph modules if necessary
