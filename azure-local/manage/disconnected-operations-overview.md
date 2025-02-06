@@ -48,55 +48,6 @@ Disconnected operations for Azure Local support the following services:
 | Azure Key Vault                         | Create and manage key vaults to store and access secrets. |
 | Policy                            | Enforce standards through policies when creating new resources. |
 
-<!--### Hardware requirements
-
-The virtual appliance for disconnected operations runs on Azure Local instances. To operate Azure Local with disconnected operations, you need to plan for extra capacity for the virtual appliance. Additionally, you must meet higher minimum hardware requirements to deploy and operate Azure Local with disconnected operations, as it hosts a local control plane.
-
-This checklist provides you with the minimum hardware requirements each node needs to support the disconnected operations virtual appliance. You should factor in extra capacity for VM or AKS workloads in your capacity planning.
-
-| Specification                        | Minimum configuration            |
-| -------------------------------------| ---------------------------------|
-| Minimum number of nodes              | 3 nodes                          |
-| Minimum memory per node              | 64 GB                            |
-| Minimum cores per node               | 24 physical cores                |
-| Minimum storage per node             | 2 TB SSD/NVME                    |
-| Minimum boot drive storage           | 480 GB SSD/NVME                  |
-| Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local, version 23H2](../plan/cloud-deployment-network-considerations.md) <br><br> Note: Switchless configurations work for cluster size of three nodes only. |-->
-
-<!--### Integration requirements
-
-You must integrate with existing datacenter assets that need to be pre-deployed and configured before starting the disconnected operations deployment process.
-
-The following table lists the requirements to successfully deploy and run disconnected operations on Azure Local instances.
-
-| Area          | Supported system         | Use                          |
-| --------------| -------------------------| -----------------------------|
-| Identity      | Active Directory Federation Service (ADFS) on Windows Server 2022. | Lightweight Directory Access Protocol (LDAP) provides group membership and synchronization. <br><br> ADFS authenticates users to the Azure Local portal to manage disconnected operations using Open-ID Connect (OIDC). <br><br> Active Directory (AD) is required for disconnected operations. |
-| Public Key Infrastructure (PKI)   | Private and Public PKIs are supported. <br><br> If you use a public PKI, the certificate revocation list (CRL) endpoints must be reachable from your infrastructure. <br><br> Active Directory Certificate Services (ADCS) validated as a Private PKI solution. | Issue certificates to secure Azure Local disconnected operations endpoints (TLS). |
-| Network Time Protocol (NTP) optional  | Local or Public time server. | Time server synchronizes the system clock. |
-| Domain Name System (DNS)   | Any DNS server, such as DNS role on Windows Server. | DNS service is required in the local network to resolve Azure Local-disconnected operations endpoints and configure ingress IPs. <br><br> When you run the appliance for disconnected operations in a connected mode, a DNS server is required to resolve Microsoft domain names for logging and telemetry. |
-
-For information on deploying and configuring the integration components, refer to:
-
-- [Install and configure DNS Server on Windows Server](/windows-server/networking/dns/quickstart-install-configure-dns-server?tabs=powershell)
-- [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service)
-- [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)
-- [What is Active Directory Certificate Services?](/windows-server/identity/ad-cs/active-directory-certificate-services-overview)
-- [Implement and manage Active Directory Certificate Services](/training/modules/implement-manage-active-directory-certificate-services/)
-- [ADFS 2016 deployment](/windows-server/identity/ad-fs/ad-fs-deployment)
-- [Design options for ADFS for Windows Server](/windows-server/identity/ad-fs/ad-fs-design)
-
-### Access requirements
-
-To successfully configure disconnected operations and create the necessary resources, you need appropriate access and permissions to create and modify the following resources:
-
-| Component   | Access required    |
-|-------------|--------------------|
-| AD ADFS   | Create a service account with read access for the organizational unit to facilitate LDAP integration. <br><br> Export the configuration for ADFS (OIDC). |
-| DNS         | Access to create DNS records or zones to provide lookups for a disconnected operations endpoint. |
-| PKI         | Ability to create and export certificates to secure disconnected operations endpoints (TLS). |
-| Network     | Access to the firewall (if a local firewall is implemented) to ensure necessary changes can be done. |-->
-
 ## Preview participation criteria
 
 To participate in the preview, you must meet the following criteria:
@@ -137,7 +88,7 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | [Azure Kubernetes Service enabled by Arc for disconnected operations](../index.yml). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | [Azure Container Registry for disconnected operations](../index.yml). | Manage Azure Container Registry on Azure Local. |
 | [Azure Policy for disconnected operations](../index.yml). | Enforce standards through policies when creating new resources. |
-| [Fallback log collection for disconnected operations](../index.yml). | Collect logs for troubleshooting. |
+| [Log collection for disconnected operations](../index.yml). | Collect logs for troubleshooting. |
 
 ## Next steps
 
