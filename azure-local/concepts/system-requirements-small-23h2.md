@@ -6,11 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 11/25/2024
-monikerRange: ">=azloc-2411"
+ms.date: 02/06/2025
 ---
 
 # System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
+
+::: moniker range=">=azloc-2411"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -155,3 +156,11 @@ Review firewall, physical network, and host network requirements:
 - [Firewall requirements](./firewall-requirements.md).
 - [Physical network requirements](./physical-network-requirements.md).
 - [Host network requirements](./host-network-requirements.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2411"
+
+This feature is available only in Azure Local 2411 or later.
+
+::: moniker-end

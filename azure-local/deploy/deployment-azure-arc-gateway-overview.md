@@ -3,13 +3,14 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/22/2025
+ms.date: 02/06/2025
 ms.author: alkohli
-monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 
 # About Azure Arc gateway for Azure Local (preview)
+
+::: moniker range=">=azloc-24111"
 
 > Applies to: Azure Local 2411.1 and later
 
@@ -206,3 +207,11 @@ This operation can take a couple of minutes.
 - [Configure the proxy via registration script](deployment-azure-arc-gateway-configure-via-script.md)
 
 - [Use the gateway without a proxy](deployment-azure-arc-gateway-use-without-proxy.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 24111 or later.
+
+::: moniker-end
