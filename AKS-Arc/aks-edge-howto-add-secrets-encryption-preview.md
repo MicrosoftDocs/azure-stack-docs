@@ -21,7 +21,7 @@ The KMS plugin will be supported for all AKS EE clusters version 1.10.xxx.0 and 
 
 ## Limitations
 1. Disabling the KMS plugin once enabled is not supported. 
-2. The plugin can be used for single node clusters. The KMS plugin cannot be used with the experimental multi-node features
+2. The plugin can be used for single node clusters. The KMS plugin cannot be used with the [experimental multi-node features](aks-edge-howto-scale-out.md)
 
 
 ## Enabling KMS Plugin on AKS EE 
@@ -30,9 +30,7 @@ The KMS plugin will be supported for all AKS EE clusters version 1.10.xxx.0 and 
 
 1. Installing the KMS Plugin
 - Install the single machine deployment using the [Single Machine Kubernetes guide](aks-edge-concept-clusters-nodes.md) guide
-- During the first step in the single machine deployment process, create an **aksedge-config.json** file 
-- Replace the value of KMS from 'false' to 'true'. 
-- In your **aksedge-config file**, in the Init section, set Init.KmsPlugin.Enable to True as shown below:
+- During the first step in the single machine deployment process, create an **aksedge-config.json** file. In the **aksedge-config file**, in the Init section, set Init.KmsPlugin.Enable to True as shown below:
 
    ```JSON
    "Init": {
