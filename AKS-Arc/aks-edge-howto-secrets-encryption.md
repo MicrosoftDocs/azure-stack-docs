@@ -67,7 +67,7 @@ To create a new secret encrypted by KMS, run the following command:
 kubectl create secret generic db-user-pass --from-literal=username=admin --from-literal=password='your-secret'
 ```
 
-#### Retrieve the secret which was created
+#### Retrieve the secret
 
 To retrieve the secret and test decryption, run the following command:
 
@@ -80,14 +80,14 @@ If successful, the terminal shows the following output:
 
 ```output
 PS C:\Windows\system32> kubectl create secret generic db-user-pass1 --from-literal-username=admin --from-literal-password='your-secret" secret/db-user-pass1 created
-ps C:\Windows\system32> kubectl get secret db-user-pass1 -o jsonpath='{.data}' ["password": "ew91ci1zZWNyZXQ=", "username": "YWRtaw4="}
+PS C:\Windows\system32> kubectl get secret db-user-pass1 -o jsonpath='{.data}' ["password": "<password>", "username": "<username>"}
 ```
 
 ## Troubleshooting
 
 If there are errors with the KMS plugin, follow this procedure:
 
-1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check for upgrades for Kubernetes clusters. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
+1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check for upgrades to Kubernetes clusters. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
    ```azurecli
    az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -107,9 +107,9 @@ If there are errors with the KMS plugin, follow this procedure:
    [+]poststarthook/start-encryption-provider-config-automatic-reload ok
    ```
 
-If you receive [-] before the output, collect diagnostic logs for debugging. For more information see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
+   If you receive **[-]** before the output, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
-1. Repair KMS. If there are still errors, then the machine running the AKS Edge Essentials cluster might be paused or turned off for extended periods of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
+1. Repair KMS. If there are still errors, then the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
 
    ```powershell
    Repair-AksEdgeKms
