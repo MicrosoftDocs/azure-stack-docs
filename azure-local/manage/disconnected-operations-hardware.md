@@ -23,12 +23,13 @@ To run disconnected operations, you must meet the required system requirements f
 
 In addition to the Azure Local hardware requirements, each node must meet the following minimum hardware specifications to run the disconnected operations appliance:
 
-| Component | Minimum                   |
-|-----------|---------------------------|
-| Memory    | 64 GB                     |
-| Boot disk | 480 GB SSD/NVMe           |
-| Drives    | 2 TB SSD/NVMe drives only |
-| Cores     | 24                        |
+| Specification | Minimum                   |
+|---------------|---------------------------|
+| Nodes         | 3 to 8                    |
+| Memory        | 64 GB                     |
+| Boot disk     | 480 GB SSD/NVMe           |
+| Drives        | 2 TB SSD/NVMe drives only |
+| Cores         | 24 physical cores         |
 
 ## Supported deployment topologies  
 
