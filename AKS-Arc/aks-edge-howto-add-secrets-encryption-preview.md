@@ -84,7 +84,7 @@ If you receive [-] before the output then collect Diagnostic Logs for debugging.
 3. Repair KMS 
 If there are still errors then the machine running the AKS EE cluster could have been paused or turned off for extended periods of time (over 30 days) the Repair-Kms command can be run to rehydrates any necessary tokens to get KMS back in a healthy state.
    ```powershell
-    Repair-Kms
+    Repair-AksEdgeKms
    ```
 4. Contact Customer Support 
 If you are still encountering errors contact [Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md)
