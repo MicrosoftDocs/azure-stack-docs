@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 08/28/2022
+ms.date: 01/30/2025
 ms.reviewer: abha
 ms.lastreviewed: 08/15/2022
 
@@ -20,8 +20,8 @@ ms.lastreviewed: 08/15/2022
 |  \<region>.dp.kubernetesconfiguration.azure.com | 443  | Required to onboard AKS hybrid clusters to Azure Arc. |
 | gbl.his.arc.azure.com | 443 | Required to get the regional endpoint for pulling system-assigned Managed Identity certificates. |
 | \*.his.arc.azure.com | 443 | Required to pull system-assigned Managed Identity certificates. |
-| k8connecthelm.azureedge.net	| 443 | Arc-enabled Kubernetes uses Helm 3 to deploy Azure Arc agents on the AKS on Azure Local management cluster. This endpoint is needed for the Helm client download to facilitate deployment of the agent helm chart.
-| \*.arc.azure.net| 443 | Required to manage AKS hybrid clusters in Azure portal. |
+| k8connecthelm.azureedge.net    | 443 | Arc-enabled Kubernetes uses Helm 3 to deploy Azure Arc agents on the AKS on Azure Local management cluster. This endpoint is needed for the Helm client download to facilitate deployment of the agent helm chart. |
+| \*.arc.azure.net| 443 | Required to manage AKS Arc clusters in the Azure portal. |
 | dl.k8s.io | 443 | Required to download and update Kubernetes binaries for Azure Arc. |
 |  akshci.azurefd.net | 443 | Required for AKS on Azure Local billing when running `Install-AksHci`. |
-|  v20.events.data.microsoft.com </br> gcs.prod.monitoring.core.windows.net | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Local or Windows Server host. |
+|  v20.events.data.microsoft.com </br> gcs.prod.monitoring.core.windows.net | 443 | Used to periodically send Microsoft required diagnostic data from the Azure Local or Windows Server host. |
