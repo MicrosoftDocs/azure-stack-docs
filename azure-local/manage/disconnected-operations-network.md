@@ -7,7 +7,7 @@ ms.author: robess
 ms.date: 02/06/2025
 ---
 
-# Networking for disconnected operations on Azure Local (preview) 
+# Plan your network disconnected operations on Azure Local (preview) 
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
