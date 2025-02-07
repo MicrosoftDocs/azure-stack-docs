@@ -34,17 +34,17 @@ The following limitations apply to the KMS plugin for AKS Edge Essentials:
 
 ### Install the KMS plugin
 
-To install the KMS plugin, follow these steps:
+To install the KMS plugin, follow the steps in this section.
 
-#### Deploy the AKS Edge Essentials clusters
+#### Step 1: deploy the AKS Edge Essentials clusters
 
-See [Single machine deployment](aks-edge-howto-single-node-deployment.md). The following line is present if the KMS plugin is enabled:
+See [Single machine deployment](aks-edge-howto-single-node-deployment.md). The following output is displayed if the KMS plugin is enabled:
 
 ```output
 Preparing to install kms-plugin as encryption provider...
 ```
 
-#### Create and retrieve a secret which is encrypted using KMS
+#### Step 2: create and retrieve a secret which is encrypted using KMS
 
 To create a new secret encrypted by KMS, run the following command:
 
@@ -59,7 +59,7 @@ If successful, the terminal shows the following output:
 secret/db-user-pass1 created
 ```
 
-#### Retrieve the secret
+#### Step 3: retrieve the secret
 
 To retrieve the secret and test decryption, run the following command:
 

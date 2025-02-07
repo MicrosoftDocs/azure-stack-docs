@@ -224,7 +224,7 @@
         href: aks-edge-workload-identity.md      
       - name: Access TPM secrets
         href: aks-edge-howto-access-tpm.md
-      - name: Add secrets encryption with the KMS plugin
+      - name: Add secret encryption with the KMS plugin
         href: aks-edge-howto-secret-encryption.md
     - name: Update AKS Edge Essentials
       items:
