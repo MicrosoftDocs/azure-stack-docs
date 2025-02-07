@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: conceptual
 author: ManikaDhiman
 ms.author: v-manidhiman
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ---
 
 # Compare management capabilities of Azure Local VMs
@@ -48,7 +48,13 @@ The following table compares the provisioning and management methods for the var
 
 The following table compares the management capabilities for Arc VMs, Arc-enabled servers, and non-Arc VMs across various operations and features available through the Azure portal:
 
-|Management capability|Arc VMs|Arc-enabled servers|Non-Arc VMs|
+> [!IMPORTANT]
+> Keep in mind the following information when comparing VM management capabilities:
+>- Microsoft Product Terms for your program override this section. For more information, see [Microsoft Azure Product Terms](https://www.microsoft.com/licensing/#products) and select your program to show the terms.
+>- Some services, even if included in Azure Hybrid Benefits, may incur operational costs, such as storing log data. For more information, see [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+>- Some key features are part of the Windows Server Management enabled by Azure Arc experience. For more information, see [Windows Server Management enabled by Azure Arc](articles/azure-arc/servers/windows-server-management-overview.md).
+
+|Azure VM management capability|Arc VMs|Arc-enabled servers|Non-Arc VMs|
 |:-----|:-----:|:-----:|:-----:|
 | **Settings** |
 | - Start|✅|❌|❌|
@@ -75,12 +81,13 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Automanage |✅|❌|❌|
 | - Run command |✅|✅|❌|
 | - SQL Server Configuration |✅|✅|❌|
-| - Updates | ✅ <br>(free) | ✅ <br>(additional cost) | ❌ |
-| - Inventory |✅|✅|❌|
-| - Change tracking |✅|✅|❌|
+| - Azure Update Manager | ✅ <br>[^3] | ✅ <br>[^1][^2] | ❌ |
+| - Inventory |✅|✅ <br>[^1][^2] |❌|
+| - Change tracking |✅|✅ <br>[^1][^2] |❌|
+| - Extended Security Updates | ✅ <br>[^3] | ✅ <br>[^3] | ❌ |
 | **Windows management** |
-| - Windows Admin Center |❌|✅|❌|
-| - Best Practices Assessment |✅|✅|❌|
+| - Windows Admin Center |❌|✅ <br>[^1][^2] |❌|
+| - Best Practices Assessment |✅|✅ <br>[^1][^2] |❌|
 | **Monitoring** |
 | - Azure Monitor |✅|✅|❌|
 | - Insights|✅|✅|❌|
@@ -93,6 +100,10 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Tasks |✅|✅|❌|
 | - Export template |✅|❌|❌|
 | - Resource health |❌ <br>(Use Alerts) |✅|❌|
+
+- [^1]: at additional costs.
+- [^2]: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
+- [^3]: included for VMs running on Azure and Azure Local instances.
 
 ## Next steps
 
