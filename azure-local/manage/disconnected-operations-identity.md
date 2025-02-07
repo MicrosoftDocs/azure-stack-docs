@@ -196,13 +196,9 @@ As a host administrator, you can use the disconnected operations PowerShell cmdl
 
 ## Cmdlets for identity integration  
 
-As a host administrator, with the disconnected operations module and certificates used during installation available, you have a range of cmdlets to change settings and help you to troubleshoot the identity integration. Use the Get-command `ApplianceExternalIdentity` for a list of cmdlets available for identity integration. 
+As a host administrator, with the disconnected operations module and certificates used during installation available, you have a range of cmdlets to change settings and help you to troubleshoot the identity integration. Use the Get-command `ApplianceExternalIdentity` for a list of cmdlets available for identity integration.
 
-Expand each section for more information.
-
-<details>
-
-<summary>Test identity configuration</summary>
+### Test identity configuration
 
 Use this command to peform easy client side validation of your identity configuration.
 
@@ -212,11 +208,7 @@ $idpConfig = new-applianceIdentityConfiguration @identityParams
 Test-ApplianceExternalIDentityConfiguration -config $idpConfig
 ```
 
-</details>
-
-<details>
-
-<summary>Test identity configuration (deep validation)</summary>
+### Test identity configuration (deep validation)
 
 Use this command to valiate your parameters and setup before you set your configuration.
 
@@ -226,11 +218,7 @@ $idpConfig = new-applianceIdentityConfiguration @identityParams
 Test-ApplianceExternalIDentityConfigurationDeep -config $idpConfig
 ```
 
-</details>
-
-<details>
-
-<summary>Set or reset identity</summary>
+## Set or reset identity
 
 Use this command to reset the ownership of the operator subscription. Only do this if you have issues with your identity integration.
 
@@ -238,11 +226,7 @@ Use this command to reset the ownership of the operator subscription. Only do th
 Set-ApplianceExternalIdentityConfiguration
 ```
 
-</details>
-
-<details>
-
-<summary>Identity management</summary>
+### Identity management
 
 Use this command for a list of all cmlets to help you setup and troubleshoot identity configurations.
 
@@ -250,11 +234,9 @@ Use this command for a list of all cmlets to help you setup and troubleshoot ide
 Get-Command *Appliance*ExternalIdentity*
 ```
 
-</details>
-
 ## Appendix
 
-Use PowerShell on Windows Server 2022 or newer. Expand each section for more information.
+Use PowerShell on Windows Server 2022 or newer for these commands. Expand each section for more information.
 
 <details>
 
