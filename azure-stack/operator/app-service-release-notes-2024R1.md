@@ -190,7 +190,7 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
 
 - Resolved issues enabling blob storage for application logging
 
-- Improved swap experience when swapping slots to prevent timeouts
+- Improved swap experience when swapping slots to prevent time-outs
 
 - Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
 
@@ -207,7 +207,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- **Application downtime should be expected during Upgrade**
+- **Application downtime should be expected during Upgrade.**
 
   > [!IMPORTANT]
   >
