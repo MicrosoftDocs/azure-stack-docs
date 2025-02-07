@@ -338,6 +338,15 @@ Here are the summarized considerations for DNS servers addresses
 |2     | The infrastructure IP address range DNS servers must be the same used for the nodes.       |
 |3     | Azure Resource Bridge VM control plane and AKS control plane will use the DNS Servers configured on the infrastructure IP address range.      |
 |4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
+|5     | When defining an array of multiple DNS servers on an ARM template for the Infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.  |
+
+```powershell
+"dnsServers": [
+                        "10.250.16.124",
+                        "10.250.17.232",
+                        "10.250.18.107"
+                    ]
+```
 
 ### Proxy requirements
 

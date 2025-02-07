@@ -10,10 +10,10 @@ ms.custom: template-how-to
 
 # Create and configure an AKS Edge Essentials cluster that can run Azure IoT Operations
 
-Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc.
+Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc. 
 
 > [!NOTE]
-> Azure IoT Operations supports AKS Edge Essentials when deployed on single machine clusters. Deploying clusters on multiple machines is an experimental feature.
+> Azure IoT Operations supports AKS Edge Essentials when deployed on k3s single machine clusters only. K8s clusters are not supported for AIO and deploying clusters on multiple machines is an experimental feature.
 
 ## Prerequisites for running the script
 
@@ -33,8 +33,8 @@ To run the script, you need the following prerequisites:
 
 The [AksEdgeQuickStartForAio.ps1](https://github.com/Azure/AKS-Edge/blob/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1) script automates the process of creating and connecting a cluster, and is the recommended path for deploying Azure IoT Operations on AKS Edge Essentials. The script performs the following tasks:
 
-- Downloads the latest [AKS Edge Essentials MSI from this repo](https://github.com/Azure/aks-edge).
-- Installs AKS Edge Essentials, and deploys and creates a single machine Kubernetes cluster on your Windows machine.
+- Downloads the latest k3s [AKS Edge Essentials MSI from this repo](https://github.com/Azure/aks-edge).
+- Installs AKS Edge Essentials, and deploys and creates a single machine k3s cluster on your Windows machine.
 - Connects to the Azure subscription, creates a resource group if it doesn't already exist, and connects the cluster to Arc to create an Arc-enabled Kubernetes cluster.
 - Enables the custom location feature on the Arc-enabled Kubernetes cluster.
 - Enables the workload identity federation feature on the Arc-enabled Kubernetes cluster.
