@@ -196,7 +196,9 @@ As a host administrator, you can use the disconnected operations PowerShell cmdl
 
 ## Cmdlets for identity integration  
 
-As a host administrator, with the disconnected operations module and certificates used during installation available, you have a range of cmdlets to change settings and help you to troubleshoot the identity integration. Use the Get-command `ApplianceExternalIdentity` for a list of cmdlets available for identity integration. Expand each section for more information.
+As a host administrator, with the disconnected operations module and certificates used during installation available, you have a range of cmdlets to change settings and help you to troubleshoot the identity integration. Use the Get-command `ApplianceExternalIdentity` for a list of cmdlets available for identity integration. 
+
+Expand each section for more information.
 
 <details>
 
