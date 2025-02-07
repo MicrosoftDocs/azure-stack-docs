@@ -96,10 +96,10 @@ Syslog forwarding can be configured for the Azure Local with disconnected operat
 
 The syslog forwarder in the disconnected operation VM supports the following configurations:
 
-- **Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](../index.yml).
-- **Syslog forwarding with TCP, server authentication, and TLS encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](../index.yml).
-- **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Link to specific section](../index.yml).
-- **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Link to specific section](../index.yml).
+<!--**Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication, and TLS encryption](#syslog-forwarding-with-tcp-mutual-authentication-and-tls-encryption).-->
+- **Syslog forwarding with TCP, server authentication, and TLS encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-encryption).
+- **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Syslog forwarding with TCP and no encryption](#syslog-forwarding-with-tcp-and-no-encryption).
+- **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Syslog forwarding with UDP and no encryption](#syslog-forwarding-with-udp-and-no-encryption).
 
 > [!IMPORTANT]
 > To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments. The handshake between the endpoints determines the version of TLS encryption, and both TLS 1.2 and TLS 1.3 are supported by default.
@@ -117,17 +117,17 @@ The following table provides the parameters for the REST endpoint:
 | Parameter                   | Description                                                                 | Type   | Required |  
 |-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
 | **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
-| **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |  
 | **Enabled**                 | Determines whether the syslog agent in the Azure Local disconnected VM is enabled or disabled. When disabled, remove the current syslog forwarder configuration and stop the syslog forwarder. | Flag   | Yes      |  
 | **NoEncryption**            | Force the client to send syslog messages in clear text.                     | Flag   | No       |  
 | **OutputSeverity**          | Level of output logging. Values are **Default** or **Verbose**.<br></br> **Default** includes severity levels: warning, critical, or error.<br></br> **Verbose** includes all severity levels: verbose, informational, warning, critical, or error. | String | No       |  
-| **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |  
 | **ServerName**              | Fully qualified domain name (FQDN) or IP address of the syslog server.                                    | String | No       |  
 | **ServerPort**              | Port number the syslog server is listening on.                              | UInt16 | No       |  
 | **SkipServerCertificateCheck** | Skip validation of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
 | **SkipServerCNCheck**       | Skip validation of the Common Name value of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
 | **UseUDP**                  | Use syslog with UDP as transport protocol.                                  | Flag   | No       |  
+<!--| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
+| **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |
+| **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |-->
 
 ### OutputSeverity configuration
 
@@ -140,7 +140,7 @@ $configRequestContent = @{
 }  
 ```
 
-### Syslog forwarding with TCP, mutual authentication, and TLS encryption
+<!--### Syslog forwarding with TCP, mutual authentication, and TLS encryption
 
 In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
 
@@ -188,37 +188,21 @@ try {
 ```
 
 > [!IMPORTANT]
-> The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.
+> The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.-->
 
 ### Syslog forwarding with TCP, server authentication, and TLS encryption
 
 In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
-This configuration prevents the client from sending messages to untrusted destinations. The default configuration is TCP with authentication and encryption, representing the minimum level of security that Microsoft recommends for a production environment.
+This configuration prevents the client from sending messages to untrusted destinations. The default configuration is TCP with authentication and encryption, representing the minimum level of security that Microsoft recommends for a production environment. Microsoft recommends that you do not use the `-SkipServerCertificateCheck` flag in production environments
+
+To enable syslog forwarding with TCP, server authentication, and TLS encryption, prepare a configuration request in PowerShell with the following values:
 
 ```powershell
-# Base64-encode the root certificate.
-$filename = "<full path to root certificate>"
-$fileContentInBytes = [System.IO.File]::ReadAllBytes($filename)
-$rootCertInBase64 = [System.Convert]::ToBase64String($fileContentInBytes)
-   
-# Configure syslog forwarder parameters.
 $configRequestContent = @{
     Enabled = $true
     ServerName = "<FQDN or IP address of syslog server>"
     ServerPort = "<port number of the syslog server, e.g., 514>"
-    RootCertInBase64 = $rootCertInBase64 # Needed when using self-signed root cert
-}
-   
-# Update syslog forwarder configuration.
-$IRVMIP = "<VM management endpoint IP address>"
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"
-$requestContent = $configRequestContent | ConvertTo-Json
-   
-try {
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Put -Body $requestContent -ContentType "application/json" -Verbose
-}catch {
-  $_.Exception  
 }
 ```
 
@@ -242,87 +226,65 @@ $configRequestContent = @{
 }  
 ```
 
-> [!IMPORTANT]
-> Microsoft recommends that you do not use the `-SkipServerCertificateCheck` flag in production environments.
-
 ### Syslog forwarding with TCP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you do not use this configuration in production environments.
+
+To enable syslog forwarding with TCP and no encryption, prepare a configuration request in PowerShell with the following values:
 
 ```powershell
-# Configure syslog forwarder parameters.
 $configRequestContent = @{
     Enabled = $true
     ServerName = "<FQDN or IP address of syslog server>"
     ServerPort = "<port number of the syslog server, e.g., 514>"
     NoEncryption = $true
 }
-   
-# Update syslog forwarder configuration.
-$IRVMIP = "<VM management endpoint IP address>"
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"
-$requestContent = $configRequestContent | ConvertTo-Json
-   
-try {
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Put -Body $requestContent -ContentType "application/json" -Verbose  
-}catch {
-  $_.Exception
-}
 ```
-
-> [!IMPORTANT]
-> Microsoft recommends that you do not use this configuration in production environments.
 
 ### Syslog forwarding with UDP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you do not use this configuration in production environments.
+
+To enable syslog forwarding with UDP and no encryption, prepare a configuration request in PowerShell with the following values:
 
 ```powershell
-# Configure syslog forwarder parameters.
 $configRequestContent = @{
     Enabled = $true
     ServerName = "<FQDN or IP address of syslog server>"
     ServerPort = "<port number of the syslog server, e.g., 514>"
     UseUDP = $true
 }
-   
-# Update syslog forwarder configuration.
-$IRVMIP = "<VM management endpoint IP address>"
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"
-$requestContent = $configRequestContent | ConvertTo-Json
-   
-try {
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Put -Body $requestContent -ContentType "application/json" -Verbose
-}catch {
-  $_.Exception
-}
 ```
 
 While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks or eavesdropping of messages.
-
-> [!IMPORTANT]
-> Microsoft recommends that you do not use this configuration in production environments.
 
 ### Disable syslog forwarding
 
 To disable syslog forwarding, run the following cmdlet:
 
 ```powershell
-# Configure syslog forwarder parameters.
 $configRequestContent = @{
     Enabled = $false
+    ServerName = "<FQDN or IP address of syslog server>"
+    ServerPort = "<port number of the syslog server, e.g., 514>"
 }
-   
-# Update syslog forwarder configuration.
+```
+
+### Update syslog setup
+
+After the configuration has been properly defined, send the configuration request using the following PowerShell script:
+
+```powershell
 $IRVMIP = "<VM management endpoint IP address>"
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"
-$requestContent = $configRequestContent | ConvertTo-Json
-   
-try { 
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Put -Body $requestContent -ContentType "application/json" -Verbose
-}catch {
-  $_.Exception
-}
+$clientCertPath = "<path to client certificate pfx file for management endpoint>"
+$clientCertPassword = "<client certificate password>"
+
+$syslogConfigurationEndpoint = "https://$IRVMIP`:9443/sysconfig/SyslogConfiguration"
+$clientCert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($clientCertPath, $clientCertPassword)
+
+$requestBody = $configRequestContent | ConvertTo-Json
+
+Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Method Put -Body $requestBody -ContentType "application/json" -Verbose
 ```
 
 ### Verify syslog setup
@@ -331,13 +293,14 @@ After you successfully connect the syslog client to your syslog server, you shou
 
 ```powershell
 $IRVMIP = "<VM management endpoint IP address>"
-$syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"
-   
-try {
-  Invoke-RestMethod -Uri $syslogConfigurationEndpoint -Method Get -ContentType "application/json" -Verbose
-}catch {
-  $_.Exception
-}  
+$clientCertPath = "<path to client certificate pfx file for management endpoint>"
+$clientCertPassword = "<client certificate password>"
+
+$syslogConfigurationEndpoint = "https://$IRVMIP`:9443/sysconfig/SyslogConfiguration"
+$clientCert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($clientCertPath, $clientCertPassword)
+
+Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Method Get -ContentType "application/json" -Verbose
+
 ```
 
 If a setting property is not configured, its default value shows when trying to retrieve the current configurations.
@@ -423,54 +386,55 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 |------------|-------------|
 | Wireless Lan 802.1x authentication events with Peer MAC address | `query="Security!*[System[(EventID=5632)]]"` |
 | New service (4697) | `query="Security!*[System[(EventID=4697)]]"` |
-| TS Session reconnect (4778), TS Session disconnect (4779) | `query="Security!*[System[(EventID=4778 or EventID=4779)]]"` |
+| TS session reconnect (4778), TS session disconnect (4779) | `query="Security!*[System[(EventID=4778 or EventID=4779)]]"` |
 | Network share object access without IPC$ and Netlogon shares | `query="Security![System[(EventID=5140)] and EventData[Data[@Name='ShareName']!='\\IPC$']]"` |
-| System Time Change (4616) | `query="Security!*[System[(EventID=4616)]]"` |
+| System time change (4616) | `query="Security!*[System[(EventID=4616)]]"` |
 | Local logons without network or service events | `query="Security!*[System[(EventID=4624)] and EventData[Data[@Name='LogonType']!='3'] and EventData[Data[@Name='LogonType']!='5']]"` |
-| Security Log cleared events (1102), EventLog Service shutdown (1100) | `query="Security!*[System[(EventID=1102 or EventID=1100)]]"` |
+| Security log cleared events (1102), EventLog Service shutdown (1100) | `query="Security!*[System[(EventID=1102 or EventID=1100)]]"` |
 | User initiated logoff | `query="Security!*[System[(EventID=4647)]]"` |
 | User logoff for all non-network logon sessions | `query="Security!*[System[(EventID=4634)] and EventData[Data[@Name='LogonType'] != '3']]"` |
 | Service logon events if the user account isn't LocalSystem, NetworkService, LocalService | `query="Security!*[System[(EventID=4624)] and EventData[Data[@Name='LogonType']='5'] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-18'] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-19'] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-20']]"` |
-| Network Share create (5142), Network Share Delete (5144) | `query="Security!*[System[(EventID=5142 or EventID=5144)]]"` |
-| Process Create (4688) | `query="Security!*[System[EventID=4688]]"` |
-| Event log service events specific to Security channel | `query="Security!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]"` |
-| Special Privileges (Admin-equivalent Access) assigned to new logon, excluding LocalSystem | `query="Security!*[System[(EventID=4672)] and EventData[Data != 'S-1-5-18']]"` |
+| Network share create (5142), Network share delete (5144) | `query="Security!*[System[(EventID=5142 or EventID=5144)]]"` |
+| Process create (4688) | `query="Security!*[System[EventID=4688]]"` |
+| Event log service events specific to security channel | `query="Security!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]"` |
+| Special privileges (admin-equivalent access) assigned to new logon, excluding LocalSystem | `query="Security!*[System[(EventID=4672)] and EventData[Data != 'S-1-5-18']]"` |
 | New user added to local, global or universal security group | `query="Security!*[System[(EventID=4732 or EventID=4728 or EventID=4756)]]"` |
 | User removed from local Administrators group | `query="Security!*[System[(EventID=4733)] and EventData[Data[@Name='TargetUserName']='Administrators']]"` |
-| Certificate Services received certificate request (4886), Approved and Certificate issued (4887), Denied request (4888) | `query="Security!*[System[(EventID=4886 or EventID=4887 or EventID=4888)]]"` |
-| New User Account Created(4720), User Account Enabled (4722), User Account Disabled (4725), User Account Deleted (4726) | `query="Security!*[System[(EventID=4720 or EventID=4722 or EventID=4725 or EventID=4726)]]"` |
+| Certificate services received certificate request (4886), approved and certificate issued (4887), denied request (4888) | `query="Security!*[System[(EventID=4886 or EventID=4887 or EventID=4888)]]"` |
+| New user account created(4720), user account enabled (4722), user account disabled (4725), user account deleted (4726) | `query="Security!*[System[(EventID=4720 or EventID=4722 or EventID=4725 or EventID=4726)]]"` |
 | Anti-malware old events, but only detect events (cuts down noise) | `query="System!*[System[Provider[@Name='Microsoft Antimalware'] and (EventID >= 1116 and EventID <= 1119)]]"` |
 | System startup (12 - includes OS/SP/Version) and shutdown | `query="System!*[System[Provider[@Name='Microsoft-Windows-Kernel-General'] and (EventID=12 or EventID=13)]]"` |
-| Service Install (7000), service start failure (7045) | `query="System!*[System[Provider[@Name='Service Control Manager'] and (EventID = 7000 or EventID=7045)]]"` |
+| Service install (7000), service start failure (7045) | `query="System!*[System[Provider[@Name='Service Control Manager'] and (EventID = 7000 or EventID=7045)]]"` |
 | Shutdown initiate requests, with user, process and reason (if supplied) | `query="System!*[System[Provider[@Name='USER32'] and (EventID=1074)]]"` |
 | Event log service events | `query="System!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]"` |
-| Other Log cleared events (104) | `query="System!*[System[(EventID=104)]]"` |
+| Other log cleared events (104) | `query="System!*[System[(EventID=104)]]"` |
 | EMET/Exploit protection events | `query="Application!*[System[Provider[@Name='EMET']]]"` |
 | WER events for application crashes only | `query="Application!*[System[Provider[@Name='Windows Error Reporting']] and EventData[Data='APPCRASH']]"` |
-| User logging on with Temporary profile (1511), cannot create profile, using temporary profile (1518) | `query="Application!*[System[Provider[@Name='Microsoft-Windows-User Profiles Service'] and (EventID=1511 or EventID=1518)]]"` |
+| User logging on with temporary profile (1511), cannot create profile, using temporary profile (1518) | `query="Application!*[System[Provider[@Name='Microsoft-Windows-User Profiles Service'] and (EventID=1511 or EventID=1518)]]"` |
 | Application crash/hang events, similar to WER/1001. These include full path to faulting EXE/Module. | `query="Application!*[System[Provider[@Name='Application Error'] and (EventID=1000)] or System[Provider[@Name='Application Hang'] and (EventID=1002)]]"` |
-| Task scheduler Task Registered (106), Task Registration Deleted (141), Task Deleted (142) | `query="Microsoft-Windows-TaskScheduler/Operational!*[System[Provider[@Name='Microsoft-Windows-TaskScheduler'] and (EventID=106 or EventID=141 or EventID=142 )]]"` |
+| Task scheduler task registered (106), Task registration deleted (141), Task deleted (142) | `query="Microsoft-Windows-TaskScheduler/Operational!*[System[Provider[@Name='Microsoft-Windows-TaskScheduler'] and (EventID=106 or EventID=141 or EventID=142 )]]"` |
 | AppLocker packaged (Modern UI) app execution | `query="Microsoft-Windows-AppLocker/Packaged app-Execution!*"` |
 | AppLocker packaged (Modern UI) app installation | `query="Microsoft-Windows-AppLocker/Packaged app-Deployment!*"` |
 | Log attempted TS connect to remote server | `query="Microsoft-Windows-TerminalServices-RDPClient/Operational!*[System[(EventID=1024)]]"` |
-| Gets all Smart-card Card-Holder Verification (CHV) events (success and failure) performed on the host. | `query="Microsoft-Windows-SmartCard-Audit/Authentication!*"` |
+| Gets all Smart-Card card-holder verification (CHV) events (success and failure) performed on the host. | `query="Microsoft-Windows-SmartCard-Audit/Authentication!*"` |
 | Gets all UNC/mapped drive successful connection | `query="Microsoft-Windows-SMBClient/Operational!*[System[(EventID=30622 or EventID=30624)]]"` |
 | Modern SysMon event provider | `query="Microsoft-Windows-Sysmon/Operational!*"` |
-| Modern Windows Defender event provider Detection events (1006-1009) and (1116-1119); plus (5001,5010,5012) req'd by customers | `query="Microsoft-Windows-Windows Defender/Operational!*[System[( (EventID >= 1006 and EventID <= 1009) or (EventID >= 1116 and EventID <= 1119) or (EventID = 5001 or EventID = 5010 or EventID = 5012) )]]"` |
+| Modern Windows Defender event provider detection events (1006-1009) and (1116-1119); plus (5001,5010,5012) req'd by customers | `query="Microsoft-Windows-Windows Defender/Operational!*[System[( (EventID >= 1006 and EventID <= 1009) or (EventID >= 1116 and EventID <= 1119) or (EventID = 5001 or EventID = 5010 or EventID = 5012) )]]"` |
 | Code Integrity events | `query="Microsoft-Windows-CodeIntegrity/Operational!*[System[Provider[@Name='Microsoft-Windows-CodeIntegrity'] and (EventID=3076 or EventID=3077)]]"` |
-| CA stop/Start events CA Service Stopped (4880), CA Service Started (4881), CA DB row(s) deleted (4896), CA Template loaded (4898) | `query="Security!*[System[(EventID=4880 or EventID = 4881 or EventID = 4896 or EventID = 4898)]]"` |
+| CA stop/start events CA service stopped (4880), CA service started (4881), CA DB row(s) deleted (4896), CA template loaded (4898) | `query="Security!*[System[(EventID=4880 or EventID = 4881 or EventID = 4896 or EventID = 4898)]]"` |
 | RRAS events – only generated on Microsoft IAS server | `query="Security!*[System[( (EventID >= 6272 and EventID <= 6280) )]]"` |
-| Process Terminate (4689) | `query="Security!*[System[(EventID = 4689)]]"` |
-| Registry modified events for Operations: New Registry Value created (%%1904), Existing Registry Value modified (%%1905), Registry Value Deleted (%%1906) |`query="Security!*[System[(EventID=4657)] and (EventData[Data[@Name='OperationType'] = '%%1904'] or EventData[Data[@Name='OperationType'] = '%%1905'] or EventData[Data[@Name='OperationType'] = '%%1906'])]"` |
-| Request made to authenticate to Wireless network (including Peer MAC (5632)) | `query="Security!*[System[(EventID=5632)]]"` |
+| Process terminate (4689) | `query="Security!*[System[(EventID = 4689)]]"` |
+| Registry modified events for Operations: new registry value created (%%1904), existing registry value modified (%%1905), registry value deleted (%%1904) |`query="Security!*[System[(EventID=4657)] and (EventData[Data[@Name='OperationType'] = '%%1904'] or EventData[Data[@Name='OperationType'] = '%%1905'] or EventData[Data[@Name='OperationType'] = '%%1906'])]"` |
+| Existing registry value modified (%%1905), registry value deleted (%%1906) |             |
+| Request made to authenticate to wireless network (including Peer MAC (5632)) | `query="Security!*[System[(EventID=5632)]]"` |
 | A new external device was recognized by the System(6416) | `query="Security!*[System[(EventID=6416)]]"` |
-| RADIUS authentication events User Assigned IP address (20274), User successfully authenticated (20250), User Disconnected (20275) | `query="System!*[System[Provider[@Name='RemoteAccess'] and (EventID=20274 or EventID=20250 or EventID=20275)]]"` |
-| CAPI events Build Chain (11), Private Key accessed (70), X509 object (90) | `query="Microsoft-Windows-CAPI2/Operational!*[System[(EventID=11 or EventID=70 or EventID=90)]]"` |
+| RADIUS authentication events user assigned IP address (20274), user successfully authenticated (20250), user disconnected (20275) | `query="System!*[System[Provider[@Name='RemoteAccess'] and (EventID=20274 or EventID=20250 or EventID=20275)]]"` |
+| CAPI events build chain (11), private key accessed (70), X509 object (90) | `query="Microsoft-Windows-CAPI2/Operational!*[System[(EventID=11 or EventID=70 or EventID=90)]]"` |
 | Groups assigned to new login (except for well known, built-in accounts) | `query="Microsoft-Windows-LSA/Operational!*[System[(EventID=300)] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-20'] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-18'] and EventData[Data[@Name='TargetUserSid'] != 'S-1-5-19']]"` |
 | DNS client events | `query="Microsoft-Windows-DNS-Client/Operational!*[System[(EventID=3008)] and EventData[Data[@Name='QueryOptions'] != '140737488355328'] and EventData[Data[@Name='QueryResults']='']]"` |
 | Detect User-Mode drivers loaded - for potential BadUSB detection. | `query="Microsoft-Windows-DriverFrameworks-UserMode/Operational!*[System[(EventID=2004)]]"` |
 | Legacy PowerShell pipeline execution details (800) | `query="Windows PowerShell!*[System[(EventID=800)]]"` |
 | Defender stopped events | `query="System!*[System[(EventID=7036)] and EventData[Data[@Name='param1']='Microsoft Defender Antivirus Network Inspection Service'] and EventData[Data[@Name='param2']='stopped']]"` |
-| BitLocker Management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` |
+| BitLocker management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` |
 
 <!--## Next steps-->
