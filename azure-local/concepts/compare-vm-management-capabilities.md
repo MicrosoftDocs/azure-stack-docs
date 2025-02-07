@@ -95,9 +95,17 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Export template |✅|❌|❌|
 | - Resource health |❌ <br>(Use Alerts) |✅|❌|
 
+> [!IMPORTANT]
+>  The Microsoft Product Terms for your program take precedent over this article. For more information, see [Microsoft Azure Product Terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure) and select your program to show the terms.
+>
+> Some services, even when not marked with [^1] and despite included in Azure Hybrid Benefits, can incur operational costs, e. g. for storing log data. Please refer to the Azure Calculator and documentation for additional details.
+> 
+> Some key features are part of the "Windows Server Management enabled by Azure Arc" experience. For more information, see [documentation](articles/azure-arc/servers/windows-server-management-overview.md)
+
 [^1]: at addtional costs
-[^2]: included, as part of Windows Server and SQL Server management capabilities enable by Azure Arc and parent [Azure Hybrid Benefits for Windows Server](WindowsServerDocs/get-started/azure-hybrid-benefit.md). The Microsoft Product Terms for your program take precedent over this article. For more information, see [Microsoft Azure Product Terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure) and select your program to show the terms.
+[^2]: included, as part of Windows Server and SQL Server management capabilities enable by Azure Arc and parent [Azure Hybrid Benefits for Windows Server](WindowsServerDocs/get-started/azure-hybrid-benefit.md).
 [^3]: included, for VMs running on Azure and Azure Local instances.
+
 
 ## Next steps
 
