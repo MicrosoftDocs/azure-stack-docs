@@ -36,7 +36,7 @@ The following limitations apply to the KMS plugin for AKS Edge Essentials:
 
 To install the KMS plugin, follow these steps:
 
-1. Deploy the AKS Edge Essentials clusters. To create a new AKS Edge Essentials cluster, see the [AKS Edge Essentials deployment guide](aks-edge-howto-deploy.md).
+1. Deploy the AKS Edge Essentials clusters.
 
    The following line is present if the KMS plugin is enabled:
 
