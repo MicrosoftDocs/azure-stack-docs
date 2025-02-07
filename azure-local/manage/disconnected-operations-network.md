@@ -83,7 +83,7 @@ For this preview, the following features are unsupported:
 
 ### Plan DNS and public key infrastructure (PKI)  
 
-During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the Ingress IP used. It's important to plan your DNS and PKI infrastructure before deploying disconnected operations. Additionally, you should consider how you want to use them to serve clients in your environment.
+During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the Ingress IP used. It's important to plan your DNS and PKI infrastructure before deploying disconnected operations. Additionally, consider how you want to use them to serve clients in your environment.
 
 The Ingress network has several endpoints that are based on the configured FQDN. These endpoints need to be resolvable and secure in your network. For a list of endpoints, see [PKI for disconnected operations](../manage/disconnected-operations-pki.md#ingress-endpoints).
 
