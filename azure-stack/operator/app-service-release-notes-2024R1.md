@@ -210,7 +210,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 > [!IMPORTANT]
 > **Application downtime should be expected during Upgrade**
 >
-> Due to a change in communication format within the Web Farm, during upgrade all roles will move into Repair Mode until they match the same version as the controller.  Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
+> Due to a change in communication format within the Web Farm, during upgrade all roles move into Repair Mode until they match the same version as the controller. Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
 
 - In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
 
