@@ -75,7 +75,7 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Automanage |✅|❌|❌|
 | - Run command |✅|✅|❌|
 | - SQL Server Configuration |✅|✅|❌|
-| - Updates | ✅ <br>(free) | ✅ <br>[^1][^2] | ❌ |
+| - Azure Update Manager | ✅ <br>[^3] | ✅ <br>[^1][^2] | ❌ |
 | - Inventory |✅|✅ <br>[^1][^2] |❌|
 | - Change tracking |✅|✅ <br>[^1][^2] |❌|
 | - Extended Security Updates | ✅ <br>[^3] | ✅ <br>[^3] | ❌ |
