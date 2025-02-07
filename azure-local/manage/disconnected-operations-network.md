@@ -4,7 +4,7 @@ description: Integrate your network with disconnected operations on Azure Local 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 01/17/2025
+ms.date: 02/06/2025
 ---
 
 # Networking for disconnected operations on Azure Local (preview) 
@@ -33,7 +33,7 @@ Here's a checklist to help you plan your network for disconnected operations on 
 - Configure the network for disconnected operations (Ingress and management network):
   - Assign an Ingress IP within the management IP address pool subnet, ensuring it doesn't overlap with the range provided during deployment.  
   - Ensure the container network range doesn't conflict with the external network.
-- Ensure the Domain Name System (DNS) server is accessible for disconnected operations and configure it during deployment to flow through the Ingress vNIC/IP.
+- Ensure the domain name system (DNS) server is accessible for disconnected operations and configure it during deployment to flow through the Ingress vNIC/IP.
 - Verify that the DNS server can resolve the endpoints for the Ingress IP.
 - Confirm that the disconnected operations appliance can reach endpoints (IP and port) through the Ingress vNIC/IP.
 - Ensure an identity provider is routable and accessible from the disconnected operations appliance on the management network (intent).
@@ -85,27 +85,7 @@ For this preview, the following features are unsupported:
 
 During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the Ingress IP used. It's important to plan your DNS and PKI infrastructure before deploying disconnected operations. Additionally, you should consider how you want to use them to serve clients in your environment.
 
-The Ingress network has several endpoints that are based on the configured FQDN. These endpoints need to be resolvable and secure in your network.
-
-The endpoints exposed through the Ingress IP include:
-
-- his.FQDN  
-- login.FQDN  
-- hosting.FQDN  
-- portal.FQDN  
-- graph.FQDN  
-- armmanagement.FQDN  
-- autonomous-gas.FQDN  
-- adminmanagement.FQDN  
-- catalogapi.FQDN  
-- artifacts.blob.FQDN  
-- acrmanagedaccount0.blob.FQDN  
-- g1-aszsu-sb.servicebus.FQDN  
-- guestnotificationservice.FQDN  
-- autonomous.dp.kubernetesconfiguration.FQDN  
-- agentserviceapi.FQDN  
-- *.edgeacr.FQDN  
-- *.vault.FQDN  
+The Ingress network has several endpoints that are based on the configured FQDN. These endpoints need to be resolvable and secure in your network. For a list of endpoints, see [PKI for disconnected operations](../manage/disconnected-operations-pki.md#ingress-endpoints).
 
 > [!NOTE]
 > The wildcard endpoints serve as backing services where your users dynamically create services such as Azure Key Vault or Azure Container Registry. Your infrastructure needs to resolve a wildcard for these specific endpoints.

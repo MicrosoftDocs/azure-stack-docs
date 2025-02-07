@@ -4,7 +4,7 @@ description: Learn about the public key infrastructure (PKI) requirements for di
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 01/17/2025
+ms.date: 02/06/2025
 ---
 
 # Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview) 
@@ -66,6 +66,8 @@ This table lists the mandatory certificates required for disconnected operations
 
 ### Management endpoints
 
+The management endpoint requires two certificates and they must be put in the same folder, *ManagementEndpointCerts*. The certificates are:
+
 | Management endpoint certificate  | Required certificate subject  | Required certificate subject alternative names (SAN) |
 |----------------------|------------------|-----------------------|
 | Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s subject name must match exactly. For example, *Subject = 192.168.100.25*| Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s SAN must match exactly. For example, *SAN = 192.168.100.25* |
@@ -73,22 +75,35 @@ This table lists the mandatory certificates required for disconnected operations
 
 ## Create certificates to secure endpoints
 
-Follow these steps to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Modify for each of the 26 certificates.
+On the host machine or Active Directory virtual machine (VM), follow these steps to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Modify for each of the 26 certificates.
 
-1. Connect to the CA via the host machine or Active Directory virtual machine (VM).
+1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create a Certificate Signing Request (CSR).
 
     ```PowerShell
-    $dns = $certSubject.Split('=')[1]
-    $filePrefix = $dns.Replace('*.','')
-    $certFilePath = Split-Path -Path $extCertFilePath
-    
-    mkdir $certFilePath -Force
-    rm "$certFilePath\$filePrefix.*" -Force
-    
-    $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"
-    $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"
+    [CmdletBinding()]   
+    param (   
+        [Parameter(Mandatory = $true)]   
+        [string]   
+        $certSubject = "CN=*.autonomous.cloud.private",   
+        [Parameter(Mandatory = $true)]   
+        [string]   
+        $extCertFilePath    
+    )   
+
+1. Define parameters for creating the CSR.
+
+    ```PowerShell  
+    #$certSubject = "CN=*.contoso-disconnected.com"  
+    #$certSubject = "CN=*.autonomous.cloud.private"  
+    $dns = $certSubject.Split('=')[1]  
+    $filePrefix = $dns.Replace('*.','')  
+    $certFilePath = Split-Path -Path $extCertFilePath  
+    mkdir $certFilePath -Force  
+    rm "$certFilePath\$filePrefix.*" -Force  
+    $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"  
+    $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"  
     ```
 
 1. Create the .inf file.
@@ -117,26 +132,28 @@ Follow these steps to create certificates for the ingress traffic and external e
     "@ | Out-File -FilePath $infPath
     ```
 
-1. [Generate a Certificate Signing Request (CSR)](/azure-stack/operator/azure-stack-get-pki-certs?view=azs-2408&tabs=omit-cn&pivots=csr-type-new-deployment&preserve-view=true) for each certificate.
+1. [Create the CSR](/azure-stack/operator/azure-stack-get-pki-certs?view=azs-2408&tabs=omit-cn&pivots=csr-type-new-deployment&preserve-view=true) for each certificate.
 
     ```powershell
     certreq -new $infPath $csrPath
     Write-Verbose "CSR created and saved to $csrPath" -Verbose
     ```
 
+1. [Define parameters to submit the CSR]
+
+    ```PowerShell
+    $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"   
+    $caName = "contoso-disonnected.com\contoso-disconnected.com" # Modify for FQDN   
+    ```
+
 1. Submit the CSR to the Enterprise CA.
 
     ```powershell
-    $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"
-    $caName = "contoso-disconnected.com\contoso-disconnected.com"
-    ```
-
-1. Submit the CSR to the CA.
-
-    ```powershell
     certreq -submit -attrib "CertificateTemplate:WebServer" -config $caName $csrPath $certPath
+
     Write-Verbose "Certificate request submitted. Certificate saved to $certPath" -Verbose
     ```
+
 1. Accept the certificate and install it.
 
     ```powershell
@@ -166,18 +183,5 @@ Follow these steps to create certificates for the ingress traffic and external e
     ```
 
 1. Repeat steps 3-11 for each certificate.
-
-1. Call sys configuration endpoint to import your .pfx files.
-
-    ```powershell
-    Set-ApplianceExternalEndpointCertificates  -DisconnectedOperationsClientContext $managementNetworkConfiguration.ToDisconnectedOperationsClientContext() - IngressEndpointCerts $ExternalCertsConfig.ExternalCertificatesFolder - IngressEndpointPassword $ExternalCertsConfig.ExternalCertificatePassword
-    ```
-
-## Management traffic  
-
-The management endpoint requires two certificates and they must be put in the same folder, *ManagementEndpointCerts*. The certificates are:
-  
-- **Transport Layer Security certificate** (endpoint).
-- **Client certificate** (authorization).
 
 ## Next steps
