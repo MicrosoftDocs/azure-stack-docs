@@ -643,9 +643,11 @@ items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
   - name: Networking for disconnected operations
-    href: manage/disconnected-operations-networking.md
+    href: manage/disconnected-operations-network.md
   - name: Identity for disconnected operations
-    href: manage/disconnected-operations-identity.md 
+    href: manage/disconnected-operations-identity.md
+  - name: Public key infrastructure (PKI) for disconnected operations
+    href: manage/disconnected-operations-pki.md  
 
 - name: Version 22H2
   items:

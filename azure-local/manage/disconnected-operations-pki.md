@@ -37,41 +37,42 @@ This table lists the mandatory certificates required for disconnected operations
 
 | Service | Required certificate subject and subject alternative names (SAN) |
 |-------------------|----------------------|  
-| ACSQueue | *.queue.fqdn |
-| ACSTable | *.table.fqdn |
+| Azure Container Registry | *.edgeacr.fqdn |
 | Appliances | dp.appliances.fqdn <br></br> adminmanagement.fqdn |
+| Azure Data Policy | data.policy.fqdn |
 | Arc configuration data plane | <'regionname'>.dp.kubernetesconfiguration.fqdn |
-| Arc for server | his.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
+| Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
 | Arc metrics | metricsingestiongateway.monitoring.fqdn |
 | Arc monitor agent | amcs.monitoring.fqdn |
 | Arc Resource Bridge data plane | dp.appliances.fqdn |
-| Azure Container Registry | *.edgeacr.fqdn |
-| Azure Data Policy | data.policy.fqdn |
 | Azure Resource Manager | armmanagement.fqdn |
-| Blob certificate  | *.blob.fqdn  |
+| Azure Arc Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Azure queue storage | *.queue.fqdn |
+| Azure Resource Manager Public | armmanagement.fqdn |
+| Azure Table storage | *.table.fqdn |
+| Azure Blob storage | *.blob.fqdn |
 | Front end appliances | frontend.appliances.fqdn |
 | Front end monitoring | pqsqueryfrontend.monitoring.fqdn |
 | Graph | graph.fqdn |
 | Azure Key Vault | *.vault.<'fqdn'> (wildcard Secure Sockets Layer (SSL) certificate) |
 | Kubernetes configuration | dp.kubernetesconfiguration.fqdn |
-| Licensing | Licensing.aszrp.fqdn <br></br> Dp.aszrp.fwdn <br></br> lbc.fqdn |
+| Licensing | Licensing.aszrp.fqdn <br></br> dp.aszrp.fwdn <br></br> lbc.fqdn |
 | Managed Arc proxy services (MAPS) Azure Kubernetes Service (AKS) | *.k8sconnect.fqdn |
 | Public extension host | *.hosting.fqdn (wildcard SSL certificate) |
 | Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> portalcontroller.fqdn <br></br> catalogapi.fqdn |
-| Service |  Required certificate subject names and SAN |
+| Secure token service | login.fqdn |
 | Service bus | *.servicebus.fqdn |
-| STS | login.fqdn |
 
 ### Management endpoints
 
 The management endpoint requires two certificates and they must be put in the same folder, *ManagementEndpointCerts*. The certificates are:
 
-| Management endpoint certificate  | Required certificate subject  | Required certificate subject alternative names (SAN) |
-|----------------------|------------------|-----------------------|
-| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s subject name must match exactly. For example, *Subject = 192.168.100.25*| Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is *192.168.100.25*, then the server certificate’s SAN must match exactly. For example, *SAN = 192.168.100.25* |
-| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *Subject = ManagementEndpointClientAuth*.  | Use a certificate SAN that helps you distinguish it from others. Any string is acceptable. <br></br> For example, *SAN = ManagementEndpointClientAuth*. |
+| Management endpoint certificate  | Required certificate subject  |
+|----------------------|------------------|
+| Server  | Management endpoint IP address: $ManagementIngressIpAddress. <br></br> If the management endpoint IP is **192.168.100.25**, then the server certificate’s subject name must match exactly. For example, **Subject = 192.168.100.25**|
+| Client  | Use a certificate subject that helps you distinguish it from others. Any string is acceptable. <br></br> For example, **Subject = ManagementEndpointClientAuth**.  |
 
 ## Create certificates to secure endpoints
 
@@ -139,7 +140,7 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
     Write-Verbose "CSR created and saved to $csrPath" -Verbose
     ```
 
-1. [Define parameters to submit the CSR]
+1. Define parameters to submit the CSR
 
     ```PowerShell
     $certPath = Join-Path $certFilePath -ChildPath "$filePrefix.cer"   
