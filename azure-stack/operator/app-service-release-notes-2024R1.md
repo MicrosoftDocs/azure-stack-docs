@@ -28,17 +28,14 @@ Azure App Service on Azure Stack Hub 24 R1 brings new updates to Azure Stack Hub
 
 ## Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+See the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
-- Ensure your **Azure Stack Hub** is updated to **1.2311.1.22** or later.
-
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal.
-
-- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal.
-
-- Back up the App Service and SQL Server Master Databases:
+- Ensure your Azure Stack Hub is updated to **1.2311.1.22** or later.
+- Ensure all roles are **Ready** in the Azure App Service Administration in the Azure Stack Hub admin portal.
+- Back up App Service Secrets using the App Service Administration in the Azure Stack Hub admin portal.
+- Back up the App Service and SQL Server master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
@@ -46,21 +43,18 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 - Back up the Tenant App content file share.
 
   > [!IMPORTANT]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
+- Syndicate the Custom Script Extension version **1.9.3** from the Marketplace.
 
 ## Updates
 
 Azure App Service on Azure Stack Update 24R1 includes the following improvements and fixes:
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
-
-- Updates **Azure Functions runtime** to **v1.0.21719**.
-
+- Updates to App Service Tenant, Admin, Functions portals and Kudu tools. Consistent with the Azure Stack portal SDK version.
+- Updates Azure Functions runtime to **v1.0.21719**.
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
-
-- **Updates to the following application frameworks and tools**:
+- Updates to the following application frameworks and tools:
   - .NET Framework 4.8.1
   - ASP.NET Core 
     - 8.0.7
@@ -211,30 +205,28 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
   > [!IMPORTANT]
   >
-  > Due to a change in communication format within the Web Farm, during upgrade all roles move into Repair Mode until they match the same version as the controller. Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
+  > Due to a change in communication format within the Web Farm, during the upgrade all roles move into repair mode until they match the same version as the controller. Due to this, we advise you to declare a maintenance window during this upgrade and prepare for application downtime during the upgrade.
 
+- In situations where you converted the appservice_hosting and appservice_metering databases to contained database, upgrade might fail if logins weren't successfully migrated to contained users.
 
-- In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
+  Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, might experience upgrade failures.  
 
-  Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, may experience upgrade failures.  
-
-  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
+  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and does not cause downtime.
 
   This script must be run under the following conditions:
 
-    - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
-    - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
-
-      - appservice_hosting_FileServer
-      - appservice_hosting_HostingAdmin
-      - appservice_hosting_LoadBalancer
-      - appservice_hosting_Operations   
-      - appservice_hosting_Publisher
-      - appservice_hosting_SecurePublisher
-      - appservice_hosting_WebWorkerManager
-      - appservice_metering_Common
-      - appservice_metering_Operations
-      - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+  - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
+  - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+    - appservice_hosting_FileServer
+    - appservice_hosting_HostingAdmin
+    - appservice_hosting_LoadBalancer
+    - appservice_hosting_Operations   
+    - appservice_hosting_Publisher
+    - appservice_hosting_SecurePublisher
+    - appservice_hosting_WebWorkerManager
+    - appservice_metering_Common
+    - appservice_metering_Operations
+    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
     ```sql
             USE appservice_hosting
