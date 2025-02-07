@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 24R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 01/31/2025
+ms.date: 02/07/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -206,6 +206,11 @@ Review the [known issues for update](#known-issues-update) and take any action p
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
+
+> [!IMPORTANT]
+> **Application downtime should be expected during Upgrade**
+>
+> Due to a change in communication format within the Web Farm, during upgrade all roles will move into Repair Mode until they match the same version as the controller.  Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
 
 - In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
 
