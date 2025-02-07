@@ -1,16 +1,17 @@
-# Azure Stack documentation
+# Azure Stack GitHub repository
 
-Welcome to the open source [documentation for Azure Stack](https://learn.microsoft.com/azure-stack). Azure Stack is a portfolio of products that extend Azure services and capabilities to your environment of choice—from the datacenter to edge locations and remote offices. Azure Stack portfolio includes the following products:
+Welcome to the open source documentation for [Azure Local](https://azure.microsoft.com/products/local/?msockid=38168d9a81d967bd04fb9e7d803166bd) and [Azure Stack](https://learn.microsoft.com/azure-stack).
 
-- Azure Local
-- Azure Stack HCI
-- Azure Kubernetes Service (AKS) enabled by Azure Arc
-- Azure Stack Hub
-- Azure Managed Lustre File System
+- **Azure Local** is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
 
-## Contribute to the Azure Stack documentation
+- **Azure Stack** is a portfolio of products that extend Azure services and capabilities to your environment of choice—from the datacenter to edge locations and remote offices. Azure Stack portfolio includes the following products:
 
-Read our [Contributor Guide](https://learn.microsoft.com/contribute/content/) to learn about how to contribute to the Azure Stack documentation.
+    - Azure Stack Hub
+    - Azure Stack Edge
+
+## Contribute to the Azure Stack repository
+
+Read our [Contributor Guide](https://learn.microsoft.com/contribute/content/) to learn about how to contribute to the Azure Stack repository.
 
 ## License
 
