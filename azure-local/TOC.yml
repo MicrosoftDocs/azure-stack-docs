@@ -648,6 +648,10 @@ items:
     href: manage/disconnected-operations-identity.md
   - name: Public key infrastructure (PKI) for disconnected operations
     href: manage/disconnected-operations-pki.md
+  - name: Azure Policy for disconnected operations
+    href: manage/disconnected-operations-policy.md
+  - name: Security for disconnected operations
+    href: manage/disconnected-operations-security.md    
 
 - name: Version 22H2
   items:
