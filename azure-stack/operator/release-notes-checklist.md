@@ -3,7 +3,7 @@ title: Azure Stack Hub update activity checklist
 description:  Checklist to prepare your system for the latest Azure Stack Hub update.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/30/2025
+ms.date: 02/07/2025
 ms.author: sethm
 ms.lastreviewed: 01/14/2020
 
@@ -21,8 +21,8 @@ This article contains a checklist of update-related activities for Azure Stack H
 | Review known issues     | [List of known issues](known-issues.md).                |
 | Review security updates | [List of security updates](release-notes-security-updates.md).      |
 | Review add-on resource provider updates | [App Service](azure-stack-app-service-update.md)<br>[Event Hubs](resource-provider-apply-updates.md)<br> [MySQL](azure-stack-mysql-resource-provider-update.md)<br>[SQL](azure-stack-sql-resource-provider-update.md)<br>  |
-| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM package requirements for the Azure Stack Hub version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack Hub version you are updating to. If your OEM package is not compatible with the Azure Stack Hub version you are updating to, you will need to perform an OEM package update before running an Azure Stack Hub update. For instructions, see "Apply Azure Stack Hub original equipment manufacturer (OEM) updates." |
-| Optional: Configure automatic log collection | It's recommended that you configure automatic log collection on your Azure Stack Hub environment to streamline the process of collecting system logs in the event that you need to open a support ticket. To configure automatic log collection, see the instructions in [Send logs proactively](./diagnostic-log-collection.md#send-logs-proactively). |
+| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM package requirements for the Azure Stack Hub version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack Hub version you are updating to. If your OEM package is not compatible with the Azure Stack Hub version you are updating to, you must perform an OEM package update before running an Azure Stack Hub update. For instructions, see [Apply Azure Stack Hub original equipment manufacturer (OEM) updates](azure-stack-update-oem.md) |
+| Optional: Configure automatic log collection | In case you need to open a support ticket, we recommend that you configure automatic log collection on your Azure Stack Hub environment to streamline the process of collecting system logs. To configure automatic log collection, see the instructions in [Send logs proactively](./diagnostic-log-collection.md#send-logs-proactively). |
 | Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. For a list of the latest hotfixes, see the [release notes hotfixes](release-notes.md#hotfixes) section. |
 | Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Hub Capacity Planner tool](azure-stack-capacity-planning-overview.md) to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack Hub update. |
 | Run **Test-AzureStack** | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md). |
