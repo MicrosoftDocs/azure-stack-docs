@@ -98,7 +98,7 @@ If there are errors with the KMS plugin, follow this procedure:
    [+]poststarthook/start-encryption-provider-config-automatic-reload ok
    ```
 
-   If you receive "**[-]**" before the `kms-provider` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
+   If you receive "**[-]**" before the `kms-providers` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
 1. Repair KMS. If there are still errors, the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
 
