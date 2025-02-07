@@ -361,4 +361,4 @@ $group
 
 ## Next steps
 
-- [Deploy disconnected operations on Azure Local](./deploy-disconnected-operations.md)
+<!--- [Deploy disconnected operations on Azure Local](./disconnected-operations-deploy.md)-->
