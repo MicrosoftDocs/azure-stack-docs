@@ -207,87 +207,88 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- Application downtime should be expected during Upgrade
+- **Application downtime should be expected during Upgrade**
 
-> [!IMPORTANT]
->
-> Due to a change in communication format within the Web Farm, during upgrade all roles move into Repair Mode until they match the same version as the controller. Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
+  > [!IMPORTANT]
+  >
+  > Due to a change in communication format within the Web Farm, during upgrade all roles move into Repair Mode until they match the same version as the controller. Due to this we advise customers to declare a maintenance window during this upgrade and prepare for Application downtime during upgrade.
+
 
 - In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
 
-Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, may experience upgrade failures.  
+  Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, may experience upgrade failures.  
 
-Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
+  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
 
-This script must be run under the following conditions:
+  This script must be run under the following conditions:
 
-- By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
-- If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+    - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
+    - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
 
-  - appservice_hosting_FileServer
-  - appservice_hosting_HostingAdmin
-  - appservice_hosting_LoadBalancer
-  - appservice_hosting_Operations
-  - appservice_hosting_Publisher
-  - appservice_hosting_SecurePublisher
-  - appservice_hosting_WebWorkerManager
-  - appservice_metering_Common
-  - appservice_metering_Operations
-  - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+      - appservice_hosting_FileServer
+      - appservice_hosting_HostingAdmin
+      - appservice_hosting_LoadBalancer
+      - appservice_hosting_Operations   
+      - appservice_hosting_Publisher
+      - appservice_hosting_SecurePublisher
+      - appservice_hosting_WebWorkerManager
+      - appservice_metering_Common
+      - appservice_metering_Operations
+      - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
-```sql
-        USE appservice_hosting
-        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
-        BEGIN
-        DECLARE @username sysname ;  
-        DECLARE user_cursor CURSOR  
-        FOR
-            SELECT dp.name
-            FROM sys.database_principals AS dp  
-            JOIN sys.server_principals AS sp
-                ON dp.sid = sp.sid  
-                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
-            OPEN user_cursor  
-            FETCH NEXT FROM user_cursor INTO @username  
-                WHILE @@FETCH_STATUS = 0  
-                BEGIN  
-                    EXECUTE sp_migrate_user_to_contained
-                    @username = @username,  
-                    @rename = N'copy_login_name',  
-                    @disablelogin = N'do_not_disable_login';  
+    ```sql
+            USE appservice_hosting
+            IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+            BEGIN
+            DECLARE @username sysname ;  
+            DECLARE user_cursor CURSOR  
+            FOR
+                SELECT dp.name
+                FROM sys.database_principals AS dp  
+                JOIN sys.server_principals AS sp
+                    ON dp.sid = sp.sid  
+                    WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+                OPEN user_cursor  
                 FETCH NEXT FROM user_cursor INTO @username  
-            END  
-            CLOSE user_cursor ;  
-            DEALLOCATE user_cursor ;
-            END
-        GO
+                    WHILE @@FETCH_STATUS = 0  
+                    BEGIN  
+                        EXECUTE sp_migrate_user_to_contained
+                        @username = @username,  
+                        @rename = N'copy_login_name',  
+                        @disablelogin = N'do_not_disable_login';  
+                    FETCH NEXT FROM user_cursor INTO @username  
+                END  
+                CLOSE user_cursor ;  
+                DEALLOCATE user_cursor ;
+                END
+            GO
 
-        USE appservice_metering
-        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
-        BEGIN
-        DECLARE @username sysname ;  
-        DECLARE user_cursor CURSOR  
-        FOR
-            SELECT dp.name
-            FROM sys.database_principals AS dp  
-            JOIN sys.server_principals AS sp
-                ON dp.sid = sp.sid  
-                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
-            OPEN user_cursor  
-            FETCH NEXT FROM user_cursor INTO @username  
-                WHILE @@FETCH_STATUS = 0  
-                BEGIN  
-                    EXECUTE sp_migrate_user_to_contained
-                    @username = @username,  
-                    @rename = N'copy_login_name',  
-                    @disablelogin = N'do_not_disable_login';  
+            USE appservice_metering
+            IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+            BEGIN
+            DECLARE @username sysname ;  
+            DECLARE user_cursor CURSOR  
+            FOR
+                SELECT dp.name
+                FROM sys.database_principals AS dp  
+                JOIN sys.server_principals AS sp
+                    ON dp.sid = sp.sid  
+                    WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+                OPEN user_cursor  
                 FETCH NEXT FROM user_cursor INTO @username  
-            END  
-            CLOSE user_cursor ;  
-            DEALLOCATE user_cursor ;
-            END
-        GO
-```
+                    WHILE @@FETCH_STATUS = 0  
+                    BEGIN  
+                        EXECUTE sp_migrate_user_to_contained
+                        @username = @username,  
+                        @rename = N'copy_login_name',  
+                        @disablelogin = N'do_not_disable_login';  
+                    FETCH NEXT FROM user_cursor INTO @username  
+                END  
+                CLOSE user_cursor ;  
+                DEALLOCATE user_cursor ;
+                END
+            GO
+    ```
 
 - A new Redirect URL must be added to the identity application created in order to support Single Sign On(SSO) Scenarios (for example Kudu)
 
