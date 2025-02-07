@@ -4,9 +4,9 @@ Welcome to the open source documentation for [Azure Local](https://azure.microso
 
 - **Azure Local** is a distributed infrastructure solution enabled by Azure Arc that lets you run virtual machines, containers, and select Azure services.
 
-- **AKS on Azure Local** is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
+- **AKS on Azure Local** is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, providing a simple deployment and lifecycle management experience.
 
-- **Azure Stack** is a portfolio of products that extend Azure services and capabilities to your environment of choice—from the datacenter to edge locations and remote offices. Azure Stack portfolio includes the following products:
+- **Azure Stack** is a portfolio of products that extend Azure services and capabilities to your environment of choice, from the datacenter to edge locations and remote offices. The Azure Stack portfolio includes the following products:
 
     - Azure Stack Hub
     - Azure Stack Edge
