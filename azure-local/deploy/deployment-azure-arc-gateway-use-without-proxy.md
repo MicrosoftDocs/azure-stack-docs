@@ -126,6 +126,6 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ::: moniker range="<=azloc-24111"
 
-This feature is available only in Azure Local 24111 or later.
+This feature is available only in Azure Local 2411.1 or later.
 
 ::: moniker-end
