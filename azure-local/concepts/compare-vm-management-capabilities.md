@@ -81,13 +81,13 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Automanage |✅|❌|❌|
 | - Run command |✅|✅|❌|
 | - SQL Server Configuration |✅|✅|❌|
-| - Azure Update Manager | ✅ <sup><a href="3">3</a></sup> | ✅ <sup><a href="1">1</a></sup> and <sup><a href="2">2</a></sup> | ❌ |
-| - Inventory |✅|✅ <sup><a href="1">1</a></sup> and <sup><a href="2">2</a></sup> |❌|
-| - Change tracking |✅|✅ <sup><a href="1">1</a></sup> and <sup><a href="2">2</a></sup> |❌|
-| - Extended Security Updates | ✅ <sup><a href="3">3</a></sup> | ✅ <sup><a href="3">3</a></sup> | ❌ |
+| - Azure Update Manager | ✅ <br>[3](#3) | ✅ <br>[1](#1) and [2](#2)  | ❌ |
+| - Inventory |✅|✅  <br>[1](#1) and [2](#2) |❌|
+| - Change tracking |✅|✅  <br>[1](#1) and [2](#2) |❌|
+| - Extended Security Updates | ✅ <br>[3](#3) | ✅ <br>[3](#3) | ❌ |
 | **Windows management** |
-| - Windows Admin Center |❌|✅ <sup><a href="1">1</a></sup> and <sup><a href="2">2</a></sup> |❌|
-| - Best Practices Assessment |✅|✅ <sup><a href="1">1</a></sup> and <sup><a href="2">2</a></sup> |❌|
+| - Windows Admin Center |❌|✅  <br>[1](#1) and [2](#2) |❌|
+| - Best Practices Assessment |✅|✅  <br>[1](#1) and [2](#2) |❌|
 | **Monitoring** |
 | - Azure Monitor |✅|✅|❌|
 | - Insights|✅|✅|❌|
@@ -101,13 +101,16 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Export template |✅|❌|❌|
 | - Resource health |❌ <br>(Use Alerts) |✅|❌|
 
+
 <!--- 1: at additional costs.
 - [^2]: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
 - [^3]: included for VMs running on Azure and Azure Local instances.-->
 
-- <a name="1"></a> 1: at additional costs.
-- <a name="2"></a> 2: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
-- <a name="3"></a> 3: included for VMs running on Azure and Azure Local instances.
+<a name="1"></a>1: at additional costs.
+
+<a name="2"></a>2: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
+
+<a name="3"></a>3: included for VMs running on Azure and Azure Local instances.
 
 ## Next steps
 
