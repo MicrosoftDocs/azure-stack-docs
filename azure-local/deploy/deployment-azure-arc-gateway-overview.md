@@ -212,6 +212,6 @@ This operation can take a couple of minutes.
 
 ::: moniker range="<=azloc-24111"
 
-This feature is available only in Azure Local 24111 or later.
+This feature is available only in Azure Local 2411.1 or later.
 
 ::: moniker-end

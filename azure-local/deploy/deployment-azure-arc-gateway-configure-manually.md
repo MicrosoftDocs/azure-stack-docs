@@ -3,13 +3,14 @@ title: Configure Arc proxy manually for Azure gateway on Azure Local, version 24
 description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/17/2025
+ms.date: 02/06/2025
 ms.author: alkohli
-monikerRange: ">=azloc-24111"
 ms.service: azure-local
 ---
 
 # Configure Arc proxy manually for Azure gateway on Azure Local (preview)
+
+::: moniker range=">=azloc-24111"
 
 Applies to: Azure Local 2411.1 and later
 
@@ -135,3 +136,11 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 - [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
 - [Get support for Azure Local](../manage/get-support.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.1 or later.
+
+::: moniker-end
