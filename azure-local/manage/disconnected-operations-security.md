@@ -4,7 +4,7 @@ description: Learn about the security considerations and compliance regulations 
 ms.topic: conceptual
 author: ronmiab
 ms.author: robess
-ms.date: 01/10/2025
+ms.date: 02/06/2025
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)
@@ -96,10 +96,10 @@ Syslog forwarding can be configured for the Azure Local with disconnected operat
 
 The syslog forwarder in the disconnected operation VM supports the following configurations:
 
-- **Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](#).
-- **Syslog forwarding with TCP, server authentication, and TLS encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](#).
-- **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Link to specific section](#).
-- **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Link to specific section](#).
+- **Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](../index.yml).
+- **Syslog forwarding with TCP, server authentication, and TLS encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Link to specific section](../index.yml).
+- **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Link to specific section](../index.yml).
+- **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Link to specific section](../index.yml).
 
 > [!IMPORTANT]
 > To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments. The handshake between the endpoints determines the version of TLS encryption, and both TLS 1.2 and TLS 1.3 are supported by default.
@@ -116,18 +116,18 @@ The following table provides the parameters for the REST endpoint:
 
 | Parameter                   | Description                                                                 | Type   | Required |  
 |-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
+| **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
+| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
+| **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |  
 | **Enabled**                 | Determines whether the syslog agent in the Azure Local disconnected VM is enabled or disabled. When disabled, remove the current syslog forwarder configuration and stop the syslog forwarder. | Flag   | Yes      |  
+| **NoEncryption**            | Force the client to send syslog messages in clear text.                     | Flag   | No       |  
+| **OutputSeverity**          | Level of output logging. Values are **Default** or **Verbose**.<br></br> **Default** includes severity levels: warning, critical, or error.<br></br> **Verbose** includes all severity levels: verbose, informational, warning, critical, or error. | String | No       |  
+| **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |  
 | **ServerName**              | Fully qualified domain name (FQDN) or IP address of the syslog server.                                    | String | No       |  
 | **ServerPort**              | Port number the syslog server is listening on.                              | UInt16 | No       |  
-| **NoEncryption**            | Force the client to send syslog messages in clear text.                     | Flag   | No       |  
 | **SkipServerCertificateCheck** | Skip validation of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
 | **SkipServerCNCheck**       | Skip validation of the Common Name value of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
 | **UseUDP**                  | Use syslog with UDP as transport protocol.                                  | Flag   | No       |  
-| **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **OutputSeverity**          | Level of output logging. Values are **Default** or **Verbose**.<br></br> **Default** includes severity levels: warning, critical, or error.<br></br> **Verbose** includes all severity levels: verbose, informational, warning, critical, or error. | String | No       |  
-| **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |  
-| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
-| **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |  
 
 ### OutputSeverity configuration
 

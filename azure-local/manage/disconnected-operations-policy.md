@@ -4,7 +4,7 @@ description: Learn how to use Azure Policy in a disconnected Azure Local environ
 ms.topic: conceptual
 author: ronmiab
 ms.author: robess
-ms.date: 01/07/2025
+ms.date: 02/06/2025
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
