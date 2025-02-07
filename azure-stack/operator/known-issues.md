@@ -29,6 +29,9 @@ To access known issues for a different version, use the version selector dropdow
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
+> [!IMPORTANT]
+> The Microsoft Entra ID Graph API service is being retired. This retirement affects all Azure Stack Hub customers, and requires you to [run the script included in this article](graph-api-retirement.md) for all affected applications.
+
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->

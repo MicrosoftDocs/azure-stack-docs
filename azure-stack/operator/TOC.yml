@@ -8,6 +8,8 @@
     items:
     - name: Security updates
       href: release-notes-security-updates.md
+    - name: Microsoft Entra ID Graph API retirement
+      href: graph-api-retirement.md
     - name: Release notes
       href: release-notes.md
     - name: Hotfixes
