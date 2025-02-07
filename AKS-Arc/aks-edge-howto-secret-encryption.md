@@ -4,7 +4,7 @@ description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/06/2025
+ms.date: 02/07/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
@@ -36,27 +36,13 @@ The following limitations apply to the KMS plugin for AKS Edge Essentials:
 
 To install the KMS plugin, follow these steps:
 
-- Install the single machine deployment using the [Single Machine Kubernetes guide](aks-edge-concept-clusters-nodes.md) guide.
-- During the first step in the single machine deployment process, create an **aksedge-config.json** file. In the `Init` section, set `Init.KmsPlugin.Enable` to **true**. For example:
+1. Deploy the AKS Edge Essentials clusters. To create a new AKS Edge Essentials cluster, see the [AKS Edge Essentials deployment guide](aks-edge-howto-deploy.md).
 
-  ```json
-  "Init": {
-   "KmsPlugin": {
-       "Enable": true
-    }
-  
-  ```
+   The following line is present if the KMS plugin is enabled:
 
-A new deployment was created when you see the following message:
-
-```output
-[01/22/2025 09:46:40] AksEdge - new deployment successfully created.
-Azure Arc parameters not set or invalid
-```
-
-### Validate the KMS installation
-
-The following sections describe how to validate the KMS plugin installation for AKS EE cluster.
+   ```output
+   Preparing to install kms-plugin as encryption provider...
+   ```
 
 #### Create and retrieve a secret which is encrypted using KMS
 
@@ -64,7 +50,13 @@ To create a new secret encrypted by KMS, run the following command:
 
 ```powershell
 # Create a new secret encrypted by KMS
-kubectl create secret generic db-user-pass --from-literal=username=admin --from-literal=password='your-secret'
+kubectl create secret generic db-user-pass --from-literal=username=<username> --from-literal=password='<your-secret>'
+```
+
+If successful, the terminal shows the following output:
+
+```output
+secret/db-user-pass1 created
 ```
 
 #### Retrieve the secret
@@ -79,8 +71,7 @@ kubectl get secret db-user-pass -o jsonpath='{.data}'
 If successful, the terminal shows the following output:
 
 ```output
-PS C:\Windows\system32> kubectl create secret generic db-user-pass1 --from-literal-username=admin --from-literal-password='your-secret" secret/db-user-pass1 created
-PS C:\Windows\system32> kubectl get secret db-user-pass1 -o jsonpath='{.data}' ["password": "<password>", "username": "<username>"}
+["password": "<your-secret>", "username": "<username>"]
 ```
 
 ## Troubleshooting
@@ -89,8 +80,8 @@ If there are errors with the KMS plugin, follow this procedure:
 
 1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check for upgrades to Kubernetes clusters. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
-   ```azurecli
-   az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+   ```powershell
+   Get-AksEdgeCluster -Name <cluster-name> | Select-Object -ExpandProperty Version
    ```
 
 1. View the **readyz** API. If the problem persists, validate that the installation succeeded. To check the health of the KMS plugin, run the following command and ensure that the health status of **kms-providers** is **OK**:
@@ -107,7 +98,7 @@ If there are errors with the KMS plugin, follow this procedure:
    [+]poststarthook/start-encryption-provider-config-automatic-reload ok
    ```
 
-   If you receive **[-]** before the output, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
+   If you receive **[-]** before the `kms-provider` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
 1. Repair KMS. If there are still errors, then the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
 
