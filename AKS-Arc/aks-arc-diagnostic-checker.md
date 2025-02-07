@@ -1,19 +1,19 @@
 ---
 title: Use diagnostic checker to identify common causes for failures (preview)
-description: Learn how to diagnose common causes for failures 
+description: Learn how to diagnose common causes for failures in AKS Arc.
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/17/2024
+ms.date: 01/30/2025
 ms.reviewer: abha
 
 #Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure. 
 
 ---
 
-# Use diagnostic checker to diagnose and fix environment issues for AKS cluster creation failure (preview)
+# Use the diagnostic checker to diagnose and fix environment issues for AKS cluster creation failure (preview)
 
-It can be difficult to identify environment-related issues, such as networking configurations, that can result in an AKS cluster creation failure. The diagnostic checker is a PowerShell-based tool that can help identify AKS cluster creation failures due to potential issues in the environment.
+It can be difficult to identify environment-related issues, such as networking configurations, that can result in an AKS cluster creation failure. The diagnostic checker is a PowerShell-based tool that can help you identify AKS cluster creation failures due to potential issues in the environment.
 
 > [!NOTE]
 > You can only use the diagnostic checker tool if an AKS cluster was created, but is in a failed state. You can't use the tool if you don't see an AKS cluster on the Azure portal. If the AKS cluster creation fails before an Azure Resource Manager resource is created, [file a support request](aks-troubleshoot.md#open-a-support-request).
@@ -102,7 +102,7 @@ $urlArray = @(
     "https://login.windows.net",
     "https://mcr.microsoft.com",
     "https://gbl.his.arc.azure.com",
-    "https://k8connecthelm.azureedge.net",
+    "https://k8connecthelm.download.prss.microsoft.com",
     "https://guestnotificationservice.azure.com",
     "https://sts.windows.net",
     "https://graph.microsoft.com"
@@ -280,7 +280,7 @@ http-connectivity-required-url-test Failure Ensure that the logical network IP a
 
 The following table provides a summary of each test performed by the script, including possible causes for failure and recommendations for mitigation:
 
-| Test Name                        | Description                                                                 | Causes for failure                                                                                      | Mitigation Recommendations                                                                                                                                     |
+| Test name                        | Description                                                                 | Causes for failure                                                                                      | Mitigation Recommendations                                                                                                                                     |
 |--------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | cloud-agent-connectivity-test        | Checks whether the DNS server can resolve the MOC cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. The cloud agent is created using one of the IP addresses from the [management IP pool](/azure-stack/hci/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given IP addresses from the Arc VM logical network. | Logical network IP addresses can't connect to management IP pool addresses due to: <br> - Incorrect DNS server resolution. <br> - Firewall rules. <br> - The logical network is in a different vlan than the management IP pool and there's no cross-vlan connectivity. | Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. Check the [AKS network port and cross vlan requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for a detailed list of ports that need to be opened. |
 | gateway-icmp-ping-test   | Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM. | - Gateway is down or unreachable. <br>- Network routing issues between the AKS cluster control plane node VM and the gateway. <br>- Firewall blocking ICMP traffic. | - Ensure the gateway is operational.<br>- Verify routing configurations.<br>- Adjust firewall rules to allow ICMP traffic.                                              |
@@ -288,4 +288,4 @@ The following table provides a summary of each test performed by the script, inc
 
 ## Next steps
 
-If the problem persists, collect [AKS cluster logs](get-on-demand-logs.md) before [creating a support request](aks-troubleshoot.md#open-a-support-request).
+If the problem persists, collect [AKS cluster logs](get-on-demand-logs.md) before you [create a support request](aks-troubleshoot.md#open-a-support-request).
