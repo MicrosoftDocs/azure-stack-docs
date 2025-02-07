@@ -91,7 +91,7 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | **Plan** |        |
 | Step 1: [Hardware requirements for disconnected operations](../manage/disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
 | Step 2: [Network requirements for disconnected operations](../index.yml). | Configure the required network settings. |
-| Step 3: [Identity integration for disconnected operations](../index.yml). | Understand and configure your identity solution. |
+| Step 3: [Identity integration for disconnected operations](../manage/disconnected-operations-identity.md). | Understand and configure your identity solution. |
 | Step 4: [Security controls for disconnected operations](../index.yml). | Configure PKI and secure the endpoints. |
 | Step 5: [Public key infrastructure (PKI) integration for disconnected operations](../index.yml). | Configure PKI and secure the endpoints. |
 | Step 6: [Set up disconnected operations](../index.yml). | Ensure you have the necessary access and permissions to set up disconnected operations. |
