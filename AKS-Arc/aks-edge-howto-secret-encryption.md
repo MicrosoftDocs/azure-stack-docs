@@ -11,7 +11,7 @@ ms.reviewer: leslielin
 
 # Add secret encryption to an AKS Edge Essentials cluster (preview)
 
-On AKS Edge Essentials clusters, following Kubernetes security best practices, it's recommended that you encrypt the Kubernetes secret store. You can perform this encryption by activating the Key Management Service (KMS) plugin for AKS Edge Essentials, which enables [encryption at rest for secrets](https://kubernetes.io/docs/concepts/configuration/secret/) stored in the etcd key-value store. It enables this encryption by generating a Key Encryption Key (KEK) and automatically rotating it every 30 days. For more detailed information about using KMS, see the official [KMS provider documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/). This article demonstrates how to activate the KMS plugin.
+Following Kubernetes security best practices, it's recommended that you encrypt the Kubernetes secret store on AKS Edge Essentials clusters. You can perform this encryption by activating the *Key Management Service (KMS) plugin for AKS Edge Essentials*, which enables [encryption at rest for secrets](https://kubernetes.io/docs/concepts/configuration/secret/) stored in the etcd key-value store. It enables this encryption by generating a Key Encryption Key (KEK) and automatically rotating it every 30 days. For more detailed information about using KMS, see the official [KMS provider documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/). This article demonstrates how to activate the KMS plugin for AKS Edge Essentials clusters.
 
 > [!IMPORTANT]
 > The KMS plugin for AKS Edge Essentials is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -30,19 +30,19 @@ The following limitations apply to the KMS plugin for AKS Edge Essentials:
 ## Enable the KMS plugin
 
 > [!NOTE]
-> You can only enable or disable the KMS Plugin when you create a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
+> You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
 
 ### Install the KMS plugin
 
 To install the KMS plugin, follow these steps:
 
-1. Deploy the AKS Edge Essentials clusters. See [Single machine deployment](aks-edge-howto-single-node-deployment.md).
+#### Deploy the AKS Edge Essentials clusters
 
-   The following line is present if the KMS plugin is enabled:
+See [Single machine deployment](aks-edge-howto-single-node-deployment.md). The following line is present if the KMS plugin is enabled:
 
-   ```output
-   Preparing to install kms-plugin as encryption provider...
-   ```
+```output
+Preparing to install kms-plugin as encryption provider...
+```
 
 #### Create and retrieve a secret which is encrypted using KMS
 
@@ -78,7 +78,7 @@ If successful, the terminal shows the following output:
 
 If there are errors with the KMS plugin, follow this procedure:
 
-1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check for upgrades to Kubernetes clusters. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
+1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check for upgrades to Kubernetes clusters. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md):
 
    ```powershell
    Get-AksEdgeCluster -Name <cluster-name> | Select-Object -ExpandProperty Version
@@ -98,9 +98,9 @@ If there are errors with the KMS plugin, follow this procedure:
    [+]poststarthook/start-encryption-provider-config-automatic-reload ok
    ```
 
-   If you receive **[-]** before the `kms-provider` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
+   If you receive "**[-]**" before the `kms-provider` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
-1. Repair KMS. If there are still errors, then the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
+1. Repair KMS. If there are still errors, the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
 
    ```powershell
    Repair-AksEdgeKms
