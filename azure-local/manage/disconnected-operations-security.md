@@ -194,7 +194,7 @@ try {
 
 In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
-This configuration prevents the client from sending messages to untrusted destinations. The default configuration is TCP with authentication and encryption, representing the minimum level of security that Microsoft recommends for a production environment. Microsoft recommends that you do not use the `-SkipServerCertificateCheck` flag in production environments
+This configuration prevents the client from sending messages to untrusted destinations. The default configuration is TCP with authentication and encryption, representing the minimum level of security that Microsoft recommends for a production environment. Microsoft recommends that you don't use the `-SkipServerCertificateCheck` flag in production environments
 
 To enable syslog forwarding with TCP, server authentication, and TLS encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -228,7 +228,7 @@ $configRequestContent = @{
 
 ### Syslog forwarding with TCP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you do not use this configuration in production environments.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
 
 To enable syslog forwarding with TCP and no encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -243,7 +243,7 @@ $configRequestContent = @{
 
 ### Syslog forwarding with UDP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you do not use this configuration in production environments.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
 
 To enable syslog forwarding with UDP and no encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -272,7 +272,7 @@ $configRequestContent = @{
 
 ### Update syslog setup
 
-After the configuration has been properly defined, send the configuration request using the following PowerShell script:
+After the configuration is properly defined, send the configuration request using the following PowerShell script:
 
 ```powershell
 $IRVMIP = "<VM management endpoint IP address>"
@@ -303,7 +303,7 @@ Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Me
 
 ```
 
-If a setting property is not configured, its default value shows when trying to retrieve the current configurations.
+If a setting property isn't configured, its default value shows when trying to retrieve the current configurations.
 
 ## Message schema and event log references
 

@@ -73,7 +73,7 @@ In this table, you can find the built-in policies that are supported for Azure L
 | Kubernetes cluster containers CPU and memory resource limits shouldn't exceed the specified limits | e345eecc-fa47-480f-9e88-67dcc122b164 | - Enforce container CPU and memory resource limits to prevent resource exhaustion attacks in a Kubernetes cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster containers should only use allowed images | febd0533-8e55-448f-b837-bd0e06f16469 | - Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues, and malicious images.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster pod hostPath volumes should only use allowed host paths | 098fc59e-46c7-4d99-9b16-64990e543d75 | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
-| Category: Guest configuraton |  |  |  |
+| Category: Guest configuration |  |  |  |
 | Configure Linux Server to disable local users. | cd22fc48-f2c9-4b86-98d3-ec1268b46a8a | - Creates a Guest Configuration assignment to configure disabling local users on Linux Server.<br>- This ensures that Linux Servers are only accessed by an Azure Active Directory (AAD) account or a list of explicitly allowed users by this policy, improving overall security posture. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure secure communication protocols (TLS 1.1 or TLS 1.2) on Windows servers | 828ba269-bf7f-4082-83dd-633417bc391d | - Creates a Guest Configuration assignment to configure specified secure protocol version (TLS 1.1 or TLS 1.2) on Windows machine.|  [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure time zone on Windows machines | 6141c932-9384-44c6-a395-59e4c057d7c9 | This policy creates a Guest Configuration assignment to set specified time zone on Windows virtual machines. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
@@ -85,7 +85,7 @@ In this table, you can find the built-in policies that are supported for Azure L
 
 You can use Azure Policy to enforce tags on resource groups created through disconnected operations. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps using the Azure Local portal:
 
-### Step 1: Set up the Basics
+### Set up the Basics
 
 1. Sign in to the Azure Local portal and navigate to **Policy**.
 
@@ -103,7 +103,7 @@ You can use Azure Policy to enforce tags on resource groups created through disc
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions" lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
 
-### Step 2: Set the parameters
+### Set the parameters
 
 1. In the **Parameters** section, provide the required **Tag name**.
 

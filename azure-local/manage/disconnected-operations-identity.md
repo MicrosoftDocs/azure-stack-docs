@@ -200,7 +200,7 @@ As a host administrator, with the disconnected operations module and certificate
 
 ### Test identity configuration
 
-Use this command to peform easy client side validation of your identity configuration.
+Use this command to perform easy client side validation of your identity configuration.
 
 ```powershell
 $idpConfig = new-applianceIdentityConfiguration @identityParams
@@ -210,7 +210,7 @@ Test-ApplianceExternalIDentityConfiguration -config $idpConfig
 
 ### Test identity configuration (deep validation)
 
-Use this command to valiate your parameters and setup before you set your configuration.
+Use this command to validate your parameters and setup before you set your configuration.
 
 ```powershell
 $idpConfig = new-applianceIdentityConfiguration @identityParams
@@ -228,7 +228,7 @@ Set-ApplianceExternalIdentityConfiguration
 
 ### Identity management
 
-Use this command for a list of all cmlets to help you setup and troubleshoot identity configurations.
+Use this command for a list of all cmlets to help you set up and troubleshoot identity configurations.
 
 ```powershell
 Get-Command *Appliance*ExternalIdentity*
