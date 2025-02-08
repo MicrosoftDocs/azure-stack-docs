@@ -106,11 +106,11 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 - [^2]: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
 - [^3]: included for VMs running on Azure and Azure Local instances.-->
 
-<a name="1"></a>1: at additional costs.
+<a name="1"></a>1: At additional costs.
 
-<a name="2"></a>2: included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
+<a name="2"></a>2: Included as part of Windows Server and SQL Server management capabilities enabled by Azure Arc. For more information, see [Azure Hybrid Benefits for Windows Server](/windows-server/get-started/azure-hybrid-benefit?tabs=azure).
 
-<a name="3"></a>3: included for VMs running on Azure and Azure Local instances.
+<a name="3"></a>3: Included for VMs running on Azure and Azure Local instances.
 
 ## Next steps
 
