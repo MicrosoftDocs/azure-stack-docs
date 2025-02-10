@@ -54,13 +54,13 @@ The following table lists what isn't impacted by the rename:
 | Azure Stack HCI CLI | The Azure CLI commands for Azure Stack HCI and Arc VM management remain the same.  |
 | Azure Stack HCI OS  | The Azure Stack HCI operating system (OS), which is a component of Azure Local, remains the same. |
 | Azure Stack HCI OEM license | The license name remains the same. |
-| Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Microsoft Learn) were made for the entire portfolio. Screenshots and conceptual diagrams are a work in progress. <br><br> Documentation for older versions of Azure Stack HCI; for example, 22H2 only, continue to reference Azure Stack HCI, and don't reflect the name change. <br><br> Release notes and security updates that are more than 6 months old also do not reflect the name change.|
+| Azure Stack HCI documentation | The text changes for Azure Stack HCI documentation (on Microsoft Learn) were made for the entire portfolio including screenshots and conceptual diagrams. <br><br> Documentation for older versions of Azure Stack HCI; for example, 22H2 only, continues to reference Azure Stack HCI, and don't reflect the name change. <br><br> Release notes and security updates that are more than 6 months old also do not reflect the name change.|
 
 ## Frequently asked questions
 
 ### When is the name change happening?
 
-The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages, is effective from November 19, 2024. The names in the text strings in the Azure portal will be completed by early 2025. Screenshot changes across the Learn pages will be completed by early 2025.
+The name change across the text strings in Microsoft experiences such as product page, pricing page, and Azure Stack HCI and AKS-HCI Learn pages, is effective from November 19, 2024. The names in the text strings in the Azure portal will be completed by early 2025. Scattered references to Azure Stack HCI across Learn pages (outside of Azure Local docset) will be updated to Azure Local by early 2025.
 
 ### Why is the name being changed?
 

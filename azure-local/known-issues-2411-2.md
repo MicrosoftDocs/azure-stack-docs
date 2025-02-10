@@ -1,32 +1,32 @@
 ---
-title: Release notes with fixed and known issues in Azure Local 2411.1 baseline release
-description: Read about the known issues and fixed issues in Azure Local 2411.1 baseline release.
+title: Release notes with fixed and known issues in Azure Local 2411.2 baseline release
+description: Read about the known issues and fixed issues in Azure Local 2411.2 baseline release.
 author: alkohli
 ms.topic: conceptual
 ms.date: 01/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-monikerRange: "=azloc-24111"
+monikerRange: "=azloc-24112"
 ---
 
-# Known issues in the Azure Local 2411.1 release
+# Known issues in the Azure Local 2411.2 release
 
 
-This article identifies critical known issues and their workarounds in the Azure Local 2411.1 release.
+This article identifies critical known issues and their workarounds in the Azure Local 2411.2 release.
 
 These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Local instance, carefully review the information contained here.
 
 > [!IMPORTANT]
 > For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
-For more information about new features in this release, see [What's new in Azure Local](whats-new.md).
+For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
 
-## Known issues for version 2411.1
+## Known issues for version 2411.2
 
-This software release maps to software version number **2411.1.10**.
+This software release maps to software version number **2411.2.10**.
 
 > [!IMPORTANT]
-> The new deployments of this software use the 2411.1.10 build. If you updated from 2408.2, you’ve received either the 2411.0.22 or 2411.0.24 build. Both builds can be updated to 2411.1.10.
+> The new deployments of this software use the 2411.2.10 build. You can also update from 2411.1.10.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -39,21 +39,20 @@ The following issues are fixed in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM Management <!--29763603--> | Redeploying an Arc VM causes connection issues with that Arc VM and the agent disconnects. ||
-| Upgrade <!--29558170--> | Resolved conflict with third party PowerShell modules. ||
-| Upgrade <!--30024981--> | Stopped indefinite logging of negligible error events. ||
-| Upgrade <!--30197462--> | Added validation to check for free memory. ||
-| Update <!--30217441-->  | Added check to ensure that solution extension content has been copied correctly.||
-| Deployment <!--30273426--> <br> Upgrade | If the timezone isn't set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation. ||
-| Security vulnerability <!--ADO--> | Microsoft identified a security vulnerability that could expose the local admin credentials used during the creation of Arc VMs on Azure Local to non-admin users on the VM and on the hosts. <br> Arc VMs running on releases prior to Azure Local 2411 release are vulnerable. ||
+| Arc VM Management <!--ADO--> | The storage path couldn't be deleted with a pre-downloaded AKS required images.||
+| Arc VM Management <!--ADO--> | Image deletion retry fails after the node restarts. | When the node goes down and if you try deleting an image, the deletion times out. When the node restarts and  retries deletion, the deletion fails again. |
+| Update <!--304749733--> |A solution extension package was unintentionally applied into a solution update. ||
+
 
 ## Known issues in this release
 
-The following table lists the known issues in this release:
+Microsoft is not aware of any known issues in this release.
+
+<!--The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, select **English (United States)** as the installation language, as well as the time and currency format. <br> For detailed remediation steps, see the troubleshooting guide in the [Azure Local Supportability](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Triggering-deployment-settings-validation-call-results-in-OperationTimeout-2411-1-and-LCM-Extension-2411-1.md) GitHub repository.|
+| XX  | ||-->
 
 ## Known issues from previous releases
 
@@ -61,6 +60,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, select **English (United States)** as the installation language, as well as the time and currency format. <br> For detailed remediation steps, see the troubleshooting guide in the [Azure Local Supportability](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Triggering-deployment-settings-validation-call-results-in-OperationTimeout-2411-1-and-LCM-Extension-2411-1.md) GitHub repository.|
 | Update <!--30345067--> | When updating from version 2408.2.7 to 2411.0.24, the update process could fail with the following error message: `Type 'CauPreRequisites' of Role 'CAU' raised an exception: Could not finish cau prerequisites due to error 'Cannot remove item C:\UpdateDistribution\<any_file_name>: Access to the path is denied.'` |For detailed steps on how to mitigate this issue, see [Azure Local Troubleshooting Guide for Update](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/mitigation-for-cannot-remove-c-update-distribution-with-access-denied.md).|
 | Update <!--ADO--> | With the 2411 release, solution and Solution Builder Extension update aren't combined in a single update run.  |To apply a Solution Builder Extension package, you need a separate update run.|
 | Update <!--30221399--> | When applying solution update in this release, the update can fail. This will occur only if the update was started prior to November 26. The issue that causes the failure can result in one of the following error messages: <br><br>**Error 1** - The step "update ARB and extension" error "Clear-AzContext failed with 0 and Exception calling "Initialize" with "1" argument(s): "Object reference not set to an instance of an object." at "Clear-AzPowerShellCache". <br><br>**Error 2** - The step "EvalTVMFlow" error "CloudEngine.Actions.InterfaceInvocationFailedException: Type 'EvalTVMFlow' of Role 'ArcIntegration' raised an exception: This module requires `Az.Accounts` version 3.0.5. An earlier version of `Az.Accounts` is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." <br><br> Depending on the version of PowerShell modules, the above error could be reported for both versions 3.0.4 and 3.0.5.|For detailed steps on how to mitigate this issue, go to: [https://aka.ms/azloc-update-30221399](https://aka.ms/azloc-update-30221399).     |
