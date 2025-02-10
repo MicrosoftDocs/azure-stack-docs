@@ -35,7 +35,7 @@ During deployment, you configure disconnected operations to integrate with your 
 
 On a high level, the OpenID Connect (OIDC) endpoint authenticates users to disconnected operations, and the Lightweight Directory Access Protocol (LDAP) endpoint integrates groups and memberships from your enterprise. Once integrated, standard Azure role-based access control is assigned to the desired scopes.
 
-:::image type="content" source="./media/disconnected-operations/identity/identity-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/identity/identity-overview.png":::
+:::image type="content" source="./media/disconnected-operations/identity/identity-layout.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/identity/identity-layout.png":::
 
 > [!NOTE]
 > Role assignments and policies aren't inherited from the operator subscription to individual subscriptions. Each subscription has its own scope. Only specific roles assigned to individual subscriptions can perform actions within that specific subscription.
