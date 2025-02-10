@@ -4,11 +4,11 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 01/13/2025
+ms.date: 02/03/2025
 ms.service: azure-local
 ---
 
-# Rotate secrets on Azure Local, version 23H2
+# Rotate secrets on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -117,4 +117,4 @@ To change the deployment service principal, follow these steps:
 
 ## Next steps
 
-[Complete the prerequisites and checklist and install Azure Local, version 23H2](../deploy/deployment-prerequisites.md).
+[Complete the prerequisites and checklist and install Azure Local](../deploy/deployment-prerequisites.md).
