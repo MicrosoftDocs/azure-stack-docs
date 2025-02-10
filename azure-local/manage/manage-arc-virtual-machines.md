@@ -1,18 +1,18 @@
 ---
-title: Manage Arc VMs on Azure Local
-description: Learn how to manage Arc VMs, including operations such as start, stop, restart, and view properties of Azure Arc VMs running on Azure Local, version 23H2.
+title: Manage including restart, start, stop or delete Arc VMs on Azure Local 
+description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/15/2025
+ms.date: 02/03/2025
 ---
 
 # Manage Arc VMs on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Azure Arc virtual machines (VMs) running on Azure Local, version 23H2. It covers the procedures to enable guest management and to start, stop, restart, pause, save, and delete an Azure Arc VM.
+This article describes how to manage Arc virtual machines (VMs) running on Azure Local. The procedures to enable guest management, start, stop, restart, pause, save, or delete an Arc VM, are detailed.
 
 ## Prerequisites
 
