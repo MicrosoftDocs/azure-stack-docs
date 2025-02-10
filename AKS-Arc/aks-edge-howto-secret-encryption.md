@@ -4,7 +4,7 @@ description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/07/2025
+ms.date: 02/10/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
