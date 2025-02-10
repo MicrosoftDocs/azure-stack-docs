@@ -1636,6 +1636,11 @@
         "redirect_document_id": false
       },
       {
+        "source_path": "azure-local/deploy/deployment-azure-arc-gateway-existing-cluster.md", 
+        "redirect_url": "/azure/azure-local/deploy/deployment-azure-arc-gateway-overview", 
+        "redirect_document_id": false
+      },
+      {
         "source_path": "azure-local/concepts/azure-hybrid-benefit-hci.md",
         "redirect_url": "/azure-local/concepts/azure-hybrid-benefit",
         "redirect_document_id": false
