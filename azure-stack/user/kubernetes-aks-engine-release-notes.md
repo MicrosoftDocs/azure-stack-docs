@@ -93,9 +93,9 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2206                                           | 0.70.0, 0.71.0, 0.73.0, 0.75.3, 0.76.0, 0.77.0 |
 | 2301                                           | 0.75.3, 0.76.0, 0.77.0, 0.78.0, 0.79.0 |
 | 2306                                           | 0.78.0, 0.79.0, 0.80.2 |
-| 2311                                           | 0.80.2* |
-| 2406                                           | 0.80.2*, 0.81.1* |
-| 2408                                           | 0.80.2*, 0.81.1* |
+| 2311                                           | 0.80.2 |
+| 2406                                           | 0.80.2, 0.80.3*, 0.81.1* |
+| 2408                                           | 0.80.2, 0.80.3*, 0.81.1* |
 
 *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
@@ -123,6 +123,7 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 |  [v0.78.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.78.0)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2023.242.3)](https://github.com/Azure/aks-engine-azurestack/blob/v0.78.0/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2023.242.3.txt), [AKS Base Windows Server 2019 Image Containerd (17763.4737.20232423)](https://github.com/Azure/aks-engine-azurestack/blob/v0.78.0/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.4737.20232423.txt) | 1.25.13**, 1.26.8** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/3d5c7916e9995045a0868945d1f732aaa4c5b5bc/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/3d5c7916e9995045a0868945d1f732aaa4c5b5bc/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.79.0](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.79.0)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2023.296.1)](https://github.com/Azure/aks-engine-azurestack/blob/v0.79.0/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2023.296.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.4974.20232961)](https://github.com/Azure/aks-engine-azurestack/blob/v0.79.0/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.4974.20232961.txt) | 1.26.9**, 1.27.6** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/af3e6b25e6304f7c68eb90965b8e9a36887cb457/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/af3e6b25e6304f7c68eb90965b8e9a36887cb457/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.80.2](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.2)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.032.1)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.032.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.5329.20240321)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.5329.20240321.txt) | 1.27.10**, 1.28.6** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-windows.json)) |
+| [v0.80.3](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.3)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.032.1)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.032.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.5329.20240321)](https://github.com/Azure/aks-engine-azurestack/blob/v0.80.2/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.5329.20240321.txt) | 1.27.10**, 1.28.6** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/96b45e116aef6ae2e5031561b0e10621ae86a068/examples/azure-stack/kubernetes-windows.json)) |
 | [v0.81.1](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.81.1)   | [AKS Base Ubuntu 20.04-LTS Image Distro (2024.311.1)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-engine-ubuntu-2004/aks-engine-azurestack-ubuntu-2004_2024.311.1.txt), [AKS Base Windows Server 2019 Image Containerd (17763.6414.20243111)](https://github.com/Azure/aks-engine-azurestack/blob/master/vhd/release-notes/aks-windows-2019-containerd/2019-datacenter-core-azurestack-ctrd-17763.6414.20243111.txt) | 1.28.15**, 1.29.10** | API Model Samples ([Linux](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-azurestack.json), [Windows](https://github.com/Azure/aks-engine-azurestack/blob/master/examples/azure-stack/kubernetes-windows.json)) |
 
 > [!NOTE]  
@@ -168,6 +169,11 @@ To use AKS engine 0.70.0 and above:
 - Since the **aks-engine** tool is a shared source code repository across Azure and Azure Stack Hub, examining the many release notes and pull requests might lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond those previously listed. You can ignore them and use the version table above as the official guide for this update.
 - AKS Engine v0.67.0 uses the wrong Windows image when deploying Windows clusters. Use v0.70.0 to resolve this issue.
 
+#### Chrony daemon fails to restart
+The `chrony` daemon on a Linux node may fail to restart with error message: `"Could not open /dev/ptp_hyperv: No such file or directory"`.
+The workaround for this issue is to manually reboot the affected Linux nodes.
+This operation will regenerate the `/dev/ptp_hyperv` symlink and allow the chrony daemon to restart successfully.
+
 ### Reference
 
 The following list is the complete set of release notes for Azure and Azure Stack Hub combined:
@@ -187,6 +193,8 @@ The following list is the complete set of release notes for Azure and Azure Stac
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.78.0
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.79.0
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.2
+- https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.80.3
+- https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.81.1
 
 ::: moniker-end
 
