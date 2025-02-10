@@ -89,8 +89,8 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 |linuxgeneva-microsoft.azurecr.io    | HTTPS/443 |
 |gcr.io    | HTTPS/443 |
 |aka.ms    | HTTPS/443 |
-|k8connecthelm.azureedge.net | HTTPS/443 |
-|k8sconnectcsp.azureedge.net | HTTPS/443 |
+|k8connecthelm.download.prss.microsoft.com | HTTPS/443 |
+|k8sconnectcsp.download.prss.microsoft.com | HTTPS/443 |
 |.blob.core.windows.net | HTTPS/443 |
 
 ## Next steps

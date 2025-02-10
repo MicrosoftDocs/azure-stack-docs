@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/29/2024
+ms.date: 02/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Local, version 23H2.
+This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Local.
 
 For more information on other scenarios, see [Manage Arc VMs on Azure Local](../manage/manage-arc-virtual-machines.md).
 
@@ -26,7 +26,7 @@ Before you begin, complete the following:
 
 - You have access to a deployed and registered Azure Local instance, with an Arc Resource Bridge and custom location configured.
 
-- Your system is running Azure Local, version 23H2, release 2405 or later.
+- Your system is running Azure Local release 2405 or later.
 
 - Azure CLI is installed on the Azure Local instance. For instructions, see [Install the Azure CLI for Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 

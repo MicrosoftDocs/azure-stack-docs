@@ -102,7 +102,7 @@ $urlArray = @(
     "https://login.windows.net",
     "https://mcr.microsoft.com",
     "https://gbl.his.arc.azure.com",
-    "https://k8connecthelm.azureedge.net",
+    "https://k8connecthelm.download.prss.microsoft.com",
     "https://guestnotificationservice.azure.com",
     "https://sts.windows.net",
     "https://graph.microsoft.com"
