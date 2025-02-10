@@ -113,7 +113,7 @@ In this preview release, the following actions are available:
 <sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
 <sub>3. Scoped for release in the future</sub>
 
-In this release, some of the actions in the preceding list are not available in the Azure portal.
+In this release, some of the actions in the preceding list aren't available in the Azure portal.
 
 > [!NOTE]
 > Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated post preview if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
@@ -228,7 +228,7 @@ Set-ApplianceExternalIdentityConfiguration
 
 ### Identity management
 
-Use this command for a list of all cmlets to help you set up and troubleshoot identity configurations.
+Use this command for a list of all cmdlets to help you set up and troubleshoot identity configurations.
 
 ```powershell
 Get-Command *Appliance*ExternalIdentity*
