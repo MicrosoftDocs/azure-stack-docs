@@ -3,7 +3,7 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/22/2024
+ms.date: 02/10/2025
 ms.author: sethm
 ms.reviewer: sumsmith
 ms.lastreviewed: 09/23/2022
@@ -165,14 +165,15 @@ To use AKS engine 0.70.0 and above:
 
 ### Known issues
 
-- Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at a time.
-- Since the **aks-engine** tool is a shared source code repository across Azure and Azure Stack Hub, examining the many release notes and pull requests might lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond those previously listed. You can ignore them and use the version table above as the official guide for this update.
+- Deploying multiple Kubernetes services in parallel inside a single cluster can lead to an error in the basic load balancer configuration. We recommend deploying one service at a time.
+- Since the **aks-engine** tool is a shared source code repository across Azure and Azure Stack Hub, examining the many release notes and pull requests might lead you to believe that the tool supports other versions of Kubernetes and OS platforms beyond those previously listed. You can ignore them and use the previous version table as the official guide for this update.
 - AKS Engine v0.67.0 uses the wrong Windows image when deploying Windows clusters. Use v0.70.0 to resolve this issue.
 
 #### Chrony daemon fails to restart
-The `chrony` daemon on a Linux node may fail to restart with error message: `"Could not open /dev/ptp_hyperv: No such file or directory"`.
-The workaround for this issue is to manually reboot the affected Linux nodes.
-This operation will regenerate the `/dev/ptp_hyperv` symlink and allow the chrony daemon to restart successfully.
+
+The `chrony` daemon on a Linux node can fail to restart with the error message: `"Could not open /dev/ptp_hyperv: No such file or directory"`.
+
+The workaround for this issue is to manually reboot the affected Linux nodes. This operation regenerates the `/dev/ptp_hyperv` symlink and allows the `chrony` daemon to restart successfully.
 
 ### Reference
 
