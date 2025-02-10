@@ -51,7 +51,7 @@ To create an SSH key pair (same as Azure AKS), use the following procedure:
 
 ## Sign in to Azure
 
-Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index?view=azure-cli-latest#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
+Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
 
 ```azurecli
 az login 
@@ -120,7 +120,7 @@ terraform init -upgrade
 
 ## Create a Terraform execution plan and apply
 
-Make sure you run [`az login`](/cli/azure/reference-index?view=azure-cli-latest#az-login) and authenticate to Azure before this step, otherwise applying the Terraform plan fails. Run [`terraform plan`](https://www.terraform.io/docs/commands/plan.html) to create an execution plan, then run [`terraform apply`](https://www.terraform.io/docs/commands/apply.html) to apply the output file to your cloud infrastructure:
+Make sure you run [`az login`](/cli/azure/reference-index#az-login) and authenticate to Azure before this step, otherwise applying the Terraform plan fails. Run [`terraform plan`](https://www.terraform.io/docs/commands/plan.html) to create an execution plan, then run [`terraform apply`](https://www.terraform.io/docs/commands/apply.html) to apply the output file to your cloud infrastructure:
 
 ```terraform
 terraform plan -out main.tfplan 
