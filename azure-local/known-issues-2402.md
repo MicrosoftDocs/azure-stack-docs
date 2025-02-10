@@ -3,15 +3,14 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2402 feature
 description: Read about the known issues and fixed issues in Azure Stack HCI 2402 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/21/2024
+ms.date: 01/28/2025
 ms.author: alkohli
-ms.reviewer: alkohli
+monikerRange: "=azloc-previous"
 ms.service: azure-local
 ---
 
 # View known issues in Azure Stack HCI 2402 release
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402 release.
 
@@ -20,7 +19,7 @@ The release notes are continuously updated, and as critical issues requiring a w
 > [!IMPORTANT]
 > This release supports both - new deployments and updates. You must be running version 2311.3 to update to this release.
 
-For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
+For more information about the new features in this release, see [What's new in Azure Local](whats-new.md).
 
 ## Issues for version 2402
 
@@ -56,7 +55,7 @@ Here are the known issues in this release:
 | Updates <!--26856541--> |In this release, there's a health check issue owing to which a single server Azure Stack HCI can't be updated from the Azure portal. |[Update your Azure Stack HCI via PowerShell](./update/update-via-powershell-23h2.md). |
 | Add/Repair server <!--26852600--> |In this release, when adding or repairing a server, a failure is seen when the software load balancer or network controller VM certificates are being copied from the existing nodes. The failure is because these certificates weren't generated during the deployment/update. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
 | Deployment <!--26737110--> |In this release, there's a transient issue resulting in the deployment failure with the following exception:<br>```Type 'SyncDiagnosticLevel' of Role 'ObservabilityConfig' raised an exception:*<br>*Syncing Diagnostic Level failed with error: The Diagnostic Level does not match. Portal was not set to Enhanced, instead is Basic.``` |As this is a transient issue, retrying the deployment should fix this. For more information, see how to [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment). |
-| Deployment <!--26376120--> |In this release, there's an issue with the Secrets URI/location field. This is a required field that is marked *Not mandatory* and results in the Azure Resource Manager template deployment failures. |Use the sample parameters file in the [Deploy Azure Stack HCI, version 23H2 via Azure Resource Manager template](./deploy/deployment-azure-resource-manager-template.md) to ensure that all the inputs are provided in the required format and then try the deployment. <br>If there's a failed deployment, you must also clean up the following resources before you [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment): <br>1.  Delete `C:\EceStore`. <br>2.  Delete `C:\CloudDeployment`. <br>3.  Delete `C:\nugetstore`. <br>4.  `Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation`.|
+| Deployment <!--26376120--> |In this release, there's an issue with the Secrets URI/location field. This is a required field that is marked *Not mandatory* and results in the Azure Resource Manager template deployment failures. |Use the sample parameters file in the [Deploy Azure Local via Azure Resource Manager template](./deploy/deployment-azure-resource-manager-template.md) to ensure that all the inputs are provided in the required format and then try the deployment. <br>If there's a failed deployment, you must also clean up the following resources before you [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment): <br>1.  Delete `C:\EceStore`. <br>2.  Delete `C:\CloudDeployment`. <br>3.  Delete `C:\nugetstore`. <br>4.  `Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation`.|
 | Security <!--26865704--> |For new deployments, Secured-core capable devices won't have Dynamic Root of Measurement (DRTM) enabled by default. If you try to enable (DRTM) using the Enable-AzSSecurity cmdlet, you'll see an error that DRTM setting isn't supported in the current release.<br> Microsoft recommends defense in depth, and UEFI Secure Boot still protects the components in the Static Root of Trust (SRT) boot chain by ensuring that they're loaded only when they're signed and verified.  |DRTM is not supported in this release.|
 |Networking <!--28106559--> | An environment check fails when a proxy server is used. By design, the bypass list is different for winhttp and wininet, which causes the validation check to fail. | Follow these workaround steps: </br><br> 1. Clear the proxy bypass list prior to the health check and before starting the deployment or the update. </br><br> 2. After passing the check, wait for the deployment or update to fail. </br><br> 3. Set your proxy bypass list again. |
 

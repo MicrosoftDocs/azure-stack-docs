@@ -9,6 +9,8 @@ ms.date: 02/10/2025
 
 # Disconnected operations for Azure Local (preview)
 
+::: moniker range=">=azloc-24112"
+
 Applies to: Azure Local, version 23H2, release 2411 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
@@ -103,3 +105,11 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | [Azure Container Registry for disconnected operations](../index.yml). | Manage Azure Container Registry on Azure Local. |
 | [Azure Policy for disconnected operations](../manage/disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
 | [Log collection for disconnected operations](../index.yml). | Collect logs for troubleshooting. |
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end
