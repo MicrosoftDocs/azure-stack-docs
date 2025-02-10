@@ -1639,6 +1639,11 @@
         "source_path": "azure-local/concepts/azure-hybrid-benefit-hci.md",
         "redirect_url": "/azure-local/concepts/azure-hybrid-benefit",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "azure-local/manage/trusted-launch-vm-deploy.md",
+        "redirect_url": "/azure-local/manage/create-arc-virtual-machines",
+        "redirect_document_id": false
       }
     ]
   }

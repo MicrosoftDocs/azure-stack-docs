@@ -353,10 +353,10 @@ items:
 
   - name: Trusted launch for Arc VMs
     items: 
-      - name: What is Trusted Launch for Arc VMs?
+      - name: What is Trusted launch for Arc VMs?
         href: manage/trusted-launch-vm-overview.md
-      - name: Deploy Trusted Launch for Arc VMs
-        href: manage/trusted-launch-vm-deploy.md
+      - name: Automatic virtual TPM state transfer
+        href: manage/trusted-launch-automatic-state-transfer.md
       - name: Manage guest state protection key
         href: manage/trusted-launch-vm-import-key.md
 

@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 01/08/2025
+ms.date: 01/29/2025
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -136,7 +136,33 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
     | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
-1. Run the following command to create a VM.
+1. Run the following commands to create the applicable VM.
+
+    **To create a Trusted launch Arc VM:**
+
+    1. Specify additional flags to enable secure boot, enable virtual TPM, and choose security type. Note, when you specify security type as Trusted launch, you must enable secure boot and vTPM, otherwise Trusted launch VM creation will fail.
+
+        ```azurecli
+        az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
+        ```
+
+    1. Once the VM is created, to verify the security type of the VM is `Trusted launch`, do the following.
+
+    1. Run the following cmdlet (on one of the cluster nodes) to find the owner node of the VM:
+
+        ```azurecli
+        Get-ClusterGroup $vmName
+        ```
+
+    1. Run the following cmdlet on the owner node of the VM:
+
+        ```azurecli
+        (Get-VM $vmName).GuestStateIsolationType
+        ```
+
+    1. Ensure a value of `TrustedLaunch` is returned.
+
+    **To create a standard Arc VM:**
 
    ```azurecli
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
@@ -247,7 +273,7 @@ Follow these steps in Azure portal for your Azure Local.
     
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
+    1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information on what are Trusted launch Arc virtual machines, see [What is Trusted launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
 
    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
 
