@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 12/16/2024
+ms.date: 02/07/2025
 ms.author: sethm 
 ms.reviewer: anirbanpaul 
 ---
@@ -188,7 +188,8 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the cluster host servers:
 
     ```powershell
-    SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
+    $cred=Get-credential
+    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).

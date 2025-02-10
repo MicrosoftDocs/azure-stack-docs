@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 02/10/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -237,6 +237,10 @@ If your deployment fails, you can rerun the deployment. In your Azure Local inst
 ## Post deployment tasks
 
 After the deployment is complete, you may need to perform some additional tasks to secure your system and ensure it's ready for workloads.
+
+### Enable Health monitoring
+
+To monitor storage pool consumption, use the steps in [Enable health alerts](../manage/health-alerts-via-azure-monitor-alerts.md) to receive alerts in Azure portal. An alert is created when the storage pool reaches 70%.
 
 ### Enable RDP
 
