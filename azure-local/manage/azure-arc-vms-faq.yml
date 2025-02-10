@@ -5,26 +5,15 @@ metadata:
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
-  ms.service: azure-stack-hci
-  ms.date: 02/03/2025
+  ms.service: azure-local
+  ms.date: 02/10/2025
 title: Azure Arc VM management FAQ
 summary:
-  Frequently asked questions about Azure Arc VMs for Azure Local.
+  Frequently asked questions about Azure Arc VMs for Azure Local for 2311.2 and later.
 
 sections:
   - name: ignored
     questions:
-    - question: |
-        What is changing in Azure Arc Virtual Machine (VM) management on Azure Stack HCI, version 22H2?
-      answer: |
-        On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change.
-        With the upcoming release of Azure Local, we're supporting Arc VM management exclusively on Azure Local. The support for Arc VM management preview on version 22H2 will end on 15 February 2024.
-
-    - question: |
-        What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
-      answer: |
-        The existing Arc VMs created on version 22H2 on your system will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Local. Keep in mind that there's no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
-
     - question: |
         What major improvements and features can I expect for Arc VMs in Azure Local?
       answer: |
