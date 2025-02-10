@@ -12,7 +12,7 @@ metadata:
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
 
 summary:
-  The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Local, version 23H2 instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
+  The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
 
   Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**.
 
@@ -32,7 +32,7 @@ sections:
           
           Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
 
-          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Local, version 22H2, it's version 10.
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
           > [!NOTE]
           > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
