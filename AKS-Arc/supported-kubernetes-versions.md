@@ -3,10 +3,10 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 11/22/2024
+ms.date: 02/10/2025
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 02/10/2025
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
@@ -48,7 +48,7 @@ You should install the latest patch release of the minor version you're running.
 | 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | Generally available | 2411 release |
 | 1.26 | [2405](aks-whats-new-23h2.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
 
-### AKS Arc supported Kubernetes minor & patch versions per release
+### AKS Arc supported Kubernetes minor and patch versions per release
 
 | Release             | Supported minor & patch versions                 |
 |---------------------|--------------------------------------------------|
