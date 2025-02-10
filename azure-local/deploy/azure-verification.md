@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/22/2024
+ms.date: 02/03/2025
 ms.lastreviewed: 03/05/2024
 ms.service: azure-local
 ---
@@ -18,9 +18,9 @@ ms.service: azure-local
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Local extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-*Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Local, version 23H2 or later. It helps to provide guarantees for these VMs to operate in other Azure environments.
+*Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Local. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about the previous version of this feature on Azure Local, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
+For more information about the previous version of this feature, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Local
 
@@ -39,14 +39,14 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 ## Manage Azure VM verification
 
-Azure VM verification is automatically enabled by default in Azure Local, version 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
+Azure VM verification is automatically enabled by default in Azure Local. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
 > [!NOTE]
 > To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
 
 ### Host prerequisites
 
-- Make sure that you have access to Azure Local, version 23H2. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
+- Make sure that you have access to Azure Local. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - (Optional) If you're using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
@@ -341,9 +341,9 @@ No. Turning on Azure VM verification incurs no extra fees.
 
 No. Azure VM verification is a feature built into Azure Local, and can only be used on Azure Local.
 
-### If I just upgraded to version 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
+### If I just upgraded from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local, version 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus in version 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
+If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
 
 ### I just set up Azure VM verification on my system. How do I ensure that Azure VM verification stays active?
 
