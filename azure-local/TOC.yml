@@ -671,6 +671,7 @@ items:
     - name: Review Azure Container Registry
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Review Azure Policy
+<<<<<<< HEAD
       href: manage/disconnected-operations-policy.md
   - name: Troubleshoot disconnected operations
     items:
@@ -678,6 +679,9 @@ items:
       href: manage/disconnected-operations-logs.md
     - name: Fallback log collection
       href: manage/disconnected-operations-fallback.md
+=======
+      href: manage/disconnected-operations-policy.md     
+>>>>>>> 716d9e57840233fa4764344f6bbbe92ea0e04cd4
 
 - name: Version 22H2
   items:
