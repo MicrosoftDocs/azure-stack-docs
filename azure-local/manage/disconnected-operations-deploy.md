@@ -13,17 +13,15 @@ ms.date: 02/11/2025
 
 This article provides you with steps to deploy Azure Local with disconnected operations in your datacenter. You can determine the Azure Local topology, prepare the first machine for the disconnected operations appliance, install the appliance, and create the Azure Local instance.
 
-> [!IMPORTANT]  
->
+> [!IMPORTANT]
 > - Ensure your network configuration and the names you input in the portal match your setup and the switches created earlier.
 > - A minimum of 3 nodes are required for disconnected operations to be supported.
-> - The Azure Local cluster takes a few hours to deploy.  
-> - The local control plane may experience periods of downtime when the node reboots and updates.  
-> - **Infrastructure cluster volume**:
-    >
-    > - During cluster creation, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created by deployment.  
-    > - When the Azure Local cluster is created, the disconnected operations VM is moved to cluster storage and converted to a clustered VM.
+> - The Azure Local cluster takes a few hours to deploy.
+> - The local control plane may experience periods of downtime when the node reboots and updates.
 
+> [!NOTE]
+>    - During cluster creation, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created by deployment.
+>   - When the Azure Local cluster is created, the disconnected operations VM is moved to cluster storage and converted to a clustered VM.
 ## Prerequisites
 
 Before you begin, you must have:
