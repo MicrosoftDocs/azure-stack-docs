@@ -1,5 +1,5 @@
 ---
-title: Add secret encryption to an AKS Edge Essentials cluster (preview)
+title: Enable secret encryption on an AKS Edge Essentials cluster (preview)
 description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters to encrypt secrets.
 author: sethmanheim
 ms.author: sethm
@@ -9,7 +9,7 @@ ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
 
-# Add secret encryption to an AKS Edge Essentials cluster (preview)
+# Enable secret encryption on an AKS Edge Essentials cluster (preview)
 
 Following Kubernetes security best practices, it's recommended that you encrypt the Kubernetes secret store on AKS Edge Essentials clusters. You can perform this encryption by activating the *Key Management Service (KMS) plugin for AKS Edge Essentials*, which enables [encryption at rest for secrets](https://kubernetes.io/docs/concepts/configuration/secret/) stored in the etcd key-value store. It enables this encryption by generating a Key Encryption Key (KEK) and automatically rotating it every 30 days. For more detailed information about using KMS, see the official [KMS provider documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/).
 
@@ -28,8 +28,6 @@ The following limitations apply to the KMS plugin for AKS Edge Essentials:
 
 - Disabling the KMS plugin after enabling it is not supported.
 - The plugin can be used for single node clusters. The KMS plugin can't be used with the [experimental multi-node features](aks-edge-howto-scale-out.md).
-
-## Enable the KMS plugin
 
 > [!NOTE]
 > You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
