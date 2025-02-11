@@ -1,0 +1,141 @@
+---
+title: Use Azure CLI for disconnected operations on Azure Local (preview)
+description: Learn how to use the Azure Command-Line Interface (CLI) for Azure Local disconnected operations (preview).
+ms.topic: how-to
+author: ronmiab
+ms.author: robess
+ms.date: 02/04/2025
+---
+
+# Use Azure CLI for disconnected operations on Azure Local (preview)
+
+[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
+
+This article covers how to install and configure the Azure CLI and install extensions for disconnected operations on Azure Local.
+
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
+
+## About CLI
+
+**CLI** is a versatile, cross-platform command line interface that allows you to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
+
+## Supported versions for CLI and extension
+
+In this preview, the supported version of Azure CLI for Azure Local disconnected operations is 2.60.0. For more information, see [Azure CLI release notes](/cli/azure/release-notes-azure-cli). To find your installed version and see if you need to update, run `az version`:  
+
+```azurecli  
+az version  
+```
+
+For more information, see [Azure CLI commands](/cli/azure/reference-index?view=azure-cli-latest#az_version&preserve-view=true).
+
+## Install CLI
+
+To install the CLI, follow these steps:
+
+1. [Download version 2.60.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.60.0-x64.msi).
+2. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
+
+## Configure certificates for CLI
+
+To use CLI, you must trust the CA root certificate on your machine.
+
+For disconnected operations you must:
+
+1. [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
+2. [Set up certificates for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
+3. Change the path to the 64-bit version: `C:\Program Files\Microsoft SDKs\Azure\CLI2`.
+
+## Configure Azure CLI  
+
+To configure the Azure CLI to run disconnected operations on Azure Local, follow these steps:
+
+1. Run the `Get-ApplianceAzCliCloudConfig` function to generate the JSON file that contains the required cloud endpoints.
+
+    Here's an example script:
+
+    ```PowerShell
+    function Get-ApplianceAzCliCloudConfig {  
+        [CmdletBinding()]  
+        [OutputType([String])]  
+        param (  
+            [Parameter(Position = 0, Mandatory = $true)]  
+            [string]$ArmEndpoint,  
+            [Parameter(Position = 1, Mandatory = $false)]  
+            [string]$OutputFolder,  
+            [Parameter(Position = 2, Mandatory = $false)]  
+            [string]$ApiVersion = "2022-09-01"  
+        )  
+        $armMetadataUrl = "$($ArmEndpoint.TrimEnd('/'))/metadata/endpoints?api-version=${ApiVersion}"  
+        try {  
+            $response = Invoke-WebRequest $armMetadataUrl `  
+                -Method 'GET' `  
+                -ContentType "application/json" `  
+                -UseBasicParsing  
+        } catch {  
+            Write-Error "Failed to get ARM metadata endpoints at '$armMetadataUrl'."  
+            throw $_  
+        }  
+        $cloudEndpoints = $response.Content | ConvertFrom-Json  
+        $cloudConfig = @{  
+            endpoints = @{  
+                activeDirectory = "$($cloudEndpoints.authentication.loginEndpoint.TrimEnd('/'))/adfs"  
+                activeDirectoryGraphResourceId = $cloudEndpoints.graph  
+                activeDirectoryResourceId = $cloudEndpoints.authentication.audiences[0]  
+                resourceManager = $cloudEndpoints.resourceManager  
+                microsoftGraphResourceId = $cloudEndpoints.graph  
+            }  
+            suffixes = @{  
+                storageEndpoint = $cloudEndpoints.suffixes.storage  
+                keyvaultDns = $cloudEndpoints.suffixes.keyvaultDns  
+                acrLoginServerEndpoint = $cloudEndpoints.suffixes.acrLoginServer  
+            }  
+        }  
+        $cloudConfigJson = $cloudConfig | ConvertTo-Json  
+        if ($OutputFolder) {  
+            $cloudConfigJson | Set-Content -Path "$OutputFolder\cloudconfig.json"  
+        }  
+        return $cloudConfigJson  
+    }  
+    ```
+
+2. Register the cloud configuration with the CLI.
+
+    ```azurecli
+    az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
+    az cloud set -n azure.local
+    ```
+
+    You can also use this command to configure the CLI:
+
+    ```azurecli
+    az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'  
+    az cloud set -n azure.local
+    ```
+
+## Extensions for CLI
+
+CLI extensions are Python wheels that aren't shipped with the CLI but run as CLI commands. With extensions, you can access experimental and prerelease commands and write your own CLI interfaces. The first time you use an extension, you should receive a prompt to install it.
+
+To get a list of available extensions, run:
+
+```azurecli
+az extension list-available --output table  
+```  
+
+For more information, see [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
+
+The following table lists the CLI extensions supported on Azure Local disconnected operations, along with the maximum extension version supported and installation information.
+
+| Disconnected operations services | Extensions | Maximum extension version supported | Installation information |  
+|----------------------------------|------------|------------------------------------|--------------------------|  
+| Arc enabled servers              | az connectedmachine | 0.7.0 and 1.1.0 | [How to install extensions](/cli/azure/azure-cli-extensions-overview#how-to-install-extensions) <br></br> [az connectedmachine](/cli/azure/connectedmachine?view=azure-cli-latest&preserve-view=true)  |
+| Arc enabled Kubernetes clusters  | az connectedk8s <br></br> az k8s-extension <br></br> az k8s-configuration <br></br> az customlocation | k8s-extension: 1.6.1 <br></br> k8sconfiguration: 2.0.0 <br></br> customlocation: 0.1.3 <br></br> Hosted location: https://winfieldartifacts.z21.web.core.windows.net/connectedk8s-1.9.3-py2.py3-none-any.whl  | https://winfieldartifacts.z21.web.core.windows.net/connectedk8s-1.9.3-py2.py3-none-any.whl <br></br> [az k8s-extension](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) <br></br> [az k8s-configuration flux](/cli/azure/k8s-configuration/flux?view=azure-cli-latest&preserve-view=true) <br></br> [az customlocation](/cli/azure/customlocation?view=azure-cli-latest&preserve-view=true)  |
+| Azure managed virtual machines (VMs) for Azure Local                  | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> aksarc: 1.2.23 | [Enable Azure VM extensions using CLI](/azure/azure-arc/servers/manage-vm-extensions-cli) <br></br> [Troubleshoot Arc-enabled servers VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)  |
+| Azure Kubernetes Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
+| Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.4.5 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
+| Azure Container Registry | Built-in      |    |  |
+| Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
+| Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
+
+<!--## Next steps-->
