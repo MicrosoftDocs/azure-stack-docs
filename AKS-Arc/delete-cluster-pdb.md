@@ -30,7 +30,11 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
    ```azurecli
    az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name
    ```
-
+    
+    Or you may run the command with --admin if you are an administrator:
+   ```azurecli
+   az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name --admin
+   ```
 1. Verify PDB:
 
    ```bash
