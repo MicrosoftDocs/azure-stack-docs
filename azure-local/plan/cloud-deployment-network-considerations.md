@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/17/2024
+ms.date: 02/11/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -227,7 +227,7 @@ $IntentName = "MgmtCompute"
 #Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
 Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
 
-#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+#Rename NetAdapter because during creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
 Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
 ```
@@ -326,13 +326,13 @@ Here are the summarized considerations for the IP addresses:
 |4     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
 |5     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
 
-### DNS Servers Considerations
+### DNS server considerations
 
-Azure Local deployments based on Active Directory require a DNS Server that can resolve the On-Prem domain and the Internet public endpoints. As part of the deployment it is required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it is not supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
+Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it is required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it is not supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
 
-The DNS servers used for Azure Local must be external and operational before deployment.It is not supported to run them as Azure Local virtual machines.
+The DNS servers used for Azure Local must be external and operational before deployment. It is not supported to run them as Azure Local virtual machines.
 
-Here are the summarized considerations for DNS servers addresses
+Here are the summarized considerations for DNS servers addresses:
 
 |#  | Considerations  |
 |---------|---------|
