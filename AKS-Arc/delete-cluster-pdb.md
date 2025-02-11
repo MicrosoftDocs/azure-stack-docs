@@ -20,16 +20,18 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all PDBs:
 
 1. Access the AKS Arc cluster:
-  - When the AKS Arc cluster is in a **Connected** state
+  - Run the following command when the AKS Arc cluster is in a **Connected** state:
 
    ```azurecli
    az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name 
    ```
    
-   - When the AKS Arc cluster is in a **disconnected** state. To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission:
+   - Run the following command when the AKS Arc cluster is in a **disconnected** state. 
+   To run the `[az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials)`, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission:
    ```azurecli
-   az aksarc get-credentials -g "$resource_group_name" -n $aks_cluster_name --file <file-name>
+   az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name
    ```
+
 1. Verify PDB:
 
    ```bash
