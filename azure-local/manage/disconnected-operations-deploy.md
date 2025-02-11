@@ -408,9 +408,7 @@ Install-Appliance @installAzureLocalParams -Verbose
 ```  
 
 > [!NOTE]
-> This process takes a couple of hours and must be completed successfully before you continue.
->
-> - After a successful configuration, you'll have a local control plane running in your datacenter.
+> This process takes a couple of hours and must be completed successfully before you continue. After a successful configuration, you'll have a local control plane running in your datacenter.
 
 ## Configure observability for diagnostics and support
 
@@ -506,7 +504,9 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 2. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
-    > Plan the subscription and resource group where you want to place your nodes and cluster since resource move action isn't supported. The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
+    > Plan the subscription and resource group where you want to place your nodes and cluster since resource move action isn't supported.
+    >
+    > The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
 
 ### Initialize each node  
 
