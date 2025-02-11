@@ -24,9 +24,8 @@ The KMS plugin is supported for all AKS Edge Essentials clusters, version 1.10.x
 
 ## Limitations
 
-The following limitations apply to the KMS plugin for AKS Edge Essentials:
+The following limitation applies to the KMS plugin for AKS Edge Essentials:
 
-- Disabling the KMS plugin after enabling it is not supported.
 - The plugin can be used for single node clusters. The KMS plugin can't be used with the [experimental multi-node features](aks-edge-howto-scale-out.md).
 
 > [!NOTE]
