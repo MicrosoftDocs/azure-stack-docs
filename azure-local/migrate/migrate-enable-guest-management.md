@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -41,18 +41,23 @@ Before you begin, complete the following:
     - To verify the installation and check that the **stack-hci-vm** version is 1.1.5 or later:
 
         ```azurecli
-        PS C:\Users\AzureStackAdminD> az version
+        PS C:\Users\AzureStackAdminD> az -version
         {
-            "azure-cli": ”2.60.0”,
-            "azure-cli-core": ”2.60.0”,
+            "azure-cli": "2.68.0",
+            "azure-cli-core": "2.68.0",
             "azure-cli-telemetry": "1.1.0",
             "extensions": {
-                "aksarc": ‘1. 2.20" ,
-                "arcappliance": "1.1.1", 
-                "connectedk8s": "1.6. 2‘ ,
+                "aksarc": "1.2.23",
+                "arcappliance": "1.3.1", 
+                "connectedk8s": "1.10.5",
                 "customlocation": "0.1.3",
-                "k8s-extension": "1.4. 5" ,
-                "stack-hci-vm": "1.1.8"
+                "k8s-extension": "1.6.3",
+                "stack-hci-vm": "1.5.0",
+                            },
+            "dependencies": {
+                "msal": "1.31.1",
+                "azure-mgmt-resource": "23.1.1",
+                            },
         }
         ```
 
