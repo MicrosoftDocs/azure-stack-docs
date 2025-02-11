@@ -510,8 +510,8 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
-      - name: Enable guest management
-        href: migrate/migrate-enable-guest-management.md
+    - name: Enable guest management
+      href: migrate/migrate-enable-guest-management.md
     - name: Maintain static IP addresses
       href: migrate/migrate-maintain-ip-addresses.md
     - name: FAQ
@@ -561,6 +561,21 @@ items:
       href: concepts/route-reflector-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
+
+- name: Disconnected operations
+  items:
+  - name: Overview
+    href: manage/disconnected-operations-overview.md
+  - name: Networking for disconnected operations
+    href: manage/disconnected-operations-network.md
+  - name: Identity for disconnected operations
+    href: manage/disconnected-operations-identity.md
+  - name: Public key infrastructure (PKI) for disconnected operations
+    href: manage/disconnected-operations-pki.md
+  - name: Azure Policy for disconnected operations
+    href: manage/disconnected-operations-policy.md
+  - name: Security for disconnected operations
+    href: manage/disconnected-operations-security.md    
 
 - name: Version 22H2
   items:
