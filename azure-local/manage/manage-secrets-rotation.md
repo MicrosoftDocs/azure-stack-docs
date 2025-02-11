@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/11/2025
 ms.service: azure-local
 ---
 
@@ -58,6 +58,37 @@ Updating password in AD.
 WARNING: Please close this session and log in again.
 PS C:\Users\MGMT> 
 ```
+
+## Change cluster witness storage account key
+
+This section describes how you can change the storage account key for the cluster witness storage account.
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+
+1. Configure the witness quorum using the secondary storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account secondary key>
+    ```
+
+1. Rotate the storage account primary key.
+
+1. Configure the witness quorum using the rotated storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account primary key>
+    ```
+
+1. Rotate the storage account secondary key.
+
+1. Update the storage account primary key in the ECE store:
+
+    ```powershell
+    $SecureSecretText = ConvertTo-SecureString -String "<REPLACE STORAGE ACCOUNT KEY>" -AsPlainText -Force
+    $WitnessCred = New-Object -Type PSCredential -ArgumentList "WitnessCredential,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
+    ```
+
 
 ## Change deployment service principal
 
