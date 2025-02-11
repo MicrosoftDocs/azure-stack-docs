@@ -28,11 +28,11 @@ Before you begin, ensure that you:
 
 1. Install the OpenSSH Server Extension.
 
-   You can install the OpenSSH Server Extension via Azure portal or by PowerShell. Installing the extension via Azure portal is the recommended method.
+   You can install the OpenSSH Server Extension via Azure portal or using PowerShell. Installing the extension via Azure portal is the recommended method.
 
    ### Install the OpenSSH Server Extension via Azure portal
 
-   To install the extension via Azure portal, navigate to Extensions and select the **OpenSSH for Windows - Azure Arc** option.
+   To install the extension via Azure portal, navigate to **Extensions** and select the **OpenSSH for Windows - Azure Arc** option.
 
    :::image type="content" source="./media/connect-arc-vm-using-ssh/install-open-ssh-server-1.png" alt-text="Screenshot of the Azure Arc Extensions page." lightbox="./media/connect-arc-vm-using-ssh/install-open-ssh-server-1.png":::
 
@@ -40,22 +40,22 @@ Before you begin, ensure that you:
 
    Use the following steps to install the OpenSSH Server Extension via PowerShell:
 
-1. Open a Windows PowerShell session as an administrator.
+   1. Open a Windows PowerShell session as an administrator.
 
-1. Run the following cmdlets to ensure that the required Azure CLI Extensions are installed:
+   1. Run the following cmdlets to ensure that the required Azure CLI Extensions are installed:
 
    ```powershell
    az extension add --upgrade --name connectedmachine
    az extension add --upgrade --name ssh
    ```
 
-1. Sign in to Azure:
+   1. Sign in to Azure:
 
    ```powershell
    az login --use-device-code
    ```
 
-1. Set appropriate parameters:
+   1. Set appropriate parameters:
 
    ```powershell
    $resourceGroup="<your resource group>"
@@ -64,7 +64,7 @@ Before you begin, ensure that you:
    $localUser = "Administrator" # Use a local admin account for testing        
    ```
 
-1. Install the `OpenSSH` Arc Extension:
+   1. Install the `OpenSSH` Arc Extension:
 
    ```powershell
    az connectedmachine extension create --name WindowsOpenSSH 
@@ -103,9 +103,9 @@ Before you begin, ensure that you:
    PS C:\Users\labadmin>
    ```
 
-1. You can see `WindowsOpenSSH` Extension in the Azure portal Extensions list view.
+   1. You can see `WindowsOpenSSH` Extension in the Azure portal Extensions list view.
 
-   :::image type="content" source="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
+      :::image type="content" source="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
 
 ## Use SSH to connect to Azure Local
 
