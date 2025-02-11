@@ -644,24 +644,34 @@ items:
   items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
-  - name: Networking for disconnected operations
-    href: manage/disconnected-operations-network.md
-  - name: Identity for disconnected operations
-    href: manage/disconnected-operations-identity.md
-  - name: Review Azure CLI
-    href: manage/disconnected-operations-cli.md
-  - name: Review Azure Kubernetes Service (AKS)
-    href: manage/disconnected-operations-aks.md
-  - name: Review Azure Arc Virtual Machines (VMs)
-    href: manage/disconnected-operations-arc-vm.md
-  - name: Review Azure Container Registry
-    href: manage/disconnected-operations-azure-container-registry.md
-  - name: Public key infrastructure (PKI) for disconnected operations
-    href: manage/disconnected-operations-pki.md
-  - name: Azure Policy for disconnected operations
-    href: manage/disconnected-operations-policy.md
-  - name: Security for disconnected operations
-    href: manage/disconnected-operations-security.md     
+  - name: Plan for disconnected operations
+    items:  
+    - name: Networking for disconnected operations
+      href: manage/disconnected-operations-network.md
+    - name: Identity for disconnected operations
+      href: manage/disconnected-operations-identity.md
+    - name: Security for disconnected operations
+      href: manage/disconnected-operations-security.md  
+    - name: Public key infrastructure (PKI) for disconnected operations
+      href: manage/disconnected-operations-pki.md
+  - name: Deploy disconnected operations
+    items:
+    - name: Set up disconnected operations
+      href: manage/disconnected-operations-set-up.md
+    - name: Deploy Azure Local for disconnected operations
+      href: manage/disconnected-operations-deploy.md
+  - name: Manage disconnected operations
+    items:
+    - name: Review Azure CLI
+      href: manage/disconnected-operations-cli.md
+    - name: Review Azure Arc Virtual Machines (VMs)
+      href: manage/disconnected-operations-arc-vm.md
+    - name: Review Azure Kubernetes Service (AKS)
+      href: manage/disconnected-operations-aks.md
+    - name: Review Azure Container Registry
+      href: manage/disconnected-operations-azure-container-registry.md
+    - name: Review Azure Policy
+      href: manage/disconnected-operations-policy.md     
 
 - name: Version 22H2
   items:
