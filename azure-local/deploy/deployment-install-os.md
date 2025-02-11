@@ -103,7 +103,7 @@ Follow these steps to configure the operating system using SConfig:
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
    > [!IMPORTANT]
-   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-servers-considerations).
+   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
 
 
 2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
