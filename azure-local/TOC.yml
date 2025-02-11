@@ -327,6 +327,8 @@ items:
         href: manage/create-network-interfaces.md
       - name: 5. Create Arc VMs
         href: manage/create-arc-virtual-machines.md
+    - name: Connect to VM via SSH
+      href: manage/connect-arc-vm-using-ssh.md
     - name: Manage Arc VMs
       href: manage/manage-arc-virtual-machines.md
     - name: Manage Arc VM resources

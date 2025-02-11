@@ -5,20 +5,20 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/06/2025
+ms.date: 02/11/2025
+
+#customer intent: As a Senior Content Developer, I want to provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
 
-# Connect to an Arc VM on Azure Local using SSH
+# Connect to an Arc VM on Azure Local using SSH and RDP over SSH
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article uses an example to connect to an Azure Arc VM on Azure Local using Secure Shell (SSH). The example enables the OpenSSH Server via Arc Extension, using Azure CLI. This can also be done in Azure portal.
+This article provides an example to connect to an Azure Arc VM on Azure Local using Secure Shell (SSH) and Remote Desktop (RDP) over SSH. The example demonstrates enabling the OpenSSH Server via the Arc Extension using Azure portal and Azure CLI.
 
 ## More about the SSH Server Extension
 
-You can open a Remote Desktop (RDP) connection to every Windows Server from the Azure CLI without a VPN or another open port through your firewall. For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
-
-The latest versions of Windows Server can also act as an SSH Server if you enable the OpenSSH Server Extension. For more information, see [OpenSSH for Windows overview](/windows-server/administration/OpenSSH/openssh-overview).
+You can open an RDP connection to every Windows Server from the Azure CLI without a VPN or another open port through your firewall. For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
 ## Prerequisites
 
@@ -26,9 +26,20 @@ Before you begin, ensure that you:
 
 1. Have access to Azure Local that is running the latest version of software.
 
-1. Install the OpenSSH Server Extension:
+1. Install the OpenSSH Server Extension.
+
+   You can install the OpenSSH Server Extension via Azure portal or by PowerShell. Installing the extension via Azure portal is the recommended method.
+
+   ### Install the OpenSSH Server Extension via Azure portal
+
+   To install the extension via Azure portal, select the **OpenSSH for Windows - Azure Arc** option.
 
    :::image type="content" source="./media/connect-arc-vm-using-ssh/install-open-ssh-server-1.png" alt-text="Screenshot of the Azure Arc Extensions page." lightbox="./media/connect-arc-vm-using-ssh/install-open-ssh-server-1.png":::
+
+
+   ### Install the OpenSSH Server Extension via PowerShell
+
+  Use the following steps to install the OpenSSH Server Extension via PowerShell
 
 1. Open a Windows PowerShell session as an administrator.
 
@@ -50,13 +61,15 @@ Before you begin, ensure that you:
    ```powershell
    $resourceGroup="<your resource group>"
    $serverName = "<your server name>"
+   $location = "<your location>"
    $localUser = "Administrator" # Use a local admin account for testing        
    ```
 
 1. Install the `OpenSSH` Arc Extension:
 
    ```powershell
-   az connectedmachine extension create --name WindowsOpenSSH --location westeurope --type WindowsOpenSSH --publisher Microsoft.Azure.OpenSSH --type-handler-version 3.0.1.0 --machine-name $serverName --resource-group $resourceGroup
+   az connectedmachine extension create --name WindowsOpenSSH 
+   --type WindowsOpenSSH --publisher Microsoft.Azure.OpenSSH --type-handler-version 3.0.1.0 --machine-name $serverName --resource-group $resourceGroup
    ```
 
    Here's a sample output:
@@ -110,18 +123,9 @@ Use the following steps to connect to Azure Local.
 
    You're now connected to Azure Local over SSH:
 
-   ```powershell
-   Microsoft Windows [Version 10.0.20348.2655]
-   (c) Microsoft Corporation. All rights reserved.
+   :::image type="content" source="./media/connect-arc-vm-using-ssh/server-connection-6.png" alt-text="Screenshot of server connection over SSH." lightbox="./media/connect-arc-vm-using-ssh/server-connection-6.png":::
 
-   administrator@VMName C:\Users\Administrator>
-   ```
-
-    You're now connected to Server Manager.
-
-    :::image type="content" source="./media/connect-arc-vm-using-ssh/server-manager-dashboard-7.png" alt-text="Screenshot of the Server Manager Dashboard for Windows Server over SSH." lightbox="./media/connect-arc-vm-using-ssh/server-manager-dashboard-7.png":::
-
-## Use RDP to connect to Azure Local
+## Use RDP over SSH to connect to Azure Local
 
 1. To sign into Azure Local using RDP, run the following command with the RDP parameter:
 
@@ -129,7 +133,7 @@ Use the following steps to connect to Azure Local.
    az ssh arc --resource-group $resourceGroup --name $serverName --local-user $localUser --rdp
    ```
 
-1. Sign in to the local server for SSH.
+1. Sign in to the local server for RDP over SSH.
 
    :::image type="content" source="./media/connect-arc-vm-using-ssh/server-login-dialog-for-ssh-arc-connection-5.png" alt-text="Screenshot of server sign-in dialog to connect to Windows Server over SSH." lightbox="./media/connect-arc-vm-using-ssh/server-login-dialog-for-ssh-arc-connection-5.png":::
 
@@ -137,9 +141,7 @@ Use the following steps to connect to Azure Local.
 
    :::image type="content" source="./media/connect-arc-vm-using-ssh/rdp-login-dialog-for-ssh-arc-connection-6.png" alt-text="Screenshot of the RDP server sign-in dialog to connect to Windows Server over SSH." lightbox="./media/connect-arc-vm-using-ssh/rdp-login-dialog-for-ssh-arc-connection-6.png":::
 
-1. You're now connected to Server Manager.
-
-   :::image type="content" source="./media/connect-arc-vm-using-ssh/server-manager-dashboard-7.png" alt-text="Screenshot of the Server Manager Dashboard for a Windows Server over SSH." lightbox="./media/connect-arc-vm-using-ssh/server-manager-dashboard-7.png":::
+   :::image type="content" source="./media/connect-arc-vm-using-ssh/rdp-desktop-for-ssh-arc-connection-9.png" alt-text="Screenshot of the RDP desktop to connect to Windows Server over SSH." lightbox="./media/connect-arc-vm-using-ssh/rdp-desktop-for-ssh-arc-connection-9.png":::
 
 You have set up an RDP tunnel over SSH into your Azure Local using Azure CLI without any VPN or open ports at your firewall.
 
