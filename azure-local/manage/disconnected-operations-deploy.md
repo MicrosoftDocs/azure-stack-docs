@@ -21,7 +21,7 @@ This article provides you with steps to deploy Azure Local with disconnected ope
 
 > [!NOTE]
 >    - During cluster creation, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created by deployment.
->   - When the Azure Local cluster is created, the disconnected operations VM is moved to cluster storage and converted to a clustered VM.
+>   - When the Azure Local cluster is created, the disconnected operations VM is moved to cluster storage and converted to a clustered virtual machine (VM).
 ## Prerequisites
 
 Before you begin, you must have:
@@ -91,7 +91,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     New-Item -ItemType Directory $applianceConfigBasePath
     Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $applianceRootCertFile
  
-7. Copy to the APPData/Azure Local folder and name it azureLocalRootCert. This is used during Arc appliance deployment.  
+7. Copy to the APPData/Azure Local folder and name it azureLocalRootCert. Use this information during the Arc appliance deployment.  
 
     ```powershell
     Copy-Item \\fileserver\share\azurelocalcerts\publicroot.cer $($env:APPDATA)\AzureLocal\AzureLocalRootCert.cer
@@ -386,7 +386,7 @@ Test-SslCertificateCrypto -SslCertificate $SslCertificate | Out-Null
 
 ## Install and configure the appliance  
 
-Use the following command on the first machine to install and configure the appliance. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
+To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
@@ -421,7 +421,7 @@ The Azure resources needed:
 - A resource group in Azure used for the appliance.
 - A Service Principal Name (SPN) with contributor rights on the resource group.
 
-Follow these steps to configure observability:
+To configure observability, follow these steps:
 
 1. On a computer with Azure CLI (or using the Azure Cloud Shell in Azure portal) create the SPN. Run the following script:
 
@@ -480,7 +480,7 @@ In this section, verify the installation and create local Azure resources.
 
 ### Create resource group SPN for cluster  
 
-Using the operator account, you need to create an SPN that can be used for Arc initialization of each Azure Local node. Follow these steps to create the SPN:
+Use the operator account to create an SPN for Arc initialization of each Azure Local node. To create the SPN, follow these steps:
 
 1. Configure CLI on your client machine and run this command:
 
@@ -503,10 +503,10 @@ Using the operator account, you need to create an SPN that can be used for Arc i
       "tenant": "<RETRACTED>"  
     }  
 
-2. Copy out the AppID and password. You'll need this in the next step.
+2. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
-    > Plan the subscription and resource group where you want to place your nodes and cluster since resource move action isn't supported. The cluster resource created during deployment is used for workloads like virtual machines (VMs) and Azure Kubernetes Services, so plan your role-based access controls accordingly.
+    > Plan the subscription and resource group where you want to place your nodes and cluster since resource move action isn't supported. The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
 
 ### Initialize each node  
 
