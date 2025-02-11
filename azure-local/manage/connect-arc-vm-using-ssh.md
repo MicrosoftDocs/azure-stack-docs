@@ -49,13 +49,13 @@ Before you begin, ensure that you:
    az extension add --upgrade --name ssh
    ```
 
-   1. Sign in to Azure:
+   c. Sign in to Azure:
 
    ```powershell
    az login --use-device-code
    ```
 
-   1. Set appropriate parameters:
+   d. Set appropriate parameters:
 
    ```powershell
    $resourceGroup="<your resource group>"
@@ -64,7 +64,7 @@ Before you begin, ensure that you:
    $localUser = "Administrator" # Use a local admin account for testing        
    ```
 
-   1. Install the `OpenSSH` Arc Extension:
+   e. Install the `OpenSSH` Arc Extension:
 
    ```powershell
    az connectedmachine extension create --name WindowsOpenSSH 
@@ -103,7 +103,7 @@ Before you begin, ensure that you:
    PS C:\Users\labadmin>
    ```
 
-   1. You can see `WindowsOpenSSH` Extension in the Azure portal Extensions list view.
+   f. You can see `WindowsOpenSSH` Extension in the Azure portal Extensions list view.
 
       :::image type="content" source="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
 
