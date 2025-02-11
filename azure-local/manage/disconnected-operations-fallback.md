@@ -1,5 +1,5 @@
 ---
-title: Use Appliance fallback logging to collect logs and troubleshoot Disconnected operations for Azure Local (preview)
+title: Use Appliance fallback logging to collect logs and troubleshoot disconnected operations for Azure Local (preview)
 description: Export and send logs using Appliance Fallback Logging for Disconnected operations in Azure Local
 ms.topic: how-to
 author: ronmiab
