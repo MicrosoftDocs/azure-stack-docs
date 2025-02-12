@@ -101,7 +101,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2408.1.38](hotfix-1-2408-1-38.md)
+- [Azure Stack Hub hotfix 1.2408.1.39](hotfix-1-2408-1-39.md)
 
 ### After successfully applying the 2501 update
 
