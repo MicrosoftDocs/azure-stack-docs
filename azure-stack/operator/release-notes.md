@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/11/2025
+ms.date: 02/12/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -61,7 +61,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2501"
 ## 2501 build reference
 
-The Azure Stack Hub 2501 update build number is **1.2501.x.xx**.
+The Azure Stack Hub 2501 update build number is **1.2501.0.21**.
 
 ### Update type
 
@@ -80,6 +80,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 - With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
 - We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
 
