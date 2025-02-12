@@ -26,15 +26,11 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
    az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name 
    ```
    
-   - When the AKS Arc cluster is in a **disconnected** state. Run the `[az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials)` command. You will need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission:
-   ```azurecli
-   az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name
-   ```
-    
-    Or you may run the command with --admin if you are an administrator:
+   - When the AKS Arc cluster is in a **disconnected** state. You will need to run the `[az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials)` command with the permission to perform **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission. To learn more, refer to [Retrieve certificate-based admin kubeconfig in AKS Arc](/aks/aksarc/retrieve-admin-kubeconfig#retrieve-the-certificate-based-admin-kubeconfig-using-az-cli)
    ```azurecli
    az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name --admin
    ```
+
 1. Verify PDB:
 
    ```bash
