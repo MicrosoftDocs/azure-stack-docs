@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/11/2025
 ms.service: azure-local
 ---
 
@@ -58,6 +58,49 @@ Updating password in AD.
 WARNING: Please close this session and log in again.
 PS C:\Users\MGMT> 
 ```
+
+## Change cluster witness storage account key
+
+This section describes how you can change the storage account key for the cluster witness storage account.
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+
+1. Configure the witness quorum using the secondary storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account secondary key>
+    ```
+
+1. Rotate the storage account primary key.
+
+1. Configure the witness quorum using the rotated storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account primary key>
+    ```
+
+1. Rotate the storage account secondary key.
+
+1. Update the storage account primary key in the ECE store:
+
+    ```powershell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace Storage account key>" -AsPlainText -Force
+    $WitnessCred = New-Object -Type PSCredential -ArgumentList "WitnessCredential,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
+    ```
+
+## Revoke SAS token for storage account used for Arc VM images
+
+This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Arc VM images.
+
+| SAS policy   | SAS expired?    | Steps to revoke   |
+|---------|---------|---------|
+| Any SAS     | Yes      | No action is required as the SAS is no longer valid.        |
+| Ad hoc SAS signed with an account key      | No      | [Manually rotate or regenerate Storage account key](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#manually-rotate-access-keys) used to create SAS.         |
+| Ad hoc SAS signed with a user delegation key      | No       | To revoke user delegation key or change role assignments, see [Revoke a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas#revoke-a-user-delegation-sas).         |
+| SAS with stored access policy      | No       | To update the expiration time to a past date or time, or delete the stored access policy, see [Modify or revoke a stored access policy](/rest/api/storageservices/define-stored-access-policy#modify-or-revoke-a-stored-access-policy).           |
+
+For more information, see [Revoke a SAS](/rest/api/storageservices/create-service-sas#revoke-a-sas).
 
 ## Change deployment service principal
 
