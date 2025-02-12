@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/11/2025
+ms.date: 02/12/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -27,8 +27,6 @@ To access release notes for a different version, use the version selector dropdo
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
-> [!IMPORTANT]  
-> This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker range="<azs-2406"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
@@ -61,7 +59,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2501"
 ## 2501 build reference
 
-The Azure Stack Hub 2501 update build number is **1.2501.x.xx**.
+The Azure Stack Hub 2501 update build number is **1.2501.0.21**.
 
 ### Update type
 
@@ -80,12 +78,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
-- We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
+- The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 
-### Changes
-
-- Starting with Azure Stack Hub 2311, we are not releasing updated Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+<!-- ### Changes -->
 
 <!-- ### Fixes -->
 
@@ -102,13 +97,11 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
-
 ### Hotfix prerequisites: before applying the 2501 update
 
 The 2501 release of Azure Stack Hub must be applied on the 2408 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2408.1.38](hotfix-1-2408-1-38.md)
+- [Azure Stack Hub hotfix 1.2408.1.39](hotfix-1-2408-1-39.md)
 
 ### After successfully applying the 2501 update
 
@@ -144,9 +137,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - With the 2408 update, we are introducing the ESv3 and DSv3 VM SKUs. These new SKUs are designed to provide higher IOPS for both OS and data disks. For more information, see [Azure Stack Hub VM SKUs](../user/azure-stack-vm-sizes.md).
 - We are also introducing [two new VM SKUs to support the L40s GPUs](../user/gpu-vms-about.md#nc_l40s-v4).
 
-### Changes
-
-- Starting with Azure Stack Hub 2311, we are not releasing updated Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+<!-- ### Changes -->
 
 <!-- ### Fixes -->
 
@@ -162,8 +153,6 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
 ### Hotfix prerequisites: before applying the 2408 update
 
@@ -208,9 +197,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- ### Improvements -->
 
-### Changes
-
-- Starting with Azure Stack Hub 2311, we are not releasing updated Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+<!-- ### Changes -->
 
 <!-- ### Fixes -->
 
@@ -226,8 +213,6 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
 ### Hotfix prerequisites: before applying the 2406 update
 
