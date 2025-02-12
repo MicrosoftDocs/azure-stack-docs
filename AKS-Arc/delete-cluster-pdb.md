@@ -20,13 +20,14 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all PDBs:
 
 1. Access the AKS Arc cluster according to its connectivity state
-  - When the AKS Arc cluster is in a **Connected** state, run the `[az connectedk8s proxy](/azure/connectedk8s?view=azure-cli-latest#az-connectedk8s-proxy)` command
+   - When the AKS Arc cluster is in a **Connected** state, run the `[az connectedk8s proxy](/cli/azure/connectedk8s#az-connectedk8s-proxy)` command
 
    ```azurecli
    az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name 
    ```
    
-   - When the AKS Arc cluster is in a **disconnected** state. You will need to run the `[az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials)` command with the permission to perform **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission. To learn more, refer to [Retrieve certificate-based admin kubeconfig in AKS Arc](/aks/aksarc/retrieve-admin-kubeconfig#retrieve-the-certificate-based-admin-kubeconfig-using-az-cli)
+   - When the AKS Arc cluster is in a **disconnected** state. You will need to run the `[az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials)` command with the permission to perform **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission. To learn more, refer to [Retrieve certificate-based admin kubeconfig in AKS Arc](/aks/aksarc/retrieve-admin-kubeconfig#retrieve-the-certificate-based-admin-kubeconfig-using-az-cli)
+
    ```azurecli
    az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name --admin
    ```
