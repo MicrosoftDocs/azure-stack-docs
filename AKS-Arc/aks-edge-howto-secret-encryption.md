@@ -4,7 +4,7 @@ description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 02/12/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
@@ -29,7 +29,7 @@ The following limitation applies to the KMS plugin for AKS Edge Essentials:
 - The plugin can be used for single node clusters. The KMS plugin can't be used with the [experimental multi-node features](aks-edge-howto-scale-out.md).
 
 > [!NOTE]
-> You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
+> You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
 
 ### Install the KMS plugin
 
