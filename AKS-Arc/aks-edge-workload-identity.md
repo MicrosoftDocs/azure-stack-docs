@@ -18,7 +18,7 @@ Azure Kubernetes Service (AKS) Edge Essentials is an on-premises Kubernetes impl
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
-For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity). As a security best practice, you can install [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](AKS-Arc/aks-edge-howto-key-manager.md) to automatically rotate the signing keys that issue Kubernetes service account tokens.
+For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity). As a security best practice, you can install [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](aks-edge-howto-key-manager.md) to automatically rotate the signing keys that issue Kubernetes service account tokens.
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
