@@ -31,46 +31,38 @@ The following limitation applies to the KMS plugin for AKS Edge Essentials:
 > [!NOTE]
 > You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
 
-### Install the KMS plugin
+### Enable the KMS plugin
 
-To install the KMS plugin, follow the steps in this section.
+To enable the KMS plugin, follow the steps in this section.
 
-#### Step 1: deploy the AKS Edge Essentials clusters
+### Validate the KMS installation
+
+To create secrets in AKS Edge Essentials clusters, see [Managing Secrets using kubectl](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#use-raw-data) in the Kubernetes documentation.
+
+Ensure that the KMS plugin is working as expected by using the `readyz` API with the following command:
+
+```powershell
+kubectl get --raw='/readyz?verbose'
+```
+
+The expected output if the KMS plugin is running should be similar to the following:
+
+```output
+[+]ping ok
+[+]Log ok
+[+]etcd ok
+[+]kms-providers ok
+[+]poststarthook/start-encryption-provider-config-automatic-reload ok
+```
+
+If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
+
+### Deploy the AKS Edge Essentials clusters
 
 See [Single machine deployment](aks-edge-howto-single-node-deployment.md). The following output is displayed if the KMS plugin is enabled:
 
 ```output
 Preparing to install kms-plugin as encryption provider...
-```
-
-#### Step 2: create and retrieve a secret which is encrypted using KMS
-
-To create a new secret encrypted by KMS, run the following command:
-
-```powershell
-# Create a new secret encrypted by KMS
-kubectl create secret generic db-user-pass --from-literal=username=<username> --from-literal=password='<your-secret>'
-```
-
-If successful, the terminal shows the following output:
-
-```output
-secret/db-user-pass1 created
-```
-
-#### Step 3: retrieve the secret
-
-To retrieve the secret and test decryption, run the following command:
-
-```powershell
-# Retrieve secret to test decryption
-kubectl get secret db-user-pass -o jsonpath='{.data}'
-```
-
-If successful, the terminal shows the following output:
-
-```output
-["password": "<your-secret>", "username": "<username>"]
 ```
 
 ## Troubleshooting
@@ -83,7 +75,7 @@ If there are errors with the KMS plugin, follow this procedure:
    Get-AksEdgeCluster -Name <cluster-name> | Select-Object -ExpandProperty Version
    ```
 
-1. View the **readyz** API. If the problem persists, validate that the installation succeeded. To check the health of the KMS plugin, run the following command and ensure that the health status of **kms-providers** is **OK**:
+1. View the `readyz` API. If the problem persists, validate that the installation succeeded. To check the health of the KMS plugin, run the following command and ensure that the health status of **kms-providers** is **OK**:
 
    ```powershell
    kubectl get --raw='/readyz?verbose'
