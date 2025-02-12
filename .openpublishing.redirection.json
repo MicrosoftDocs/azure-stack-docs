@@ -1679,6 +1679,96 @@
       "source_path": "azure-local/concepts/network-hud-overview.md",
       "redirect_url": "/azure/azure-local/concepts/network-atc-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/concepts/choose-drives.md",
+      "redirect_url": "/windows-server/storage/storage-spaces/choose-drives",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/drive-symmetry-considerations.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/drive-symmetry-considerations", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/plan-volumes.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/plan-volumes", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/storage-spaces-direct-overview.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/storage-spaces-direct-overview", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/nested-resiliency.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/nested-resiliency", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/cache.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/cache", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/fault-tolerance.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/fault-tolerance", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/understand-storage-resync.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/understand-storage-resync", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/quorum.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/quorum", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/deploy-persistent-memory.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/deploy-persistent-memory", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/concepts/persistent-memory-health.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/persistent-memory-health", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/create-volumes.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/create-volumes", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/volume-encryption-deduplication.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/volume-encryption-deduplication", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/manage-volumes.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/manage-volumes", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/replace-drives.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/replace-drives", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/use-csv-cache.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/use-csv-cache", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/manage-smb-multichannel.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/manage-smb-multichannel", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure/azure-local/manage/storage-repair-speed.md", 
+      "redirect_url": "/windows-server/storage/storage-spaces/storage-repair-speed", 
+      "redirect_document_id": false
     }
   ]
 }
