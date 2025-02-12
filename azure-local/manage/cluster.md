@@ -44,7 +44,7 @@ There are currently two storage settings that can be applied to your cluster. To
 
 2. In the **Cluster Manager** view, from the **Tools** pane on the left, select **Settings**.
 
-    - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
+    - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](/windows-server/storage/storage-spaces/cache).
 
        :::image type="content" source="media/cluster/in-memory-cache.png" alt-text="Screenshot of the cluster In-memory cache screen." lightbox="media/cluster/in-memory-cache.png":::
 
@@ -108,7 +108,7 @@ There are several general settings that can be applied to your cluster. Here you
 
         - **File share witness** - to use a file share as witness
 
-        For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+        For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum).
 
         :::image type="content" source="media/cluster/witness.png" alt-text="Screenshot of the cluster Witness screen." lightbox="media/cluster/witness.png":::
 

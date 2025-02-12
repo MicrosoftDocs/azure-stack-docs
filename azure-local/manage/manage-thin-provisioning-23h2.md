@@ -96,5 +96,5 @@ No. This is a gradual process that can take 15 minutes or so after the files are
 
 For more information, see also:
 
-- [Plan volumes](../concepts/plan-volumes.md).
-- [Create volumes](create-volumes.md).
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes).
+- [Create volumes](/windows-server/storage/storage-spaces/create-volumes).

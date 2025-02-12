@@ -152,5 +152,5 @@ Yes. When creating a volume, the size can be greater than the pool's available c
 
 For more information, see also:
 
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Create volumes](create-volumes.md)
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes)
+- [Create volumes](/windows-server/storage/storage-spaces/create-volumes)

@@ -51,7 +51,7 @@ Parity encoding, often called "erasure coding," provides fault tolerance using b
 Storage Spaces offers two flavors of parity – "single" parity and "dual" parity, the latter employing an advanced technique called "local reconstruction codes" at larger scales.
 
 > [!IMPORTANT]
-> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
+> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes.md#choosing-the-resiliency-type).
 
 ### Single parity
 Single parity keeps only one bitwise parity symbol, which provides fault tolerance against only one failure at a time. It most closely resembles RAID-5. To use single parity, you need at least three hardware fault domains – with Storage Spaces Direct, that means three servers. Because three-way mirroring provides more fault tolerance at the same scale, we discourage using single parity. But, it's there if you insist on using it, and it's fully supported.
@@ -90,7 +90,7 @@ To mix three-way mirror and dual parity, you need at least four fault domains, m
 The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose.
 
 > [!IMPORTANT]
-> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
+> We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes.md#choosing-the-resiliency-type).
 
 ## <a name="summary"></a>Summary
 
@@ -197,7 +197,7 @@ Over its lifetime, Storage Spaces can tolerate any number of failures, because i
 
 ## Usage
 
-Check out [Create volumes](../manage/create-volumes.md).
+Check out [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
 
 ## Next steps
 

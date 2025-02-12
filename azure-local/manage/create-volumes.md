@@ -16,9 +16,9 @@ ms.date: 02/26/2024
 This article describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
 > [!TIP]
-> If you haven't already, check out [Plan volumes](../concepts/plan-volumes.md) first.
+> If you haven't already, check out [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes) first.
 
-When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](../manage/create-volumes.md#create-volumes-using-windows-powershell).
+When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](/windows-server/storage/storage-spaces/create-volumes.md#create-volumes-using-windows-powershell).
 
 ## Create a two-way or three-way mirror volume
 
@@ -72,7 +72,7 @@ To open a volume and add files to the volume in Windows Admin Center:
 
 Deduplication and compression is managed per volume. Deduplication and compression uses a post-processing model, which means that you won't see savings until it runs. When it does, it'll work over all files, even those that were there from before.
 
-To learn more, see [Enable volume encryption, deduplication, and compression](volume-encryption-deduplication.md)
+To learn more, see [Enable volume encryption, deduplication, and compression](/windows-server/storage/storage-spaces/volume-encryption-deduplication)
 
 ## Create volumes using Windows PowerShell
 
@@ -196,13 +196,13 @@ The following tables summarize the storage tiers that are/can be created in Azur
 
 ## Nested resiliency volumes
 
-Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2022 or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. For more information, see [Nested Resiliency for Storage Spaces Direct](../concepts/nested-resiliency.md) and [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
+Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2022 or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. For more information, see [Nested Resiliency for Storage Spaces Direct](/windows-server/storage/storage-spaces/nested-resiliency) and [Plan volumes: choosing the resiliency type](/windows-server/storage/storage-spaces/plan-volumes.md#choosing-the-resiliency-type).
 
-[!INCLUDE [Create nested resiliency volumes](../includes/create-volumes-with-nested-resiliency.md)]
+[!INCLUDE [Create nested resiliency volumes](/windows-server/includes/create-volumes-with-nested-resiliency)]
 
 ## Next steps
 
 For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Manage volumes](manage-volumes.md)
+- [Manage volumes](/windows-server/storage/storage-spaces/manage-volumes)

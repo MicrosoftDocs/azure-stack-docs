@@ -13,7 +13,7 @@ ms.date: 08/17/2023
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI or Windows Server using Windows Admin Center. It also covers how to enable deduplication on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
+This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI or Windows Server using Windows Admin Center. It also covers how to enable deduplication on volumes. To learn how to create volumes, see [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
 
 ## Encrypt volumes with BitLocker
 
@@ -44,4 +44,4 @@ To turn on deduplication on a volume in Windows Admin Center:
 
 ## Next steps
 
-- [Manage volumes](manage-volumes.md)
+- [Manage volumes](/windows-server/storage/storage-spaces/manage-volumes)

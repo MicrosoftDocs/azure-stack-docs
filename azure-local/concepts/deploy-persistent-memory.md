@@ -20,7 +20,7 @@ Persistent memory (or PMem) is a new type of memory technology that retains its 
 
 Persistent memory is a type of non-volatile media that fits in a standard DIMM (memory) slot. It's slower than DRAM, but provides higher throughput than SSD and NVMe. Compared to DRAM, persistent memory modules come in much larger capacities and are less expensive per GB, however they are still more expensive than NVMe. Memory contents remain even when system power goes down in the event of an unexpected power loss, user initiated shutdown, or system crash. This means that you can use persistent memory modules as ultra-fast, persistent storage.
 
-Azure Stack HCI and Windows Server 2019 support using persistent memory as either a cache or a capacity drive. However, given the pricing model, persistent memory provides the most value as either a cache or as a small amount of dedicated storage for memory mapping data. In most cases, persistent memory drives will be automatically used as cache drives, and anything slower will be used as capacity drives. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](cache.md) and [Plan volumes](plan-volumes.md).
+Azure Stack HCI and Windows Server 2019 support using persistent memory as either a cache or a capacity drive. However, given the pricing model, persistent memory provides the most value as either a cache or as a small amount of dedicated storage for memory mapping data. In most cases, persistent memory drives will be automatically used as cache drives, and anything slower will be used as capacity drives. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](/windows-server/storage/storage-spaces/cache) and [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes).
 
 ## Persistent memory concepts
 
@@ -243,5 +243,5 @@ The following table shows the full performance numbers.
 For related information, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Persistent memory health management](persistent-memory-health.md)
-- [Understanding the storage pool cache](cache.md)
+- [Persistent memory health management](/windows-server/storage/storage-spaces/persistent-memory-health)
+- [Understanding the storage pool cache](/windows-server/storage/storage-spaces/cache)
