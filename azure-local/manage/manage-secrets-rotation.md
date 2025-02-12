@@ -84,11 +84,23 @@ This section describes how you can change the storage account key for the cluste
 1. Update the storage account primary key in the ECE store:
 
     ```powershell
-    $SecureSecretText = ConvertTo-SecureString -String "<REPLACE STORAGE ACCOUNT KEY>" -AsPlainText -Force
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace Storage account key>" -AsPlainText -Force
     $WitnessCred = New-Object -Type PSCredential -ArgumentList "WitnessCredential,$SecureSecretText"
     Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
     ```
 
+## Revoke SAS token for storage account used for Arc VM images
+
+This section descirbes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Arc VM images.
+
+| SAS policy   | SAS expired?    | Steps to revoke   |
+|---------|---------|---------|
+| Any SAS     | Yes      | No action is required as the SAS is no longer valid.        |
+| Ad hoc SAS signed with an account key      | No      | [Manually rotate or regenerate Storage account key](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#manually-rotate-access-keys) used to create SAS.         |
+| Ad hoc SAS signed with a user delegation key      | No       | Revoke user delegation key or change role assignments, see [Revoke a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas#revoke-a-user-delegation-sas).         |
+| SAS with stored access policy      | No       | Update the expiration time to a past date or time, or delete the stored access policy, see [Modify or revoke a stored access policy](/rest/api/storageservices/define-stored-access-policy#modify-or-revoke-a-stored-access-policy).           |
+
+For more details, see [Revoke a SAS](/rest/api/storageservices/create-service-sas#revoke-a-sas).
 
 ## Change deployment service principal
 
