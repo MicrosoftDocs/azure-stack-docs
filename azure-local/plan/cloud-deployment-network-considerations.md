@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/11/2025
+ms.date: 02/12/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -210,7 +210,7 @@ New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" 
 ```
 
 > [!NOTE]
->Once Azure Local instance is deployed, it is not supported to change the Management intent name or the virtual switch name. It is required to use the same intent name and virtual switch name if you require to update or recreate the intent after deployment.
+> Once an Azure Local instance is deployed, changing the management intent name or the virtual switch name isn't supported. You must use the same intent name and virtual switch name if you need to update or recreate the intent after deployment.
 
 #### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
