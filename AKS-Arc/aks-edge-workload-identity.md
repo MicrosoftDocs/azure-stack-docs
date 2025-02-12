@@ -4,7 +4,8 @@ description: Learn how to configure an AKS Edge Essentials cluster with workload
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 02/12/2025
+ms.reviewer: leslielin
 
 ---
 
@@ -260,6 +261,6 @@ The following example shows how to use the Azure role-based access control (Azur
 
 ## Next steps
 
-In this article, you configured it to use a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
+This article described how to configure a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
 
-If you have not installed the [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](AKS-Arc/aks-edge-howto-key-manager.md), , follow the instructions to ensure periodic token rotation.
+If you didn't install the [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](aks-edge-howto-key-manager.md), follow the instructions in this article to ensure periodic token rotation.
