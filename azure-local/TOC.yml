@@ -675,7 +675,7 @@ items:
   - name: Troubleshoot disconnected operations
     items:
     - name: On-demand log collection
-      href: manage/disconnected-operations-logs.md
+      href: manage/disconnected-operations-on-demand-logs.md
     - name: Fallback log collection
       href: manage/disconnected-operations-fallback.md
 
