@@ -1641,7 +1641,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "azure/azure-local/concepts/azure-hybrid-benefit-hci.md",
+      "source_path": "azure-local/concepts/azure-hybrid-benefit-hci.md",
       "redirect_url": "/azure-local/concepts/azure-hybrid-benefit",
       "redirect_document_id": false
     },
