@@ -1,5 +1,5 @@
 ---
-title: Log collections on demand with Azure Local disconnected operations (preview)
+title: Collect logs on-demand with Azure Local disconnected operations (preview)
 description: Use PS module to collect logs on demand for Azure Local disconnected operations (preview).
 ms.topic: how-to
 author: ronmiab
