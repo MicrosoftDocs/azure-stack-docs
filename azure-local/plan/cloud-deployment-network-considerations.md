@@ -209,6 +209,9 @@ $IntentName = "MgmtCompute"
 New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
+> [!NOTE]
+>Once Azure Local instance is deployed, it is not supported to change the Management intent name or the virtual switch name. It is required to use the same intent name and virtual switch name if you require to update or recreate the intent after deployment.
+
 #### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
 Once the virtual switch and the associated management virtual network adapter are created, make sure that the network adapter name is compliant with Network ATC naming standards.
