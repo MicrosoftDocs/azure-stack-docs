@@ -22,7 +22,10 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Start the wizard and fill out the basics
 
-1. Open a web browser and navigate to [**Azure portal**](https://portal.azure.com). Search for and select **Azure Local**. On the **Azure Arc|Azire Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+1. Open a web browser and navigate to [**Azure portal**](https://portal.azure.com). Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+
+   :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
+
 1. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
