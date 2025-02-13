@@ -223,7 +223,7 @@ To address and resolve the issue of the failed extension and restore normal back
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end
