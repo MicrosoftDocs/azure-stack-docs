@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/10/2025
 ms.author: alkohli
 ---
 
@@ -73,6 +73,8 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 - DAS and SMB shares on source system are not supported for migrations to Azure Stack HCI.
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
+
+- Verify that none of the VMs you plan to migrate have the Azure Connected Machine Agent installed. For more information, see [FAQ](migrate-faq.yml).
 
 ## Target Azure Local requirements
 

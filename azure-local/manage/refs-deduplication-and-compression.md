@@ -454,4 +454,4 @@ If the CSV is moved to another machine of the system while compression is in pro
 
 ## Next steps
 
-- [Manage volume](./manage-volumes.md).
+- [Manage volume](/windows-server/storage/storage-spaces/manage-volumes).

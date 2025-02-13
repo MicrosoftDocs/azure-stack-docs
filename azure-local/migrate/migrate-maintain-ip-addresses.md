@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/23/2025
+ms.date: 02/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -51,11 +51,15 @@ To migrate VMs with static IPs from the source system (Hyper-V or VMware), follo
 
 1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
 
-### Prepare target VMs for IP migration
+### Prepare target Azure Local instance and logical network
 
-On the target system, provision a static Azure Arc logical network to support the migration. This setup requires defining the IP address space, gateway address, DNS servers, and optionally an IP pool range.
+On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining the IP address space, gateway address, DNS servers, and optionally an IP pool range.
 
 For detailed guidance on creating and configuring static or dynamic Azure Arc logical networks, see [Create logical networks for Azure Local](../manage/create-logical-networks.md?tabs=azurecli).
+
+Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration will fail with the error: "The address is already in use." To avoid this, go to the target static logical network, check which IP addresses are in use, and remove any NICs assigned to the static IPs you want to migrate.
+
+:::image type="content" source="./media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page." lightbox="./media/migrate-maintain-ip-addresses/connected-devices.png":::
 
 ### (Optional) Prepare to deploy IP migration at scale using group policy
 
