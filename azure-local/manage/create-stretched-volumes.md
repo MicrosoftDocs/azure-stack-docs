@@ -181,5 +181,5 @@ Storage Replica will now set everything up. If there's any data to be replicated
 For related topics and other storage management tasks, see also:
 
 - [Stretched cluster overview](../concepts/stretched-clusters.md)
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Manage volumes](manage-volumes.md)
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes)
+- [Manage volumes](/windows-server/storage/storage-spaces/manage-volumes)

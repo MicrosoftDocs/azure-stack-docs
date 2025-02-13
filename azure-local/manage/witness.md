@@ -20,7 +20,7 @@ This article describes how to set up an Azure Stack HCI or Windows Server cluste
 
 We recommend setting up a cluster witness for clusters with two, three, or four nodes. The witness helps the cluster determine which nodes have the most up-to-date cluster data if some nodes can't communicate with the rest of the cluster. You can host the cluster witness on a file share located on another server, or use a cloud witness.
 
-To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
+To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
 
 ## Before you begin
 
@@ -139,6 +139,6 @@ To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
 > [Connect Azure Stack HCI to Azure](..\deploy\register-with-azure.md)
 
-- For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+- For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum).
 
 - For more information about creating and managing Azure Storage Accounts, see [Create a storage account](/azure/storage/common/storage-account-create).

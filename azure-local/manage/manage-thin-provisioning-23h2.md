@@ -1,8 +1,8 @@
 ---
 title: Storage thin provisioning in Azure Local, version 23H2
 description: How to use storage thin provisioning on Azure Local, version 23H2 by using Windows PowerShell.
-author: TinaWu-Msft
-ms.author: tinawu
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/28/2025
@@ -96,5 +96,5 @@ No. This is a gradual process that can take 15 minutes or so after the files are
 
 For more information, see also:
 
-- [Plan volumes](../concepts/plan-volumes.md).
-- [Create volumes](create-volumes.md).
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes).
+- [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
