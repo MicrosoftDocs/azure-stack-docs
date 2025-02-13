@@ -124,15 +124,15 @@ This dashboard tab includes metrics related to volume usage, such as disk read/w
 
 Here's a sample screenshot of Volume Usage Metrics:
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
 
 Here's a sample screenshot of VHD Metrics:
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Stoage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
 
 Here's a sample screenshot of Physical Disk Metrics:
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
 
 ### [Network Performance](#tab/network-performance)
 
@@ -140,7 +140,7 @@ Monitoring network performance metrics ensure network availability for users, he
 
 This section provides network performance metrics, including netadapter bytes sent/received per second, RDMA inbound/outbound bytes per second, and VM netadapter bytes sent/received per second.
 
-Here's a sample screenshot showing Network Metrics:
+Here's a sample screenshot of Network Metrics:
 
 :::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
 
@@ -150,13 +150,13 @@ The **Compute Performance** tab is divided into two sections:
 
 - **Memory Metrics.** This section provides information on memory used, available, percentage usage for host and guest, VM memory available, used, memory assigned, pressure, maximum, minimum, startup, and more. These metrics ensure proper resource allocation and utilization, and help identify usage patterns for appropriate actions.
 
-    Here's a sample screenshot showing Memory Metrics:
+    Here's a sample screenshot of Memory Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-memory.png":::
 
 - **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
 
-    Here's a sample screenshot showing CPU Metrics:
+    Here's a sample screenshot of CPU Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-cpu.png":::
 
