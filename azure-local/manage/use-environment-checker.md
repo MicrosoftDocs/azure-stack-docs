@@ -413,6 +413,9 @@ Network validator also checks storage connection, adapter driver readiness, and 
 You provide the answer file JSON as the input for network validator cmdlet call. Or you can manually provide the individual parameters when running the validator cmdlet.
 
 > [!NOTE]
+> There is currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
+
+> [!NOTE]
 > You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
 
 ### Run the network validator
