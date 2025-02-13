@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/11/2025
+ms.date: 02/13/2025
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to monitor your Azure Local system with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Local.
+This article describes how to monitor your Azure Local system with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also describes the Performance Metrics dashboard and lists metrics collected for compute, storage, and network resources in Azure Local.
 
 When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Local enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your Azure Local system and assess its health and utilization.
 
@@ -120,43 +120,43 @@ Select each tab to learn more about the different sections of the Performance Me
 
 Monitoring storage performance helps optimize storage utilization, allocation, and configuration according to resources and business needs.
 
-This dashboard tab includes metrics related to volume usage, such as Disk Read/Write Operations per second, Disk Read/Write Bytes per second, and Volume Latency. Additionally, it provides metrics for VHD and Physical Disks.
+This dashboard tab includes metrics related to volume usage, such as disk read/write operations per second, disk read/write bytes per second, and volume latency. It also provides metrics for VHD and physical disks.
 
-- Sample screenshot showing the Volume Usage Metrics:
+Here's a sample screenshot of Volume Usage Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
 
-- Sample screenshot showing the VHD Metrics:
+Here's a sample screenshot ofVHD Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Stoage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
 
-- Sample screenshot showing the Physical Disk Metrics:
+Here's a sample screenshot of Physical Disk Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
 
 ### [Netowrk Performance](#tab/network-performance)
 
-Network Performance metrics ensure network availability for users, help identify and troubleshoot problems, and improve network performance.
+Monitoring network performance metrics ensure network availability for users, help identify and troubleshoot problems, and improve network performance.
 
-This section provides network performance metrics, including Netadapter Bytes Sent/Received per second, RDMA Inbound/Outbound Bytes per second, and VM Netadapter Bytes Sent/Received per second.
+This section provides network performance metrics, including netadapter bytes sent/received per second, RDMA inbound/outbound bytes per second, and VM netadapter bytes sent/received per second.
 
-- Sample screenshot showing the Network Metrics:
+Here's a sample screenshot showing Network Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
 
 ### [Compute Performance](#tab/compute-performance)
 
-This tab is divided into two sections: Memory Metrics and CPU Metrics.
+The **Compute Performance** tab is divided into two sections:
 
-- Memory Metrics: This section provides information on memory used, available, percentage usage for host and guest, VM Memory available, used, memory assigned, pressure, maximum, minimum, startup, and more. These metrics ensure proper resource allocation and utilization, and help identify usage patterns for appropriate actions.
+- **Memory Metrics.** This section provides information on memory used, available, percentage usage for host and guest, VM memory available, used, memory assigned, pressure, maximum, minimum, startup, and more. These metrics ensure proper resource allocation and utilization, and help identify usage patterns for appropriate actions.
 
-    Here's a sample screenshot showing the Memory Metrics:
+    Here's a sample screenshot showing Memory Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-memory.png":::
 
-- CPU Metrics: This section offers metrics such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
+- **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
 
-    Here's a sample screenshot showing the CPU Metrics:
+    Here's a sample screenshot showing CPU Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-cpu.png":::
 
