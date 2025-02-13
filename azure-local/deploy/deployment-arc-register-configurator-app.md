@@ -1,5 +1,5 @@
 ---
-title: Configurator application for Azure Local (preview)
+title: Configurator application for Azure Local (Preview)
 description: Learn how to use the Configurator application to bootstrap and Arc register the Azure Local machines. (Preview)
 author: alkohli
 ms.author: alkohli
@@ -9,7 +9,7 @@ ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
 
-# Register your Azure Local machines via the Configurator app (preview)
+# Register your Azure Local machines via the Configurator app (Preview)
 
 > Applies to: Azure Local 2502 and later
 
