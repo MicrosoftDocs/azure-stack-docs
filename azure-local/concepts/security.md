@@ -59,7 +59,7 @@ This section discusses how to use Windows Admin Center to protect data and workl
 
 - **BitLocker for Storage Spaces** protects data at rest. You can use BitLocker to encrypt the contents of Storage Spaces data volumes on the operating system. Using BitLocker to protect data can help organizations stay compliant with government, regional, and industry-specific standards such as FIPS 140-2 and HIPAA.
  
-    To learn more about using BitLocker in Windows Admin Center, see [Enable volume encryption, deduplication, and compression](../manage/volume-encryption-deduplication.md)
+    To learn more about using BitLocker in Windows Admin Center, see [Enable volume encryption, deduplication, and compression](/windows-server/storage/storage-spaces/volume-encryption-deduplication)
 
 - **SMB** encryption for Windows networking protects data in transit. *Server Message Block (SMB)* is a network file-sharing protocol that allows applications on a computer to read and write to files and to request services from server programs on a computer network.
 
