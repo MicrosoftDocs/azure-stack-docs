@@ -31,7 +31,7 @@ Before you begin, make sure you have:
 - Completed [Identity for Azure Local with disconnected operations (preview)](disconnected-operations-identity.md).
 - Completed [Networking for Azure Local with disconnected operations (preview)](disconnected-operations-network.md).
 - Completed [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
-- Completed [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md).
+- Completed [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md#preview-participation-criteria).
 <!-- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
 - Completed [Deploy Azure Local with disconnected operations (preview)](disconnected-operations-deploy.md).-->
 
@@ -47,7 +47,7 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 
 ## Create an AKS cluster
 
-To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster)
+To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster](/azure/aks/aksarc/aks-create-clusters-cli#install-the-azure-cli-extension)
 
 ### Install the Azure CLI extension
 
@@ -71,6 +71,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in to Azure Local
 
+```azurecli
 You can use the following command to sign in to Azure Local
 
 ```azurecli
@@ -86,7 +87,7 @@ Use the `az stack-hci-vm network lnet create` cmdlet to create a logical network
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```
 
-For more information, see [Create logical networks](/azure/aks/aksarc/aks-create-clusters-cli).
+For more information, see [Create logical networks](/azure/aks/aksarc/aks-networks?tabs=azurecli).
 
 > [!NOTE]
 > Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Arc VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
@@ -102,7 +103,7 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
 
-For more information, see [Create an AKS cluster](/azure/aks/aksarc/aks-create-clusters-cli).
+For more information, see [Create an AKS cluster](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
