@@ -141,7 +141,7 @@ After the solution upgrade is complete, you may need to perform additional tasks
 - You may need to connect to the system via Remote Desktop Protocol (RDP) to deploy workloads. For more information, see [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
 - To prevent the accidental deletion of resources, you can lock resources.
 - You need to upgrade the security posture. For more information, see [Update security posture on Azure Local after upgrade](../manage/manage-security-post-upgrade.md).
-- You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 
 - If you haven't used Cluster-Aware Updating (CAU) for patching your system, you must ensure the permissions are set correctly. For more information, see [Cluster aware updating (CAU)](../plan/configure-custom-settings-active-directory.md#cluster-aware-updating-cau)
 
