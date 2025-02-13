@@ -231,7 +231,7 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
 
-1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
+1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
 
 ## Next steps
 
