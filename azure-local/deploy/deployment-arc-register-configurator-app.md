@@ -1,6 +1,6 @@
 ---
 title: Configurator application for Azure Local (preview)
-description: Learn how to use the Configurator application to o bootstrap and Arc register the Azure Local machines. (Preview)
+description: Learn how to use the Configurator application to bootstrap and Arc register the Azure Local machines. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.service: azure-local
 
 This article describes how to use the Configurator app to bootstrap and register the machines you plan to include in your Azure Local instance.
 
-You can use the Configurator app or Azure CLI to register your machines. Use the Configurator app if you intend to deploy some sites with a few machines per site.
+You can use the Configurator app or [Azure CLI](./deployment-arc-register-server-permissions.md) to register your machines. If you plan to deploy a few machines per site, use the Configurator app.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -92,7 +92,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
 
-1. Open the Configurator app. Sign into the machine using the machine serial number.
+1. Open the Configurator app. Enter the machine serial number and select **Next**.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/access-the-device-1.png" alt-text="Screenshot of the machine serial number dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/access-the-device-1.png":::
 
@@ -100,15 +100,15 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/access-the-device-2.png" alt-text="Screenshot of the password in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/access-the-device-2.png":::
 
-1. On the Azure Arc agent setup page, select **Start**.
+1. On the **Azure Arc agent setup** page, select **Start**.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/start-setup-1.png" alt-text="Screenshot of the Azure Arc agent setup page with Start selected in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/start-setup-1.png":::
 
-1. On the **Prerequisites** tab, verify that the minimum requirements are met. 
+1. On the **Prerequisites** tab, verify that the minimum requirements are met and then select **Next**.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
 
-   If a requirement isn't met, the app displays a warning icon. Resolve the issue before you proceed.
+   If a requirement isn't met, the app displays a warning icon. Resolve the issue before you proceed. For more information, see [Troubleshooting](#troubleshooting).
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
 
@@ -129,7 +129,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png":::
 
-   1. Enable **Remote desktop** protocol.
+   1. Select **Off** to enable **Remote desktop** protocol.
 
    1. Select **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list.
 
@@ -141,10 +141,12 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. Select **Next** on the **Basics** tab.
 
-1. On the **Arc agent setup** tab, under **Arc agent details**, specify the following inputs:
+1. On the **Arc agent setup** tab, provide the following inputs:
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-setup-tab-1.png":::
 
+   1. The **Cloud type** is populated automatically as `Azure`.
+   
    1. Enter a **Subscription ID** to register the machine.
 
    1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
@@ -154,20 +156,20 @@ Follow these steps to configure network settings and connect the machines to Azu
       > [!IMPORTANT]
       > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
 
-   1. The **Cloud type** is populated automatically as `Azure`.
-
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
 
    1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
-      > [!IMPORTANT]
-      > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
+   > [!IMPORTANT]
+   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
 
-1. On the **Arc agent setup** tab, select **Next**.
+1. Select **Next**.
 
 1. On the **Review and apply** tab, verify machine details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your machines boot up automatically at this point and you must sign in again.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/review-apply-tab-1.png" alt-text="Screenshot of the Review and apply tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/review-apply-tab-1.png":::
+
+### Step 2: Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine details are uploaded followed by registration of the machines to Azure.
 
@@ -179,7 +181,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
-## Step 2: Verify machines are connected to Arc
+## Step 3: Verify machines are connected to Arc
 
 1. In the Azure portal, go to the resource group for bootstrapping.
 
@@ -189,9 +191,9 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 You might need to collect logs or diagnose problems if you encounter any issues while using the app to configure machines. You can use the following methods to troubleshoot:
 
-1. Get logs from a machine.
-1. Run diagnostic tests.
-1. Collect a Support package.
+- Get logs from a machine.
+- Run diagnostic tests.
+- Collect a Support package.
 
 ### Get logs if the app is inaccessible
 
@@ -205,7 +207,7 @@ To diagnose and troubleshoot any machine issues related to hardware, time server
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane.
 
-1. Select **Run diagnostic tests**. The diagnostic tests check the health of the machine hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent.
+1. Select **Run tests**. The diagnostic tests check the health of the machine hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected."lightbox="media/deployment-arc-register-configurator-app/run-diagnostics-tests-1.png":::
 
@@ -221,11 +223,11 @@ Here's a table that describes the diagnostic tests:
 | Web proxy (if configured)        | This test validates the web proxy configuration of the machine.  |
 | Time sync                        | This test validates the machine time settings and checks that the time server configured on the machine is valid and accessible.                   |
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the machine. |
-| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
+| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool). |
 
 ### Collect a Support package from the app
 
-A log package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a log package via the app. Follow these steps to collect a Support package from the app:
+A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app. Follow these steps to collect a Support package:
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
