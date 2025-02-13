@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/15/2024
+ms.date: 02/11/2025
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
@@ -86,6 +86,81 @@ Follow these steps to analyze metrics for a specific Azure Local cluster in the 
     :::image type="content" source="media/monitor-cluster-with-metrics/cluster-metrics.png" alt-text="Screenshot showing the metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/cluster-metrics.png":::
 
     To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](./setup-metric-alerts.md#create-metrics-alerts).
+
+## Performance Metrics dashboard for Azure Local
+
+The Azure Local Performance Metrics dashboard provides a detailed view of performance metrics across all Azure Local systems within a subscription. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
+
+### Benefits
+
+- Consolidates all available metrics into a single view, eliminating the need to select individual metrics.
+
+- Built using Azure Workbooks, highly customizable and user-friendly.
+
+- Includes multiple filters, such as a time filter for viewing data up to the past 30 days.
+
+- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters.
+
+<!--### Prerequisites
+
+- You must have access to an Azure Local system that's deployed, registered, and connected to Azure.
+
+- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Local system. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).-->
+
+### Access the dashboard
+
+To access the Performance Metrics dashboard, follow these steps:
+
+1. Navigate to Azure Monitor and select **Workbooks**.
+1. Under the **Azure Local** section, select **Performance Metrics Dashboard**.
+
+Select each tab to learn more about the different sections of the Performance Metrics dashboard.
+
+### [Storage Performance](#tab/storage-performance)
+
+Monitoring storage performance helps optimize storage utilization, allocation, and configuration according to resources and business needs.
+
+This dashboard tab includes metrics related to volume usage, such as Disk Read/Write Operations per second, Disk Read/Write Bytes per second, and Volume Latency. Additionally, it provides metrics for VHD and Physical Disks.
+
+- Sample screenshot showing the Volume Usage Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
+
+- Sample screenshot showing the VHD Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Stoage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+
+- Sample screenshot showing the Physical Disk Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
+
+### [Netowrk Performance](#tab/network-performance)
+
+Network Performance metrics ensure network availability for users, help identify and troubleshoot problems, and improve network performance.
+
+This section provides network performance metrics, including Netadapter Bytes Sent/Received per second, RDMA Inbound/Outbound Bytes per second, and VM Netadapter Bytes Sent/Received per second.
+
+- Sample screenshot showing the Network Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
+
+### [Compute Performance](#tab/compute-performance)
+
+This tab is divided into two sections: Memory Metrics and CPU Metrics.
+
+- Memory Metrics: This section provides information on memory used, available, percentage usage for host and guest, VM Memory available, used, memory assigned, pressure, maximum, minimum, startup, and more. These metrics ensure proper resource allocation and utilization, and help identify usage patterns for appropriate actions.
+
+    Here's a sample screenshot showing the Memory Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-memory.png":::
+
+- CPU Metrics: This section offers metrics such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
+
+    Here's a sample screenshot showing the CPU Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-cpu.png":::
+
+---
 
 ## What metrics are collected?
 
