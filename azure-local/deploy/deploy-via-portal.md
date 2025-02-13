@@ -46,7 +46,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select  **+ Add machines**.
     1. On the **Add machines** page, the operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
-    1. Select one or more machines that make up this Azure Local instance. These machines will show as missing Arc extensions.
+    1. Select one or more machines that make up this Azure Local instance. These machines show as missing Arc extensions.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
 1. Select **Install extensions**. This action installs Arc extensions on the selected machines. This operation takes several minutes. Refresh the page to view the status of the extension installation.
@@ -62,7 +62,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
-    1. Accept the suggested name or provide a name for the key vault you’ll create.
+    1. Accept the suggested name or provide a name for the key vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
 
@@ -73,7 +73,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Specify the deployment settings
 
-On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you'll be able to review the settings before you deploy:
+On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you are able to review the settings before you deploy:
 
 <!--- **Quickstart template** - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.--->
 
@@ -122,7 +122,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
-1. Here is an example where we created one Compute and management intent and one storage intent.
+1. Here's an example where we created one Compute and management intent and one storage intent.
 
     - For *Compute_Management* intent, provide an intent name.
         - In this case, we added two network adapters.
@@ -136,7 +136,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
 
      > [!IMPORTANT]
-     > Portal deployment doesn't allow to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you cannot use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
+     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
@@ -150,7 +150,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     > [!NOTE]
     > These settings are only applicable when you create an Azure Local instance using the *medium* hardware class.
 
-    :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customize network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
+    :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customized network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
 
 1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network. 
 
@@ -202,9 +202,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Optionally change advanced settings and apply tags
 
-1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
+1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
     * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You'll need to later create workload volumes and storage paths.
+    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
     * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
         To use this option, you must be using a single machine and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
@@ -246,7 +246,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.
 
-1. Review the settings that will be used for deployment and then select **Create** to deploy the system.
+1. Review the settings that are used for deployment and then select **Create** to deploy the system.
 
     <!--:::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::-->
 
@@ -287,7 +287,7 @@ If your deployment fails, you can resume the deployment. In your Azure Local ins
 
 ## Post deployment tasks
 
-After the deployment is complete, you may need to perform some additional tasks to secure your system and ensure it's ready for workloads.
+After the deployment is complete, you might need to perform some more tasks to secure your system and ensure it's ready for workloads.
 
 ### Enable Health monitoring
 
@@ -297,7 +297,7 @@ To monitor storage pool consumption, use the steps in [Enable health alerts](../
 
 For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Local instances. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
-You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your system via the Remote PowerShell and then enable RDP:
+You might need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your system via the Remote PowerShell and then enable RDP:
 
 1. Run PowerShell as administrator on your management PC.
 1. Connect to your Azure Local instance via a remote PowerShell session.
