@@ -106,11 +106,11 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. On the **Prerequisites** tab, verify that the minimum requirements are met. 
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
 
    If a requirement is not met, the app displays a warning icon. Resolve the issue before you proceed.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
 
 1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
 
@@ -173,7 +173,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png":::
+   <!-->:::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png":::-->
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
