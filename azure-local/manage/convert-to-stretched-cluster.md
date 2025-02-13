@@ -134,5 +134,5 @@ With Storage Replica, all disks must be of the same size and attributes. When cr
 
 ## Next steps
 
-- [Create volumes on Azure Stack HCI and Windows Server clusters](create-volumes.md)
+- [Create volumes on Azure Stack HCI and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes)
 - [Stretch Cluster Replication Using Shared Storage](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage)
