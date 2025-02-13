@@ -33,7 +33,7 @@ The key parameters for single machine deployment are:
 - `DeploymentType`: This parameter defines the deployment type and is specified as `SingleMachineCluster`.
 - The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
 - You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
-- To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview), set the `Init.KmsPlugin enable` to **true**. For more information, see [Enabling KMS Plugin on AKS Edge Essentials](hyperlink to KMS doc).
+- To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enabling KMS Plugin on AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
 
 ## Step 2: create a single machine cluster
 
