@@ -1,6 +1,6 @@
 ---
 title: Configurator application for Azure Local (preview)
-description: Learn how to use the Configurator application to o bootstrap and Arc register the Azure Local machines. (preview)
+description: Learn how to use the Configurator application to o bootstrap and Arc register the Azure Local machines. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -37,10 +37,10 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
-1. For each machine, make a note of:
+1. Note down:
 
-   1. The serial number.
-   1. Local administrator credentials to sign into the machine.
+   1. The serial number for each machine.
+   1. Local administrator credentials to sign into each machine.
 
 ### Azure prerequisites
 
@@ -108,7 +108,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
 
-   If a requirement is not met, the app displays a warning icon. Resolve the issue before you proceed.
+   If a requirement isn't met, the app displays a warning icon. Resolve the issue before you proceed.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
 
@@ -125,7 +125,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. To specify more details, select **Enter additional details**.
 
-1. On the **Additional details** blade, provide the following inputs and then select **Apply**.
+1. On the **Additional details** page, provide the following inputs and then select **Apply**.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png":::
 
@@ -161,7 +161,7 @@ Follow these steps to configure network settings and connect the machines to Azu
    1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
       > [!IMPORTANT]
-      > Make sure to verify all the inputs before you proceed. Any incorrect inputs here may result in a setup failure.
+      > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
 
 1. On the **Arc agent setup** tab, select **Next**.
 
@@ -211,7 +211,7 @@ To diagnose and troubleshoot any machine issues related to hardware, time server
 
 1. After the tests are completed, the results are displayed. Here's a sample output of the diagnostic tests when there's a machine issue:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/deployment-arc-register-configurator-app/run-diagnostics-tests-1.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/deployment-arc-register-configurator-app/run-diagnostics-tests-2.png":::
 
 Here's a table that describes the diagnostic tests:
 
