@@ -29,13 +29,23 @@ The KMS plugin is supported for all AKS Edge Essentials clusters, version 1.10.x
 
 ## Enable the KMS plugin
 
-To enable the KMS plugin, set the `settings.EnableKMS` to `true` in your [deployment JSON configuration file](aks-edge-deployment-config-json.md). See [Single machine deployment](aks-edge-howto-single-node-deployment.md) for deployment instructions.
+In your [**aksedge-config.json** file](aks-edge-deployment-config-json.md), in the `Init` section, set `Init.KmsPlugin.Enable` to `true`:
+
+```json
+"Init": {
+ "KmsPlugin": {
+     "Enable": true
+  }
+}
+```
 
 The following output is displayed during deployment, showing that the KMS plugin is enabled:
 
 ```output
 Preparing to install kms-plugin as encryption provider...
 ```
+
+For deployment instructions, see [Single machine deployment](aks-edge-howto-single-node-deployment.md).
 
 > [!NOTE]
 > You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
