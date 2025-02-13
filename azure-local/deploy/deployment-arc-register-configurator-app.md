@@ -13,9 +13,9 @@ ms.service: azure-local
 
 > Applies to: Azure Local 2502 and later
 
-This article describes how to use the Configurator app to bootstrap and register the machines you intend to use as an Azure Local instance.
+This article describes how to use the Configurator app to bootstrap and register the machines you plan to include in your Azure Local instance.
 
-You can use the Configurator app or Azure CLI to register your machines. Use the configurator app if you intend to deploy some sites with a few machines per site.
+You can use the Configurator app or Azure CLI to register your machines. Use the Configurator app if you intend to deploy some sites with a few machines per site.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -31,16 +31,16 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
 
-1. [Download the English-language Preview ISO](https://aka.ms/HCIReleaseImage) and install the preview version of Azure Local, version 23H2 OS.
+1. [Download the English-language Preview ISO](https://aka.ms/HCIReleaseImage).
 
-1. Use the English-language Preview ISO that you downloaded and follow the steps for OS installation in [Install Azure Local Operating System](../deploy/deployment-install-os.md).
+1. Use the downloaded Preview ISO and follow the steps for operating system installation in [Install Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
 1. Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
 1. Note down:
 
-   1. The serial number for each machine.
-   1. Local administrator credentials to sign into each machine.
+   - The serial number for each machine.
+   - Local administrator credentials to sign into each machine.
 
 ### Azure prerequisites
 
