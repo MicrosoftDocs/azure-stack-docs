@@ -173,7 +173,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   <!-->:::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png":::-->
+   <!--:::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png":::-->
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -183,7 +183,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. In the Azure portal, go to the resource group for bootstrapping.
 
-1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
+1. On the resource group used to bootstrap, you should see your Arc-enabled machines. <!--In this example, you see a single machine.-->
 
 ## Troubleshooting
 
@@ -236,5 +236,5 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 ## Next steps
 
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local system via one of the following options:
-    - [Via the Azure portal](./deploy-via-portal.md).
-    - [Via the ARM template](./deployment-azure-resource-manager-template.md).
+    - [Deploy via Azure portal](./deploy-via-portal.md).
+    - [Deploy via ARM template](./deployment-azure-resource-manager-template.md).
