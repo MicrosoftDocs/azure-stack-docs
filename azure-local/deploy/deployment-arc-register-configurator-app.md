@@ -53,6 +53,11 @@ Before you begin, make sure that you complete the following prerequisites:
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration" 
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity" 
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI" 
+   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Kubernetes" 
+   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.KubernetesConfiguration" 
+   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ExtendedLocation" 
+   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ResourceConnector" 
+   Register-ResourceProviderIfRequired -ProviderNamespace "HybridContainerService" 
    ```
 
 1. **Create a resource group**. Follow the steps to [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
