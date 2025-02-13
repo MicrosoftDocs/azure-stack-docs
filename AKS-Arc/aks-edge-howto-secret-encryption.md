@@ -4,14 +4,15 @@ description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/12/2025
+ms.date: 02/13/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
 
 # Enable secret encryption on an AKS Edge Essentials cluster (preview)
 
-Following Kubernetes security best practices, it's recommended that you encrypt the Kubernetes secret store on AKS Edge Essentials clusters. You can perform this encryption by activating the *Key Management Service (KMS) plugin for AKS Edge Essentials*, which enables [encryption at rest for secrets](https://kubernetes.io/docs/concepts/configuration/secret/) stored in the etcd key-value store. It enables this encryption by generating a Key Encryption Key (KEK) and automatically rotating it every 30 days. The KEK is protected with the administrator credentials and is accessible only for the administrators.
+Following Kubernetes security best practices, it's recommended that you encrypt the Kubernetes secret store on AKS Edge Essentials clusters. You can perform this encryption by activating the *Key Management Service (KMS) plugin for AKS Edge Essentials*, which enables [encryption at rest for secrets](https://kubernetes.io/docs/concepts/configuration/secret/) stored in the etcd key-value store. It enables this encryption by generating a Key Encryption Key (KEK) and automatically rotating it every 30 days. The KEK is protected with administrator credentials and is accessible only to administrators.
+
 For more detailed information about using KMS, see the official [KMS provider documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/).
 
 This article demonstrates how to activate the KMS plugin for AKS Edge Essentials clusters.
@@ -24,22 +25,20 @@ This article demonstrates how to activate the KMS plugin for AKS Edge Essentials
 The KMS plugin is supported for all AKS Edge Essentials clusters, version 1.10.xxx.0 and later.
 
 > [!NOTE]
->The plugin can be used for single node clusters. The KMS plugin can't be used with the [experimental features such as multi-node and windows node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
-
-
+> The KMS plugin can only be used for single node clusters. The plugin can't be used with [experimental features such as multi-node and Windows node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
 
 ## Enable the KMS plugin
 
-To enable the KMS plugin, set the `settings.EnableKMS` to `true` in your deployment JSON file ( [Deployment JSON configuration](aks-edge-deployment-config-json.md)). See [Single machine deployment](aks-edge-howto-single-node-deployment.md) for deployment instructions. 
+To enable the KMS plugin, set the `settings.EnableKMS` to `true` in your [deployment JSON configuration file](aks-edge-deployment-config-json.md). See [Single machine deployment](aks-edge-howto-single-node-deployment.md) for deployment instructions.
 
-The following output is displayed during deployment showing that the KMS plugin is enabled:
+The following output is displayed during deployment, showing that the KMS plugin is enabled:
 
 ```output
 Preparing to install kms-plugin as encryption provider...
 ```
 
 > [!NOTE]
-> You can enable or disable the KMS plugin only when you create a new deployment. Once you set the flag, it can't be changed.
+> You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
 
 To create secrets in AKS Edge Essentials clusters, see [Managing Secrets using kubectl](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#use-raw-data) in the Kubernetes documentation.
 
@@ -49,12 +48,13 @@ If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
 
 If there are errors with the KMS plugin, follow this procedure:
 
-1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check the current version of AKS-EE. 
+1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check the current version of AKS Edge Essentials:
 
    ```powershell
    Get-Command -Module AKSEdge | Format-Table Name, Version
    ```
-   If the version is older, upgrade to the lastest version. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
+
+   If the version is older, upgrade to the latest version. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
 1. View the `readyz` API. If the problem persists, validate that the installation succeeded. To check the health of the KMS plugin, run the following command and ensure that the health status of **kms-providers** is **OK**:
 
