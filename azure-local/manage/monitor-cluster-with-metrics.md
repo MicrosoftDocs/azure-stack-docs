@@ -25,7 +25,7 @@ Take a few moments to watch the video walkthrough on creating metric charts in m
 
 Here are the benefits of using Metrics for Azure Local:
 
-- **No additional cost**. These metrics are standard, out-of-the-box features that are automatically collected and provided to you at no extra cost.
+- **No extra cost**. These metrics are standard, out-of-the-box features that are automatically collected and provided to you at no extra cost.
 
 - **Near real-time insights**. You have the capability to observe out-of-the-box metrics and correlate trends using near real-time data.  
 
@@ -124,17 +124,17 @@ This dashboard tab includes metrics related to volume usage, such as disk read/w
 
 Here's a sample screenshot of Volume Usage Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
 
-Here's a sample screenshot ofVHD Metrics:
+Here's a sample screenshot of VHD Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Stoage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Stoage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
 
 Here's a sample screenshot of Physical Disk Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Stoage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
 
-### [Netowrk Performance](#tab/network-performance)
+### [Network Performance](#tab/network-performance)
 
 Monitoring network performance metrics ensure network availability for users, help identify and troubleshoot problems, and improve network performance.
 
@@ -142,7 +142,7 @@ This section provides network performance metrics, including netadapter bytes se
 
 Here's a sample screenshot showing Network Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
+:::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
 
 ### [Compute Performance](#tab/compute-performance)
 
