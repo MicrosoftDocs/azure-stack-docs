@@ -44,7 +44,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure prerequisites
 
-1. Make sure that your Azure subscription is registered against the required resource providers. To register, you must be an owner or contributor on your subscription. You can also ask an administrator to register.
+1. **Register required resource providers.** Make sure that your Azure subscription is registered against the required resource providers. To register, you must be an owner or contributor on your subscription. You can also ask an administrator to register.
 
    Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
@@ -55,15 +55,15 @@ Before you begin, make sure that you complete the following prerequisites:
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI" 
    ```
 
-1. [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
+1. **Create a resource group**. Follow the steps to [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
 
-1. [Get the tenant ID of your Microsoft Entra tenant through the Azure portal](/azure/azure-portal/get-subscription-tenant-id):
+1. **Get the tenant ID**. Follow the steps in [Get the tenant ID of your Microsoft Entra tenant through the Azure portal](/azure/azure-portal/get-subscription-tenant-id):
 
    1. In the Azure portal, go to **Microsoft Entra ID** > **Properties**.
 
    1. Scroll down to the Tenant ID section and copy the **Tenant ID** value to use later.
 
-1. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+1. **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
@@ -73,13 +73,13 @@ Before you begin, make sure that you complete the following prerequisites:
 
    1. Make a note of the Arc gateway ID to use later.
 
-1. As you register machines as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the machines are provisioned:
+1. **Verify permissions**. As you register machines as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the machines are provisioned:
 
    - `Azure Connected Machine Onboarding`.
    - `Azure Connected Machine Resource Administrator`.
 
-1. To verify that you have these roles, follow these steps in the Azure portal:
-
+   To verify that you have these roles, follow these steps in the Azure portal:
+    
    1. Go to the subscription you used for the Azure Local deployment.
 
    1. Go to the resource group where you plan to register the machine.
@@ -87,7 +87,7 @@ Before you begin, make sure that you complete the following prerequisites:
    1. In the left-pane, go to **Access Control (IAM)**.
 
    1. In the right-pane, go to **Role assignments**. Verify that you have `Azure Connected Machine Onboarding` and `Azure Connected Machine Resource Administrator` roles assigned.
-
+    
 ## Step 1: Configure the network and connect to Azure
 
 Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
