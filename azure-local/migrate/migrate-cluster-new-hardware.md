@@ -3,7 +3,7 @@ title: Migrate to Azure Local on new hardware
 description: Learn how to migrate to Azure Local on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 01/16/2025 
+ms.date: 02/03/2025 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
@@ -85,7 +85,7 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 
 For VMs on Windows Server 2012 R2 or later, update all VMs to the latest VM version supported on the source hardware first before running the Robocopy migration script. This ensures all VMs are at least at version 5.0 for a successful VM import.
 
-For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012, the VM version will be less than version 5.0. These VMs also use an .xml file for configuration instead of an .vcmx file. As such, a direct import of the VM to Azure Local is not supported. In these cases, you have two options, as detailed in [Migrating older VMs](#migrating-older-vms).
+For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012, the VM version will be less than version 5.0. These VMs also use an .xml file for configuration instead of a .vcmx file. As such, a direct import of the VM to Azure Local is not supported. In these cases, you have two options, as detailed in [Migrating older VMs](#migrating-older-vms).
 
 ### Updating the VM version
 

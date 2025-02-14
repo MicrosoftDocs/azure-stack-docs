@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/08/2025
+ms.date: 02/11/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -20,18 +20,66 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2311"
+::: moniker range=">=azs-2406"
 > [!IMPORTANT]  
 > Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2311"
+::: moniker range="<azs-2406"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
+> [!IMPORTANT]
+> The Microsoft Entra ID Graph API service is being retired. This retirement affects all Azure Stack Hub customers, and requires you to [run the script included in this article](graph-api-retirement.md) for all affected applications.
+
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2501"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Graph API retirement
+
+- Applicable: This issue applies to all supported versions of Azure Stack Hub.
+- Cause: The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534).
+- Remediation: Run the [script included in this article](graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+- Occurrence: Occasional.
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2408"
 <!-- ## Update -->
@@ -171,98 +219,6 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
-::: moniker range="azs-2311"
-
-<!-- ## Update -->
-
-<!-- ## Networking -->
-
-## Compute
-
-### Azure Kubernetes Service on Azure Stack Hub
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
-- Remediation: Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Common.
-
-### Shutdown using Start-AzsCryptoWipe does not work
-
-- Applicable: This issue applies to release 2311.
-- Cause: In some cases when you run the `Start-AzsCryptoWipe` [command to shut down Azure Stack Hub](/azure-stack/operator/azure-stack-hub-decommission#shut-down-azure-stack-hub), one of the physical machines is not powered off.
-- Remediation: If you see that any physical machine is not powered down, you must turn off that machine through the Baseboard Management Controller (BMC).
-- Occurrence: Common.
-
-## Storage
-
-### False storage volume utilization alert in Test-AzureStack report
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: The new OS build with 2311 introduces a new system alert for thin provisioning: an alert is raised when the storage pool usage exceeds 70%. Fixed-size volumes are used in the Azure Stack Hub deployment, so the 70% threshold is always exceeded. You can find this warning in the Test-AzureStack reports.
-- Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
-- Occurrence: Common.
-
-## Networking
-
-### Outbound ICMP to internet is blocked by default for tenant VM
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
-- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
-- Occurrence: Common.
-
-<!-- ## Alerts -->
-
-## Portal
-
-### Can't use Flow Timeout and BGP community string DNS options in the portal
-
-- Applicable: This issue applies to release 2311.
-- Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
-- Remediation: Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Common.
-
-### False deployment error in portal for API app deployment
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
-- Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Common.
-
-### Nodes blade fails to load
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
-- Remediation: Microsoft is aware of the issue and is working on a fix.
-- Occurrence: Occasional.
-
-<!-- ## Datacenter integration -->
-
-<!-- ## Storage -->
-
-<!-- ## SQL and MySQL-->
-
-<!-- ## App Service -->
-
-## Resource providers
-
-### Incorrect rotation status after secret rotation of resource provider certificates
-
-- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
-- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
-- Remediation: None. No impact to your system or workloads.
-- Occurrence: All supported versions of Azure Stack Hub.
-
-<!-- ## Usage -->
-
-<!-- ### Identity -->
-
-<!-- ### Marketplace -->
-
-<!-- ## Event Hubs -->
-
-::: moniker-end
-
 ::: moniker range="azs-2406 || azs-2408 || azs-2311"
 ## Update
 
@@ -277,6 +233,9 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2311"
+## 2311 archived known issues
+::: moniker-end
 ::: moniker range="azs-2306"
 ## 2306 archived known issues
 ::: moniker-end
@@ -353,6 +312,6 @@ To access known issues for a different version, use the version selector dropdow
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2311"
+::: moniker range="<azs-2406"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

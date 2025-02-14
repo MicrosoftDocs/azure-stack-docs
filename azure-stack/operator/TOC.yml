@@ -8,6 +8,8 @@
     items:
     - name: Security updates
       href: release-notes-security-updates.md
+    - name: Microsoft Entra ID Graph API retirement
+      href: graph-api-retirement.md
     - name: Release notes
       href: release-notes.md
     - name: Hotfixes
@@ -30,20 +32,10 @@
             href: hotfix-1-2406-1-15.md      
           - name: Hotfix 1.2406.1.14
             href: hotfix-1-2406-1-14.md      
-        - name: 2311
-          items:
-          - name: Hotfix 1.2311.3.62
-            href: hotfix-1-2311-3-62.md
-          - name: Hotfix 1.2311.3.61
-            href: hotfix-1-2311-3-61.md
-          - name: Hotfix 1.2311.3.50
-            href: hotfix-1-2311-3-50.md
-          - name: Hotfix 1.2311.3.44
-            href: hotfix-1-2311-3-44.md
-          - name: Hotfix 1.2311.2.23
-            href: hotfix-1-2311-2-23.md
       - name: Archive
         items:
+        - name: Hotfix 1.2311.3.62
+          href: hotfix-1-2311-3-62.md
         - name: Hotfix 1.2306.4.102
           href: hotfix-1-2306-4-102.md      
         - name: Hotfix 1.2301.3.97

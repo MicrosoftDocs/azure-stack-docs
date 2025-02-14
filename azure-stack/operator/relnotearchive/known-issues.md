@@ -22,6 +22,7 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-2311"
+
 <!-- ## Update -->
 
 <!-- ## Networking -->
@@ -31,7 +32,7 @@ To access known issues for a different archived version, use the version selecto
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 
@@ -51,9 +52,20 @@ To access known issues for a different archived version, use the version selecto
 - Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
+- Occurrence: Common.
+
 <!-- ## Alerts -->
 
 ## Portal
+
+### Can't use Flow Timeout and BGP community string DNS options in the portal
 
 - Applicable: This issue applies to release 2311.
 - Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
@@ -66,6 +78,13 @@ To access known issues for a different archived version, use the version selecto
 - Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
 - Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 

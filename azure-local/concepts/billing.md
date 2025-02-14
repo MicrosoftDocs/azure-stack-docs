@@ -17,7 +17,7 @@ Azure Local is an Azure service that goes on your Azure subscription bill just l
 No traditional on-premises software license is required for Azure Local, although guest virtual machines (VMs) may require individual operating system licensing - see [Activate Windows Server VMs](../manage/vm-activate.md).
 
 > [!TIP]
-> You can get cost savings with Azure Hybrid Benefit if you have Windows Server Datacenter licenses with active Software Assurance. For more information about Azure Hybrid Benefit, see [Azure Hybrid Benefit for Azure Local](azure-hybrid-benefit-hci.md).
+> You can get cost savings with Azure Hybrid Benefit if you have Windows Server Datacenter licenses with active Software Assurance. For more information about Azure Hybrid Benefit, see [Azure Hybrid Benefit for Azure Local](azure-hybrid-benefit.md).
 
 ## What does Azure Local charge for?
 

@@ -14,89 +14,9 @@ items:
     - name: Release information
       href: release-information-23h2.md
     - name: Known issues 
-      items:
-      - name: Known issues 2411
-        items:
-        - name: 2411.1 - Current
-          href: known-issues-2411-1.md
-        - name: 2411 
-          href: known-issues-2411.md
-      - name: Known issues 2408
-        items:
-        - name: 2408.2 - Current 
-          href: known-issues-2408-2.md
-        - name: 2408.1
-          href: known-issues-2408-1.md
-        - name: 2408
-          href: known-issues-2408.md
-      - name: Archived known issues 
-        items:
-        - name: Known issues 2405 
-          items:
-          - name: 2405.3 - Current
-            href: known-issues-2405-3.md
-          - name: 2405.2
-            href: known-issues-2405-2.md      
-          - name: 2405.1
-            href: known-issues-2405-1.md
-          - name: 2405.0
-            href: known-issues-2405.md
-        - name: Known issues 2402 
-          items:
-          - name: 2402.4 - Current
-            href: known-issues-2402-4.md
-          - name: 2402.3
-            href: known-issues-2402-3.md
-          - name: 2402.2
-            href: known-issues-2402-2.md
-          - name: 2402.1
-            href: known-issues-2402-1.md
-          - name: 2402.0 
-            href: known-issues-2402.md
-        - name: Known issues 2311
-          items:
-          - name: 2311.5 - Current
-            href: known-issues-2311-5.md
-          - name: 2311.4 
-            href: known-issues-2311-4.md
-          - name: 2311.3 
-            href: known-issues-2311-3.md
-          - name: 2311.2 - GA
-            href: known-issues-2311-2.md
-          - name: 2311
-            href: known-issues-2311.md
+      href: known-issues.md
     - name: Security updates
-      items:
-      - name: December 2024 - Current
-        href: security-update/security-update-dec-2024.md
-      - name: November 2024
-        href: security-update/security-update-nov-2024.md
-      - name: October 2024
-        href: security-update/security-update-oct-2024.md
-      - name: September 2024
-        href: security-update/security-update-sep-2024.md
-      - name: August 2024
-        href: security-update/security-update-aug-2024.md
-      - name: July 2024
-        href: security-update/security-update-jul-2024.md
-      - name: June 2024 
-        href: security-update/security-update-jun-2024.md
-      - name: Archived security updates 
-        items:  
-        - name: May 2024
-          href: security-update/security-update-may-2024.md
-        - name: April 2024
-          href: security-update/security-update-apr-2024.md
-        - name: March 2024 
-          href: security-update/security-update-mar-2024.md
-        - name: February 2024 
-          href: security-update/security-update-feb-2024.md      
-        - name: January 2024 
-          href: security-update/security-update-jan-2024.md
-        - name: December 2023 
-          href: security-update/security-update-dec-2023.md
-        - name: November 2023 
-          href: security-update/security-update-nov-2023.md
+      href: security-update/security-update.md
   - name: Disconnected operations
     href: manage/disconnected-operations-overview.md
   - name: OEM License
@@ -327,6 +247,8 @@ items:
         href: manage/create-network-interfaces.md
       - name: 5. Create Arc VMs
         href: manage/create-arc-virtual-machines.md
+    - name: Connect to VM via SSH
+      href: manage/connect-arc-vm-using-ssh.md
     - name: Manage Arc VMs
       href: manage/manage-arc-virtual-machines.md
     - name: Manage Arc VM resources
@@ -590,8 +512,8 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
-      - name: Enable guest management
-        href: migrate/migrate-enable-guest-management.md
+    - name: Enable guest management
+      href: migrate/migrate-enable-guest-management.md
     - name: Maintain static IP addresses
       href: migrate/migrate-maintain-ip-addresses.md
     - name: FAQ
@@ -706,26 +628,12 @@ items:
         href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
     - name: Manage storage
       items:
-      - name: Create volumes
-        href: manage/create-volumes.md
       - name: Create stretched volumes
         href: manage/create-stretched-volumes.md
-      - name: Encrypt and deduplicate volumes
-        href: manage/volume-encryption-deduplication.md
-      - name: Manage volumes
-        href: manage/manage-volumes.md
-      - name: Replace drives
-        href: manage/replace-drives.md
-      - name: Use the CSV in-memory read cache
-        href: manage/use-csv-cache.md
-      - name: Manage SMB Multichannel
-        href: manage/manage-smb-multichannel.md
       - name: Storage thin provisioning
         href: manage/thin-provisioning.md
       - name: Thin provisioning conversion
         href: manage/thin-provisioning-conversion.md
-      - name: Adjustable storage repair speed
-        href: manage/storage-repair-speed.md
     - name: Monitor systems
       items:
       - name: Monitor single system with Insights
@@ -802,30 +710,8 @@ items:
       items:
       - name: Single-node systems
         href: concepts/single-server-clusters.md
-      - name: Choose drives
-        href: concepts/choose-drives.md
-      - name: Drive symmetry considerations
-        href: concepts/drive-symmetry-considerations.md
-      - name: Plan volumes
-        href: concepts/plan-volumes.md
-      - name: Understand Storage Spaces Direct
-        href: concepts/storage-spaces-direct-overview.md
-      - name: Understand nested resiliency for Storage Spaces Direct
-        href: concepts/nested-resiliency.md      
-      - name: Understand the storage pool cache
-        href: concepts/cache.md
-      - name: Fault tolerance and storage efficiency
-        href: concepts/fault-tolerance.md
-      - name: Understand and monitor storage resync
-        href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: System and storage pool quorum
-        href: concepts/quorum.md
-      - name: Understand and deploy persistent memory
-        href: concepts/deploy-persistent-memory.md
-      - name: Persistent memory health management
-        href: concepts/persistent-memory-health.md
       - name: Nested virtualization
         href: concepts/nested-virtualization.md
     - name: Software Defined Networking (SDN)

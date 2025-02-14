@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 01/16/2025
+ms.date: 02/07/2025
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
@@ -185,7 +185,8 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the host machines:
 
     ```powershell
-    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
+    $cred=Get-credential
+    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).

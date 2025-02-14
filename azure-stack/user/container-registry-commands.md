@@ -1,14 +1,14 @@
 ---
-title: Azure Container Registries supported commands 
-description: Review the list of supported commands for CLI and PowerShell for Azure Container Registries on Azure Stack Hub.
+title: Azure Container Registry supported commands 
+description: Review the list of supported commands for CLI and PowerShell for Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
 ms.topic: reference
-ms.date: 07/25/2024
+ms.date: 02/07/2025
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
 
-# Intent: As an Azure Stack Hub user, I want to know about the supported commands for Azure Container Registries on Azure Stack Hub so that I can manage my container images and artifacts.
+# Intent: As an Azure Stack Hub user, I want to know about the supported commands for Azure Container Registry on Azure Stack Hub so that I can manage my container images and artifacts.
 
 ---
 
@@ -53,6 +53,7 @@ Azure Container Registry on Azure Stack Hub supports a subset of the global Azur
 Some supported commands have optional parameters that are not supported on Azure Stack Hub. The unsupported parameters are as follows:
 
 `az acr create`
+
 - `--allow-trusted-services`  
 - `--default-action`  
 - `--identity`  
@@ -62,6 +63,7 @@ Some supported commands have optional parameters that are not supported on Azure
 - `--zone-redundancy`  
 
 `az acr update`
+
 - `--allow-trusted-services`
 - `--anonymous-pull-enabled`
 - `--data-endpoint-enabled`
