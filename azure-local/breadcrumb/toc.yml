@@ -9,6 +9,18 @@
     - name: Azure Local Deploy
       tocHref: /azure/azure-local/deploy/
       topicHref: /azure/azure-local/index
+    - name: Azure Local Update
+      tocHref: /azure/azure-local/update/
+      topicHref: /azure/azure-local/index
+    - name: Azure Local Upgrade
+      tocHref: /azure/azure-local/upgrade/
+      topicHref: /azure/azure-local/index
+    - name: Azure Local Manage
+      tocHref: /azure/azure-local/manage/
+      topicHref: /azure/azure-local/index
+    - name: Azure Local Migrate
+      tocHref: /azure/azure-local/migrate/
+      topicHref: /azure/azure-local/index
 ### For contextual TOC
 - name: Azure Local
   tocHref: /windows-server/
