@@ -16,7 +16,7 @@ This article discusses the most common supported operations for Azure Arc virtua
 
 ## Overview
 
-Azure Local can host various VM types, but Arc VMs provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities). VMs are created using [Arc VM provisioning flow](/azure/azure-local/manage/create-arc-virtual-machines?tabs=azureportal), registered to [Arc Resource Bridge](azure/azure-arc/resource-bridge/overview), and have the [Connected Machine agent](/azure/azure-arc/servers/agent-overview) installed. Due to the nature of their architecture, Arc VMs are specifically designed to be managed by the Azure control plane.  
+Azure Local can host various VM types, but Arc VMs provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities). VMs are created using [Arc VM provisioning flow](/azure/azure-local/manage/create-arc-virtual-machines?tabs=azureportal), registered to [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), and have the [Connected Machine agent](/azure/azure-arc/servers/agent-overview) installed. Due to the nature of their architecture, Arc VMs are specifically designed to be managed by the Azure control plane.  
 
 Local tools such as System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Console have been available for many years, offering extensive management capabilities. Many are well-versed with these tools and have been managing these systems for years, using scripts and orchestration that have been refined over time.
 
@@ -24,13 +24,11 @@ Arc VMs hosted outside of Azure, inside of corporate networks, run on Azure Loca
 
 ## Supported VM operations  
 
-If an operation is supported by Azure portal, it can only be performed using Azure portal.
-
-If an operation isn't supported by Azure portal, it can only be performed using local tools.
+If an operation is supported by Azure portal, it can only be performed using Azure portal (and not using local tools).
 
 ### Using Azure portal
 
-The following operations are supported using Azure portal. 
+The following operations are supported using Azure portal.
 
 - Create VM
 - Start VM
@@ -102,7 +100,7 @@ The following VM operations will be supported in a future release using Azure po
 
 ## Unsupported VM operations
 
-The following VM operations are not supported.
+The following VM operations are not supported and can't be performed using Azure portal or local tools.
 
 - Live migrate a VM from one system to another
 - Rename a VM
