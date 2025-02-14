@@ -41,7 +41,7 @@ Here are the Azure requirements for your Azure Local instance:
    - Japan East
    - South Central US
 
-- **Azure Key Vault**: Make sure to enable public network access when you set up a key vault. This setting allows edge devices to connect to the key vault without any access issues.
+- **Azure Key Vault**: Make sure to enable public network access when you set up a key vault. This setting allows Azure Local instances to connect to the key vault without any access issues.
 
 ## Machine and storage requirements
 
