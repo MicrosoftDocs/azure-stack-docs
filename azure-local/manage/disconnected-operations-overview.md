@@ -13,7 +13,7 @@ ms.date: 01/23/2025
 
 ::: moniker range=">=azloc-24112"
 
-Applies to: Azure Local release 2411 and later
+Applies to: Azure Local 2411 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
