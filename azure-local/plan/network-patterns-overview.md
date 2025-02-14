@@ -27,9 +27,9 @@ A deployment consists of single-node or multiple node systems (up to 16 machines
 
 The following highlights some considerations of using switchless configurations:
 
-- Storage switchless deployments in Azure Local, version 23H2 only support 1,2 or 3 nodes.
+- Storage switchless deployments in Azure Local only support 1,2 or 3 nodes.
 
-- Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local, version 23H2 systems.  
+- Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Local systems.  
 
 - No switch is necessary for in-system (East-West) traffic; however, a physical switch is required for traffic outside the system (North-South).
 

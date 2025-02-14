@@ -61,7 +61,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
-- For Azure Local, version 23H2 cloud deployments:
+- For Azure Local cloud deployments:
 
     - Scale out storage switchless systems aren't supported.
 

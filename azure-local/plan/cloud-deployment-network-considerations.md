@@ -8,11 +8,11 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Network considerations for cloud deployments of Azure Local, version 23H2
+# Network considerations for cloud deployments of Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article discusses how to design and plan an Azure Local, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
+This article discusses how to design and plan an Azure Local system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
 
 ## Network design framework
 
@@ -412,4 +412,4 @@ Here are the summarized considerations for network adapter configuration:
 
 ## Next steps
 
-- [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md).
+- [About Azure Local deployment](../deploy/deployment-introduction.md).

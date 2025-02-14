@@ -13,7 +13,7 @@ ms.date: 12/26/2024
 
 [!INCLUDE [includes](../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Local solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local in their datacenters.
+In this article, you'll learn about the two-node storage switched, fully converged with two TOR switches network reference pattern that you can use to deploy your Azure Local instance solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Local instance in their datacenters.
 
 For information on other network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 

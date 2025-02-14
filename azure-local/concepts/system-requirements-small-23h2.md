@@ -9,7 +9,7 @@ ms.custom: references_regions
 ms.date: 02/06/2025
 ---
 
-# System requirements for small form factor deployments of Azure Local, version 23H2 (preview)
+# System requirements for small form factor deployments of Azure Local
 
 ::: moniker range=">=azloc-2411"
 

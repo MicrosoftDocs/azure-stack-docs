@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/02/2025
+ms.date: 02/14/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -18,7 +18,7 @@ This article also describes how to optionally use a highly locked-down firewall 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link are not supported for Azure Local, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Local, version 23H2.
+> Azure Express Route and Azure Private Link are not supported for Azure Local or any of its components as it is not possible to access the public endpoints required for Azure Local.
 
 ## Firewall requirements for outbound endpoints
 
@@ -37,33 +37,33 @@ As shown in the following diagram, Azure Local can access Azure using more than 
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Local accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-## Required firewall URLs for Azure Local, version 23H2 deployments
+## Required firewall URLs for Azure Local deployments
 
-Starting with Azure Local, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
+Starting with Azure Local, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in East US for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
+- [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
 For a consolidated list of endpoints for West Europe that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in West Europe for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
+- [Required endpoints in West Europe for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
 
 For a consolidated list of endpoints for Australia East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Australia East for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
+- [Required endpoints in Australia East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
 For a consolidated list of endpoints for Canada Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Canada Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
+- [Required endpoints in Canada Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
 For a consolidated list of endpoints for India Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in India Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
+- [Required endpoints in India Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
 
 For a consolidated list of endpoints for SouthEast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in SouthEast Asia for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
+- [Required endpoints in SouthEast Asia for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
 
 For a consolidated list of endpoints for Japan East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Japan East for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/JapanEastEndpoints/japaneast-hci-endpoints.md)
+- [Required endpoints in Japan East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/JapanEastEndpoints/japaneast-hci-endpoints.md)
 
 For a consolidated list of endpoints for South Central US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in South Central US for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthCentralUSEndpoints/southcentralus-hci-endpoints.md)
+- [Required endpoints in South Central US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthCentralUSEndpoints/southcentralus-hci-endpoints.md)
 
 ## Firewall requirements for additional Azure services
 
@@ -198,4 +198,5 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 For more information, see also:
 
 - The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
-- See [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md)
+- See [About Azure Local deployment](../deploy/deployment-introduction.md)
+````
