@@ -108,51 +108,55 @@ For more information, see [Create an AKS cluster](/azure/aks/aksarc/aks-create-c
 Here's an example script to create logical networks and an AKS Arc cluster.
 
 ```azurecli
-# Check and update variables below according to your environment  
-$subscriptionId = “ ”  # Update the Starter Subscription Id of your environment  
-$location = "autonomous"  
-$resourceGroupName = " " # Update the resource group name  
-$customLocationResourceName = " "   # This name would be referenced in resource group  
-$customLocationResourceId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocationResourceName"  
+# Check and update variables according to your environment.
+
+$subscriptionId = “ ”  # Update the Starter Subscription Id of your environment
+$location = "autonomous"
+$resourceGroupName = " " # Update the resource group name
+$customLocationResourceName = " "   # This name would be referenced in resource group
+$customLocationResourceId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocationResourceName"
   
-# IP config detail please follow the content in  
-$aszhost = <Host Machine> # update with host machine name  
-# YAML file would be information on the following  
-$vmSwitchName= # The value of vswitchname  
-$addressPrefixes= # The value of ipaddressprefix  
-$gateway= # The value of gateway  
-$dnsservers= # The value of dnsservers  
-$ipPoolStart= # Set this according to $addressPrefixes, please don’t overlap k8snodeippoolstart and k8snodeippoolend  
-$ipPoolEnd= # Set this according to $addressPrefixes, please don't overlap k8snodeippoolstart and k8snodeippoolend  
+# IP config detail.
+ 
+$aszhost = <Host Machine> # update with host machine name
+# YAML file would be information on the following:  
+$vmSwitchName= # The value of vswitchname
+$addressPrefixes= # The value of ipaddressprefix
+$gateway= # The value of gateway
+$dnsservers= # The value of dnsservers
+$ipPoolStart= # Set this according to $addressPrefixes, don’t overlap k8snodeippoolstart and k8snodeippoolend
+$ipPoolEnd= # Set this according to $addressPrefixes, don't overlap k8snodeippoolstart and k8snodeippoolend
   
-# Create Logical Network for AKS cluster  
-$lNetName = "aksarc-lnet-static"  
-az stack-hci-vm network lnet create `  
---resource-group $resourceGroupName `  
---custom-location $customLocationResourceId `  
---location $location `  
---name $lNetName `  
---ip-allocation-method "Static" `  
---address-prefixes $addressPrefixes `  
---ip-pool-start $ipPoolStart `  
---ip-pool-end $ipPoolEnd `  
---gateway $gateway `  
---dns-servers $dnsservers `  
---vm-switch-name $vmSwitchName  
+# Create Logical Network for AKS cluster.
+
+$lNetName = "aksarc-lnet-static"
+az stack-hci-vm network lnet create `
+--resource-group $resourceGroupName `
+--custom-location $customLocationResourceId `
+--location $location `
+--name $lNetName `
+--ip-allocation-method "Static" `
+--address-prefixes $addressPrefixes `
+--ip-pool-start $ipPoolStart `
+--ip-pool-end $ipPoolEnd `
+--gateway $gateway `
+--dns-servers $dnsservers `
+--vm-switch-name $vmSwitchName
   
-# Create AKS cluster using az cli  
-$logicNetId = (az stack-hci-vm network lnet show --resource-group $resourceGroupName --name $lNetName --query id -o tsv)  
-$aksClusterName = " " # please enter the clustername  
-$controlPlaneIp = # Set this according to $addressPrefixes, please don't overlap $ipPoolStart and $ipPoolEnd  
-az aksarc create -n $aksClusterName `  
---resource-group $resourceGroupName `  
---custom-location $customLocationResourceId `  
---node-count 2 `  
---vnet-ids $logicNetId `  
---generate-ssh-keys `  
---control-plane-ip $controlPlaneIp `  
---only-show-errors  
-# --node-vm-size 'Standard_D8s_v3' `  
+# Create AKS cluster using az cli.
+ 
+$logicNetId = (az stack-hci-vm network lnet show --resource-group $resourceGroupName --name $lNetName --query id -o tsv)
+$aksClusterName = " " # please enter the clustername
+$controlPlaneIp = # Set this according to $addressPrefixes, please don't overlap $ipPoolStart and $ipPoolEnd
+az aksarc create -n $aksClusterName `
+--resource-group $resourceGroupName `
+--custom-location $customLocationResourceId `
+--node-count 2 `
+--vnet-ids $logicNetId `
+--generate-ssh-keys `
+--control-plane-ip $controlPlaneIp `
+--only-show-errors
+# --node-vm-size 'Standard_D8s_v3' `
 ```
 
 ### Retrieve `kubeconfig`
@@ -189,7 +193,7 @@ Here are some known issues and workarounds for disconnected operations with AKS 
 
 | Feature | Description | Workaround/comments |
 |-------------|-----------------|-------------------------|
-| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd : ERROR: Operation returned an invalid status 'OK'`. |
+| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd : ERROR: Operation returned an invalid status`. |
 
 For more information on AKS Arc, see the following articles:
 
