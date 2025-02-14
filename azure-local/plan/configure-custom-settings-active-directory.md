@@ -3,7 +3,7 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell

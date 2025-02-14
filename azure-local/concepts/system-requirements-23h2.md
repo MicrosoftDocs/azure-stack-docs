@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 01/02/2025
+ms.date: 02/14/2025
 ---
 
 # System requirements for Azure Local

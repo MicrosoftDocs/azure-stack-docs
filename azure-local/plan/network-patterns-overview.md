@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 11/13/2024
+ms.date: 02/14/2025
 ---
 
 # Network reference patterns overview for Azure Local
