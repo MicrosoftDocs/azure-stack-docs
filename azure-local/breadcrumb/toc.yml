@@ -5,6 +5,10 @@
   - name: Azure Local
     tocHref: /azure/azure-local/
     topicHref: /azure/azure-local/index
+    items:
+    - name: Azure Local Deploy
+      tocHref: /azure/azure-local/deploy/
+      topicHref: /azure/azure-local/index
 ### For contextual TOC
 - name: Azure Local
   tocHref: /windows-server/
@@ -17,7 +21,4 @@
   topicHref: /azure/azure-local/index
 - name: Azure Local
   tocHref: /troubleshoot/
-  topicHref: /azure/azure-local/index
-- name: Azure Local Deploy
-  tocHref: /azure/azure-local/deploy
   topicHref: /azure/azure-local/index
