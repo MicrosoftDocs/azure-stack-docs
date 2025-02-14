@@ -21,6 +21,9 @@
     - name: Azure Local Migrate
       tocHref: /azure/azure-local/migrate/
       topicHref: /azure/azure-local/index
+    - name: Azure Local Concepts
+      tocHref: /azure/azure-local/concepts/
+      topicHref: /azure/azure-local/index
 ### For contextual TOC
 - name: Azure Local
   tocHref: /windows-server/
