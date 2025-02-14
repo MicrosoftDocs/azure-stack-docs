@@ -41,7 +41,7 @@
     "externalReference": [],
     "globalMetadata": {
       "uhfHeaderId": "Azure",
-      "breadcrumb_path": "../adaptive-cloud/breadcrumb/toc.json",
+      "breadcrumb_path": "/azure/adaptive-cloud/breadcrumb/toc.json",
       "feedback_system": "Standard",
       "manager":"femila",
       "ms.service": "azure-stack",
