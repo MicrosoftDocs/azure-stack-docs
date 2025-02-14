@@ -28,40 +28,46 @@ The KMS plugin will be supported for all AKS EE clusters version 1.10.xxx.0 and 
 > [!NOTE]
 > You can only enable or disable the KMS Plugin when creating a new deployment. Once you set the flag, it can't be changed unless you remove the deployment or node.
 
-1. Deploying the AKS EE clusters 
-Refer to the [AKS EE deployment guide](aks-edge-howto-deploy.md) to create a new AKS EE cluster.
-The following line will be present if KMS plugin is enabled:
-   ```powershell
-    Preparing to install kms-plugin as encryption provider...
+1. Installing the KMS Plugin
+- Install the single machine deployment using the [Single Machine Kubernetes guide](aks-edge-concept-clusters-nodes.md) guide
+- During the first step in the single machine deployment process, create an **aksedge-config.json** file. In the **aksedge-config file**, in the Init section, set Init.KmsPlugin.Enable to True as shown below:
+
+   ```JSON
+   "Init": {
+    "KmsPlugin": {
+        "Enable": true
+     }
+  }
    ```
+A new deployment has been created when you see the following message:
+    :::image type="content" source="media/aks-edge/aks-ee-successful-deployement.jpg" alt-text="Screenshot showing new deployement." lightbox="media/aks-edge/aks-ee-successful-deployement.jpg":::
+
+2. Validating KMS Installation
+The following sections describe how to validate the KMS plugin installation for AKS EE cluster 
 
 **Create and retrieve a secret which is encrypted using KMS**
    ```powershell
    # Create a new secret encrypted by KMS
-    kubectl create secret generic db-user-pass --from-literal=username=<username> --from-literal=password='<your-secret>'
+    kubectl create secret generic db-user-pass --from-literal=username=admin --from-literal=password='your-secret'
    ```
-If successful the terminal will show the following output:
-```output
-   secret/db-user-pass1 created
-```
+
 **Retrieve the secret which has been created**
    ```powershell
     # Retrieve secret to test decryption
     kubectl get secret db-user-pass -o jsonpath='{.data}'
    ```
 If successful the terminal will show the following output:
-```output
- ["password": "<your-secret>", "username": "<username>"}
+    :::image type="content" source="media/aks-edge/aks-ee-successful-secret-create.jpg" alt-text="Screenshot showing secret creation and retrieval." lightbox="media/aks-edge/aks-ee-successful-secret-create.jpg":::
 
-```
 
 ## Troubleshooting
 If there are errors with the KMS plugin, please run the following commands. 
 
 1. Check that the AKS version is **1.10.xxx.0** and later
 Use the following command to check for upgrades for Kubernetes Cluster. Please refer to [upgrade an AKS Cluster](aks-edge-howto-update.md) for more information.
-   ```powershell
-    Get-AksEdgeCluster -Name <cluster-name> | Select-Object -ExpandProperty Version
+
+   ```shell
+    az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
    ```
 2. View readyz api  
 If the problem persists, then validate that installation succeeded and to check the health of the KMS plugin run the following command and ensure that the health status of kms-providers is "ok"
@@ -71,7 +77,7 @@ If the problem persists, then validate that installation succeeded and to check 
 
 :::image type="content" source="media/aks-edge/aks-ee-kms-plugin-ok.jpg" alt-text="Screenshot showing readyz api." lightbox="media/aks-edge/aks-ee-kms-plugin-ok.jpg":::
 
-If you receive [-] before the 'kms-provider' field then collect Diagnostic Logs for debugging. Refer to the link instructions [here](aks-get-kubelet-logs.md) for more information. 
+If you receive [-] before the output then collect Diagnostic Logs for debugging. Refer to the link instructions [here](aks-get-kubelet-logs.md) for more information. 
 
 3. Repair KMS 
 If there are still errors then the machine running the AKS EE cluster could have been paused or turned off for extended periods of time (over 30 days) the Repair-Kms command can be run to rehydrates any necessary tokens to get KMS back in a healthy state.
