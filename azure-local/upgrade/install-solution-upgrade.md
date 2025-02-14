@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -63,7 +63,7 @@ On the **Basics** tab, specify the following information:
 
    :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of Create key vault page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
 
-1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each machine. For more information on how to create this deployment account, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).
+1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each machine. 
 
    > [!NOTE]
    > The user can't be Administrator and can't use format `domain\username`.
