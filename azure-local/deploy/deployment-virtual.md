@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 11/25/2024
 ---
 
-# Deploy a virtual Azure Local, version 23H2 system
+# Deploy a virtual Azure Local system
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -19,7 +19,7 @@ This article describes how to deploy a virtualized Azure Local instance running 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Local, version 23H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
-The following are the minimum requirements to successfully deploy Azure Local, version 23H2.
+The following are the minimum requirements to successfully deploy Azure Local.
 
 Before you begin, make sure that:
 
@@ -60,7 +60,7 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
-> These are the minimum requirements to successfully deploy Azure Local, version 23H2.  Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
+> These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
@@ -229,7 +229,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Download Azure Local 23H2 software](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
+1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
 1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 

@@ -13,7 +13,7 @@ ms.date: 01/23/2025
 
 ::: moniker range=">=azloc-24112"
 
-Applies to: Azure Local, version 23H2, release 2411 and later
+Applies to: Azure Local release 2411 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
@@ -74,7 +74,7 @@ This checklist provides you with the minimum hardware requirements each node nee
 | Minimum cores per node               | 24 physical cores                |
 | Minimum storage per node             | 2 TB SSD/NVME                    |
 | Minimum boot drive storage           | 480 GB SSD/NVME                  |
-| Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local, version 23H2](../plan/cloud-deployment-network-considerations.md) <br><br> Note: Switchless configurations work for cluster size of three nodes only. |
+| Network                              | Switchless and Switched are supported: [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md) <br><br> Note: Switchless configurations work for cluster size of three nodes only. |
 
 ### Integration requirements
 
