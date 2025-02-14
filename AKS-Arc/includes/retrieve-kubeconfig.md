@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.topic: include
 ms.date: 06/03/2024
 ms.lastreviewed: 06/03/2024
-ms.reviewer: sulahiri
+ms.reviewer: leslielin
 
 # Common content between AKS Arc and AKS on VMware
 
