@@ -51,36 +51,36 @@ In this preview release, the following actions are available:
 | Action                                | Operator |  
 |---------------------------------------|----------|  
 | Assign more operators                 | Yes      |  
-| View group memberships (synced)       | Yes      |  
-| View identity synchronization status  | Yes      |  
-| View Identity configuration           | Yes      |  
-| List Service Principal Names (SPNs)   | Yes      |  
 | Create SPN                            | Yes      |  
 | Delete SPN <sub>2</sub>               | Yes      |  
+| List Service Principal Names (SPNs)   | Yes      |  
 | Update SPN <sub>2</sub>               | Yes      |
+| View group memberships (synced)       | Yes      |  
+| View Identity configuration           | Yes      |  
+| View identity synchronization status  | Yes      |  
 
 ### Subscription management
 
 | Action                                | Operator |
 |---------------------------------------|----------|
-| List all subscriptions                | Yes      |  
+| Create Alias                          | Yes      |  
 | Create subscriptions                  | Yes      |  
+| Delete Alias                          | Yes      |  
+| Delete subscription <sub>1</sub>      | Yes      |  
+| List alias                            | Yes      |  
+| List all subscriptions                | Yes      |  
+| Reassign subscription ownership       | Yes      |  
 | Rename subscription                   | Yes      |  
 | Resume subscription                   | Yes      |  
-| Delete subscription <sub>1</sub>      | Yes      |  
-| Reassign subscription ownership       | Yes      |  
-| List alias                            | Yes      |  
-| Create Alias                          | Yes      |  
-| Delete Alias                          | Yes      |  
 
 ### Observability and diagnostics
 
 | Action                                          | Operator |
 |-------------------------------------------------|----------|  
-| Configure syslog forwarding                     | Yes      |  
 | Collect logs                                    | Yes      |  
-| Download logs                                   | Yes      |  
 | Configure diagnostics and telemetry settings    | Yes      |
+| Configure syslog forwarding                     | Yes      |  
+| Download logs                                   | Yes      |  
 
 <sub>1. Operator subscription cannot be deleted</sub>
 <sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
@@ -114,31 +114,27 @@ The following parameters must be collected and available before deployment:
 
 | Parameter Name        | Description            | Example                 |  
 |-----------------------|------------------------|-------------------------|  
-| Authority                         | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
-| ClientID                          | AppID created when setting up the adfsclient app.                            | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`            |  
-| LdapServer                        | LDAP v3 endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.contoso.com`                                |  
-| LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.                             | Username: `ldapreader` Password:         |  
-| RootOperatorUserPrincipalName     | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@contoso.com`        |  
-| SyncGroupIdentifier               | GUID to Active Directory group to start syncing from. | `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID  81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
-| LdapsCertChainInfo                | Certificate chain information for LDAP. This is used to validate calls from the appliance to LDAP. You can omit the certificate chain information for demo purposes. | MIIF ......  |
-|OidcCertChainInfo                  | Certificate chain information used for OIDC to validate tokens from OpenId Connect compliant endpoint. You can omit the certificate chain information for demo purposes. | MIID ......  |
+| Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
+| ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
+| LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
+| LdapsCertChainInfo    | Certificate chain information for LDAP. This is used to validate calls from the appliance to LDAP. You can omit the certificate chain information for demo purposes. | MIIF ......  |
+| LdapServer       | LDAP endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.local.contoso.com`    |  
+| RootOperatorUserPrincipalName  |   UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com`   |
+| SyncGroupIdentifier    | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
 
-Example of a configuration object:
+Example of a configuration parameter:
 
 ```console  
-$idpConfig = @{  
-     authority = 'https://adfs.contoso-AzureLocal.com/adfs'  
-     clientId  = '9e7655c5-1bc4-45af-8345-cdf6bbf4ec1'  
-     rootOperatorUserPrincipalName = 'operator@contoso.com'  
-     ldapServer                    = 'ldap.contoso.com'  
-     ldapUsername                  = 'ldapreader'  
-     ldapPassword                  = $ldappass  
-     syncGroupIdentifier           = '81d71e5c5-abc4-11af-8132-afdf6bbe2ec1'  
+$ldapPass = 'retracted'|Convertto-securestring -asplaintext -force
+$idpConfig = @{ 
+     authority = 'https://adfs.contoso-AzureLocal.com/adfs'    
+           clientId  = '9e7655c5-1bc4-45af-8345-cdf6bbf4ec1'    
+           rootOperatorUserPrincipalName = 'operator@local.contoso.com'    
+           ldapServer                    = 'ldap.local.contoso.com'    
+           LdapCredential = New-Object PSCredential -ArgumentList @("ldap", $ldapPass)
+      syncGroupIdentifier           = '81d71e5c5-abc4-11af-8132-afdf6bbe2ec1'
 }
-```  
-
-> [!NOTE]
-> Make sure to secure identity endpoints with certificates that share the same root of trust as those used for the disconnected operations appliance. Multiple roots of trust aren't supported.
+```
 
 ## Current limitations
 
@@ -219,7 +215,6 @@ Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
 # Import the ADDSDeployement module
 Import-Module ADDSDeployment
-
 
 # Install the AD FS role
 Install-WindowsFeature ADFS-Federation -IncludeManagementTools

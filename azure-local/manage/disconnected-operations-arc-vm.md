@@ -84,25 +84,30 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     Here's an example script.
 
     ```azurecli
-    # Install Azcli extension
+    # Install Azcli extension.
+
     az extension add -n stack-hci-vm --version 1.3.0
     
-    # Az log in
+    # Az log in.
+
     az cloud set -n azure.local
     az config set core.instance_discovery=false --only-show-errors
     az login --user "admin@demo.asz" --password $(New-Guid).Guid
 
-    # Check and update variables according to your environment
+    # Check and update variables according to your environment.
+
     $subscriptionId  = "3d926709-1015-a8cc-3003-08439e143d37"  # The starter subscription Id
     $resource_group = "disconnected-test-rg"
     $customloc_name = "s-cluster-customlocation"
     $customLocationID="/subscriptions/$SubscriptionId/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name"
     $location = "autonomous"
 
-    # Create resource group
+    # Create resource group.
+
     az group create -n $resource_group -l $location
 
-    # Create storage path
+    # Create storage path.
+
     az stack-hci-vm storagepath create `
         --resource-group $resource_group `
         --custom-location $customLocationID `
@@ -136,7 +141,6 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     Here's an example script:
 
     ```azurecli
-    # Create network for VM
     # Update vm-switch-name and IP addresses in address-prefixes/ip-pool-start/ip-pool-end/gate according to your environment.
 
     # You can find them in: C:\CloudDeployment\FullEnvironment.json
@@ -161,8 +165,8 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 6. [Create network interfaces](../manage/create-network-interfaces.md). For this preview also refer to the [limitations](#limitations) section.
 
     ```azurecli
-    # Create network interface
-    # Pick an ip-address between ip-pool-start and ip-pool-end from LNET
+    # Pick an ip-address between ip-pool-start and ip-pool-end from LNET.
+
     az stack-hci-vm network nic create `
         --resource-group $resource_group `
         --custom-location $customLocationID `
@@ -175,7 +179,6 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 7. [Create Arc VMs](../manage/create-arc-virtual-machines.md). For this preview also refer to the [limitations](#limitations) section.
 
     ```azurecli
-    # Create VM
     az stack-hci-vm create `
         --resource-group $resource_group `
         --custom-location $customLocationID `
