@@ -52,10 +52,10 @@ The key parameters to note for a scalable Kubernetes deployment are:
 > [!IMPORTANT]
 > The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
-- `Arc`: This section is required. During AKS EE deployment, the Arc parameters will be used to connect the AKS EE cluster to Azure Arc.
+- `Arc`: This section is required. During AKS EE deployment, the Arc parameters will be used to connect the AKS EE cluster to Azure Arc. For more information on the required Arc parameters, see the [connect to Arc documentation](./aks-edge-howto-connect-to-arc.md).
   
 > [!IMPORTANT]
-> Starting with the February 2025 release, the `Arc` section of the config file is required. Azure Arc connection will occur automatically during AKS EE deployment.
+> Starting with the February 2025 release, the `Arc` section of the config file is required. Azure Arc connection will occur automatically during AKS EE deployment. 
   
 - The `Network.NetworkPlugin` value by default is `flannel`. Flannel is the default CNI for a K3S cluster. In a K8S cluster, change the `NetworkPlugin` to `calico`.
 - In addition to the previous parameters, you can set the following parameters according to your deployment configuration, [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `LinuxNode.Ip4Address`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `WindowsNode.Ip4Address`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
