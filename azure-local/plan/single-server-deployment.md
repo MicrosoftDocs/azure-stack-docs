@@ -110,4 +110,4 @@ Optional - this pattern doesn't require a storage network.
 
 ## Next steps
 
-Learn about two-node patterns - [Azure Local network deployment patterns](choose-network-pattern.md).
+Learn about [Two-node Azure Local network deployment patterns](choose-network-pattern.md).

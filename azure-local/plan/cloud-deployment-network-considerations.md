@@ -26,7 +26,7 @@ The following diagram shows the various decisions and steps that define the netw
 
 To help determine the size of your Azure Local instance, use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
 
-As described in the Azure Local [system machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
+As described in the Azure Local [machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
 
 - **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Local instance network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 

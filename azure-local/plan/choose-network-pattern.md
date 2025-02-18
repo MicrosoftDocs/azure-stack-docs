@@ -49,4 +49,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Local](../deploy/download-software.md)
+- [Download Azure Local](../deploy/download-software.md).
