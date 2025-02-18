@@ -8,7 +8,7 @@
     items:
     - name: Azure Local Deploy
       tocHref: /azure/azure-local/deploy/
-      topicHref: /azure/azure-local/index
+      topicHref: /azure/azure-local/deploy
     - name: Azure Local Update
       tocHref: /azure/azure-local/update/
       topicHref: /azure/azure-local/index
