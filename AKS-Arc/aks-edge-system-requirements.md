@@ -59,7 +59,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
-- **GPU**: [GPU-PV](./aks-edge-gpu).
+- **GPU**: [GPU-PV](aks-edge-gpu.md).
 - **Secret Encryption**: [KMS plugin for AKS EE](./aks-edge-howto-secret-encryption).
 - **Security**: [Workload Identity](./aks-edge-workload-identity). WLIF is only available for customers deploying AIO on top of AKS EE. 
 - **Network plugins**: Calico on K3S (discontinued).
