@@ -3,16 +3,16 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/12/2025
+ms.date: 02/14/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
 
-# Network considerations for cloud deployments of Azure Local, version 23H2
+# Network considerations for cloud deployments of Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article discusses how to design and plan an Azure Local, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
+This article discusses how to design and plan an Azure Local system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
 
 ## Network design framework
 
@@ -26,7 +26,7 @@ The following diagram shows the various decisions and steps that define the netw
 
 To help determine the size of your Azure Local instance, use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
 
-As described in the Azure Local [system machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
+As described in the Azure Local [machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
 
 - **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Local instance network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
@@ -412,4 +412,4 @@ Here are the summarized considerations for network adapter configuration:
 
 ## Next steps
 
-- [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md).
+- [About Azure Local deployment](../deploy/deployment-introduction.md).
