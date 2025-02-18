@@ -37,7 +37,7 @@ You can apply these updates via PowerShell or the Azure portal. Regardless of th
 
 Before Microsoft releases a new update package, the package is validated as a collection of components. After the validation is complete, the content is released along with the release notes.
 
-The release notes include the update contents, changes, known issues, and links to any external downloads that might be required (for example, drivers and firmware). For more information, see the [Latest release notes](../known-issues-2311-2.md).
+The release notes include the update contents, changes, known issues, and links to any external downloads that might be required (for example, drivers and firmware). For more information, see the [Latest release notes](../known-issues.md).
 
 After Microsoft releases the update, your Azure Local update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 
