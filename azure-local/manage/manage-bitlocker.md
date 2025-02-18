@@ -120,5 +120,5 @@ Follow these steps to export the recovery keys for your cluster:
     ```
 
 ## Next steps
-
-- [Use BitLocker with Cluster Shared Volumes](../manage/bitlocker-on-csv.md#use-bitlocker-with-cluster-shared-volumes).
+For more information on Bitlocker integration with Cluster Shared Volumes, see:
+- [Use BitLocker with Cluster Shared Volumes](https://learn.microsoft.com/en-us/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
