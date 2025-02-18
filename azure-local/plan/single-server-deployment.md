@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 12/26/2024
+ms.date: 02/15/2025
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Local
@@ -110,4 +110,4 @@ Optional - this pattern doesn't require a storage network.
 
 ## Next steps
 
-Learn about two-node patterns - [Azure Local network deployment patterns](choose-network-pattern.md).
+Learn about [Two-node Azure Local network deployment patterns](choose-network-pattern.md).
