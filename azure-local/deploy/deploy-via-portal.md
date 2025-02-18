@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 02/13/2025
+ms.date: 02/18/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -36,10 +36,6 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 
-<!--5. Create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
-
-    Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).-->
-
 1. Select the machine or machines that make up this Azure Local instance.
 
    > [!IMPORTANT]
@@ -52,22 +48,29 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     1. Select one or more machines that make up this Azure Local instance. These machines show as missing Arc extensions.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
+
 1. Select **Install extensions**. This action installs Arc extensions on the selected machines. This operation takes several minutes. Refresh the page to view the status of the extension installation.
+
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
     
     After the extensions are installed successfully, the status of the machine updates to **Ready**.
 
 1. **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-<!--1. Select **Validate**, wait for the green validation checkbox to appear, and then select **Next: Configuration**.
-
-    The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.-->
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
 
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
+
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
+
     1. Accept the suggested name or provide a name for the key vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
+
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
 
     The key vault adds cost in addition to the Azure Local subscription. For details, see [Key vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing key vault.
 
@@ -77,8 +80,6 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 ## Specify the deployment settings
 
 On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you are able to review the settings before you deploy:
-
-<!--- **Quickstart template** - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.--->
 
 1. Choose the source of the deployment settings:
    * **New configuration** - Specify all of the settings to deploy this system.
@@ -105,6 +106,8 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - Group management and compute traffic
     - Custom configuration
 
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
+
     If you selected a **Network switch** for storage, more patterns are available based on how you intend to group the traffic:
 
     - **Group all traffic** - If you're using network switches for storage traffic you can group all traffic types together on a set of network adapters.
@@ -115,10 +118,10 @@ On the **Configuration** tab, choose whether to create a new configuration for t
         - Management intent.
         - Compute and storage intent.
 
-      
-
     - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
     <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
+
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
    > [!TIP]
    > If you're deploying a single machine that you plan to add machines to later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
@@ -141,9 +144,11 @@ On the **Configuration** tab, choose whether to create a new configuration for t
      > [!IMPORTANT]
      > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage)
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-3.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-3.png":::
 
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
+
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
 
     - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **System traffic priority** - Choose from 5, 6 or 7.
@@ -153,9 +158,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     > [!NOTE]
     > These settings are only applicable when you create an Azure Local instance using the *medium* hardware class.
 
-    :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customized network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
-
-1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network. 
+1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
 
 1. If you picked static IP, provide the following values:
     1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
@@ -164,7 +167,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
     1. Validate subnet.
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-4.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-4.png":::
 
 1. Select **Next: Management**.
 
@@ -177,15 +180,15 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
 
-1. Enter the Active Directory **Domain** you're deploying this system into.
+1. Enter the Active Directory **Domain** where you're deploying this system. This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
 
-    This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
 1. Enter the **OU** created for this deployment.
-   For example: ``OU=HCI01,DC=contoso,DC=com``
-6. Enter the **Deployment account** credentials.
+   For example: `OU=Local001,DC=contoso,DC=com`.
+
+1. Enter the **Deployment account** credentials.
 
     This domain user account was created when the domain was prepared for deployment.
-7. Enter the **Local administrator** credentials for the machines.
+1. Enter the **Local administrator** credentials for the machines.
 
     The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (12+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
 
