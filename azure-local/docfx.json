@@ -74,7 +74,7 @@
     "externalReference": [],
     "globalMetadata": {
       "uhfHeaderId": "Azure",
-      "breadcrumb_path": "../azure-local/breadcrumb/toc.yml",
+      "breadcrumb_path": "/azure/azure-local/breadcrumb/toc.json",
       "feedback_system": "Standard",
       "permissioned-type": "public",
       "ms.service": "azure-local",
