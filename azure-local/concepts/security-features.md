@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 02/14/2025
 ---
 
-# Security features for Azure Local, version 23H2
+# Security features for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -36,7 +36,7 @@ For more information, see [Manage security defaults on Azure Local](../manage/ma
 
 ## Application Control
 
-Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local, version 23H2](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
+Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
 
 Application Control provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about Application Control-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
@@ -140,7 +140,7 @@ For more information, see [Manage secrets rotation](../manage/manage-secrets-rot
 
 ## Syslog forwarding of security events
 
-For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local, version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
+For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Local has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 
