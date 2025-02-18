@@ -6,10 +6,10 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 01/02/2025
+ms.date: 02/14/2025
 ---
 
-# System requirements for Azure Local, version 23H2
+# System requirements for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -96,14 +96,14 @@ To ensure adequate support and diagnosability for large memory Azure Local insta
 
 In addition to Microsoft Azure Local updates, many OEMs also release regular updates for your Azure Local hardware, such as driver and firmware updates. To ensure that OEM package update notifications, reach your organization check with your OEM about their specific notification process.
 
-Before deploying Azure Local, version 23H2, ensure that your hardware is up to date by:
+Before deploying Azure Local, ensure that your hardware is up to date by:
 
 - Determining the current version of your Solution Builder Extension (SBE) package.
 - Finding the best method to download, install, and update your SBE package.
 
 ### OEM information
 
-This section contains OEM contact information and links to OEM Azure Local, version 23H2 reference material.
+This section contains OEM contact information and links to OEM Azure Local reference material.
 
 | Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the system after it's running |
 |-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
@@ -117,11 +117,11 @@ For a comprehensive list of all OEM contact information, download the [Azure Loc
 
 ### BIOS setting
 
-Check with your OEM regarding the necessary generic BIOS settings for Azure Local, version 23H2. These settings may include hardware virtualization, TPM enabled, and secure core.
+Check with your OEM regarding the necessary generic BIOS settings for Azure Local. These settings may include hardware virtualization, TPM enabled, and secure core.
 
 ## Driver
 
-Check with your OEM regarding the necessary drivers that need to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
 
 ### Driver installation steps
 
@@ -230,11 +230,11 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
 ## Firmware
 
-Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Local, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+You should always follow the OEM's recommended installation steps. With Azure Local, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
