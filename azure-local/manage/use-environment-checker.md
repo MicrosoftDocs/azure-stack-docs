@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 12/27/2024
 ---
 
-# Evaluate the deployment readiness of your environment for Azure Local, version 23H2
+# Evaluate the deployment readiness of your environment for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
