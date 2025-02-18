@@ -1801,6 +1801,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-local/known-issues-2405-3.md", 
+      "redirect_url": "/azure/azure-local/kown-issues", 
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-local/known-issues-2408.md", 
       "redirect_url": "/azure/azure-local/kown-issues", 
       "redirect_document_id": false

@@ -28,7 +28,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
-For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues?view=azloc-24112&preserve-view=true#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-24112&preserve-view=true#fixed-issues).
 
 ::: moniker-end
 
@@ -44,7 +44,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues?view=azloc-24111&preserve-view=true#fixed-issues-1).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
 
 ::: moniker-end
 
@@ -164,7 +164,7 @@ This release contains the following changes for Arc VM management:
 - The vLAN field on a logical network will default to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
-For more information, see the [Fixed issues list in 2408](./known-issues?view=azloc-2408&preserve-view=true#fixed-issues-5).
+For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
 
 ### SBE changes
 
