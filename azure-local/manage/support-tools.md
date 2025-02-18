@@ -235,7 +235,7 @@ Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-X
 ## Questions or Feedback?
 
 Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
-We Listen! To submit feedback, contact [mailto:azlocaldiagfeedback@microsoft.com].
+We Listen! To submit feedback, contact [azlocaldiagfeedback@microsoft.com](mailto:azlocaldiagfeedback@microsoft.com).
 
 ## Next steps
 
