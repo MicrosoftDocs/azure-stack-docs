@@ -39,7 +39,7 @@ As shown in the following diagram, Azure Local can access Azure using more than 
 
 ## Required firewall URLs for Azure Local deployments
 
-Starting with Azure Local, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
+Azure Local instances automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
@@ -197,5 +197,5 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 
 For more information, see also:
 
-- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
+- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports).
 - [About Azure Local deployment](../deploy/deployment-introduction.md).
