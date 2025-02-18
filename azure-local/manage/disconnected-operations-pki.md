@@ -7,11 +7,11 @@ ms.author: robess
 ms.date: 02/06/2025
 ---
 
-# Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview) 
+# Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview)
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.  
+This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -19,7 +19,7 @@ This document describes your local public key infrastructure (PKI) requirements 
 
 PKI for disconnected operations is essential for securing the endpoints provided by the disconnected operations appliance. You create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
 
-## PKI requirements  
+## PKI requirements
 
 You need a public certificate authority (CA) to issue your certificates or they can be self-signed. Your certificates must be part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
@@ -95,16 +95,16 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
 
 1. Define parameters for creating the CSR.
 
-    ```PowerShell  
+    ```PowerShell 
     #$certSubject = "CN=*.contoso-disconnected.com"  
     #$certSubject = "CN=*.autonomous.cloud.private"  
-    $dns = $certSubject.Split('=')[1]  
-    $filePrefix = $dns.Replace('*.','')  
-    $certFilePath = Split-Path -Path $extCertFilePath  
-    mkdir $certFilePath -Force  
-    rm "$certFilePath\$filePrefix.*" -Force  
-    $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"  
-    $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"  
+    $dns = $certSubject.Split('=')[1]
+    $filePrefix = $dns.Replace('*.','')
+    $certFilePath = Split-Path -Path $extCertFilePath
+    mkdir $certFilePath -Force
+    rm "$certFilePath\$filePrefix.*" -Force
+    $csrPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.csr"
+    $infPath = Join-Path -Path $certFilePath -ChildPath "$filePrefix.inf"
     ```
 
 1. Create the .inf file.
@@ -185,4 +185,4 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
 
 1. Repeat steps 3-11 for each certificate.
 
-## Next steps
+<!--## Next steps-->
