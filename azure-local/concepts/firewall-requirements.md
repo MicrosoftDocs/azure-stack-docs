@@ -82,7 +82,7 @@ Depending on additional Azure services you enable for Azure Local, you may need 
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Local, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
+Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Stack HCI, version 22H2). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
 
 When using the **Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each machine, open the ports as described in the following sections:
 
@@ -92,7 +92,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local instance machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
+| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
 
 ### Windows Admin Center
 
@@ -198,5 +198,4 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 For more information, see also:
 
 - The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
-- See [About Azure Local deployment](../deploy/deployment-introduction.md)
-````
+- [About Azure Local deployment](../deploy/deployment-introduction.md).
