@@ -4,7 +4,7 @@ description: Integrate your identity with disconnected operations on Azure Local
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 02/06/2025
+ms.date: 02/19/2025
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)
