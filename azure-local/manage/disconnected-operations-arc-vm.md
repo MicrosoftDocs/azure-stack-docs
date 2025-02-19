@@ -4,7 +4,7 @@ description: Learn how to manage Azure Arc VMs with disconnected operations for 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 2/11/2025
+ms.date: 09/19/2025
 ---
 
 # Arc VMs for Azure Local with disconnected operations (preview)

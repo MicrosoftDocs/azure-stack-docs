@@ -4,7 +4,7 @@ description: Learn how to deploy and manage Azure Container Registry with discon
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/04/2025
+ms.date: 09/19/2025
 ---
 
 # Deploy Azure Container Registry with disconnected operations (preview)
