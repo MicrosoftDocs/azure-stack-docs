@@ -53,7 +53,7 @@ Before you begin, you must:
 
 To deploy an Azure Container Registry on disconnected operations, follow these steps:
 
-1. Sign in to the Azure portal and navigate to the **Create a resource** page.
+1. Sign in to the portal and navigate to the **Create a resource** page.
 2. Select **Create a resource** > **Containers** > **Container Registry**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/create-container-registry.png" alt-text="Screenshot showing how to create a container registry from the Portal." lightbox=" ./media/disconnected-operations/azure-container-registry/create-container-registry.png":::
@@ -68,11 +68,11 @@ To deploy an Azure Container Registry on disconnected operations, follow these s
 
 5. When the **Your deployment is complete** message appears, select the container registry in the portal.
 
-   :::image type="content" source="./media/disconnected-operations/azure-container-registry/login-server.png" alt-text="Screenshot showing the login server name for the container registry." lightbox=" ./media/disconnected-operations/azure-container-registry/login-server.png":::
-
 6. Note your registry name and value of the **Login server**.
     - In Azure cloud, the login server is a fully qualified name ending with `azurecr.io`.
     - You need these values to push and pull images with Docker.
+
+   :::image type="content" source="./media/disconnected-operations/azure-container-registry/login-server.png" alt-text="Screenshot showing the login server name for the container registry." lightbox=" ./media/disconnected-operations/azure-container-registry/login-server.png":::
 
 ## Assign RBAC to a container registry
 
@@ -110,7 +110,7 @@ az acr login --name <registry-name>
 
 ### Import a container image using Azure CLI
 
-You can import a container image to your container registry on disconnected operations using Azure CLI. In this example, we import the `mcr.microsoft.com/hello-world:latest` image into our registry.
+You can import a container image to your container registry on disconnected operations using Azure CLI. In this example, we import the `mcr.microsoft.com/hello-world:latest` image into a registry.
 
 To return a list of registries in your resource group, use the `az acr list` command.
 
@@ -135,7 +135,7 @@ The following table lists the supported Azure Container Registry CLI commands.
 | az acr credential renew | Regenerates login credentials for an Azure Container Registry instance. |  
 | az acr credential show | Gets the login credentials for an Azure Container Registry instance. |  
 | az acr delete | Deletes an Azure Container Registry instance. |  
-| az acr import | Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push. |  
+| az acr import | Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, and docker push. |  
 | az acr list | Lists all the container registries under the current subscription. |  
 | az acr login | Logs in to an Azure Container Registry through the Docker CLI. |  
 | az acr manifest list-metadata | Lists manifests of a repository in an Azure Container Registry. |  

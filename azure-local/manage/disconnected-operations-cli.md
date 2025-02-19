@@ -1,5 +1,5 @@
 ---
-title: Use Azure CLI for disconnected operations on Azure Local (preview)
+title: Use Azure Command Line Interface (CLI) for disconnected operations on Azure Local (preview)
 description: Learn how to use the Azure Command-Line Interface (CLI) for Azure Local disconnected operations (preview).
 ms.topic: how-to
 author: ronmiab
@@ -7,7 +7,7 @@ ms.author: robess
 ms.date: 02/04/2025
 ---
 
-# Use Azure CLI for disconnected operations on Azure Local (preview)
+# Use Azure Command Line Interface (CLI) for disconnected operations on Azure Local (preview)
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
@@ -38,11 +38,11 @@ To install the CLI, follow these steps:
 
 ## Configure certificates for CLI
 
-To use CLI, you must trust the CA root certificate on your machine.
+To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
 For disconnected operations you must:
 
-1. [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
+1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. [Set up certificates for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
 3. Change the path to the 64-bit version: `C:\Program Files\Microsoft SDKs\Azure\CLI2`.
 
@@ -55,48 +55,87 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     Here's an example script:
 
     ```PowerShell
-    function Get-ApplianceAzCliCloudConfig {  
-        [CmdletBinding()]  
-        [OutputType([String])]  
-        param (  
-            [Parameter(Position = 0, Mandatory = $true)]  
-            [string]$ArmEndpoint,  
-            [Parameter(Position = 1, Mandatory = $false)]  
-            [string]$OutputFolder,  
-            [Parameter(Position = 2, Mandatory = $false)]  
-            [string]$ApiVersion = "2022-09-01"  
-        )  
-        $armMetadataUrl = "$($ArmEndpoint.TrimEnd('/'))/metadata/endpoints?api-version=${ApiVersion}"  
-        try {  
-            $response = Invoke-WebRequest $armMetadataUrl `  
-                -Method 'GET' `  
-                -ContentType "application/json" `  
-                -UseBasicParsing  
-        } catch {  
-            Write-Error "Failed to get ARM metadata endpoints at '$armMetadataUrl'."  
-            throw $_  
-        }  
-        $cloudEndpoints = $response.Content | ConvertFrom-Json  
-        $cloudConfig = @{  
-            endpoints = @{  
-                activeDirectory = "$($cloudEndpoints.authentication.loginEndpoint.TrimEnd('/'))/adfs"  
-                activeDirectoryGraphResourceId = $cloudEndpoints.graph  
-                activeDirectoryResourceId = $cloudEndpoints.authentication.audiences[0]  
-                resourceManager = $cloudEndpoints.resourceManager  
-                microsoftGraphResourceId = $cloudEndpoints.graph  
-            }  
-            suffixes = @{  
-                storageEndpoint = $cloudEndpoints.suffixes.storage  
-                keyvaultDns = $cloudEndpoints.suffixes.keyvaultDns  
-                acrLoginServerEndpoint = $cloudEndpoints.suffixes.acrLoginServer  
-            }  
-        }  
-        $cloudConfigJson = $cloudConfig | ConvertTo-Json  
-        if ($OutputFolder) {  
-            $cloudConfigJson | Set-Content -Path "$OutputFolder\cloudconfig.json"  
-        }  
-        return $cloudConfigJson  
-    }  
+    function Get-ApplianceAzCliCloudConfig
+    {
+    [CmdletBinding()]
+    [OutputType([String])]
+    param (
+    [Parameter(Position = 0, Mandatory = $true)]
+    [string]
+    $ArmEndpoint,
+    
+    [Parameter(Position = 1, Mandatory = $false)]
+    [string]
+    $OutputFolder,
+    
+    [Parameter(Position = 2, Mandatory = $false)]
+    [string]
+    $ApiVersion = "2022-09-01" )
+    
+    $armMetadataUrl = "$($ArmEndpoint.TrimEnd('/'))/metadata/endpoints?api-version=${ApiVersion}"
+    try
+    {
+    $response = Invoke-WebRequest $armMetadataUrl `
+    -Method 'GET' `
+    -ContentType "application/json" `
+    -UseBasicParsing
+    }
+    catch
+    {
+    Write-Error "Failed to get ARM metadata endpoints at '$armMetadataUrl'."
+    throw $_
+    }
+    
+    $cloudEndpoints = $response.Content | ConvertFrom-Json
+    $cloudConfig = @{
+    endpoints = @{
+    activeDirectory = "$($cloudEndpoints.authentication.loginEndpoint.TrimEnd('/'))/adfs"
+    activeDirectoryGraphResourceId = $cloudEndpoints.graph
+    activeDirectoryResourceId = $cloudEndpoints.authentication.audiences[0]
+    resourceManager = $cloudEndpoints.resourceManager
+    microsoftGraphResourceId = $cloudEndpoints.graph
+    }
+    suffixes = @{
+    storageEndpoint = $cloudEndpoints.suffixes.storage
+    keyvaultDns = $cloudEndpoints.suffixes.keyvaultDns
+    acrLoginServerEndpoint = $cloudEndpoints.suffixes.acrLoginServer
+    }
+    }
+    $cloudConfigJson = $cloudConfig | ConvertTo-Json
+    if ($OutputFolder)
+    {
+    $cloudConfigJson | Set-Content -Path "$OutputFolder\cloudconfig.json"
+    }
+    return $cloudConfigJson
+    }
+    ```
+
+    You can also use this command to configure the CLI:
+
+    ```azurecli
+    az config set core.enable_broker_on_windows=false
+    az config set core.instance_discovery=false
+
+    $cloudConfigJson = Get-ApplianceAzCliCloudConfig
+    ```
+
+    Here's an example of content in the cloudconfig.json file:
+
+    ```json
+    { 
+        "suffixes":  {
+                      "keyvaultDns":  ".vault.autonomous.cloud.private",
+                      "storageEndpoint":  "autonomous.cloud.private",
+                      "acrLoginServerEndpoint":  ".edgeacr.autonomous.cloud.private"
+                  },
+         "endpoints":  {
+                       "activeDirectory":  "https://login.autonomous.cloud.private/adfs",
+                       "activeDirectoryGraphResourceId":  "https://graph.autonomous.cloud.private",
+                       "resourceManager":  "https://armmanagement.autonomous.cloud.private",
+                       "microsoftGraphResourceId":  "https://graph.autonomous.cloud.private",
+                       "activeDirectoryResourceId":  "https://armmanagement.autonomous.cloud.private"
+                   }
+    }
     ```
 
 2. Register the cloud configuration with the CLI.
@@ -106,18 +145,11 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     az cloud set -n azure.local
     ```
 
-    You can also use this command to configure the CLI:
-
-    ```azurecli
-    az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'  
-    az cloud set -n azure.local
-    ```
-
 ## Extensions for CLI
 
 CLI extensions are Python wheels that aren't shipped with the CLI but run as CLI commands. With extensions, you can access experimental and prerelease commands and write your own CLI interfaces. The first time you use an extension, you should receive a prompt to install it.
 
-To get a list of available extensions, run:
+To get a list of available extensions, run this command:
 
 ```azurecli
 az extension list-available --output table  

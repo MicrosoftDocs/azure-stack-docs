@@ -25,9 +25,9 @@ With your Azure Local deployment, there's flexibility to set up the Azure Local 
 
 Here's a checklist to help you plan your network for disconnected operations on Azure Local:
 
-- Review [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md)
-- Verify [System requirements for Azure Local](../concepts/system-requirements.md)  
-- Develop the Azure Local network plan (Disconnected operations and Azure Local):  
+- Review [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
+- Verify [System requirements for Azure Local](../concepts/system-requirements.md).
+- Develop the Azure Local network plan (Disconnected operations and Azure Local):
   - Create the [Host network plan (intents and switches)](../concepts/host-network-requirements.md).
   - Reserve the management IP address pool.
 - Configure the network for disconnected operations (ingress and management network):
@@ -106,3 +106,5 @@ Here are the endpoints that the appliance needs to resolve:
 |-------------------------------|----------|
 |Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net  |
 | Azure Connected Machine Agent Managed Identity |  login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
+
+<!--Next steps-->

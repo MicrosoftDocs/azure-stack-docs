@@ -15,23 +15,23 @@ This article provides you with steps to deploy Azure Local with disconnected ope
 
 > [!IMPORTANT]
 > - Ensure your network configuration and the names you input in the portal match your setup and the switches created earlier.
-> - A minimum of 3 nodes are required for disconnected operations to be supported.
+> - A minimum of 3 machines are required for disconnected operations to be supported.
 > - The Azure Local cluster takes a few hours to deploy.
 > - The local control plane may experience periods of downtime when the node reboots and updates.
 
 > [!NOTE]
 >    - During cluster creation, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Don't tamper with or delete the infrastructure volumes created by deployment.
 >   - When the Azure Local cluster is created, the disconnected operations VM is moved to cluster storage and converted to a clustered virtual machine (VM).
+
 ## Prerequisites
 
 Before you begin, you must have:
 
-- Completed [Plan and understand hardware](disconnected-operations-overview.md).
+- Completed [Plan and understand hardware](disconnected-operations-overview.md#preview-participation-criteria).
 - Completed [Plan and understand identity](disconnected-operations-identity.md).
 - Completed [Plan and understand networking](disconnected-operations-network.md).
 - Completed [Plan and understand public key infrastructure (PKI)](disconnected-operations-pki.md).
 - Completed [Set up disconnected operations for Azure Local](disconnected-operations-set-up.md).
-- A minimum of 3 machines are required to support disconnected operations.
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
 
@@ -60,6 +60,7 @@ In this preview, you can deploy Azure Local with disconnected operations on non-
 During this preview:
 
 - Physical nodes are required for support.
+- A minimum of 3 to 8 machine are supported.
 - Virtualized deployments aren't supported.
 
 You deploy and configure Azure Local with disconnected operations in multiple steps. The following image shows the overall journey, including post-deployment.
@@ -138,7 +139,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Expand-Archive "$($applianceConfigBasePath)\AzureLocal.DisconnectedOperations.zip" -DestinationPath $applianceConfigBasePath  
     ```  
 
-4. Verify that you have at least these three files using the following command:
+4. Verify that you have these three files using the following command:
 
     - OperationsModule (PowerShell module for installation)
     - IRVM01.zip
@@ -429,8 +430,10 @@ To configure observability, follow these steps:
     az login
     $g = (az group create -n $resourcegroup -l eastus)|ConvertFrom-Json
     az ad sp create-for-rbac -n $appname --role Owner --scopes $g.id
+    
     # get the subscription id
     $j = (az account list|ConvertFrom-Json)|Where-object { $_.IsDefault}
+    
     # SubscriptionID:
     $j.id
     ```
@@ -504,15 +507,18 @@ Use the operator account to create an SPN for Arc initialization of each Azure L
 2. Copy out the AppID and password for use in the next step.
 
     > [!NOTE]
-    > Plan the subscription and resource group where you want to place your nodes and cluster since resource move action isn't supported.
+    > Plan the subscription and resource group where you want to place your nodes and cluster. The resource move action isn't supported.
     >
     > The cluster resource created during deployment is used for workloads like VMs and Azure Kubernetes Services, so plan your role-based access controls accordingly.
+    >
+    > Don't place the cluster resource in the operator subscription, unless you plan to restrict this to only operators with full access to other operations. You can create more subscriptions or place it in the starter subscription.
 
 ### Initialize each node  
 
 To initialize each node, follow these steps. Modify where necessary to match your environment details:
 
 1. [Install and configure the CLI](disconnected-operations-cli.md) with your local endpoint on each node. Ensure that you run initialization on the first machine before moving on to other nodes.
+
 2. Set the configuration variable. Define the resource group, cloud name, configuration path, application ID, client secret, and appliance FQDN.
 
     ```azurecli

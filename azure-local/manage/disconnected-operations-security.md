@@ -97,7 +97,7 @@ Syslog forwarding can be configured for the Azure Local with disconnected operat
 The syslog forwarder in the disconnected operation VM supports the following configurations:
 
 <!--**Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication, and TLS encryption](#syslog-forwarding-with-tcp-mutual-authentication-and-tls-encryption).-->
-- **Syslog forwarding with TCP, server authentication, and TLS encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-encryption).
+- **Syslog forwarding with Transmission Control Protocol (TCP), server authentication, and Transport Layer Security (TLS) encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-encryption).
 - **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Syslog forwarding with TCP and no encryption](#syslog-forwarding-with-tcp-and-no-encryption).
 - **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Syslog forwarding with UDP and no encryption](#syslog-forwarding-with-udp-and-no-encryption).
 
@@ -398,12 +398,12 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 | Process create (4688) | `query="Security!*[System[EventID=4688]]"` |
 | Event log service events specific to security channel | `query="Security!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]"` |
 | Special privileges (admin-equivalent access) assigned to new logon, excluding LocalSystem | `query="Security!*[System[(EventID=4672)] and EventData[Data != 'S-1-5-18']]"` |
-| New user added to local, global or universal security group | `query="Security!*[System[(EventID=4732 or EventID=4728 or EventID=4756)]]"` |
+| New user added to local, global, or universal security group | `query="Security!*[System[(EventID=4732 or EventID=4728 or EventID=4756)]]"` |
 | User removed from local Administrators group | `query="Security!*[System[(EventID=4733)] and EventData[Data[@Name='TargetUserName']='Administrators']]"` |
 | Certificate services received certificate request (4886), approved and certificate issued (4887), denied request (4888) | `query="Security!*[System[(EventID=4886 or EventID=4887 or EventID=4888)]]"` |
 | New user account created(4720), user account enabled (4722), user account disabled (4725), user account deleted (4726) | `query="Security!*[System[(EventID=4720 or EventID=4722 or EventID=4725 or EventID=4726)]]"` |
 | Anti-malware old events, but only detect events (cuts down noise) | `query="System!*[System[Provider[@Name='Microsoft Antimalware'] and (EventID >= 1116 and EventID <= 1119)]]"` |
-| System startup (12 - includes OS/SP/Version) and shutdown | `query="System!*[System[Provider[@Name='Microsoft-Windows-Kernel-General'] and (EventID=12 or EventID=13)]]"` |
+| System startup (12 - includes OS/SP/Version) and shut down | `query="System!*[System[Provider[@Name='Microsoft-Windows-Kernel-General'] and (EventID=12 or EventID=13)]]"` |
 | Service install (7000), service start failure (7045) | `query="System!*[System[Provider[@Name='Service Control Manager'] and (EventID = 7000 or EventID=7045)]]"` |
 | Shutdown initiate requests, with user, process and reason (if supplied) | `query="System!*[System[Provider[@Name='USER32'] and (EventID=1074)]]"` |
 | Event log service events | `query="System!*[System[Provider[@Name='Microsoft-Windows-Eventlog']]]"` |
@@ -419,7 +419,7 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 | Gets all Smart-Card card-holder verification (CHV) events (success and failure) performed on the host. | `query="Microsoft-Windows-SmartCard-Audit/Authentication!*"` |
 | Gets all UNC/mapped drive successful connection | `query="Microsoft-Windows-SMBClient/Operational!*[System[(EventID=30622 or EventID=30624)]]"` |
 | Modern SysMon event provider | `query="Microsoft-Windows-Sysmon/Operational!*"` |
-| Modern Windows Defender event provider detection events (1006-1009) and (1116-1119); plus (5001,5010,5012) req'd by customers | `query="Microsoft-Windows-Windows Defender/Operational!*[System[( (EventID >= 1006 and EventID <= 1009) or (EventID >= 1116 and EventID <= 1119) or (EventID = 5001 or EventID = 5010 or EventID = 5012) )]]"` |
+| Modern Windows Defender event provider detection events (1006-1009) and (1116-1119); plus (5001,5010,5012) required by customers | `query="Microsoft-Windows-Windows Defender/Operational!*[System[( (EventID >= 1006 and EventID <= 1009) or (EventID >= 1116 and EventID <= 1119) or (EventID = 5001 or EventID = 5010 or EventID = 5012) )]]"` |
 | Code Integrity events | `query="Microsoft-Windows-CodeIntegrity/Operational!*[System[Provider[@Name='Microsoft-Windows-CodeIntegrity'] and (EventID=3076 or EventID=3077)]]"` |
 | CA stop/start events CA service stopped (4880), CA service started (4881), CA DB row(s) deleted (4896), CA template loaded (4898) | `query="Security!*[System[(EventID=4880 or EventID = 4881 or EventID = 4896 or EventID = 4898)]]"` |
 | RRAS events – only generated on Microsoft IAS server | `query="Security!*[System[( (EventID >= 6272 and EventID <= 6280) )]]"` |
