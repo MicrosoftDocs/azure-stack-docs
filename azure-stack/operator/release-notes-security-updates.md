@@ -15,7 +15,7 @@ ms.lastreviewed: 02/19/2025
 
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
-::: moniker range < "azs-2501"
+::: moniker range < "azs-2408"
 This version is no longer supported. For more information, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
