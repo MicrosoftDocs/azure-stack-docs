@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Local
 description: Physical network requirements and considerations for Azure Local, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---

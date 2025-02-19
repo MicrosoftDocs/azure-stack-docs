@@ -44,7 +44,7 @@ For Arc VM images to be used on Azure Local, make sure to satisfy the following 
 
 ## Firewall requirements
 
-Make sure the requirements as listed in [Required firewall URLs for Azure Local deployments](../concepts/firewall-requirements.md#required-firewall-urls-for-azure-local-version-23h2-deployments) are satisfied to allow communication between the Arc VMs running on Azure Local and Azure Arc.
+Make sure the requirements as listed in [Required firewall URLs for Azure Local deployments](../concepts/firewall-requirements.md#required-firewall-urls-for-azure-local-deployments) are satisfied to allow communication between the Arc VMs running on Azure Local and Azure Arc.
 
 ## Azure Command-Line Interface (CLI) requirements
 

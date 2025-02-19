@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ---
 
 # Review three-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local
@@ -61,7 +61,7 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
 
 - `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
-- For Azure Local, version 23H2 cloud deployments:
+- For Azure Local cloud deployments:
 
     - Scale out storage switchless systems aren't supported.
 

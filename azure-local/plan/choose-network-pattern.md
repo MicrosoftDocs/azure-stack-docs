@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ---
 
 # Azure Local network deployment patterns
@@ -49,4 +49,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Local](../deploy/download-software.md)
+- [Download Azure Local](../deploy/download-software.md).

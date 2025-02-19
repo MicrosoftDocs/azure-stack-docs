@@ -4,7 +4,7 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2025
+ms.date: 02/18/2025
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
@@ -235,7 +235,7 @@ Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-X
 ## Questions or Feedback?
 
 Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
-We Listen! To submit feedback, use the "contact owners" option inside PSGallery.
+We Listen! To submit feedback, contact [azlocaldiagfeedback@microsoft.com](mailto:azlocaldiagfeedback@microsoft.com).
 
 ## Next steps
 
