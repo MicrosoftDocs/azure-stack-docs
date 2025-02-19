@@ -84,7 +84,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- Fixed an issue in which the [**Deployments** blade under a subscription failed to load](known-issues.md#deployments-blade-under-subscription-fails-to-load).
+- Fixed an issue in which the [**Deployments** blade under a subscription failed to load](known-issues.md?view=azs-2408#deployments-blade-under-subscription-fails-to-load).
 
 ## Security updates
 
