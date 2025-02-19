@@ -16,11 +16,15 @@ ms.lastreviewed: 02/19/2025
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
 
 ::: moniker range="<azs-2408"
-This version is no longer supported. For more information, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md#keep-your-system-under-support).
+This version is no longer supported. For more information, see the [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
 ::: moniker range="azs-2501"
 ## 2501 update
+
+Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
+
+For more information about these vulnerabilities, click on the following links:
 
 - [CVE-2025-21374](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-21374)
 - [CVE-2025-21292](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-21292)
