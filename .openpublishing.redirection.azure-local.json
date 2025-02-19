@@ -1834,6 +1834,81 @@
       "source_path": "azure-local/known-issues-2411-2.md", 
       "redirect_url": "/azure/azure-local/kown-issues", 
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-nov-2023.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-dec-2023.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-jan-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-feb-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-mar-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-apr-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-may-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-jun-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-jul-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-aug-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-sep-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-oct-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-nov-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-dec-2024.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/security-update/security-update-jan-2025.md", 
+      "redirect_url": "/azure/azure-local/security-update/security-update", 
+      "redirect_document_id": false
     }
   ]
 }
