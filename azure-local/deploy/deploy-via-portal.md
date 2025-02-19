@@ -9,11 +9,11 @@ ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy Azure Local, version 23H2 using the Azure portal
+# Deploy Azure Local using the Azure portal
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article helps you deploy an Azure Local instance, version 23H2 using the Azure portal.
+This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Prerequisites
 

@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 1/08/2025
 ---
 
-# Register your Azure Local, version 23H2 machines via the local UI (preview)
+# Register your Azure Local machines via the local UI (preview)
 
 > Applies to: Azure Local 2405.1 and later
 
@@ -31,8 +31,8 @@ After you have procured the hardware that you intend to use to set up your Azure
 1. You have the machines that you intend to cluster as an Azure Local instance. The machines must be powered on and connected to the network.
 1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md)
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-1. [Download the English Preview ISO](../deploy/download-23h2-software.md) to install Azure Local, version 23H2.
-1. Use the English Preview ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Local, version 23H2 software](../deploy/deployment-install-os.md).
+1. [Download the English Preview ISO](../deploy/download-23h2-software.md) to install Azure Local.
+1. Use the English Preview ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Local software](../deploy/deployment-install-os.md).
 1. For your machines, note down the:
    1. Serial number of the machines.
    1. Local administrator credentials to sign into the machine.
@@ -215,7 +215,7 @@ Here's a table that describes the diagnostic tests:
 | Web proxy (if configured)        | This test validates the web proxy configuration of the device.  |
 | Time sync                        | This test validates the device time settings and checks that the time server configured on the device is valid and accessible.                   |
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the device. |
-| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local, version 23H2](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
+| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
 
 ### Collect a Support package from the local UI
 

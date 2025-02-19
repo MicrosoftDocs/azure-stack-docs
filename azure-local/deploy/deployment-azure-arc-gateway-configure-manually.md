@@ -28,7 +28,7 @@ Make sure the following prerequisites are met before proceeding:
 
 ## Step 1: Manually configure the proxy
 
-If you need to configure the Arc proxy on your Azure Local machines before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
+If you need to configure the Arc proxy on your Azure Local machines before starting the Arc registration process, follow the instructions at [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 Ensure that you configure the proxy and the bypass list for all the machines on your system.
 
@@ -84,7 +84,7 @@ Once the Azure Local machines are registered in Azure Arc and all the extensions
 
 - [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
 
-- [Azure Resource Manager template deployment for Azure Local, version 23H2](deployment-azure-resource-manager-template.md).
+- [Azure Resource Manager template deployment for Azure Local](deployment-azure-resource-manager-template.md).
 
 ## Step 5: Verify that the setup succeeded
 

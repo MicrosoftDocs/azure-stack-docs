@@ -13,7 +13,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
+This article is the first in the series of deployment articles that describe how to deploy Azure Local. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
 
 ## About deployment methods
 

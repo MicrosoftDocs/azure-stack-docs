@@ -69,7 +69,7 @@ Once the Azure Local machines are registered in Azure Arc and all the extensions
 
 - [Deploy an Azure Local instance using the Azure portal](deploy-via-portal.md).
 
-- [Azure Resource Manager template deployment for Azure Local, version 23H2](deployment-azure-resource-manager-template.md).
+- [Azure Resource Manager template deployment for Azure Local](deployment-azure-resource-manager-template.md).
 
 ## Step 4: Verify that the setup succeeded
 

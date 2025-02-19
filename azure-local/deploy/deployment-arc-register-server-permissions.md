@@ -9,11 +9,11 @@ ms.service: azure-local
 ms.custom: devx-track-azurepowershell
 ---
 
-# Register your machines and assign permissions for Azure Local, version 23H2 deployment
+# Register your machines and assign permissions for Azure Local deployment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local, version 23H2.
+This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local.
 
 ## Prerequisites
 
@@ -81,7 +81,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
     PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
     PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
-    NuGet provider is required to continue                                                                                  
+    NuGet provider is required to continue                                                                                   
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
     'C:\Users\SetupUser\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
     running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
@@ -161,7 +161,7 @@ Before you begin, make sure you've completed the following prerequisites:
     to authenticate.
     
     Account               SubscriptionName      TenantId                Environment
-    -------               ----------------      --------                -----------
+    -------               ----------------      --------                ----------- 
     guspinto@contoso.com AzureStackHCI_Content  <Tenant ID>             AzureCloud
 
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
