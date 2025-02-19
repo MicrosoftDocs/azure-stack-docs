@@ -25,7 +25,7 @@ This article demonstrates how to activate the KMS plugin for AKS Edge Essentials
 The KMS plugin is supported for all AKS Edge Essentials clusters, version 1.10.xxx.0 and later.
 
 > [!NOTE]
-> The KMS plugin can only be used for single node clusters. The plugin can't be used with [experimental features such as multi-node and Windows node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
+> The KMS plugin can only be used for single node clusters. The plugin can't be used with [experimental features such as multi-node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
 
 ## Enable the KMS plugin
 
@@ -50,6 +50,22 @@ For deployment instructions, see [Single machine deployment](aks-edge-howto-sing
 > [!NOTE]
 > You can only enable or disable the KMS plugin when you create a new deployment. Once you set the flag, it can't be changed.
 
+## Verify the KMS plugin is enabled
+To verify that the KMS plugin is enabled, run the command below and ensure that the health status of **kms-providers** is **OK**:
+
+   ```powershell
+   kubectl get --raw='/readyz?verbose'
+   ```
+
+   ```output
+   [+]ping ok
+   [+]Log ok
+   [+]etcd ok
+   [+]kms-providers ok
+   [+]poststarthook/start-encryption-provider-config-automatic-reload ok
+   ```
+
+
 To create secrets in AKS Edge Essentials clusters, see [Managing Secrets using kubectl](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/#use-raw-data) in the Kubernetes documentation.
 
 If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
@@ -66,29 +82,17 @@ If there are errors with the KMS plugin, follow this procedure:
 
    If the version is older, upgrade to the latest version. For more information, see [Upgrade an AKS cluster](aks-edge-howto-update.md).
 
-1. View the `readyz` API. If the problem persists, validate that the installation succeeded. To check the health of the KMS plugin, run the following command and ensure that the health status of **kms-providers** is **OK**:
-
-   ```powershell
-   kubectl get --raw='/readyz?verbose'
-   ```
-
-   ```output
-   [+]ping ok
-   [+]Log ok
-   [+]etcd ok
-   [+]kms-providers ok
-   [+]poststarthook/start-encryption-provider-config-automatic-reload ok
-   ```
+2. View the `readyz` API. If the problem persists, verify that the KMS plugin is enabled. Please refer to the [Verify the KMS plugin is enabled](#verify-the-kms-plugin-is-enabled) above
 
    If you receive "**[-]**" before the `kms-providers` field, collect diagnostic logs for debugging. For more information, see [Get kubelet logs from cluster nodes](aks-get-kubelet-logs.md).
 
-1. Repair KMS. If there are still errors, the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
+3. Repair KMS. If there are still errors, the machine running the AKS Edge Essentials cluster might be paused or turned off for an extended period of time (over 30 days). To get KMS back into a healthy state, you can use the `Repair-Kms` command to restore any necessary tokens:
 
    ```powershell
    Repair-AksEdgeKms
    ```
 
-1. If you still encounter errors, contact [Microsoft Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md).
+4. If you still encounter errors, contact [Microsoft Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md).
 
 ## Next steps
 
