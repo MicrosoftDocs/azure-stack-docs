@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/11/2025
+ms.date: 02/19/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -124,7 +124,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2406 and later.
 - Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
-- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Remediation: This issue is fixed in release 2501.
 - Occurrence: Common.
 
 ### Nodes blade fails to load
@@ -187,7 +187,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2406 and later.
 - Cause: Due to a change in how subscription-level deployments are stored, an internal server error occurs when deploying or viewing deployments at subscription scope.
-- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Remediation: This issue is fixed in release 2501.
 - Occurrence: Common.
 
 ### Nodes blade fails to load
