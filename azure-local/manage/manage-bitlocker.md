@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/03/2025
+ms.date: 02/19/2025
 ---
 
 # Manage BitLocker encryption on Azure Local
@@ -120,5 +120,7 @@ Follow these steps to export the recovery keys for your cluster:
     ```
 
 ## Next steps
-For more information on Bitlocker integration with Cluster Shared Volumes, see:
-- [Use BitLocker with Cluster Shared Volumes](https://learn.microsoft.com/en-us/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+
+For more information about Bitlocker integration with Cluster Shared Volumes, see:
+
+- [Use BitLocker with Cluster Shared Volumes](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
