@@ -1,10 +1,10 @@
 ---
 title: Understand security controls with disconnected operations on Azure Local (preview)
 description: Learn about the security considerations and compliance regulations for using a local control plane with Azure Local with disconnected operations.
-ms.topic: conceptual
+ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date:02/19/2025
+ms.date: 02/19/2025
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)
