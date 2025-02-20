@@ -102,7 +102,7 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
 | [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
-| [Azure Policy for disconnected operations](../manage/disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
+| [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
 | **Troubleshoot** |      |
 | [On-demand log collection](../index.yml). | Collect logs on-demand for troubleshooting. |
 | [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
