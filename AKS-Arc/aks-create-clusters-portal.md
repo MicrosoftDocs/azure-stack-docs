@@ -48,8 +48,9 @@ This article describes how to create Kubernetes clusters in Azure Local using th
    - **Primary node pool**:
      - You can leave the default values selected, or change the default value from the drop down list.
    - **SSH Keys**
-     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. You must provide an existing SSH public key.
-     - Provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format. You can generate SSH keys using PuTTYGen on Windows.
+     - SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use.
+     - You can use an existing SSH key or generate a new key pair during cluster creation. For information about how to create new SSH keys from the Azure portal, see [Create and manage SSH keys in the portal](/azure/virtual-machines/ssh-keys-portal#generate-new-keys).
+     - To **Use an existing public key by providing the SSH public key value**, provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format.
 
 1. Select **Next: Node pools** when complete.
 1. On the **Node pools** page, configure the following options:
