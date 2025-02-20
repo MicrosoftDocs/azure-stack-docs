@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/06/2024
+ms.date: 02/20/2025
 ---
 
 # Download version 23H2 operating system for Azure Local deployment

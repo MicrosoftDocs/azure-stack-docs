@@ -5,7 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 1/08/2025
+ms.date: 02/20/2025
 ---
 
 # Register your Azure Local machines via the local UI (preview)
