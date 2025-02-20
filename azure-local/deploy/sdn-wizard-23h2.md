@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center for Azure Local
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
