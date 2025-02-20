@@ -42,27 +42,27 @@ To deploy an ARM template, you need write access on the resources you're deployi
    az account set --subscription "<your-subscription-id>"
    ```
 
-## Step 2: Create an SSH key pair using Azure CLI
+## Step 2: Create an SSH key pair
 
-```azurecli
-az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
-```
+Create an SSH key pair in Azure and store the private key file for later use. For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
 
-or, create an SSH key pair using **ssh-keygen**:
+1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
 
-```cmd
-ssh-keygen -t rsa -b 4096
-```
+   ```azurecli
+   az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
+   ```
 
-To deploy the template, you must provide the public key from the SSH pair. To retrieve the public key, use the `az sshkey show` command:
+   or  the `ssh-keygen` command
 
-```azurecli
-az sshkey show --name "mySSHKey" --resource-group "myResourceGroup" --query "publicKey"
-```
+   ```azurecli
+   ssh-keygen -t rsa -b 4096 
+   ```
 
-By default, the SSH key files are created in the **~/.ssh** directory. Run the `az sshkey create` or `ssh-keygen` command to overwrite any existing SSH key pair with the same name.
+1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
 
-For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed).
+For additional options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+
 
 ## Step 3: Review the template
 
