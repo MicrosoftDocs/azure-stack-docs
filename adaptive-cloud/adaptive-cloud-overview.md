@@ -1,11 +1,11 @@
 ---
-title: What is Azure Adaptive Cloud?
-description: Introduction to Azure Adaptive Cloud, enabling organizations to leverage cloud-native and AI technologies across hybrid, multicloud, edge, and IoT.
+title: What is Azure adaptive cloud?
+description: Introduction to Azure adaptive cloud, enabling organizations to leverage cloud-native and AI technologies across hybrid, multicloud, edge, and IoT.
 author: asergaz
 ms.author: sergaz
 ms.topic: overview
 ms.date: 02/20/2025
-#Customer intent: As a newcomer to Azure Adaptive Cloud, I want to understand what Azure Adaptive Cloud is, what services are available, and examples of business cases so I can figure out where to start.
+#Customer intent: As a newcomer to Azure adaptive cloud, I want to understand what Azure adaptive cloud is, what services are available, and examples of business cases so I can figure out where to start.
 ---
 
 <!--
@@ -45,7 +45,7 @@ One clear sign of a procedural article would be the use of a numbered list. With
 
 -->
 
-# What is Azure Adaptive Cloud?
+# What is Azure adaptive cloud?
 
 <!-- 2. Introductory paragraph
 ----------------------------------------------------------

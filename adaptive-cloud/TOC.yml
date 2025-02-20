@@ -1,8 +1,8 @@
 items:
-  - name: Azure Adaptive Cloud documentation
+  - name: Azure adaptive cloud documentation
     href: index.yml
 
   - name: Overview
     items:
-    - name: What is Azure Adaptive Cloud?
+    - name: What is Azure adaptive cloud?
       href: adaptive-cloud-overview.md
