@@ -22,7 +22,7 @@ If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect
 Disconnect-AideArcKubernetes
 ```
 
-If you used `Connect-AksEdgeArc` to connect to Arc, run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc:
+Run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc:
 
 ```powershell
 Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
