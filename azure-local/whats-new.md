@@ -25,7 +25,7 @@ This is a baseline release with the following features and improvements:
 - **Quality updates** - This build is based off the Operating system version 25398.1425 and contains the latest quality updates.
 - **Updated .NET version** - This build has an updated .NET version to 8.0.13.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues-2411-3.md?view=azloc-24113&preserve-view=true#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
 
 ::: moniker-end
 

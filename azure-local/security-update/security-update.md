@@ -74,7 +74,7 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+## File list in this update
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5051980](https://go.microsoft.com/fwlink/?linkid=2303533).
 
