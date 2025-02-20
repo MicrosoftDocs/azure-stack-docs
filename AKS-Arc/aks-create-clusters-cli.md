@@ -53,9 +53,10 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
 > [!NOTE]
-> - The SSH key value is the public key for accessing nodes in the provisioned cluster. By default, this key is located at `~/.ssh/id_rsa.pub`. You can specify a different location using the `--ssh-key-value` parameter during cluster creation.
-> - The `--generate-ssh-keys` parameter is required if there's no pre-existing SSH key on your local machine. If you don't include this parameter during cluster creation and no SSH key exists, you receive an error message.
-> - If you already have an SSH key on your local machine, the AKS cluster reuses that key. In this case, specifying `--generate-ssh-keys`, or omitting that parameter, has no effect.
+> - SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use. To access nodes, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+> - You can use a pre-existing SSH key or [configure SSH keys for an AKS cluster](configure-ssh-keys.md) during cluster creation. If there's no pre-existing SSH key on your local machine, the `--generate-ssh-keys` parameter is required. You can also restrict SSH access by following [the documentation](restrict-ssh-access.md). For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
+> - If you don't include `--generate-ssh-keys` during cluster creation and no SSH key exists, you'll receive an error message. If you already have an SSH key on your local machine, the AKS cluster will reuse it. In this case, whether you specify `--generate-ssh-keys` or omit it makes no difference.
+> - By default, the SSH key is stored at `~/.ssh/id_rsa.pub`. During cluster creation, you can specify an alternate location using the `--ssh-key-value` parameter.
 
 > [!IMPORTANT]
 > To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
