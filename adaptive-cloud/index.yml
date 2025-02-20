@@ -1,17 +1,16 @@
 ### YamlMime:Hub
-title: Azure hybrid and multicloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
-summary: Resources for building and operating hybrid and multicloud solutions that span the global cloud, datacenter, and edge.
+title: Azure Adaptive Cloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
+summary: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
 brand: azure
 
 metadata:
-  title: Azure hybrid and multicloud cloud documentation 
-  description: Resources for building and operating hybrid and multicloud solutions that span the global cloud, datacenter, and edge.
-  ms.service: azure-stack
+  title: Azure Adaptive Cloud documentation
+  description: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
+  ms.service: azure-adaptive-cloud
   ms.topic: hub-page
-  author: ronmiab 
-  ms.author: robess
-  ms.date: 04/19/2024
-  ms.custom: e2e-hybrid
+  author: asergaz 
+  ms.author: sergaz
+  ms.date: 02/20/2025
 
 # highlightedContent section (optional)
 # Maximum of 8 items
@@ -19,18 +18,15 @@ highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
   items:
     # Card
-    - title: "Ignite 2023: Session catalog"
+    - title: "Ignite 2024: Session catalog"
       itemType: video
-      url: https://ignite.microsoft.com/sessions     
-    - title: "Ignite 2022: post-event sessions (Oct/Nov 2022)"
-      itemType: video
-      url: https://learn.microsoft.com/events/learn-events/learnlive-post-ignite-22/       
-    - title: "Inspire 2023: Session catalog"
-      itemType: video
-      url: https://partner.microsoft.com/blog/article/find-the-right-sessions-for-you-at-microsoft-inspire-d-stf       
-    - title: "Build 2023: post-event sessions (May/June 2023)"
+      url: https://ignite.microsoft.com/sessions      
+    - title: "Build 2024: post-event sessions"
       itemType: video
       url: https://build.microsoft.com/en-US/home
+    - title: "Arc Jumpstart"
+      itemType: quickstart
+      url: https://jumpstart.azure.com/
      
 # productDirectory section (optional)
 productDirectory:
@@ -44,15 +40,15 @@ productDirectory:
       links:
         - url: /azure
           text: Azure services
+        - url: /azure/azure-arc/
+          text: Azure Arc
     # Card
-    - title: Private cloud platforms for hosted, on-premises, and mobile data centers
+    - title: Hybrid cloud infrastructure for hosted, on-premises, and mobile data centers
       # imageSrc should be square in ratio with no whitespace
       imageSrc: media/index/azure-stack-hub.svg
       links:
-        - url: /azure-stack/mdc
-          text: Azure Modular Datacenter
-        - url: /azure-stack/hci
-          text: Azure Stack HCI
+        - url: /azure/azure-local/
+          text: Azure Local
         - url: /azure-stack#azure-stack-hub
           text: Azure Stack Hub 
         - url: /azure-stack/ruggedized
@@ -62,6 +58,8 @@ productDirectory:
       # imageSrc should be square in ratio with no whitespace
       imageSrc: media/index/intelligent.svg
       links:
+        - url: /azure/iot-operations/
+          text: Azure IoT Operations
         - url: /azure/iot-edge/
           text: Azure IoT Edge
         - url: /azure-sphere
