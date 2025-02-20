@@ -89,19 +89,19 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | Read the overview | Review the overview to understand the disconnected operations feature and its benefits. |
 | Review the participation criteria | Review the participation criteria before you get started. |
 | **Plan** |        |
-| Step 1: [Hardware requirements for disconnected operations](../manage/disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
-| Step 2: [Network requirements for disconnected operations](../manage/disconnected-operations-network.md). | Configure the required network settings. |
-| Step 3: [Identity integration for disconnected operations](../manage/disconnected-operations-identity.md). | Understand and configure your identity solution. |
-| Step 4: [Security controls for disconnected operations](../manage/disconnected-operations-security.md). | Understand and configure security controls. |
-| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](../manage/disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
+| Step 1: [Hardware requirements for disconnected operations](disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
+| Step 2: [Network requirements for disconnected operations](disconnected-operations-network.md). | Configure the required network settings. |
+| Step 3: [Identity integration for disconnected operations](disconnected-operations-identity.md). | Understand and configure your identity solution. |
+| Step 4: [Security controls for disconnected operations](disconnected-operations-security.md). | Understand and configure security controls. |
+| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
 | **Deploy** |       |
-| Step 6: [Set up disconnected operations](../index.yml). | Ensure you have the necessary access and permissions to set up disconnected operations. |
-| Step 7: [Deploy Azure Local with disconnected operations](../index.yml). | Deploy Azure Local with disconnected operations. |
+| Step 6: [Set up disconnected operations](disconnected-operations-set-up.md). | Ensure you have the necessary access and permissions to set up disconnected operations. |
+| Step 7: [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
-| [Azure CLI for disconnected operations](../index.yml). | Use the Azure CLI to manage Azure Local with disconnected operations. |
-| [Arc VMs for disconnected operations](../index.yml). | Manage Arc VMs on Azure Local. |
-| [Azure Kubernetes Service enabled by Arc for disconnected operations](../index.yml). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
-| [Azure Container Registry for disconnected operations](../index.yml). | Manage Azure Container Registry on Azure Local. |
+| [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
+| [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
+| [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
+| [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | [Azure Policy for disconnected operations](../manage/disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
 | **Troubleshoot** |      |
 | [On-demand log collection](../index.yml). | Collect logs on-demand for troubleshooting. |
