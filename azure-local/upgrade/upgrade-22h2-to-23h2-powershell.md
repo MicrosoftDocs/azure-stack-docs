@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -114,7 +114,7 @@ To install the new OS using PowerShell, follow these steps:
 1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the machines are rebooted.
 
     > [!IMPORTANT]
-    > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
+    > The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 23H2 OS. <!--ASK-->
 
    ```PowerShell
    Invoke-CauRun -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
