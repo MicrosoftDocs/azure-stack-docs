@@ -4,7 +4,7 @@ description: Learn how to use the Configurator application to bootstrap and Arc 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/12/2025
+ms.date: 02/20/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -113,7 +113,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
 
-   If a requirement isn't met, the app displays a warning icon. Resolve the issue before you proceed. For more information, see [Troubleshooting](#troubleshooting).
+   If a requirement isn't met, the app displays a warning or errors. Resolve the issue before you proceed. For more information, see [Troubleshooting](#troubleshooting).
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
 
@@ -180,7 +180,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   <!--:::image type="content" source="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/arc-agent-registration-6.png":::-->
+   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -188,9 +188,11 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ## Step 3: Verify machines are connected to Arc
 
-1. In the Azure portal, go to the resource group for bootstrapping.
+1. In the Azure portal, go to the resource group that you used for bootstrapping.
 
-1. On the resource group used to bootstrap, you should see your Arc-enabled machines. <!--In this example, you see a single machine.-->
+1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local ." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
 
 ## Troubleshooting
 
@@ -199,6 +201,7 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 - Get logs from a machine.
 - Run diagnostic tests.
 - Collect a Support package.
+- Clean previous installation.
 
 ### Get logs if the app is inaccessible
 
@@ -239,6 +242,14 @@ A Support package is composed of all the relevant logs that can help Microsoft S
    :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
+
+### Clean previous installation
+
+If you have more than one version of the app installed, when you try to open the app, an older version of the app might open. To fix this issue, clean the previous installation. Follow these steps to clean the previous installation:
+
+1. Uninstall the Configurator app as you would any other app on the system.
+1. Delete the `C:\Users\%USERNAME%\AppData\Roaming\microsoft.-azure.-edge.-oobe.-local-ui` directory.
+1. Launch the app again. The app should open without any issues.
 
 ## Next steps
 
