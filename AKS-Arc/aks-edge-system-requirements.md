@@ -28,7 +28,7 @@ To better understand the etcd hardware recommendations, [see this article](https
 
 You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. When using an Azure VM, a premium SSD is required, per the [Azure Virtual Machine documentation](/azure/virtual-machines/disks-types#disk-type-comparison). 
 
-You can also run AKS EE in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
+You can also run AKS Edge Essentials in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
 
 ### OS requirements
 
@@ -60,7 +60,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
 - **GPU**: [GPU-PV](aks-edge-gpu.md).
-- **Secret Encryption**: [KMS plugin for AKS EE](aks-edge-howto-secret-encryption.md).
+- **Secret Encryption**: [KMS plugin for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
 - **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for customers deploying Azure IoT Operations on top of AKS Edge Essentials.
 - **Network plugins**: Calico on K3S (discontinued).
 
