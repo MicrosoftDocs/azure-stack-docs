@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/11/2025
+ms.date: 02/18/2025
 
 #customer intent: As a Senior Content Developer, I want to provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
@@ -61,7 +61,7 @@ Before you begin, ensure that you:
    $resourceGroup="<your resource group>"
    $serverName = "<your server name>"
    $location = "<your location>"
-   $localUser = "Administrator" # Use a local admin account for testing        
+   $localUser = "<your username>" # Use a local admin account for testing        
    ```
 
    e. Install the `OpenSSH` Arc Extension:
@@ -107,7 +107,7 @@ Before you begin, ensure that you:
 
       :::image type="content" source="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png" alt-text="Screenshot of Azure portal Extensions list view." lightbox="./media/connect-arc-vm-using-ssh/azure-portal-extensions-list-view-3.png":::
 
-## Use SSH to connect to Azure Local
+## Use SSH to connect to an Arc VM on Azure Local
 
 > [!NOTE]
 > You may be asked to allow Arc SSH to set up port 22 for SSH.
@@ -124,7 +124,7 @@ Use the following steps to connect to Azure Local.
 
    :::image type="content" source="./media/connect-arc-vm-using-ssh/server-connection-6.png" alt-text="Screenshot of server connection over SSH." lightbox="./media/connect-arc-vm-using-ssh/server-connection-6.png":::
 
-## Use RDP over SSH to connect to Azure Local
+## Use RDP over SSH to connect an Arc VM on Azure Local
 
 1. To sign into Azure Local using RDP over SSH, run the following command with the RDP parameter:
 
