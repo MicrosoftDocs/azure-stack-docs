@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 02/20/2025
 ---
 
 # Deploy a virtual Azure Local system
@@ -14,7 +14,7 @@ ms.date: 11/25/2024
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article describes how to deploy a virtualized Azure Local instance running version 23H2 on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).
+This article describes how to deploy a virtualized Azure Local instance on a host system with Windows Server 2022, Windows 11, or later operating system (OS). The host should also have Hyper-V enabled for the deployment.
 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
