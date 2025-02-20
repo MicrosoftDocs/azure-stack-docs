@@ -4,7 +4,7 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 09/10/2024
+ms.date: 02/20/2025
 ms.custom: template-concept
 ---
 
@@ -60,10 +60,10 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
 - **GPU**: [GPU-PV](aks-edge-gpu.md).
-- **Secret Encryption**: [KMS plugin for AKS EE](./aks-edge-howto-secret-encryption).
-- **Security**: [Workload Identity](aks-edge-workload-identity.md). WLIF is only available for customers deploying AIO on top of AKS EE. 
+- **Secret Encryption**: [KMS plugin for AKS EE](aks-edge-howto-secret-encryption.md).
+- **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for customers deploying Azure IoT Operations on top of AKS Edge Essentials.
 - **Network plugins**: Calico on K3S (discontinued).
 
 ## Next steps
 
-- [Set up your machine](./aks-edge-howto-setup-machine.md)
+- [Set up your machine](aks-edge-howto-setup-machine.md)

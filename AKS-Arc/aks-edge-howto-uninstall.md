@@ -4,7 +4,7 @@ description: Learn how to uninstall AKS Edge Essentials.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 02/20/2025
 ms.custom:
   - template-how-to
   - devx-track-azurecli

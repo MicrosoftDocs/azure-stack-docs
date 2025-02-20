@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 02/20/2024
 ms.custom: template-how-to
 ---
 
@@ -31,13 +31,13 @@ See [Deployment JSON configuration](aks-edge-deployment-config-json.md) for a de
 The key parameters for single machine deployment are:
 
 - `DeploymentType`: This parameter defines the deployment type and is specified as `SingleMachineCluster`.
-- `Arc`: This section is required. During AKS EE deployment, the Arc parameters will be used to connect the AKS EE cluster to Azure Arc. For more information on the required Arc parameters, see the [connect to Arc documentation](./aks-edge-howto-connect-to-arc.md).
+- `Arc`: This section is required. During the AKS Edge Essentials deployment, the Arc parameters are used to connect the AKS EE cluster to Azure Arc. For more information about the required Arc parameters, see the [connect to Arc documentation](aks-edge-howto-connect-to-arc.md).
   
 - The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
 - You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
 
 > [!IMPORTANT]
-> Starting with the February 2025 release, the `Arc` section of the config file is required. Azure Arc connection will occur automatically during AKS EE deployment.
+> Starting with the AKS Edge Essentials February 2025 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS EE deployment.
 
 ## Step 2: create a single machine cluster
 

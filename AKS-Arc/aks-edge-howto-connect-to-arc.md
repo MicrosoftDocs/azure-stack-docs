@@ -4,7 +4,7 @@ description: Connect your AKS Edge Essentials clusters to Arc
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 09/27/2024
+ms.date: 02/20/2025
 ms.custom: template-how-to
 ---
 
@@ -13,7 +13,7 @@ ms.custom: template-how-to
 This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the GitHub repo to connect your cluster to Arc [as described here](./aks-edge-howto-more-configs.md).
 
 > [!IMPORTANT]
-> Starting with the February 2025 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically after you run `New-AksEdgeDeployment` to deploy an AKS Edge cluster.
+> Starting with the AKS Edge Essentials February 2025 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically after you run `New-AksEdgeDeployment` to deploy an AKS Edge Essentials cluster.
 
 ## Prerequisites
 
