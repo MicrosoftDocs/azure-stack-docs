@@ -4,14 +4,14 @@ description: Learn how to configure proxy settings for Azure Local, version 23H2
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/26/2024
+ms.date: 02/19/2025
 ---
 
-# Configure proxy settings for Azure Local, version 23H2
+# Configure proxy settings for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure proxy settings for Azure Local, version 23H2 cloud deployment if your network uses a proxy server for internet access.
+This article describes how to configure proxy settings for Azure Local cloud deployment if your network uses a proxy server for internet access.
 
 For information about firewall requirements for outbound endpoints and internal rules and ports for Azure Local, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
