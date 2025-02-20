@@ -1,19 +1,19 @@
 ---
 title: Repair-AksEdgeKms for AKS Edge
-author: AnushkaKhare-Eng
 description: The Repair-AksEdgeKms command repairs the KMS plugin for an existing cluster
+author: sethmanheim
 ms.topic: reference
-ms.date: 2/18/2025
-ms.author: khareanushka
-ms.lastreviewed: 2/18/2025
-ms.reviewer: 
+ms.date: 2/20/2025
+ms.author: sethm
+ms.lastreviewed: 2/20/2025
+ms.reviewer: khareanushka
 
 ---
 
 
 # Repair-AksEdgeKms
 
-Repair the KMS plugin for an existing cluster.
+Repairs the KMS plugin for an existing cluster.
 
 ## Syntax
 
@@ -23,10 +23,11 @@ Repair-AksEdgeKms
 
 ## Description
 
-This command repairs the KMS plugin for an existing cluster. This function is supported only for single node and scalable clusters.The command below rehydrates nodeagent tokens required for key rotation to get KMS back in a healthy state.
+This command repairs the KMS plugin for an existing cluster. This function is supported only for single node and scalable clusters. To get the KMS plugin back to a healthy state, the command rehydrates **nodeagent** tokens required for key rotation.
 
 ## Examples
-### Repairing the KMS plugin
+
+### Repair the KMS plugin
 
 ```powershell
 Repair-AksEdgeKms

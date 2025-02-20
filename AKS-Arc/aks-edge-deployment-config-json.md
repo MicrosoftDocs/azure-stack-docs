@@ -4,7 +4,7 @@ description: Description of deployment configuration JSON parameters in AKS Edge
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 07/11/2024
+ms.date: 02/20/2025
 ms.custom: template-concept
 ---
 
@@ -21,7 +21,7 @@ You can find the complete JSON schema file at `C:\Program Files\AksEdge\aksedge-
 | `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. In `ScalableCluster`, you can add more machines to the cluster infrastructure. | `SingleMachineCluster` |Single-machine and full deployment|
 | `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`.|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**.| None |Single-machine and full deployment|
 | `Init.ServiceIPRangeSize` |`[0-127]`|Number of reserved IP start addresses for your Kubernetes services. Based on the size, we allocate a range of free IP addresses on your subnet. | `0` |Single-machine and full deployment|
-| `Init.KmsPlugin.Enable` |Boolean| Enabling the KMS Plugin | false |Single-machine and full deployment|
+| `Init.KmsPlugin.Enable` |Boolean| Enables the KMS plugin | false |Single-machine and full deployment|
 | `Join.ClusterJoinToken` |String|`Reserved` | None |Full deployment only|
 | `Join.DiscoveryTokenHash` |String|`Reserved`| None |Full deployment only|
 | `Join.CertificateKey` |String|`Reserved`| None |Full deployment only|

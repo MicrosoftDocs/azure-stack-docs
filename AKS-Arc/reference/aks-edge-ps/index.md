@@ -4,7 +4,7 @@ description: PowerShell cmdlets for AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 02/20/2025
 ---
 
 # AKS Edge Essentials PowerShell module
@@ -90,6 +90,7 @@ Removes the deployment from an existing cluster.
 ### [Remove-AksEdgeNode](./remove-aksedgenode.md)
 
 Removes a local node from an existing cluster.
+
 ### [Repair-AksEdgeKms](./repair-aksedgekms.md)
 
 Repair the KMS plugin for an existing cluster
