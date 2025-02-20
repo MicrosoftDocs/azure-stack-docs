@@ -24,7 +24,7 @@ landingContent:
             url: overview.md
       - linkListType: whats-new
         links:
-          - text: What's new in Azure Local, version 23H2?
+          - text: What's new in Azure Local?
             url: whats-new.md
           - text: Small Form Factor (preview)
             url: concepts/system-requirements-small-23h2.md

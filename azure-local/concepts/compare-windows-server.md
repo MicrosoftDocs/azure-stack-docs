@@ -100,7 +100,7 @@ The following table compares the technical features of Azure Local and Windows S
 
 <sup>1</sup> Functionality only available in Azure Local, version 22H2.
 
-For more information, see [What's New in Azure Local, version 23H2](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
+For more information, see [What's New in Azure Local](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 
 ## Compare management options
 
