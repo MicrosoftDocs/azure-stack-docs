@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/18/2025
+ms.date: 02/19/2025
 ---
 
 # Manage security after upgrading Azure Local
@@ -71,11 +71,11 @@ A new deployment of Azure Local introduces two baselines documents injected by t
 
 ### Confirm the status of the security baselines
 
-After rebooting, rerun the cmdlets to confirm the status of the security baselines:
+After rebooting, rerun the following cmdlets to confirm the status of security baselines:
 
 ```powershell
-Get-AzSSecuritySettingsConfiguration
-Get-AzSSecuredCoreConfiguration
+Get-ASOSConfigSecuredCoreDoc
+Get-ASOSConfigSecuritySettingsDoc
 ```
 
 You get an output for each cmdlet with baseline information.
