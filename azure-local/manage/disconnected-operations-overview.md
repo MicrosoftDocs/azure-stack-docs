@@ -4,7 +4,7 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 01/23/2025
+ms.date: 02/20/2025
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
@@ -13,7 +13,7 @@ ms.date: 01/23/2025
 
 ::: moniker range=">=azloc-24112"
 
-Applies to: Azure Local 2411 and later
+Applies to: Azure Local 2411.2 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
