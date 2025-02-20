@@ -93,7 +93,7 @@ Removes a local node from an existing cluster.
 
 ### [Repair-AksEdgeKms](./repair-aksedgekms.md)
 
-Repair the KMS plugin for an existing cluster
+Repair the KMS plugin for an existing cluster.
 
 ### [Set-AksEdgeBillingPodState](./set-aksedgebillingpodstate.md)
 
