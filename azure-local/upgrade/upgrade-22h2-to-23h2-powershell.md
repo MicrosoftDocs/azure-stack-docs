@@ -114,7 +114,7 @@ To install the new OS using PowerShell, follow these steps:
 1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the machines are rebooted.
 
     > [!IMPORTANT]
-    > The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 23H2 OS. <!--ASK-->
+    > The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 22H2 OS. <!--ASK-->
 
    ```PowerShell
    Invoke-CauRun -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
