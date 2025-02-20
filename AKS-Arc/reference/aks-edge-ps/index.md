@@ -93,15 +93,15 @@ Removes a local node from an existing cluster.
 
 ### [Repair-AksEdgeKms](./repair-aksedgekms.md)
 
-Repair the KMS plugin for an existing cluster.
+Repairs the KMS plugin for an existing cluster.
 
 ### [Set-AksEdgeBillingPodState](./set-aksedgebillingpodstate.md)
 
- Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
+Allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
 
 ### [Set-AksEdgeNodeConnectivityMode](./set-aksedgenodeconnectivitymode.md)
 
- Sets AKS Edge Essentials node connectivity mode.
+Sets AKS Edge Essentials node connectivity mode.
 
 ### [Set-AksEdgeNodeToDrain](./set-aksedgenodetodrain.md)
 
