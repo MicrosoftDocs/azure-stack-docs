@@ -18,7 +18,7 @@ This article lists the various security updates that are available in Azure Loca
 
 This article describes the OS security update for Azure Local that was released on February 11, 2025 and applies to OS build 25398.1425.
 
-## Improvements
+## Improvements in this update
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -40,7 +40,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [February 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Feb).
 
-## Known issues
+## Known issues in this update
 
 The following is a known issue with this update.
 
@@ -68,8 +68,7 @@ You can temporarily resolve this issue by updating permissions (ACLs) on the aff
 
 Microsoft is actively investigating the issue and will provide a resolution in an upcoming Windows update. Further communications will be provided when a resolution or addition is available.
 
-
-## To install this update
+## Install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -270,7 +269,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-2408"
+::: moniker range="azloc-previous"
 
 ## August 2024 OS security update (KB 5041573) for Azure Local
 

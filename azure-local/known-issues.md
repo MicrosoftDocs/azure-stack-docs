@@ -35,19 +35,11 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-The following issues are fixed in this release:
-
-|Feature|Issue|Workaround/Comments|
-|------|------|----------|
-| XX <!--ADO--> | XX ||
+There are no fixed issues in this release.
 
 ## Known issues in this release
 
-The following table lists the known issues in this release:
-
-|Feature  |Issue  |Workaround  |
-|---------|---------|---------|
-| XX  | XX | XX |
+Microsoft is not aware of any known issues in this release.
 
 ## Known issues from previous releases
 
