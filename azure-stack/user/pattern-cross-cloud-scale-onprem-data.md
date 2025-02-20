@@ -133,7 +133,6 @@ For more information about service principal creation and using a certificate fo
 To learn more about topics introduced in this article:
 
 - Watch [Dynamically scale apps between datacenters and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
-- See [Hybrid app design considerations](overview-app-design-considerations.md) to learn more about best practices and to answer additional questions you might have.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [cross-cloud scaling (on-premises data) solution deployment guide](/azure/architecture/hybrid/deployments/solution-deployment-guide-cross-cloud-scaling-onprem-data?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json). The deployment guide provides step-by-step instructions for deploying and testing its components.

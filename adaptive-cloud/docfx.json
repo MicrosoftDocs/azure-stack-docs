@@ -43,9 +43,11 @@
       "uhfHeaderId": "Azure",
       "breadcrumb_path": "/azure/adaptive-cloud/breadcrumb/toc.json",
       "feedback_system": "Standard",
-      "manager":"femila",
-      "ms.service": "azure-stack",
-      "permissioned-type": "public"
+      "permissioned-type": "public",
+      "ms.service": "azure-adaptive-cloud",
+      "tittleSuffix": "Azure Adaptive Cloud",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/5c778dec-0625-ec11-b6e6-000d3a4f0858",
+      "feedback_help_link_url": "https://learn.microsoft.com/en-us/answers/tags/146/azure-arc"
     },
     "fileMetadata": {},
     "template": []

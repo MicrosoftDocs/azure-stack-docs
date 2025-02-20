@@ -76,7 +76,6 @@ To learn more about topics introduced in this article:
 - See the [Azure Machine Learning documentation](/azure/machine-learning) for an overview of ML and related topics.
 - See [Azure Container Registry](/azure/container-registry/) to learn how to build, store, and manage images for container deployments.
 - Refer to [App Service on Azure Stack Hub](/azure-stack/operator/azure-stack-app-service-overview) to learn more about the resource provider and how to deploy.
-- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices and to get any additional questions answered.
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [Train ML model at the edge deployment guide](https://aka.ms/edgetrainingdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components.
