@@ -12,13 +12,13 @@ ms.reviewer: alkohli
 
 This article lists the various security updates that are available in Azure Local.
 
-::: moniker range="=azloc-24112"
+::: moniker range="=azloc-24113"
 
 ## February OS security update (KB5051980) for Azure Local
 
 This article describes the OS security update for Azure Local that was released on February 11, 2025 and applies to OS build 25398.1425.
 
-## Improvements in this update
+## Improvements 
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -40,7 +40,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [February 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Feb).
 
-## Known issues in this update
+## Known issues
 
 The following is a known issue with this update.
 
@@ -68,13 +68,13 @@ You can temporarily resolve this issue by updating permissions (ACLs) on the aff
 
 Microsoft is actively investigating the issue and will provide a resolution in an upcoming Windows update. Further communications will be provided when a resolution or addition is available.
 
-## Install this update
+## To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list in this update
+## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5051980](https://go.microsoft.com/fwlink/?linkid=2303533).
 
