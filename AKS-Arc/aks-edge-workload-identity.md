@@ -4,7 +4,7 @@ description: Learn how to configure an AKS Edge Essentials cluster with workload
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/12/2025
+ms.date: 02/20/2025
 ms.reviewer: leslielin
 
 ---
