@@ -44,7 +44,7 @@ To deploy an ARM template, you need write access on the resources you're deployi
 
 ## Step 2: Create an SSH key pair
 
-Create an SSH key pair in Azure and store the private key file for later use. For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
 
 1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
 1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
