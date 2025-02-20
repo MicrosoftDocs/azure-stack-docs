@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/28/2025
+ms.date: 02/19/2025
 ---
 
 # What's new in Azure Local?
@@ -15,6 +15,19 @@ ms.date: 01/28/2025
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+
+::: moniker range="=azloc-24113"
+
+## Features and improvements in 2411.3
+
+This is a baseline release with the following features and improvements:
+
+- **Quality updates** - This build is based off the Operating system version 25398.1425 and contains the latest quality updates.
+- **Updated .NET version** - This build has an updated .NET version to 8.0.13.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
+
+::: moniker-end
 
 ::: moniker range="=azloc-24112"
 
@@ -135,7 +148,7 @@ This is a baseline release with the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2408"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408
 
