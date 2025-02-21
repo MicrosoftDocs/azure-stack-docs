@@ -413,11 +413,11 @@
           - name: Tiered data
             href: pattern-tiered-data-analytics.md
           - name: Train ML model at the edge
-            href: pattern-train-ml-model-at-edge.md
+            href: pattern-train-machine-learning-model-at-edge.md
     - name: Multi
       items:
       - name: Cross-cloud scaling (on-premises data)
-        href: pattern-cross-cloud-scale-onprem-data.md
+        href: pattern-cross-cloud-scale-on-premises-data.md
       - name: Footfall detection (retail)
         href: pattern-retail-footfall-detection.md
       - name: High availability Kubernetes cluster

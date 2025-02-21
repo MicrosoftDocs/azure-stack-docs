@@ -22,7 +22,7 @@
     },
     {
       "source_path": "adaptive-cloud/app-solutions/pattern-cross-cloud-scale-onprem-data.md",
-      "redirect_url": "/azure-stack/user/pattern-cross-cloud-scale-onprem-data",
+      "redirect_url": "/azure-stack/user/pattern-cross-cloud-scale-on-premises-data",
       "redirect_document_id": false
     },
     {
@@ -62,7 +62,7 @@
     },
     {
       "source_path": "adaptive-cloud/app-solutions/pattern-train-ml-model-at-edge.md",
-      "redirect_url": "/azure-stack/user/pattern-train-ml-model-at-edge",
+      "redirect_url": "/azure-stack/user/pattern-train-machine-learning-model-at-edge",
       "redirect_document_id": false
     }
   ]

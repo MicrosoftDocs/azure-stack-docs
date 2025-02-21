@@ -1,6 +1,6 @@
 ---
 title: Cross-cloud scaling (on-premises data) pattern in Azure Stack Hub
-description: Learn how to build a scalable cross-cloud app that uses on-prem data in Azure and Azure Stack Hub.
+description: Learn how to build a scalable cross-cloud app that uses on-premises data in Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: article
 ms.date: 11/05/2019
@@ -27,7 +27,7 @@ The solution takes advantage of the compliance benefits of the private cloud, co
 
 The solution deployment guide allows you to deploy an identical web app to a public and private cloud. You can also access a non-internet routable network hosted on the private cloud. The web apps are monitored for load. Upon a significant increase in traffic, a program manipulates DNS records to redirect traffic to the public cloud. When traffic is no longer significant, the DNS records are updated to direct traffic back to the private cloud.
 
-[![Cross-cloud scaling with on-prem data pattern](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)
+![Cross-cloud scaling with on-prem data pattern](media/pattern-cross-cloud-scale-on-premises-data/solution-architecture.png)
 
 ## Components
 
