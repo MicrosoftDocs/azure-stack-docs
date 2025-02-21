@@ -70,7 +70,6 @@ This pattern as shown allows for unfettered access to a port on an internal devi
 To learn more about topics introduced in this article:
 
 - This pattern uses Azure Relay. For more information, see the [Azure Relay documentation](/azure/azure-relay/).
-- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices and get answers to any additional questions.
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [Hybrid relay solution deployment guide](https://aka.ms/hybridrelaydeployment). The deployment guide provides step-by-step instructions for deploying and testing its components.
