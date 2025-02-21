@@ -290,7 +290,7 @@ Azure Stack Hub provides two identity provider choices. The provider you use dep
 
 The identity provider manages users and groups, including authentication and authorization for accessing resources. Access can be granted to Azure Stack Hub resources like subscriptions, resource groups, and individual resources like VMs or load balancers. To have a consistent access model, you should consider using the same groups (either direct or nested) for all Azure Stack Hubs. Here's a configuration example:
 
-![nested Microsoft Entra ID groups with azure stack hub](media/pattern-highly-available-kubernetes/azure-stack-azure-ad-nested-groups.png)
+![Diagram of nested Microsoft Entra ID groups with Azure Stack Hub.](media/pattern-highly-available-kubernetes/azure-stack-azure-ad-nested-groups.png)
 
 The example contains a dedicated group for a specific purpose. For example, to provide Contributor permissions for the Resource Group that contains our Kubernetes cluster infrastructure on a specific Azure Stack Hub instance (here "Seattle K8s Cluster Contributor"). These groups are then nested into an overall group that contains the "subgroups" for each Azure Stack Hub.
 
