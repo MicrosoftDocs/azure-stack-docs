@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.custom: devx-track-azurepowershell
 ms.author: sethm
-ms.date: 03/11/2024
+ms.date: 02/21/2025
 ---
 
 # Manage Azure Stack HCI cluster registration
@@ -14,7 +14,7 @@ ms.date: 03/11/2024
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-Depending on your cluster configuration and requirements, you may need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure portal. It also provides answers to the frequently asked questions about cluster registration.
+Depending on your cluster configuration and requirements, you might need to take additional steps after registering your cluster with Azure. This article describes how to manage your cluster registration using Windows Admin Center, PowerShell, or the Azure portal. It also provides answers to the frequently asked questions about cluster registration.
 
 When you [register your cluster with Azure](../deploy/register-with-azure.md), an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. Starting with Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
 
@@ -83,7 +83,7 @@ To view the status of the cluster and Arc resources, navigate to the resource gr
 
 Starting with Azure Stack HCI, version 21H2, the clusters are automatically Arc-enabled on registration. Azure Arc integration isn't available on Azure Stack HCI, version 20H2.
 
-You need to manually enable Azure Arc integration in the following scenarios:
+You must manually enable Azure Arc integration in the following scenarios:
 
 - You updated your cluster servers from Azure Stack HCI, version 20H2 (which were previously not Arc-enabled manually) to version 21H2.
 - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](../deploy/troubleshoot-hci-registration.md#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed).
@@ -97,13 +97,13 @@ Follow these steps to enable Azure Arc integration:
     Install-Module -Name Az.Resources
     ``````
 
-2. Install the latest version of the `Az.StackHCI` module on your management PC:
+1. Install the latest version of the `Az.StackHCI` module on your management PC:
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
    ```
 
-3. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
+1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"
@@ -124,13 +124,13 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
    :::image type="content" source="media/manage-cluster-registration/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update." lightbox="media/manage-cluster-registration/sconfig-install.png":::
 
-2. Select the option for **All quality updates** (option 1).
+1. Select the option for **All quality updates** (option 1).
 
-3. You can choose to specifically update the Arc agent, or install all of the updates available:
+1. You can choose to specifically update the Arc agent, or install all of the updates available:
 
    :::image type="content" source="media/manage-cluster-registration/sconfig-updates.png" alt-text="Sconfig options." lightbox="media/manage-cluster-registration/sconfig-updates.png":::
 
-4. Run `azcmagent version` from PowerShell on each node to verify the Arc agent version.
+1. Run `azcmagent version` from PowerShell on each node to verify the Arc agent version.
 
 ## Unregister Azure Stack HCI
 
@@ -240,7 +240,7 @@ You can further reduce the permissions required to perform Azure Stack HCI regis
    - Microsoft.GuestConfiguration
    - Microsoft.HybridConnectivity
 
-2. Create the resource groups. Make sure the resource groups into which the Azure Stack HCI resources will be projected are pre-created by a privileged user. For more details, see the [prerequisites](../deploy/register-with-azure.md#prerequisites) section.
+1. Create the resource groups. Make sure the resource groups into which the Azure Stack HCI resources will be projected are pre-created by a privileged user. For more details, see the [prerequisites](../deploy/register-with-azure.md#prerequisites) section.
 
    Once these two pre-requisites are set up, create a custom role and use it for registration as described below. First, create a JSON file called **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to the ID of your Azure subscription. To get your subscription ID, visit the Azure portal, go to **Subscriptions**, then copy/paste your ID from the list:
 
@@ -264,13 +264,13 @@ You can further reduce the permissions required to perform Azure Stack HCI regis
    }
    ```
 
-3. Create the custom role:
+1. Create the custom role:
 
    ```powershell
    New-AzRoleDefinition -InputFile <path to customHCIRole.json>
    ```
 
-4. Assign the custom role to the user:
+1. Assign the custom role to the user:
 
    ```powershell
    $user = get-AzAdUser -DisplayName <userdisplayname>
@@ -376,8 +376,6 @@ We do not support resource move for any Azure Stack HCI resources. To change the
   - Do not run this cmdlet immediately after server reboot; let the automatic sync happen. Otherwise, it may result in a bad state.
   
 ## Next steps
-
-For more detailed information, see also:
 
 - [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 - [Manage clusters with PowerShell](cluster-powershell.md)
