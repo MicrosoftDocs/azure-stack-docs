@@ -49,7 +49,7 @@ Before you begin, make sure you have the following prerequisites:
 - The following permissions are required to enable Azure RBAC when creating a Kubernetes cluster:
   - To create a Kubernetes cluster, the [**Azure Kubernetes Service Arc Contributor**](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role is required.
   - To use the `--enable-azure-rbac` parameter, the [**Role Based Access Control Administrator**](/azure/role-based-access-control/built-in-roles/privileged#role-based-access-control-administrator) role is required for access to the **Microsoft.Authorization/roleAssignments/write** permission.
-  - To assign these roles, use the [`az role assignment create`](/cli/azure/role/assignment#az-role-assignment-create) CLI command, or follow [Assign Azure roles using Azure CLI](/azure/role-based-access-control/role-assignments-cli):
+  - To assign these roles, use the `[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)` CLI command, or follow [Assign Azure roles using Azure CLI](/azure/role-based-access-control/role-assignments-cli):
 
     ```azurecli
     az role assignment create --assignee <assignee-object-id> --role <role-name-or-id> --scope $ARM_ID
