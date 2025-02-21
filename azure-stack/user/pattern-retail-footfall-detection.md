@@ -70,7 +70,7 @@ To enable this solution to scale across multiple cameras and locations, you'll n
 
 ### Availability
 
-Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, you might want to implement a mechanism to cache images locally, then forward to Azure Stack Hub when connectivity returns. If the location is large enough, deploying a Data Box Edge with the Face API container to that location might be a better option.
+Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, you might want to implement a mechanism to cache images locally, then forward to Azure Stack Hub when connectivity returns.
 
 ### Manageability
 
