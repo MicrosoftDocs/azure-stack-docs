@@ -73,7 +73,6 @@ Manageability of this solution depends on authoring tools in use and engagement 
 To learn more about topics introduced in this article:
 
 - See the [Azure Storage](/azure/storage/) and [Azure Functions](/azure/azure-functions/) documentation. This pattern makes heavy use of Azure Storage accounts and Azure Functions on both Azure and Azure Stack Hub.
-- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices and to get answers to additional questions.
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [Tiered data for analytics solution deployment guide](https://aka.ms/tiereddatadeploy). The deployment guide provides step-by-step instructions for deploying and testing its components.
