@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/29/2025
+ms.date: 02/20/2025
 ---
 
 # Automatic virtual TPM state transfer for Azure Local
@@ -24,9 +24,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 
 1. Create a Trusted launch Arc VM running a supported Windows 11 guest operating system (OS).
 
-1. Enable BitLocker encryption for the OS volume on the Win 11 guest.
-
-1. Sign on to the Windows 11 guest and enable BitLocker encryption for the OS volume:
+1. Enable BitLocker encryption for the OS volume on the Win 11 guest. Sign on to the Windows 11 guest and enable BitLocker encryption for the OS volume:
 
     1. In the search box on the task bar, type "Manage BitLocker," and then select it from the list of results.
 
@@ -55,15 +53,15 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 1. Verify that you can sign on to the Windows 11 guest in the VM, and if BitLocker encryption for the OS volume remains enabled. If true, this confirms that the vTPM state was preserved during VM migration.
 
     > [!NOTE]
-    > If vTPM state wasn't preserved during VM migration, VM startup would've resulted in BitLocker recovery during guest boot up. You would've been prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This situation happens because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
+    > If vTPM state wasn't preserved during VM migration, VM startup would result in BitLocker recovery during guest boot up. You would be prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This situation occurs because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
 
 1. Force the VM to failover to another machine in the system.
 
     1. Confirm the owner node of the VM using the following command.
 
-    ```powershell
-    Get-ClusterGroup <VM name>
-    ```
+        ```powershell
+        Get-ClusterGroup <VM name>
+        ```
 
     1. Use Failover Cluster Manager to stop the cluster service on the owner node as follows: Select the owner node as displayed in Failover Cluster Manager.  On the **Actions** right pane, select **More Actions** and then select **Stop Cluster Service**.
 
@@ -82,7 +80,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 1. Verify that you can sign on to the Windows 11 guest in the VM, and if BitLocker encryption for the OS volume remains enabled. If true, the vTPM state was preserved during VM failover.
 
     > [!NOTE]
-    > If vTPM state isn't preserved during VM migration, VM startup results in BitLocker recovery during guest bootup. You are prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This prompt happens because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from the original VM.
+    > If vTPM state wasn't preserved during VM migration, VM startup would result in BitLocker recovery during guest boot up. You would be prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This situation occurs because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
 
 
 ## Next steps

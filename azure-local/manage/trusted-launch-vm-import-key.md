@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: alkohli
-ms.date: 01/29/2025
+ms.date: 02/20/2025
 ---
 
 # Manage Trusted launch Arc VM guest state protection key on Azure Local

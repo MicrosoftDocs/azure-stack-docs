@@ -5,7 +5,7 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/29/2025
+ms.date: 02/20/2025
 ---
 
 # Introduction to Trusted launch for Azure Arc VMs on Azure Local
@@ -45,10 +45,21 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 
 ## Guest operating system images
 
-All Windows 11 images from Azure Marketplace supported by Azure Arc VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
+All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Arc VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
 
 > [!NOTE]
 > VM guest images obtained outside of Azure Marketplace are not supported.
+
+## Backup and disaster recovery considerations
+
+When working with Trusted launch Arc VMs, make sure to understand the following key considerations and limitations related to backup and recovery:
+
+- **Differences between Trusted launch Arc VMs and standard Arc VMs**: Unlike standard Azure Arc VMs, Trusted launch Arc VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM protection key is stored in a local key vault in the Azure Local system where the VM resides. Trusted launch Arc VMs store the VM guest state in two files: VM guest state and VM runtime state. To back up and restore a Trusted launch VM, a backup solution must back up and restore all the VM files, including guest state and the runtime state files, and additionally backup and restore the VM protection key.
+
+- **Backup and disaster recovery tooling support**: Currently, Trusted launch Arc VMs do not support any third-party or Microsoft-owned back up and disaster recovery tools, including but not limited to, Azure Backup, Azure Site Recovery, Veeam, and Commvault. If there arises a need to move a Trusted launch Arc TVM to an alternate cluster, see the manual process <link to the Manual backup and recovery of Trusted launch Arc VMs mentioned in bullet 2 below> to manage all the necessary files and VM protection key to ensure that the VM can be successfully restored.  
+
+> [!NOTE]
+> Trusted launch Arc VMs restored on an alternate Azure Local system cannot be managed from the Azure control plane.
 
 ## Next steps
 
