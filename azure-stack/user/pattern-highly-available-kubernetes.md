@@ -40,7 +40,7 @@ The preceding diagram illustrates the application architecture of the sample app
 
  1) An AKS Engine based Kubernetes cluster on Azure Stack Hub.
  2) [cert-manager](https://www.jetstack.io/cert-manager/), which provides a suite of tools for certificate management in Kubernetes, used to automatically request certificates from Let's Encrypt.
- 3) A Kubernetes namespace that contains the application components for the front end (ratings-web), api (ratings-api), and database (ratings-mongodb).
+ 3) A Kubernetes namespace that contains the application components for the front end (ratings-web), API (ratings-api), and database (ratings-mongodb).
  4) The Ingress Controller that routes HTTP/HTTPS traffic to endpoints within the Kubernetes cluster.
 
 The sample application is used to illustrate the application architecture. All components are examples. The architecture contains only a single application deployment. To achieve high availability (HA), we'll run the deployment at least twice on two different Azure Stack Hub instances - they can run either in the same location or in two (or more) different sites:
@@ -63,7 +63,7 @@ Go to [Known Issues and Limitations](https://github.com/Azure/aks-engine/blob/ma
 
 **Azure Load Balancer** is used for the Kubernetes API Endpoint and the Nginx Ingress Controller. The load balancer routes external (for example, Internet) traffic to nodes and VMs offering a specific service.
 
-**Azure Container Registry (ACR)** is used to store private Docker images and Helm charts, which are deployed to the cluster. AKS Engine can authenticate with the Container Registry using an Azure AD identity. Kubernetes doesn't require ACR. You can use other container registries, such as Docker Hub.
+**Azure Container Registry (ACR)** is used to store private Docker images and Helm charts, which are deployed to the cluster. AKS Engine can authenticate with the Container Registry using Microsoft Entra ID. Kubernetes doesn't require ACR. You can use other container registries, such as Docker Hub.
 
 **Azure Repos** is a set of version control tools that you can use to manage your code. You can also use GitHub or other git-based repositories. Go to [Azure Repos Overview](/azure/devops/repos/get-started/what-is-repos) to learn more.
 
@@ -147,7 +147,7 @@ Networking and connectivity also affect the three layers mentioned previously fo
 
 **Application**
 
-For the application layer, the most important consideration is whether the application is exposed and accessible from the Internet. From a Kubernetes perspective, Internet accessibility means exposing a deployment or pod using a Kubernetes Service or an Ingress Controller.
+For the application layer, the most important consideration is whether the application is exposed and accessible from the Internet. From a Kubernetes perspective, Internet accessibility means to expose a deployment or pod using a Kubernetes Service or an Ingress Controller.
 
 Exposing an application using a public IP via a Load Balancer or an Ingress Controller doesn't nessecarily mean that the application is now accessible via the Internet. It's possible for Azure Stack Hub to have a public IP address that is only visible on the local intranet - not all public IPs are truly Internet-facing.
 
@@ -209,7 +209,7 @@ Achieving this design depends heavily on technology choices. Here are some solut
 Considerations when working with data across multiple locations is an even more complex consideration for a highly available and resilient solution. Consider:
 
 - Latency and network connectivity between Azure Stack Hubs.
-- Availability of identities for services and permissions. Each Azure Stack Hub instance integrates with an external directory. During deployment, you choose to use either Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS). As such, there's potential to use a single identity that can interact with multiple independent Azure Stack Hub instances.
+- Availability of identities for services and permissions. Each Azure Stack Hub instance integrates with an external directory. During deployment, you choose to use either Microsoft Entra ID or Microsoft Entra ID Federation. As such, there's potential to use a single identity that can interact with multiple independent Azure Stack Hub instances.
 
 ## Business continuity and disaster recovery
 
@@ -285,14 +285,14 @@ Identity and security are important topics. Especially when the solution spans i
 
 Azure Stack Hub provides two identity provider choices. The provider you use depends on the environment and whether running in a connected or disconnected environment:
 
-- Azure AD - can only be used in a connected environment.
-- ADFS to a traditional Active Directory forest - can be used in both a connected or disconnected environment.
+- Microsoft Entra ID - can only be used in a connected environment.
+- Microsoft Entra ID Federation to a traditional Active Directory forest - can be used in both a connected or disconnected environment.
 
 The identity provider manages users and groups, including authentication and authorization for accessing resources. Access can be granted to Azure Stack Hub resources like subscriptions, resource groups, and individual resources like VMs or load balancers. To have a consistent access model, you should consider using the same groups (either direct or nested) for all Azure Stack Hubs. Here's a configuration example:
 
-![nested aad groups with azure stack hub](media/pattern-highly-available-kubernetes/azure-stack-azure-ad-nested-groups.png)
+![Diagram of nested Microsoft Entra ID groups with Azure Stack Hub.](media/pattern-highly-available-kubernetes/azure-stack-azure-ad-nested-groups.png)
 
-The example contains a dedicated group (using AAD or ADFS) for a specific purpose. For example, to provide Contributor permissions for the Resource Group that contains our Kubernetes cluster infrastructure on a specific Azure Stack Hub instance (here "Seattle K8s Cluster Contributor"). These groups are then nested into an overall group that contains the "subgroups" for each Azure Stack Hub.
+The example contains a dedicated group for a specific purpose. For example, to provide Contributor permissions for the Resource Group that contains our Kubernetes cluster infrastructure on a specific Azure Stack Hub instance (here "Seattle K8s Cluster Contributor"). These groups are then nested into an overall group that contains the "subgroups" for each Azure Stack Hub.
 
 Our sample user will now have "Contributor" permissions to both Resources Groups that contain the entire set of Kubernetes infrastructure resources. The user will have access to resources on both Azure Stack Hub instances, because the instances share the same identity provider.
 
@@ -328,7 +328,7 @@ AKS Engine helps with the two most important tasks:
 
 Newer base OS images contain the latest OS security fixes and kernel updates. 
 
-The [Unattended Upgrade](https://wiki.debian.org/UnattendedUpgrades) mechanism automatically installs security updates that are released before a new base OS image version is available in the Azure Stack Hub Marketplace. Unattended upgrade is enabled by default and installs security updates automatically, but does not reboot the Kubernetes cluster nodes. Rebooting the nodes can be automated using the open-source [**K**Ubernetes **RE**boot **D**aemon (kured))](/azure/aks/node-updates-kured). Kured watches for Linux nodes that require a reboot, then automatically handle the rescheduling of running pods and node reboot process.
+The [Unattended Upgrade](https://wiki.debian.org/UnattendedUpgrades) mechanism automatically installs security updates that are released before a new base OS image version is available in the Azure Stack Hub Marketplace. Unattended upgrade is enabled by default and installs security updates automatically, but does not reboot the Kubernetes cluster nodes. Rebooting the nodes can be automated using the open-source [**K**ubernetes **RE**boot **D**aemon (kured))](/azure/aks/node-updates-kured). Kured watches for Linux nodes that require a reboot, then automatically handle the rescheduling of running pods and node reboot process.
 
 ## Deployment (CI/CD) considerations
 
@@ -362,7 +362,7 @@ If the Azure Resource Manager endpoints, Kubernetes API, or both aren't directly
 [![On-prem architecture overview](media/pattern-highly-available-kubernetes/aks-azure-stack-app-pattern-self-hosted.png)](media/pattern-highly-available-kubernetes/aks-azure-stack-app-pattern-self-hosted.png#lightbox)
 
 > [!NOTE]
-> **What about disconnected scenarios?** In scenarios where either Azure Stack Hub or Kubernetes or both of them do not have internet-facing management endpoints, it is still possible to use Azure DevOps for your deployments. You can either use a self-hosted Agent Pool (which is a DevOps Agent running on-premises or on Azure Stack Hub itself) or a completly self-hosted Azure DevOps Server on-premises. The self-hosted agent needs only outbound HTTPS (TCP/443) Internet connectivity.
+> **What about disconnected scenarios?** In scenarios where either Azure Stack Hub or Kubernetes or both of them do not have internet-facing management endpoints, it is still possible to use Azure DevOps for your deployments. You can either use a self-hosted Agent Pool (which is a DevOps Agent running on-premises or on Azure Stack Hub itself) or a completely self-hosted Azure DevOps Server on-premises. The self-hosted agent needs only outbound HTTPS (TCP/443) Internet connectivity.
 
 The pattern can use a Kubernetes cluster (deployed and orchestrated with AKS engine) on each Azure Stack Hub instance. It includes an application consisting of a frontend, a mid-tier, backend services (for example MongoDB), and an nginx-based Ingress Controller. Instead of using a database hosted on the K8s cluster, you can leverage "external data stores". Database options include MySQL, SQL Server, or any kind of database hosted outside of Azure Stack Hub or in IaaS. Configurations like this aren't in scope here.
 
