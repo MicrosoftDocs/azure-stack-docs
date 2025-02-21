@@ -1,5 +1,5 @@
 ---
-title: Hybrid patterns and solution examples for Azure and Azure Stack Hub
+title: Hybrid patterns and examples for Azure and Azure Stack Hub
 description: An overview of hybrid patterns and solution examples for learning and building hybrid solutions on Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: overview
@@ -13,13 +13,13 @@ ms.lastreviewed: 05/24/2021
 
 ---
 
-# Hybrid solution patterns and examples for Azure and Azure Stack
+# Hybrid solution patterns and examples for Azure and Azure Stack Hub
 
 Microsoft provides Azure and Azure Stack products and solutions as one consistent Azure ecosystem. The Microsoft Azure Stack family is an extension of Azure.
 
 ## The hybrid cloud and hybrid apps
 
-Azure Stack brings the agility of cloud computing to your on-premises environment and the edge by enabling a *hybrid cloud*. Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge extend Azure from the cloud into your sovereign datacenters, branch offices, field, and beyond. With this diverse set of capabilities, you can:
+Azure Stack brings the agility of cloud computing to your on-premises environment and the edge by enabling a *hybrid cloud*. Azure Stack Hub, Azure Local, and Azure Stack Edge extend Azure from the cloud into your sovereign datacenters, branch offices, field, and beyond. With this diverse set of capabilities, you can:
 
 - Reuse code and run cloud-native apps consistently across Azure and your on-premises environments.
 - Run traditional virtualized workloads with optional connections to Azure services.
@@ -47,5 +47,4 @@ Step-by-step deployment guides assist in deploying a solution example. The guide
 
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 - Explore the "Patterns" and the "Solution deployment guides" sections of the TOC to learn more about each.
-- Read about [Hybrid app design considerations](overview-app-design-considerations.md) to review pillars of software quality for designing, deploying, and operating hybrid apps.
 - [Set up a development environment on Azure Stack](/azure-stack/user/azure-stack-dev-start) and [deploy your first app](/azure-stack/user/azure-stack-dev-start-deploy-app) on Azure Stack.
