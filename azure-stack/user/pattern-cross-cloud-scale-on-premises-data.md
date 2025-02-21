@@ -1,6 +1,6 @@
 ---
 title: Cross-cloud scaling (on-premises data) pattern in Azure Stack Hub
-description: Learn how to build a scalable cross-cloud app that uses on-prem data in Azure and Azure Stack Hub.
+description: Learn how to build a scalable cross-cloud app that uses on-premises data in Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: article
 ms.date: 11/05/2019
@@ -27,7 +27,7 @@ The solution takes advantage of the compliance benefits of the private cloud, co
 
 The solution deployment guide allows you to deploy an identical web app to a public and private cloud. You can also access a non-internet routable network hosted on the private cloud. The web apps are monitored for load. Upon a significant increase in traffic, a program manipulates DNS records to redirect traffic to the public cloud. When traffic is no longer significant, the DNS records are updated to direct traffic back to the private cloud.
 
-[![Cross-cloud scaling with on-prem data pattern](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)
+![Cross-cloud scaling with on-prem data pattern](media/pattern-cross-cloud-scale-on-premises-data/solution-architecture.png)
 
 ## Components
 
@@ -133,7 +133,6 @@ For more information about service principal creation and using a certificate fo
 To learn more about topics introduced in this article:
 
 - Watch [Dynamically scale apps between datacenters and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
-- See [Hybrid app design considerations](overview-app-design-considerations.md) to learn more about best practices and to answer additional questions you might have.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [cross-cloud scaling (on-premises data) solution deployment guide](/azure/architecture/hybrid/deployments/solution-deployment-guide-cross-cloud-scaling-onprem-data?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json). The deployment guide provides step-by-step instructions for deploying and testing its components.
