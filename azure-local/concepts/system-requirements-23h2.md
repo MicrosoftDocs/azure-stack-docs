@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 02/14/2025
+ms.date: 02/21/2025
 ---
 
 # System requirements for Azure Local
@@ -47,8 +47,8 @@ Before you begin, make sure that the physical machine and storage hardware used 
 
 |Component|Minimum|
 |--|--|
-|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
-|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
+|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
+|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
