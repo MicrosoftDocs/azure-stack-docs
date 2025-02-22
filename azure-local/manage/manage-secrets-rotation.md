@@ -158,6 +158,64 @@ To change the deployment service principal, follow these steps:
    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionId -TenantID $TenantId -AppId $AppId -NewPassword $NewPassword 
    ```
 
+## Rotate internal secrets
+
+This section describes how you can rotate internal secrets. Internal secrets include certificates, passwords, secure strings, and keys used by the Azure Local infrastructure. Internal secret rotation is only required if you suspect one has been compromised, or you've received an expiration alert.
+
+The exact steps for secret rotation are different depending on the software version your Azure Local instance is running.
+
+### Azure Local instance running 2411.2 and later
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+### Azure Local instance running 2411.1 to 2411.0
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Update the CA Certificate password in ECE store. Run the following PowerShell command:
+
+    ```PowerShell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace with a strong password>" -AsPlainText -Force
+    $CACertCred = New-Object -Type PSCredential -ArgumentList "CACertUser,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName CACertificateCred -Credential $CACertCred
+    ```
+
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+### Azure Local instance running 2408.2 to 2405.3
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Update the CA Certificate password in ECE store. Run the following PowerShell command:
+
+    ```PowerShell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace with a strong password>" -AsPlainText -Force
+    $CACertCred = New-Object -Type PSCredential -ArgumentList "CACertificateCred,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName CACertificateCred -Credential $CACertCred
+    ```
+
+1. Delete FCA cert from all the cluster nodes and restart FCA service. Run the following command on each node of your Azure Local instance:
+
+    ```PowerShell
+    $cert = Get-ChildItem -Recurse cert:\LocalMachine\My | Where-Object { $_.Subject -like "CN=FileCopyAgentKeyIdentifier*" } 
+    $cert | Remove-Item 
+    restart-service "AzureStack File Copy Agent*"
+    ```
+
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+
 ## Next steps
 
 [Complete the prerequisites and checklist and install Azure Local](../deploy/deployment-prerequisites.md).
