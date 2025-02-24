@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 12/21/2023
+ms.date: 02/21/2025
 ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
@@ -23,7 +23,7 @@ Follow these steps on all nodes in your Azure Local cluster or Windows Server cl
 
    You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Don't continue to the next step until you close all open PowerShell windows.
 
-1. Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Local or Windows Server cluster:
+1. Install the **AksHci** PowerShell module by running the following command on all nodes in your Azure Local or Windows Server cluster:
 
    ```powershell
    Install-Module -Name AksHci -Repository PSGallery -Force -AcceptLicense
@@ -39,4 +39,4 @@ You can use a [helper script to delete old AKS-HCI PowerShell modules](https://g
 Get-Command -Module AksHci
 ```
 
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](../reference/ps/index.md).
+For the complete list of **AksHci** PowerShell commands, see [AksHci PowerShell](../reference/ps/index.md).
