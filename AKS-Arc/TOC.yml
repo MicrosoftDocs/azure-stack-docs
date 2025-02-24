@@ -168,7 +168,7 @@
     items:
     - name: Azure Local
       href: /azure/azure-local
-    - name: Azure Adaptive Cloud
+    - name: Azure adaptive cloud
       href: /azure/adaptive-cloud
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
