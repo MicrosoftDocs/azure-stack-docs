@@ -33,13 +33,11 @@ The tool provides:
 
 Before you use the PowerShell module, make sure to:
 
-- Download the Azure Local Support Diagnostic Tool from the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=hci).
+- Ensure that you are using an account that has administrative access to the Azure Local nodes.
 
-- Import the module into an elevated PowerShell window using an account with administrator privileges on the local system. For more information, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module).
+- Ensure that PSRemoting has been configured on the Azure Local nodes. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1&preserve-view=true) reference documentation.
 
-- Install the module on each node of the Azure Local system. For information about connecting to a node, see [Enable RDP](.././deploy/deploy-via-portal.md#enable-rdp).
-
-## Install and use the Azure Local Support Diagnostic Tool
+## Install or Update the Azure Local Support Diagnostic Tool
 
 Run PowerShell as an administrator and then run the following commands:
 
@@ -49,7 +47,32 @@ To install the tool, run the following command:
 Install-Module –Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
+If you already have the module installed, you can update using the following cmdlet:
+
+```powershell
+Update-Module -Name Microsoft.AzureStack.HCI.CSSTools
+```
+
+Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
+```powershell
+Remove-Module -Name Microsoft.AzureStack.HCI.CSSTools
+Import-Module -Name Microsoft.AzureStack.HCI.CSSTools
+```
+
+    > [!NOTE]
+    > Ensure all the nodes within Azure Local have been updated to use the same version. Remove existing PSSessions to ensure the correct module version is loaded into the remote runspace.
+
+
+## Using the Azure Local Support Diagnostic Tool
+To see a list of available cmdlets within the PowerShell module, use:
+```powershell
+Get-Command -Module Microsoft.AzureStack.HCI.CSSTools
+```
+
+
+### Perform diagnostic checks
 To list all available diagnostic checks, run the following command:
+
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem, Registration>
@@ -57,6 +80,8 @@ Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem, Registration>
 
 Run all diagnostic checks by pressing `CTRL+SPACE` after the parameter `ProductName`.
 
+
+### Collect data for support
 To collect data using one of our pre-defined collection sets, run the following command:
 
 ```powershell
@@ -83,7 +108,7 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 -ComputerName @(<computerName1>,<computerName2>)
 ```
 
-## Example scenario
+## Example scenarios
 
 To troubleshoot Azure Local, run the following commands:
 
@@ -101,6 +126,9 @@ Get-AzsSupportEceDeploymentDetails
 Get-AzsSupportEceUpdateDetails
 ```
 
+### For storage issues
+Refer to TODO.
+
 ### For registration issues
 
 ```powershell
@@ -111,14 +139,14 @@ Here's an example of output for a registration issue:
 
 ```output
 PS C:\temp> Invoke-AzsSupportDiagnosticCheck -ProductName Registration
-Starting known issue check for Azure Stack HCI: Registration.                                                                                                       
-Starting Azure Stack HCI base system validation.                                                                                                                        
-Gathering information from all clustered nodes.                                                                                                                         
-We are preparing to collect diagnostic information from your environment                                                                                                
-We started the diagnostic data collection! This might take some time.                                                                                                   
-Finished collecting diagnostic information.                                                                                                                             
-====[ Validating registration state on node: HCI-N-1 ]====                                                                                                              
-[Pass] [Azure Stack HCI - General registration state]                                                                                                                   
+Starting known issue check for Azure Stack HCI: Registration.
+Starting Azure Stack HCI base system validation.
+Gathering information from all clustered nodes.
+We are preparing to collect diagnostic information from your environment
+We started the diagnostic data collection! This might take some time.
+Finished collecting diagnostic information.
+====[ Validating registration state on node: HCI-N-1 ]====
+[Pass] [Azure Stack HCI - General registration state]
 Validate that the cluster is registered
 Details: Validation successfull
 
