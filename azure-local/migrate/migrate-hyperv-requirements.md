@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/12/2024
+ms.date: 02/10/2025
 ms.author: alkohli
 ---
 
@@ -24,7 +24,7 @@ The following operating systems (OS) are supported for the source appliance, tar
 |---------|---------|
 |Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
 |Source appliance     |Windows Server 2022        |
-|Target environment     |Azure Local, version 23H2         |
+|Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
 |Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM (Linux) | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x <br>SUSE Linux Enterprise 12.x<br>Debian 9.x |
@@ -74,11 +74,13 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
+- Verify that none of the VMs you plan to migrate have the Azure Connected Machine Agent installed. For more information, see [FAQ](migrate-faq.yml).
+
 ## Target Azure Local requirements
 
-- The target operating system for your Azure Local instance must be running version 23H2.
+- The target system must be running Azure Local.
 
-- An Arc Resource Bridge must exist on the Azure Local, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Arc Resource Bridge must exist on the Azure Local system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
 - Ensure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 

@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 12/27/2024
 ---
 
-# Evaluate the deployment readiness of your environment for Azure Local, version 23H2
+# Evaluate the deployment readiness of your environment for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -411,6 +411,9 @@ It is possible that the IP addresses allocated to Azure Local may already be act
 Network validator also checks storage connection, adapter driver readiness, and other host network configuration readiness.
 
 You provide the answer file JSON as the input for network validator cmdlet call. Or you can manually provide the individual parameters when running the validator cmdlet.
+
+> [!NOTE]
+> There is currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
 
 > [!NOTE]
 > You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
