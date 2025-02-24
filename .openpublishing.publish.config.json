@@ -6,6 +6,7 @@
       "build_output_subfolder": "adaptive-cloud",
       "locale": "en-us",
       "monikers": [],
+      "moniker_ranges": [],
       "open_to_public_contributors": false,
       "type_mapping": {
         "Conceptual": "Content"
@@ -29,14 +30,12 @@
       "template_folder": "_themes"
     },
     {
-      "docset_name": "AzureLocal",
-      "build_source_folder": "azure-local",
-      "build_output_subfolder": "AzureLocal",
+      "docset_name": "azure-managed-lustre",
+      "build_source_folder": "azure-managed-lustre",
+      "build_output_subfolder": "azure-managed-lustre",
       "locale": "en-us",
       "monikers": [],
-      "moniker_ranges": [
-        ">=azloc-2408"
-      ],
+      "moniker_ranges": [],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
@@ -45,12 +44,14 @@
       "template_folder": "_themes"
     },
     {
-      "docset_name": "azure-managed-lustre",
-      "build_source_folder": "azure-managed-lustre",
-      "build_output_subfolder": "azure-managed-lustre",
+      "docset_name": "AzureLocal",
+      "build_source_folder": "azure-local",
+      "build_output_subfolder": "AzureLocal",
       "locale": "en-us",
       "monikers": [],
-      "moniker_ranges": [],
+      "moniker_ranges": [
+        ">=azloc-2408"
+      ],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
