@@ -27,7 +27,7 @@ The following sections describe how you can back up the Trusted launch Arc VM an
 
 ## Back up the VM
 
-You can use [Export-VM](/powershell/module/hyper-v/export-vm?view=windowsserver2025-ps)(Hyper-V) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch Arc VM. You can then back up those VM files.
+You can use [Export-VM](/powershell/module/hyper-v/export-vm)(Hyper-V) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch Arc VM. You can then back up those VM files.
 
 Follow these steps to copy the VM GSP key from the key vault on the Azure Local system (where the VM resides) to a backup key vault on a different Azure Local system:
 
@@ -86,7 +86,7 @@ Run the following steps on the Azure Local system.
 
 ## Restore the VM
 
-In the event of a data loss, use the backup copy of your VM files, and restore the VM to a target Azure Local system using [Import-VM](/powershell/module/hyper-v/import-vm?view=windowsserver2025-ps)(Hyper-V). This restores all the VM files, including VMGS and VMRS files.
+In the event of a data loss, use the backup copy of your VM files, and restore the VM to a target Azure Local system using [Import-VM](/powershell/module/hyper-v/import-vm)(Hyper-V). This restores all the VM files, including VMGS and VMRS files.
 
 Follow these steps to copy the VM GSP key from the backup key vault in the Azure Local system (where the backup copy of the VM GSP key was stored) to the key vault on the target Azure Local system (where the VM needs to be restored).
 
