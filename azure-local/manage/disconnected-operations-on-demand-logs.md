@@ -7,7 +7,7 @@ ms.author: robess
 ms.date: 02/11/2025
 ---
 
-# Log collections on demand with Azure Local disconnected operations PowerShell Module
+# Collect logs on demand with Azure Local disconnected operations PowerShell Module
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
@@ -49,9 +49,9 @@ Use the following cmdlets and references to triage Azure Local issues.
 - `Send-AzStackHciDiagnosticData`. For more information, see [Get support for Azure Local deployment issues](/azure/azure-local/manage/get-support-for-deployment-issues).
 - `Get-SDDCDiagnosticInfo` and upload it to customer service and support (CSS) data transfer manager (DTM) share. For more information, see [Collect diagnostic data for clusters](/azure/azure-local/manage/collect-diagnostic-data).
 
-## Set up service principle for log collection
+## Set up a service principle
 
-There are a few prerequisites to perform to set up a service principle for log collection. Follow these steps:
+There are a few prerequisites you need to perform to set up a service principle for log collection. Follow these steps:
 
 1. Sign-in to Azure.
 
@@ -85,7 +85,7 @@ There are a few prerequisites to perform to set up a service principle for log c
 
 8. Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
 
-9. Run this command to set up the management endpoint client context.
+9. Set up the management endpoint client context. Run this script:
 
     ```azurecli
     Import-Module "<disconnected operations Module Folder Path>\Azure.Local.DisconnectedOperations.psd1" -Force
@@ -152,9 +152,9 @@ Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabili
 
 ## Log collection for a disconnected environment and accessible management endpoint
 
-For this scenario, the management API is used to copy logs from disconnected operations to a shared folder. Logs are then analyzed locally or manually uploaded to Microsoft via the `Send-DiagnsticsData` cmdlet.
+For this scenario, the management application programming interface (API) is used to copy logs from disconnected operations to a shared folder. Logs are then analyzed locally or manually uploaded to Microsoft via the `Send-DiagnsticsData` cmdlet.
 
-To trigger log collection if the management endpoint is accessible, follow these steps:
+To trigger log collection in this scenario, follow these steps:
 
 1. Trigger log collection. Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.
 
