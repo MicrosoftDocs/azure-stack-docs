@@ -11,7 +11,7 @@ ms.date: 02/19/2025
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article provides an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). This feature closely mirrors the AKS capabilities on Azure Local, and there are many references to Azure Local AKS articles. This article also highlights key differences or limitations associated with disconnected operations.
+This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You'll learn about key differences and limitations of disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 

@@ -11,9 +11,7 @@ ms.date: 09/19/2025
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article gives you a brief overview of the Azure Arc Virtual Machine (VM) management features for disconnected operations on Azure Local, including the benefits, components, and high-level workflow.
-
-This feature closely mirrors the Arc VM capabilities on Azure Local, and there are many references to Azure Local Arc VM articles. Key differences or limitations associated with disconnected operations are highlighted in this article.
+This article provides you with a brief overview of the Azure Arc Virtual Machine (VM) management features for disconnected operations on Azure Local. It includes the benefits, components, and high-level workflow. This feature closely mirrors Arc VM capabilities on Azure Local and references many Azure Local Arc VM articles. You'll learn about key differences and limitations of disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -23,12 +21,11 @@ Azure Arc VM management lets you set up and manage VMs in your on-premises Azure
 
 For more information, see [What is Azure Arc VM management for Azure Local](../manage/azure-arc-vm-management-overview.md).
 
-## Supported OS versions
+## Supported operating system (OS) versions
 
 Here's a list of supported OS versions for this preview:
 
-- Windows Server 2022
-- Windows Server 2025
+- Windows Server 2025 and 2022
 - Windows 10 Enterprise
 - Ubuntu 22.04
 
@@ -38,32 +35,32 @@ Arc VMs for Azure Local with disconnected operations have the following limitati
 
 ### VM images
 
-- Can only be created from a local share.
+- You can only create VM images from a local share.
+- You can only create VM images using Azure Command Line (CLI). This release doesn't support image creation via Azure portal.
 - Marketplace, Azure storage account, and images from an existing Arc VM aren't supported.
-- Can only be created using Azure Command Line (CLI); the portal isn't supported.
 
 ### Network interfaces
 
-Can only be created in CLI; the portal isn't supported.
+You can only create network interfaces in CLI. This release doesn't support network interface creation via Azure portal.
 
 ### Storage paths
 
-- Can only be created in CLI; the portal isn't supported.
-- Can't be deleted using CLI or the portal if connected to an Arc VM or VM image. First, delete the Arc VM and image using that storage path.
+- You can only create storage paths in CLI. This release doesn't support storage path creation via Azure portal.
+- You can't delete storage paths using CLI or the portal if they're connected to an Arc VM or VM image. First, delete the Arc VM and image using that storage path.
 
 ### Logical networks
 
-- Can only be created in CLI; the portal isn't supported.
-- Won't be fully loaded in the portal, but you can see and use them.
-- Deleting a logical network used by a network interface doesn't fail as expected; it deletes the network and results in a **Failed** state. To recover, recreate the logical network.
+- You can only create logical networks in CLI; the portal isn't supported.
+- You can see and use logical networks; however, they won't be fully loaded in the portal.
+- Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
 ### Proxy servers
 
-Not supported for connecting to outbound internet.
+Proxy servers aren't supported for connecting to outbound internet.
 
 ### Machine creation
 
-- Create a machine through the portal via **Machines** > **Azure Arc** > **Add/Create** > C**reate a machine in a connected host environment**.
+- You can create a virtual machine through the portal via **Machines** > **Azure Arc** > **Add/Create** > **Create a machine in a connected host environment**.
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
 ## Create Arc VMs
