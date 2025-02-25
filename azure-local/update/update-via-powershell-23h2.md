@@ -429,7 +429,7 @@ Follow these steps to track update progress using PowerShell.
     Get-SolutionUpdate -Id <ResourceId> | ft Version,State,UpdateStateProperties,HealthState
     ```
 
-    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local-version-23h2).
+    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local).
 
     Using the above command the following examples show how to monitor the update as it progresses through those phases using the `State` and `UpdateStateProperties` properties.
 
