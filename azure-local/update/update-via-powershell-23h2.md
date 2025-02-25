@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 02/25/2025
 ---
 
-# Update your Azure Local via PowerShell
+# Update Azure Local via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
