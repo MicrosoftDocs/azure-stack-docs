@@ -7,7 +7,7 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
-ms.date: 02/07/2024
+ms.date: 02/20/2025
 ---
 
 # Register Azure Stack HCI with Azure
@@ -18,14 +18,13 @@ ms.date: 02/07/2024
 
 [!INCLUDE [warning-22h2](../includes/hci-warning-deploy-22h2.md)]
 
-Now that you've deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register it with Azure.
+Now that you deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register it with Azure.
 
-This article describes how to register Azure Stack HCI with Azure via Windows Admin Center or PowerShell. For information on how to manage cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
-
+This article describes how to register Azure Stack HCI with Azure via Windows Admin Center or PowerShell. For information about how to manage cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
 
 ## About Azure Stack HCI registration
 
-Azure Stack HCI is delivered as an Azure service. As per the Azure online services terms, you must register your cluster within 30 days of installation. Your cluster isn't fully supported until your registration is active. If you don't register your cluster with Azure upon deployment, or if your cluster is registered but hasn't connected to Azure for more than 30 days, the system won't allow new virtual machines (VMs) to be created or added. For more information, see  [Job failure when attempting to create VM](troubleshoot-hci-registration.md#job-failure-when-attempting-to-create-vm).
+Azure Stack HCI is delivered as an Azure service. As per the Azure online services terms, you must register your cluster within 30 days of installation. Your cluster isn't fully supported until your registration is active. If you don't register your cluster with Azure upon deployment, or if your cluster is registered but hasn't connected to Azure for more than 30 days, the system doesn't allow new virtual machines (VMs) to be created or added. For more information, see  [Job failure when attempting to create VM](troubleshoot-hci-registration.md#job-failure-when-attempting-to-create-vm).
 
 After registration, an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster. Starting with Azure Stack HCI, version 21H2, registering a cluster automatically creates an Azure Arc of the server resource for each server in the Azure Stack HCI cluster. This Azure Arc integration extends the Azure management plane to Azure Stack HCI. The Azure Arc integration enables periodic syncing of information between the Azure resource and the on-premises clusters.
 
@@ -39,20 +38,20 @@ Before you begin cluster registration, make sure the following prerequisites are
 
 - **Azure subscription and permissions.** Make sure you have an Azure subscription and you know the Azure region where the cluster resources should be created. For more information about Azure subscription and supported Azure regions, see [Azure requirements](../concepts/system-requirements.md#azure-requirements).
 
-- **Management computer.** Make sure you have access to a management computer with internet access. Your management computer must be joined to the same Active Directory domain in which you've created your Azure Stack HCI cluster.
+- **Management computer.** Make sure you have access to a management computer with internet access. Your management computer must be joined to the same Active Directory domain in which you created your Azure Stack HCI cluster.
 
 - **Windows Admin Center.** If you're using Windows Admin Center to register the cluster, make sure you:
 
-   - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). For registration, use the same Microsoft Entra ID (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Microsoft Entra ID**, and copy/paste your tenant ID.
+  - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). For registration, use the same Microsoft Entra ID (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Microsoft Entra ID**, and copy/paste your tenant ID.
 
-   - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
+  - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
 
 - **Azure policies.** Make sure you don't have any conflicting Azure policies that might interfere with cluster registration. Some of the common conflicting policies can be:
 
-   - **Resource group naming**: Azure Stack HCI registration provides two configuration parameters for naming resource groups: `-ResourceGroupName` and `-ArcServerResourceGroupName`. See [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) for details on the resource group naming. Make sure that the naming does not conflict with the existing policies.
-   - **Resource group tags**: Currently Azure Stack HCI does not support adding tags to resource groups during cluster registration. Make sure your policy accounts for this behavior.
-   - **.msi download**: Azure Stack HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you don't restrict these downloads.
-   - **Credentials lifetime**: By default, the Azure Stack HCI service requests two years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
+  - **Resource group naming**: Azure Stack HCI registration provides two configuration parameters for naming resource groups: `-ResourceGroupName` and `-ArcServerResourceGroupName`. See [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) for details on the resource group naming. Make sure that the naming does not conflict with the existing policies.
+  - **Resource group tags**: Currently Azure Stack HCI does not support adding tags to resource groups during cluster registration. Make sure your policy accounts for this behavior.
+  - **.msi download**: Azure Stack HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you don't restrict these downloads.
+  - **Credentials lifetime**: By default, the Azure Stack HCI service requests two years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
 
       > [!NOTE]
       > If you have a separate resource group for Arc-for-Server resources, we recommend using a resource group having Arc-for-Server resources related only to Azure Stack HCI. The Azure Stack HCI resource provider has permissions to manage any other Arc-for-Server resources in the **ArcServer** resource group.
@@ -68,7 +67,7 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 - **User Access Administrator** role: Required to Arc-enable each server of an Azure Stack HCI cluster.
 - **Contributor** role: Required to register and unregister the Azure Stack HCI cluster.
 
-   :::image type="content" source="media/register-with-azure/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/register-with-azure/access-control.png":::
+  :::image type="content" source="media/register-with-azure/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/register-with-azure/access-control.png":::
 
 ### Assign Azure permissions using PowerShell
 
@@ -103,13 +102,13 @@ Some admins may prefer a more restrictive option. In this case, it's possible to
    }
    ```
 
-2. Create the custom role:
+1. Create the custom role:
 
    ```powershell
    New-AzRoleDefinition -InputFile <path to customHCIRole.json>
    ```
 
-3. Assign the custom role to the user:
+1. Assign the custom role to the user:
 
    ```powershell
    $user = get-AzAdUser -DisplayName <userdisplayname>
@@ -133,13 +132,9 @@ You can register your Azure Stack HCI cluster using Windows Admin Center or Powe
 Follow these steps to register Azure Stack HCI with Azure via Windows Admin Center:
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
-
 1. Launch Windows Admin center and sign in to your Azure account. Go to **Settings** > **Account**, and then select **Sign in** under **Azure Account**.
-
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
-
 1. Under **Cluster connections**, select the cluster you want to register.
-
 1. On **Dashboard**, under **Azure Arc**, check the status of **Azure Stack HCI registration** and **Arc-enabled servers**.
 
    - **Not configured** means your cluster isn't registered.
@@ -151,9 +146,7 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
    > If you didn't register Windows Admin Center with Azure earlier, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
 1. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list.
-
 1. Select the Azure region from the drop-down menu.
-
 1. Select one of the following options to select the Azure Stack HCI resource group:
 
    - Select **Use existing** to create the Azure Stack HCI cluster and Arc for Server resources in an existing resource group.
@@ -169,7 +162,7 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
 Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you cannot run the commands from a management computer that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
 
 > [!NOTE]
-> You can’t use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy-via-portal.md).
+> You can't use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy-via-portal.md).
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
 
@@ -192,7 +185,7 @@ Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName server1 -Region "eastus" -TenantId "<tenant_id>"  
    ```
 
-   If the management computer has a GUI, you will get a login prompt, in which you provide the credentials to access the cluster nodes. If the management computer doesn't have a GUI, use the parameter `-credentials <credentials to log in to cluster nodes>` in the `Register-AzStackHCI` cmdlet.
+   If the management computer has a GUI, you get a login prompt, in which you provide the credentials to access the cluster nodes. If the management computer doesn't have a GUI, use the parameter `-credentials <credentials to log in to cluster nodes>` in the `Register-AzStackHCI` cmdlet.
 
    This syntax registers the cluster (of which **Server1** is a member) as the current user, and automatically Arc-enables the nodes by default. The command also places the HCI cluster resource as the `<on-prem cluster name>` Azure resource and all the Arc-for-Server resources as `<server name>` in the `<on-prem cluster name>-rg` resource group, in the specified region, subscription, and tenant with the default cloud environment (AzureCloud). You can use the optional `-ResourceGroupName` and `-ArcServerResourceGroupName` parameters to this cmdlet.
 
@@ -206,11 +199,11 @@ Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you
    >
    > If you're registering in Azure Government, use `-EnvironmentName "AzureUSGovernment" -Region "UsGovVirginia"`.
 
-1. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 3. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, follow the device code-based login workflow, as guided on the console. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
+1. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 3. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, follow the device code-based login workflow, as guided on the console. The registration workflow detects when you log in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
 
 ---
 
-## Additional registration options
+## Other registration options
 
 You have other options to register your cluster:
 
@@ -219,7 +212,7 @@ You have other options to register your cluster:
 
 ## Manage cluster registration
 
-After you've registered your cluster with Azure, you can manage its registration through Windows Admin Center, PowerShell, or the Azure portal.
+After you register your cluster with Azure, you can manage its registration through Windows Admin Center, PowerShell, or the Azure portal.
 
 Depending on your cluster configuration and requirements, you may need to take the following actions to manage the cluster registration:
 
