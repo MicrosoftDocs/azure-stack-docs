@@ -121,17 +121,16 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     ```azurecli
     curl.exe -o "C:\\ClusterStorage\\UserStorage_1\\testimage.vhdx" "https://ostempfolder.z13.web.core.windows.net/17763.30320.amd64fre.rs5_release_svc_asdb_2303b.230128-1700_client_enterprise_en-us_vl.vhdx"
     az stack-hci-vm image create `
-    --resource-group $resource_group `
-    --custom-location $customLocationID `
-    --location $location `
-    --storage-path-id $storagePathID `
-    --image-path "C:\\ClusterStorage\\UserStorage_1\\testimage.vhdx" `
-    --name "test-gallery-image" `
-    --os-type "Windows"
+        --resource-group $resource_group `
+        --custom-location $customLocationID `
+        --location $location `
+        --storage-path-id $storagePathID `
+        --image-path "C:\\ClusterStorage\\UserStorage_1\\testimage.vhdx" `
+        --name "test-gallery-image" `
+        --os-type "Windows"
     ```
 
     For an Ubuntu image, see [Prepare an Ubuntu image for Azure Local virtual machines](../manage/virtual-machine-image-linux-sysprep.md).
-
 
 5. [Create logical network](../manage/create-logical-networks.md). For this preview release, see the [limitations](#limitations) section.
 
