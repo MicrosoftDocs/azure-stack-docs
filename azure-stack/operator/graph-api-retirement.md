@@ -4,7 +4,7 @@ description: Learn how to mitigate the retirement of the Entra ID Graph API.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 02/05/2025
+ms.date: 02/25/2025
 ms.reviewer: rtiberiu
 
 ---
