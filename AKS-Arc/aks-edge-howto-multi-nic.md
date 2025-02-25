@@ -4,7 +4,7 @@ description: Learn how to attach multiple network interfaces to an AKS Edge Esse
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/12/2024
+ms.date: 02/25/2025
 ms.custom: template-how-to, linux-related-content
 ---
 
@@ -61,19 +61,11 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 ## Verify multiple NIC network configuration settings
 
-After you successfully install and deploy the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node:
+After you successfully install and deploy the AKS Edge Essentials node, follow these steps to make sure both the primary and secondary interfaces were created and added to the Linux node. To check the interfaces, run the following command:
 
-1. Check the primary interface:
-
-   ```powershell
-   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr eth0"
-   ```
-
-1. Check the secondary network interface. If you added more than one extra interface, it appears as **ethX** with **X** being the number of extra network interfaces:
-
-   ```powershell
-   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr eth1"
-   ```
+```powershell
+Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr"
+```
 
 ## Configure Multus CNI plugin
 
