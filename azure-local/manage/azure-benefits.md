@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/28/2023
+ms.date: 02/21/2025
 ms.lastreviewed: 02/23/2024
 ---
 
@@ -18,11 +18,11 @@ ms.lastreviewed: 02/23/2024
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
 > [!NOTE]
-> This article is for Azure Stack HCI version 22H2 and earlier only. For a list of benefits associated with version 23H2 and later, see [Azure verification for VMs](../deploy/azure-verification.md).
+> This article is only for Azure Stack HCI version 22H2 and earlier. For a list of benefits associated with version 23H2 and later, see [Azure verification for VMs](../deploy/azure-verification.md).
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-*Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no extra cost. If you have Windows Server workloads, we recommend turning it on. 
+*Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no extra cost. If you have Windows Server workloads, we recommend turning it on.
 
 Take a few minutes to watch the introductory video on Azure Benefits:
 
@@ -56,12 +56,12 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
    > [!NOTE]
    > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30 day connectivity requirements for Azure Stack HCI, no user action is required.
 
-2. HciSvc exposes a private and non-routable REST endpoint, accessible only to VMs on the same server. To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI host (named *AZSHCI_HOST-IMDS_DO_NOT_MODIFY*). VMs then must have a NIC configured and attached to the same vSwitch (*AZSHCI_GUEST-IMDS_DO_NOT_MODIFY*).
+1. HciSvc exposes a private and non-routable REST endpoint, accessible only to VMs on the same server. To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI host (named **AZSHCI_HOST-IMDS_DO_NOT_MODIFY**). VMs then must have a NIC configured and attached to the same vSwitch (**AZSHCI_GUEST-IMDS_DO_NOT_MODIFY**).
 
    > [!NOTE]
    > Modifying or deleting this switch and NIC prevents Azure Benefits from working properly. If errors occur, disable Azure Benefits using Windows Admin Center or the PowerShell instructions that follow, and then try again.
 
-3. Consumer workloads (for example, Windows Server Azure Edition guests) request attestation. HciSvc then signs the response with an Azure certificate.
+1. Consumer workloads (for example, Windows Server Azure Edition guests) request attestation. HciSvc then signs the response with an Azure certificate.
 
    > [!NOTE]
    > You must manually enable access for each VM that needs Azure Benefits.
@@ -89,15 +89,15 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure Benefits**.
 
-2. In the **Azure Benefits** pane, select **Turn on**. By default, the checkbox to turn on for all existing VMs is selected. You can deselect it and manually add VMs later.
+1. In the **Azure Benefits** pane, select **Turn on**. By default, the checkbox to turn on for all existing VMs is selected. You can deselect it and manually add VMs later.
 
-3. Select **Turn on** again to confirm setup. It may take a few minutes for servers to reflect the changes.
+1. Select **Turn on** again to confirm setup. It may take a few minutes for servers to reflect the changes.
 
-4. When Azure Benefits setup is successful, the page updates to show the Azure Benefits dashboard. To check Azure Benefits for the host:
+1. When Azure Benefits setup is successful, the page updates to show the Azure Benefits dashboard. To check Azure Benefits for the host:
    1. Check that **Azure Benefits cluster status** appears as **On**.
    2. Under the **Cluster** tab in the dashboard, check that Azure Benefits for every server shows as **Active** in the table.
 
-5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
+1. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
 :::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Screenshot of Azure Benefits in Windows Admin Center.":::
 
@@ -115,7 +115,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
    Enable-AzStackHCIAttestation -AddVM
    ```
 
-2. When Azure Benefits setup is successful, you can view the Azure Benefits status. Check the cluster property **IMDS Attestation** by running the following command:
+1. When Azure Benefits setup is successful, you can view the Azure Benefits status. Check the cluster property **IMDS Attestation** by running the following command:
 
    ```powershell
    Get-AzureStackHCI
@@ -127,15 +127,16 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
    Get-AzureStackHCIAttestation [[-ComputerName] <string>]
    ```
 
-3. To check access to Azure Benefits for VMs, run the following command:
+1. To check access to Azure Benefits for VMs, run the following command:
 
    ```powershell
    Get-AzStackHCIVMAttestation
    ```
 
 ## [Azure portal](#tab/azureportal)
+
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
-2. Under the feature **Enable Azure Benefits**, view the host attestation status:
+1. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
    :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Screenshot of Azure Benefit Attestation status." lightbox="media/azure-benefits/attestation-status.png":::
 
@@ -145,7 +146,8 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Benefits following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and cluster name:
+
     ```azurecli
     subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     resourceGroup="hcicluster-rg" # Replace with your resource group name
@@ -155,7 +157,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
     ```
 
 1. To view Azure Benefits status on a cluster, run the following command:
-    ```azurecli    
+
+    ```azurecli
     az stack-hci cluster list \
     --resource-group "${resourceGroup}" \
     --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.imdsAttestation}" \
@@ -183,6 +186,7 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
    ```powershell
    Add-AzStackHCIVMAttestation -AddAll
    ```
+
 - Optionally, to check that the VMs can access Azure Benefits on the host, run the following command on the VM:
 
   ```powershell
