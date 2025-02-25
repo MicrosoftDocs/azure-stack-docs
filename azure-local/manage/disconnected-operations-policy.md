@@ -17,9 +17,9 @@ This article describes how to use Azure Policy in a disconnected Azure Local env
 
 ## About using Azure Policy in Azure Local disconnected
 
-Azure Policy ensures compliance with organizational standards by comparing resource properties to business rules. These rules, described in JSON format are known as policy definitions. You can assign these rules to various scopes, such as subscriptions or individual resources within the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
+Azure Policy ensures compliance with organizational standards by comparing resource properties to business rules. These rules, described in JSON format, are known as policy definitions. You can assign these rules to various scopes, such as subscriptions or individual resources within the Resource Manager scope. For more information, see [Overview of Azure Policy](/azure/governance/policy/overview).
 
-For Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and servers. Selected built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators can enable these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement varies based on the policy type.
+For Azure Local disconnected operations, policy enforcement supports Arc-enabled Kubernetes and Arc-enabled servers. Selected built-in policy definitions are included in the Azure Local disconnected operations deployment. Operators can enable these policies by creating policy assignments on the target scope using the disconnected operations portal or CLI. Enforcement varies based on the policy type.
 
 ## Benefits
 
@@ -33,7 +33,7 @@ With Azure Policy in a disconnected Azure Local environment, you can:
 
 ## Prerequisites
 
-A policy assignment must be created before resources can be created. This ensures the resources are checked for compliance.
+Create a policy assignment before you create resources. This ensures the resources are checked for compliance.
 
 <!--## Restrictions and limitations
 
@@ -48,7 +48,7 @@ Consider these limitations when using Azure Policy:
 
 ## Supported built-in policies
 
-In this table, you can find the built-in policies that are supported for Azure Local disconnected operations.
+The following table summarizes the built-in policies supported for Azure Local disconnected operations.
 
 | Policy name | Policy ID | Description | Azure documentation link |
 |--|--|--|--|
@@ -72,7 +72,7 @@ In this table, you can find the built-in policies that are supported for Azure L
 | Category: Azure Kubernetes Service |  |  |  |
 | Kubernetes cluster containers CPU and memory resource limits shouldn't exceed the specified limits | e345eecc-fa47-480f-9e88-67dcc122b164 | - Enforce container CPU and memory resource limits to prevent resource exhaustion attacks in a Kubernetes cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster containers should only use allowed images | febd0533-8e55-448f-b837-bd0e06f16469 | - Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues, and malicious images.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
-| Kubernetes cluster pod hostPath volumes should only use allowed host paths | 098fc59e-46c7-4d99-9b16-64990e543d75 | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
+| Kubernetes cluster pod hostPath volumes should only use allowed host paths | 098fc59e-46c7-4d99-9b16-64990e543d75 | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Azure Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Category: Guest configuration |  |  |  |
 | Configure Linux Server to disable local users. | cd22fc48-f2c9-4b86-98d3-ec1268b46a8a | - Creates a Guest Configuration assignment to configure disabling local users on Linux Server.<br>- This policy ensures that only a Microsoft Entra account or a list of explicitly allowed users can access Linux servers, improving overall security posture. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure secure communication protocols, Transport Layer Security (TLS) 1.1, or TLS 1.2 on Windows servers | 828ba269-bf7f-4082-83dd-633417bc391d | - Creates a Guest Configuration assignment to configure specified secure protocol version (TLS 1.1 or TLS 1.2) on Windows machine.|  [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
@@ -111,7 +111,7 @@ You can use Azure Policy to enforce tags on resource groups created through disc
 
     :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name" lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
 
-After the policy is created, you're prevented from creating resource groups without the required tag.
+After the policy is created, you can't create resource groups without the required tag.
 
 :::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups" lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 

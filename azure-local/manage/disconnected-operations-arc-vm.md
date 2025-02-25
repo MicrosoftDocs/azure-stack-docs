@@ -4,7 +4,7 @@ description: Learn how to manage Azure Arc VMs with disconnected operations for 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 09/19/2025
+ms.date: 02/19/2025
 ---
 
 # Arc VMs for Azure Local with disconnected operations (preview)
@@ -60,7 +60,7 @@ Proxy servers aren't supported for connecting to outbound internet.
 
 ### Machine creation
 
-- You can create a virtual machine through the portal via **Machines** > **Azure Arc** > **Add/Create** > **Create a machine in a connected host environment**.
+- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**.
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
 ## Create Arc VMs
@@ -76,7 +76,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 
     - Use the built-in RBAC roles to control access to VMs and VM resources.
 
-3. [Create a storage path](../manage/create-storage-path.md). For this preview also refer to the [limitations](#limitations) section.
+3. [Create a storage path](../manage/create-storage-path.md). For this preview release, see the [limitations](#limitations) section.
 
     Here's an example script.
 
@@ -93,7 +93,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 
     # Check and update variables according to your environment.
 
-    $subscriptionId  = "3d926709-1015-a8cc-3003-08439e143d37"  # The starter subscription Id
+    $subscriptionId  = "<SubscriptonId>"  # The starter subscription Id
     $resource_group = "disconnected-test-rg"
     $customloc_name = "s-cluster-customlocation"
     $customLocationID="/subscriptions/$SubscriptionId/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name"
@@ -114,7 +114,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     $storagePathID=(az stack-hci-vm storagepath show --name "New_StoragePath" --resource-group $resource_group --query id -o tsv)
     ```
 
-4. [Create a VM image](../manage/virtual-machine-image-local-share.md) on Azure Local machines with access to the ClusterStorage. For this preview also refer to the [limitations](#limitations) section.
+4. [Create a VM image](../manage/virtual-machine-image-local-share.md). The image should reside on a cluster shared volume available to all the machines in the instance. The default path can be C:\\ClusterStorage. For this preview release, see the [limitations](#limitations) section.
 
     Here's an example script.
 
@@ -133,7 +133,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     For an Ubuntu image, see [Prepare an Ubuntu image for Azure Local virtual machines](../manage/virtual-machine-image-linux-sysprep.md).
 
 
-5. [Create logical networks](../manage/create-logical-networks.md). For this preview also refer to the [limitations](#limitations) section.
+5. [Create logical network](../manage/create-logical-networks.md). For this preview release, see the [limitations](#limitations) section.
 
     Here's an example script:
 
@@ -143,7 +143,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     # You can find them in: C:\CloudDeployment\FullEnvironment.json
 
     # Find the “HostNetwork”, “Intents”, “Name” for the vm-switch-name 
-    # Find the “"InfrastructureNetwork": section under “DeploymentData” to find the IP address details
+    # Find the "InfrastructureNetwork": section under “DeploymentData” to find the IP address details
 
     az stack-hci-vm network lnet create `
         --resource-group $resource_group `
@@ -159,7 +159,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --dns-servers "192.168.200.222"
     ```
 
-6. [Create network interfaces](../manage/create-network-interfaces.md). For this preview also refer to the [limitations](#limitations) section.
+6. [Create network interfaces](../manage/create-network-interfaces.md). For this preview release, see the [limitations](#limitations) section.
 
     ```azurecli
     # Pick an ip-address between ip-pool-start and ip-pool-end from LNET.
@@ -173,7 +173,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --ip-address "192.168.200.185"        
     ```
 
-7. [Create Arc VMs](../manage/create-arc-virtual-machines.md). For this preview also refer to the [limitations](#limitations) section.
+7. [Create Arc VMs](../manage/create-arc-virtual-machines.md). For this preview release, see the [limitations](#limitations) section.
 
     ```azurecli
     az stack-hci-vm create `
@@ -190,8 +190,8 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --name "test-vm" `
         --enable-agent true
     ```
-    
-    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create a container registry from the Portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
+
+    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Arc VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
 ## Manage Arc VMs and VM resources
 
@@ -201,7 +201,7 @@ For Arc VM resources:
 
 - If you remove a data disk interface used by a VM, the command doesn't fail as expected. Instead, it deletes the data disk interface and results in an incorrect provisioning state as **Failed**.
 
-- To restore the provisioning state to **Succeeded**, you need to recreate the data disk interface.
+- To restore the provisioning state to **Succeeded**, you need to recreate the data disk.
 
 ## Manage VM extensions
 
@@ -219,4 +219,4 @@ Here are some extra resources to help you manage Azure Arc VMs on Azure Local:
 
 - [Azure Arc VM management FAQ](../manage/azure-arc-vms-faq.yml).
 
-<!--## Next steps-->
+<!--## Related content-->

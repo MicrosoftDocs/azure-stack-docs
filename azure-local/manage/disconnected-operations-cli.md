@@ -40,10 +40,10 @@ To install the CLI, follow these steps:
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
-For disconnected operations you must:
+For disconnected operations, you must:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
-2. [Set up certificates for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
+2. [Set up and configure the certificate trusts for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
 3. Change the path to the 64-bit version: `C:\Program Files\Microsoft SDKs\Azure\CLI2`.
 
 ## Configure Azure CLI  
