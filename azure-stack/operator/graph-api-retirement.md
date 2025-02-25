@@ -15,7 +15,7 @@ The Microsoft Entra ID (formerly Azure Active Directory or Azure AD) [Graph API 
 
 ## Mitigation steps
 
-The Graph API retirement affects all Azure Stack Hub customers that use Entra ID as the identity provider, and requires you to run the script included in this article for all impacted applications. If you have applications that need continued access to the Graph APIs, the script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+The Graph API retirement affects all Azure Stack Hub customers that use Entra ID as the identity provider, and requires you to run the script included in this article for all impacted applications. If you have applications that need continued access to the Graph APIs, the script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API.
 
 The PowerShell script provided in this article sets a flag for each application to configure the Graph API extension for each Entra ID identity provider of Azure Stack Hub.
 
