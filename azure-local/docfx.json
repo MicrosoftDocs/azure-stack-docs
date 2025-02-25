@@ -2,6 +2,24 @@
   "build": {
     "content": [
       {
+        "group": "version-azlocal",
+        "src" : "./",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -34,13 +52,29 @@
           "**/docfx.json",
           "_repo.en-us/**"
         ]
+      },
+      {
+        "files": [
+          "**/*.png",
+          "**/*.svg",
+          "**/*.jpg",
+          "**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ],
+        "src": "./",
+        "group": "version-azlocal"
       }
     ],
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
       "uhfHeaderId": "Azure",
-      "breadcrumb_path": "../azure-local/breadcrumb/toc.yml",
+      "breadcrumb_path": "/azure/azure-local/breadcrumb/toc.json",
       "feedback_system": "Standard",
       "permissioned-type": "public",
       "ms.service": "azure-local",
@@ -49,7 +83,18 @@
       "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
     },
-    "fileMetadata": {},
-    "template": []
+    "fileMetadata": {
+      "monikerRange": {
+      "./*.md": ">=azloc-24081 || =azloc-previous",
+      "./*.yml": ">=azloc-24081 || =azloc-previous"
+      }
+    },
+    "template": [],
+    "groups": {
+      "version-azlocal": {
+        "moniker_range": ">=azloc-24081 || =azloc-previous",
+        "dest": "azure-local"
+      }
+    }
   }
 }

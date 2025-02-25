@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 02/14/2025
 ---
 
-# Security features for Azure Local, version 23H2
+# Security features for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -36,7 +36,7 @@ For more information, see [Manage security defaults on Azure Local](../manage/ma
 
 ## Application Control
 
-Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local, version 23H2](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
+Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
 
 Application Control provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about Application Control-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
@@ -88,7 +88,7 @@ For more information, see the full [List of option rules](/windows/security/appl
 Allow rules in the base policy allow all Microsoft components delivered by the OS and the cloud deployments to be trusted. Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
-> The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
+> The Allow and Deny rules in the base policy are updated regularly to improve product functionality and maximize protection of your solution.
 
 To learn more about Deny rules, see:
 
@@ -134,13 +134,13 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> Secret creation and rotation operations take about ten minutes to complete, depending on the size of the system.
+> Secret creation and rotation operations take about 10 minutes to complete, depending on the size of the system.
 
 For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
 ## Syslog forwarding of security events
 
-For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local, version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
+For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Local has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 
@@ -153,6 +153,17 @@ Syslog forwarding agents are deployed on every Azure Local host to forward syslo
 The syslog forwarder in Azure Local supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there's unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
+
+## Microsoft Defender Antivirus
+
+Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
+
+Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local to minimize potential functionality issues.
+
+For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
+
+> [!NOTE]
+> If you remove the Microsoft Defender Antivirus feature, leave the settings associated with the feature from the security baseline as-is. You don't need to remove these settings.
 
 ## Microsoft Defender for Cloud (preview)
 

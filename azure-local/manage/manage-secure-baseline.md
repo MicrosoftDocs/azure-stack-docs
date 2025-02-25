@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/12/2024
+ms.date: 02/03/2025
 ---
 
-# Manage security defaults for Azure Local, version 23H2
+# Manage security defaults for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -16,7 +16,7 @@ This article describes how to manage default security settings for your Azure Lo
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local, version 23H2 system that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local system that is deployed, registered, and connected to Azure.
 
 ## View security default settings in the Azure portal
 

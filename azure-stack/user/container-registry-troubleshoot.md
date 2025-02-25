@@ -2,7 +2,7 @@
 title: Troubleshoot issues in Azure Container Registry on Azure Stack Hub 
 description: Find answers to common issues with Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
-ms.topic: reference
+ms.topic: troubleshooting
 ms.date: 07/25/2024
 ms.author: sethm
 ms.reviewer: dgarrity

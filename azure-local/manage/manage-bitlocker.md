@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 02/19/2025
 ---
 
-# Manage BitLocker encryption on Azure Local, version 23H2
+# Manage BitLocker encryption on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -16,7 +16,7 @@ This article describes how to view and enable BitLocker encryption, and retrieve
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local, version 23H2 instance that is deployed, registered, and connected to Azure.
+Before you begin, make sure that you have access to an Azure Local instance that is deployed, registered, and connected to Azure.
 
 ## View BitLocker settings via Azure portal
 
@@ -121,4 +121,6 @@ Follow these steps to export the recovery keys for your cluster:
 
 ## Next steps
 
-- [Use BitLocker with Cluster Shared Volumes](../manage/bitlocker-on-csv.md#use-bitlocker-with-cluster-shared-volumes).
+For more information about Bitlocker integration with Cluster Shared Volumes, see:
+
+- [Use BitLocker with Cluster Shared Volumes](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
