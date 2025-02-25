@@ -61,7 +61,7 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 ## Verify multiple NIC network configuration settings
 
-After you successfully install and deploy the AKS Edge Essentials node, follow these steps to make sure the primary interface was created and added to the Linux node. To check the primary interface, run the following command:
+After you successfully install and deploy the AKS Edge Essentials node, follow these steps to make sure both the primary and secondary interfaces were created and added to the Linux node. To check the interfaces, run the following command:
 
 ```powershell
 Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr"
