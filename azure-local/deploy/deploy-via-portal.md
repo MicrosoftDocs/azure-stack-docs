@@ -24,7 +24,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Open a web browser and navigate to [**Azure portal**](https://portal.azure.com). Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
-   :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
+   :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
 1. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
@@ -48,29 +48,29 @@ This article helps you deploy an Azure Local instance using the Azure portal.
     1. Select one or more machines that make up this Azure Local instance. These machines show as missing Arc extensions.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
 
 1. Select **Install extensions**. This action installs Arc extensions on the selected machines. This operation takes several minutes. Refresh the page to view the status of the extension installation.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Install extensions on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
     
     After the extensions are installed successfully, the status of the machine updates to **Ready**.
 
 1. **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
 
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty key vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
 1. On the **Create a new key vault** page, provide information for the specified parameters and select **Create**:
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new key vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
     1. Accept the suggested name or provide a name for the key vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The key vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the key vault. Select **Grant key vault permissions**.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of key vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
 
     The key vault adds cost in addition to the Azure Local subscription. For details, see [Key vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing key vault.
 
@@ -106,7 +106,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - Group management and compute traffic
     - Custom configuration
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the No switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
     If you selected a **Network switch** for storage, more patterns are available based on how you intend to group the traffic:
 
@@ -121,7 +121,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
     <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option select on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
    > [!TIP]
    > If you're deploying a single machine that you plan to add machines to later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
@@ -148,7 +148,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Customized network settings on the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
 
     - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **System traffic priority** - Choose from 5, 6 or 7.
