@@ -3,7 +3,7 @@ title: Azure Local observability
 description: Learn about observability in Azure Local.
 author: alkohli
 ms.author: alkohli
-ms.date: 02/25/2025
+ms.date: 02/26/2025
 ms.topic: conceptual
 ms.service: azure-local
 ---
@@ -132,13 +132,13 @@ To use the crash dump collection feature, make sure you complete the following p
 To disable the crash dump collection capability, use the following command:
 
 ```powershell
-Set-EdgeCrashDumpCollection- -Disable
+Set-EdgeCrashDumpCollection -SetState Disable
 ```
 
 To re-enable it, use the following command:
 
 ```powershell
- Set-EdgeCrashDumpCollection- -Enable
+Set-EdgeCrashDumpCollection -SetState Enable
 ```
 
 ## Next steps
