@@ -11,7 +11,7 @@ ms.date: 02/25/2025
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the various phases of solution updates that are applied to your Azure Local to keep it up-to-date.
+This article describes the various phases of solution updates that are applied to your Azure Local to keep it up to date.
 
 The procedure in this article applies to both single node and multi-node systems that are running the latest version of Azure Local with the orchestrator installed.
 

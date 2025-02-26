@@ -97,7 +97,7 @@ The PowerShell procedures apply to both single-node and multi-node systems that 
 
 ### The Azure portal
 
-You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update your Azure Local](./azure-update-manager-23h2.md).
+You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update Azure Local](./azure-update-manager-23h2.md).
 
 ### Unsupported interfaces for updates
 
