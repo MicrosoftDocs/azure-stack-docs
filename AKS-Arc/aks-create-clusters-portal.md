@@ -4,7 +4,7 @@ description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 02/26/2025
 ms.reviewer: guanghu
 ms.lastreviewed: 01/30/2024
 ---
@@ -49,7 +49,7 @@ This article describes how to create Kubernetes clusters in Azure Local using th
      - You can leave the default values selected, or change the default value from the drop down list.
    - **SSH Keys**
      - SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use.
-     - You can use an existing SSH key or generate a new key pair during cluster creation. For information about how to create new SSH keys from the Azure portal, see [Create and manage SSH keys in the portal](/azure/virtual-machines/ssh-keys-portal#generate-new-keys).
+     - You can use an existing SSH key or generate a new key pair during cluster creation. For information about how to create new SSH keys from the Azure portal, see [Create and store SSH keys in the portal](/azure/virtual-machines/ssh-keys-portal#generate-new-keys).
      - To **Use an existing public key by providing the SSH public key value**, provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format.
 
 1. Select **Next: Node pools** when complete.
