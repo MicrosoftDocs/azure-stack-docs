@@ -52,11 +52,14 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
-> [!NOTE]
-> - SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use. To access nodes, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
-> - You can use a pre-existing SSH key or [configure SSH keys for an AKS cluster](configure-ssh-keys.md) during cluster creation. If there's no pre-existing SSH key on your local machine, the `--generate-ssh-keys` parameter is required. You can also restrict SSH access by following [the documentation](restrict-ssh-access.md). For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli), or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
-> - If you don't include `--generate-ssh-keys` during cluster creation and no SSH key exists, you receive an error message. If you already have an SSH key on your local machine, the AKS cluster reuses it. In this case, it makes no difference whether you specify `--generate-ssh-keys` or not.
-> - By default, the SSH key is stored at **~/.ssh/id_rsa.pub**. During cluster creation, you can specify an alternate location using the `--ssh-key-value` parameter.
+### Considerations
+
+Note the following considerations when you create a cluster:
+
+- SSH keys are essential for troubleshooting and log collection. Be sure to save your private key file for future use. To access nodes, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+- You can use a pre-existing SSH key or [configure SSH keys for an AKS cluster](configure-ssh-keys.md) during cluster creation. If there's no pre-existing SSH key on your local machine, the `--generate-ssh-keys` parameter is required. You can also restrict SSH access by following [the documentation](restrict-ssh-access.md). For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli), or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
+- If you don't include `--generate-ssh-keys` during cluster creation and no SSH key exists, you receive an error message. If you already have an SSH key on your local machine, the AKS cluster reuses it. In this case, it makes no difference whether you specify `--generate-ssh-keys` or not.
+- By default, the SSH key is stored at **~/.ssh/id_rsa.pub**. During cluster creation, you can specify an alternate location using the `--ssh-key-value` parameter.
 
 > [!IMPORTANT]
 > To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-23h2) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
