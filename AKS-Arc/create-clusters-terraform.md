@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters using Terraform.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 02/26/2025
 
 ---
 
@@ -32,16 +32,16 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Create an SSH key pair
 
-Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and manage SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 
 1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
-1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
 
    ```azurecli
    az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
    ```
 
-   or  the `ssh-keygen` command
+   or, use the `ssh-keygen` command:
 
    ```azurecli
    ssh-keygen -t rsa -b 4096 
@@ -49,7 +49,7 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 
 1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
 
-For additional options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
 
 ## Sign in to Azure
 
