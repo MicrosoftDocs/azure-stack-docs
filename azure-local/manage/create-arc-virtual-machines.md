@@ -7,7 +7,7 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 01/29/2025
+ms.date: 02/24/2025
 ---
 
 # Create Arc virtual machines on Azure Local
@@ -95,7 +95,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation.
 
 > [!NOTE]
-> If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+> If you need more than one network interface with static IPs for your VM, create one or more interfaces now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, isn't supported.
 
 Here we create a VM that uses specific memory and processor counts on a specified storage path.
 
@@ -182,7 +182,7 @@ If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is au
 When creating an Arc VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
 
 - `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on Arc VMs.
-- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 do not support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
+- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM
 
@@ -199,7 +199,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
-Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration.
+Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
 
 As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
@@ -279,7 +279,7 @@ Follow these steps in Azure portal for your Azure Local.
 
    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
-        1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
+        1. If you selected a Windows image, provide a username and password for the administrator account, and then confirm the password.
  
         <!--:::image type="content" source="./media/create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 
@@ -302,7 +302,7 @@ Follow these steps in Azure portal for your Azure Local.
 1. In the VM proxy configuration section, to configure a proxy for your Arc VM, input the following parameters:
 
     > [!NOTE]
-    > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM are not necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+    > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
     :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
 
@@ -354,11 +354,11 @@ Follow these steps in Azure portal for your Azure Local.
 
     > [!NOTE]
     > - If you enabled guest management, you must add at least one network interface.
-    > - If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+    > - If you need more than one network interface with static IPs for your VM, create one or more interfaces now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, isn't supported.
 
-    :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/add-new-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-network-interface.png":::
 
-    1. Provide a **Name** for the network interface. 
+    1. Provide a **Name** for the network interface.
     1. From the drop-down list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
     1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
