@@ -1,7 +1,7 @@
 ---
 title: System requirements for AKS enabled by Azure Arc on Azure Local 22H2
 description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local 22H2.
-ms.date: 02/13/2024
+ms.date: 02/21/2025
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 

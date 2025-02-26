@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 07/26/2024
-ms.lastreviewed: 07/26/2024
+ms.date: 02/21/2025
+ms.lastreviewed: 02/21/2025
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -46,9 +46,15 @@ Before you begin, make sure you have the following prerequisites:
   ```
   
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
-- You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster:
-  - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
-  - To use the `--enable-azure-rbac` parameter, you need the **Role Based Access Control Administrator** role for access to the **Microsoft.Authorization/roleAssignments/write** permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
+- The following permissions are required to enable Azure RBAC when creating a Kubernetes cluster:
+  - To create a Kubernetes cluster, the [**Azure Kubernetes Service Arc Contributor**](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role is required.
+  - To use the `--enable-azure-rbac` parameter, the [**Role Based Access Control Administrator**](/azure/role-based-access-control/built-in-roles/privileged#role-based-access-control-administrator) role is required for access to the **Microsoft.Authorization/roleAssignments/write** permission.
+  - To assign these roles, use the [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) CLI command, or follow [Assign Azure roles using Azure CLI](/azure/role-based-access-control/role-assignments-cli):
+
+    ```azurecli
+    az role assignment create --assignee <assignee-object-id> --role <role-name-or-id> --scope $ARM_ID
+    ```
+    
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 - Once Azure RBAC is enabled, you can access your Kubernetes cluster with the given permissions using either direct mode or proxy mode.
   - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.

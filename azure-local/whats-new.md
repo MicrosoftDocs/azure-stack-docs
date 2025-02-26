@@ -5,16 +5,28 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/28/2025
+ms.date: 02/19/2025
 ---
 
 # What's new in Azure Local?
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+
+::: moniker range="=azloc-24113"
+
+## Features and improvements in 2411.3
+
+This is a baseline release with the following features and improvements:
+
+- **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
+- **Updated .NET version** - This build has an updated .NET version 8.0.13.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
+
+::: moniker-end
 
 ::: moniker range="=azloc-24112"
 
@@ -23,12 +35,12 @@ This article lists the various features and improvements that are available in A
 This is a baseline release with the following features and improvements:
 
 - **Arc VMs** - Here are the improvements made to Arc VMs in this release:
-    - **Azure marketplace images**: Three new Azure marketplace images are available in addition to the existing images. For more information, see the [List of Azure marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
+    - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
     - **Live migration**: Live migration is available for Arc VMs via on-premises tools. For more information, see [Live migration of Arc VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-arc-vms).
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
-For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues-2411-2.md#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-24112&preserve-view=true#fixed-issues).
 
 ::: moniker-end
 
@@ -44,7 +56,7 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
 
 ::: moniker-end
 
@@ -135,7 +147,7 @@ This is a baseline release with the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2408"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408
 
@@ -164,7 +176,7 @@ This release contains the following changes for Arc VM management:
 - The vLAN field on a logical network will default to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
-For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
+For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
 
 ### SBE changes
 
@@ -181,7 +193,7 @@ This release contains the following changes for SBE:
 
 ## Features and improvements in 2405.3
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-3.md) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ::: moniker-end
 
@@ -201,7 +213,7 @@ This is primarily a bug fix release with a few improvements.
   
 - **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
 
-  For more information, see [Fixed issues in 2405.2](./known-issues-2405-2.md#fixed-issues).
+  For more information, see [Fixed issues in 2405.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 - **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Local hardware including the Azure Local Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
 
@@ -217,7 +229,7 @@ This is primarily a bug fix release with a few improvements.
 - **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
 - **Multiple bug fixes related to Updates** were made in this release.
 
-For more information on bug fixes, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
+For more information on bug fixes, see the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ## Features and improvements in 2405
 
@@ -248,7 +260,7 @@ Here are the features and improvements in this release.
 
 - This release contains a fix for a deployment issue that is encountered when setting the diagnostic level in Azure and the device. <!--26737110-->
 
-For more information, see the [Fixed issues list in 2405](./known-issues-2405.md#fixed-issues).
+For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Updates changes
 
@@ -267,7 +279,7 @@ This release contains the following changes for updates:
   - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
   - An issue for Cluster-Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
 
-For more information, see the [Fixed issues list in in 2405](./known-issues-2405.md#fixed-issues).
+For more information, see the [Fixed issues list in in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Environment checker changes
 
@@ -322,15 +334,15 @@ For a list of the changes and improvements in AKS on Azure Local, see [What's ne
 
 ## Features and improvements in 2402.4
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-3.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.2
 
-This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:
+This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes. Here's the list of enhancements:
 
 - **Region expansion** - The following new regions are now supported on your Azure Local instance: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 - **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
@@ -338,7 +350,7 @@ This is primarily a bug fix release with a few enhancements. See the [Fixed issu
 
 ## Features and improvements in 2402.1
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-1.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402
 
@@ -377,11 +389,11 @@ This release includes the following updates to the security documentation:
 
 ## Features and improvements in 2311.5
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-5.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.4
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-4.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
@@ -415,7 +427,7 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 
 ### Add server and repair server changes
 
-- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
+- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Arc VM management changes
 

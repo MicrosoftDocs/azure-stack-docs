@@ -396,6 +396,34 @@
         href: iaas-architecture-sql-n-tier-multi-region.md
       - name: Network virtual appliances
         href: iaas-architecture-nva-architecture.md
+  - name: Patterns
+    items:
+    - name: Solution patterns and examples
+      href: overview-patterns-solution-examples.md
+    - name: Single 
+      items:
+          - name: Cross-cloud scaling
+            href: pattern-cross-cloud-scale.md
+          - name: DevOps hybrid CI/CD
+            href: pattern-cicd-pipeline.md
+          - name: Geo-distributed app
+            href: pattern-geo-distributed.md
+          - name: Hybrid relay
+            href: pattern-hybrid-relay.md
+          - name: Tiered data
+            href: pattern-tiered-data-analytics.md
+          - name: Train ML model at the edge
+            href: pattern-train-machine-learning-model-at-edge.md
+    - name: Multi
+      items:
+      - name: Cross-cloud scaling (on-premises data)
+        href: pattern-cross-cloud-scale-on-premises-data.md
+      - name: Footfall detection (retail)
+        href: pattern-retail-footfall-detection.md
+      - name: High availability Kubernetes cluster
+        href: pattern-highly-available-kubernetes.md      
+      - name: Out-of-stock detection at the edge
+        href: pattern-out-of-stock-at-edge.md
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
