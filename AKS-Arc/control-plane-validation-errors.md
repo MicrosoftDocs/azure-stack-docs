@@ -40,13 +40,13 @@ If you don't provide valid SSH key information during Kubernetes cluster creatio
 - LinuxProfile SSH public keys should be valid and non-empty.
 - Global LinuxProfile SSH public keys should be valid and non-empty.
 
-To mitigate the issue, see [Generate and store SSH keys with the Azure CLI](ssh-keys-azure-cli.md#generate-new-keys) to create the SSH keys. Then, [see Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
+To mitigate the issue, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, [see Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
 
 ## Control plane count and VM size
 
 In Kubernetes, control plane nodes manage and orchestrate the cluster. They run key components such as API Server, etcd, scheduler, etc. Control plane nodes maintain cluster state, schedule workloads, and ensure high availability, often using multiple nodes for redundancy.
 
-To successfully create an AKS Arc cluster, you must specify at least one control plane node count. Also, to maintain etcd quorum, the control plane node count should be an odd number. For more information about supported count and VM SKU options, see [Scale requirements for AKS on Azure Local](scale-requirements.md#support-count-for-aks-on-hci).
+To successfully create an AKS Arc cluster, you must specify at least one control plane node count. Also, to maintain etcd quorum, the control plane node count should be an odd number. For more information about supported count and VM SKU options, see [Scale requirements for AKS on Azure Local](scale-requirements.md#support-count-for-aks-on-azure-local).
 
 ## Next steps
 
