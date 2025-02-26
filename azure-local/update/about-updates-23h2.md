@@ -93,7 +93,7 @@ There are two interfaces you can use to apply available updates.
 
 ### PowerShell
 
-The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update your Azure Local via PowerShell](update-via-powershell-23h2.md).
+The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update Azure Local via PowerShell](update-via-powershell-23h2.md).
 
 ### The Azure portal
 
