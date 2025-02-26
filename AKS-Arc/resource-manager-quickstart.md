@@ -3,7 +3,7 @@ title: Deploy a Kubernetes (AKS) cluster using an Azure Resource Manager templat
 description: Learn how to deploy a Kubernetes cluster in AKS enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli
-ms.date: 12/18/2024
+ms.date: 02/26/2025
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
@@ -44,16 +44,16 @@ To deploy an ARM template, you need write access on the resources you're deployi
 
 ## Step 2: Create an SSH key pair
 
-Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see **Create and manage SSH keys with the [Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure Portal](/azure/virtual-machines/ssh-keys-portal)**.
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli), or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 
-1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
-1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
+1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:
 
    ```azurecli
    az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
    ```
 
-   or  the `ssh-keygen` command
+   or, use the `ssh-keygen` command:
 
    ```azurecli
    ssh-keygen -t rsa -b 4096 
@@ -61,7 +61,7 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 
 1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
 
-For additional options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
 
 
 ## Step 3: Review the template
