@@ -29,7 +29,7 @@ This article describes how to create Kubernetes clusters in Azure Local using th
 ## Create a Kubernetes cluster
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. On the Azure portal search bar, type Kubernetes Azure Arc.
+1. On the Azure portal search bar, type **Kubernetes Azure Arc**.
 1. Select **Add > Create a Kubernetes cluster with Azure Arc**:
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot showing cluster creation page on the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::

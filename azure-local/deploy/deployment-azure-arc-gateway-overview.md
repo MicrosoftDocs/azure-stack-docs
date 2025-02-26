@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/06/2025
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
