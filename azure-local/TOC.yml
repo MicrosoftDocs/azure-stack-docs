@@ -268,6 +268,8 @@ items:
    
     - name: Collect log files for Azure Arc VM
       href: manage/collect-log-files-arc-enabled-vms.md 
+    - name: Supported operations for Arc VMs
+      href: manage/virtual-machine-operations.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
