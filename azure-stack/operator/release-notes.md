@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/12/2025
+ms.date: 02/25/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -82,7 +82,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- ### Changes -->
 
-<!-- ### Fixes -->
+### Fixes
+
+- Fixed an issue in which the [**Deployments** blade under a subscription failed to load](known-issues.md?view=azs-2408&preserve-view=true#deployments-blade-under-subscription-fails-to-load).
 
 ## Security updates
 

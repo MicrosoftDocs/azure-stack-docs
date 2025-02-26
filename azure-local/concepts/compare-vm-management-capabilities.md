@@ -87,7 +87,7 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Extended Security Updates | ✅ <br>[3](#3) | ✅ <br>[3](#3) | ❌ |
 | **Windows management** |
 | - Windows Admin Center |❌|✅  <br>[1](#1) and [2](#2) |❌|
-| - Best Practices Assessment |✅|✅  <br>[1](#1) and [2](#2) |❌|
+| - Best Practices Assessment |❌|✅  <br>[1](#1) and [2](#2) |❌|
 | **Monitoring** |
 | - Azure Monitor |✅|✅|❌|
 | - Insights|✅|✅|❌|

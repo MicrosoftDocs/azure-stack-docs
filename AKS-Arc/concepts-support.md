@@ -3,7 +3,7 @@ title: Tested resource limits, VM sizes, and regions for AKS enabled by Azure Ar
 description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) enabled by Azure Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 12/21/2023
+ms.date: 02/20/2025
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
