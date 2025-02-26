@@ -51,7 +51,7 @@ You can only create network interfaces in CLI. This release doesn't support netw
 ### Logical networks
 
 - You can only create logical networks in CLI; the portal isn't supported.
-- You can see and use logical networks; however, they won't be fully loaded in the portal.
+- You can see and use logical networks; however, they may not be fully loaded in the portal.
 - Deleting a logical network used by a network interface doesn't fail as expected. It deletes the network and results in a **Failed** state. To recover, recreate the logical network.
 
 ### Proxy servers
@@ -60,7 +60,7 @@ Proxy servers aren't supported for connecting to outbound internet.
 
 ### Machine creation
 
-- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**.
+- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Arc VMs section.
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
 ## Create Arc VMs
