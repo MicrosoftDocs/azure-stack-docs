@@ -121,7 +121,7 @@ Here are the key features of crash dump collection for Azure Local:
 - **Compliance and security.** Ensures crash data is handled securely and in compliance with data protection regulations across all Azure regions and national clouds.
 - **Customizable settings.** Enabled by default for optimal performance and reliability, but can be disabled using specific commands if necessary. However, we recommend to keep it enabled to benefit from its diagnostic capabilities.
 
-## Prerequisites
+### Prerequisites
 
 To use the crash dump collection feature, make sure you complete the following prerequisites:
 
