@@ -23,8 +23,6 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 
 ## Prerequisites
 
-Before you begin, make sure you have:
-
 - [Azure CLI](disconnected-operations-cli.md) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
 - An understanding of AKS and Azure Arc concepts.
@@ -32,8 +30,7 @@ Before you begin, make sure you have:
 - Completed [Networking for Azure Local with disconnected operations (preview)](disconnected-operations-network.md).
 - Completed [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
 - Completed [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md#preview-participation-criteria).
-<!-- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
-- Completed [Deploy Azure Local with disconnected operations (preview)](disconnected-operations-deploy.md).-->
+- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
 
 ## Limitations
 
