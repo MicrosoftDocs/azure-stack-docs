@@ -20,7 +20,7 @@ Azure Local can host various types of VMs including Arc-enabled servers, traditi
 
 The architecture of VMs enabled by Arc, is specifically designed to be managed by the Azure control plane. However, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers have used these tools for years to manage their on-premises VMs.
 
-While IT admins can manage Azure Local VMs using the same tool and scripts, this practice could lead to synchronization issues between the Arc VMs and the Azure portal. The best way to manage these VMs is to make sure if the operations are supported in Azure portal only or supported by portal and local tools, manage these VMs via the portal. Use the local tools only if the operations are supported only by the local tools (and not via the portal).
+While IT admins can manage Azure Local VMs using the same tool and scripts, this practice could lead to synchronization issues between the Arc VMs and the Azure portal. The best way to manage these VMs is to make sure if the operations are supported in Azure portal and local tools, manage these VMs only via the Azure portal. Use the local tools only if the operations are supported only by the local tools (and not via the Azure portal).
 
 ## Supported VM operations
 
@@ -28,7 +28,7 @@ If an operation is supported in Azure portal, make sure to perform that operatio
 
 ### Using Azure portal
 
-The following operations are supported using Azure portal:
+The following operations are supported using the Azure portal:
 
 - Create VM.
 - Start VM.
@@ -58,7 +58,7 @@ The following VM operations are supported only using the Azure Command-Line Inte
 
 ### Using local tools
 
-The following VM operations are supported only using the local tools:
+The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and System Center Virtual Machine Manager (SCVMM):
 
 - Connect to VM.
 - Quick migrate a VM to another machine in the same system.
@@ -88,7 +88,7 @@ The following VM operations are supported only using the local tools:
 
 ## Unsupported VM operations
 
-The following VM operations aren't supported. These operations can't be performed using the Azure portal or the local tools.
+The following VM operations aren't supported. These operations can't be performed using the Azure portal, or the Azure CLI, or the local tools.
 
 - Live migrate a VM from one system to another.
 - Rename a VM.
