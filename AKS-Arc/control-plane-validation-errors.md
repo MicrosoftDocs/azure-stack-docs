@@ -40,7 +40,7 @@ If you don't provide valid SSH key information during Kubernetes cluster creatio
 - LinuxProfile SSH public keys should be valid and non-empty.
 - Global LinuxProfile SSH public keys should be valid and non-empty.
 
-To mitigate the issue, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, [see Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
+To mitigate the issue, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, see [Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
 
 ## Control plane count and VM size
 
