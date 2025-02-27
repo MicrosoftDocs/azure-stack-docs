@@ -1,5 +1,5 @@
 ---
-title: Connection issues with MetalLB or Kubernetes services of type Load Balancer
+title: Intermittent connectivity issues with MetalLB or Kubernetes services of type Load Balancer
 description: Learn how to mitigate connection issues with MetalLB or Kubernetes services of type Load Balancer.
 author: sethmanheim
 ms.author: sethm
@@ -8,7 +8,7 @@ ms.date: 02/26/2025
 
 ---
 
-# Connection issues with MetalLB or Kubernetes services of type Load Balancer
+# Intermittent connectivity issues with MetalLB or Kubernetes services of type Load Balancer
 
 You might sometimes experience intermittent connectivity issues when accessing a Kubernetes service of type **LoadBalancer** using the assigned external IP address. This article describes how to identify and resolve connection issues with MetalLB or Kubernetes services of type **LoadBalancer**.
 

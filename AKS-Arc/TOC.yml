@@ -148,8 +148,8 @@
       href: aks-troubleshoot.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
-    - name: Kubernetes load balancer issues
-      href: kubernetes-load-balancer-issues.md 
+    - name: Connectivity issues with MetalLB
+      href: load-balancer-issues.md 
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
     - name: Use diagnostic checker
