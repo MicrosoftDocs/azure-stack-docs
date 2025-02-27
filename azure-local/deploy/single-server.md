@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kimlam
 ms.lastreviewed: 01/17/2023
-ms.date: 01/31/2024
+ms.date: 02/27/2025
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -23,9 +23,9 @@ Currently you can't use Windows Admin Center to deploy Azure Stack HCI on a sing
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
+- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server once it has been deployed.
+- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server after it's deployed.
 
 ## Deploy on a single server
 
@@ -60,8 +60,8 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    ```
 
    > [!NOTE]
-   > - The cluster name should not exceed 15 characters.
-   > - The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
+   > - The cluster name shouldn't exceed 15 characters.
+   > - The `New-Cluster` command requires the `StaticAddress` parameter if the node isn't using DHCP for its IP address assignment. This parameter should be supplied with a new, available IP address on the node's subnet.
 
 1. Use [PowerShell](../deploy/register-with-azure.md?tab=power-shell#register-a-cluster) or [Windows Admin Center](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) to register the cluster.
 1. [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
