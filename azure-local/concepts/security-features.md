@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 02/26/2025
 ---
 
 # Security features for Azure Local
@@ -158,9 +158,21 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
 
-Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local to minimize potential functionality issues.
+Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, **we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local** to minimize potential functionality issues.
 
 For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
+
+In the rare instance that you experience any functionality issues with Azure Local using a third-party antivirus software, you can exclude the following paths:
+
+- C:\Agents\\*
+- C:\CloudContent\\*
+- C:\CloudDeployment\\*
+- C:\ClusterStorage\\*
+- C:\EceStore\\*
+- C:\MASLogs\\*
+- C:\NugetStore\\*
+- C:\deploymentpackage\\*
+- C:\ProgramData\GuestConfig\extension_logs\\*
 
 > [!NOTE]
 > If you remove the Microsoft Defender Antivirus feature, leave the settings associated with the feature from the security baseline as-is. You don't need to remove these settings.
