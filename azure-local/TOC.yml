@@ -656,7 +656,7 @@ items:
       href: manage/disconnected-operations-security.md  
     - name: Public key infrastructure (PKI)
       href: manage/disconnected-operations-pki.md
-  - name: Deploy disconnected operations
+  - name: Deploy
     items:
     - name: Set up
       href: manage/disconnected-operations-set-up.md

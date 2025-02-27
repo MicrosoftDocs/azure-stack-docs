@@ -83,28 +83,13 @@ You can manually unlock the virtual hard drive or virtual storage disk using Bit
 
 ## Configure syslog forwarding
 
-In this section, we explain how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using the syslog protocol for Azure Local with disconnected operations VM. Use syslog forwarding to integrate with security monitoring solutions and retrieve relevant security event logs for retention on your own SIEM platform.
-
-To set up syslog forwarding for the Azure Local host, see [Manage syslog forwarding for Azure Local](manage-syslog-forwarding.md).
+You can use the syslog protocol for Azure Local with disconnected operations VM to forward security events to a customer-managed security information and event management (SIEM) system.
 
 The syslog agent of the disconnected operations VM forwards security events in syslog format from the VM to the customer-configured syslog server.
 
-The syslog forwarder in the disconnected operation VM supports the following configurations:
+To configure syslog forwarding, access the physical host using a domain administrator account. Use GET and PUT HTTP commands to query or modify the state of the syslog forwarding configuration. The PowerShell scripts in the following section demonstrate how to control the behavior of the syslog forwarder from Azure Local hosts. However, any REST client can be used.
 
-<!--**Syslog forwarding with transmission control protocol (TCP), mutual authentication (client and server), and TLS encryption**: In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication, and TLS encryption](#syslog-forwarding-with-tcp-mutual-authentication-and-tls-encryption).-->
-- **Syslog forwarding with Transmission Control Protocol (TCP), server authentication, and Transport Layer Security (TLS) encryption**: In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-encryption).
-- **Syslog forwarding with TCP and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Syslog forwarding with TCP and no encryption](#syslog-forwarding-with-tcp-and-no-encryption).
-
-> [!IMPORTANT]
-> To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments. The handshake between the endpoints determines the version of TLS encryption, and both TLS 1.2 and TLS 1.3 are supported by default.
-
-- **Syslog with user datagram protocol (UDP) and no encryption**: In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Syslog forwarding with UDP and no encryption](#syslog-forwarding-with-udp-and-no-encryption).
-
-### Use the REST endpoint to configure syslog forwarding
-
-To configure the syslog forwarder, you need access to the physical host using a domain administrator account. Use the GET and PUT HTTP commands to query or modify the state of the syslog forwarding configuration. The following PowerShell scripts show you how to control the behavior of the syslog forwarder from Azure Local hosts, but any REST client should work.
-
-To provide the syslog server information to the forwarder, use the commands in the following sections. Additionally, use these commands for encryption, authentication, configuring the transport protocol, and providing an optional certificate between the client and the server.
+To set up syslog forwarding for the Azure Local host, see [Manage syslog forwarding for Azure Local](manage-syslog-forwarding.md).
 
 ### Syslog forwarding parameters
 
@@ -175,7 +160,7 @@ try {
 > [!IMPORTANT]
 > The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.-->
 
-### Syslog forwarding with TCP, server authentication, and TLS encryption
+### Configure syslog forwarding with TCP, server authentication, and TLS encryption
 
 In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
@@ -211,7 +196,7 @@ $configRequestContent = @{
 }  
 ```
 
-### Syslog forwarding with TCP and no encryption
+### Configure syslog forwarding with TCP and no encryption
 
 In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
 
@@ -226,7 +211,10 @@ $configRequestContent = @{
 }
 ```
 
-### Syslog forwarding with UDP and no encryption
+> [!IMPORTANT]
+> To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments. The handshake between the endpoints determines the version of TLS encryption, and both TLS 1.2 and TLS 1.3 are supported by default.
+
+### Configure syslog forwarding with UDP and no encryption
 
 In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
 
@@ -242,6 +230,8 @@ $configRequestContent = @{
 ```
 
 While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks or eavesdropping of messages.
+
+## Manage syslog forwarding
 
 ### Disable syslog forwarding
 
@@ -290,7 +280,7 @@ Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Me
 
 If a setting property isn't configured, its default value shows when trying to retrieve the current configurations.
 
-## Message schema and event log references
+## Reference: Message schema and event log
 
 In the next sections, we discuss syslog message schema and event definitions.
 
@@ -422,4 +412,4 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 | Defender stopped events | `query="System!*[System[(EventID=7036)] and EventData[Data[@Name='param1']='Microsoft Defender Antivirus Network Inspection Service'] and EventData[Data[@Name='param2']='stopped']]"` |
 | BitLocker management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` |
 
-<!--## Next steps-->
+## Related content

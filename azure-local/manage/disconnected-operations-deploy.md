@@ -660,4 +660,4 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 - To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services reporting 100, you need to open a support ticket from the Azure portal.
 
-<!--## Next steps-->
+## Related content

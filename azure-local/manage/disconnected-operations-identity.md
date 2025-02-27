@@ -322,6 +322,4 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account"
 
 </details>
 
-## Next steps
-
-<!--- [Deploy disconnected operations on Azure Local](./disconnected-operations-deploy.md)-->
+## Related content
