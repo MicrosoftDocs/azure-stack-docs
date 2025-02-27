@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center for Azure Local
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Local
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
@@ -12,7 +12,7 @@ ms.reviewer: anirbanpaul
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Local, version 23H2 via the Azure portal.
+This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Local via the Azure portal.
 
 Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Local, in the following deployment order:
 
@@ -25,7 +25,7 @@ Alternatively, you can deploy the entire SDN infrastructure through the [SDN Exp
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on an Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you are deploying SDN on an Azure Local, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 

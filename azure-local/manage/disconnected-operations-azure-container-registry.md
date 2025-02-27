@@ -76,7 +76,7 @@ To deploy an Azure Container Registry on disconnected operations, follow these s
 
 ## Assign RBAC to a container registry
 
-In this section, you assign RBAC to a container registry on disconnected operations. You perform this action like you would on global Azure. For more information, see [Registry roles and permissions - Azure Container Registry](/azure/container-registry/container-registry-roles).
+In this section, you assign RBAC to a container registry on disconnected operations. For more information, see [Registry roles and permissions - Azure Container Registry](/azure/container-registry/container-registry-roles).
 
 To assign the **AcrPull** role to a user and validate the role assignment using the Docker CLI, follow these steps:
 

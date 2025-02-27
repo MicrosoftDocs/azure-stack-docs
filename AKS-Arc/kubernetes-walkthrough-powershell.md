@@ -3,7 +3,7 @@ title: Use PowerShell to set up Kubernetes on Azure Local and Windows Server clu
 description: Learn how to set up an AKS host and create Kubernetes clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/21/2023
+ms.date: 02/21/2025
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: mikek
@@ -25,11 +25,11 @@ This quickstart guides you through setting up an Azure Kubernetes Service (AKS) 
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 > - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](set-proxy-settings.md).
-> - Installing AKS on Azure Local after setting up Arc VMs is not supported. For more information, see [known issues with Arc VMs](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues). If you want to install AKS on Azure Local, you must uninstall Arc Resource Bridge and then install AKS on Azure Local. You can deploy a new Arc Resource Bridge again after you clean up and install AKS, but it won't remember the VM entities you created previously.
+> - Installing AKS on Azure Local after setting up Arc VMs is not supported. For more information, see [known issues with Arc VMs](/azure/azure-local/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues). If you want to install AKS on Azure Local, you must uninstall Arc Resource Bridge and then install AKS on Azure Local. You can deploy a new Arc Resource Bridge again after you clean up and install AKS, but it won't remember the VM entities you created previously.
 
 ## Before you begin
 
-- Make sure you have satisfied all the prerequisites in [system requirements](.\system-requirements.md).
+- Make sure you satisfy all the prerequisites in [system requirements](.\system-requirements.md).
 - Use an Azure account to register your AKS host for billing. For more information, see [Azure requirements](.\system-requirements.md#azure-requirements).
 
 ## Install the AksHci PowerShell module
@@ -38,7 +38,7 @@ This quickstart guides you through setting up an Azure Kubernetes Service (AKS) 
 
 ## Register the resource provider to your subscription
 
-Before the registration process, enable the appropriate resource provider in Azure for AKS enabled by Arc registration. To do that, run the following PowerShell commands:
+Before the registration process, enable the appropriate resource provider in Azure for the AKS enabled by Arc registration. To do so, run the following PowerShell commands:
 
 To sign in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command:
 
@@ -52,7 +52,7 @@ If you want to switch to a different subscription, run the [Set-AzContext](/powe
 Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 ```
 
-Run the following commands to register your Azure subscription to Azure Arc enabled Kubernetes resource providers. This registration process can take up to 10 minutes, but it only needs to be performed once on a specific subscription:
+Run the following commands to register your Azure subscription to Azure Arc-enabled Kubernetes resource providers. This registration process can take up to 10 minutes, but it only needs to be performed once on a specific subscription:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -80,7 +80,7 @@ Initialize-AksHciNode
 
 Run the following commands on any one node in your Azure Local and Windows Server cluster.
 
-To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External":
+To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is **External**:
 
 ```powershell
 Get-VMSwitch
@@ -94,10 +94,10 @@ Name        SwitchType     NetAdapterInterfaceDescription
 extSwitch   External       Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This virtual network is used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, see [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) PowerShell command. This virtual network is used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, see [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
 
 ```powershell
-#static IP
+# static IP
 $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanId 9
 ```
 
@@ -106,7 +106,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 ## Step 3: Configure your deployment
 
-Run the following commands on any one node in your Azure Local and Windows Server cluster.
+Run the following commands on any node in your Azure Local and Windows Server cluster.
 
 To create the configuration settings for the AKS host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -134,13 +134,13 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ### Option 2: Use an Azure service principal
 
-If you don't have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Local and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
+If you don't have access to a subscription on which you're an **Owner**, you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Local and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
 
 ## Step 5: Start a new deployment
 
-Run the following command on any one node in your Azure Local or Windows Server cluster.
+Run the following command on any node in your Azure Local or Windows Server cluster.
 
-After you configure your deployment, you must start it in order to install the AKS agents/services and the AKS host. To begin deployment, run the following command:
+After you configure your deployment, you must start it in order to install the AKS agents and services, and the AKS host. To begin deployment, run the following command:
 
 > [!TIP]
 > To see additional status details during installation, set `$VerbosePreference = "Continue"` before proceeding.
@@ -206,7 +206,7 @@ Enable-AksHciArcConnection -name mycluster
 ```
 
 > [!NOTE]
-> If you encounter issues or error messages during the installation process, see [installation known issues and errors](/azure-stack/aks-hci/known-issues-installation) for more information.
+> If you encounter issues or error messages during the installation process, see [Installation known issues and errors](known-issues-installation.yml) for more information.
 
 ## Scale a Kubernetes cluster
 
@@ -231,7 +231,7 @@ To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/
 
 ## Access your clusters using kubectl
 
-To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use kubectl to [deploy applications using Helm](./helm-deploy.md):
+To access your Kubernetes clusters using **kubectl**, run the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command. This command uses the specified cluster's **kubeconfig** file as the default **kubeconfig** file for **kubectl**. You can also use **kubectl** to [deploy applications using Helm](./helm-deploy.md):
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -246,7 +246,7 @@ Remove-AksHciCluster -name mycluster
 ```
 
 > [!NOTE]
-> Make sure that your cluster is deleted by looking at the existing VMs in the Hyper-V Manager. If they are not deleted, then you can manually delete the VMs. Then, run the command `Restart-Service wssdagent`. Run this command on each node in the failover cluster.
+> Make sure that your cluster is deleted by looking at the existing VMs in Hyper-V Manager. If they aren't deleted, you can manually delete the VMs. Then, run the command `Restart-Service wssdagent`. Run this command on each node in the failover cluster.
 
 ## Get logs
 
@@ -256,7 +256,7 @@ To get logs from your all your pods, run the [Get-AksHciLogs](./reference/ps/get
 Get-AksHciLogs
 ```
 
-In this quickstart, you learned how to set up an AKS host and create Kubernetes clusters using PowerShell. You also learned how to use PowerShell to scale a Kubernetes cluster and to access clusters with `kubectl`.
+In this quickstart, you learned how to set up an AKS host and create Kubernetes clusters using PowerShell. You also learned how to use PowerShell to scale a Kubernetes cluster and to access clusters with **kubectl**.
 
 ## Next steps
 

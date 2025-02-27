@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 02/07/2025
+ms.date: 02/20/2025
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
@@ -12,12 +12,12 @@ ms.reviewer: anirbanpaul
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you are deploying SDN on Azure Local, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
@@ -38,7 +38,7 @@ The following requirements must be met for a successful SDN deployment:
 - All host machines must have Hyper-V enabled.
 - All host machines must be joined to Active Directory.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured for the subnets and VLANs defined in the configuration file.
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.

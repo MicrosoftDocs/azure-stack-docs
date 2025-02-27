@@ -4,12 +4,16 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 02/10/2025
+ms.date: 02/20/2025
+
+#customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
 
 # Disconnected operations for Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2411 and later
+::: moniker range=">=azloc-24112"
+
+Applies to: Azure Local 2411.2 and later
 
 This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
 
@@ -19,7 +23,7 @@ This article describes disconnected operations and how they can be used in the d
 
 Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
-To run Azure Local with disconnected operations, it is essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher due to the need to host a local control plane. Proper planning is important to ensure smooth operations.
+To run Azure Local with disconnected operations, it's essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher due to the need to host a local control plane. Proper planning is important to ensure smooth operations.
 
 For more information, see technical prerequisites and hardware in the [Preview participation criteria](./disconnected-operations-overview.md#preview-participation-criteria) section.
 
@@ -89,22 +93,28 @@ Follow these steps to deploy and manage Azure Local with disconnected operations
 | Read the overview | Review the overview to understand the disconnected operations feature and its benefits. |
 | Review the participation criteria | Review the participation criteria before you get started. |
 | **Plan** |        |
-| Step 1: [Hardware requirements for disconnected operations](../manage/disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
-| Step 2: [Network requirements for disconnected operations](../manage/disconnected-operations-network.md). | Configure the required network settings. |
-| Step 3: [Identity integration for disconnected operations](../manage/disconnected-operations-identity.md). | Understand and configure your identity solution. |
-| Step 4: [Security controls for disconnected operations](../manage/disconnected-operations-security.md). | Understand and configure security controls. |
-| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](../manage/disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
+| Step 1: [Hardware requirements for disconnected operations](disconnected-operations-overview.md#preview-participation-criteria). | Ensure that you have the necessary hardware. |
+| Step 2: [Network requirements for disconnected operations](disconnected-operations-network.md). | Configure the required network settings. |
+| Step 3: [Identity integration for disconnected operations](disconnected-operations-identity.md). | Understand and configure your identity solution. |
+| Step 4: [Security controls for disconnected operations](disconnected-operations-security.md). | Understand and configure security controls. |
+| Step 5: [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md). | Configure PKI and secure the endpoints. |
 | **Deploy** |       |
-| Step 6: [Set up disconnected operations](../index.yml). | Ensure you have the necessary access and permissions to set up disconnected operations. |
-| Step 7: [Deploy Azure Local with disconnected operations](../index.yml). | Deploy Azure Local with disconnected operations. |
+| Step 6: [Set up disconnected operations](disconnected-operations-set-up.md). | Ensure you have the necessary access and permissions to set up disconnected operations. |
+| Step 7: [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
-| [Azure CLI for disconnected operations](../index.yml). | Use the Azure CLI to manage Azure Local with disconnected operations. |
-| [Arc VMs for disconnected operations](../index.yml). | Manage Arc VMs on Azure Local. |
-| [Azure Kubernetes Service enabled by Arc for disconnected operations](../index.yml). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
-| [Azure Container Registry for disconnected operations](../index.yml). | Manage Azure Container Registry on Azure Local. |
-| [Azure Policy for disconnected operations](../manage/disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
+| [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
+| [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
+| [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
+| [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
+| [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
 | **Troubleshoot** |      |
 | [On-demand log collection](../index.yml). | Collect logs on-demand for troubleshooting. |
 | [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
 
-<!--Next steps-->
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end
