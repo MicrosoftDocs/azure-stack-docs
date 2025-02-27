@@ -4,7 +4,7 @@ description: Learn how to use the Key Manager for Kubernetes extension to rotate
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.date: 02/24/2025
+ms.date: 02/27/2025
 ms.reviewer: leslielin
 ---
 
@@ -53,10 +53,8 @@ Before you begin, ensure you have the following prerequisites:
 
        `trust-manager` is used to distribute a trust bundle to components.
 
-- The key manager extension only works with [bounded service account tokens](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#manual-secret-management-for-serviceaccounts). It doesn't support legacy tokens with infinite lifetimes. If your workflow relies on legacy tokens, do not install this extension.
-- Bounded service account tokens have a default lifetime of one year. To rotate these tokens, this lifetime should be reduced to one day, which ensures that tokens are rapidly reissued and signed with newly rotated keys. To implement these changes, you must modify the `api-server` configuration as follows.
-
-  Run the following commands:
+- The Key Manager extension only works with [bounded service account tokens](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#manual-secret-management-for-serviceaccounts). It doesn't support legacy tokens with infinite lifetimes. If your workflow relies on legacy tokens, do not install this extension.
+- Bounded service account tokens have a default lifetime of one year. To rotate these tokens, this lifetime should be reduced to one day, which ensures that tokens are rapidly reissued and signed with newly rotated keys. To implement these changes, you must modify the `api-server` configuration by running the following commands:
 
   ```powershell
   $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/refs/heads/main/tools/scripts/AksEdgeKeyManagerExtension/UpdateK3sConfigForKeyManager.ps1"
@@ -70,7 +68,7 @@ Before you begin, ensure you have the following prerequisites:
 ## Install the Key Manager for Kubernetes extension for service account key rotation
 
 > [!IMPORTANT]
-> After you install the key manager, the `api-server` is updated with the new service account token during token rotation. This process briefly makes the API server inaccessible as it restarts.
+> After you install the Key Manager extension, the `api-server` is updated with the new service account token during token rotation. This process briefly makes the API server inaccessible while it restarts.
 
 Now run the following commands. Replace the variables with your specific resource group name and AKS cluster name:
 
