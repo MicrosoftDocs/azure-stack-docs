@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/25/2025
+ms.date: 02/27/2025
 ---
 
 # Update Azure Local via PowerShell
@@ -264,7 +264,6 @@ Follow these steps to discover the available updates for your system:
 
     </details>
 
-You can now proceed to [Download and install the updates](#step-2-discover-the-updates).
 
 ## Step 3: Import and rediscover updates
 
