@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 02/27/2025
 ms.custom: template-how-to
 ---
 
@@ -35,13 +35,14 @@ The key parameters for single machine deployment are:
   
 - The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
 - You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
+- To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enable secret encryption on a cluster](aks-edge-howto-secret-encryption.md).
 
 > [!IMPORTANT]
 > Starting with the AKS Edge Essentials February 2025 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS Edge Essentials deployment.
 
 ## Step 2: create a single machine cluster
 
-1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
+You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
