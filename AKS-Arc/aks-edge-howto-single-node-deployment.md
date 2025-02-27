@@ -42,7 +42,7 @@ The key parameters for single machine deployment are:
 
 ## Step 2: create a single machine cluster
 
-1. You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
+You can now run the `New-AksEdgeDeployment` cmdlet to deploy a single-machine AKS Edge cluster with a single Linux control-plane node:
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigFilePath .\aksedge-config.json
