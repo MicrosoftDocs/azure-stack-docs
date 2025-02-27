@@ -226,6 +226,8 @@
         href: aks-edge-howto-access-tpm.md
       - name: Enable secret encryption with the KMS plugin
         href: aks-edge-howto-secret-encryption.md
+      - name: Use the Key Manager for Kubernetes extension
+        href: aks-edge-howto-key-manager.md        
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
