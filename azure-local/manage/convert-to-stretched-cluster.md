@@ -5,7 +5,7 @@ ms.topic: how-to
 author: jasongerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 09/16/2021
+ms.date: 02/27/2025
 ---
 
 # Convert to a stretched Azure Stack HCI cluster
@@ -27,8 +27,8 @@ Refer to your OEM-provided documentation when adding new server hardware for use
 Follow these steps to prep the new server nodes:
 
 1. Place the new physical servers in the rack and cable them appropriately.
-1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
-1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
+1. Enable physical switch ports and adjust access control lists and VLAN IDs if applicable.
+1. Configure the correct IP address in the baseboard management controller and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
 1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
 1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](/azure-stack/hci/deploy/operating-system).
@@ -61,24 +61,24 @@ Ok, let's begin:
 
 1. List the site and server nodes currently in the cluster and create a `Sites.xml` file:
 
-    ~~~PowerShell
+    ```powershell
     Get-ClusterFaultDomainXML | out-file sites.xml
-    ~~~
+    ```
 
 1. Navigate to where the `Sites.xml` file is located on your management computer and open the file. For example, if there are two nodes currently in the cluster, the `Sites.xml` file will look like this:
 
-    ~~~cmd
+    ```PowerShell
     <Topology>
         <Site Name="Site1" Description="" Location="">
             <Node Name="NODE1" Description="" Location="">
             <Node Name="NODE2" Description="" Location="">
         </Site>
     <Topology>
-    ~~~
+    ```
 
 1. Using this example, add a new site name and the two new servers to the site so that the `Sites.xml` file looks like this:
 
-    ~~~PowerShell
+    ```powershell
     <Topology>
         <Site Name="Site1" Description="" Location="">
             <Node Name="NODE1" Description="" Location="">
@@ -89,20 +89,20 @@ Ok, let's begin:
             <Node Name="NODE4" Description="" Location="">
         </Site>
     <Topology>
-    ~~~
+    ```
 
 1. Modify the site (fault domain) information. The first command sets a variable to obtain and display the contents of the `Sites.xml` file. The second command sets the modification based on the variable `$XML`, as follows:
 
-    ~~~PowerShell
+    ```powershell
     $XML = Get-Content .\sites.xml | out-string
     Set-ClusterFaultDomainXML -xml $XML
-    ~~~
+    ```
 
 1. Verify that the modifications you made are correct:
 
-    ~~~PowerShell
+    ```powershell
     Get-ClusterFaultDomain
-    ~~~
+    ```
 
 ## Add new server nodes
 
@@ -110,21 +110,21 @@ Once the sites have been created, you next add the new servers to the cluster. T
 
 1. Using the `Add-ClusterNode` cmdlet, add the new server nodes to the cluster:
 
-    ~~~PowerShell
+    ```powershell
     Add-ClusterNode -Name NODE3, NODE4
-    ~~~
+    ```
 
 1. Once the servers are added, verify that they are in the correct new site using the following:
 
-    ~~~PowerShell
+    ```powershell
     Get-ClusterFaultDomain
-    ~~~
+    ```
 
 1. Verify the new drive pool is created. This may take a few minutes to create the storage pool from the newly added nodes:
 
-    ~~~PowerShell
+    ```powershell
     Get-StoragePool
-    ~~~
+    ```
 
 ## Create disks and replication
 
@@ -134,5 +134,5 @@ With Storage Replica, all disks must be of the same size and attributes. When cr
 
 ## Next steps
 
-- [Create volumes on Azure Stack HCI and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes)
-- [Stretch Cluster Replication Using Shared Storage](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage)
+- [Create volumes on Azure Stack HCI and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes).
+- [Stretch cluster replication using shared storage](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage).

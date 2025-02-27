@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.reviewer: stevenek
 ms.topic: how-to
-ms.date: 05/16/2022
+ms.date: 02/27/2025
 ---
 
 # Create stretched cluster volumes and set up replication
@@ -112,7 +112,7 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
     Add-ClusterSharedVolume -Name 'Cluster Virtual Disk (Disk1)'
     ```
 
-You are done creating volumes, and ready to set up Storage Replica for replication.
+You're done creating volumes, and ready to set up Storage Replica for replication.
 
 ## Set up replication using PowerShell
 
@@ -142,7 +142,7 @@ In addition, the `Test-SRTopology` cmdlet will also measure:
 
 Once Test-SRTopology completes, it will create an .html file (TestSrTopologyReport with date and time) in your Windows Temp folder. Any warning or failures should be reviewed as they could cause Storage Replica to not be properly created.
 
-An example command that would run for 5 hours would be:
+An example command that would run for five hours would be:
 
 ```powershell
 Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolumeName X: -DestinationComputerName Server3 -DestinationVolumeName Y: -DestinationLogVolumeName Z: -DurationInMinutes 300 -ResultPath c:\temp

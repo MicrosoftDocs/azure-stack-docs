@@ -4,7 +4,7 @@ description: This topic provides guidance on how to change languages in the Azur
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 02/26/2024
+ms.date: 02/27/2025
 ---
 
 # Change languages in Azure Stack HCI
@@ -22,7 +22,8 @@ This article explains how to change languages in:
 - Server Core in the Azure Stack HCI operating system
 
 ## Change the language in the management PC
-If you are using Windows 10 on your management PC, you can install a language pack for use in Windows 10, the apps you use, and the websites that you visit. You also can change your keyboard language, and set the input language in a language-preference order for websites and apps.
+
+If you're using Windows 10 on your management PC, you can install a language pack for use in Windows 10, the apps you use, and the websites that you visit. You also can change your keyboard language, and set the input language in a language-preference order for websites and apps.
 
 Changing either the language that you use in Windows 10 or the keyboard language doesn't affect the display language in Windows Admin Center.
 
@@ -32,6 +33,7 @@ Changing either the language that you use in Windows 10 or the keyboard language
 To learn more, see [Manage the input and display language settings in Windows 10](https://support.microsoft.com/help/4496404/windows-10-manage-the-input-and-display-language).
 
 ## Change the language in Windows Admin Center
+
 You can change the language in Windows Admin Center and the region format as needed according to your location. Changing either of these options in Windows Admin Center has no effect on the language setting of the management PC running Windows 10.
 
 To change the language in Windows Admin Center:
@@ -44,11 +46,13 @@ To change the language in Windows Admin Center:
 To learn more, see [Windows Admin Center Settings](/windows-server/manage/windows-admin-center/configure/settings).
 
 ## Change the language in Microsoft Edge
+
 You can add supported languages to Microsoft Edge, and reorder your language preferences in the browser. You also can add a foreign language translator extension to the browser to get translations.
 
 To learn more, see [Microsoft Edge language support](/deployedge/microsoft-edge-supported-languages).
 
 ## Change the language in Server Core
+
 If you need to change the language in Server Core of the Azure Stack HCI operating system, we recommend doing so after clustering your servers. You can add supported language packs to Server Core, and then change the language and keyboard layout to the one you want to use. You can also use a Windows PowerShell command to override the current language and keyboard input method.
 
 Each language pack is installed in the directory *%SystemRoot%\System32\\%Language-ID%*. For example, *C:\Windows\System32\es-ES* is the location of the Spanish language pack. Each language pack is about 50 MB. If you want to install all 38 language packs, the size of the required image that you create is about 2 GB.
@@ -80,4 +84,4 @@ To manually obtain and add language packs to the operating system:
 ## Next steps
 For more information, see also:
 
-- [Add or remove servers for an Azure Stack HCI cluster](./add-cluster.md)
+- [Add or remove servers for an Azure Stack HCI cluster](./add-cluster.md).

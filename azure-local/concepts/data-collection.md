@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 04/24/2023
+ms.date: 02/27/2025
 ---
 
 # Azure Stack HCI data collection
@@ -14,7 +14,7 @@ ms.date: 04/24/2023
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
+This article describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
 Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
@@ -27,7 +27,7 @@ We do collect diagnostic data. The data described below is required for Microsof
 
 This Azure Stack HCI data:
 
-- is not sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
+- isn't sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
 - is logged to the Microsoft-AzureStack-HCI/Analytic event channel.
 - is in JSON format, so that system administrators can examine and analyze the data being sent.
 
@@ -97,7 +97,7 @@ Azure Stack HCI collects:
        } 
    }
    ```
- 
+
 The output should look something like this:
 
 ```shell
