@@ -14,12 +14,12 @@ ms.lastreviewed: 02/27/2025
 
 # Azure Kubernetes Service on Azure Stack Hub overview for users
 
+> [!IMPORTANT]
+> Azure Kubernetes Service on Azure Stack Hub, previously a preview feature, was discontinued and is no longer supported. See the [AKS engine](../user/azure-stack-kubernetes-aks-engine-overview.md) documentation for a Kubernetes solution on Azure Stack Hub.
+
 Azure Kubernetes Service (AKS) makes it easy to deploy a Kubernetes cluster in Azure and Azure Stack Hub. AKS reduces the complexity and operational overhead of managing Kubernetes clusters.
 
 As a managed Kubernetes service, Azure Stack Hub handles critical tasks such as health monitoring, and facilitates maintenance for you. The Azure Stack Hub team manages the image used for maintaining the clusters. The cluster administrator only needs to apply the updates as needed. The services come at no extra cost. AKS is free; you only pay to use the VMs (master and agent nodes) within your clusters. It's simpler to use than the [AKS engine](azure-stack-kubernetes-aks-engine-overview.md) since it removes some of the manual tasks required with the AKS engine.
-
-> [!IMPORTANT]
-> Azure Kubernetes Service on Azure Stack Hub, previously a preview feature, was discontinued and is no longer supported. See the [AKS engine](../user/azure-stack-kubernetes-aks-engine-overview.md) documentation for a Kubernetes solution on Azure Stack Hub.
 
 ## AKS on Azure Stack Hub
 
@@ -96,7 +96,7 @@ The following table provides an overview of features of AKS in global Azure comp
 
 AKS on Azure and on Azure Stack Hubs share the same source repository. There are no conceptual differences between the two. However, operating in different environments brings along differences to keep in mind when using AKS on Azure Stack Hub. Most of the differences are related to the system residing inside customers' Data Centers and related to functionality that isn't yet available in Azure Stack Hub.
 
-### Connected or Disconnected Azure Stack Hub in customer's data center 
+### Connected or Disconnected Azure Stack Hub in customer's data center
 
 In both scenarios, Azure Stack Hub is under the control of the customer. Also, customers may deploy Azure Stack Hub in fully disconnected, an *air-gapped*, environment. You might want to consider the following factors:
 
