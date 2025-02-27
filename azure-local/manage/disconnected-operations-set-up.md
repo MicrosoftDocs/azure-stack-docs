@@ -17,8 +17,6 @@ This article describes how to set up disconnected operations for Azure Local. It
 
 ## Prerequisites
 
-Before you begin, you must:
-
 - Have an active Azure subscription.  
 - Have approval for disconnected operations for Azure Local.
 - Have an Azure account with role-based access control rights to create a disconnected operations instance.
