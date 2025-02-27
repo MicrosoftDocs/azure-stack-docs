@@ -52,7 +52,7 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
     > [!NOTE]
     > If vTPM state wasn't preserved during VM migration, VM startup would result in BitLocker recovery during guest boot up. You would be prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This situation occurs because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
 
-1. Force the VM to failover to another machine in the system.
+1. Force the VM to fail over to another machine in the system.
 
     1. Confirm the owner node of the VM using the following command.
 
