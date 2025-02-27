@@ -3,9 +3,10 @@ title: Azure Kubernetes Service on Azure Stack Hub overview for users
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub overview for users.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/24/2025
+ms.date: 02/27/2025
 ms.author: sethm
-ms.lastreviewed: 10/26/2021
+ms.reviewer: sumsmith
+ms.lastreviewed: 02/27/2025
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -18,7 +19,7 @@ Azure Kubernetes Service (AKS) makes it easy to deploy a Kubernetes cluster in A
 As a managed Kubernetes service, Azure Stack Hub handles critical tasks such as health monitoring, and facilitates maintenance for you. The Azure Stack Hub team manages the image used for maintaining the clusters. The cluster administrator only needs to apply the updates as needed. The services come at no extra cost. AKS is free; you only pay to use the VMs (master and agent nodes) within your clusters. It's simpler to use than the [AKS engine](azure-stack-kubernetes-aks-engine-overview.md) since it removes some of the manual tasks required with the AKS engine.
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not become GA. See [AKS Engine](../user/azure-stack-kubernetes-aks-engine-overview.md) for a Kubernetes solution on Azure Stack Hub.
+> Azure Kubernetes Service on Azure Stack Hub, previously a preview feature, was discontinued and is no longer supported. See the [AKS engine](../user/azure-stack-kubernetes-aks-engine-overview.md) documentation for a Kubernetes solution on Azure Stack Hub.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## AKS on Azure Stack Hub
