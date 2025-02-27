@@ -17,7 +17,7 @@ This article describes how to manually back up and restore a Trusted launch Arc 
 
 Unlike standard Azure Arc VMs, Trusted launch Arc VMs use a VM guest state protection (GSP) key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM GSP key is stored in a local key vault in the Azure Local system where the VM resides. 
 
-Trusted launch Arc VMs store the VM guest state in two files, VM Guest state (VMGS) and VM Runtime state (VMRS). If the VM GSP key is lost, you can't to boot up a Trusted launch Arc VM.
+Trusted launch Arc VMs store the VM guest state in two files, VM Guest state (VMGS) and VM Runtime state (VMRS). If the VM GSP key is lost, you can't boot up a Trusted launch Arc VM.
 
 It is important that you back up your Trusted launch Arc VM periodically, so you can recover your VM in the event of a data loss. To back up a Trusted launch VM, back up all the VM files, including VMGS and VMRS files. Additionally, back up the VM GSP key to a backup key vault. 
 
@@ -27,7 +27,7 @@ The following sections describe how you can back up the Trusted launch Arc VM an
 
 ## Back up the VM
 
-You can use [Export-VM](/powershell/module/hyper-v/export-vm)(Hyper-V) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch Arc VM. You can then back up those VM files.
+You can use [Export-VM](/powershell/module/hyper-v/export-vm) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch Arc VM. You can then back up those VM files.
 
 Follow these steps to copy the VM GSP key from the key vault on the Azure Local system (where the VM resides) to a backup key vault on a different Azure Local system:
 
@@ -86,7 +86,7 @@ Run the following steps on the Azure Local system.
 
 ## Restore the VM
 
-In the event of a data loss, use the backup copy of your VM files, and restore the VM to a target Azure Local system using [Import-VM](/powershell/module/hyper-v/import-vm)(Hyper-V). This restores all the VM files, including VMGS and VMRS files.
+In the event of a data loss, use the backup copy of your VM files, and restore the VM to a target Azure Local system using [Import-VM](/powershell/module/hyper-v/import-vm). This restores all the VM files, including VMGS and VMRS files.
 
 Follow these steps to copy the VM GSP key from the backup key vault in the Azure Local system (where the backup copy of the VM GSP key was stored) to the key vault on the target Azure Local system (where the VM needs to be restored).
 
@@ -110,7 +110,7 @@ Run the following commands on the Azure Local system.
    Get-MocKeyPublicKey -name wrappingKey -group AzureStackHostAttestation -keyvaultName AzureStackTvmKeyVault -outputFile wrappingKey.pem
     ```
 
-### 2. On the Azure Local system with the backup key
+### 2. On the Azure Local system with the backup key vault
 
 Run the following commands on the Azure Local system.
 

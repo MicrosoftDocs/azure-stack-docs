@@ -5,18 +5,15 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/20/2025
+ms.date: 02/27/2025
 ---
 
-# Automatic virtual TPM state transfer for Azure Local
+# Automatic transfer of virtual TPM state for Trusted launch VMs on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how automatic virtual TPM state (vTPM) transfer for Trusted launch virtual machines (VMs) works for Azure Local.
+This article uses an example to illustrate the automatic transfer of virtual TPM (vTPM) state in the case of Trusted launch Arc VMs on Azure Local, even as the VM migrates or fails over to another machine in the system. This operation allows the applications that use the vTPM to function normally during VM migration or fail over.
 
-The vTPM state is automatically transferred in the case of Trusted launch Arc VMs when the VM migrates, or fails over to another machine in the system.
-
-Enabling Trusted launch for Arc VMs preserves the vTPM state and allows applications that rely on the vTPM state to function normally, even when the VM migrates or fails over to another machine in the system.
 
 ## Example
 
