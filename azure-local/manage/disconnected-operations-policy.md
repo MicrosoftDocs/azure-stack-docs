@@ -35,17 +35,6 @@ With Azure Policy in a disconnected Azure Local environment, you can:
 
 Create a policy assignment before you create resources. This order ensures the resources are checked for compliance.
 
-<!--## Restrictions and limitations
-
-Consider these limitations when using Azure Policy:
-
-- Policy enforcement for disconnected operations is supported only on resource creation. Compliance and audit capabilities aren't supported.
-- Only preselected built-in policy definitions are available. Customer-defined policy definitions aren't supported.
-- Updating a policy assignment won't automatically trigger a compliance check for existing resources. However, the updated policy assignment applies to resources you create or update after the policy assignment is updated.
-
-> [!NOTE]
-> Custom policy definitions are considered out of scope for this preview due to potential dependencies and untested scenarios.-->
-
 ## Supported built-in policies
 
 The following table summarizes the built-in policies supported for Azure Local disconnected operations.
@@ -117,10 +106,6 @@ After the policy is created, you can't create resource groups without the requir
 
 ## Unsupported features
 
-In this preview, the following features aren't supported:
+In this preview, compliance dashboard, remediation actions, and policy exemptions aren't supported:
 
-- Compliance dashboard.
-- Remediation actions.
-- Policy exemptions.
-
-<!--## Next steps->
+## Related content

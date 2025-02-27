@@ -170,4 +170,4 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
-<!--## Next steps-->
+## Related content

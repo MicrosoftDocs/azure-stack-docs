@@ -218,4 +218,4 @@ Here are some extra resources to help you manage Azure Arc VMs on Azure Local:
 
 - [Azure Arc VM management FAQ](../manage/azure-arc-vms-faq.yml).
 
-<!--## Related content-->
+## Related content
