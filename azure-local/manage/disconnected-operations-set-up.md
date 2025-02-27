@@ -11,7 +11,7 @@ ms.date: 02/19/2025
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article provides you with steps to set up disconnected operations for Azure Local. You learn how to create a virtual appliance resource in the Azure portal. This helps you download the necessary installation files and get support from Microsoft.
+This article describes how to set up disconnected operations for Azure Local. It explains how to create a virtual appliance resource in the Azure portal, download the necessary installation files, and get support from Microsoft.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -35,7 +35,7 @@ After you complete the steps outlined in this document, you should have:
 
 To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
-1. Sign into the Azure portal and navigate to **Azure local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
+1. Sign into the Azure portal and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
 
 2. Select the **Disconnected operations** tab and then select the **Create** button.
 
@@ -59,14 +59,14 @@ To create a virtual appliance and download the required files for your on-premis
 
 5. After the completion, navigate to your new resource. You should see the resource details on the appliance page.
 
-6. Look for the downloaded **manifest** and **virtual appliance** files. These files are needed for your on-premises installation.
+6. Look for the **download manifest** and **download appliance** files. These files are needed for your on-premises installation.
 
     | File | Description | Estimated size |  
     |------|-------------|----------------|  
     | Manifest file | Identified as `AzureLocal.DisconnectedOperations.Appliance.manifest`. This file is needed for deployment and to activate the appliance. It contains the required licensing information and more. | < 1 KB |  
     | Virtual appliance | Identified as `AzureLocal.DisconnectedOperations.zip`. This is a zip file that contains the virtual hard disks and operations module required to deploy and configure the virtual appliance. | 70 GB+ |  
 
-7. Select the **download** button for each file.
+7. Select the download button for each file.
 
    :::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
 

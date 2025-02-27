@@ -11,7 +11,7 @@ ms.date: 02/19/2025
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This article helps you integrate your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
+This article helps you plan the integration of your network with disconnected operations on Azure Locall. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -39,21 +39,37 @@ Here's a checklist to help you plan your network for disconnected operations on 
 - Ensure an identity provider is routable and accessible from the disconnected operations appliance on the management network (intent).
 - Configure the external network to ensure workloads outside of Azure Local can resolve and route traffic to the disconnected operations ingress IP (port 443).
 
-## Virtual network interface cards (vNICs) and network integration
+## Virtual network interface cards and network integration
 
-The disconnected operations VM appliance uses two different vNICs that plug into the network intent. These are:
+The disconnected operations VM appliance uses two different virtual network interface cards (vNICs) that plug into the network intent. These are:
 
 - **Management vNIC**  
 - **Ingress vNIC**  
 
-You connect the vNICs to the virtual switch for management, which links to your physical network. Then, you set an IP address for the vNICs during deployment. After that, you use their interfaces for tasks like bootstrapping, troubleshooting, operations, and regular use through the Portal or CLI.
+Here's a high-level workflow for vNIC management and deployment:
+
+- Connect the vNICs to the virtual switch for management, which links to your physical network.
+- Set an IP address for the vNICs during deployment.
+- Use their interfaces for tasks such as, bootstrapping, troubleshooting, operations, and regular use through the portal or CLI.
   
 :::image type="content" source="./media/disconnected-operations/network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/network/network-overview.png":::
 
 ## Plan your ingress IP  
 
 When you plan your ingress IP, you need to make sure the ingress IP is in the same subnet range as the cluster you configure later, but outside the reserved IP range itself. For example, if your cluster's subnet range is 192.168.1.0/24 and the reserved IP range is 192.168.1.1 - 192.168.1.10, you should choose an ingress IP like 192.168.1.11 or higher, ensuring it doesn't overlap with the reserved range.
-  
+
+> [!NOTE]
+> Disconnected operations has a built-in container network range that might interfere with your existing network range. If you're already using the range 10.131.19.0/24, you need to isolate this range from your disconnected operations environment.
+>
+> - Reconfiguring the built-in container network range is currently not supported.
+
+### Unsupported features  
+
+For this preview, the following features are unsupported:  
+
+- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that enables you to add VLAN tags to ingress packets on a per-port basis.
+- Configurable VLAN for disconnected operations Management network that enables you to isolate management traffic from other network traffic, enhance security, and reduce interference.
+
 ### IP checklist for the disconnected appliance  
 
 Here's a checklist to help you plan your IP addresses for the disconnected operations appliance:
@@ -69,18 +85,6 @@ Here's a checklist to help you plan your IP addresses for the disconnected opera
   - Any valid, unused IP on the local network.
   - Ensure reachability, if accessing lower management Application Programming Interfaces (APIs) from outside the cluster.
 
-> [!NOTE]
-> Disconnected operations has a built-in container network range that might interfere with your existing network range. If you're already using the range 10.131.19.0/24, you need to isolate this range from your disconnected operations environment.
->
-> - Reconfiguring the built-in container network range is currently not supported.  
-
-## Unsupported features  
-
-For this preview, the following features are unsupported:  
-
-- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that enables you to add VLAN tags to ingress packets on a per-port basis.
-- Configurable VLAN for disconnected operations Management network that enables you to isolate management traffic from other network traffic, enhance security, and reduce interference.
-
 ### Plan DNS and public key infrastructure (PKI)  
 
 During deployment of disconnected operations, you need an FQDN for your appliance that resolves to the ingress IP used. It's important to plan your DNS and PKI infrastructure before deploying disconnected operations. Additionally, consider how you want to use them to serve clients in your environment.
@@ -94,11 +98,11 @@ If you plan to connect the appliance to Azure, make sure your DNS infrastructure
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
-## Running with limited connectivity  
+## Run appliance with limited connectivity  
 
-You can run the appliance in limited connectivity mode. This makes getting support easier and allows logs and telemetry to be sent directly to Microsoft without an export/import job. There are some special considerations to keep in mind when running in limited connectivity mode, as the appliance needs to resolve Microsoft endpoints.
+You can run the appliance in limited connectivity mode. This makes getting support easier and allows logs and telemetry to be sent directly to Microsoft without an export/import job. The disconnected appliance only needs to resolve a subset of these endpoints for observability and diagnostics purposes.
 
-The disconnected appliance only needs to resolve a subset of these endpoints for observability and diagnostics purposes.
+When running in limited connectivity mode, the appliance needs to resolve certain Microsoft endpoints for observability and diagnostics.
 
 Here are the endpoints that the appliance needs to resolve:
 

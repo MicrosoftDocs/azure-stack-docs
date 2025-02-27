@@ -646,21 +646,21 @@ items:
   items:
   - name: Overview
     href: manage/disconnected-operations-overview.md
-  - name: Plan for disconnected operations
+  - name: Plan
     items:  
-    - name: Networking for disconnected operations
+    - name: Networking
       href: manage/disconnected-operations-network.md
-    - name: Identity for disconnected operations
+    - name: Identity
       href: manage/disconnected-operations-identity.md
-    - name: Security for disconnected operations
+    - name: Security
       href: manage/disconnected-operations-security.md  
-    - name: Public key infrastructure (PKI) for disconnected operations
+    - name: Public key infrastructure (PKI)
       href: manage/disconnected-operations-pki.md
   - name: Deploy disconnected operations
     items:
-    - name: Set up disconnected operations
+    - name: Set up
       href: manage/disconnected-operations-set-up.md
-    - name: Deploy Azure Local for disconnected operations
+    - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
   - name: Manage disconnected operations
     items:
