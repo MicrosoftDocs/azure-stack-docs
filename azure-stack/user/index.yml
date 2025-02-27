@@ -91,5 +91,5 @@ landingContent:
             url: azure-stack-solution-template-service-fabric-cluster.md
           - text: Deploy a container to Azure Stack Hub registry
             url: container-registry-overview.md
-          - text: Deploy an Azure Kubernetes Services (AKS) cluster
-            url: aks-overview.md
+          - text: AKS engine on Azure Stack Hub
+            url: azure-stack-kubernetes-aks-engine-overview.md
