@@ -19,7 +19,7 @@ This article helps you plan and integrate your existing identity with disconnect
 
 For disconnected operations, you need to integrate with an existing identity and access management solution. Before you deploy the disconnected operations, make sure that you understand the steps required to integrate and apply the identity solution.
 
-Disconnected operations is validated for the following solutions:
+Disconnected operations are validated for the following solutions:
 
 - Active Directory: Groups and memberships  
 - Active Directory Federation Services (AD FS): Authentication  
@@ -155,7 +155,7 @@ As a host administrator, you can use the disconnected operations PowerShell cmdl
 - **Synchronization failed / Didn’t start**:  
   - Ensure LDAP credentials are valid.  
   - Ensure LDAP credentials have read access.  
-  - Ensure disconnected operations has network line of sight to the LDAP server, can resolve the FQDN (if not using IP address), and there are no firewalls blocking traffic.  
+  - Ensure disconnected operations have network line of sight to the LDAP server, can resolve the FQDN (if not using IP address), and there are no firewalls blocking traffic.  
 
 - **Wrong set of groups synchronized**:  
   - Verify that the `SyncGroupIdentifier` is set to the correct root. The one you're synchronizing from.  
