@@ -33,7 +33,7 @@ If you continually see an [Azure Advisor](/azure/advisor/) upgrade recommendatio
 
 AKS Arc workload data is stored on Azure Local storage volumes, including the AKS Arc node disks and persistent volumes of data disks. If the storage volume is accidentally deleted, the AKS Arc cluster doesn't work properly, as its data is removed as well. To manage storage volumes on Azure Local, follow these steps:
 
-- Ensure that you deleted all the storage path(s) that are created on that storage volume. Deleting storage paths raises an alert to indicate the workload that was stored on it. To delete the storage path, see [Delete a storage path](/azure/azure-local/manage/create-storage-path?view=azloc-24112&tabs=azurecli#delete-a-storage-path).
+- Ensure that you deleted all the storage path(s) that are created on that storage volume. Deleting storage paths raises an alert to indicate the workload that was stored on it. To delete the storage path, see [Delete a storage path](/azure/azure-local/manage/create-storage-path?view=azloc-24112&preserve-view=true&tabs=azurecli#delete-a-storage-path).
 - If you have an AKS Arc cluster that must be deleted, per the alert from the previous step of the storage path deletion, see [Delete the AKS Arc cluster](aks-create-clusters-cli.md#delete-the-cluster).
 
 ## Next steps
