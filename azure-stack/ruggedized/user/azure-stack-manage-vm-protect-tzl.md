@@ -3,7 +3,7 @@ title: Protect VMs deployed on Azure Stack | Microsoft Docs
 description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 06/15/2021

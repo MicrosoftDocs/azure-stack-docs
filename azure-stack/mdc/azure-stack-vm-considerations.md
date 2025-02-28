@@ -3,7 +3,7 @@ title: Azure Stack virtual machine (VM) features | Microsoft Docs
 description: Learn about different features and considerations when working with virtual machines (VMs) in an MDC.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 2/1/2021

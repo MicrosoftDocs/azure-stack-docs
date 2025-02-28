@@ -3,7 +3,7 @@ title: Control plane configuration validation errors
 description: Learn details about each control plane configuration validation error.
 author: sethmanheim
 ms.author: sethm
-ms.topic: concept-article
+ms.topic: troubleshooting
 ms.date: 02/26/2025
 
 ---
