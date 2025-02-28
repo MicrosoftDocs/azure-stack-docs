@@ -3,7 +3,7 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 11/22/2024
+ms.date: 02/28/2025
 ms.author: sethm 
 ms.lastreviewed: 02/27/2024
 ms.reviewer: guanghu
@@ -29,12 +29,12 @@ If you continually see an [Azure Advisor](/azure/advisor/) upgrade recommendatio
 
 ## Storage
 
-### AKS on Azure Local might not work after storage volume been deleted 
+### AKS on Azure Local might not work after deleting storage volume
 
-AKS Arc workload data is been stored on Azure Local storage volumes, including the AKS Arc node disks and persistent volumes of data disks. If the storage volume is been accidently deleted, the AKS Arc cluster will not work properly as its data is removed as well.  Please follow these steps to manage storage volumes on Azure Local: 
+AKS Arc workload data is stored on Azure Local storage volumes, including the AKS Arc node disks and persistent volumes of data disks. If the storage volume is accidentally deleted, the AKS Arc cluster doesn't work properly, as its data is removed as well. To manage storage volumes on Azure Local, follow these steps:
 
-- Ensure that you deleted all the storage path(s) that are created on that storage volume. Deleting storage path will raise alert to indicate the worklaod that has been stored on it. To delete storage path, see [Delete a storage path](/azure-local/manage/create-storage-path?view=azloc-24112&tabs=azurecli#delete-a-storage-path).
-- If you have any AKS Arc cluster need to be deleted, that is notified in the previous step of storage path deletion, see [Delete the AKS Arc cluster](/aks/aksarc/aks-create-clusters-cli#delete-the-cluster).
+- Ensure that you deleted all the storage path(s) that are created on that storage volume. Deleting storage paths raises an alert to indicate the workload that was stored on it. To delete the storage path, see [Delete a storage path](/azure-local/manage/create-storage-path?view=azloc-24112&tabs=azurecli#delete-a-storage-path).
+- If you have an AKS Arc cluster that must be deleted, per the alert from the previous step of the storage path deletion, see [Delete the AKS Arc cluster](create-clusters-cli.md#delete-the-cluster).
 
 ## Next steps
 
