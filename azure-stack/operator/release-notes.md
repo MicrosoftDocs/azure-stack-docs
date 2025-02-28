@@ -158,7 +158,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 ### Hotfix prerequisites: before applying the 2408 update
 
-The 2408 release of Azure Stack Hub must be applied on the 22406 release with the following hotfix installed:
+The 2408 release of Azure Stack Hub must be applied on the 2406 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2406.1.18](hotfix-1-2406-1-18.md)
 
