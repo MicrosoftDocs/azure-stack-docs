@@ -3,7 +3,7 @@ title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
 author: jasongerend
 ms.topic: troubleshooting
-ms.date: 04/17/2023
+ms.date: 02/27/2025
 ms.author: jgerend
 ---
 
@@ -13,7 +13,7 @@ ms.author: jgerend
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
+This article helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
 
 DCB is required for RDMA over Converged Ethernet (RoCE) networks, and is optional (but recommended) for Internet Wide Area RDMA Protocol (iWARP) networks.
 
@@ -25,7 +25,7 @@ Data Center Bridging must be installed to use QoS-specific cmdlets. To check if 
 Get-WindowsFeature -Name Data-Center-Bridging -ComputerName Server1
 ```
 
-If Data Center Bridging is not installed, install it by running the following cmdlet on each server in the cluster:
+If Data Center Bridging isn't installed, install it by running the following cmdlet on each server in the cluster:
 
 ```PowerShell
 Install-WindowsFeature –Name Data-Center-Bridging -ComputerName Server1
@@ -39,11 +39,11 @@ Either use the Validate feature in Windows Admin Center by selecting **Tools > S
 Test-Cluster –Node Server1, Server2
 ```
 
-Among other things, the test will validate that DCB QoS Configuration is consistent, and that all servers in the cluster have the same number of traffic classes and QoS Rules. It will also verify that all servers have QoS rules defined for Failover Clustering and SMB/SMB Direct traffic classes.
+Among other things, the test validates that DCB QoS Configuration is consistent, and that all servers in the cluster have the same number of traffic classes and QoS Rules. It also verifies that all servers have QoS rules defined for Failover Clustering and SMB/SMB Direct traffic classes.
 
 You can view the validation report in Windows Admin Center, or by accessing a log file in the current working directory. For example: C:\Users\<username>\AppData\Local\Temp\
 
-Near the bottom of the report, you will see "Validate QoS Settings Configuration" and a corresponding report for each server in the cluster.
+Near the bottom of the report, you'll see "Validate QoS Settings Configuration" and a corresponding report for each server in the cluster.
 
 To understand which traffic classes are already set on a server, use the `Get-NetQosTrafficClass` cmdlet.
 
@@ -55,7 +55,7 @@ Validate the consistency of DCB willing status and priority flow control status 
 
 ### DCB willing status
 
-Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device will reject all configuration attempts from remote devices and enforce only the local configurations. If you're using RDMA over Converged Ethernet (RoCE) adapters, then the willing bit should be set to false on all servers.
+Network adapters that support the Data Center Bridging Capability Exchange protocol (DCBX) can accept configurations from a remote device. To enable this capability, the DCB willing bit on the network adapter must be set to true. If the willing bit is set to false, the device rejects all configuration attempts from remote devices and enforce only the local configurations. If you're using RDMA over Converged Ethernet (RoCE) adapters, then the willing bit should be set to false on all servers.
 
 All servers in an Azure Stack HCI cluster should have the DCB willing bit set the same way.
 
@@ -93,7 +93,7 @@ New-NetQosPolicy "Cluster" -Cluster -Priority 6
 
 ### QoS rule for SMB
 
-If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB. To add a new network QoS rule for SMB, use the `New-NetQosPolicy` cmdlet as in the following example:
+If some or all nodes have QOS rules defined but don't have a QOS Rule for SMB, this may cause connectivity and performance problems for SMB. To add a new network QoS rule for SMB, use the `New-NetQosPolicy` cmdlet as in the following example:
 
 ```PowerShell
 New-NetQosPolicy -Name "SMB" -SMB -PriorityValue8021Action 3
@@ -101,7 +101,7 @@ New-NetQosPolicy -Name "SMB" -SMB -PriorityValue8021Action 3
 
 ### QoS rule for SMB Direct
 
-SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but do not have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct. To create a new QoS policy for SMB Direct, issue the following commands:
+SMB Direct bypasses the networking stack, instead using RDMA methods to transfer data. If some or all nodes have QOS rules defined but don't have a QOS Rule for SMB Direct, this may cause connectivity and performance problems for SMB Direct. To create a new QoS policy for SMB Direct, issue the following commands:
 
 ```PowerShell
 New-NetQosPolicy "SMB Direct" –NetDirectPort 445 –Priority 3
@@ -111,6 +111,6 @@ New-NetQosPolicy "SMB Direct" –NetDirectPort 445 –Priority 3
 
 For related information, see also:
 
-- [Data Center Bridging](/windows-server/networking/technologies/dcb/dcb-top)
-- [Manage Data Center Bridging](/windows-server/networking/technologies/dcb/dcb-manage)
-- [QoS Common Configurations](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj735302(v=ws.11))
+- [Data Center Bridging](/windows-server/networking/technologies/dcb/dcb-top).
+- [Manage Data Center Bridging](/windows-server/networking/technologies/dcb/dcb-manage).
+- [QoS Common Configurations](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj735302(v=ws.11)).
