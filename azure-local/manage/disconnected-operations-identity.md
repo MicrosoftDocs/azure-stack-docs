@@ -50,9 +50,9 @@ In this preview release, the following actions are available:
 |---------------------------------------|----------|  
 | Assign more operators                 | Yes      |  
 | Create SPN                            | Yes      |  
-| Delete SPN <sub>2</sub>               | Yes      |  
+| Delete SPN                            | Yes      |  
 | List Service Principal Names (SPNs)   | Yes      |  
-| Update SPN <sub>2</sub>               | Yes      |
+| Update SPN                            | Yes      |
 | View group memberships (synced)       | Yes      |  
 | View Identity configuration           | Yes      |  
 | View identity synchronization status  | Yes      |  
@@ -64,7 +64,7 @@ In this preview release, the following actions are available:
 | Create Alias                          | Yes      |  
 | Create subscriptions                  | Yes      |  
 | Delete Alias                          | Yes      |  
-| Delete subscription <sub>1</sub>      | Yes      |  
+| Delete subscription                   | Yes      |  
 | List alias                            | Yes      |  
 | List all subscriptions                | Yes      |  
 | Reassign subscription ownership       | Yes      |  
@@ -80,8 +80,10 @@ In this preview release, the following actions are available:
 | Configure syslog forwarding                     | Yes      |  
 | Download logs                                   | Yes      |  
 
-<sub>1. Operator subscription cannot be deleted</sub>
-<sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
+There are a couple of exceptions to the actions available to operators:
+
+- An Operator subscription cannot be deleted
+- SPNs can also be deleted by the owners assigned to the SPN itself
 
 In this preview release, only the following actions are available in the Azure portal.
 
@@ -115,7 +117,8 @@ The following parameters must be collected and available before deployment:
 | Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
 | ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
-| LdapsCertChainInfo    | Certificate chain information for LDAP. This is used to validate calls from the appliance to LDAP. You can omit the certificate chain information for demo purposes. | MIIF ......  |
+| LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
+| OidcCertChainInfo     | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
 | LdapServer       | LDAP endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.local.contoso.com`    |  
 | RootOperatorUserPrincipalName  |   UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com`   |
 | SyncGroupIdentifier    | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
