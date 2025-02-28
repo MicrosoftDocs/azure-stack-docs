@@ -69,7 +69,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-    - Install Azure CLI version AzCLI 2.60.0.
+    - [Install Azure CLI](disconnected-operations-cli.md#install-cli) version AzCLI 2.60.0.
     - Install the Azure Local extension **stack-hci-vm** version v1.3.0.
 
 2. [Assign role-based access control (RBAC) roles](../manage/assign-vm-rbac-roles.md).

@@ -44,8 +44,8 @@ Key features of Azure Container Registry on disconnected operations include:
 - Ensure that the disconnected operations virtual machine is deployed.
 - Verify access to the disconnected operations portal.
 - Register the *Microsoft.ContainerRegistry* resource provider with disconnected operations.
-- Install the Azure CLI (supported up to version 2.54.0.).
-- (Optional) Install Docker Desktop on your disconnected operations host or client machine for test purposes.
+- [Install the Azure CLI](disconnected-operations-cli.md#install-cli) (supported up to version 2.54.0.).
+- (Optional) [Install Docker Desktop](https://www.docker.com/get-started/) on your disconnected operations host or client machine for test purposes.
 
 ## Deploy Azure Container Registry
 
@@ -96,7 +96,7 @@ To assign the **AcrPull** role to a user and validate the role assignment using 
 
 ## Manage images in Azure Container Registry
 
-### Sign in to registry
+### Sign into the registry
 
 > [!NOTE]
 > You must sign into the registry instance before you push and pull container images. When you sign in with Azure CLI, only specify the registry resource name. Don't use the fully qualified login server name.

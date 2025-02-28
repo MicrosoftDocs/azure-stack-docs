@@ -19,8 +19,6 @@ This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconn
 
 AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain a consistent management and operational experience of AKS on Azure Local using a local control plane.
 
-<!--For more ifnormation, see [What’s New in Release 2408](../whats-new.md#2408-releases).-->
-
 ## Prerequisites
 
 - [Azure CLI](disconnected-operations-cli.md) installed on your local machine.
@@ -198,4 +196,4 @@ For more information on AKS Arc, see the following articles:
 - [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
 - [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
 
-<!--## Next steps-->
+## Related content
