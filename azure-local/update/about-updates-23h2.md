@@ -5,10 +5,10 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 11/13/2024
+ms.date: 02/25/2025
 ---
 
-# About updates for Azure Local, version 23H2
+# About updates for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -63,7 +63,7 @@ Microsoft might release the following types of updates for the Azure Local:
 
 ² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates.
 
-Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your system must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Local, version 23H2 releases](../release-information-23h2.md#about-azure-local-releases).
+Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your system must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 
@@ -93,15 +93,15 @@ There are two interfaces you can use to apply available updates.
 
 ### PowerShell
 
-The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update your Azure Local, version 23H2 via PowerShell](update-via-powershell-23h2.md).
+The PowerShell procedures apply to both single-node and multi-node systems that run with the orchestrator installed. For more information, see [Update Azure Local via PowerShell](update-via-powershell-23h2.md).
 
 ### The Azure portal
 
-You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](./azure-update-manager-23h2.md).
+You can install Azure Local updates using the Azure Update Manager in the Azure portal. For more information, see [Use Azure Update Manager to update Azure Local](./azure-update-manager-23h2.md).
 
 ### Unsupported interfaces for updates
 
-When you install updates for Azure Local, version 23H2 don't use the following interfaces:
+When you install updates for Azure Local, don't use the following interfaces:
 
 - SConfig
 - Windows Admin Center
