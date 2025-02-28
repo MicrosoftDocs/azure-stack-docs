@@ -3,7 +3,7 @@ title: Customer billing model overview in Azure Stack - MDC | Microsoft Docs
 description: Learn how Azure Stack users are billed for resource usage in a Modular Data Center (MDC).
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 06/01/2021
