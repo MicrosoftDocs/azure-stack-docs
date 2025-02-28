@@ -3,7 +3,7 @@ title: Infrastructure Backup Service best practices for Azure Stack Hub Ruggediz
 description: Follow these best practices when you deploy and manage Azure Stack Hub Ruggedized to help mitigate data loss if there's a catastrophic failure.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
 ms.topic: article
 ms.date: 10/13/2021
