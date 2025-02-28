@@ -16,7 +16,7 @@ ms.date: 02/27/2025
 
 This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 
-We'll create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
+We create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
 
 ## Stretched volumes and replication using Windows Admin Center
 
@@ -150,7 +150,7 @@ Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolum
 
 ### Step 2: Create the replication partnership
 
-Now that you completed the `Test-SRTopology` tests, you are ready to configure Storage Replica and create the replication partnership. In a nutshell, we'll configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
+Now that you completed the `Test-SRTopology` tests, you're ready to configure Storage Replica and create the replication partnership. In a nutshell, we'll configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
 
 Let's begin:
 
@@ -160,7 +160,7 @@ Let's begin:
    Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
    ```
 
-1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
+1. The Available Storage group should be "owned" by the node it's currently sitting on. The group can be moved to Server1 using:
 
    ```powershell
    Move-ClusterGroup -Name "Available Storage" -Node Server1
