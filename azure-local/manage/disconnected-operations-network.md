@@ -11,7 +11,7 @@ ms.date: 02/19/2025
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This article helps you plan the integration of your network with disconnected operations on Azure Locall. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
+This article helps you plan the integration of your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 

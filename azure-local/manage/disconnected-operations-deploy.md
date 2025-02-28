@@ -275,7 +275,7 @@ Populate the required parameters based on your deployment planning. Modify the e
 
 ## Validate the management endpoint certificates
 
-Before you install the appliance, validate the management endpoint certificates.Ensure that the certificate has a validated certificate chain, isn't expired, has the correct subject, the appropriate enhanced key usage (EKUs), and the supported cryptography.
+Before you install the appliance, validate the management endpoint certificates. Ensure that the certificate has a validated certificate chain, isn't expired, has the correct subject, the appropriate enhanced key usage (EKUs), and the supported cryptography.
 
 Run the following script:
 
