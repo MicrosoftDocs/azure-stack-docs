@@ -35,5 +35,4 @@ The following sections describe known issues and workarounds for AKS enabled by 
 
 ## Next steps
 
-- [Troubleshoot K8sVersionValidation error](cluster-k8s-version.md)
-- [Use diagnostic checker](aks-arc-diagnostic-checker.md)
+[What is AKS enabled by Azure Arc?](aks-overview.md)
