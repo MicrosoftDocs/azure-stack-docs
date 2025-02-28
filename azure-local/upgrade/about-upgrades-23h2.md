@@ -23,9 +23,9 @@ Throughout this article, we refer to Azure Local 2311.2 as the *new* version and
 
 ## About Azure Local 2311.2
 
-Azure Local 2311.2 integrates the Azure Arc infrastructure that provisions and manages the workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Local, version 23H2](../whats-new.md#features-and-improvements-in-2311).
+Azure Local 2311.2 integrates the Azure Arc infrastructure that provisions and manages the workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Local](../whats-new.md#features-and-improvements-in-2311).
 
-Starting with Azure Local 2311.2, Azure Local has evolved from a cloud-connected operating system (OS) to an Arc-enabled solution. The OS forms the base layer of this solution, with the Arc and the Orchestrator (also known as the Lifecycle Manager) components layered on top. These components are packaged together into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
+Starting with version 2311.2, Azure Local has evolved from a cloud-connected operating system (OS) to an Arc-enabled solution. The OS forms the base layer of this solution, with the Arc and the Orchestrator (also known as the Lifecycle Manager) components layered on top. These components are packaged together into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
 
 - This IaC model takes a set of input parameters that are specific to each customer and environment.
 - The lifecycle manager then orchestrates the desired state across all the layers to meet the desired state and version.
@@ -38,7 +38,7 @@ The following diagram illustrates the components of the new version of Azure Loc
 
 An upgrade is a whole new version of software that represents a significant change or major improvement. An update, on the other hand, is a process of applying a set of changes to the software to improve its performance, security, or stability.
 
-Azure Local 2311.2, is the new version of the solution with a multitude of new capabilities. To transition from the *old* to the *new* version, you need to upgrade your existing system. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Local, you would need to update your existing system.
+Azure Local 2311.2 is the latest version of the solution, offering a multitude of new capabilities. To transition from the *old* version of Azure Local to the *new* version, you need to upgrade your existing system. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Local, you would need to update your existing system.
 
 ## High-level steps for Azure Local upgrade
 
