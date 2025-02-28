@@ -3,7 +3,7 @@ title: Intermittent connectivity issues with MetalLB or Kubernetes services of t
 description: Learn how to mitigate connection issues with MetalLB or Kubernetes services of type Load Balancer.
 author: sethmanheim
 ms.author: sethm
-ms.topic: concept-article
+ms.topic: troubleshooting
 ms.date: 02/26/2025
 
 ---

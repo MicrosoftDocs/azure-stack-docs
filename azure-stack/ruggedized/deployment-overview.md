@@ -3,7 +3,7 @@ title: Azure Stack Hub ruggedized deployment and set up for the Azure Stack Hub 
 description: Learn what to expect for a successful on-site deployment of a Azure Stack Hub ruggedized, from planning to post-deployment.
 services: azure-stack
 author: patricka
-manager: femila
+manager: lizross
 ms.service: azure-stack
 ms.topic: article
 ms.date: 06/02/2021
