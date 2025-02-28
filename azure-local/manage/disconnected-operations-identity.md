@@ -4,7 +4,7 @@ description: Integrate your identity with disconnected operations on Azure Local
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 02/06/2025
+ms.date: 02/19/2025
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)
@@ -19,7 +19,7 @@ This article helps you plan and integrate your existing identity with disconnect
 
 For disconnected operations, you need to integrate with an existing identity and access management solution. Before you deploy the disconnected operations, make sure that you understand the steps required to integrate and apply the identity solution.
 
-Disconnected operations is validated for the following solutions:
+Disconnected operations are validated for the following solutions:
 
 - Active Directory: Groups and memberships  
 - Active Directory Federation Services (AD FS): Authentication  
@@ -27,9 +27,7 @@ Disconnected operations is validated for the following solutions:
 > [!NOTE]
 > Only Universal groups are supported for Active Directory. Ensure your group scope is set to Universal when you configure and set up group memberships.
 
-## How identity integration works
-
-### Deployment  
+## Understand how identity integration works
 
 During deployment, you configure disconnected operations to integrate with your Identity Provider (IDP) and Identity and Access Management (IAM). Currently, you need to specify a **Root operator**. This user owns a special operator subscription and is responsible for adding other operators' post-deployment. The **Operator subscription** is the scope that defines operator actions, and individual actions are based on the **Operator role**.
 
@@ -40,40 +38,40 @@ On a high level, the OpenID Connect (OIDC) endpoint authenticates users to disco
 > [!NOTE]
 > Role assignments and policies aren't inherited from the operator subscription to individual subscriptions. Each subscription has its own scope. Only specific roles assigned to individual subscriptions can perform actions within that specific subscription.
 
-## Understanding the operator role and actions  
+### Understand the operator role and actions  
 
 You can assign more operators to the operator subscription, which allows operator-related actions (day-to-day operations) to be performed. The built-in role (Owner) on the operator subscription allows the following actions on the scope: `/Subscriptions/\<GUID>/Microsoft.AzureLocalOperator/*`.  
 
 In this preview release, the following actions are available:
 
-### Identity and access management
+#### Identity and access management
 
 | Action                                | Operator |  
 |---------------------------------------|----------|  
 | Assign more operators                 | Yes      |  
 | Create SPN                            | Yes      |  
-| Delete SPN <sub>2</sub>               | Yes      |  
+| Delete SPN                            | Yes      |  
 | List Service Principal Names (SPNs)   | Yes      |  
-| Update SPN <sub>2</sub>               | Yes      |
+| Update SPN                            | Yes      |
 | View group memberships (synced)       | Yes      |  
 | View Identity configuration           | Yes      |  
 | View identity synchronization status  | Yes      |  
 
-### Subscription management
+#### Subscription management
 
 | Action                                | Operator |
 |---------------------------------------|----------|
 | Create Alias                          | Yes      |  
 | Create subscriptions                  | Yes      |  
 | Delete Alias                          | Yes      |  
-| Delete subscription <sub>1</sub>      | Yes      |  
+| Delete subscription                   | Yes      |  
 | List alias                            | Yes      |  
 | List all subscriptions                | Yes      |  
 | Reassign subscription ownership       | Yes      |  
 | Rename subscription                   | Yes      |  
 | Resume subscription                   | Yes      |  
 
-### Observability and diagnostics
+#### Observability and diagnostics
 
 | Action                                          | Operator |
 |-------------------------------------------------|----------|  
@@ -82,17 +80,19 @@ In this preview release, the following actions are available:
 | Configure syslog forwarding                     | Yes      |  
 | Download logs                                   | Yes      |  
 
-<sub>1. Operator subscription cannot be deleted</sub>
-<sub>2. SPNs can also be deleted by the owners assigned to the SPN itself</sub>
+There are a couple of exceptions to the actions available to operators:
 
-In this release, some of the actions in the preceding list aren't available in the Azure portal.
+- An Operator subscription cannot be deleted
+- SPNs can also be deleted by the owners assigned to the SPN itself
+
+In this preview release, only the following actions are available in the Azure portal.
 
 > [!NOTE]
 > Other built-in roles such as *Security operator*, *Subscription manager*, and *Support operator* might be considered and evaluated post preview if needed. To achieve more detailed operator roles, you can create custom role definitions based on the operator role and assign access to the operator subscription.
 
-## Understanding synchronization  
+### Understand synchronization  
 
-After you complete the initial configuration, groups with group memberships are synchronized, making them accessible from disconnected operations. To see which groups and memberships are synchronized, you can view them using an Operator Application Programming Interface (API), such as `Get-ApplianceExternalIdentityObservability` listed in the Appendix. In later releases, you can view them through the Portal. Synchronization runs periodically, every 6 hours.
+After you complete the initial configuration, groups with group memberships are synchronized, making them accessible from disconnected operations. To see which groups and memberships are synchronized, use an Operator Application Programming Interface (API), such as `Get-ApplianceExternalIdentityObservability` listed in the [Appendix](#appendix). Synchronization runs periodically, every 6 hours.
 
 ## Identity checklist  
 
@@ -117,7 +117,8 @@ The following parameters must be collected and available before deployment:
 | Authority    | An accessible authority URI that gives information about OIDC endpoints, metadata, and more. | `hhttps://adfs.contoso-AzureLocal.com/adfs` |  
 | ClientID     | AppID created when setting up the adfsclient app.    | `1e7655c5-1bc4-52af-7145-afdf6bbe2ec1`     |  
 | LdapCredential (Username and Password) | Credentials (read-only) for LDAP integration.       | Username: `ldap` <br></br> Password: ******       |  
-| LdapsCertChainInfo    | Certificate chain information for LDAP. This is used to validate calls from the appliance to LDAP. You can omit the certificate chain information for demo purposes. | MIIF ......  |
+| LdapsCertChainInfo    | Certificate chain information for your LDAP endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
+| OidcCertChainInfo     | Certificate chain information for your OIDC endpoint. You can omit the certificate chain information for demo purposes. | [How to get the certificate chain](disconnected-operations-pki.md)  |
 | LdapServer       | LDAP endpoint that can be reached from disconnected operations. This is used to synchronize groups and group memberships. | `Ldap.local.contoso.com`    |  
 | RootOperatorUserPrincipalName  |   UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com`   |
 | SyncGroupIdentifier    | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
@@ -136,7 +137,7 @@ $idpConfig = @{
 }
 ```
 
-## Current limitations
+## Limitations
 
 Here are some limitations to consider when planning your identity integration with disconnected operations:
 
@@ -149,12 +150,12 @@ Here are some limitations to consider when planning your identity integration wi
 
 ## Mitigate issues with identity integration  
 
-As a host administrator, you can use the disconnected operations PowerShell cmdlet to update and change a few settings to mitigate rainy-day scenarios that might occur. Here are some scenarios where you might need to reconfigure your identity settings to mitigate issues:  
+As a host administrator, you can use the disconnected operations PowerShell cmdlet to update and change settings to mitigate potential issues that may arise in unforeseen scenarios. Here are some scenarios where you might need to reconfigure your identity settings to mitigate issues:  
 
 - **Synchronization failed / Didn’t start**:  
   - Ensure LDAP credentials are valid.  
   - Ensure LDAP credentials have read access.  
-  - Ensure disconnected operations has network line of sight to the LDAP server, can resolve the FQDN (if not using IP address), and there are no firewalls blocking traffic.  
+  - Ensure disconnected operations have network line of sight to the LDAP server, can resolve the FQDN (if not using IP address), and there are no firewalls blocking traffic.  
 
 - **Wrong set of groups synchronized**:  
   - Verify that the `SyncGroupIdentifier` is set to the correct root. The one you're synchronizing from.  
@@ -186,7 +187,7 @@ $idpConfig = new-applianceIdentityConfiguration @identityParams
 Test-ApplianceExternalIDentityConfigurationDeep -config $idpConfig
 ```
 
-## Set or reset identity
+### Set or reset identity
 
 Use this command to reset the ownership of the operator subscription. Only do this if you have issues with your identity integration.
 
@@ -324,6 +325,4 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account"
 
 </details>
 
-## Next steps
-
-<!--- [Deploy disconnected operations on Azure Local](./disconnected-operations-deploy.md)-->
+## Related content
