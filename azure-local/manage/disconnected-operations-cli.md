@@ -4,7 +4,7 @@ description: Learn how to use the Azure Command-Line Interface (CLI) for Azure L
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/04/2025
+ms.date: 02/19/2025
 ---
 
 # Use Azure Command Line Interface (CLI) for disconnected operations on Azure Local (preview)
@@ -40,10 +40,10 @@ To install the CLI, follow these steps:
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
-For disconnected operations you must:
+For disconnected operations, you must:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
-2. [Set up certificates for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
+2. [Set up and configure the certificate trusts for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
 3. Change the path to the 64-bit version: `C:\Program Files\Microsoft SDKs\Azure\CLI2`.
 
 ## Configure Azure CLI  
@@ -170,4 +170,4 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
-<!--## Next steps-->
+## Related content

@@ -4,14 +4,14 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/04/2025
+ms.date: 02/19/2025
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article provides an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). This feature closely mirrors the AKS capabilities on Azure Local, and there are many references to Azure Local AKS articles. This article also highlights key differences or limitations associated with disconnected operations.
+This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You'll learn about key differences and limitations of disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -19,11 +19,7 @@ This article provides an overview of Azure Kubernetes Service (AKS) Arc for disc
 
 AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain a consistent management and operational experience of AKS on Azure Local using a local control plane.
 
-<!--For more ifnormation, see [What’s New in Release 2408](../whats-new.md#2408-releases).-->
-
 ## Prerequisites
-
-Before you begin, make sure you have:
 
 - [Azure CLI](disconnected-operations-cli.md) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
@@ -32,8 +28,7 @@ Before you begin, make sure you have:
 - Completed [Networking for Azure Local with disconnected operations (preview)](disconnected-operations-network.md).
 - Completed [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
 - Completed [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md#preview-participation-criteria).
-<!-- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
-- Completed [Deploy Azure Local with disconnected operations (preview)](disconnected-operations-deploy.md).-->
+- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
 
 ## Limitations
 
@@ -201,4 +196,4 @@ For more information on AKS Arc, see the following articles:
 - [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
 - [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
 
-<!--## Next steps-->
+## Related content
