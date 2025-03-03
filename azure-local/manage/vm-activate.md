@@ -4,15 +4,15 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/27/2025
+ms.date: 03/03/2025
 ms.service: azure-local
 ---
 
 # Activate Windows Server VMs on Azure Local
 
-> Applies to: Azure Local 2311.1 and later; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
+> Applies to: Azure Local 2311.1 and later; Windows Server 2025, Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
-Windows Server virtual machines (VMs) must be activated before you can use them on Azure Local. You can use any existing Windows Server activation methods that you already have. Optionally, Azure Local offers an addon subscription and tools to hel simplify this process. This article describes Windows Server VM activation concepts and the options that are available on Azure Local.
+Windows Server virtual machines (VMs) must be activated before you can use them on Azure Local. You can use any existing Windows Server activation methods that you already have. Optionally, Azure Local offers an addon subscription and tools to help simplify this process. This article describes Windows Server VM activation concepts and the options that are available on Azure Local.
 
 ## Summary
 
@@ -27,7 +27,7 @@ Next, activate your Windows Server VMs:
 
 - Azure Local supportes Automatic VM Activation (AVMA), a method that binds VM activation to the Azure Local machine and activates the Windows Server VM when it starts up.
 - If you're using Windows Server subscription, AVMA is automatically enabled on the Azure Local machines. You can immediately activate Windows Server VMs against the system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
-- If you're using Azure Hybrid Benefit, you must use the corresponding keys associated with your Windows Server license and apply them using your chosen activation method. One of the most convenient ways is to use AVMA by enabling Windows Server subscription.
+- If you're using Azure Hybrid Benefit, you must use the corresponding keys associated with your Windows Server license and apply them using your chosen activation method. One of the most convenient ways is to exchange them to use AVMA by enabling Windows Server subscription.
 - To use other methods to activate Windows Server VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
 
 ## Compare options
