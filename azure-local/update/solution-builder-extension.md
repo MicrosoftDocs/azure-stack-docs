@@ -98,7 +98,7 @@ Gen A                 Contoso680          4.0.0.0                  UpdateAvailab
 > [!NOTE]
 > If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
 
-The following table describes the possible states of the SBE on your Azure Local system.
+The following table describes the possible states of the SBE on your Azure Local system. For states requiring action, follow the provided guidance.
 
 | State    | Description     | Action    |
 |-----------|----------------|-----------|
