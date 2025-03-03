@@ -3,7 +3,7 @@ title: VM sizes supported in Azure Stack for an MDC | Microsoft Docs
 description: Reference for the supported VM sizes in an MDC.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: reference
 ms.date: 2/1/2021
