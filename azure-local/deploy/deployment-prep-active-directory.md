@@ -97,9 +97,9 @@ To create a dedicated OU, follow these steps:
 
 ## Considerations for large scale deployments
 
-The LCM user account is used during servicing operations, such as applying updates via PowerShell. It's also used when performing domain join actions against your AD, such as [repairing a node](../manage/repair-server.md) or [adding a node](../manage/add-server.md). This requires the LCM user identity having delegated permissions to add computer accounts to the target OU in the on-premises domain.
+The LCM user account is used during servicing operations, such as applying updates via PowerShell. This account is also used when performing domain join actions against your AD, such as [repairing a node](../manage/repair-server.md) or [adding a node](../manage/add-server.md). This requires the LCM user identity having delegated permissions to add computer accounts to the target OU in the on-premises domain.
 
-During the cloud deployment of Azure Local, the LCM user account is added to the local Administrators' group of the physical nodes. To mitigate the risk of a compromised LCM user account, **we recommend having a dedicated LCM user account with a unique password for each Azure Local instance.** This recommendation limits the scope and impact of a compromised LCM account to a single instance.
+During the cloud deployment of Azure Local, the LCM user account is added to the local administrators group of the physical nodes. To mitigate the risk of a compromised LCM user account, **we recommend having a dedicated LCM user account with a unique password for each Azure Local instance.** This recommendation limits the scope and impact of a compromised LCM account to a single instance.
 
 We recommend that you follow these best practices for OU creation. These recommendations are automated when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
 
@@ -107,7 +107,7 @@ We recommend that you follow these best practices for OU creation. These recomme
 - When deploying multiple instances at-scale, for easier management:
   - Create an OU under a single parent OU for each instance.
   - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.
-  - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local Administrators' group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
+  - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local administrators group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
 
 If your organization's processes and procedures require deviations from these recommendations, they are allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
 
