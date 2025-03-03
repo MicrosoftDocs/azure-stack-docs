@@ -324,5 +324,5 @@ You can update to newer versions of keys, or replace existing keys with the same
 
 ## Next steps
 
-- [Automatic virtual machine activation](windows-server/get-started/automatic-vm-activation)
+- [Automatic virtual machine activation](/windows-server/get-started/automatic-vm-activation)
 - [Key Management Services (KMS) activation planning for Windows Server](/windows-server/get-started/kms-activation-planning)
