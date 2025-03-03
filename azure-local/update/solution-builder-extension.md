@@ -105,10 +105,10 @@ The following table describes the possible states of the SBE on your Azure Local
 | AppliedSuccessfully | The SBE is installed and up to date.| No action required.|
 | NeedsAttention | The SBE or Azure Local update requires attention.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
 | PreparationFailed | The system failed to prepare for the SBE or Azure Local update.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
-| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history)|
+| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
 | UpdateAvailable | A new SBE or Azure Local update is available.| [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates).|
 | UpdateFailed | The SBE or Azure Local update failed.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
-| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history)|
+| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
 
 ## Discover Solution Builder Extension Updates
 
