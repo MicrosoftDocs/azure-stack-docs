@@ -112,7 +112,9 @@ The following table describes the possible states of the SBE on your Azure Local
 
 ## Discover Solution Builder Extension Updates
 
-The Azure Local Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Local and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
+The Azure Local Lifecycle Management orchestration queries an established online SBE manifest endpoint for each hardware vendor to determine if there are any new SBE updates for your Azure Local instance. The process of checking for new updates and determining if they're applicable to your Azure Local instance is called **discovering** updates.
+
+Microsoft and your hardware vendor work together to ensure only valid and supported update options are discovered. The SBE manifest defines a validated standard to determine if the update matches the current versions installed on your Azure Local instance. If you see an SBE discovered as an option to install, it means your hardware vendor has validated and supports the new combination of SBE and Azure Local versions.
 
 To discover and install SBE or your SBE updates, use one of the methods in the next sections.
 
