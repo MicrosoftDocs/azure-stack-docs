@@ -27,7 +27,7 @@ Here's a list of supported OS versions for this preview:
 
 - Windows Server 2025 and 2022
 - Windows 10 Enterprise
-- Ubuntu 22.04
+- Ubuntu 20.04, 22.04, and 24.04 LTS
 
 ## Limitations
 
@@ -61,6 +61,9 @@ Proxy servers aren't supported for connecting to outbound internet.
 ### Machine creation
 
 - You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Arc VMs section.
+
+    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Arc VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
+
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
 ## Create Arc VMs
@@ -160,6 +163,8 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 
 6. [Create network interfaces](../manage/create-network-interfaces.md). For this preview release, see the [limitations](#limitations) section.
 
+    Here's an example script.
+
     ```azurecli
     # Pick an ip-address between ip-pool-start and ip-pool-end from LNET.
 
@@ -173,6 +178,8 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
     ```
 
 7. [Create Arc VMs](../manage/create-arc-virtual-machines.md). For this preview release, see the [limitations](#limitations) section.
+
+    Here's an example script.
 
     ```azurecli
     az stack-hci-vm create `
@@ -189,8 +196,6 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --name "test-vm" `
         --enable-agent true
     ```
-
-    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Arc VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
 ## Manage Arc VMs and VM resources
 

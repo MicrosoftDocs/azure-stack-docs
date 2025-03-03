@@ -188,7 +188,7 @@ Here are some known issues and workarounds for disconnected operations with AKS 
 
 | Feature | Description | Workaround/comments |
 |-------------|-----------------|-------------------------|
-| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd : ERROR: Operation returned an invalid status`. |
+| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd: ERROR: Operation returned an invalid status`. |
 
 For more information on AKS Arc, see the following articles:
 
