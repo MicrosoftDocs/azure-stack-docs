@@ -201,7 +201,7 @@
           "folder_relative_path_in_docset": "articles/azure-stack/"
         }
       },
-      "manager":"femila",
+      "manager":"lizross",
       "ms.service": "azure-stack",
       "recommendations": true
     },

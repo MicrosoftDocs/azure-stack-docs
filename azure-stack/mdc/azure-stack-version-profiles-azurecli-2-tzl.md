@@ -3,7 +3,7 @@ title: Manage Azure Stack Hub with Azure CLI - MDC | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub for a Modular Data Center (MDC).
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: article
 ms.date: 08/19/2024

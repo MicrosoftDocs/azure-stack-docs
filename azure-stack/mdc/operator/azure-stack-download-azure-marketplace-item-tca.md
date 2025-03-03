@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack
 description: Learn how to download marketplace items from Azure and publish to Azure Stack for modular data centers (MDC).
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: conceptual
 ms.date: 06/03/2021
