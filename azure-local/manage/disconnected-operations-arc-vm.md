@@ -144,7 +144,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
 
     # You can find them in: C:\CloudDeployment\FullEnvironment.json
 
-    # Find the “HostNetwork”, “Intents”, “Name” for the vm-switch-name 
+    # Find the “HostNetwork”, “Intents”, “Name” for the vm-switch-name. Take the name and put it in the parenthesis of the example script. For example "ConvergedSwitch(NameFromJSON)" 
     # Find the "InfrastructureNetwork": section under “DeploymentData” to find the IP address details
 
     az stack-hci-vm network lnet create `
