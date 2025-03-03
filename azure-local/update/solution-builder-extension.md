@@ -105,10 +105,10 @@ The following table describes the possible states of the SBE on your Azure Local
 | AppliedSuccessfully | The SBE is installed and up to date.| No action required.|
 | NeedsAttention | The SBE or Azure Local update requires attention.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
 | PreparationFailed | The system failed to prepare for the SBE or Azure Local update.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
-| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
 | UpdateAvailable | A new SBE or Azure Local update is available.| [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates).|
 | UpdateFailed | The SBE or Azure Local update failed.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
-| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progess and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
 
 ## Discover Solution Builder Extension Updates
 
@@ -148,7 +148,7 @@ Azure Local 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Local 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> Microsoft recommends installing the combined “Solution” update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
+> Microsoft recommends installing the combined "Solution" update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
