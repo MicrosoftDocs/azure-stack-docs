@@ -247,6 +247,8 @@ items:
         href: manage/create-network-interfaces.md
       - name: 5. Create Arc VMs
         href: manage/create-arc-virtual-machines.md
+    - name: Connect to VM via SSH
+      href: manage/connect-arc-vm-using-ssh.md
     - name: Manage Arc VMs
       href: manage/manage-arc-virtual-machines.md
     - name: Manage Arc VM resources
@@ -273,11 +275,11 @@ items:
 
   - name: Trusted launch for Arc VMs
     items: 
-      - name: What is Trusted Launch for Arc VMs?
+      - name: What is Trusted launch for Arc VMs?
         href: manage/trusted-launch-vm-overview.md
-      - name: Deploy Trusted Launch for Arc VMs
-        href: manage/trusted-launch-vm-deploy.md
-      - name: Manage guest state protection key
+      - name: Automatic virtual TPM state transfer
+        href: manage/trusted-launch-automatic-state-transfer.md
+      - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 
   - name: Non Arc VMs
@@ -626,26 +628,12 @@ items:
         href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
     - name: Manage storage
       items:
-      - name: Create volumes
-        href: manage/create-volumes.md
       - name: Create stretched volumes
         href: manage/create-stretched-volumes.md
-      - name: Encrypt and deduplicate volumes
-        href: manage/volume-encryption-deduplication.md
-      - name: Manage volumes
-        href: manage/manage-volumes.md
-      - name: Replace drives
-        href: manage/replace-drives.md
-      - name: Use the CSV in-memory read cache
-        href: manage/use-csv-cache.md
-      - name: Manage SMB Multichannel
-        href: manage/manage-smb-multichannel.md
       - name: Storage thin provisioning
         href: manage/thin-provisioning.md
       - name: Thin provisioning conversion
         href: manage/thin-provisioning-conversion.md
-      - name: Adjustable storage repair speed
-        href: manage/storage-repair-speed.md
     - name: Monitor systems
       items:
       - name: Monitor single system with Insights
@@ -722,30 +710,8 @@ items:
       items:
       - name: Single-node systems
         href: concepts/single-server-clusters.md
-      - name: Choose drives
-        href: concepts/choose-drives.md
-      - name: Drive symmetry considerations
-        href: concepts/drive-symmetry-considerations.md
-      - name: Plan volumes
-        href: concepts/plan-volumes.md
-      - name: Understand Storage Spaces Direct
-        href: concepts/storage-spaces-direct-overview.md
-      - name: Understand nested resiliency for Storage Spaces Direct
-        href: concepts/nested-resiliency.md      
-      - name: Understand the storage pool cache
-        href: concepts/cache.md
-      - name: Fault tolerance and storage efficiency
-        href: concepts/fault-tolerance.md
-      - name: Understand and monitor storage resync
-        href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: System and storage pool quorum
-        href: concepts/quorum.md
-      - name: Understand and deploy persistent memory
-        href: concepts/deploy-persistent-memory.md
-      - name: Persistent memory health management
-        href: concepts/persistent-memory-health.md
       - name: Nested virtualization
         href: concepts/nested-virtualization.md
     - name: Software Defined Networking (SDN)

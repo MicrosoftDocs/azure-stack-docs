@@ -18,12 +18,16 @@
         items:
         - name: 2408
           items:
+          - name: Hotfix 1.2408.1.44
+            href: hotfix-1-2408-1-44.md            
           - name: Hotfix 1.2408.1.39
             href: hotfix-1-2408-1-39.md            
           - name: Hotfix 1.2408.1.38
             href: hotfix-1-2408-1-38.md            
         - name: 2406
           items:
+          - name: Hotfix 1.2406.1.19
+            href: hotfix-1-2406-1-19.md      
           - name: Hotfix 1.2406.1.18
             href: hotfix-1-2406-1-18.md      
           - name: Hotfix 1.2406.1.16
@@ -32,20 +36,10 @@
             href: hotfix-1-2406-1-15.md      
           - name: Hotfix 1.2406.1.14
             href: hotfix-1-2406-1-14.md      
-        - name: 2311
-          items:
-          - name: Hotfix 1.2311.3.62
-            href: hotfix-1-2311-3-62.md
-          - name: Hotfix 1.2311.3.61
-            href: hotfix-1-2311-3-61.md
-          - name: Hotfix 1.2311.3.50
-            href: hotfix-1-2311-3-50.md
-          - name: Hotfix 1.2311.3.44
-            href: hotfix-1-2311-3-44.md
-          - name: Hotfix 1.2311.2.23
-            href: hotfix-1-2311-2-23.md
       - name: Archive
         items:
+        - name: Hotfix 1.2311.3.62
+          href: hotfix-1-2311-3-62.md
         - name: Hotfix 1.2306.4.102
           href: hotfix-1-2306-4-102.md      
         - name: Hotfix 1.2301.3.97

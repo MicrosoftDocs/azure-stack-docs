@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/28/2025
+ms.date: 02/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,74 @@ ms.reviewer: alkohli
 # Security updates for Azure Local
 
 This article lists the various security updates that are available in Azure Local.
+
+::: moniker range="=azloc-24113"
+
+## February OS security update (KB5051980) for Azure Local
+
+This article describes the OS security update for Azure Local that was released on February 11, 2025 and applies to OS build 25398.1425.
+
+## Improvements 
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Cluster stability]** Fixed: Many machines within the same system suddenly shut down. The network is less available, and latency rises.  
+
+- **[Task Manager]** Fixed: The CPU index number might be wrong when you set process affinity. This occurs on servers that have two or more non-uniform memory access (NUMA) nodes.  
+
+- **[GB18030-2022]** This update adds support for this amendment.  
+
+- **[Memory leak]** Fixed: Leaks occur when predictive input ideas show.  
+
+- **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.  
+
+- **[Virtual machine (VM) storage pool]** Fixed: Some operations that rely on a storage pool stop working. This occurs because the virtual machine (VM)can't reclaim disk space to do task such as load balancing.
+
+- **[USB cameras]** Fixed: Your device does not recognize the camera is on. This issue occurs after you install the January 2025 security update.
+
+- **Digital/Analog converter (DAC)** Fixed: You might experience issues with USB audio devices. This is more likely when you use a DAC audio driver based on [USB 1.0](/windows-hardware/drivers/audio/usb-audio-class-system-driver--usbaudio-sys-). USB audio devices might stop working, which stops playback.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [February 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Feb).
+
+## Known issues
+
+The following is a known issue with this update.
+
+**Symptom**
+
+Following the installation of the October 2024 security update, some customers report that the OpenSSH (Open Secure Shell) service fails to start, preventing SSH connections. The service fails with no detailed logging, and manual intervention is required to run the sshd.exe process.
+
+This issue is affecting enterprise, IOT, and education customers, with a limited number of devices impacted. Microsoft is investigating whether consumer customers using Home or Pro editions of Windows are also affected.
+
+**Workaround**
+
+You can temporarily resolve this issue by updating permissions (ACLs) on the affected directories. Follow these steps:
+
+1. Open PowerShell as an administrator.
+
+1. Update the permissions for *C:\ProgramData\ssh* and *C:\ProgramData\ssh\logs* to allow full control for **System** and the **Administrators** group, while allowing read access for **Authenticated Users**. You can restrict read access to specific users or groups by modifying the permissions string if needed.
+
+1. Use the following commands to update the permissions:
+
+    ```azurecli
+    $directoryPath = "C:\ProgramData\ssh" $acl = Get-Acl -Path $directoryPath $sddlString = "O:BAD:PAI(A;OICI;FA;;;SY)(A;OICI;FA;;;BA)(A;OICI;0x1200a9;;;AU)" $securityDescriptor = New-Object System.Security.AccessControl.RawSecurityDescriptor $sddlString $acl.SetSecurityDescriptorSddlForm($securityDescriptor.GetSddlForm("All")) Set-Acl -Path $directoryPath -AclObject $acl
+    ```
+
+1. Repeat the above steps for *C:\ProgramData\ssh\logs*.
+
+Microsoft is actively investigating the issue and will provide a resolution in an upcoming Windows update. Further communications will be provided when a resolution or addition is available.
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5051980](https://go.microsoft.com/fwlink/?linkid=2303533).
+
+::: moniker-end
 
 ::: moniker range="=azloc-24112"
 
@@ -201,7 +269,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-2408"
+::: moniker range="azloc-previous"
 
 ## August 2024 OS security update (KB 5041573) for Azure Local
 

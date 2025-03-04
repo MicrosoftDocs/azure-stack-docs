@@ -3,17 +3,17 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 12/04/2024
+ms.date: 02/20/2024
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
 ---
 
-# Register your machines and assign permissions for Azure Local, version 23H2 deployment
+# Register your machines and assign permissions for Azure Local deployment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local, version 23H2.
+This article describes how to register your Azure Local machines and then set up the required permissions to deploy Azure Local.
 
 ## Prerequisites
 
@@ -57,38 +57,6 @@ Before you begin, make sure you've completed the following prerequisites:
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
 
-<!-- 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery. **This step is only required if you're using an OS ISO that's older than 2408**. For more information, see [What's new in 2408](../whats-new.md#features-and-improvements-in-2408).
-
-    # [PowerShell](#tab/powershell)
-    ```powershell
-    #Register PSGallery as a trusted repo
-    Register-PSRepository -Default -InstallationPolicy Trusted
-
-    #Install required PowerShell modules in your machine for registration
-    Install-Module Az.Accounts -RequiredVersion 3.0.0
-    Install-Module Az.Resources -RequiredVersion 6.12.0
-    Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
-    
-
-    #Install Arc registration script from PSGallery 
-    Install-Module AzsHCI.ARCinstaller
-    ```
-    # [Output](#tab/output)
-    Here's a sample output of the installation:
-
-    ```output
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 3.0.0
-    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.8.0
-    PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
-    NuGet provider is required to continue                                                                                  
-    PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
-    'C:\Users\SetupUser\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
-    running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
-    and import the NuGet provider now?
-    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-    PS C:\Users\SetupUser>
-    ``` -->
 
 1. Set the parameters. The script takes in the following parameters:
 
@@ -161,7 +129,7 @@ Before you begin, make sure you've completed the following prerequisites:
     to authenticate.
     
     Account               SubscriptionName      TenantId                Environment
-    -------               ----------------      --------                -----------
+    -------               ----------------      --------                ----------- 
     guspinto@contoso.com AzureStackHCI_Content  <Tenant ID>             AzureCloud
 
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
@@ -225,6 +193,11 @@ Before you begin, make sure you've completed the following prerequisites:
     1. The mandatory Azure Local extensions are installed on your machines. From the resource group, select the registered machine. Go to the **Extensions**. The mandatory extensions show up in the right pane.
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Local registered machines with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
+
+> [!NOTE]
+> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+
+
 
 ## Assign required permissions for deployment
 

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/03/2025
+ms.date: 02/19/2025
 ---
 
 # Manage security after upgrading Azure Local
@@ -41,46 +41,46 @@ Each of these steps is described in detail in the following sections.
 A new deployment of Azure Local introduces two baselines documents injected by the security management layer, while the upgraded cluster doesn't.
 
 > [!IMPORTANT]
-> After applying the security baseline documents, a new mechanism is used to apply and maintain the [Security baseline settings](https://aka.ms/hci-securitybase).
+> After you apply the security baseline documents, a new mechanism is used to apply and maintain [Security baseline settings](https://aka.ms/hci-securitybase).
 
 1. If your servers inherit baseline settings through mechanisms such as GPO, DSC, or scripts, we recommend that you:
 
     - Remove these duplicate settings from such mechanisms.
-    - Alternatively, after applying the security baseline, [Disable the drift control mechanism](./manage-secure-baseline.md).
+    - Alternatively, after you apply the security baseline, [Disable the drift control mechanism](./manage-secure-baseline.md).
 
-    The new security posture of your servers will combine the previous settings, the new settings, and the overlapping settings with updated values.
+    The new security posture of your servers combines previous settings, new settings, and overlapping settings with updated values.
 
     > [!NOTE]
-    > Microsoft tests and vaildates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with the new product scenarios, and could require extensive testing and troubleshooting on your part.
+    > Microsoft tests and vaildates the Azure Local security settings. We strongly recommend that you keep these settings. Use of custom settings can potentially lead to system instability, incompatibility with new product scenarios, and could require extensive testing and troubleshooting on your part.
 
-1. When running the followign commands, you'll find the documents aren't in place. These cmdlets won't return any output.
+1. When running the following commands, you'll find the documents aren't in place. These cmdlets won't return any output.
 
-    ```powershell
-    Get-AzSSecuritySettingsConfiguration
-    Get-AzSSecuredCoreConfiguration
-    ```
+   ```powershell
+   Get-ASOSConfigSecuredCoreDoc
+   Get-ASOSConfigSecuritySettingsDoc
+   ```
 
 1. To enable the baselines, go to each of the nodes you upgraded. Run the following commands locally or remotely using a privileged administrator account:
 
-    ```powershell
-    Start-AzSSecuritySettingsConfiguration
-    Start-AzSSecuredCoreConfiguration
-    ```
+   ```powershell
+   Start-AzSSecuritySettingsConfiguration
+   Start-AzSSecuredCoreConfiguration
+   ```
 
 1. Reboot the nodes in a proper sequence for the new settings to become effective.
 
 ### Confirm the status of the security baselines
 
-After rebooting, rerun the cmdlets to confirm the status of the security baselines:
+After rebooting, rerun the following cmdlets to confirm the status of security baselines:
 
 ```powershell
-Get-AzSSecuritySettingsConfiguration
-Get-AzSSecuredCoreConfiguration
+Get-ASOSConfigSecuredCoreDoc
+Get-ASOSConfigSecuritySettingsDoc
 ```
 
-You'll get an output for each cmdlet with the baseline information.
+You get an output for each cmdlet with baseline information.
 
-Here is an example of the baseline output:
+Here's an example of the baseline output:
 
 ```powershell
 OsConfiguration": {
@@ -108,7 +108,7 @@ If you need to enable BitLocker on any of your volumes, see [Manage BitLocker en
 
 Application control for business (formerly known as Windows Defender Application Control or WDAC) provides a great layer of defense against running untrusted code.
 
-After you upgrade your system, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing third party software already existing on the servers.
+After you upgrade your system, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing non-Microsoft software already existing on the servers.
 
 For new deployments, Application Control is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
 
@@ -118,7 +118,7 @@ For new deployments, Application Control is enabled in *Enforced* mode (blocking
 1. Repeat steps #2 and #3 as necessary until no further audit events are observed. Switch to *Enforced* mode.
 
     > [!WARNING]
-    > Failure to create the necessary AppControl policies to enable additional third party software will prevent that software from running.
+    > Failure to create the necessary AppControl policies to enable non-Microsoft software may prevent that software from running.
 
 For instructions to enable in *Enforced* mode, see [Manage Windows Defender Application Control for Azure Local](./manage-wdac.md#switch-application-control-policy-modes).
 

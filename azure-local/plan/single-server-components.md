@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ---
 
 # Review single-server storage reference pattern components for Azure Local

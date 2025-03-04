@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/10/2025
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -70,6 +70,8 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 - Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
 - The VMware source environment must be able to initiate a network connection with the target Azure Local instance, either by being on the same on-premises network or by using a VPN.
+
+- Verify that none of the VMs you plan to migrate have the Azure Connected Machine Agent installed. For more information, see [FAQ](migrate-faq.yml).
 
 ## Target Azure Local system requirements
 

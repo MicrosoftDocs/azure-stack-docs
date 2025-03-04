@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/06/2025
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -223,7 +223,7 @@ To address and resolve the issue of the failed extension and restore normal back
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end

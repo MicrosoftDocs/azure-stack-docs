@@ -3,33 +3,32 @@ title: Prerequisites to deploy Azure Local, version 23H2
 description: Learn about the prerequisites to deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/14/2025
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Review deployment prerequisites for Azure Local, version 23H2
+# Review deployment prerequisites for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article discusses the security, software, hardware, and networking prerequisites, and the deployment checklist in order to deploy Azure Local instance, version 23H2.
+This article discusses the security, software, hardware, and networking prerequisites, and the deployment checklist in order to deploy Azure Local instance.
 
 ## Review requirements and complete prerequisites
 
-| Requirements                  | Links                                                                                           |
-|-------------------------------|-------------------------------------------------------------------------------------------------|
-| Security features             | [Link](../concepts/security-features.md)         |
-| Environment readiness         | [Link](../manage/use-environment-checker.md)      |
-| System requirements           | [Link](../concepts/system-requirements-23h2.md)      |
-| Firewall requirements         | [Link](../concepts//firewall-requirements.md)         |
+| Requirements | Links |
+|--|--|
+| Security features | [Link](../concepts/security-features.md) |
+| Environment readiness | [Link](../manage/use-environment-checker.md) |
+| System requirements | [Link](../concepts/system-requirements-23h2.md) |
+| Firewall requirements | [Link](../concepts//firewall-requirements.md) |
 | Physical network requirements | [Link](../concepts//physical-network-requirements.md) |
-| Host network requirements     | [Link](../concepts/host-network-requirements.md)    |
+| Host network requirements | [Link](../concepts/host-network-requirements.md) |
 
 ## Complete deployment checklist
 
-Use the following checklist to gather the required information ahead of the actual deployment of your Azure Local instance, version 23H2.
-
+Use the following checklist to gather the required information ahead of the actual deployment of your Azure Local instance.
 
 |Component|What is needed|
 |--|--|

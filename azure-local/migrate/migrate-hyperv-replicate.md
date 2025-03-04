@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/16/2024
+ms.date: 02/10/2025
 ms.author: alkohli
 ---
 
