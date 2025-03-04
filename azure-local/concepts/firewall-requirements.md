@@ -57,7 +57,7 @@ For a consolidated list of endpoints for India Central that includes Azure Local
 - [Required endpoints in India Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
 
 For a consolidated list of endpoints for Southeast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Southeast Asia for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
+- [Required endpoints in Southeast Asia for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
 
 For a consolidated list of endpoints for Japan East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in Japan East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/JapanEastEndpoints/japaneast-hci-endpoints.md)
