@@ -36,10 +36,6 @@ In the current implementation of Azure Site Recovery integration with Azure Loca
 
 ## Overall workflow
 
-The following diagram illustrates the overall workflow of Azure Site Recovery working with Azure Local.
-
-:::image type="content" source="media/azure-site-recovery/site-recovery-workflow.png" alt-text="Illustration describing Azure Site Recovery and Azure Local workflow." lightbox="media/azure-site-recovery/site-recovery-workflow.png":::
-
 Here are the main steps that occur when using Site Recovery with an Azure Local:
 
 1. Start with a registered Azure Local on which you enable Azure Site Recovery.
@@ -60,9 +56,9 @@ The following table lists the scenarios that are supported for Azure Site Recove
 
 | **Azure Local VM details** | **Failover**      | **Failback**                                   |
 |--------------------------------|-------------------|------------------------------------------------|
-| Windows Gen 1                  | Failover to Azure | Failback on same or different host as failover |
-| Windows Gen 2                  | Failover to Azure | Failback on same or different host as failover |
-| Linux Gen 1                    | Failover to Azure | Failback on same or different host as failover |
+| Windows Gen 1                  | Failover to Azure | Failback on same host as failover |
+| Windows Gen 2                  | Failover to Azure | Failback on same host as failover |
+| Linux Gen 1                    | Failover to Azure | Failback on same host as failover |
 
 > [!NOTE]
 > If an Azure Local VM is deleted after a failover, manual intervention is needed to fail back to the same or a different host..
@@ -243,6 +239,7 @@ Here's a list of known issues and the associated workarounds in this release:
 | 1. | When you register Azure Site Recovery with a system, a machine fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all machines in the system are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
 | 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
 | 3. | Azure Site Recovery agent fails to install. Error message of "Microsoft Azure Site Recovery Provider installation has failed with exit code - 1." appears in the portal with the failed installation. | The installation fails when WDAC is enforced. <br><br> - Setting WDAC to "Audit" mode will allow the installation to complete.  To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#manage-wdac-settings-with-powershell) |
+| 4. | Failback of an Arc VM to an alternate cluster fails. | Failback of an Arc VM to an alternate cluster is not supported |
 
 ## Next steps
 
