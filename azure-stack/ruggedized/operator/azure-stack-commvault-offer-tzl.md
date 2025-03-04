@@ -3,7 +3,7 @@ title: Offer Commvault marketplace item in Azure Stack | Microsoft Docs
 description: Deploy Commvault from Azure Stack Marketplace
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack
 ms.topic: article
 ms.date: 06/15/2021

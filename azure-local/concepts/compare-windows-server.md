@@ -4,13 +4,13 @@ description: This topic helps you determine whether Azure Local or Windows Serve
 ms.topic: conceptual
 author: jasongerend
 ms.author: jgerend
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/21/2024
 ---
 
 # Compare Azure Local to Windows Server
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022
 
 This article explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
@@ -100,7 +100,7 @@ The following table compares the technical features of Azure Local and Windows S
 
 <sup>1</sup> Functionality only available in Azure Local, version 22H2.
 
-For more information, see [What's New in Azure Local, version 23H2](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
+For more information, see [What's New in Azure Local](../whats-new.md) and [Using Azure Local on a single machine](single-server-clusters.md).
 
 ## Compare management options
 

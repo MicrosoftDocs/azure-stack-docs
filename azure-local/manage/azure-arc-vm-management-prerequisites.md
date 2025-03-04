@@ -4,8 +4,9 @@ description: Learn about the prerequisites for deploying Azure Arc VM management
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 11/06/2024
+ms.service: azure-local
+ms.date: 02/03/2025
+
 ---
 
 # Azure Arc VM management prerequisites
@@ -39,6 +40,11 @@ For Arc VM images to be used on Azure Local, make sure to satisfy the following 
 
 - Use only the English (en-us) language VHDs to create VM images.
 - Do not use Azure Virtual machine VHD disk to create VM images.
+- If using Windows Server 2012 and Windows Server 2012 R2 images, you can only create Arc VMs using the Azure CLI. For more information, see [Additional parameters required to provision Arc VM via the Azure CLI using Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+
+## Firewall requirements
+
+Make sure the requirements as listed in [Required firewall URLs for Azure Local deployments](../concepts/firewall-requirements.md#required-firewall-urls-for-azure-local-deployments) are satisfied to allow communication between the Arc VMs running on Azure Local and Azure Arc.
 
 ## Azure Command-Line Interface (CLI) requirements
 

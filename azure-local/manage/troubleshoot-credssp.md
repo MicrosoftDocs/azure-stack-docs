@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: jasongerend
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 02/27/2025
 ms.author: jgerend
 ms.reviewer: JasonGerend
 ---
@@ -23,7 +23,7 @@ Some tasks that require CredSSP to be enabled include:
 - Create Cluster wizard workflow
 - Active Directory queries or updates
 - SQL Server queries or updates
-- Locating accounts or computers on a different domain or non-domain joined environment
+- Locating accounts or computers on a different domain or nondomain joined environment
 
 ## Troubleshooting tips
 
@@ -50,18 +50,22 @@ If you receive the following WinRM error message, try using the manual verificat
 `Connecting to remote <sever name> failed with the following error message: The WinRM client cannot process the request. A computer policy does not allow the delegation of the user credentials to the target computer because the computer is not trusted. The identity of the target computer can be verified if you configure the WSMAN service to use a valid certificate.`
 
 The manual verification steps in this section require you to configure the following computers:
+
 - The computer running Windows Admin Center
 - The server where you received the error message
 
 To resolve the error, try the following remedy steps as needed:
 
 **Remedy 1:**
+
 1. Restart the computer running Windows Admin Center and the server.
+
 1. Try running the Create Cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
 **Remedy 2:**
+
 1. On the computer running Windows Admin Center, open Windows PowerShell as an administrator and run the following commands:
 
     ```powershell
@@ -81,25 +85,26 @@ To resolve the error, try the following remedy steps as needed:
     ```powershell  
     Enable-WsmanCredSSP -Role Server  
     ```
-    
+
 1. Try running the Create Cluster wizard again.
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
 **Remedy 3:**
+
 1. On the computer running Windows Admin Center, run the following PowerShell command to check the Service Principal Name (SPN):
 
     ```powershell
     setspn -Q WSMAN/<Windows Admin Center Computer Name>  
     ```
-    
+
     The result should list the following output:
 
     `WSMAN/<Windows Admin Center Computer Name>`
 
     `WSMAN/<Windows Admin Center Computer FQDN Name>`
 
-1. If the results are not listed, run the following PowerShell commands to register the SPN:
+1. If the results aren't listed, run the following PowerShell commands to register the SPN:
 
     ```powershell
     setspn -S WSMAN/<Windows Admin Center Computer Name> <Windows Admin Center Computer Name>  
@@ -121,7 +126,7 @@ To resolve the error, try the following remedy steps as needed:
 
     `WSMAN/<Server FQDN Name>`
 
-1. If the results are not listed, run the following PowerShell commands to register the SPN:
+1. If the results aren't listed, run the following PowerShell commands to register the SPN:
 
     ```powershell
     setspn -S WSMAN/<Server Name> <Server Name>  
@@ -135,16 +140,16 @@ To resolve the error, try the following remedy steps as needed:
 
     For details on running the wizard, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
-
 **Remedy 4:**
 
-If any of the previous remedy steps failed or did not complete, this might indicate a record conflict in Active Directory. You can use a different computer name to reset the record as a new record in Active Directory.
+If any of the previous remedy steps failed or didn't complete, this might indicate a record conflict in Active Directory. You can use a different computer name to reset the record as a new record in Active Directory.
 
 To reset the record in Active Directory, reinstall the Azure Stack HCI operating system with a new computer name.
 
 **Remedy 5:**
 
 If the error message you're seeing mentions `NTLM` then try the following:
+
 1. On the computer running Windows Admin Center (the one with the "client" CredSSP role), run the following command to see what policies are configured:
 
     ```powershell
@@ -165,4 +170,4 @@ If the error message you're seeing mentions `NTLM` then try the following:
 
 ## Next steps
 
-For more information on CredSSP, see [Credential Security Support Provider](/windows/win32/secauthn/credential-security-support-provider).
+For more information about CredSSP, see [Credential Security Support Provider](/windows/win32/secauthn/credential-security-support-provider).

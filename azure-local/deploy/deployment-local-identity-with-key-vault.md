@@ -3,17 +3,17 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/22/2024
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
-# Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
+# Deploy Azure Local using local identity with Azure Key Vault (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+::: moniker range=">=azloc-2411"
 
-This article describes how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment.
+This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -103,7 +103,7 @@ Follow these steps to configure DNS for Azure Local:
 
 During deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This allows you to use a local identity with Key Vault to securely manage and store secrets instead of relying on AD for authentication.
 
-The general deployment steps are the same as those outlined in [Deploy an Azure Local, version 23H2 system using the Azure portal](./deploy-via-portal.md). However, when using local identity with Key Vault, you need to perform specific steps on the **Networking** and **Management** tabs.
+The general deployment steps are the same as those outlined in [Deploy an Azure Local system using the Azure portal](./deploy-via-portal.md). However, when using local identity with Key Vault, you need to perform specific steps on the **Networking** and **Management** tabs.
 
 ### Networking tab
 
@@ -223,5 +223,13 @@ To address and resolve the issue of the failed extension and restore normal back
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2411"
+
+This feature is available only in Azure Local 2411 or later.
+
+::: moniker-end

@@ -5,13 +5,14 @@ metadata:
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
-  ms.service: azure-stack-hci
-  ms.date: 12/10/2024
+  ms.service: azure-local
+  ms.date: 02/10/2025
+
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
 
 summary:
-  The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Local, version 23H2 instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
+  The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
 
   Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**.
 
@@ -31,7 +32,7 @@ sections:
           
           Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
 
-          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Local, version 22H2, it's version 10.
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
           > [!NOTE]
           > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
@@ -86,7 +87,7 @@ sections:
 
           ### My source VMs use static IP addresses. Are these addresses preserved when I migrate my VMs to Azure Local?
         
-          Currently both VMware and Hyper-V migrations only support VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Local system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.
+          In this release, static IP addresses can be preserved during migration for Windows VMs on VMware and Hyper-V. Linux VMs are not supported. For more details, see [Maintain static IP addresses](migrate-maintain-ip-addresses.md).
 
           ### I use DHCP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
         
@@ -96,6 +97,10 @@ sections:
         
           Both Linux and Windows VMs that have secure boot enabled aren't supported in this release.
 
+          ### Can I use private endpoints with Azure Migrate for Azure Local migrations?
+          
+          Private endpoint connectivity is not currently supported for Azure Migrate projects configured for migrations to Azure Local.
+
           ### How do I enable guest management on my migrated VMs? 
           
           First, ensure that the target Azure Local that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](migrate-enable-guest-management.md).
@@ -104,22 +109,25 @@ sections:
           
           No, this is not a supported scenario with this release. Create a separate project for each source from which you wish to migrate.
 
-          ### Can I use private endpoints to connect to my Azure Migrate project?
-          
-          No, this is not a supported scenario with this release.
+          ### I have the Azure Connected Machine Agent deployed on my source VM(s) that I wish to migrate. Do I need to uninstall the agent on my VM(s) before migration?
 
+          Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before migration. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so will result in unsupported behavior.
+
+          When the VM is migrated, it will be created as a native Azure Arc virtual machine in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
+
+        
           ## [VMware VMs only](#tab/vmware-vms)
           
           ### How many VMs can I replicate in parallel from VMware?
 
           Within the Azure Migrate portal, you can select up to 10 machines at once for replication. To replicate more machines, add in batches of 10 (agentless migration overview).
 
-          Each Azure migrate appliance supports replication of 52 disks in parallel (scheduling logic).
+          Each Azure Migrate appliance supports replication of 52 disks in parallel (scheduling logic).
 
-          For example, if you selected to replicate 100 VMs (in batches of 10), with each VM containing two disks each, resulting in 200 (100 x 2) disks in total. The Azure migrate appliance starts replicating 52 disks in parallel. As soon as one disk finishes initial replication, the next disk immediately takes its spot in the queue, while still continuously replicating the remaining 52 disks. This continues with all the remaining disks until all 200 disks have been replicated.
+          For example, if you selected to replicate 100 VMs (in batches of 10), with each VM containing two disks each, resulting in 200 (100 x 2) disks in total. The Azure Migrate appliance starts replicating 52 disks in parallel. As soon as one disk finishes initial replication, the next disk immediately takes its spot in the queue, while still continuously replicating the remaining 52 disks. This continues with all the remaining disks until all 200 disks have been replicated.
 
           ## [Hyper-V VMs only](#tab/hyper-v-vms)
           
-          ### I have a VM running on an older Hyper-V servers - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Local?
+          ### I have a VM running on an older Hyper-V server - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Local?
 
           Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.

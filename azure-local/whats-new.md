@@ -4,23 +4,47 @@ description: Find out what's new in Azure Local, version 23H2 release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
-ms.date: 01/03/2025
+ms.service: azure-local
+ms.date: 02/19/2025
 ---
 
-# What's new in Azure Local, version 23H2
+# What's new in Azure Local?
 
-[!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-This article lists the various features and improvements that are available in Azure Local, version 23H2.
+This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
 
-Azure Local, version 23H2 is the latest version of the Azure Local solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+::: moniker range="=azloc-24113"
 
-There are multiple release trains for Azure Local, version 23H2: 2411, 2408, 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+## Features and improvements in 2411.3
 
-## [2411 releases](#tab/2411releases)
+This is a baseline release with the following features and improvements:
+
+- **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
+- **Updated .NET version** - This build has an updated .NET version 8.0.13.
+
+For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
+
+::: moniker-end
+
+::: moniker range="=azloc-24112"
+
+## Features and improvements in 2411.2
+
+This is a baseline release with the following features and improvements:
+
+- **Arc VMs** - Here are the improvements made to Arc VMs in this release:
+    - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
+    - **Live migration**: Live migration is available for Arc VMs via on-premises tools. For more information, see [Live migration of Arc VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-arc-vms).
+
+- **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
+
+For more information on improvements in this release, see the [Fixed issues in 2411.2](./known-issues.md?view=azloc-24112&preserve-view=true#fixed-issues).
+
+::: moniker-end
+
+::: moniker range="=azloc-24111"
 
 ## Features and improvements in 2411.1
 
@@ -32,7 +56,11 @@ This is a baseline release with the following features and improvements:
 
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
-For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues-2411-1.md#fixed-issues).
+For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
+
+::: moniker-end
+
+::: moniker range="=azloc-2411"
 
 ## Features and improvements in 2411
 
@@ -67,15 +95,13 @@ This is a baseline release with the following features and improvements:
 
 - **Security improvements** - Starting this release, the security posture of Azure Local is enhanced with the following improvements:
 
-  - **Security posture following Azure Local, version 22H2 to version 23H2 upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2 to version 23H2.
+  - **Security posture following Azure Stack HCI, version 22H2 to Azure Local upgrade** - Warnings and guardrails were added in the upgrade flow. Documentation was also updated to reflect the security posture of Azure Local after upgrading from version 22H2.
   
-    For more information, see [Manage security after upgrading Azure Local from version 22H2 to version 23H2](./manage/manage-security-post-upgrade.md).
+    For more information, see [Manage security after upgrading Azure Local from version 22H2](./manage/manage-security-post-upgrade.md).
 
   - **Improved security baseline compliance** - Starting this release, the security settings on the Azure Local nodes are compared against the security baseline with full accuracy. On the right secured-core hardware, you achieve a 99% compliance score, which you can view in the Azure portal.
   
     For more information, see [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal).
-
-  - **ECC memory requirements** - Beginning this release, the EE memory requirements are enforced. For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **Error-Correcting Code (ECC) memory requirements** - Beginning this release, the ECC memory requirements are enforced. If you can't meet the memory and ECC requirements, you can opt for a virtual deployment.
 
@@ -83,12 +109,10 @@ This is a baseline release with the following features and improvements:
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
-## [2408 releases](#tab/2408releases)
+::: moniker-end
 
->[!NOTE]
-> A new ISO image is available that includes the Hyper-V role and all necessary Arc registration modules.
 
-This release train includes the following releases:
+::: moniker range="=azloc-24082"
 
 
 ## Features and improvements in 2408.2
@@ -101,6 +125,12 @@ This is a baseline release with the following features and improvements:
   - You can set a SQL Server configuration for Arc VMs on Portal.
   - You can now create an image from an Arc VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
+
+
+::: moniker-end
+
+::: moniker range="=azloc-24081"
+
 
 ## Features and improvements in 2408.1
 
@@ -115,15 +145,19 @@ This is a baseline release with the following features and improvements:
 - **Improved CLI error messages** for deletion of VM network interfaces, data disks, and storage paths that are in use.
 - **Improved reliability** when installing open ssh client during solution deployment.
 
+::: moniker-end
+
+::: moniker range="=azloc-previous"
+
 ## Features and improvements in 2408
 
 This is a baseline release with the following features and improvements:
 
-### Upgrade from version 22H2 to version 23H2
+### Upgrade from Azure Stack HCI, version 22H2 to Azure Local 
 
-This release introduces the ability to upgrade your Azure Local instance from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade has a phased rollout.
+This release introduces the ability to upgrade your Azure Stack HCI from version 22H2 to Azure Local. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade has a phased rollout.
 
-For more information, see [Upgrade Azure Local from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
+For more information, see [Upgrade Azure Local from version 22H2](./upgrade/about-upgrades-23h2.md).
 
 ### Updates changes
 
@@ -142,7 +176,7 @@ This release contains the following changes for Arc VM management:
 - The vLAN field on a logical network will default to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
-For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
+For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
 
 ### SBE changes
 
@@ -152,13 +186,19 @@ This release contains the following changes for SBE:
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
-## [2405 releases](#tab/2405releases)
+::: moniker-end
 
-The 2405 release train includes the following releases:
+::: moniker range="=azloc-previous"
+
 
 ## Features and improvements in 2405.3
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-3.md) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
+
+::: moniker-end
+
+
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2405.2
 
@@ -173,7 +213,7 @@ This is primarily a bug fix release with a few improvements.
   
 - **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on machines. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
 
-  For more information, see [Fixed issues in 2405.2](./known-issues-2405-2.md#fixed-issues).
+  For more information, see [Fixed issues in 2405.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 - **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Local hardware including the Azure Local Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
 
@@ -189,7 +229,7 @@ This is primarily a bug fix release with a few improvements.
 - **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
 - **Multiple bug fixes related to Updates** were made in this release.
 
-For more information on bug fixes, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
+For more information on bug fixes, see the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ## Features and improvements in 2405
 
@@ -220,7 +260,7 @@ Here are the features and improvements in this release.
 
 - This release contains a fix for a deployment issue that is encountered when setting the diagnostic level in Azure and the device. <!--26737110-->
 
-For more information, see the [Fixed issues list in 2405](./known-issues-2405.md#fixed-issues).
+For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Updates changes
 
@@ -239,7 +279,7 @@ This release contains the following changes for updates:
   - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
   - An issue for Cluster-Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
 
-For more information, see the [Fixed issues list in in 2405](./known-issues-2405.md#fixed-issues).
+For more information, see the [Fixed issues list in in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Environment checker changes
 
@@ -284,27 +324,25 @@ This release includes the following updates to the security documentation:
 
 - The compliance score for Azure Local machine is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](./manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
 - The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
-- Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local, version 23H2](./concepts/security-features.md) article.
+- Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local](./concepts/security-features.md) article.
 
-### AKS on Azure Local, version 23H2
+### AKS on Azure Local
 
-For a list of the changes and improvements in AKS on Azure Local, version 23H2, see [What's new in AKS on Azure Local, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+For a list of the changes and improvements in AKS on Azure Local, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
-## [2402 releases](#tab/2402releases)
 
-The 2402 release train includes the following releases:
 
 ## Features and improvements in 2402.4
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-3.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402.2
 
-This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:
+This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes. Here's the list of enhancements:
 
 - **Region expansion** - The following new regions are now supported on your Azure Local instance: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 - **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
@@ -312,15 +350,15 @@ This is primarily a bug fix release with a few enhancements. See the [Fixed issu
 
 ## Features and improvements in 2402.1
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-1.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2402
 
-This section lists the new features and improvements in the 2402 release of Azure Local, version 23H2.
+This section lists the new features and improvements in the 2402 release of Azure Local.
 
 ### New built in security role
 
-This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
 
 The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
@@ -334,11 +372,11 @@ Beginning this release, the Active Directory preparation process is simplified. 
 
 ### Region expansion
 
-Azure Local, version 23H2 solution is now supported in Australia. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+Azure Local solution is now supported in Australia. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 
 ### New documentation for network considerations
 
-We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Local, version 23H2. For more information, see [Network considerations for Azure Local](./plan/cloud-deployment-network-considerations.md).
+We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Local. For more information, see [Network considerations for Azure Local](./plan/cloud-deployment-network-considerations.md).
 
 ### Security changes
 
@@ -348,21 +386,18 @@ This release includes the following updates to the security documentation:
 - Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
 - Published the [Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
 
-## [2311 releases](#tab/2311releases)
-
-The 2311 release train includes the following releases:
 
 ## Features and improvements in 2311.5
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-5.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.4
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-4.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
-A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
+A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
 
 The role applies the concept of the least amount of privilege and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
 
@@ -372,12 +407,12 @@ Additionally, this release includes an update health check that confirms the ass
 
 ## Features and improvements in 2311.2 GA
 
-This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Local, version 23H2.
+This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Local.
 
 > [!IMPORTANT]
 > The production workloads are only supported on the Azure Local systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
 
-In this generally available release of the Azure Local, version 23H2, all the features that were available with the [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
+In this generally available release of the Azure Local, all the features that were available with the [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
 
 ### Deployment changes
 
@@ -392,7 +427,7 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 
 ### Add server and repair server changes
 
-- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
+- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Arc VM management changes
 
@@ -420,18 +455,18 @@ Starting with this release, the following workloads are generally available on A
 
 - Azure Kubernetes Service (AKS) on Azure Local. For more information, see [Create Kubernetes clusters](/azure/aks/hybrid/aks-create-clusters-cli).
 
-    In addition, AKS on HCI has a new CLI extension and Azure portal experience, [Support for logical networks](/azure/aks/hybrid/aks-networks), [Support for taints and labels](/azure/aks/hybrid/cluster-labels), [Support for upgrade via Azure CLI](/azure/aks/hybrid/cluster-upgrade), [Support for Nvidia A2](/azure/aks/hybrid/deploy-gpu-node-pool?pivots=aks-23h2) and more. For details, see [What's new in AKS on Azure Local, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+    In addition, AKS on HCI has a new CLI extension and Azure portal experience, [Support for logical networks](/azure/aks/hybrid/aks-networks), [Support for taints and labels](/azure/aks/hybrid/cluster-labels), [Support for upgrade via Azure CLI](/azure/aks/hybrid/cluster-upgrade), [Support for Nvidia A2](/azure/aks/hybrid/deploy-gpu-node-pool?pivots=aks-23h2) and more. For details, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
 - Azure Virtual Desktops (AVD) on Azure Local. For more information, see [Deploy AVD on Azure Local](/azure/virtual-desktop/azure-stack-hci-overview).
 
 ## Features and improvements in 2311
 
-This section lists the new features and improvements in the 2311 release of Azure Local, version 23H2. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
+This section lists the new features and improvements in the 2311 release of Azure Local. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
 
 
 ### Cloud-based deployment
 
-For machines running Azure Local, version 23H2, you can perform new deployments via the cloud. You can deploy an Azure Local instance in one of the two ways - via the Azure portal or via an Azure Resource Manager deployment template.
+For machines running Azure Local, release 2311.2, you can perform new deployments via the cloud. You can deploy an Azure Local instance in one of the two ways - via the Azure portal or via an Azure Resource Manager deployment template.
 
 For more information, see [Deploy Azure Local instance using the Azure portal](./deploy/deploy-via-portal.md) and [Deploy Azure Local via the Azure Resource Manager deployment template](./deploy/deployment-azure-resource-manager-template.md).
 
@@ -478,14 +513,14 @@ Beginning this release, the following Azure Arc VM management capabilities are a
 - **Trusted launch for Azure Arc VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Local.
     For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
 
-### AKS on Azure Local, version 23H2
+### AKS on Azure Local
 
-Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. For more information, see [What's new in AKS on Azure Local, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. For more information, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of AKS on Azure Local 23H2 including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
-- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Local 23H2. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
+- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of AKS on Azure Local including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
+- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
 - **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
 - **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
@@ -525,12 +560,12 @@ This release introduces the Resilient File System (ReFS) deduplication and compr
 
 For more information, see [Optimize storage with ReFS deduplication and compression in Azure Local](./manage/refs-deduplication-and-compression.md).
 
----
+::: moniker-end
 
 ## Next steps
 
-- [Read the blog announcing the general availability of Azure Local, version 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
-- [Read the blog about What's new for Azure Local at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
-- For Azure Local, version 23H2 deployments:
+- [Read the blog about What's new for Azure Local at Microsoft Ignite 2024](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
+- Read the [blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
+- For Azure Local deployments:
   - Read the [Deployment overview](./deploy/deployment-introduction.md).
-  - Learn how to [Deploy Azure Local, version 23H2 via the Azure portal](./deploy/deploy-via-portal.md).
+  - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).

@@ -3,10 +3,9 @@ title: App Service on Azure Stack Hub 24R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 12/09/2024
+ms.date: 02/07/2025
 ms.author: anwestg
 ms.reviewer:
-
 ---
 
 # App Service on Azure Stack Hub 24R1 release notes
@@ -29,39 +28,33 @@ Azure App Service on Azure Stack Hub 24 R1 brings new updates to Azure Stack Hub
 
 ## Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+See the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
-- Ensure your **Azure Stack Hub** is updated to **1.2311.1.22** or later.
-
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal.
-
-- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal.
-
-- Back up the App Service and SQL Server Master Databases:
+- Ensure your Azure Stack Hub is updated to **1.2311.1.22** or later.
+- Ensure all roles are **Ready** in the Azure App Service Administration in the Azure Stack Hub admin portal.
+- Back up App Service Secrets using the App Service Administration in the Azure Stack Hub admin portal.
+- Back up the App Service and SQL Server master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
 - Back up the Tenant App content file share.
 
-  > [!Important]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > [!IMPORTANT]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
+- Syndicate the Custom Script Extension version **1.9.3** from the Marketplace.
 
 ## Updates
 
 Azure App Service on Azure Stack Update 24R1 includes the following improvements and fixes:
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
-
-- Updates **Azure Functions runtime** to **v1.0.21719**.
-
+- Updates to App Service Tenant, Admin, Functions portals and Kudu tools. Consistent with the Azure Stack portal SDK version.
+- Updates Azure Functions runtime to **v1.0.21719**.
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
-
-- **Updates to the following application frameworks and tools**:
+- Updates to the following application frameworks and tools:
   - .NET Framework 4.8.1
   - ASP.NET Core 
     - 8.0.7
@@ -191,7 +184,7 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
 
 - Resolved issues enabling blob storage for application logging
 
-- Improved swap experience when swapping slots to prevent timeouts
+- Improved swap experience when swapping slots to prevent time-outs
 
 - Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
 
@@ -208,21 +201,26 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (update)
 
-- In situations where a customer converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins weren't successfully migrated to contained users.
+- **Application downtime should be expected during Upgrade.**
 
-Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, may experience upgrade failures.  
+  > [!IMPORTANT]
+  >
+  > Due to a change in communication format within the Web Farm, during the upgrade all roles move into repair mode until they match the same version as the controller. Due to this, we advise you to declare a maintenance window during this upgrade and prepare for application downtime during the upgrade.
 
-Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. **This script is non-destructive and will not cause downtime**.
+- In situations where you converted the appservice_hosting and appservice_metering databases to contained database, upgrade might fail if logins weren't successfully migrated to contained users.
 
-This script must be run under the following conditions:
+  Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, might experience upgrade failures.  
 
-- By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
-- If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and does not cause downtime.
 
+  This script must be run under the following conditions:
+
+  - By a user that has the system administrator privilege, for example the SQL SA (System Administrator) Account;
+  - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
     - appservice_hosting_FileServer
     - appservice_hosting_HostingAdmin
     - appservice_hosting_LoadBalancer
-    - appservice_hosting_Operations
+    - appservice_hosting_Operations   
     - appservice_hosting_Publisher
     - appservice_hosting_SecurePublisher
     - appservice_hosting_WebWorkerManager
@@ -230,59 +228,107 @@ This script must be run under the following conditions:
     - appservice_metering_Operations
     - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
-```sql
-        USE appservice_hosting
-        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
-        BEGIN
-        DECLARE @username sysname ;  
-        DECLARE user_cursor CURSOR  
-        FOR
-            SELECT dp.name
-            FROM sys.database_principals AS dp  
-            JOIN sys.server_principals AS sp
-                ON dp.sid = sp.sid  
-                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
-            OPEN user_cursor  
-            FETCH NEXT FROM user_cursor INTO @username  
-                WHILE @@FETCH_STATUS = 0  
-                BEGIN  
-                    EXECUTE sp_migrate_user_to_contained
-                    @username = @username,  
-                    @rename = N'copy_login_name',  
-                    @disablelogin = N'do_not_disable_login';  
+    ```sql
+            USE appservice_hosting
+            IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+            BEGIN
+            DECLARE @username sysname ;  
+            DECLARE user_cursor CURSOR  
+            FOR
+                SELECT dp.name
+                FROM sys.database_principals AS dp  
+                JOIN sys.server_principals AS sp
+                    ON dp.sid = sp.sid  
+                    WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+                OPEN user_cursor  
                 FETCH NEXT FROM user_cursor INTO @username  
-            END  
-            CLOSE user_cursor ;  
-            DEALLOCATE user_cursor ;
-            END
-        GO
+                    WHILE @@FETCH_STATUS = 0  
+                    BEGIN  
+                        EXECUTE sp_migrate_user_to_contained
+                        @username = @username,  
+                        @rename = N'copy_login_name',  
+                        @disablelogin = N'do_not_disable_login';  
+                    FETCH NEXT FROM user_cursor INTO @username  
+                END  
+                CLOSE user_cursor ;  
+                DEALLOCATE user_cursor ;
+                END
+            GO
 
-        USE appservice_metering
-        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
-        BEGIN
-        DECLARE @username sysname ;  
-        DECLARE user_cursor CURSOR  
-        FOR
-            SELECT dp.name
-            FROM sys.database_principals AS dp  
-            JOIN sys.server_principals AS sp
-                ON dp.sid = sp.sid  
-                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
-            OPEN user_cursor  
-            FETCH NEXT FROM user_cursor INTO @username  
-                WHILE @@FETCH_STATUS = 0  
-                BEGIN  
-                    EXECUTE sp_migrate_user_to_contained
-                    @username = @username,  
-                    @rename = N'copy_login_name',  
-                    @disablelogin = N'do_not_disable_login';  
+            USE appservice_metering
+            IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+            BEGIN
+            DECLARE @username sysname ;  
+            DECLARE user_cursor CURSOR  
+            FOR
+                SELECT dp.name
+                FROM sys.database_principals AS dp  
+                JOIN sys.server_principals AS sp
+                    ON dp.sid = sp.sid  
+                    WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+                OPEN user_cursor  
                 FETCH NEXT FROM user_cursor INTO @username  
-            END  
-            CLOSE user_cursor ;  
-            DEALLOCATE user_cursor ;
-            END
-        GO
-```
+                    WHILE @@FETCH_STATUS = 0  
+                    BEGIN  
+                        EXECUTE sp_migrate_user_to_contained
+                        @username = @username,  
+                        @rename = N'copy_login_name',  
+                        @disablelogin = N'do_not_disable_login';  
+                    FETCH NEXT FROM user_cursor INTO @username  
+                END  
+                CLOSE user_cursor ;  
+                DEALLOCATE user_cursor ;
+                END
+            GO
+    ```
+
+- A new Redirect URL must be added to the identity application created in order to support Single Sign On(SSO) Scenarios (for example Kudu)
+
+# [Entra ID](#tab/EntraID)
+
+## Retrieve the Identity Application Client ID
+
+1. In the Azure Stack admin portal, navigate to the **ControllersNSG** Network Security Group.
+1. By default, remote desktop access is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
+1. Navigate to the resource group containing the App Service Resource Provider deployment. By default, the resource group is named with the format `AppService.<region>`, and connected to **CN0-VM**.
+1. Launch the **Web Cloud Management Console**.
+1. Check the **Web Cloud Management Console -> Web Cloud** screen and verify that both **Controllers** are **Ready**.
+1. Select **Settings**.
+1. Find the **ApplicationClientId** setting. Retrieve the value.
+1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+1. Modify the **Inbound_Rdp_3389** rule to deny access.
+
+## Update the Entra ID Application with new Redirect URI
+  
+1. Sign into the Azure portal to access the Entra ID tenant you connected your Azure Stack Hub to at deployment time.
+1. Using the Azure portal and navigate to **Microsoft Entra ID**.
+1. Search your tenant for the `ApplicationClientId` you retrieved earlier.
+1. Select the application.
+1. Select **Authentication**.
+1. Add another **Redirect URI** to the existing list: `https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>`.
+
+# [ADFS](#tab/ADFS)
+
+## Retrieve the identity application
+
+1. Open a [session to the Privileged Endpoint](azure-stack-privileged-endpoint.md).
+1. Run the following command to retrieve the AD FS Graph applications:
+
+   ``` PowerShell
+   Get-GraphApplication
+   ```
+
+1. Find the identifier for the **AzureStack-AppService** application.
+1. Update the `RedirectURIs` for the application:
+
+   ``` PowerShell
+   $RedirectURIs = "@("https://appservice.sso.appservice.<region>.<DomainName>.<extension>", "https://azsstamp.sso.appservice.<region>.<DomainName>.<extension>", "https://api.appservice.<region>.<DomainName>.<extension>:44300/manage")
+   Set-GraphApplication -ApplicationIdentifier <insert Identifier value> -ClientRedirectUris $RedirectURIs
+   ```
+
+1. Close the Privileged Endpoint session.
+
+---
 
 ## Known issues (post-installation)
 

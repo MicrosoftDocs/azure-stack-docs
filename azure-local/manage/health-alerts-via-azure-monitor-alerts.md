@@ -4,7 +4,7 @@ description: Learn how to use the Azure Monitor alerts to respond to Azure Local
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/26/2024
 ---
 
@@ -36,7 +36,7 @@ The integration of Azure Monitor alerts with Azure Local offers several key bene
 
 Here are the prerequisites for using health alerts with Azure Local:
 
-- Have access to an Azure Local, version 23H2 system that is deployed and registered. For more information, see [Deploy Azure Local via Azure portal](../deploy/deploy-via-portal.md).
+- Have access to an Azure Local system that is deployed and registered. For more information, see [Deploy Azure Local via Azure portal](../deploy/deploy-via-portal.md).
 
 ## Configure health alerts for Azure Local
 

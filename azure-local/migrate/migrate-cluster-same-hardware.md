@@ -3,18 +3,18 @@ title: Migrate to Azure Local on same hardware
 description: Learn how to migrate a system to Azure Local on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/29/2024
+ms.date: 02/03/2025
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
 
 # Migrate to Azure Local on same hardware
 
-> Applies to: Azure Local, versions 22H2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Local 2311.2 and later; Azure Stack HCI, version 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new operating system for Azure Local and retains your existing system settings and storage, and imports your VMs.
+This topic describes how to migrate a Windows Server failover cluster to Azure Local using your existing machine hardware. This process installs the new operating system for Azure Local and retains your existing system settings and storage, and imports your virtual machines (VMs).
 
 The following diagram depicts migrating your Windows Server cluster in-place using the same machine hardware. After shutting down your system, Azure Local is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
@@ -23,7 +23,7 @@ The following diagram depicts migrating your Windows Server cluster in-place usi
 To migrate your VMs to new Azure Local hardware, see [Migrate to Azure Local on new hardware](migrate-cluster-new-hardware.md).
 
 > [!NOTE]
-> Migrating stretched clusters is not covered in this article.
+> Migrating stretched clusters isn't covered in this article.
 
 ## Before you begin
 
@@ -40,7 +40,7 @@ There are several requirements and things to consider before you begin migration
 - Shut down your system VMs, offline CSVs, offline storage pools, and the system service.
 - Disable the Cluster Name Object (CNO) (it's reused later) and:
     - Check that the CNO has Create Object rights to its own Organizational Unit (OU)
-    - Check that the block inherited policy has been set on the OU
+    - Check that the block inherited policy is set on the OU
     - Set the required policy for Azure Local on this OU
 
 ## VM version support and update
@@ -60,7 +60,7 @@ Regardless of the OS version a VM may be running on, the minimum VM version supp
 |Windows Server 2022| |
 |Azure Local|9.0|
 
-For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 systems, direct migration to Azure Local is not supported. In these cases, you have two options:
+For VMs on Windows Server 2008 SP1, Windows Server 2008 R2-SP1, and Windows 2012 systems, direct migration to Azure Local isn't supported. In these cases, you have two options:
 
 - Migrate these VMs to Windows Server 2012 R2 or later first, update the VM version, then begin the migration process.
 
@@ -111,11 +111,11 @@ If using Windows Admin Center to create the Azure Local instance, the Create Clu
 For detailed information on how to create the system, see [Create an Azure Local instance using Windows Admin Center](../deploy/create-cluster.md).
 
 > [!IMPORTANT]
-> Skip step **4.1 Clean drives** in the Create system wizard. Otherwise you will delete your existing VMs and storage.
+> Skip step **4.1 Clean drives** in the Create system wizard. Otherwise you'll delete your existing VMs and storage.
 
 1. Start the Create Cluster wizard. When you get to **Step 4: Storage**:
 
-1. Skip step **4.1 Clean drives**. Don't do this.
+1. Skip step **4.1 Clean drives**. Don't do this operation.
 
 1. Step away from the wizard.
 
@@ -144,7 +144,7 @@ Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication
 For more information on how to create the system using PowerShell, see [Create an Azure Local instance using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
 > [!NOTE]
-> Re-use the same name for the previously disabled Cluster Name Object.
+> Reuse the same name for the previously disabled Cluster Name Object.
 
 1. Run the cmdlet to create the system:
 
@@ -161,11 +161,11 @@ For more information on how to create the system using PowerShell, see [Create a
 1. If migrating from Windows Server 2016, this also creates a new `ClusterperformanceHistory` ReFS volume and assigns it to the SDDC Cluster Resource Group.
 
     > [!NOTE]
-    > If a storage pool shows Minority Disk errors (viewable in Cluster Manager), re-run the `Enable-ClusterS2D -verbose` cmdlet.
+    > If a storage pool shows Minority Disk errors (viewable in Cluster Manager), rerun the `Enable-ClusterS2D -verbose` cmdlet.
 
-1. Using Cluster Manager, enable every CSV except the `ClusterperformanceHistory` volume, which is a ReFS volume (make sure this is not an ReFS CSV).
+1. Using Cluster Manager, enable every CSV except the `ClusterperformanceHistory` volume, which is a ReFS volume (make sure this isn't an ReFS CSV).
 
-1. If migrating from Windows Server 2019, re-run the `Enable-ClusterS2D -verbose` cmdlet. This associates the `ClusterperformanceHistory` ReFS volume with the SDDC Cluster Resource Group.
+1. If migrating from Windows Server 2019, rerun the `Enable-ClusterS2D -verbose` cmdlet. This associates the `ClusterperformanceHistory` ReFS volume with the SDDC Cluster Resource Group.
 
 1. Determine your current storage pool name and version by running the cmdlet:
 
@@ -203,7 +203,7 @@ For more information on how to create the system using PowerShell, see [Create a
     ```
 
     > [!NOTE]
-    > `ClusterFunctionalLevel` is automatically set to `10` and does not require updating due to new the operating system and cluster creation.
+    > `ClusterFunctionalLevel` is automatically set to `10` and doesn't require updating due to new the operating system and cluster creation.
 
 1. Update your storage pool as follows:
 
@@ -215,7 +215,7 @@ For more information on how to create the system using PowerShell, see [Create a
 
 If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes don't benefit from performance enhancements in Azure Local from using mirror-accelerated parity (MAP) volumes. This enhancement requires a new ReFS volume to be created using the PowerShell `New-Volume` cmdlet.
 
-For Windows Server 2016 MAP volumes, ReFS compaction wasn't available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Local instance.
+For Windows Server 2016 MAP volumes, ReFS compaction wasn't available, so reattaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Local instance.
 
 ## Import the VMs
 

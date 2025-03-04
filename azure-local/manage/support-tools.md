@@ -4,12 +4,12 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 02/18/2025
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues
 
-> Applies to: Azure Local, version 23H2
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides information to download and use the Azure Local Support Diagnostic Tool. The tool is a set of PowerShell commands to simplify data collection, troubleshooting, and resolution of common issues.
 
@@ -235,7 +235,7 @@ Data collection done C:\temp\Azs.Support\XXXXXXX\SupportDataBundle-XX-XX_XX-XX-X
 ## Questions or Feedback?
 
 Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
-We Listen! To submit feedback, use the "contact owners" option inside PSGallery.
+We Listen! To submit feedback, contact [azlocaldiagfeedback@microsoft.com](mailto:azlocaldiagfeedback@microsoft.com).
 
 ## Next steps
 

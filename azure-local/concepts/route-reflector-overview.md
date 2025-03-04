@@ -4,13 +4,13 @@ description: Use this topic to learn about BGP Route Reflector for Software Defi
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: overview
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/22/2024
 ---
 
 # What is Route Reflector?
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article provides an overview of Border Gateway Protocol (BGP) Route Reflector in Azure Local and Windows Server.
 

@@ -4,13 +4,13 @@ description: Software defined networking (SDN) provides a way to centrally confi
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.service: azure-stack-hci
-ms.date: 01/08/2025
+ms.service: azure-local
+ms.date: 01/29/2025
 ---
 
-# Software Defined Networking (SDN) in Azure Local, version 23H2
+# Software Defined Networking (SDN) in Azure Local
 
-> Applies to: Azure Local, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.
 
@@ -50,4 +50,4 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 For related information, see also:
 
 - [Plan a Software Defined Network infrastructure](./plan-software-defined-networking-infrastructure-23h2.md)
-- [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md) <!--update this link for 23H2 version-->
+- [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)

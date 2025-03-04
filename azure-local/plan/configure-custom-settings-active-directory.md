@@ -3,17 +3,17 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-azurepowershell
 ---
 
-# Custom Active Directory configuration for your Azure Local, version 23H2
+# Custom Active Directory configuration for your Azure Local instance
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the permissions and the DNS records required for the Azure Local, version 23H2 deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
+This article describes the permissions and the DNS records required for the Azure Local instance deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
 
 The Azure Local solution is deployed in large Active Directories with established processes and tools for assigning permissions. Microsoft provides an [Active Directory preparation script](../deploy/deployment-prep-active-directory.md) that can be optionally used for the Azure Local deployment. The required permissions for Active Directory, the creation of the organizational unit, and blocking inheritance of GPOs - can all be also configured manually.
 
@@ -28,7 +28,7 @@ Here are some of the Active Directory requirements for the Azure Local deploymen
 
 - The user (also known as deployment user) requires the necessary permissions over the dedicated OU. The user can reside anywhere in the directory.
 
-- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Local, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Local, version 23H2](../concepts/security-features.md).
+- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Local manages security defaults including the drift protection. For more information, see [Security features for Azure Local instance](../concepts/security-features.md).
 
 - Computer account objects and cluster CNO can be [precreated](/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to the deployment itself creating them.
 
@@ -116,7 +116,7 @@ nslookup "machine name"
 
 A disjoint namespace occurs when the primary DNS suffix of one or more domain member computers doesn't match the DNS name of their Active Directory domain. For example, if a computer has a DNS name of corp.contoso.com but is part of an Active Directory domain called na.corp.contoso.com, it's using a disjoint namespace.
 
-Before deploying Azure Local, version 23H2, you must:
+Before deploying an Azure Local instance, you must:
 
 - Append the DNS suffix to the management adapter of every node.
 - Verify you can resolve the hostname to the FQDN of the Active Directory.
@@ -138,7 +138,7 @@ nslookup node1.na.corp.contoso.com
 ```
 
 > [!NOTE]
-> You cannot use group policies to configure the DNS suffix list with Azure Local, version 23H2.
+> You cannot use group policies to configure the DNS suffix list with Azure Local instance.
 
 ## Cluster aware updating (CAU)
 

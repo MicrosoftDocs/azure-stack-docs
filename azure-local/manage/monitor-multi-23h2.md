@@ -5,11 +5,11 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/10/2024
 ---
 
-# Monitor multiple Azure Local, version 23H2 systems with Insights
+# Monitor multiple Azure Local systems with Insights
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 

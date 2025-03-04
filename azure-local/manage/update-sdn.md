@@ -5,12 +5,12 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: anpaul
-ms.date: 10/24/2024
+ms.date: 01/16/2025
 ---
 
 # Update SDN infrastructure for Azure Local
 
-> Applies to: Azure Local, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software Defined Networking (SDN) infrastructure components include Network Controller and optionally, Software Load Balancers (SLBs), and SDN gateways that run on virtual machines (VMs).
 

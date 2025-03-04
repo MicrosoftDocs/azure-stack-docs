@@ -3,21 +3,21 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/15/2024
+ms.date: 02/20/2024
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-arm-template
 ---
 
-# Deploy Azure Local, version 23H2 via Azure Resource Manager deployment template
+# Deploy Azure Local via Azure Resource Manager deployment template
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-> Azure Resource Manager template deployment of Azure Local, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Local instances. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
+> Azure Resource Manager template deployment of Azure Local systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Local instances. We recommend that you deploy a system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
 
 ## Prerequisites
 
@@ -178,7 +178,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     Once complete, the task at the top updates with status and end time.
 
-You can also check out this community sourced template to [Deploy an Azure Local, version 23H2 instance using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
+You can also check out this community sourced template to [Deploy an Azure Local instance using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
 ## Troubleshoot deployment issues
 

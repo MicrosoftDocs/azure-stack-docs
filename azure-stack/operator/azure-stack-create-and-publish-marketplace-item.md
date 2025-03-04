@@ -3,7 +3,7 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/19/2021
+ms.date: 01/17/2025
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 04/26/2021
@@ -181,7 +181,7 @@ To create a custom marketplace item, do the following:
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
-   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](powershell-install-az-module.md#uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.

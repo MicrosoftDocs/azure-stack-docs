@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kimlam
 ms.lastreviewed: 01/17/2023
-ms.date: 01/31/2024
+ms.date: 02/27/2025
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -23,9 +23,9 @@ Currently you can't use Windows Admin Center to deploy Azure Stack HCI on a sing
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
+- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server once it has been deployed.
+- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server after it's deployed.
 
 ## Deploy on a single server
 
@@ -38,11 +38,13 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
     ```
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
+
 1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Install the required roles and features using the following command, then reboot before continuing.
+
+1. Install the required roles and features using the following command, then reboot before you continue.
 
    ```powershell
-   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica", "NetworkHUD" -IncludeAllSubFeature -IncludeManagementTools
+   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica", -IncludeAllSubFeature -IncludeManagementTools
    ```
 
 1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
@@ -60,11 +62,12 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    ```
 
    > [!NOTE]
-   > - The cluster name should not exceed 15 characters.
-   > - The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
+   > - The cluster name shouldn't exceed 15 characters.
+   > - The `New-Cluster` command requires the `StaticAddress` parameter if the node isn't using DHCP for its IP address assignment. This parameter should be supplied with a new, available IP address on the node's subnet.
 
 1. Use [PowerShell](../deploy/register-with-azure.md?tab=power-shell#register-a-cluster) or [Windows Admin Center](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) to register the cluster.
-1. [Create volumes](../manage/create-volumes.md).
+
+1. [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
 
 ## Updating single-node clusters
 
@@ -76,16 +79,20 @@ For solution updates (such as driver and firmware updates), see your solution ve
 
 ## Change a single-node to a multi-node cluster (optional)
 
-You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
+You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when you add servers to clusters with two or more servers.
 
 1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md).
+
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md).
+
 3. Once the server is added, change the cluster's fault domain awareness from PhysicalDisk to ScaleScaleUnit: [Inline fault domain changes](../manage/single-node-scale-out.md#inline-fault-domain-changes).
+
 4. Optionally, if more resiliency is needed, adjust the volume resiliency type from a 2-way mirror to a Nested 2-way mirror: [Single-server to two-node cluster](../manage/single-node-scale-out.md#single-server-to-two-node-cluster).
+
 5. [Set up a cluster witness](../manage/witness.md).
 
 ## Next steps
 
-- [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md)
-- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview)
-- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview)
+- [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md).
+- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview).
+- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview).

@@ -5,12 +5,12 @@ metadata:
   ms.topic: faq
   author: ronmiab
   ms.author: robess
-  ms.service: azure-stack-hci
-  ms.date: 10/21/2024
+  ms.service: azure-local
+  ms.date: 01/24/2025
 
 title: Azure Stack HCI OEM license and billing FAQ
 summary: |
-  This FAQ provides information on the Azure Stack HCI OEM license and billing and applies to Azure Local, version 23H2.
+  This FAQ provides information on the Azure Stack HCI OEM license and billing and applies to Azure Local.
 
 sections:
   - name: Azure Stack HCI OEM license and billing FAQ

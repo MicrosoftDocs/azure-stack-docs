@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 10/15/2024
 ---
 
@@ -37,7 +37,7 @@ Here are the benefits of using Metrics for Azure Local:
 
 Here are the prerequisites of using Metrics for Azure Local:
 
-- You must have access to an Azure Local, version 23H2 (Build version: 2311) or later system that's deployed, registered, and connected to Azure.
+- You must have access to an Azure Local system that's deployed, registered, and connected to Azure.
 
 - The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Local system. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 

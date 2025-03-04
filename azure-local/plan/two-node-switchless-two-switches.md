@@ -5,8 +5,8 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
-ms.date: 12/26/2024
+ms.service: azure-local
+ms.date: 02/14/2025
 ---
 
 # Review two-node storage switchless, two switches deployment network reference pattern for Azure Local

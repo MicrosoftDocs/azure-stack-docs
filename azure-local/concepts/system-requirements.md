@@ -4,7 +4,7 @@ description: How to choose servers, storage, and networking components for Azure
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: references_regions
 ms.date: 05/22/2024
 ---
@@ -98,7 +98,7 @@ Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory
 
 For best results, adhere to the following:
 
-- Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](drive-symmetry-considerations.md).
+- Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](/windows-server/storage/storage-spaces/drive-symmetry-considerations).
 
 - Each server in the cluster should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data and one for log data.
 
@@ -178,5 +178,5 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 
 For related information, see also:
 
-- [Choose drives](choose-drives.md)
+- [Choose drives](/windows-server/storage/storage-spaces/choose-drives)
 - [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)

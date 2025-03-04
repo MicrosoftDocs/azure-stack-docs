@@ -4,7 +4,7 @@ description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin 
 author: pronichkin
 ms.author: artemp
 ms.topic: reference
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 04/12/2024
 ---
 
@@ -31,7 +31,7 @@ Before you deploy the Azure Stack HCI operating system:
 
 - Plan your [physical network requirements](../concepts/physical-network-requirements.md) and [host network requirements](../concepts/host-network-requirements.md).
 - If your deployment will stretch across multiple sites, determine how many servers you will need at each site, and whether the cluster configuration will be active/passive or active/active. For more information, see [Stretched clusters overview](../concepts/stretched-clusters.md).
-- Carefully [choose drives](../concepts/choose-drives.md) and [plan volumes](../concepts/plan-volumes.md) to meet your storage performance and capacity requirements.
+- Carefully [choose drives](/windows-server/storage/storage-spaces/choose-drives) and [plan volumes](/windows-server/storage/storage-spaces/plan-volumes) to meet your storage performance and capacity requirements.
 
 For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](/azure/aks/hybrid/overview#what-you-need-to-get-started).
 

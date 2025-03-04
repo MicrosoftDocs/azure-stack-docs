@@ -3,18 +3,20 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 02/20/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Configure Arc proxy via registration script for Azure gateway on Azure Local (preview)
 
-Applies to: Azure Local, version 23H2, release 2408, 2408.1, 2408.2, 2411 and 2411.1
+::: moniker range=">=azloc-24111"
+
+Applies to: Azure Local 2411.1 and later
 
 After creating the Arc gateway resource in your Azure subscription, you can enable the new Arc gateway preview features. This article details how to configure the Arc proxy before Arc registration using a registration script for the Arc gateway on Azure Local.
 
-Using this method, you don’t need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
+Using this method, you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -22,7 +24,7 @@ Using this method, you don’t need to configure the Arc proxy across WinInet, W
 
 Make sure the following prerequisites are met before proceeding:
 
-- You’ve access to an Azure Local instance running version 23H2.
+- You've access to an Azure Local instance running release 2411.1 or later. Prior versions do not support this scenario.
 
 - An Arc gateway resource created in the same subscription as used to deploy Azure Local. For more information, see [Create the Arc gateway resource in Azure](deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
 
@@ -125,3 +127,11 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 - [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
 - [Get support for Azure Local](../manage/get-support.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.1 or later.
+
+::: moniker-end

@@ -1052,6 +1052,16 @@
       "redirect_document_id":true 
     },
     { 
+      "source_path":"azure-stack/operator/azure-stack-train-and-cert.md", 
+      "redirect_url":"/azure-stack/operator/index", 
+      "redirect_document_id":true 
+    },
+    { 
+      "source_path":"azure-stack/operator/azure-stack-powershell-install.md", 
+      "redirect_url":"/azure-stack/operator/powershell-install-az-module", 
+      "redirect_document_id":true 
+    },
+    { 
       "source_path":"azure-stack/ruggedized/customer-replaceable-unit/emc-poweredge-tactical-indicators-and-codes.md", 
       "redirect_url":"/azure-stack/ruggedized/customer-replaceable-unit/indicators-and-codes", 
       "redirect_document_id":true 
@@ -1663,6 +1673,11 @@
     {
       "source_path": "azure-stack/hci/security-update/hci-security-update-apr-2024.md",
       "redirect_url": "/azure-stack/hci/security-update/security-update-apr-2024",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/concepts/network-hud-overview.md",
+      "redirect_url": "/azure/azure-local/concepts/network-atc-overview",
       "redirect_document_id": false
     }
   ]

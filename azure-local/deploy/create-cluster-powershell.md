@@ -122,14 +122,13 @@ The next step is to install required Windows roles and features on every server 
 - RSAT-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - NetworkATC
-- NetworkHUD
 - SMB Bandwidth Limit
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "FS-SMBBW", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -137,7 +136,7 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "NetworkHUD", "FS-SMBBW", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "FS-SMBBW", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
@@ -441,8 +440,8 @@ Get-StoragePool -CimSession $ClusterName
 Now that your cluster is created, there are other important tasks you need to complete:
 
 - Set up a cluster witness if you're using a two-node or larger cluster. See [Set up a cluster witness](../manage/witness.md).
-- Create your volumes. See [Create volumes](../manage/create-volumes.md).
-When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](../manage/create-volumes.md#create-volumes-using-windows-powershell).
+- Create your volumes. See [Create volumes](/windows-server/storage/storage-spaces/create-volumes).
+When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](/windows-server/storage/storage-spaces/create-volumes#create-volumes-using-windows-powershell).
 - For stretched clusters, create volumes and set up replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
 
 ## Next steps

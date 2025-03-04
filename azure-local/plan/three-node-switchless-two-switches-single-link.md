@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Local
 
-[!INCLUDE [includes](../includes/hci-applies-to-23h2.md)] and later
+[!INCLUDE [includes](../includes/hci-applies-to-23h2.md)] 
 
 In this article, learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Local solution.
 
@@ -61,7 +61,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
-- For Azure Local, version 23H2 cloud deployments:
+- For Azure Local cloud deployments:
 
     - Scale out storage switchless systems aren't supported.
 

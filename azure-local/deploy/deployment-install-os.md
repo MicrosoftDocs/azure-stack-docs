@@ -3,10 +3,10 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/26/2024
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Install the Azure Stack HCI operating system, version 23H2
@@ -98,12 +98,12 @@ Follow these steps to configure the operating system using SConfig:
 
     - Configure VLAN IDs for the management network. For more information, see [Management VLAN ID](../plan/cloud-deployment-network-considerations.md#management-vlan-id) and [Management VLAN ID with a virtual switch](../plan/cloud-deployment-network-considerations.md#management-vlan-id-with-a-virtual-switch).
     - Configure DHCP for the management network. For more information, see [DHCP IP assignment](../plan/cloud-deployment-network-considerations.md#dhcp-ip-assignment).
-    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
+    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
    > [!IMPORTANT]
-   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-servers-considerations).
+   > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
 
 
 2. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
@@ -159,5 +159,5 @@ You are now ready to register the Azure Local machine with Azure Arc and assign 
 
 ## Next steps
 
-- (Optional) [Configure proxy settings for Azure Local, version 23H2](../manage/configure-proxy-settings-23h2.md).
+- (Optional) [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 - [Register Azure Local machines in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).

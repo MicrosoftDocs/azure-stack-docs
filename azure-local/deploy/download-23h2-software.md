@@ -4,8 +4,8 @@ description: Learn how to download Azure Local, version 23H2 software from the A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 11/06/2024
+ms.service: azure-local
+ms.date: 02/20/2025
 ---
 
 # Download version 23H2 operating system for Azure Local deployment
@@ -14,7 +14,7 @@ ms.date: 11/06/2024
 
 This article describes how to download the operating system (OS) software from the Azure portal to deploy an Azure Local instance.
 
-The first step in deploying Azure Local, version 23H2 is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
+The first step in deploying Azure Local is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
 
 ## Prerequisites
 
