@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 03/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -31,6 +31,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to Azure Local, version 22H2.](#step-1-connect-to-azure-local)
 1. [Check for the available updates using PowerShell.](#step-1-connect-to-azure-local)
 1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
@@ -52,6 +53,20 @@ Before you begin, make sure that:
 > Use of 3rd party tools to install upgrades is not supported.
 
 Follow these steps to install the solution upgrade:
+
+## Step 0: Update registry keys
+
+To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each node to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
+
+Run the following command on each node to update registry keys:
+
+```powershell
+# Set RefsDisableVolumeUpgrade to 1
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsDisableVolumeUpgrade" -Value 1 -Type DWord -ErrorAction Stop
+
+# Set RefsEnableMetadataValidation to 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+```
 
 ## Step 1: Connect to Azure Local
 

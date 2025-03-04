@@ -31,13 +31,13 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete prerequisites.](#complete-prerequisites)
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to your system.](#step-1-connect-to-your-system)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
    1. [Offline manual upgrade of all machines in a system.](#method-2-perform-a-fast-offline-os-update-of-all-machines-in-a-system)
 1. Check the status of the updates.
 1. [Perform post-upgrade steps, after the OS is upgraded.](#next-steps)
-
 
 ## Complete prerequisites
 
@@ -48,6 +48,20 @@ Before you begin, make sure that:
 - Make sure that all the machines in your Azure Local are healthy and show as **Online**.
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
+
+## Step 0: Update registry keys
+
+To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each node to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
+
+Run the following command on each node to update registry keys:
+
+```powershell
+# Set RefsDisableVolumeUpgrade to 1
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsDisableVolumeUpgrade" -Value 1 -Type DWord -ErrorAction Stop
+
+# Set RefsEnableMetadataValidation to 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+```
 
 ## Step 1: Connect to your system
 
@@ -130,7 +144,6 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 <!--ASK-->
 
 You're now ready to perform the post-upgrade steps for your system.
-
 
 ## Next steps
 
