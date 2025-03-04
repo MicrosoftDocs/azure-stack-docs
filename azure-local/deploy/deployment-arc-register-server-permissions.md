@@ -195,7 +195,7 @@ Before you begin, make sure you've completed the following prerequisites:
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Local registered machines with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
 > [!NOTE]
-> Once the Azure Local machines are registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machines.
+> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 
 
