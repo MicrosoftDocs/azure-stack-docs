@@ -1621,6 +1621,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/asdk/index.yml",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/asdk/asdk-admin-basics.md",
       "redirect_url": "/azure-stack/operator/azure-stack-overview",
       "redirect_document_id": false
