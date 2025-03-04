@@ -1,5 +1,5 @@
 ---
-title: Prepare GPUs for Azure Local instance.
+title: Prepare GPUs for Azure Local instance
 description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli

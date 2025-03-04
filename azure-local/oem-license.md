@@ -91,7 +91,7 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 |Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in a cluster isn't supported.|
 |Different billing on machines.        | Mixing machine hardware sold with an Azure Stack HCI OEM license and machine hardware purchased with a regular Azure subscription isn't supported.|
 
-For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure Portal](https://portal.azure.com).
+For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure portal](https://portal.azure.com).
 
 ## Next step
 

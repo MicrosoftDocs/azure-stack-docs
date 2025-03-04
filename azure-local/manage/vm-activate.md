@@ -25,7 +25,7 @@ For more information, see [Compare options](#compare-options).
 
 Next, activate your Windows Server VMs:
 
-- Azure Local supportes Automatic VM Activation (AVMA), a method that binds VM activation to the Azure Local machine and activates the Windows Server VM when it starts up.
+- Azure Local supports Automatic VM Activation (AVMA), a method that binds VM activation to the Azure Local machine and activates the Windows Server VM when it starts up.
 - If you're using Windows Server subscription, AVMA is automatically enabled on the Azure Local machines. You can immediately activate Windows Server VMs against the system using [generic AVMA client keys](/windows-server/get-started/automatic-vm-activation?tabs=server2025#avma-keys).
 - If you're using Azure Hybrid Benefit, you must use the corresponding keys associated with your Windows Server license and apply them using your chosen activation method. One of the most convenient ways is to exchange them to use AVMA by enabling Windows Server subscription.
 - To use other methods to activate Windows Server VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
