@@ -33,9 +33,9 @@ Before you begin, make sure that:
 
 ## Step 0: Update registry keys
 
-Post-OS upgrade, update registry keys on each node to ensure that Resilient File System (ReFS) volume upgrade is enabled and metadata validation is turned on.
+Post-OS upgrade, update registry keys on each machine in the system to ensure that Resilient File System (ReFS) volume upgrade is enabled and metadata validation is turned on.
 
-Run the following command on each node to update registry keys:
+Run the following command on each machine in the system to update registry keys:
 
 ```powershell
 # Set RefsDisableVolumeUpgrade to 0
@@ -100,7 +100,7 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 
 ## Step 3: Perform the post-OS upgrade steps
 
-Once the new OS is installed, you need to upgrade the *cluster functional level* and the storage pool version using PowerShell to enable new features.
+Once the new OS is installed, you need to upgrade the cluster functional level and the storage pool version using PowerShell to enable new features.
 
 > [!IMPORTANT]
 > - Post-OS upgrade steps are essential for the stability and performance of your system. Make sure to follow these steps after the OS upgrade.

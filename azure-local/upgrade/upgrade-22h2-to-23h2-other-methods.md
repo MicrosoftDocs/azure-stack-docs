@@ -51,9 +51,9 @@ Before you begin, make sure that:
 
 ## Step 0: Update registry keys
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each node to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
+To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each machine in the system to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
 
-Run the following command on each node to update registry keys:
+Run the following command on each machine in the system to update registry keys:
 
 ```powershell
 # Set RefsDisableVolumeUpgrade to 1
@@ -99,7 +99,7 @@ Depending upon your requirements, you can manually update the OS using SConfig o
 
 To do a manual feature update of a failover cluster, use the **SConfig** tool and Failover Clustering PowerShell cmdlets. For more information about **SConfig**, see [Configure a Server Core installation of Windows Server and Azure Local with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-For each node in the cluster, run these commands on the target node:
+For each machine in the cluster, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node <Node Name> -Drain`
 

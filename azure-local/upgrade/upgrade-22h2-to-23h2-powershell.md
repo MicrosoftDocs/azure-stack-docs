@@ -56,9 +56,9 @@ Follow these steps to install the solution upgrade:
 
 ## Step 0: Update registry keys
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each node to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
+To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each machine in the system to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
 
-Run the following command on each node to update registry keys:
+Run the following command on each machine in the system to update registry keys:
 
 ```powershell
 # Set RefsDisableVolumeUpgrade to 1
