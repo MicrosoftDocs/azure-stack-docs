@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 02/26/2025
+ms.date: 03/04/2025
 ---
 
 # Security features for Azure Local
@@ -158,11 +158,11 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
 
-Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, **we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local** to minimize potential functionality issues.
+Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer non-Microsoft antivirus and security software, **we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local** to minimize potential functionality issues.
 
 For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
 
-In the rare instance that you experience any functionality issues with Azure Local using a third-party antivirus software, you can exclude the following paths:
+In the rare instance that you experience any functionality issues with Azure Local using non-Microsoft antivirus software, you can exclude the following paths:
 
 - C:\Agents\\*
 - C:\CloudContent\\*
@@ -183,7 +183,10 @@ Microsoft Defender for Cloud is a security posture management solution with ad
 
 With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Local system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual machines and Arc VMs.
 
-For more information, see [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
+For more information, see:
+
+- [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
+- [Microsoft Defender Antivirus and non-Microsoft antivirus solutions without Defender for Endpoint](/defender-endpoint/defender-antivirus-compatibility-without-mde).
 
 ## Next steps
 
