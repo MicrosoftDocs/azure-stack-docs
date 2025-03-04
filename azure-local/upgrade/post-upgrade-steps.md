@@ -33,7 +33,7 @@ Before you begin, make sure that:
 
 ## Step 0: Update registry keys
 
-Post-OS upgrade, update registry keys on each node to ensure ReFS volume upgrade is enabled and metadata validation is turned on.
+Post-OS upgrade, update registry keys on each node to ensure that Resilient File System (ReFS) volume upgrade is enabled and metadata validation is turned on.
 
 Run the following command on each node to update registry keys:
 
@@ -140,7 +140,7 @@ Once the new OS is installed, you need to upgrade the *cluster functional level*
       Get-StoragePool | Where-Object -Property FriendlyName -ne "Primordial"
       ```
 
-   1. Use the following cmdlet to update the storage pool. Use the pool name from the previous output.
+   1. Use the following cmdlet to update the storage pool. Use the pool name from the output of the previous step.
 
       ```PowerShell
       Update-StoragePool -FriendlyName "<name of the storage pool>" -Verbose
