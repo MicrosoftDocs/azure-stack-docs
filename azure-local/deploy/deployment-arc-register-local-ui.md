@@ -5,7 +5,7 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/20/2025
+ms.date: 03/03/2025
 ---
 
 # Register your Azure Local machines via the local UI (preview)
@@ -164,6 +164,9 @@ Follow these steps to configure the network settings and connect the machines to
 1. Repeat all the steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png" alt-text="Screenshot that shows the Azure Arc agent setup configuration status, open in Azure portal option for Azure Local ." lightbox="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png":::
+
+> [!NOTE]
+> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 ## Step 2: Verify machines are connected to Arc
 
