@@ -1621,6 +1621,106 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/asdk/index.yml",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-admin-basics.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-advanced-eval.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-architecture.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-cli.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-connect.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-deploy-considerations.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-deploy-powershell.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-download.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-install.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-post-deploy.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-prepare-host.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-redeploy.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-register.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-release-notes.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-start-stop.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-telemetry.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-troubleshooting.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-validate-backup.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/asdk/asdk-what-is.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/manage/monitor-hci-single-23h2.md",
       "redirect_url": "/azure-stack/hci/manage/monitor-single-23h2",
       "redirect_document_id": false
