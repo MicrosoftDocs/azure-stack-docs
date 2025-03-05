@@ -3,7 +3,7 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 03/04/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -103,7 +103,7 @@ During the cloud deployment of Azure Local, the LCM user account is added to the
 
 We recommend that you follow these best practices for OU creation. These recommendations are automated when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
 
-- For each Azure Local instance, create an individual OU within Active Directory. This approach helps manage computer account, CNO, LCM user account, and physical machine computer accounts within the scope of a single OU for each instance.
+- For each Azure Local instance, create an individual OU within Active Directory. This approach helps manage the LCM user account, the computer accounts of the physical machines, and the cluster name object (CNO) within the scope of a single OU for each instance.
 - When deploying multiple instances at-scale, for easier management:
   - Create an OU under a single parent OU for each instance.
   - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.

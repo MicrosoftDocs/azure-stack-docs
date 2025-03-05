@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 02/21/2025
+ms.date: 02/14/2025
 ---
 
 # System requirements for Azure Local
@@ -40,6 +40,8 @@ Here are the Azure requirements for your Azure Local instance:
    - Canada Central
    - Japan East
    - South Central US
+
+- **Azure Key Vault**: Make sure to enable public network access when you set up a key vault. This setting allows Azure Local instances to connect to the key vault without any access issues.
 
 ## Machine and storage requirements
 
