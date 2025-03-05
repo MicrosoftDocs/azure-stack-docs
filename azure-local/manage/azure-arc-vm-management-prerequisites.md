@@ -1,27 +1,27 @@
 ---
-title: Azure Arc VM management prerequisites
-description: Learn about the prerequisites for deploying Azure Arc VM management for Azure Local.
+title: Azure Local VM management prerequisites
+description: Learn about the prerequisites for deploying Azure Local VMs for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/03/2025
+ms.date: 03/05/2025
 
 ---
 
-# Azure Arc VM management prerequisites
+# Azure Local VM management prerequisites
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article lists the requirements and prerequisites for Azure Arc VM management on Azure Local. We recommend that you review the requirements and complete the prerequisites before you manage your Arc VMs.
+This article lists the requirements and prerequisites for Azure Local VMs enabled by Azure Arc. We recommend that you review the requirements and complete the prerequisites before you manage your Azure Local VMs.
 
 ## Azure requirements
 
 The Azure requirements include:
 
-- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+- To provision Azure Local VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VMs](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 
-- Arc VM management infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Arc VM management on Azure Local, all entities must be registered, enabled, or created in the same region.
+- Azure Local VM infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Azure Local VMs, all entities must be registered, enabled, or created in the same region.
 
   The entities include your Azure Local instance, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
@@ -103,4 +103,4 @@ If you're accessing your Azure Local remotely, the following requirements must b
 
 ## Next steps
 
-- [Assign RBAC role for Arc VM management](./assign-vm-rbac-roles.md).
+- [Assign RBAC role for Azure Local VMs](./assign-vm-rbac-roles.md).
