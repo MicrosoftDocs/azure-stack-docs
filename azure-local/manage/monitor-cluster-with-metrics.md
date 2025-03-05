@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/13/2025
+ms.date: 03/05/2025
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
@@ -112,7 +112,9 @@ The Azure Local Performance Metrics dashboard provides a detailed view of perfor
 To access the Performance Metrics dashboard, follow these steps:
 
 1. Navigate to Azure Monitor and select **Workbooks**.
-1. Under the **Azure Local** section, select **Performance Metrics Dashboard**.
+1. Under the **Azure Local** section, select **Azure Local Performance Metrics**.
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/workbooks-gallery.png" alt-text="Screenshot of the Workbooks gallery showing Azure Local workbooks." lightbox="media/monitor-cluster-with-metrics/workbooks-gallery.png":::
 
 Select each tab to learn more about the different sections of the Performance Metrics dashboard.
 
@@ -152,13 +154,13 @@ The **Compute Performance** tab is divided into two sections:
 
     Here's a sample screenshot of Memory Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-memory.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-memory.png":::
 
 - **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
 
     Here's a sample screenshot of CPU Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/compute-performance-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-performance-cpu.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/compute-cpu.png" alt-text="Screenshot of the Compute Performance dashboard showing the CPU metrics." lightbox="media/monitor-cluster-with-metrics/compute-cpu.png":::
 
 ---
 
