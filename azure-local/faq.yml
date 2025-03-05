@@ -123,6 +123,10 @@ sections:
           ------                         ----------------
           Microsoft Azure Stack HCI      23H2
           ```
+      - question: Is it possible to unregister an Azure Local machine with Azure Arc once it is registered?
+        answer: |
+          No. You can't undo the registration once you've registered the Azure Local machine with Azure Arc. To undo, you'll need to install the operating system again on the machine.        
+      
       - question: How long is Azure Local, version 22H2 supported?
         answer: |
             Azure Stack HCI, version 22H2 will reach end of support on May 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests (SR) will only be available when performing an operating system upgrade. To continue receiving updates, we recommend that you upgrade your operating system to [version 23H2](./upgrade/upgrade-22h2-to-23h2-powershell.md).

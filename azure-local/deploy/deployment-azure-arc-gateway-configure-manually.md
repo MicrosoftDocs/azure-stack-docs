@@ -61,6 +61,15 @@ $ProxyServer = "http://x.x.x.x:port"
 
 $ArcgwId = "/subscriptions/yoursubscription/resourceGroups/yourresourcegroupname/providers/Microsoft.HybridCompute/gateways/yourarcgatewayname" 
 
+#Define the bypass list for the proxy. Use comma to separate each item from the list.  
+# Use "localhost" instead of <local> 
+# Use specific IPs such as 127.0.0.1 without mask 
+# Use * for subnets allowlisting. 192.168.1.* for /24 exclusions. Use 192.168.*.* for /16 exclusions. 
+# Append * for domain names exclusions like *.contoso.com 
+# DO NOT INCLUDE .svc on the list. The registration script takes care of Environment Variables configuration. 
+
+$ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1" 
+
 #Connect to your Azure account and subscription 
 
 Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode 
@@ -75,7 +84,7 @@ $id = (Get-AzContext).Account.Id
 
 #Invoke the registration script with Proxy and ArcgatewayID 
 
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ArcGatewayID $ArcgwId 
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region australiaeast -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer -ProxyBypass $ProxyBypassList  -ArcGatewayID $ArcgwId 
 ```
 
 ## Step 4: Start Azure Local cloud deployment
