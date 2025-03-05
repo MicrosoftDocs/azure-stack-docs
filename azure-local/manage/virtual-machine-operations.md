@@ -83,26 +83,28 @@ The following VM operations are supported only using the local tools such as Win
 ### Cluster or node-level operations
 
 - Connect to VM.
-- Quick migrate a VM to another machine in the same system.
-- Live migrate a VM to another machine in the same system.
+- Quick migrate a VM to another machine in the same cluster.
+- Live migrate a VM to another machine in the same cluster.
 - Change default location of VM files.
-- Change automatic balancing of VMs in a system.
+- Change automatic balancing of VMs in a cluster.
 
-
-## Operations supported only via Network ATC PowerShell cmdlets
+### Operations supported only via Network ATC PowerShell cmdlets
 
 The following VM operations are supported only using the Network ATC PowerShell cmdlets. For more information, see [Customize cluster network settings](./manage-network-atc.md#customize-cluster-network-settings).
 
 - Enable/disable single root input/output virtualization (SR-IOV) per network interface.
-- Configure the number of simultaneous live migrations of a system.
-- Configure the number of simultaneous storage live migrations of a system.
-- Add/remove/change order of host network for live migration of a system.
+- Configure the number of simultaneous live migrations of a cluster.
+- Configure the number of simultaneous storage live migrations of a cluster.
+- Add/remove/change order of host network for live migration of a cluster.
 
 ## Unsupported VM operations
 
-The following VM operations aren't supported. These operations can't be performed using the Azure portal, or the Azure CLI, or the local tools.
+The following VM operations aren't supported.
 
-- Live migrate a VM from one system to another.
+> [!IMPORTANT]
+> These operations can't be performed using Azure portal, Azure CLI, or local tools. Performing these operations can lead to synchronization issues between the Azure Local VMs and the portal.
+
+- Live migrate a VM from one cluster to another.
 - Rename a VM.
 - Checkpoint a VM (standard or production).
 - Change the VM MAC address pool on the machine.
