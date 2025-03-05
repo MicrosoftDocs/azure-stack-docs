@@ -59,11 +59,11 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Use Graphics Processing Units (GPUs) with clustered VMs](/windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json)  | Yes | Yes |
 
 
-## Storage Resilliency
+## Storage Resiliency
 
-|# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-|---------|---------|---------|----------|
-|Single machine    |Two-way mirror         | 1        |  1        |
+|# machines  |Volume resiliency |
+|---------|---------|
+|Single machine    |Two-way mirror         |
  
 
 ## Known issues
