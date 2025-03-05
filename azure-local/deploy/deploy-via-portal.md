@@ -3,17 +3,17 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy Azure Local, version 23H2 using the Azure portal
+# Deploy Azure Local using the Azure portal
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article helps you deploy an Azure Local instance, version 23H2 using the Azure portal.
+This article helps you deploy an Azure Local instance using the Azure portal.
 
 ## Prerequisites
 
@@ -273,5 +273,5 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).

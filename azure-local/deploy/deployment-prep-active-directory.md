@@ -3,17 +3,17 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/05/2025
+ms.date: 03/04/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
 
-# Prepare Active Directory for Azure Local, version 23H2 deployment
+# Prepare Active Directory for Azure Local deployment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory environment before you deploy Azure Local, version 23H2.
+This article describes how to prepare your Active Directory environment before you deploy Azure Local.
 
 Active Directory requirements for Azure Local include:
 
@@ -27,7 +27,7 @@ Active Directory requirements for Azure Local include:
 > - When group policy inheritance is blocked at the OU level, GPOs with enforced option enabled aren't blocked. If applicable, ensure that these GPOs are blocked using other methods, for example using a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648). Apply the WMI filter to any enforced GPOs, to exclude machine computer accounts for your Azure Local instances from applying the GPOs. Once the filter is applied, enforced GPOs won't apply, based on the logic defined in the WMI filter.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
-[Custom Active Directory configuration for your Azure Local, version 23H2](../plan/configure-custom-settings-active-directory.md).
+[Custom Active Directory configuration for your Azure Local](../plan/configure-custom-settings-active-directory.md).
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name is created. This OU contains the new LCM deployment user account.
+1. An OU with the specified name is created. This OU contains the new Lifecycle Manager (LCM) deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
@@ -97,18 +97,19 @@ To create a dedicated OU, follow these steps:
 
 ## Considerations for large scale deployments
 
-The Lifecycle Manager (LCM) user account is utilized during Azure Local instance deployments that use Active Directory (AD), or for any add-node/repair operations for existing instances. The LCM user account is responsible for performing domain join actions, which necessitates the LCM user identity having delegated permissions to add computer accounts to the target Organizational Unit (OU) in the on-premises domain. During the deployment of Azure Local, the LCM user account is added to the local administrators' group of the physical machines.
+The LCM user account is used during servicing operations, such as applying updates via PowerShell. This account is also used when performing domain join actions against your AD, such as [repairing a node](../manage/repair-server.md) or [adding a node](../manage/add-server.md). This requires the LCM user identity having delegated permissions to add computer accounts to the target OU in the on-premises domain.
 
-To mitigate the risk of a compromised LCM user account credential, we advise that for each Azure Local instance, you have a dedicated LCM user account with a unique password.
+During the cloud deployment of Azure Local, the LCM user account is added to the local administrators group of the physical nodes. To mitigate the risk of a compromised LCM user account, **we recommend having a dedicated LCM user account with a unique password for each Azure Local instance.** This recommendation limits the scope and impact of a compromised LCM account to a single instance.
 
-We recommend that you follow these best practices for OU creation:
+We recommend that you follow these best practices for OU creation. These recommendations are automated when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
 
-- For each Azure Local instance, create an individual OU within Active Directory. This approach helps manage computer account, CNO, LCM user account, and physical machine computer accounts within the scope of a single OU for each instance.
+- For each Azure Local instance, create an individual OU within Active Directory. This approach helps manage the LCM user account, the computer accounts of the physical machines, and the cluster name object (CNO) within the scope of a single OU for each instance.
 - When deploying multiple instances at-scale, for easier management:
   - Create an OU under a single parent OU for each instance.
-  - Disable GPO inheritance at the parent OU level.
+  - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.
+  - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local administrators group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
 
-The preceding recommendations are automated, when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
+If your organization's processes and procedures require deviations from these recommendations, they are allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
 
 ## Next steps
 

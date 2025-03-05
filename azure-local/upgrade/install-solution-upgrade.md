@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 02/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -63,7 +63,7 @@ On the **Basics** tab, specify the following information:
 
    :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of Create key vault page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
 
-1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each machine. For more information on how to create this deployment account, see [Prepare Active Directory for Azure Local, version 23H2 deployment](../deploy/deployment-prep-active-directory.md).
+1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each machine. 
 
    > [!NOTE]
    > The user can't be Administrator and can't use format `domain\username`.
@@ -141,11 +141,11 @@ After the solution upgrade is complete, you may need to perform additional tasks
 - You may need to connect to the system via Remote Desktop Protocol (RDP) to deploy workloads. For more information, see [Enable RDP](../deploy/deploy-via-portal.md#enable-rdp).
 - To prevent the accidental deletion of resources, you can lock resources.
 - You need to upgrade the security posture. For more information, see [Update security posture on Azure Local after upgrade](../manage/manage-security-post-upgrade.md).
-- You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- You may need to create workloads and storage paths for each volume. For details, see [Create volumes on Azure Local](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 
 - If you haven't used Cluster-Aware Updating (CAU) for patching your system, you must ensure the permissions are set correctly. For more information, see [Cluster aware updating (CAU)](../plan/configure-custom-settings-active-directory.md#cluster-aware-updating-cau)
 
 
 ## Next steps
 
-If you run into issues during the upgrade process, see [Troubleshoot solution upgrade on Azure Local](./troubleshoot-upgrade-to-azure-stack-hci-23h2.md).
+If you run into issues during the upgrade process, see [Troubleshoot solution upgrade on Azure Local](./troubleshoot-upgrade-to-23h2.md).

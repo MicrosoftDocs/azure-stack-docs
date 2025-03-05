@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 12/11/2024
+ms.date: 03/04/2025
 ---
 
-# Security features for Azure Local, version 23H2
+# Security features for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -36,7 +36,7 @@ For more information, see [Manage security defaults on Azure Local](../manage/ma
 
 ## Application Control
 
-Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local, version 23H2](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
+Application Control is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. Application Control is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Application Control for Azure Local](../manage/manage-wdac.md#manage-application-control-settings-with-powershell).
 
 Application Control provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about Application Control-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
@@ -140,7 +140,7 @@ For more information, see [Manage secrets rotation](../manage/manage-secrets-rot
 
 ## Syslog forwarding of security events
 
-For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local, version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
+For customers and organizations that require their own local security information and event management (SIEM) system, Azure Local includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Local has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 
@@ -158,9 +158,21 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 Azure Local comes with Microsoft Defender Antivirus enabled and configured by default. We strongly recommend that you use Microsoft Defender Antivirus with your Azure Local instances. Microsoft Defender Antivirus provides real-time protection, cloud-delivered protection, and automatic sample submission.
 
-Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer third-party antivirus and security software, we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local to minimize potential functionality issues.
+Although we recommend using Microsoft Defender Antivirus for Azure Local, if you prefer non-Microsoft antivirus and security software, **we advise selecting one that your Independent Software Vendor (ISV) has validated for Azure Local** to minimize potential functionality issues.
 
 For more information, see [Microsoft Defender Antivirus compatibility with other security products](/defender-endpoint/microsoft-defender-antivirus-compatibility).
+
+In the rare instance that you experience any functionality issues with Azure Local using non-Microsoft antivirus software, you can exclude the following paths:
+
+- C:\Agents\\*
+- C:\CloudContent\\*
+- C:\CloudDeployment\\*
+- C:\ClusterStorage\\*
+- C:\EceStore\\*
+- C:\MASLogs\\*
+- C:\NugetStore\\*
+- C:\deploymentpackage\\*
+- C:\ProgramData\GuestConfig\extension_logs\\*
 
 > [!NOTE]
 > If you remove the Microsoft Defender Antivirus feature, leave the settings associated with the feature from the security baseline as-is. You don't need to remove these settings.
@@ -171,7 +183,10 @@ Microsoft Defender for Cloud is a security posture management solution with ad
 
 With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Local system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual machines and Arc VMs.
 
-For more information, see [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
+For more information, see:
+
+- [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
+- [Microsoft Defender Antivirus and non-Microsoft antivirus solutions without Defender for Endpoint](/defender-endpoint/defender-antivirus-compatibility-without-mde).
 
 ## Next steps
 

@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.reviewer: stevenek
 ms.topic: how-to
-ms.date: 05/16/2022
+ms.date: 02/27/2025
 ---
 
 # Create stretched cluster volumes and set up replication
@@ -16,7 +16,7 @@ ms.date: 05/16/2022
 
 This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 
-We'll create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
+We create volumes on four servers in two sites, two servers per site as an example. Keep in mind however, that if you want to create three-way mirror volumes, you need at least six servers, three servers per site.
 
 ## Stretched volumes and replication using Windows Admin Center
 
@@ -112,7 +112,7 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
     Add-ClusterSharedVolume -Name 'Cluster Virtual Disk (Disk1)'
     ```
 
-You are done creating volumes, and ready to set up Storage Replica for replication.
+You're done creating volumes, and ready to set up Storage Replica for replication.
 
 ## Set up replication using PowerShell
 
@@ -142,7 +142,7 @@ In addition, the `Test-SRTopology` cmdlet will also measure:
 
 Once Test-SRTopology completes, it will create an .html file (TestSrTopologyReport with date and time) in your Windows Temp folder. Any warning or failures should be reviewed as they could cause Storage Replica to not be properly created.
 
-An example command that would run for 5 hours would be:
+An example command that would run for five hours would be:
 
 ```powershell
 Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolumeName X: -DestinationComputerName Server3 -DestinationVolumeName Y: -DestinationLogVolumeName Z: -DurationInMinutes 300 -ResultPath c:\temp
@@ -150,7 +150,7 @@ Test-SRTopology -SourceComputerName Server1 -SourceVolumeName W: -SourceLogVolum
 
 ### Step 2: Create the replication partnership
 
-Now that you completed the `Test-SRTopology` tests, you are ready to configure Storage Replica and create the replication partnership. In a nutshell, we'll configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
+Now that you completed the `Test-SRTopology` tests, you're ready to configure Storage Replica and create the replication partnership. In a nutshell, we'll configure Storage Replica by creating replication groups (RG) for each site and specifying the data volumes and log volumes for both the source server nodes in Site1 (Server1, Server2) and the destination (replicated) server nodes in Site2 (Server3, Server4).
 
 Let's begin:
 
@@ -160,7 +160,7 @@ Let's begin:
    Add-ClusterSharedVolume -Name "Cluster Virtual Disk (Site1)"
    ```
 
-1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
+1. The Available Storage group should be "owned" by the node it's currently sitting on. The group can be moved to Server1 using:
 
    ```powershell
    Move-ClusterGroup -Name "Available Storage" -Node Server1
@@ -181,5 +181,5 @@ Storage Replica will now set everything up. If there's any data to be replicated
 For related topics and other storage management tasks, see also:
 
 - [Stretched cluster overview](../concepts/stretched-clusters.md)
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Manage volumes](manage-volumes.md)
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes)
+- [Manage volumes](/windows-server/storage/storage-spaces/manage-volumes)
