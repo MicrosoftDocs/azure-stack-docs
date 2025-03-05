@@ -60,11 +60,11 @@ The following table compares attributes of a single-node cluster to multi-node c
 
 
 ## Storage Resilliency
- 
-    |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-    |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        |  1        |
 
+|# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
+|---------|---------|---------|----------|
+|Single machine    |Two-way mirror         | 1        |  1        |
+ 
 
 ## Known issues
 
