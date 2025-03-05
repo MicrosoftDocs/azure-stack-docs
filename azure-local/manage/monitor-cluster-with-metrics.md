@@ -122,19 +122,25 @@ Select each tab to learn more about the different sections of the Performance Me
 
 Monitoring storage performance helps optimize storage utilization, allocation, and configuration according to resources and business needs.
 
-This dashboard tab includes metrics related to volume usage, such as disk read/write operations per second, disk read/write bytes per second, and volume latency. It also provides metrics for VHD and physical disks.
+The **Storage Performance** tab presents three types of metrics:
 
-Here's a sample screenshot of Volume Usage Metrics:
+- **Volume Usage Metrics.** This section displays metrics related to volume usage, such as disk read/write operations per second, disk read/write bytes per second, and volume latency.
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
+    Here's a sample screenshot of Volume Usage Metrics:
 
-Here's a sample screenshot of VHD Metrics:
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+- **VHD Metrics.** This section displays metrics related to VHD, such as VHD read/write operations per second, VHD read/write bytes per second, VHD latency, and VHD current and maximum size.
 
-Here's a sample screenshot of Physical Disk Metrics:
+    Here's a sample screenshot of VHD Metrics:
 
-:::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+
+- **Physical Disk Metrics.** This section displays metrics related to physical disk read/write operations per second, physical disk read/write bytes per second, latency read and write, total capacity size, and capacity size used.
+
+    Here's a sample screenshot of Physical Disk Metrics:
+
+    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
 
 ### [Network Performance](#tab/network-performance)
 
@@ -146,17 +152,19 @@ Here's a sample screenshot of Network Metrics:
 
 :::image type="content" source="media/monitor-cluster-with-metrics/network-performance-network.png" alt-text="Screenshot of the Network Performance dashboard showing the Network metrics." lightbox="media/monitor-cluster-with-metrics/network-performance-network.png":::
 
-### [Compute Performance](#tab/compute-performance)
+### [Compute](#tab/compute)
 
-The **Compute Performance** tab is divided into two sections:
+Monitoring compute metrics, including memory and CPU, ensures proper resource allocation and utilization. It identifies usage patterns for appropriate actions, helps detect issues, optimizes system performance, and ensures smooth operation of resources.
 
-- **Memory Metrics.** This section provides information on memory used, available, percentage usage for host and guest, VM memory available, used, memory assigned, pressure, maximum, minimum, startup, and more. These metrics ensure proper resource allocation and utilization, and help identify usage patterns for appropriate actions.
+The **Compute** tab presents two types of metrics:
+
+- **Memory Metrics.** This section provides information on memory used, available, percentage usage for host and guest, VM memory available, used, memory assigned, pressure, maximum, minimum, startup, and more.
 
     Here's a sample screenshot of Memory Metrics:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/compute-memory.png" alt-text="Screenshot of the Compute Performance dashboard showing the Memory metrics." lightbox="media/monitor-cluster-with-metrics/compute-memory.png":::
 
-- **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage. These metrics help identify issues, optimize system performance, and ensure smooth operation of resources.
+- **CPU Metrics.** This section offers metrics, such as Total CPU percentage, host vs guest CPU percentage, and VM CPU percentage.
 
     Here's a sample screenshot of CPU Metrics:
 
