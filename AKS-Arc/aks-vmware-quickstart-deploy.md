@@ -97,6 +97,13 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
    > [!NOTE]
    > In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
 
+## Delete the cluster
+
+Run the `az aksarc delete` command to clean up the cluster you created:
+
+```azurecli
+az aksarc delete -n '<name of your cluster>' -g $resource_group
+```
 
 ## Next steps
 
