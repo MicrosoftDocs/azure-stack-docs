@@ -58,6 +58,14 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No | Yes |
 |[Use Graphics Processing Units (GPUs) with clustered VMs](/windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json)  | Yes | Yes |
 
+
+## Storage resiliency
+
+|# machines  |Volume resiliency |
+|---------|---------|
+|Single machine    |Two-way mirror         |
+ 
+
 ## Known issues
 
 The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified, check back for updates.
