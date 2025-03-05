@@ -107,7 +107,7 @@ The Azure Local Performance Metrics dashboard provides a detailed view of perfor
 
 - The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Local system. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).-->
 
-### Access the dashboard
+### Access the Performance Metrics dashboard
 
 To access the Performance Metrics dashboard, follow these steps:
 
@@ -116,7 +116,9 @@ To access the Performance Metrics dashboard, follow these steps:
 
     :::image type="content" source="media/monitor-cluster-with-metrics/workbooks-gallery.png" alt-text="Screenshot of the Workbooks gallery showing Azure Local workbooks." lightbox="media/monitor-cluster-with-metrics/workbooks-gallery.png":::
 
-Select each tab to learn more about the different sections of the Performance Metrics dashboard.
+### View the Performance Metrics dashboard charts
+
+The Performance Metrics dashboard is organized into three tabs, each focusing on different aspects of system performance. Select the relevant tab to view the metrics related to the selected system performance category.
 
 ### [Storage Performance](#tab/storage-performance)
 
