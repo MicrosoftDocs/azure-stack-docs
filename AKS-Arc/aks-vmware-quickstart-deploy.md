@@ -105,6 +105,10 @@ Run the `az aksarc delete` command to clean up the cluster you created:
 az aksarc delete -n '<name of your cluster>' -g $resource_group
 ```
 
+   > [!Important]
+   > The delete operation may fail if your vCenter credentials are invalid. To prevent this, verify that you have proper administrative access for Arc-enabled VMware vSphere. For more information, please refer to [this document](azure/azure-arc/vmware-vsphere/administer-arc-vmware#updating-the-vsphere-account-credentials-using-a-new-password-or-a-new-vsphere-account-after-onboarding).
+
+
 ## Next steps
 
 - See [Supported deployment scale](aks-vmware-scale-requirements.md) for the different configuration options.
