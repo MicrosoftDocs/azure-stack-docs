@@ -53,6 +53,9 @@ If you already have the module installed, you can update using the following cmd
 Update-Module -Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
+    > [!NOTE]
+    > When you import the module, it will attempt to automatically update from PowerShell Gallery. You can also update manually using methods below.
+
 Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
 ```powershell
 Remove-Module -Name Microsoft.AzureStack.HCI.CSSTools
@@ -71,14 +74,14 @@ Get-Command -Module Microsoft.AzureStack.HCI.CSSTools
 
 
 ### Perform diagnostic checks
-To list all available diagnostic checks, run the following command:
+You can perform a diagnostic health check against the system to help detect common issues. The following components are available:
+- BaseSystem
+- Registration
 
 
 ```powershell
-Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem, Registration>
+Invoke-AzsSupportDiagnosticCheck -Component <Component>
 ```
-
-Run all diagnostic checks by pressing `CTRL+SPACE` after the parameter `ProductName`.
 
 
 ### Collect data for support
@@ -109,7 +112,6 @@ New-AzsSupportDataBundle -ClusterCommands $clusterCommands `
 ```
 
 ## Example scenarios
-
 To troubleshoot Azure Local, run the following commands:
 
 ### For deployment issues
@@ -127,18 +129,22 @@ Get-AzsSupportEceUpdateDetails
 ```
 
 ### For storage issues
-Refer to TODO.
+```powershell
+Start-AzsSupportStorageDiagnostic
+```
+
+For full guidance on troubleshooting storage related issues, refer to [Troubleshooting-Storage-With-Support-Diagnostics-Tool](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Storage/Troubleshooting-Storage-With-Support-Diagnostics-Tool.md).
 
 ### For registration issues
 
 ```powershell
-Invoke-AzsSupportDiagnosticCheck -ProductName Registration
+Invoke-AzsSupportDiagnosticCheck -Component Registration
 ```
 
 Here's an example of output for a registration issue:
 
 ```output
-PS C:\temp> Invoke-AzsSupportDiagnosticCheck -ProductName Registration
+PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component Registration
 Starting known issue check for Azure Stack HCI: Registration.
 Starting Azure Stack HCI base system validation.
 Gathering information from all clustered nodes.
@@ -192,13 +198,13 @@ Data collection done . Please upload the file to the Microsoft Workspace.
 ### For base Azure Local system issues
 
 ```powershell
-Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
+Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
 ```
 
 Here's an example of the output for base system issues:
 
 ```output
-PS C:\temp> Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
+PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
 Starting known issue check for Azure Stack HCI: BaseSystem.
 Gathering information from all clustered nodes.
 We are preparing to collect diagnostic information from your environment
