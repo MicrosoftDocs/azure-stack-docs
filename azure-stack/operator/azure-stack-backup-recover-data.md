@@ -52,7 +52,7 @@ Azure Stack Hub supports a type of deployment called cloud recovery mode. This m
 
 - Deployment inputs
 - Internal identity service data
-- Federated identify configuration (ADFS deployments).
+- Federated identify configuration (AD FS deployments).
 - Root certificates used by internal certificate authority.
 - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, resource groups, tags, storage quotas, network quotas, and compute resources.
 - Key Vault secrets and vaults.
