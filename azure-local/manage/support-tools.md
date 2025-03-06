@@ -35,7 +35,7 @@ Before you use the PowerShell module, make sure to:
 
 - Ensure that you are using an account that has administrative access to the Azure Local nodes.
 
-- Ensure that PSRemoting has been configured on the Azure Local nodes. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-5.1&preserve-view=true) reference documentation.
+- Ensure that PSRemoting has been configured on the Azure Local nodes. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) reference documentation.
 
 ## Install or Update the Azure Local Support Diagnostic Tool
 
@@ -159,7 +159,7 @@ Details: Validation successfull
 [Fail] [Azure Stack HCI - Azure Connection state]
 Validate that the cluster is in a connected state
 Details: This Azure Stack HCI node does not seem to be connected to azure. Ensure that this node is in a connected state.
-Documentation: https://learn.microsoft.com/en-us/azure-stack/hci/deploy/troubleshoot-hci-registration.
+Documentation: https://learn.microsoft.com/azure-stack/hci/deploy/troubleshoot-hci-registration.
 
 [Pass] [Azure Arc Agent - Connection state]
 Validate that the azure arc agent is connected
