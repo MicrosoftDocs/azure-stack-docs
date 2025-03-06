@@ -3,9 +3,8 @@ title: Troubleshoot Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 02/12/2021
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
@@ -17,7 +16,7 @@ ms.lastreviewed: 12/10/2020
 
 # Troubleshoot issues in Azure Stack Hub
 
-This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+This article provides troubleshooting information for Azure Stack Hub integrated environments.
 
 ## Frequently asked questions
 
