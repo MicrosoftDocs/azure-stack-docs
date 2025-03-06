@@ -15,8 +15,7 @@ ms.service: azure-local
 
 This article describes how to perform the post-OS upgrade tasks after you upgraded the operating system (OS) to the new version. The post-upgrade tasks described in this article are required for the stability of the Azure Local instance.
 
-Throughout this article, we refer to Azure Local, version 23H2 as the new version and Azure Local, version 22H2 as the old version.
-
+Throughout this article, we refer to Azure Local 2311.2 as the *new* version and Azure Local, version 22H2 as the *old* version.
 
 ## Complete prerequisites
 
@@ -24,10 +23,10 @@ Before you begin, make sure that:
 
 - You successfully upgraded the OS to version 23H2 on Azure Local as per the instructions in one of the following docs:
 
-    - [Upgrade to 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
-    - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
-    - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
-    
+   - [Upgrade to 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+   - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
+   - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
+
 - Make sure that all the machines in your system are healthy and show as **Online**.
 - You have access to a client that can connect to your system. This client should be running PowerShell 5.0 or later.
 
