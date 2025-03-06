@@ -75,30 +75,46 @@ The following table provides the hardware update method for different hardware v
 | Lenovo | Premier Solutions and specific Integrated Systems:</br><br> MX455 V3, MX450 | Solution Builder Extension | [Azure Local Solution Builder Extension Update - Lenovo](https://thinkagile.lenovo.com/MX/) |
 | Lenovo | Other Integrated Systems and Validated Nodes (not previously listed)  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
 
-## Discover Solution Builder Extension Updates
+## Check for SBE installation
 
-The Azure Local Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Local and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
-
-Check to see if you have SBE installed on your registered Azure Local system by running the following command:
+To see if you have SBE installed on your registered Azure Local system, run the following command:
 
 ```powershell
 $Update = Get-SolutionUpdateEnvironment
-$Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+$Update | ft SbeFamily, HardwareModel, CurrentSbeVersion, State
 ```
 
 Here's a sample output
 
 ```console
 PS C:\Users\lcmuser> $Update = Get-SolutionUpdateEnvironment
-PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion
+PS C:\Users\lcmuser> $Update | ft SbeFamily, HardwareModel, CurrentSbeVersion, State
 
-SbeFamily             HardwareModel       CurrentSbeVersion
----------             -------------       -----------------
-Gen A                 Contoso680          4.0.0.0
+SbeFamily             HardwareModel       CurrentSbeVersion        State
+---------             -------------       -----------------        -----
+Gen A                 Contoso680          4.0.0.0                  UpdateAvailable
 ```
 
 > [!NOTE]
 > If you don't have an SBE installed the CurrentSbeVersion default is shown as 2.1.0.0.
+
+The following table describes the possible states of the SBE on your Azure Local system. For states requiring action, follow the provided guidance.
+
+| State    | Description     | Action    |
+|-----------|----------------|-----------|
+| AppliedSuccessfully | The SBE is installed and up to date.| No action required.|
+| NeedsAttention | The SBE or Azure Local update requires attention.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| PreparationFailed | The system failed to prepare for the SBE or Azure Local update.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| PreparationInProgress | The system is preparing for an SBE or Azure Local update.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+| UpdateAvailable | A new SBE or Azure Local update is available.| [Discover Solution Builder Extension updates](#discover-solution-builder-extension-updates).|
+| UpdateFailed | The SBE or Azure Local update failed.| [Troubleshoot solution updates for Azure Local](update-troubleshooting-23h2.md).|
+| UpdateInProgress | An SBE or Azure Local update is in progress.| [Track system update progress and history](azure-update-manager-23h2.md#track-system-update-progress-and-history).|
+
+## Discover Solution Builder Extension Updates
+
+The Azure Local Lifecycle Management orchestration queries an established online SBE manifest endpoint for each hardware vendor to determine if there are any new SBE updates for your Azure Local instance. The process of checking for new updates and determining if they're applicable to your Azure Local instance is called **discovering** updates.
+
+Microsoft and your hardware vendor work together to ensure only valid and supported update options are discovered. To determine if the extension updates match, the discovery process checks the current versions of your Azure Local instance against the validated versions recorded in the SBE manifest. If you see an SBE discovered as an option to install, it means your hardware vendor has validated and supports the new combination of SBE and Azure Local versions.
 
 To discover and install SBE or your SBE updates, use one of the methods in the next sections.
 
@@ -132,7 +148,7 @@ Azure Local 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Local 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> Microsoft recommends installing the combined “Solution” update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
+> Microsoft recommends installing the combined "Solution" update in most cases, to reduce the number of update operations needed to keep your system up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
