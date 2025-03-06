@@ -26,9 +26,9 @@ This article addresses the current Azure Stack Hub limitation, which lets tenant
 - A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the Fortinet FortiGate Next-Generation Firewall Single VM Solution.
 - At least two available FortiGate license files to activate the FortiGate NVA. For information about how to get these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/19071/registering-and-downloading-your-license).
 
-  This procedure uses the [Single FortiGate-VM deployment](https://docs2.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/632940/single-fortigate-vm-deployment). The procedure describes the steps to connect the FortiGate NVA to the Azure Stack Hub VNET in your on-premises network.
+  This procedure uses the [Single FortiGate-VM deployment](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/632940/single-fortigate-vm-deployment). The procedure describes the steps to connect the FortiGate NVA to the Azure Stack Hub VNET in your on-premises network.
 
-  For more information about how to deploy the FortiGate solution in an active-passive (HA) set up, see [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/983245/ha-for-fortigate-vm-on-azure) in the Fortinet document library.
+  For more information about how to deploy the FortiGate solution in an active-passive (HA) set up, see [HA for FortiGate-VM on Azure](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/983245/ha-for-fortigate-vm-on-azure) in the Fortinet document library.
 
 ## Deployment parameters
 
