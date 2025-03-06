@@ -3,25 +3,6 @@
     "content": [
       {
         "group": "version-ash",
-        "src" : "asdk",
-        "dest" : "asdk",
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices"
-        ]
-      },
-      {
-        "group": "version-ash",
         "src" : "operator",
         "dest" : "operator",
         "files": [
@@ -85,7 +66,6 @@
           "**/*.yml"
         ],
         "exclude": [
-          "asdk/**",
           "operator/**",
           "partner/**",
           "user/**",
@@ -101,22 +81,6 @@
       }
     ],
     "resource": [
-      {
-        "files": [
-          "**/*.png",
-          "**/*.jpg",
-          "**/*.svg",
-          "**/*.gif"
-        ],
-        "src": "asdk",
-        "dest": "asdk",
-        "group": "version-ash",
-        "exclude": [
-          "**/obj/**",
-          "_themes/**",
-          "_themes.pdf/**"
-        ]
-      },
       {
         "files": [
           "**/*.png",
@@ -176,7 +140,6 @@
           "**/*.json"
         ],
         "exclude": [
-          "asdk/**",
           "operator/**",
           "partner/**",
           "user/**",
@@ -207,7 +170,6 @@
     },
     "fileMetadata": {
       "ms.service": {
-        "asdk/**/*.md": "azure-stack-hub",
         "mdc/**/*.md": "azure-stack-hub",
         "operator/**/*.md": "azure-stack-hub",
         "partner/**/*.md": "azure-stack-hub",
@@ -215,20 +177,16 @@
         "user/**/*.md": "azure-stack-hub"
       },
       "titleSuffix": {
-        "**/*.md": "Azure Stack Hub",
-        "asdk/**/*.md": "Azure Stack Development Kit (ASDK)",
-        "hybrid/**/*.md": "Azure Stack"
+        "**/*.md": "Azure Stack Hub"
       },
       "feedback_help_link_url": {
         "operator/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "user/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "mdc/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
-        "asdk/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "partner/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
         "reference/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub"
       },
       "ms.subservice": {
-        "asdk/**/*.md": "azure-stack-hub-asdk",
         "mdc/**/*.md": "azure-stack-hub-mdc"
       }
     },

@@ -3,7 +3,7 @@ title: Connect Storage Explorer to Azure Stack Hub subscription or storage accou
 description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscription.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 02/20/2025
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
@@ -24,9 +24,7 @@ After you connect to an Azure Stack Hub subscription or storage account, see the
 
 ## Prepare for connecting to Azure Stack Hub
 
-You need direct access to Azure Stack Hub or a VPN connection for Storage Explorer to access the Azure Stack Hub subscription. To learn how to set up a VPN connection to Azure Stack Hub, see [Connect to Azure Stack Hub with VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
-
-For integrated systems that are disconnected, the recommendation is to use an internal enterprise Certificate Authority to export the root certificate in a Base-64 format and then import it into Azure Storage Explorer.  
+You need direct access to Azure Stack Hub or a VPN connection for Storage Explorer to access the Azure Stack Hub subscription. For integrated systems that are disconnected, the recommendation is to use an internal enterprise Certificate Authority to export the root certificate in a Base-64 format and then import it into Azure Storage Explorer.  
 
 > [!NOTE]  
 > Azure Storage Explorer relies on the Node.js networking stack to determine which default certificate signers to trust. [Learn more](/azure/storage/common/storage-explorer-network#ssl-certificates).
