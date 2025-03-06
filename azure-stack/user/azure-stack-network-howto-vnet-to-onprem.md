@@ -16,7 +16,7 @@ ms.lastreviewed: 12/2/2020
 
 # Set up VPN gateway for Azure Stack Hub using FortiGate NVA
 
-This article describes how to create a VPN connection to your Azure Stack Hub. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The procedure below deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
+This article describes how to create a VPN connection to your Azure Stack Hub. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The following procedure deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ This article describes how to create a VPN connection to your Azure Stack Hub. A
    > [!NOTE]  
    > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Hub Marketplace, contact your cloud operator.
 
-- To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
+- To activate the FortiGate NVA, you need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
 
    This procedure uses the [Single FortiGate-VM deployment](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/632940/single-fortigate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
 
@@ -75,7 +75,7 @@ The following table summarizes the parameters that are used in these deployments
 1. Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
 
    > [!WARNING]
-   > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and set up a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
+   > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and set up a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that don't conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You don't want the range to overlap with the IP ranges that exist in your on-premises network.
 
 1. Select **OK**.
 
@@ -109,7 +109,7 @@ The following table summarizes the parameters that are used in these deployments
 1. Enter the IP network range that defines the network range of the on-premises network to which the VPN connects.
 1. Select **Virtual appliance** for **Next hop type** and `172.16.1.4`. If you use a different IP range, use your IP range.
 
-   ![The Add route dialog box shows the four values that have been entered into the text boxes.](./media/azure-stack-network-howto-vnet-to-onprem/image12a.png)
+   ![The Add route dialog box shows the four values that were entered into the text boxes.](./media/azure-stack-network-howto-vnet-to-onprem/image12a.png)
 
 1. Select **Save**.
 
@@ -117,7 +117,7 @@ The following table summarizes the parameters that are used in these deployments
 
 Activate the FortiGate NVA and set up an IPSec VPN connection on each NVA.
 
-To activate each FortiGate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
+To activate each FortiGate NVA, you need a valid license file from Fortinet. The NVAs don't function until you activate each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
 
 Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
@@ -165,7 +165,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
    Use your IP range if you are using a different IP range.
 
-1. Enter the appropriate remote subnets that represent the on-premises network, to which you will connect through the on-premises VPN device.
+1. Enter the appropriate remote subnets that represent the on-premises network, to which you connect through the on-premises VPN device.
 
     ![The screenshot of the VPN Creation Wizard shows it to be on the third step, Policy & Routing. It shows the selected and entered values.](./media/azure-stack-network-howto-vnet-to-onprem/image18a.png)
 
@@ -180,7 +180,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
 ## Configure the on-premises VPN
 
-The on-premises VPN device must be configured to create the IPSec VPN tunnel. The following table provides the parameters you will need to set up the on-premises VPN device. For information on how to configure the on-premises VPN device, refer tp the documentation for your device.
+The on-premises VPN device must be configured to create the IPSec VPN tunnel. The following table provides the parameters you need to set up the on-premises VPN device. For information about how to configure the on-premises VPN device, see the documentation for your device.
 
 | Parameter | Value |
 | --- | --- |

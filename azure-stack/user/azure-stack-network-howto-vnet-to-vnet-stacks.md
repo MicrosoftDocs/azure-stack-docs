@@ -16,9 +16,9 @@ ms.lastreviewed: 12/2/2020
 
 # VNet to VNet connectivity between Azure Stack Hub instances with Fortinet FortiGate NVA
 
-In this article, you'll connect a VNET in one Azure Stack Hub to a VNET in another Azure Stack Hub using Fortinet FortiGate NVA, a network virtual appliance.
+This article describes how to connect a VNET in one Azure Stack Hub to a VNET in another Azure Stack Hub using Fortinet FortiGate NVA, a network virtual appliance.
 
-This article addresses the current Azure Stack Hub limitation, which lets tenants set up only one VPN connection across two environments. Users will learn how to set up a custom gateway on a Linux virtual machine that will allow multiple VPN connections across different Azure Stack Hub. The procedure in this article deploys two VNETs with a FortiGate NVA in each VNET: one deployment per Azure Stack Hub environment. It also details the changes required to set up an IPSec VPN between the two VNETs. The steps in this article should be repeated for each VNET in each Azure Stack Hub.
+This article addresses the current Azure Stack Hub limitation, which lets tenants set up only one VPN connection across two environments. The article describes how to set up a custom gateway on a Linux virtual machine that allows multiple VPN connections across different Azure Stack Hub. The procedure in this article deploys two VNETs with a FortiGate NVA in each VNET: one deployment per Azure Stack Hub environment. It also details the changes required to set up an IPSec VPN between the two VNETs. The steps in this article should be repeated for each VNET in each Azure Stack Hub.
 
 ## Prerequisites
 
@@ -90,10 +90,10 @@ Repeat these steps for both Azure Stack Hub environments.
 1. Select **OK**.
 1. Provide the virtual network, subnets, and VM size details from the [Deployment parameters](#deployment-parameters).
 
-   If you wish to use different names and ranges, take care not to  use parameters that will conflict with the other VNET and FortiGate resources in the other Azure Stack Hub environment. This is especially true when setting the VNET IP range and subnet ranges within the VNET. Check that they don't overlap with the IP ranges for the other VNET you create.
+   If you want to use different names and ranges, take care not to use parameters that conflict with the other VNET and FortiGate resources in the other Azure Stack Hub environment. This limitation is especially true when setting the VNET IP range and subnet ranges within the VNET. Check that they don't overlap with the IP ranges for the other VNET you create.
 
 1. Select **OK**.
-1. Configure the public IP that will be used for the FortiGate NVA:
+1. Configure the public IP to be used for the FortiGate NVA:
 
    ![The "Public IP address name" text box of the IP Assignment dialog box shows a value of "forti1-publicip1" (from the Deployment Table).](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png)
 
@@ -121,7 +121,7 @@ Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
 1. Select **Yes**.
 1. Select **Add**.
-1. Name the **Route** `to-forti1` or `to-forti2`. Use your IP range if you are using a different IP range.
+1. Name the **Route** `to-forti1` or `to-forti2`. Use your IP range if you're using a different IP range.
 1. Enter:
 
    - forti1: `172.17.0.0/16`  
@@ -175,7 +175,7 @@ Once the NVAs are activated, follow these steps to create an IPSec VPN between t
    ![The screenshot of the VPN Creation Wizard shows it to be on the first step, VPN Setup. The following values are selected: "Site to Site" for Template Type, "FortiGate" for Remote Device Type, and "This site is behind NAT" for NAT Configuration.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image16.png)
 
 1. Select **Next**.
-1. Enter the remote IP address of the on-premises VPN device to which you are going to connect.
+1. Enter the remote IP address of the on-premises VPN device to which you're going to connect.
 1. Select **port1** as the **Outgoing Interface**.
 1. Select **Pre-shared Key** and enter (and record) a pre-shared key.
 
@@ -193,7 +193,7 @@ Once the NVAs are activated, follow these steps to create an IPSec VPN between t
 
    If you use a different IP range, enter your IP range.
 
-1. Enter the appropriate Remote Subnet(s) that represent the on-premises network, which you will connect to through the on-premises VPN device.
+1. Enter the appropriate remote subnets that represent the on-premises network to which you connect through the on-premises VPN device:
 
    - forti1: 172.16.0.0/16
    - forti2: 172.17.0.0/16
@@ -231,7 +231,7 @@ You should now be able to route in between each VNET via the FortiGate NVAs. To 
 
 - The Azure Stack Hub VMs are placed on the **InsideSubnet** of each VNET.
 - You don't apply any NSGs to the VM upon creation; that is, remove the NSG that gets added by default if creating the VM from the portal.
-- Ensure that the VM firewall rules allow the communication you are going to use to test connectivity. For testing purposes, it's recommended that you disable the firewall completely within the OS, if at all possible.
+- Ensure that the VM firewall rules allow the communication you're going to use to test connectivity. For testing purposes, it's recommended that you disable the firewall completely within the OS, if at all possible.
 
 ## Next steps
 
