@@ -2,9 +2,8 @@
 title: Create Linux VM with Azure CLI in Azure Stack Hub 
 description: Create a Linux virtual machine by using the Azure CLI in Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: quickstart
-ms.date: 03/12/2024
+ms.date: 03/06/2025
 ms.author: sethm
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using Azure CLI.
@@ -23,22 +22,24 @@ You can create an Ubuntu Server 20.04 LTS virtual machine (VM) by using the Azur
 
 ## Prerequisites
 
+Before you begin, make sure you have the following prerequisites:
+
 * A Linux image in the Azure Stack Hub Marketplace
 
    The Azure Stack Hub Marketplace doesn't contain a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 20.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
-* Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack Hub, sign in to the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) (or a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)), and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack Hub, sign in to a Windows-based external client if you're connected through VPN, and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
 
-* A public Secure Shell (SSH) key with the name *id_rsa.pub* saved in the *.ssh* directory of your Windows user profile. For detailed information about creating SSH keys, see [Use an SSH key pair with Azure Stack Hub](azure-stack-dev-start-howto-ssh-public-key.md).
+* A public Secure Shell (SSH) key with the name `id_rsa.pub` saved in the **.ssh** directory of your Windows user profile. For more information about creating SSH keys, see [Use an SSH key pair with Azure Stack Hub](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your Azure Stack Hub integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
-> We've assigned values for all variables in the following code examples. However, you can assign your own values.
+> We assigned values for all variables in the following code examples. However, you can assign your own values.
 
-The following example creates a resource group named myResourceGroup in the local location: 
+The following example creates a resource group named myResourceGroup in the local location:
 
 ```azurecli
 az group create --name myResourceGroup --location local
@@ -46,7 +47,7 @@ az group create --name myResourceGroup --location local
 
 ## Create a virtual machine
 
-Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. The example uses *Demouser* as the admin username and *Demouser@123* as the admin password. Change these values to something that's appropriate for your environment.
+Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. The example uses `Demouser` as the admin username and `Demouser@123` as the admin password. Change these values to something that's appropriate for your environment.
 
 ```azurecli
 az vm create \
@@ -58,11 +59,11 @@ az vm create \
   --location local
 ```
 
-The public IP address is returned in the **PublicIpAddress** parameter. Note the address for later use with the virtual machine.
+The public IP address is returned in the `PublicIpAddress` parameter. Note the address for later use with the virtual machine.
 
 ## Open port 80 for web traffic
 
-Because this virtual machine is going to run the IIS web server, you need to open port 80 to internet traffic. To open the port, use the [az vm open-port](/cli/azure/vm) command: 
+Because this virtual machine runs the IIS web server, you must open port 80 to internet traffic. To open the port, use the [az vm open-port](/cli/azure/vm) command:
 
 ```azurecli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -70,7 +71,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## Use SSH to connect to the virtual machine
 
-From a client computer with SSH installed, connect to the virtual machine. If you're working on a Windows client, use [PuTTY](https://www.putty.org/) to create the connection. To connect to the virtual machine, use the following command:
+From a client computer with SSH installed, connect to the virtual machine. If you work on a Windows client, use [PuTTY](https://www.putty.org/) to create the connection. To connect to the virtual machine, use the following command:
 
 ```bash
 ssh <publicIpAddress>

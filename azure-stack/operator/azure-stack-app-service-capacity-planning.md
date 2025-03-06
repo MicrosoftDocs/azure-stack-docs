@@ -2,9 +2,8 @@
 title: Plan App Service server roles capacity - Azure Stack Hub 
 description: Learn about capacity planning for App Service server roles in Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020
@@ -99,7 +98,7 @@ Cloud admins can monitor their worker tier allocation in the App Service admin a
 
 ## File server role
 
-For the file server role, you can use a standalone file server for development and testing. For example, when deploying Azure App Service on the Azure Stack Development Kit (ASDK) you can use this [template](https://aka.ms/appsvconmasdkfstemplate).  For production purposes, you should use a pre-configured Windows file server, or a pre-configured non-Windows file server.
+For the file server role, you can use a standalone file server for development and testing. For production purposes, you should use a pre-configured Windows file server, or a pre-configured non-Windows file server.
 
 In production environments, the file server role experiences intensive disk I/O. Because it houses all of the content and app files for user web sites, you should preconfigure one of the following resources for this role:
 
@@ -115,5 +114,4 @@ For more information, see [Provision a file server](azure-stack-app-service-befo
 
 [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md)
 
-<!--Image references-->
 [1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png
