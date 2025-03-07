@@ -123,9 +123,7 @@ Here are the key features of crash dump collection for Azure Local:
 
 ### Prerequisites
 
-To use the crash dump collection feature, make sure you complete the following prerequisites:
-
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension version 2.0.18 to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](./telemetry-and-diagnostics-overview.md).
+To use the crash dump collection feature, install the `AzureEdgeTelemetryAndDiagnostics` extension version 2.0.18. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](./telemetry-and-diagnostics-overview.md).
 
 ### Disable crash dump collection
 
