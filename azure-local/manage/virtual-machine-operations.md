@@ -32,63 +32,65 @@ The supported operations can be performed via multiple interfaces.
 ### Using Azure portal or Azure CLI
 
 > [!IMPORTANT]
-> Make sure to perform these operations only via the Azure portal or Azure CLI (and not via the local tools).
+> Make sure to perform these VM operations only via the Azure portal or Azure CLI (and not via the local tools).
 
-- Restart VM.
-- Stop VM.
-- Delete VM.
-- Add network interface to VM.
-- Delete network interface for VM.
-- Enable and use Windows Admin Center (for read-only) on a VM.
-- Add data disk to VM.
-- Delete data disk from VM.
-- Change CPU cores for VM.
-- Change memory of VM.
-- Add extensions to VM.
-- Delete extensions from VM.
-- Enable guest management on VM.
-- Connect to VM via SSH.
+- Restart.
+- Stop.
+- Delete.
+- Add network interface.
+- Delete network interface.
+- Enable and use Windows Admin Center (for read-only).
+- Add data diskM.
+- Delete data disk.
+- Change CPU cores.
+- Change memory.
+- Add extensions.
+- Delete extensions.
+- Enable guest management.
+- Connect via SSH.
 
 ### Using Azure CLI
 
 > [!IMPORTANT]
 > Make sure to perform these operations only via the Azure CLI (and not via the local tools).
 
-- Pause state of VM.
-- Save state of VM.
-- Attach GPU to VM.
-- Detach GPU from VM.
+- Pause VM.
+- Save VM state.
+- Attach GPU.
+- Detach GPU.
 
 ### Using local tools
 
 The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node.
 
-### VM-level operations
+#### VM-level operations
 
+- Change MAC address of network interface.
 - Enable/disable MAC address spoofing per network interface.
-- Processor compatibility mode configuration per VM.
-- Processor Non-Uniform Memory Access (NUMA) topology configuration per VM.
+- Processor compatibility mode configuration.
+- Processor Non-Uniform Memory Access (NUMA) topology configuration.
 - Processor VM reserve, limit, and weight.
 - Enable Quality of Service (QoS) management per disk.
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller.
-- Remove a SCSI controller from VM.
-- Add/remove DVD drive from VM.
-- Configure dynamic memory of VM.
-- Change VM boot order of VM.
-- Enable/disable integration services of VM.
-- Change automatic start action of VM.
-- Change automatic stop action of VM.
+- Remove a SCSI controller.
+- Add/remove DVD drive.
+- Configure dynamic memory.
+- Change VM boot order.
+- Enable/disable integration services.
+- Change automatic start action.
+- Change automatic stop action.
 - Enable secure boot of Generation 2 VM.
 
-### Cluster or node-level operations
+#### Cluster or node-level operations
 
 - Connect to VM.
-- Quick migrate a VM to another machine in the same cluster.
-- Live migrate a VM to another machine in the same cluster.
+- Quick migrate a VM to another node in the same cluster.
+- Live migrate a VM to another node in the same cluster.
 - Change default location of VM files.
-- Change automatic balancing of VMs in a cluster.
+- Change automatic balancing of VMs in the cluster.
+- Change the Hyper-V MAC address range on the node.
 
-### Operations supported only via Network ATC PowerShell cmdlets
+#### Operations supported only via Network ATC PowerShell cmdlets
 
 The following VM operations are supported only using the Network ATC PowerShell cmdlets. For more information, see [Customize cluster network settings](./manage-network-atc.md#customize-cluster-network-settings).
 
@@ -107,11 +109,10 @@ The following VM operations aren't supported.
 - Live migrate a VM from one cluster to another.
 - Rename a VM.
 - Checkpoint a VM (standard or production).
-- Change the VM MAC address pool on the machine.
 - Change disk type (static/dynamic) of a VM.
 - Change IP address of network interface.
 - Enable/change VLAN ID per network interface.
-- Change MAC address of network interface.
+
 
 ## Related content
 
