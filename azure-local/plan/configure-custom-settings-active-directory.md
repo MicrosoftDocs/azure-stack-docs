@@ -3,7 +3,7 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2025
+ms.date: 03/04/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -118,7 +118,7 @@ A disjoint namespace occurs when the primary DNS suffix of one or more domain me
 
 Before deploying an Azure Local instance, you must:
 
-- Append the DNS suffix to the management adapter of every node.
+- Append the DNS suffix to the management adapter of every node. The DNS suffix must match the Active Directory domain name.
 - Verify you can resolve the hostname to the FQDN of the Active Directory.
 
 ### Example - append the DNS suffix
