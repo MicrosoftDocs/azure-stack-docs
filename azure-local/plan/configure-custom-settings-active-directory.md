@@ -60,7 +60,7 @@ Run the following PowerShell cmdlets to import the Active Directory module and a
 import-module ActiveDirectory
 
 #Input parameters
-$ouPath ="OU=HCI001,DC=contoso,DC=com"
+$ouPath ="AD:OU=HCI001,DC=contoso,DC=com"
 $DeploymentUser="deploymentuser"
 
 #Assign required permissions
