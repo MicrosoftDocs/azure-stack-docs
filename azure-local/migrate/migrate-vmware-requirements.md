@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 03/07/2025
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -63,7 +63,9 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 ## Source VMware server requirements
 
-- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs. For more information, see [Enable your VMware vCenter resources in Azure](/azure/azure-arc/vmware-vsphere/browse-and-enable-vcenter-resources-in-azure).
+
+- Ensure that the adequate vCenter Server Permissions are met at [vCenter Server permissions for agentless VMware migrations](/azure/migrate/vmware/migrate-support-matrix-vmware-migration#vmware-vsphere-requirements-agentless).
 
 - In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated
 

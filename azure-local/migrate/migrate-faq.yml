@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 02/10/2025
+  ms.date: 03/07/2025
 
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
@@ -115,6 +115,9 @@ sections:
 
           When the VM is migrated, it will be created as a native Azure Arc virtual machine in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
 
+          How can I throttle the bandwidth used for replicating and migrating VMs with Azure Migrate?
+
+          See the FAQ at [Common Questions About the Migration and Modernization Tool](/azure/migrate/common-questions-server-migration#how-do-i-throttle-replication-when-using-the-azure-migrate-appliance-for-agentless-vmware-replication) for details on throttling replication and migration bandwidth.
         
           ## [VMware VMs only](#tab/vmware-vms)
           
