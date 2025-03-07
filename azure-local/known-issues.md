@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/06/2025
+ms.date: 03/07/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -306,7 +306,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Migrate | Migration of Gen 1 (non-sysprep) VMs using Azure Migrate fails with the error: *Failed to clean up seed ISO disk from the file system for VM*. |Contact Microsoft Support to apply a patch that resolves the VM failures associated with this issue.  |
+| Azure Migrate / Arc VM Management | Migration of Gen 1 (non-sysprep) VMs using Azure Migrate fails with the error: *Failed to clean up seed ISO disk from the file system for VM*. |Contact Microsoft Support to apply a patch that resolves the VM failures associated with this issue. A permanent fix will be included in the 2503 update.|
 | Security vulnerability <!--ADO--> |Microsoft has identified a security vulnerability that could expose the local admin credentials used during the creation of Arc VMs on Azure Local to non-admin users on the VM and on the hosts. <br> Arc VMs running on releases prior to Azure Local 2411 release are vulnerable.  |To identify the Arc VMs that require this change and to change the account passwords, see detailed instructions in: [Security vulnerability for Arc VMs on Azure Local](https://aka.ms/CVE-2024-49060).|
 | Deployment <!--30273426--><br>Upgrade |If the timezone is not set to UTC before you deploy Azure Local, an *ArcOperationTimeOut* error occurs during validation. The following error message is displayed: *OperationTimeOut, No updates received from device for operation.*   |Depending on your scenario, choose one of the following workarounds for this issue: <br><br> **Scenario 1.** Before you start the deployment, make sure that the timezone is set to UTC. <br><br>Connect to each of the Azure Local nodes and change the timezone to UTC. <br><br> Run the following command: `Set-TimeZone -Id "UTC"`. <br><br> **Scenario 2.** If you started the deployment without setting the UTC timezone and received the error mentioned in the validation phase, follow these steps:<br><br> 1. Connect to each Azure Local node. Change the time zone to UTC with `Set-TimeZone -Id "UTC"`. Reboot the nodes.<br><br> 2. After the nodes have restarted, go to the Azure Local resource in Azure portal. Start the validation again to resolve the issue and continue with the deployment or upgrade.<br><br> For detailed remediation steps, see the troubleshooting guide in the [Azure Local Supportability](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Triggering-deployment-settings-validation-call-results-in-OperationTimeout-2411-0.md) GitHub repository.|
 | Update <!--30345067--> | When updating from version 2408.2.7 to 2411.0.24, the update process could fail with the following error message: `Type 'CauPreRequisites' of Role 'CAU' raised an exception: Could not finish cau prerequisites due to error 'Cannot remove item C:\UpdateDistribution\<any_file_name>: Access to the path is denied.'` |For detailed steps on how to mitigate this issue, see [Azure Local Troubleshooting Guide for Update](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/mitigation-for-cannot-remove-c-update-distribution-with-access-denied.md).|
