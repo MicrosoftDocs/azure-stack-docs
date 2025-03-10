@@ -65,7 +65,7 @@ The files automatically install in the default PowerShell module directory: `C:\
 
 ## Edit the configuration file
 
-The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, depending on whether you're deploying only the Network Controller component, or the Software Load Balancer and Gateway components as well.
+The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, based on whether you're deploying just the Network Controller component or also the Software Load Balancer and Gateway components.
 
 For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
 
@@ -147,7 +147,7 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 
 ### Additional settings for SLB and Gateway
 
-The following additional parameters are used by SLB and Gateway VMs. Leave these values empty if you are not deploying SLB or Gateway VMs:
+The following additional parameters are used by SLB and Gateway VMs. Leave these values empty if you're not deploying SLB or Gateway VMs:
 
 - **SDNASN** - Autonomous System Number (ASN) used by SDN to peer with network switches
 - **RouterASN** - Gateway router ASN
@@ -155,7 +155,7 @@ The following additional parameters are used by SLB and Gateway VMs. Leave these
 - **PrivateVIPSubnet** -  virtual IP address (VIP) for the private subnet
 - **PublicVIPSubnet** - virtual IP address for the public subnet
 
-The following additional parameters are only used by Gateway VMs. Leave these values blank if you are not deploying Gateway VMs:
+The following additional parameters are only used by Gateway VMs. Leave these values blank if you're not deploying Gateway VMs:
 
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
@@ -167,7 +167,7 @@ The following additional parameters are only used by Gateway VMs. Leave these va
 
 ### Settings for tenant overlay networks
 
-The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you are using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
+The following parameters are used if you're deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
 
 - **PASubnet** -  subnet for the Provider Address (PA) network
 - **PAVLANID** - VLAN ID for the PA network

@@ -17,7 +17,7 @@ In this article, you deploy an end-to-end Software Defined Network (SDN) infrast
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on Azure Local, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you're deploying SDN on Azure Local, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
@@ -62,7 +62,7 @@ The files automatically install in the default PowerShell module directory: `C:\
 
 ## Edit the configuration file
 
-The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, depending on whether you're deploying only the Network Controller component, or the Software Load Balancer and Gateway components as well.
+The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, based on whether you're deploying just the Network Controller component or also the Software Load Balancer and Gateway components.
 
 For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
 
@@ -164,7 +164,7 @@ The following other parameters are used by Gateway VMs only. Leave these values 
 
 ### Settings for tenant overlay networks
 
-The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
+The following parameters are used if you're deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
 
 - **PASubnet** -  subnet for the Provider Address (PA) network
 - **PAVLANID** - VLAN ID for the PA network
