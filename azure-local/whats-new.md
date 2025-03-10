@@ -17,6 +17,22 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2503"
 
+## Features and improvements in 2503
+
+This is a baseline release with the following features and improvements:
+
+- Registration and deployment changes
+  - Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed during the Azure Local instance deployment.
+  - You can bootstrap your Azure Local machines using the Configurator app. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
+  
+- Updates and upgrade improvements
+  - Added support for differentiation of SKUs when considering applicability of a Solution Builder Extension update.
+  - Added a tag to indicate a superseded update.
+  - The Download Service is now used to download HTTP content.
+  - Introduced support for a URL-based platform update package.
+  - Azure Local rebranding changes for update.
+
+
 
 ::: moniker-end
 
@@ -168,8 +184,8 @@ For more information, see [Upgrade Azure Local from version 22H2](./upgrade/abou
 
 This release contains the following changes for updates:
 
-- Revised the names and descriptions of update steps. [27635293]
-- Introduced a health fault alert that is raised when there are available updates on the system. [27253002]
+- Revised the names and descriptions of update steps. 
+- Introduced a health fault alert that is raised when there are available updates on the system. 
 
 ### Arc VM management changes
 

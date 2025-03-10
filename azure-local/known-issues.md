@@ -21,6 +21,52 @@ For more information about new features in this release, see [What's new for Azu
 
 ::: moniker range="=azloc-2503"
 
+## Known issues for version 2503
+
+This software release maps to software version number **2503.x.x**.
+
+> [!IMPORTANT]
+> The new deployments of this software use the 2503.x.x build. You can also update from 2411.3.
+
+Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+The following table lists the fixed issues in this release:
+
+|Feature|Issue|Workaround/Comments|
+|------|------|----------|
+| Arc VM Management <!--ADO--> | Unable to delete a gallery image if the source Arc VM the gallery image was created from was deleted.| You can now delete a gallery image even if the source Arc VM the gallery image was created from was deleted.|
+| Arc VM Management <!--ADO--> | After ARB Disaster Recovery, some Arc VMs may lose network connectivity. | Updated ARB Disaster Recovery logic to ensure network configurations of Arc VMs persist. |
+| Arc VM Management <!--ADO--> | Inaccurate power state reporting on Azure for Arc VMs when the source image for the VM is deleted from the cluster.  | Power operations shows consistent and accurate power state representation on Azure for Arc VMs with deleted source images.  |
+| Arc VM Management <!--ADO--> | Inaccurate power state reporting on Azure for Arc VMs when attempting power operations.  | Improved the accuracy of power state reconciliation by reducing latency and fixing a bug that impacted power operations visibility to Azure.  |
+| Arc VM Management <!--ADO--> | Unable to create a gallery image with specified storage path.  | You can now create a gallery image with specified storage path.  |
+| Update <!--30232441--> | Ensure that Solution Builder Extension updates of type "Notify" that have been imported get copied correctly before validation  |   |
+| Update <!--30324217--> | Improved the Solution Extension Secret Location cmdlet help to provide better examples.  |   |
+| Update <!--29409214--> | Added retry logic to Cluster-Aware Updating runs and health checks for cluster nodes.   |   |
+| Update <!--31104115--> | Increased system stability during .NET 8 updates.   |   |
+| Upgrade <!--29558170--> | Disable the Carbon PowerShell module if detected and load the known modules.   | |
+| Upgrade <!--30353283--> | Optimized the current Carbon PowerShell module solution.   |  |
+| Upgrade <!--30251075--> | Added a check to validate enough free memory to start an ARB VM.    |   |
+| Arc VM Management <!--ADO--> | After  | Updated  |
+
+
+## Known issues in this release
+
+The following table lists the known issues in this release:
+
+|Feature|Issue|Workaround/Comments|
+|------|------|----------|
+| Arc VM Management <!--ADO--> | Unable to delete an Arc VM when one of the nodes are down.| Contact Microsoft Support if this issue occurs.|
+| Arc VM Management <!--ADO--> | Unabl| You|
+
+## Known issues from previous releases
+
+The following table lists the known issues from previous releases:
+
 
 ::: moniker-end
 
@@ -42,9 +88,11 @@ Release notes for this version include the issues fixed in this release, known i
 
 There are no fixed issues in this release.
 
+
 ## Known issues in this release
 
 Microsoft is not aware of any known issues in this release.
+
 
 ## Known issues from previous releases
 
