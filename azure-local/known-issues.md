@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/06/2025
+ms.date: 03/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -18,6 +18,11 @@ These release notes are continuously updated, and as critical issues requiring a
 > For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
+
+::: moniker range="=azloc-2503"
+
+
+::: moniker-end
 
 ::: moniker range="=azloc-24113"
 
