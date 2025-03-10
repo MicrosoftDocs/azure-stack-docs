@@ -468,7 +468,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following issues are fixed in this release:
 
@@ -480,7 +480,7 @@ The following issues are fixed in this release:
 | Upgrade <!--29346181--> | Added validation to check for an IPv6 address. ||
 | Update | SBE interfaces wouldn't execute on all the machines if the hostname in the system was a subset of another hostname. ||
 
-## Known issues in this release
+### Known issues in this release
 
 <!--The following table lists the known issues in this release:
 
@@ -489,7 +489,7 @@ The following issues are fixed in this release:
 
 Microsoft isn't aware of any known issues in this release.
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -551,7 +551,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following issues are fixed in this release:
 
@@ -561,7 +561,7 @@ The following issues are fixed in this release:
 | Updates <!--28101677-->|An update issue related to different health checks having the same name was fixed.   ||
 | Arc VM management | In large deployment scenarios, such as extensive AVD host pool deployments or large-scale VM provisioning, you might encounter reliability issues caused by a Hyper-V socket external library problem. ||
 
-## Known issues in this release
+### Known issues in this release
 
 The following table lists the known issues in this release:
 
@@ -577,7 +577,7 @@ The following table lists the known issues in this release:
 | Upgrade <!--29319539--> | When upgrading the stamp from 2311 or prior builds to 2408 or later, add node and repair node operations may fail. For example, you could see an error: `Type 'AddAsZHostToDomain' of Role 'BareMetal' raised an exception`. | There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps. |
 | Update | When installing an SBE update for your Azure Local system, some SBE interfaces aren't executed on all the machines if the hostname in the cluster is a subset of another hostname. For example, host-1 is a subset of host-10. This could result in failures in the CAU scan or CAU run. | Microsoft recommends using at least 2 digits for hostname instance counts in your host naming conventions. For more information, see [Define your naming convention](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming). |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
