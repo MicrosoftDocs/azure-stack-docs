@@ -283,7 +283,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-24081"
+::: moniker range="azloc-previous"
 
 ## September OS security update (KB 5043055) for Azure Local
 

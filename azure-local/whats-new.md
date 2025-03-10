@@ -134,7 +134,7 @@ This is a baseline release with the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24081"
+::: moniker range="=azloc-previous"
 
 
 ## Features and improvements in 2408.1
