@@ -64,7 +64,7 @@ The files automatically install in the default PowerShell module directory: `C:\
 
 The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, depending on whether you're deploying only the Network Controller component, or the Software Load Balancer and Gateway components as well.
 
-For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
+For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
 
 Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the relevant config file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment.
 
