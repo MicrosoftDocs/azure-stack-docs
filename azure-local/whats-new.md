@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/07/2025
+ms.date: 03/10/2025
 ---
 
 # What's new in Azure Local?
@@ -31,8 +31,6 @@ This is a baseline release with the following features and improvements:
   - The Download Service is now used to download HTTP content.
   - Introduced support for a URL-based platform update package.
   - Azure Local rebranding changes for update.
-
-
 
 ::: moniker-end
 
