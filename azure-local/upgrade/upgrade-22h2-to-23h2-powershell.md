@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 03/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -56,14 +56,9 @@ Follow these steps to install the solution upgrade:
 
 ## Step 0: Update registry keys
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each machine in the system to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
-
-Run the following command on each machine in the system to update registry keys:
+To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
 
 ```powershell
-# Set RefsDisableVolumeUpgrade to 1
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsDisableVolumeUpgrade" -Value 1 -Type DWord -ErrorAction Stop
-
 # Set RefsEnableMetadataValidation to 0
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
 ```
