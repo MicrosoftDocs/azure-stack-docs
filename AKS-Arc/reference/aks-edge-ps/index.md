@@ -4,7 +4,7 @@ description: PowerShell cmdlets for AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: reference
-ms.date: 02/20/2025
+ms.date: 03/10/2025
 ---
 
 # AKS Edge Essentials PowerShell module

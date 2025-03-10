@@ -4,7 +4,7 @@ description: Learn how to use the Key Manager for Kubernetes extension to rotate
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.date: 02/27/2025
+ms.date: 03/10/2025
 ms.reviewer: leslielin
 ---
 

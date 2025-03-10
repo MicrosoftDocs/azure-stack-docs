@@ -4,7 +4,7 @@ description: Learn how to deploy AKS Edge Essentials on a single machine.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/27/2025
+ms.date: 03/10/2025
 ms.custom: template-how-to
 ---
 
@@ -38,7 +38,7 @@ The key parameters for single machine deployment are:
 - To encrypt the Kubernetes secret store, you can enable the Key Management Service (KMS) plugin (preview) by setting the `Init.KmsPlugin enable` to **true**. For more information, see [Enable secret encryption on a cluster](aks-edge-howto-secret-encryption.md).
 
 > [!IMPORTANT]
-> Starting with the AKS Edge Essentials February 2025 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS Edge Essentials deployment.
+> Starting with the AKS Edge Essentials 1.10.868.0 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during the AKS Edge Essentials deployment.
 
 ## Step 2: create a single machine cluster
 
