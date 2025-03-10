@@ -4,7 +4,7 @@ description: Learn how to bring up an AKS Edge Essentials cluster and connect it
 author: sethmanheim
 ms.author: sethm
 ms.topic: quickstart
-ms.date: 02/27/2025
+ms.date: 03/10/2025
 ms.custom: template-how-to
 ---
 

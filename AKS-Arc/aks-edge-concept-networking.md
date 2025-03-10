@@ -4,7 +4,7 @@ description: Basic networking concepts for AKS Edge Essentials
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 07/11/2024
+ms.date: 03/10/2025
 ms.custom: template-concept
 ---
 

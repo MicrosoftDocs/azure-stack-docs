@@ -4,7 +4,7 @@ description: Description of deployment configuration JSON parameters in AKS Edge
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 02/20/2025
+ms.date: 03/10/2025
 ms.custom: template-concept
 ---
 
