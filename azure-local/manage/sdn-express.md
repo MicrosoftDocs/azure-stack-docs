@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 02/07/2025
+ms.date: 03/10/2025
 ms.author: sethm 
 ms.reviewer: anirbanpaul 
 ---
@@ -65,9 +65,11 @@ The files automatically install in the default PowerShell module directory: `C:\
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file (located at the above mentioned install path) contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, depending on whether you're deploying only the Network Controller component, or the Software Load Balancer and Gateway components as well.
 
-Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the **MultiNodeSampleConfig.psd1** file in a text editor. Change specific parameter values to fit your infrastructure and deployment, as described in the next section.
+For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
+
+Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the relevant config file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment.
 
 ### General settings and parameters
 
@@ -188,8 +190,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the cluster host servers:
 
     ```powershell
-    $cred=Get-credential
-    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
+    .\SDNExpress.ps1 -ConfigurationDataFile “Traditional VLAN networks.psd1” -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
