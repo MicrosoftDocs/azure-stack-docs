@@ -31,7 +31,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
-1. [Update registry keys.](#step-0-update-registry-keys)
+1. [Update registry key.](#step-0-update-registry-key)
 1. [Connect to Azure Local, version 22H2.](#step-1-connect-to-azure-local)
 1. [Check for the available updates using PowerShell.](#step-1-connect-to-azure-local)
 1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
@@ -54,7 +54,7 @@ Before you begin, make sure that:
 
 Follow these steps to install the solution upgrade:
 
-## Step 0: Update registry keys
+## Step 0: Update registry key
 
 To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
 
