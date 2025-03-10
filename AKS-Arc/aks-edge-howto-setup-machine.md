@@ -29,7 +29,7 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
    | File | Link |
    | ---- | ---- |
    | K8s installer (1.30.5) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
-   | K3s installer (1.30.5) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+   | K3s installer (1.30.6) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
    | K8s installer (1.29.4) | [aka.ms/aks-edge/k8s-msi-1.29](https://aka.ms/aks-edge/k8s-msi-1.29)  |
    | K3s installer (1.29.6) | [aka.ms/aks-edge/k3s-msi-1.29](https://aka.ms/aks-edge/k3s-msi-1.29) |
    | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
