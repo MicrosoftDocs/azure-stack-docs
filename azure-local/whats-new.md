@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/19/2025
+ms.date: 03/07/2025
 ---
 
 # What's new in Azure Local?
@@ -14,6 +14,11 @@ ms.date: 02/19/2025
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+
+::: moniker range="=azloc-2503"
+
+
+::: moniker-end
 
 ::: moniker range="=azloc-24113"
 
