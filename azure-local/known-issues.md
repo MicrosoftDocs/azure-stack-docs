@@ -541,9 +541,6 @@ The following table lists the known issues from previous releases:
 | Cluster aware updating <!--26411980--> |Resume node operation failed to resume node. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 | Cluster aware updating <!--26346755--> |Suspend node operation was stuck for greater than 90 minutes. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2408
 
