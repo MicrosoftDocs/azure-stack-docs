@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 03/07/2025
+ms.date: 03/11/2025
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -67,7 +67,7 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - Ensure that adequate vCenter Server permissions are met. For more information, see [VMware vSphere agentless requirements](/azure/migrate/vmware/migrate-support-matrix-vmware-migration#vmware-vsphere-requirements-agentless).
 
-- In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated
+- In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated.
 
 - Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
