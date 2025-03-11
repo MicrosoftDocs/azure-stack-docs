@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 03/11/2025
 ms.author: alkohli
 ---
 
@@ -40,7 +40,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 |-|-|
 |Asia-Pacific|South East Asia, East Asia|
 |Europe|North Europe, West Europe|
-|United States|East US, Central US, West Central US, West US2|
+|United States| Central US, West US2|
 
 Keep in mind the following information as you create a project:
 
