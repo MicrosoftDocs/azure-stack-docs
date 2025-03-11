@@ -4,7 +4,8 @@ description: Learn how to configure an AKS Edge Essentials cluster with workload
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 03/10/2025
+ms.reviewer: leslielin
 
 ---
 
@@ -17,7 +18,7 @@ Azure Kubernetes Service (AKS) Edge Essentials is an on-premises Kubernetes impl
 - Deploy your application.
 - Example: Grant a pod in the cluster access to secrets in an Azure key vault.
 
-For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity).
+For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity). As a security best practice, you can install [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](aks-edge-howto-key-manager.md) to automatically rotate the signing keys that issue Kubernetes service account tokens.
 
 > [!IMPORTANT]
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
@@ -260,4 +261,6 @@ The following example shows how to use the Azure role-based access control (Azur
 
 ## Next steps
 
-In this article, you configured it to use a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
+This article described how to configure a workload identity in preparation for application workloads to authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
+
+If you didn't install the [Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)](aks-edge-howto-key-manager.md), follow the instructions in this article to ensure periodic token rotation.
