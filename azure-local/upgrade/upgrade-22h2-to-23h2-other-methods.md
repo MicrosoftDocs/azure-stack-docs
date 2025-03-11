@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2025
+ms.date: 03/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -31,7 +31,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete prerequisites.](#complete-prerequisites)
-1. [Update registry keys.](#step-0-update-registry-keys)
+1. [Update registry key.](#step-0-update-registry-key)
 1. [Connect to your system.](#step-1-connect-to-your-system)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
@@ -49,16 +49,11 @@ Before you begin, make sure that:
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
 
-## Step 0: Update registry keys
+## Step 0: Update registry key
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, update registry keys on each machine in the system to ensure ReFS volume upgrade is disabled and metadata validation is turned off.
-
-Run the following command on each machine in the system to update registry keys:
+To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
 
 ```powershell
-# Set RefsDisableVolumeUpgrade to 1
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsDisableVolumeUpgrade" -Value 1 -Type DWord -ErrorAction Stop
-
 # Set RefsEnableMetadataValidation to 0
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
 ```

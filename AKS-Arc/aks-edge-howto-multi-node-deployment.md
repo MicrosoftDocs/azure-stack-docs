@@ -4,7 +4,7 @@ description: Describes how to create a cluster with multiple machines in AKS Edg
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 01/09/2025
+ms.date: 03/10/2025
 ms.custom: template-how-to
 ---
 
@@ -52,6 +52,11 @@ The key parameters to note for a scalable Kubernetes deployment are:
 > [!IMPORTANT]
 > The Kubernetes `pod cidr` is `10.42.0.0/16` for K3s and `10.244.0.0/24` for K8s. The Kubernetes `service cidr` is `10.43.0.0/16` for K3s and `10.96.0.0/12` for K8s.
 
+- `Arc`: This section is required. During the AKS Edge Essentials deployment, the Arc parameters are used to connect the AKS Edge Essentials cluster to Azure Arc. For more information about the required Arc parameters, see the [connect to Arc documentation](aks-edge-howto-connect-to-arc.md).
+  
+> [!IMPORTANT]
+> Starting with the AKS Edge Essentials 1.10.868.0 release, the `Arc` section of the config file is required. The Azure Arc connection occurs automatically during AKS Edge Essentials deployment.
+  
 - The `Network.NetworkPlugin` value by default is `flannel`. Flannel is the default CNI for a K3S cluster. In a K8S cluster, change the `NetworkPlugin` to `calico`.
 - In addition to the previous parameters, you can set the following parameters according to your deployment configuration, [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `LinuxNode.Ip4Address`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `WindowsNode.Ip4Address`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
 
