@@ -61,7 +61,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Workloads**: Windows worker nodes.
 - **GPU**: [GPU-PV](aks-edge-gpu.md).
 - **Secret Encryption**: [KMS plugin for AKS Edge Essentials](aks-edge-howto-secret-encryption.md).
-- **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for customers deploying Azure IoT Operations on top of AKS Edge Essentials.
+- **Security**: [Workload identity](aks-edge-workload-identity.md). Workload identity federation is only available for deployment of Azure IoT Operations on top of AKS Edge Essentials.
 - **Network plugins**: Calico on K3S (discontinued).
 
 ## Next steps
