@@ -63,13 +63,6 @@ When you plan your ingress IP, you need to make sure the ingress IP is in the sa
 >
 > - Reconfiguring the built-in container network range is currently not supported.
 
-### Unsupported features  
-
-For this preview, the following features are unsupported:  
-
-- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that enables you to add VLAN tags to ingress packets on a per-port basis.
-- Configurable VLAN for disconnected operations Management network that enables you to isolate management traffic from other network traffic, enhance security, and reduce interference.
-
 ### IP checklist for the disconnected appliance  
 
 Here's a checklist to help you plan your IP addresses for the disconnected operations appliance:
@@ -110,5 +103,12 @@ Here are the endpoints that the appliance needs to resolve:
 |-------------------------------|----------|
 |Geneva Observability Services | gcs.prod.monitoring.core.windows.net <br></br> *.prod.warm.ingest.monitor.core.windows.net  |
 | Azure Connected Machine Agent Managed Identity |  login.windows.net <br></br> login.microsoftonline.com <br></br> pas.windows.net <br></br> management.azure.com <br></br> *.his.arc.azure.com <br></br> *.guestconfiguration.azure.com |
+
+### Unsupported features  
+
+For this preview, the following features are unsupported:  
+
+- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that enables you to add VLAN tags to ingress packets on a per-port basis.
+- Configurable VLAN for disconnected operations Management network that enables you to isolate management traffic from other network traffic, enhance security, and reduce interference.
 
 ## Related content
