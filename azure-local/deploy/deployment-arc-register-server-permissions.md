@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 03/11/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -24,12 +24,16 @@ Before you begin, make sure you've completed the following prerequisites:
 - [Install the Azure Stack HCI operating system, version 23H2](./deployment-install-os.md) on each machine.
 
 - Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
-
     - *Microsoft.HybridCompute*
     - *Microsoft.GuestConfiguration*
     - *Microsoft.HybridConnectivity*
     - *Microsoft.AzureStackHCI*
-
+    - *Microsoft.Kubernetes*
+    - *Microsoft.KubernetesConfiguration*
+    - *Microsoft.ExtendedLocation*
+    - *Microsoft.ResourceConnector*
+    - *HybridContainerService*
+    
     > [!NOTE]
     > The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Local machines with Arc.
 
