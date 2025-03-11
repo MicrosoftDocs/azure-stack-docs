@@ -186,6 +186,8 @@
   items:
   - name: Overview
     href: aks-edge-overview.md
+  - name: What's new
+    href: 
   - name: System requirements and support matrix
     href: aks-edge-system-requirements.md
   - name: Quickstart
