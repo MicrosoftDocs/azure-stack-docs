@@ -21,16 +21,23 @@ This article lists the various features and improvements that are available in A
 
 This is a baseline release with the following features and improvements:
 
-- Registration and deployment changes
-  - Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed during the Azure Local instance deployment.
-  - You can bootstrap your Azure Local machines using the Configurator app. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
-  
-- Updates and upgrade improvements
-  - Added support for differentiation of SKUs when considering applicability of a Solution Builder Extension update.
-  - Added a tag to indicate a superseded update.
+- **Registration and deployment changes**
+  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+  - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
+    - Composed image is now supported for Other Equiment Manufacturers (OEMs).
+    - Several security enhancements were done for the Bootstrap service.
+    - Service Principal Name (SPN) is deprecated for Arc registration.
+    - The Arc installer script is simplified to only use `Start-ArcBootstrap` to register Azure Local machines with Arc.
+- **Environment checker related changes**
+  - Environment checker is now integrated for connectivity tests.
+  - Environment checker validates the composed image used for bootstrap.
+  - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
+- **Updates and upgrade improvements**
+  - The differentiation of SKUs is supported when considering the applicability of a Solution Builder Extension update.
+  - A tag is added to indicate a superseded update.
   - The Download Service is now used to download HTTP content.
-  - Introduced support for a URL-based platform update package.
-  - Azure Local rebranding changes for update.
+  - A URL-based platform update package is now supported.
+  - Azure Local rebranding changes were made for Update.
 
 ::: moniker-end
 
