@@ -4,7 +4,7 @@ description: Learn how to enable the KMS plugin for AKS Edge Essentials clusters
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 03/11/2025
 ms.custom: template-how-to
 ms.reviewer: leslielin
 ---
@@ -22,10 +22,10 @@ This article demonstrates how to activate the KMS plugin for AKS Edge Essentials
 
 ## Prerequisites
 
-The KMS plugin is supported for all AKS Edge Essentials clusters, version  1.10.868.0 and later.
+The KMS plugin is supported for all AKS Edge Essentials clusters, version 1.10.868.0 and later.
 
 > [!NOTE]
-> The KMS plugin can only be used for single node clusters. The plugin can't be used with [experimental features such as multi-node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
+> The KMS plugin can only be used for single node clusters. The plugin can't be used with [experimental features, such as multi-node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
 
 ## Enable the KMS plugin
 
@@ -74,7 +74,7 @@ If you encounter errors, see the [Troubleshooting](#troubleshooting) section.
 
 If there are errors with the KMS plugin, follow this procedure:
 
-1. Check that the AKS version is **1.10.xxx.0** or later. Use the following command to check the current version of AKS Edge Essentials:
+1. Check that the AKS version is **1.10.868.0** or later. Use the following command to check the current version of AKS Edge Essentials:
 
    ```powershell
    Get-Command -Module AKSEdge | Format-Table Name, Version
