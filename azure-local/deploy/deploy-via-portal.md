@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 03/11/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -30,11 +30,11 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    All resources in the Azure subscription are billed together.
 
-1. Enter the **Instance name** used for this Azure Local instance when Active Directory Domain Services (AD DS) was prepared for this deployment.
+1. Enter the **Instance name** to use for this Azure Local instance.
 
 1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-   We don't transfer a lot of data so it's OK if the region isn't close.
+   We don't transfer a lot of data so it's OK if the region isn't close. Select  **+ Add machines**.
 
 1. Select the machine or machines that make up this Azure Local instance.
 
@@ -43,9 +43,9 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
-1. Select  **+ Add machines**.
-    1. On the **Add machines** page, the operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
-    1. Select one or more machines that make up this Azure Local instance. These machines show as missing Arc extensions.
+1. On the **Add machines** page:
+    1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
+    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Missing Arc extensions**.
     1. Select **Add**. The machines show up on the **Basics** tab.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
@@ -182,7 +182,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 1. Enter the Active Directory **Domain** where you're deploying this system. This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
 
-1. Enter the **OU** created for this deployment.
+1. Enter the **OU** created for this deployment. The OU can't be at the top level of the domain.
    For example: `OU=Local001,DC=contoso,DC=com`.
 
 1. Enter the **Deployment account** credentials.
