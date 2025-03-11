@@ -19,14 +19,13 @@ This article outlines troubleshooting steps for known issues and errors that can
 This page is continually updated, so check back here for new information. As we identify critical problems that require workarounds, we add them. Please review this information carefully before deploying your AKS Arc on VMware preview.
 
 ## Arc Resource Bridge
-
-### Azure Arc resource bridge issues
+To keep your Azure Arc resource bridge deployment online and operational, you need to perform maintenance operations such as updating credentials, monitoring upgrades, and ensuring the appliance VM is online. Follow [Azure Arc resource bridge maintenance operations](/azure/azure-arc/resource-bridge/maintenance#update-credentials-in-the-appliance-vm) to learn more.
 
 For Azure Arc resource bridge issues, see the [troubleshooting guide here](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge).
 
 ### Recover from failed deployments of Arc Resource Bridge
 
-See the [troubleshooting guide here](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script#recovering-from-failed-deployments).
+See the [Recovering from failed deployments](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script#recovering-from-failed-deployments) for troubleshooting.
 
 ### vCenter connection to Azure
 
