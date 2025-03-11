@@ -22,9 +22,9 @@ This article lists the various features and improvements that are available in A
 This is a baseline release with the following features and improvements:
 
 - **Registration and deployment changes**
-  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
-    - Composed image is now supported for Other Equiment Manufacturers (OEMs).
+    - Composed image is now supported for Other Equipment Manufacturers (OEMs).
     - Several security enhancements were done for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.
     - The Arc installer script is simplified to only use `Start-ArcBootstrap` to register Azure Local machines with Arc.
@@ -199,7 +199,7 @@ This release contains the following changes for Arc VM management:
 - 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
 - Logical network properties are properly updated. Previously, the logical network sometimes wouldn't have its properties (vLAN, IP Pools, etc.) filled.
-- The vLAN field on a logical network will default to '0' if not specified.
+- The vLAN field on a logical network defaults to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
 For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
