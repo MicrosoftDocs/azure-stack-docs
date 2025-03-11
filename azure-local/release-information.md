@@ -5,7 +5,7 @@ author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 03/10/2025
+ms.date: 03/11/2025
 ---
 
 # Azure Stack HCI, version 22H2 release information
@@ -26,8 +26,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article** |
 |:-|:-|:-|
-| <!--update this row for 3B-->20349.3207 | 2025-03-11 | [KB 5051979](https://support.microsoft.com/en-us/topic/3ed79598-31b4-43b5-b422-758d074b8331) |
-| 20349.3207 | 2025-02-11 | [KB 5051979](https://support.microsoft.com/en-us/topic/3ed79598-31b4-43b5-b422-758d074b8331) |
+| 20349.3328 | 2025-03-11 | [KB 5053603](https://support.microsoft.com/topic/march-11-2025-security-update-kb5053603-11c37709-3521-4e80-a223-a8c4846ae980) |
+| 20349.3207 | 2025-02-11 | [KB 5051979](https://support.microsoft.com/topic/3ed79598-31b4-43b5-b422-758d074b8331) |
 | 20349.3091 | 2025-01-14 | [KB 5049983](https://support.microsoft.com/topic/916b5502-9602-4ed0-a0ee-c7a3c7ebcfd6) |
 | 20349.2966 | 2024-12-10 | [KB 5048654](https://support.microsoft.com/topic/7a18b155-a0ed-4b39-8968-262c30590a2e) |
 | 20349.2849 | 2024-11-12 | [KB 5046616](https://support.microsoft.com/topic/49a4f881-4e4d-4024-a43f-365cb392df29) |
