@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: conceptual
 author: ManikaDhiman
 ms.author: v-manidhiman
-ms.date: 02/07/2025
+ms.date: 03/11/2025
 ---
 
 # Compare management capabilities of Azure Local VMs
@@ -93,7 +93,6 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Insights|✅|✅|❌|
 | - Logs |✅|✅|❌|
 | - Alerts |✅|❌|❌|
-| - Metrics |✅|❌|❌|
 | - Workbooks |❌|✅|❌|
 | **Automation** |
 | - CLI/PS |✅|✅|❌|

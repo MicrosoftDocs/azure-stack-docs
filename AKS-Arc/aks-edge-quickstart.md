@@ -4,7 +4,7 @@ description: Learn how to bring up an AKS Edge Essentials cluster and connect it
 author: sethmanheim
 ms.author: sethm
 ms.topic: quickstart
-ms.date: 07/11/2024
+ms.date: 03/10/2025
 ms.custom: template-how-to
 ---
 
@@ -13,7 +13,9 @@ ms.custom: template-how-to
 This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge Essentials single-machine K3S Linux-only cluster.
 
 > [!NOTE]
-> The purpose of this quickstart script is to ease the evaluation process. This script requires higher level credentials for a one-time setup of the Azure subscription. This is not intended for production use.
+>
+> - The purpose of this quickstart script is to ease the evaluation process. This script requires higher level credentials for a one-time setup of the Azure subscription. The script is not intended for production use.
+> - By default, this quickstart script enables the Key Management Service (KMS) plugin (preview) by setting Init.KmsPlugin to **true**. For more information, see [Enable secret encryption on an AKS Edge Essentials cluster](aks-edge-howto-secret-encryption.md).
 
 ## Prerequisites
 
