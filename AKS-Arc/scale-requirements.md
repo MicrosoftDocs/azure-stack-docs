@@ -2,7 +2,7 @@
 title: Scale requirements for AKS on Azure Local
 description: Learn about scale requirements for AKS on Azure Local.
 ms.topic: conceptual
-ms.date: 03/26/2024
+ms.date: 03/10/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
@@ -41,9 +41,9 @@ This article describes the maximum and minimum supported scale count for AKS on 
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
-| AKS Arc Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
-| AKS Arc Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS Arc control plane nodes     | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS Arc Linux worker node       | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS Arc Windows worker node     | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
 ## Supported values for control plane node sizes
 
