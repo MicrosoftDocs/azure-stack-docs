@@ -96,7 +96,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Set up disconnected operations](disconnected-operations-set-up.md). | Ensure you have the necessary access and permissions to set up disconnected operations. |
 | Review [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
-| [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
+| Review [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
 | Review [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
 | Review [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | Review [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
