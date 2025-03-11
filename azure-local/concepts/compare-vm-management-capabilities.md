@@ -93,7 +93,7 @@ The following table compares the management capabilities for Arc VMs, Arc-enable
 | - Insights|✅|✅|❌|
 | - Logs |✅|✅|❌|
 | - Alerts |✅|❌|❌|
-| - Metrics |✅|❌|❌|
+| - Metrics |❌|❌|❌|
 | - Workbooks |❌|✅|❌|
 | **Automation** |
 | - CLI/PS |✅|✅|❌|
