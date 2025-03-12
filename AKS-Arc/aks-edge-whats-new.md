@@ -16,7 +16,7 @@ AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Az
 
 ## Features and improvements
 
-This section lists the new features and improvements in AKS Arc in each release of Azure Local, version 23H2.
+This section lists the new features and improvements in each release of AKS Edge Essentials.
 
 ### Release 1.10.868.0 (March 2025)
 
