@@ -233,6 +233,9 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2406"
+## 2406 archived known issues
+::: moniker-end
 ::: moniker range="azs-2311"
 ## 2311 archived known issues
 ::: moniker-end
@@ -312,6 +315,6 @@ To access known issues for a different version, use the version selector dropdow
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2406"
+::: moniker range="<azs-2408"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
