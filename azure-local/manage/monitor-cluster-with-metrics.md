@@ -87,11 +87,19 @@ Follow these steps to analyze metrics for a specific Azure Local cluster in the 
 
     To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](./setup-metric-alerts.md#create-metrics-alerts).
 
-## Performance Metrics dashboard for Azure Local
+## Monitor performance metrics
 
-The Azure Local Performance Metrics dashboard provides a detailed view of performance metrics across all Azure Local systems within a subscription. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
+The performance metrics dashboard provides a detailed view of performance metrics across all Azure Local systems within a subscription or for a specific system. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
+
+There are two types of performace metrics dashboards:
+
+- **Single Cluster Performance Metrics**, which offers drilled-down views for a specific system, split by unique Logical unit number (LUN).
+
+- **Multi Cluster Performance Metrics**, which monitors multiple systems at-scale.
 
 ### Benefits
+
+- Requires no extra setup to view your data, provided the [`AzureEdgeTelemetryAndDiagnostics`](../concepts/telemetry-and-diagnostics-overview.md) extension is installed.
 
 - Consolidates all available metrics into a single view, eliminating the need to select individual metrics.
 
@@ -99,15 +107,7 @@ The Azure Local Performance Metrics dashboard provides a detailed view of perfor
 
 - Includes multiple filters, such as a time filter for viewing data up to the past 30 days.
 
-- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters.
-
-- Provides detailed Insights. With the workbook for a single cluster, you can drill down to view metrics at the node, volume, and netadapter levels, providing you with detailed insights into your system's performance.
-
-<!--### Prerequisites
-
-- You must have access to an Azure Local system that's deployed, registered, and connected to Azure.
-
-- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Local system. For more information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).-->
+- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters. Or for a specific cluster, a drilled-down view of metrics at the node, volume, and netadapter levels.
 
 ### Access the Performance Metrics dashboard
 
@@ -132,11 +132,11 @@ To access the Performance Metrics dashboard via the Azure Local system, follow t
 
 1. Select one of the following workbooks based on whether you want to view performance metrics for a single cluster or multiple clusters:
 
-    - **Single Cluster Performance Metrics.** This workbook provides a more drilled down view for the specific resource, split by unique Logical unit number (LUN).
+    - **Single Cluster Performance Metrics**
     
-    - **Multi Cluster Performance Metrics.** This workbook is an at-scale workbook where you can monitor performace of multiple clusters.
+    - **Multi Cluster Performance Metrics** 
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
+        :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
 
 ### View the Performance Metrics dashboard charts
 
