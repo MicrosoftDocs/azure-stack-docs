@@ -188,6 +188,8 @@
     href: aks-edge-overview.md
   - name: System requirements and support matrix
     href: aks-edge-system-requirements.md
+  - name: What's new in AKS Edge Essentials
+    href: aks-edge-whats-new.md
   - name: Quickstart
     href: aks-edge-quickstart.md
   - name: Concepts
@@ -270,8 +272,6 @@
       href: aks-edge-troubleshoot-overview.md
     - name: Logs 
       href: aks-edge-resources-logs.md
-    - name: Release notes and known issues
-      href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
       href: https://github.com/Azure/AKS-Edge/issues
     - name: AKS Edge Essentials pricing
