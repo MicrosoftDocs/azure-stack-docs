@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/11/2025
+ms.date: 03/12/2025
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
@@ -89,13 +89,13 @@ Follow these steps to analyze metrics for a specific Azure Local cluster in the 
 
 ## Monitor performance metrics
 
-The performance metrics dashboard provides a detailed view of performance metrics across all Azure Local systems within a subscription or for a specific system. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
+The performance metrics dashboard provides a comprehensive view of performance metrics across all Azure Local systems within a subscription or for a specific system. It collects over 60 metrics at no additional cost via the `AzureEdgeTelemetryAndDiagnostics` extension. These metrics form the basis of the charts displayed in the dashboard, offering insights into infrastructure performance and health.
 
-There are two types of performace metrics dashboards:
+There are two types of performance metrics dashboards:
 
-- **Single Cluster Performance Metrics**, which offers drilled-down views for a specific system, split by unique Logical unit number (LUN).
+- **Single Cluster Performance Metrics**, which offers drilled-down views for a specific system, split by unique logical unit number (LUN).
 
-- **Multi Cluster Performance Metrics**, which monitors multiple systems at-scale.
+- **Multi Cluster Performance Metrics**, which monitors multiple systems at scale and provides detailed view of performance metrics across all systems within a subscription.
 
 ### Benefits
 
@@ -107,15 +107,15 @@ There are two types of performace metrics dashboards:
 
 - Includes multiple filters, such as a time filter for viewing data up to the past 30 days.
 
-- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters. Or for a specific cluster, a drilled-down view of metrics at the node, volume, and netadapter levels.
+- Allows viewing metrics for multiple clusters across various subscriptions, with filters for subscription, resource groups, or clusters. For a specific cluster, a drilled-down view of metrics at the node, volume, and netadapter levels is available.
 
-### Access the Performance Metrics dashboard
+### Access the performance metrics dashboard
 
-You can access the Performance Metrics dashboard through Azure Monitor or the Azure Local system.
+You can access the performance metrics dashboard through Azure Monitor or the Azure Local system.
 
 #### Access the dashboard via Azure Monitor
 
-To access the Performance Metrics dashboard via Azure Monitor, follow these steps:
+To access the dashboard via Azure Monitor, follow these steps:
 
 1. Navigate to Azure Monitor and select **Workbooks**.
 1. Under the **Azure Local** section, select **Azure Local Performance Metrics**.
@@ -124,7 +124,7 @@ To access the Performance Metrics dashboard via Azure Monitor, follow these step
 
 #### Access the dashboard via the Azure Local system
 
-To access the Performance Metrics dashboard via the Azure Local system, follow these steps:
+To access the dashboard via the Azure Local system, follow these steps:
 
 1. In the Azure portal, go to your Azure Local system.
 
@@ -138,9 +138,9 @@ To access the Performance Metrics dashboard via the Azure Local system, follow t
 
         :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
 
-### View the Performance Metrics dashboard charts
+### View the dashboard charts
 
-The Performance Metrics dashboard is organized into three tabs, each focusing on different aspects of system performance. Select the relevant tab to view the metrics related to the selected system performance category.
+The performance metrics dashboard is organized into three tabs, each focusing on different aspects of system performance. Select the relevant tab to view the metrics related to the selected system performance category.
 
 ### [Storage Performance](#tab/storage-performance)
 
