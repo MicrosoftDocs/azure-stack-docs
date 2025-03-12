@@ -27,7 +27,7 @@ The following features and improvements were added in this release:
 - **AKS Edge Essentials now connects to Azure Arc during deployment to decrease the number of required deployment steps.** Arc parameters are now required in the **aks-edge** configuration file during deployment. Starting with the next release, AKS Edge Essentials deployment will be blocked if Arc parameters are missing or invalid.
 - **The Calico CNI + K3s preview has been discontinued**. You must now use Flannel with K3s and Calico with K8s. For more information, see [Single machine deployment](aks-edge-howto-single-node-deployment.md#step-1-single-machine-configuration-parameters).
 
-### Supported versions for 1.10.868.0
+#### Supported versions for 1.10.868.0
 
 The component versions supported in the 1.10.868.0 release are as follows:
 
@@ -36,6 +36,37 @@ The component versions supported in the 1.10.868.0 release are as follows:
 - K8s (upstream Kubernetes) distribution: 1.29.9 (upgrade only), 1.30.5
 - K3s distribution: 1.29.9 (upgrade only), 1.30.6
 - JSON version schema: 1.15
+
+### Release 1.9.262.0 (November 2024)
+
+- Updated the Mariner and Windows versions to include CVE fixes between this release and the previous release.
+
+#### Supported versions for 1.9.262.0
+
+The component versions supported in the 1.9.262.0 release are as follows:
+
+- AKS Edge Essentials version: 1.9.262.0
+- Mariner version: 2.0.20241029
+- K8s (upstream Kubernetes) distribution: 1.28.9, 1.29.4
+- K3s distribution: 1.28.5, 1.29.6
+- JSON version schema: 1.14
+
+### Release 1.8.202.0 (September 2024)
+
+- Upgrade from K3s 1.28.3 (July release) to 1.28.5 (September release), and on K8s from 1.28.3 (July release) to 1.28.9 (September release).
+- Upgrade from K3s 1.27.6 (July release) to 1.28.5 (September release), and K3s 1.28.3 (July release) to 1.29.6 (September release)
+- Upgrade from K8s from 1.27.6 (July release) to 1.28.9 (September release), and on K8s from 1.28.3 (July release) to 1.29.4 (September release).
+- There is a new precheck during install to validate **fdatasync** latency. If disk latency is higher than 10ms, the install process returns a non-blocking warning message.
+
+#### Supported versions for 1.8.202.0
+
+The component versions supported in the 1.8.202.0 release are as follows:
+
+- AKS Edge Essentials version: 1.8.202.0
+- Mariner version: 2.0.20240731
+- K8s (upstream Kubernetes) distribution: 1.28.9, 1.29.4
+- K3s distribution: 1.28.5, 1.29.6
+- JSON version schema: 1.14
 
 ## Next steps
 
