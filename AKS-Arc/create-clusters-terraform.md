@@ -70,11 +70,11 @@ az login
     required_providers { 
       azapi = { 
         source  = "azure/azapi" 
-        version = "~> 1.13" 
+        version = "~> 2.0" 
       } 
       azurerm = { 
        source  = "hashicorp/azurerm" 
-       version = "~> 3.74" 
+       version = "~> 4.0" 
       } 
      }
     }
@@ -88,13 +88,13 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment.
+1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, please update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-23h2.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 
    # Make sure to use the latest AVM module version
    source = "Azure/avm-res-hybridcontainerservice-provisionedclusterinstance/azurerm" 
-   version = "~>0.6"
+   version = "~>2.0"
 
    # Make sure to provide all required parameters  
    resource_group_id = "<Resource_Group>" 
@@ -105,7 +105,8 @@ az login
    agent_pool_profiles = [{count=1}] 
    ssh_public_key =  "Your_SSH_Key"
 
-   # Optional parameters, update them as needed
+   # Optional parameters, please update them as needed
+   enable_azure_rbac = false
    enable_workload_identity = false 
    enable_oidc_issuer = false 
    rbac_admin_group_object_ids = ["<Admin_Group_Object_ID>"]
