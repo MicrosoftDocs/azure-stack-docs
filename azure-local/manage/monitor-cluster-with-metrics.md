@@ -119,7 +119,7 @@ To access the dashboard via Azure Monitor, follow these steps:
 
 1. Navigate to Azure Monitor and select **Workbooks**.
 
-1. Under the **Azure Local** section, select the workbook based on whether you want to view performance metrics for a single cluster or multiple clusters.
+1. Under the **Azure Local** section, select the **Multi Cluster Performance Metrics** workbook.
 
     :::image type="content" source="media/monitor-cluster-with-metrics/access-via-azure-monitor.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Monitor." lightbox="media/monitor-cluster-with-metrics/access-via-azure-monitor.png":::
 
@@ -131,9 +131,13 @@ To access the dashboard via the Azure Local system, follow these steps:
 
 1. Under **Monitoring**, select **Workbooks**.
 
-1. Select the workbook based on whether you want to view performance metrics for a single cluster or multiple clusters.
+1. Select one of the following workbooks based on whether you want to view performance metrics for a single cluster or multiple clusters:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
+    - **Single Cluster Performance Metrics**
+    
+    - **Multi Cluster Performance Metrics**
+
+        :::image type="content" source="media/monitor-cluster-with-metrics/access-via-system.png" alt-text="Screenshot of the Workbooks gallery when accessed via Azure Local system." lightbox="media/monitor-cluster-with-metrics/access-via-system.png":::
 
 ### View the dashboard charts
 
