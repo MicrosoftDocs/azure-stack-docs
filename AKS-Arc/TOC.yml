@@ -188,6 +188,8 @@
     href: aks-edge-overview.md
   - name: System requirements and support matrix
     href: aks-edge-system-requirements.md
+  - name: What's new in AKS Edge Essentials
+    href: aks-edge-whats-new.md
   - name: Quickstart
     href: aks-edge-quickstart.md
   - name: Concepts
