@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/06/2025
+ms.date: 03/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -39,7 +39,11 @@ There are no fixed issues in this release.
 
 ## Known issues in this release
 
-Microsoft is not aware of any known issues in this release.
+The following table lists the known issues in this release:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Operating system  | Backing up the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 
 ## Known issues from previous releases
 
