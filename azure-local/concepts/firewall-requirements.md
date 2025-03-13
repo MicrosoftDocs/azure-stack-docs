@@ -98,7 +98,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
 
-| Rule | Action | Source | Destination | Service | Ports |fv
+| Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
 | Provide access to Azure and Microsoft Update | Allow | Windows Admin Center | Azure Local | TCP | 445 |
 | Use Windows Remote Management (WinRM) 2.0<br> for HTTP connections to run commands<br> on remote Windows servers | Allow | Windows Admin Center | Azure Local | TCP | 5985 |
