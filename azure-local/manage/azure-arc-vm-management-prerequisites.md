@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/05/2025
+ms.date: 03/14/2025
 
 ---
 
@@ -23,14 +23,14 @@ The Azure requirements include:
 
 - Azure Local VM infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Azure Local VMs, all entities must be registered, enabled, or created in the same region.
 
-  The entities include your Azure Local instance, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
+  The entities include your Azure Local instance, Azure Arc resource bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
 
 ## Azure Local requirements
 
-- You have access to an Azure Local instance that is deployed, has an Arc Resource Bridge, and a custom location.
+- You have access to an Azure Local instance that is deployed, has an Azure Arc resource bridge, and a custom location.
 
-  - Go to the **Overview > Server** page in the Azure Local resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your system.
+  - Go to the **Overview > Server** page in the Azure Local resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Azure Arc resource bridge for your system.
     
       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Local resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
@@ -58,7 +58,7 @@ For information on Azure CLI commands for Azure Local VMs, see [az stack-hci-vm]
 
 If you're accessing your Azure Local directly, no steps are needed on your part.
 
-During the system deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the system. You can connect to and manage the system using the Azure CLI extension.
+During the system deployment, an Azure Arc resource bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the system. You can connect to and manage the system using the Azure CLI extension.
 
 ### Connect to the system remotely
 

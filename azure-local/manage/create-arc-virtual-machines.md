@@ -20,7 +20,7 @@ This article describes how to create an Azure Local virtual machines (VMs) start
 
 Use the [Azure Local resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
 
-- Create and manage VM resources such as VM images, disks, network interfaces.
+- Create and manage Azure Local VM resources such as VM images, disks, network interfaces.
 - View and access Azure Arc resource bridge and custom location associated with the Azure Local instance.
 - Provision and manage VMs.
 
@@ -228,17 +228,6 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-<!--Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
-
-- For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
-
-    ```powershell
-    netsh winhttp set proxy proxy-server="http=myproxy;https=sproxy:88" bypass-list="*.foo.com"
-    ```
-
-    After the proxy is enabled, you can then [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management).
-
-- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.-->
 
 # [Azure portal](#tab/azureportal)
 
