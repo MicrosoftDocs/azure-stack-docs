@@ -26,7 +26,7 @@ To ensure that your Azure Stack Hub environments that use Entra ID as an identit
 
 ## Run the script
 
-Run the following PowerShell script in your Entra ID environment that's used by Azure Stack Hub as the "home directory" (the main identity provider of your Azure Stack Hub), as well as the Entra ID environment to which you registered your Azure Stack Hub system (this might be a different directory than your "home directory"). The script interacts with Azure, so you don't need to run it on a specific machine. However, you need at least "application administrator" privileges in the respective Entra ID tenant to run the script.
+Run the following PowerShell script in your Entra ID environment that's used by Azure Stack Hub as the *home directory* (the main identity provider of your Azure Stack Hub), as well as the Entra ID environment to which you registered your Azure Stack Hub system. This might be a different directory than your home directory. The script interacts with Azure, so you don't need to run it on a specific machine. However, you need at least **application administrator** privileges in the respective Entra ID tenant to run the script.
 
 Make sure to run the following script with administrator privileges on the local machine:
 
