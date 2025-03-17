@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 10/23/2024
+ms.date: 03/17/2025
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local

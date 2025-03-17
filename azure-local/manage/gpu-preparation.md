@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 03/17/2025
 ms.service: azure-local
 ---
 
@@ -12,7 +12,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Arc virtual machines (VMs) and AKS enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Azure Local virtual machines (VMs) enabled by Azure Arc and Azure Kubernetes Service (AKS) enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 
 ## Attaching GPUs on Azure Local
@@ -41,12 +41,12 @@ NVIDIA supports their workloads separately with their virtual GPU software. For 
 
 For AKS workloads, see [GPUs for AKS for Arc](/azure/aks/hybrid/deploy-gpu-node-pool#supported-gpu-models).
 
-The following GPU models are supported using both DDA and GPU-P for Arc VM workloads:
+The following GPU models are supported using both DDA and GPU-P for Azure Local VM workloads:
 
 - NVIDIA A2
 - NVIDIA A16
 
-These additional GPU models are supported using GPU-P (only) for Arc VM workloads:
+These additional GPU models are supported using GPU-P (only) for VM workloads:
 
 - NVIDIA A10
 - NVIDIA A40
@@ -263,7 +263,7 @@ Follow these steps to configure the GPU partition count in PowerShell:
 
 ## Guest requirements
 
-GPU management is supported for the following Arc VM workloads:
+GPU management is supported for the following VM workloads:
 
 - Generation 2 VMs
 
