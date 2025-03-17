@@ -1,5 +1,5 @@
 ---
-title: Prepare Red Hat Enterprise Linux image for Azure Local VM via Azure CLI (preview)
+title: Prepare Red Hat Enterprise Linux image via Azure CLI for Azure Local VMs enabled by Azure Arc
 description: Learn how to prepare a Red Hat Enterprise Linux image to create an Azure Local VM image (preview).
 author: ronmiab
 ms.author: robess
@@ -10,7 +10,7 @@ ms.date: 11/06/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Local.
 ---
 
-# Prepare a Red Hat Enterprise image for Azure Local virtual machines (preview)
+# Prepare a Red Hat Enterprise image for Azure Local VMs enabled by Azure Arc (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 

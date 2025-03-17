@@ -1,5 +1,5 @@
 ---
-title: Prepare SUSE Linux image for Azure Local VM via Azure CLI (preview)
+title: Prepare SUSE Linux image via Azure CLI for Azure Local VMs enabled by Azure Arc
 description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview).
 author: ronmiab
 ms.author: robess
@@ -11,7 +11,7 @@ ms.date: 11/06/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Local.
 ---
 
-# Prepare SUSE Linux image for Azure Local virtual machines (preview)
+# Prepare SUSE Linux image for Azure Local VMs enabled by Azure Arc (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 

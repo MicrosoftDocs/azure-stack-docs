@@ -1,5 +1,5 @@
 ---
-title: Prepare CentOS Linux image for Azure Local VMs via Azure CLI (preview)
+title: Prepare CentOS Linux image via Azure CLI for Azure Local VMs enabled by Azure Arc (preview)
 description: Learn how to prepare CentOS Linux images to create an Azure Local VM image (preview).
 author: alkohli
 ms.author: alkohli
@@ -9,10 +9,10 @@ ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 11/06/2024
 ---
 
-# Prepare a CentOS Linux image for Azure Local virtual machines (preview)
+# Prepare a CentOS Linux image for Azure Local VMs enabled by Azure Arc (preview)
 
 > [!CAUTION]
-> This article references CentOS, a Linux distribution that's reached end-of-life (EOL). Consider your use of CentOS and plan accordingly. For more information, see [CentOS end-of-life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+> This article references CentOS, a Linux distribution that's reached end of support. Consider your use of CentOS and plan accordingly. For more information, see [CentOS end-of-life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -40,7 +40,7 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from a CentOS image
 
 > [!IMPORTANT]
-> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
+> - Do not use an Azure Virtual Machine virtual hard disk to prepare the VM image for Azure Local.
 > - We recommend that you prepare a CentOS image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Local to create a VM image by using the Azure CLI.
@@ -54,7 +54,7 @@ To use the downloaded CentOS image to provision a VM:
     
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-name.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-name.png":::
 
-    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk v2 (VHDX) image here.
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png":::
     
@@ -76,7 +76,7 @@ To use the downloaded CentOS image to provision a VM:
 
     For step-by-step instructions, see [Provision a VM by using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-1. Use the UEFI certificate to secure boot the VM:
+1. Use the Unified Extensible Firmware Interface (UEFI) certificate to secure boot the VM:
 
     1. After the VM is created, it shows up in Hyper-V Manager. Select the VM, right-click it, and then select **Settings**.
     1. On the left pane, select the **Security** tab. Then under **Secure Boot**, from the **Template** dropdown list, select **Microsoft UEFI Certificate Authority**.
