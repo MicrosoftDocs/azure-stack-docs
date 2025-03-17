@@ -1,6 +1,6 @@
 ---
 title: Supported operations for Arc Virtual Machines on Azure Local 
-description: Learn the supported VM operations for Azure Arc VMs on Azure Local.
+description: Learn the supported virtual machine (VM) operations for Azure Arc VMs on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -12,15 +12,15 @@ ms.date: 03/17/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article discusses the most common operations for Azure Local virtual machines (VMs) enabled by Azure Arc and identifies the operations that are supported, and the ones that you need to avoid to prevent complications.
+This article discusses the most common operations for Azure Local virtual machines (VMs) enabled by Azure Arc. The article identifies the operations that are supported on Azure Local VMs, and the ones that you need to avoid to prevent complications.
 
 ## Overview
 
 Azure Local can host various types of VMs including Arc-enabled servers, unmanaged VMs, and VMs enabled by Azure Arc. When comparing these options, the Azure Local VMs enabled by Azure Arc provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
 
-While the architecture of Azure Local VMs is designed to be managed by the Azure control plane, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers have used these tools for years to manage their on-premises VMs.
+While the architecture of Azure Local VMs is designed to be managed by the Azure control plane, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers use these tools to manage their on-premises VMs.
 
-If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this will result in synchronization issues between the Azure Local VMs and the portal. 
+If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this results in synchronization issues between the Azure Local VMs and the portal.
 
 > [!NOTE]
 > - We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
@@ -65,7 +65,7 @@ The supported operations can be performed via multiple interfaces.
 The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node. 
 
 > [!IMPORTANT]
-> These changes will not be reflected in the portal.
+> These changes won't be reflected in the portal.
 
 #### VM-level operations
 
