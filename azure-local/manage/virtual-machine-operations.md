@@ -41,7 +41,7 @@ The supported operations can be performed via multiple interfaces.
 - Add network interface.
 - Delete network interface.
 - Enable and use Windows Admin Center (for read-only).
-- Add data diskM.
+- Add data disk.
 - Delete data disk.
 - Change CPU cores.
 - Change memory.
@@ -65,7 +65,7 @@ The supported operations can be performed via multiple interfaces.
 The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node. 
 
 > [!IMPORTANT]
-> These changes will not be reflected in the portal. 
+> These changes will not be reflected in the portal.
 
 #### VM-level operations
 
