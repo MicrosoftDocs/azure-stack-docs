@@ -1,6 +1,6 @@
 ---
-title: Prepare Ubuntu image for Azure Local VM via Azure CLI 
-description: Learn how to prepare Ubuntu images to create an Azure Local VM image.
+title: Prepare Ubuntu image for Azure Local VMs via Azure CLI 
+description: Learn how to prepare Ubuntu images to create an Azure Local VM image by using Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -135,4 +135,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.
+- [Create Azure Local VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.

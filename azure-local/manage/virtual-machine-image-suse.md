@@ -1,6 +1,6 @@
 ---
 title: Prepare SUSE Linux image for Azure Local VM via Azure CLI (preview)
-description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview) by using Azure CLI.
+description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: how-to

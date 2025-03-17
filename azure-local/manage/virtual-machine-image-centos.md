@@ -1,6 +1,6 @@
 ---
-title: Prepare CentOS Linux image for Azure Local VM via Azure CLI (preview)
-description: Learn how to prepare CentOS Linux images to create an Azure Local VM image (preview) by using the Azure CLI.
+title: Prepare CentOS Linux image for Azure Local VMs via Azure CLI (preview)
+description: Learn how to prepare CentOS Linux images to create an Azure Local VM image (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -176,4 +176,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.
+- [Create Azure Local VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.

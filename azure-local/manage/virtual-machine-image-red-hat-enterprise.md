@@ -260,4 +260,4 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ## Related content
 
-- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.
+- [Create Azure Local VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Local instance.
