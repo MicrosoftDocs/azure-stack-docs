@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/05/2025
+ms.date: 03/17/2025
 ---
 
 # Supported operations for Azure Local virtual machines 
@@ -20,12 +20,13 @@ Azure Local can host various types of VMs including Arc-enabled servers, unmanag
 
 While the architecture of Azure Local VMs is designed to be managed by the Azure control plane, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers have used these tools for years to manage their on-premises VMs.
 
-If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this will result in synchronization issues between the Azure Local VMs and the portal. Only the following operations when performed using local tools will update the state of the Azure Local VM in the portal: Changing the size of VM memory, vCPU count, change the power state status (Start/Stop VM) resulting from power cycle operation.
+If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this will result in synchronization issues between the Azure Local VMs and the portal. 
 
 > [!NOTE]
-> We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
+> - We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
+> - The operations when performed using local tools, update the state of the Azure Local VM in the portal, are: Changing the size of VM memory, vCPU count, change the power state status (Start/Stop VM) resulting from power cycle.
 
-## Supported operations
+## Supported operations for VMs
 
 The supported operations can be performed via multiple interfaces.
 
@@ -115,7 +116,7 @@ The following VM operations aren't supported.
 
 - Live migrate a VM from one cluster to another.
 - Checkpoint a VM (standard or production).
-- Change the type of the disk (static/dynamic/VHD/VHDX).
+- Change the type of disk (static/dynamic/VHD/VHDX).
 
 
 ## Related content
