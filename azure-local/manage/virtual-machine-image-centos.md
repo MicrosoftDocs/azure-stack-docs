@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 11/06/2024
+ms.date: 03/18/2025
 ---
 
 # Prepare a CentOS Linux image for Azure Local VMs enabled by Azure Arc (preview)

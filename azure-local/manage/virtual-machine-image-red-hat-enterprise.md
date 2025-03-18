@@ -6,8 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 11/06/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Local.
+ms.date: 03/18/2025
 ---
 
 # Prepare a Red Hat Enterprise image for Azure Local VMs enabled by Azure Arc (preview)
@@ -37,7 +36,7 @@ The following sections provide detailed instructions for each step in the workfl
 
 > [!IMPORTANT]
 >
-> - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
+> - Do not use a virtual hard disk from an Azure virtual machine to prepare the Azure Local VM image.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Local system to create a VM image by using the Azure CLI.

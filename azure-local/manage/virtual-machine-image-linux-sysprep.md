@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 01/30/2025
+ms.date: 03/18/2025
 ---
 
 # Prepare an Ubuntu image for Azure Local VMs enabled by Azure Arc
@@ -35,7 +35,7 @@ The following sections provide detailed instructions for each step in the workfl
 
 > [!IMPORTANT]
 >
-> - Do not use an Azure Virtual Machine VHD disk to prepare the Azure Local VM image.
+> - Do not use a virtual hard disk from an Azure virtual machine to prepare the Azure Local VM image.
 > - We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
 
 ### Step 1: Create an Ubuntu VM

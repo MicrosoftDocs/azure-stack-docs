@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/06/2024
+ms.date: 03/18/2025
 ---
 
 # Prepare SUSE Linux image for Azure Local VMs enabled by Azure Arc (preview)
