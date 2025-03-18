@@ -25,7 +25,7 @@ To find answers to frequently asked questions about Azure Local VM management, s
 
 ## Benefits of Azure Local VM management
 
-Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Local VMs enabled by Azure Arc offer many benefits over traditional on-premises tools. These benefits include:
+Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Local VMs offer many benefits over traditional on-premises tools. These benefits include:
 
 - Role-based access control (RBAC) via built-in Azure Local roles enhances security by ensuring that only authorized users can perform VM management operations. For more information, see [Use role-based access control to manage Azure Local virtual machines](./assign-vm-rbac-roles.md).
 - Azure Local VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
@@ -38,7 +38,7 @@ Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Loc
 
 ## Limitations of Azure Local VM management
 
-Consider the following limitations when you're managing Azure Local VMs:
+Consider the following limitations when you're managing VMs on Azure Local:
 
 - Taking checkpoints on VMs running on Azure Local by using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely affect the management of these VMs from Azure.
 - Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
