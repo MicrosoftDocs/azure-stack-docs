@@ -123,7 +123,7 @@ After the VM is running, follow these steps:
 
 To configure the VM:
 
-1. Connect and then sign into the VM by using the root password that you created during the CentOS installation.
+1. Connect and then sign in to the VM by using the root password that you created during the CentOS installation.
 1. Make sure that `cloud-init` wasn't installed.
 
     ```bash
