@@ -1,24 +1,24 @@
 ---
-title: Manage Azure Arc VM Resources for Azure Local Virtual Machines
-description: Learn how to manage resource such as data disks and network interfaces on an Azure Arc VM.
+title: Manage Azure Local VM Resources for Azure Local Virtual Machines
+description: Learn how to manage resources such as data disks and network interfaces on an Azure Local VM.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/14/2025
+ms.date: 03/18/2025
 ---
 
-# Manage resources for Azure Arc VMs on Azure Local
+# Manage resources for Azure Local VMs
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-After you deploy Azure Arc virtual machines (VMs), you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Arc VM running on your Azure Local instance.
+After you deploy Azure Local virtual machines (VMs), you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Local VM running on your Azure Local instance.
 
 You can add or delete the resources by using the Azure portal. For the task of adding a data disk, you can also use the Azure CLI.
 
 ## Prerequisites
 
-- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Arc VMs running on this system. For more information, see [Create Azure Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
+- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Local VMs running on this system. For more information, see [Create Azure Local virtual machines](./create-arc-virtual-machines.md).
 
 ## Add a data disk
 
@@ -120,7 +120,7 @@ Follow these steps in the Azure portal for your Azure Local instance:
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png" alt-text="Screenshot of the Apply button on the Networking pane for a virtual machine." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png":::
 
-1. You get a notification that the job for network interface creation started. After the network interface is created, it's attached to the Azure Arc VM.
+1. You get a notification that the job for network interface creation started. After the network interface is created, it's attached to the Azure Local VM.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png" alt-text="Screenshot of the Notifications pane for network interface creation beside the Networking pane for a virtual machine." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png":::
 
@@ -143,7 +143,7 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
     :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-2.png" alt-text="Screenshot of the confirmation dialog for deleting a network interface." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-2.png":::
 
-1. Select **Apply** to apply the changes. The network interface is dissociated from the Azure Arc VM.
+1. Select **Apply** to apply the changes. The network interface is dissociated from the Azure Local VM.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of the Apply button on the Networking pane for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
 
@@ -153,4 +153,4 @@ Follow these steps in the Azure portal for your Azure Local instance.
 
 ## Related content
 
-- [Manage VM extensions on Azure Local virtual machines](./virtual-machine-manage-extension.md)
+- [Manage VM extensions on Azure Local virtual machines](./virtual-machine-manage-extension.md).
