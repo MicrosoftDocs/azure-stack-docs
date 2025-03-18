@@ -1,6 +1,6 @@
 ---
-title: Supported operations for Arc Virtual Machines on Azure Local 
-description: Learn the supported virtual machine (VM) operations for Azure Arc VMs on Azure Local.
+title: Supported operations for Azure Local virtual machines 9VMs) enabled by Azure Arc
+description: Learn the supported virtual machine (VM) operations for Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 03/17/2025
 ---
 
-# Supported operations for Azure Local virtual machines 
+# Supported operations for Azure Local virtual machines (VMs) 
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -18,13 +18,13 @@ This article discusses the most common operations for Azure Local virtual machin
 
 Azure Local can host various types of VMs including Arc-enabled servers, unmanaged VMs, and VMs enabled by Azure Arc. When comparing these options, the Azure Local VMs enabled by Azure Arc provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
 
-While the architecture of Azure Local VMs is designed to be managed by the Azure control plane, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers use these tools to manage their on-premises VMs.
+While Azure Local VMs are designed to be managed by the Azure control plane, these VMs can also be managed by on-premises local tools. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many customers use these tools to manage their on-premises VMs.
 
-If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this results in synchronization issues between the Azure Local VMs and the portal.
+If IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this results in synchronization issues between the Azure Local VMs and the portal. Though the operations listed under [Supported operations for local tools](#using-local-tools) don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
 
 > [!NOTE]
 > - We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
-> - The operations when performed using local tools, update the state of the Azure Local VM in the portal, are: Changing the size of VM memory, vCPU count, change the power state status (Start/Stop VM) resulting from power cycle.
+> - Only the following operations when performed using local tools update the state of the Azure Local VM in the portal: Changing the size of VM memory, vCPU count, change the power state status (Start/Stop VM) resulting from the power cycle operation.
 
 ## Supported operations for VMs
 
@@ -65,19 +65,17 @@ The supported operations can be performed via multiple interfaces.
 The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node. 
 
 > [!IMPORTANT]
-> These changes won't be reflected in the portal.
+> These changes aren't reflected in the portal.
 
 #### VM-level operations
 
 - Rename a VM inside the guest operating system.
 - Rename a VM on local tools.
-- Change IP address of network adapter.
-- Enable/change VLAN ID per network adapter.
 - Change MAC address of network adapter.
 - Enable/disable MAC address spoofing per network adapter.
-- Processor compatibility mode configuration.
-- Processor Non-Uniform Memory Access (NUMA) topology configuration.
-- Processor VM reserve, limit, and weight.
+- Configure Processor compatibility mode.
+- Configure Processor Non-Uniform Memory Access (NUMA) topology.
+- Configure Processor VM reserve, limit, and weight.
 - Enable Quality of Service (QoS) management per disk.
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller.
 - Remove a SCSI controller.
@@ -112,11 +110,14 @@ The following VM operations are supported only using the Network ATC PowerShell 
 The following VM operations aren't supported.
 
 > [!IMPORTANT]
-> These operations can't be performed using Azure portal, Azure CLI, or local tools. Performing these operations can lead to synchronization issues between the Azure Local VMs and the portal.
+> These operations can't be performed using Azure portal, Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from Azure portal.
 
+- Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
+- Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
 - Checkpoint a VM (standard or production).
 - Change the type of disk (static/dynamic/VHD/VHDX).
+- Change the size of disk (compact/shrink).
 
 
 ## Related content
