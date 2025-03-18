@@ -39,19 +39,21 @@ The following table lists the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM Management <!--ADO--> | Unable to delete a gallery image if the source Arc VM the gallery image was created from was deleted.| You can now delete a gallery image even if the source Arc VM the gallery image was created from was deleted.|
-| Arc VM Management <!--ADO--> | After ARB Disaster Recovery, some Arc VMs may lose network connectivity. | Updated ARB Disaster Recovery logic to ensure network configurations of Arc VMs persist. |
-| Arc VM Management <!--ADO--> | Inaccurate power state reporting on Azure for Arc VMs when the source image for the VM is deleted from the cluster.  | Power operations shows consistent and accurate power state representation on Azure for Arc VMs with deleted source images.  |
-| Arc VM Management <!--ADO--> | Inaccurate power state reporting on Azure for Arc VMs when attempting power operations.  | Improved the accuracy of power state reconciliation by reducing latency and fixing a bug that impacted power operations visibility to Azure.  |
-| Arc VM Management <!--ADO--> | Unable to create a gallery image with specified storage path.  | You can now create a gallery image with specified storage path.  |
-| Update <!--30232441--> | Ensure that Solution Builder Extension updates of type "Notify" that have been imported get copied correctly before validation  |   |
+| Azure Local VMs <!--ADO--> | Unable to delete a gallery image if the source Azure Local VM gallery image was created from, was deleted.| You can now delete a gallery image even if the source Arc VM the gallery image was created from was deleted.|
+| Azure Local VMs <!--ADO--> | After Azure Arc resource bridge disaster recovery, some Azure Local VMs may lose network connectivity. | Updated Azure Arc resource bridge disaster recovery logic to ensure network configurations of Azure Local VMs persists. |
+| Azure Local VMs <!--ADO--> | Inaccurate power state reporting on Azure for Azure Local VMs when the source image for the VM is deleted from the cluster.  | Power operations shows consistent and accurate power state representation on Azure for Azure Local VMs with deleted source images.  |
+| Azure Local VMs <!--ADO--> | Inaccurate power state reporting on Azure for Azure Local VMs when attempting power operations.  | Improved the accuracy of power state reconciliation by reducing latency and fixing a bug that impacted power operations visibility to Azure.  |
+| Azure Local VMs <!--ADO--> | Unable to create a gallery image with specified storage path.  | You can now create a gallery image with specified storage path.  |
+| Azure Local VMs <!--ADO--> | Running `azcmagent disconnect` deletes the Azure Local VM.  | Don't use `azcmagent disconnect` on Azure Local VMs. Only `azcmagent disconnect -f` or `azcmagent disconnect --force-local-only` can be used. This command disconnects the connected machine agent and keeps the VM running (no longer deletes). |
+| Update <!--30232441--> | Ensure that Solution Builder Extension updates of type *Notify* that have been imported get copied correctly before validation.  |   |
 | Update <!--30324217--> | Improved the Solution Extension Secret Location cmdlet help to provide better examples.  |   |
 | Update <!--29409214--> | Added retry logic to Cluster-Aware Updating runs and health checks for cluster nodes.   |   |
-| Update <!--31104115--> | Increased system stability during .NET 8 updates.   |   |
+| Update <!--31104115--> | Increased system stability during the .NET 8 updates.   |   |
 | Upgrade <!--29558170--> | Disable the Carbon PowerShell module if detected and load the known modules.   | |
 | Upgrade <!--30353283--> | Optimized the current Carbon PowerShell module solution.   |  |
-| Upgrade <!--30251075--> | Added a check to validate enough free memory to start an ARB VM.    |   |
-| Arc VM Management <!--ADO--> | After  | Updated  |
+| Upgrade <!--30251075--> | Added a check to validate enough free memory to start an Azure Arc resource bridge VM.    |   |
+| Security <!--XXXX--> | Mitigation for security vulnerability CVE-2024-21302 was implemented. See the [Guidance for blocking rollback of Virtualization-based Security (VBS) related security updates](https://support.microsoft.com/topic/guidance-for-blocking-rollback-of-virtualization-based-security-vbs-related-security-updates-b2e7ebf4-f64d-4884-a390-38d63171b8d3)   |   |
+
 
 
 ## Known issues in this release
@@ -60,7 +62,8 @@ The following table lists the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Arc VM Management <!--ADO--> | Unable to delete an Arc VM when one of the nodes are down.| Contact Microsoft Support if this issue occurs.|
+| Azure Local VMs <!--ADO--> | Unable to delete an Arc VM when one of the nodes are down.| Contact Microsoft Support if this issue occurs.|
+| Azure Local VMs <!--ADO--> | Checkpoints on Azure Local VMs cause sync issues between Azure Local VMs and Portal. | Remove any checkpoints on the VM. |
 
 
 ## Known issues from previous releases
