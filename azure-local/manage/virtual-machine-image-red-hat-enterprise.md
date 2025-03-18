@@ -14,18 +14,16 @@ ms.date: 11/06/2024
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine (VM) on your Azure Local. You use the Azure CLI for the VM image creation.
+This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linux image and create an Azure Local virtual machine (VM).
 
 ## Prerequisites
-
-Before you begin, meet the following prerequisites:
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
 - [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
-To prepare a Red Hat Enterprise image and create a VM image:
+To prepare a Red Hat Enterprise image and create an Azure Local VM image from it:
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise.md#create-a-vm-image-from-a-red-hat-enterprise-image)
 1. [Connect to a VM and install the Red Hat OS](./virtual-machine-image-red-hat-enterprise.md#step-2-connect-to-a-vm-and-install-the-red-hat-os)
@@ -38,6 +36,7 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create a VM image from a Red Hat Enterprise image
 
 > [!IMPORTANT]
+>
 > - Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
