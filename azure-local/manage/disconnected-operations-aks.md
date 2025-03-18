@@ -21,7 +21,7 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 
 ## Prerequisites
 
-- [Azure CLI](disconnected-operations-cli.md) installed on your local machine.
+- [Azure Command-Line Interface (CLI)](disconnected-operations-cli.md) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
 - An understanding of AKS and Azure Arc concepts.
 - Completed [Identity for Azure Local with disconnected operations (preview)](disconnected-operations-identity.md).
@@ -46,7 +46,7 @@ To create an AKS cluster that supports disconnected operations, follow these ste
 
 ### Install the Azure CLI extension
 
-Before you install the Azure CLI extension, make sure you have the following:
+Before you install the CLI extension, make sure you have the following:
 
 - Azure CLI version 2.60.0
 - Extension version:
@@ -64,9 +64,8 @@ az config set core.instance_discovery=false --only-show-errors
 
 For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/aks-create-clusters-cli).
 
-### Sign in to Azure Local
+### Sign in with Azure CLI
 
-```azurecli
 You can use the following command to sign in to Azure Local
 
 ```azurecli
@@ -85,7 +84,7 @@ az stack-hci-vm network lnet create --subscription $subscription --resource-grou
 For more information, see [Create logical networks](/azure/aks/aksarc/aks-networks?tabs=azurecli).
 
 > [!NOTE]
-> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Arc VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
 
 ### Create the cluster
 
@@ -178,7 +177,7 @@ For more information, see [Retrieve kubeconfig](/azure/aks/aksarc/retrieve-admin
 
 You can use the `az aksarc delete` cmdlet to delete the AKS cluster you created.
 
-```Azure CLI
+```azurecli
 az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
 

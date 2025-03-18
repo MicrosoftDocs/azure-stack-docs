@@ -1,25 +1,25 @@
 ---
-title: Arc VMs for Azure Local with disconnected operations (preview)
-description: Learn how to manage Azure Arc VMs with disconnected operations for Azure Local (preview).
+title: Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
+description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 02/19/2025
 ---
 
-# Arc VMs for Azure Local with disconnected operations (preview)
+# Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article provides you with a brief overview of the Azure Arc Virtual Machine (VM) management features for disconnected operations on Azure Local. It includes the benefits, components, and high-level workflow. This feature closely mirrors Arc VM capabilities on Azure Local and references many Azure Local Arc VM articles. You'll learn about key differences and limitations of disconnected operations.
+This article provides you with a brief overview of the Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It includes the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You'll learn about key differences and limitations of disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-Azure Arc VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to enable self-service VM management and automate deployment.
+Azure Local VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to enable self-service VM management and automate deployment.
 
-For more information, see [What is Azure Arc VM management for Azure Local](../manage/azure-arc-vm-management-overview.md).
+For more information, see [What is Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
 
 ## Supported operating system (OS) versions
 
@@ -31,13 +31,13 @@ Here's a list of supported OS versions for this preview:
 
 ## Limitations
 
-Arc VMs for Azure Local with disconnected operations have the following limitations:
+Azure Local VMs running disconnected operations have the following limitations:
 
 ### VM images
 
 - You can only create VM images from a local share.
 - You can only create VM images using Azure Command Line (CLI). This release doesn't support image creation via Azure portal.
-- Marketplace, Azure storage account, and images from an existing Arc VM aren't supported.
+- Marketplace, Azure storage account, and images from an existing Azure Local VM aren't supported.
 
 ### Network interfaces
 
@@ -46,7 +46,7 @@ You can only create network interfaces in CLI. This release doesn't support netw
 ### Storage paths
 
 - You can only create storage paths in CLI. This release doesn't support storage path creation via Azure portal.
-- You can't delete storage paths using CLI or the portal if they're connected to an Arc VM or VM image. First, delete the Arc VM and image using that storage path.
+- You can't delete storage paths using CLI or the portal if they're connected to an Azure Local VM or VM image. First, delete the Azure Local VM and image using that storage path.
 
 ### Logical networks
 
@@ -60,15 +60,15 @@ Proxy servers aren't supported for connecting to outbound internet.
 
 ### Machine creation
 
-- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Arc VMs section.
+- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
 
-    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Arc VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
+    :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Azure Local VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
-## Create Arc VMs
+## Create Azure Local VMs
 
-Follow these steps to create Arc VMs for disconnected operations on Azure Local.
+Follow these steps to create Azure Local VMs running disconnected operations.
 
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
@@ -132,7 +132,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --os-type "Windows"
     ```
 
-    For an Ubuntu image, see [Prepare an Ubuntu image for Azure Local virtual machines](../manage/virtual-machine-image-linux-sysprep.md).
+    For an Ubuntu image, see [Prepare Ubuntu image for Azure Local VM via Azure CLI](../manage/virtual-machine-image-linux-sysprep.md).
 
 5. [Create logical network](../manage/create-logical-networks.md). For this preview release, see the [limitations](#limitations) section.
 
@@ -176,7 +176,7 @@ Follow these steps to create Arc VMs for disconnected operations on Azure Local.
         --ip-address "192.168.200.185"        
     ```
 
-7. [Create Arc VMs](../manage/create-arc-virtual-machines.md). For this preview release, see the [limitations](#limitations) section.
+7. [Create Azure Local VMs](../manage/create-arc-virtual-machines.md). For this preview release, see the [limitations](#limitations) section.
 
     Here's an example script.
 
@@ -214,12 +214,12 @@ To manage VM extensions, see [manage VM extensions](../manage/virtual-machine-ma
 
 ## Extra resources
 
-Here are some extra resources to help you manage Azure Arc VMs on Azure Local:
+Here are some extra resources to help you manage Azure Local VMs:
 
-- [Collect log files for Azure Arc VMs on Azure Local](../manage/collect-log-files-arc-enabled-vms.md).
+- [Collect log files for Azure Local VMs](../manage/collect-log-files-arc-enabled-vms.md).
 
-- [Troubleshoot Azure Arc VM management for Azure Local](../manage/troubleshoot-arc-enabled-vms.md).
+- [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md).
 
-- [Azure Arc VM management FAQ](../manage/azure-arc-vms-faq.yml).
+- [Azure Local VM management FAQ](../manage/azure-arc-vms-faq.yml).
 
 ## Related content

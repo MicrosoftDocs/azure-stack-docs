@@ -45,8 +45,8 @@ Disconnected operations for Azure Local support the following services:
 | Azure Resource Manager (ARM)      | Manage and utilize subscriptions, resource groups, ARM templates, and Azure Command-Line Interface (CLI). |
 | Role based access control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
 | Managed identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
-| Arc-enabled servers               | Manage VM guests for Arc VMs on Azure Local. |
-| Arc VMs for Azure Local           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
+| Arc-enabled servers               | Manage VM guests for Azure Local VMs. |
+| Azure Local VMs           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes clusters   | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local virtual machines, enabling unified configuration and management. |
 | Azure Kubernetes Service (AKS) enabled by Arc for Azure Local | Set up and manage AKS on Azure Local. |
 | Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
@@ -97,7 +97,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
 | Review [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
-| Review [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
+| Review [Azure Local VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Azure Local VMs. |
 | Review [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | Review [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | Review [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |

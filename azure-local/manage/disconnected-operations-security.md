@@ -22,12 +22,12 @@ Azure Local with disconnected operations addresses security and compliance needs
 - **Management Network Interface Card (NIC)**: Allows you to execute a limited set of commands for deployment and troubleshooting. It's secured with a customer-provided certificate during bootstrapping. For more information, see [Plan your network for disconnected operations](disconnected-operations-network.md).
 - **External (Ingress) NIC**: Exposed to users in your network. This network path is used for tenants and workloads of the system. User authentication is handled via your identity provider and uses role-based access control. For more information, see [Plan your identity for disconnected operations](disconnected-operations-identity.md).
 
-The Azure Local with disconnected operations VM uses the following security features:
+An Azure Local VM running disconnected operations uses the following security features:
 
 - Transport Layer Security (TLS) 1.2, TLS 1.3, Datagram Transport Layer Security (DTLS) 1.2, and signed Server Message Block (SMB) protocols encryption for all data in transit.
 - Microsoft Defender to guard against viruses and malware.
 - Secure boot ensures the integrity of boot components.
-- Windows Defender Application Control ensures that only authorized code runs in a disconnected operations VM.
+- Windows Defender Application Control ensures that only authorized code runs in a disconnected operations VM appliance.
 
 For more information about the security features for Azure Local, see [Security features for Azure Local](/azure/azure-local/concepts/security-features).
 
