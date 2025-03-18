@@ -1434,6 +1434,11 @@
         "source_path": "AKS-Arc/azure-hybrid-benefit.md",
         "redirect_url": "/azure/aks/aksarc/pricing",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/aks-known-issues.md",
+        "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
+        "redirect_document_id": false
       }
     ]
   }
