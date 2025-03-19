@@ -35,6 +35,7 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 Here are some limitations associated with disconnected operations for AKS Arc:
 
 - Support for disconnected operations begins with the 2408 release.
+- Supported Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
 - Microsoft Entra ID (formerly known as Azure Active Directory) isn't currently supported for disconnected operations.
 - GPUs aren't supported.
 - Arc Gateway isn't supported for configuring outbound URLs.
@@ -42,11 +43,11 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 
 ## Create an AKS cluster
 
-To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster](/azure/aks/aksarc/aks-create-clusters-cli#install-the-azure-cli-extension)
+To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli#install-the-azure-cli-extension)
 
-### Install the Azure CLI extension
+### Install the Azure Command-Line Interface extension
 
-Before you install the CLI extension, make sure you have the following:
+Before you install the Azure CLI extension, make sure you have the following:
 
 - Azure CLI version 2.60.0
 - Extension version:
@@ -97,7 +98,7 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
 
-For more information, see [Create an AKS cluster](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster).
+For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
@@ -153,6 +154,10 @@ az aksarc create -n $aksClusterName `
 # --node-vm-size 'Standard_D8s_v3' `
 ```
 
+For information on node pools, see [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
+
+For information on auto-scaling in Kubernetes cluster, see [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
+
 ### Retrieve `kubeconfig`
 
 To retrieve the `kubeconfig` file for the AKS cluster, use the `az aksarc get-credentials` cmdlet. Make sure you use your admin credentials.
@@ -193,6 +198,6 @@ For more information on AKS Arc, see the following articles:
 
 - [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
 - [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
-- [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
+- [Create Kubernetes clusters through Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
 
 ## Related content
