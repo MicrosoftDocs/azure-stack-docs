@@ -12,11 +12,11 @@ ms.date: 03/18/2025
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article introduces Trusted launch for Azure Local virtual machines (VMs). You can create a Trusted launch VM using Azure portal or by using Azure Command-Line Interface (CLI).
+This article introduces Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc. You can create a Trusted launch for Azure Local VM using Azure portal or by using Azure Command-Line Interface (CLI).
 
 ## Introduction
 
-Trusted launch VMs enable secure boot, installs a virtual Trusted Platform Module (vTPM) device, automatically transfers the vTPM state when the VM migrates or fails over to another machine within the system, and supports the ability to attest whether the VM started in a known good state.
+Trusted launch for Azure Local VMs enable secure boot, installs a virtual Trusted Platform Module (vTPM) device, automatically transfers the vTPM state when the VM migrates or fails over to another machine within the system, and supports the ability to attest whether the VM started in a known good state.
 
 Trusted launch is a security type that can be specified when creating Azure Local VMs. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
 
@@ -62,4 +62,4 @@ When working with Trusted launch for Azure Local VMs, make sure to understand th
 
 ## Next steps
 
-- [Create Trusted launch VMs](create-arc-virtual-machines.md).
+- [Create Trusted launch for Azure Local VMs](create-arc-virtual-machines.md).

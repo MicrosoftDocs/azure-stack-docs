@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Local VM Resources for Azure Local Virtual Machines
-description: Learn how to manage resources such as data disks and network interfaces on an Azure Local VM.
+title: Manage resources for Azure Local VMs enabled by Azure Arc
+description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,17 +8,17 @@ ms.service: azure-local
 ms.date: 03/18/2025
 ---
 
-# Manage resources for Azure Local VMs
+# Manage resources for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-After you deploy Azure Local virtual machines (VMs), you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Local VM running on your Azure Local instance.
+After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you might need to add or delete resources such as data disks and network interfaces. This article describes how to manage these VM resources for an Azure Local VM running on your Azure Local instance.
 
 You can add or delete the resources by using the Azure portal. For the task of adding a data disk, you can also use the Azure CLI.
 
 ## Prerequisites
 
-- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Local VMs running on this system. For more information, see [Create Azure Local virtual machines](./create-arc-virtual-machines.md).
+- Access to an Azure Local instance that's deployed and registered. You should have one or more Azure Local VMs running on this system. For more information, see [Create an Azure Local VM enabled by Azure Arc](./create-arc-virtual-machines.md).
 
 ## Add a data disk
 
