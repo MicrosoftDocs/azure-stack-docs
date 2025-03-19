@@ -43,9 +43,11 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 
 ## Create an AKS cluster
 
-To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli#install-the-azure-cli-extension)
+To create an AKS cluster that supports disconnected operations [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
-### Install the Azure Command-Line Interface extension
+Use the following specifications for disconnected operations:
+
+### Install the Azure CLI extension
 
 Before you install the Azure CLI extension, make sure you have the following:
 
@@ -67,7 +69,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in with Azure CLI
 
-You can use the following command to sign in to Azure Local
+You can use the following command to sign in with Azure CLI.
 
 ```azurecli
 az cloud set -n azure.local 
@@ -154,10 +156,6 @@ az aksarc create -n $aksClusterName `
 # --node-vm-size 'Standard_D8s_v3' `
 ```
 
-For information on node pools, see [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
-
-For information on auto-scaling in Kubernetes cluster, see [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
-
 ### Retrieve `kubeconfig`
 
 To retrieve the `kubeconfig` file for the AKS cluster, use the `az aksarc get-credentials` cmdlet. Make sure you use your admin credentials.
@@ -198,6 +196,7 @@ For more information on AKS Arc, see the following articles:
 
 - [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
 - [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
-- [Create Kubernetes clusters through Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
+- [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
+- [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
 
 ## Related content

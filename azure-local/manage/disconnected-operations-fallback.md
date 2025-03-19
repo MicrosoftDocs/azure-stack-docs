@@ -514,4 +514,4 @@ PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles `
 
 </details>
 
-<!--## Next steps-->
+## Related content

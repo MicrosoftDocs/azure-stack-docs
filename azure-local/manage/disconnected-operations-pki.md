@@ -185,4 +185,4 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
 
 1. Repeat steps 3-11 for each certificate.
 
-<!--## Next steps-->
+## Related content
