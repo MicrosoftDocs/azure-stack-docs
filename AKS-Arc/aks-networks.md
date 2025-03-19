@@ -74,6 +74,7 @@ To update an existing logical network, run the [az stack-hci-vm network lnet upd
 
 ```azurecli
 az stack-hci-vm network lnet update --resource-group $resource_group --name $lnetName
+```
 
 # [Azure portal](#tab/azureportal)
 
