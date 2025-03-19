@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Deploy disconnected operations for Azure Local (preview)
@@ -23,7 +23,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 - The deployment of the Azure Local cluster may take several hours.
 - The local control plane may experience periods of downtime during node reboots and updates.
 - During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. It's important not to tamper with or delete the infrastructure volumes created by the deployment process.
-- Upon the creation of the Azure Local cluster, the disconnected operations virtual machine (VM) is moved to cluster storage and converted to a clustered VM.
+- Upon the creation of the Azure Local cluster, the disconnected operations virtual machine appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
 

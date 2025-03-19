@@ -4,7 +4,7 @@ description: Use PowerShell module to collect logs on demand for Azure Local dis
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/11/2025
+ms.date: 03/19/2025
 ---
 
 # Collect logs on demand with Azure Local disconnected operations PowerShell Module

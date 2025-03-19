@@ -1,10 +1,10 @@
 ---
 title: Use Appliance fallback logging to collect logs and troubleshoot disconnected operations for Azure Local (preview)
-description: Export and send logs using Appliance Fallback Logging for Disconnected operations in Azure Local
+description: Export and send logs using Appliance Fallback Logging for disconnected operations in Azure Local
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/11/2025
+ms.date: 03/19/2025
 ---
 
 # Appliance fallback log collection (preview)
@@ -17,7 +17,7 @@ This article describes how to use appliance fallback logging to export and send 
 
 ## About fallback logging
 
-Appliance fallback logging is utilized to collect and send logs to Kusto, if the disconnected operations virtual machine is down and standard log collection can't be initiated. This is useful in scenarios where the disconnected operations virtual machine isn't accessible, but logs are still needed for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local VM running disconnected is down, standard log collection can't be initiated, and logs are needed for troubleshooting.
 
 ## Prerequisites
 

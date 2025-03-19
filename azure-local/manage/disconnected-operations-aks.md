@@ -4,7 +4,7 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).

@@ -4,7 +4,7 @@ description: Integrate your network with disconnected operations on Azure Local 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Plan your network disconnected operations on Azure Local (preview) 
