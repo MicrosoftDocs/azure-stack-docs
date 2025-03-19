@@ -101,7 +101,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | Review [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | Review [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
-| Review [Azure Key Vault for disconnected operations](/azure/key-vault/general/quick-create-cli#create-a-key-vault). | Use the CLI to create a Key Vault. |
+| Review [Azure Key Vault for disconnected operations](/azure/key-vault/general/quick-create-cli#create-a-key-vault). | Use the CLI to create an Azure Key Vault. |
 | **Troubleshoot** |      |
 | Review [On-demand log collection](../index.yml). | Collect logs on-demand for troubleshooting. |
 | Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
