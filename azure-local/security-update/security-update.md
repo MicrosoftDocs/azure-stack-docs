@@ -22,7 +22,7 @@ This article describes the OS security update for Azure Local that was released 
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
-- **[Daylight saving time (DST)]** This update supports (DST) changes in Paraguay. 
+- **[Daylight saving time (DST)]** This update supports (DST) changes in Paraguay.
 
 - **[Open Secure Shell (OpenSSH) (known issue)]** Fixed: The service fails to start, which stops SSH connections. There is no detailed logging, and you must run the sshd.exe process manually. 
 

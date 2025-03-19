@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/18/2025
+ms.date: 03/19/2025
 ---
 
 # What's new in Azure Local?
@@ -38,7 +38,7 @@ This is a baseline release with the following features and improvements:
   - The Download Service is now used to download HTTP content.
   - A URL-based platform update package is now supported.
   - Azure Local rebranding changes were made for Update.
-- **ArC VM management changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+- **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
 
 
 ::: moniker-end

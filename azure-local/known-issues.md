@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/13/2025
+ms.date: 03/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -23,10 +23,10 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2503
 
-This software release maps to software version number **2503.x.x**.
+This software release maps to software version number **2503.0.9**.
 
 > [!IMPORTANT]
-> The new deployments of this software use the 2503.x.x build. You can also update from 2411.3.
+> The new deployments of this software use the **2503.0.9** build. You can also update from 2411.3.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -44,7 +44,9 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--ADO--> | Inaccurate power state reporting on Azure for Azure Local VMs when the source image for the VM is deleted from the cluster.  | Power operations shows consistent and accurate power state representation on Azure for Azure Local VMs with deleted source images.  |
 | Azure Local VMs <!--ADO--> | Inaccurate power state reporting on Azure for Azure Local VMs when attempting power operations.  | Improved the accuracy of power state reconciliation by reducing latency and fixing a bug that impacted power operations visibility to Azure.  |
 | Azure Local VMs <!--ADO--> | Unable to create a gallery image with specified storage path.  | You can now create a gallery image with specified storage path.  |
-| Azure Local VMs <!--ADO--> | Running `azcmagent disconnect` deletes the Azure Local VM.  | Don't use `azcmagent disconnect` on Azure Local VMs. Only `azcmagent disconnect -f` or `azcmagent disconnect --force-local-only` can be used. This command disconnects the connected machine agent and keeps the VM running (no longer deletes). |
+| Azure Local VMs <!--ADO--> | Running `azcmagent disconnect` deletes the Azure Local VM.  | Don't use `azcmagent disconnect` on Azure Local VMs. Use only `azcmagent disconnect -f` or `azcmagent disconnect --force-local-only`. This command disconnects the connected machine agent and keeps the VM running (no longer deletes). |
+| Azure Local VMs/Azure Migrate | Migration of Gen 1 (non-sysprep) VMs using Azure Migrate fails with the error: *Failed to clean up seed ISO disk from the file system for VM*. | Migration of Gen 1 (non-sysprep) VMs using Azure Migrate will no longer fail with this error.  |
+| Azure Local VMs/Azure Migrate | VM creation from OS disk fails due to incorrect storage precheck. | VM creation succeeds regardless if the source is gallery image or OS disk.  |
 | Update <!--30232441--> | Ensure that Solution Builder Extension updates of type *Notify* that have been imported get copied correctly before validation.  |   |
 | Update <!--30324217--> | Improved the Solution Extension Secret Location cmdlet help to provide better examples.  |   |
 | Update <!--29409214--> | Added retry logic to Cluster-Aware Updating runs and health checks for cluster nodes.   |   |
@@ -53,9 +55,6 @@ The following table lists the fixed issues in this release:
 | Upgrade <!--30353283--> | Optimized the current Carbon PowerShell module solution.   |  |
 | Upgrade <!--30251075--> | Added a check to validate enough free memory to start an Azure Arc resource bridge VM.    |   |
 | Security <!--XXXX--> | Mitigation for security vulnerability CVE-2024-21302 was implemented. See the [Guidance for blocking rollback of Virtualization-based Security (VBS) related security updates](https://support.microsoft.com/topic/guidance-for-blocking-rollback-of-virtualization-based-security-vbs-related-security-updates-b2e7ebf4-f64d-4884-a390-38d63171b8d3)   |   |
-| Azure Local VMs/Azure Migrate | Migration of Gen 1 (non-sysprep) VMs using Azure Migrate fails with the error: *Failed to clean up seed ISO disk from the file system for VM*. | Contact Microsoft Support to apply a patch that resolves the VM failures associated with this issue.  |
-| Azure Local VMs/Azure Migrate | VM creation from OS disk fails due to incorrect storage precheck. | VM creation succeeds regardless if the source is gallery image or OS disk.  |
-
 
 
 ## Known issues in this release
