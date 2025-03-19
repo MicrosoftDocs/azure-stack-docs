@@ -70,6 +70,8 @@ For static IP, the required parameters are as follows:
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --vlan 10
 ```
 
+### Update an existing logical network
+
 To update an existing logical network, run the [az stack-hci-vm network lnet update command](/cli/azure/stack-hci-vm/network/lnet). For example:
 
 ```azurecli
