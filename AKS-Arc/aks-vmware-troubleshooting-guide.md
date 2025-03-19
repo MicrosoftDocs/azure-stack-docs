@@ -4,9 +4,9 @@ description: Learn how to troubleshoot issues and errors in AKS enabled by Arc o
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 03/20/2024
+ms.date: 03/19/2025
 ms.author: sethm 
-ms.lastreviewed: 03/20/2024
+ms.lastreviewed: 03/19/2025
 ms.reviewer: leslielin
 ---
 
@@ -19,7 +19,8 @@ This article outlines troubleshooting steps for known issues and errors that can
 This page is continually updated, so check back here for new information. As we identify critical problems that require workarounds, we add them. Please review this information carefully before deploying your AKS Arc on VMware preview.
 
 ## Arc Resource Bridge
-To keep your Azure Arc resource bridge deployment online and operational, you need to perform maintenance operations such as updating credentials, monitoring upgrades, and ensuring the appliance VM is online. For more information, see [Azure Arc resource bridge maintenance operations](/azure/azure-arc/resource-bridge/maintenance#update-credentials-in-the-appliance-vm).
+
+To keep your Azure Arc resource bridge deployment online and operational, you must perform maintenance operations such as updating credentials, monitoring upgrades, and ensuring the appliance VM is online. For more information, see [Azure Arc resource bridge maintenance operations](/azure/azure-arc/resource-bridge/maintenance#update-credentials-in-the-appliance-vm).
 
 For Azure Arc resource bridge issues, see the [troubleshooting guide here](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge).
 
