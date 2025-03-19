@@ -885,7 +885,7 @@ Running [Windows Update Standalone Installer](https://support.microsoft.com/topi
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [cumulative update 5032202](https://go.microsoft.com/fwlink/?linkid=2252437).
+For a list of the files that are provided in this update, download the file information for [cumulative update 5032202](https://go.microsoft.com/fwlink/?linkid=2309855).
 
 <!--For a list of the files that are provided in the servicing stack update, download the file information for the [SSU - version 25398.521](https://go.microsoft.com/fwlink/?linkid=2252176).-->
 
