@@ -106,7 +106,7 @@ az aksarc delete -n '<name of your cluster>' -g $resource_group
 ```
 
 > [!IMPORTANT]
-> The delete operation can fail if your vCenter credentials are invalid. To prevent this, verify that you have proper administrative access for Arc-enabled VMware vSphere. For more information, [see this article](/azure/azure-arc/vmware-vsphere/administer-arc-vmware#updating-the-vsphere-account-credentials-using-a-new-password-or-a-new-vsphere-account-after-onboarding).
+> The delete operation can fail if your vCenter credentials are invalid. To prevent this, verify that you have proper administrative access for Arc-enabled VMware vSphere. For more information, see [Updating the vSphere account credentials](/azure/azure-arc/vmware-vsphere/administer-arc-vmware#updating-the-vsphere-account-credentials-using-a-new-password-or-a-new-vsphere-account-after-onboarding).
 
 
 ## Next steps
