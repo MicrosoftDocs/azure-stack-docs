@@ -4,7 +4,7 @@ description: Learn how to use the Configurator application to bootstrap and Arc 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 03/19/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
