@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Local, version 23H2
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/19/2025
+ms.date: 03/20/2025
 ---
 
 # Configure proxy settings for Azure Local
@@ -260,7 +260,6 @@ Please review the Arc-enabled servers agent page for further details [Managing a
 
 If you're using or plan to use any of the following Azure services, refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
-- [Azure Kubernetes Service (AKS) hybrid](/azure/aks/hybrid/set-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
 - [Microsoft Defender](/defender-endpoint/production-deployment#network-configuration)
