@@ -241,7 +241,7 @@ Here's a table that describes the diagnostic tests:
 
 A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app. Follow these steps to collect a Support package:
 
-1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
 
