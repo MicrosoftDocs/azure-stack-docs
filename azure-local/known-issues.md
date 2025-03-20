@@ -66,10 +66,6 @@ The following table lists the known issues in this release:
 | Azure Local VMs <!--ADO--> | Unable to delete an Arc VM when one of the nodes are down.| Contact Microsoft Support if this issue occurs.|
 | Azure Local VMs <!--ADO--> | Checkpoints on Azure Local VMs cause sync issues between Azure Local VMs and Portal. | Remove any checkpoints on the VM. |
 
-|Feature  |Issue  |Workaround  |
-|---------|---------|---------|
-| Deployment | During the Azure Local deployment, `DeviceManagementExtension` fails to install when a proxy is configured. | Install previous `DeviceManangementExtension` version 1.2502.0.3012 when using a proxy. |
-| Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 
 ## Known issues from previous releases
 
@@ -77,6 +73,8 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Deployment | During the Azure Local deployment, `DeviceManagementExtension` fails to install when a proxy is configured. | Install previous `DeviceManangementExtension` version 1.2502.0.3012 when using a proxy. |
+| Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Update  | When monitoring update progress in the Azure Update Management portal, the progress might appear to not have updated for several hours. | Run `Get-SolutionUpdate` on one of the cluster nodes. If an update object is returned, the update might be taking longer than expected but it is progressing. If an update object is not returned, the update may be stalled. For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Get-SolutionUpdate-GatewayTimeout.md).|
 | Deployment | Validation times out due to timestamp deserialization. | When deploying the operating system, select **English (United States)** as the installation language, as well as the time and currency format. <br> For detailed remediation steps, see the troubleshooting guide in the [Azure Local Supportability](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Deployment/Triggering-deployment-settings-validation-call-results-in-OperationTimeout-2411-1-and-LCM-Extension-2411-1.md) GitHub repository.|
 | Update <!--30345067--> | When updating from version 2408.2.7 to 2411.0.24, the update process could fail with the following error message: `Type 'CauPreRequisites' of Role 'CAU' raised an exception: Could not finish cau prerequisites due to error 'Cannot remove item C:\UpdateDistribution\<any_file_name>: Access to the path is denied.'` |For detailed steps on how to mitigate this issue, see [Azure Local Troubleshooting Guide for Update](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/mitigation-for-cannot-remove-c-update-distribution-with-access-denied.md).|

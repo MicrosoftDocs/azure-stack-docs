@@ -27,9 +27,9 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
 
-1. Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
-1. Note down:
+- Note down:
 
    - The serial number for each machine.
    - Local administrator credentials to sign into each machine.
@@ -38,7 +38,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-1. **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
