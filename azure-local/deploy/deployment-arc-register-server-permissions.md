@@ -158,26 +158,20 @@ Before you begin, make sure you've completed the following prerequisites:
     ```output
     PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
     >>
-    Starting AzStackHci ArcIntegration Initialization
-    Constructing node config using ARM Access Token
-    Waiting for bootstrap to complete: InProgress
+    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+    Triggering bootstrap on the device...
+    Waiting for bootstrap to complete... Current Status: InProgress
     =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: Succeeded
+    Waiting for bootstrap to complete... Current Status: InProgress
+    Waiting for bootstrap to complete... Current Status: Succeeded
+    Bootstrap succeeded.
+    
+    Triggering bootstrap log collection as a best effort.
+    Version Response                                                    
+    ------- --------                                                    
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
-    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciArcIntegration.log
-    Version Response
-    ------- --------
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    Successfully triggered Arc boostrap support log collection. Waiting for 600 seconds to complete.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 0.
-    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 1.
-    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 2.
-    Arc boostrap support log collection completed successfully.
 
     PS C:\Users\Administrator>
     ```
@@ -196,7 +190,6 @@ Before you begin, make sure you've completed the following prerequisites:
 
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
 
 
 ## Assign required permissions for deployment
@@ -223,11 +216,8 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
     - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
  
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
-
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
 1. In the Azure portal go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
 
