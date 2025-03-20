@@ -4,7 +4,7 @@ description: Learn how to use the Configurator application to bootstrap and Arc 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/19/2025
+ms.date: 03/20/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -97,7 +97,11 @@ Before you begin, make sure that you complete the following prerequisites:
 
 Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
 
-1. Open the Configurator app. Enter the machine serial number and select **Next**.
+1. Open the Configurator app. Right-click the Configurator app exe and run as administrator. Wait a few minutes for the app to open up.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/open-app-1.png" alt-text="Screenshot of opening the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/open-app-1.png":::
+
+1. Enter the machine serial number and select **Next**.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/access-the-device-1.png" alt-text="Screenshot of the machine serial number dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/access-the-device-1.png":::
 
@@ -113,7 +117,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-1.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when all the prerequisites are met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-1.png":::
 
-   If a requirement isn't met, the app displays a warning or errors. Resolve the issue before you proceed. For more information, see [Troubleshooting](#troubleshooting).
+   If a requirement isn't met, the app displays a warning or errors. You can't proceed if there are errors though warnings are ignored. Resolve the errors before you proceed. For more information, see [Troubleshooting](#troubleshooting).
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/prerequisites-2.png" alt-text="Screenshot of the Prerequisites tab in the Configurator app for Azure Local when one of the prerequisites isn't met." lightbox="media/deployment-arc-register-configurator-app/prerequisites-2.png":::
 
