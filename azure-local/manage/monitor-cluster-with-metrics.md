@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/12/2025
+ms.date: 03/20/2025
 ---
 
 # Monitor Azure Local with Azure Monitor Metrics
@@ -153,19 +153,19 @@ The **Storage Performance** tab presents three types of metrics:
 
     Here's a sample screenshot of Volume Usage Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-volume-usage.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-volume-usage.png" alt-text="Screenshot of the Storage Performance dashboard showing the Volume Usage metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-volume-usage.png":::
 
 - **VHD Metrics.** This section displays metrics related to VHD, such as VHD read/write operations per second, VHD read/write bytes per second, VHD latency, and VHD current and maximum size.
 
     Here's a sample screenshot of VHD Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-vhd.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-vhd.png" alt-text="Screenshot of the Storage Performance dashboard showing the VHD metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-vhd.png":::
 
 - **Physical Disk Metrics.** This section displays metrics related to physical disk read/write operations per second, physical disk read/write bytes per second, latency read and write, total capacity size, and capacity size used.
 
     Here's a sample screenshot of Physical Disk Metrics:
 
-    :::image type="content" source="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/stoage-performance-physical-disk.png":::
+    :::image type="content" source="media/monitor-cluster-with-metrics/storage-performance-physical-disk.png" alt-text="Screenshot of the Storage Performance dashboard showing the Physical Disk metrics." lightbox="media/monitor-cluster-with-metrics/storage-performance-physical-disk.png":::
 
 In a **Single Cluster Performance Metrics** dashboard, you can drill down further to view metrics split by LUN, which is a unique identifier for storage resources.
 
