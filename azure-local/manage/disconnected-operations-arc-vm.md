@@ -212,14 +212,10 @@ The supported VM extensions are *Azure Monitor Agent* and *Custom Script*.
 
 To manage VM extensions, see [manage VM extensions](../manage/virtual-machine-manage-extension.md) on Arc-enabled VMs for Azure Local.
 
-## Extra resources
-
-Here are some extra resources to help you manage Azure Local VMs:
+## Related content
 
 - [Collect log files for Azure Local VMs](../manage/collect-log-files-arc-enabled-vms.md).
 
 - [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md).
 
 - [Azure Local VM management FAQ](../manage/azure-arc-vms-faq.yml).
-
-## Related content

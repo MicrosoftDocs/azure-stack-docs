@@ -192,11 +192,12 @@ Here are some known issues and workarounds for disconnected operations with AKS 
 |-------------|-----------------|-------------------------|
 | Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd: ERROR: Operation returned an invalid status`. |
 
-For more information on AKS Arc, see the following articles:
+## Related content
 
 - [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
-- [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
-- [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
-- [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
 
-## Related content
+- [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
+
+- [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
+
+- [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
