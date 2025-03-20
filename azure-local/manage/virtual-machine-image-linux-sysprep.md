@@ -47,7 +47,7 @@ To create a VM on your Azure Local instance, use the downloaded Ubuntu image, an
 
         :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png":::
 
-    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk v2 (VHDX) image here.
+    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
 
         :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png":::
 
