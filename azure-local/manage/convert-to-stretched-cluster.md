@@ -2,8 +2,8 @@
 title: Convert to a stretched Azure Stack HCI cluster
 description: Learn how to convert to a stretched cluster in Azure Stack HCI
 ms.topic: how-to
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.reviewer: stevenek
 ms.date: 02/27/2025
 ---

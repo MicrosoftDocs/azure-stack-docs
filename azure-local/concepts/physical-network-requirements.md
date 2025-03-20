@@ -4,8 +4,8 @@ description: Physical network requirements and considerations for Azure Local, i
 author: jacobpedd
 ms.topic: conceptual
 ms.date: 02/14/2025
-ms.author: jgerend 
-ms.reviewer: JasonGerend
+ms.author: alkohli 
+ms.reviewer: alkohli
 ---
 
 # Physical network requirements for Azure Local
