@@ -21,7 +21,7 @@ This article describes how to use Azure CLI to prepare a CentOS Linux image and 
 ## Prerequisites
 
 - Have access to an Azure Local instance that is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Local instance. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file. You use this image to create a VM image.
+- [Download the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Local instance. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file.
 
 ## Workflow
 
@@ -39,12 +39,12 @@ The following sections provide detailed instructions for each step in the workfl
 
 > [!IMPORTANT]
 >
-> - Do not use a virtual hard disk from an Azure virtual machine to prepare the Azure Local VM image.
+> - Do not use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
 > - We recommend that you prepare a CentOS image if you intend to enable guest management on the VMs.
 
 ### Step 1: Create a CentOS VM
 
-Use the downloaded CentOS image to create a virtual machine on your Azure Local instance and follow these steps:
+Use the downloaded CentOS image to create a VM on your Azure Local instance and follow these steps:
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.

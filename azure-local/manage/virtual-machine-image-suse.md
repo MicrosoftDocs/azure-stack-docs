@@ -28,13 +28,13 @@ This article describes how to use Azure CLI to prepare an SUSE Linux image and c
 
 ## Workflow
 
-To convert the QCOW2 image to VHDX and create an Azure Local VM image from the VHDX image:
+To convert the QCOW2 image to a virtual hard disk v2 (VHDX) and create an Azure Local VM image from the VHDX image:
 
 1. [Convert QCOW2 to VHDX](#step-1-convert-qcow2-to-vhdx).
 2. [Create a SUSE VM image](#step-2-create-a-suse-vm-image).
 
 > [!IMPORTANT]
-> Do not use an Azure Virtual Machine VHD disk to prepare the Azure Local VM image.
+> Do not use an Azure VM VHD disk to prepare the Azure Local VM image.
 
 The following sections provide detailed instructions for each step in the workflow.
 

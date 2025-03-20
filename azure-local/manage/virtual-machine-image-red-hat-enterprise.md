@@ -18,7 +18,7 @@ This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linu
 ## Prerequisites
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
+- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file.
 
 ## Workflow
 
@@ -36,22 +36,21 @@ The following sections provide detailed instructions for each step in the workfl
 
 > [!IMPORTANT]
 >
-> - Do not use a virtual hard disk from an Azure virtual machine to prepare the Azure Local VM image.
+> - Do not use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Local system to create a VM image by using the Azure CLI.
 
 ### Step 1: Create a Red Hat Enterprise VM
 
-To use the downloaded Red Hat Enterprise image to provision a VM:
+Use the downloaded Red Hat Enterprise image to create a VM on your Azure Local instance and follow these steps:
 
-1. Use the downloaded image to create a VM with the following specifications:
-
+1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
 
-    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk v2 (VHDX) image here.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 
