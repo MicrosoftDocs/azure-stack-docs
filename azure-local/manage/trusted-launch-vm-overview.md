@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/18/2025
+ms.date: 03/20/2025
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article introduces Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc. You can create a Trusted launch for Azure Local VM using Azure portal or by using Azure Command-Line Interface (CLI).
+This article introduces Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc. You can create a Trusted launch for an Azure Local VM using the Azure portal or by using Azure Command-Line Interface (CLI).
 
 ## Introduction
 
@@ -44,7 +44,7 @@ Trusted launch is a security type that can be specified when creating Azure Loca
 
 ## Guest operating system images
 
-All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM enabled by Azure Arc image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
+All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
 
 > [!NOTE]
 > VM guest images obtained outside of Azure Marketplace are not supported.

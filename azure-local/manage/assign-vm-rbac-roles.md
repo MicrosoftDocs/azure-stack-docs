@@ -1,18 +1,18 @@
 ---
-title: Use builtin RBAC roles for Azure Local VM management
-description: Learn how to use RBAC builtin roles for Azure Local VM management.
+title: Use builtin RBAC roles for Azure Local VM to manage Azure Local VMs enabled by Azure Arc
+description: Learn how to use RBAC builtin roles to manage Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/17/2025
+ms.date: 03/20/2025
 ---
 
-# Use Role-based Access Control for Azure Local virtual machine management 
+# Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc 
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use the Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs).
+This article describes how to use the Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs) enabled by Azure Arc.
 
 You can use the builtin RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
 
