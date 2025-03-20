@@ -19,43 +19,13 @@ This article describes how to register your Azure Local machines and then set up
 
 Before you begin, make sure you've completed the following prerequisites:
 
-- Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
-- Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
-- [Install the Azure Stack HCI operating system, version 23H2](./deployment-install-os.md) on each machine.
+### Azure Local machine prerequisites
 
-- Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
+[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
 
-    - *Microsoft.HybridCompute*
-    - *Microsoft.GuestConfiguration*
-    - *Microsoft.HybridConnectivity*
-    - *Microsoft.AzureStackHCI*
-    - Microsoft.Kubernetes 
-    - Microsoft.KubernetesConfiguration
-    - *Microsoft.ExtendedLocation*
-    - *Microsoft.ResourceConnector*
-    - *HybridContainerService*
+### Azure prerequisites
 
-    > [!NOTE]
-    > The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Local machines with Arc.
-
-- If you're registering the machines as Arc resources, make sure that you have the following permissions on the resource group where the machines were provisioned:
-
-    - Azure Connected Machine Onboarding
-    - Azure Connected Machine Resource Administrator
-
-    To verify that you have these roles, follow these steps in the Azure portal:
-
-    1. Go to the subscription that you use for the Azure Local deployment.
-    1. Go to the resource group where you're planning to register the machines.
-    1. In the left-pane, go to **Access Control (IAM)**.
-    1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
-
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::-->
-
-- Check your Azure policies. Make sure that:
-    - The Azure policies aren't blocking the installation of extensions.
-    - The Azure policies aren't blocking the creation of certain resource types in a resource group.
-    - The Azure policies aren't blocking the resource deployment in certain locations.
+[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
 ## Register machines with Azure Arc
 
