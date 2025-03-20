@@ -4,7 +4,7 @@ description: How to manage virtual machines on Azure Local using Windows PowerSh
 author: alkohli
 ms.topic: how-to 
 ms.date: 01/16/2025
-ms.author: jgerend
+ms.author: alkohli
 ms.reviewer: stevenek
 ms.service: azure-local
 ---
