@@ -44,7 +44,7 @@ The following sections provide detailed instructions for each step in the workfl
 
 ### Step 1: Create a CentOS VM
 
-Use the downloaded CentOS image to create a VM on your Azure Local instance and follow these steps:
+To create a VM on your Azure Local instance, use the downloaded CentOS image, and follow these steps:
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.
