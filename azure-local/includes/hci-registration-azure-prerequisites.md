@@ -9,7 +9,7 @@ ms.lastreviewed: 03/20/2025
 ---
 
 
-- **Register required resource providers.** Make sure that your Azure subscription is registered against the required resource providers. To register, you must be an owner or contributor on your subscription. You can also ask an administrator to register.
+1. **Register required resource providers.** Make sure that your Azure subscription is registered against the required resource providers. To register, you must be an owner or contributor on your subscription. You can also ask an administrator to register.
 
    Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
@@ -51,7 +51,7 @@ ms.lastreviewed: 03/20/2025
 
    1. In the right-pane, go to **Role assignments**. Verify that you have `Azure Connected Machine Onboarding` and `Azure Connected Machine Resource Administrator` roles assigned.
 
-- Check your Azure policies. Make sure that:
+1. Check your Azure policies. Make sure that:
     - The Azure policies aren't blocking the installation of extensions.
     - The Azure policies aren't blocking the creation of certain resource types in a resource group.
     - The Azure policies aren't blocking the resource deployment in certain locations.
