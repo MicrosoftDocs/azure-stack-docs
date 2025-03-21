@@ -60,13 +60,13 @@ Proxy servers aren't supported for connecting to outbound internet.
 
 ### Machine creation
 
-- You can create a virtual machine through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
+- You can create a VM through the portal via **Azure Arc** > **Machines** > **Add/Create** > **Create a machine in a connected host environment**. For more information, see step 7 under the Create Azure Local VMs section.
 
     :::image type="content" source="./media/disconnected-operations/arc-vms/create-arc-vms.png" alt-text="Screenshot showing how create an Azure Local VM from the portal." lightbox=" ./media/disconnected-operations/arc-vms/create-arc-vms.png":::
 
 - The **Create** button in the Virtual Machines section of the Azure Local resource on the portal can't be used to create a machine.
 
-## Create Azure Local VMs
+## Create Azure Local VMs with disconnected operations
 
 Follow these steps to create Azure Local VMs running disconnected operations.
 
