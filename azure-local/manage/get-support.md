@@ -1,8 +1,8 @@
 ---
 title: Get support for Azure Local
 description: This topic provides guidance on how to get support for Azure Local.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 01/21/2025
 ---

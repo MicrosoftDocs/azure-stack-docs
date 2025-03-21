@@ -1,10 +1,10 @@
 ---
 title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
-author: jasongerend
+author: alkohli
 ms.topic: how-to
 ms.date: 11/13/2024
-ms.author: jgerend
+ms.author: alkohli
 zone_pivot_groups: windows-os
 ---
 
