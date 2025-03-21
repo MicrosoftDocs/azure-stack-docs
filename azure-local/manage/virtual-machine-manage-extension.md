@@ -104,5 +104,5 @@ Removal of the extension from the list should take a couple of minutes.
 
 ## Related content
 
-- [Enable guest management when creating Azure Arc VMs](./create-arc-virtual-machines.md#create-arc-vms)
+- [Enable guest management when creating Azure Arc VMs](./create-arc-virtual-machines.md#enable-guest-management)
 - [Troubleshoot VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions)
