@@ -1,8 +1,8 @@
 ---
 title: Change privacy settings
 description: This article provides guidance on how to change privacy settings in either the Azure Stack HCI operating system or Windows Server.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 02/27/2025
 ---

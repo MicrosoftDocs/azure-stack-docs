@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI security considerations
 description: This article provides guidance on security considerations for the Azure Stack HCI operating system.
-author:  jasongerend
-ms.author:  jgerend
+author:  alkohli
+ms.author:  alkohli
 ms.topic: conceptual
 ms.date: 02/27/2025
 ---

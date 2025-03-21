@@ -69,7 +69,6 @@ The following VM operations are supported only using the local tools such as Win
 
 #### VM-level operations
 
-- Rename a VM inside the guest operating system.
 - Rename a VM on local tools.
 - Change MAC address of network adapter.
 - Enable/disable MAC address spoofing per network adapter.
@@ -112,6 +111,7 @@ The following VM operations aren't supported.
 > [!IMPORTANT]
 > These operations can't be performed using Azure portal, Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from Azure portal.
 
+- Rename a VM inside the guest operating system.
 - Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
