@@ -238,5 +238,6 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
+- [Supported VM sizes](scale-requirements.md)
 - [Use GPUs (AKS on Azure Local 22H2)](deploy-gpu-node-pool-22h2.md)
 - [AKS overview](aks-hybrid-options-overview.md)
