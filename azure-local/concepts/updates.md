@@ -1,8 +1,8 @@
 ---
 title: Updates and upgrades
 description: An overview of how updates and upgrades are applied to Azure Stack HCI.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: conceptual
 ms.date: 02/23/2024
 ---

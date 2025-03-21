@@ -1,8 +1,8 @@
 ---
 title: Change languages in Azure Stack HCI
 description: This topic provides guidance on how to change languages in the Azure Stack HCI operating system, Windows 10, Windows Admin Center, and Microsoft Edge.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 02/27/2025
 ---
