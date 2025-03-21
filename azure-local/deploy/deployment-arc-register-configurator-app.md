@@ -25,50 +25,20 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-1. Procure the hardware that you intend to use as an Azure Local system. Turn on these machines and connect them to the network.
+[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
 
-1. Complete [prerequisites for your environment](../deploy/deployment-prerequisites.md).
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
 
-1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-
-1. [Download the English-language Preview ISO](https://aka.ms/HCIReleaseImage).
-
-1. Use the downloaded Preview ISO and follow the steps for operating system installation in [Install Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
-
-1. Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
-
-1. Note down:
+- Note down:
 
    - The serial number for each machine.
    - Local administrator credentials to sign into each machine.
 
 ### Azure prerequisites
 
-1. **Register required resource providers.** Make sure that your Azure subscription is registered against the required resource providers. To register, you must be an owner or contributor on your subscription. You can also ask an administrator to register.
+[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-   Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
-
-   ```powershell
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Kubernetes" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.KubernetesConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ExtendedLocation" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ResourceConnector" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "HybridContainerService" 
-   ```
-
-1. **Create a resource group**. Follow the steps to [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
-
-1. **Get the tenant ID**. Follow the steps in [Get the tenant ID of your Microsoft Entra tenant through the Azure portal](/azure/azure-portal/get-subscription-tenant-id):
-
-   1. In the Azure portal, go to **Microsoft Entra ID** > **Properties**.
-
-   1. Scroll down to the Tenant ID section and copy the **Tenant ID** value to use later.
-
-1. **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
@@ -77,22 +47,7 @@ Before you begin, make sure that you complete the following prerequisites:
        ```
 
    1. Make a note of the Arc gateway ID to use later.
-
-1. **Verify permissions**. As you register machines as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the machines are provisioned:
-
-   - `Azure Connected Machine Onboarding`.
-   - `Azure Connected Machine Resource Administrator`.
-
-   To verify that you have these roles, follow these steps in the Azure portal:
-    
-   1. Go to the subscription you used for the Azure Local deployment.
-
-   1. Go to the resource group where you plan to register the machine.
-
-   1. In the left-pane, go to **Access Control (IAM)**.
-
-   1. In the right-pane, go to **Role assignments**. Verify that you have `Azure Connected Machine Onboarding` and `Azure Connected Machine Resource Administrator` roles assigned.
-    
+   
 ## Step 1: Configure the network and connect to Azure
 
 Follow these steps to configure network settings and connect the machines to Azure. Start this action a few minutes after you turn on the machine.
@@ -138,7 +93,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/basics-tab-additional-details-1.png":::
 
-   1. Select **Off** to enable **Remote desktop** protocol.
+   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
    1. Select **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list.
 
@@ -180,7 +135,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ### Step 2: Complete registration of machines to Azure
 
-1. Wait for the configuration to complete. First, machine details are uploaded followed by registration of the machines to Azure.
+1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 

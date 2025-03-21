@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 03/11/2025
+ms.date: 03/20/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -19,42 +19,13 @@ This article describes how to register your Azure Local machines and then set up
 
 Before you begin, make sure you've completed the following prerequisites:
 
-- Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
-- Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
-- [Install the Azure Stack HCI operating system, version 23H2](./deployment-install-os.md) on each machine.
+### Azure Local machine prerequisites
 
-- Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
-    - *Microsoft.HybridCompute*
-    - *Microsoft.GuestConfiguration*
-    - *Microsoft.HybridConnectivity*
-    - *Microsoft.AzureStackHCI*
-    - *Microsoft.Kubernetes*
-    - *Microsoft.KubernetesConfiguration*
-    - *Microsoft.ExtendedLocation*
-    - *Microsoft.ResourceConnector*
-    - *HybridContainerService*
-    
-    > [!NOTE]
-    > The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Local machines with Arc.
+[!INCLUDE [hci-registration-azure-local-machine-prerequisites](../includes/hci-registration-azure-local-machine-prerequisites.md)]
 
-- If you're registering the machines as Arc resources, make sure that you have the following permissions on the resource group where the machines were provisioned:
+### Azure prerequisites
 
-    - Azure Connected Machine Onboarding
-    - Azure Connected Machine Resource Administrator
-
-    To verify that you have these roles, follow these steps in the Azure portal:
-
-    1. Go to the subscription that you use for the Azure Local deployment.
-    1. Go to the resource group where you're planning to register the machines.
-    1. In the left-pane, go to **Access Control (IAM)**.
-    1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
-
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::-->
-
-- Check your Azure policies. Make sure that:
-    - The Azure policies aren't blocking the installation of extensions.
-    - The Azure policies aren't blocking the creation of certain resource types in a resource group.
-    - The Azure policies aren't blocking the resource deployment in certain locations.
+[!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
 ## Register machines with Azure Arc
 
@@ -162,26 +133,20 @@ Before you begin, make sure you've completed the following prerequisites:
     ```output
     PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
     >>
-    Starting AzStackHci ArcIntegration Initialization
-    Constructing node config using ARM Access Token
-    Waiting for bootstrap to complete: InProgress
+    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+    Triggering bootstrap on the device...
+    Waiting for bootstrap to complete... Current Status: InProgress
     =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: Succeeded
+    Waiting for bootstrap to complete... Current Status: InProgress
+    Waiting for bootstrap to complete... Current Status: Succeeded
+    Bootstrap succeeded.
+    
+    Triggering bootstrap log collection as a best effort.
+    Version Response                                                    
+    ------- --------                                                    
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
-    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciArcIntegration.log
-    Version Response
-    ------- --------
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    Successfully triggered Arc boostrap support log collection. Waiting for 600 seconds to complete.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 0.
-    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 1.
-    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
-    Waiting for Arc bootstrap support logs to complete on '', retry count: 2.
-    Arc boostrap support log collection completed successfully.
 
     PS C:\Users\Administrator>
     ```
@@ -194,13 +159,10 @@ Before you begin, make sure you've completed the following prerequisites:
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
 
-    <!--1. The mandatory Azure Local extensions are installed on your machines. From the resource group, select the registered machine. Go to the **Extensions**. The mandatory extensions show up in the right pane.
 
-        :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Local registered machines with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png"::: -->
 
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
 
 
 ## Assign required permissions for deployment
@@ -227,11 +189,8 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
     - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
  
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
-
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
 1. In the Azure portal go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
 
