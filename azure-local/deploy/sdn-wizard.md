@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: how-to
 ms.date: 05/31/2024
 ms.author: sethm
-ms.reviewer: JasonGerend
+ms.reviewer: alkohli
 ---
 
 # Deploy SDN using Windows Admin Center

@@ -1,25 +1,22 @@
 ---
-title: Prepare SUSE Linux image for Azure Local VM via Azure CLI (preview)
-description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview) by using Azure CLI.
+title: Prepare SUSE Linux image via Azure CLI for Azure Local VMs enabled by Azure Arc
+description: Learn how to prepare SUSE Linux images to create an Azure Local VM image (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/06/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Local.
+ms.date: 03/21/2025
 ---
 
-# Prepare SUSE Linux image for Azure Local virtual machines (preview)
+# Prepare SUSE Linux image for Azure Local VMs enabled by Azure Arc (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use a SUSE Linux image to create a virtual machine (VM) on your Azure Local. You use Azure CLI for the VM image creation.
+This article describes how to use Azure CLI to prepare an SUSE Linux image and create an Azure Local virtual machine (VM).
 
 ## Prerequisites
-
-Before you begin, meet the following prerequisites:
 
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
@@ -31,13 +28,13 @@ Before you begin, meet the following prerequisites:
 
 ## Workflow
 
-To convert the QCOW2 image to VHDX and create a VM image from the VHDX image.
+To convert the QCOW2 image to a virtual hard disk v2 (VHDX) and create an Azure Local VM image from the VHDX image:
 
 1. [Convert QCOW2 to VHDX](#step-1-convert-qcow2-to-vhdx).
 2. [Create a SUSE VM image](#step-2-create-a-suse-vm-image).
 
 > [!IMPORTANT]
-> Do not use an Azure Virtual Machine VHD disk to prepare the VM image for Azure Local.
+> Do not use an Azure VM VHD disk to prepare the Azure Local VM image.
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -47,7 +44,7 @@ After the QCOW2 image is downloaded, use the **QEMU disk image utility for Windo
 
 The QEMU disk image utility for Windows tool is used to convert, create, and consistently check various virtual disk formats. It's compatible with Hyper-V and other solutions and is optimized for Windows Server (x64).
 
-Follow these steps to download the tool and convert the QCOW2 image file to VHDX.
+To convert the QCOW2 image file to VHDX, follow these steps:
 
 1. Download the [QEMU disk image utility for Windows](https://cloudbase.it/qemu-img-windows/) tool by clicking the **Download binaries** button for file. Alternatively, you can run the following PowerShell command to download the tool:
 

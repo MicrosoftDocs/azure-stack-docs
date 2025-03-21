@@ -1,8 +1,8 @@
 ---
 title: System requirements for Azure Stack HCI, version 22H2
 description: How to choose servers, storage, and networking components for Azure Stack HCI, version 22H2.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
