@@ -1,10 +1,10 @@
 --- 
 title: Set up a cluster witness 
 description: Learn how to set up a cluster witness 
-author: jasongerend 
+author: alkohli 
 ms.topic: how-to 
 ms.date: 01/31/2024
-ms.author: jgerend 
+ms.author: alkohli 
 ms.reviewer: stevenek 
 ---
 
