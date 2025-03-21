@@ -43,11 +43,11 @@ ConvergedSwitch(management_compute_storage)    External        Teamed-Interface
 
 ## Create the logical network
 
-You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
+You can create a logical network by using either the Azure CLI or the Azure portal.
 
 # [Azure CLI](#tab/azurecli)
 
-You can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in the static IP configuration.
+To create a logical network on the VM switch in a static IP configuration, you can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) command:
 
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --vlan 10
