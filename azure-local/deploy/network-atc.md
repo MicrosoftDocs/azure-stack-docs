@@ -5,7 +5,7 @@ author: dcuomo
 ms.topic: how-to
 ms.date: 11/13/2024
 ms.author: dacuo
-ms.reviewer: jgerend
+ms.reviewer: alkohli
 zone_pivot_groups: windows-os
 ---
 
