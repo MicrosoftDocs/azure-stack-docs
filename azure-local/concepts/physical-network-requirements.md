@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Local
 description: Physical network requirements and considerations for Azure Local, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 02/14/2025
+ms.date: 03/21/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -419,7 +419,7 @@ Azure Local can function in various data center architectures including 2-tier (
 Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
-> We highly recommend that all Azure Local machines in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+> We require that all Azure Local machines in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 > [!NOTE]
 > Stretched cluster functionality is only available in Azure Local, version 22H2.
