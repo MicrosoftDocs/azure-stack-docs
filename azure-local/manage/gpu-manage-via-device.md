@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/17/2025
+ms.date: 03/21/2025
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
@@ -28,7 +28,7 @@ Before you begin, satisfy the following prerequisites:
 
 ## Attach a GPU during Azure Local VM creation
 
-Follow the steps outlined in [Create virtual machines on Azure Local](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process.
+Follow the steps outlined in [Create Azure Local VMs enabled by Azure Arc](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process.
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuDDA
