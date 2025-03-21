@@ -1,15 +1,15 @@
 ---
 title: Azure Local VM management prerequisites
-description: Learn about the prerequisites for deploying Azure Local VMs for Azure Local.
+description: Learn about the prerequisites for deploying Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/14/2025
+ms.date: 03/21/2025
 
 ---
 
-# Azure Local VM management prerequisites
+# Review prerequisites for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
