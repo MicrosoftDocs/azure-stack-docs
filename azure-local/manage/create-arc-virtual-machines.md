@@ -14,7 +14,7 @@ ms.date: 03/21/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Azure Local virtual machines (VMs) starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create Azure Local virtual machines (VMs) starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Local resource
 
@@ -138,7 +138,7 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 
 1. Run the following commands to create the applicable VM.
 
-    **To create a Trusted launch Azure Local VM enabled by Azure Arc:**
+    **To create a Trusted launch Azure Local VM:**
 
     1. Specify additional flags to enable secure boot, enable virtual TPM, and choose security type. Note, when you specify security type as Trusted launch, you must enable secure boot and vTPM, otherwise Trusted launch VM creation will fail.
 
@@ -700,7 +700,7 @@ For  more information, see [system-assigned managed identities](/entra/identity/
 
 ## Next steps
 
-- [Delete Azure LocalVMs](./manage-arc-virtual-machines.md#delete-a-vm).
+- [Delete Azure Local VMs](./manage-arc-virtual-machines.md#delete-a-vm).
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
 - [Troubleshoot Azure Local VMs](troubleshoot-arc-enabled-vms.md).
 - [Frequently Asked Questions for Azure Local VM management](./azure-arc-vms-faq.yml).
