@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 03/18/2025
+ms.date: 03/21/2025
 ---
 
 # Prepare a Red Hat Enterprise image for Azure Local VMs enabled by Azure Arc (preview)
@@ -50,7 +50,7 @@ Follow these steps to provision a VM using the downloaded CentOS image.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
 
-    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk extended (VHDX) image here.
+    1. Specify **Generation 2** for your VM as you're working with a virtual hard disk v2 (VHDX) image here.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 

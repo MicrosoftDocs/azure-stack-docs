@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 03/18/2025
+ms.date: 03/21/2025
 ---
 
 # Prepare an Ubuntu image for Azure Local VMs enabled by Azure Arc
