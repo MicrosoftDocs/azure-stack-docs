@@ -3,7 +3,7 @@ title: Create logical networks for Kubernetes clusters on Azure Local, version 2
 description: Learn how to create Arc-enabled logical networks for AKS.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 03/19/2025
+ms.date: 03/21/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
