@@ -50,7 +50,19 @@ You can create a logical network by using either the Azure CLI or the Azure port
 To create a logical network on the VM switch in a static IP configuration, you can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) command:
 
 ```azurecli
-az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --vlan 10
+az stack-hci-vm network lnet create \
+  --subscription $subscription \
+  --resource-group $resource_group \
+  --custom-location $customLocationID \
+  --name $lnetName \
+  --vm-switch-name $vmSwitchName \
+  --ip-allocation-method "Static" \
+  --address-prefixes $addressPrefixes \
+  --gateway $gateway \
+  --dns-servers $dnsServers \
+  --ip-pool-start $ipPoolStart \
+  --ip-pool-end $ipPoolEnd \
+  --vlan 10
 ```
 
 For static IP, the required parameters are as follows:
