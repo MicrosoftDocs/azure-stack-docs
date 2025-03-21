@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI data collection
 description: This topic describes the design and policies relevant to diagnostic data collected by Azure Stack HCI.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
 ms.date: 02/27/2025

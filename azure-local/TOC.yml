@@ -331,7 +331,7 @@ items:
       href: manage/connect-arc-vm-using-ssh.md
     - name: Manage Arc VMs
       href: manage/manage-arc-virtual-machines.md
-    - name: Manage Arc VM resources
+    - name: Manage Azure Local VM resources
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
@@ -346,7 +346,7 @@ items:
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
    
-    - name: Collect log files for Azure Arc VM
+    - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
@@ -355,7 +355,7 @@ items:
 
   - name: Trusted launch for Arc VMs
     items: 
-      - name: What is Trusted launch for Arc VMs?
+      - name: What is Trusted launch for Azure Local VMs?
         href: manage/trusted-launch-vm-overview.md
       - name: Automatic virtual TPM state transfer
         href: manage/trusted-launch-automatic-state-transfer.md
