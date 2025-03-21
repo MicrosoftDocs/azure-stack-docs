@@ -135,7 +135,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 ### Step 2: Complete registration of machines to Azure
 
-1. Wait for the configuration to complete. First, machine details are uploaded followed by registration of the machines to Azure.
+1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
