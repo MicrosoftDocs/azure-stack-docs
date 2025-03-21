@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 03/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -37,7 +37,7 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 Before you start, make sure that you:
 
-- Sign the [Local Identity with Azure Key Vault Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__v7SnuFUNjBYOTVZTjRaTUtVVFVWSU1EM1dWWFpSOC4u&route=shorturl) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+- Send an email to [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 

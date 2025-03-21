@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local upgrade
 description: Learn how to troubleshoot upgrades on your Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
+ms.date: 02/28/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local

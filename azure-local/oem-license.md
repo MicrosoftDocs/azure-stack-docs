@@ -3,7 +3,7 @@ title: Azure Stack HCI OEM license overview
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
-ms.date: 12/31/2024
+ms.date: 03/03/2025
 ms.author: robess
 ms.reviewer: alkohli
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license is and how it can be beneficial to them.
@@ -68,7 +68,7 @@ For more information on the Azure Stack HCI OEM license, see [Azure Stack HCI OE
 
 ## Licensing Windows Server guest VMs on Azure Local
 
-You can activate Windows Server VMs on an Azure Local instance using generic Automatic Virtual Machine Activation (AVMA) client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](manage/vm-activate.md#activate-azure-hybrid-benefit-ahb-through-avma).
+You can activate Windows Server VMs on an Azure Local instance using generic Automatic Virtual Machine Activation (AVMA) client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](manage/vm-activate.md#activate-azure-hybrid-benefit-through-avma).
 
 ## Licensing AKS on Azure Local
 
@@ -91,7 +91,7 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 |Varying operating systems or versions.    | Running different operating systems or different versions of the same operating system across the nodes in a cluster isn't supported.|
 |Different billing on machines.        | Mixing machine hardware sold with an Azure Stack HCI OEM license and machine hardware purchased with a regular Azure subscription isn't supported.|
 
-For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure Portal](https://portal.azure.com).
+For support with billing issues related to mixed node scenarios, file an Azure support request through [the Azure portal](https://portal.azure.com).
 
 ## Next step
 

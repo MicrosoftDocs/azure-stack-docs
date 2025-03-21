@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 03/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,11 +15,11 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) from version 22H2 to version 23H2 on your Azure Local using manual methods such a [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 using manual methods, such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
-Throughout this article, we refer to Azure Stack HCI OS, version 23H2 as the **new** version and Azure Stack HCI OS, version 22H2 as the **old** version.
+Throughout this article, we refer to Azure Stack HCI OS, version 23H2 as the *new* version and Azure Stack HCI OS, version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > To keep your Azure Local service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Local instances running version 22H2. We strongly recommend that you install this version as soon as it becomes available.
@@ -31,13 +31,13 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete prerequisites.](#complete-prerequisites)
+1. [Update registry key.](#step-0-update-registry-key)
 1. [Connect to your system.](#step-1-connect-to-your-system)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
    1. [Offline manual upgrade of all machines in a system.](#method-2-perform-a-fast-offline-os-update-of-all-machines-in-a-system)
 1. Check the status of the updates.
 1. [Perform post-upgrade steps, after the OS is upgraded.](#next-steps)
-
 
 ## Complete prerequisites
 
@@ -48,6 +48,15 @@ Before you begin, make sure that:
 - Make sure that all the machines in your Azure Local are healthy and show as **Online**.
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
+
+## Step 0: Update registry key
+
+To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
+
+```powershell
+# Set RefsEnableMetadataValidation to 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+```
 
 ## Step 1: Connect to your system
 
@@ -85,7 +94,7 @@ Depending upon your requirements, you can manually update the OS using SConfig o
 
 To do a manual feature update of a failover cluster, use the **SConfig** tool and Failover Clustering PowerShell cmdlets. For more information about **SConfig**, see [Configure a Server Core installation of Windows Server and Azure Local with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-For each node in the cluster, run these commands on the target node:
+For each machine in the cluster, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node <Node Name> -Drain`
 
@@ -130,7 +139,6 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 <!--ASK-->
 
 You're now ready to perform the post-upgrade steps for your system.
-
 
 ## Next steps
 

@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/19/2024
+ms.date: 03/06/2025
 ms.author: sethm
 ms.custom:
   - devx-track-azurepowershell
@@ -17,8 +17,6 @@ zone_pivot_groups: state-connected-disconnected
 # Register Azure Stack Hub with Azure
 
 Register Azure Stack Hub with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack Hub, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
-
-The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).

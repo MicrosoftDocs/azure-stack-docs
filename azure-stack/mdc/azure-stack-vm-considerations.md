@@ -3,10 +3,10 @@ title: Azure Stack virtual machine (VM) features | Microsoft Docs
 description: Learn about different features and considerations when working with virtual machines (VMs) in an MDC.
 services: azure-stack
 author: sethmanheim
-manager: femila
+manager: lizross
 ms.service: azure-stack-hub
 ms.topic: article
-ms.date: 2/1/2021
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/20/2019
@@ -25,7 +25,7 @@ Azure Stack virtual machines (VMs) provide on-demand, scalable computing resourc
 | Virtual machine sizes | Azure supports a wide variety of sizes for VMs. To learn about the available sizes and options, refer to the [Windows VMs sizes](/azure/virtual-machines/sizes) and [Linux VM sizes](/azure/virtual-machines/linux/sizes) topics. | Azure Stack supports a subset of VM sizes that are available in Azure. To view the list of supported sizes, refer to the [VM sizes](#vm-sizes) section of this article. |
 | Virtual machine quotas | [Quota limits](/azure/azure-subscription-service-limits#service-specific-limits) are set by Microsoft. | The Azure Stack cloud admin must assign quotas before they offer VM to their users. |
 | Virtual machine extensions |Azure supports a wide variety of VM extensions. To learn about the available extensions, refer to the [VM extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack supports a subset of extensions that are available in Azure and each of the extensions have specific versions. The Azure Stack cloud admin can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [VM extensions](#vm-extensions) section of this article. |
-| Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. A user must have access to the Azure Stack Development Kit via [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect to a VM that is created in Azure Stack.<br><br>VMs created within a specific Azure Stack instance have a DNS name based on the value that is configured by the cloud admin. |
+| Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. A user must have access to VPN to connect to a VM that is created in Azure Stack.<br><br>VMs created within a specific Azure Stack instance have a DNS name based on the value that is configured by the cloud admin. |
 | Virtual machine storage | Supports [managed disks.](/azure/virtual-machines/windows/managed-disks-overview) | Managed disks are supported in Azure Stack with version 1808 and later. |
 | Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM, which the disks are attached to. For more info, refer to the [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md) article.
 | API versions | Azure always has the latest API versions for all the VM features. | Azure Stack supports specific Azure services and specific API versions for these services. To view the list of supported API versions, refer to the [API versions](#api-versions) section of this article. |
