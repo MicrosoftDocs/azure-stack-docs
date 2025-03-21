@@ -16,11 +16,11 @@ This article discusses the most common operations for Azure Local virtual machin
 
 ## Overview
 
-Azure Local can host various types of VMs including Arc-enabled servers, unmanaged VMs, and VMs enabled by Azure Arc. When comparing these options, the VMs enabled by Azure Arc provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
+Azure Local can host various types of VMs including unmanaged VMs, Arc-enabled servers, and VMs enabled by Azure Arc. When comparing these options, the VMs enabled by Azure Arc provide the highest level of management capabilities in Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
 
 While Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal, on-premises local tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager (SCVMM), Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
 
-When IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, this results in synchronization issues between the Azure Local VMs and the portal. Though the operations listed under [Supported operations for local tools](#using-local-tools) don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
+When IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, it can result in synchronization errors or more severe problems between the Azure Local VMs and the portal.
 
 > [!NOTE]
 > - We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
@@ -70,7 +70,6 @@ The following VM operations are supported only using the local tools such as Win
 
 #### VM-level operations
 
-- Rename a VM inside the guest operating system.
 - Rename a VM on local tools.
 - Change MAC address of network adapter.
 - Enable/disable MAC address spoofing per network adapter.
@@ -113,6 +112,7 @@ The following VM operations aren't supported.
 > [!IMPORTANT]
 > These operations can't be performed using Azure portal, Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from Azure portal.
 
+- Rename a VM inside the guest operating system.
 - Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.

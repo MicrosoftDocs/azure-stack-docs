@@ -2,8 +2,8 @@
 title: Hybrid capabilities with Azure services in Azure Local, version 23H2
 description: This article describes the cloud service components of Azure Local, version 23H2.
 ms.topic: overview
-author: ManikaDhiman
-ms.author: v-manidhiman
+author: alkohli
+ms.author: alkohli
 ms.date: 02/20/2025
 ms.custom: e2e-hybrid
 ---
