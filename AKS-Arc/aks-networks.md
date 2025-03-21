@@ -47,7 +47,11 @@ You can create a logical network using either the Azure Command-Line Interface (
 
 # [Azure CLI](#tab/azurecli)
 
-You can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in Static IP configuration.
+You can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in the static IP configuration.
+
+```azurecli
+az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --vlan 10
+```
 
 For static IP, the required parameters are as follows:
 
@@ -65,10 +69,6 @@ For static IP, the required parameters are as follows:
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  |
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
 | `--vlan`              | The VLAN ID. Usage: `--vlan 10`. This parameter is required, otherwise the default value of 0 results in an AKS Arc cluster creation failure.  |
-
-```azurecli
-az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --vlan 10
-```
 
 # [Azure portal](#tab/azureportal)
 
