@@ -40,7 +40,7 @@ The following sections provide detailed instructions for each step in the workfl
 
 ### Step 1: Create an Ubuntu VM
 
-Follow these steps to provision a VM using the downloaded CentOS image.
+Follow these steps to provision a VM using the downloaded Ubuntu image.
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.

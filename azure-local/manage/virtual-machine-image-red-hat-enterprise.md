@@ -43,7 +43,7 @@ Follow these steps on your Azure Local system to create a VM image by using the 
 
 ### Step 1: Create a Red Hat Enterprise VM
 
-Follow these steps to provision a VM using the downloaded CentOS image.
+Follow these steps to provision a VM using the downloaded Red Hat Enterprise image.
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.
