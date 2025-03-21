@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 02/23/2024
+ms.date: 03/21/2024
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 
@@ -46,7 +46,7 @@ Here are the main steps that occur when using Site Recovery with an Azure Local:
     1. Replication policy
 1. Once you have created all the resources, prepare infrastructure.
 1. Enable VM replication. Complete the remaining steps for replication in the Azure Site Recovery resource portal and begin replication.
-1. Once the VMs are replicated, you can fail over the VMs and run on Azure.
+1. Once the VMs are replicated, you can fail over the VMs and run on Azure. To fail back from Azure, follow the instructions in [Fail back from Azure](/azure/site-recovery/hyper-v-azure-failback).
 
 ## Supported scenarios
 
