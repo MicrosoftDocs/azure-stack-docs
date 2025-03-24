@@ -15,8 +15,8 @@ ms.reviewer: abha
 
 # Storage options for applications in AKS enabled by Azure Arc
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 Applications that run in AKS deployments using Azure Kubernetes Service enabled by Azure Arc might need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application).
 
