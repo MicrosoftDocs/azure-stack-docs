@@ -61,8 +61,8 @@ To run the quickstart script, perform the following steps:
    $giturl = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools"
    $url = "$giturl/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
    Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1 -UseBasicParsing
-   Invoke-WebRequest -Uri "$giturl/aio-aide-userconfig.json" -UseBasicParsing
-   Invoke-WebRequest -Uri "$giturl/aio-aksedge-config.json" -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aide-userconfig.json" -OutFile .\aio-aide-userconfig.json -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aksedge-config.json" -OutFile .\aio-aksedge-config.json -UseBasicParsing
    Unblock-File .\AksEdgeQuickStartForAio.ps1
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
    ```
