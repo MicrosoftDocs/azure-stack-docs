@@ -49,9 +49,9 @@ Key features of Azure Container Registry on disconnected operations include:
 
 ## Deploy Azure Container Registry
 
-To deploy an Azure Container Registry on disconnected operations, follow these steps:
+To deploy an Azure Container Registry on disconnected operations, follow these steps from your browser:
 
-1. From your browser, type `https://portal.autonomous.cloud.private`, sign in, and navigate to the **Create a resource** page.
+1. Type `https://portal.autonomous.cloud.private`, sign in, and navigate to the **Create a resource** page.
 2. Select **Create a resource** > **Containers** > **Container Registry**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/create-container-registry.png" alt-text="Screenshot showing how to create a container registry from the portal." lightbox=" ./media/disconnected-operations/azure-container-registry/create-container-registry.png":::
