@@ -4,7 +4,7 @@ description: Learn how to run the quickstart script that creates an Arc-enabled 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 01/13/2025
+ms.date: 03/24/2025
 ms.custom: template-how-to
 ---
 
