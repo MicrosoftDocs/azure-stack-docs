@@ -4,7 +4,7 @@ description: Learn about the public key infrastructure (PKI) requirements for di
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview)
@@ -46,9 +46,9 @@ This table lists the mandatory certificates required for disconnected operations
 | Arc guest notification service | guestnotificationservice.fqdn |
 | Arc metrics | metricsingestiongateway.monitoring.fqdn |
 | Arc monitor agent | amcs.monitoring.fqdn |
-| Arc Resource Bridge data plane | dp.appliances.fqdn |
+| Azure Arc resource bridge data plane | dp.appliances.fqdn |
 | Azure Resource Manager | armmanagement.fqdn |
-| Azure Arc Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Azure queue storage | *.queue.fqdn |
 | Azure Resource Manager Public | armmanagement.fqdn |
 | Azure Table storage | *.table.fqdn |
@@ -185,4 +185,4 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
 
 1. Repeat steps 3-11 for each certificate.
 
-<!--## Next steps-->
+## Related content

@@ -4,7 +4,7 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).
@@ -21,7 +21,7 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 
 ## Prerequisites
 
-- [Azure CLI](disconnected-operations-cli.md) installed on your local machine.
+- [Azure Command-Line Interface (CLI)](disconnected-operations-cli.md) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
 - An understanding of AKS and Azure Arc concepts.
 - Completed [Identity for Azure Local with disconnected operations (preview)](disconnected-operations-identity.md).
@@ -35,6 +35,7 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 Here are some limitations associated with disconnected operations for AKS Arc:
 
 - Support for disconnected operations begins with the 2408 release.
+- Supported Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
 - Microsoft Entra ID (formerly known as Azure Active Directory) isn't currently supported for disconnected operations.
 - GPUs aren't supported.
 - Arc Gateway isn't supported for configuring outbound URLs.
@@ -42,7 +43,9 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 
 ## Create an AKS cluster
 
-To create an AKS cluster that supports disconnected operations, follow these steps or review [Create a Kubernetes cluster](/azure/aks/aksarc/aks-create-clusters-cli#install-the-azure-cli-extension)
+To create an AKS cluster that supports disconnected operations [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
+
+Use the following specifications for disconnected operations:
 
 ### Install the Azure CLI extension
 
@@ -64,10 +67,9 @@ az config set core.instance_discovery=false --only-show-errors
 
 For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/aks-create-clusters-cli).
 
-### Sign in to Azure Local
+### Sign in with Azure CLI
 
-```azurecli
-You can use the following command to sign in to Azure Local
+You can use the following command to sign in with Azure CLI.
 
 ```azurecli
 az cloud set -n azure.local 
@@ -85,7 +87,7 @@ az stack-hci-vm network lnet create --subscription $subscription --resource-grou
 For more information, see [Create logical networks](/azure/aks/aksarc/aks-networks?tabs=azurecli).
 
 > [!NOTE]
-> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Arc VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
 
 ### Create the cluster
 
@@ -98,7 +100,7 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
 
-For more information, see [Create an AKS cluster](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster).
+For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
@@ -178,7 +180,7 @@ For more information, see [Retrieve kubeconfig](/azure/aks/aksarc/retrieve-admin
 
 You can use the `az aksarc delete` cmdlet to delete the AKS cluster you created.
 
-```Azure CLI
+```azurecli
 az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
 
@@ -188,12 +190,14 @@ Here are some known issues and workarounds for disconnected operations with AKS 
 
 | Feature | Description | Workaround/comments |
 |-------------|-----------------|-------------------------|
-| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd : ERROR: Operation returned an invalid status`. |
-
-For more information on AKS Arc, see the following articles:
-
-- [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
-- [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
-- [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli).
+| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd: ERROR: Operation returned an invalid status`. |
 
 ## Related content
+
+- [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
+
+- [AKS enabled by Azure Arc network requirements](/azure/aks/aksarc/aks-hci-network-system-requirements).
+
+- [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
+
+- [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).

@@ -4,14 +4,14 @@ description: Learn about the security considerations and compliance regulations 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
-This article helps you understand the security considerations and compliance regulations for disconnected operations on Azure Local.
+This article helps you understand the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -22,12 +22,12 @@ Azure Local with disconnected operations addresses security and compliance needs
 - **Management Network Interface Card (NIC)**: Allows you to execute a limited set of commands for deployment and troubleshooting. It's secured with a customer-provided certificate during bootstrapping. For more information, see [Plan your network for disconnected operations](disconnected-operations-network.md).
 - **External (Ingress) NIC**: Exposed to users in your network. This network path is used for tenants and workloads of the system. User authentication is handled via your identity provider and uses role-based access control. For more information, see [Plan your identity for disconnected operations](disconnected-operations-identity.md).
 
-The Azure Local with disconnected operations VM uses the following security features:
+An Azure Local VM running disconnected operations uses the following security features:
 
 - Transport Layer Security (TLS) 1.2, TLS 1.3, Datagram Transport Layer Security (DTLS) 1.2, and signed Server Message Block (SMB) protocols encryption for all data in transit.
 - Microsoft Defender to guard against viruses and malware.
 - Secure boot ensures the integrity of boot components.
-- Windows Defender Application Control ensures that only authorized code runs in a disconnected operations VM.
+- Windows Defender Application Control ensures that only authorized code runs in a disconnected operations VM appliance.
 
 For more information about the security features for Azure Local, see [Security features for Azure Local](/azure/azure-local/concepts/security-features).
 
@@ -79,13 +79,13 @@ Follow these steps to retrieve your BitLocker recovery passwords:
 
 If your system's experiencing BitLocker issues, like Azure Local with disconnected operations failing to start, contact support with your BitLocker recovery passwords.
 
-You can manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. However, if BitLocker recovery keys aren't available, your only option is to redeploy the disconnected operations VM.
+You can manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. However, if BitLocker recovery keys aren't available, your only option is to redeploy the disconnected operations VM appliance.
 
 ## Configure syslog forwarding
 
-You can use the syslog protocol for Azure Local with disconnected operations VM to forward security events to a customer-managed security information and event management (SIEM) system.
+You can use the syslog protocol for Azure Local with disconnected operations VM appliance to forward security events to a customer-managed security information and event management (SIEM) system.
 
-The syslog agent of the disconnected operations VM forwards security events in syslog format from the VM to the customer-configured syslog server.
+The syslog agent of the disconnected operations VM appliance forwards security events in syslog format from the Azure Local VM to the customer-configured syslog server.
 
 To configure syslog forwarding, access the physical host using a domain administrator account. Use GET and PUT HTTP commands to query or modify the state of the syslog forwarding configuration. The PowerShell scripts in the following section demonstrate how to control the behavior of the syslog forwarder from Azure Local hosts. However, any REST client can be used.
 
@@ -98,7 +98,7 @@ The following table provides the parameters for the REST endpoint:
 | Parameter                   | Description                                                                 | Type   | Required |  
 |-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
 | **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **Enabled**                 | Determines whether the syslog agent in the Azure Local disconnected VM is enabled or disabled. When disabled, remove the current syslog forwarder configuration and stop the syslog forwarder. | Flag   | Yes      |  
+| **Enabled**                 | Determines whether the syslog agent in the Azure Local disconnected VM appliance is enabled or disabled. When disabled, remove the current syslog forwarder configuration and stop the syslog forwarder. | Flag   | Yes      |  
 | **NoEncryption**            | Force the client to send syslog messages in clear text.                     | Flag   | No       |  
 | **OutputSeverity**          | Level of output logging. Values are **Default** or **Verbose**.<br></br> **Default** includes severity levels: warning, critical, or error.<br></br> **Verbose** includes all severity levels: verbose, informational, warning, critical, or error. | String | No       |  
 | **ServerName**              | Fully qualified domain name (FQDN) or IP address of the syslog server.                                    | String | No       |  
@@ -146,7 +146,7 @@ $configRequestContent = @{
 }
    
 # Update syslog forwarder configuration.
-$IRVMIP = "<VM management endpoint IP address>"  
+$IRVMIP = "<Azure Local VM management endpoint IP address>"  
 $syslogConfigurationEndpoint = "http://$IRVMIP`:8320/SyslogConfiguration"  
 $requestContent = $configRequestContent | ConvertTo-Json  
    
@@ -250,7 +250,7 @@ $configRequestContent = @{
 After the configuration is properly defined, send the configuration request using the following PowerShell script:
 
 ```powershell
-$IRVMIP = "<VM management endpoint IP address>"
+$IRVMIP = "<Azure Local VM management endpoint IP address>"
 $clientCertPath = "<path to client certificate pfx file for management endpoint>"
 $clientCertPassword = "<client certificate password>"
 
@@ -267,7 +267,7 @@ Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Me
 After you successfully connect the syslog client to your syslog server, you should start to receive event notifications. If you don’t see notifications, verify your cluster syslog forwarder configuration by running the following cmdlet:
 
 ```powershell
-$IRVMIP = "<VM management endpoint IP address>"
+$IRVMIP = "<Azure Local VM management endpoint IP address>"
 $clientCertPath = "<path to client certificate pfx file for management endpoint>"
 $clientCertPassword = "<client certificate password>"
 

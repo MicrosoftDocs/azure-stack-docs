@@ -4,7 +4,7 @@ description: Learn how to deploy and manage Azure Container Registry with discon
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Deploy Azure Container Registry with disconnected operations on Azure Local (preview)
@@ -51,7 +51,7 @@ Key features of Azure Container Registry on disconnected operations include:
 
 To deploy an Azure Container Registry on disconnected operations, follow these steps:
 
-1. Sign in to the portal and navigate to the **Create a resource** page.
+1. Sign in to [the portal](../index.yml) and navigate to the **Create a resource** page.
 2. Select **Create a resource** > **Containers** > **Container Registry**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/create-container-registry.png" alt-text="Screenshot showing how to create a container registry from the portal." lightbox=" ./media/disconnected-operations/azure-container-registry/create-container-registry.png":::

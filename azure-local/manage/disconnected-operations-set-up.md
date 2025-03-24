@@ -4,7 +4,7 @@ description: Learn how to set up disconnected operations for Azure Local by crea
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Set up disconnected operations for Azure Local (preview)
@@ -33,7 +33,7 @@ After you complete the steps outlined in this document, you should have:
 
 To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
-1. Sign into the Azure portal and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
+1. Sign into [the portal](../index.yml) and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
 
 2. Select the **Disconnected operations** tab and then select the **Create** button.
 
@@ -70,6 +70,6 @@ To create a virtual appliance and download the required files for your on-premis
 
 8. When the downloads are complete, put these files in a share or onto a portable media. You need these files during the deployment process.
 
-## Next steps
+## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).

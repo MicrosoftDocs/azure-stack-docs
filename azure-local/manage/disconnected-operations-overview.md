@@ -4,7 +4,7 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 02/19/2025
+ms.date: 03/19/2025
 ---
 
 # Disconnected operations for Azure Local (preview)
@@ -19,7 +19,7 @@ This article describes disconnected operations and how they can be used in the d
 
 ## Overview
 
-Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
+Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud. This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
 To run Azure Local with disconnected operations, it's essential to plan for extra capacity for the virtual appliance. The minimum hardware requirements to deploy and operate Azure Local in a disconnected environment are higher due to the need to host a local control plane. Proper planning is important to ensure smooth operations.
 
@@ -42,17 +42,17 @@ Disconnected operations for Azure Local support the following services:
 |Service                            | Description                                  |
 |-----------------------------------|----------------------------------------------|
 | Azure portal                      | Delivers an Azure portal experience that's similar to Azure Public. |
-| Azure Resource Manager (ARM)      | Manage and utilize subscriptions, resource groups, ARM templates, and Azure Command-Line Interface (CLI). |
+| Azure Resource Manager (ARM)      | Manage and utilize subscriptions, resource groups, ARM templates, and CLI. |
 | Role based access control (RBAC)  | Implement RBAC for subscriptions and resource groups. |
 | Managed identity                  | Use **system-assigned** managed identity for resource types that support managed identity. |
-| Arc-enabled servers               | Manage VM guests for Arc VMs on Azure Local. |
-| Arc VMs for Azure Local           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
+| Arc-enabled servers               | Manage VM guests for Azure Local VMs. |
+| Azure Local VMs           | Set up and manage Windows or Linux virtual machines using the disconnected operations feature for Azure Local. |
 | Arc-enabled Kubernetes clusters   | Connect and manage Cloud Native Computing Foundation (CNCF) Kubernetes clusters deployed on Azure Local virtual machines, enabling unified configuration and management. |
 | Azure Kubernetes Service (AKS) enabled by Arc for Azure Local | Set up and manage AKS on Azure Local. |
 | Azure Local device management     | Create and manage Azure Local instances including the ability to add and remove nodes. |
-| Azure Container Registry                | Create and manage container registries to store and retrieve container images and artifacts. |
-| Azure Key Vault                         | Create and manage key vaults to store and access secrets. |
-| Azure Policy                            | Enforce standards through policies when creating new resources. |
+| Azure Container Registry          | Create and manage container registries to store and retrieve container images and artifacts. |
+| Azure Key Vault                   | Create and manage key vaults to store and access secrets. |
+| Azure Policy                      | Enforce standards through policies when creating new resources. |
 
 ## Preview participation criteria
 
@@ -96,11 +96,12 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Set up disconnected operations](disconnected-operations-set-up.md). | Ensure you have the necessary access and permissions to set up disconnected operations. |
 | Review [Deploy Azure Local with disconnected operations](disconnected-operations-deploy.md). | Deploy Azure Local with disconnected operations. |
 | **Manage** |       |
-| [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the Azure CLI to manage Azure Local with disconnected operations. |
-| Review [Arc VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Arc VMs on Azure Local. |
+| Review [Azure CLI for disconnected operations](disconnected-operations-cli.md). | Use the CLI to manage Azure Local with disconnected operations. |
+| Review [Azure Local VMs for disconnected operations](disconnected-operations-arc-vm.md). | Manage Azure Local VMs. |
 | Review [Azure Kubernetes Service enabled by Arc for disconnected operations](disconnected-operations-aks.md). | Manage Azure Kubernetes Service enabled by Arc on Azure Local. |
 | Review [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | Review [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards through policies when creating new resources. |
+| Review [Azure Key Vault for disconnected operations](/azure/key-vault/general/quick-create-cli#create-a-key-vault). | Use the CLI to create an Azure Key Vault. |
 | **Troubleshoot** |      |
 | Review [On-demand log collection](../index.yml). | Collect logs on-demand for troubleshooting. |
 | Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
