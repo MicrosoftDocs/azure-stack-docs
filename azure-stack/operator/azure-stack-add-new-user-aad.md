@@ -58,7 +58,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 1. Run the following cmdlet to connect.
 
    ```powershell
-   Connect-MgGraph  -Scopes 'User.ReadWrite.All'
+   Connect-MgGraph -Scopes 'User.ReadWrite.All'
    ```
 
 1. After you connect, complete the sequence by adding the new user:
