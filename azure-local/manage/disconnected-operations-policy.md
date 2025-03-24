@@ -76,7 +76,7 @@ You can use Azure Policy to enforce tags on resource groups created through disc
 
 ### Set up the Basics
 
-1. From your browser, type 'https://portal.autonomous.cloud.private', sign in and navigate to **Policy**.
+1. From your browser, type `https://portal.autonomous.cloud.private`, sign in, and navigate to **Policy**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page" lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
