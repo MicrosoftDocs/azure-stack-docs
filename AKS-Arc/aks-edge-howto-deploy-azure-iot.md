@@ -92,29 +92,29 @@ To run the quickstart script, perform the following steps:
    > [!IMPORTANT]
    > Preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. AKS Edge Essentials previews are partially covered by customer support on a best-effort basis.
 
-2. [Optional] [Azure Arc gateway (preview)](/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only 7 endpoints. To use Azure Arc Gateway with Azure IoT Operations on AKS Edge Essentials:
+1. [Optional] [Azure Arc gateway (preview)](/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only 7 endpoints. To use Azure Arc Gateway with Azure IoT Operations on AKS Edge Essentials:
 
-     - [Follow step 1 to create an Arc gateway resource](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
-     - Note the [URLs listed in step 2](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-no` in **aio-aksedge-config.json**.
-     - Follow [step 3a in the Arc gateway documentation](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway ID.
-     - In **aio-aide-userconfig.json**, set the value of `GatewayResourceId` to the gateway ID saved from the previous step.
+   - [Follow step 1 to create an Arc gateway resource](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
+   - Note [the URLs listed in step 2](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-no` in **aio-aksedge-config.json**.
+   - Follow [step 3a in the Arc gateway documentation](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway ID.
+   - In **aio-aide-userconfig.json**, set the value of `GatewayResourceId` to the gateway ID saved from the previous step.
 
-3. Run the following command:
+1. Run the following command:
 
-     ```powershell
-     .\AksEdgeQuickStartForAio.ps1 -aideUserConfigfile .\aio-aide-userconfig.json -aksedgeConfigFile .\aio-aksedge-config.json
-     ```
+   ```powershell
+   .\AksEdgeQuickStartForAio.ps1 -aideUserConfigfile .\aio-aide-userconfig.json -aksedgeConfigFile .\aio-aksedge-config.json
+   ```
 
-     If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
+   If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
   
-     Run the following commands to check that the deployment was successful:
+   Run the following commands to check that the deployment was successful:
   
-     ```powershell
-     Import-Module AksEdge
-     Get-AksEdgeDeploymentInfo
-     ```
+   ```powershell
+   Import-Module AksEdge
+   Get-AksEdgeDeploymentInfo
+   ```
   
-     In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
+   In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
 
 ## Verify your cluster
 
