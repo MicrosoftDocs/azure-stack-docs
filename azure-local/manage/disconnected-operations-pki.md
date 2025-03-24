@@ -48,7 +48,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Arc monitor agent | amcs.monitoring.fqdn |
 | Azure Arc resource bridge data plane | dp.appliances.fqdn |
 | Azure Resource Manager | armmanagement.fqdn |
-| Azure Arc Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
+| Azure Arc-enabled Kubernetes | autonomous.dp.kubernetesconfiguration.fqdn |
 | Azure queue storage | *.queue.fqdn |
 | Azure Resource Manager Public | armmanagement.fqdn |
 | Azure Table storage | *.table.fqdn |
