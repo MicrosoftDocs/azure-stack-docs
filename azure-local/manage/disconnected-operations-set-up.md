@@ -33,7 +33,7 @@ After you complete the steps outlined in this document, you should have:
 
 To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
-1. From your browser, type 'https://portal.autonomous.cloud.private' and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
+1. From your browser, type 'https://portal.autonomous.cloud.private', sign in and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
 
 2. Select the **Disconnected operations** tab and then select the **Create** button.
 
