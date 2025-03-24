@@ -61,15 +61,15 @@ To run the quickstart script, perform the following steps:
    $giturl = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools"
    $url = "$giturl/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
    Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1 -UseBasicParsing
-   Invoke-WebRequest -Uri "$giturl/aio-aide-userconfig.json" -OutFile .\custom-userconfig.json -UseBasicParsing
-   Invoke-WebRequest -Uri "$giturl/aio-aksedge-config.json" -OutFile .\custom-aksedge-config.json -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aide-userconfig.json" -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aksedge-config.json" -UseBasicParsing
    Unblock-File .\AksEdgeQuickStartForAio.ps1
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
    ```
 
-1. Add the required parameter values in the **custom-userconfig.json** and **custom-aksedge-config.json** files:
+1. Add the required parameter values in the **aio-aide-userconfig.json** and **aio-aksedge-config.json** files:
 
-   In **custom-userconfig.json**, fill in the following values:
+   In **aio-aide-userconfig.json**, fill in the following values:
 
    |Flag|Value  |
    |---------|---------|
@@ -80,7 +80,7 @@ To run the quickstart script, perform the following steps:
    |CustomLocationOID     |     The object ID value that you retrieved in step 2.     |
    |EnableWorkloadIdentity (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
 
-   In **custom-aksedge-config.json**, add the required **ClusterName** field and other optional fields, as follows:
+   In **aio-aksedge-config.json**, add the required **ClusterName** field and other optional fields, as follows:
 
    |Flag | Value  |
    |---------|---------|
@@ -102,7 +102,7 @@ To run the quickstart script, perform the following steps:
 3. Run the following command:
 
      ```powershell
-     .\AksEdgeQuickStartForAio.ps1 -aideUserConfigfile .\custom-userconfig.json -aksedgeConfigFile .\custom-aksedge-config.json
+     .\AksEdgeQuickStartForAio.ps1 -aideUserConfigfile .\aio-aide-userconfig.json -aksedgeConfigFile .\aio-aksedge-config.json
      ```
 
      If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
