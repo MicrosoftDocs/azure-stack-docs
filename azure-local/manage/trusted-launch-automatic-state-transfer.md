@@ -5,21 +5,20 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/27/2025
+ms.date: 03/25/2025
 ---
 
-# Automatic transfer of virtual TPM state for Trusted launch VMs on Azure Local
+# Automatic transfer of virtual TPM state for Trusted launch VMs on Azure Local enabled by Azure Arc
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article uses an example to illustrate the automatic transfer of virtual TPM (vTPM) state in the case of Trusted launch Arc VMs on Azure Local, even as the VM migrates or fails over to another machine in the system. This operation allows the applications that use the vTPM to function normally during VM migration or fail over.
-
+This article uses an example to illustrate the automatic transfer of virtual TPM (vTPM) state in the case of Trusted launch for Azure Local VMs enabled by Azure Arc, even as the VM migrates or fails over to another machine in the system. This operation allows the applications that use the vTPM to function normally during VM migration or fail over.
 
 ## Example
 
-This example shows a Trusted launch Arc VM running Windows 11 guest with BitLocker encryption enabled. Here are the steps to run this example:
+This example shows a Trusted launch for Azure Local VM running Windows 11 guest with BitLocker encryption enabled. Here are the steps to run this example:
 
-1. Create a Trusted launch Arc VM running a supported Windows 11 guest operating system (OS).
+1. Create a Trusted launch for Azure Local VM running a supported Windows 11 guest operating system (OS).
 
 1. Enable BitLocker encryption for the OS volume on the Win 11 guest. Sign on to the Windows 11 guest and enable BitLocker encryption for the OS volume:
 
@@ -79,7 +78,6 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
     > [!NOTE]
     > If vTPM state wasn't preserved during VM migration, VM startup would result in BitLocker recovery during guest boot up. You would be prompted for the BitLocker recovery password when you attempted to sign on to the Windows 11 guest. This situation occurs because the boot measurement (stored in the vTPM) of the migrated VM on the destination node is different from that of the original VM.
 
-
 ## Next steps
 
-- [Manage Trusted launch Arc VM guest state protection key](trusted-launch-vm-import-key.md).
+- [Manage Trusted launch for Azure Local VM guest state protection key](trusted-launch-vm-import-key.md).
