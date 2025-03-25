@@ -190,7 +190,9 @@ If you experience failures or errors while repairing a node, you can capture the
     Repair-Server -Rerun
     ```
 
-If you encounter an issue during the repair node operation and need help from Microsoft Support, you can follow [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) for steps to collect and send diagnostics to Microsoft. You might need to provide diagnostics logs from the node under repair. Make sure you run the `Send-DiagnosticData` cmdlet from this node.
+If you encounter an issue during the repair node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send diagnostic logs to Microsoft.
+
+You might need to provide diagnostic logs from the node under repair. Make sure you run the `Send-DiagnosticData` cmdlet from this node.
 
 ## Next steps
 

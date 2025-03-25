@@ -173,7 +173,9 @@ If you experience failures or errors while adding a node, you can capture the ou
     Add-Server -Rerun
     ```
 
-If you encounter an issue during the add node operation and need help from Microsoft Support, you can follow [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) for steps to collect and send diagnostics to Microsoft. You might need to provide diagnostics logs from the new node that's to be added to the cluster. Make sure you run the `Send-DiagnosticData` cmdlet from the new node.
+If you encounter an issue during the add node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send the diagnostic logs to Microsoft. 
+
+You might need to provide diagnostic logs from the new node that's to be added to the cluster. Make sure you run the `Send-DiagnosticData` cmdlet from the new node.
 
 ## Next steps
 
