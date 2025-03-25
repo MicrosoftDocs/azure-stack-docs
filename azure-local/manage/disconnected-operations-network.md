@@ -50,7 +50,7 @@ Here's a high-level workflow for vNIC management and deployment:
 
 - Connect the vNICs to the virtual switch for management, which links to your physical network.
 - Set an IP address for the vNICs during deployment.
-- Use their interfaces for tasks such as, bootstrapping, troubleshooting, operations, and regular use through the portal or CLI.
+- Use their interfaces for tasks such as bootstrapping, troubleshooting, operations, and regular use through the portal or CLI.
   
 :::image type="content" source="./media/disconnected-operations/network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/network/network-overview.png":::
 
@@ -71,12 +71,12 @@ Here's a checklist to help you plan your IP addresses for the disconnected opera
   - Connects to the management intent.
   - Part of the regular network path for the control plane and Azure Local capabilities.
   - Needs DNS resolution to the desired Fully Qualified Domain Name (FQDN).
-  - Must be in the same subnet as the Azure Local instance, but outside the reserved range used for instance deployment.
+  - Must be in the same subnet as the Azure Local instance, but outside the reserved range used for the instance deployment.
 
 - **Management IP**:
   - Connects to management intent.
   - Any valid, unused IP on the local network.
-  - Ensure reachability, if accessing lower management Application Programming Interfaces (APIs) from outside the cluster.
+  - Ensure reachability if accessing lower management Application Programming Interfaces (APIs) from outside the cluster.
 
 ### Plan DNS and public key infrastructure (PKI)  
 

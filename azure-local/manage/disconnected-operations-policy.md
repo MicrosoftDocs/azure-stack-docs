@@ -33,7 +33,7 @@ With Azure Policy in a disconnected Azure Local environment, you can:
 
 ## Prerequisites
 
-- You've access to a Azure Local with Azure Local disconnected operations deployed.
+- You've access to an Azure Local instance with Azure Local disconnected operations deployed.
 - Review the built-in policies.
 - Identify a policy definition you want to assign.
 
@@ -45,7 +45,7 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
 ### Set up the Basics
 
-1. Sign in to [the portal](../index.yml) and navigate to **Policy**.
+1. Sign in to the Azure Local portal and navigate to **Policy**.
 
     :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page" lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 

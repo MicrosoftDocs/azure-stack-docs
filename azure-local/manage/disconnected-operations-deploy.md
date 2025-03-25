@@ -23,7 +23,7 @@ When deploying Azure Local with disconnected operations, consider the following 
 - The deployment of the Azure Local cluster may take several hours.
 - The local control plane may experience periods of downtime during node reboots and updates.
 - During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. It's important not to tamper with or delete the infrastructure volumes created by the deployment process.
-- Upon the creation of the Azure Local cluster, the disconnected operations virtual machine appliance is moved to cluster storage and converted to a clustered VM.
+- Upon the creation of the Azure Local cluster, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
 
@@ -658,6 +658,6 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 - To find logs from the **OperationsModule** on the first machine, go to `C:\ProgramData\Microsoft\AzureLocalDisconnectedOperations\Logs`.
 
-- To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services reporting 100, you need to open a support ticket from the Azure portal.
+- To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, you need to open a support ticket from the Azure portal.
 
 ## Related content
