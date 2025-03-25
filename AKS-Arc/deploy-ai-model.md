@@ -71,7 +71,7 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    ---
 
-1. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
+2. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
 
    ```azurecli
    kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
@@ -83,7 +83,7 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
    kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
    ```
 
-1. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
+3. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
 
    ```azurecli
    kubectl label node moc-l36c6vu97d5 apps=llm-inference
