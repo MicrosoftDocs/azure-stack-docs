@@ -60,7 +60,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
 
-    If the validation fails with wrong extension version, go to **Install extensions** to get and install the appropriate version of extension.
+    If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
 
     After the extensions are installed successfully, **Add machines** by selecting from the same list of machines and then **Validate selected machines**.
 
