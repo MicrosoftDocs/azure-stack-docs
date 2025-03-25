@@ -99,6 +99,7 @@
       - name: Deploy and configure Workload Identity
         href: workload-identity.md     
     - name: Storage
+      href: concepts-storage.md
       items:
       - name: CSI storage drivers
         items: 
@@ -403,8 +404,6 @@
           href: concepts-node-networking.md
         - name: Kubernetes container networking
           href: concepts-container-networking.md
-    - name: Storage
-      href: concepts-storage.md
     - name: Application availability
       href: app-availability.md
     - name: Scale
