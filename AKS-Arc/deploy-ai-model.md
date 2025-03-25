@@ -55,39 +55,39 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
 ## Add a GPU node pool
 
-1. Before you add a GPU node pool, make sure that Azure Local is enabled with a supported GPU such as A2, T4, or A16, and that the GPU drivers are installed on all the host nodes. To add a GPU node pool, follow these steps:
+Before you add a GPU node pool, make sure that Azure Local is enabled with a supported GPU such as A2, T4, or A16, and that the GPU drivers are installed on all the host nodes. To add a GPU node pool, follow these steps:
 
-   # [Azure portal](#tab/portal)
+### [Azure portal](#tab/portal)
 
-   Sign in to the Azure portal and find your AKS Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
+Sign in to the Azure portal and find your AKS Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
 
-   # [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
-   To create a GPU node pool using Azure CLI, run the following command.
+To create a GPU node pool using Azure CLI, run the following command.
 
-   ```azurecli
-   az aksarc nodepool add --resource-group <Resource_Group_name> --cluster-name <Cluster_Name> --name <Node_Pool_Name> --node-vm-size <GPU_VM_SKU> --node-count 1
-   ```
+```azurecli
+az aksarc nodepool add --resource-group <Resource_Group_name> --cluster-name <Cluster_Name> --name <Node_Pool_Name> --node-vm-size <GPU_VM_SKU> --node-count 1
+```
 
-   ---
+---
 
-1. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
+After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
 
-   # [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
-   ```azurecli
-   kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
-   ```
+```azurecli
+kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
+```
 
-   # [PowerShell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
-   ```powershell
-   kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
-   ```
+```powershell
+kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
+```
 
-   ---
+---
 
-1. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
+Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
 
    ```azurecli
    kubectl label node moc-l36c6vu97d5 apps=llm-inference
