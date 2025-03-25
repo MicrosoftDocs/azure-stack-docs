@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 01/28/2025
+ms.date: 03/25/2025
 ---
 
 # Add a node on Azure Local
@@ -172,6 +172,8 @@ If you experience failures or errors while adding a node, you can capture the ou
     ```powershell
     Add-Server -Rerun
     ```
+
+If you encounter an issue during the add node operation and need help from Microsoft Support, you can follow [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) for steps to collect and send diagnostics to Microsoft. You might need to provide diagnostics logs from the new node that's to be added to the cluster. Make sure you run the `Send-DiagnosticData` cmdlet from the new node.
 
 ## Next steps
 
