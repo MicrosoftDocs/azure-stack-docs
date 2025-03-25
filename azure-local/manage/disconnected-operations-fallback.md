@@ -21,8 +21,6 @@ Use appliance fallback logging to collect and send logs to Microsoft when the Az
 
 ## Prerequisites
 
-Before you begin, make sure you:
-
 - Import the Appliance logging.
 - Ensure access to the logs.
 - Verify permission to run the cmdlets.
