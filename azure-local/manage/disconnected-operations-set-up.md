@@ -31,7 +31,7 @@ After you complete the steps outlined in this document, you should have:
 
 ## Create virtual appliance and download installation files
 
-To create a virtual appliance and download the required files for your on-premises installation, follow these steps from your browser:
+To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
 1. Sign into [the portal](../index.yml) and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
 

@@ -49,7 +49,7 @@ Key features of Azure Container Registry on disconnected operations include:
 
 ## Deploy Azure Container Registry
 
-To deploy an Azure Container Registry on disconnected operations, follow these steps from your browser:
+To deploy an Azure Container Registry on disconnected operations, follow these steps:
 
 1. Sign in to [the portal](../index.yml) and navigate to the **Create a resource** page.
 2. Select **Create a resource** > **Containers** > **Container Registry**.
