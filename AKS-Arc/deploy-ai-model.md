@@ -69,6 +69,8 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
    az aksarc nodepool add --resource-group <Resource_Group_name> --cluster-name <Cluster_Name> --name <Node_Pool_Name> --node-vm-size <GPU_VM_SKU> --node-count 1
    ```
 
+   ---
+
 1. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
 
    ### [Azure CLI](#tab/azurecli)
@@ -82,6 +84,8 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
    ```powershell
    kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
    ```
+
+   ---
 
 1. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
 
@@ -155,7 +159,7 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
 The following table shows the supported GPU models and their corresponding VM SKUs. The GPU model is used to determine the VM SKU when you create a node pool. For more information about the GPU models, see [Supported GPU models](scale-requirements.md#supported-gpu-models).
 
-|                                     |     T4              |     A2 or A16                     |     A2 or A16                       |
+|     Type                            |     T4              |     A2 or A16                     |     A2 or A16                       |
 |-------------------------------------|---------------------|-----------------------------------|-------------------------------------|
 |     Model VM SKU Matrix             |     Standard_NK6    |     Standard_NC4, Standard_NC8    |     Standard_NC32, Standard_NC16    |
 |     phi-2                           |     Y               |     Y                             |     Y                               |
