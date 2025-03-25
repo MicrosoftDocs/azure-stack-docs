@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 01/28/2025
+ms.date: 03/25/2025
 ---
 
 # Repair a node on Azure Local
@@ -189,6 +189,10 @@ If you experience failures or errors while repairing a node, you can capture the
     ```powershell
     Repair-Server -Rerun
     ```
+
+If you encounter an issue during the repair node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send diagnostic logs to Microsoft.
+
+You might need to provide diagnostic logs from the node under repair. Make sure you run the `Send-DiagnosticData` cmdlet from this node.
 
 ## Next steps
 
