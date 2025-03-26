@@ -46,22 +46,22 @@ AKS on Azure Local has a dependency on deploying a supported version of Azure Lo
 
 #### Evaluate if Azure Local is right for you
 
-[Compare Windows Server](/azure-local/concepts/compare-windows-server?) explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
+[Compare Windows Server](/azure-local/concepts/compare-windows-server.md) explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
 #### Uninstall AKS on Windows Server
 
 Before moving to Azure Local, follow these steps to disconnect AKS workload clusters from Azure Arc and then uninstall AKS:
-- Identify all your Arc connected AKS workload clusters, and then [disconnect your AKS workload clusters from Azure Arc](connect-to-arc#disconnect-your-aks-cluster-from-azure-arc.md)
-- Uninstall AKS using [`Uninstall-AksHci`](/azure/aks/aksarc/reference/ps/uninstall-akshci). This will remove all AKS related configurations from Windows server.
+- Identify all your Arc connected AKS workload clusters, and then [disconnect your AKS workload clusters from Azure Arc](connect-to-arc#disconnect-your-aks-cluster-from-azure-arc)
+- Uninstall AKS using [`Uninstall-AksHci`](/azure/aks/aksarc/reference/ps/uninstall-akshci.md). This will remove all AKS related configurations from Windows server.
 
 #### Deploy a supported version of Azure Local
 
-[Deploy Azure Local from Azure portal or an Azure Resource Manager template](/azure/aks/aksarc/reference/ps/uninstall-akshci).
+[Deploy Azure Local from Azure portal or an Azure Resource Manager template](/azure/aks/aksarc/reference/ps/uninstall-akshci.md).
 
 #### Deploy an AKS cluster on Azure Local
 
 - [Review the networking pre-requisites](aks-hci-network-system-requirements.md) for deploying AKS on Azure Local.
-- [Deploy an AKS cluster on Azure Local using Az CLI, Azure portal and ARM templates, etc.](aks-create-clusters-cli).
+- [Deploy an AKS cluster on Azure Local using Az CLI, Azure portal and ARM templates, etc.](aks-create-clusters-cli.md).
 
 
 ### [From Azure Local, version 22H2](#tab/22H2)
@@ -71,21 +71,21 @@ AKS on Azure Local has a dependency on deploying a supported version of Azure Lo
 #### Uninstall AKS on Azure Local, version 22H2
 
 Before upgrading to a supported version of Azure Local, follow these steps to disconnect AKS workload clusters from Azure Arc and then uninstall AKS:
-- Identify all your Arc connected AKS workload clusters, and then [disconnect your AKS workload clusters from Azure Arc](connect-to-arc#disconnect-your-aks-cluster-from-azure-arc.md)
+- Identify all your Arc connected AKS workload clusters, and then [disconnect your AKS workload clusters from Azure Arc](connect-to-arc#disconnect-your-aks-cluster-from-azure-arc)
 - Uninstall AKS using [`Uninstall-AksHci`](/azure/aks/aksarc/reference/ps/uninstall-akshci). This will remove all AKS related configurations from Windows server.
 
 #### Upgrade to a supported version of Azure Local
 
-[Upgrade Azure Local 22H2 to a supported version of Azure Local](/azure-local/upgrade/about-upgrades-23h2).
+[Upgrade Azure Local 22H2 to a supported version of Azure Local](/azure-local/upgrade/about-upgrades-23h2.md).
 
 #### Deploy an AKS cluster on Azure Local
 
 - [Review the networking pre-requisites](aks-hci-network-system-requirements.md) for deploying AKS on Azure Local.
-- [Deploy an AKS cluster on Azure Local using Az CLI, Azure portal and ARM templates, etc.](aks-create-clusters-cli).
+- [Deploy an AKS cluster on Azure Local using Az CLI, Azure portal and ARM templates, etc.](aks-create-clusters-cli.md).
 
    ---
 
 ## Next steps
 
 - [Compare AKS deployment options](https://techcommunity.microsoft.com/blog/azurearcblog/comparing-feature-sets-for-aks-enabled-by-azure-arc-deployment-options/4188163).
-- [Compare Windows Server with Azure Local](/azure-local/concepts/compare-windows-server?)
+- [Compare Windows Server with Azure Local](/azure-local/concepts/compare-windows-server.md)
