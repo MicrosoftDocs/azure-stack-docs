@@ -72,6 +72,8 @@ The following lists the steps for the two options:
 
 ### Deploy with external virtual switch
 
+The parameters for the cmdlet `new-vmswitch` might differ based on your Windows operating system. For more information, see [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch?view=windowsserver2022-ps#-switchtype).
+
 On your physical host computer, run the following PowerShell command to create an external virtual switch:
 
 ```PowerShell
