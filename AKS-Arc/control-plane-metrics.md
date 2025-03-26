@@ -39,13 +39,13 @@ Azure Monitor collects and aggregates important metrics from your AKS Arc runnin
 
 You can either install the extension from the Azure portal or using CLI.
 
-#### Portal
+# [Azure portal](#tab/azureportal)
 
 Go to your Kubernetes instance, then select **Monitoring > Insights > Monitor Settings**.
 
 :::image type="content" source="media/control-plane-metrics/monitor-settings.png" alt-text="Screenshot of portal showing monitor settings." lightbox="media/control-plane-metrics/monitor-settings.png":::
 
-#### CLI
+#### [Azure CLI](#tab/azurecli)
 
 The following command installs the managed Prometheus extension with a default Azure Monitor workspace.
 
@@ -53,7 +53,9 @@ The following command installs the managed Prometheus extension with a default A
 az k8s-extension create --name azuremonitor-metrics --cluster-name &lt;cluster-name&gt; --resource-group &lt;resource-group&gt; --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers.Metrics
 ```
 
-The guidance for the managed Prometheus extension onboarding can also be found [here](/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli#enable-prometheus-and-grafana).
+---
+
+See the [guidance for the managed Prometheus extension onboarding](/azure/azure-monitor/containers/kubernetes-monitoring-enable?tabs=cli#enable-prometheus-and-grafana).
 
 ### Step 2: Verify extension and metrics pod deployment
 
