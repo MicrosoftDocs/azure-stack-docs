@@ -89,6 +89,5 @@ Before upgrading to a supported version of Azure Local, follow these steps to di
 
 ## Next steps
 
-- [Review requirements](./system-requirements.md)
-- [Set upAKS on Azure Local and Windows Server using Windows Admin Center](./create-kubernetes-cluster.md)
-- [Set up an Azure Kubernetes Service host on Azure Local and deploy a workload cluster using PowerShell](./kubernetes-walkthrough-powershell.md)
+- [Compare AKS deployment options](https://techcommunity.microsoft.com/blog/azurearcblog/comparing-feature-sets-for-aks-enabled-by-azure-arc-deployment-options/4188163).
+- [Compare Windows Server with Azure Local](/azure-local/concepts/compare-windows-server?)
