@@ -47,11 +47,11 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
 1. Sign in to the Azure Local portal and navigate to **Policy**.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page" lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
 2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page" lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page." lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
 
 3. Identify the **Scope**, **Policy definition**, and **Assignment name**.
 
@@ -59,7 +59,7 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
 5. Select **Parameters** to proceed to the next step.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions" lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions." lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
 
 ### Set the parameters
 
@@ -67,11 +67,11 @@ You can use Azure Policy to enforce tags on various resources. In this example, 
 
 2. Name your tag and select the **Review + create button**.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name" lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name." lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
 
-After the policy is created, you can't create resource groups without the required tag.
-
-:::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups" lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
+    After the policy is created, you can't create resource groups without the required tag.
+    
+    :::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups." lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 
 ## Supported built-in policies
 

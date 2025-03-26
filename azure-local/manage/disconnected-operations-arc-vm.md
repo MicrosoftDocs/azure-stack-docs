@@ -19,7 +19,7 @@ This article provides you with a brief overview of the Azure Local virtual machi
 
 Azure Local VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to enable self-service VM management and automate deployment.
 
-For more information, see [What is Azure Local VM management](../manage/azure-arc-vm-management-overview.md)?
+For more information, see [What is Azure Local VM management?](../manage/azure-arc-vm-management-overview.md)
 
 ## Supported operating system (OS) versions
 

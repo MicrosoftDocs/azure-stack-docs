@@ -61,7 +61,7 @@ You can use these parameters with the `Copy-DiagnosticData` cmdlet.
     > [!NOTE]
     > The BitLocker recovery key set is required to unlock the mounted VHDs used for log collection. These keys should be retrieved and saved upon successful deployment of the appliance using the BitlockerRecoveryKeys endpoint.
 
-#### Copy from the Azuer Local VMs running disconnected and mount VHDs
+#### Copy from the Azure Local VMs running disconnected and mount VHDs
 
 To copy diagnostic logs from the mounted VHDs to a specified folder nested in the provided `DiagnosticLogPath` location, follow these steps:
 
