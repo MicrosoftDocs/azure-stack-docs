@@ -46,7 +46,9 @@ Here are the main steps that occur when using Site Recovery with an Azure Local:
     1. Replication policy
 1. Once you have created all the resources, prepare infrastructure.
 1. Enable VM replication. Complete the remaining steps for replication in the Azure Site Recovery resource portal and begin replication.
-1. Once the VMs are replicated, you can fail over the VMs and run on Azure. To fail back from Azure, follow the instructions in [Fail back from Azure](/azure/site-recovery/hyper-v-azure-failback).
+1. Once the VMs are replicated, you can fail over the VMs and run on Azure.
+
+To fail back from Azure, follow the instructions in [Fail back from Azure](/azure/site-recovery/hyper-v-azure-failback).
 
 ## Supported scenarios
 
