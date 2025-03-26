@@ -19,7 +19,7 @@ This article provides you with a brief overview of the Azure Local virtual machi
 
 Azure Local VM management lets you set up and manage VMs in your on-premises Azure Local environment. IT admins can use Azure management tools to enable self-service VM management and automate deployment.
 
-For more information, see [What is Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
+For more information, see [What is Azure Local VM management?](../manage/azure-arc-vm-management-overview.md)
 
 ## Supported operating system (OS) versions
 
@@ -196,11 +196,11 @@ Follow these steps to create Azure Local VMs running disconnected operations.
         --enable-agent true
     ```
 
-## Manage Arc VMs and VM resources
+## Manage Azure Local VMs and VM resources
 
-To manage Arc VMs using CLI, see [Arc VMs using the Azure CLI](/azure/azure-local/manage/manage-arc-virtual-machines?view=azloc-24112&tabs=windows&preserve-view=true). To verify the status of the VM, see [Status of the VM](../manage/manage-arc-virtual-machines.md#status-displayed-as-connecting).
+To manage Azure Local VMs using CLI, see [Azure Local VMs using the Azure CLI](/azure/azure-local/manage/manage-arc-virtual-machines?view=azloc-24112&tabs=windows&preserve-view=true). To verify the status of the VM, see [Status of the VM](../manage/manage-arc-virtual-machines.md#status-displayed-as-connecting).
 
-For Arc VM resources:
+For Azure Local VM resources:
 
 - If you remove a data disk interface used by a VM, the command doesn't fail as expected. Instead, it deletes the data disk interface and results in an incorrect provisioning state as **Failed**.
 

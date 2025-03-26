@@ -33,7 +33,45 @@ With Azure Policy in a disconnected Azure Local environment, you can:
 
 ## Prerequisites
 
-Create a policy assignment before you create resources. This order ensures the resources are checked for compliance.
+- You've access to an Azure Local instance with Azure Local disconnected operations deployed.
+- Review the built-in policies.
+- Identify a policy definition you want to assign.
+
+For more information, see [Supported built-in policies](#supported-built-in-policies).
+
+## Enable Azure Policy
+
+You can use Azure Policy to enforce tags on various resources. In this example, we've used a built-in policy that enforces tags on resource groups. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps:
+
+### Set up the Basics
+
+1. Sign in to the Azure Local portal and navigate to **Policy**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
+
+2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page." lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
+
+3. Identify the **Scope**, **Policy definition**, and **Assignment name**.
+
+4. Toggle the **Policy enforcement** to **Enabled**.
+
+5. Select **Parameters** to proceed to the next step.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions." lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
+
+### Set the parameters
+
+1. In the **Parameters** section, provide the required **Tag name**.
+
+2. Name your tag and select the **Review + create button**.
+
+    :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name." lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
+
+    After the policy is created, you can't create resource groups without the required tag.
+    
+    :::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups." lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 
 ## Supported built-in policies
 
@@ -41,7 +79,7 @@ The following table summarizes the built-in policies supported for Azure Local d
 
 | Policy name | Description | Azure documentation link |
 |--|--|--|
-|Category: Tags |  |  |
+|**Category: Tags** |  |  |
 | Add or replace a tag on resources. | - Adds or replaces the specified tag and value when any resource is created or updated.<br>- Existing resources can be remediated by triggering a remediation task.<br>- Doesn't modify tags on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Add or replace a tag on resource groups. | - Adds or replaces the specified tag and value when any resource group is created or updated.<br>- Existing resource groups can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Add or replace a tag on subscriptions. | - Adds or replaces the specified tag and value on subscriptions via a remediation task.<br>- Existing resource groups can be remediated by triggering a remediation task. For more information, see [Azure Policy remediation](https://aka.ms/azurepolicyremediation). | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
@@ -58,51 +96,17 @@ The following table summarizes the built-in policies supported for Azure Local d
 | Require a tag on resources | Enforces existence of a tag. Doesn't apply to resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag and its value on resource groups. | Enforces a required tag and its value on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Require a tag on resource groups. | Enforces existence of a tag on resource groups. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
-| Category: Azure Kubernetes Service |  |  |
+| **Category: Azure Kubernetes Service** |  |  |
 | Kubernetes cluster containers CPU and memory resource limits shouldn't exceed the specified limits. | - Enforce container CPU and memory resource limits to prevent resource exhaustion attacks in a Kubernetes cluster.<br>- This policy is generally available for Kubernetes Service (AKS), and preview for Azure Arc enabled Kubernetes.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster containers should only use allowed images. | - Use images from trusted registries to reduce the Kubernetes cluster's exposure risk to unknown vulnerabilities, security issues, and malicious images.<br>- For more information, see [Azure Kubernetes Service policy](https://aka.ms/kubepolicydoc). | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
 | Kubernetes cluster pod hostPath volumes should only use allowed host paths. | - Limit pod HostPath volume mounts to the allowed host paths in a Kubernetes Cluster.<br>- This policy is generally available for Azure Kubernetes Service (AKS), and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc. | [Azure Policy built-in definitions for Azure Kubernetes Service](/azure/aks/policy-reference) |
-| Category: Guest configuration |  |  |
+| **Category: Guest configuration** |  |  |
 | Configure Linux Server to disable local users. | - Creates a Guest Configuration assignment to configure disabling local users on Linux Server.<br>- This policy ensures that only a Microsoft Entra account or a list of explicitly allowed users can access Linux servers, improving overall security posture. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure secure communication protocols, Transport Layer Security (TLS) 1.2, or TLS 1.3 on Windows servers. | - Creates a Guest Configuration assignment to configure specified secure protocol version (TLS 1.2 or TLS 1.3) on Windows machine.|  [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Configure time zone on Windows machines. | This policy creates a Guest Configuration assignment to set specified time zone on Windows virtual machines. | [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference) |
 | Requires resources to not have a specific tag. |     |    |
 | Inherit a tag from the subscription. | - Adds or replaces the specified tag and value from the subscription when you create or update any resource.<br>- Existing resources can be remediated by triggering a remediation task. | [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies) |
 | Windows web servers should be configured to use secure communication protocols. |    |    |
-
-## Enable Azure Policy
-
-You can use Azure Policy to enforce tags on resource groups created through disconnected operations. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps using the Azure Local portal:
-
-### Set up the Basics
-
-1. Sign in to [the portal](../index.yml) and navigate to **Policy**.
-
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page" lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
-
-2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
-
-    :::image type="content" source="media/disconnected-operations/azure-policy/assign-policy.png" alt-text="Screenshot of the authoring and assignments page" lightbox="media/disconnected-operations/azure-policy/assign-policy.png":::
-
-3. Identify the **Scope**, **Policy definition**, and **Assignment name**.
-
-4. Toggle the **Policy enforcement** to **Enabled**.
-
-5. Select **Parameters** to proceed to the next step.
-
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-definitions.png" alt-text="Screenshot of the Assign policy basics and available policy definitions" lightbox="media/disconnected-operations/azure-policy/policy-definitions.png":::
-
-### Set the parameters
-
-1. In the **Parameters** section, provide the required **Tag name**.
-
-2. Name your tag and select the **Review + create button**.
-
-    :::image type="content" source="media/disconnected-operations/azure-policy/tag-name.png" alt-text="Screenshot of the parameters page to set a tag name" lightbox="media/disconnected-operations/azure-policy/tag-name.png":::
-
-After the policy is created, you can't create resource groups without the required tag.
-
-:::image type="content" source="media/disconnected-operations/azure-policy/created-tag.png" alt-text="Screenshot of the tag created and required for resource groups" lightbox="media/disconnected-operations/azure-policy/created-tag.png":::
 
 ## Unsupported features
 

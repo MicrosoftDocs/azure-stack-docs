@@ -43,7 +43,7 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 
 ## Create an AKS cluster
 
-To create an AKS cluster that supports disconnected operations [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
+To create an AKS cluster that supports disconnected operations, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster) and [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Use the following specifications for disconnected operations:
 
@@ -91,6 +91,8 @@ For more information, see [Create logical networks](/azure/aks/aksarc/aks-networ
 
 ### Create the cluster
 
+To create the AKS cluster, we use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). To use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
+
 Use the az aksarc create cmdlet to create a Kubernetes cluster.
 
 ```azurecli
@@ -100,7 +102,7 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
 
-For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
+For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
