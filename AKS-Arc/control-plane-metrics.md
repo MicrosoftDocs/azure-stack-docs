@@ -41,13 +41,13 @@ You can either install the extension from the Azure portal or using CLI.
 
 # [Azure portal](#tab/azureportal)
 
-Go to your Kubernetes instance, then select **Monitoring > Insights > Monitor Settings**.
+Go to your Kubernetes instance, then select **Monitoring > Insights > Monitor Settings**:
 
 :::image type="content" source="media/control-plane-metrics/monitor-settings.png" alt-text="Screenshot of portal showing monitor settings." lightbox="media/control-plane-metrics/monitor-settings.png":::
 
 #### [Azure CLI](#tab/azurecli)
 
-The following command installs the managed Prometheus extension with a default Azure Monitor workspace.
+The following command installs the managed Prometheus extension with a default Azure Monitor workspace:
 
 ```azurecli
 az k8s-extension create --name azuremonitor-metrics --cluster-name &lt;cluster-name&gt; --resource-group &lt;resource-group&gt; --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers.Metrics
@@ -82,7 +82,7 @@ ama-logs-rs-86bc9dd898-4p7pv 2/2 Running 0 5h29m
 
 ## Enable control plane metrics with custom configurations
 
-After enabling the extension, you can view Prometheus Metrics from [targets scraped by default](/azure/azure-monitor/containers/prometheus-metrics-scrape-default#targets-scraped-by-default) in the Azure Monitor workspace. The [default ON targets](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration-minimal#minimal-ingestion-for-default-on-targets) include kubelet, kube-state-metrics, node-exporter, etc. To get started with kubelet metrics, use the PromQL below:
+After you enable the extension, you can view Prometheus Metrics from [targets scraped by default](/azure/azure-monitor/containers/prometheus-metrics-scrape-default#targets-scraped-by-default) in the Azure Monitor workspace. The [default ON targets](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration-minimal#minimal-ingestion-for-default-on-targets) include kubelet, kube-state-metrics, node-exporter, etc. To get started with kubelet metrics, use the PromQL below:
 
 ```bash
 kubelet_running_pods{cluster="<cluster_name>", instance="<instance_name>", job="kubelet"}
