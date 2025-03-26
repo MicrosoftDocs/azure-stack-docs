@@ -1,6 +1,6 @@
 ---
-title: Retirement of AKS' architecture on Windows Server 2019, Windows Server 2022 and Azure Local, version 22H2
-description: Learn about retirement of AKS on Windows Server 2019, Windows Server 2022 and Azure Local, version 22H2
+title: Retirement of AKS' architecture on Windows Server 2019 and Windows Server 2022
+description: Learn about retirement of AKS on Windows Server 2019 and Windows Server 2022
 ms.topic: how-to
 ms.custom: linux-related-content
 author: sethmanheim
@@ -11,9 +11,7 @@ ms.date: 03/26/2025
 # Keyword: retirement
 ---
 
-# Announcing the 3-year retirement of AKS on Windows Server and Azure Local, version 22H2
-
-[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]).
+# Announcing the 3-year retirement of AKS on Windows Server's current architecture
 
 AKS enabled by Azure Arc uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, Azure Resource Manager, Bicep and Terraform templates to create and manage your Kubernetes clusters running on Azure Local. Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, **we will be retiring the current architecture of AKS on Windows Server 2019 and AKS on Windows Server 2022 in 3-years time, on March 27, 2028**
 
