@@ -23,10 +23,10 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2503
 
-This software release maps to software version number **2503.0.9**.
+This software release maps to software version number **2503.0.11**.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **2503.0.9** build. You can also update from 2411.3.
+> The new deployments of this software use the **2503.0.11** build. You can also update from 2411.3.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
