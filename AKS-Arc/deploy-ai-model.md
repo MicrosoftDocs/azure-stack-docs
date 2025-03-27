@@ -61,6 +61,8 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    Sign in to the Azure portal and find your AKS Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
 
+   :::image type="content" source="media/deploy-ai-model/add-gpu-node-pool.png" alt-text="Screenshot of portal showing add GPU node pool." lightbox="media/deploy-ai-model/add-gpu-node-pool.png":::
+
    ### [Azure CLI](#tab/azurecli)
 
    To create a GPU node pool using Azure CLI, run the following command.
