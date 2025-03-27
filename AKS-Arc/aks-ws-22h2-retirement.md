@@ -28,7 +28,6 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Support for NVIDIA T4**: Create Linux node pools in new VM sizes with GPU NVIDIA T4.
 - **K8s Audit Logs**: Export audit logs and other control plane logs to one or more destinations.
 - **Improved certificate management**: Shut down AKS Arc clusters for up to 7 days without any certificate expiration issues. Automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
-- **Pricing**: AKS is now included in Azure Local pricing, effective January 2025. This means that you only need to pay for Azure Local. There are no separate costs for running AKS clusters, including Linux and Windows node pools.
 
 ## If you're using Azure Kubernetes Service on Windows Server 2019 or Windows Server 2022:
 
