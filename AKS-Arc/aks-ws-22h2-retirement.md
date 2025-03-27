@@ -77,7 +77,7 @@ Before you upgrade to a supported version of Azure Local, follow these steps to 
 
 #### Upgrade to a supported version of Azure Local
 
-[Upgrade Azure Local 22H2 to a supported version of Azure Local](/azure/azure-local/upgrade/about-upgrades-23h2.md).
+[Upgrade Azure Local 22H2 to a supported version of Azure Local](/azure/azure-local/upgrade/about-upgrades-23h2).
 
 #### Deploy an AKS cluster on Azure Local
 
@@ -89,4 +89,4 @@ Before you upgrade to a supported version of Azure Local, follow these steps to 
 ## Next steps
 
 - [Compare AKS deployment options](https://techcommunity.microsoft.com/blog/azurearcblog/comparing-feature-sets-for-aks-enabled-by-azure-arc-deployment-options/4188163).
-- [Compare Windows Server with Azure Local](/azure/azure-local/concepts/compare-windows-server.md)
+- [Compare Windows Server with Azure Local](/azure/azure-local/concepts/compare-windows-server)
