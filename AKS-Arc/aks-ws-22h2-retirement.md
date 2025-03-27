@@ -57,7 +57,7 @@ Before you move to Azure Local, follow these steps to disconnect AKS workload cl
 
 #### Deploy a supported version of Azure Local
 
-[Deploy Azure Local from Azure portal or an Azure Resource Manager template](/azure/aks/aksarc/reference/ps/uninstall-akshci).
+[Deploy Azure Local from Azure portal or an Azure Resource Manager template](/azure/azure-local/deploy/deployment-introduction).
 
 #### Deploy an AKS cluster on Azure Local
 
