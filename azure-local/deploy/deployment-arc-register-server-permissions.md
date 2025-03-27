@@ -52,6 +52,9 @@ Before you begin, make sure you've completed the following prerequisites:
     - The Azure policies aren't blocking the creation of certain resource types in a resource group.
     - The Azure policies aren't blocking the resource deployment in certain locations.
 
+> [!IMPORTANT]
+> Azure Express Route and Azure Private Link are not supported for Azure Local or any of its components as it is not possible to access the public endpoints required for Azure Local.
+
 ## Register machines with Azure Arc
 
 > [!IMPORTANT]
