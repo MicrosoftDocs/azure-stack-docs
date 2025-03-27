@@ -48,7 +48,7 @@ You must have an Azure subscription to use the Azure portal.
 
 If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Microsoft Graph module for Windows PowerShell instead.
 
-1. Install the Microsoft Microsoft Graph PowerShell SDK for Windows PowerShell with these steps:
+1. Install the Microsoft Graph PowerShell SDK for Windows PowerShell with these steps:
 
    - Open an elevated Windows PowerShell command prompt (run Windows PowerShell as admin).
    - Run the **Install-Module Microsoft.Graph** command.
