@@ -333,6 +333,8 @@
         href: vnet.yml
 - name: AKS on Windows Server
   items:
+  - name: AKS on Windows Server retirement
+    href: aks-windows-server-retirement.md
   - name: Overview
     href: overview.md
   - name: System requirements
