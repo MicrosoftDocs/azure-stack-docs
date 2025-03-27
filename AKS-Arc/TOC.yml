@@ -9,6 +9,8 @@
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
+  - name: AKS on Windows Server 22H2 retirement
+    href: aks-ws-22h2-retirement.md
   - name: Blogs and announcements
     href: blogs-announcements.md
 - name: AKS on Azure Local, version 23H2
