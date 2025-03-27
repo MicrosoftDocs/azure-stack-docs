@@ -37,7 +37,7 @@ Azure Monitor collects and aggregates important metrics from your AKS Arc runnin
 
 ### Step 1: Install the managed Prometheus extension
 
-You can either install the extension from the Azure portal or using CLI.
+You can install the extension either from the Azure portal, or using CLI.
 
 # [Azure portal](#tab/azureportal)
 
@@ -50,7 +50,7 @@ Go to your Kubernetes instance, then select **Monitoring > Insights > Monitor Se
 The following command installs the managed Prometheus extension with a default Azure Monitor workspace:
 
 ```azurecli
-az k8s-extension create --name azuremonitor-metrics --cluster-name &lt;cluster-name&gt; --resource-group &lt;resource-group&gt; --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers.Metrics
+az k8s-extension create --name azuremonitor-metrics --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers.Metrics
 ```
 
 ---
@@ -80,7 +80,7 @@ ama-logs-rs-86bc9dd898-4p7pv 2/2 Running 0 5h29m
 ….
 ```
 
-## Enable control plane metrics with custom configurations
+## Enable control plane metrics with custom configuration
 
 After you enable the extension, you can view Prometheus Metrics from [targets scraped by default](/azure/azure-monitor/containers/prometheus-metrics-scrape-default#targets-scraped-by-default) in the Azure Monitor workspace. The [default ON targets](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration-minimal#minimal-ingestion-for-default-on-targets) include kubelet, kube-state-metrics, node-exporter, etc. To get started with kubelet metrics, use the PromQL below:
 
@@ -90,7 +90,7 @@ kubelet_running_pods{cluster="<cluster_name>", instance="<instance_name>", job="
 
 :::image type="content" source="media/control-plane-metrics/metrics.png" alt-text="Screenshot showing metrics query." lightbox="media/control-plane-metrics/metrics.png":::
 
-To view control plane metrics such as APIServer, ETCD, you need to customize the scraping of Prometheus metrics by applying the config maps to your cluster. The metrics pods pick up the config maps and pods restart in 2-3 minutes. Follow these steps to enable.
+To view control plane metrics such as APIServer and ETCD, you can customize the scraping of Prometheus metrics by applying the config maps to your cluster. The metrics pods pick up the config maps and pods restart in 2-3 minutes. Follow these steps to enable.
 
 ### Step 1: connect to Kubernetes
 
@@ -107,7 +107,7 @@ Managed Prometheus uses an [agent-based solution](https://github.com/Azure/prome
 
 ### Step 3: apply custom configuration files
 
-Run the following commands to apply the changes, then wait for several minutes for the metrics pods to restart.
+Run the following commands to apply the changes, then wait several minutes for the metrics pods to restart.
 
 ```bash
 kubectl apply -f ama-metrics-settings-configmap.yaml
@@ -134,13 +134,13 @@ Metrics Explorer is convenient for metrics validation. To operationalize Kuberne
 
 :::image type="content" source="media/control-plane-metrics/dashboards.png" alt-text="Screenshot showing metrics dashboard." lightbox="media/control-plane-metrics/dashboards.png":::
 
-### Step 3: View metrics in the dashboard
+### Step 3: view metrics in the dashboard
 
 Ensure that the data source and cluster names are correct. You can view the metrics in Grafana and customize them as needed.
 
 :::image type="content" source="media/control-plane-metrics/metrics-status.png" alt-text="Screenshot showing control plance metrics status." lightbox="media/control-plane-metrics/metrics-status.png":::
 
-## Next Steps
+## Next steps
 
 - [AKS Arc monitoring data reference](kubernetes-monitor-metrics.md)
 - [Prometheus scrape configuration](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration)
