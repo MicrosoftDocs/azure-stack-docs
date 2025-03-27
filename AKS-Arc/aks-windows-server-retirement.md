@@ -1,6 +1,6 @@
 ---
 title: Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022
-description: Learn about retirement of AKS on Windows Server 2019 and Windows Server 2022
+description: Learn about retirement of AKS on Windows Server 2019 and Windows Server 2022.
 ms.topic: how-to
 ms.custom: linux-related-content
 author: sethmanheim
