@@ -39,9 +39,9 @@ Consider the following limitations when using the GPU-P feature:
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
 
-## Attach a GPU during Arc VM creation
+## Attach a GPU during Azure Local VM creation
 
 Follow the steps outlined in [Create Azure Local virtual machines](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
 
