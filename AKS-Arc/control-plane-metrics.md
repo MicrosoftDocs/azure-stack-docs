@@ -138,7 +138,7 @@ Metrics Explorer is convenient for metrics validation. To operationalize Kuberne
 
 Ensure that the data source and cluster names are correct. You can view the metrics in Grafana and customize them as needed.
 
-:::image type="content" source="media/control-plane-metrics/metrics-status.png" alt-text="Screenshot showing control plance metrics status." lightbox="media/control-plane-metrics/metrics-status.png":::
+:::image type="content" source="media/control-plane-metrics/metrics-status.png" alt-text="Screenshot showing control plane metrics status." lightbox="media/control-plane-metrics/metrics-status.png":::
 
 ## Next steps
 
