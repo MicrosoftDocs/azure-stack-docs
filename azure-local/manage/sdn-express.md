@@ -185,6 +185,11 @@ Here's how Hyper-V Network Virtualization (HNV) Provider logical network allocat
 
 The SDN Express script deploys your specified SDN infrastructure. When the script is complete, your SDN infrastructure is ready to be used for VM workload deployments.
 
+Running the command requires the use of Hyper-v modules.
+```PowerShell
+add-windowsfeature rsat-hyper-v-tools
+```
+
 1. Review the `README.md` file for late-breaking information on how to run the deployment script.  
 
 1. Run the following command from a user account with administrative credentials for the cluster host servers:
