@@ -133,6 +133,8 @@
             href: kubernetes-monitor-object-events.md
           - name: Get kubelet logs
             href: aks-get-kubelet-logs.md
+          - name: Monitor control plane metrics
+            href: control-plane-metrics.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Monitor Kubernetes audit events
@@ -331,6 +333,8 @@
         href: vnet.yml
 - name: AKS on Windows Server
   items:
+  - name: AKS on Windows Server retirement
+    href: aks-windows-server-retirement.md
   - name: Overview
     href: overview.md
   - name: System requirements
