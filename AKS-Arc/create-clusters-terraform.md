@@ -62,7 +62,7 @@ az login
 ## Implement the Terraform code
 
 1. Create a directory you can use to test the sample Terraform code, and make it your current directory.
-1. In the same directory, create a file named **providers.tf** and paste the following code:
+1. In the same directory, create a file named **providers.tf** and paste the following code and replace with your subscription ID.
 
    ```terraform
    terraform { 
@@ -79,7 +79,8 @@ az login
      }
     }
   
-    provider "azurerm" { 
+    provider "azurerm" {
+    subscription_id = "<Subscription_ID>"
     features { 
      resource_group { 
       prevent_deletion_if_contains_resources = false 
