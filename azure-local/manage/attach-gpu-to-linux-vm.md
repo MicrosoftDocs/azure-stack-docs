@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 03/21/2025
+ms.date: 03/28/2025
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Local
@@ -55,7 +55,7 @@ This topic provides step-by-step instructions on how to install and configure an
     Get-VMAssignableDevice -VMName Ubuntu
     ```
 
-    Successful assignment of the GPU to the VM that shows this output:
+    Successful assignment of the GPU to the VM shows this output:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="Assign GPU Screenshot." lightbox="media/attach-gpu-to-linux-vm/assign-gpu.png":::
 
@@ -160,7 +160,7 @@ This topic provides step-by-step instructions on how to install and configure an
 
 ## Configure Azure IoT Edge
 
-To prepare for this configuration, please review the FAQ contained in the [NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) GitHub repo, which explains the need to install Docker instead of Moby. After reviewing, proceed using the steps.
+To prepare for this configuration, please review the FAQ contained in the [NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) GitHub repo, which explains the need to install Docker instead of Moby. After reviewing, proceed to the next steps.
 
 ### Install NVIDIA Docker
 

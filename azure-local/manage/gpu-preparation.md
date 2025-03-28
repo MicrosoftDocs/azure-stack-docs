@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/17/2025
+ms.date: 03/28/2025
 ms.service: azure-local
 ---
 
@@ -12,7 +12,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Azure Local virtual machines (VMs) enabled by Azure Arc and Azure Kubernetes Service (AKS) enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
+This article describes how to prepare graphical processing units (GPUs) on your Azure Local instance for computation-intensive workloads running on Azure Local VMs enabled by Azure Arc and Azure Kubernetes Service (AKS) enabled by Azure Arc. GPUs are used for computation-intensive workloads such as machine learning and deep learning.
 
 
 ## Attaching GPUs on Azure Local

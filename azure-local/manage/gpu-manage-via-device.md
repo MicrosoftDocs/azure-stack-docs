@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/21/2025
+ms.date: 03/28/2025
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU DDA with Azure Local virtual machines (VMs) enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
+This article describes how to manage GPU DDA with Azure Local VMs enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 Discrete Device Assignment (DDA) allows you to dedicate a physical graphical processing unit (GPU) to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.
 
