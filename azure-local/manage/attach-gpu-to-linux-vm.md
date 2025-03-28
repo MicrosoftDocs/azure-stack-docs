@@ -55,7 +55,7 @@ This topic provides step-by-step instructions on how to install and configure an
     Get-VMAssignableDevice -VMName Ubuntu
     ```
 
-    Successful assignment of the GPU to the VM shows this output:
+    Here's an output from the successful assignment of the GPU to the VM:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="Assign GPU Screenshot." lightbox="media/attach-gpu-to-linux-vm/assign-gpu.png":::
 
@@ -69,11 +69,11 @@ This topic provides step-by-step instructions on how to install and configure an
     Set-VM -LowMemoryMappedIoSpace 3Gb -VMName VMName
 
     # Configure greater than 32 bit MMIO space
-    Set-VM -HighMemoryMappedIoSpace 33280 Mb -VMName VMName
+    Set-VM -HighMemoryMappedIoSpace 33280Mb -VMName VMName
    ```
 
    > [!NOTE]
-   > The Value 33280Mb should suffice for most GPUs, but should be replaced with a value greater than your GPU memory.
+   > The value `33280Mb` should suffice for most GPUs, but should be replaced with a value greater than your GPU memory.
 
 5. Using Hyper-V Manager, connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
 
@@ -196,7 +196,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
     ```
 
-    Successful installation looks like the output in the screenshot:
+    Here's an output from a successful installation:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/docker.png" alt-text="Successful Docker Install Screenshot." lightbox="media/attach-gpu-to-linux-vm/docker.png":::
 
@@ -498,7 +498,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     }
     ```
 
-18. Click **Review and Create**, and on the next page click **Create**. You should now see the three modules listed for your IoT Edge device in the Azure portal:
+18. Select **Review and Create**, and on the next page click **Create**. You should now see the three modules listed for your IoT Edge device in the Azure portal:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="Modules and IoT Edge Hub Connections Screenshot." lightbox="media/attach-gpu-to-linux-vm/edge-hub-connections.png":::
 
@@ -517,7 +517,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png" alt-text="nvidia-smi screenshot." lightbox="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png":::
  
     > [!NOTE]
-    > It takes a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command "journalctl -u iotedge --no-pager --no-full" to look at the iotedge daemon logs.
+    > It takes a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command `journalctl -u iotedge --no-pager --no-full` to look at the iotedge daemon logs.
 
 20. Confirm that the NvdiaDeepStreem Container is operational. The command output in the screenshots indicates success.
 
