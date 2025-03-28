@@ -3,10 +3,11 @@ title: Kubernetes cluster architecture for AKS enabled by Azure Arc
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 06/24/2024
-ms.reviewer: daschott
+ms.date: 03/28/2025
+ms.reviewer: abha
+ms.lastreviewed: 03/28/2025
 ms.topic: conceptual
-ms.date: 05/16/2022
+
 
 # Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Azure Arc.
 # Keyword: Kubernetes cluster architecture
@@ -17,7 +18,7 @@ ms.date: 05/16/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) on Azure Local and Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Local. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and life cycle management experience.
+Azure Kubernetes Service (AKS) on Windows Server is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and life cycle management experience.
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
@@ -37,7 +38,7 @@ An Azure Kubernetes Service cluster has the following components:
 - **Management cluster** (also known as the AKS host) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - **Workload clusters** (also known as target clusters) are where containerized applications are deployed.
 
-:::image type="content" source="media/kubernetes-concepts/hci-architecture.png" alt-text="Illustration showing the technical architecture of Azure Kubernetes Service on Azure Local and Windows Server." lightbox="media/kubernetes-concepts/hci-architecture.png":::
+:::image type="content" source="media/kubernetes-concepts/hci-architecture.png" alt-text="Illustration showing the technical architecture of Azure Kubernetes Service on Windows Server." lightbox="media/kubernetes-concepts/hci-architecture.png":::
 
 ## Manage AKS enabled by Arc
 
