@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/28/2025
+ms.date: 03/30/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -192,10 +192,6 @@ If the deployment fails, you should see an error message on the deployments page
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
 
-**Workaround**: The failed resource on the Deployment details page specifies the role assignment name. If the resource name is **AzureStackHCIDeviceManagementRole-RoleAssignment** then role assignment failed for the **Azure Stack HCI Device Management Role**. Note this role name and go to **Resource Group > Access Control (IAM) > Role Assignments**. Search for the corresponding name and delete the existing role assignments there. Redeploy your template.
-
-:::image type="content" source="./media/deployment-azure-resource-manager-template/workaround-details-2.png" alt-text="Screenshot showing the Details summary page." lightbox="./media/deployment-azure-resource-manager-template/workaround-details-2.png":::
-
 ### Known issues for ARM template deployment
 
 This section contains known issues and workarounds for ARM template deployment.
@@ -204,9 +200,11 @@ This section contains known issues and workarounds for ARM template deployment.
 
 **Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
 
-:::image type="content" source="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png" alt-text="Screenshot showing the role assignment exists message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png":::
+:::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
 
-**Workaround**: Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.
+**Workaround**: The failed resource on the Deployment details page specifies the role assignment name. If the resource name is **AzureStackHCIDeviceManagementRole-RoleAssignment** then role assignment failed for the **Azure Stack HCI Device Management Role**. Note this role name and go to **Resource Group > Access Control (IAM) > Role Assignments**. Search for the corresponding name and delete the existing role assignments there. Redeploy your template.
+
+:::image type="content" source="./media/deployment-azure-resource-manager-template/workaround-details-2.png" alt-text="Screenshot showing the role assignment name on the Details page." lightbox="./media/deployment-azure-resource-manager-template/workaround-details-2.png":::
 
 #### Tenant ID, application ID, principal ID, and scope aren't allowed to be updated
 
