@@ -12,7 +12,8 @@ ms.date: 03/03/2025
 
 > Applies to: Azure Local 2405.1 and later
 
-<!--[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]-->
+> [!IMPORTANT]
+> Starting 2503 release, local UI is deprecated. If you want to bootstrap your Azure Local machines, you can use the [Configurator App](./deployment-arc-register-configurator-app.md).
 
 This article describes how to use a local web-based UI to bootstrap and register the machines that you intend to cluster as an Azure Local instance.
 
