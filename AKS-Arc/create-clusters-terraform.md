@@ -53,7 +53,7 @@ For more options, you can either follow [Configure SSH keys for an AKS cluster](
 
 ## Sign in to Azure
 
-Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
+Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
 
 ```azurecli
 az login 
@@ -62,7 +62,7 @@ az login
 ## Implement the Terraform code
 
 1. Create a directory you can use to test the sample Terraform code, and make it your current directory.
-1. In the same directory, create a file named **providers.tf** and paste the following code:
+1. In the same directory, create a file named **providers.tf** and paste the following code. Make sure to replace `<subscription_ID>` with your subscription ID:
 
    ```terraform
    terraform { 
@@ -79,7 +79,8 @@ az login
      }
     }
   
-    provider "azurerm" { 
+    provider "azurerm" {
+    subscription_id = "<subscription_ID>"
     features { 
      resource_group { 
       prevent_deletion_if_contains_resources = false 
