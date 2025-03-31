@@ -67,6 +67,8 @@ The following table lists the known issues in this release:
 | Azure Local VMs <!--ADO--> | Unable to delete an Arc VM when one of the nodes are down.| Contact Microsoft Support if this issue occurs.|
 | Azure Local VMs <!--ADO--> | Checkpoints on Azure Local VMs cause sync issues between Azure Local VMs and Portal. | Remove any checkpoints on the VM. |
 | Updates <!--32073115--> | Updating to 2503.0.13 failed `Update PreRequisites` for Role 'MocArb' with exception: `SyntaxWarning: invalid escape sequence '\W' at CheckAndInstall-CliExtensions`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/).  |
+| Security vulnerability <!--32074481--> | There is a known security vulnerability in this release that may affect security scans for the updates. if the update is scanned. For more information, see [Azure Arc Installer vulnerability CVE-2025-26627 - Host](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-26627) |  |
+| Azure Local VMs <!--32074457O--> | There is a known security vulnerability in this release that may affect security scans for the updates. For more information, see [Azure Arc Installer vulnerability CVE-2025-26627 - Guest](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-26627)  |  |
 
 
 ## Known issues from previous releases
