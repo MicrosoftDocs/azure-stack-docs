@@ -42,16 +42,17 @@ You should install the latest patch release of the minor version you're running.
 
 |  K8s minor version | Supported Azure Local versions | Current status | Last release with Kubernetes patch/CVE updates |
 |--------------|-------------------|--------------|------------|
-| 1.30 | TBD | Upcoming | TBD |
-| 1.29 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408) | Generally available | TBD |
-| 1.28 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405) | Generally available | TBD |
-| 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | Generally available | 2411 release |
+| 1.30 | [2503](aks-whats-new-23h2.md#features-and-improvements) | Generally Available | TBD |
+| 1.29 | [2503](aks-whats-new-23h2.md#features-and-improvements), [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408) | Generally available | TBD |
+| 1.28 | [2503](aks-whats-new-23h2.md#features-and-improvements), [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405) | No more patch versions/CVE updates | 2503 release |
+| 1.27 | [2411](aks-whats-new-23h2.md#features-and-improvements), [2408](aks-whats-new-23h2.md#release-2408), [2405](aks-whats-new-23h2.md#release-2405), 2402 | No more patch versions/CVE updates | 2411 release |
 | 1.26 | [2405](aks-whats-new-23h2.md#release-2405), 2402 and older | No more patch versions/CVE updates | 2405 release |
 
 ### AKS Arc supported Kubernetes minor and patch versions per release
 
 | Release             | Supported minor & patch versions                 |
 |---------------------|--------------------------------------------------|
+| 2503                |    |
 | 2411                | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4   |
 | 2408                | 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4   |
 | 2405                | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |
