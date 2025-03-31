@@ -42,6 +42,18 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local, version 23H2.
 
+### Release 2503
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Large VM SKUs for Kubernetes nodepools**: Two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB have been added to support larger nodepools on an AKS cluster. To learn more about supported VM sizes, see [supported scale options](/scale-requirements.md).
+- **Improved diagnosability**: [Diagnostic checker tool](/aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and new test cases have been added.
+- **Improved Kubernetes cluster delete**: Delete issues such as due to [pod disruption budgets](/delete-cluster-pdb?tabs=aks-on-azure-local) have been fixed.
+- **Improved AKS Arc image download**: Issues with AKS Arc image downloads have been fixed.
+- **Improved GPU support**: Error handling is now improved for Kubernetes cluster create with GPU enabled node pools. Known issues with attaching persistent volumes on GPU enabled node pools have been fixed.
+
+To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to the latest version.
+
 ### Release 2411
 
 The following Kubernetes cluster deployment and management capabilities are available:
