@@ -22,16 +22,21 @@ To open a support request, see the [Get support](/azure/aks/hybrid/help-support)
 
 The following sections describe known issues and workarounds for AKS enabled by Azure Arc:
 
-- [Control plane configuration validation errors](control-plane-validation-errors.md)
-- [Connectivity issues with MetalLB](load-balancer-issues.md)
-- [K8sVersionValidation error](cluster-k8s-version.md)
+| AKS Arc CRUD Operation | Issue | Fix Status |
+|------------------------|-------|------------|
+| Kubernetes operation   | [Issues after deleting storage volume](delete-storage-volume.md) | Pending |
+| Create validation      | [Control plane configuration validation errors](control-plane-validation-errors.md) | N/A - this is to help users understand valid inputs. |
+| Create validation      | [K8sVersionValidation error](cluster-k8s-version.md)   | N/A - this is to help users understand valid inputs. |
+| Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md)  | N/A - this is to help users understand networking misconfigurations. |
+| Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md)   | N/A - this is to alert users to upgrade to latest available version. |
+| AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Fixed in 2503 release |
+| AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
+| Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
+| MetalLB Arc extension  | [Connectivity issues with MetalLB](load-balancer-issues.md) | Fixed in 2411 release | 
+
+
+## Tools to diagnose Kubernetes cluster failures
 - [Use diagnostic checker](aks-arc-diagnostic-checker.md)
-- [KubeAPIServer unreachable error](kube-api-server-unreachable.md)
-- [Can't see VM SKUs on Azure portal](check-vm-sku.md)
-- [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md)
-- [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md)
-- [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md)
-- [Issues after deleting storage volume](delete-storage-volume.md)
 
 ## Next steps
 
