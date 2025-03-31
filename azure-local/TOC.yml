@@ -202,8 +202,8 @@ items:
     items:
     - name: Via console
       href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via local UI
-      href: deploy/deployment-arc-register-local-ui.md  
+    - name: Via Configurator app
+      href: deploy/deployment-arc-register-configurator-app.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
