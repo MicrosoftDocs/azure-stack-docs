@@ -52,7 +52,11 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Improved AKS Arc image download**: Issues with AKS Arc image downloads have been fixed.
 - **Improved GPU support**: Error handling is now improved for Kubernetes cluster create with GPU enabled node pools. Known issues with attaching persistent volumes on GPU enabled node pools have been fixed.
 
-To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to the latest version.
+To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
+
+#### Supported Kubernetes versions for 2503
+
+The Kubernetes versions supported in the 2503 release are 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4
 
 ### Release 2411
 
