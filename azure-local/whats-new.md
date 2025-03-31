@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/19/2025
+ms.date: 03/31/2025
 ---
 
 # What's new in Azure Local?
@@ -14,6 +14,35 @@ ms.date: 02/19/2025
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+
+::: moniker range="=azloc-2503"
+
+## Features and improvements in 2503
+
+This is a baseline release with the following features and improvements:
+
+- **Registration and deployment changes**
+  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+  - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
+    - Composed image is now supported for Other Equipment Manufacturers (OEMs).
+    - Several security enhancements were done for the Bootstrap service.
+    - Service Principal Name (SPN) is deprecated for Arc registration.
+    - The Arc installer script is simplified to only use `Start-ArcBootstrap` to register Azure Local machines with Arc.
+  - **Deployment of current version and previous versions**: Starting with this release, you can deploy the current version of Azure Local using the Azure portal. To deploy a previous version, use an Azure Resource Manager template that matches the version you wish to deploy. For more information, see [Deploy via ARM template](./deploy/deployment-azure-resource-manager-template.md).
+- **Environment checker related changes**
+  - Environment checker is now integrated for connectivity tests.
+  - Environment checker validates the composed image used for bootstrap.
+  - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
+- **Updates and upgrade improvements**
+  - The differentiation of SKUs is supported when considering the applicability of a Solution Builder Extension update.
+  - A tag is added to indicate a superseded update.
+  - The Download Service is now used to download HTTP content.
+  - A URL-based platform update package is now supported.
+  - Azure Local rebranding changes were made for Update.
+- **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+
+
+::: moniker-end
 
 ::: moniker range="=azloc-24113"
 
@@ -129,7 +158,7 @@ This is a baseline release with the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24081"
+::: moniker range="=azloc-previous"
 
 
 ## Features and improvements in 2408.1
@@ -163,8 +192,8 @@ For more information, see [Upgrade Azure Local from version 22H2](./upgrade/abou
 
 This release contains the following changes for updates:
 
-- Revised the names and descriptions of update steps. [27635293]
-- Introduced a health fault alert that is raised when there are available updates on the system. [27253002]
+- Revised the names and descriptions of update steps. 
+- Introduced a health fault alert that is raised when there are available updates on the system. 
 
 ### Arc VM management changes
 
@@ -173,7 +202,7 @@ This release contains the following changes for Arc VM management:
 - 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
 - Logical network properties are properly updated. Previously, the logical network sometimes wouldn't have its properties (vLAN, IP Pools, etc.) filled.
-- The vLAN field on a logical network will default to '0' if not specified.
+- The vLAN field on a logical network defaults to '0' if not specified.
 - Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
 For more information, see the [Fixed issues list in 2408](./known-issues.md?view=azloc-2408&preserve-view=true#fixed-issues-5).
