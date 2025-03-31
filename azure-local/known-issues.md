@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/19/2025
+ms.date: 03/31/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -23,10 +23,10 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2503
 
-This software release maps to software version number **2503.0.11**.
+This software release maps to software version number **2503.0.13**.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **2503.0.11** build. You can also update from 2411.3.
+> The new deployments of this software use the **2503.0.13** build. You can also update from 2411.3.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
