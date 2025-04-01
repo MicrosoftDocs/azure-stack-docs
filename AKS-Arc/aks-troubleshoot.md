@@ -32,13 +32,13 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 
 ## Guides to diagnose and troubleshoot Kubernetes CRUD failures
 
-| AKS Arc CRUD Operation | Issue | 
+| AKS Arc operation | Issue | 
 |------------------------|-------|
-| Kubernetes operation   | [Issues after deleting storage volume](delete-storage-volume.md) 
 | Create validation      | [Control plane configuration validation errors](control-plane-validation-errors.md) 
 | Create validation      | [K8sVersionValidation error](cluster-k8s-version.md)   
 | Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md)  
 | Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md)
+| Kubernetes steady state   | [Issues after deleting storage volume](delete-storage-volume.md)
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md)
 
 ## Next steps
