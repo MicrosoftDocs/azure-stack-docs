@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local, version 23H2
 description: Learn about what's new in AKS on Azure Local, version 23H2.
 ms.topic: overview
-ms.date: 11/19/2024
+ms.date: 04/01/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
-ms.lastreviewed: 06/25/2024
+ms.lastreviewed: 04/01/2025
 
 ---
 
@@ -57,7 +57,7 @@ To get started with these features in the 2503 release, make sure to update your
 
 #### Supported Kubernetes versions for 2503
 
-The Kubernetes versions supported in the 2503 release are 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4
+The Kubernetes versions supported in the 2503 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4.
 
 ### Release 2411
 
