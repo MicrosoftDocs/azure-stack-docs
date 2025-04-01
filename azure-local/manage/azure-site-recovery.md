@@ -146,7 +146,7 @@ After the infrastructure preparation is complete, follow these steps to select t
     1. For **Subscription**, enter or select the subscription.
     1. For **Post-failover resource group**, select the resource group name to which you fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
-    1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that is used for the VM’s replication.
+    1. For **Storage**, select the type of Azure storage to which replication will happen. Recommendation is to use managed disk.
 
         :::image type="content" source="media/azure-site-recovery/enable-replication-2.png" alt-text="Screenshot of target environment tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-2.png":::
 
