@@ -3,7 +3,7 @@ title: Create logical networks for Kubernetes clusters on Azure Local, version 2
 description: Learn how to create Arc-enabled logical networks for AKS.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 03/21/2025
+ms.date: 04/01/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
@@ -80,7 +80,7 @@ For static IP, the required parameters are as follows:
 | `--ip-allocation-method`   | The IP address allocation method. Supported values are `Static`. Usage: `--ip-allocation-method "Static"`. |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  |
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  |
-| `--vlan`              | The VLAN ID. Usage: `--vlan 10`. This parameter is required, otherwise the default value of 0 results in an AKS Arc cluster creation failure.  |
+| `--vlan`              | The VLAN ID. Usage: `--vlan 10`. This parameter is optional. Specifies the VLAN ID (an int32 value) to use when creating the logical network.  |
 
 # [Azure portal](#tab/azureportal)
 
