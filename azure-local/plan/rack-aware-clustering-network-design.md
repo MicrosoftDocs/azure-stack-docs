@@ -980,7 +980,7 @@ interface Ethernet1/52
 
 ### Dell switch
 
-:::image type="content" source="media/rack-aware-clustering-network-design/dell-qos.png" alt-text="Diagram showing option B." lightbox="media/rack-aware-clustering-network-design/dell-qos.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/dell-qos.png" alt-text="Diagram showing Dell switch." lightbox="media/rack-aware-clustering-network-design/dell-qos.png":::
 
 Make: Dell
 
@@ -1174,7 +1174,7 @@ system qos
 
 This packet capture shows the ETS values in the LLDP packet. This specific setup is using priority ID 5 vs 7. Packet capture of a LLDP packet with the ETS and PFC configured.
 
-:::image type="content" source="media/rack-aware-clustering-network-design/frame-code.png" alt-text="Diagram showing option B." lightbox="media/rack-aware-clustering-network-design/frame-code.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/frame-code.png" alt-text="Diagram showing packet capture." lightbox="media/rack-aware-clustering-network-design/frame-code.png":::
 
 #### Interface configuration
 

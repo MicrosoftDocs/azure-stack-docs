@@ -22,7 +22,7 @@ This direct connection between racks supports a single storage pool, with Rack A
 
 To support the synchronous replications between racks, a dedicated storage network intent is required to secure the bandwidth and low latency for storage traffic. The required round-trip latency between the two racks should be 1ms or less.
 
-For detailed networking requirements, see [Rack Aware Cluster Networking](rack-aware-cluster-overview.md).
+For detailed networking requirements, see [Rack Aware Clustering network design](rack-aware-clustering-network-design.md).
 
 ## Requirements and supported configurations
 
@@ -84,7 +84,7 @@ When creating a VM to a specific availability zone, the default option is withou
 1. Connect to a machine on your Azure Local instance.
 1. Sign in and set the subscription:
 
-    :::image type="content" source="media/rack-aware-clustering-overview/rack-aware-cluster-vm-sign-in.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-clustering-overview/rack-aware-cluster-vm-sign-in.png":::
+    :::image type="content" source="media/rack-aware-clustering-overview/rack-aware-cluster-vm-sign-in.png" alt-text="Screenshot showing VM sign in." lightbox="media/rack-aware-clustering-overview/rack-aware-cluster-vm-sign-in.png":::
 
 1. Set the parameters:
 
