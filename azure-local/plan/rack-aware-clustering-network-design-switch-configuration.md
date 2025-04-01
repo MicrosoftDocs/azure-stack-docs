@@ -1,6 +1,6 @@
 ---
-title: Network design for Rack Aware Cluster on Azure Local (Preview)
-description: Considerations for a Rack Aware Cluster on Azure Local (Preview).
+title: Network design for Rack Aware Cluster on Azure Local including switch considerations (Preview)
+description: Switch considerations for a Rack Aware Cluster on Azure Local (Preview).
 ms.topic: overview
 author: alkohli
 ms.author: alkohli

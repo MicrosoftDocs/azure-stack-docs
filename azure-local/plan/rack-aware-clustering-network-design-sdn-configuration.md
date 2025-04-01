@@ -1,14 +1,14 @@
 ---
-title: Network design for Rack Aware Cluster on Azure Local (Preview)
-description: Considerations for a Rack Aware Cluster on Azure Local (Preview).
-ms.topic: overview
+title: SDN considerations for network design for Rack Aware Cluster on Azure Local (Preview)
+description: SDN considerations for a Rack Aware Cluster on Azure Local (Preview).
+ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.date: 04/01/2025
 ---
 
-# Network design for Rack Aware Cluster on Azure Local (Preview)
+# SDN considerations for network design of Rack Aware Cluster on Azure Local (Preview)
 
 Applies to: Azure Local 2504 or later
 
