@@ -9,7 +9,7 @@ ms.reviewer: abha
 
 ---
 
-# Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+# Can't create AKS cluster or scale node pool because of issues with AKS Arc VHD image
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
