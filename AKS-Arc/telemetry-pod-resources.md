@@ -9,7 +9,9 @@ ms.reviewer: abha
 
 ---
 
-## AKS Arc telemetry pod is consuming too much memory and CPU
+# AKS Arc telemetry pod is consuming too much memory and CPU
+
+## Symptoms
 
 The **akshci-telemetry** pod in a AKS Arc cluster can over time consume a lot of CPU and memory resources. If metrics are enabled, you can verify the CPU and memory usage using the following `kubectl` command:
 
