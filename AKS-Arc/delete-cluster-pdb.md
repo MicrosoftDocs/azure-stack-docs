@@ -4,7 +4,7 @@ description: Learn how to troubleshoot when deleted workload cluster resources c
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 12/12/2024
+ms.date: 04/01/2025
 ms.reviewer: leslielin
 
 ---
@@ -19,7 +19,7 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 
 This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
 
-If you're on an older build, please update to Azure Local, version 2503. Once you update to 2503, you can retry deleting the AKS cluster. If retry does not work, follow the workaround below. File a support case if the retry does not delete the AKS cluster.
+If you're on an older build, please update to Azure Local, version 2503. Once you update to 2503, you can retry deleting the AKS cluster. If the retry doesn't work, follow this workaround. File a support case if the retry does not delete the AKS cluster.
 
 ## Workaround for AKS Edge Essentials and prior versions of AKS on Azure Local.
 
