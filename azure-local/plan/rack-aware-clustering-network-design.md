@@ -40,7 +40,7 @@ There are a few requirements for the TOR configuration.
 
 #### Aggregated setup (option A)
 
-:::image type="content" source="media/network-design-rack-aware-system/option-a.png" alt-text="Diagram showing aggregated setup for option A." lightbox="media/network-design-rack-aware-system/option-a.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/option-a.png" alt-text="Diagram showing aggregated setup for option A." lightbox="media/rack-aware-clustering-network-design/option-a.png":::
 
 Option A illustrates four TOR switches (TOR1 to TOR4). Each machine is equipped with two physical network cards, totaling four interfaces. One network card utilizes NIC teaming for management (7) and compute (8) network intents, creating an aggregated link with Switch Embedded Teaming (SET). The second network card manages storage intents (711, 712) traffic, with each interface tagged with a single VLAN.
 
@@ -50,7 +50,7 @@ For storage intents, the switch ports have one VLAN tag per interface, whereas t
 > Storage intents are intentionally omitted on certain TOR devices and aren't universally applied. The rack aware cluster follows the standard hyper-converged infrastructure disaggregated network design, where storage interfaces support only one storage Intent per interface. This configuration was tested using Multiple Spanning Tree Protocol (MSTP). Storage VLANs are grouped into one spanning tree group, while non-storage VLANs are in a different STP group. During MSTP configuration, the spine switches needed to include the storage STP group even though they did not support those VLANs.
 
 #### Disaggregated setup (option B)
-:::image type="content" source="media/network-design-rack-aware-system/option-b.png" alt-text="Diagram showing disaggregated setup for option B." lightbox="media/network-design-rack-aware-system/option-b.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/option-b.png" alt-text="Diagram showing disaggregated setup for option B." lightbox="media/rack-aware-clustering-network-design/option-b.png":::
 
 Option B operates similarly to Option A in a disaggregated setup. RDMA storage traffic uses interfaces: 711 (red) and 712 (blue). Key differences are:
 
@@ -90,7 +90,7 @@ In a standard switched disaggregated configuration (option B), the storage and c
 - 8: Compute intent
 - 7: Management intent
 
-:::image type="content" source="media/network-design-rack-aware-system/disaggregated-design.png" alt-text="Diagram switched disaggregated design." lightbox="media/network-design-rack-aware-system/disaggregated-design.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/disaggregated-design.png" alt-text="Diagram switched disaggregated design." lightbox="media/rack-aware-clustering-network-design/disaggregated-design.png":::
 
 *Figure: RDMA traffic doesn't cross between TORs. All NIC 1 traffic is exclusive to all NIC 1 interfaces. Same for NIC 2 interfaces.*
 
@@ -100,7 +100,7 @@ Each machine in the system has two network interfaces: one for storage intent 1 
 
 Here is an example of a TOR1 or TOR3 switch to host interface.
 
-:::image type="content" source="media/network-design-rack-aware-system/switch-host-interface.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/switch-host-interface.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/switch-host-interface.png" alt-text="Diagram showing switch host interface." lightbox="media/rack-aware-clustering-network-design/switch-host-interface.png":::
 
 The configuration is shown for a storage intent switch interface connected to a storage host NIC. This setup applies to both Option A and Option B. The physical link connects to NIC1 on the host, supporting VLAN 711 of TOR1. The switch port is trunked with VLAN tag 711, and a QoS policy matching the host policy is assigned. See the Appendix for specific QoS settings.
 
@@ -167,7 +167,7 @@ The link speed should match a 1:1 ratio, recommended as a bundled set of links b
 
 ### Room-to-room link configuration -  Option A
 
-:::image type="content" source="media/network-design-rack-aware-system/room-to-room-option-a.png" alt-text="Diagram showing room-to-room link configuration Option B.." lightbox="media/network-design-rack-aware-system/room-to-room-option-a.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/room-to-room-option-a.png" alt-text="Diagram showing room-to-room link configuration Option B.." lightbox="media/rack-aware-clustering-network-design/room-to-room-option-a.png":::
 
 The syntax configures TOR1 or TOR3 to link network interfaces into a port channel on a switch. Here's what each part means: 
 
@@ -242,7 +242,7 @@ This configuration is used to create a high-bandwidth, redundant link between tw
 
 ### Room-to-room link configuration - Option B 
 
-:::image type="content" source="media/network-design-rack-aware-system/room-to-room-option-b.png" alt-text="Diagram showing room-to-room link configuration Option B." lightbox="media/network-design-rack-aware-system/room-to-room-option-b.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/room-to-room-option-b.png" alt-text="Diagram showing room-to-room link configuration Option B." lightbox="media/rack-aware-clustering-network-design/room-to-room-option-b.png":::
 
 #### TOR1 VPC configuration 
 
@@ -519,7 +519,7 @@ For QoS examples, see *Cisco switch configuration* and *Dell switch configuratio
 
 ### Software Load Balancing
 
-:::image type="content" source="media/network-design-rack-aware-system/sdn-slb-configuration.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/sdn-slb-configuration.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/sdn-slb-configuration.png" alt-text="Diagram showing software load balancing." lightbox="media/rack-aware-clustering-network-design/sdn-slb-configuration.png":::
 
 The Software Load Balancing (SLB) solution for Azure Local in a rack aware cluster consists of three network layers: spine, TOR, and SLB. In this setup, the spine is a combined Layer 2/Layer 3 BGP router that peers with the SLB. The TOR layer is a simple Layer 2 switch that enables BGP sessions to pass from the SLB to the spine. Each spine is configured with a Dynamic BGP configuration, allowing multiple SLBs to establish BGP sessions with the spines. The SLB uses the spine loopback IP address as the peering IP. In the spine BGP configuration, the update source is set to loopback 0. When the SLB establishes a BGP session with the spine, it advertises the VIP addresses provided by the network controller as host IP addresses. 
 
@@ -622,7 +622,7 @@ hsrp version 2
 
 #### Static SDN gateway
 
-:::image type="content" source="media/network-design-rack-aware-system/static-sdn-gateway.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/static-sdn-gateway.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/static-sdn-gateway.png" alt-text="Diagram showing static SDN gateway." lightbox="media/rack-aware-clustering-network-design/static-sdn-gateway.png":::
 
 ```output
 ip route 10.10.50.0/24 10.68.40.6 name AZLOCAL/VNET/AccntSvc 
@@ -638,7 +638,7 @@ ip route 0.0.0.0/0 10.8.9.2/30 name CoreNet/DefaultRoute
 
 #### Dynamic SDN gateway
 
-:::image type="content" source="media/network-design-rack-aware-system/dynamic-sdn-gateway.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/dynamic-sdn-gateway.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/dynamic-sdn-gateway.png" alt-text="Diagram showing dynamic SDN gateway." lightbox="media/rack-aware-clustering-network-design/dynamic-sdn-gateway.png":::
 
 ```output
 interface loopback0 
@@ -683,13 +683,13 @@ In an AKS configuration, Layer 2 and Layer 3 scenarios are supported. Layer 2 us
 
 #### MetalLB Layer 2
 
-:::image type="content" source="media/network-design-rack-aware-system/load-balancer-l2.png" alt-text="Diagram showing metalLB Layer 2." lightbox="media/network-design-rack-aware-system/load-balancer-l2.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/load-balancer-l2.png" alt-text="Diagram showing metalLB Layer 2." lightbox="media/rack-aware-clustering-network-design/load-balancer-l2.png":::
 
 In a Layer 2 configuration, the AKS load balancer uses ARP in Layer 2 networking to reach the network. The switch/router is a primary gateway for the Azure Local system and provides the Layer 3 services to AKS.  The MetalLB system uses ARP to network allowing its IP address to be reachable.  The IP pool of the MetalLB service is required to be in the same subnet as the Kubernetes K8 nodes.  
 
 #### AKS MetalLB Layer 3
 
-:::image type="content" source="media/network-design-rack-aware-system/load-balancer-bgp.png" alt-text="Diagram showing metalLB Layer 3 BGP." lightbox="media/network-design-rack-aware-system/load-balancer-bgp.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/load-balancer-bgp.png" alt-text="Diagram showing metalLB Layer 3 BGP." lightbox="media/rack-aware-clustering-network-design/load-balancer-bgp.png":::
 
 In a Layer 3 configuration, the switch/router (spine) acts as a BGP router that the Azure Local AKS MetalLB service uses to connect using BGP. The spine enables dynamic BGP as the peering neighbor for the compute intent 10.68.40.0/26. Any IP address used by AKS within the compute intent network can be used if it uses the configured BGP AS number on the spine. In this example, the spine AS number is 64512, with a router ID of Y.Y.5.5. The spine advertises the x.x.40.0/26 compute intent and its loopback 0 networks. In the dynamic BGP configuration the compute intent subnet is specified as the neighbor with the neighbor AS of 65500. It uses update-source loopback 0 and set a `ebgp-multihop` of 3. 
 
@@ -735,19 +735,19 @@ router bgp 64512
 
 ## References
 
-- [Host network requirements for Azure Local](https://learn.microsoft.com/en-us/azure/azure-local/concepts/host-network-requirements?view=azloc-24113)
+- [Host network requirements for Azure Local](../concepts/host-network-requirements.md)
 
-- [Physical network requirements for Azure Local](https://learn.microsoft.com/en-us/azure/azure-local/concepts/physical-network-requirements?view=azloc-24113&tabs=overview%2C23H2reqs)
+- [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md)
 
 - [RDMA over Converged Ethernet (RoCE) on Cisco Nexus 9300](https://aboutnetworks.net/rocev2-on-nexus9k/)
 
-- [What is Software Load Balancer (SLB) for SDN?](https://learn.microsoft.com/en-us/azure/azure-local/concepts/software-load-balancer?view=azloc-24113)
+- [What is Software Load Balancer (SLB) for SDN?](../concepts/software-load-balancer.md)
 
-- [Overview of MetalLB for Kubernetes clusters](https://learn.microsoft.com/en-us/azure/aks/aksarc/load-balancer-overview)
+- [Overview of MetalLB for Kubernetes clusters](/azure/aks/aksarc/load-balancer-overview)
 
-- [Software defined networking (SDN) in Azure Local and Windows Server](https://learn.microsoft.com/en-us/azure/azure-local/concepts/software-defined-networking?view=azloc-24113)
+- [Software defined networking (SDN) in Azure Local and Windows Server](../concepts/software-defined-networking.md)
 
-- [Plan a Software Defined Network infrastructure](https://learn.microsoft.com/en-us/azure/azure-local/concepts/plan-software-defined-networking-infrastructure?view=azloc-24113)
+- [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md)
 
 - [Azure Local Network configuration design with SDN](https://techcommunity.microsoft.com/blog/azurestackblog/azure-stack-hci---network-configuration-design-with-sdn/3817175)
 
@@ -767,7 +767,7 @@ router bgp 64512
 
 ### Cisco switch configuration
 
-:::image type="content" source="media/network-design-rack-aware-system/cisco-qos.png" alt-text="Diagram showing Cicso configuration." lightbox="media/network-design-rack-aware-system/cisco-qos.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/cisco-qos.png" alt-text="Diagram showing Cicso configuration." lightbox="media/rack-aware-clustering-network-design/cisco-qos.png":::
 
 Make: Cisco 
 
@@ -980,7 +980,7 @@ interface Ethernet1/52
 
 ### Dell switch
 
-:::image type="content" source="media/network-design-rack-aware-system/dell-qos.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/dell-qos.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/dell-qos.png" alt-text="Diagram showing option B." lightbox="media/rack-aware-clustering-network-design/dell-qos.png":::
 
 Make: Dell
 
@@ -1174,9 +1174,9 @@ system qos
 
 This packet capture shows the ETS values in the LLDP packet. This specific setup is using priority ID 5 vs 7. Packet capture of a LLDP packet with the ETS and PFC configured.
 
-:::image type="content" source="media/network-design-rack-aware-system/frame-code.png" alt-text="Diagram showing option B." lightbox="media/network-design-rack-aware-system/frame-code.png":::
+:::image type="content" source="media/rack-aware-clustering-network-design/frame-code.png" alt-text="Diagram showing option B." lightbox="media/rack-aware-clustering-network-design/frame-code.png":::
 
-#### Interface configuration 
+#### Interface configuration
 
 ```output
 interface ethernet1/1/18 
