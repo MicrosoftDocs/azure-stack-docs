@@ -48,7 +48,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 - **Large VM SKUs for Kubernetes nodepools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger nodepools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
 - **Improved log collection experience**: Improved log collection for AKS control plane node VMs and nodepool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
-- **Improved diagnosability**: The [Diagnostic checker tool](aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and added new test cases.
+- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and added new test cases.
 - **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
 - **Improved AKS Arc image download**: Fixed issues with AKS Arc image downloads.
 - **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled nodepools. Fixed known issues with attaching persistent volumes on GPU enabled nodepools.
