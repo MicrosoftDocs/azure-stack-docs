@@ -3,9 +3,9 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 02/28/2025
+ms.date: 04/01/2025
 ms.author: sethm 
-ms.lastreviewed: 02/27/2024
+ms.lastreviewed: 04/01/2025
 ms.reviewer: guanghu
 
 ---
@@ -22,7 +22,7 @@ To open a support request, see the [Get support](/azure/aks/hybrid/help-support)
 
 The following sections describe known issues for AKS enabled by Azure Arc:
 
-| AKS Arc CRUD Operation | Issue | Fix Status |
+| AKS Arc CRUD operation | Issue | Fix status |
 |------------------------|-------|------------|
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
 | AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
