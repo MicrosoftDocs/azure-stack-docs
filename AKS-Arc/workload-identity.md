@@ -274,7 +274,9 @@ The following example shows how to use the Azure role-based access control (Azur
 1. Assign the RBAC [Key Vault Secrets Officer](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-officer) role to yourself so that you can create a secret in the new key vault. New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 
    ```azurecli
-   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
+   $CALLER_OBJECT_ID=$(az ad signed-in-user show --query id -o tsv)
+
+   az role assignment create --assignee-object-id $CALLER_OBJECT_ID --role "Key Vault Secrets Officer" --scope $KVId --assignee-principal-type ServicePrincipal
    ```
 
 1. Create a secret in the key vault:
@@ -286,7 +288,9 @@ The following example shows how to use the Azure role-based access control (Azur
 1. Assign the [Key Vault Secrets User](/azure/role-based-access-control/built-in-roles/security#key-vault-secrets-user) role to the user-assigned managed identity that you created previously. This step gives the managed identity permission to read secrets from the key vault:
 
    ```azurecli
-   az role assignment create --assignee-object-id $MSIPrincipalId --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
+   $IDENTITY_PRINCIPAL_ID=$(az identity show --name "$USER_ASSIGNED_IDENTITY_NAME" --resource-group "$resource_group_name" --query principalId --output tsv)
+
+   az role assignment create --assignee-object-id $IDENTITY_PRINCIPAL_ID --role "Key Vault Secrets User" --scope $KVId --assignee-principal-type ServicePrincipal
    ```
 
 1. Create an environment variable for the key vault URL:

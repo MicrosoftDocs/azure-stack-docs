@@ -99,6 +99,7 @@
       - name: Deploy and configure Workload Identity
         href: workload-identity.md     
     - name: Storage
+      href: concepts-storage.md
       items:
       - name: CSI storage drivers
         items: 
@@ -132,6 +133,8 @@
             href: kubernetes-monitor-object-events.md
           - name: Get kubelet logs
             href: aks-get-kubelet-logs.md
+          - name: Monitor control plane metrics
+            href: control-plane-metrics.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Monitor Kubernetes audit events
@@ -144,8 +147,12 @@
             href: kubernetes-monitor-metrics.md
   - name: Troubleshooting
     items:
-    - name: Troubleshoot & known issues
+    - name: Troubleshoot and known issues
       href: aks-troubleshoot.md
+    - name: Control plane configuration validation errors
+      href: control-plane-validation-errors.md
+    - name: Connectivity issues with MetalLB
+      href: load-balancer-issues.md 
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
     - name: Use diagnostic checker
@@ -153,11 +160,15 @@
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
     - name: Can't see VM SKUs on Azure portal
-      href: tsg-check-vm-sku.md
+      href: check-vm-sku.md
     - name: Deleted AKS Arc cluster still visible on Azure portal
       href: deleted-cluster-visible.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
       href: delete-cluster-pdb.md
+    - name: Azure Advisor upgrade recommendation
+      href: azure-advisor-upgrade.md
+    - name: Issues after deleting storage volumes
+      href: delete-storage-volume.md
   - name: Reference
     items:
     - name: Azure CLI
@@ -180,6 +191,8 @@
     href: aks-edge-overview.md
   - name: System requirements and support matrix
     href: aks-edge-system-requirements.md
+  - name: What's new in AKS Edge Essentials
+    href: aks-edge-whats-new.md
   - name: Quickstart
     href: aks-edge-quickstart.md
   - name: Concepts
@@ -214,14 +227,20 @@
       href: aks-edge-howto-deploy-azure-iot.md
     - name: Offline installation
       href: aks-edge-howto-offline-install.md
-    - name: Access TPM secrets
-      href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
     - name: Use GPU acceleration
       href: aks-edge-gpu.md
-    - name: Configure Workload Identity
-      href: aks-edge-workload-identity.md
+    - name: Security
+      items:
+      - name: Configure Workload Identity
+        href: aks-edge-workload-identity.md      
+      - name: Access TPM secrets
+        href: aks-edge-howto-access-tpm.md
+      - name: Enable secret encryption with the KMS plugin
+        href: aks-edge-howto-secret-encryption.md
+      - name: Use the Key Manager for Kubernetes extension
+        href: aks-edge-howto-key-manager.md        
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
@@ -256,8 +275,6 @@
       href: aks-edge-troubleshoot-overview.md
     - name: Logs 
       href: aks-edge-resources-logs.md
-    - name: Release notes and known issues
-      href: https://github.com/Azure/AKS-Edge/releases
     - name: File bugs
       href: https://github.com/Azure/AKS-Edge/issues
     - name: AKS Edge Essentials pricing
@@ -316,6 +333,8 @@
         href: vnet.yml
 - name: AKS on Windows Server
   items:
+  - name: AKS on Windows Server retirement
+    href: aks-windows-server-retirement.md
   - name: Overview
     href: overview.md
   - name: System requirements
@@ -389,8 +408,6 @@
           href: concepts-node-networking.md
         - name: Kubernetes container networking
           href: concepts-container-networking.md
-    - name: Storage
-      href: concepts-storage.md
     - name: Application availability
       href: app-availability.md
     - name: Scale

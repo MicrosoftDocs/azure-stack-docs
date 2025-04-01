@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 10/22/2024
+ms.date: 02/28/2025
 ms.service: azure-local
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Local, version 22H2 instance.
 ---
@@ -195,7 +195,7 @@ In this example, there are three intents that are managed across machines.
 
 The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each machine in the system. For example, if you have a three-node system with two intents, you should see six objects, each with their own status, returned by the command.
 
-To verify your machines's successful deployment of the intents submitted in step 5, run the following command:
+To verify your machine's successful deployment of the intents submitted in step 5, run the following command:
 
 ```powershell
 Get-NetIntentStatus -Name <IntentName>

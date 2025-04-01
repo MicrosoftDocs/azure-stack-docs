@@ -3,9 +3,9 @@ title: Physical network requirements for Azure Local
 description: Physical network requirements and considerations for Azure Local, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 02/14/2025
-ms.author: jgerend 
-ms.reviewer: JasonGerend
+ms.date: 03/21/2025
+ms.author: alkohli 
+ms.reviewer: alkohli
 ---
 
 # Physical network requirements for Azure Local
@@ -75,6 +75,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8325H series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(10, 25, 40, 100 GbE)| AOS CX version 10.15.1005 or later |&check;| &check;| &check;| &check; |
 | [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
@@ -89,6 +90,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [CX 8100 series](https://www.arubanetworks.com/resource/cx-8100-series-switch-data-sheet/) <br>(10 GbE)|AOS CX version 10.12.0006 or later |&check;| &check;| &check;| &check; |
 | [CX 8325 series](https://www.arubanetworks.com/resource/aruba-8325-switch-series-data-sheet/) <br>(10, 25, 100 GbE)|AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
+| [CX 8325H series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(10, 25, 40, 100 GbE)| AOS CX version 10.15.1005 or later |&check;| &check;| &check;| &check; |
 | [CX 8325P series](https://www.hpe.com/psnow/doc/a00059009enw) <br>(40, 100 GbE)| AOS CX version 10.15.0005 or later |&check;| &check;| &check;| &check; |
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
@@ -417,7 +419,7 @@ Azure Local can function in various data center architectures including 2-tier (
 Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
-> We highly recommend that all Azure Local machines in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+> We require that all Azure Local machines in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 > [!NOTE]
 > Stretched cluster functionality is only available in Azure Local, version 22H2.

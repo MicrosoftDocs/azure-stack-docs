@@ -6,9 +6,7 @@ ms.topic: include
 ms.date: 11/26/2024
 ---
 
-Follow these steps on your Azure Local to create the VM image from the VHDX that you created earlier.
-
-Use the Azure CLI to create the VM image:
+Follow these steps using Azure CLI on your Azure Local to create the VM image from the VHDX you created earlier.
 
 1. Run PowerShell as an administrator.
 

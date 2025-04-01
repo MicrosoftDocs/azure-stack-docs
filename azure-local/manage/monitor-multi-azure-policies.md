@@ -1,8 +1,8 @@
 ---
 title: Enable Insights for Azure Local at scale using Azure policies
 description: How to enable Insights for Azure Local systems at scale using Azure policies.
-author: ManikaDhiman
-ms.author: v-manidhiman
+author: alkohli
+ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local

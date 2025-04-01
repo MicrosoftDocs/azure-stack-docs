@@ -2,10 +2,10 @@
 title: Compare Azure Local to Windows Server
 description: This topic helps you determine whether Azure Local or Windows Server is right for your organization.
 ms.topic: conceptual
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.service: azure-local
-ms.date: 10/21/2024
+ms.date: 03/28/2025
 ---
 
 # Compare Azure Local to Windows Server
@@ -13,6 +13,8 @@ ms.date: 10/21/2024
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022
 
 This article explains key differences between Azure Local and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
+
+When replacing a datacenter primarily running VMware, Azure Local is typically not the optimal solution, as it is better suited for specific distributed scenarios, like retail stores, manufacturing facilities, or branch offices. Azure Local is optimized for distributed sites with fewer than three clusters of 16 nodes, especially when there are latency or regulatory constraints. Instead, we recommend [Azure VMware Solution](/azure/azure-vmware), which is specifically designed for VMware workload modernization and datacenter replacement.
 
 ## When to use Azure Local
 

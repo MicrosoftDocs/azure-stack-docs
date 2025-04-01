@@ -1,11 +1,11 @@
 ---
 title: Nested virtualization in Azure Stack HCI
 description: Run Azure Stack HCI on virtual machines for evaluation and testing.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 04/17/2023
+ms.date: 02/27/2025
 ---
 
 # Nested virtualization in Azure Stack HCI
@@ -17,7 +17,7 @@ ms.date: 04/17/2023
 Nested virtualization is a feature that lets you run Hyper-V inside a Hyper-V virtual machine (VM). This allows you to maximize your hardware investments and gain flexibility in evaluation and testing scenarios.
 
    > [!IMPORTANT]
-   > Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, nested virtualization is not supported in production environments. For production use, Azure Stack HCI should be deployed on validated physical hardware.
+   > Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, nested virtualization isn't supported in production environments. For production use, Azure Stack HCI should be deployed on validated physical hardware.
 
 Some scenarios in which nested virtualization can be useful are:
 
@@ -42,7 +42,7 @@ To configure nested virtualization on a VM using PowerShell, see [Run Hyper-V in
 ## Nested virtualization processor support
 
 Azure Stack HCI, version 21H2 adds support for nested virtualization on AMD processors. Now you can run nested virtualization on first generation EPYC processors or newer generations (Naples, Rome, Milan).
- 
+
 Prerequisites:
 
 - Azure Stack HCI, version 21H2

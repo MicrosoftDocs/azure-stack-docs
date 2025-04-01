@@ -1,7 +1,7 @@
 ﻿---
 title: Configure SSH keys for a cluster in AKS enabled by Azure Arc
 description: Learn how to configure SSH keys for an AKS Arc cluster.
-ms.date: 01/10/2025
+ms.date: 02/26/2025
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
@@ -71,16 +71,9 @@ You have three options for SSH key configuration:
 - Use an existing key stored in Azure and select from the stored keys.
 - Use an existing public key by providing the SSH public key value.
 
-## Error message
+## Error messages
 
-If you don't provide valid SSH key information during cluster creation and no SSH key exists, you receive error messages like the following:
-
-- An RSA key file or key value must be supplied to SSH Key Value.
-- Control Plane: Missing Security Keys in Cluster Configuration.
-- LinuxProfile SSH public keys should be valid and non-empty.
-- Global LinuxProfile SSH public keys should be valid and non-empty.
-
-To mitigate the issue, see [Create and manage SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli#generate-new-keys) to create the SSH keys. Then, see [Create Kubernetes clusters](aks-create-clusters-cli.md) for the interface you're using. If you're using the REST API, see [provisioned cluster instances](/rest/api/hybridcontainer/provisioned-cluster-instances) to create the provisioned cluster instance.
+For information about error messages that can occur when you create and deploy an AKS cluster on Azure Local, see the [Control plane configuration validation errors](control-plane-validation-errors.md) article.
 
 ## Next steps
 
