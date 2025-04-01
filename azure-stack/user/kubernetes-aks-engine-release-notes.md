@@ -139,7 +139,7 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 
 The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
-### What's new with AKSe 0.82.1
+### What's new in AKSe 0.82.1
 
 - Added support for Kubernetes 1.29.15 and 1.30.10.
 - AKS Engine release v0.82.1 on Azure Stack Hub offers Ubuntu 22.04 LTS as its Linux base image. Starting with this release, Ubuntu 20.04 is no longer supported.
