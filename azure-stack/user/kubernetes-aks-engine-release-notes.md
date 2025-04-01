@@ -51,9 +51,10 @@ Download the new versions of the AKS base Ubuntu image and AKS engine.
 As explained in the documentation for AKS engine for Azure Stack Hub, deploying a Kubernetes cluster requires:
 
 - The **aks-engine** binary (required).
-- AKS Base Ubuntu 16.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 20.04 instead).
-- AKS Base Ubuntu 18.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 20.04 instead).
-- AKS Base Ubuntu 20.04-LTS Image Distro (required for Linux agents).
+- AKS Base Ubuntu 16.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 22.04 instead).
+- AKS Base Ubuntu 18.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 22.04 instead).
+- AKS Base Ubuntu 20.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 22.04 instead).
+- AKS Base Ubuntu 22.04-LTS Image Distro (required for Linux agents).
 - AKS Base Windows Server Image (one of the following images is required for Windows agents):
   - AKS Base Windows Server Image Containerd.
   - AKS Base Windows Server Image Docker.
@@ -70,9 +71,9 @@ New versions of these images are available with this update:
 
 Starting with AKS Engine v0.63.0, the Ubuntu 16.04 distro is no longer a supported option, as the OS has reached its end-of-life. For AKS Engine v0.67.0 or later versions, the **aks-engine** upgrade automatically overwrites the unsupported `aks-ubuntu-16.04` distro value with with `aks-ubuntu-18.04`. For AKS Engine v0.75.3 or later versions, if you're using Kubernetes v1.24 or above, the **aks-engine-azurestack** upgrade automatically overwrites the unsupported `aks-ubuntu-16.04` distro value with `aks-ubuntu-20.04`.
 
-### Upgrading Kubernetes clusters created with the Ubuntu 18.04 distro
+### Upgrading Kubernetes clusters created with the Ubuntu 18.04 or 20.04 distro
 
-Starting with AKS Engine v0.75.3, the Ubuntu 18.04 distro is no longer a supported option, as the OS has reached its end-of-life. For AKS Engine v0.75.3 or later versions, the **aks-engine-azurestack** upgrade automatically overwrites the unsupported `aks-ubuntu-18.04` distro value with `aks-ubuntu-20.04`.
+Starting with AKS Engine v0.75.3, the Ubuntu 18.04 distro is no longer a supported option, as the OS has reached its end-of-life. Starting with AKS Engine v0.82.1, the Ubuntu 20.04 distro is no longer a supported option. For these AKS Engine versions, the **aks-engine-azurestack** upgrade automatically overwrites the unsupported `aks-ubuntu-18.04` or `aks-ubuntu-20.04` distro value with `aks-ubuntu-20.04` or `aks-ubuntu-22.04`, respectively.
 
 ### Upgrading Kubernetes clusters created with docker container runtime
 
@@ -94,8 +95,9 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2301                                           | 0.75.3, 0.76.0, 0.77.0, 0.78.0, 0.79.0 |
 | 2306                                           | 0.78.0, 0.79.0, 0.80.2 |
 | 2311                                           | 0.80.2 |
-| 2406                                           | 0.80.2, 0.80.3*, 0.81.1* |
-| 2408                                           | 0.80.2, 0.80.3*, 0.81.1* |
+| 2406                                           | 0.80.2, 0.80.3, 0.81.1 |
+| 2408                                           | 0.80.2, 0.80.3, 0.81.1*, 0.82.1* |
+| 2501                                           | 0.81.1*, 0.82.1* |
 
 *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
@@ -137,9 +139,11 @@ You can find the supported Kubernetes versions for AKS Engine on Azure Stack Hub
 
 The AKS engine `upgrade` command fully automates the upgrade process of your cluster, and handles virtual machines (VMs), networking, storage, Kubernetes, and orchestration tasks. Before applying the update, make sure to review the release note information.
 
-### Upgrading Kubernetes clusters created with the Ubuntu 20.04 distro
+### What's new with AKSe 0.82.1
 
-Starting with AKS Engine v0.82.1, the Ubuntu 20.04 distro is not longer a supported option as the OS reached its end-of-life. For AKS Engine v0.82.1 or later versions, aks-engine-azurestack upgrade will automatically overwrite the unsupported `aks-ubuntu-20.04` distro value with `aks-ubuntu-22.04`.
+- Added support for Kubernetes 1.29.15 and 1.30.10.
+- AKS Engine release v0.82.1 on Azure Stack Hub offers Ubuntu 22.04 LTS as its Linux base image. Starting with this release, Ubuntu 20.04 is no longer supported.
+- You can find other features at [the v0.82.1 GitHub page](https://github.com/Azure/aks-engine-azurestack/releases/tag/v0.82.1).
 
 ### What's new with AKSe 0.76.0
 
