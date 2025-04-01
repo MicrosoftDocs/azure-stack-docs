@@ -18,7 +18,7 @@ This article discusses considerations for the network design for the Rack Aware 
 
 This article describes the network design and configuration of the Rack Aware Cluster architecture on Azure Local. The configuration involves a single cluster where the nodes are placed in different physical locations within a building. The intent is to support disaster recovery scenarios by placing different workloads in one or both locations. This configuration can support environments with or without Software Defined Networking (SDN), Layer 2 virtual networks, or Azure Kubernetes Service (AKS).
 
-The Rack Aware Cluster setup is intended to support environments with up to 4 + 4 nodes, where the cluster is separated into two local availability zones with less than 1ms latency between the rooms. The network architecture requires the use of spine and top of rack (TOR) switch layers to support network traffic. Compute and management traffic will be hosted at the spine layer, while Storage Spaces Direct Remote Direct Memory Access (RDMA) traffic is hosted at the TOR switch layer. RDMA traffic doesn't travel to the spine switch layer; it is dedicated to the TOR layer and can travel to its neighboring TOR in a different zone with a matching configuration.
+The Rack Aware Cluster setup is intended to support environments with up to 4 + 4 nodes, where the cluster is separated into two local availability zones with less than 1ms latency between the rooms. The network architecture requires the use of spine and top of rack (TOR) switch layers to support network traffic. Compute and management traffic are hosted at the spine layer, while Storage Spaces Direct Remote Direct Memory Access (RDMA) traffic is hosted at the TOR switch layer. RDMA traffic doesn't travel to the spine switch layer; it is dedicated to the TOR layer and can travel to its neighboring TOR in a different zone with a matching configuration.
 
 ## TOR switch design
 
@@ -36,7 +36,7 @@ There are a few requirements for the TOR configuration.
 
 - Management and compute network intents require a Layer 2 network extension to all TOR switches via a spine layer.
 
-- RDMA room-to-room link with a network latency of less than 1ms. In this example, Node 1 RDMA network interface (NIC) 1 is shown in red below, travels to its local TOR, crosses the room-to-room link, arrives on the TOR in the next room, and continues to Node 3 NIC 1. The latency of this crossing takes less than 1ms.
+- RDMA room-to-room link with a network latency of less than 1ms. In this example, Node 1 RDMA network interface (NIC) 1 is shown in red, travels to its local TOR, crosses the room-to-room link, arrives on the TOR in the next room, and continues to Node 3 NIC 1. The latency of this crossing takes less than 1ms.
 
 #### Aggregated setup (option A)
 
@@ -44,7 +44,7 @@ There are a few requirements for the TOR configuration.
 
 Option A illustrates four TOR switches (TOR1 to TOR4). Each machine is equipped with two physical network cards, totaling four interfaces. One network card utilizes NIC teaming for management (7) and compute (8) network intents, creating an aggregated link with Switch Embedded Teaming (SET). The second network card manages storage intents (711, 712) traffic, with each interface tagged with a single VLAN.
 
-For storage intents, the switch ports have one VLAN tag per interface, whereas the management/compute interface ports support all non-storage VLAN tags. The TOR switches use Multi-Chassis Link Aggregation (MLAG) for management and compute traffic, but not for storage traffic, to reduce hops in RDMA sessions due to its low-latency, lossless nature. There are two independent sets of bundled links to support room-to-room link traffic: VLAN 711 is supported by a link between TOR1 and TOR3, and VLAN 712 is supported by a link between TOR2 and TOR4.
+For storage intents, the switch ports have one VLAN tag per interface, whereas the management/compute interface ports support all non-storage VLAN tags. The TOR switches use Multi-Chassis Link Aggregation (MLAG) for management and compute traffic, but not for storage traffic, to reduce hops in RDMA sessions due to its low-latency, lossless nature. There are two independent sets of bundled links to support room-to-room link traffic: VLAN 711 is supported using a link between TOR1 and TOR3, and VLAN 712 is supported using a link between TOR2 and TOR4.
 
 > [!NOTE]
 > Storage intents are intentionally omitted on certain TOR devices and aren't universally applied. The rack aware cluster follows the standard hyper-converged infrastructure disaggregated network design, where storage interfaces support only one storage Intent per interface. This configuration was tested using Multiple Spanning Tree Protocol (MSTP). Storage VLANs are grouped into one spanning tree group, while non-storage VLANs are in a different STP group. During MSTP configuration, the spine switches needed to include the storage STP group even though they did not support those VLANs.
@@ -94,7 +94,7 @@ In a standard switched disaggregated configuration (option B), the storage and c
 
 *Figure: RDMA traffic doesn't cross between TORs. All NIC 1 traffic is exclusive to all NIC 1 interfaces. Same for NIC 2 interfaces.*
 
-Each machine in the system has two network interfaces: one for storage intent 1 and another for storage intent 2. These RDMA-capable NICs, typically equipped with two interfaces each, are dedicated as follows: NIC1 connects to TOR1 and handles VLAN 711, while NIC2 connects to TOR2 and manages VLAN 712. The NICs are not teamed, so traffic from NIC1 remains on NIC1 and doesn't cross to NIC2. This setup uses the switch backplane, designed for non-blocking performance, optimal latency, and high throughput, which is crucial for protocols like RDMA. Each switch port that supports RDMA traffic is managed by QoS policies.
+Each machine in the system has two network interfaces: one for storage intent 1 and another for storage intent 2. These RDMA-capable NICs, typically equipped with two interfaces each, are dedicated as follows: NIC1 connects to TOR1 and handles VLAN 711, while NIC2 connects to TOR2 and manages VLAN 712. The NICs are not teamed, so traffic from NIC1 remains on NIC1 and doesn't cross to NIC2. This setup uses the switch backplane, designed for non-blocking performance, optimal latency, and high throughput, which is crucial for protocols like RDMA. Each switch port that supports RDMA traffic is managed with QoS policies.
 
 ## Switch-to-host interface
 
@@ -138,9 +138,9 @@ The RDMA network VLAN (711 or 712) is connected by a set of bundled links to sup
 
 *(NIC speed) * (storage ports on a machine) * (total ARC nodes per zone) = bandwidth requirement*
 
-Using the diagram above as an example (25GbE x 2 x 2) = 100GbE:
+Using the diagram as an example (25 GbE x 2 x 2) = 100 GbE:
 
-- `Storage Interface Speed`: 25GbE, the storage NIC has 2 ports each port supporting a link speed of 25GbE. 
+- `Storage Interface Speed`: 25 GbE, the storage NIC has 2 ports each port supporting a link speed of 25 GbE. 
 
 - `Storage ports on a single machine`: 2, each machine in this example has a Storage NIC with 2 Interface ports. One supports VLAN 711, the other supports VLAN 712. 
 
@@ -188,7 +188,7 @@ interface port-channel711
 
 - `switchport mode trunk`: Configures the interface to operate in trunk mode, allowing it to carry traffic for multiple VLANs.
 
-- `switchport trunk native vlan 99`: Specifies VLAN 99 as the native VLAN. This VLAN will not have its traffic tagged as it passes through the trunk. Traffic to this VLAN is black holed. 
+- `switchport trunk native vlan 99`: Specifies VLAN 99 as the native VLAN. This VLAN won't have its traffic tagged as it passes through the trunk. Traffic to this VLAN is black holed. 
 
 - `switchport trunk allowed vlan 711`: Specifies that only VLAN 711 traffic is allowed on this trunk link. 
 
@@ -507,7 +507,7 @@ The rest of the configuration is similar to the port-channel interfaces, with th
 
 ## QoS
 
-The QoS configuration leverages the DCB framework to establish a lossless, low-latency setup for RDMA, encompassing both ROCE v2 and iWARP technologies. In the default Azure Local configuration, RDMA traffic is assigned to PFC ID 3. An additional PFC ID is allocated for the system heartbeat, which by default uses PFC ID 7. PFC ID 7 is given the highest priority, while PFC ID 3 is also configured to support pause frames or function as a no-drop queue.
+The QoS configuration applies the DCB framework to establish a lossless, low-latency setup for RDMA, encompassing both ROCE v2 and iWARP technologies. In the default Azure Local configuration, RDMA traffic is assigned to PFC ID 3. Another PFC ID is allocated for the system heartbeat, which by default uses PFC ID 7. PFC ID 7 is given the highest priority, while PFC ID 3 is also configured to support pause frames or function as a no-drop queue.
 
 These two PFC IDs are mapped to specific traffic classes, with all other traffic, not marked by these PFC IDs, which are categorized as default traffic with the lowest priority. Additionally, Enhanced Transmission Selection (ETS) is employed to allocate bandwidth reservations for particular traffic classes. The default RDMA setting in Azure Local reserves a minimum of 50% of the interface bandwidth for RDMA traffic. System traffic is allocated 1% of bandwidth for 25Gb interfaces and 2% for 10Gb interfaces.
 
@@ -548,11 +548,11 @@ router bgp 64588
 
 - `bestpath as-path multipath-relax`: This command allows BGP to relax the criteria for selecting multiple paths for the same destination. It permits BGP to consider paths as multipaths even if their AS paths are different. 
 
-- `address-family ipv4 unicast`: This specifies the address family for IPv4 unicast routing. All subsequent commands will apply to this address family. 
+- `address-family ipv4 unicast`: This specifies the address family for IPv4 unicast routing. All subsequent commands apply to this address family. 
 
 - `network 10.68.212.0/24`: This command advertises the network 10.68.212.0/24 to other BGP peers. It tells BGP to include this network in its routing updates. 
 
-- `neighbor 10.68.212.0/24`: Defines a BGP neighbor with the IP address 10.68.212.0/24. Note that typically, a neighbor IP address is a single IP rather than a subnet. Using the subnet allows the SLB/MUX to establish a Dynamic BGP peering with the Spine. The SLB/MUX starts the BGP peering session, and the Spine is a passive listener waiting for a BGP request to start. 
+- `neighbor 10.68.212.0/24`: Defines a BGP neighbor with the IP address 10.68.212.0/24. Typically, a neighbor IP address is a single IP rather than a subnet. Using the subnet allows the SLB/MUX to establish a Dynamic BGP peering with the Spine. The SLB/MUX starts the BGP peering session, and the Spine is a passive listener waiting for a BGP request to start. 
 
 - `remote-as 65000`: Specifies that the neighbor at 10.68.212.0/24 belongs to the autonomous system 65000. This is necessary for establishing an external BGP (eBGP) session. 
 
@@ -566,7 +566,7 @@ This configuration sets up BGP on a router with ASN 64588, advertises the networ
 
 The SDN gateway is a virtual router hosted in the Azure Local cloud environment, designed to support multitenant Hyper-V virtual networks. The SDN gateway can be connected using either static routing or dynamic routing via BGP. In both cases, a virtual network is created within the Azure Local system, and the SDN gateway serves as the primary gateway for the network. A compute intent Provider Address (PA) network supports a single SDN gateway. 
 
-In a static configuration, the switch/router has a static route to the endpoint, which acts as the next hop to reach the virtual network. This next hop is contained within the Compute Intent network. The static route is manually maintained in the switch/router route table.  In this configuration the Switch Virtual Interface (SVI) PA network supporting the SDN gateway is maintained on the switch/router along with the Azure Local virtual network. 
+In a static configuration, the switch/router has a static route to the endpoint, which acts as the next hop to reach the virtual network. This next hop is contained within the Compute Intent network. The static route is manually maintained in the switch/router route table.  In this configuration, the Switch Virtual Interface (SVI) PA network supporting the SDN gateway is maintained on the switch/router along with the Azure Local virtual network. 
 
 In a dynamic configuration, BGP is used to dynamically advertise the virtual network to the switch/router. Once a BGP session is established, it advertises the virtual network subnet, and is injected into the switch/router route table.  In this instance, the same SVI is maintained to support the PA network, but the virtual network is not included in the configuration. This is received dynamically via BGP as a network advertisement. 
 
@@ -630,7 +630,7 @@ ip route 0.0.0.0/0 10.8.8.2/30 name CoreNet/DefaultRoute
 ip route 0.0.0.0/0 10.8.9.2/30 name CoreNet/DefaultRoute
 ```
 
-- `ip route 10.10.50.0/24 10.68.40.6 name AZLOCAL/VNET/AccntSvc`: Adds a static route for the network 10.10.50.0/24 with the next hop 10.68.40.6 and names it `AZLOCAL/VNet/AccountingServices`. The next hop 10.68.40.6 is the gateway service that is acting as the gateway to the VNET 10.10.50.0/24.  Each TOR in the environment will have the same configuration. 
+- `ip route 10.10.50.0/24 10.68.40.6 name AZLOCAL/VNET/AccntSvc`: Adds a static route for the network 10.10.50.0/24 with the next hop 10.68.40.6 and names it `AZLOCAL/VNet/AccountingServices`. The next hop 10.68.40.6 is the gateway service that is acting as the gateway to the VNET 10.10.50.0/24.  Each TOR in the environment has the same configuration. 
 
 - `ip route 0.0.0.0/0 10.8.8.2/30 name CoreNet/DefaultRoute`: Adds a default route with the next hop 10.8.8.2/30 and names it `CoreNet/DefaultRoute` 
 
@@ -719,13 +719,13 @@ router bgp 64512
 
 - `bestpath as-path multipath-relax`: This command allows BGP to relax the criteria for selecting multiple paths for the same destination. It permits BGP to consider paths as multipaths even if their AS paths are different. 
 
-- `address-family ipv4 unicast`: This specifies the address family for IPv4 unicast routing. All subsequent commands will apply to this address family. 
+- `address-family ipv4 unicast`: This specifies the address family for IPv4 unicast routing. All subsequent commands apply to this address family. 
 
 - `network 10.68.40.0/26`: This command advertises the network 10.68.40.0/26 to other BGP peers. It tells BGP to include this network in its routing updates. 
 
 - `Network 10.71.5.5/32`: This command advertises the loopback network 10.71.5.5/32 to other BGP peers. It tells BGP to include this network in its routing updates. 
 
-- `neighbor 10.68.40.0/26`: Defines a BGP neighbor with the IP address 10.68.40.0/26. Note that typically, a neighbor is a unicast IP address rather than a subnet. Using the subnet allows MetalLB to establish a Dynamic BGP peering session with the Spine. MetalLB starts the BGP peering session, and the Spine is a passive listener waiting for a BGP request to start. 
+- `neighbor 10.68.40.0/26`: Defines a BGP neighbor with the IP address 10.68.40.0/26. Typically, a neighbor is a unicast IP address rather than a subnet. Using the subnet allows MetalLB to establish a Dynamic BGP peering session with the Spine. MetalLB starts the BGP peering session, and the Spine is a passive listener waiting for a BGP request to start. 
 
 - `remote-as 65500`: Specifies that the neighbor at 10.68.40.0/26 belongs to the autonomous system 65500. This is necessary for establishing an external BGP (eBGP) session. 
 
@@ -783,7 +783,7 @@ This QoS configuration is dedicated to the Cisco Nexus 9300 switch hardware.  NI
 
 **Global LLDP command**
 
-This enables ETS in the switch configuration and recommendation to the Azure Local nodes.  The Azure Local nodes will not utilize DCBX to configurate their QoS settings, the LLDP portion will be used to notify the hosts of the switch QoS configuration.
+This enables ETS in the switch configuration and recommendation to the Azure Local nodes.  The Azure Local machines won't utilize DCBX to configurate their QoS settings, the LLDP portion are used to notify the hosts of the switch QoS configuration.
 
 ```output
 feature lldp 
@@ -839,7 +839,7 @@ class-map type qos match-all CLUSTER
 
 **Policy map type QOS**
 
-`Policy-map type qos` is defining a service called `AZS_SERVICES` and configuring the class maps `RDMA` and `CLUSTER` from above. This setting should only maintain the existing PFC COS ID of the traffic. From the syntax it maps PFC COS 3 to 3 and PFC COS 7 to 7. 
+`Policy-map type qos` is defining a service called `AZS_SERVICES` and configuring the class maps `RDMA` and `CLUSTER`. This setting should only maintain the existing PFC COS ID of the traffic. From the syntax it maps PFC COS 3 to 3 and PFC COS 7 to 7. 
 
 ```output
 ! Map the traffic to a queue map from the class-map 
@@ -866,7 +866,7 @@ Starting with COS 3, it's configured to support Weighted Random Early Detection 
 COS 7 is dedicated to the heartbeat traffic. This is assigned a fixed bandwidth reservation of 1%. In this configuration, the hosts are using 25Gb NIC and the switch is set to utilize a 25Gb interface. When 25Gb interfaces are using 1% bandwidth reservation, which is adequate for heartbeat traffic.  
 
 > [!NOTE] 
-> If 10Gb interfaces are used it's recommended to set a 2% reservation.
+> If 10Gb interfaces are used, it's recommended to set a 2% reservation.
 >
 >COS 0 is given the remainder of the bandwidth. When setting the egress queue bandwidth reservation, it must equal 100% of the bandwidth. 
 
@@ -915,7 +915,7 @@ system qos
   service-policy type network-qos QOS_NETWORK
 ```
 
-- `system qos` will apply this configuration globally to the entire switch. Two service policies will be set in the environment, and these will be used in the interface configurations. `QOS_EGRESS_PORT` and `QOS_NETWORK`. When `AZS_SERVICES` is applied with PFC mode on this policy these policies will be applied to the interface configuration. 
+- `system qos` applies the configuration globally to the entire switch. Two service policies are used in the environment, and these are used in the interface configurations. `QOS_EGRESS_PORT` and `QOS_NETWORK`. When `AZS_SERVICES` is applied with PFC mode on this policy these policies are applied to the interface configuration. 
 
 - `QOS_EGRESS_PORT` is the name of the queuing policy map that is being applied. This policy map defines how different classes of traffic are managed as they exit the switch, including bandwidth allocation and congestion management. 
 
@@ -929,7 +929,7 @@ system qos
 
 #### Example: Interface QoS applied 
 
-In this example, QoS policies are being applied to the switch interface. PFC is enabled along with the `AZS_SERVICE` configuration defined above. In addition, a MTU size of 9216 is applied to support SDN with iWARP. The key items in this configuration are the priority flow control and service policy lines. 
+In this example, QoS policies are being applied to the switch interface. PFC is enabled along with the `AZS_SERVICE` configuration defined. In addition, a MTU size of 9216 is applied to support SDN with iWARP. The key items in this configuration are the priority flow control and service policy lines. 
 
 `Priority-flow-control` enables the PFC in the configuration and sends the values within the LLDP messages.  `Service-polity type qos` enables the `AZS_SERVICES` that are set in the QoS section.
 
@@ -986,7 +986,7 @@ Make: Dell
 
 Model: S5248F-ON
 
-Device Description: S5248F-ON 48x25GbE SFP28, 4x100GbE QSFP28, 2x200GbE QSFP-DD Interface Module 
+Device Description: S5248F-ON 48x25 GbE SFP28, 4x100 GbE QSFP28, 2x200 GbE QSFP-DD Interface Module 
 
 Firmware version: 10.5.4.5 
 
@@ -999,11 +999,11 @@ This provides an overview of the switch settings implemented for Azure Local, ap
 dcbx enable
 ```
 
-QoS facilitates Azure Local storage operations for both RoCE v2 and iWARP by prioritizing storage traffic on ports designed for a storage intent. This ensures that RDMA traffic is reliably maintained. For the setup of QOS, the Data Center Bridging Capability Exchange (DCBX) protocol is activated on the switch. Although Azure Local doesn't process DCBX LLDP messages for configuration purposes, LLDP TLVs will be used in future scenarios. 
+QoS facilitates Azure Local storage operations for both RoCE v2 and iWARP by prioritizing storage traffic on ports designed for a storage intent. This ensures that RDMA traffic is reliably maintained. For the setup of QOS, the Data Center Bridging Capability Exchange (DCBX) protocol is activated on the switch. Although Azure Local doesn't process DCBX LLDP messages for configuration purposes, LLDP TLVs are used in future scenarios. 
 
 **Class map**
 
-The class map section will associate traffic with a queue. 
+The class map section associates traffic with a queue. 
 
 ```output
 class-map type queuing AZS_SERVICES_EtsQue_0 
@@ -1034,7 +1034,7 @@ class-map type network-qos AZS_SERVICES_Dot1p_7
 
 **Trusted dot1p-map**
 
-`trusted dot1p-map` is assigned a name `AZS_SERIVCES-Dot1p` this group name will help associate the different queues based on their packet markings. This setting will map the QoS groups to 802.1p priority values. 
+`trusted dot1p-map` is assigned a name `AZS_SERIVCES-Dot1p` this group name helps associate the different queues based on their packet markings. This setting maps the QoS groups to 802.1p priority values. 
 
 ```output
 trust dot1p-map AZS_SERVICES_Dot1p 
@@ -1043,11 +1043,11 @@ trust dot1p-map AZS_SERVICES_Dot1p
   qos-group 7 dot1p 7 
 ```
  
-- `qos-group 0 dot1p 0-2,4-6`: any traffic that arrives on the switch utilizing any of these priority flags will be associated with the default queue. This is the lowest traffic class that is configured on the device. 
+- `qos-group 0 dot1p 0-2,4-6`: any traffic that arrives on the switch utilizing any of these priority flags are associated with the default queue. This is the lowest traffic class that is configured on the device. 
 
-- `qos-group 3 dot1p 3`: Map dot1p traffic to class 3, this will maintain the same priority class. 
+- `qos-group 3 dot1p 3`: Map dot1p traffic to class 3, this maintains the same priority class. 
 
-- `qos-group 7 dot1p 7`: Map dot1p traffic to class 7, this will maintain the same priority class.
+- `qos-group 7 dot1p 7`: Map dot1p traffic to class 7, this maintains the same priority class.
 
 **Qos map traffic class**
 
@@ -1088,7 +1088,7 @@ policy-map type queuing AZS_SERVICES_ets
 
 - `class AZS_SERVICES_EtsQue_3`: Allocates 50% of the bandwidth to queue 3 supporting RDMA and enable random early detection (RED) with explicit congestion notification (ECN) 
 
-- `class AZS_SERVICES_EtsQue_7`: This is configured with a bandwidth reservation of 2% for system heartbeat traffic. Depending on the link speed of the host port, this reservation can range between 1% and 2%. Specifically, Azure Local applies a 2% reservation when the host port speed is 10Gb. For speeds of 25Gb or higher, a reservation of 1% is deemed sufficient. 
+- `class AZS_SERVICES_EtsQue_7`: This is configured with a bandwidth reservation of 2% for system heartbeat traffic. Depending on the link speed of the host port, this reservation can range between 1% and 2%. Specifically, Azure Local applies a 2% reservation when the host port speed is 10 Gb. For speeds of 25 Gb or higher, a reservation of 1% is deemed sufficient. 
 
 **Policy-map type network-qos**
 
@@ -1108,7 +1108,7 @@ policy-map type network-qos AZS_SERVICES_pfc
 
 **System QOS**
 
-This section will apply the global QoS configuration on the device.  Trusted map settings from the above `AZS_SERVICES_Dot1p` setting are applied.  Buffer statistics and enable in the configuration.  Enhanced Transmission Selection (ETS) is applied. 
+This section applies the global QoS configuration on the device.  Trusted map settings from the `AZS_SERVICES_Dot1p` setting are applied.  Buffer statistics and enable in the configuration.  Enhanced Transmission Selection (ETS) is applied. 
 
 ```output
 system qos 
@@ -1191,17 +1191,17 @@ qos-map traffic-class AZS_SERVICES_Que
 ...
 ```
 
-The following items need to be enabled on the interface - each of the policy names are found in the above configurations. 
+The following items need to be enabled on the interface - each of the policy names are found in the configurations. 
 
  - `ets mode on`: Must configured under interface level as well to enable ETS.  
 
 - `priority-flow-control mode on`: Used to support priority flow control traffic. 
 
-- `service-policy input type network-qos AZS_SERVICES_pfc`: This setting enables the `AZS_SERVICES_pfc` policy enabling the ability to pause priority 3 frames. The name of the service will vary depending on your configuration. 
+- `service-policy input type network-qos AZS_SERVICES_pfc`: This setting enables the `AZS_SERVICES_pfc` policy enabling the ability to pause priority 3 frames. The name of the service varies depending on your configuration. 
 
-- `service-policy output type queuing AZS_SERVICES_ets`: This setting enables the ETS setting to reserve bandwidth, enable RED settings and ECN.  The name of the service will vary depending on your configuration. 
+- `service-policy output type queuing AZS_SERVICES_ets`: This setting enables the ETS setting to reserve bandwidth, enable RED settings and ECN.  The name of the service varies depending on your configuration. 
 
-- `qos-map traffic-class AZS_SERVICES_Que`: This setting enables the interface to support the different traffic classes associate them to the correct queue. The qos-map name will vary depending on your configuration. 
+- `qos-map traffic-class AZS_SERVICES_Que`: This setting enables the interface to support the different traffic classes associate them to the correct queue. The `qos-map` name varies depending on your configuration. 
 
 - `mtu 9216`: In this configuration SDN is enabled, the TOR is set with its maximum MTU size to support VXLAN encapsulation.
 

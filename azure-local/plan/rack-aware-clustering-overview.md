@@ -18,28 +18,28 @@ The diagram shows a cluster of two racks of servers with top-of-rack (Tor) switc
 
 :::image type="content" source="media/rack-aware-clustering-overview/rack-aware-cluster-architecture.png" alt-text="Diagram of rack aware cluster architecture." lightbox="media/rack-aware-clustering-overview/rack-aware-cluster-architecture.png":::
 
-This direct connection between racks supports a single storage pool, with Rack Aware Clusters guaranteeing data copy distribution evenly between the two racks.  This design is particularly valuable in environments that require high availability and disaster recovery capabilities. Even if an entire rack encounters an issue, the other rack maintains the integrity and accessibility of the data.
+This direct connection between racks supports a single storage pool, with Rack Aware Clusters guaranteeing data copy distribution evenly between the two racks.  This design is valuable in environments that require high availability and disaster recovery capabilities. Even if an entire rack encounters an issue, the other rack maintains the integrity and accessibility of the data.
 
-To support the synchronous replications between racks, a dedicated storage network intent is required to secure the bandwidth and low latency for storage traffic. The required round-trip latency between the two racks should be 1ms or less.
+To support the synchronous replications between racks, a dedicated storage network intent is required to secure the bandwidth and low latency for storage traffic. The required round-trip latency between the two racks should be 1 ms or less.
 
 For detailed networking requirements, see [Rack Aware Clustering network design](rack-aware-clustering-network-design.md).
 
 ## Requirements and supported configurations
 
-All [system requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters.  Additional requirements for rack-aware clusters include:
+All [system requirements for Azure Local](../concepts/system-requirements-23h2.md) apply to rack aware clusters.  Other requirements for rack-aware clusters include:
 
 - Data drives must be all-flash, either Nonvolatile Memory Express (NVMe) or solid-state drives (SSD).
 
 - Azure Local Rack Aware Cluster supports only two local availability zones, with a maximum of four machines in each zone. The two zones must contain an equal number of machines. See the table for supported configurations with volume resiliency settings.
 
-    | Machines in 2 zones  | Volume resiliency   | Infrastructure volumes  | Workload volumes  |
+    | Machines in two zones  | Volume resiliency   | Infrastructure volumes  | Workload volumes  |
     | -- | -- | -- | -- |
     | 1+1 (2-node cluster)  | 2-way mirror  | 1 | 2 |
     | 2+2 (4-node cluster)  | Rack Level Nested Mirror (4-way mirror)  | 1 | 4 |
     | 3+3 (6-node cluster)  | Rack Level Nested Mirror (4-way mirror)  | 1 | 6 |
     | 4+4 (8-node cluster)  | Rack Level Nested Mirror (4-way mirror)  | 1 | 8 |
 
-- Only new greenfield deployments are supported - no conversion from standard clusters.
+- New greenfield deployments are supported only - no conversion from standard clusters.
 
 - To facilitate synchronous replications between racks, a dedicated storage network is essential to ensure adequate bandwidth and low latency for storage traffic. The round-trip latency requirement between two racks should be 1 millisecond or less. The necessary bandwidth can be calculated based on the cluster size and the network interface card (NIC) speed as follows:
 
@@ -76,7 +76,7 @@ Before you create an Azure Local VM for Rack Aware Clustering, make sure that al
 
 Once availability zones are set up in Rack Aware Cluster, Azure Local VMs can be created on a specific availability zone to reduce latency, improve performance, ensure redundancy, and meet compliance requirements.
 
-When creating a VM to a specific availability zone, the default option is without strict placement. The VM will be created on a machine within the specified zone (`--zone`). If all machines within a zone are down, the VM can migrate to another machine outside of the zone. However, the VM will attempt to failback to a machine within the original zone when that availability zone recovers.
+When you create a VM in a specific availability zone, the default option is without strict placement. The VM is created on a machine within the specified zone (`--zone`). If all machines within a zone are down, the VM can migrate to another machine outside of the zone. However, the VM attempts to failback to a machine within the original zone when that availability zone recovers.
 
 > [!NOTE]
 > If no zone is specified when creating an Azure Local VM, the system will automatically choose an optimal placement within the Rack Aware Cluster.
@@ -122,7 +122,7 @@ When creating a VM to a specific availability zone, the default option is withou
 
 ### Create a VM in a specific availability zone (strict placement enabled)
 
-To create a VM in a specific availability zone and ensure it stays within that availability zone, you can specify an additional flag `--strict-placement` to `true`. The VM will be created on a node within the specified zone (`--zone`). If all machines within a zone are down, the VM will also go down. Only enable strict placement if the VM is not required to be running at all times or needs to adhere to a specific availability zone due to compliance requirements.  
+To create a VM in a specific availability zone and ensure it stays within that availability zone, you can specify another flag `--strict-placement` to `true`. The VM is created on a node within the specified zone (`--zone`). If all machines within a zone are down, the VM also goes down. Only enable strict placement if the VM isn't required to be always running or needs to adhere to a specific availability zone due to compliance requirements.  
 
 1. Run the following command:
 
