@@ -66,7 +66,7 @@ $DeploymentUser="deploymentuser"
 #Assign required permissions
 $userSecurityIdentifier = Get-ADuser -Identity $Deploymentuser
 $userSID = [System.Security.Principal.SecurityIdentifier] $userSecurityIdentifier.SID
-$acl = Get-Acl -Path $ouPath
+$acl = Get-Acl -Path "AD:$ouPath"
 $userIdentityReference = [System.Security.Principal.IdentityReference] $userSID
 $adRight = [System.DirectoryServices.ActiveDirectoryRights]::CreateChild -bor [System.DirectoryServices.ActiveDirectoryRights]::DeleteChild
 $genericAllRight = [System.DirectoryServices.ActiveDirectoryRights]::GenericAll
