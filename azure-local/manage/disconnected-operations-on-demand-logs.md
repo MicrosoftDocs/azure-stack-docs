@@ -26,8 +26,8 @@ The following on-demand scenarios are supported for log collection:
 | Scenarios for log collection             | How to collect logs                    |
 |------------------------------------------|----------------------------------------|
 | [Use on-demand direct log collection](#log-collection-when-connected-to-azure-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollection`.<br></br>**Prerequisite**: Setup observability configuration using the cmdlet: `Set-ApplianceObservabilityConfiguration`. |
-| [Use on-demand indirect log collection](#log-collection-for-a-disconnected-environment-and-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.<br></br> Manually send diagnostic data to Microsoft after you copy data from a Virtual Hard Disk (VHD) to a host using the `Send-DiagnosticData` cmdlet. |
-| [Use on-demand fallback log collection](#log-collection-with-an-inaccessible-management-endpoint) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations virtual machine is down. | Logs are collected after shutting down the disconnected operations virtual machine, mounting and unlocking VHDs and copying logs using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Manually send diagnostic data to Microsoft using the `Send-DiagnosticData` cmdlet. |
+| [Use on-demand indirect log collection](#log-collection-for-a-disconnected-environment-and-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.<br></br> After the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` step, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft.  |
+| [Use on-demand fallback log collection](#log-collection-with-an-inaccessible-management-endpoint) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Logs are collected after shutting down the disconnected operations with Azure Local VM, mounting and unlocking virtual hard disks (VHDs) and copying logs using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Trigger on-demand log collection
 
@@ -49,47 +49,43 @@ Use the following cmdlets and references to triage Azure Local issues.
 - `Send-AzStackHciDiagnosticData`. For more information, see [Get support for Azure Local deployment issues](/azure/azure-local/manage/get-support-for-deployment-issues).
 - `Get-SDDCDiagnosticInfo` and upload it to customer service and support (CSS) data transfer manager (DTM) share. For more information, see [Collect diagnostic data for clusters](/azure/azure-local/manage/collect-diagnostic-data).
 
-## Set up a service principle
+## Prerequisites
 
-There are a few prerequisites you need to perform to set up a service principle for log collection. Follow these steps:
+There are a few prerequisites you need to perform log collection in a connected disconnected operations scenario.
 
-1. Sign-in to Azure.
+- Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) to set up the following Azure resources:
+  - A resource group in Azure used for the appliance.
+  - A Service Principal (SPN) with contributor rights on the resource group.
+    - Copy the `AppId` and `Password` form the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
 
-    ```azurecli
-    az login
+- Install the operations module if it's not installed. Use the `Import-Module` cmdlet and modify the path to match your folder structure.
+
+    Here's an example output:
+
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> Import-Module "Q:\AzureLocalVHD\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
+    VERBOSE: [2025-03-26 19:49:12Z][Test-RunningRequirements] PSVersionTable:  
+      
+    Name                           Value  
+    ----                           -----  
+    PSVersion                      5.1.26100.2161  
+    PSEdition                      Desktop  
+    PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}  
+    BuildVersion                   10.0.26100.2161  
+    CLRVersion                     4.0.30319.42000  
+    WSManStackVersion              3.0  
+    PSRemotingProtocolVersion      2.3  
+    SerializationVersion           1.1.0.1  
+      
+    VERBOSE: See Readme.md for directions on how to use this module.
     ```
 
-2. Create a resource group.
+- Management endpoint
+  - Identify your management endpoint IP address.
+  - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
+  - Set up the management endpoint client context. Run this script:
 
     ```azurecli
-    az group create -g WinfieldPreview -l eastus
-    ```
-
-3. List accounts to find the tenant ID and subscription ID.
-
-    ```azurecli
-    az account list -o table
-    ```
-
-4. Create a service principal.
-
-    ```azurecli
-    az ad sp create-for-rbac --name "ObsBootcampSPN" --role "Azure Connected Machine Onboarding" --scopes /subscriptions/<GUID>
-    ```
-
-5. Copy `AppId` and `Password` from the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
-
-6. [Install the operations module](disconnected-operations-deploy.md).
-
-7. Identify your management endpoint IP address.
-
-8. Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
-
-9. Set up the management endpoint client context. Run this script:
-
-    ```azurecli
-    Import-Module "<disconnected operations Module Folder Path>\Azure.Local.DisconnectedOperations.psd1" -Force
-    
     $certPasswordPlainText = "***"
     $certPassword = ConvertTo-SecureString $certPasswordPlainText -AsPlainText -Force
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
@@ -97,9 +93,29 @@ There are a few prerequisites you need to perform to set up a service principle 
 
     Here's example output:
 
+    ```console
+    $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
+    $recoveryKeys
+    ```
+
+- Retrieve BitLocker keys:
+  
     ```azurecli
     $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
     $recoveryKeys
+    ```
+
+    Here's the example output:
+
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> $recoverykeySet = Get-ApplianceBitlockerRecoveryKeys  
+    >> $recoverykeySet | ConvertTo-JSON > c:\recoveryKey.json  
+    VERBOSE: [2025-03-26 21:57:01Z][Get-ApplianceBitlockerRecoveryKeys] [START] Get bitlocker recovery keys.
+    VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] Executing 'Script Block' with timeout 300 seconds ...
+    VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Script Block' ...
+    VERBOSE: [2025-03-26 21:57:01Z][Invoke-ScriptsWithRetry] Task 'Script Block' succeeded.
+    VERBOSE: [2025-03-26 21:57:01Z][Get-ApplianceBitlockerRecoveryKeys] [END] Get bitlocker recovery keys.
+    PS C:\Users\administrator.s46r2004\Documents> Get-content c:\recoveryKey.json
     ```
 
 > [!NOTE]
@@ -107,26 +123,67 @@ There are a few prerequisites you need to perform to set up a service principle 
 
 ## Log collection when connected to Azure with an accessible management endpoint
 
-Before you start, make sure the observability configuration with Azure Local disconnected operations module is set up. Run the following command:
+Before you can start log collection and get the Stamp ID, you must have the observability configuration with Azure Local disconnected operations module setup.
 
-```azurecli
-Get-ApplianceObservabilityConfiguration
-```
+1. To check that the observability configuration is set up. Use the Get-`ApplianceObservabilityConfiguration` or `Get-Appliancehealthstate` cmdlet:
 
-If the observability configuration isn't set up, run the following script:
+    Here's an example output:
 
-```azurecli
-$observabilityConfiguration = New-ApplianceObservabilityConfiguration `
-  -ResourceGroupName "WinfieldPreview" `
-  -TenantId "<Tenant Id>" `
-  -Location "eastus" `
-  -SubscriptionId "<Subscription Id>" `
-  -ServicePrincipalId "<Service Principal Id of the one you prepared for log collection>" `
-  -ServicePrincipalSecret (Read-Host -AsSecureString "Service Principal secret of the one for log collection")
-Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
-```
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceHealthState  
+    VERBOSE: [2025-03-26 22:43:43Z][Invoke-ScriptsWithRetry] Executing 'Get health state ...' with timeout 300 seconds ...  
+    VERBOSE: [2025-03-26 22:43:43Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Get health state ...' ...  
+    VERBOSE: [2025-03-26 22:43:44Z][Invoke-ScriptsWithRetry] Task 'Get health state ...' succeeded.  
+      
+    SystemReady ReadinessStatusDetails ErrorMessages  
+    ----------- ---------------------- -------------  
+    False       @{Services=79; Diagnostics=100; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
+    ```
 
-1. Trigger log collection. Run the `Invoke-applianceLogCollection` cmdlet.
+    > [!NOTE]
+    > If the observability configuration is set up, skip step 2 and proceed to step 3.
+
+2. If the observability configuration isn't set up, run the following script:
+
+    ```azurecli
+    $observabilityConfiguration = New-ApplianceObservabilityConfiguration `
+      -ResourceGroupName "WinfieldPreview" `
+      -TenantId "<Tenant Id>" `
+      -Location "eastus" `
+      -SubscriptionId "<Subscription Id>" `
+      -ServicePrincipalId "<Service Principal Id of the one you prepared for log collection>" `
+      -ServicePrincipalSecret (ConvertTO-SecureString "Service Principal secret of the one for log collection" -AsPlainText -Force")
+    Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration
+    ```
+
+    Here's an example output:
+
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> $observabilityConfiguration = New-ApplianceObservabilityConfiguration `  
+    >> -ResourceGroupName "WinfieldPreviewShip" `  
+    >> -ServerId "<Server Id>" `  
+    >> -Location "eastus" `  
+    >> -SubscriptionId "<Subscription Id>" `  
+    >> -ClientId "<Client ID>" `  
+    >> -ServicePrincipalSecret (ConvertTo-SecureString "SY5T0_9@_eFlLoSdB1uck_1v_0S0#Mf1O#A0o" -AsPlainText -Force)  
+    PS C:\Users\administrator.s46r2004\Documents> Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabilityConfiguration  
+    VERBOSE: [2025-03-26 22:34:56Z][ConfigureObservability] [START] Set observability configuration  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Setting up diagnostics ...' with timeout 300 seconds ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Setting up diagnostics ...' ...  
+    VERBOSE: [2025-03-26 22:34:56Z][ScriptBlock] [INFO] Result of observability configuration: ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Task 'Setting up diagnostics ...' succeeded.  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Wait Diagnostics ready' with timeout 1200 seconds ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Wait Diagnostics ready' ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Executing 'Get health state ...' with timeout 300 seconds ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Get health state ...' ...  
+    VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Task 'Get health state ...' succeeded.  
+    VERBOSE: [2025-03-26 22:34:56Z][ScriptBlock] System Readiness information:  
+    SystemReady ReadinessStatusDetails ErrorMessages  
+    ----------- ---------------------- -------------  
+    False       @{Services=22; Diagnostics=0; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
+    ```
+
+3. Trigger log collection.Run the `Invoke-applianceLogCollection` cmdlet.
 
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
@@ -134,7 +191,7 @@ Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabili
     $operationId = Invoke-ApplianceLogCollection -FromDate $fromDate -ToDate $toDate
     ```
 
-2. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet.
+4. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet.
 
     ```azurecli
     Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
@@ -144,19 +201,39 @@ Set-ApplianceObservabilityConfiguration -ObservabilityConfiguration $observabili
     Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
     ```
 
-3. Get the stamp ID
+5. Get the stamp ID
 
     ```azurecli
     $stampId = (Get-ApplianceInstanceConfiguration).StampId
+    ```
+
+    Here's an example output:
+
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> $stampId = (Get-ApplianceInstanceConfiguration).StampId  
+    VERBOSE: [2025-03-27 19:56:41Z][Invoke-ScriptsWithRetry] Executing 'Retrieving system configuration ...' with timeout 300 seconds ...  
+    VERBOSE: [2025-03-27 19:56:41Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Retrieving system configuration ...' ...  
+    VERBOSE: [2025-03-27 19:56:41Z][ScriptBlock] Getting system configuration from https://100.69.172.253:9443/sysconfig/SystemConfiguration  
+    VERBOSE: [2025-03-27 19:56:42Z][Invoke-ScriptsWithRetry] Task 'Retrieving system configuration ...' succeeded.  
+    PS C:\Users\administrator.s46r2004\Documents> $stampId <Stamp ID>
     ```
 
 ## Log collection for a disconnected environment and accessible management endpoint
 
 For this scenario, the management application programming interface (API) is used to copy logs from disconnected operations to a shared folder. Logs are then analyzed locally or manually uploaded to Microsoft via the `Send-DiagnsticsData` cmdlet.
 
-To trigger log collection in this scenario, follow these steps:
+You can trigger the log collection for your disconnected environment using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
 
-1. Trigger log collection. Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.
+1. Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.
+
+    ```azurecli
+    $fromDate = (Get-Date).AddMinutes(-30)
+    $toDate = (Get-Date)
+    $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate `
+    -LogOutputShareFolderPath "<File Share Path>" -ShareFolderUsername "ShareFolderUser" -ShareFolderPassword (ConvertTo-SecureString "<Share Folder Password>" -AsPlainText -Force)
+    ```
+
+2. Copy logs from your disconnected environment to the share folder.
 
     ```azurecli
     $fromDate = (Get-Date).ToUniversalTime().AddHours(-1)
@@ -176,7 +253,7 @@ To trigger log collection in this scenario, follow these steps:
     $OperationId = Invoke-RestMethod -Certificate $mgmtClientCert -Method "PUT" -URI "https://$($mgmtIpAddress):9443/logs/logCollectionIndirectJob" -Content "application/json" -Body $onDemandRequestBody -Verbose
     ```
 
-2. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet.
+3. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to retrieve the current log collection job status.
 
     ```azurecli
     Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
@@ -186,7 +263,10 @@ To trigger log collection in this scenario, follow these steps:
     Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
     ```
 
-3. Send diagnostic data to Microsoft. Unzip all files into the share folder.
+4. Send diagnostic data to Microsoft.
+    - First, use the `Send-DiagnosticsData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticsData](disconnected-operations-fallback.md#send-diagnosticdata).
+
+    - Then, unzip all files into the share folder.
 
     ```azurecli
     $logShareFolderPath = "***"
@@ -197,7 +277,7 @@ To trigger log collection in this scenario, follow these steps:
     }
     ```
 
-4. Get the stamp ID
+5. Get the stamp ID
 
     ```azurecli
     $stampId = (Get-ApplianceInstanceConfiguration).StampId
@@ -205,11 +285,11 @@ To trigger log collection in this scenario, follow these steps:
 
 ## Log collection with an inaccessible management endpoint
 
-Use fallback log collection to collect and send logs when the disconnected operations virtual machine is down, the management endpoint isn't accessible, and standard log collection can't be invoked.
+Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM is down, the management endpoint isn't accessible, and standard log collection can't be invoked.
 
 There are three methods in this scenario:
 
-**Copy-DiagnosticData**: Used to copy logs from the disconnected operations virtual machine to a local folder.
+**Copy-DiagnosticData**: Used to copy logs from the disconnected operations with Azure Local VM to a local folder.
 **Send-DiagnosticData**: Used to send logs to Microsoft for analysis.
 **Get-observabilityStampId**: Used to get the stamp ID.
 

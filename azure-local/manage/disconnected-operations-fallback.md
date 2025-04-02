@@ -17,7 +17,7 @@ This article describes how to use appliance fallback logging to export and send 
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations VM is down. This method is used when standard log collection can't be initiated, and logs are needed for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations virtual machine (VM) is down. This method is used when standard log collection can't be initiated, and logs are needed for troubleshooting.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 
 ## Export logs for the fallback scenario
 
-You can use three cmdlets to export logs for the fallback scenario:
+To export logs for the fallback scenario, you can use three cmdlets:
 
 - [**Copy-DiagnosticData**](#copy-diagnosticdata)
 - [**Send-DiagnosticData**](#send-diagnosticdata)
@@ -99,7 +99,7 @@ You can use these parameters with the `Copy-DiagnosticData` cmdlet.
     [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
 
-    You can also retrieve Bitlocker recovery keys using `Get-ApplianceBitlockerRecoveryKeys`. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
+    You can also retrieve BitLocker recovery keys using `Get-ApplianceBitlockerRecoveryKeys`. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
 
 #### Copy from the Azure Local VMs running disconnected and mount VHDs
 
@@ -298,7 +298,7 @@ Copy-DiagnosticData -DiagnosticLogPath "C:" -Roles @("ServiceFabric") | Send-Dia
 
 The `Copy-DiagnosticData` cmdlet passes the appropriate **DiagnosticLogPath** and **StampId** parameters into `Send-DiagnosticData`. For the full output of piping the copy cmdlet to send, see **Copy_Send.txt** in the [Appendix](#appendix). This command includes all the output you’d see from the send command with the copy command included.
 
-If you've already collected logs in a folder and need to look up the stamp ID, you can run this command:  
+If logs are collected in a folder and you need to look up the stamp ID, you can run this command:  
 
 ```powershell  
 Get-ObservabilityStampId | Send-DiagnosticData `  
@@ -313,7 +313,7 @@ The `Get-ObservabilityStampId` return value is passed into `Send-DiagnosticData`
 
 ## Appendix  
 
-To view detailed information about the corresponding cmdlet you can use the following commands:
+To view detailed information about the corresponding cmdlet, you can use the following commands:
 
 <details>
 
