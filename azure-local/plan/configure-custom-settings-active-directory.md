@@ -66,7 +66,7 @@ $DeploymentUser="deploymentuser"
 #Assign required permissions
 $userSecurityIdentifier = Get-ADuser -Identity $Deploymentuser
 $userSID = [System.Security.Principal.SecurityIdentifier] $userSecurityIdentifier.SID
-$acl = Get-Acl -Path $ouPath
+$acl = Get-Acl -Path "AD:$ouPath"
 $userIdentityReference = [System.Security.Principal.IdentityReference] $userSID
 $adRight = [System.DirectoryServices.ActiveDirectoryRights]::CreateChild -bor [System.DirectoryServices.ActiveDirectoryRights]::DeleteChild
 $genericAllRight = [System.DirectoryServices.ActiveDirectoryRights]::GenericAll
@@ -86,7 +86,7 @@ $rule3 = New-Object System.DirectoryServices.ActiveDirectoryAccessRule($userIden
 $acl.AddAccessRule($rule1)
 $acl.AddAccessRule($rule2)
 $acl.AddAccessRule($rule3)
-Set-Acl -Path $ouPath -AclObject $acl
+Set-Acl -Path "AD:$ouPath" -AclObject $acl
 ```
 
 ## Required DNS records
