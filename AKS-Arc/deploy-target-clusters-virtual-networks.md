@@ -45,7 +45,7 @@ New-AksHciClusterNetwork -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci)" `
 |     `ipAddressPrefix`                      |   Subnet prefix for creating the virtual network in the network controller. This prefix is a subnet prefix, not a virtual network prefix. Currently, MOC only supports a single subnet.                                           |
 |     `gateway`                              |   Default gateway for the subnet. Must be the first IP of the subnet. SDN doesn't support custom default gateways for virtual networks.                                                                                  |
 |     `dnsServers`                           |   DNS servers reachable from SDN VMs public IP or other (for example, an L3 connection), used for name resolutions.                                                                                                              |
-|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKS on Azure Local VMs on the same subnet, but not recommended due to possible misconfiguration.  |
+|     `K8sNodeIpPoolStart`, `K8sNodeIpPoolEnd`  |   A subset or full IP range from the `ipAddressPrefix`. Used by MOC IPAM to allocate IP addresses for nodes. Useful if deploying non-AKS on Windows Server VMs on the same subnet, but not recommended due to possible misconfiguration.  |
 
 ## Create a Kubernetes cluster on your SDN virtual network
 

@@ -5,7 +5,7 @@ ms.topic: overview
 ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm 
-ms.date: 03/28/2025
+ms.date: 04/02/2025
 
 # Intent: As an IT Pro, I want to use AKS on Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
@@ -21,7 +21,7 @@ To get started with on-premises Kubernetes using AKS, [set up AKS enabled by Azu
 
 Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes). If you're using Azure Stack Hub, see [AKS engine on Azure Stack Hub](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 
-The following sections discuss some of the reasons to use AKS on Azure Local and Windows Server, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/). For information about how Kubernetes works in AKS on Windows Server, see [Kubernetes core concepts](kubernetes-concepts.md). For more information about Kubernetes, see [the Kubernetes.io documentation](https://kubernetes.io).
+The following sections discuss some of the reasons to use AKS on Windows Server, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/). For information about how Kubernetes works in AKS on Windows Server, see [Kubernetes core concepts](kubernetes-concepts.md). For more information about Kubernetes, see [the Kubernetes.io documentation](https://kubernetes.io).
 
 ## Why use AKS on Windows Server for containerized applications?
 
@@ -31,7 +31,7 @@ Kubernetes is an open-source orchestrator for automating container management at
 
 Some of the functionality AKS provides on Windows Server includes:
 
-- Deploy containerized apps at scale to Kubernetes clusters running across the Azure Local and Windows Server cluster.
+- Deploy containerized apps at scale to Kubernetes clusters running across the Windows Server cluster.
 - Deploy and manage both Linux and Windows-based containerized apps.
 - Scale up or down by adding or removing nodes to the Kubernetes cluster.
 - Manage storage and networking on your Kubernetes cluster.

@@ -5,13 +5,13 @@ author: sethmanheim
 ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 07/02/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Service cluster to Kubernetes so I can extend those capabilities to my Kubernetes clusters.
-# Keyword: AKS cluster Azure Local cluster
+# Keyword: AKS cluster Kubernetes cluster
 ---
 
 # Connect an Azure Kubernetes Service cluster to Azure Arc

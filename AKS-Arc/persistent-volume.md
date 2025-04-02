@@ -3,7 +3,7 @@ title: Use persistent volumes with AKS enabled by Azure Arc
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/03/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
@@ -47,7 +47,7 @@ spec:
    storage: 10Gi
 ```
 
-To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Local cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Windows Server cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
 
 ```bash
 kubectl create -f pvc-akshci-csi.yaml 

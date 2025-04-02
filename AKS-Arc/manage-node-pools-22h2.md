@@ -1,16 +1,16 @@
 ---
-title: Manage node pools for a cluster (AKS on Azure Local 22H2)
-description: Learn how to manage multiple node pools in AKS enabled by Azure Arc (AKS on Azure Local 22H2).
+title: Manage node pools for a cluster in AKS on Windows Server
+description: Learn how to manage multiple node pools in AKS enabled by Azure Arc on Windows Server.
 ms.topic: how-to
 ms.custom:
-ms.date: 01/31/2024
+ms.date: 04/02/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
 ---
 
-# Manage node pools for a cluster (AKS on Azure Local 22H2)
+# Manage node pools for a cluster in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -232,4 +232,4 @@ Events:
 
 ## Next steps
 
-- [Manage node pools (AKS on Azure Local 23H2)](manage-node-pools.md)
+- [Manage node pools in AKS on Azure Local 23H2](manage-node-pools.md)

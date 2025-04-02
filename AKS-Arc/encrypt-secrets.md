@@ -8,7 +8,7 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 
-# Keyword: etcd secrets AKS Azure Local 
+# Keyword: etcd secrets AKS Windows Server
 
 ---
 
