@@ -113,7 +113,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Local | TCP | 9389 |
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Azure Local | Active Directory Services | TCP | 9389 |
 
 ### Network Time Protocol
 
