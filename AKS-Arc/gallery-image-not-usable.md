@@ -15,19 +15,19 @@ ms.reviewer: abha
 
 ## Symptoms
 
-You see the following error when you try creating the AKS cluster:
+You see the following error when you try to create the AKS cluster:
 
 ```output
 Kubernetes version 1.29.4 is not ready for use on Linux. Please go to https://aka.ms/aksarccheckk8sversions for details of how to check the readiness of Kubernetes versions.
 ```
 
-You may also see the following when attempting to scale a nodepool:
+You might also see the following error when you try to scale a nodepool:
 
 ```output
 error with code NodepoolPrecheckFailed occured: AksHci nodepool creation precheck failed. Detailed message: 1 error occurred:\n\t* rpc error: code = Unknown desc = GalleryImage not usable, health state degraded: Degraded
 ```
 
-When you run `az aksarc get-versions` you see the following errors:
+When you run `az aksarc get-versions`, you see the following errors:
 
 ```output
 ...
@@ -46,8 +46,8 @@ When you run `az aksarc get-versions` you see the following errors:
 - This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
 - Upgrade your Azure Local deployment to the 2503 build.
 - Once updated, confirm that the images have been downloaded successfully by running the `az aksarc get-versions` command.
-- For **new AKS clusters**: New AKS clusters should now be created successfully.
-- For **scaling existing AKS clusters**: Scaling existing AKS clusters will continue to hit issues. Please file a support case.
+- For new AKS clusters: new AKS clusters should now be created successfully.
+- For scaling existing AKS clusters: scaling existing AKS clusters continues to encounter issues. Please file a support case.
 
 ## Next steps
 
