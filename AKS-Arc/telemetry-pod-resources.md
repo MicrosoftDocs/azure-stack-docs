@@ -1,6 +1,6 @@
 ---
-title: AKS Arc telemetry pod is consuming too much memory and CPU
-description: Learn how to troubleshoot when AKS Arc telemetry pod is consuming too much memory and CPU
+title: AKS Arc telemetry pod consumes too much memory and CPU
+description: Learn how to troubleshoot when AKS Arc telemetry pod consumes too much memory and CPU.
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
@@ -9,7 +9,7 @@ ms.reviewer: abha
 
 ---
 
-# AKS Arc telemetry pod is consuming too much memory and CPU
+# AKS Arc telemetry pod consumes too much memory and CPU
 
 ## Symptoms
 
@@ -26,20 +26,21 @@ NAME                              CPU(cores)   MEMORY(bytes)
 akshci-telemetry-5df56fd5-rjqk4   996m         152Mi
 ```
 
-## Mitigation Steps
+## Mitigation
 
-To resolve this issue, we need to set default **resource limits** for the pods in the `kube-system` namespace.
+To resolve this issue, set default **resource limits** for the pods in the `kube-system` namespace.
 
-### Important Notes:
-- Please verify if you have any pods in the **kube-system** namespace that might require more memory than the default limit setting below. If so, adjustments may be needed.
-- The **LimitRange** is applied to the **namespace** (in this case, the `kube-system` namespace). The default resource limits will also apply to new pods that don't specify their own limits.
-- **Existing pods** (including those that already have resource limits) will not be affected.
-- **New pods** that don't specify their own resource limits will be constrained by the limits set below.
-- After setting the resource limits and deleting the telemetry pod, the new pod might eventually hit the memory limit and get killed with **OOM (Out-Of-Memory)** errors. This is a **temporary mitigation**.
+### Important notes
+
+- Verify if you have any pods in the **kube-system** namespace that might require more memory than the default limit setting. If so, adjustments might be needed.
+- The **LimitRange** is applied to the **namespace**; in this case, the `kube-system` namespace. The default resource limits also apply to new pods that don't specify their own limits.
+- **Existing pods**, including those that already have resource limits, aren't affected.
+- **New pods** that don't specify their own resource limits are constrained by the limits set in the next section.
+- After you set the resource limits and delete the telemetry pod, the new pod might eventually hit the memory limit and generate **OOM (Out-Of-Memory)** errors. This is a temporary mitigation.
   
-To proceed with setting the resource limits, you can run the following script. While the below script uses `az aksarc get-credentials`, you can also use `az connectedk8s proxy` to get the proxy kubeconfig and access the Kubernetes cluster.
+To proceed with setting the resource limits, you can run the following script. While the script uses `az aksarc get-credentials`, you can also use `az connectedk8s proxy` to get the proxy kubeconfig and access the Kubernetes cluster.
 
-### Define the **LimitRange YAML** to set default CPU and memory limits:
+### Define the LimitRange YAML to set default CPU and memory limits
 
 ```powershell
 # Set the $cluster_name and $resource_group of the aksarc cluster
@@ -75,14 +76,16 @@ sleep 5
 kubectl get pods -l app=akshci-telemetry -n kube-system --kubeconfig "./kubeconfig-$cluster_name"
 ```
 
-### Validate if the resource limits have been applied correctly
+### Validate if the resource limits were applied correctly
 
 1. Check the resource limits in the pod's YAML configuration:
+
    ```powershell
    kubectl get pods -l app=akshci-telemetry -n kube-system --kubeconfig "./kubeconfig-$cluster_name" -o yaml
    ```
 
-2. In the output, verify that the **resources** section includes the limits:
+1. In the output, verify that the `resources` section includes the limits:
+
    ```yaml
    resources:
      limits:
