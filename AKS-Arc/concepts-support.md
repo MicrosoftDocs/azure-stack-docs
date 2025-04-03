@@ -1,6 +1,6 @@
 ---
-title: Tested resource limits, VM sizes, and regions for AKS enabled by Azure Arc
-description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) enabled by Azure Arc.
+title: Tested resource limits, VM sizes, and regions for AKS on Windows Server
+description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/31/2025
@@ -13,15 +13,15 @@ ms.custom: references_regions
 
 ---
 
-# Resource limits, VM sizes, and regions for AKS enabled by Azure Arc
+# Resource limits, VM sizes, and regions for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service (AKS) enabled by Azure Arc. The tests used the latest release of AKS enabled by Azure Arc.
+This article provides information about tested configurations, resource limits, VM sizes, and regions for Azure Kubernetes Service (AKS) on Windows Server. The tests used the latest release of AKS on Windows Server.
 
 ## Maximum specifications
 
-AKS enabled by Arc deployments have been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or [submit a question to the community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+AKS on Windows Server deployments have been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or [submit a question to the community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -46,7 +46,7 @@ The hardware configuration of each physical node in the AKS Arc cluster is as fo
 - Disk: 8x HDDs (2 TB or larger) and 2x 1.6 TB NVMe to support S2D storage configurations.
 - Network: Four (4) 100-Gbit NICs (Mellanox or Intel).
 
-Microsoft engineering tested AKS enabled by Arc using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configuration, see [Scaling AKS](#scaling-aks).
+Microsoft engineering tested AKS on Windows Server using this configuration, for single node, 2 node, 4 node, and 8 node Windows failover clusters. If you have a requirement that exceeds the tested configuration, see [Scaling AKS](#scaling-aks).
 
 > [!IMPORTANT]  
 > When you upgrade a deployment of AKS, extra resources are temporarily consumed.
@@ -79,7 +79,7 @@ The following VM sizes for control plane nodes, Linux worker nodes, and Windows 
 
 ## Supported Azure regions for Azure registration
 
-AKS enabled by Arc is supported in the following Azure regions:
+AKS on Windows Server is supported in the following Azure regions:
 
 - Australia East
 - East US
@@ -171,7 +171,7 @@ The following scaling example is based on these general assumptions/use cases:
 - To run 200 worker nodes in one target cluster, you can use the default control plane and load balancer size. Depending on the number of pods per node, you can go up at least one size on the control plane and use **Standard_D8s_v3**.
 - Depending on the number of Kubernetes services hosted in each target cluster, you might have to increase the size of the load balancer VM as well at target cluster creation to ensure that services can be reached with high performance and traffic is routed accordingly.
 
-The deployment of AKS enabled by Arc distributes the worker nodes for each node pool in a target cluster across the available nodes using placement logic.
+The deployment of AKS on Windows Server distributes the worker nodes for each node pool in a target cluster across the available nodes using placement logic.
 
 > [!IMPORTANT]
 > The node placement is not preserved during platform and AKS upgrades and will change over time. A failed physical node also impacts the distribution of virtual machines across the remaining cluster nodes.

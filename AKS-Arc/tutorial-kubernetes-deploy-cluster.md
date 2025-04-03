@@ -1,6 +1,6 @@
 ---
-title: Deploy a workload cluster on AKS enabled by Azure Arc
-description: In this tutorial, learn how to create a Kubernetes cluster and use kubectl to connect to the Kubernetes master node in AKS enabled by Arc.
+title: Deploy a Kubernetes cluster on Windows Server
+description: In this tutorial, learn how to create a Kubernetes cluster and use kubectl to connect to the Kubernetes master node in AKS on Windows Server.
 ms.topic: tutorial
 ms.date: 04/03/2025
 ms.author: sethm 
@@ -13,7 +13,7 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Deploy a workload cluster on AKS enabled by Arc
+# Tutorial: Deploy a Kubernetes cluster on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -22,7 +22,7 @@ Kubernetes provides a distributed platform for containerized applications.
 In this tutorial, part three of seven, a Kubernetes cluster is deployed on AKS on Windows Server. You'll learn how to:
 
 > [!div class="checklist"]
-> * Deploy an AKS cluster on Windows Server
+> * Deploy a Kubernetes cluster on Windows Server
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
@@ -156,9 +156,9 @@ moc-lel7tzxdt30   Ready    control-plane,master   6d20h   v1.20.7
 In this tutorial, a Kubernetes cluster was deployed in AKS, and you configured `kubectl` to connect to it. You learned how to:
 
 > [!div class="checklist"]
-> * Deploy an AKS cluster on Windows Server
+> * Deploy a Kubernetes cluster on Windows Server
 > * Install the Kubernetes CLI (kubectl)
-> * Configure kubectl to connect to your AKS cluster
+> * Configure kubectl to connect to your Kubernetes cluster
 
 Advance to the next tutorial to learn how to deploy an application to the cluster.
 
