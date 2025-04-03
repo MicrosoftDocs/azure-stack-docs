@@ -2,12 +2,12 @@
 title: Get support for AKS Arc and AKS Edge Essentials
 description: Learn about how to get support and open a support request for AKS enabled by Azure Arc or AKS Edge Essentials.
 ms.topic: conceptual
-ms.date: 07/11/2024
+ms.date: 04/03/2025
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: mikek
 author: sethmanheim
+
 # Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
 # Keyword: AKS support AKS help support requests
 ---
@@ -20,10 +20,10 @@ If you encounter an issue with AKS enabled by Azure Arc or AKS Edge Essentials, 
 
 Select the product you're using to see the relevant instructions on opening a support request.
 
-# [AKS on Azure Local](#tab/akshci)
+# [AKS on Windows Server](#tab/akshci)
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Local. Select the subscription to open its dashboard.
+1. Browse to the subscription you're using for Azure Kubernetes Services on Windows Server. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
 
     :::image type="content" source="media/help-support/new-support-request-sidebar.png" alt-text="Screenshot of the Azure portal Help and Support sidebar." lightbox="media/help-support/new-support-request-sidebar.png":::
@@ -34,7 +34,7 @@ Select the product you're using to see the relevant instructions on opening a su
 
 1. Your subscription name should auto-populate in the **Subscription** field. If it doesn't, select it from the dropdown.
 
-1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Azure Local (AKS-HCI)** service in the **Compute** category.
+1. Select the **All services** button, then select the **Service type** dropdown. Begin typing **Azure Kubernetes Service** in the search box to locate the **Azure Kubernetes Service on Windows Server** service in the **Compute** category.
 
     :::image type="content" source="media/help-support/service-type.png" alt-text="Screenshot showing service selection." lightbox="media/help-support/service-type.png":::
 

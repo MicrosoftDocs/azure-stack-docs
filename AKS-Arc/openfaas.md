@@ -7,7 +7,7 @@ ms.custom: linux-related-content
 ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: scooley
+
 # Keyword: OpenFaaS serverless functions
 ---
 

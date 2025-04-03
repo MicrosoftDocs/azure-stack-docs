@@ -15,6 +15,9 @@ ms.date: 04/02/2025
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
+> [!IMPORTANT]
+> Microsoft is retiring the current architecture of AKS on Windows Server 2019 and AKS on Windows Server 2022 on March 27, 2028. We recommend that you upgrade to [AKS on Azure Local](aks-whats-new-23h2.md). For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
+
 Azure Kubernetes Service (AKS) on Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Windows Server automates running containerized applications at scale. AKS on Windows Server makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 To get started with on-premises Kubernetes using AKS, [set up AKS enabled by Azure Arc](setup.md).

@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-AKS enabled by Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. This how-to guide describes how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
+AKS enabled by Azure Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. This how-to guide describes how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
 This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Arc](kubernetes-concepts.md).
 
