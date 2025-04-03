@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -75,6 +75,12 @@ To install the operating system, version 23H2, follow these steps:
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
+## Install latest drivers and firmware
+
+1. Skip this step if your hardware partner provides a solution builder extension (SBE). Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
+
+1. If your hardware partner provides an SBE, copy it to each machine that you intend to cluster. Place the SBE content at C:\SBE to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+
 ## Configure the operating system using SConfig
 
 You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI OS after installation.
@@ -88,11 +94,6 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 > - Machines must not be joined to Active Directory before deployment.
 
 Follow these steps to configure the operating system using SConfig:
-
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your machines.
-
-    > [!IMPORTANT]
-    > If your hardware partner provides a solution builder extension (SBE), copy it to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 
