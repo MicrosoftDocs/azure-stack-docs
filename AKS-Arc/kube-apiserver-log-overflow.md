@@ -50,7 +50,7 @@ To resolve the issue temporarily, you must manually clean up the old audit logs.
 - Remove the old audit logs from the **/var/log/kube-apiserver** folder.
 - If you have multiple control plane nodes, you must repeat this process on each control plane VM.
 
-[SSH into the control plane VM]() and navigate to the kube-apiserver logs directory:
+[SSH into the control plane VM](ssh-connect-to-windows-and-linux-worker-nodes.md) and navigate to the kube-apiserver logs directory:
 
 ```bash
 cd /var/log/kube-apiserver
