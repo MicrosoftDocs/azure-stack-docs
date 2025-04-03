@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 03/20/2025
+ms.date: 04/03/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -17,7 +17,7 @@ This article describes how to register your Azure Local machines and then set up
 
 ## Prerequisites
 
-Before you begin, make sure you've completed the following prerequisites:
+Before you begin, make sure you complet the following prerequisites:
 
 ### Azure Local machine prerequisites
 
@@ -79,7 +79,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
 
     ---
-2. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+2. Connect to your Azure account and set the subscription. Open browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     # [PowerShell](#tab/powershell)
 
@@ -192,7 +192,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
 
-1. In the Azure portal go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
+1. In the Azure portal, go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
 
