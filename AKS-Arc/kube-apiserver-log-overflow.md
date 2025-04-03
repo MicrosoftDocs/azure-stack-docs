@@ -1,6 +1,6 @@
 ---
-title: Known issue with disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs
-description: Known issue with disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs
+title: Disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs
+description: Learn about a known issue with disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs.
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
@@ -15,16 +15,16 @@ ms.reviewer: abha
 
 ## Symptoms
 
-If you're running kubectl commands and facing issues, you may see errors like:
+If you're running kubectl commands and facing issues, you might see errors such as:
 
 ```output
 kubectl get ns
 Error from server (InternalError): an error on the server ("Internal Server Error: \"/api/v1/namespaces?limit=500\": unknown") has prevented the request from succeeding (get namespaces)
 ```
 
-When you SSH into the control plane VM, you may notice that your control plane VM has run out of disk space, specifically on the /dev/sda2 partition. This is due to the accumulation of kube-apiserver audit logs in the /var/log/kube-apiserver directory, which can consume ~90GB of disk space.
+When you SSH into the control plane VM, you might notice that your control plane VM ran out of disk space, specifically on the **/dev/sda2** partition. This is due to the accumulation of kube-apiserver audit logs in the **/var/log/kube-apiserver** directory, which can consume approximately 90 GB of disk space.
 
-```
+```output
 clouduser@moc-laiwyj6tly6 [ /var/log/kube-apiserver ]$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        4.0M     0  4.0M   0% /dev
@@ -40,15 +40,15 @@ clouduser@moc-laiwyj6tly6 [ /var/log/kube-apiserver ]$ sudo du -h /var/log/kube-
 87G     /var/log/kube-apiserver
 ```
 
-The issue occurs because the `--audit-log-maxbackup value is set to 0`. This setting allows the audit logs to accumulate without any limit, eventually filling up the disk. 
+The issue occurs because the `--audit-log-maxbackup` value is set to 0. This setting allows the audit logs to accumulate without any limit, eventually filling up the disk. 
 
 ## Mitigation
 
-To resolve the issue temporarily, you will need to manually clean up the old audit logs. Follow the steps below:
+To resolve the issue temporarily, you must manually clean up the old audit logs. Follow these steps:
 
-- SSH into the control plane virtual machine (VM) of your AKSArc cluster.
-- Remove the old audit logs from the /var/log/kube-apiserver folder.
-- If you have multiple control plane nodes, you will need to repeat this process on each control plane VM.
+- SSH into the control plane virtual machine (VM) of your AKS Arc cluster.
+- Remove the old audit logs from the **/var/log/kube-apiserver** folder.
+- If you have multiple control plane nodes, you must repeat this process on each control plane VM.
 
 [SSH into the control plane VM]() and navigate to the kube-apiserver logs directory:
 
