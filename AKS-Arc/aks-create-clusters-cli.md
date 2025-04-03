@@ -44,7 +44,7 @@ az extension add -n connectedk8s --upgrade
 
 ## Create a Kubernetes cluster
 
-Use the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before you run this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [`az account set`](/cli/azure/account#az-account-set) command. With the  `az aksarc create` command, we recommend that you use the `--validate` flag, which validates the input parameters that you intend to use. Once the input parameters are validated, you can run the  `az aksarc create` command without the `--validate` flag to create the Kubernetes cluster. 
+Use the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before you run this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [`az account set`](/cli/azure/account#az-account-set) command. With the  `az aksarc create` command, we recommend that you use the `--validate` flag, which validates the input parameters that you intend to use. Once the input parameters are validated, you can run the  `az aksarc create` command without the `--validate` flag to create the Kubernetes cluster.
 
 ```azurecli
 az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
@@ -62,7 +62,7 @@ Note the following considerations when you create a cluster:
 - By default, the SSH key is stored at **~/.ssh/id_rsa.pub**. During cluster creation, you can specify an alternate location using the `--ssh-key-value` parameter.
 
 > [!IMPORTANT]
-> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](/azure/aks/hybrid/azure-rbac-local) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
+> To use Azure RBAC or workload identity for an AKS cluster, you must pass the required parameters during cluster creation using Azure CLI. Currently, updating an existing AKS cluster to enable workload identity and/or Azure RBAC is not supported. For more information, see [Use Azure RBAC for Kubernetes authorization](azure-rbac-local.md) or [Deploy and configure Workload Identity for your cluster](workload-identity.md).
 
 ## Connect to the Kubernetes cluster
 
