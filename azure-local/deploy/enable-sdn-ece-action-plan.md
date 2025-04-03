@@ -80,13 +80,14 @@ Follow these steps on the Azure CLI to run the ECE action plan:
 
     ```azurecli
     #Run the LCM action plan to install Network Controller as Failover Cluster Service
+    
     Add-EceFeature -Name NC -SDNPrefix v
     ```
 
     This step can take up to 5 minutes.
 
 1. Validate that network controller is successfully added to your instance. Once the network controller is added, the `add-EceFeature` command shows the action plan outcome.
-
+    <br></br>
     <details>
     <summary>Expand this section to see an example output.</summary>
 
