@@ -75,7 +75,9 @@ To install the operating system, version 23H2, follow these steps:
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
-## Install latest drivers and firmware
+## Install drivers and firmware
+
+To install the latest drivers and firmware, follow these steps:
 
 1. Skip this step if your hardware partner provides a solution builder extension (SBE). Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
 
