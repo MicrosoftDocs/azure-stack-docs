@@ -23,7 +23,7 @@ This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md
 - **For deleting a nodepool** with a PodDisruptionBudget: By design, the nodepool isn't deleted if a PodDisruptionBudget exists, to protect applications. Use the following workaround to delete the PDB resources and then retry deleting the nodepool.
 
 
-## Workaround for AKS Edge Essentials and older versions of AKS on Azure Local.
+## Workaround for AKS Edge Essentials and older versions of AKS on Azure Local
 
 Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all PDBs:
 
