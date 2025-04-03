@@ -1,6 +1,6 @@
 ---
 title: Overview of Azure Local Rack Aware Clustering
-description: Use this topic to learn about Azure Local Rack Aware Clustering.
+description: Use this article to learn about Azure Local Rack Aware Clustering.
 author: alkohli
 ms.author: alkohli
 ms.topic: overview
@@ -36,13 +36,13 @@ For detailed networking requirements, see [Rack Aware Clustering network design]
 
 The main benefits of Azure Local Rack Aware Cluster include:
 
-- **High availability**: By distributing data across two or more racks, the system can withstand the failure of an entire rack without losing access to data. This is particularly important for mission-critical applications that require continuous uptime.
+- **High availability**: By distributing data across two or more racks, the system can withstand the failure of an entire rack without losing access to data. This is important for mission-critical applications that require continuous uptime.
 
 - **Improved performance**: The architecture allows for better load balancing and resource utilization, as workloads can be distributed across multiple racks.
 
 - **Simplified management**: Azure Local Rack Aware Clustering provides a unified management interface for both racks, making it easier to monitor and maintain the system.
 
-- **Cost-effective**: By leveraging existing infrastructure and providing a single storage pool, organizations can reduce costs associated with hardware and maintenance.
+- **Cost-effective**: By using existing infrastructure and providing a single storage pool, organizations can reduce costs associated with hardware and maintenance.
 
 
 ## Use cases
@@ -60,7 +60,7 @@ All [system requirements for Azure Local](../concepts/system-requirements-23h2.m
 
 Other requirements for rack aware clusters include:
 
-- **Drive requirements**: Data drives must be all-flash, either non volatile memory express (NVMe) or solid-state drives (SSD).
+- **Drive requirements**: Data drives must be all-flash. Either non volatile memory express (NVMe) or solid-state drives (SSD) work.
 
 - **Availability zone requirements**: Rack aware cluster supports only two local availability zones, with a maximum of four machines in each zone. The two zones must contain an equal number of machines.
 
@@ -69,18 +69,18 @@ Other requirements for rack aware clusters include:
     - The following table summarizes the supported configurations with volume resiliency settings.
 
         | Machines in two zones  | Volume resiliency   | Infra volumes  | Workload volumes  |
-        | -- | -- | -- | -- |
+        |--| -- |--| -- |
         | 1+1 <br> (2-node cluster)  | 2-way mirror  | 1 | 2 |
         | 2+2 <br> (4-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 4 |
         | 3+3 <br> (6-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 6 |
         | 4+4 <br> (8-node cluster)  | Rack level nested mirror <br> (4-way mirror)  | 1 | 8 |
 
-    - Only the new deployments are supported. Conversion from existing standard deployments to rack aware clusters is not supported.
+    - Only the new deployments are supported. Conversion from existing standard deployments to rack aware clusters isn't supported.
 
 - **Replication requirements**: To facilitate synchronous replications between racks, a dedicated storage network is essential to ensure adequate bandwidth and low latency for storage traffic. The round-trip latency requirement between two racks should be 1 millisecond or less. The necessary bandwidth can be calculated based on the cluster size and the network interface card (NIC) speed as follows:
 
     | Machines in zone | NIC speed | Storage ports | Bandwidth required |
-    | -- | -- | -- | -- |
+    |--| -- |--| -- |
     | 1 | 10 | 2 | 20 GbE  |
     | 2 | 10 | 2 | 40 GbE  |
     | 3 | 10 | 2 | 60 GbE  |
@@ -98,8 +98,8 @@ Storage Spaces Direct is used to create a single storage pool that aggregates th
 
 - Only two-way mirror volumes are supported. Three-way mirror volumes aren't supported.
 
-- For a *1+1* configuration, two volumes are created — one on each machine — with a two-way mirror that respects the rack fault domain, ensuring two copies of data are available in the cluster, one in each rack.
-- In a *2+2* configuration, four volumes are created — one on each machine — with a two-way mirror that also respects the rack fault domain, providing one copy of data in each rack.
+- For a *1+1* configuration, two volumes are created—one on each machine—with a two-way mirror that respects the rack fault domain, ensuring two copies of data are available in the cluster, one in each rack.
+- In a *2+2* configuration, four volumes are created—one on each machine—with a two-way mirror that also respects the rack fault domain, providing one copy of data in each rack.
 
     With a two-way mirror:
 
