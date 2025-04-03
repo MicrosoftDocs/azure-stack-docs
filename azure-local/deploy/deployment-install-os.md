@@ -73,15 +73,15 @@ To install the operating system, version 23H2, follow these steps:
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
-Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
-
 ## Install drivers and firmware
 
 To install the latest drivers and firmware, follow these steps:
 
 1. Skip this step if your hardware partner provides a solution builder extension (SBE). Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
 
-1. If your hardware partner provides an SBE, copy it to each machine that you intend to cluster. Place the SBE content at C:\SBE to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+
+Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
 ## Configure the operating system using SConfig
 
