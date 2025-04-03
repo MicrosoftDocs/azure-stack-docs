@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/31/2025
+ms.date: 04/03/2025
 ---
 
 # What's new in Azure Local?
@@ -23,7 +23,7 @@ This is a baseline release with the following features and improvements:
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
-  - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./index.yml).
+  - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
     - Composed image is now supported for Other Equipment Manufacturers (OEMs).
     - Several security enhancements were done for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.
