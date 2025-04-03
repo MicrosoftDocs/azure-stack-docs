@@ -55,7 +55,7 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB |
 
-For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server cluster or Windows Server failover cluster.
+For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server failover cluster.
 
 You must install the same operating system on each server in the cluster. If you're using Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
 
@@ -87,6 +87,7 @@ The following requirements apply to a Windows Server Datacenter cluster.
 - Verify that you disabled IPv6 on all network adapters.
 - For a successful deployment, the Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.
+- Make sure that there's network connectivity between Windows Server hosts and tenant VMs.
 - DNS name resolution is required for all nodes to be able to communicate with each other.
 - (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS to register the cloud agent generic cluster name in the DNS system for discovery.
 
