@@ -9,7 +9,7 @@ ms.reviewer: abha
 
 ---
 
-# Disk space exhaustion on the control plane VMs due to accumulation of kube-apiserver audit logs
+# Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
