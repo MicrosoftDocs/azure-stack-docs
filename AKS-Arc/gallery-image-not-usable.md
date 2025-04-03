@@ -43,9 +43,11 @@ When you run `az aksarc get-versions` you see the following errors:
 
 ## Mitigation
 
-This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
-
-If you're on an older build, please update to Azure Local, version 2503. Once you update to 2503, confirm that the images are ready by running the `az aksarc get-versions` command. You can then retry creating the AKS cluster. If the retry doesn't work, file a support case.
+- This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
+- Upgrade your Azure Local deployment to the 2503 build.
+- Once updated, confirm that the images have been downloaded successfully by running the `az aksarc get-versions` command.
+- For **new AKS clusters**: New AKS clusters should now be created successfully.
+- For **scaling existing AKS clusters**: Scaling existing AKS clusters will continue to hit issues. Please file a support case.
 
 ## Next steps
 
