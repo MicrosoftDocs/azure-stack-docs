@@ -157,11 +157,11 @@
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: Cannot create/scale AKS cluster due to image issues
+    - name: Can't create/scale AKS cluster due to image issues
       href: gallery-image-not-usable.md
     - name: Disk space exhaustion on control plane VMs
       href: kube-apiserver-log-overflow.md
-    - name: Telemetry pod is consuming too much memory and CPU  
+    - name: Telemetry pod consumes too much memory and CPU  
       href: telemetry-pod-resources.md
     - name: Issues after deleting storage volumes
       href: delete-storage-volume.md
