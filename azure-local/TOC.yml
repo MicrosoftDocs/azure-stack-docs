@@ -152,7 +152,10 @@ items:
     - name: Using Express scripts
       href: deploy/sdn-express-23h2.md
     - name: Using Windows Admin Center
-      href: deploy/sdn-wizard-23h2.md     
+      href: deploy/sdn-wizard-23h2.md  
+  - name: Deploy Rack Aware Clustering 
+    href: deploy/deployment-azure-resource-manager-template.md
+
   
   - name: Deploy workloads
     items:
@@ -251,6 +254,8 @@ items:
         href: manage/create-arc-virtual-machines.md
     - name: Connect to VM via SSH
       href: manage/connect-arc-vm-using-ssh.md
+    - name: Place VMs in Rack Aware Cluster
+      href: plan/rack-aware-clustering-vm-placement.md
     - name: Manage Azure Local VMs
       href: manage/manage-arc-virtual-machines.md
     - name: Manage Azure Local VM resources
@@ -539,6 +544,22 @@ items:
   items: 
   - name: Azure Local observability
     href: concepts/observability.md
+  - name: Azure Local Rack Aware Clustering
+    items:
+    - name: Overview
+      href: plan/rack-aware-clustering-overview.md
+    - name: Network design requirements
+      items: 
+      - name: Switch configuration
+        href: plan/rack-aware-clustering-network-design-switch-configuration.md
+      - name: Link configuration
+        href: plan/rack-aware-clustering-network-design-link-configuration.md
+      - name: QoS configuration
+        href: plan/rack-aware-clustering-network-design-qos-configuration.md
+      - name: SDN configuration
+        href: plan/rack-aware-clustering-network-design-sdn-configuration.md
+      - name: AKS configuration
+        href: plan/rack-aware-clustering-network-design-aks-configuration.md
   - name: Host networking
     items:
     - name: Network ATC overview
