@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 03/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -31,7 +31,7 @@ The Azure Stack HCI operating system update is available via Windows Update and 
 To upgrade the OS on your Azure Local, follow these high-level steps:
 
 1. [Complete the prerequisites](#complete-prerequisites).
-1. [Update registry key.](#step-0-update-registry-key)
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to the Azure Local, version 22H2](#step-1-connect-to-azure-local-via-windows-admin-center).
 1. [Check for the available updates using Windows Admin Center.](#step-2-install-operating-system-and-hardware-updates-using-windows-admin-center)
 1. [Install the new OS, hardware and extension updates using Windows Admin Center.](#step-2-install-operating-system-and-hardware-updates-using-windows-admin-center)
@@ -50,13 +50,21 @@ Before you begin, make sure that:
 > [!NOTE]
 > The offline ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
 
-## Step 0: Update registry key
+## Step 0: Update registry keys
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
+To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following commands on each machine in the system to update registry keys:
 
 ```powershell
 # Set RefsEnableMetadataValidation to 0
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+```
+
+```powershell
+# Create the parameters key if it does not exist. If it does already exist, the command may fail with an error, which is expected.
+New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+
+# Set the SkipSmallLocalAllocations value to 0
+New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
 ```
 
 ## Step 1: Connect to Azure Local via Windows Admin Center
