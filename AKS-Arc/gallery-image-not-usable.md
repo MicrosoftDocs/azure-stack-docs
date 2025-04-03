@@ -1,5 +1,5 @@
 ---
-title: Kubernetes cluster create or nodepool scale failing due to AKS Arc VHD image download issues  
+title: Kubernetes cluster create or nodepool scale failing due to AKS Arc image issues  
 description:  Known issue with Kubernetes cluster create or nodepool scale failing due to AKS Arc VHD image download issues
 ms.topic: troubleshooting
 author: sethmanheim
@@ -9,7 +9,7 @@ ms.reviewer: abha
 
 ---
 
-# Can't create AKS cluster or scale node pool because of issues with AKS Arc VHD image download
+# Can't create AKS cluster or scale node pool because of issues with AKS Arc images
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
