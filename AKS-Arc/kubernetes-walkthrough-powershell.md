@@ -37,7 +37,7 @@ This quickstart guides you through setting up an Azure Kubernetes Service (AKS) 
 
 ## Register the resource provider to your subscription
 
-Before the registration process, enable the appropriate resource provider in Azure for the AKS enabled by Arc registration. To do so, run the following PowerShell commands:
+Before the registration process, enable the appropriate resource provider in Azure for the AKS registration. To do so, run the following PowerShell commands:
 
 To sign in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command:
 
@@ -69,7 +69,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 
 ## Step 1: prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements to install AKS enabled by Arc are satisfied. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command on all nodes in your Windows Server cluster:
+Run checks on every physical node to see if all the requirements to install AKS are satisfied. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command on all nodes in your Windows Server cluster:
 
 ```powershell
 Initialize-AksHciNode
@@ -133,7 +133,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ### Option 2: use an Azure service principal
 
-If you don't have access to a subscription on which you're an **Owner**, you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Local and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
+If you don't have access to a subscription on which you're an **Owner**, you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
 
 ## Step 5: start a new deployment
 
