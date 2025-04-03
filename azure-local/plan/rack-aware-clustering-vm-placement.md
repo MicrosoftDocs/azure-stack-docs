@@ -95,4 +95,4 @@ To create a VM in a specific availability zone and ensure it stays within that a
 
 ## Next steps
 
-- See [Rack Aware Cluster networking](rack-aware-clustering-network-design.md).
+- See [Rack Aware Cluster networking](./rack-aware-clustering-network-design-switch-configuration.md).
