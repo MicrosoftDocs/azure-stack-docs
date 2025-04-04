@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Local, version 23H2
 description: Learn about what's new in AKS on Azure Local, version 23H2.
 ms.topic: overview
-ms.date: 11/19/2024
+ms.date: 04/01/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
-ms.lastreviewed: 06/25/2024
+ms.lastreviewed: 04/01/2025
 
 ---
 
@@ -41,6 +41,23 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 ## Features and improvements
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Local, version 23H2.
+
+### Release 2503
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Large VM SKUs for Kubernetes nodepools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger nodepools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
+- **Improved log collection experience**: Improved log collection for AKS control plane node VMs and nodepool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
+- **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) is automatically run in case of Kubernetes cluster create failure, and added new test cases.
+- **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
+- **Improved AKS Arc image download**: Fixed issues with AKS Arc image downloads.
+- **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled nodepools. Fixed known issues with attaching persistent volumes on GPU enabled nodepools.
+
+To get started with these features in the 2503 release, make sure to update your [AKSArc CLI extension](/cli/azure/aksarc) to version 1.5.37 or higher.
+
+#### Supported Kubernetes versions for 2503
+
+The Kubernetes versions supported in the 2503 release are: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3 and 1.30.4.
 
 ### Release 2411
 

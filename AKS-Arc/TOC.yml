@@ -151,24 +151,31 @@
       href: aks-troubleshoot.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
-    - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md 
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: Can't see VM SKUs on Azure portal
-      href: check-vm-sku.md
-    - name: Deleted AKS Arc cluster still visible on Azure portal
-      href: deleted-cluster-visible.md
+    - name: Can't create/scale AKS cluster due to image issues
+      href: gallery-image-not-usable.md
+    - name: Disk space exhaustion on control plane VMs
+      href: kube-apiserver-log-overflow.md
+    - name: Telemetry pod consumes too much memory and CPU  
+      href: telemetry-pod-resources.md
+    - name: Issues after deleting storage volumes
+      href: delete-storage-volume.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
       href: delete-cluster-pdb.md
     - name: Azure Advisor upgrade recommendation
       href: azure-advisor-upgrade.md
-    - name: Issues after deleting storage volumes
-      href: delete-storage-volume.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
+      href: deleted-cluster-visible.md
+    - name: Can't see VM SKUs on Azure portal
+      href: check-vm-sku.md
+    - name: Connectivity issues with MetalLB
+      href: load-balancer-issues.md 
+
   - name: Reference
     items:
     - name: Azure CLI
