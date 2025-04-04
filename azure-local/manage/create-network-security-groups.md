@@ -33,7 +33,7 @@ For each security rule, you can specify source and destination, port, and protoc
 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
-    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../manage/enable-sdn.md).
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
 
 
 # [Azure portal](#tab/azureportal)
@@ -444,4 +444,4 @@ az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nam
 
 ## Next steps
 
-- [Manage NSGs on Azure Local](../manage/enable-sdn.md)
+- [Manage NSGs on Azure Local](../index.yml)
