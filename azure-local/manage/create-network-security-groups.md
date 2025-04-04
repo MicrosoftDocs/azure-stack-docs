@@ -85,14 +85,15 @@ az stack-hci-vm network nsg create -g $resource_group --name $nsgname --custom-l
 
 [Machine 1]: PS C:\HCIDeploymentUser>
 ```
-<details>
+
+</details>
 
 > [!TIP]
 Use `az stack-hci-vm network nsg create -h` for help with CLI.
 
 ## Create network security rule
 
-Create an inbound security rule.
+### Create an inbound security rule.
 
 ```azurecli
 az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "ICMP" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
@@ -166,7 +167,7 @@ az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname -
 > [TIP!]
 > Use `az stack-hci-vm network nsg rule create -h` for help with Azure CLI.
 
-### Create an outbound security rule 
+### Create an outbound security rule
 
 Create an outbound security rule blocking all traffic
 
@@ -182,7 +183,6 @@ Create a NIC with the NSG created earlier in one step. IP address is optional an
 ```azurecli
 az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
 ```
-
 
 <br></br>
 <details>
@@ -248,11 +248,9 @@ az stack-hci-vm network nic create --resource-group $resource_group --custom-loc
 } 
 
 [Machine 1]: PS C:\HCIDeploymentUser>
-``` 
+```
 
 </details>
-
-
 
 ### Create a NIC
 
@@ -270,7 +268,7 @@ Check if the above is a correct one.
 
 ## Associate NSG with logical network
 
-Create a static logical network (lnet) with NSG. No IP pools are passed in this example as they are optional. 
+Create a static logical network (lnet) with NSG. No IP pools are passed in this example as they are optional.
 
  
 ```azurecli
