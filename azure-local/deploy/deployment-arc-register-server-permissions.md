@@ -17,7 +17,7 @@ This article describes how to register your Azure Local machines and then set up
 
 ## Prerequisites
 
-Before you begin, make sure you complet the following prerequisites:
+Before you begin, make sure you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
@@ -79,7 +79,7 @@ Before you begin, make sure you complet the following prerequisites:
     ```
 
     ---
-2. Connect to your Azure account and set the subscription. Open browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+2. Connect to your Azure account and set the subscription. Open a browser on the client that you're using to connect to the machine and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     # [PowerShell](#tab/powershell)
 
