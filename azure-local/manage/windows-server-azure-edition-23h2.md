@@ -8,7 +8,7 @@ ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/03/2025
+ms.date: 03/19/2025
 ---
 
 # Deploy Windows Server Azure Edition VMs on Azure Local
@@ -18,7 +18,7 @@ ms.date: 03/03/2025
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Local 2311.2 or later. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Local marketplace or an image in Azure Marketplace.
 
 > [!NOTE]
-> Both Azure Arc VMs and non-Arc VMs are supported.
+> Both Azure Local VMs enabled by Azure Arc and unmanaged VMs are supported.
 
 Azure Local is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).
 
@@ -57,7 +57,7 @@ You can provision a Windows Server Azure Edition VM using an Azure Local Marketp
 
 You do this by following these steps:
 
-1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#) on Azure Local.
+1. Deploy [Azure Local VM management](azure-arc-vm-management-overview.md#) on Azure Local.
 
 1. Learn about how certain [Azure Marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Local.
 
