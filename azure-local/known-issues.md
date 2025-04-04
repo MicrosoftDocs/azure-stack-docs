@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/31/2025
+ms.date: 04/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -39,6 +39,7 @@ The following table lists the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
+| Azure Local VMs | Intermittent failures or timeouts when creating or deleting Azure Local VMs due to internal service entering a deadlocked state. | You can now deploy Azure Local VMs without facing timeout issues. |
 | Azure Local VMs <!--ADO--> | Unable to delete a gallery image if the source Azure Local VM gallery image was created from, was deleted.| You can now delete a gallery image even if the source Azure Local VM the gallery image was created from, was deleted.|
 | Azure Local VMs <!--ADO--> | After Azure Arc resource bridge disaster recovery, some Azure Local VMs may lose network connectivity. | Updated Azure Arc resource bridge disaster recovery logic to ensure network configurations of Azure Local VMs persists. |
 | Azure Local VMs <!--ADO--> | Inaccurate power state reporting on Azure for Azure Local VMs when the source image for the VM is deleted from the cluster.  | Power operations shows consistent and accurate power state representation on Azure for Azure Local VMs with deleted source images.  |
