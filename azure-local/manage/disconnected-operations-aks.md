@@ -69,7 +69,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in with Azure CLI
 
-You can use the az login command to sign in to your Azure account. For more information, see [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively#interactive-login)
+You can use the az login command to sign in to your Azure account. For more information, see [Sign in with credentials on the command line](/cli/azure/authenticate-azure-cli-interactively#sign-in-with-credentials-on-the-command-line).
 
 ### Create logical networks
 
