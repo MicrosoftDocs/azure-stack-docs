@@ -6,7 +6,7 @@ ms.topic: overview
 ms.date: 05/24/2021
 ms.author: robess
 ms.reviewer: anajod
-ms.lastreviewed: 05/24/2021
+ms.lastreviewed: 04/03/2025
 
 # Intent: As an Azure Stack user, I want an overview of hybrid patterns and solution examples so I can learn about building hybrid solutions on Azure and Azure Stack.
 # Keyword: azure stack hybrid patterns solution examples
@@ -41,7 +41,7 @@ There are two types of pattern articles:
 
 ## Solution deployment guides
 
-Step-by-step deployment guides assist in deploying a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
+Step-by-step deployment guides help you deploy a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
 
 ## Next steps
 
