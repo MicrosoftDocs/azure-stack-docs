@@ -1,20 +1,20 @@
 ---
-title: Create Azure Local VM from images in Azure Storage account
-description: Learn how to create Azure Local VM images using source images from Azure Storage account via Azure portal and Azure CLI.
+title: Create Azure Local VMs enabled by Azure Arc in Azure Storage account
+description: Learn how to create Azure Local VMs enabled by Azure Arc using source images from Azure Storage account via Azure portal and Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/07/2024
+ms.date: 03/21/2025
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for Azure Local using source images from Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on Azure Local.
+This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Storage account. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Azure Local VMs.
 
 
 ## Prerequisites
