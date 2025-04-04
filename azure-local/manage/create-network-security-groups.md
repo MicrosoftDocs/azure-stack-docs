@@ -252,19 +252,7 @@ az stack-hci-vm network nic create --resource-group $resource_group --custom-loc
 
 </details>
 
-### Create a NIC
 
-```azurecli
-az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname
-```
-
-`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.
-
-```azurecli
-az stack-hci-vm network nic update --name $nicname --network-security-group $nsgname 
-```
-
-Check if the above is a correct one.
 
 ## Associate NSG with logical network
 
@@ -401,6 +389,20 @@ CI/networkSecurityGroups/examplensg3",
 
 </details>
 
+
+### Create a NIC
+
+```azurecli
+az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname
+```
+
+`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.
+
+```azurecli
+az stack-hci-vm network nic update --name $nicname --network-security-group $nsgname 
+```
+
+Check if the above is a correct one.
 
 ## Create default network access policy
 
