@@ -17,7 +17,7 @@ This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconn
 
 ## Overview
 
-AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain a consistent management and operational experience of AKS on Azure Local using a local control plane.
+AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain consistent management and operational experience of AKS on Azure Local using a local control plane.
 
 ## Prerequisites
 
@@ -69,12 +69,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in with Azure CLI
 
-You can use the following command to sign in with Azure CLI.
-
-```azurecli
-az cloud set -n azure.local 
-az login --user "XXXX" --password “XXXX” 
-```
+You can use the az login command to sign in to your Azure account. For more information, see [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively#interactive-login)
 
 ### Create logical networks
 
@@ -185,14 +180,6 @@ You can use the `az aksarc delete` cmdlet to delete the AKS cluster you created.
 ```azurecli
 az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
-
-## Known issues
-
-Here are some known issues and workarounds for disconnected operations with AKS Arc:
-
-| Feature | Description | Workaround/comments |
-|-------------|-----------------|-------------------------|
-| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd: ERROR: Operation returned an invalid status`. |
 
 ## Related content
 
