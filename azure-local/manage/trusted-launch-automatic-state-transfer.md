@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.date: 04/04/2025
 ---
 
-# Automatic transfer of virtual TPM state for Trusted launch for Azure Local VMS
+# Automatic transfer of virtual TPM state for Trusted launch for Azure Local VMs
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
