@@ -25,7 +25,29 @@ You can use a network security group to filter network traffic between Azure res
 
 For each security rule, you can specify source and destination, port, and protocol.
 
+## Prerequisites
+
+# [Azure CLI](#tab/azurecli)
+
+- You've access to an Azure Local instance.
+
+    - This instance is running 2504 or later.
+    - This instance has a custom location created.
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../manage/enable-sdn.md).
+
+
+# [Azure portal](#tab/azureportal)
+
+---
+
 ## Create NSGs
+
+# [Azure CLI](#tab/azurecli)
+
+## Sign in and set subscription
+
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+
 
 Create a network security group (NSG) on Azure Local. The NSG can be associated with a network interface or a logical network.
 
@@ -415,3 +437,11 @@ Update destination port range on a security rule:
 ```azurecli
 az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $name --resource-group $resource_group --destination-port-ranges $dportrange
 ```
+
+# [Azure portal](#tab/azureportal)
+
+---
+
+## Next steps
+
+- [Manage NSGs on Azure Local](../manage/enable-sdn.md)
