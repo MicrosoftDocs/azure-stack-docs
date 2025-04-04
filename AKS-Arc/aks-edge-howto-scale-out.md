@@ -1,14 +1,14 @@
 ---
-title: AKS Edge Scale
+title: AKS Edge Essentials scale (preview)
 description: Learn how to scale out your AKS Edge Essentials applications to multiple nodes.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/11/2024
+ms.date: 04/04/2025
 ms.custom: template-how-to, linux-related-content
 ---
 
-# Scaling out on multiple machines
+# Scale out on multiple machines (preview)
 
 Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to other secondary machines to create a multi-machine deployment.
 
