@@ -22,7 +22,7 @@ The procedure in this article applies to both single node and multi-node systems
 
 The Azure Local solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
-[!INCLUDE [azure-local-banner-new-releases](includes/azure-local-banner-new-releases.md)]
+[!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
 When you apply a solution update, here are the high-level steps that you take:
 

@@ -17,7 +17,7 @@ ms.date: 02/25/2025
 
 This article describes how to use Azure Update Manager to find and install available updates on Azure Local. It also describes how to review, track progress, and browse the history of system updates.
 
-[!INCLUDE [azure-local-banner-new-releases](includes/azure-local-banner-new-releases.md)]
+[!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
 ## About Azure Update Manager
 
