@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Azure Local VMs enabled by Azure Arc
-description: Learn how to troubleshoot Azure Local VMs
+description: Learn how to troubleshoot Azure Local VMs.
 author: alkohli
 ms.topic: how-to
 ms.date: 03/27/2025
