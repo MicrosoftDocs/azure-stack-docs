@@ -8,4 +8,4 @@ ms.reviewer: alkohli
 ---
 
 > [!IMPORTANT]
-> Based on the solution you are using to run Azure Local, latest feature updates might take a week from the availability date before they are visible due to hardware partner validation and signoff.
+> Based on the solution you're using to run Azure Local, latest feature updates might take a week from the availability date before they're visible, due to hardware partner validation and sign-off.
