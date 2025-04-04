@@ -1,11 +1,11 @@
 ---
-title: Connect to an Azure Local VM using SSH
-description: Learn how to use SSH to connect to an Azure Local VM.
+title: Connect to an Azure Local virtual machine (VM) using SSH
+description: Learn how to use SSH to connect to an Azure Local VM enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/25/2025
+ms.date: 04/04/2025
 
 #customer intent: As a Senior Content Developer, I want to provide customers with the highest level of content for using disconneced operations to deploy and manage their Azure Local instances.
 ---
@@ -14,9 +14,9 @@ ms.date: 03/25/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides an example to connect to an Azure Local VM using Secure Shell (SSH) and Remote Desktop (RDP) over SSH. The example demonstrates enabling the OpenSSH Server via the Arc Extension using Azure portal and Azure CLI.
+This article provides an example to connect to an Azure Local VM using Secure Shell (SSH) and Remote Desktop (RDP) over SSH. The example demonstrates enabling the OpenSSH Server via the Arc extension using Azure portal and Azure CLI.
 
-## More about the SSH Server Extension
+## About SSH Server extension
 
 You can open an RDP connection to every Windows Server from the Azure CLI without a VPN or another open port through your firewall. For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 

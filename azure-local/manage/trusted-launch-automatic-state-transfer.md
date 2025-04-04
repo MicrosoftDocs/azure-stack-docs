@@ -5,20 +5,20 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/25/2025
+ms.date: 04/04/2025
 ---
 
-# Automatic transfer of virtual TPM state for Trusted launch VMs on Azure Local enabled by Azure Arc
+# Automatic transfer of virtual TPM state for Trusted launch for Azure Local VMS
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article uses an example to illustrate the automatic transfer of virtual TPM (vTPM) state in the case of Trusted launch for Azure Local VMs enabled by Azure Arc, even as the VM migrates or fails over to another machine in the system. This operation allows the applications that use the vTPM to function normally during VM migration or fail over.
+This article uses an example to illustrate the automatic transfer of virtual TPM (vTPM) state for Trusted launch for Azure Local VM, even as the VM migrates or fails over to another machine in the system. This operation allows the applications that use the vTPM to function normally during VM migration or failover.
 
 ## Example
 
 This example shows a Trusted launch for Azure Local VM running Windows 11 guest with BitLocker encryption enabled. Here are the steps to run this example:
 
-1. Create a Trusted launch for Azure Local VM running a supported Windows 11 guest operating system (OS).
+1. Create an Azure Local Trusted launch VM running a supported Windows 11 guest operating system (OS).
 
 1. Enable BitLocker encryption for the OS volume on the Win 11 guest. Sign on to the Windows 11 guest and enable BitLocker encryption for the OS volume:
 
