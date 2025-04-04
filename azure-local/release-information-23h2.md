@@ -20,6 +20,8 @@ To keep your Azure Local solution in a supported state, you have up to six month
 
 This article provides the release information for Azure Local, including the release build and OS build information.  
 
+[!INCLUDE [azure-local-banner-new-releases](includes/azure-local-banner-new-releases.md)]
+
 ## About Azure Local releases
 
 The Azure Local includes multiple release trains: 2402, 2405, 2408, 2411, and 2503. Each release train includes a feature build and subsequent cumulative updates.
