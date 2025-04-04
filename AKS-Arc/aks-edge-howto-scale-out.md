@@ -15,6 +15,12 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
 > [!CAUTION]
 > Scaling to additional nodes is an experimental feature.
 
+> [!IMPORTANT]
+> AKS Edge Essentials multi-machine deployment is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> Azure Kubernetes Service Edge Essentials previews are partially covered by customer support on a best-effort basis.
+
+
 ## Prerequisites
 
 - Set up your [scalable Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
