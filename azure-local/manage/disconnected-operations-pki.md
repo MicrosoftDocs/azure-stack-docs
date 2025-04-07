@@ -197,7 +197,7 @@ You need these certificates when deploying the disconnected operations appliance
 
 ## Related content
 
-- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#hardware-requirements).
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria).
 
 - [Plan and understand identity](disconnected-operations-identity.md).
 
