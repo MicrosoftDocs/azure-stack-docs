@@ -209,9 +209,7 @@ Get-Command *Appliance*ExternalIdentity*
 
 Use PowerShell on Windows Server 2022 or newer for these commands. Expand each section for more information.
 
-<details>
-
-<summary>Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes</summary>
+### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
@@ -244,11 +242,7 @@ Install-AdfsFarm `
     -GroupServiceAccountIdentifier "Local.contoso\gmsa_adfs$"
 ```
 
-</details>
-
-<details>
-
-<summary>Create AD FS client app, sample users, and groups</summary>
+### Create AD FS client app, sample users, and groups
 
 ```powershell
 Add-AdfsClient `
@@ -311,9 +305,7 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-<details>
-
-<summary>Grant LDAP user read on Users with inherit</summary>
+### Grant LDAP user read on Users with inherit
 
 ```powershell
 $domain = Get-ADDomain
@@ -324,8 +316,6 @@ $acl.AddAccessRule($accessRule)
 Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account"
 ```
-
-</details>
 
 ::: moniker-end
 
