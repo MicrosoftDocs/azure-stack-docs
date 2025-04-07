@@ -166,7 +166,7 @@ The previous URL list covers the minimum required URLs for you to connect your A
 
 #### Stretched clusters in AKS
 
-As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/stretched-clusters), deploying AKS on Windows Server using Windows stretched clusters isn't supported. We recommend that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Local and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
+As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/stretched-clusters), deploying AKS on Windows Server using Windows stretched clusters isn't supported. We recommend that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
 
 ## Windows Admin Center requirements
 
