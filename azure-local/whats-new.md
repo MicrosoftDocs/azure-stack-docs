@@ -65,7 +65,7 @@ This is a baseline release with the following features and improvements:
 
 - **Arc VMs** - Here are the improvements made to Arc VMs in this release:
     - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
-    - **Live migration**: Live migration is available for Arc VMs via on-premises tools. For more information, see [Live migration of Arc VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-arc-vms).
+    - **Live migration**: Live migration is available for Azure Local VMs via on-premises tools. For more information, see [Live migration of Azure Local VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-local-vms).
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 
