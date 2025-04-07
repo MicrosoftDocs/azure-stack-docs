@@ -84,7 +84,7 @@ In this preview release, the following actions are available:
 
 There are a couple of exceptions to the actions available to operators:
 
-- An Operator subscription cannot be deleted
+- An Operator subscription can't be deleted
 - SPNs can also be deleted by the owners assigned to the SPN itself
 
 In this preview release, only the following actions are available in the Azure portal.
