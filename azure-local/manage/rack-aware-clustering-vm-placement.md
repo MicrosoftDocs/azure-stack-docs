@@ -20,15 +20,22 @@ This article describes how to place an Azure Local virtual machine (VM) enabled 
 
 You can run Azure Local VMs on a Rack Aware Cluster running on an Azure Local instance. A Rack Aware Cluster is designed to enhance fault tolerance and data distribution within an Azure Local instance.
 
-Before you place Azure VMs on a Rack Aware Cluster, you must have availability zones. Availability zones expands the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region.
+Before you place Azure VMs on a Rack Aware Cluster, make sure to create 2 or more zones. 
 
-Each Availability Zone has a distinct power source, network, and cooling. By designing your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a data center. If one zone is compromised, then replicated apps and data are instantly available in another zone.
+<Availability zones expands the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region.
 
-Once you have the availability zones, you can assign those to the VMs to reduce latency, improve performance, ensure redundancy and meet compliance requirements.
+Each Availability Zone has a distinct power source, network, and cooling. By designing your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a data center. If one zone is compromised, then replicated apps and data are instantly available in another zone.>
+
+Once you have the placement zones, you can assign those to the VMs to reduce latency, improve performance, ensure redundancy and meet compliance requirements.
+
+> [!IMPORTANT]
+> Updating zone configuration of existing virtual machines is not supported.  
 
 ## Prerequisites
 
-- Make sure that you've access to a Rack Aware Cluster. The Rack Aware Cluster must have availability zones configured. For more information, see [Configuring availability zones](../index.yml).
+- Make sure that you've access to a Rack Aware Cluster. For more information, see [Deploy a Rack Aware Cluster](../index.yml).
+- Ensure that the Rack Aware Cluster has 2 or more availability zones configured. For more information, see [Configuring availability zones](../index.yml).
+    - Go to the **Settings** blade of the Azure Local instance in the Azure portal, and select **Availability zones**. You can see the availability zones configured for your Rack Aware Cluster. Insert image here.
 - Before you create an Azure Local VM for a rack aware cluster, make sure that all prerequisites listed in [Create Azure Local virtual machines enabled by Azure Arc](../manage/create-arc-virtual-machines.md) are met.
 
 ## Create and place the Azure Local VM
