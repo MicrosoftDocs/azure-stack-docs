@@ -1,20 +1,20 @@
 ---
-title: Kubernetes cluster architecture for AKS enabled by Azure Arc
-description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Arc.
+title: Kubernetes cluster architecture for AKS on Windows Server
+description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm 
-ms.date: 03/28/2025
+ms.date: 04/04/2025
 ms.reviewer: abha
 ms.lastreviewed: 03/28/2025
 ms.topic: conceptual
 
 
-# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Azure Arc.
+# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.
 # Keyword: Kubernetes cluster architecture
 
 ---
 
-# Kubernetes cluster architecture and workloads for AKS enabled by Azure Arc
+# Kubernetes cluster architecture and workloads for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -24,7 +24,7 @@ This article introduces the core Kubernetes infrastructure components, such as t
 
 ## Kubernetes cluster architecture
 
-Kubernetes is the core component of AKS enabled by Azure Arc. AKS uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
+Kubernetes is the core component of AKS on Windows Server. AKS uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 
 The deployment operation creates multiple Linux or Windows virtual machines and joins them together to create Kubernetes cluster(s).
 
@@ -40,7 +40,7 @@ An Azure Kubernetes Service cluster has the following components:
 
 :::image type="content" source="media/kubernetes-concepts/hci-architecture.png" alt-text="Illustration showing the technical architecture of Azure Kubernetes Service on Windows Server." lightbox="media/kubernetes-concepts/hci-architecture.png":::
 
-## Manage AKS enabled by Arc
+## Manage AKS on Windows Server
 
 You can manage AKS using the following management options:
 
@@ -96,7 +96,7 @@ The Deployment Controller uses the Kubernetes scheduler to run a given number of
 
 Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide workload clusters and restrict access to create, view, or manage resources. For example, you can create namespaces to separate business groups. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
-When you create an Azure Kubernetes Service cluster on AKS enabled by Arc, the following namespaces are available:
+When you create an Azure Kubernetes Service cluster on AKS on Windows Server, the following namespaces are available:
 
 - **default**: a namespace where pods and deployments are created by default when none is provided. In smaller environments, you can deploy applications directly into the default namespace without creating additional logical separations. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.
 - **kube-system**: a namespace where core resources exist, such as network features such as DNS and proxy, or the Kubernetes dashboard. You typically don't deploy your own applications into this namespace.
@@ -121,7 +121,7 @@ For more information, see [node selectors](https://kubernetes.io/docs/concepts/s
 
 ## Next steps
 
-In this article, you learned about the cluster architecture of AKS enabled by Azure Arc, and the workload cluster components. For more information about these concepts, see the following articles:
+In this article, you learned about the cluster architecture of AKS on Windows Server, and the workload cluster components. For more information about these concepts, see the following articles:
 
 - [Security](./concepts-security.md)
 - [Container networking](./concepts-container-networking.md)

@@ -566,7 +566,7 @@
       href: aks-hybrid-preview-uninstall.md
     - name: Troubleshooting overview
       href: troubleshoot-overview.md
-    - name: Azure Arc enabled Kubernetes
+    - name: Azure Arc-enabled Kubernetes
       href: known-issues-arc.yml
     - name: Pre-installation validation tests
       href: validation-tests.md

@@ -1,6 +1,6 @@
 ---
 title: Overview of AKS on Windows Server
-description: Learn about AKS enabled by Azure Arc on Windows Server.
+description: Learn about AKS on Windows Server.
 ms.topic: overview
 ms.custom: linux-related-content
 author: sethmanheim
@@ -20,7 +20,7 @@ ms.date: 04/02/2025
 
 Azure Kubernetes Service (AKS) on Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Windows Server automates running containerized applications at scale. AKS on Windows Server makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
-To get started with on-premises Kubernetes using AKS, [set up AKS enabled by Azure Arc](setup.md).
+To get started with on-premises Kubernetes using AKS, [set up AKS on Windows Server](setup.md).
 
 Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes). If you're using Azure Stack Hub, see [AKS engine on Azure Stack Hub](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 

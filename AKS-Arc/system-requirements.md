@@ -1,7 +1,7 @@
 ---
-title: System requirements for AKS enabled by Azure Arc on Windows Server
-description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc on Windows Server.
-ms.date: 03/28/2025
+title: System requirements for AKS on Windows Server
+description: Learn about system requirements for Azure Kubernetes Service (AKS) on Windows Server.
+ms.date: 04/04/2025
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
@@ -11,11 +11,11 @@ ms.author: sethm
 
 ---
 
-# System requirements for AKS enabled by Azure Arc on Windows Server
+# System requirements for AKS on Windows Server
 
 > Applies to: Windows Server 2022, Windows Server 2019
 
-This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
+This article describes the requirements for setting up Azure Kubernetes Service (AKS) on Windows Server. For an overview of AKS on Windows Server, see the [AKS overview](overview.md).
 
 ## Hardware requirements
 
@@ -93,7 +93,7 @@ The following requirements apply to a Windows Server Datacenter cluster.
 
 ### IP address assignment  
 
-In AKS enabled by Arc, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as previously listed. There are two networking models to choose from, depending on your desired AKS networking architecture.
+In AKS on Windows Server, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as previously listed. There are two networking models to choose from, depending on your desired AKS networking architecture.
 
 > [!NOTE]
 > The virtual networking architecture defined here for your AKS deployments is different from the underlying physical networking architecture in your data center.
@@ -123,7 +123,7 @@ For more information about networking requirements, see [node networking concept
 
 ### Network port and URL requirements
 
-#### AKS enabled by Arc requirements
+#### AKS on Windows Server requirements
 
 When creating a Kubernetes cluster, the following firewall ports are automatically opened on each server in the cluster.
 
@@ -158,7 +158,7 @@ Download the [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftD
 ---
 
 > [!NOTE]
-> AKS enabled by Arc stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
+> AKS on Windows Server stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
 
 #### Additional URL requirements for Azure Arc features
 
@@ -170,7 +170,7 @@ As outlined in the [Stretched clusters overview](/azure/azure-local/concepts/str
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing AKS enabled by Azure Arc. To use Windows Admin Center with AKS on Windows Server, you must meet all the criteria in the following list.
+Windows Admin Center is the user interface for creating and managing AKS on Windows Server. To use Windows Admin Center with AKS on Windows Server, you must meet all the criteria in the following list.
 
 These are the requirements for the machine running the Windows Admin Center gateway:
 

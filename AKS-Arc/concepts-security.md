@@ -1,6 +1,6 @@
 ---
-title: Security concepts in AKS enabled by Azure Arc
-description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS enabled by Arc.
+title: Security concepts in AKS on Windows Server
+description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Windows Server.
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/31/2025
@@ -8,20 +8,20 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: leslielin
 
-# Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure in AKS enabled by Azure Arc.
+# Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure in AKS on Windows Server.
 # Keyword: security concepts infrastructure security
 
 ---
 
-# Security concepts in AKS enabled by Azure Arc
+# Security concepts in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Security in AKS enabled by Azure Arc involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS enabled by Arc supports hybrid deployment options for Azure Kubernetes Service (AKS). This article describes the security-hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in AKS on Windows Server involves securing the infrastructure and the applications running on the Kubernetes cluster. AKS on Windows Server supports hybrid deployment options for Azure Kubernetes Service (AKS). This article describes the security-hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
 
-AKS enabled by Arc applies various security measures to secure its infrastructure. The following diagram highlights these measures:
+AKS on Windows Server applies various security measures to secure its infrastructure. The following diagram highlights these measures:
 
 :::image type="content" source="media/concepts-security/security-infrastructure.png" alt-text="Illustration showing the infrastructure security of Azure Kubernetes Service." lightbox="media/concepts-security/security-infrastructure.png":::
 
@@ -39,7 +39,7 @@ The following table describes the security-hardening aspects of AKS on Windows S
 
 ## Application security
 
-The following table describes the different application security options available in AKS enabled by Arc:
+The following table describes the different application security options available in AKS on Windows Server:
 
 > [!NOTE]
 > You have the option to use the open source application-hardening options available in the open source ecosystem you choose.
@@ -52,7 +52,7 @@ The following table describes the different application security options availab
 
 ## Built-in security features
 
-This section describes the built-in security features that are currently available in AKS enabled by Azure Arc:
+This section describes the built-in security features that are currently available in AKS on Windows Server:
 
 |  Security objective  |   Feature  |
 |-----------   |  --------- |
@@ -65,7 +65,7 @@ This section describes the built-in security features that are currently availab
 
 ## Next steps
 
-In this topic, you learned about the concepts for securing AKS enabled by Azure Arc, and about securing applications on Kubernetes clusters.
+In this article, you learned about the concepts for securing AKS on Windows Server, and about securing applications on Kubernetes clusters.
 
 - [Secure communication with certificates](./secure-communication.md)
 - [Encrypt etcd secrets](./encrypt-secrets.md)

@@ -1,23 +1,23 @@
 ---
-title: Quickstart to set up AKS enabled by Azure Arc using Windows Admin Center
-description: Learn how to set up AKS enabled by Azure Arc using Windows Admin Center
+title: Quickstart to set up AKS on Windows Server using Windows Admin Center
+description: Learn how to set up AKS on Windows Server using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 03/28/2025
+ms.date: 04/04/2025
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal
 
-# Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up AKS enabled by Azure Arc.
+# Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up AKS on Windows Server.
 # Keyword: Windows Admin Center Kubernetes
 ---
 
-# Quickstart: Set up AKS enabled by Azure Arc using Windows Admin Center
+# Quickstart: Set up AKS on Windows Server using Windows Admin Center
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this quickstart, you set up AKS enabled by Arc using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
+In this quickstart, you set up AKS on Windows Server using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 
 Setup involves the following tasks:
 
