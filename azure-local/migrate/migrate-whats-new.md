@@ -22,7 +22,7 @@ This release includes the following features and improvements:
 
     - An issue where VMs failed to migrate due to a gallery image provisioning failure.
 
-    View the full list of [Fixed issues in 2503](../known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
+    View the full list of [Fixed issues in 2503](../known-issues.md?view=azloc-2503&preserve-view=true#fixed-issues).
 
 - **Smarter replication experience** – Starting with this release, Azure portal automatically includes or excludes VMs from replication based on migration eligibility. This improvement reduces setup errors and simplifies replication.
 
