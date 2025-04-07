@@ -280,7 +280,7 @@ items:
   - name: Rack Aware Cluster
     items:
       - name: Place VMs in Rack Aware Cluster
-        href: plan/rack-aware-clustering-vm-placement.md
+        href: manage/rack-aware-clustering-vm-placement.md
 
   - name: Trusted launch for Azure Local VMs
     items: 

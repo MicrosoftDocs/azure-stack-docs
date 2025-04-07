@@ -113,4 +113,4 @@ Follow these steps to create a VM in a specific availability zone with strict pl
 
 ## Next steps
 
-- See [Rack Aware Cluster networking](./rack-aware-clustering-network-design-switch-configuration.md).
+- See [Rack Aware Cluster networking overview](../plan/rack-aware-clustering-overview.md).
