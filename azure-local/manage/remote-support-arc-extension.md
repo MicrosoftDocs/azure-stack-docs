@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: shisab
 ms.lastreviewed: 01/19/2024
-ms.date: 10/22/2024
+ms.date: 04/03/2025
 ---
 
 # Azure Local Remote Support ARC extension overview
@@ -17,7 +17,7 @@ This article provides a brief overview of the Remote Support Arc extension, its 
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the system. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by preinstalling the remote support agent on all nodes of the system. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
 
 The scheduled tasks to configure JEA are set up through either:
 
@@ -176,7 +176,7 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 ```
 
 > [!NOTE]
-> Session transcript details are retained for ninety days. You can retrieve details for a remote session within ninety days after the session.
+> Session transcript details are retained for 90 days. You can retrieve details for a remote session within 90 days after the session.
 
 ## Error handling
 
