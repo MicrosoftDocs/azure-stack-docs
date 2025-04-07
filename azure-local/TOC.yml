@@ -254,8 +254,6 @@ items:
         href: manage/create-arc-virtual-machines.md
     - name: Connect to VM via SSH
       href: manage/connect-arc-vm-using-ssh.md
-    - name: Place VMs in Rack Aware Cluster
-      href: plan/rack-aware-clustering-vm-placement.md
     - name: Manage Azure Local VMs
       href: manage/manage-arc-virtual-machines.md
     - name: Manage Azure Local VM resources
@@ -279,6 +277,10 @@ items:
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
+  - name: Rack Aware Cluster
+    items:
+      - name: Place VMs in Rack Aware Cluster
+        href: plan/rack-aware-clustering-vm-placement.md
 
   - name: Trusted launch for Azure Local VMs
     items: 
