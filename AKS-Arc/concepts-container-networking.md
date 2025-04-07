@@ -1,9 +1,9 @@
 ---
 title: Container networking concepts
-description: Learn about container networking in AKS enabled by Azure Arc.
+description: Learn about container networking in AKS on Windows Server.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/01/2025
+ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 
@@ -20,7 +20,7 @@ Application components must work together to process their tasks in a container-
 
 More complex applications might require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You might also need to restrict the flow of network traffic into or between pods and nodes for security.
 
-This article introduces the core concepts that provide networking to your applications in AKS enabled by Arc:
+This article introduces the core concepts that provide networking to your applications in AKS on Windows Server:
 
 - Kubernetes services
 - Ingress controller

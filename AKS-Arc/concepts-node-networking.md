@@ -1,9 +1,9 @@
 ---
-title: Node virtual machine networking in AKS enabled by Azure Arc
+title: Node virtual machine networking in AKS on Windows Server
 description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/01/2025
+ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 1/14/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can choose between two IP address assignment models for your networking architecture for AKS enabled by Arc. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS):
+You can choose between two IP address assignment models for your networking architecture for AKS on Windows Server. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS):
 
 - **Static IP networking**: the virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
 - **DHCP networking**: the virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
@@ -143,7 +143,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ### Walk through an example deployment
 
-Jane is an IT administrator just starting with AKS enabled by Azure Arc. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Windows Server cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS on Windows Server. She wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on her Windows Server cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes.

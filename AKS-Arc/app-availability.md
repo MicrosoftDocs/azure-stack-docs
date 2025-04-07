@@ -1,9 +1,9 @@
 ---
-title: Application availability in AKS enabled by Azure Arc
-description: Learn about application availability in AKS enabled by Arc
+title: Application availability in AKS on Windows Server
+description: Learn about application availability in on Windows Server.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/01/2025
+ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
@@ -12,11 +12,11 @@ ms.reviewer: rbaziwane
 # Keyword: AKS on Windows Server architecture live migration disruption Kubernetes container orchestration
 ---
 
-# Application availability in AKS enabled by Azure Arc
+# Application availability in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
+Azure Kubernetes Service (AKS) on Windows Server offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 The AKS architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This architecture means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Windows Server, gets similar (or better) uptime than what's currently experienced on a legacy VM application.
 
