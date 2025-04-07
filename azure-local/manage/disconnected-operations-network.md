@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Plan your network disconnected operations on Azure Local (preview) 
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This article helps you plan the integration of your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
@@ -111,4 +113,10 @@ For this preview, the following features are unsupported:
 - Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that enables you to add VLAN tags to ingress packets on a per-port basis.
 - Configurable VLAN for disconnected operations Management network that enables you to isolate management traffic from other network traffic, enhance security, and reduce interference.
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

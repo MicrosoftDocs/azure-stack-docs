@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
 This article covers how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
@@ -170,4 +172,10 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Deploy Azure Container Registry with disconnected operations on Azure Local (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This article describes how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local.
@@ -152,4 +154,10 @@ The following table lists the supported Azure Container Registry CLI commands.
 
 In this preview, viewing metrics for a container registry isn't supported.
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

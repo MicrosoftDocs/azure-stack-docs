@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This article describes how to use appliance fallback logging to export and send logs to Microsoft when Azure Local is operating in a disconnected mode.
@@ -399,4 +401,10 @@ PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles ` | Send-Diagn
 
 </details>
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

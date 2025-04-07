@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Plan your identity for disconnected operations on Azure Local (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This article helps you plan and integrate your existing identity with disconnected operations on Azure Local. The article describes how to configure your identity solution to work with disconnected operations and understand the various actions and roles available to the operators.
@@ -325,4 +327,10 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account"
 
 </details>
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

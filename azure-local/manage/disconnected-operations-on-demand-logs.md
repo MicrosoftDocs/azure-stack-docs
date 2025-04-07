@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Collect logs on demand with Azure Local disconnected operations PowerShell Module
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This document helps you connect with support and provide logs for troubleshooting issues when Azure Local is operating in a disconnected mode.
@@ -294,3 +296,11 @@ There are three methods in this scenario:
 **Get-observabilityStampId**: Used to get the stamp ID.
 
 For more information, see [Use appliance fallback log collection](disconnected-operations-fallback.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

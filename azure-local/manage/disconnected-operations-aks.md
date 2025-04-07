@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
 This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You'll learn about key differences and limitations of disconnected operations.
@@ -96,8 +98,6 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
-
-For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
@@ -190,3 +190,11 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 - [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
 
 - [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

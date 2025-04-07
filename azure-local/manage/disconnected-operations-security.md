@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Security considerations for Azure Local with disconnected operations (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This article helps you understand the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
@@ -412,4 +414,10 @@ Here we identify a list of miscellaneous events that are forwarded. These events
 | Defender stopped events | `query="System!*[System[(EventID=7036)] and EventData[Data[@Name='param1']='Microsoft Defender Antivirus Network Inspection Service'] and EventData[Data[@Name='param2']='stopped']]"` |
 | BitLocker management events | `query="Microsoft-Windows-BitLocker/BitLocker Management!*"` |
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

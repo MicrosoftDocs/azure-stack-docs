@@ -9,6 +9,8 @@ ms.date: 03/19/2025
 
 # Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview)
 
+::: moniker range=">=azloc-24112"
+
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
 This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.
@@ -195,10 +197,18 @@ You need these certificates when deploying the disconnected operations appliance
 
 ## Related content
 
-- Plan hardware for Azure local disconnected operations
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#hardware-requirements).
 
-- Plan and understand identity
+- [Plan and understand identity](disconnected-operations-identity.md).
 
-- Plan and understand networking
+- [Plan and understand networking](disconnected-operations-network.md).
 
-- Acquire Project Winfield
+- [Set up disconnected operations](disconnected-operations-set-up.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end
