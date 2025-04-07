@@ -1,6 +1,6 @@
 ---
-title: How to use AKS enabled by Arc with SDN and virtual networking infrastructure
-description: Learn how to use AKS enabled by Azure Arc with software defined networking and virtual networking infrastructure.
+title: How to use AKS on Windows Server with SDN and virtual networking infrastructure
+description: Learn how to use AKS on Windows Server with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 04/02/2025
@@ -17,7 +17,7 @@ ms.reviewer: anpaul
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load Balancer][] for all AKS Arc load balancing scenarios. AKS enabled by Azure Arc offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
+This article describes how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load Balancer][] for all AKS Arc load balancing scenarios. AKS on Windows Server offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 ## Limitations
 
@@ -33,7 +33,7 @@ The following features are out of scope and not supported in this GA release:
 
 ## Prerequisites
 
-To deploy AKS enabled by Arc with SDN, make sure your environment satisfies the deployment criteria of both AKS Arc and SDN.
+To deploy AKS on Windows Server with SDN, make sure your environment satisfies the deployment criteria of both AKS Arc and SDN.
 
 - [AKS Arc requirements](system-requirements.md)
 - SDN requirements: [Plan a Software Defined Network infrastructure][]
@@ -87,7 +87,7 @@ Choose one of your Windows Server machines to drive the creation of AKS Arc. The
 
    | Parameter                               | Description                                                                                    |
    |-----------------------------------------|------------------------------------------------------------------------------------------------|
-   | `-name`                                   | Name of virtual network in AKS enabled by Arc (must be lowercase).                                        |
+   | `-name`                                   | Name of virtual network in AKS on Windows Server (must be lowercase).                                        |
    | `-vswitchName`                            | Name of external vSwitch on the Windows Server machines. Use same vSwitch that was used for SDN deployment. |
    | `-k8sNodeIpPoolStart` <br /> `-k8sNodeIpPoolEnd` | IP start/end range of SDN virtual network.                                                      |
    | `-ipAddressPrefix`                        | Virtual network subnet in CIDR notation.                                                        |
@@ -171,7 +171,7 @@ See the [self-help resources here][Troubleshooting SDN] for SDN [and here for AK
 
 ## Next steps
 
-Next, you can [create workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS enabled by Arc are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
+Next, you can [create workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS on Windows Server are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: /azure/azure-local/concepts/software-load-balancer
 [Plan a Software Defined Network infrastructure]: /azure/azure-local/concepts/plan-software-defined-networking-infrastructure

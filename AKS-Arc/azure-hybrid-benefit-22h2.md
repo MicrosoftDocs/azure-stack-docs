@@ -1,6 +1,6 @@
 ---
-title: Azure Hybrid Benefit for AKS enabled by Azure Arc
-description: Activate Azure Hybrid Benefit for AKS enabled by Arc on Windows Server.
+title: Azure Hybrid Benefit for AKS on Windows Server
+description: Activate Azure Hybrid Benefit for AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm
 ms.date: 04/01/2025
@@ -14,15 +14,15 @@ ms.custom:
 # Keyword: Azure Hybrid Benefit for AKS
 ---
 
-# Azure Hybrid Benefit for AKS enabled by Azure Arc
+# Azure Hybrid Benefit for AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS enabled by Arc, you can maximize the value of your on-premises licenses and modernize your applications at no extra cost.
+Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS on Windows Server, you can maximize the value of your on-premises licenses and modernize your applications at no extra cost.
 
 ## What is Azure Hybrid Benefit for AKS?
 
-Azure Hybrid Benefit for AKS enabled by Arc is a new benefit that can help you significantly reduce the cost of running Kubernetes on-premises or at the edge. It works by letting you apply your on-premises Windows Server Datacenter or Standard licenses with Software Assurance (SA) to pay for AKS. Each Windows Server core license entitles use on 1 virtual core of AKS. There are a few important details to note regarding activation of the benefit for AKS:
+Azure Hybrid Benefit for AKS on Windows Server is a new benefit that can help you significantly reduce the cost of running Kubernetes on-premises or at the edge. It works by letting you apply your on-premises Windows Server Datacenter or Standard licenses with Software Assurance (SA) to pay for AKS. Each Windows Server core license entitles use on 1 virtual core of AKS. There are a few important details to note regarding activation of the benefit for AKS:
 
 - Azure Hybrid Benefit for AKS is enabled at the management cluster (or AKS host) level. You don't need to enable the benefit for workload clusters.
 - If you have multiple AKS on Windows Server deployments, you must enable Azure Hybrid Benefit individually for each deployment.

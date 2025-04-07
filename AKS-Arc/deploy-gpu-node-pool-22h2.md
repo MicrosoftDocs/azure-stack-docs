@@ -1,6 +1,6 @@
 ---
 title: Use GPUs for compute-intensive workloads
-description: Learn how to deploy GPU-enabled node pools in AKS enabled by Azure Arc on Windows Server.
+description: Learn how to deploy GPU-enabled node pools in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 04/02/2025
@@ -15,7 +15,7 @@ ms.lastreviewed: 03/21/2023
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
+Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS on Windows Server.
 
 ## Before you begin
 
@@ -101,7 +101,7 @@ Repeat steps 1 to 3 for each node in your failover cluster.
 
 ## Install or update AKS
 
-See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS enabled by Arc.
+See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS on Windows Server.
 
 ## Create a new workload cluster with a GPU-enabled node pool
 

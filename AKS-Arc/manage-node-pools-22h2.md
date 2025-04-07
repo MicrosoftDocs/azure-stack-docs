@@ -1,6 +1,6 @@
 ---
 title: Manage node pools for a cluster in AKS on Windows Server
-description: Learn how to manage multiple node pools in AKS enabled by Azure Arc on Windows Server.
+description: Learn how to manage multiple node pools in AKS on Windows Server.
 ms.topic: how-to
 ms.custom:
 ms.date: 04/02/2025
@@ -15,9 +15,9 @@ ms.lastreviewed: 01/30/2024
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 > [!NOTE]
-> For information about managing node pools in AKS on Azure Local 23H2, see [Manage node pools](manage-node-pools.md).
+> For information about managing node pools in AKS on Azure Local, see [Manage node pools](manage-node-pools.md).
 
-In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
+In AKS on Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
 
 > [!NOTE]
 > This feature enables greater control over how to create and manage multiple node pools. As a result, separate commands are required for create, update, and delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create or scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 

@@ -17,7 +17,7 @@ ms.reviewer: kybisnet
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Deploying AKS enabled by Azure Arc target clusters on different [software defined networking (SDN) virtual networks (VNets)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
+Deploying AKS on Windows Server target clusters on different [software defined networking (SDN) virtual networks (VNets)](software-defined-networking.md) can offer a range of benefits, primarily focused on security, scalability, and organization of networks:
 
 - **Security and isolation**: Each isolated VNet acts as a separate entity, which can help to contain potential security threats. If one network is compromised, the threat is less likely to spread to other VNets.
 - **Scalability**: Deploying AKS target clusters on multiple networks can improve the scalability of your applications. As your requirements and/or compliance grows, you can add more AKS target clusters to new SDN VNets.
