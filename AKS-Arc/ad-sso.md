@@ -1,5 +1,5 @@
 ---
-title: Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS enabled by Azure Arc
+title: Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS on Windows Server
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
@@ -13,13 +13,13 @@ ms.reviewer: leslielin
 
 ---
 
-# Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS enabled by Azure Arc
+# Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can create a secure connection to your Kubernetes API server in AKS enabled by Arc using Active Directory (AD) single sign-on (SSO) credentials.
+You can create a secure connection to your Kubernetes API server in AKS on Windows Server using Active Directory (AD) single sign-on (SSO) credentials.
 
-## Overview of AD in AKS enabled by Arc
+## Overview of AD in AKS on Windows Server
 
 Without Active Directory authentication, you must rely on a certificate-based *kubeconfig* file when you connect to the API server via the `kubectl` command. The **kubeconfig** file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 

@@ -30,7 +30,7 @@ AKS on Windows Server troubleshooting topics are organized by functional area. U
 - [Installation](/azure-stack/aks-hci/known-issues-installation)  
 - [Upgrade](/azure-stack/aks-hci/known-issues-upgrade)
 - [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center)
-- [Azure Arc enabled Kubernetes](/azure-stack/aks-hci/known-issues-arc)
+- [Azure Arc-enabled Kubernetes](/azure-stack/aks-hci/known-issues-arc)
 - [Uninstall](/azure-stack/aks-hci/known-issues-uninstall) 
 - [Kubernetes workload clusters](/azure-stack/aks-hci/known-issues-workload-clusters) 
 - [Networking](/azure-stack/aks-hci/known-issues-networking)

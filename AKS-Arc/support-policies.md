@@ -1,6 +1,6 @@
 ---
-title: Support policies for AKS enabled by Azure Arc
-description: Learn about AKS enabled by Arc support policies, shared responsibility, and features that are in preview.
+title: Support policies for AKS on Windows Server
+description: Learn about AKS on Windows Server support policies, shared responsibility, and features that are in preview.
 ms.topic: article
 ms.date: 04/03/2025
 author: sethmanheim
@@ -13,11 +13,11 @@ ms.reviewer: rbaziwane
 # Keyword: support policies AKS technical support control plane service updates
 ---
 
-# Support policies for AKS enabled by Azure Arc
+# Support policies for AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides details about technical support policies and limitations for AKS enabled by Arc. The article also describes cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for AKS on Windows Server. The article also describes cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 

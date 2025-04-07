@@ -1,5 +1,5 @@
 ---
-title: Use persistent volumes with AKS enabled by Azure Arc
+title: Use persistent volumes with AKS on Windows Server
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
@@ -13,11 +13,11 @@ ms.reviewer: abha
 
 ---
 
-# Use persistent volumes with AKS enabled by Arc
+# Use persistent volumes with AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS enabled by Azure Arc (AKS Arc).
+This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS on Windows Server.
 
 A *persistent volume* represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycles.
 

@@ -1,6 +1,6 @@
 ---
-title: Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service cluster in AKS enabled by Azure Arc
-description: Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS cluster in AKS enabled by Arc.
+title: Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service cluster in AKS on Windows Server
+description: Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS cluster in AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm 
 ms.topic: conceptual
@@ -21,7 +21,7 @@ This article demonstrates how to:
 
 * Run your Java, Java EE, Jakarta EE, or MicroProfile application on the Open Liberty or WebSphere Liberty runtime.
 * Build the application Docker image using Open Liberty container images.
-* Deploy the containerized application to an on-premises AKS cluster in AKS enabled by Arc using the Open Liberty Operator.
+* Deploy the containerized application to an on-premises AKS cluster in AKS on Windows Server using the Open Liberty Operator.
 
 The Open Liberty Operator simplifies the deployment and management of applications running on Kubernetes clusters. With Open Liberty Operator, you can also perform more advanced operations, such as gathering traces and dumps.
 

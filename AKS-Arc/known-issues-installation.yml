@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot known issues and errors when installing AKS enabled by Azure Arc
+  title: Troubleshoot known issues and errors when installing AKS on Windows Server
   description: Find solutions to known issues and errors when installing AKS Arc
   author: sethmanheim
   ms.author: sethm

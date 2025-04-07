@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
   title: Resolve errors when enabling and disabling Azure Arc on AKS workload clusters
-  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS enabled by Arc.
+  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 6/13/2024
 
-title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS enabled by Arc
+title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS on Windows Server
 summary: |
   Applies to: AKS on Windows Server
   
-  This article describes errors you might encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) and [`Disable-AksHciArcConnection`](./reference/ps/disable-akshciarcconnection.md) in AKS Arc. For issues that are not covered in this article, see [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
+  This article describes errors you might encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [`Enable-AksHciArcConnection`](./reference/ps/enable-akshciarcconnection.md) and [`Disable-AksHciArcConnection`](./reference/ps/disable-akshciarcconnection.md) in AKS Arc. For issues that are not covered in this article, see [Troubleshooting Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
   
   You can also [open a support issue](./help-support.md) if none of the listed workarounds apply to you.
   

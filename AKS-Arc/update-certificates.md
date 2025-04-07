@@ -1,6 +1,6 @@
 ---
-title: Update certificates in AKS enabled by Azure Arc
-description: Learn how to update certificates in AKS enabled by Arc.
+title: Update certificates in AKS on Windows Server
+description: Learn how to update certificates in AKS on Windows Server.
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 04/02/2025
@@ -13,7 +13,7 @@ ms.reviewer: leslielin
 
 ---
 
-# Update certificates in AKS enabled by Azure Arc
+# Update certificates in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -23,21 +23,21 @@ The behavior of the certificates at the MOC layer and AKS Kubernetes layer has a
 
 ## Certificate renewal dependencies on cluster shutdown
 
-|             Shutdown                        |     MOC certificates    |   AKS enabled by Arc Kubernetes certificates    |
+|             Shutdown                        |     MOC certificates    |   AKS on Windows Server Kubernetes certificates    |
 |-------------------------------------|---------------------------|---------------------------------------------|
 |     Shutdown less than 30 days    |     Not impacted          |     Impacted                                |
 |     Shutdown more than 30 days    |     Impacted              |     Impacted                                |
 
 ## Certificate renewal dependencies on cluster renewal
 
-|              Cluster                               |     MOC certificates    |   AKS enabled by Arc Kubernetes certificates    |
+|              Cluster                               |     MOC certificates    |   AKS on Windows Server Kubernetes certificates    |
 |---------------------------------------------|---------------------------|---------------------------------------------|
 |     Cluster updated within 90 days        |     Not impacted          |     Not impacted                            |
 |     Cluster not updated within 90 days    |     Not impacted          |     Not impacted                            |
 
 ## Commands for fixing certificates
 
-|              Cluster          |     MOC certificates                                                                 |     AKS enabled by Arc Kubernetes Control plane certificates                            |
+|              Cluster          |     MOC certificates                                                                 |     AKS on Windows Server Kubernetes control plane certificates                            |
 |------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 |     Management cluster      |     [`Update-AksHciCertificates`](reference/ps/update-akshcicertificates.md)                                                 |     N/A                                                                         |
 |     Target cluster    |     [`Update-AksHciClusterCertificates -name -fixCloudCredentials`](reference/ps/update-akshciclustercertificates.md)    |     [`Update-AksHciClusterCertificates -name -fixKubeletCredentials`](reference/ps/update-akshciclustercertificates.md)    |

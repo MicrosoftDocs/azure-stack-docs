@@ -1,6 +1,6 @@
 ---
-title: Validation tests in AKS enabled by Azure Arc
-description: Learn how to validate your environment and configuration prior to installing AKS enabled by Arc.
+title: Validation tests in AKS on Windows Server
+description: Learn how to validate your environment and configuration prior to installing AKS on Windows Server.
 author: sethmanheim
 ms.topic: troubleshooting
 ms.date: 07/03/2024
@@ -10,7 +10,7 @@ ms.reviewer: waltero
 
 ---
 
-# AKS enabled by Arc pre-installation validation tests
+# AKS on Windows Server pre-installation validation tests
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
