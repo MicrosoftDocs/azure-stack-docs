@@ -22,15 +22,15 @@ In this conceptual article, the following key components are introduced. These c
 
 ## Logical networks for AKS Arc VMs and control plane IP
 
-Kubernetes nodes are deployed as specialized virtual machines in AKS enabled by Arc. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS Arc uses Azure Local logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about logical networks, see [Logical networks for Azure Local](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node VM in your Azure Local environment.
+Kubernetes nodes are deployed as specialized virtual machines in AKS enabled by Arc. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS Arc uses Azure Local logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about logical networks, see [Logical networks for Azure Local](/azure/azure-local/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node VM in your Azure Local environment.
 
 > [!NOTE]
-> Static IP is the only supported mode for assigning an IP address to AKS Arc VMs. This is because Kubernetes requires the IP address assigned to a Kubernetes node to be constant throughout the lifecycle of the Kubernetes cluster. 
-> Software defined virtual networks and SDN related features are currently not supported on AKS on Azure Local, version 23H2. 
+> Static IP is the only supported mode for assigning an IP address to AKS Arc VMs. This is because Kubernetes requires the IP address assigned to a Kubernetes node to be constant throughout the lifecycle of the Kubernetes cluster.
+> Software defined virtual networks and SDN related features are currently not supported on AKS on Azure Local.
 
 The following parameters are required in order to use a logical network for AKS Arc cluster create operation:
 
-| [Az CLI logical networks parameter](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli) | Description| Required parameter for AKS Arc cluster|
+| [Az CLI logical networks parameter](/azure/azure-local/manage/create-logical-networks?tabs=azurecli) | Description| Required parameter for AKS Arc cluster|
 |------------------|---------|-----------|
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | ![Supported](media/aks-hybrid-networks/check.png) |
@@ -62,11 +62,11 @@ Regardless of the option you choose, you must ensure that the IP addresses alloc
 
 ## Proxy settings
 
-Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet. For more information on how to set proxy correctly, see [proxy requirements for Azure Local](/azure-stack/hci/manage/configure-proxy-settings-23h2).
+Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet. For more information on how to set proxy correctly, see [proxy requirements for Azure Local](/azure/azure-local/manage/configure-proxy-settings-23h2).
 
 ## Firewall URL exceptions
 
-Firewall requirements for AKS have been consolidated with Azure Local firewall requirements. See [Azure Local firewall requirements](/azure-stack/hci/concepts/firewall-requirements) for list of URLs that need to be allowed to successfully deploy AKS.
+Firewall requirements for AKS have been consolidated with Azure Local firewall requirements. See [Azure Local firewall requirements](/azure/azure-local/concepts/firewall-requirements) for list of URLs that need to be allowed to successfully deploy AKS.
 
 ## DNS server settings
 
@@ -74,7 +74,7 @@ You need to ensure that the DNS server of the logical network can resolve the FQ
 
 ## Network port and cross-VLAN requirements
 
-When you deploy Azure Local, you allocate a contiguous block of at least [six static IP addresses on your management network's subnet](/azure-stack/hci/deploy/deploy-via-portal#specify-network-settings), omitting addresses already used by the physical machines. These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) for Arc VM management and AKS Arc. If your management network that provides IP addresses to Arc Resource Bridge related Azure Local services are on a different VLAN than the logical network you used to create AKS clusters, you need to ensure that the following ports are opened to successfully create and operate an AKS cluster. 
+When you deploy Azure Local, you allocate a contiguous block of at least [six static IP addresses on your management network's subnet](/azure/azure-local/deploy/deploy-via-portal#specify-network-settings), omitting addresses already used by the physical machines. These IPs are used by Azure Local and internal infrastructure (Arc Resource Bridge) for Arc VM management and AKS Arc. If your management network that provides IP addresses to Arc Resource Bridge related Azure Local services are on a different VLAN than the logical network you used to create AKS clusters, you need to ensure that the following ports are opened to successfully create and operate an AKS cluster. 
 
 | Destination Port | Destination | Source | Description | Bi-directional cross VLAN networking notes |
 |------------------|-------------|--------|-------------|----------------|
@@ -84,4 +84,5 @@ When you deploy Azure Local, you allocate a contiguous block of at least [six st
 | 65000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port and vice-versa. |
 
 ## Next steps
+
 [IP address planning and considerations for Kubernetes clusters and applications](aks-hci-ip-address-planning.md)

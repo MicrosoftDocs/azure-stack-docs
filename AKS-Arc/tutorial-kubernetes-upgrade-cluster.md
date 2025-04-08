@@ -185,7 +185,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Next steps
 
-In this tutorial, you upgraded Kubernetes in a Kubernetes cluster on AKS enabled by Arc. You learned how to:
+In this tutorial, you upgraded a Kubernetes cluster on Windows Server. You learned how to:
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions

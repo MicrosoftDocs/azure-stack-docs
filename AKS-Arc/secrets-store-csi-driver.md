@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Secrets Store CSI driver integration
-description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS enabled by Azure Arc.
+description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/27/2024
@@ -15,7 +15,7 @@ ms.author: sethm
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI Driver with AKS enabled by Azure Arc, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system.
+The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI Driver with AKS on Windows Server, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system.
 
 With the Secrets Store CSI driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
@@ -24,7 +24,7 @@ With the Secrets Store CSI driver, you can also integrate a key vault with one o
 Before you begin, make sure you have the following prerequisites:
 
 - An Azure account and subscription.
-- An existing deployment of AKS enabled by Arc with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
+- An existing deployment of AKS on Windows Server with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you're running Linux clusters, they must be on version Linux 1.16.0 or later.
 - If you're running Windows clusters, they must be on version Windows 1.18.0 or later.
 - Make sure you've completed the following installations:

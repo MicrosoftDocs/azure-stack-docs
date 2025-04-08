@@ -11,7 +11,7 @@ ms.lastreviewed: 01/10/2025
 
 # Configure SSH keys for an AKS Arc cluster
 
-> Applies to: AKS on Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 [Secure Shell Protocol (SSH)](https://www.ssh.com/ssh/) is an encrypted connection protocol that provides secure sign-ins over unsecured connections. AKS on Azure Local supports access to a VM in your Kubernetes nodes over SSH using a public-private key pair, also known as *SSH keys*. For information about how to create and manage SSH keys, see [Create and manage SSH keys](/azure/virtual-machines/ssh-keys-azure-cli).
 
