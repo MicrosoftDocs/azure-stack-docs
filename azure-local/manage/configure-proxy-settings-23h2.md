@@ -59,14 +59,14 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
 Here's an example of the command usage:
 
 ```powershell
-Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer http://192.168.1.250:8080 -ProxyBypass "localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster"
+Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer http://192.168.1.250:8080 -ProxyBypass "localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster"
 ```
 
 ### WinInet proxy bypass list string considerations
 
 When configuring the `WinInet` proxy bypass list, keep the following points in mind:
 
-- Parameters must be separated with comma `,` or semicolon `;`.
+- Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
@@ -83,7 +83,7 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
     Current WinHTTP proxy settings:
 
     Proxy Server(s) :  http://192.168.1.250:8080
-    Bypass List     :  localhost;127.0.0.1;*. contoso.com;node1;node2;192.168.1.*;s-cluster
+    Bypass List     :  localhost,127.0.0.1,*. contoso.com,node1,node2,192.168.1.*,s-cluster
 
     PS C:\>
     ```
@@ -125,14 +125,14 @@ The parameters are described in the following table:
 Here's an example of the command usage:
 
 ```powershell
-Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster"
+Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster"
 ```
 
 ### WinHTTP proxy bypass list string considerations
 
 When configuring the `WinHTTP` proxy bypass list string, keep the following points in mind:
 
-- Parameters must be separated with comma `,` or semicolon `;`.
+- Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
@@ -149,7 +149,7 @@ When configuring the `WinHTTP` proxy bypass list string, keep the following poin
     Current WinHTTP proxy settings:
 
     Proxy Server(s) :  http://192.168.1.250:8080
-    Bypass List     :  localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster
+    Bypass List     :  localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster
 
     PS C:\>
     ```
