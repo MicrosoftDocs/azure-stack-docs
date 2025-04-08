@@ -1,6 +1,6 @@
 ---
 title: Update noProxy settings, certificates in Azure Kubernetes Service
-description: Learn how to update proxy settings and certificates in AKS on Azure Local or AKS on Windows Server.
+description: Learn how to update proxy settings and certificates in AKS on Windows Server.
 ms.topic: how-to
 ms.date: 07/12/2024
 ms.author: sethm
@@ -17,15 +17,15 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to update proxy settings and certificates for your deployment in AKS enabled by Azure Arc. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter to exclude private subnets (for example, contoso.com) from using the proxy server, and you can update proxy certificates for the deployment. You can't change HTTP or HTTPS settings.
+This article describes how to update proxy settings and certificates for your deployment in AKS on Windows Server. Each AKS deployment has a single global proxy configuration. You can add exclusions using the `noProxy` parameter to exclude private subnets (for example, contoso.com) from using the proxy server, and you can update proxy certificates for the deployment. You can't change HTTP or HTTPS settings.
 
 For information about the initial proxy server setup, see [Use proxy server settings in AKS Arc](set-proxy-settings.md).
 
 ## Proxy settings you can update
 
-Before you begin, review current limitations to proxy setting updates you can perform in AKS enabled by Arc:
+Before you begin, review current limitations to proxy setting updates you can perform in AKS on Windows Server:
 
-- AKS enabled by Arc supports one global proxy configuration per AKS Arc deployment. When you update the proxy settings, they're updated for the entire AKS Arc deployment.
+- AKS on Windows Server supports one global proxy configuration per AKS Arc deployment. When you update the proxy settings, they're updated for the entire AKS Arc deployment.
 - You can only update `noProxy` settings, which are used to exclude a private subnet from using the proxy server, and proxy certificates. HTTP and HTTPs proxy settings can't be updated.
 - You can't configure different proxy settings for a specific node pool or workload cluster. Similarly, you can't update proxy settings for a specific node pool or workload cluster.
 - Updates to proxy settings are only applied after you update your entire AKS deployment. You must update the AKS host management cluster and all AKS workload clusters. To check whether an update is available, use the AKS PowerShell module cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
@@ -136,4 +136,4 @@ To apply the proxy updates:
 
 ## Next steps
 
-For more information about networking in AKS enabled by Arc, see [Kubernetes networking concepts](concepts-node-networking.md).
+For more information about networking in AKS on Windows Server, see [Kubernetes networking concepts](concepts-node-networking.md).

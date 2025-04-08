@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Kubernetes clusters on Azure Local, version 23H2
-description: Learn how to create Arc-enabled logical networks for AKS.
+title: Create logical networks for Kubernetes clusters on Azure Local
+description: Learn how to create Arc-enabled logical networks for AKS enabled by Azure Arc.
 ms.topic: how-to
 author: sethmanheim
 ms.date: 04/01/2025
@@ -9,18 +9,18 @@ ms.lastreviewed: 04/01/2024
 ms.reviewer: abha
 ---
 
-# Create logical networks for Kubernetes clusters on Azure Local, version 23H2
+# Create logical networks for Kubernetes clusters on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-After you install and configure Azure Local, version 23H2, you must create Arc VM logical networks. AKS on Azure Local uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
+After you install and configure Azure Local, you must create Arc VM logical networks. AKS on Azure Local uses static logical networks to provide IP addresses to the underlying VMs of the AKS clusters.
 
 ## Before you begin
 
 Before you begin, make sure you have the following prerequisites:
 
-- Install and configure Azure Local, version 23H2. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
-- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md).
+- Install and configure Azure Local. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
+- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local](aks-hci-network-system-requirements.md).
 - Make sure you have an external VM switch that can be accessed by all the machines in your Azure Local cluster. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you will create.
 
 Run the following command to get the name of the external VM switch on your Azure Local cluster:

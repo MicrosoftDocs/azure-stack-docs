@@ -1,12 +1,13 @@
 ---
-title: Deploy Azure Arc-enabled data services in AKS enabled by Azure Arc
-description: Learn how to deploy Azure Arc-enabled data services in AKS enabled by Azure Arc.
+title: Deploy Azure Arc-enabled data services in AKS on Windows Server
+description: Learn how to deploy Azure Arc-enabled data services in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/03/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+
 # Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data.
 # Keyword: Azure Arc data services
 ---
@@ -15,9 +16,9 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides a checklist of prerequisites you can follow to deploy Azure Arc-enabled data services on Azure Kubernetes Service (AKS) enabled by Azure Arc. You must have [AKS](kubernetes-walkthrough-powershell.md) installed before using the checklist.
+This article provides a checklist of prerequisites you can follow to deploy Azure Arc-enabled data services on Azure Kubernetes Service (AKS) on Windows Server. You must install [AKS on Windows Server](kubernetes-walkthrough-powershell.md) before using the checklist.
 
-## Prerequisites for AKS on Azure Local and Windows Server
+## Prerequisites for AKS on Windows Server
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md).
@@ -28,13 +29,13 @@ This article provides a checklist of prerequisites you can follow to deploy Azur
 > [!div class="checklist"]
 > * [Connect your clusters to Azure Arc for Kubernetes](connect-to-arc.md).
 
-Confirm whether custom location is enabled on your Kubernetes cluster by running the following command and checking for `customLocation: enabled: true`:
+Confirm whether the custom location is enabled on your Kubernetes cluster by running the following command and checking for `customLocation: enabled: true`:
 
 ```console
 helm get values azure-arc
 ```
 
-If custom location isn't enabled, run the following CLI command:
+If the custom location isn't enabled, run the following CLI command:
 
 ```azurecli
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
