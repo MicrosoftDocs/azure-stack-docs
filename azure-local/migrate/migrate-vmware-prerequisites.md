@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate 
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2024
+ms.date: 04/08/2025
 ms.author: alkohli
 ---
 
@@ -28,8 +28,8 @@ The following list contains the prerequisites that must be met to migrate VMware
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
-|Create a custom storage path for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
-|Create a logical network for the Arc Resource Bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
+|Create a custom storage path for the Arc resource bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
+|Create a logical network for the Arc resource bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
 |Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
 |Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
 

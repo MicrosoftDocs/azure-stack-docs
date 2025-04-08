@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 04/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -190,7 +190,7 @@ After migration, Device Manager may still display the old network adapter inform
 
 ### Multiple IP addresses on a single network adapter
 
-When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Arc VMs in Azure Local will display only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
+When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Azure Local VMs enabled by Arc will display only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
 
 ### Multiple network adapters and types
 
