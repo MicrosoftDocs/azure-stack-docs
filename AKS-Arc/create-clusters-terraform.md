@@ -13,7 +13,7 @@ ms.date: 02/26/2025
 This article describes how to create Kubernetes clusters in Azure Local using Terraform and the Azure Verified Module. The workflow is as follows:
 
 - Create an SSH key pair.
-- Create a Kubernetes cluster in Azure Local 23H2 using Terraform. By default, the cluster is Azure Arc-connected.
+- Create a Kubernetes cluster in Azure Local using Terraform. By default, the cluster is Azure Arc-connected.
 - Validate the deployment and connect to the cluster.
 
 > [!IMPORTANT]
@@ -89,7 +89,7 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-23h2.md) for prerequisites.
+1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 

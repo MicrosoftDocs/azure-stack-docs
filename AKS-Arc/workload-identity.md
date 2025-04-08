@@ -29,7 +29,7 @@ For a conceptual overview of Workload identity federation, see [Workload identi
 > These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
 > [!NOTE]
-> In public preview, AKS on Azure Local, version 23H2 supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
+> In public preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward is currently unsupported.
 
 ## Prerequisites
 
@@ -98,7 +98,7 @@ The following example output shows the successful creation of a resource group:
 
 To create an AKS Arc cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
 
-- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local, version 23H2 cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
+- `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID using `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
 - `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID using `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
 
 Run the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command with the `--enable-oidc-issuer --enable-workload-identity` parameter. Provide your **entra-admin-group-object-ids** and ensure you're a member of the Microsoft Entra ID admin group for proxy mode access:
