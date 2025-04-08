@@ -57,7 +57,7 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 
 For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on a Windows Server failover cluster.
 
-You must install the same operating system on each server in the cluster. If you're using Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
+You must install the same operating system on each server in the cluster. In Windows Server Datacenter, the same OS and version must be the same on each server in the cluster. Each OS must use the **en-us** region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 

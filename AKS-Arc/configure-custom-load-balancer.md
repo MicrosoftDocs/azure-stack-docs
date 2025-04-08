@@ -49,7 +49,7 @@ This configuration assumes you want to use a custom load balancer in your cluste
 
 1. Manually configure your load balancer.  
 
-If you run an upgrade, the load balancer configuration (`loadBalancerSku` and `count`) you defined during installation remains the same after the upgrade completes. However, if you want to update `loadBalancerSku` during an upgrade, you must redeploy your workload clusters. If you have existing clusters running a HAProxy-based load balancer, you can continue running your workloads and the upgrade completes successfully.
+If you run an upgrade, the load balancer configuration (`loadBalancerSku` and `count`) you defined during installation remains the same after the upgrade completes. However, if you want to update `loadBalancerSku` during an upgrade, you must redeploy your workload clusters. If you have existing clusters running a HAProxy-based load balancer, you can continue running your workloads. The upgrade then completes successfully.
 
 > [!IMPORTANT]
 > If you change from using a custom load balancer to using the default load balancer, you're required to redeploy your workload cluster with the new load balancer configuration. For information about how to configure the default load balancer, see [Configure load balancer](configure-load-balancer.md).  

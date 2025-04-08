@@ -39,7 +39,7 @@ AKS on Windows Server troubleshooting topics are organized by functional area. U
 - [General](/azure-stack/aks-hci/known-issues)
 
 > [!NOTE]
-> If none of the workarounds found in the links above apply to you, [open a support issue](help-support.md).
+> If none of the workarounds found in these links apply to you, [open a support issue](help-support.md).
 
 ## Next steps
 

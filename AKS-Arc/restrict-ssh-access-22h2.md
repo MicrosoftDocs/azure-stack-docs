@@ -1,6 +1,6 @@
 ---
 title: Restrict SSH access to virtual machines in AKS on Windows Server
-description: Learn how to restrict SSH access in AKS Arc on Windows Server.
+description: Learn how to restrict SSH access in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 04/02/2025
