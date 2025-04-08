@@ -1,6 +1,6 @@
 ---
-title: Upgrade the AKS host in AKS enabled by Arc using PowerShell
-description: Learn about using PowerShell to upgrade the AKS host in AKS enabled by Azure Arc.
+title: Upgrade the AKS host in AKS on Windows Server using PowerShell
+description: Learn about using PowerShell to upgrade the AKS host in AKS on Windows Server.
 ms.topic: how-to
 ms.date: 06/27/2024
 ms.author: sethm 
@@ -13,11 +13,11 @@ author: sethmanheim
 
 ---
 
-# Upgrade the AKS host in AKS enabled by Arc using PowerShell
+# Upgrade the AKS host in AKS on Windows Server using PowerShell
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to update the Azure Kubernetes Service host in AKS enabled by Azure Arc.
+This article describes how to update the Azure Kubernetes Service host in AKS on Windows Server.
 
 ## Overview of AKS host updates
 

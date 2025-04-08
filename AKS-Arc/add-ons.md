@@ -1,6 +1,6 @@
 ---
-title: Add-ons and extensions available for AKS enabled by Arc
-description: Learn about what add-ons and integrations are supported in AKS enabled by Azure Arc.
+title: Add-ons and extensions available for AKS on Windows Server
+description: Learn about what add-ons and integrations are supported in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 02/15/2024
@@ -9,9 +9,9 @@ ms.lastreviewed: 02/15/2023
 ms.reviewer: baziwane
 ---
 
-# Add-ons, extensions, and other integrations with AKS enabled by Arc
+# Add-ons, extensions, and other integrations with AKS on Windows Server
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc provides augmented functionality for your Kubernetes cluster, mainly through extensions that are supported by Microsoft. There are also many integrations offered by open-source projects and third-party organizations. It's important to note that these integrations, which are not supported by AKS Arc, are not included in the [AKS Arc support policy](support-policies.md).
+Azure Kubernetes Service (AKS) on Windows Server provides augmented functionality for your Kubernetes cluster, mainly through extensions that are supported by Microsoft. There are also many integrations offered by open-source projects and third-party organizations. It's important to note that these integrations, which are not supported by AKS Arc, are not included in the [AKS Arc support policy](support-policies.md).
 
 ## Add-ons
 
@@ -30,7 +30,7 @@ The following rules are used by AKS Arc for applying updates to installed add-on
 | [Install-AksHciCsiNfs](reference/ps/install-akshcicsinfs.md)      | Installs the CSI NFS plug-in to a cluster.                       |
 | [Install-AksHciCsiSmb](reference/ps/install-akshcicsismb.md)      | Installs the CSI SMB plug-in to a cluster.                       |
 | [Install-AksHciGmsaWebhook](reference/ps/install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.                     |
-| [Install-AksHciMonitoring](reference/ps/install-akshcimonitoring.md)  | Installs Prometheus for monitoring in the AKS enabled by Arc deployment. |
+| [Install-AksHciMonitoring](reference/ps/install-akshcimonitoring.md)  | Installs Prometheus for monitoring in the AKS on Windows Server deployment. |
 
 ## Azure Arc extensions
 
@@ -38,7 +38,7 @@ Cluster extensions build on top of certain Helm charts and provide an Azure Reso
 
 ### Available extensions
 
-For more information about the specific cluster extensions for AKS enabled by Arc, see [Currently available extensions](/azure/azure-arc/kubernetes/extensions-release).
+For more information about the specific cluster extensions for AKS on Windows Server, see [Currently available extensions](/azure/azure-arc/kubernetes/extensions-release).
 
 ## Difference between extensions and add-ons
 
@@ -58,4 +58,4 @@ The following table shows examples of open-source and third-party integrations:
 
 ## Next steps
 
-- [AKS enabled by Arc overview](aks-overview.md)
+- [AKS on Windows Server overview](overview.md)
