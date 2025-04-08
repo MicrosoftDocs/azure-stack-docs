@@ -31,7 +31,7 @@ This tutorial, part six of seven, describes how to update the sample Azure Vote 
 In previous tutorials you learned how to:
 
 * Package an application into a container image and upload the image to Azure Container Registry.
-* Create a Kubernetes cluster on Azure Local and deploy the application to the cluster.
+* Create a Kubernetes cluster and deploy the application to the cluster.
 * Clone an application repository that includes the application source code and a pre-created Docker Compose file you can use in this tutorial.
 
 Verify that you created a clone of the repo, and changed directories into the cloned directory. If you haven't completed these steps, start with [Tutorial 1 - Create container images](tutorial-kubernetes-prepare-application.md).

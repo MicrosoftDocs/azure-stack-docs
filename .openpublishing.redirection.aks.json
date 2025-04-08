@@ -1439,6 +1439,21 @@
         "source_path": "AKS-Arc/aks-known-issues.md",
         "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/aks-whats-new-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/aks-whats-new-local",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/azure-rbac-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/azure-rbac-local",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/kubernetes-rbac-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/kubernetes-rbac-local",
+        "redirect_document_id": false
       }
     ]
   }
