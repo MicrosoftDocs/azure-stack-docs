@@ -14,7 +14,7 @@ ms.lastreviewed: 01/30/2024
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This step is only required if you installed the AKS cluster provisioning from Azure preview. The preview ended with the release of [AKS enabled by Azure Arc on Azure Local version 23H2](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to AKS Arc.
+This step is only required if you installed the AKS cluster provisioning from Azure preview. The preview ended with the release of [AKS enabled by Azure Arc on Azure Local](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to AKS Arc.
 
 ## Step 1: delete all preview AKS clusters and Azure vnets created using Az CLI
 

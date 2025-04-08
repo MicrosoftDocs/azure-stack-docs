@@ -25,8 +25,8 @@ Failed to either reach kube-apiserver or control plane IP %s:%d of Kubernetes cl
 
 ## Possible causes and follow-ups
 
-- Check whether the logical network into which you deployed the AKS cluster is reachable from the [management IP pool](/azure-stack/hci/plan/cloud-deployment-network-considerations#management-ip-pool). 
-- Check whether the `control plane IP` address of the AKS cluster is reachable from the [management IP pool](/azure-stack/hci/plan/cloud-deployment-network-considerations#management-ip-pool). You can find the control plane IP address by running the [`az aksarc show`](/cli/azure/aksarc#az-aksarc-show) command.
+- Check whether the logical network into which you deployed the AKS cluster is reachable from the [management IP pool](/azure/azure-local/plan/cloud-deployment-network-considerations#management-ip-pool). 
+- Check whether the `control plane IP` address of the AKS cluster is reachable from the [management IP pool](/azure/azure-local/plan/cloud-deployment-network-considerations#management-ip-pool). You can find the control plane IP address by running the [`az aksarc show`](/cli/azure/aksarc#az-aksarc-show) command.
 - One possible reason for connectivity issues here is if the Arc Resource Bridge is in a different vlan than the logical network in which you created the AKS cluster. If the Arc Resource Bridge is in a different vlan, ensure that cross-vlan communication is enabled.
 - Another frequent issue occurs if you have a firewall that isolates the management network from logical networks. Ensure that you opened the required ports so the management network can reach AKS Arc VMs. Review [the network requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for more information about required ports.
 - Duplicate IPs and IP address collisions are other reasons why the API server might be unreachable. Ensure that you didn't use the IP addresses provided in the management network anywhere else. Likewise, ensure that the control plane IP provided during the AKS cluster creation operation isn't used anywhere else.
@@ -42,6 +42,6 @@ If the problem persists, collect the following information before [creating a su
 ## Next steps
 
 - [Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
-- [Review AKS on Azure Local, version 23H2 architecture](cluster-architecture.md)
-- [Review Azure Local network considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations)
-- [Review networking prerequisities for AKS on Azure Local, version 23H2](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local architecture](cluster-architecture.md)
+- [Review Azure Local network considerations](/azure/azure-local/plan/cloud-deployment-network-considerations)
+- [Review networking prerequisities for AKS on Azure Local](aks-hci-network-system-requirements.md)

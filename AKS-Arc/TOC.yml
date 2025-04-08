@@ -11,11 +11,11 @@
     href: data-collection.md
   - name: Blogs and announcements
     href: blogs-announcements.md
-- name: AKS on Azure Local, version 23H2
+- name: AKS on Azure Local
   expanded: true
   items:
-  - name: What's new in AKS on Azure Local, version 23H2
-    href: aks-whats-new-23h2.md
+  - name: What's new in AKS on Azure Local
+    href: aks-whats-new-local.md
   - name: Concepts
     items:
     - name: Architecture
@@ -85,9 +85,9 @@
       - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
         href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
-        href: azure-rbac-23h2.md
+        href: azure-rbac-local.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
-        href: kubernetes-rbac-23h2.md
+        href: kubernetes-rbac-local.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
       - name: Configure SSH keys for a cluster

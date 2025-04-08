@@ -15,7 +15,7 @@ ms.lastreviewed: 01/30/2024
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 > [!NOTE]
-> For information about managing node pools in AKS on Azure Local 23H2, see [Manage node pools](manage-node-pools.md).
+> For information about managing node pools in AKS on Azure Local, see [Manage node pools](manage-node-pools.md).
 
 In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
 
@@ -232,4 +232,4 @@ Events:
 
 ## Next steps
 
-- [Manage node pools (AKS on Azure Local 23H2)](manage-node-pools.md)
+- [Manage node pools (AKS on Azure Local)](manage-node-pools.md)

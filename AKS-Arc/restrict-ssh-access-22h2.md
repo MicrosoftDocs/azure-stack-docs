@@ -93,5 +93,5 @@ Get-AksHciLogs –virtualMachineLogs
 
 ## Next steps
 
-- [Restrict SSH access (AKS on Azure Local 23H2)](restrict-ssh-access.md)
+- [Restrict SSH access (AKS on Azure Local)](restrict-ssh-access.md)
 - [AKS on Windows Server overview](aks-overview.md)

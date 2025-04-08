@@ -87,9 +87,9 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Local 22H2 cluster and a Windows Server Datacenter cluster. For networking requirements on Azure Local 23H2, see [Networking requirements](aks-hci-network-system-requirements.md).
+The following requirements apply to an Azure Local 22H2 cluster and a Windows Server Datacenter cluster. For networking requirements on Azure Local, see [Networking requirements](aks-hci-network-system-requirements.md).
 
-- For Azure Local 22H2 and Windows Server, verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Local or Windows Server clusters, this switch and its name must be the same across all cluster nodes. For Azure Local 23H2, see the [network system requirements](aks-hci-network-system-requirements.md).
+- For Azure Local 22H2 and Windows Server, verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Local or Windows Server clusters, this switch and its name must be the same across all cluster nodes. For Azure Local, see the [network system requirements](aks-hci-network-system-requirements.md).
 - Verify that you have disabled IPv6 on all network adapters.
 - For a successful deployment, the Azure Local or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.
