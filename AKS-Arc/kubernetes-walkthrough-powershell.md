@@ -224,9 +224,9 @@ Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ```
 
 > [!NOTE]
-> In previous versions of AKS on Windows Server, the [Set-AksHciCluster](./reference/ps/set-akshcicluster) command was also used to scale worker nodes. Now that AKS is introducing node pools in workload clusters, you can only use this command to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](./reference/ps/new-akshcicluster).
+> In previous versions of AKS on Windows Server, the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command was also used to scale worker nodes. Now that AKS is introducing node pools in workload clusters, you can only use this command to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](./reference/ps/new-akshcicluster.md).
 
-To scale worker nodes in a node pool, use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool) command.
+To scale worker nodes in a nodepool, use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
 
 ## Access your clusters using kubectl
 
