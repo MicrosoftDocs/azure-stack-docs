@@ -24,7 +24,7 @@ Availability sets offer several benefits for AKS on Azure Local users, such as:
 
 ## Enable availability sets
 
-With AKS on Azure Local, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
+With AKS on Azure Local, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable the availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
 
 ## How availability sets work in AKS enabled by Azure Arc
 
