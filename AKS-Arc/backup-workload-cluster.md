@@ -17,7 +17,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob Storage or MinIO storage in AKS enabled by Azure Arc.
+This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob Storage or MinIO storage in AKS on Windows Server.
 
 [Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS Arc target Kubernetes cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 

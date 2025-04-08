@@ -1,9 +1,9 @@
 ---
-title: Use persistent volumes with AKS enabled by Azure Arc
+title: Use persistent volumes with AKS on Windows Server
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/03/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
@@ -13,11 +13,11 @@ ms.reviewer: abha
 
 ---
 
-# Use persistent volumes with AKS enabled by Arc
+# Use persistent volumes with AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS enabled by Azure Arc (AKS Arc).
+This article describes how to provision, use, and delete persistent volumes that provide long-term storage for use with Kubernetes pods in AKS on Windows Server.
 
 A *persistent volume* represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycles.
 
@@ -47,7 +47,7 @@ spec:
    storage: 10Gi
 ```
 
-To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Local cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Windows Server cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
 
 ```bash
 kubectl create -f pvc-akshci-csi.yaml 
