@@ -8,7 +8,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
 
-# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS on Azure Local deployment.
+# Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS deployment.
 # Keyword: multi-container Kubernetes service
 
 ---

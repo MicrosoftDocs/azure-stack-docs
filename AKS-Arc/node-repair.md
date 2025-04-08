@@ -1,6 +1,6 @@
 ---
 title: Node auto-repair
-description: Learn about automatic node repair of Windows and Linux nodes in AKS enabled by Azure Arc.
+description: Learn about automatic node repair of Windows and Linux nodes in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
@@ -15,7 +15,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-To help minimize service disruptions for clusters, AKS enabled by Azure Arc continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. This article describes how AKS Arc checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. The article also shows how to manually check node health.
+To help minimize service disruptions for clusters, AKS on Windows Server continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. This article describes how AKS Arc checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. The article also shows how to manually check node health.
 
 ## How AKS checks for unhealthy nodes
 
