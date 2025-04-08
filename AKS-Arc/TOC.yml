@@ -278,6 +278,8 @@
     items:
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Get support
+      href: aks-edge-help-support.md
     - name: Troubleshooting 
       href: aks-edge-troubleshoot-overview.md
     - name: Logs 
@@ -364,7 +366,7 @@
         href: tutorial-kubernetes-prepare-application.md
       - name: 2 - Create container registry
         href: tutorial-kubernetes-prepare-azure-container-registry.md
-      - name: 3 - Deploy a workload cluster
+      - name: 3 - Deploy a Kubernetes cluster
         href: tutorial-kubernetes-deploy-cluster.md
       - name: 4 - Run an application
         href: tutorial-kubernetes-deploy-application.md
@@ -554,7 +556,7 @@
       - name: Use OpenFaaS
         href: openfaas.md
       - name: Use Bridge to Kubernetes with Visual Studio Code
-        href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+        href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
       - name: Use Bridge to Kubernetes with Visual Studio
         href: /visualstudio/containers/bridge-to-kubernetes
       - name: Deploy a Java application with Open Liberty or WebSphere Liberty
@@ -573,7 +575,7 @@
       href: aks-hybrid-preview-uninstall.md
     - name: Troubleshooting overview
       href: troubleshoot-overview.md
-    - name: Azure Arc enabled Kubernetes
+    - name: Azure Arc-enabled Kubernetes
       href: known-issues-arc.yml
     - name: Pre-installation validation tests
       href: validation-tests.md
@@ -599,12 +601,6 @@
       href: known-issues-uninstall.yml
     - name: Other
       href: known-issues.yml
-    - name: Azure Local issues
-      items:
-      - name: Cluster validation reporting in Azure Local
-        href: /azure-stack/hci/manage/validate-qos
-      - name: CredSSP in Azure Local
-        href: /azure-stack/hci/manage/troubleshoot-credssp
     - name: Support policies
       href: support-policies.md
     - name: Get support

@@ -1,6 +1,6 @@
 ---
 title: Connect with SSH to Azure Kubernetes Service nodes
-description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS enabled by Azure Arc.
+description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You might need to access Windows or Linux worker nodes in AKS enabled by Azure Arc for maintenance, log collection, or other troubleshooting operations. For security purposes, you must create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
+You might need to access Windows or Linux worker nodes in AKS on Windows Server for maintenance, log collection, or other troubleshooting operations. For security purposes, you must create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
 
 This article describes how to create an SSH connection to access both Windows and Linux nodes.
 
