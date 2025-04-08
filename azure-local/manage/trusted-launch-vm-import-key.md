@@ -1,33 +1,33 @@
 ---
-title: Manage Trusted launch Arc VM guest state protection key on Azure Local
-description: Learn how to manage a Trusted launch Arc VM guest state protection key on Azure Local.
+title: Manage Trusted launch for Azure Local VM enabled by Azure Arc guest state protection key
+description: Learn how to manage a Trusted launch for Azure Local VM enabled by Azure Arc guest state protection key.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: alkohli
-ms.date: 02/21/2025
+ms.date: 03/27/2025
 ---
 
-# Manage backup and recovery of Trusted launch Arc VMs on Azure Local
+# Manage backup and recovery of Trusted launch for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manually back up and restore a Trusted launch Arc VM on Azure Local.
+This article describes how to manually back up and restore a Trusted launch for Azure Local VM enabled by Azure Arc.
 
-Unlike standard Azure Arc VMs, Trusted launch Arc VMs use a VM guest state protection (GSP) key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM GSP key is stored in a local key vault in the Azure Local system where the VM resides. 
+Unlike standard Azure Local VMs, Trusted launch for Azure Local VMs use a VM guest state protection (GSP) key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM GSP key is stored in a local key vault in the Azure Local system where the VM resides.
 
-Trusted launch Arc VMs store the VM guest state in two files, VM Guest state (VMGS) and VM Runtime state (VMRS). If the VM GSP key is lost, you can't boot up a Trusted launch Arc VM.
+Trusted launch for Azure Local VMs store the VM guest state in two files, VM Guest state (VMGS) and VM Runtime state (VMRS). If the VM GSP key is lost, you can't boot up a Trusted launch for Azure Local VM.
 
-It is important that you back up your Trusted launch Arc VM periodically, so you can recover your VM in the event of a data loss. To back up a Trusted launch VM, back up all the VM files, including VMGS and VMRS files. Additionally, back up the VM GSP key to a backup key vault. 
+It is important that you back up your Trusted launch for Azure Local VM periodically, so you can recover your VM in the event of a data loss. To back up a Trusted launch VM, back up all the VM files, including VMGS and VMRS files. Additionally, back up the VM GSP key to a backup key vault.
 
-Similarly, to restore a Trusted launch Arc VM to a target Azure Local system, restore all the VM files, including VMGS and VMRS files. Additionally, restore the VM GSP key from the backup key vault to another key vault on the target Azure Local system.
+Similarly, to restore a Trusted launch for Azure Local VM to a target Azure Local system, restore all the VM files, including VMGS and VMRS files. Additionally, restore the VM GSP key from the backup key vault to another key vault on the target Azure Local system.
 
-The following sections describe how you can back up the Trusted launch Arc VM and restore it in the event of a data loss.
+The following sections describe how you can back up the Trusted launch for Azure Local VM and restore it in the event of a data loss.
 
 ## Back up the VM
 
-You can use [Export-VM](/powershell/module/hyper-v/export-vm) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch Arc VM. You can then back up those VM files.
+You can use [Export-VM](/powershell/module/hyper-v/export-vm) to obtain a copy of all the VM files, including VMGS and VMRS files, for your Trusted launch for Azure Local VM. You can then back up those VM files.
 
 Follow these steps to copy the VM GSP key from the key vault on the Azure Local system (where the VM resides) to a backup key vault on a different Azure Local system:
 
@@ -91,7 +91,7 @@ In the event of a data loss, use the backup copy of your VM files, and restore t
 Follow these steps to copy the VM GSP key from the backup key vault in the Azure Local system (where the backup copy of the VM GSP key was stored) to the key vault on the target Azure Local system (where the VM needs to be restored).
 
 > [!NOTE]
-> Trusted launch Arc VMs restored on an alternate Azure Local system (different from the Azure Local system where the VM originally resided) can't be managed from the Azure control plane.
+> Trusted launch for Azure Local VMs restored on an alternate Azure Local system (different from the Azure Local system where the VM originally resided) can't be managed from the Azure control plane.
 
 
 ### 1. On the source Azure Local system where the VM needs to be restored
