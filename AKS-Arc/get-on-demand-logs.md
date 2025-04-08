@@ -25,7 +25,7 @@ Before log collection, you must have the SSH key you obtained when you created t
 
 ## Collect logs
 
-You can collect logs using IPs or the `kubeconfig` parameter. If an IP is used, it collects the log from a particular node. If `kubeconfig` is used, it collects logs from all cluster nodes. This command generates a .zip file on the local disk. For other parameters, see the [Az CLI reference](https://learn.microsoft.com/en-us/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-get-logs). You may also use Powersherll command Get-AzAksArcLog to collect logs, see the [Az PS reference](https://learn.microsoft.com/en-us/powershell/module/az.aksarc/get-azaksarclog)
+You can collect logs using IPs or the `kubeconfig` parameter. If an IP is used, it collects the log from a particular node. If `kubeconfig` is used, it collects logs from all cluster nodes. This command generates a .zip file on the local disk. For other parameters, see the [Az CLI reference](/cli/azure/aksarc#az-aksarc-get-logs). You can also use the `Get-AzAksArcLog` PowerShell command to collect logs. For more information, see the [PowerShell reference](/powershell/module/az.aksarc/get-azaksarclog).
 
 ```azurecli
 az aksarc get-logs --ip 192.168.200.25 --credentials-dir ./.ssh --out-dir ./logs
