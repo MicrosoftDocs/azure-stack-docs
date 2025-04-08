@@ -124,8 +124,8 @@ items:
     items:
     - name: Via console
       href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via local UI
-      href: deploy/deployment-arc-register-local-ui.md  
+    - name: Via Configurator app
+      href: deploy/deployment-arc-register-configurator-app.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
@@ -484,6 +484,8 @@ items:
   items:
   - name: Migration overview
     href: migrate/migration-options-overview.md
+  - name: What's new in VM migration?
+    href: migrate/migrate-whats-new.md
   - name: Migrate using Azure Migrate
     items:
     - name: Hyper-V VMs

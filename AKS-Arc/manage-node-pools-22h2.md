@@ -232,4 +232,4 @@ Events:
 
 ## Next steps
 
-- [Manage node pools in AKS on Azure Local 23H2](manage-node-pools.md)
+- [Manage nodepools (AKS on Azure Local)](manage-node-pools.md)

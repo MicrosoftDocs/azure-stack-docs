@@ -16,7 +16,7 @@ ms.lastreviewed: 02/21/2025
 
 # Use Azure role-based access control (RBAC) for Kubernetes authorization
 
-Applies to: AKS on Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the **kubectl** tool based on the given permissions. Azure CLI provides an easy way to get the access credentials and kubeconfig configuration file to connect to your AKS clusters using **kubectl**.
 
@@ -30,7 +30,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 
 Before you begin, make sure you have the following prerequisites:
 
-- AKS on Azure Local, version 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
+- AKS on Azure Local currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - Install the latest version of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
   ```azurecli

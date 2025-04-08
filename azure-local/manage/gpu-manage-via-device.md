@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/21/2024
+ms.date: 03/28/2025
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU DDA with Arc virtual machines (VMs) on Azure Local. For GPU DDA management on AKS enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
+This article describes how to manage GPU DDA with Azure Local VMs enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 Discrete Device Assignment (DDA) allows you to dedicate a physical graphical processing unit (GPU) to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.
 
@@ -24,17 +24,17 @@ Discrete Device Assignment (DDA) allows you to dedicate a physical graphical pro
 
 Before you begin, satisfy the following prerequisites:
 
-- Follow the setup instructions found at [Prepare GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared for DDA.  
+- Follow the setup instructions found at [Prepare GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local VMs, and to ensure that your GPUs are prepared for DDA.  
 
-## Attach a GPU during Arc VM creation
+## Attach a GPU during Azure Local VM creation
 
-Follow the steps outlined in [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process.
+Follow the steps outlined in [Create Azure Local VMs enabled by Azure Arc](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process.
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuDDA
 ```
 
-## Attach a GPU after Arc VM creation
+## Attach a GPU after VM creation
 
 Use the following CLI command to attach the GPU:
 
