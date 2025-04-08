@@ -195,6 +195,66 @@ You need these certificates when deploying the disconnected operations appliance
 
 1. Copy the original certificate (26 .pfx files) obtained from your CA to the directory structure represented in IngressEndpointCerts.
 
+Here's an example script to create the certificates for the management endpoint:
+
+```powershell
+Populate cert chain info 
+# Resolve certificates from endpoint
+
+# https://gist.github.com/keystroke/643bcbc449b3081544c7e6db7db0bba8
+
+#This script uses endpoints that needs to be modified
+
+$oidcCertChain = Get-CertificateChainFromEndpoint https://adfs.contoso.com 
+$ldapCertchain =  Get-CertificateChainFromEndpoint https://adfs2.contoso.com 
+
+#First endpoint https://adfs.contoso.com 
+$certificates = Get-CertificateChainFromEndpoint https://adfs.contoso.com #Please modify 
+
+# Save certificates to specified folder 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' #Please modify 
+foreach ($certificate in $certificates) 
+{ 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
+} 
+ Prepping the parameters 
+
+# Read certificate information for external identity configuration 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' 
+$oidcCertChainInfo = @() 
+foreach ($file in (Get-ChildItem $targetDirectory)) 
+{ 
+    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $b64 = [system.convert]::ToBase64String($bytes) 
+    $oidcCertChainInfo += $b64 
+} 
+//Repeat the same steps for the next endpoint 
+//Second endpoint https://adfs2.contoso.com ( Please modify) 
+$certificates = Get-CertificateChainFromEndpoint https://adfs2.contoso.com //Please modify 
+
+# Save certificates to specified folder 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' //Please modify 
+foreach ($certificate in $certificates) 
+{ 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
+} 
+ Prepping the parameters 
+
+# Read certificate information for external identity configuration 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
+$ ldapCertchainInfo = @() 
+foreach ($file in (Get-ChildItem $targetDirectory)) 
+{ 
+    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $b64 = [system.convert]::ToBase64String($bytes) 
+    $ ldapCertchainInfo += $b64 
+} 
+```
+
 ## Related content
 
 - [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria).
