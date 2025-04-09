@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment validation failures for Az
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 02/04/2025
+ms.date: 04/09/2025
 ---
 
 
@@ -17,7 +17,7 @@ This article provides guidance on how to troubleshoot deployment validation issu
 ## Error - deployment validation failure
 
 When deploying Azure Local via the Azure portal, you might encounter a deployment validation failure.
-The "Azure Local Network - Check network requirements" validation task fail with the following error:
+The "Azure Local Network - Check network requirements" validation task fails with the following error:
 
 ```
 Could not complete the operation. 400: Resource creation validation failed. Details:
