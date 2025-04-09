@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/03/2025
+ms.date: 04/09/2025
 ---
 
 # Enable SDN on Azure Local using ECE action plan (Preview)
@@ -22,9 +22,9 @@ SDN is a set of technologies that enable you to create and manage logical and vi
 
 After the network controller is enabled, you can create and manage the following SDN features:
 
-- **Logical networks**: You can create SDN static or DHCP logical networks that project your physical networks.
-- **Network interfaces**: You can attach network interfaces to virtual machines and assign them IP addresses from the logical network.
-- **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on security rules. You can also create network security rules and default network access policies.
+- **Logical networks**: You can create SDN static or DHCP logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
+- **Network interfaces**: You can attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
+- **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on security rules. You can also create network security rules and default network access policies. For more information, see [Create network security groups](../manage/create-network-security-groups.md).
 
 ## Changes to network controller
 
@@ -50,19 +50,7 @@ SDN is a preview feature.
 
 ## Sign in and set subscription
 
-1. [Connect to a machine](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) on your Azure Local.
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login --use-device-code
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
 
 ## Review ECE action plan parameters
 
