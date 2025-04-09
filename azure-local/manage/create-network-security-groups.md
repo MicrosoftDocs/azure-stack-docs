@@ -38,6 +38,12 @@ For each security rule, you can specify source and destination, port, and protoc
 
 # [Azure portal](#tab/azureportal)
 
+- You've access to an Azure Local instance.
+
+    - This instance is running 2504 or later.
+    - This instance has a custom location created.
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    
 ---
 
 ## Create network security groups and network security rules
@@ -190,7 +196,7 @@ az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname -
 
 </details>
 
-> [TIP!]
+> [!TIP]
 > Use `az stack-hci-vm network nsg rule create -h` for help with Azure CLI.
 
 ### Create an outbound security rule
@@ -522,7 +528,7 @@ You can attach a default network access policy to Azure Local VM in two ways:
 
 While creating a VM, you can create a network interface and attach a default network access policy to it. 
 
-For more information, see [Create Azure Local VM via Azure portal](./create-arc-virtual-machines.md#create-vm-portal). In this procedure, when you reach the Networking tab, follow these steps to add a default network access policy: 
+For more information, see [Create Azure Local VM via Azure portal](./create-arc-virtual-machines.md). In this procedure, when you reach the **Networking** tab, follow these steps to add a default network access policy:
 
 1. On the Networking tab, select **+ Add network interface**.
 1. In the **Add network interface** page, input the following information:
@@ -533,15 +539,13 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
     1. **NIC Network security group** - There are three options:
         1. **None** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks thereby posing a security risk. This option isn't recommended.
         1. **Basic** - Choose this option to attach a **Default network access policy**. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH, or RDP as per your requirements.
-        1. **Advanced** - Choose this option to attach a custom network access policy. You can create a custom network access policy with one or more inbound and outbound rules. For more information, see [Create a custom network access policy](./create-custom-network-access-policy.md).
+        1. **Advanced** - Choose this option to attach a custom network access policy. You can create a custom network access policy with one or more inbound and outbound rules. For more information, see [Create a custom network access policy](../index.yml).
     1. Select **Add**.
 1. Continue with the rest of the VM creation process.
 
 ### Apply default network access policy to an existing VM
 
 You can apply a default network access policy to an existing VM.
-
-
 
 ---
 
