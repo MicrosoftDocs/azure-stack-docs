@@ -165,6 +165,17 @@ items:
     - name: Run SQL Server
       href: deploy/sql-server-23h2.md
 
+- name: Enable
+  items:
+  - name: Read SDN overview
+    href: concepts/sdn-overview
+  - name: Enable SDN via ECE action plan  
+    href: manage/enable-sdn-ece-action-plan.md
+  - name: Create network security groups   
+    href: manage/create-network-security-groups.md
+  - name: Manage network security groups
+    href: manage/manage-network-security-groups.md
+
 - name: Update 
   items:
   - name: About Updates
