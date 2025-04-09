@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/11/2025
+ms.date: 04/09/2025
 ms.service: azure-local
 ---
 
@@ -89,9 +89,9 @@ This section describes how you can change the storage account key for the cluste
     Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
     ```
 
-## Revoke SAS token for storage account used for Arc VM images
+## Revoke SAS token for storage account used for Azure Local VM images
 
-This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Arc VM images.
+This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Azure Local VMs enabled by Arc images.
 
 | SAS policy   | SAS expired?    | Steps to revoke   |
 |---------|---------|---------|
