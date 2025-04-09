@@ -34,11 +34,12 @@ This is a baseline release with the following features and improvements:
   - Environment checker validates the composed image used for bootstrap.
   - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
 - **Updates and upgrade improvements**
-  - The differentiation of SKUs is supported when considering the applicability of a Solution Builder Extension update.
-  - A tag is added to indicate a superseded update.
-  - The Download Service is now used to download HTTP content.
-  - A URL-based platform update package is now supported.
-  - Azure Local rebranding changes were made for Update.
+  - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
+  - A tag has been added to indicate whether an update is the latest or has been superseded.
+  - HTTP content will now be downloaded using a more resilient service (Download Service).
+  - OS content will be packaged with the release, rather than determining appliable content on the device at runtime. This change is aimed at minimizing failure points and supporting [sideloading](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content will be installed using the CAU plug-ins that are shipped with OS.
+  - Azure Local rebranding changes were made for this update.
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
 
 
