@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/03/2025
+ms.date: 04/09/2025
 ---
 
 # What's new in Azure Local?
@@ -41,6 +41,7 @@ This is a baseline release with the following features and improvements:
   - OS content will be installed using the CAU plug-ins that are shipped with OS.
   - Azure Local rebranding changes were made for this update.
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+- **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
 
 ::: moniker-end
