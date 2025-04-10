@@ -1,5 +1,5 @@
 ---
-title: Create network security groups on Azure Local (Preview)
+title: Manage network security groups, network security rules on Azure Local VMs (Preview)
 description: Learn about the Azure verification for VMs feature on Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
@@ -464,8 +464,6 @@ While creating a VM, you can create a network interface and attach a default net
 </details>
 
 
-
-
 # [Azure portal](#tab/azureportal)
 
 ## Create a network security group
@@ -542,6 +540,9 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
         1. **Advanced** - Choose this option to attach a custom network access policy. You can create a custom network access policy with one or more inbound and outbound rules. For more information, see [Create a custom network access policy](../index.yml).
     1. Select **Add**.
 1. Continue with the rest of the VM creation process.
+
+> [!IMPORTANT]
+> The default network access policy is only available for the first network interface of the VM. If you add a second network interface, the default network access policy isn't available to attach to the interface.
 
 ### Apply default network access policy to an existing VM
 
