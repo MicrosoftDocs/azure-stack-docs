@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2025
+ms.date: 04/10/2025
 ms.service: azure-local
 ---
 
@@ -12,16 +12,10 @@ ms.service: azure-local
 
 Applies to: Azure Local 2504 or later
 
-This article describes how to manage network security groups (NSGs) and network security rules on your Azure Local virtual machines enabled by Azure Arc. Once you have created network security groups and network security rules on your Azure Local VMs, you can list, show details, updates, delete these resources.
+This article describes how to manage network security groups (NSGs) and network security rules on your Azure Local virtual machines enabled by Azure Arc. Once you have created network security groups and network security rules on your Azure Local VMs, you can list, show details, associate, dissociate, update, and delete these resources.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-
-
-
-You can use a network security group to filter network traffic between Azure resources in a logical network on your Azure Local instance. A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, several types of resources.  
-
-For each security rule, you can specify source and destination, port, and protocol.
 
 ## Prerequisites
 
@@ -55,15 +49,262 @@ For each security rule, you can specify source and destination, port, and protoc
 
 ## Manage network security groups
 
+This section describes the manage operations supported for network security groups.
+
 ### List network security groups
+
+Follow these steps to list network security groups:
+
+```azurecli
+az stack-hci-vm network nsg list -g $resource_group
+```
+
 
 ### Show details of a network security group
 
+Follow these steps to show details of a network security group:
+
+```azurecli
+az stack-hci-vm network nsg show -g $resource_group --name $nsgname
+```
+
 ### Delete a network security group
+
+Follow these steps to delete a network security group:
+
+```azurecli
+az stack-hci-vm network nsg delete -g $resource_group --name $nsgname
+```
+
+
+## Associate network security group with network interface
+
+Create a NIC with the NSG created earlier in one step. IP address is optional and is not passed in this example. If you do not pass the IP address, the system assigns a random IP address from the subnet.
+
+ 
+```azurecli
+az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
+```
+
+<br></br>
+<details>
+<summary>Expand this section to see an example output.</summary>
+
+```output
+[Machine 1]: PS C:\HCIDeploymentUser> $lnetname="static-lnet" 
+[Machine 1]: PS C:\HCIDeploymentUser> $nicname="examplenic" 
+[Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname 
+{ 
+
+  "extendedLocation": { 
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
+    "type": "CustomLocation" 
+  }, 
+
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
+  "location": "eastus2euap", 
+  "name": "examplenic", 
+  "properties": { 
+    "dnsSettings": null, 
+    "ipConfigurations": [ 
+      { 
+        "name": null, 
+        "properties": { 
+          "gateway": "100.78.98.1", 
+          "prefixLength": "24", 
+          "privateIpAddress": "100.78.98.224", 
+          "subnet": { 
+            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet", 
+            "resourceGroup": "examplerg" 
+          } 
+        } 
+      } 
+    ], 
+
+    "macAddress": "02:ec:ce:e0:00:01", 
+    "networkSecurityGroup": { 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
+      "resourceGroup": "examplerg" 
+    }, 
+
+    "provisioningState": "Succeeded", 
+    "status": { 
+      "errorCode": null, 
+      "errorMessage": null, 
+      "provisioningStatus": null 
+    } 
+  }, 
+
+  "resourceGroup": "examplerg", 
+  "systemData": { 
+    "createdAt": "2025-03-11T23:38:19.228090+00:00", 
+    "createdBy": "gus@contoso.com", 
+    "createdByType": "User", 
+    "lastModifiedAt": "2025-03-12T15:49:32.143520+00:00", 
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+    "lastModifiedByType": "Application" 
+  }, 
+
+  "tags": null, 
+  "type": "microsoft.azurestackhci/networkinterfaces" 
+} 
+
+[Machine 1]: PS C:\HCIDeploymentUser>
+```
+
+</details>
+
+
+## Associate network security group with logical network
+
+Create a static logical network (lnet) with NSG. No IP pools are passed in this example as they are optional.
+
+ 
+```azurecli
+az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --ip-poolstart $ippoolstart --ip-pool-end $ippoolend --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan –network-security-group $nsgname 
+```
+ 
+<br></br>
+<details>
+<summary>Expand this section to see an example output.</summary>
+
+```output
+[Machine 1]: PS C:\HCIDeploymentUser> $lnetname="static-lnet3" 
+$ipaddress="100.78.98.10" 
+$ipaddprefix="100.78.98.0/24" 
+$vmswitchname='"ConvergedSwitch(managementcompute)"' 
+$dnsservers="100.71.93.111" 
+$gateway="100.78.98.1" 
+$vlan="301" 
+
+[Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan --network-security-group $nsgname 
+
+{ 
+
+  "extendedLocation": { 
+
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/ 
+
+customlocations/examplecl", 
+
+    "type": "CustomLocation" 
+
+  }, 
+
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logical 
+
+Networks/static-lnet3", 
+  "location": "eastus2euap", 
+  "name": "static-lnet3", 
+  "properties": { 
+    "dhcpOptions": { 
+      "dnsServers": [ 
+        "100.71.93.111" 
+      ] 
+    }, 
+
+    "provisioningState": "Succeeded", 
+    "status": { 
+      "errorCode": "", 
+      "errorMessage": "", 
+      "provisioningStatus": null 
+    }, 
+
+    "subnets": [ 
+      { 
+        "name": "static-lnet3", 
+        "properties": { 
+          "addressPrefix": "100.78.98.0/24", 
+          "addressPrefixes": null, 
+          "ipAllocationMethod": "Static", 
+          "ipConfigurationReferences": null, 
+          "ipPools": [ 
+
+            { 
+              "end": "100.78.98.255", 
+              "info": { 
+                "available": "256", 
+                "used": "0" 
+              }, 
+
+              "ipPoolType": null, 
+              "name": null, 
+              "start": "100.78.98.0" 
+            } 
+          ], 
+
+          "networkSecurityGroup": { 
+            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackH 
+
+CI/networkSecurityGroups/examplensg3", 
+
+            "resourceGroup": "examplerg" 
+
+          }, 
+
+          "routeTable": { 
+            "etag": null, 
+            "name": null, 
+            "properties": { 
+              "routes": [ 
+
+                { 
+                  "name": null, 
+                  "properties": { 
+                    "addressPrefix": "0.0.0.0/0", 
+                    "nextHopIpAddress": "100.78.98.1" 
+                  } 
+                } 
+              ] 
+            }, 
+
+            "type": null 
+
+          }, 
+
+          "vlan": 301 
+
+        } 
+      } 
+    ], 
+
+    "vmSwitchName": "ConvergedSwitch(managementcompute)" 
+  }, 
+
+  "resourceGroup": "examplerg", 
+  "systemData": { 
+    "createdAt": "2025-03-13T01:04:07.645689+00:00", 
+    "createdBy": "gus@contoso.com", 
+    "createdByType": "User", 
+    "lastModifiedAt": "2025-03-13T01:04:15.389109+00:00", 
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+    "lastModifiedByType": "Application" 
+  }, 
+
+  "tags": null, 
+  "type": "microsoft.azurestackhci/logicalnetworks" 
+} 
+ 
+[Machine 1]: PS C:\HCIDeploymentUser>
+```
+
+</details>
+
+
+### Create a network interface 
+
+```azurecli
+az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname
+```
+
+`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.
+
 
 
 
 ## Manage network security rules
+
+This section describes the manage operations supported for network security rules.
 
 <br></br>
 <details>
@@ -77,6 +318,8 @@ For each security rule, you can specify source and destination, port, and protoc
 </details>
 
 ### Show details of a network security rule
+
+Run this command to show details of a network security rule:
 
 
 ```azurecli
@@ -139,6 +382,15 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
 
 ### Update a network security rule
 
+Run this command to update a network security rule:
+
+
+```azurecli
+
+```
+
+    
+
 <br></br>
 <details>
 <summary>Expand this section to see an example output.</summary>
@@ -152,6 +404,8 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
 
 ### List network security rules in a network security group
 
+Run this command to list network security rules in a network security group:
+
 ```azurecli
 
 
@@ -160,7 +414,11 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
 
 ### Delete a network security rule
 
+Run this command to delete a network security rule:
 
+```azurecli
+az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -n $securityrulename
+```
 
 <br></br>
 <details>
@@ -176,15 +434,13 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
 
 # [Azure portal](#tab/azureportal)
 
-
-
-
+This section describes the manage operations supported for network security groups and network security rules. Thsese operations are available in the Azure portal.
 
 ## Associate network security group with a logical network
 
 You can associate a network security group with a logical network. This association allows you to apply the same network security rules to all the VMs in the logical network.
 
-To associate a network security group with a logical network, follow these steps:
+To associate a network security group with a logical network, follow these steps in Azure portal:
 
 1. Go to **Azure Local resource page > Resources > Logical networks**.
 1. In the right pane, from the list of logical networks, select a network.
@@ -221,7 +477,15 @@ To associate a network security group with a network interface, follow these ste
 
 ## Dissociate network security group from a network interface
 
+You can dissociate a network security group from a network interface.
 
+To dissociate a network security group from a network interface, follow these steps:
+
+1. Go to **Azure Local resource page > Resources > Network interfaces**.
+1. In the right pane, from the list of network interfaces, select an interface.
+1. Go to **Settings > Network security groups**.
+1. In the right-pane, from the top command bar, select **Dissociate network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+1. Once the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
 
 ---
 
