@@ -436,6 +436,11 @@ az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -
 
 This section describes the manage operations supported for network security groups and network security rules. Thsese operations are available in the Azure portal.
 
+## List network security groups
+
+
+
+
 ## Associate network security group with a logical network
 
 You can associate a network security group with a logical network. This association allows you to apply the same network security rules to all the VMs in the logical network.
@@ -486,6 +491,30 @@ To dissociate a network security group from a network interface, follow these st
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 1. Once the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
+
+
+## List network security rules in a network security group
+
+List network security rules in a network security group.
+
+To list network security rules in a network security group, follow these steps:
+
+1. Go to **Azure Local resource page > Resources > Network security groups**.
+1. In the right pane, from the list of network security groups, select a network security group.
+1. In the right pane, from the list of network security rules, select a network security rule. The details of the network security rule are displayed in the right pane.
+
+## Update a network security rule
+
+Update a network security rule.
+
+To update a network security rule, follow these steps:
+
+1. Go to **Azure Local resource page > Resources > Network security groups**.
+1. In the right pane, from the list of network security groups, select a network security group.
+1. In the right pane, from the list of network security rules, select a network security rule.
+1. In the right pane, the **Edit network security rule** page opens.
+1. Update the required fields and select **Save**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+1. Once the network security rule is updated, the page refreshes to indicate the update.
 
 ---
 
