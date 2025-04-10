@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 04/10/2025
 ms.author: sethm 
 ms.lastreviewed: 04/10/2025
-ms.reviewer: aathipsa
+ms.reviewer: khareanushka
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 
 # Keyword: etcd secrets AKS Windows Server
 
@@ -31,7 +31,7 @@ This article describes how to verify that the data is encrypted. For more inform
 Before you begin, ensure that you have the following prerequisites:
 
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
-- To view or manage secrets, ensure you have the necessary entitlements to access them. Learn more from [Access and identity](concepts-security-access-identity.md#built-in-roles).
+- To view or manage secrets, ensure you have the necessary entitlements to access them. For more information, see [Access and identity](concepts-security-access-identity.md#built-in-roles).
 
 ## Access your Microsoft Entra-enabled cluster
 
