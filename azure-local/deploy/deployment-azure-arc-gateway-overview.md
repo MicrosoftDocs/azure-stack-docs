@@ -12,13 +12,13 @@ ms.service: azure-local
 
 ::: moniker range=">=azloc-24111"
 
-> Applies to: Azure Local 2411.1 and later
+> Applies to: Azure Local version 2411.1 and later
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 This article provides an overview of the Azure Arc gateway for Azure Local. The Arc gateway can be enabled on new deployments of Azure Local running software version 2408 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
-You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
+You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -30,7 +30,7 @@ The Arc gateway works by introducing the following components:
 
 - **Arc proxy** – A new component that is added to the Arc Agentry. This component runs as a service (Called  the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions. The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
 
-Once you integrate the Arc gateway with release 2411 of Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
+When you integrate the Arc gateway with version 2411 of Azure Local deployments, each machine gets Arc proxy along with other Arc Agents.
 
 When Arc gateway is used, the *http* and *https* traffic flow changes as follows:
 
@@ -50,11 +50,11 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. With the proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Local machines over the routable IP.
 
-1. Once the traffic reaches Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). Note that for AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
+1. Once the traffic reaches Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it is sent to the enterprise proxy (or direct outbound if no proxy set). For AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
-**Traffic flow for Arc VMs**
+**Traffic flow for Azure Local VMs**
 
-*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside the Arc VM is not yet supported in this version.
+*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside an Azure Local VM enabled by Arc is not yet supported in this version.
 
 Traffic flows are illustrated in the following diagram:
 
@@ -138,13 +138,13 @@ You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azu
 1. Go to the **Azure Arc > Azure Arc gateway** page, then select **Create**.
 1. Select the subscription where you are planning to deploy your Azure Local instance.
 1. For **Name**, enter the name for the Arc gateway resource.
-1. For **Location**, enter the region where the Arc gateway resource should live. An Arc gateway resource can be used by any Arc-enabled resource in the same Azure tenant.
+1. For **Location**, enter the region where the Arc gateway resource should live. An Arc gateway resource is used by any Arc-enabled resource in the same Azure tenant.
 1. Select **Next**.
 1. On the **Tags** page, specify one or more custom tags to support your standards.
 1. Select **Review & Create**.
 1. Review your details, and then select **Create**.
 
-The gateway creation process takes nine to ten minutes to complete.
+The gateway creation process takes nine to 10 minutes to complete.
 
 
 # [CLI](#tab/cli)
@@ -181,10 +181,10 @@ The gateway creation process takes 9-10 minutes to complete.
 
 ## Detach or change the Arc gateway association from the machine
 
-To detach the gateway resource from your Arc-enabled server, set the gateway resource ID to `null`. If you want to attach your Arc-enabled server to another Arc gateway resource just update the name and resource ID with the new Arc gateway information:
+To detach the gateway resource from your Arc-enabled server, set the gateway resource ID to `null`. To attach your Arc-enabled server to another Arc gateway resource just update the name and resource ID with the new Arc gateway information:
 
 ```azurecli
-az arcgateway settings update --resource-group <Resource Group> --subscription <subscription name> --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name <Arc-Server's name> --gateway-resource-id "
+az arcgateway settings update --resource-group <Resource Group> --subscription <subscription name> --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name <Arc-enabled server name> --gateway-resource-id "
 ```
 
 ## Delete the Arc gateway resource
@@ -209,6 +209,6 @@ This operation can take a couple of minutes.
 
 ::: moniker range="<=azloc-24111"
 
-This feature is available only in Azure Local 2411.1 or later.
+This feature is available only in Azure Local version 2411.1 or later.
 
 ::: moniker-end
