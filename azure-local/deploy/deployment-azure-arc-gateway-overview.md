@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/10/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -19,8 +19,6 @@ ms.service: azure-local
 This article provides an overview of the Azure Arc gateway for Azure Local. The Arc gateway can be enabled on new deployments of Azure Local running software version 2408 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. Once you create the Arc gateway, you can connect to and use it for new deployments of Azure Local.
-
-For information on how to deploy the Azure Arc gateway for standalone servers (not Azure Local machines), see [Simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -83,12 +81,11 @@ The list of supported endpoints by the Arc gateway in Azure Local will increase 
 You can use the Arc gateway in the following scenario for Azure Local versions 2411.1 or later:
 
 - Enable Arc gateway during deployment of new Azure Local instances running versions 2411.1 or later.
+- The Arc gateway resource must be created on the same subscription where you are planning to deploy your Azure Local instance.
 
-Unsupported scenarios for Azure Local, versions 2408, 2411 and 2411.1 include:
+Unsupported scenarios for Azure Local include:
 
-- Azure Local instances updated from versions 2402 or 2405 to versions 2408 or 2411 can't take advantage of all the new endpoints supported by this Arc gateway preview. Host components, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new version 2408 deployment.
-
-- Enabling Arc gateway after deployment cannot take advantage of all the new endpoints supported by this Arc gateway preview. Host, Arc extensions, ARB, and AKS required endpoints are only supported when enabling the Arc gateway as part of a new deployment.
+- Enabling Arc gateway after deployment is not supported.
 
 ## Azure Local endpoints not redirected
 
@@ -139,7 +136,7 @@ You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azu
 
 1. Sign in to [Azure portal](https://ms.portal.azure.com/).
 1. Go to the **Azure Arc > Azure Arc gateway** page, then select **Create**.
-1. Select the subscription and resource group where you want the Arc gateway resource to be managed within Azure. An Arc gateway resource can be used by any Arc-enabled resource in the same Azure tenant.
+1. Select the subscription where you are planning to deploy your Azure Local instance.
 1. For **Name**, enter the name for the Arc gateway resource.
 1. For **Location**, enter the region where the Arc gateway resource should live. An Arc gateway resource can be used by any Arc-enabled resource in the same Azure tenant.
 1. Select **Next**.
