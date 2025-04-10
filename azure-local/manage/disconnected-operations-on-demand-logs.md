@@ -55,12 +55,17 @@ Use the following cmdlets and references to triage Azure Local issues.
 
 There are a few prerequisites you need to perform log collection in a connected disconnected operations scenario.
 
-- Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) to set up the following Azure resources:
-  - A resource group in Azure used for the appliance.
-  - A Service Principal (SPN) with contributor rights on the resource group.
+1. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) to set up the following Azure resources:
+  
+    - A resource group in Azure used for the appliance.
+    - A Service Principal (SPN) with contributor rights on the resource group.
     - Copy the `AppId` and `Password` form the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
 
-- Install the operations module if it's not installed. Use the `Import-Module` cmdlet and modify the path to match your folder structure.
+2. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and modify the path to match your folder structure.
+
+    ```azurecli
+    Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
+    ```
 
     Here's an example output:
 
@@ -82,10 +87,10 @@ There are a few prerequisites you need to perform log collection in a connected 
     VERBOSE: See Readme.md for directions on how to use this module.
     ```
 
-- Management endpoint
-  - Identify your management endpoint IP address.
-  - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
-  - Set up the management endpoint client context. Run this script:
+3. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) for your management endpoint.
+    - Identify your management endpoint IP address.
+    - Identify the management client certificate used to authenticate with the Azure Local disconnected operations management endpoint.
+    - Set up the management endpoint client context. Run this script:
 
     ```azurecli
     $certPasswordPlainText = "***"
@@ -93,14 +98,7 @@ There are a few prerequisites you need to perform log collection in a connected 
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "<Management Endpoint Client Cert Path>" -ManagementEndpointClientCertificatePassword $certPassword -ManagementEndpointIpAddress "<Management Endpoint IP address>"
     ```
 
-    Here's example output:
-
-    ```console
-    $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
-    $recoveryKeys
-    ```
-
-- Retrieve BitLocker keys:
+4. Retrieve BitLocker keys:
   
     ```azurecli
     $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context # context can be omitted if context is set.
@@ -180,6 +178,7 @@ Before you can start log collection and get the Stamp ID, you must have the obse
     VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] [CHECK][Attempt 0] for task 'Get health state ...' ...  
     VERBOSE: [2025-03-26 22:34:56Z][Invoke-ScriptsWithRetry] Task 'Get health state ...' succeeded.  
     VERBOSE: [2025-03-26 22:34:56Z][ScriptBlock] System Readiness information:  
+    
     SystemReady ReadinessStatusDetails ErrorMessages  
     ----------- ---------------------- -------------  
     False       @{Services=22; Diagnostics=0; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
