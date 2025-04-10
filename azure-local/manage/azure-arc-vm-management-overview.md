@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 03/18/2025
+ms.date: 04/09/2025
 ---
 
 # What is Azure Local VM management?
@@ -43,7 +43,9 @@ Consider the following limitations when you're managing VMs on Azure Local:
 - Taking checkpoints on VMs running on Azure Local by using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely affect the management of these VMs from Azure.
 - Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
-- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. For more information, see [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).  
+- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. For more information, see [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+
+- Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 ## Components of Azure Local VM management
 
