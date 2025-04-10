@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 04/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,13 +12,15 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for running the static IP migration scripts on Windows VMs, and supporting guest operating systems from Windows Server 2012 R2 and later. This applies to both Hyper-V migration and VMware migration.
+This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for running the static IP migration scripts on Windows and Linux VMs. For Windows VMs, it supports guest operating systems from Windows Server 2012 R2 and later. For Linux VMs, it supports Ubuntu, Red Hat Enterprise Linux, CentOS, and Debian distributions.
 
 ## About the static IP migration package
 
-Download the [Windows static IP migration package](https://aka.ms/hci-migrate-static-ip-download) (.zip format).
+Download the [static IP migration package](https://aka.ms/hci-migrate-static-ip-download) (.zip format).
 
-The .zip file includes the following scripts:
+The .zip file includes the following scripts for Windows and Linux.
+
+Windows: 
 
 - **Prepare-MigratedVM.ps1** – Prepares the VM for static IP migration using the `-StaticIPMigration` cmdlet, which runs the *Initialize-StaticIPMigration.ps1* script.
 
@@ -28,10 +30,17 @@ The .zip file includes the following scripts:
 
 - **Set-StaticIPConfiguration.ps1** - Runs at VM startup to apply the network interface configuration file generated.
 
-- **Utilities.psm1** - Contains helper functions for the scripts.
+- **Utilities.psm1** - This script contains helper functions for the scripts.
 
-> [!NOTE]
-> Static IP address migration is currently available only for Windows VMs, and is not supported for Linux VMs.
+Linux:
+
+- **prepare_migrated_vm.sh** – Prepares the VM for static IP migration using the `-StaticIPMigration` parameter. It executes the *initialize_static_ip_migration.sh* script.
+
+- **initialize_static_ip_migration.sh** - Collects the VM's network interface information into a configuration file (*interface_configurations* in the local directory) and installs a cron job to execute the *set_static_ip_configuration.sh script*. 
+
+- **set_static_ip_configuration.sh** - Runs at VM startup to apply the network interface configuration file generated.
+
+- **utilities.sh** – This script contains helper functions for the scripts.
 
 ## Prerequisites
 
@@ -49,7 +58,7 @@ To migrate VMs with static IPs from the source system (Hyper-V or VMware), follo
 
 1. For Linux VMs, ensure that **Linux Integration Services** are installed.
 
-1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
+1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.  For Linux VMs, the account should also have the appropriate privileges to run network administration commands (such as `ip`, `resolvectl`, and its variants).
 
 ### Prepare target Azure Local instance and logical network
 
@@ -57,7 +66,7 @@ On the target Azure Local instance, provision a static Azure Arc logical network
 
 For detailed guidance on creating and configuring static or dynamic Azure Arc logical networks, see [Create logical networks for Azure Local](../manage/create-logical-networks.md?tabs=azurecli).
 
-Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration will fail with the error: "The address is already in use." To avoid this, go to the target static logical network, check which IP addresses are in use, and remove any NICs assigned to the static IPs you want to migrate.
+Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration fails with the error: "The address is already in use." To avoid this, go to the target static logical network, check which IP addresses are in use, and remove any NICs assigned to the static IPs you want to migrate.
 
 :::image type="content" source="./media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page." lightbox="./media/migrate-maintain-ip-addresses/connected-devices.png":::
 
@@ -73,13 +82,20 @@ To use this method, you need domain administrator privileges and access to the G
 
 1. Download the .zip file and install the static IP migration package contents onto a local folder on the VM.
 
-1. Open a PowerShell console and run the *Prepare-MigratedVM.ps1* script with the following command:
+1. For Windows VMs, open a PowerShell console and run the *Prepare-MigratedVM.ps1* script with the following command:
 
-    ```powershell
-    .\Prepare-MigratedVM.ps1 -StaticIPMigration  
-    ```
+        ```powershell
+        .\Prepare-MigratedVM.ps1 -StaticIPMigration  
+        ```
 
-1. In Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
+1. For Linux VMs, open a terminal session and run the *prepare_migrated_vm.sh* script with the following commands:
+
+       ```Bash
+       chmod u+x prepare_migrated_vm.sh 
+       sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
+       ```
+
+1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
 
@@ -168,7 +184,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 1. Link the GPO to the desired Organizational Unit (OU):
 
-    1. If the GPO is not already linked, right-click the desired OU in the Group Policy Management Console and select **Link an existing GPO**.
+    1. If the GPO isn't already linked, right-click the desired OU in the Group Policy Management Console and select **Link an existing GPO**.
 
     1. Select the GPO you created.
 
@@ -186,11 +202,11 @@ These are the known limitations and display issues when migrating static IP addr
 
 ### Old network adapter information in Device Manager
 
-After migration, Device Manager may still display the old network adapter information from pre-migration. While this does not affect the new network adapter created post-migration and will not cause IP conflicts, the script doesn't currently delete this old registration, so it remains visible.
+After migration, Device Manager may still display the old network adapter information from pre-migration. While this doesn't affect the new network adapter created post-migration and won't cause IP conflicts, the script doesn't currently delete this old registration, so it remains visible.
 
 ### Multiple IP addresses on a single network adapter
 
-When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Arc VMs in Azure Local will display only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
+When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Arc VMs in Azure Local displays only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
 
 ### Multiple network adapters and types
 
