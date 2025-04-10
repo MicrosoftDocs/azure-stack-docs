@@ -84,16 +84,16 @@ To use this method, you need domain administrator privileges and access to the G
 
 1. For Windows VMs, open a PowerShell console and run the *Prepare-MigratedVM.ps1* script with the following command:
 
-        ```powershell
-        .\Prepare-MigratedVM.ps1 -StaticIPMigration  
-        ```
+    ```powershell
+    .\Prepare-MigratedVM.ps1 -StaticIPMigration  
+    ```
 
 1. For Linux VMs, open a terminal session and run the *prepare_migrated_vm.sh* script with the following commands:
 
-       ```Bash
-       chmod u+x prepare_migrated_vm.sh 
-       sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
-       ```
+    ```Bash
+    chmod u+x prepare_migrated_vm.sh 
+    sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
+    ```
 
 1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
 
