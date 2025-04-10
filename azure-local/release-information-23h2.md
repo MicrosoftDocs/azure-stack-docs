@@ -20,17 +20,13 @@ To keep your Azure Local solution in a supported state, you have up to six month
 
 This article provides the release information for Azure Local, including the release build and OS build information.  
 
-[!INCLUDE [azure-local-banner-new-releases](includes/azure-local-banner-new-releases.md)]
-
 ## About Azure Local releases
 
-The Azure Local includes multiple release trains: 2402, 2405, 2408, 2411, and 2503. Each release train includes a feature build and subsequent cumulative updates.
+The Azure Local includes multiple release trains: 2405, 2408, 2411, 2503,a nd 2504. Each release train includes a feature build and subsequent cumulative updates.
 
 - **Feature build**: The feature update build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
 - **Cumulative build**: A cumulative update build includes the incremental updates from the most recent feature build.
-
-- **Baseline release**: A version that is available to be installed directly as part of a fresh deployment. Starting with 2408.0, every release (both feature and cumulative builds) is a baseline release.
 
 The following diagram illustrates the release trains, their associated feature builds, and update paths.
 
@@ -38,23 +34,28 @@ The following diagram illustrates the release trains, their associated feature b
 
 #### Move to the next release train
 
-Follow these guidelines to move to the next release train:
+Follow these guidelines to skip releases with the same release train as you move to the next release train:
 
 - Update the existing deployment to a build that allows you to move to the next release train. The following table provides examples of how to move between release trains:
 
-  | Update scenario       | Timeframe           | Update path                                      |
-  |-----------------------|---------------------|--------------------------------------------------|
-  | From 2402 to 2405     | May 2024            | 2402 --> 2402.3 --> 2405                         |
-  | From 2402 to 2405.1   | June 2024  or later | 2402 --> 2402.4 --> 2405.1                       |
-  | From 2402.3 to 2408.2 | August 2024         | 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2 |
+  | Update scenario       | Update path                             |
+  |-----------------------|-----------------------------------------|
+  | From 2408 to 2411     | 2408 --> 2408.2 --> 2411                |
+  | From 2411 to 2503     | 2411 --> 2411.2 --> 2411.3 --> 2503     |
 
 #### Move within the same release train
 
-Follow these guidelines to move within the same release train:
+Follow these guidelines to update to each release within your current release train:
 
-- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2405 feature build, you can update to any of the 2405 cumulative update builds, such as 2405.1, 2405.2, or 2405.3.
+- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2411 feature build, you can update to any of the 2411 cumulative update builds, such as 2411.1, 2411.2, or 2411.3.
 
-- To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2405 feature build, update to a later build within six months.
+  | Timeframe for 2411 release train     | Update path       |
+  |--------------------------------------|-------------------|
+  | Nov 2024                             | 2411 --> 2411.1   |
+  | December 2024 or later               | 2411.1 --> 2411.2 |
+  | February 2024                        | 2411.2 --> 2411.3 |
+
+- To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2408 feature build, update to a later build within six months.
 
 ## Azure Local release information summary
 
