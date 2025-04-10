@@ -22,7 +22,7 @@ This article provides the release information for Azure Local, including the rel
 
 ## About Azure Local releases
 
-The Azure Local includes multiple release trains: 2405, 2408, 2411, 2503,a nd 2504. Each release train includes a feature build and subsequent cumulative updates.
+The Azure Local includes multiple release trains: 2405, 2408, 2411, 2503, and 2504. Each release train includes a feature build and subsequent cumulative updates.
 
 - **Feature build**: The feature update build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
