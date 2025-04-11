@@ -56,35 +56,44 @@ Before you begin, prepare the source and target environments for IP migration.
 
 ### Prepare source VMs for IP migration
 
-To migrate VMs with static IPs from the source system (Hyper-V or VMware), follow these steps. The steps are different for Windows and Linux VMs.
+To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met. The requirements are different for Windows and Linux VMs.
 
 # [Windows](#tab/windows)
 
-Follow these steps for Windows VMs:
+For Windows VMs:
 
 [!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
 
-1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
+- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
 
 # [Linux](#tab/linux)
 
-Follow these steps for Linux VMs:
+For Linux VMs:
 
 [!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
 
-1. For Linux VMs, ensure that **Linux Integration Services** are installed.
+- For Linux VMs, ensure that **Linux Integration Services** are installed.
 
-1. Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks. For Linux VMs, the account should also have the appropriate privileges to run network administration commands (such as `ip`, `resolvectl`, and its variants).
+- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks. For Linux VMs, the account should also have the appropriate privileges to run network administration commands (such as `ip`, `resolvectl`, and its variants).
 
 ---
 
 ### Prepare target Azure Local instance and logical network
 
-On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining the IP address space, gateway address, DNS servers, and optionally an IP pool range.
+On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining:
+
+- The IP address space
+- Gateway address
+- DNS servers
+- an IP pool range (optional)
 
 For detailed guidance on creating and configuring static or dynamic Azure Arc logical networks, see [Create logical networks for Azure Local](../manage/create-logical-networks.md?tabs=azurecli).
 
-Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration fails with the error: "The address is already in use." To avoid this, go to the target static logical network, check which IP addresses are in use, and remove any NICs assigned to the static IPs you want to migrate.
+Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration fails with the error: **The address is already in use.** To avoid this:
+
+1. Go to the target static logical network.
+1. Check which IP addresses are in use.
+1. Remove any NICs assigned to the static IPs you want to migrate.
 
 :::image type="content" source="./media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page." lightbox="./media/migrate-maintain-ip-addresses/connected-devices.png":::
 
