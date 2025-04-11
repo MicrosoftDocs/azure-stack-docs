@@ -85,18 +85,18 @@ kubectl exec --stdin --tty etcd-moc-lrhdsg6jk1f -n kube-system -- etcdctl --cace
 
 The following fields are returned in the command output:
 
-- **ClusterID**: cluster ID
-- **MemberID**: member ID
-- **Revision**: revision number
+- **ClusterID**: cluster ID.
+- **MemberID**: member ID.
+- **Revision**: revision number.
 - **RaftTerm**: 2
-- **Key**: path to the key
-- **CreateRevision**: revision number at the time the key was created
-- **ModRevision**: revision number at the time the key was modified
-- **Version**: the version of the key-value pair in etcd
+- **Key**: path to the key.
+- **CreateRevision**: revision number at the time the key was created.
+- **ModRevision**: revision number at the time the key was modified.
+- **Version**: the version of the key-value pair in etcd.
 - **Value**: `k8s:enc:kms:v1:kms -plugin: <encrypted secret value>`
-- **Lease**: the lease associated with the secret
-- **More**: indicates whether there are more results
-- **Count**: the number of key-value pairs returned
+- **Lease**: the lease associated with the secret.
+- **More**: indicates whether there are more results.
+- **Count**: the number of key-value pairs returned.
 
 After you run the command, examine the `Value` field in the output in the terminal window. This output shows the value stored in etcd for this key, which is the encrypted value of the secret. The value is encrypted using a KMS plugin. The `k8s:enc:kms:v1:` prefix indicates that Kubernetes is using the KMS plugin to store the secret in an encrypted format.
 
