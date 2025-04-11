@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 03/21/2024
+ms.date: 04/11/2025
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 
@@ -108,7 +108,7 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
     1. Accept the defaults for other settings.
 
         > [!IMPORTANT]
-        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local resource and its child resources.
+        > You'll need owner permissions on the Recovery services vault to assign permissions to the managed identity. You'll need read/write permission on the Azure Local resource and its child resources.
 
         Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
@@ -147,7 +147,7 @@ After the infrastructure preparation is complete, follow these steps to select t
     1. For **Subscription**, enter or select the subscription.
     1. For **Post-failover resource group**, select the resource group name to which you fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
-    1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that is used for the VM’s replication.
+    1. For **Storage**, select the type of Azure storage you are replicating to. We recommend using managed disk.
 
         :::image type="content" source="media/azure-site-recovery/enable-replication-2.png" alt-text="Screenshot of target environment tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-2.png":::
 
@@ -164,7 +164,7 @@ After the infrastructure preparation is complete, follow these steps to select t
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-4.png" alt-text="Screenshot of virtual selection tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-4.png":::
 
-1. On the **Replication settings** tab, select the operating system type, operating system disk and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
+1. On the **Replication settings** tab, select the operating system type, operating system disk, and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-5.png" alt-text="Screenshot of Replication settings tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-5.png":::
 
@@ -243,8 +243,8 @@ Here's a list of known issues and the associated workarounds in this release:
 |----|----------------------|---------------------------|
 | 1. | When you register Azure Site Recovery with a system, a machine fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all machines in the system are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
 | 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
-| 3. | Azure Site Recovery agent fails to install. Error message of "Microsoft Azure Site Recovery Provider installation has failed with exit code - 1." appears in the portal with the failed installation. | The installation fails when WDAC is enforced. <br><br> - Setting WDAC to "Audit" mode will allow the installation to complete.  To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#manage-wdac-settings-with-powershell) |
-| 4. | Failback of an Arc VM to an alternate cluster fails. | Failback of an Arc VM to an alternate cluster is not supported |
+| 3. | Azure Site Recovery agent fails to install. Error message of "Microsoft Azure Site Recovery Provider installation has failed with exit code - 1." appears in the portal with the failed installation. | The installation fails when WDAC is enforced. <br><br> - Setting WDAC to "Audit" mode allows the installation to complete. To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#manage-wdac-settings-with-powershell) |
+| 4. | Failback of an Arc VM to an alternate cluster fails. | Failback of an Arc VM to an alternate cluster isn't supported |
 
 ## Next steps
 
