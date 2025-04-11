@@ -66,43 +66,32 @@ kubectl exec --stdin --tty <etcd pod name> -n kube-system --etcdctl --cacert /et
 ```
 
 - `kubectl exec`: This is the kubectl command used to execute a command inside a running pod. It allows you to run commands within the container of a pod.
-- `--stdin`: This flag allows you to send input (stdin) to the command you are running inside the pod. 
-- `--tty`: This flag allocates a TTY (terminal) for the command, making it behave like you are interacting with a terminal session. 
+- `--stdin`: This flag allows you to send input (stdin) to the command you are running inside the pod.
+- `--tty`: This flag allocates a TTY (terminal) for the command, making it behave as though you're interacting with a terminal session.
 - `<etcd pod name>`: to find the etcd pod name, run the following command:
 
   ```azurecli
    kubectl get pods -n kube-system | findstr etcd-moc
    ```
 
-- `-n kube-system`: This flag specifies the namespace where the pod is located. kube-system is the default namespace used by Kubernetes for system components, such as etcd and other control plane services.
+- `-n kube-system`: Specifies the namespace where the pod is located. **kube-system** is the default namespace used by Kubernetes for system components, such as etcd and other control plane services.
 - `--etcdctl`: Reads the secret from etcd. Additional fields are used for authentication prior to getting access to etcd.
 
 The following fields are returned in the command output:
 
 ```output
 "ClusterID" : <cluster id> 
-
 "MemberID" : <member id> 
-
- "Revision" : <revision number> 
-
+"Revision" : <revision number> 
 "RaftTerm" : 2 
-
 "Key" : <path to the key>
-
-"CreateRevision" : < revision number at the time the key was created> 
-
-"ModRevision" :  <revision number at the time the key was modified > 
-
-"Version" : <The version of the key-value pair in etcd > 
-
+"CreateRevision" : <revision number at the time the key was created> 
+"ModRevision" :  <revision number at the time the key was modified> 
+"Version" : <version of the key-value pair in etcd> 
 "Value" : "k8s:enc:kms:v1:kms-plugin: <encrypted secret value>"  
-
-"Lease" : <The lease associated with the secret> 
-
-"More" : <Indicates if there are more results> 
-
-"Count" : <The number of key-value pairs returned> 
+"Lease" : <lease associated with the secret> 
+"More" : <indicates if there are more results> 
+"Count" : <number of key-value pairs returned> 
 ```
 
 After you run the command, examine the `Value` field in the output in the terminal window. This output shows the value stored in etcd secret store for this key, which is the encrypted value of the secret. The value is encrypted using a KMS plugin. The `k8s:enc:kms:v1:` prefix indicates that Kubernetes is using the KMS v1 plugin to store the secret in an encrypted format.
