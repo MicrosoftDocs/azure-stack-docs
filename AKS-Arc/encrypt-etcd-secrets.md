@@ -3,7 +3,7 @@ title: Encrypt etcd secrets for Kubernetes clusters in AKS on Azure Local
 description: Learn how to encrypt etcd secrets in AKS on Azure Local.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 04/11/2025
 ms.author: sethm 
 ms.lastreviewed: 04/10/2025
 ms.reviewer: khareanushka
@@ -62,7 +62,7 @@ kubectl get --raw='/readyz?verbose'
 To verify that secrets and data has been encrypted using a KMS plugin, [see the Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/#verifying-that-the-data-is-encrypted). You can use the following commands to verify that the data is encrypted:
 
 ```azurecli
-kubectl exec --stdin --tty <etcd pod name> -n kube-system -- etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt get /registry/secrets/default/db-user-pass -w fields
+kubectl exec --stdin --tty <etcd pod name> -n kube-system --etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt get /registry/secrets/default/db-user-pass -w fields
 ```
 
 - `kubectl exec`: This is the kubectl command used to execute a command inside a running pod. It allows you to run commands within the container of a pod.
@@ -75,10 +75,28 @@ kubectl exec --stdin --tty <etcd pod name> -n kube-system -- etcdctl --cacert /e
    ```
 
 - `-n kube-system`: This flag specifies the namespace where the pod is located. kube-system is the default namespace used by Kubernetes for system components, such as etcd, kube-dns, and other control plane services.
+- `--etcdctl`: Reads the secret from etcd. Additional fields are used for authentication prior to getting access to etcd.
+
+The following example shows how to use this command:
 
 ```azurecli
 kubectl exec --stdin --tty etcd-moc-lrhdsg6jk1f -n kube-system -- etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt get /registry/secrets/default/db-user-pass -w fields
 ```
+
+The following fields are returned in the command output:
+
+- **ClusterID**: cluster ID
+- **MemberID**: member ID
+- **Revision**: revision number
+- **RaftTerm**: 2
+- **Key**: path to the key
+- **CreateRevision**: revision number at the time the key was created
+- **ModRevision**: revision number at the time the key was modified
+- **Version**: the version of the key-value pair in etcd
+- **Value**: `k8s:enc:kms:v1:kms -plugin: <encrypted secret value>`
+- **Lease**: the lease associated with the secret
+- **More**: indicates whether there are more results
+- **Count**: the number of key-value pairs returned
 
 After you run the command, examine the `Value` field in the output in the terminal window. This output shows the value stored in etcd for this key, which is the encrypted value of the secret. The value is encrypted using a KMS plugin. The `k8s:enc:kms:v1:` prefix indicates that Kubernetes is using the KMS plugin to store the secret in an encrypted format.
 
