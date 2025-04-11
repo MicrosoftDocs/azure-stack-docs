@@ -52,7 +52,7 @@ The following scripts are included for Linux:
 
 ## Prerequisites
 
-Before you begin, prepare the source and target environments for IP migration. The prerequisites are different for Windows and Linux VMs.
+Before you begin, prepare the source and target environments for IP migration.
 
 ### Prepare source VMs for IP migration
 
@@ -110,13 +110,6 @@ For Windows VMs:
 
     ```powershell
     .\Prepare-MigratedVM.ps1 -StaticIPMigration  
-    ```
-
-1. For Linux VMs, open a terminal session and run the *prepare_migrated_vm.sh* script with the following commands:
-
-    ```Bash
-    chmod u+x prepare_migrated_vm.sh 
-    sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
     ```
 
 1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
