@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment validation failures for Az
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 04/09/2025
+ms.date: 04/11/2025
 ---
 
 
@@ -211,9 +211,9 @@ Follow these steps in the Azure portal:
 
 1. If no other validation issues occur, start the deployment.
 
-### Recreate the lock on the seed node resource
+### Recreate the lock on the seed node
 
-After the mitigation is complete, we strongly recommend that you recreate the lock on the resource.
+After the mitigation is complete, we strongly recommend that you recreate the lock on the seed node.
 
 Follow these steps to recreate the lock:
 
