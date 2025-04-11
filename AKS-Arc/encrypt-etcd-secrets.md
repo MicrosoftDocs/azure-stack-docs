@@ -12,7 +12,7 @@ ms.reviewer: khareanushka
 
 ---
 
-# How to: Encrypt etcd secrets for Kubernetes clusters in AKS on Azure Local
+# How to: Encrypt etcd secrets for Kubernetes clusters
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -65,8 +65,8 @@ To verify that secrets and data has been encrypted using a KMS plugin, [see the 
 kubectl exec --stdin --tty <etcd pod name> -n kube-system --etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt get /registry/secrets/default/db-user-pass -w fields
 ```
 
-- `kubectl exec`: This is the kubectl command used to execute a command inside a running pod. It allows you to run commands within the container of a pod.
-- `--stdin`: This flag allows you to send input (stdin) to the command you are running inside the pod.
+- `kubectl exec`: This is the kubectl command used to execute a command inside a running pod. It enables you to run commands within the container of a pod.
+- `--stdin`: This flag enables you to send input (stdin) to the command you are running inside the pod.
 - `--tty`: This flag allocates a TTY (terminal) for the command, making it behave as though you're interacting with a terminal session.
 - `<etcd pod name>`: to find the etcd pod name, run the following command:
 
@@ -75,7 +75,7 @@ kubectl exec --stdin --tty <etcd pod name> -n kube-system --etcdctl --cacert /et
    ```
 
 - `-n kube-system`: Specifies the namespace where the pod is located. **kube-system** is the default namespace used by Kubernetes for system components, such as etcd and other control plane services.
-- `--etcdctl`: Reads the secret from etcd. Additional fields are used for authentication prior to getting access to etcd.
+- `--etcdctl`: Reads the secret from etcd. Additional fields are used for authentication before you get access to etcd.
 
 The following fields are returned in the command output:
 
@@ -94,7 +94,7 @@ The following fields are returned in the command output:
 "Count" : <number of key-value pairs returned> 
 ```
 
-After you run the command, examine the `Value` field in the output in the terminal window. This output shows the value stored in etcd secret store for this key, which is the encrypted value of the secret. The value is encrypted using a KMS plugin. The `k8s:enc:kms:v1:` prefix indicates that Kubernetes is using the KMS v1 plugin to store the secret in an encrypted format.
+After you run the command, examine the `Value` field in the output in the terminal window. This output shows the value stored in the etcd secret store for this key, which is the encrypted value of the secret. The value is encrypted using a KMS plugin. The `k8s:enc:kms:v1:` prefix indicates that Kubernetes is using the KMS v1 plugin to store the secret in an encrypted format.
 
 > [!NOTE]
 > If you use the `kubectl describe secrets` command to retrieve secrets, it returns them in base64-encoded format, but unencrypted. The `kubectl describe` command retrieves the details of a Kubernetes resource via the API server, which manages encryption and decryption automatically. For sensitive data such as secrets, even if they are mounted on a pod, the API server ensures that they are decrypted when accessed. As a result, running the `kubectl describe` command does not display secrets in their encrypted form, but rather in their decrypted form if they are being used by a resource.
