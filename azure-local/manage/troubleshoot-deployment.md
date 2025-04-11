@@ -51,7 +51,7 @@ The multi-step resolution process includes the following steps:
 - [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure-resource-with-incorrect-vm-switch-information)
 - [Refresh the cloud data](#refresh-the-cloud-edgedevices-data)
 - [Restart the deployment via Azure portal](#restart-the-deployment-via-azure-portal)
-- [Recreate the lock on the seed node resource](#recreate-the-lock-on-the-seed-node-resource)
+- [Recreate the lock on the seed node](#recreate-the-lock-on-the-seed-node)
 
 > [!NOTE]
 > All the steps in this article need to be performed on the seed node.
