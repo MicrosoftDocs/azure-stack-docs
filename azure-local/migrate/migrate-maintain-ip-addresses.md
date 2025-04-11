@@ -80,9 +80,9 @@ For Linux VMs:
 
 ### Prepare target Azure Local instance and logical network
 
-On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining:
+On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining the following:
 
-- The IP address space
+- IP address space
 - Gateway address
 - DNS servers
 - an IP pool range (optional)
