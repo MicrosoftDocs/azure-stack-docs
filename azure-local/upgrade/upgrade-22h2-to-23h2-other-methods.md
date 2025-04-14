@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/14/2025
+ms.date: 04/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -51,20 +51,27 @@ Before you begin, make sure that:
 
 ## Step 0: Update registry keys
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following commands on each machine in the system to update registry keys:
+To ensure Resilient File System (ReFS) and live migrations function properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
 
-```powershell
-# Set RefsEnableMetadataValidation to 0
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
-```
+1. Set `RefsEnableMetadataValidation` to `0`:
 
-```powershell
-# Create the parameters key if it does not exist. If it does already exist, the command may fail with an error, which is expected.
-New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+   ```
 
-# Set the SkipSmallLocalAllocations value to 0
-New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
-```
+1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
+
+   ```powershell
+   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+   ```
+
+1. Set `SkipSmallLocalAllocations` to `0`:
+
+   ```powershell
+   New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
+   ```
+
+1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
 ## Step 1: Connect to your system
 
