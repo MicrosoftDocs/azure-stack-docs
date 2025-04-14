@@ -12,7 +12,7 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to download an Azure managed disk from Azure to your Azure Local instance. You can then use the disk to create an image or to attach it to your Azure Local virtual machines (VMs) enabled by Arc as needed.
+This article describes how to download an Azure managed disk from Azure to your Azure Local instance. You can then use the disk to create an image or to attach it to your Azure Local virtual machines (VMs) enabled by Arc, as needed.
 
 ## Prerequisites
 
