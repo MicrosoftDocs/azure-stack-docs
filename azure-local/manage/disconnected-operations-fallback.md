@@ -114,7 +114,7 @@ To copy diagnostic logs from the mounted VHDs to a folder location specified in 
     - The available roles are **Agents**, **Oplets**, **MASLogs**, **ServiceFabric**, **ArcADiagnostics**, **Observability**, **WindowsEventLogs**, **CosmosDB**, and **Storage**. By default, all roles except **Storage** and **CosmosDB** are included.
 
     > [!TIP]
-    > The standalone pipeline used to send logs to Kusto is limited regarding the log volume it can handle. The more targeted the collection (the shorter the collection window and fewer the roles), the better the chance of avoiding errors during log ingestion.
+    > The standalone pipeline used to send logs to Microsoft  is limited regarding the log volume it can handle. The more targeted the collection (the shorter the collection window and fewer the roles), the better the chance of avoiding errors during log ingestion.
 
 2. Specify a collection window, use the `-FromDate` and `-ToDate` parameters. By default, logs from the **last four hours** are collected.
 
@@ -176,7 +176,7 @@ Azure Local VM running disconnected nested file structure:
 
 ### Send-DiagnosticData  
 
-After logs are collected into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, you can send them to Kusto via the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targeting all the logs in the file location you provide, and sends them for ingestion into Kusto. If log ingestion fails, the cmdlet attempts up to three times and then outputs the results of the send activity once it's complete.
+After logs are collected into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, you can send them to Microsoft via the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targeting all the logs in the file location you provide, and sends them for ingestion to Microsoft. If log ingestion fails, the cmdlet attempts up to three times and then outputs the results of the send activity once it's complete.
 
 The **Send-DiagnosticData** cmdlet downloads and runs the standalone observability pipeline. You need to enter the credentials required to connect to Azure for the pipeline. There are two options for providing these credentials:
 
@@ -235,12 +235,12 @@ Send-DiagnosticData
 -StampId "Stamp ID"  
 ```  
 
-The cmdlet returns the stamp ID, also known as the **AEOStampId**, which is used for Kusto lookup. It also provides information about any errors encountered and the location of the send activity logs.
+The cmdlet returns the stamp ID, also known as the **AEOStampId**. It also provides information about any errors encountered and the location of the send activity logs.
 
 Here's an example of the output:
 
 ```console
-AEOStampID '<Stamp ID>' used for log tracking in Kusto.
+AEOStampID '<Stamp ID>' used for log tracking.
 
 Logs and artifacts from send action can be found under:  
 G:\CopyLogs_20241218T1622391740\SendLogs_20241218T1625348996  
@@ -283,35 +283,6 @@ StampId
 ```
 
 If no `StampId` is listed in the returned content after running the command, the stamp ID isn't set and needs to be passed into the [Send-DiagnosticData](#send-diagnosticdata) manually. If the stamp ID isn't set and isn't passed manually, it defaults to the host **UUID**.
-
-### Pipe cmdlets
-
-If you plan to use the `Copy-DiagnosticData` or `Get-ObservabilityStampId` cmdlets, you can simplify the calls by piping these commands into the `Send-DiagnosticData` cmdlet.  
-
-More commonly, if you want to copy and send logs, you can run this command:  
-
-```powershell  
-Copy-DiagnosticData -DiagnosticLogPath "C:" -Roles @("ServiceFabric") | Send-DiagnosticData `  
--ResourceGroupName "Resource group" `  
--SubscriptionId "Subscription ID" `  
--TenantId "Tenant ID" `  
--RegistrationRegion “eastus”  
-```  
-
-The `Copy-DiagnosticData` cmdlet passes the appropriate **DiagnosticLogPath** and **StampId** parameters into `Send-DiagnosticData`. For the full output of piping the copy cmdlet to send, see **Copy_Send.txt** in the [Appendix](#appendix). This command includes all the output you’d see from the send command with the copy command included.
-
-If logs are collected in a folder and you need to look up the stamp ID, you can run this command:  
-
-```powershell  
-Get-ObservabilityStampId | Send-DiagnosticData `  
--ResourceGroupName "Resource group" `  
--SubscriptionId "Subscription Id" `  
--TenantId "Tenant Id" `  
--DiagnosticLogPath "C:\path\to\LogsToExport" `  
--RegistrationRegion “eastus”  
-```  
-
-The `Get-ObservabilityStampId` return value is passed into `Send-DiagnosticData` as the **StampId** parameter.
 
 ## Appendix  
 

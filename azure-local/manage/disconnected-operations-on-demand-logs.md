@@ -225,7 +225,9 @@ For this scenario, the management application programming interface (API) is use
 
 You can trigger the log collection for your disconnected environment using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
 
-1. Run the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` cmdlet.
+1. Trigger log collection.
+
+    Here's an example:
 
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
@@ -235,6 +237,8 @@ You can trigger the log collection for your disconnected environment using the `
     ```
 
 2. Copy logs from your disconnected environment to the share folder.
+
+    Here's an example:
 
     ```azurecli
     $fromDate = (Get-Date).ToUniversalTime().AddHours(-1)
@@ -254,7 +258,11 @@ You can trigger the log collection for your disconnected environment using the `
     $OperationId = Invoke-RestMethod -Certificate $mgmtClientCert -Method "PUT" -URI "https://$($mgmtIpAddress):9443/logs/logCollectionIndirectJob" -Content "application/json" -Body $onDemandRequestBody -Verbose
     ```
 
-3. Check the status of the log collection job. Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to retrieve the current log collection job status.
+3. Check the status of the log collection job.
+
+    Use the `Get-ApplianceLogCollectionJobStatus` or `Get-ApplianceLogCollectionHistory` cmdlet to retrieve the current log collection job status.
+
+    Here's an example:
 
     ```azurecli
     Get-ApplianceLogCollectionJobStatus -OperationId $OperationId
@@ -264,10 +272,84 @@ You can trigger the log collection for your disconnected environment using the `
     Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
     ```
 
-4. Send diagnostic data to Microsoft.
-    - First, use the `Send-DiagnosticsData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticsData](disconnected-operations-fallback.md#send-diagnosticdata).
+    Here's an example ouput:
 
-    - Then, unzip all files into the share folder.
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Trigger log collections with parameters:  
+    https://<IP address>/logs/logCollectionIndirectJob  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Executing 'Trigger log collection ...' with timeout 600 seconds ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Trigger log collection ...' ...  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ScriptsWithRetry] Task 'Trigger log collection ...' succeeded.  
+    VERBOSE: [2023-04-09 22:34:28Z] [Invoke-ApplianceLogCollectionAndSaveToShareFolder] Log collections trigger result: "<Instance Id>"  
+    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
+    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
+    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
+    VERBOSE: [2023-04-09 22:35:29Z] [Invoke-ScriptsWithRetry] Task 'Get log collection job status ...' succeeded.  
+      
+    StatusRecord                               
+       @{Instance Id=<Instance Id>; State=Running; StartTime=0001-01-01T00:00:00; EndTime=0001-01-01T00:00:00} 
+    ```
+
+    Here's an example output:
+
+    ```console
+
+    PS C:\Users\administrator.s46r2004\Documents> $onDemandRequestBody  
+    Name        Value  
+    ----        -----  
+    SaveToPath  \\<IP address>\Arc\LogsShare1  
+    FromDate    2025-04-09T21:26:51.8237434+00:00  
+    UserName    masd.stbtest.microsoft.com\administrator  
+    ToDate      2025-04-10T21:56:50.7453871+00:00  
+    UserPassword <Password>  
+      
+    PS C:\Users\administrator.s46r2004\Documents> $response = Invoke-WebRequest -Uri "http://<IP address>:7345/logCollectionIndirectJob" -Method Put -Body $onDemandRequestBody | ConvertTo-Json -ContentType 'application/json' -UseBasicParsing  
+    PS C:\Users\administrator.s46r2004\Documents> $response  
+      
+    StatusCode        : 200  
+    StatusDescription : OK 
+    Content           : 
+    RawContent        : HTTP/1.1 200 OK  
+                        x-ms-correlation-request-id: <Correlation Id>  
+                        Content-Length: 38  
+                        Content-Type: application/json; charset=utf-8  
+                        Date: Thu, 10 Apr 2025 14:59:27 GMT  
+                        Server: Micr...  
+    Forms  
+    Headers           : {[x-ms-correlation-request-id, <Correlation Id>], [Content-Length, 38], [Content-Type, application/json; charset=utf-8], [Date, Thu, 10 Apr 2025 14:59:27 GMT]...}  
+    Images            : {}
+    InputFields       : {} 
+    Links             : {} 
+    ParsedHtml        :   
+    RawContentLength  : 38  
+    ```
+
+    Here's an example output:
+
+    ```console
+    PS C:\Users\administrator.s46r2004\Documents> Get-ApplianceLogCollectionJobStatus -OperationId $operationId  
+    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] Executing 'Get log collection job status ...' with timeout 600 seconds ...  
+    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] [CHECK] [Attempt 0] for task 'Get log collection job status ...' ...  
+    VERBOSE: [2025-04-10 15:07:33Z] [Invoke-ScriptsWithRetry] Task 'Get log collection job status ...' succeeded.  
+      
+    StatusRecord
+    -----------  
+    @{IntanceId=<Instance Id>; State=Succeeded; StartTime=2025-04-10T14:59:43.8936665Z; EndTime=2025-04-10T15:07:11.0920805Z}
+      
+    PS C:\Users\administrator.s46r2004\Documents> dir C:\Arc\Logs1  
+      
+        Directory: C:\Arc\Logs1  
+      
+    Mode                LastWriteTime         Length Name  
+    ----                -------------         ------ ----  
+    d----               4/10/2025  3:05 PM           LO_06ec98de-c1c4-406f-a5a9-89f2b803c70f_IRVM01  
+    ```
+
+4. Send diagnostic data to Microsoft.
+    1. First, use the `Send-DiagnosticsData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticsData](disconnected-operations-fallback.md#send-diagnosticdata).
+
+    2. Then, unzip all files into the share folder.
 
     ```azurecli
     $logShareFolderPath = "***"
@@ -290,9 +372,9 @@ Use fallback log collection to collect and send logs when the disconnected opera
 
 There are three methods in this scenario:
 
-**Copy-DiagnosticData**: Used to copy logs from the disconnected operations with Azure Local VM to a local folder.
-**Send-DiagnosticData**: Used to send logs to Microsoft for analysis.
-**Get-observabilityStampId**: Used to get the stamp ID.
+- **Copy-DiagnosticData**: Used to copy logs from the disconnected operations with Azure Local VM to a local folder.
+- **Send-DiagnosticData**: Used to send logs to Microsoft for analysis.
+- **Get-observabilityStampId**: Used to get the stamp ID.
 
 For more information, see [Use appliance fallback log collection](disconnected-operations-fallback.md).
 
