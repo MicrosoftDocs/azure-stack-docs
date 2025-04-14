@@ -1,5 +1,5 @@
 ---
-title: Use GPUs for compute-intensive workloads
+title: Use GPUs for compute-intensive workloads in AKS on Windows Server
 description: Learn how to deploy GPU-enabled node pools in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.lastreviewed: 03/21/2023
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads
+# Use GPUs for compute-intensive workloads in AKS on Windows Server
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
