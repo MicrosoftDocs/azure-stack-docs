@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration (preview)
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 04/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -271,6 +271,13 @@ If the source VM has multiple network adapters with a mix of DHCP and static con
 
 :::image type="content" source="./media/migrate-maintain-ip-addresses/display-issue.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/display-issue.png":::
 
+### IPv6 static IP addresses not supported
+
+Azure Local VMs currently only support IPv4 addresses. NICs configured with IPv6 addresses will not be migrated, as IPv6 is not supported.
+
+## Logs
+
+When configuring static IP migration for VMs using the *Prepare-MigratedVM.ps1* or *prepare_migrated_vm.sh* script, logs are automatically created in the script's directory.
 
 ## Next steps
 
