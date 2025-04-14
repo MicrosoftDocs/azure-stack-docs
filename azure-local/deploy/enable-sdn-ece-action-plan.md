@@ -39,6 +39,7 @@ SDN is a preview feature.
 - Once you have enabled SDN, you can't roll back.
 - Make sure that you use this feature for testing and development only.
 - Do not deploy this feature on production data.
+- For cloud-based SDN, SLB and gateway are not supported.
 
 ## Prerequisites
 
@@ -57,7 +58,7 @@ SDN is a preview feature.
 The ECE action plan uses the following parameters:
 
 
-|Column1  |Column2  |
+| Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
 |**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
