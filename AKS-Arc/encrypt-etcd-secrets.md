@@ -107,4 +107,4 @@ If you encounter any errors with the KMS plugin, follow the procedure on the [Tr
 
 - [Create Kubernetes clusters](aks-create-clusters-cli.md#deploy-the-application-and-load-balancer)
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
-- [Deploy a Windows Server application on a Kubernetes cluster](deploy-windows-application.md)
+
