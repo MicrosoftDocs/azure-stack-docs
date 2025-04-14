@@ -43,7 +43,8 @@ Before you begin, make sure that:
 
 - You have access to version 23H2 OS software update.
 - The system is registered in Azure.
-- Make sure that all the machines in your Azure Local are healthy and show as **Online**.
+- All the machines in your Azure Local are healthy and show as **Online**.
+- You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 
