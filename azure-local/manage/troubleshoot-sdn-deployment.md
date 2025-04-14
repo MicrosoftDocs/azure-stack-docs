@@ -4,20 +4,20 @@ description: Learn how to troubleshoot the deployment of Software Defined Networ
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 01/16/2025
+ms.date: 04/11/2025
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Local via Windows Admin Center
 
 > Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019
 
-This article provides guidance on how to troubleshoot issues that you may encounter while deploying the SDN components using Windows Admin Center. Use this guidance to troubleshoot the issues before creating a support ticket. This article also provides instructions on how to collect logs after successfully troubleshooting the issues to help diagnose the cause of deployment failure.
+This article provides guidance on how to troubleshoot issues that you may encounter while deploying the Software Defined Networking (SDN) components using Windows Admin Center. Use this guidance to troubleshoot the issues before creating a support ticket. This article also provides instructions on how to collect logs after successfully troubleshooting the issues to help diagnose the cause of deployment failure.
 
 ## Troubleshoot timeout error
 
 If the deployment of virtual machines (VM) for the various SDN components, including Network Controller, Software Load Balancer, or Gateway times out, you see the following error:
 
-*....is not ready after the 1800 second timeout.*
+*....isn't ready after the 1,800 second timeout.*
 
 You may see this message in Windows Admin Center during the deployment of Network Controller, Software Load Balancer, or Gateway.
 
@@ -31,7 +31,7 @@ To identify and troubleshoot the cause of the failure in your SDN deployment thr
 
 - [Verify connectivity to the SDN URI or SDN cluster](#verify-connectivity-to-the-sdn-uri-or-sdn-cluster).
 
-After you've completed these checks and resolved any identified issues through troubleshooting, proceed with deploying SDN again. We also recommend [collecting logs](#collect-logs-for-sdn-components) to determine why the deployment of an SDN VM had failed.
+After you've completed these checks and resolved any identified issues through troubleshooting, proceed with deploying SDN again. We also recommend [collecting logs](#collect-logs-for-sdn-components) to determine why the deployment of an SDN VM failed.
 
 ### Download the correct VHDX file
 
@@ -61,7 +61,7 @@ Follow these steps to verify connectivity of the management network VLAN:
 
 ### Ensure that Windows Defender and firewall policies permit WinRM connectivity
 
-You must enable Windows Remote Management (WinRM) and PowerShell remoting to start configuration on the Network Controller VMs that have been deployed. If this is not done, a timeout error occurs.
+You must enable Windows Remote Management (WinRM) and PowerShell remoting to start configuration on the Network Controller VMs that deployed. If this isn't done, a timeout error occurs.
 
 To verify or enable WinRM and PowerShell remoting, perform these steps:
 
@@ -127,7 +127,7 @@ After enabling dynamic DNS, you may be able to move the `SDNAPI` microservice by
 
 ## Collect logs for SDN components
 
-After successfully troubleshooting the deployment issue, we recommend collecting logs to determine why the deployment of an SDN VM had failed.
+After successfully troubleshooting the deployment issue, we recommend collecting logs to determine why the deployment of an SDN VM failed.
 
 Follow these steps to collect guest logs for the SDN VM:
 
