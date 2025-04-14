@@ -17,7 +17,7 @@ ms.reviewer: abha
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 > [!NOTE]
-> For information about GPUs in AKS on Windows Server, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool-22h2.md).
+> For information about GPUs in AKS on Windows Server, see [Use GPUs in AKS on Windows Server](deploy-gpu-node-pool-22h2.md).
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
