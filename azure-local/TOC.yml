@@ -174,7 +174,7 @@ items:
   - name: Create network security groups   
     href: manage/create-network-security-groups.md
   - name: Manage network security groups
-    href: manage/create-network-security-groups.md
+    href: manage/manage-network-security-groups.md
 
 - name: Update 
   items:

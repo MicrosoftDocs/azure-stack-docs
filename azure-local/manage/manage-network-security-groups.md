@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 04/14/2025
 ms.service: azure-local
 ---
 
@@ -26,7 +26,7 @@ This article describes how to manage network security groups (NSGs) and network 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
-
+    - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 # [Azure portal](#tab/azureportal)
 
@@ -38,7 +38,7 @@ This article describes how to manage network security groups (NSGs) and network 
     
 ---
 
-## Create network security groups and network security rules
+## Manage network security groups and network security rules
 
 # [Azure CLI](#tab/azurecli)
 
@@ -64,9 +64,98 @@ az stack-hci-vm network nsg list -g $resource_group
 
 Follow these steps to show details of a network security group:
 
-```azurecli
-az stack-hci-vm network nsg show -g $resource_group --name $nsgname
-```
+1. Run the following command to show details of a network security group (NSG) on your Azure Local instance.
+
+    ```azurecli
+    az stack-hci-vm network nsg show -g $resource_group --name $nsgname 
+    ```
+
+2. The command outputs the details of a specified network security group (NSG). 
+
+    - In this example, the NSG has no network interface attached.
+        <br></br>
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+        
+        ```output
+        [Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nsg show -g $resource_group -n $nsgname
+        {
+          "eTag": null,
+          "extendedLocation": {
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+            "type": "CustomLocation"
+          },
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
+          "location": "eastus2euap",
+          "name": "examplensg",
+          "properties": {
+            "networkInterfaces": [],
+            "provisioningState": "Succeeded",
+            "subnets": []
+          },
+          "resourceGroup": "examplerg",
+          "systemData": {
+            "createdAt": "2025-03-11T22:56:05.968402+00:00",
+            "createdBy": "gus@contoso.com",
+            "createdByType": "User",
+            "lastModifiedAt": "2025-03-11T22:56:13.438321+00:00",
+            "lastModifiedBy": "<User ID>",
+            "lastModifiedByType": "Application"
+          },
+          "tags": null,
+          "type": "microsoft.azurestackhci/networksecuritygroups"
+        }
+        
+        [Machine 1]: PS C:\HCIDeploymentUser>
+        
+        ```
+        </details>
+
+    - In this example, the NSG has a network interface attached.
+    
+        <br></br>
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+        
+        ```output
+        [Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nsg show -g $resource_group -n $nsgname
+        {
+          "eTag": null,
+          "extendedLocation": {
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+            "type": "CustomLocation"
+          },
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
+          "location": "eastus2euap",
+          "name": "examplensg",
+          "properties": {
+            "networkInterfaces": [
+              {
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic",
+                "resourceGroup": "examplerg"
+              }
+            ],
+            "provisioningState": "Succeeded",
+            "subnets": []
+          },
+          "resourceGroup": "examplerg",
+          "systemData": {
+            "createdAt": "2025-03-11T22:56:05.968402+00:00",
+            "createdBy": "gus@contoso.com",
+            "createdByType": "User",
+            "lastModifiedAt": "2025-03-12T15:49:32.419759+00:00",
+            "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+            "lastModifiedByType": "Application"
+          },
+          "tags": null,
+          "type": "microsoft.azurestackhci/networksecuritygroups"
+        }
+        
+        [Machine 1]: PS C:\HCIDeploymentUser>        
+        ```
+
+        </details>
+
 
 ### Delete a network security group
 
@@ -438,7 +527,9 @@ This section describes the manage operations supported for network security grou
 
 ## List network security groups
 
+Go to **Azure Local resource page > Resources > Network security groups**. You see a list of network security groups present on your Azure Local.
 
+:::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
 
 
 ## Associate network security group with a logical network
