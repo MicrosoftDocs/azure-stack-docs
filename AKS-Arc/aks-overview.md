@@ -46,9 +46,4 @@ The available deployment options are as follows:
 
 ## Next steps
 
-To get started with AKS enabled by Azure Arc, see the following deployment option overviews:
-
 - [What's new in AKS on Azure Local](aks-whats-new-local.md)
-- [AKS on Windows Server](overview.md)
-- [AKS Edge Essentials](aks-edge-overview.md)
-- [AKS on VMware (preview)](aks-vmware-overview.md)
