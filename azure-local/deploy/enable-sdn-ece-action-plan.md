@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/09/2025
+ms.date: 04/14/2025
 ---
 
 # Enable SDN on Azure Local using ECE action plan (Preview)
@@ -46,7 +46,7 @@ SDN is a preview feature.
 - You’ve access to a client used to connect to Azure Local instance via Azure CLI. This client should have appropriate version of software installed.
 - You’ve access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
-    An Azure Stack HCI administrator can register the Azure Local instance as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users.
+    An Azure Stack HCI administrator can register the Azure Local instance as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 
 ## Sign in and set subscription
 
@@ -56,14 +56,18 @@ SDN is a preview feature.
 
 The ECE action plan uses the following parameters:
 
-- **Name**: Pass the name as `NC`. No other user input is allowed.
-- **SDNPrefix**: Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.
+
+|Column1  |Column2  |
+|---------|---------|
+|**Name**   | Pass the name as `NC`. No other user input is allowed.         |
+|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
+
 
 ## Run the ECE action plan
 
 Follow these steps on the Azure CLI to run the ECE action plan:
 
-1. Connect to the first node of your Azure Local instance with Azure Stack HCI administrator role.
+1. [Connect to the first node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 1. Run the ECE action plan to deploy network controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command.
 
     ```azurecli
@@ -81,8 +85,8 @@ Follow these steps on the Azure CLI to run the ECE action plan:
 
     ```output
 
-    [Machine1]: PS C:\HCIDeploymentUser> az account set --subscription <Subscription ID>
-    [Machine1]: PS C:\HCIDeploymentUser> Add-EceFeature -Name NC -SDNPrefix v
+    [Machine1]: PS C:\DeploymentUser> az account set --subscription <Subscription ID>
+    [Machine1]: PS C:\DeploymentUser> Add-EceFeature -Name NC -SDNPrefix v
     Start                  End                    Duration    Type   Status  Name                                                                                         
     -----                  ---                    --------    ----   ------  ----                                                                                         
     03/11/2025 10:29:52 PM 03/11/2025 10:31:13 PM 00.00:01:20 Action Success └─(A)CleanNCSecret                                                                           
@@ -144,7 +148,7 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     0
     VERBOSE: Transcript stopped at C:\MASLogs\Add-EceFeature.2025-03-11.22-29-49
     
-    [Machine1]: PS C:\HCIDeploymentUser>
+    [Machine1]: PS C:\DeploymentUser>
 
     ```
     </details>
