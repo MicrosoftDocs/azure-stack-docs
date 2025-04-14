@@ -76,6 +76,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
+    - name: Security
+      items:
+      - name: Encrypt etcd secrets
+        href: encrypt-etcd-secrets.md
     - name: AI and Machine Learning
       items:
       - name: Deploy an AI model with the AI toolchain operator

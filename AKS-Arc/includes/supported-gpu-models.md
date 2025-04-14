@@ -2,15 +2,15 @@
 author: sethmanheim
 ms.author: sethm
 ms.topic: include
-ms.date: 03/25/2025
+ms.date: 04/14/2025
 ms.reviewer: abha
-ms.lastreviewed: 03/25/2025
+ms.lastreviewed: 04/14/2025
 
 ---
 
 ## Supported GPU models
 
-The following GPU models are supported by AKS on Azure Local, version 23H2:
+The following GPU models are supported by AKS on Azure Local.
 
 | Manufacturer | GPU model | Supported version |
 |--------------|-----------|-------------------|
@@ -20,7 +20,7 @@ The following GPU models are supported by AKS on Azure Local, version 23H2:
 
 ## Supported GPU VM sizes
 
-The following VM sizes for each GPU model are supported by AKS on Azure Local, version 23H2.
+The following VM sizes for each GPU model are supported by AKS on Azure Local.
 
 ### Nvidia T4 is supported by NK T4 SKUs
 
