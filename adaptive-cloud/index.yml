@@ -6,7 +6,8 @@ brand: azure
 metadata:
   title: Azure adaptive cloud documentation
   description: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
-  ms.service: azure-stack
+  ms.service: azure
+  ms.subservice: azure-adaptive-cloud
   ms.topic: hub-page
   author: asergaz 
   ms.author: sergaz
