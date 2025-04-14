@@ -12,7 +12,7 @@ ms.service: azure-local
 
 Applies to: Azure Local 2504 or later
 
-This article describes how to create network security groups (NSGs), network security rules and default network access policies on your Azure Local virtual machines enabled by Azure Arc. Once the software defined networking (SDN) is enabled on your existing Azure Local instance, you can create and attach NSGs to network interfaces or logical networks to filter network traffic.  
+This article describes how to create network security groups (NSGs), network security rules, and default network access policies on your Azure Local virtual machines enabled by Azure Arc. Once the software defined networking (SDN) is enabled on your existing Azure Local instance, you can create and attach NSGs to network interfaces or logical networks to filter network traffic.  
 
 This how-to article is designed for the IT administrators who know how to configure and deploy workloads on Azure Local instances.
 
@@ -29,17 +29,17 @@ For each security rule, you can specify source and destination, port, and protoc
 
 # [Azure CLI](#tab/azurecli)
 
-- You've access to an Azure Local instance.
+- You have access to an Azure Local instance.
 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
-    - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+    - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
 # [Azure portal](#tab/azureportal)
 
-- You've access to an Azure Local instance.
+- You have access to an Azure Local instance.
 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
@@ -142,6 +142,12 @@ After you create a network security group, you're ready to create network securi
     $nsgname="examplensg"     
     $customLocationId="/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl" 
     $location="eastus2euap"
+    $securityrulename="examplensr" 
+    $sportrange="*" 
+    $saddprefix="10.0.0.0/24" 
+    $dportrange="80" 
+    $daddprefix="192.168.99.0/24" 
+    $description="Inbound security rule" 
     ```
 
     The parameters for network security group creation are tabulated as follows:
@@ -149,7 +155,7 @@ After you create a network security group, you're ready to create network securi
     | Parameters | Description |
     |------------|-------------|
     | **name**  | Name for the network security rule that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **nsg-name**  | Name for the network security group that will contain this network security rule. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | **nsg-name**  | Name for the network security group that contains this network security rule. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **resource-group** | Name of the resource group where you create the network security group. For ease of management, we recommend that you use the same resource group as your Azure Local. |
     | **subscription** | Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for your Azure Local VMs. |
@@ -179,15 +185,6 @@ After you create a network security group, you're ready to create network securi
     <summary>Expand this section to see an example output.</summary>  
     
     ```output
-    [Machine 1]: PS C:\DeploymentUser> $securityrulename="examplensr" 
-    [Machine 1]: PS C:\DeploymentUser> $sportrange="*" 
-    [Machine 1]: PS C:\DeploymentUser> $saddprefix="10.0.0.0/24" 
-    [Machine 1]: PS C:\DeploymentUser> $dportrange="80" 
-    [Machine 1]: PS C:\DeploymentUser> $daddprefix="192.168.99.0/24" 
-    [Machine 1]: PS C:\DeploymentUser> $description="Inbound security rule" 
-    
-    [Machine 1]: PS C:\DeploymentUser> az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "ICMP" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description 
-    
     { 
       "extendedLocation": { 
         "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
@@ -234,7 +231,6 @@ After you create a network security group, you're ready to create network securi
       "type": "microsoft.azurestackhci/networksecuritygroups/securityrules" 
     } 
     
-    [Machine 1]: PS C:\DeploymentUser>
     ```
     
     </details>
@@ -249,15 +245,6 @@ Run the following command to create an outbound network security rule that block
   ```azurecli
   az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
   ```
-<!--## Create default network access policy
-
-Default network policies can be used to protect Azure Local virtual machines from external unauthorized attacks. These policies block all inbound access to Azure Local VMs (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
-
-You can attach a default network access policy to Azure Local VM in two ways:
-
-- During VM creation. You'll need to attach the VM to an existing logical network. For more information, see [Create a logical network](./create-logical-networks.md)
-- Post VM creation.-->
-
 
 # [Azure portal](#tab/azureportal)
 
@@ -278,7 +265,7 @@ Follow these steps in Azure portal to create a network security group.
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-3.png" alt-text="Screenshot 2." lightbox="./media/create-network-security-groups/create-network-security-group-3.png":::
 
     1. **Subscription** - Choose the subscription you want to use for the NSG.
-    1. **Resource group** - Create new or choose an existing resource group where you deploy all the resources associated with you Azure Local VM.
+    1. **Resource group** - Create new or choose an existing resource group where you deploy all the resources associated with your Azure Local VM.
     1. **Instance name** - Enter a name for the network security group you wish to create. 
     1. **Region** - Choose the Azure region where your Azure Local instance is deployed. The region must be the same as the region of the Azure Local instance.
     1. **Custom location**: Select the custom location associated with the Azure Local instance.
@@ -320,13 +307,13 @@ Follow these steps in Azure portal for your Azure Local:
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-4.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-4.png":::
 
-    1. **Source** - Choose between **IP address** or **Any**. The source specifies the incoming traffic from a specific IP address range that will be allowed or denied by this rule.
+    1. **Source** - Choose between **IP address** or **Any**. The source specifies the incoming traffic from a specific IP address range that is allowed or denied by this rule.
     1. **Source IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you chose IP address as the source.
     1. **Source port ranges** - Provide a specific port or a port range that will be denied or allowed by this rule. Provide an asterisk* to allow traffic on any port.
     1. **Destination** - Choose between **IP address** or **Any**. The destination specifies the outgoing traffic to a specific IP address range that will be allowed or denied by this rule.
     1. **Destination IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you chose IP address as the destination.
     1. **Destination port ranges** - Provide a specific port or a port range that will be denied or allowed by this rule. Provide an asterisk* to allow traffic on any port.
-    1. **Protocol** - Choose  a protocol from **Any**, **TCP**, **UDP** or **ICMP**. The protocol specifies the type of traffic that will be allowed or denied by this rule.
+    1. **Protocol** - Choose  a protocol from **Any**, **TCP**, **UDP, or **ICMP**. The protocol specifies the type of traffic that is allowed or denied by this rule.
     1. **Action** - Choose between **Allow** or **Deny**. The action specifies whether the traffic that matches this rule will be allowed or denied.
     1. **Priority** - Enter a number between 100 and 4096. The priority specifies the order in which the rules are applied. Lower numbers are processed first.
     1. **Name** - Enter a name for the rule. The name must be unique within the network security group.
@@ -342,7 +329,7 @@ Follow these steps in Azure portal for your Azure Local:
 Create a default network access policy to block all inbound traffic to Azure Local VMs (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
 
 You can attach a default network access policy to Azure Local VM in two ways:
-- During VM creation. You'll need to attach the VM to a logical netowrk. For more information, see [Create a logical network](./create-logical-networks.md).
+- During VM creation. You need to attach the VM to a logical network. For more information, see [Create a logical network](./create-logical-networks.md).
 - Post VM creation.
 
 ### Apply default network access policy when creating a VM
