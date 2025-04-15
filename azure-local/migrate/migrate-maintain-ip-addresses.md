@@ -14,13 +14,11 @@ ms.reviewer: alkohli
 
 This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for running the static IP migration scripts on Windows and Linux VMs.
 
-For Windows VMs, this article supports guest operating systems from Windows Server 2012 R2 and later. For Linux VMs, it supports Ubuntu, Red Hat Enterprise Linux, CentOS, and Debian distributions.
-
 ## About the static IP migration package
 
-Download the [static IP migration package](https://aka.ms/hci-migrate-static-ip-download) (.zip format).
+For Windows VMs, this article supports guest operating systems from Windows Server 2012 R2 and later. For Linux VMs, it supports Ubuntu, Red Hat Enterprise Linux, CentOS, and Debian distributions.
 
-The .zip file includes different scripts for Windows and Linux VMs.
+Download the [static IP migration package](https://aka.ms/hci-migrate-static-ip-download) (.zip format). The .zip file includes different scripts for Windows and Linux VMs.
 
 # [Windows](#tab/windows)
 
@@ -120,7 +118,7 @@ To set up IP migration manually for Windows VMs:
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 
-    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
+    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Local and Azure portal.
 
 1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**.
 
@@ -238,7 +236,7 @@ To set up IP migration manually for Linux VMs:
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 
-    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
+    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Local and Azure portal.
 
 1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**.
 
@@ -258,11 +256,11 @@ After migration, Device Manager may still display the old network adapter inform
 
 ### Multiple IP addresses on a single network adapter
 
-When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Arc VMs in Azure Local displays only one IP address per network adapter in Arc portal. This is a known display issue in the Arc portal and does not affect the actual functionality of the IP addresses on the migrated VM.
+When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Azure Local VMs enabled by Azure Arc in Azure Local display only one IP address per network adapter in Azure Local portal. This is a known display issue in the Azure Local portal and does not affect the actual functionality of the IP addresses on the migrated VM.
 
 ### Multiple network adapters and types
 
-If the source VM has multiple network adapters with a mix of DHCP and static configurations, the migrated VM will preserve the correct number of network adapter, network adapter types, and static IP addresses on the static network adapter. However, the Arc portal view of the migrated VM may incorrectly display duplicate or inaccurate IPs on the network adapters. This is a known display issue in the Arc portal and doesn't impact the functionality of the IP addresses on the migrated VM. See the example below of a migrated VM with a DHCP network adapter and a static network adapter.
+If the source VM has multiple network adapters with a mix of DHCP and static configurations, the migrated VM will preserve the correct number of network adapter, network adapter types, and static IP addresses on the static network adapter. However, the Azure Local portal view of the migrated VM may incorrectly display duplicate or inaccurate IPs on the network adapters. This is a known display issue in the Azure Local portal and doesn't impact the functionality of the IP addresses on the migrated VM. See the example below of a migrated VM with a DHCP network adapter and a static network adapter.
 
 :::image type="content" source="./media/migrate-maintain-ip-addresses/display-issue.png" alt-text="Screenshot of network adapters." lightbox="./media/migrate-maintain-ip-addresses/display-issue.png":::
 
