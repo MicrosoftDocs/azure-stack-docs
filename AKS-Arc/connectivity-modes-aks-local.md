@@ -1,8 +1,8 @@
 ---
 title: AKS on Azure Local connectivity modes
-description: Learn about running AKS on Azure Local in disconnected & semi-connected mode
+description: Learn about running AKS on Azure Local in disconnected and semi-connected mode.
 ms.topic: overview
-ms.date: 02/28/2025
+ms.date: 04/15/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
@@ -13,7 +13,7 @@ ms.custom: conceptual
 
 # AKS on Azure Local connectivity modes
 
-AKS on Azure Local requires connectivity to Azure in order to utilize features such as Kubernetes cluster upgrades and identity and access options like Azure Entra ID. Additionally, Azure Arc agents on the AKS Arc cluster must remain connected to enable functionalities like [configurations (GitOps)](conceptual-gitops-flux2.md), Arc extensions and [cluster connect](conceptual-cluster-connect.md). Since AKS on Azure Local clusters deployed at the edge might not always have stable network access, the Kubernetes cluster may occasionally be unable to reach Azure when operating in a semi-connected state.
+AKS on Azure Local requires connectivity to Azure in order to use features such as Kubernetes cluster upgrades, and identity and access options such as Azure Entra ID. Also, Azure Arc agents on the AKS Arc cluster must remain connected to enable functionality such as [configuration (GitOps)](conceptual-gitops-flux2.md), Arc extensions, and [cluster connect](conceptual-cluster-connect.md). Since AKS on Azure Local clusters deployed at the edge might not always have stable network access, the Kubernetes cluster might occasionally be unable to reach Azure when it operates in a semi-connected state.
 
 ## Understand connectivity modes
 
@@ -29,18 +29,18 @@ When working with AKS on Azure Local clusters, it's important to understand how 
 
 The connectivity status of a cluster is determined by the time of the latest heartbeat received from the Azure Arc agents deployed on the cluster.
 
-| AKS operation | Impact of temprorary disconnection | Details | Workaround |
+| AKS operation | Impact of temporary disconnection | Details | Workaround |
 | ------------- | ---------------------------------- |---------|------------|
 | Creating, updating, upgrading & deleting Kubernetes cluster | Not supported | Since Kubernetes CRUD operations are driven via Azure, you will not be able to perform any CRUD operation while disconnected. | No supported workaround |
-| Scaling the Kubernetes cluster | Partially supported | You will not be able to manually scale an existing nodepool or add a new nodepool to the Kubernetes cluster | Your Kubernetes cluster will scale dynamically if you've [enabled autoscalar](auto-scale-aks-arc.md) while creating the Kubernetes cluster. | 
-| Access the Kubernetes cluster | Partially supported | You will not be able to use [Azure Entra](enable-authentication-microsoft-entra-id.md) and `az connectedk8s proxy` since these require connectivity to Azure. | [Retrieve admin kubeconfig](retrieve-admin-kubeconfig.md) to access the Kubernetes cluster. | 
+| Scaling the Kubernetes cluster | Partially supported | You will not be able to manually scale an existing nodepool or add a new nodepool to the Kubernetes cluster | Your Kubernetes cluster will scale dynamically if you've [enabled autoscalar](auto-scale-aks-arc.md) while creating the Kubernetes cluster. |
+| Access the Kubernetes cluster | Partially supported | You will not be able to use [Azure Entra](enable-authentication-microsoft-entra-id.md) and `az connectedk8s proxy` since these require connectivity to Azure. | [Retrieve admin kubeconfig](retrieve-admin-kubeconfig.md) to access the Kubernetes cluster. |
 | Viewing Kubernetes cluster status | Partially supported | You will not be able to use Azure portal or ARM APIs to view Kubernetes cluster status. | Use local tools such as [kubectl get](https://kubernetes.io/docs/reference/kubectl/quick-reference/#viewing-and-finding-resources). |
 | MetalLB Arc extension | Partially supported | Your load balancer will continue working but you will not be able to add/remove IP pools or update MetalLB configuration | No supported workaround |
-| AKS cluster and application observability | Partially supported | You will not be able to use Container Insights and [create diagnostic settings using Container Insights](kubernetes-monitor-audit-events#create-a-diagnostic-setting) since these require connectivity to Azure | Use [3rd party on-premises monitoring solutions](aks-monitor-logging.md).
+| AKS cluster and application observability | Partially supported | You will not be able to use Container Insights and [create diagnostic settings using Container Insights](kubernetes-monitor-audit-events.md#create-a-diagnostic-setting) since these require connectivity to Azure | Use [3rd party on-premises monitoring solutions](aks-monitor-logging.md).
 | SSH into the Kubernetes VMs | Supported | You will be able to SSH into Kubernetes VMs. | No workaround needed |
-| Collect logs for troubleshooting | Supported | You will be able to collect logs for troubleshooting issues. | No workaround needed | 
+| Collect logs for troubleshooting | Supported | You will be able to collect logs for troubleshooting issues. | No workaround needed |
 
 ## Next steps
 
-- [Azure Arc connectivity modes](/azure-arc/kubernetes/conceptual-connectivity-modes.md)
+- [Azure Arc connectivity modes](/azure//azure-arc/kubernetes/conceptual-connectivity-modes)
 - [Create and manage Kubernetes clusters on-premises using Azure CLI](aks-create-clusters-cli.md)
