@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 02/06/2025
+ms.date: 04/03/2025
 ---
 
 # System requirements for small form factor deployments of Azure Local (Preview)
@@ -27,7 +27,7 @@ The certified devices are listed in the [Azure Local Catalog](https://aka.ms/Azu
 
 ## Device requirements
 
-The device must be listed in the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) which indicates that the device has passed the Windows Server certification and the extra qualifications.
+Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
 The following table lists the requirements for the small hardware:
 

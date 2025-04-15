@@ -99,7 +99,7 @@ Azure Stack Hub works with both Azure Active Directory (Azure AD) and Active Dir
 
 #### Ensure compliance, and data sovereignty
 
-Azure Stack Hub lets you run the same service across multiple countries as you would if using a public cloud. Deploying the same app in datacenters in each country allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country's borders.
+Azure Stack Hub lets you run the same service across multiple countries/regions as you would if using a public cloud. Deploying the same app in datacenters in each country/region allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country/region's borders.
 
 #### Azure Stack Hub - security posture
 
