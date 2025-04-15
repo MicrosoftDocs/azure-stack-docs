@@ -540,11 +540,22 @@ To associate a network security group with a logical network, follow these steps
 
 1. Go to **Azure Local resource page > Resources > Logical networks**.
 1. In the right pane, from the list of logical networks, select a network.
+
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
+
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
-1. In the **Associate network security group** page, from the dropdown, select a network security group.
-1. Select **Add network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
-1. Once the network security group is associated with the logical network, you can see the network security group in the **Network security groups** tab of the logical network.
+
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png":::
+
+1. In the **Associate network security group** page:
+
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png":::
+
+    1. From the dropdown, select a network security group.
+    1. Select **Add network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+
+    Once the network security group is associated with the logical network, you can see the network security group in the **Network security groups** tab of the logical network.
 
 ## Dissociate network security group from a logical network
 
@@ -554,8 +565,15 @@ To dissociate a network security group from a logical network, follow these step
 
 1. Go to **Azure Local resource page > Resources > Logical networks**.
 1. In the right pane, from the list of logical networks, select a network.
+
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
+
 1. Go to **Settings > Network security groups**.
-1. In the right-pane, from the top command bar, select **Dissociate network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+1. In the right-pane, from the top command bar, select **Dissociate network security group**.
+
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png
+
+1. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 1. Once the network security group is dissociated from the logical network, the page refreshes to indicate the dissociation.
 
 ## Associate network security group with a network interface
