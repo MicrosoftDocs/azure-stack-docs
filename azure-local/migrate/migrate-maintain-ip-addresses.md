@@ -100,7 +100,7 @@ Follow these steps to set up IP migration. The steps are different for Windows a
 
 # [Windows](#tab/windows)
 
-To set up IP migration for Windows VMs, follow these steps.
+For Windows VMs, you can set up IP migration manually or by using group policy.
 
 ### Set up IP migration manually
 
@@ -130,13 +130,13 @@ To set up IP migration manually for Windows VMs:
 
 1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
 
-## Set up IP migration using group policy
+### Set up IP migration using group policy
 
 Follow these steps to set up static IP migration at scale on domain-joined VMs using group policy.
 
 - Review the prerequisites listed for static IP migrations using group policy.
 
-### Create a group policy object
+#### Create a group policy object
 
 1. Open the Group Policy Management Console for your Active Directory (AD) environment.
 
@@ -156,7 +156,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 1. Right-click the blank area under **Scheduled Tasks** and select **New > Immediate Task (At least Windows 7)**.
 
-### Define the scheduled task
+#### Define the scheduled task
 
 1. Select **New > Immediate Task**. When the Scheduled Task Wizard opens, configure each tab as follows:
 
@@ -199,7 +199,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 1. Select **OK** to finalize the scheduled task configuration.
 
-### Apply the group policy object
+#### Apply the group policy object
 
 1. Link the GPO to the desired Organizational Unit (OU):
 
