@@ -176,7 +176,7 @@ items:
   - name: Manage network security groups
     href: manage/manage-network-security-groups.md
   - name: Troubleshoot SDN
-    href: manage/sdn-overview.md
+    href: concepts/sdn-overview.md
 
 
 - name: Update 
