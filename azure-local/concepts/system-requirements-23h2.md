@@ -45,6 +45,8 @@ Here are the Azure requirements for your Azure Local instance:
 
 ## Machine and storage requirements
 
+Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
+
 Before you begin, make sure that the physical machine and storage hardware used to deploy Azure Local meets the following requirements:
 
 |Component|Minimum|
@@ -68,8 +70,6 @@ The machines should also meet this extra requirement:
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
 
 For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
-
-Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
 ## Networking requirements
 
