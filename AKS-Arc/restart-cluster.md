@@ -1,6 +1,6 @@
 ---
 title: Restart, remove, or reinstall Azure Kubernetes Service 
-description: Learn how to restart, remove, or reinstall AKS enabled by Azure Arc.
+description: Learn how to restart, remove, or reinstall AKS on Windows Server.
 author: sethmanheim
 ms.topic: article
 ms.date: 07/03/2024

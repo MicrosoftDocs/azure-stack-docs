@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/30/2025
+ms.date: 04/09/2025
 ---
 
 # Create logical networks for Azure Local VMs enabled by Azure Arc
@@ -13,6 +13,9 @@ ms.date: 03/30/2025
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create or add logical networks for your Azure Local instance. Any Azure Local virtual machines (VMs) that you create use these logical networks.
+
+> [!NOTE]
+> Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
 ## Prerequisites
 
@@ -71,6 +74,16 @@ The prerequisites for the Azure portal are the same as those for the Azure CLI. 
 ## Create the logical network
 
 You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
+
+> [!NOTE]
+> Once a logical network is created, you can't update the following:
+>
+> - DNS server
+> - Default gateway
+> - IP pools
+> - IP address space
+> - VLAN ID
+> - Virtual switch name
 
 # [Azure CLI](#tab/azurecli)
 

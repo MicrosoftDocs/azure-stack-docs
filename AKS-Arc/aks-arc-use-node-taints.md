@@ -1,8 +1,7 @@
 ---
 title: Manage node taints for an AKS cluster
-description: Learn how to manage node taints in AKS on Azure Local, version 23H2
+description: Learn how to manage node taints in AKS on Azure Local
 ms.topic: how-to
-ms.custom:
 ms.date: 06/03/2024
 author: sethmanheim
 ms.author: sethm 
