@@ -40,7 +40,7 @@ The following scripts are included for Windows:
 
 The following scripts are included for Linux:
 
-- **prepare_migrated_vm.sh** – Prepares the VM for static IP migration using the `-StaticIPMigration` parameter. It executes the *initialize_static_ip_migration.sh* script.
+- **prepare_migrated_vm.sh** – Prepares the VM for static IP migration using the `-o StaticIPMigration` option. It executes the *initialize_static_ip_migration.sh* script.
 
 - **initialize_static_ip_migration.sh** - Collects the VM's network interface information into a configuration file (*interface_configurations* in the local directory) and installs a cron job to execute the *set_static_ip_configuration.sh script*. 
 
@@ -99,7 +99,7 @@ Ensure that the static IP addresses you plan to migrate are available in the sta
 
 ### (Optional) Prepare to deploy IP migration at scale using group policy
 
-To use this method, you need domain administrator privileges and access to the Group Policy Editor. Additionally, one of the following conditions must be met:
+ To use this method, you need domain administrator privileges and access to the Group Policy Editor. Additionally, one of the following conditions must be met:
 
 - The source VMs must have internet access to download the static IP migration package directly to their local file system.
 
@@ -206,7 +206,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
     1. Select **Run whether user is logged on or not**.
 
-    1. Select**Run with highest privileges**.
+    1. Select **Run with highest privileges**.
 
 1. Under **Configure for**, select **Windows Vista or Windows Server 2008** for configuration:
 
