@@ -217,7 +217,7 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
 
 # [Linux](#tab/linux)
 
-To set up IP migration for Windows VMs, follow these steps.
+To set up IP migration for Linux VMs, follow these steps.
 
 ### Set up IP migration manually
 
