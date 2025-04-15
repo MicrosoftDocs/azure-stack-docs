@@ -54,11 +54,11 @@ The following scripts are included for Linux:
 
 Before you begin, prepare the source and target environments for IP migration.
 
+# [Windows](#tab/windows)
+
 ### Prepare source VMs for IP migration
 
-To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met. The requirements are different for Windows and Linux VMs.
-
-# [Windows](#tab/windows)
+To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
 
 For Windows VMs:
 
@@ -66,36 +66,7 @@ For Windows VMs:
 
 - Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks.
 
-# [Linux](#tab/linux)
-
-For Linux VMs:
-
-[!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
-
-- For Linux VMs, ensure that **Linux Integration Services** are installed.
-
-- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks. For Linux VMs, the account should also have the appropriate privileges to run network administration commands (such as `ip`, `resolvectl`, and its variants).
-
----
-
-### Prepare target Azure Local instance and logical network
-
-On the target Azure Local instance, provision a static Azure Arc logical network to support the migration. This setup requires defining the following:
-
-- IP address space
-- Gateway address
-- DNS servers
-- an IP pool range (optional)
-
-For detailed guidance on creating and configuring static or dynamic Azure Arc logical networks, see [Create logical networks for Azure Local](../manage/create-logical-networks.md?tabs=azurecli).
-
-Ensure that the static IP addresses you plan to migrate are available in the static logical network and not assigned to another VM. If an IP address is already in use, the migration fails with the error: **The address is already in use.** To avoid this:
-
-1. Go to the target static logical network.
-1. Check which IP addresses are in use.
-1. Remove any NICs assigned to the static IPs you want to migrate.
-
-:::image type="content" source="./media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page." lightbox="./media/migrate-maintain-ip-addresses/connected-devices.png":::
+[!INCLUDE [static-ip-migration-prepare-target](../includes/static-ip-migration-prepare-target.md)]
 
 ### (Optional) Prepare to deploy IP migration at scale using group policy
 
@@ -105,13 +76,35 @@ Ensure that the static IP addresses you plan to migrate are available in the sta
 
 - The source VMs must have read-only access to a remote file share hosting the static IP migration package, which must be prepared and downloaded to the remote share in advance.
 
-## Set up IP migration manually
+# [Linux](#tab/linux)
 
-Follow these steps to set up IP migration manually. The steps are different for Windows and Linux VMs.
+### Prepare source VMs for IP migration
+
+To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
+
+For Linux VMs:
+
+[!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
+
+- For Linux VMs, ensure that **Linux Integration Services** are installed.
+
+- Ensure the preparation script is run on the source VM by an account with administrator privileges to create scheduled tasks. For Linux VMs, the account should also have the appropriate privileges to run network administration commands (such as `ip`, `resolvectl`, and its variants).
+
+[!INCLUDE [static-ip-migration-prepare-target](../includes/static-ip-migration-prepare-target.md)]
+
+---
+
+## Set up IP migration
+
+Follow these steps to set up IP migration. The steps are different for Windows and Linux VMs.
 
 # [Windows](#tab/windows)
 
-For Windows VMs:
+To set up IP migration for Windows VMs, follow these steps.
+
+### Set up IP migration manually
+
+To set up IP migration manually for Windows VMs:
 
 1. Download the .zip file and install the static IP migration package contents onto a local folder on the VM.
 
@@ -136,37 +129,6 @@ For Windows VMs:
     :::image type="content" source="./media/migrate-maintain-ip-addresses/shut-down-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shut-down-vms.png":::
 
 1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
-
-# [Linux](#tab/linux)
-
-For Linux VMs:
-
-1. Download the .zip file and install the static IP migration package contents onto a local folder on the VM.
-
-1. Open a terminal session and run the *prepare_migrated_vm.sh* script with the following commands:
-
-    ```Bash
-    chmod u+x prepare_migrated_vm.sh 
-    sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
-    ```
-
-1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
-
-1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
-
-1. In the **Replications > General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
-
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
-
-    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
-
-1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**.
-
-    :::image type="content" source="./media/migrate-maintain-ip-addresses/shut-down-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shut-down-vms.png":::
-
-1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
-
----
 
 ## Set up IP migration using group policy
 
@@ -252,6 +214,41 @@ Follow these steps to set up static IP migration at scale on domain-joined VMs u
     1. Check the VM to confirm that an interface configuration file has been created under *C:\StaticIp\IpConfigurations.json*.
 
     1. Ensure that a scheduled task named `Set-StaticIpConfiguration` has been created to run on restart.
+
+# [Linux](#tab/linux)
+
+To set up IP migration for Windows VMs, follow these steps.
+
+### Set up IP migration manually
+
+To set up IP migration manually for Linux VMs:
+
+1. Download the .zip file and install the static IP migration package contents onto a local folder on the VM.
+
+1. Open a terminal session and run the *prepare_migrated_vm.sh* script with the following commands:
+
+    ```Bash
+    chmod u+x prepare_migrated_vm.sh 
+    sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
+    ```
+
+1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
+
+1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
+
+1. In the **Replications > General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
+
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
+
+    Failure to correctly assign the network interfaces to their corresponding logical networks results in incorrect IP address information displayed in Azure Arc and Azure portal.
+
+1. On the **Migrate** view, under **Shut down virtual machines**, select **Yes, shut down virtual machines (ensures no data loss)**.
+
+    :::image type="content" source="./media/migrate-maintain-ip-addresses/shut-down-vms.png" alt-text="Screenshot of Shut down VMs panel." lightbox="./media/migrate-maintain-ip-addresses/shut-down-vms.png":::
+
+1. After the VM is migrated, check the migrated VM to verify that the static IP settings were migrated over.
+
+---
 
 ## Known limitations
 
