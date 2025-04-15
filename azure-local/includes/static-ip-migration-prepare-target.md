@@ -24,4 +24,4 @@ Ensure that the static IP addresses you plan to migrate are available in the sta
 1. Check which IP addresses are in use.
 1. Remove any NICs assigned to the static IPs you want to migrate.
 
-:::image type="content" source="./media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page." lightbox="./media/migrate-maintain-ip-addresses/connected-devices.png":::
+:::image type="content" source="../migrate/media/migrate-maintain-ip-addresses/connected-devices.png" alt-text="Screenshot of Connected Devices page.":::
