@@ -26,5 +26,5 @@ For Azure Local solution, there are the following two types of SDN:
 
 For related information, see also:
 
-- [Enable Arc-based SDN via ECE action plan](./enable-sdn-action-plan.md)
+- [Enable cloud-based SDN via ECE action plan](./enable-sdn-action-plan.md)
 - [Deploy traditional SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)

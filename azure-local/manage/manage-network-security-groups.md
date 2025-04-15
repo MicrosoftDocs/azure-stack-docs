@@ -553,7 +553,7 @@ To dissociate a network security group from a logical network, follow these step
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
 
 1. Confirm the dissociation.
 
@@ -573,7 +573,7 @@ To associate a network security group with a network interface, follow these ste
 1. Go to **Settings > Network security group**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." " lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
 
 1. In the **Associate network security group** page, input the following information:
 
