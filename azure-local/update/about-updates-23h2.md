@@ -82,7 +82,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 This solution is the recommended way to update your Azure Local.
 
 > [!NOTE]
-
+>
 > - Azure Local update includes updates for all components, including Azure CLI, PowerShell, and any extensions. Microsoft does not support out of band updates for individual components. The out of band updates could lead to incompatibility with Application Control for Windows.
 > - Customer workloads aren't covered by this update solution.
 
