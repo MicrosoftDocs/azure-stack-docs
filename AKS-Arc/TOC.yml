@@ -364,23 +364,6 @@
             href: setup.md
           - name: Create a Kubernetes cluster
             href: create-kubernetes-cluster.md
-  - name: Tutorial
-    items:
-      - name: 1 - Prepare an application
-        href: tutorial-kubernetes-prepare-application.md
-      - name: 2 - Create container registry
-        href: tutorial-kubernetes-prepare-azure-container-registry.md
-      - name: 3 - Deploy a Kubernetes cluster
-        href: tutorial-kubernetes-deploy-cluster.md
-      - name: 4 - Run an application
-        href: tutorial-kubernetes-deploy-application.md
-      - name: 5 - Scale an application
-        href: tutorial-kubernetes-scale.md
-      - name: 6 - Update an application
-        href: tutorial-kubernetes-app-update.md
-      - name: 7 - Upgrade Kubernetes cluster 
-        # Remove this, we don tneed to upgrade K8s in this tutorial.
-        href: tutorial-kubernetes-upgrade-cluster.md
   - name: Concepts
     items:
     - name: Quotas and resource limits
