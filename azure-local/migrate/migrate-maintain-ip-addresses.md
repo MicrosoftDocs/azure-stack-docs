@@ -52,15 +52,13 @@ The following scripts are included for Linux:
 
 ## Prerequisites
 
-Before you begin, prepare the source and target environments for IP migration.
-
 # [Windows](#tab/windows)
+
+Before you begin, prepare the source and target environments for IP migration.
 
 ### Prepare source VMs for IP migration
 
-To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
-
-For Windows VMs:
+To migrate Windows VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
 
 [!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
 
@@ -78,11 +76,11 @@ For Windows VMs:
 
 # [Linux](#tab/linux)
 
+Before you begin, prepare the source and target environments for IP migration.
+
 ### Prepare source VMs for IP migration
 
-To migrate VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
-
-For Linux VMs:
+To migrate Linux VMs with static IPs from the source system (Hyper-V or VMware), make sure the following requirements are met.
 
 [!INCLUDE [static-ip-migration-prerequisites](../includes/static-ip-migration-prerequisites.md)]
 
