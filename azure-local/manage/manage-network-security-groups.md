@@ -1,6 +1,6 @@
 ---
-title: Create network security groups, network security rules on Azure Local VMs (Preview)
-description: Learn how to create network security groups, network security rules, network default access policies for Azure Local virtual machines(Preview).
+title: Manage network security groups, network security rules on Azure Local VMs (Preview)
+description: Learn how to manage network security groups and network security rules for Azure Local virtual machines(Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -73,7 +73,7 @@ Follow these steps to show details of a network security group:
 2. The command outputs the details of a specified network security group (NSG). 
 
     - In this example, the NSG has no network interface attached.
-        <br></br>
+
         <details>
         <summary>Expand this section to see an example output.</summary>
         
@@ -112,8 +112,7 @@ Follow these steps to show details of a network security group:
         </details>
 
     - In this example, the NSG has a network interface attached.
-    
-        <br></br>
+
         <details>
         <summary>Expand this section to see an example output.</summary>
         
@@ -175,7 +174,6 @@ Create a NIC with the NSG created earlier in one step. IP address is optional an
 az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
 ```
 
-<br></br>
 <details>
 <summary>Expand this section to see an example output.</summary>
 
@@ -253,7 +251,6 @@ Create a static logical network (lnet) with NSG. No IP pools are passed in this 
 az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --ip-poolstart $ippoolstart --ip-pool-end $ippoolend --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan –network-security-group $nsgname 
 ```
  
-<br></br>
 <details>
 <summary>Expand this section to see an example output.</summary>
 
@@ -280,9 +277,7 @@ customlocations/examplecl",
 
   }, 
 
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logical 
-
-Networks/static-lnet3", 
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
   "location": "eastus2euap", 
   "name": "static-lnet3", 
   "properties": { 
@@ -323,9 +318,7 @@ Networks/static-lnet3",
           ], 
 
           "networkSecurityGroup": { 
-            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackH 
-
-CI/networkSecurityGroups/examplensg3", 
+            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg3", 
 
             "resourceGroup": "examplerg" 
 
@@ -389,8 +382,6 @@ az stack-hci-vm network nic create --resource-group $resource_group --custom-loc
 `az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.
 
 
-
-
 ## Manage network security rules
 
 This section describes the manage operations supported for network security rules.
@@ -421,7 +412,6 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
 
 ```output
 
-[Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
 {
   "extendedLocation": {
     "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
@@ -461,10 +451,6 @@ az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --
   "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
 }
 
-[Machine 1]: PS C:\HCIDeploymentUser>
-
-
-
 ```
 
 </details>
@@ -478,9 +464,6 @@ Run this command to update a network security rule:
 
 ```
 
-    
-
-<br></br>
 <details>
 <summary>Expand this section to see an example output.</summary>
 
@@ -509,7 +492,6 @@ Run this command to delete a network security rule:
 az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -n $securityrulename
 ```
 
-<br></br>
 <details>
 <summary>Expand this section to see an example output.</summary>
 
@@ -573,8 +555,9 @@ To dissociate a network security group from a logical network, follow these step
 
     :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png
 
-1. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
-1. Once the network security group is dissociated from the logical network, the page refreshes to indicate the dissociation.
+1. Confirm the dissociation.
+
+The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane. Once the network security group is dissociated from the logical network, the page refreshes to indicate the dissociation.
 
 ## Associate network security group with a network interface
 
@@ -590,7 +573,7 @@ To associate a network security group with a network interface, follow these ste
 1. Go to **Settings > Network security group**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." " lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
 
 1. In the **Associate network security group** page, input the following information:
 
