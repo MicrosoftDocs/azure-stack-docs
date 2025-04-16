@@ -146,9 +146,7 @@ This is a baseline release with the following features and improvements:
 
 ::: moniker-end
 
-
-::: moniker range="=azloc-24082"
-
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408.2
 
@@ -160,12 +158,6 @@ This is a baseline release with the following features and improvements:
   - You can set a SQL Server configuration for Arc VMs on Portal.
   - You can now create an image from an Arc VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
-
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 
 ## Features and improvements in 2408.1
 
