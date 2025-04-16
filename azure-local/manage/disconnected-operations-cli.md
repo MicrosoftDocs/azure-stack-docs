@@ -45,8 +45,70 @@ To use CLI, you must trust the certificate authority (CA) root certificate on yo
 For disconnected operations, you must:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
-2. [Set up and configure the certificate trusts for Azure CLI](/azure-stack/asdk/asdk-cli?view=azs-2408&tabs=win#trust-the-certificate&preserve-view=true) to configure certificate trust for CLI.
-3. Change the path to the 64-bit version: `C:\Program Files\Microsoft SDKs\Azure\CLI2`.
+2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
+
+    Here's an example script:
+
+    ```console
+    First, import the helper method as defined below:
+
+        function UpdatePythonCertStore
+    {
+        [CmdletBinding()]
+        param (
+            [Parameter(Mandatory = $false)]
+            [ValidateScript({Test-Path $_})]
+            [string]
+            $ApplianceRootCertPath = "$env:APPDATA\Appliance\applianceRoot.cer"
+        )
+     
+        Trace-Execution "[START] Updating CLI cert store with Appliance root cert at $ApplianceRootCertPath"
+        $cerFile = $ApplianceRootCertPath
+        Trace-Execution "Updating Python cert store with $cerFile"
+     
+        # C:\Program Files\Microsoft SDKs\Azure\CLI2
+        $azCli2Path = Split-Path -Path (Split-Path -Path (Get-Command -Name az).Source -Parent) -Parent
+        $pythonCertStore = "${azCli2Path}\Lib\site-packages\certifi\cacert.pem"
+     
+        Trace-Execution "Python cert store location $pythonCertStore"
+     
+        $root = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new()
+     
+        if(Test-Path $cerFile)
+        {
+            $root.Import($cerFile)
+            Trace-Execution "$(Get-Date) Extracting required information from the cert file"
+            $md5Hash    = (Get-FileHash -Path $cerFile -Algorithm MD5).Hash.ToLower()
+            $sha1Hash   = (Get-FileHash -Path $cerFile -Algorithm SHA1).Hash.ToLower()
+            $sha256Hash = (Get-FileHash -Path $cerFile -Algorithm SHA256).Hash.ToLower()
+            $issuerEntry  = [string]::Format("# Issuer: {0}", $root.Issuer)
+            $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
+            $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
+            $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
+            $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
+            $sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
+            $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
+            $certText = (Get-Content -Path $cerFile -Raw).ToString().Replace("`r`n","`n")
+            $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
+                            $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
+            Trace-Execution "Adding the certificate content to Python Cert store"
+            Add-Content $pythonCertStore $rootCertEntry
+            Trace-Execution "Python Cert store was updated to allow the Azure Stack CA root certificate"
+        }
+        else
+        {
+            $errorMessage = "$cerFile required to update CLI was not found."
+            Trace-Execution "ERROR: $errorMessage"
+            throw "UpdatePythonCertStore: $errorMessage"
+        }
+     
+        Trace-Execution "[END] Updating CLI cert store"
+    }
+
+    Next, run the helper method in PowerShell:
+
+    UpdatePythonCertStore -ApplianceRootCertPath D:\ingress.cer
+    ```
 
 ## Configure Azure CLI  
 
