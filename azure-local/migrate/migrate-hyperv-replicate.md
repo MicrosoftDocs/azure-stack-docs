@@ -218,7 +218,7 @@ This step applies only if you downloaded the .zip file.
     1. This field is automatically populated. If this is not the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
 	1. For **Target system**, select the Azure Local resource.
-	1. Verify there is a green check for the system. A green check indicates that all the prerequisites such as Arc resource bridge are configured on this system.
+	1. Verify there is a green check for the system. A green check indicates that all the prerequisites such as Azure Arc resource bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::

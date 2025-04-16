@@ -256,7 +256,7 @@ After migration, Device Manager may still display the old network adapter inform
 
 ### Multiple IP addresses on a single network adapter
 
-When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Azure Local VMs enabled by Azure Arc in Azure Local display only one IP address per network adapter in Azure Local portal. This is a known display issue in the Azure Local portal and does not affect the actual functionality of the IP addresses on the migrated VM.
+When the source VM has multiple static IP addresses assigned to a single network adapter, those IP addresses are correctly assigned on the migrated VM. However, Azure Local VMs enabled by Azure Arc in Azure Local display only one IP address per network adapter in Azure portal. This is a known display issue in the Azure Local portal and does not affect the actual functionality of the IP addresses on the migrated VM.
 
 ### Multiple network adapters and types
 
