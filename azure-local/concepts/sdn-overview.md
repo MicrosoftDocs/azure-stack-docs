@@ -1,6 +1,6 @@
 ---
 title: Software defined networking (SDN) enabled by Azure Arc on Azure Local (Preview)
-description: Cloud-managed Software defined networking (SDN) provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local. (Preview)
+description: Software defined networking enabled by Arc provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
@@ -37,14 +37,16 @@ The Azure Local solution has the following two types of SDN:
 - **SDN managed by on-prem tools**: This SDN solution is available for Windows Server and for Azure Local 2311.2 and later. This SDN has three major components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-prem tools](../concepts/software-defined-networking-23h2.md).
 
 
-## Supported operations for cloud-managed and traditional SDN
+## Supported operations for SDN enabled by Arc and SDN managed by on-prem tools
+
+Here is a summary of the supported operations for SDN enabled by Arc and SDN managed by on-prem tools:
 
 | SDN type | SDN resources  | VM types  | Management tools  |
 |---------|---------|---------|---------|
-| Cloud-managed   | Logical networks<br>VM NICs<br>Network security groups        | Azure Local VMs        | Azure portal <br> Azure CLI <br> ARM templates         |
-| Traditional     |Logical networks<br>VM NICs<br>Network security groups<br>Virtual networks<br>Peering<br>Software Load Balancers<br>VPN Gateways        | Hyper-V VMs<br>SCVMM VMs         | SDN Express<br>Windows Admin Center<br>PowerShell<br>SCVMM VMs        |
+| SDN enabled by Arc   | Logical networks<br>VM NICs<br>Network security groups        | Azure Local VMs        | Azure portal <br> Azure CLI <br> ARM templates         |
+| SDN managed by on-prem tools     |Logical networks<br>VM NICs<br>Network security groups<br>Virtual networks<br>Peering<br>Software Load Balancers<br>VPN Gateways        | Hyper-V VMs<br>SCVMM VMs         | SDN Express<br>Windows Admin Center<br>PowerShell<br>SCVMM VMs        |
 
-For cloud-managed SDN, the following SDN resources aren't supported:
+For SDN enabled by Arc, the following resources aren't supported:
 
 - Virtual networks
 - Virtual network peering
@@ -52,7 +54,7 @@ For cloud-managed SDN, the following SDN resources aren't supported:
 - VPN Gateways
 
 
-## Supported networking patterns for cloud-managed SDN
+## Supported networking patterns for SDN enabled by Arc
 
 Before enabling SDN, we recommend you check the following supported networking patterns and available options.
 
@@ -86,12 +88,12 @@ Insert a network diagram here.
     - The second compute intent is used only for VMs and workloads traffic.
     - The third storage intent is used only for storage traffic.
 
-## Choose cloud-managed or traditional SDN
+## Choose SDN type based on your requirements
 
 Starting release 2504, you have two ways to enable SDN.
 
-- Use cloud-managed SDN if workloads only require logical networks based on VLAN isolation and network security groups to secure access.​
-- Use traditional SDN if workloads require virtual networks for isolation, and load balancers or gateways.
+- Use SDN enabled by Arc if workloads only require logical networks based on VLAN isolation and network security groups to secure access.​
+- Use SDN managed by on-prem tools if workloads require virtual networks for isolation, and load balancers or gateways.
 
 Use the following detailed decision matrix to select the SDN type based on your requirements:
 
@@ -102,5 +104,5 @@ Use the following detailed decision matrix to select the SDN type based on your 
 
 For related information, see also:
 
-- [Enable cloud-managed SDN via ECE action plan](../deploy/enable-sdn-ece-action-plan.md)
-- [Deploy traditional SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
+- [Enable SDN enabled by Arc via ECE action plan](../deploy/enable-sdn-ece-action-plan.md)
+- [Deploy SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
