@@ -12,25 +12,21 @@ ms.date: 04/14/2025
 
 > Applies to: Azure Local 2504 or later
 
-This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You will use an ECE action plan via the Azure Command-line interface (CLI) to enable SDN.
+This article describes how to enable cloud-managed software defined networking (SDN) on your existing Azure Local instance. You will use an ECE action plan via the Azure Command-line interface (CLI) to enable SDN.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About SDN on Azure Local
+## About enabling SDN in Azure Local
 
-SDN is a set of technologies that enable you to create and manage logical and virtual networks in a centralized and automated way. With SDN, you can use network controllers, policies, and virtual appliances to dynamically configure and secure your network resources across different hosts and clusters.
+For cloud-managed SDN, the network controller is deployed as a set of Failover Cluster services managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the network controller into the Azure Local platform as a managed service.
 
-After the network controller is enabled, you can create and manage the following SDN features:
+Once the network controller is integrated, cloud-managed SDN is enabled. You can use the Azure portal, Azure CLI, or Azure Resource Manager templates to create and manage the following SDN features:
 
 - **Logical networks**: You can create SDN static or DHCP logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - **Network interfaces**: You can attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
 - **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on security rules. You can also create network security rules and default network access policies. For more information, see [Create network security groups](../manage/create-network-security-groups.md).
+- **Network security rules**: You can create network security rules to allow or deny traffic to and from network interfaces and logical networks. For more information, see [Create network security rules](../manage/create-network-security-rules.md).
 
-## Changes to network controller
-
-In this release, the network controller is deployed as a set of Failover Cluster services managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the network controller into the Azure Local platform as a managed service.
-
-Once the network controller is integrated, SDN is enabled. You can then create logical networks, network security groups, network access policies and even network interfaces.
 
 ## Considerations and limitations
 
@@ -44,7 +40,9 @@ SDN is a preview feature.
 ## Prerequisites
 
 - You’ve access to an Azure Local instance running 2504 or later.
-- You’ve access to a client used to connect to Azure Local instance via Azure CLI. This client should have appropriate version of software installed.
+- You’ve access to a client used to connect to Azure Local instance via Azure CLI.
+    
+    This client should have the latest version of [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel). 
 - You’ve access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
@@ -66,12 +64,12 @@ The ECE action plan uses the following parameters:
 |**MacAddressPoolEnd**   | Use this optional parameter to define the last MAC address of the custom pool.|
 
 
-
 ## Run the ECE action plan
 
 Follow these steps on the Azure CLI to run the ECE action plan:
 
-1. [Connect to the first node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
+1. Verify that you are [Connected to the first node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
+
 1. Run the ECE action plan to deploy network controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command.
 
     ```azurecli
@@ -88,9 +86,6 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     <summary>Expand this section to see an example output.</summary>
 
     ```output
-
-    [Machine1]: PS C:\DeploymentUser> az account set --subscription <Subscription ID>
-    [Machine1]: PS C:\DeploymentUser> Add-EceFeature -Name NC -SDNPrefix v
     Start                  End                    Duration    Type   Status  Name                                                                                         
     -----                  ---                    --------    ----   ------  ----                                                                                         
     03/11/2025 10:29:52 PM 03/11/2025 10:31:13 PM 00.00:01:20 Action Success └─(A)CleanNCSecret                                                                           
@@ -139,7 +134,7 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     03/11/2025 10:41:43 PM 03/11/2025 10:41:50 PM 00.00:00:07 Step   Success               └─(S)1.2.2 Flag FCNC deployed                                                                            
     03/11/2025 10:41:43 PM 03/11/2025 10:41:50 PM 00.00:00:07 Task   Success                 └─(T)Role=Cloud\Fabric\NC Interface=SetFCNCCompleteMOCHydrated                  
                            
-    InstanceID     : 138bfd53-322b-4835-b522-21d5ebae2f8d
+    InstanceID     : <Instance ID>
     ActionTypeName : EnableMOCSDN
     Status         : Completed
     StartDateTime  : 3/11/2025 10:32:52 PM
@@ -151,12 +146,10 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     VERBOSE: Enabling SDN for MOC completed.
     0
     VERBOSE: Transcript stopped at C:\MASLogs\Add-EceFeature.2025-03-11.22-29-49
-    
-    [Machine1]: PS C:\DeploymentUser>
-
     ```
+
     </details>
-    
+
 ## Next steps
 
-- [Register to Arc and assign permissions for deployment](deployment-arc-register-server-permissions.md)
+- Learn how to [Create network security groups, network security rules, and default network access policies](../manage/create-network-security-groups.md).
