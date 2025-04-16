@@ -1,5 +1,5 @@
 ---
-title: Manage network security groups, network security rules on Azure Local VMs (Preview)
+title: Manage network security groups and network security rules on Azure Local VMs (Preview)
 description: Learn how to manage network security groups and network security rules for Azure Local virtual machines(Preview).
 author: alkohli
 ms.author: alkohli
@@ -12,7 +12,7 @@ ms.service: azure-local
 
 Applies to: Azure Local 2504 or later
 
-This article describes how to manage network security groups (NSGs) and network security rules on your Azure Local virtual machines enabled by Azure Arc. Once you have created network security groups and network security rules on your Azure Local VMs, you can list, show details, associate, dissociate, update, and delete these resources.
+This article describes how to manage network security groups (NSGs) and network security rules on your Azure Local virtual machines enabled by Azure Arc. Once you create network security groups and network security rules on your Azure Local VMs, you can list, show details, associate, dissociate, update, and delete these resources.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -21,7 +21,7 @@ This article describes how to manage network security groups (NSGs) and network 
 
 # [Azure CLI](#tab/azurecli)
 
-- You've access to an Azure Local instance.
+- You have access to an Azure Local instance.
 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
@@ -30,7 +30,7 @@ This article describes how to manage network security groups (NSGs) and network 
 
 # [Azure portal](#tab/azureportal)
 
-- You've access to an Azure Local instance.
+- You have access to an Azure Local instance.
 
     - This instance is running 2504 or later.
     - This instance has a custom location created.
@@ -190,7 +190,7 @@ Follow these steps to delete a network security group:
 
 ## Associate network security group with network interface
 
-In this example, we create a network interface with an existing network security group in one step. The IP address for the network interface is optional and is not passed in this example. If you do not pass the IP address, the system assigns a random IP address from the subnet.
+In this example, we create a network interface with an existing network security group in one step. The IP address for the network interface is optional and isn't passed in this example. If you don't pass the IP address, the system assigns a random IP address from the subnet.
 
 1. Set the following parameters in your Azure CLI session.
 
@@ -275,7 +275,7 @@ In this example, we create a network interface with an existing network security
 
 ## Associate network security group with logical network
 
-In this example,  we associate a static logical network (lnet) with an existing netowrk security group. No IP pools are passed in this example as they are optional.
+In this example,  we associate a static logical network with an existing network security group. No IP pools are passed in this example as they are optional.
 
 1. Set the following parameters in your Azure CLI session.
 
@@ -543,7 +543,7 @@ az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -
 
 # [Azure portal](#tab/azureportal)
 
-This section describes the manage operations supported for network security groups and network security rules. Thsese operations are available in the Azure portal.
+This section describes the manage operations supported for network security groups and network security rules. These operations are available in the Azure portal.
 
 ## List network security groups
 
@@ -573,7 +573,7 @@ To associate a network security group with a logical network, follow these steps
     :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png" alt-text="Screenshot of a filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png":::
 
     1. From the dropdown, select a network security group.
-    1. Select **Add network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+    1. Select **Add network security group**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 
     Once the network security group is associated with the logical network, you can see the network security group in the **Network security groups** tab of the logical network.
 
@@ -618,7 +618,7 @@ To associate a network security group with a network interface, follow these ste
     :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-3.png" alt-text="Screenshot of filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-3.png":::
 
     1. **Network security group** - Select a network security group from the list of network security groups available in your Azure Local instance.
-    1. Select **Assocaite network security group**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+    1. Select **Associate network security group**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 
 ## Dissociate network security group from a network interface
 
@@ -664,7 +664,7 @@ To update a network security rule, follow these steps:
 1. In the right pane, from the list of network security groups, select a network security group.
 1. In the right pane, from the list of network security rules, select a network security rule.
 1. In the right pane, the **Edit network security rule** page opens.
-1. Update the required fields and select **Save**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+1. Update the required fields and select **Save**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 1. Once the network security rule is updated, the page refreshes to indicate the update.
 
 ---
