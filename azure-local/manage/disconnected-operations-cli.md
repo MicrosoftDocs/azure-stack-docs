@@ -50,7 +50,7 @@ For disconnected operations, you must:
     Here's an example script:
 
     ```console
-    First, import the helper method as defined below:
+    First, import the helper method as defined in this section:
 
         function UpdatePythonCertStore
     {
