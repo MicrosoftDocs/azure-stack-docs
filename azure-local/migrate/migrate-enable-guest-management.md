@@ -24,7 +24,7 @@ The output properties may vary depending on whether VMs were migrated or not.
 
 Before you begin, complete the following:
 
-- You have access to a deployed and registered Azure Local instance, with an Arc resource bridge and custom location configured.
+- You have access to a deployed and registered Azure Local instance, with an Azure Arc resource bridge and custom location configured.
 
 - Your system is running Azure Local release 2405 or later.
 
