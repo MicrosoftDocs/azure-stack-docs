@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 02/25/2025
+ms.date: 04/08/2025
 ---
 
 # About updates for Azure Local
@@ -73,7 +73,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 
 - Operating System: These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.
 
-- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. Azure Connected Machine agent and Arc Resource Bridge and its dependencies, get updated automatically to the latest validated version when Azure Local is updated.
+- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. Azure Connected Machine agent and Arc resource bridge and its dependencies, get updated automatically to the latest validated version when Azure Local is updated.
 
 - Solution Builder Extension: Hardware vendors might choose to integrate with this feature to enhance the update management experience for their customers.
 
@@ -82,7 +82,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 This solution is the recommended way to update your Azure Local.
 
 > [!NOTE]
-
+>
 > - Azure Local update includes updates for all components, including Azure CLI, PowerShell, and any extensions. Microsoft does not support out of band updates for individual components. The out of band updates could lead to incompatibility with Application Control for Windows.
 > - Customer workloads aren't covered by this update solution.
 

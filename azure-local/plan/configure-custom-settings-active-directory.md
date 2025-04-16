@@ -51,7 +51,9 @@ Here's a table that contains the permissions required for the deployment user an
 You can use PowerShell cmdlets to assign appropriate permissions to deployment user over OU. The following example shows how you can assign the required permissions to a *deploymentuser* over the OU *HCI001* that resides in the Active Directory domain *contoso.com*.
 
 > [!NOTE]
-> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps&preserve-view=true) and [OU](/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps&preserve-view=true) in your Active Directory. For more information on how to block group policy inheritance, see [Set-GPInheritance](/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps&preserve-view=true).
+> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps&preserve-view=true) and [OU](/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps&preserve-view=true) in your Active Directory. **The msFVE-RecoveryInformation must be set via PowerShell. Using the Active Directory delegation wizard is not applicable for that scenario.**
+>
+> For more information on how to block group policy inheritance, see [Set-GPInheritance](/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps&preserve-view=true).
 
 Run the following PowerShell cmdlets to import the Active Directory module and assign required permissions:
 

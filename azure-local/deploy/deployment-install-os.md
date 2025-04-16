@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/03/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -73,6 +73,14 @@ To install the operating system, version 23H2, follow these steps:
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
+## Install drivers and firmware
+
+To install the latest drivers and firmware, follow these steps:
+
+1. Skip this step if your hardware partner provides a solution builder extension (SBE). Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
+
+1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
 ## Configure the operating system using SConfig
@@ -88,11 +96,6 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 > - Machines must not be joined to Active Directory before deployment.
 
 Follow these steps to configure the operating system using SConfig:
-
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your machines.
-
-    > [!IMPORTANT]
-    > If your hardware partner provides a solution builder extension (SBE), copy it to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 

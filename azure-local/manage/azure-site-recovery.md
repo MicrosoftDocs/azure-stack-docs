@@ -108,7 +108,7 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
     1. Accept the defaults for other settings.
 
         > [!IMPORTANT]
-        > You will need owner permissions on the Recovery services vault to assign permissions to the managed identity. You will need read/write permission on the Azure Local resource and its child resources.
+        > You'll need owner permissions on the Recovery services vault to assign permissions to the managed identity. You'll need read/write permission on the Azure Local resource and its child resources.
 
         Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
@@ -147,7 +147,7 @@ After the infrastructure preparation is complete, follow these steps to select t
     1. For **Subscription**, enter or select the subscription.
     1. For **Post-failover resource group**, select the resource group name to which you fail over. When the failover occurs, the VMs in Azure are created in this resource group.
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
-    1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that is used for the VM’s replication.
+    1. For **Storage**, select the type of Azure storage you are replicating to. We recommend using managed disk.
 
         :::image type="content" source="media/azure-site-recovery/enable-replication-2.png" alt-text="Screenshot of target environment tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-2.png":::
 
@@ -164,7 +164,7 @@ After the infrastructure preparation is complete, follow these steps to select t
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-4.png" alt-text="Screenshot of virtual selection tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-4.png":::
 
-1. On the **Replication settings** tab, select the operating system type, operating system disk and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
+1. On the **Replication settings** tab, select the operating system type, operating system disk, and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-5.png" alt-text="Screenshot of Replication settings tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-5.png":::
 
