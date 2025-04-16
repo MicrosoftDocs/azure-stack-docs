@@ -1454,6 +1454,41 @@
         "source_path": "AKS-Arc/kubernetes-rbac-23h2.md",
         "redirect_url": "/azure/aks/aksarc/kubernetes-rbac-local",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-prepare-application.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-prepare-azure-container-registry.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-deploy-cluster.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-deploy-application.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-scale.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-app-update.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-upgrade-cluster.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
       }
     ]
   }
