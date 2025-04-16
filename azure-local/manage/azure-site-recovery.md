@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 04/09/2025
+ms.date: 04/16/2025
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 
@@ -244,7 +244,7 @@ Here's a list of known issues and the associated workarounds in this release:
 | 1. | When you register Azure Site Recovery with a system, a machine fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all machines in the system are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
 | 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
 | 3. | Azure Site Recovery agent fails to install. Error message of "Microsoft Azure Site Recovery Provider installation has failed with exit code - 1." appears in the portal with the failed installation. | The installation fails when WDAC is enforced. <br><br> - Setting WDAC to "Audit" mode will allow the installation to complete.  To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#manage-wdac-settings-with-powershell) |
-| 4. | Failback of an Azure Local VM to an alternate cluster fails. | Failback of a VM to an alternate cluster is not supported |
+| 4. | Failback of an Azure Local VM to an alternate cluster fails. | Failback of an Azure Local VM to an alternate cluster is not supported |
 
 ## Next steps
 
