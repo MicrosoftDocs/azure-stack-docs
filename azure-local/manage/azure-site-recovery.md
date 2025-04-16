@@ -32,7 +32,7 @@ The disaster recovery strategy for Azure Site Recovery consists of the following
 In the current implementation of Azure Site Recovery integration with Azure Local, you can start the disaster recovery and prepare the infrastructure from the Azure Local resource in the Azure portal. After the preparation is complete, you can finish the remaining steps from the Site Recovery resource in the Azure portal.
 
 > [!NOTE]
-> Azure Site Recovery doesn't support the replication, failover, and failback of the Azure Arc resource bridge and Azure Local VMs enabled by Arc.
+> Azure Site Recovery doesn't support the replication, failover, and failback of the Azure Arc resource bridge and Azure Local VMs enabled by Azure Arc.
 
 ## Overall workflow
 
