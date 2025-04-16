@@ -1,5 +1,5 @@
 ---
-title: AKS on Azure Local connectivity modes
+title: Connectivity modes in AKS Arc on Azure Local
 description: Learn about running AKS on Azure Local in disconnected and semi-connected mode.
 ms.topic: overview
 ms.date: 04/16/2025
@@ -11,7 +11,7 @@ ms.custom: conceptual
 
 ---
 
-# AKS on Azure Local connectivity modes
+# Connectivity modes in AKS on Azure Local
 
 AKS on Azure Local requires connectivity to Azure in order to use features such as Kubernetes cluster upgrades, and identity and access options such as Azure Entra ID. Also, Azure Arc agents on the AKS Arc cluster must remain connected to enable functionality such as [configuring (GitOps)](/azure/azure-arc/kubernetes/conceptual-gitops-flux2), Arc extensions, and [cluster connect](/azure/azure-arc/kubernetes/conceptual-cluster-connect). Since AKS on Azure Local clusters deployed at the edge might not always have stable network access, the Kubernetes cluster might occasionally be unable to reach Azure when it operates in a semi-connected state.
 
