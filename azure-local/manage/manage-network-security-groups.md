@@ -55,14 +55,34 @@ This section describes the manage operations supported for network security grou
 
 Follow these steps to list network security groups:
 
-```azurecli
-az stack-hci-vm network nsg list -g $resource_group
-```
+1. Set the following parameters in your Azure CLI session.
+
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus2euap"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    ```
+
+2. Run the following command to list network security groups on your Azure Local instance.
+
+    ```azurecli
+    az stack-hci-vm network nsg list -g $resource_group
+    ```
 
 
 ### Show details of a network security group
 
 Follow these steps to show details of a network security group:
+
+1. Set the following parameters in your Azure CLI session.
+  
+      ```azurecli
+      $resource_group = "examplerg"
+      $location = "eastus2euap"
+      $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+      $nsgname = "examplensg"
+      ```
 
 1. Run the following command to show details of a network security group (NSG) on your Azure Local instance.
 
@@ -70,7 +90,7 @@ Follow these steps to show details of a network security group:
     az stack-hci-vm network nsg show -g $resource_group --name $nsgname 
     ```
 
-2. The command outputs the details of a specified network security group (NSG). 
+2. The command outputs the details of a specified network security group (NSG).
 
     - In this example, the NSG has no network interface attached.
 
@@ -78,7 +98,6 @@ Follow these steps to show details of a network security group:
         <summary>Expand this section to see an example output.</summary>
         
         ```output
-        [Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nsg show -g $resource_group -n $nsgname
         {
           "eTag": null,
           "extendedLocation": {
@@ -104,11 +123,9 @@ Follow these steps to show details of a network security group:
           },
           "tags": null,
           "type": "microsoft.azurestackhci/networksecuritygroups"
-        }
-        
-        [Machine 1]: PS C:\HCIDeploymentUser>
-        
+        }        
         ```
+
         </details>
 
     - In this example, the NSG has a network interface attached.
@@ -117,7 +134,6 @@ Follow these steps to show details of a network security group:
         <summary>Expand this section to see an example output.</summary>
         
         ```output
-        [Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nsg show -g $resource_group -n $nsgname
         {
           "eTag": null,
           "extendedLocation": {
@@ -143,14 +159,12 @@ Follow these steps to show details of a network security group:
             "createdBy": "gus@contoso.com",
             "createdByType": "User",
             "lastModifiedAt": "2025-03-12T15:49:32.419759+00:00",
-            "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+            "lastModifiedBy": "User ID",
             "lastModifiedByType": "Application"
           },
           "tags": null,
           "type": "microsoft.azurestackhci/networksecuritygroups"
-        }
-        
-        [Machine 1]: PS C:\HCIDeploymentUser>        
+        }       
         ```
 
         </details>
@@ -160,215 +174,239 @@ Follow these steps to show details of a network security group:
 
 Follow these steps to delete a network security group:
 
-```azurecli
-az stack-hci-vm network nsg delete -g $resource_group --name $nsgname
-```
+1. Set the following parameters in your Azure CLI session.
 
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus2euap"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    ```
+2. Run the following command to delete a network security group (NSG) on your Azure Local instance.
+
+    ```azurecli
+    az stack-hci-vm network nsg delete -g $resource_group --name $nsgname
+    ```
 
 ## Associate network security group with network interface
 
-Create a NIC with the NSG created earlier in one step. IP address is optional and is not passed in this example. If you do not pass the IP address, the system assigns a random IP address from the subnet.
+In this example, we create a network interface with an existing network security group in one step. The IP address for the network interface is optional and is not passed in this example. If you do not pass the IP address, the system assigns a random IP address from the subnet.
 
- 
-```azurecli
-az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
-```
+1. Set the following parameters in your Azure CLI session.
 
-<details>
-<summary>Expand this section to see an example output.</summary>
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus2euap"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    $lnetname="static-lnet" 
+    $nicname="examplenic" 
+    ```
 
-```output
-[Machine 1]: PS C:\HCIDeploymentUser> $lnetname="static-lnet" 
-[Machine 1]: PS C:\HCIDeploymentUser> $nicname="examplenic" 
-[Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname 
-{ 
+2. Run the following command to create a network interface (NIC) on your Azure Local instance.
 
-  "extendedLocation": { 
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
-    "type": "CustomLocation" 
-  }, 
+    ```azurecli
+    az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
+    ```
 
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
-  "location": "eastus2euap", 
-  "name": "examplenic", 
-  "properties": { 
-    "dnsSettings": null, 
-    "ipConfigurations": [ 
-      { 
-        "name": null, 
-        "properties": { 
-          "gateway": "100.78.98.1", 
-          "prefixLength": "24", 
-          "privateIpAddress": "100.78.98.224", 
-          "subnet": { 
-            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet", 
-            "resourceGroup": "examplerg" 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+    { 
+    
+      "extendedLocation": { 
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
+        "type": "CustomLocation" 
+      }, 
+    
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
+      "location": "eastus2euap", 
+      "name": "examplenic", 
+      "properties": { 
+        "dnsSettings": null, 
+        "ipConfigurations": [ 
+          { 
+            "name": null, 
+            "properties": { 
+              "gateway": "100.78.98.1", 
+              "prefixLength": "24", 
+              "privateIpAddress": "100.78.98.224", 
+              "subnet": { 
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet", 
+                "resourceGroup": "examplerg" 
+              } 
+            } 
           } 
+        ], 
+    
+        "macAddress": "<Mac Address>", 
+        "networkSecurityGroup": { 
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
+          "resourceGroup": "examplerg" 
+        }, 
+    
+        "provisioningState": "Succeeded", 
+        "status": { 
+          "errorCode": null, 
+          "errorMessage": null, 
+          "provisioningStatus": null 
         } 
-      } 
-    ], 
-
-    "macAddress": "02:ec:ce:e0:00:01", 
-    "networkSecurityGroup": { 
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
-      "resourceGroup": "examplerg" 
-    }, 
-
-    "provisioningState": "Succeeded", 
-    "status": { 
-      "errorCode": null, 
-      "errorMessage": null, 
-      "provisioningStatus": null 
+      }, 
+    
+      "resourceGroup": "examplerg", 
+      "systemData": { 
+        "createdAt": "2025-03-11T23:38:19.228090+00:00", 
+        "createdBy": "gus@contoso.com", 
+        "createdByType": "<User>", 
+        "lastModifiedAt": "2025-03-12T15:49:32.143520+00:00", 
+        "lastModifiedBy": "<User ID>", 
+        "lastModifiedByType": "Application" 
+      }, 
+    
+      "tags": null, 
+      "type": "microsoft.azurestackhci/networkinterfaces" 
     } 
-  }, 
-
-  "resourceGroup": "examplerg", 
-  "systemData": { 
-    "createdAt": "2025-03-11T23:38:19.228090+00:00", 
-    "createdBy": "gus@contoso.com", 
-    "createdByType": "User", 
-    "lastModifiedAt": "2025-03-12T15:49:32.143520+00:00", 
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
-    "lastModifiedByType": "Application" 
-  }, 
-
-  "tags": null, 
-  "type": "microsoft.azurestackhci/networkinterfaces" 
-} 
-
-[Machine 1]: PS C:\HCIDeploymentUser>
-```
+    
+    ```
 
 </details>
 
 
 ## Associate network security group with logical network
 
-Create a static logical network (lnet) with NSG. No IP pools are passed in this example as they are optional.
+In this example,  we associate a static logical network (lnet) with an existing netowrk security group. No IP pools are passed in this example as they are optional.
 
- 
-```azurecli
-az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --ip-poolstart $ippoolstart --ip-pool-end $ippoolend --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan –network-security-group $nsgname 
-```
- 
-<details>
-<summary>Expand this section to see an example output.</summary>
+1. Set the following parameters in your Azure CLI session.
 
-```output
-[Machine 1]: PS C:\HCIDeploymentUser> $lnetname="static-lnet3" 
-$ipaddress="100.78.98.10" 
-$ipaddprefix="100.78.98.0/24" 
-$vmswitchname='"ConvergedSwitch(managementcompute)"' 
-$dnsservers="100.71.93.111" 
-$gateway="100.78.98.1" 
-$vlan="301" 
+  
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus2euap"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    $nicname="examplenic" 
+    $lnetname="static-lnet3" 
+    $ipaddress="100.78.98.10" 
+    $ipaddprefix="100.78.98.0/24" 
+    $vmswitchname='"ConvergedSwitch(managementcompute)"' 
+    $dnsservers="100.71.93.111" 
+    $gateway="100.78.98.1" 
+    $vlan="301"
+    ```
 
-[Machine 1]: PS C:\HCIDeploymentUser> az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan --network-security-group $nsgname 
+1. Run the following command to associate a logical network with a network security group on your Azure Local instance.
 
-{ 
+    ```azurecli
+    az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan –network-security-group $nsgname 
+    ```
 
-  "extendedLocation": { 
-
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/ 
-
-customlocations/examplecl", 
-
-    "type": "CustomLocation" 
-
-  }, 
-
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
-  "location": "eastus2euap", 
-  "name": "static-lnet3", 
-  "properties": { 
-    "dhcpOptions": { 
-      "dnsServers": [ 
-        "100.71.93.111" 
-      ] 
-    }, 
-
-    "provisioningState": "Succeeded", 
-    "status": { 
-      "errorCode": "", 
-      "errorMessage": "", 
-      "provisioningStatus": null 
-    }, 
-
-    "subnets": [ 
-      { 
-        "name": "static-lnet3", 
-        "properties": { 
-          "addressPrefix": "100.78.98.0/24", 
-          "addressPrefixes": null, 
-          "ipAllocationMethod": "Static", 
-          "ipConfigurationReferences": null, 
-          "ipPools": [ 
-
-            { 
-              "end": "100.78.98.255", 
-              "info": { 
-                "available": "256", 
-                "used": "0" 
-              }, 
-
-              "ipPoolType": null, 
-              "name": null, 
-              "start": "100.78.98.0" 
-            } 
-          ], 
-
-          "networkSecurityGroup": { 
-            "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg3", 
-
-            "resourceGroup": "examplerg" 
-
-          }, 
-
-          "routeTable": { 
-            "etag": null, 
-            "name": null, 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+    { 
+    
+      "extendedLocation": { 
+    
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/ 
+    
+    customlocations/examplecl", 
+    
+        "type": "CustomLocation" 
+    
+      }, 
+    
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
+      "location": "eastus2euap", 
+      "name": "static-lnet3", 
+      "properties": { 
+        "dhcpOptions": { 
+          "dnsServers": [ 
+            "100.71.93.111" 
+          ] 
+        }, 
+    
+        "provisioningState": "Succeeded", 
+        "status": { 
+          "errorCode": "", 
+          "errorMessage": "", 
+          "provisioningStatus": null 
+        }, 
+    
+        "subnets": [ 
+          { 
+            "name": "static-lnet3", 
             "properties": { 
-              "routes": [ 
-
+              "addressPrefix": "100.78.98.0/24", 
+              "addressPrefixes": null, 
+              "ipAllocationMethod": "Static", 
+              "ipConfigurationReferences": null, 
+              "ipPools": [ 
+    
                 { 
+                  "end": "100.78.98.255", 
+                  "info": { 
+                    "available": "256", 
+                    "used": "0" 
+                  }, 
+    
+                  "ipPoolType": null, 
                   "name": null, 
-                  "properties": { 
-                    "addressPrefix": "0.0.0.0/0", 
-                    "nextHopIpAddress": "100.78.98.1" 
-                  } 
+                  "start": "100.78.98.0" 
                 } 
-              ] 
-            }, 
-
-            "type": null 
-
-          }, 
-
-          "vlan": 301 
-
-        } 
-      } 
-    ], 
-
-    "vmSwitchName": "ConvergedSwitch(managementcompute)" 
-  }, 
-
-  "resourceGroup": "examplerg", 
-  "systemData": { 
-    "createdAt": "2025-03-13T01:04:07.645689+00:00", 
-    "createdBy": "gus@contoso.com", 
-    "createdByType": "User", 
-    "lastModifiedAt": "2025-03-13T01:04:15.389109+00:00", 
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
-    "lastModifiedByType": "Application" 
-  }, 
-
-  "tags": null, 
-  "type": "microsoft.azurestackhci/logicalnetworks" 
-} 
- 
-[Machine 1]: PS C:\HCIDeploymentUser>
-```
+              ], 
+    
+              "networkSecurityGroup": { 
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg3", 
+    
+                "resourceGroup": "examplerg" 
+    
+              }, 
+    
+              "routeTable": { 
+                "etag": null, 
+                "name": null, 
+                "properties": { 
+                  "routes": [ 
+    
+                    { 
+                      "name": null, 
+                      "properties": { 
+                        "addressPrefix": "0.0.0.0/0", 
+                        "nextHopIpAddress": "100.78.98.1" 
+                      } 
+                    } 
+                  ] 
+                }, 
+    
+                "type": null 
+    
+              }, 
+    
+              "vlan": 301 
+    
+            } 
+          } 
+        ], 
+    
+        "vmSwitchName": "ConvergedSwitch(managementcompute)" 
+      }, 
+    
+      "resourceGroup": "examplerg", 
+      "systemData": { 
+        "createdAt": "2025-03-13T01:04:07.645689+00:00", 
+        "createdBy": "gus@contoso.com", 
+        "createdByType": "User", 
+        "lastModifiedAt": "2025-03-13T01:04:15.389109+00:00", 
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+        "lastModifiedByType": "Application" 
+      }, 
+    
+      "tags": null, 
+      "type": "microsoft.azurestackhci/logicalnetworks" 
+    } 
+    ```
 
 </details>
 
@@ -528,11 +566,11 @@ To associate a network security group with a logical network, follow these steps
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Associate network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png":::
 
 1. In the **Associate network security group** page:
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png" alt-text="Screenshot of a filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-3.png":::
 
     1. From the dropdown, select a network security group.
     1. Select **Add network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
@@ -548,16 +586,16 @@ To dissociate a network security group from a logical network, follow these step
 1. Go to **Azure Local resource page > Resources > Logical networks**.
 1. In the right pane, from the list of logical networks, select a network.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting a logical network." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
 
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
 
 1. Confirm the dissociation.
 
-The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane. Once the network security group is dissociated from the logical network, the page refreshes to indicate the dissociation.
+The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane. Once the network security group is dissociated from the logical network, the page refreshes to indicate the dissociation.
 
 ## Associate network security group with a network interface
 
@@ -568,19 +606,19 @@ To associate a network security group with a network interface, follow these ste
 1. Go to **Azure Local resource page > Resources > Network interfaces**.
 1. In the right pane, from the list of network interfaces, select a network interface.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting a network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png":::
 
 1. Go to **Settings > Network security group**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Associate network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
 
 1. In the **Associate network security group** page, input the following information:
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-3.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-3.png" alt-text="Screenshot of filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-3.png":::
 
     1. **Network security group** - Select a network security group from the list of network security groups available in your Azure Local instance.
-    1. Select **Assocaite network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+    1. Select **Assocaite network security group**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 
 ## Dissociate network security group from a network interface
 
@@ -590,17 +628,17 @@ To dissociate a network security group from a network interface, follow these st
 
 1. Go to **Azure Local resource page > Resources > Network interfaces**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png"::: 
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting network interface to dissociate from the network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png"::: 
 
 1. In the right pane, from the list of network interfaces, select an interface that has a network security group attached to it.
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png":::
 
 1. Confirm the dissociation.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png" alt-text="Screenshot of confirmation for Dissocaite network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
 
 Once the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
 

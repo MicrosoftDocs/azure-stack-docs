@@ -340,11 +340,11 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
 
 1. On the Networking tab, select **+ Add network interface**.
 
-    :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-1.png" alt-text="Screenshot 9." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-1.png" alt-text="Screenshot showing addition of a network interface." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
 
 1. In the **Add network interface** page, input the following information:
 
-    :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-3.png" alt-text="Screenshot 9." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-3.png" alt-text="Screenshot showing network interface NSG options for the new network interface." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
 
     1. **Name** - Enter a name for the network interface.
     1. **Network** - Select a logical network from the list of logical networks available in your Azure Local instance.
