@@ -37,7 +37,7 @@
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Connectivity modes
-      href: connectivity-modes-aks-local.md  
+      href: connectivity-modes.md  
     - name: Billing
       items:
       - name: Pricing details
