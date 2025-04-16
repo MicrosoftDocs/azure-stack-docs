@@ -645,8 +645,6 @@ After the network security group is dissociated from the network interface, the 
 
 ## List network security rules in a network security group
 
-List network security rules in a network security group.
-
 To list network security rules in a network security group, follow these steps:
 
 1. Go to **Azure Local resource page > Resources > Network security groups**.
@@ -654,8 +652,6 @@ To list network security rules in a network security group, follow these steps:
 1. In the right pane, from the list of network security rules, select a network security rule. The details of the network security rule are displayed in the right pane.
 
 ## Update a network security rule
-
-Update a network security rule.
 
 To update a network security rule, follow these steps:
 
