@@ -33,7 +33,9 @@
     - name: High availability
       items: 
       - name: Use availability sets
-        href: availability-sets.md   
+        href: availability-sets.md
+    - name: Connectivity modes
+      href: connectivity-modes-aks-local.md  
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Billing
