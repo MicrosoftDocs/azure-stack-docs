@@ -46,7 +46,7 @@ Here is a summary of the supported operations for SDN enabled by Arc and SDN man
 | SDN enabled by Arc   | Logical networks<br>VM NICs<br>Network security groups        | Azure Local VMs        | Azure portal <br> Azure CLI <br> ARM templates         |
 | SDN managed by on-prem tools     |Logical networks<br>VM NICs<br>Network security groups<br>Virtual networks<br>Peering<br>Software Load Balancers<br>VPN Gateways        | Hyper-V VMs<br>SCVMM VMs         | SDN Express<br>Windows Admin Center<br>PowerShell<br>SCVMM VMs        |
 
-## Unsupported scenarios For SDN enabled by Arc
+## Unsupported scenarios for SDN enabled by Arc
 
 - The following SDN resources aren't supported:
 

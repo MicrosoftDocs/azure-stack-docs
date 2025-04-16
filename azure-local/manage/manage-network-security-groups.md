@@ -424,17 +424,6 @@ az stack-hci-vm network nic create --resource-group $resource_group --custom-loc
 
 This section describes the manage operations supported for network security rules.
 
-<br></br>
-<details>
-<summary>Expand this section to see an example output.</summary>
-
-```output
-
-
-```
-
-</details>
-
 ### Show details of a network security rule
 
 Run this command to show details of a network security rule:
@@ -521,6 +510,16 @@ Run this command to list network security rules in a network security group:
 
 ```
 
+<br></br>
+<details>
+<summary>Expand this section to see an example output.</summary>
+
+```output
+
+
+```
+
+</details>
 
 ### Delete a network security rule
 
@@ -638,7 +637,7 @@ To dissociate a network security group from a network interface, follow these st
 
 1. Confirm the dissociation.
 
-    :::image type="content" source="dissociate-network-security-group-nic-3" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
 
 The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 After the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
