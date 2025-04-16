@@ -27,15 +27,19 @@ Once the network controller is integrated, cloud-managed SDN is enabled. You can
 - **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on security rules. You can also create network security rules and default network access policies. For more information, see [Create network security groups](../manage/create-network-security-groups.md).
 - **Network security rules**: You can create network security rules to allow or deny traffic to and from network interfaces and logical networks. For more information, see [Create network security rules](../manage/create-network-security-rules.md).
 
-
 ## Considerations and limitations
 
-SDN is a preview feature.
+> [!IMPORTANT]
+> - Cloud-managed SDN is a preview feature and shouldn't be deployed on production clusters.
+> - Once you have enabled SDN, you can't roll back or disable.
 
-- Once you have enabled SDN, you can't roll back.
-- Make sure that you use this feature for testing and development only.
-- Do not deploy this feature on production data.
-- For cloud-based SDN, SLB and gateway are not supported.
+Here are some considerations and limitations to keep in mind:
+
+- Cloud-managed SDN is supported with updates to newer Azure Local releases.
+- AKS workloads on Azure Local do not support network security groups applied to the logical network where they are running.
+- Enabling cloud-managed SDN with existing Azure Local VMs and logical networks is supported.
+    - The logical networks and network interfaces are automatically hydrated into the Network Controller.
+    - You may experience a short network disruption (about 30 seconds disconnection while SDN Azure Virtual Filtering Platform policies are applied).
 
 ## Prerequisites
 
@@ -46,6 +50,9 @@ SDN is a preview feature.
 - You’ve access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+- Make sure that Dynamic DNS updates are enabled or pre-create the NC rest name DNS record before you run `Add-EceFeature`.
+    - The NC rest name should be unique in the Active Directory.
+    - For more information, see [Dynamic DNS updates](../index.yml).
 
 ## Sign in and set subscription
 
