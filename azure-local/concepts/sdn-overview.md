@@ -46,13 +46,18 @@ Here is a summary of the supported operations for SDN enabled by Arc and SDN man
 | SDN enabled by Arc   | Logical networks<br>VM NICs<br>Network security groups        | Azure Local VMs        | Azure portal <br> Azure CLI <br> ARM templates         |
 | SDN managed by on-prem tools     |Logical networks<br>VM NICs<br>Network security groups<br>Virtual networks<br>Peering<br>Software Load Balancers<br>VPN Gateways        | Hyper-V VMs<br>SCVMM VMs         | SDN Express<br>Windows Admin Center<br>PowerShell<br>SCVMM VMs        |
 
-For SDN enabled by Arc, the following resources aren't supported:
+## Unsupported scenarios For SDN enabled by Arc
 
-- Virtual networks
-- Virtual network peering
-- Software Load Balancers (SLBs)
-- VPN Gateways
+- The following SDN resources aren't supported:
 
+    - Virtual networks
+    - Virtual network peering
+    - Software Load Balancers (SLBs)
+    - VPN Gateways
+
+- Hybrid scenarios aren't supported. Deployment and management methods should be consistent. If SDN is enabled by Azure Arc, it can only be managed via Azure portal, Azure CLI, and ARM template.
+- Management via on-premises tools such as Windows Admin Center and SDN express scripts are not supported.
+- Disaster recovery support is currently not available.
 
 ## Supported networking patterns for SDN enabled by Arc
 
@@ -60,28 +65,34 @@ Before enabling SDN, we recommend you check the following supported networking p
 
 ### Group all traffic on single network intent
 
-Insert a network diagram here.
-
+- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#group-all-traffic-on-a-single-intent)
 - Use this pattern only with switched storage network connectivity.
-- Use the *Group all traffic* host networking pattern in single or multi node configuration.
+
+    :::image type="content" source="./media/sdn-overview/group-all-traffic.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/sdn-overview/group-all-traffic.png":::
+
 - A single virtual switch is available to create SDN resources.
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
 
-### Group management and compute traffic
+### Group management and compute traffic in one intent with a separate storage intent
 
-Insert a network diagram here.
-
+- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#group-management-and-compute-traffic-in-one-intent-with-a-separate-storage-intent).
 - Use this pattern with switched or switchless storage network connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
-- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration.
+
+    :::image type="content" source="./media/sdn-overview/group-management-compute-traffic.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/sdn-overview/group-all-traffic.png":::
+
 - A single virtual switch is available to create SDN resources.
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
 
 ### Custom configuration - Disaggregated host networking
 
-Insert a network diagram here.
+- Use the *Custom configuration* host networking pattern in single or multi node configuration. For more information about this pattern, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#fully-disaggregated-host-networking).
+
+    :::image type="content" source="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png":::
 
 - Use this pattern with switched or switchless storage connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
-- Use the *Custom configuration* host networking pattern in single or multi node configuration.
+
+    :::image type="content" source="./media/sdn-overview/custom-configuration-disaggregated-networking.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/sdn-overview/custom-configuration-disaggregated-networking.png":::
+
 - A single virtual switch is available to create SDN resources.
 - You can use up to 3 network intents provided there are enough network adapter ports to disaggregate the network traffic types.
     - The first management intent is used only for host management traffic.
