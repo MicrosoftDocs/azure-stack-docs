@@ -80,7 +80,7 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - The target system must be running Azure Local.
 
-- An Azure Arc resource bridge must exist on the Azure Local system for migration. The Arc resource bridge is automatically created during the deployment. To verify that an Azure Arc resource bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Azure Arc resource bridge must exist on the Azure Local system for migration. The Azure Arc resource bridge is automatically created during the deployment. To verify that an Azure Arc resource bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
 - Ensure that a logical network is configured on your Azure Arc resource bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 
