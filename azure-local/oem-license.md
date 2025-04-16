@@ -1,5 +1,5 @@
 ---
-title: Azure Local with Windows Server Datacenter 2025 overview
+title: OEM license for Azure Local overview
 description: Learn about the OEM license for Azure Local, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
