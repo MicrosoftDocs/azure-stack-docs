@@ -4,7 +4,7 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/14/2025
+ms.date: 04/16/2025
 ms.service: azure-local
 ---
 
@@ -549,7 +549,7 @@ This section describes the manage operations supported for network security grou
 
 Go to **Azure Local resource page > Resources > Network security groups**. You see a list of network security groups present on your Azure Local.
 
-:::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
+:::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of list of create network security groups." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
 
 
 ## Associate network security group with a logical network
@@ -561,12 +561,12 @@ To associate a network security group with a logical network, follow these steps
 1. Go to **Azure Local resource page > Resources > Logical networks**.
 1. In the right pane, from the list of logical networks, select a network.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png" alt-text="Screenshot of selecting a logical network to associate with network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-1.png":::
 
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Associate network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Associate network security group for the specified logical network." lightbox="./media/manage-network-security-groups/associate-network-security-group-logical-network-2.png":::
 
 1. In the **Associate network security group** page:
 
@@ -591,7 +591,7 @@ To dissociate a network security group from a logical network, follow these step
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Dissociate network security group for the specified logical network" lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
 
 1. Confirm the dissociation.
 
@@ -611,7 +611,7 @@ To associate a network security group with a network interface, follow these ste
 1. Go to **Settings > Network security group**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Associate network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Associate network security group with the selected network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
 
 1. In the **Associate network security group** page, input the following information:
 
@@ -670,4 +670,4 @@ To update a network security rule, follow these steps:
 
 ## Next steps
 
-- [Manage NSGs on Azure Local](../index.yml)
+- [Troubleshoot SDN enabled by Arc](../index.yml).
