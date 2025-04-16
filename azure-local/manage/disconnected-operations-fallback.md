@@ -24,8 +24,6 @@ Use appliance fallback logging to collect and send logs to Microsoft when the Az
 ## Prerequisites
 
 - [Import the Appliance logging](#import-the-appliance-logging).
-- Ensure access to the logs.
-- Verify permission to run the cmdlets.
 
 ## Import the Appliance logging
 
@@ -284,6 +282,12 @@ StampId
 
 If no `StampId` is listed in the returned content after running the command, the stamp ID isn't set and needs to be passed into the [Send-DiagnosticData](#send-diagnosticdata) manually. If the stamp ID isn't set and isn't passed manually, it defaults to the host **UUID**.
 
+Alternatively, you can use the `Get-ApplianceInstanceConfiguration` command to get the stamp ID.
+
+```powershell
+$stampId = (Get-ApplianceInstanceConfiguration).StampId
+```
+
 ## Appendix  
 
 To view detailed information about the corresponding cmdlet, you can use the following commands:
@@ -356,15 +360,8 @@ PS C:\># Copy-DiagnosticData pipes the 'DiagnosticLogPath' (always) and the Obse
 # as the 'StampId' if available.
 
 Copy-DiagnosticData -DiagnosticLogPath "C:" -Roles @("ServiceFabric") `  | Send-DiagnosticData -ResourceGroupName "Resource group" `  -SubscriptionId "Subscription Id" ` -TenantId "Tenant Id" ` -RegstrationRegion “eastus”
-```
 
-</details>
-
-<details>
-
-<summary>Copy_Send.txt</summary>
-
-```plaintext  
+EXAMPLE 6
 PS C:\> $roles = @("Agents", "Oplets", "MASLogs")  
 
 PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles ` | Send-DiagnosticData ` -ResourceGroupName "Resource group" ` -RegistrationRegion "eastus" ` -SubscriptionId "Subscription Id" ` -TenantId "Tentant Id" ` -RegistrationWithCredential $sp
