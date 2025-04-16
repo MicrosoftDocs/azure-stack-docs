@@ -1,23 +1,23 @@
 ---
-title: Quickstart to set up AKS enabled by Azure Arc using Windows Admin Center
-description: Learn how to set up AKS enabled by Azure Arc using Windows Admin Center
+title: Quickstart to set up AKS on Windows Server using Windows Admin Center
+description: Learn how to set up AKS on Windows Server using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 12/27/2023
+ms.date: 04/04/2025
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal
 
-# Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up AKS enabled by Azure Arc.
+# Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up AKS on Windows Server.
 # Keyword: Windows Admin Center Kubernetes
 ---
 
-# Quickstart: Set up AKS enabled by Azure Arc using Windows Admin Center
+# Quickstart: Set up AKS on Windows Server using Windows Admin Center
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this quickstart, you set up AKS enabled by Arc using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
+In this quickstart, you set up AKS on Windows Server using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 
 Setup involves the following tasks:
 
@@ -77,7 +77,7 @@ Now that you verified the system settings, follow these steps:
 
    [![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png)](.\media\setup\host-configuration-static.png#lightbox)
 
-   (Optional) Configure proxy settings as required for the AKS host. These settings are dependent on the proxy settings that are provisioned on the Azure Local host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
+   (Optional) Configure proxy settings as required for the AKS host. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
    [![Screenshot that shows the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png#lightbox)
 

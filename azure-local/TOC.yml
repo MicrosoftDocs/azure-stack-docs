@@ -500,6 +500,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: What's new in VM migration?
+      href: migrate/migrate-whats-new.md
     - name: Hyper-V VMs
       items: 
       - name: Overview

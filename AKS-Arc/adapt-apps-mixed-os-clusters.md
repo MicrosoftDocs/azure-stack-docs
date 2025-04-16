@@ -1,6 +1,6 @@
 ---
 title: Adapt applications for use in mixed-OS Kubernetes clusters
-description: Learn how to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS Arc are scheduled on the correct worker node operating system.
+description: Learn how to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS on Windows Server are scheduled on the correct worker node operating system.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/27/2024
@@ -16,9 +16,9 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-AKS enabled by Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. This how-to guide describes how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
+AKS on Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. This how-to guide describes how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
-This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Arc](kubernetes-concepts.md).
+This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Windows Server](kubernetes-concepts.md).
 
 ## Node selectors
 
