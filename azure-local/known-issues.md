@@ -480,7 +480,7 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24082"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2408.2
 
@@ -563,10 +563,6 @@ The following table lists the known issues from previous releases:
 | Update <!--27625941--> | When applying a cluster update to 10.2402.3.11 the `Get-SolutionUpdate` cmdlet may not respond and eventually fails with a RequestTimeoutException after approximately 10 minutes. This is likely to occur following an add or repair node scenario. | Use the `Start-ClusterGroup` and `Stop-ClusterGroup` cmdlets to restart the update service. </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Stop-ClusterGroup` </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Start-ClusterGroup` </br><br> A successful run of these cmdlets should bring the update service online. |
 | Cluster aware updating <!--26411980--> |Resume node operation failed to resume node. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 | Cluster aware updating <!--26346755--> |Suspend node operation was stuck for greater than 90 minutes. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2408.1
 
