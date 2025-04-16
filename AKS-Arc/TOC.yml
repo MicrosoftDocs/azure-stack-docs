@@ -33,9 +33,11 @@
     - name: High availability
       items: 
       - name: Use availability sets
-        href: availability-sets.md   
+        href: availability-sets.md
     - name: Supported scale requirements
       href: scale-requirements.md
+    - name: Connectivity modes
+      href: connectivity-modes.md  
     - name: Billing
       items:
       - name: Pricing details
