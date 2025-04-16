@@ -632,16 +632,18 @@ To dissociate a network security group from a network interface, follow these st
 
 1. In the right pane, from the list of network interfaces, select an interface that has a network security group attached to it.
 1. Go to **Settings > Network security groups**.
-1. In the right-pane, from the top command bar, select **Dissociate network security group**. The operation will take a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
+1. In the right-pane, from the top command bar, select **Dissociate network security group**. 
 
     :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png":::
 
 1. Confirm the dissociation.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png" alt-text="Screenshot of confirmation for Dissocaite network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
+    :::image type="content" source="dissociate-network-security-group-nic-3" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
 
+The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 Once the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
 
+[iamge](./media/manage-network-security-groups/)
 
 ## List network security rules in a network security group
 
