@@ -62,6 +62,9 @@ The ECE action plan uses the following parameters:
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
 |**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
+|**MacAddressPoolStart**   | Use this optional parameter to define the first MAC address of the custom pool.|
+|**MacAddressPoolEnd**   | Use this optional parameter to define the last MAC address of the custom pool.|
+
 
 
 ## Run the ECE action plan
