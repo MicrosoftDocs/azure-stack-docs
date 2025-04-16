@@ -1,6 +1,6 @@
 ---
 title: Cloud-managed and traditional Software defined networking (SDN) in Azure Local, version 24H2
-description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
+description: Cloud-managed Software defined networking (SDN) provides a way to centrally configure and manage logical networks, network security groups, network security rules via the Azure portal and Azure CLI in Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
@@ -8,11 +8,11 @@ ms.service: azure-local
 ms.date: 04/16/2025
 ---
 
-# Software Defined Networking (SDN) in Azure Local
+# Cloud-managed Software Defined Networking (SDN) in Azure Local
 
 > Applies to: Azure Local 2504 and later
 
-This article provides an overview of the Software defined networking (SDN) in Azure Local including the types of SDN, when to use which type, and supported scenarios for cloud-managed SDN.
+This article provides an overview of the Cloud-managed Software defined networking (SDN) in Azure Local including the types of SDN, when to use which type, and supported scenarios for cloud-managed SDN.
 
 SDN provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your datacenter. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. <!--Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.-->
 
@@ -98,10 +98,9 @@ Use the following detailed decision matrix to select the SDN type based on your 
 :::image type="content" source="./media/sdn-overview/sdn-type-decision-matrix.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/sdn-overview/sdn-type-decision-matrix.png":::
 
 
-
 ## Next steps
 
 For related information, see also:
 
-- [Enable cloud-managed SDN via ECE action plan](./enable-sdn-action-plan.md)
+- [Enable cloud-managed SDN via ECE action plan](../deploy/enable-sdn-ece-action-plan.md)
 - [Deploy traditional SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)

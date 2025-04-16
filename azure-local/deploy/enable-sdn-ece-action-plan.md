@@ -25,7 +25,7 @@ Once the network controller is integrated, cloud-managed SDN is enabled. You can
 - **Logical networks**: You can create SDN static or DHCP logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - **Network interfaces**: You can attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
 - **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on security rules. You can also create network security rules and default network access policies. For more information, see [Create network security groups](../manage/create-network-security-groups.md).
-- **Network security rules**: You can create network security rules to allow or deny traffic to and from network interfaces and logical networks. For more information, see [Create network security rules](../manage/create-network-security-rules.md).
+- **Network security rules**: You can create network security rules to allow or deny traffic to and from network interfaces and logical networks. For more information, see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
 
 ## Considerations and limitations
 
@@ -46,7 +46,7 @@ Here are some considerations and limitations to keep in mind:
 - You’ve access to an Azure Local instance running 2504 or later.
 - You’ve access to a client used to connect to Azure Local instance via Azure CLI.
     
-    This client should have the latest version of [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel). 
+    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel). 
 - You’ve access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).

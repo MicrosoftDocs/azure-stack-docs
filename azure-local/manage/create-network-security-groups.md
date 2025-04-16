@@ -1,10 +1,10 @@
 ---
-title: Manage network security groups, network security rules on Azure Local VMs (Preview)
-description: Learn about the Azure verification for VMs feature on Azure Local (Preview).
+title: Create network security groups, network security rules, default network access policies on Azure Local VMs (Preview)
+description: Learn how to create network security groups, network security rules, and default network access policies on Azure Local VMs using the Azure CLI or the Azure portal (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/14/2025
+ms.date: 04/16/2025
 ms.service: azure-local
 ---
 
@@ -163,12 +163,12 @@ After you create a network security group, you're ready to create network securi
     | **direction** | Direction of the network security rule can be outbound or inbound. |
     | **source** | Specify the source as an address prefix or an IP address but not both.  |
     | **source-port-ranges** | Specify the source port range to match either an incoming or outgoing packet. You can enter `*` to specify all source ports.  |
-    | **source-address-prefixes** | |
+    | **source-address-prefixes** | 
     | **destination** | Specify the destination as an address prefix or an IP address but not both.  |  
-    | **destination-address-prefixes** |  |
+    | **destination-address-prefixes** |  
     | **destination-port-ranges** | Specify the destination port range to match either an incoming or outgoing packet. You can enter `*` to specify all destination ports.  |
     | **protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are **All**, **TCP** and **UDP**. |
-    | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny**. ||
+    | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny**. |
     | **priority** | Priority of the rule. Acceptable values are **101** to **65000**. A lower value denotes a higher priority.  |
     | **description** | An optional description for this network security rule.  |
 
@@ -254,15 +254,15 @@ Follow these steps in Azure portal to create a network security group.
 
 1. Go to **Azure Local resource page > Resources > Network security groups**. You see a list of network security groups present on your Azure Local.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of selecting create network security group." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of Network security groups option in left-pane." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
 
 1. In the right pane, from the top command bar, select **+ Create network security group**.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-2.png" alt-text="Screenshot 1." lightbox="./media/create-network-security-groups/create-network-security-group-2.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-2.png" alt-text="Screenshot of Create network security group option selected." lightbox="./media/create-network-security-groups/create-network-security-group-2.png":::
 
 1. On the **Basics** tab, input the following information:
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-3.png" alt-text="Screenshot 2." lightbox="./media/create-network-security-groups/create-network-security-group-3.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-3.png" alt-text="Screenshot of Basics tab filled out for creation of network security group." lightbox="./media/create-network-security-groups/create-network-security-group-3.png":::
 
     1. **Subscription** - Choose the subscription you want to use for the NSG.
     1. **Resource group** - Create new or choose an existing resource group where you deploy all the resources associated with your Azure Local VM.
@@ -275,15 +275,15 @@ Follow these steps in Azure portal to create a network security group.
     1. Review the settings.
     1. Select **Create**.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-4.png" alt-text="Screenshot 3." lightbox="./media/create-network-security-groups/create-network-security-group-4.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-4.png" alt-text="Screenshot of Review + Create tab for creation of network security group." lightbox="./media/create-network-security-groups/create-network-security-group-4.png":::
 
 1. A job starts and after the job is completed, you see a notification. Select **Go to resource**. On the **Resource group**, you see an NSG is created.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-5.png" alt-text="Screenshot 4." lightbox="./media/create-network-security-groups/create-network-security-group-5.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-5.png" alt-text="Screenshot of newly created network security group in the resource group." lightbox="./media/create-network-security-groups/create-network-security-group-5.png":::
 
 1. Go to **Azure Local cluster resource > Resources > Network security groups**. A new NSG is added to the list of the NSG on your Azure Local.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-6.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-group-6.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-group-6.png" alt-text="Screenshot of newly created network security group in the list of network security groups." lightbox="./media/create-network-security-groups/create-network-security-group-6.png":::
 
 ## Create a network security rule
 
@@ -293,19 +293,19 @@ Follow these steps in Azure portal for your Azure Local:
 
 1. Go to **Azure Local resource page > Resources > Network security groups**.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-1.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-1.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-1.png" alt-text="Screenshot of network security groups option selected for the creation of network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-1.png":::
 
 1. In the right pane, from the list of network security groups, select a network security group.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-2.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-2.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-2.png" alt-text="Screenshot of a network security group selected for the creation of network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-2.png":::
 
 1. Go to **Settings > Inbound security rules** for inbound rules or **Outbound security rules** for outbound rule. In the right-pane, from the top command bar, select **+ Create**.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-3.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-3.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-3.png" alt-text="Screenshot of for an inbound network security rule with Create selected." lightbox="./media/create-network-security-groups/create-network-security-rule-3.png":::
 
 1. In the **Add inbound security rule** page, input the following information:
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-4.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-4.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-4.png" alt-text="Screenshot of Inbound security rule with all the parameters filled out." lightbox="./media/create-network-security-groups/create-network-security-rule-4.png":::
 
     1. **Source** - Choose between **IP address** or **Any**. The source specifies the incoming traffic from a specific IP address range that is allowed or denied by this rule.
     1. **Source IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you chose IP address as the source.
@@ -322,7 +322,7 @@ Follow these steps in Azure portal for your Azure Local:
 
 1. **Refresh** the list. The newly created network security rule should show up.
 
-    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-5-a.png" alt-text="Screenshot 5." lightbox="./media/create-network-security-groups/create-network-security-rule-5-a.png":::
+    :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-5-a.png" alt-text="Screenshot of the new network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-5-a.png":::
 
 ## Create default network access policy
 
