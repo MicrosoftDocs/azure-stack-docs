@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/14/2025
+ms.date: 04/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -123,7 +123,7 @@ Follow these steps to verify that the upgrade was successful:
     |---------|---------|
     | Machine - Azure Arc     | 1 per machine         |
     | Azure Local         | 1       |
-    | Arc Resource Bridge     | 1, *-arcbridge* suffix by default       |
+    | Azure Arc Resource Bridge     | 1, *-arcbridge* suffix by default       |
     | Custom location         | 1, *-cl* suffix by default       |
     | Key Vault               | 1       |
 
