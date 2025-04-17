@@ -272,7 +272,7 @@ You can trigger the log collection for your disconnected environment using the `
     Get-ApplianceLogCollectionHistory -FromDate ((Get-Date).AddHours(-3))
     ```
 
-    Here's an example ouput:
+    Here's an example output:
 
     ```console
     PS C:\Users\administrator.s46r2004\Documents> $operationId = Invoke-ApplianceLogCollectionAndSaveToShareFolder -FromDate $fromDate -ToDate $toDate -LogOutputShareFolderPath "\\<LogShareName>\$logShareName" -ShareFolderUsername "<Username>.masd.stbtest.microsoft.com\administrator" -ShareFolderPassword (ConvertTo-SecureString "<Password>" -AsPlainText -Force)  
