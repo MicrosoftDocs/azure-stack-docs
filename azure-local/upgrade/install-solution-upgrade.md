@@ -21,7 +21,7 @@ This article describes how to install the solution upgrade on your Azure Local i
 Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
-> While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+> While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
 
 ## Prerequisites
 
