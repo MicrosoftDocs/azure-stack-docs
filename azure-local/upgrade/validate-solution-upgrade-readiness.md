@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2025
+ms.date: 04/17/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -418,13 +418,16 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Local, you must remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, Preview versions of Arc VMs can't be updated.
+Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
+
+1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, Preview versions of Arc VMs can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
 ## Remediation 11: Check the AKS install state
 
-Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
+Follow these steps to apply solution upgrade if you're running AKS workloads on your Azure Local:
 
 1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
 1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
