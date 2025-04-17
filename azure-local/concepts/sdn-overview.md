@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 04/16/2025
+ms.date: 04/17/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
@@ -24,7 +24,7 @@ SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools
 
 **SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 and later. This preview feature isn't recommended for production use.
 
-In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing both existing and new logical networks to be managed by the Network Controller.
+In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing the management of both existing and new logical networks.
 
 With SDN enabled by Arc:
 - You can create and apply network security groups (NSGs) to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
@@ -44,6 +44,7 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 
 ## Unsupported scenarios for SDN enabled by Arc
 
+Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 
 |Scenario  |Description  |
 |---------|---------|
@@ -75,21 +76,25 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 ### Group all traffic on single network intent
 
 - Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#group-all-traffic-on-a-single-intent).
+
 - Use this pattern only with switched storage network connectivity.
 
     :::image type="content" source="./media/sdn-overview/group-all-traffic.png" alt-text="Screenshot of selecting switched storage connectivity." lightbox="./media/sdn-overview/group-all-traffic.png":::
 
 - A single virtual switch is available to create SDN resources.
+
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
 
 ### Group management and compute traffic in one intent with a separate storage intent
 
 - Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#group-management-and-compute-in-one-intent-with-a-separate-intent-for-storage).
+
 - Use this pattern with switched or switchless storage network connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
 
     :::image type="content" source="./media/sdn-overview/group-management-compute-traffic.png" alt-text="Screenshot of selecting switched storage connectivity for 2-node system." lightbox="./media/sdn-overview/group-all-traffic.png":::
 
 - A single virtual switch is available to create SDN resources.
+
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
 
 ### Custom configuration for disaggregated host networking
@@ -103,6 +108,7 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
     :::image type="content" source="./media/sdn-overview/custom-configuration-disaggregated-networking.png" alt-text="Screenshot of switched or switchless storage connectivity for up to 4 nodes." lightbox="./media/sdn-overview/custom-configuration-disaggregated-networking.png":::
 
 - A single virtual switch is available to create SDN resources.
+
 - You can use up to 3 network intents provided there are enough network adapter ports to separate the network traffic types.
     - The first management intent is used only for host management traffic.
     - The second compute intent is used only for VMs and workloads traffic.
