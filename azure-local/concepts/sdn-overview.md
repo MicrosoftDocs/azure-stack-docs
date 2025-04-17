@@ -30,7 +30,7 @@ With SDN enabled by Arc:
 - You can create and apply network security groups (NSGs) to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
 - You can create and delete virtual machine NICs.
 
-An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
+An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
 
 ## Comparison summary of SDN management 
@@ -40,7 +40,7 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 | SDN management | Supported SDN resources  | Supported VMs  | Management tools  |
 |---------|---------|---------|---------|
 | SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
-| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>Software Load Balancers<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
+| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
 
 ## Unsupported scenarios for SDN enabled by Arc
 
@@ -49,7 +49,7 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |Scenario  |Description  |
 |---------|---------|
 |SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
-|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN express scripts.         |
+|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN Express scripts.         |
 |Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
 |DHCP-based networks     | DHCP-based logical networks and network interfaces aren't supported.         |
 |AKS workloads     | AKS workloads aren't supported.      |
@@ -64,7 +64,7 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 
 - Hybrid scenarios aren't supported. Deployment and management methods should be consistent.
     - If SDN is enabled by Azure Arc, it can only be managed via Azure portal, Azure CLI, and ARM template.
-    - Management via on-premises tools such as Windows Admin Center and SDN express scripts is not supported.
+    - Management via on-premises tools such as Windows Admin Center and SDN Express scripts is not supported.
 - Scenarios requiring multiple network interfaces simultaneously on a VM are not supported.
 - DHCP-based logical networks and network interfaces are not supported.
 - Disaster recovery support is currently not available.-->
@@ -130,5 +130,5 @@ Use the following detailed decision matrix to select the SDN type based on your 
 
 For related information, see also:
 
-- [Enable SDN enabled by Arc via ECE action plan](../deploy/enable-sdn-ece-action-plan.md)
-- [Deploy SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
+- [Enable SDN via ECE action plan](../deploy/enable-sdn-ece-action-plan.md)
+- [Deploy SDN infrastructure using SDN Express PowerShell scripts](../deploy/sdn-express-23h2.md)

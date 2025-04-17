@@ -14,7 +14,6 @@ Applies to: Azure Local 2504 or later
 
 This article describes how to create network security groups (NSGs), network security rules, and default network access policies on your Azure Local virtual machines enabled by Azure Arc. Once the software defined networking (SDN) is enabled on your existing Azure Local instance, you can create and attach NSGs to network interfaces or logical networks to filter network traffic.  
 
-This how-to article is designed for the IT administrators who know how to configure and deploy workloads on Azure Local instances.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -23,11 +22,11 @@ This how-to article is designed for the IT administrators who know how to config
 
 You can use a network security group to filter network traffic between Azure resources in a logical network on your Azure Local instance. A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, several types of resources.  
 
-For each security rule, you can specify source and destination, port, and protocol.
+For each network security rule, you can specify source and destination, port, and protocol.
 
 ## Prerequisites
 
-# [Azure CLI](#tab/azurecli)
+<!--# [Azure CLI](#tab/azurecli)-->
 
 - You have access to an Azure Local instance.
 
@@ -37,7 +36,7 @@ For each security rule, you can specify source and destination, port, and protoc
     - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
-# [Azure portal](#tab/azureportal)
+<!--# [Azure portal](#tab/azureportal)
 
 - You have access to an Azure Local instance.
 
@@ -45,10 +44,11 @@ For each security rule, you can specify source and destination, port, and protoc
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
 ---
+-->
 
-## Create network security groups and network security rules
+<!--## Create network security groups and network security rules-->
 
-# [Azure CLI](#tab/azurecli)
+<!--# [Azure CLI](#tab/azurecli)-->
 
 ## Sign in and set subscription
 
@@ -84,7 +84,8 @@ Create a network security group (NSG) to filter network traffic on Azure Local. 
     ```azurecli
     az stack-hci-vm network nsg create -g $resource_group --name $nsgname --custom-location $customLocationId --location $location  
     ```
-2. The command creates a network security group (NSG) with the specified name and associates it with the specified custom location. 
+
+1. The command creates a network security group (NSG) with the specified name and associates it with the specified custom location. 
     <br></br>
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -246,7 +247,7 @@ Run the following command to create an outbound network security rule that block
   az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
   ```
 
-# [Azure portal](#tab/azureportal)
+<!--# [Azure portal](#tab/azureportal)
 
 ## Create a network security group
 
@@ -365,6 +366,7 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
 You can apply a default network access policy to an existing VM.
 
 ---
+-->
 
 ## Next steps
 
