@@ -19,7 +19,7 @@ This article describes how to manage network security groups (NSGs) and network 
 
 ## Prerequisites
 
-# [Azure CLI](#tab/azurecli)
+<!--# [Azure CLI](#tab/azurecli)-->
 
 - You have access to an Azure Local instance.
 
@@ -28,7 +28,7 @@ This article describes how to manage network security groups (NSGs) and network 
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-# [Azure portal](#tab/azureportal)
+<!--# [Azure portal](#tab/azureportal)
 
 - You have access to an Azure Local instance.
 
@@ -37,10 +37,10 @@ This article describes how to manage network security groups (NSGs) and network 
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     
 ---
+-->
+<!--## Manage network security groups and network security rules-->
 
-## Manage network security groups and network security rules
-
-# [Azure CLI](#tab/azurecli)
+<!--# [Azure CLI](#tab/azurecli)-->
 
 ## Sign in and set subscription
 
@@ -540,7 +540,7 @@ az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -
 </details>
 
 
-# [Azure portal](#tab/azureportal)
+<!--# [Azure portal](#tab/azureportal)
 
 This section describes the manage operations supported for network security groups and network security rules. These operations are available in the Azure portal.
 
@@ -663,6 +663,7 @@ To update a network security rule, follow these steps:
 1. Once the network security rule is updated, the page refreshes to indicate the update.
 
 ---
+-->
 
 ## Next steps
 
