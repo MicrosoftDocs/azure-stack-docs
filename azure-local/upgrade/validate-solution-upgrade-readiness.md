@@ -421,7 +421,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
 
 1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
-1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, Preview versions of Arc VMs can't be updated.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, preview versions of Azure Local VMs enabled by Azure Arc can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
