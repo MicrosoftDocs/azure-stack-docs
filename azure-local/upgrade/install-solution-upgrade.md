@@ -37,13 +37,14 @@ Before you install the solution upgrade, make sure that you:
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
     :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade." lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
-
+ 
 ## Install the solution upgrade via Azure portal
 
 You install the solution upgrade via the Azure portal.
 
 > [!IMPORTANT]
-> Microsoft only supports upgrade applied from **Azure Local** resource page. Use of 3rd party tools to install upgrades is not supported.
+> - Microsoft only supports upgrade applied from **Azure Local** resource page. Use of 3rd party tools to install upgrades is not supported.
+> - If you're running Azure Kubernetes Service (AKS) workloads on your Azure Local, wait for the solution upgrade banner to appear on your Azure Local resource page. Then, remove AKS and all the settings from AKS hybrid before you apply the solution upgrade.
 
 Follow these steps to install the solution upgrade:
 
