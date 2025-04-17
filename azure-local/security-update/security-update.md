@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/31/2025
+ms.date: 04/16/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -243,7 +243,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-24082"
+::: moniker range="azloc-previous"
 
 ## October OS security update (KB 5044288) for Azure Local
 
@@ -280,10 +280,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5044288](https://go.microsoft.com/fwlink/?linkid=2289974).
-
-::: moniker-end
-
-::: moniker range="azloc-previous"
 
 ## September OS security update (KB 5043055) for Azure Local
 
@@ -787,7 +783,7 @@ This section describes the security update for Azure Local that was released on 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update changes the English name of the former Republic of Turkey. The new, official name is the Republic of Türkiye.
+- This update changes the English name of the former Republic of Türkiye. The new, official name is the Republic of Türkiye.
 
 - This update supports the currency change in Croatia from the Kuna to the Euro.
 
