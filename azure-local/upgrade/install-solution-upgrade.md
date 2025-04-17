@@ -21,7 +21,7 @@ This article describes how to install the solution upgrade on your Azure Local i
 Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
-> While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+> While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
 
 ## Prerequisites
 
@@ -43,7 +43,8 @@ Before you install the solution upgrade, make sure that you:
 You install the solution upgrade via the Azure portal.
 
 > [!IMPORTANT]
-> Microsoft only supports upgrade applied from **Azure Local** resource page. Use of 3rd party tools to install upgrades is not supported.
+> - Microsoft only supports upgrade applied from Azure Local resource page. Use of 3rd party tools to install upgrades is not supported.
+> - If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
 
 Follow these steps to install the solution upgrade:
 
