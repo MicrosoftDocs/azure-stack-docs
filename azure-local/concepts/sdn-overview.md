@@ -22,25 +22,25 @@ SDN offers a centralized way to configure and manage networks and network servic
 
 SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools.
 
-**SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 and later. This preview feature is not recommended for production use.
+**SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 and later. This preview feature isn't recommended for production use.
 
 In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing both existing and new logical networks to be managed by the Network Controller.
 
 With SDN enabled by Arc:
-- You can create and apply network security groups to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
+- You can create and apply network security groups (NSGs) to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
 - You can create and delete virtual machine NICs.
 
-An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-prem tools](../concepts/software-defined-networking-23h2.md).
+An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
 
 ## Comparison summary of SDN management 
 
-Here is a comparative summary of the SDN managed by Arc and via on-premises tools:
+Here's a comparative summary of the SDN managed by Arc and via on-premises tools:
 
 | SDN management | Supported SDN resources  | Supported VMs  | Management tools  |
 |---------|---------|---------|---------|
 | SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
-| SDN managed by on-prem tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>Software Load Balancers<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
+| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>Software Load Balancers<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
 
 ## Unsupported scenarios for SDN enabled by Arc
 
@@ -48,10 +48,11 @@ Here is a comparative summary of the SDN managed by Arc and via on-premises tool
 |Scenario  |Description  |
 |---------|---------|
 |SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
-|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Do not manage via on-premises tools such as Windows Admin Center and SDN express scripts.         |
+|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Don't manage via on-premises tools such as Windows Admin Center and SDN express scripts.         |
 |Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
 |DHCP-based networks     | DHCP-based logical networks and network interfaces aren't supported.         |
-|Disaster recovery     | Disaster recovery support is currently not available.      |
+|AKS workloads     | AKS workloads aren't supported.      |
+|Disaster recovery     | Disaster recovery support isn't available.      |
 
 
 <!--- For SDN enabled by Arc, the following resources aren't supported:
