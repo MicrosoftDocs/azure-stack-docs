@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 03/07/2025
+  ms.date: 04/08/2025
 
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
@@ -103,7 +103,7 @@ sections:
 
           ### How do I enable guest management on my migrated VMs? 
           
-          First, ensure that the target Azure Local that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](migrate-enable-guest-management.md).
+          First, ensure that the target Azure Local that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Azure Local VMs enabled by Azure Arc](migrate-enable-guest-management.md).
           
           ### Can I use the same Azure Migrate project for both Hyper-V and VMware migrations?
           
@@ -113,7 +113,7 @@ sections:
 
           Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before migration. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so will result in unsupported behavior.
 
-          When the VM is migrated, it will be created as a native Azure Arc virtual machine in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
+          When the VM is migrated, it will be created as a native Azure Local VM in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
 
           ### How can I throttle the bandwidth used for replicating and migrating VMs with Azure Migrate?
 
