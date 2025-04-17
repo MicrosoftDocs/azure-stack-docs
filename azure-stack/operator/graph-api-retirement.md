@@ -55,7 +55,7 @@ Write-Host "Found '$($applications.Count)' total applications in directory '$ten
  
 # Find all the unique deployment GUIDs, each one representing an Azure Stack deployment or registration in the current directory
 $deploymentGuids = $applications.IdentifierUris |
-    Where-Object { $_ -like 'https://management.*' -or $_ -like 'https://adminmanagement.*' -or $_ -like 'https://azurebridge.*' } |
+    Where-Object { $_ -like 'https://management.*' -or $_ -like 'https://adminmanagement.*' -or $_ -like 'https://azurebridge*' } |
     ForEach-Object { "$_".Split('/')[3] } |
     Select-Object -Unique
 Write-Host "Found '$($deploymentGuids.Count)' total Azure Stack deployments or registrations in directory '$tenantId'"
@@ -78,7 +78,7 @@ foreach ($application in $applications)
 $azureStackLegacyGraphApplications = $azureStackApplications |
     Where-Object {
         ($_.RequiredResourceAccess.ResourceAppId -contains '00000002-0000-0000-c000-000000000000') -or
-        ($_.IdentifierUris | Where-Object { $_ -like 'https://azurebridge.*' }) }
+        ($_.IdentifierUris | Where-Object { $_ -like 'https://azurebridge*' }) }
  
 # Find which of those applications need to have their authentication behaviors patched to allow access to legacy Graph
 $azureStackLegacyGraphApplicationsToUpdate = $azureStackLegacyGraphApplications |
