@@ -12,60 +12,68 @@ ms.date: 04/16/2025
 
 > Applies to: Azure Local 2504 and later
 
-This article provides an overview of the Software defined networking (SDN) enabled by Azure Arc on Azure Local including the types of SDN, when to use which type, and supported scenarios for SDN.
+This article provides an overview of Software Defined Networking (SDN) enabled by Azure Arc on Azure Local, including SDN management methods, guidance on when to use each method, and supported as well as unsupported SDN scenarios.
 
-SDN provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your datacenter. You can use SDN to dynamically create, secure, and connect your network to meet the evolving needs of your apps. <!--Operating global-scale datacenter networks for services like Microsoft Azure, which efficiently performs tens of thousands of network changes every day, is possible only because of SDN.-->
+SDN offers a centralized way to configure and manage networks and network services such as switching, routing, and load balancing in your datacenter. It enables you to dynamically create, secure, and connect your network to meet the evolving needs of your applications.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About SDN enabled by Arc on Azure Local
+## About SDN management on Azure Local
 
-The Azure Local solution has the following two types of SDN:
+SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools.
 
-- **SDN enabled by Arc**: This is the Preview SDN solution that is available in Azure Local 2504 and later. This preview solution isn't recommended for production use.
+**SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 and later. This preview feature is not recommended for production use.
 
-    This SDN has Network Controller running as a Failover Cluster service. There's no need to deploy extra VMs to run the Network Controller thus allowing more capacity for workloads.
+In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing both existing and new logical networks to be managed by the Network Controller.
 
-    Once you enable SDN, you can manage logical networks, network security groups, and virtual machine networks interfaces via the Arc control plane.
+With SDN enabled by Arc:
+- You can create and apply network security groups to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
+- You can create and delete virtual machine NICs.
 
-    With SDN enabled by Arc:
-
-    - The existing and new logical networks are managed by the network controller.
-    - You can create and apply network security groups to logical networks and virtual machine network interfaces (NICs). You can also create and add security rules.
-    - You can create and delete virtual machine NICs.
-
-- **SDN managed by on-prem tools**: This SDN solution is available for Windows Server and for Azure Local 2311.2 and later. This SDN has three major components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-prem tools](../concepts/software-defined-networking-23h2.md).
+An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer, and Gateway. For more information, see [SDN managed by on-prem tools](../concepts/software-defined-networking-23h2.md).
 
 
-## Supported operations for SDN enabled by Arc and SDN managed by on-prem tools
+## Comparison summary of SDN management 
 
-Here is a summary of the supported operations for SDN enabled by Arc and SDN managed by on-prem tools:
+Here is a comparative summary of the SDN managed by Arc and via on-premises tools:
 
-| SDN type | SDN resources  | VM types  | Management tools  |
+| SDN management | Supported SDN resources  | Supported VMs  | Management tools  |
 |---------|---------|---------|---------|
-| SDN enabled by Arc   | Logical networks<br>VM NICs<br>Network security groups        | Azure Local VMs        | Azure portal <br> Azure CLI <br> ARM templates         |
-| SDN managed by on-prem tools     |Logical networks<br>VM NICs<br>Network security groups<br>Virtual networks<br>Peering<br>Software Load Balancers<br>VPN Gateways        | Hyper-V VMs<br>SCVMM VMs         | SDN Express<br>Windows Admin Center<br>PowerShell<br>SCVMM VMs        |
+| SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
+| SDN managed by on-prem tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>Software Load Balancers<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
 
 ## Unsupported scenarios for SDN enabled by Arc
 
-- The following SDN resources aren't supported:
+
+|Scenario  |Description  |
+|---------|---------|
+|SDN resources     | The following resources aren't supported:<br><br> - Virtual networks <br><br> - Software Load Balancers <br><br> - Gateways (VPN, L3, GRE)         |
+|Hybrid scenarios     | Deployment and management method must be consistent. <br><br> - If SDN is enabled by Arc, manage it only using Azure portal, Azure CLI, and Azure Resource Manager templates. <br><br> - Do not manage via on-premises tools such as Windows Admin Center and SDN express scripts.         |
+|Multiple NICs     | Scenarios that require multiple NICs simultaneously aren't supported.        |
+|DHCP-based networks     | DHCP-based logical networks and network interfaces aren't supported.         |
+|Disaster recovery     | Disaster recovery support is currently not available.      |
+
+
+<!--- For SDN enabled by Arc, the following resources aren't supported:
 
     - Virtual networks
-    - Virtual network peering
     - Software Load Balancers (SLBs)
-    - VPN Gateways
+    - Gateways (VPN, L3, GRE)
 
-- Hybrid scenarios aren't supported. Deployment and management methods should be consistent. If SDN is enabled by Azure Arc, it can only be managed via Azure portal, Azure CLI, and ARM template.
-- Management via on-premises tools such as Windows Admin Center and SDN express scripts are not supported.
-- Disaster recovery support is currently not available.
+- Hybrid scenarios aren't supported. Deployment and management methods should be consistent.
+    - If SDN is enabled by Azure Arc, it can only be managed via Azure portal, Azure CLI, and ARM template.
+    - Management via on-premises tools such as Windows Admin Center and SDN express scripts is not supported.
+- Scenarios requiring multiple network interfaces simultaneously on a VM are not supported.
+- DHCP-based logical networks and network interfaces are not supported.
+- Disaster recovery support is currently not available.-->
 
 ## Supported networking patterns for SDN enabled by Arc
 
-Before enabling SDN, we recommend you check the following supported networking patterns and available options.
+Before you deploy Azure Local and enable SDN, we recommend that you review the following supported networking patterns and available options.
 
 ### Group all traffic on single network intent
 
-- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#group-all-traffic-on-a-single-intent)
+- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#group-all-traffic-on-a-single-intent).
 - Use this pattern only with switched storage network connectivity.
 
     :::image type="content" source="./media/sdn-overview/group-all-traffic.png" alt-text="Screenshot of selecting switched storage connectivity." lightbox="./media/sdn-overview/group-all-traffic.png":::
@@ -83,7 +91,7 @@ Before enabling SDN, we recommend you check the following supported networking p
 - A single virtual switch is available to create SDN resources.
 - The Azure Virtual Filtering extensions are turned on after the Network Controller is enabled.  
 
-### Custom configuration - Disaggregated host networking
+### Custom configuration for disaggregated host networking
 
 - Use the *Custom configuration* host networking pattern in single or multi node configuration. For more information about this pattern, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#fully-disaggregated-host-networking).
 
@@ -99,7 +107,7 @@ Before enabling SDN, we recommend you check the following supported networking p
     - The second compute intent is used only for VMs and workloads traffic.
     - The third storage intent is used only for storage traffic.
 
-## Choose SDN type based on your requirements
+<!--## Choose SDN type based on your requirements
 
 Starting release 2504, you have two ways to enable SDN.
 
@@ -108,7 +116,7 @@ Starting release 2504, you have two ways to enable SDN.
 
 Use the following detailed decision matrix to select the SDN type based on your requirements:
 
-:::image type="content" source="./media/sdn-overview/sdn-type-decision-matrix.png" alt-text="Screenshot of SDN decision matrix." lightbox="./media/sdn-overview/sdn-type-decision-matrix.png":::
+:::image type="content" source="./media/sdn-overview/sdn-type-decision-matrix.png" alt-text="Screenshot of SDN decision matrix." lightbox="./media/sdn-overview/sdn-type-decision-matrix.png":::-->
 
 
 ## Next steps
