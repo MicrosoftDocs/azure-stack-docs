@@ -24,7 +24,7 @@ Once the Network Controller is integrated, SDN is enabled. You can use the Azure
 
 - **Logical networks**: You can create SDN static logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - **Network interfaces**: You can create and attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
-- **Network Security Group (NSG)**: You can apply NSGs to network interfaces or logical networks to filter network traffic based on network security rules. You can also create default network access policies and network security rules to allow or deny traffic to and from network interfaces and logical networks. 
+- **Network Security Group (NSG)**: You can create and apply NSGs to network interfaces or logical networks to filter network traffic. You can also create default network access policies and network security rules to allow or deny traffic to and from network interfaces and logical networks.
 
     For more information, see [Create network security groups](../manage/create-network-security-groups.md) and see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
 
