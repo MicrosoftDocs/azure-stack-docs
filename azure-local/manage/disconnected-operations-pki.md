@@ -4,10 +4,12 @@ description: Learn about the public key infrastructure (PKI) requirements for di
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Public Key Infrastructure (PKI) for disconnected operations on Azure Local (preview)
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
@@ -21,15 +23,15 @@ PKI for disconnected operations is essential for securing the endpoints provided
 
 ## PKI requirements
 
-You need a public certificate authority (CA) to issue your certificates or they can be self-signed. Your certificates must be part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
+Public certificate authorities (CA) or enterprise certificate authorities must issue certificates. Ensure that your certificates are part of the Microsoft Trusted Root Program. For more information, see [List of Participants - Microsoft Trusted Root Program](/security/trusted-root/participants-list).  
 
 Mandatory certificates are grouped by area with the appropriate subject alternate names (SAN). Before you create the certificates, make sure you understand the following requirements:
 
-- Store all 26 certificates in one folder.
-- Use certificates issued by an enterprise CA. Self-signed certificates aren’t supported.
-- Define **Subject name** and **SAN**, as required by most browsers.
-- Ensure all certificates share the same trust chain.
-- Certificates must expire two years from the day of deployment.
+- The use of self-signed certificates isn’t supported. We recommend you use certificates issued by an enterprise CA.
+- Disconnected operations requires 26 external certificates for the endpoints it exposes.
+- Individual certificates should be generated for each endpoint and copied into the corresponding directory/folder structure. These Certificates are mandatory for disconnected operations deployment.
+- All certificates must have Subject and SAN defined, as required by most browsers.
+- All certificates should share the same trust chain and should at least have a two-year expiration from the day of the deployment.
 
 ### Ingress endpoints
 
@@ -76,7 +78,13 @@ The management endpoint requires two certificates and they must be put in the sa
 
 ## Create certificates to secure endpoints
 
-On the host machine or Active Directory virtual machine (VM), follow these steps to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Modify for each of the 26 certificates.
+On the host machine or Active Directory virtual machine (VM), follow the steps in this section to create certificates for the ingress traffic and external endpoints of the disconnected operations appliance. Make sure you modify for each of the 26 certificates.
+
+You need these certificates when deploying the disconnected operations appliance. Additionally, you need the public key for your local infrastructure to provide a secure trust chain.
+
+> [!NOTE]
+> **IngressEndpointCerts** is the folder where all 26 certificate files should be stored. **IngressEndpointPassword** is a secure string with the certificate password.
+
 
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
@@ -175,7 +183,7 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
     }
     ```
 
-1. Save the .pfx file in the **IngressEndpointsCerts** folder.
+1. Save the .pfx file in the **IngressEndpointsCerts** folder. The IngressEndpointPassword is a secure string with the certificate password.
 
     ```powershell
     $cert = Get-Item -Path "Cert:\LocalMachine\My\$thumbprint"
@@ -185,4 +193,82 @@ On the host machine or Active Directory virtual machine (VM), follow these steps
 
 1. Repeat steps 3-11 for each certificate.
 
+1. Copy the original certificate (26 .pfx files) obtained from your CA to the directory structure represented in IngressEndpointCerts.
+
+Here's an example script to create the certificates for the management endpoint:
+
+```powershell
+Populate cert chain info 
+# Resolve certificates from endpoint
+
+# https://gist.github.com/keystroke/643bcbc449b3081544c7e6db7db0bba8
+
+#This script uses endpoints that needs to be modified
+
+$oidcCertChain = Get-CertificateChainFromEndpoint https://adfs.contoso.com 
+$ldapCertchain =  Get-CertificateChainFromEndpoint https://adfs2.contoso.com 
+
+#First endpoint https://adfs.contoso.com 
+$certificates = Get-CertificateChainFromEndpoint https://adfs.contoso.com #Please modify 
+
+# Save certificates to specified folder 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' #Please modify 
+foreach ($certificate in $certificates) 
+{ 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
+} 
+ Prepping the parameters 
+
+# Read certificate information for external identity configuration 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates1' 
+$oidcCertChainInfo = @() 
+foreach ($file in (Get-ChildItem $targetDirectory)) 
+{ 
+    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $b64 = [system.convert]::ToBase64String($bytes) 
+    $oidcCertChainInfo += $b64 
+} 
+//Repeat the same steps for the next endpoint 
+//Second endpoint https://adfs2.contoso.com ( Please modify) 
+$certificates = Get-CertificateChainFromEndpoint https://adfs2.contoso.com //Please modify 
+
+# Save certificates to specified folder 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' //Please modify 
+foreach ($certificate in $certificates) 
+{ 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $bytes | Set-Content -Path "$targetDirectory\$($certificate.Thumbprint).cer" -Encoding Byte 
+} 
+ Prepping the parameters 
+
+# Read certificate information for external identity configuration 
+$targetDirectory = 'C:\WinfieldExternalIdentityCertificates2' 
+$ ldapCertchainInfo = @() 
+foreach ($file in (Get-ChildItem $targetDirectory)) 
+{ 
+    $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($file.FullName) 
+    $bytes = $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert) 
+    $b64 = [system.convert]::ToBase64String($bytes) 
+    $ ldapCertchainInfo += $b64 
+} 
+```
+
 ## Related content
+
+- [Plan hardware for Azure local with disconnected operations](disconnected-operations-overview.md#preview-participation-criteria).
+
+- [Plan and understand identity](disconnected-operations-identity.md).
+
+- [Plan and understand networking](disconnected-operations-network.md).
+
+- [Set up disconnected operations](disconnected-operations-set-up.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

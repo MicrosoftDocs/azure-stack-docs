@@ -4,10 +4,12 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Deploy disconnected operations for Azure Local (preview)
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
@@ -660,4 +662,10 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 - To view the health state of your appliance, use the management endpoint `Get-ApplianceHealthState` cmdlet. If you see this screen and the cmdlet reports no errors and all services report 100, you need to open a support ticket from the Azure portal.
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

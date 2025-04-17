@@ -4,10 +4,12 @@ description: Learn how to use Azure Policy in a disconnected Azure Local environ
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
@@ -110,6 +112,12 @@ The following table summarizes the built-in policies supported for Azure Local d
 
 ## Unsupported features
 
-In this preview, compliance dashboard, remediation actions, and policy exemptions aren't supported:
+In this preview, compliance dashboard, remediation actions, and policy exemptions aren't supported.
 
-## Related content
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

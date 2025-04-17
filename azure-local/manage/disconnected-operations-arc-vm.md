@@ -4,10 +4,12 @@ description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
@@ -219,3 +221,11 @@ To manage VM extensions, see [manage VM extensions](../manage/virtual-machine-ma
 - [Troubleshoot Azure Local VM management](../manage/troubleshoot-arc-enabled-vms.md).
 
 - [Azure Local VM management FAQ](../manage/azure-arc-vms-faq.yml).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end
