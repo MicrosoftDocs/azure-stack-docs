@@ -4,7 +4,7 @@ description: Learn about the security considerations and compliance regulations 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)

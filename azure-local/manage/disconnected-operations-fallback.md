@@ -4,7 +4,7 @@ description: Export and send logs using Appliance Fallback Logging for disconnec
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)

@@ -4,7 +4,7 @@ description: Learn how to use the Azure Command-Line Interface (CLI) for Azure L
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
