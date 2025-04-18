@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 03/08/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,9 +12,9 @@ ms.reviewer: alkohli
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable guest management after migration for Arc virtual machines (VMs) running on Azure Local.
+This article describes how to enable guest management after migration for Azure Local virtual machines (VMs) enabled by Arc.
 
-For more information on other scenarios, see [Manage Arc VMs on Azure Local](../manage/manage-arc-virtual-machines.md).
+For more information on other scenarios, see [Manage Azure Local VMs](../manage/manage-arc-virtual-machines.md).
 
 The output properties may vary depending on whether VMs were migrated or not.
 
@@ -24,7 +24,7 @@ The output properties may vary depending on whether VMs were migrated or not.
 
 Before you begin, complete the following:
 
-- You have access to a deployed and registered Azure Local instance, with an Arc Resource Bridge and custom location configured.
+- You have access to a deployed and registered Azure Local instance, with an Azure Arc resource bridge and custom location configured.
 
 - Your system is running Azure Local release 2405 or later.
 
@@ -61,7 +61,7 @@ Before you begin, complete the following:
         }
         ```
 
-- Familiarize yourself with Arc VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+- Familiarize yourself with Azure Local VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
 ## Enable the guest agent on migrated VMs
 

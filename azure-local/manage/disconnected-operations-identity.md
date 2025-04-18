@@ -4,10 +4,12 @@ description: Integrate your identity with disconnected operations on Azure Local
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
 
@@ -82,7 +84,7 @@ In this preview release, the following actions are available:
 
 There are a couple of exceptions to the actions available to operators:
 
-- An Operator subscription cannot be deleted
+- An Operator subscription can't be deleted
 - SPNs can also be deleted by the owners assigned to the SPN itself
 
 In this preview release, only the following actions are available in the Azure portal.
@@ -207,9 +209,7 @@ Get-Command *Appliance*ExternalIdentity*
 
 Use PowerShell on Windows Server 2022 or newer for these commands. Expand each section for more information.
 
-<details>
-
-<summary>Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes</summary>
+### Set up Active Directory/Active Directory Domain Services (ADDS) for demo purposes
 
 ```powershell
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
@@ -242,11 +242,7 @@ Install-AdfsFarm `
     -GroupServiceAccountIdentifier "Local.contoso\gmsa_adfs$"
 ```
 
-</details>
-
-<details>
-
-<summary>Create AD FS client app, sample users, and groups</summary>
+### Create AD FS client app, sample users, and groups
 
 ```powershell
 Add-AdfsClient `
@@ -309,9 +305,7 @@ $group = Get-ADGroup -Identity $groupName | Select-Object Name, ObjectGUID
 $group
 ```
 
-<details>
-
-<summary>Grant LDAP user read on Users with inherit</summary>
+### Grant LDAP user read on Users with inherit
 
 ```powershell
 $domain = Get-ADDomain
@@ -323,6 +317,10 @@ Set-ACL -Path "AD:\$($domain.DistinguishedName)" -AclObject $acl
 Write-Verbose "Granted 'GenericRead' permissions to ldap account"
 ```
 
-</details>
+::: moniker-end
 
-## Related content
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

@@ -4,10 +4,12 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 03/19/2025
+ms.date: 04/22/2025
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).
+
+::: moniker range=">=azloc-24112"
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
@@ -17,7 +19,7 @@ This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconn
 
 ## Overview
 
-AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain a consistent management and operational experience of AKS on Azure Local using a local control plane.
+AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain consistent management and operational experience of AKS on Azure Local using a local control plane.
 
 ## Prerequisites
 
@@ -69,12 +71,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in with Azure CLI
 
-You can use the following command to sign in with Azure CLI.
-
-```azurecli
-az cloud set -n azure.local 
-az login --user "XXXX" --password “XXXX” 
-```
+You can use the az login command to sign in to your Azure account. For more information, see [Sign in with credentials on the command line](/cli/azure/authenticate-azure-cli-interactively#sign-in-with-credentials-on-the-command-line).
 
 ### Create logical networks
 
@@ -101,8 +98,6 @@ az aksarc create -n $aksclustername -g $resource_group --custom-location $custom
 
 > [!NOTE]
 > You should get JSON-formatted information about the cluster once the creation is complete.
-
-For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). You can also use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
 
 Here's an example script to create logical networks and an AKS Arc cluster.
 
@@ -186,14 +181,6 @@ You can use the `az aksarc delete` cmdlet to delete the AKS cluster you created.
 az aksarc delete --name $aksclustername --resource-group $resource_group
 ```
 
-## Known issues
-
-Here are some known issues and workarounds for disconnected operations with AKS Arc:
-
-| Feature | Description | Workaround/comments |
-|-------------|-----------------|-------------------------|
-| Delete logical networks | Deletion of logical networks on existing AKS clusters using the Portal or CLI won't work. For example, `stack-hci-vm network lnet delete`. | Follow these steps to mitigate the issue: <br></br> 1. Delete all AKS Arc clusters that reference the logical network. <br></br> 2. Wait for >10 minutes. <br></br> 3. Delete the logical network (LNET). <br></br> Ignore the following error if it occurs `az.cmd: ERROR: Operation returned an invalid status`. |
-
 ## Related content
 
 - [AKS on Azure Local architecture](/azure/aks/aksarc/cluster-architecture).
@@ -203,3 +190,11 @@ Here are some known issues and workarounds for disconnected operations with AKS 
 - [Manage node pools for an AKS cluster](/azure/aks/aksarc/manage-node-pools).
 
 - [Use cluster autoscaler on an AKS arc cluster](/azure/aks/aksarc/auto-scale-aks-arc).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24111"
+
+This feature is available only in Azure Local 2411.2.
+
+::: moniker-end

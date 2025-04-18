@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 04/02/2025
+ms.date: 04/16/2025
 ms.reviewer: alkohli
 ms.lastreviewed: 03/20/2025
 ---
@@ -14,16 +14,16 @@ ms.lastreviewed: 03/20/2025
    Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
    ```powershell
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Kubernetes" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.KubernetesConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ExtendedLocation" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ResourceConnector" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "HybridContainerService"
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Attestation"
+   Register-ResourceProvider -ProviderNamespace "Microsoft.HybridCompute" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.Kubernetes" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguration" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.ExtendedLocation" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.ResourceConnector" 
+   Register-ResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
+   Register-ResourceProvider -ProviderNamespace "Microsoft.Attestation"
    ```
 
     > [!NOTE]

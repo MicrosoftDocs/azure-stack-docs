@@ -122,6 +122,10 @@ landingContent:
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMware (preview)
             url: migrate/migration-azure-migrate-vmware-overview.md
+          - text: Set up disconnected operations for Azure Local (preview)
+            url: manage/disconnected-operations-set-up.md
+          - text: Deploy disconnected operations for Azure Local (preview)
+            url: manage/disconnected-operations-deploy.md             
       
   # Card
   - title: Concepts
