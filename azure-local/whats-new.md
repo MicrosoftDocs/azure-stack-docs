@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/09/2025
+ms.date: 04/17/2025
 ---
 
 # What's new in Azure Local?
@@ -14,6 +14,36 @@ ms.date: 04/09/2025
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+
+::: moniker range="=azloc-2504"
+
+## Features and improvements in 2504
+
+This release has the following features and improvements:
+
+- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new version 261000.3775 for the Azure Stack HCI Operating System.
+
+- **NET update installations**: There are multiple improvements in this release that increase the reliability of .NET security update installations.
+
+- **Registration and deployment changes**
+    - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
+    - The error logging in the registration script is enhanced.
+
+- **Azure Local VM changes**
+    - **Software defined networking enabled by Azure Arc**: This release includes the ability to enable and manage a software defined network (SDN) using Azure Arc. This feature is currently in preview and works only on 2504 deployments that use the new version of OS 26100.3775. With SDN enabled by Arc: 
+        - You can create and manage logical networks, network interfaces, and network security groups (NSGs) for Azure Local VMs. 
+        - You can also create and manage network security rules.
+        - You can create and delete virtual machine NICs.
+        
+    For more information, see [Overview of SDN enabled by Azure Arc on Azure Local](./index.yml).
+    - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md#expand-the-size-of-a-data-disk-attached-to-an-azure-local-vm).
+    - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released.
+
+- **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
+
+- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2503"
 
