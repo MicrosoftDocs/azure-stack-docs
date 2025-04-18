@@ -28,7 +28,7 @@ Before you begin the download of the software from Azure portal, ensure that you
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
-- Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](https://learn.microsoft.com/azure/azure-local/deploy/deployment-arc-register-server-permissions).
+- Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 ## Download the software from the Azure portal
 
@@ -56,9 +56,9 @@ Follow these steps to download the software:
 
     2. Select your desired version. Only the recommended version is eligible for deployment using Azure portal. To deploy a previous version, use an [Azure Resource Manager template](deployment-azure-resource-manager-template.md).
     
-    :::image type="content" source="media/download-23h2-software/download-azure-stack-hci-step-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 2." lightbox="media/download-23h2-software/download-azure-stack-hci-step-2.png":::
-
     3. Select **I agree with Azure Local license terms and private notice** and then select **Download**.
+    
+    :::image type="content" source="media/download-23h2-software/download-azure-stack-hci-step-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 2." lightbox="media/download-23h2-software/download-azure-stack-hci-step-2.png":::
 
     > [!NOTE]
     > This action begins the download. Use the downloaded ISO file to install the software on each machine that you want to cluster.
