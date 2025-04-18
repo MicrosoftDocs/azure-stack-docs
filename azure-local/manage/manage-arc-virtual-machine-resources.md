@@ -84,9 +84,8 @@ az stack-hci-vm disk update --name $name --resource-group $resource_group --size
 
 >[!NOTE]
 >
->- The size `--size-gb` you are changing the data disk to can't be the same or less than the original size of the data disk.
->- The maximum size the disk can expand to depends on the storage capacity of the cluster.
->- Hyper-V also imposes a VHD max of 2TB and VHDx max of 64TB.
+>- The size `--size-gb` you're changing the data disk to can't be the same or less than the original size of the data disk.
+>- The maximum size the disk can expand to depends on the storage capacity of the cluster. Hyper-V also imposes a VHD max of 2TB and VHDx max of 64TB.
 
 Here is a sample output that indicates successful resizing of the data disk:
 
