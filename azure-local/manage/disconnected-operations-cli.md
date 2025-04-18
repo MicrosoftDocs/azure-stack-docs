@@ -53,61 +53,61 @@ For disconnected operations, you must:
     First, import the helper method as defined in this section:
 
         function UpdatePythonCertStore
-    {
-        [CmdletBinding()]
-        param (
-            [Parameter(Mandatory = $false)]
-            [ValidateScript({Test-Path $_})]
-            [string]
-            $ApplianceRootCertPath = "$env:APPDATA\Appliance\applianceRoot.cer"
-        )
-     
-        Trace-Execution "[START] Updating CLI cert store with Appliance root cert at $ApplianceRootCertPath"
-        $cerFile = $ApplianceRootCertPath
-        Trace-Execution "Updating Python cert store with $cerFile"
-     
-        # C:\Program Files\Microsoft SDKs\Azure\CLI2
-        $azCli2Path = Split-Path -Path (Split-Path -Path (Get-Command -Name az).Source -Parent) -Parent
-        $pythonCertStore = "${azCli2Path}\Lib\site-packages\certifi\cacert.pem"
-     
-        Trace-Execution "Python cert store location $pythonCertStore"
-     
-        $root = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new()
-     
-        if(Test-Path $cerFile)
         {
-            $root.Import($cerFile)
-            Trace-Execution "$(Get-Date) Extracting required information from the cert file"
-            $md5Hash    = (Get-FileHash -Path $cerFile -Algorithm MD5).Hash.ToLower()
-            $sha1Hash   = (Get-FileHash -Path $cerFile -Algorithm SHA1).Hash.ToLower()
-            $sha256Hash = (Get-FileHash -Path $cerFile -Algorithm SHA256).Hash.ToLower()
-            $issuerEntry  = [string]::Format("# Issuer: {0}", $root.Issuer)
-            $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
-            $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
-            $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
-            $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
-            $sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
-            $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
-            $certText = (Get-Content -Path $cerFile -Raw).ToString().Replace("`r`n","`n")
-            $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
-                            $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
-            Trace-Execution "Adding the certificate content to Python Cert store"
-            Add-Content $pythonCertStore $rootCertEntry
-            Trace-Execution "Python Cert store was updated to allow the Azure Stack CA root certificate"
+            [CmdletBinding()]
+            param (
+                [Parameter(Mandatory = $false)]
+                [ValidateScript({Test-Path $_})]
+                [string]
+                $ApplianceRootCertPath = "$env:APPDATA\Appliance\applianceRoot.cer"
+            )
+        
+            Write-Verbose "[START] Updating CLI cert store with Appliance root cert at $ApplianceRootCertPath"
+            $cerFile = $ApplianceRootCertPath
+            Write-Verbose "Updating Python cert store with $cerFile"
+        
+            # C:\Program Files\Microsoft SDKs\Azure\CLI2
+            $azCli2Path = Split-Path -Path (Split-Path -Path (Get-Command -Name az).Source -Parent) -Parent
+            $pythonCertStore = "${azCli2Path}\Lib\site-packages\certifi\cacert.pem"
+        
+            Write-Verbose "Python cert store location $pythonCertStore"
+        
+            $root = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new()
+        
+            if(Test-Path $cerFile)
+            {
+                $root.Import($cerFile)
+                Write-Verbose "$(Get-Date) Extracting required information from the cert file"
+                $md5Hash    = (Get-FileHash -Path $cerFile -Algorithm MD5).Hash.ToLower()
+                $sha1Hash   = (Get-FileHash -Path $cerFile -Algorithm SHA1).Hash.ToLower()
+                $sha256Hash = (Get-FileHash -Path $cerFile -Algorithm SHA256).Hash.ToLower()
+                $issuerEntry  = [string]::Format("# Issuer: {0}", $root.Issuer)
+                $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
+                $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
+                $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
+                $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
+                $sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
+                $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
+                $certText = (Get-Content -Path $cerFile -Raw).ToString().Replace("`r`n","`n")
+                $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
+                                $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
+                Write-Verbose "Adding the certificate content to Python Cert store"
+                Add-Content $pythonCertStore $rootCertEntry
+                Write-Verbose "Python Cert store was updated to allow the Azure Stack CA root certificate"
+            }
+            else
+            {
+                $errorMessage = "$cerFile required to update CLI was not found."
+                Write-Verbose "ERROR: $errorMessage"
+                throw "UpdatePythonCertStore: $errorMessage"
+            }
+        
+            Write-Verbose "[END] Updating CLI cert store"
         }
-        else
-        {
-            $errorMessage = "$cerFile required to update CLI was not found."
-            Trace-Execution "ERROR: $errorMessage"
-            throw "UpdatePythonCertStore: $errorMessage"
-        }
-     
-        Trace-Execution "[END] Updating CLI cert store"
-    }
 
     Next, run the helper method in PowerShell:
 
-    UpdatePythonCertStore -ApplianceRootCertPath D:\ingress.cer
+    UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
 ## Configure Azure CLI  
@@ -174,13 +174,16 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-    You can also use this command to configure the CLI:
+    Now, use this helper method to get the endpoints and create a cloudConfig file for CLI:
 
     ```azurecli
     az config set core.enable_broker_on_windows=false
     az config set core.instance_discovery=false
+    $fqdn = "autonomous.cloud.private"
+    $cloudConfigJson = Get-ApplianceAzCliCloudConfig -ArmEndpoint "https://armmanagement.$($fqdn)/"
 
-    $cloudConfigJson = Get-ApplianceAzCliCloudConfig
+    # Write the content to a file cloudConfig.json
+    $cloudConfigJson | Out-File -FilePath cloudConfig.json
     ```
 
     Here's an example of content in the cloudconfig.json file:
@@ -202,8 +205,7 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-2. Register the cloud configuration with the CLI.
-
+3. Register the cloud configuration with the CLI using the cloudConfig.json file.
     ```azurecli
     az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
     az cloud set -n azure.local
