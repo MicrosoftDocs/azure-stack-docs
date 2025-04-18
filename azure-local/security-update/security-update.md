@@ -14,16 +14,22 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2504"
 
-## April OS security updates (KB5055527 and KB5055523) for Azure Local
+## April OS security updates (KB5055527) for Azure Local
 
-For 2504 release of Azure Local, Microsoft has released two security updates.
+<!--For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments.
 
-- The first update **KB5055527** is for existing deployment of 2504 running OS build 25398.1551.
-- The second update **KB5055523** is for new deployments of 2504 running OS build **26100.3775**.
+The following table provides information about different deployment types, their corresponding security updates, and OS builds:
 
-# [Existing deployments](#tab/existing-deployments)
 
-This section applies to existing deployments of 2504 running OS build **25398.1551**.
+| Deployment type  | Security update  | OS build  |
+|---------|---------|---------|
+| Existing deployments    | KB5055527         | 25398.1551         |
+| New deployments    | KB5055523         | 26100.3775         |-->
+
+
+<!--# [Existing deployments](#tab/existing-deployments) 
+
+This section applies to existing deployments of 2504 running OS build **25398.1551**.-->
 
 ## Improvements
 
@@ -62,7 +68,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
 
-# [New deployments](#tab/new-deployments)
+<!--# [New deployments](#tab/new-deployments)
 
 This section applies to new deployments of 2504 running OS build **26100.3775**.
 
@@ -105,7 +111,9 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5055523](https://go.microsoft.com/fwlink/?linkid=2313854).
+
 ---
+-->
 
 ::: moniker-end
 
