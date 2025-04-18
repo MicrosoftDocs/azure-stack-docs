@@ -43,6 +43,8 @@ Follow these guidelines to skip releases with the same release train as you move
   | From 2408 to 2411     | 2408 --> 2408.2 --> 2411                |
   | From 2411 to 2503     | 2411 --> 2411.2 --> 2411.3 --> 2503     |
 
+- Update the 2503 train to 2504 using an existing deployment or a new deployment. The existing deployment option allows you to update from 2503 to 2504 without needing to create a new deployment. The new deployment option allows you to create a new deployment of 2504.
+
 #### Move within the same release train
 
 Follow these guidelines to update to each release within your current release train:
@@ -74,8 +76,6 @@ The following tables summarize the release information for Azure Local across al
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](security-update/security-update.md?view=azloc-24111&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24111&preserve-view=true#features-and-improvements-in-24111) | [Known issues](./known-issues.md?view=azloc-24111&preserve-view=true) |
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
-
----
 
 #### [New deployment](#tab/new-deployment)
 
