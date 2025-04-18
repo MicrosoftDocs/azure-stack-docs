@@ -43,7 +43,7 @@ Follow these guidelines to skip releases with the same release train as you move
   | From 2408 to 2411     | 2408 --> 2408.2 --> 2411                |
   | From 2411 to 2503     | 2411 --> 2411.2 --> 2411.3 --> 2503     |
 
-- Update the 2503 train to 2504 using an existing deployment or a new deployment. The existing deployment option allows you to update from 2503 to 2504 without needing to create a new deployment. The new deployment option allows you to create a new deployment of 2504.
+- Update the 2503 train to 2504 or create a new deployment.
 
 #### Move within the same release train
 
@@ -63,7 +63,9 @@ Follow these guidelines to update to each release within your current release tr
 
 ### Supported versions of Azure Local
 
-The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504 using an existing deployment. The other release supports a new deployment of 2504.
+The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*.
+
+Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504.
 
 #### [Existing deployment](#tab/existing-deployment)
 
