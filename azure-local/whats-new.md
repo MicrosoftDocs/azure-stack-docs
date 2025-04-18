@@ -17,6 +17,14 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2504"
 
+Microsoft has two 2504 releases for April. Here are the details of each release:
+
+ 
+|Solution version  |OS version |Deployment  |
+|---------|---------|---------|
+|12.2504  | 26100.3775        | New deployments only.        |
+|11.2504  | 23598.1551        | Existing deployments only.        |
+
 ## Features and improvements in 2504
 
 This release has the following features and improvements:
@@ -51,6 +59,7 @@ This release has the following features and improvements:
 ::: moniker range="=azloc-2503"
 
 ## Features and improvements in 2503
+
 
 This is a baseline release with the following features and improvements:
 
