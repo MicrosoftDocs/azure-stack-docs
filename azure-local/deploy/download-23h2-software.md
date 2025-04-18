@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/20/2025
+ms.date: 04/18/2025
 ---
 
 # Download version 23H2 operating system for Azure Local deployment
@@ -28,6 +28,8 @@ Before you begin the download of the software from Azure portal, ensure that you
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
+- Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](https://learn.microsoft.com/azure/azure-local/deploy/deployment-arc-register-server-permissions).
+
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
@@ -42,29 +44,24 @@ Follow these steps to download the software:
 
     After you select **Azure Local**, you're directed to the Azure Local **Get started** page, with the **Get started** tab selected by default.
 
-1. On the **Get started** tab, under the **Prepare machines** tile, select **Download software**. Skip this step if your Azure Local instance came installed with the OS.
+1. On the **Get started** tab, under the **Download software** tile, select **Download**. Skip this step if your Azure Local instance came installed with the OS.
 
     :::image type="content" source="media/download-23h2-software/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-23h2-software/get-started-page-with-download-button.png":::
     
-1. On the **Download Azure Local software** page on the right, do the following:
+1. On the **Download Azure Stack HCI** page, do the following:
 
-    :::image type="content" source="media/download-23h2-software/download-23h2-software-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page with the various ISO options." lightbox="media/download-23h2-software/download-23h2-software-2.png":::
+    1. Select the subscription in which you intend to deploy Azure Local. Ensure that the selected subscription has the Microsoft Azure Stack HCI resource provider registered.
 
-    1. Choose software version. By default, the latest generally available version is selected.
-    1. Select **English** to download the English version of the ISO. To download the VHDX, select **English VHDX** from the dropdown list.
-        > [!NOTE]
-        > - Currently, English is the only language that is supported.
-        > - Download an **English VHDX** if you are performing [Virtual deployments](./deployment-virtual.md) for educational and demonstration purposes only.
-        > - Download **English Preview** only if you are participating in the Azure Local preview program. The**English** and **English VHDX** options are not available for preview versions.
+    :::image type="content" source="media/download-23h2-software/download-azure-stack-hci.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 1." lightbox="media/download-23h2-software/download-azure-stack-hci.png":::
 
-    1. Select the **Azure Stack HCI OS, version 23H2** option.
-        > [!NOTE]
-        > The ISO that you download is OS version 25398.469. This ISO is then patched to the latest OS version during the installation process.
-    1. Review service terms and privacy notice.
-    1. Select the license terms and privacy notice checkbox.
-    1. Select **Download software**. This action begins the download. Use the downloaded ISO file to install the software on each machine that you want to cluster.
+    2. Select your desired version. Only the recommended version is eligible for deployment using Azure portal. To deploy a previous version, use an [Azure Resource Manager template](deployment-azure-resource-manager-template.md).
+    
+    :::image type="content" source="media/download-23h2-software/download-azure-stack-hci-step-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 2." lightbox="media/download-23h2-software/download-azure-stack-hci-step-2.png":::
 
-        :::image type="content" source="media/download-23h2-software/download-23h2-software-1.png" alt-text="Screenshot of the Download Azure Stack HCI version 23H2 page." lightbox="media/download-23h2-software/download-23h2-software-1.png":::
+    3. Select **I agree with Azure Local license terms and private notice** and then select **Download**.
+
+    > [!NOTE]
+    > This action begins the download. Use the downloaded ISO file to install the software on each machine that you want to cluster.
 
 ## Next steps
 
