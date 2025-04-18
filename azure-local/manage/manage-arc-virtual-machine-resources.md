@@ -79,7 +79,7 @@ After creating a data disk, you can expand the data disk to your desired size us
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
-az stack-hci-vm disk update --name "<VM name>" --resource-group "<Resource group name>" --size-gb "<Size in GB>"
+az stack-hci-vm disk update --name $name --resource-group $resource_group --size-gb $size_in_gb
 ```
 
 >[!NOTE]
