@@ -79,12 +79,12 @@ After creating a data disk, you can expand the data disk to your desired size us
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
-az stack-hci-vm disk update --name $name --resource-group $resource_group --size-gb $size_in_gb
+az stack-hci-vm disk update --name "<VM name>" --resource-group "<Resource group name>" --size-gb "<Size in GB>"
 ```
 
 >[!NOTE]
 >
->- The size `--size-gb` you're changing the data disk to can't be the same or less than the original size of the data disk.
+>- The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >- The maximum size the disk can expand to depends on the storage capacity of the cluster. Hyper-V also imposes a VHD max of 2TB and VHDx max of 64TB.
 
 Here is a sample output that indicates successful resizing of the data disk:
