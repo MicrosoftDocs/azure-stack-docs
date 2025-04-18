@@ -61,9 +61,9 @@ Follow these guidelines to update to each release within your current release tr
 
 ### Supported versions of Azure Local
 
-The following table summarizes the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. Starting in 2504 there are two releases. One is to upgrade from 2503 to 2504 using an existing deployment and the other is a new deployment of 2504.
+The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504 using an existing deployment. The other release supports a new deployment of 2504.
 
-### [Existing deployment](#tab/existing-deployment)
+#### [Existing deployment](#tab/existing-deployment)
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
@@ -74,12 +74,15 @@ The following table summarizes the release information for Azure Local across al
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](security-update/security-update.md?view=azloc-24111&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24111&preserve-view=true#features-and-improvements-in-24111) | [Known issues](./known-issues.md?view=azloc-24111&preserve-view=true) |
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
+
 ---
 
-### [New deployment](#tab/new-deployment)
+#### [New deployment](#tab/new-deployment)
+
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 12.2504 <br><br> Availability date: 2025-04-23 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
+
 ---
 
 ### Older versions of Azure Local
