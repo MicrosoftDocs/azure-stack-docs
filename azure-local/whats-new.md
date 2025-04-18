@@ -17,19 +17,19 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2504"
 
-Microsoft has two 2504 releases for April. Here are the details of each release:
+<!--Microsoft has two 2504 releases for April. Here are the details of each release:
 
  
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504  | 26100.3775        | New deployments only.        |
-|11.2504  | 23598.1551        | Existing deployments only.        |
+|11.2504  | 23598.1551        | Existing deployments only.        |-->
 
 ## Features and improvements in 2504
 
 This release has the following features and improvements:
 
-- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.
+<!--- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.-->
 
 - **NET update installations**: There are multiple improvements in this release that increase the reliability of .NET security update installations.
 
@@ -37,16 +37,16 @@ This release has the following features and improvements:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
 
-- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
+<!--- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).-->
 
 - **Azure Local VM changes**
-    - **Software defined networking enabled by Azure Arc**: This release includes the ability to enable and manage a software defined network (SDN) using Azure Arc. This feature is currently in preview and works only on 2504 deployments that use the new version of OS 26100.3775.
+    <!--- **Software defined networking enabled by Azure Arc**: This release includes the ability to enable and manage a software defined network (SDN) using Azure Arc. This feature is currently in preview and works only on 2504 deployments that use the new version of OS 26100.3775.
         With SDN enabled by Arc:
         - You can create and manage logical networks, network interfaces, and network security groups (NSGs) for Azure Local VMs.
         - You can also create and manage network security rules.
         - You can create and delete virtual machine NICs.
         
-    For more information, see [Overview of SDN enabled by Azure Arc on Azure Local](./index.yml).
+    For more information, see [Overview of SDN enabled by Azure Arc on Azure Local](./index.yml).-->
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./index.yml).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
