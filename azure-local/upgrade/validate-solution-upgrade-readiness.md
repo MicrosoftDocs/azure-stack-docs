@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/16/2025
+ms.date: 04/18/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -23,8 +23,8 @@ This *optional* but *recommended* step helps you assess the readiness of Azure L
 
 - Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
-- Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
-- Review and remediate the validation checks that block the upgrade.
+- Perform other checks like installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Review and remediate validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
 
