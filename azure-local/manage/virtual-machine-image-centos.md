@@ -21,7 +21,7 @@ This article describes how to use Azure CLI to prepare a CentOS Linux image and 
 ## Prerequisites
 
 - Have access to an Azure Local instance that is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Local instance. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file.
+- [Download the latest supported ISO image](https://mirrors.vcea.wsu.edu/centos/7.9.2009/isos/x86_64/) on your Azure Local instance. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file.
 
 ## Workflow
 
