@@ -17,13 +17,15 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2504"
 
-<!--Microsoft has two 2504 releases for April. Here are the details of each release:
+<!--Starting with 2504 release, Microsoft has introduced a new versioning schema and a release cadence. There are two 2504 releases for April. Here are the details of each release:
 
  
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
-|12.2504  | 26100.3775        | New deployments only.        |
-|11.2504  | 23598.1551        | Existing deployments only.        |-->
+|12.2504.1001.20 | 26100.3775        | New deployments only.        |
+|11.2504.1001.19  | 23598.1551        | Existing deployments only.        |
+
+For more information, see [Release information summary](./release-information-23h2.md).-->
 
 ## Features and improvements in 2504
 
@@ -40,13 +42,9 @@ This release has the following features and improvements:
 <!--- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).-->
 
 - **Azure Local VM changes**
-    <!--- **Software defined networking enabled by Azure Arc**: This release includes the ability to enable and manage a software defined network (SDN) using Azure Arc. This feature is currently in preview and works only on 2504 deployments that use the new version of OS 26100.3775.
-        With SDN enabled by Arc:
-        - You can create and manage logical networks, network interfaces, and network security groups (NSGs) for Azure Local VMs.
-        - You can also create and manage network security rules.
-        - You can create and delete virtual machine NICs.
-        
-    For more information, see [Overview of SDN enabled by Azure Arc on Azure Local](./index.yml).-->
+    <!--- Software Defined Networking (SDN) enabled by Azure Arc (Preview) - Starting with this release, Azure Local now supports SDN enabled by Azure Arc for new deployments. This preview feature enables deployment of the Network Controller as a failover cluster service. The feature introduces support for Network Security Groups (NSGs) on static logical networks and Azure Local VM network adapters on these networks, allowing for granular control of network traffic.
+ 
+    To learn more about this Preview feature, see [SDN overview](./index.yml) -->
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./index.yml).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
