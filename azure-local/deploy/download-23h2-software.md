@@ -30,7 +30,7 @@ Before you begin the download of the software from Azure portal, ensure that you
 
 - Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
-## Download the software from Azure portal
+## Download the software from the Azure portal
 
 > [!IMPORTANT]
 > English is the only supported language for the deployment.
