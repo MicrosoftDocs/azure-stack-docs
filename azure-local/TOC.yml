@@ -153,7 +153,6 @@ items:
       href: deploy/sdn-express-23h2.md
     - name: Using Windows Admin Center
       href: deploy/sdn-wizard-23h2.md  
-
   
   - name: Deploy workloads
     items:
