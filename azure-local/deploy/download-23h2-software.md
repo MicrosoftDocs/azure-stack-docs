@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/18/2025
+ms.date: 04/21/2025
 ---
 
 # Download version 23H2 operating system for Azure Local deployment
@@ -30,14 +30,14 @@ Before you begin the download of the software from Azure portal, ensure that you
 
 - Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
-## Download the software from the Azure portal
+## Download the software from Azure portal
 
 > [!IMPORTANT]
 > English is the only supported language for the deployment.
 
 Follow these steps to download the software:
 
-1. If not already signed in, sign in to the [Azure portal](https://portal.azure.com/) with your Azure account credentials.
+1. If not already signed in, sign in to [Azure portal](https://ms.portal.azure.com/) with your Azure account credentials.
 1. In the Azure portal search bar at the top, enter **Azure Local**. As you type, the portal starts suggesting related resources and services based on your input. Select **Azure Local** under the **Services** category.
 
     :::image type="content" source="media/download-23h2-software/search-software.png" alt-text="Screenshot that shows how to search for Azure Local." lightbox="media/download-23h2-software/search-software.png":::
