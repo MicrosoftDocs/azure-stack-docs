@@ -26,7 +26,7 @@ For more information about new features in this release, see [What's new for Azu
 This software release maps to software version number **2504.1001.19**.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **2504.1001.19** build. You can also update from 2411.3.
+> The new deployments of this software use the **2504.1001.19** build. You can also update from 2503.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -39,11 +39,11 @@ The following table lists the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Azure Local VMs <!--31912537-->| Subsequent deployments/operations on source image will fail if a VM was created with OS disk and source image located on the same CSV and an error occurred during a previous copy of the source image. |  |
+| Azure Local VMs <!--31912537-->| Subsequent deployments or operations on source image fail if a VM is created with OS disk and source image located on the same CSV and an error occurred during a previous copy of the source image. |  |
 | Azure Local VMs <!--31925164--> | Multiple Hyper-V VMs for a single Azure Local VM that failed to be created are left running on Azure Local. | |
 | Azure Local VMs <!--30299461--> | Storage path deletion times out if AKS node disks are present. | No timeout and will error out with proper error message listing the resources on the storage path. |
-| Azure Local VMs <!--31569686--> | Issues with deleting resources that are "in use" by other resources that no longer exist on the cluster.  | Enhanced validation to check if resources are present on the cluster before attempting to delete.  |
-| Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | Customers can checkpoint an Azure Local VM with local tools and have the VM still be manageable from Azure Portal.  |
+| Azure Local VMs <!--31569686--> | Issues with deleting resources that are in use by other resources that no longer exist on the cluster.  | Enhanced validation to check if resources are present on the cluster before attempting to delete.  |
+| Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | You can checkpoint an Azure Local VM with on-premises tools. The VM still be manageable from Azure portal.  |
 
 ## Known issues in this release
 
