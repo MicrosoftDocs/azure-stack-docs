@@ -5,11 +5,10 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/18/2025
+ms.date: 04/21/2025
 ---
 
 # What's new in Azure Local?
-
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
@@ -50,7 +49,7 @@ This release has the following features and improvements:
 
 - **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
 
-- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+<!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
 
 ::: moniker-end
 
