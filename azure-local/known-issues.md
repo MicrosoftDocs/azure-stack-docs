@@ -51,7 +51,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Add server and Repair server <!--32447442--> | The add-node and repair-node operations fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the composed image of the same solution version as that running on the existing cluster. To get the composed image, contact Microsoft Support or OEM Support. |
+| Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the composed image of the same solution version as that running on the existing cluster. To get the composed image, contact Microsoft Support or OEM Support. |
 
 ## Known issues from previous releases
 
