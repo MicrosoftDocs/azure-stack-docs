@@ -104,7 +104,7 @@ GPU VMs undergo downtime during operations such as patch and update (PnU) and ha
 
 ## Guest driver installation
 
-The following PowerShell cmdlets can be used for driver installation:
+You can use the [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) PowerShell cmdlet for driver installation:
 
 ```powershell
 $VmName = <VM Name In Portal>
