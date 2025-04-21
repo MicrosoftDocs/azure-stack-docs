@@ -1,12 +1,13 @@
 ---
-title: Create StatefulSets in AKS enabled by Azure Arc
-description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) enabled by Arc.
+title: Create StatefulSets in AKS on Windows Server
+description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+
 # Intent: As an IT Pro, I need to learn how to create Stateful Sets in AKS.
 # Keyword: Stateful Sets
 ---
@@ -15,7 +16,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create, update, and delete *StatefulSets*, which are used to maintain the state of an application beyond a pod lifecycle in an AKS deployment in AKS enabled by Azure Arc.
+This article describes how to create, update, and delete *StatefulSets*, which are used to maintain the state of an application beyond a pod lifecycle in an AKS deployment in AKS on Windows Server.
 
 ## Overview of StatefulSets
 

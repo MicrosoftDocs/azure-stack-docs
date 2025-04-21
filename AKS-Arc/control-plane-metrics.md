@@ -1,6 +1,6 @@
 ﻿---
 title: Monitor control plane metrics
-description: Learn how to enable and query control plane metrics from AKS on Azure Local 23H2.
+description: Learn how to enable and query control plane metrics from AKS on Azure Local.
 ms.date: 03/26/2025
 ms.topic: how-to
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.reviewer: haojiehang
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable and query control plane metrics from AKS on Azure Local 23H2. The workflow is as follows:
+This article describes how to enable and query control plane metrics from AKS on Azure Local. The workflow is as follows:
 
 - Enable Managed Prometheus extension
 - Enable control plane metrics

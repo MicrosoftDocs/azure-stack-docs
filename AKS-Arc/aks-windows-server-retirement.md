@@ -38,11 +38,11 @@ The Azure Kubernetes Service current architecture on Windows Server 2019 and Win
 
 If you're using AKS on Azure Local, version 22H2, be aware that Azure Local, version 22H2 will reach end of service on May 31 2025. After that, you won't receive monthly security and quality updates that provide protection from the latest security threats. To continue receiving updates, we recommend updating to the latest version of Azure Local.
 
-## Deploy AKS on Azure Local, version 23H2 or later
+## Deploy AKS on Azure Local
 
 ### [From Windows Server 2019, 2022](#tab/ws)
 
-AKS on Azure Local has a dependency on deploying a supported version of Azure Local. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server don't work on Azure Local, version 23H2 or later, since AKS deployments on Azure Local, version 23H2 or later are managed via Azure Resource Manager (Azure CLI, Azure portal, etc.).
+AKS on Azure Local has a dependency on deploying a supported version of Azure Local. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Windows Server don't work on Azure Local, since AKS deployments on Azure Local are managed via Azure Resource Manager (Azure CLI, Azure portal, etc.).
 
 #### Evaluate if Azure Local is right for you
 
@@ -66,7 +66,7 @@ Before you move to Azure Local, follow these steps to disconnect AKS workload cl
 
 ### [From Azure Local, version 22H2](#tab/22H2)
 
-AKS on Azure Local has a dependency on deploying a supported version of Azure Local. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Azure Local, version 22H2 don't work on Azure Local, version 23H2 or later, since AKS deployments on Azure Local, version 23H2 or later are managed via Azure Resource Manager (Az CLI, Azure portal, etc).
+AKS on Azure Local has a dependency on deploying a supported version of Azure Local. This means that local, PowerShell, or Windows Admin Center commands such as `Update-AksHciCluster` that worked on Azure Local, version 22H2 don't work on Azure Local, since AKS deployments on Azure Local are managed via Azure Resource Manager (Az CLI, Azure portal, etc).
 
 #### Uninstall AKS on Azure Local, version 22H2
 
