@@ -125,7 +125,7 @@ Follow these steps on the node you're trying to repair.
 1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
  
     > [!NOTE]
-    > - You'll need to use the composed image of the same solution as that running on the existing cluster. To get the correct composed image, contact Microsoft Support or OEM Support.
+    > - For 2503 and later, you'll need to use the composed image of the same solution as that running on the existing cluster. To get the correct composed image, contact Microsoft Support or OEM Support.
     > - If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
