@@ -43,7 +43,7 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--31925164--> | Multiple Hyper-V VMs for a single Azure Local VM that failed to be created are left running on Azure Local. | |
 | Azure Local VMs <!--30299461--> | Storage path deletion times out if AKS node disks are present. | No timeout and will error out with proper error message listing the resources on the storage path. |
 | Azure Local VMs <!--31569686--> | Issues with deleting resources that are in use by other resources that no longer exist on the cluster.  | Enhanced validation to check if resources are present on the cluster before attempting to delete.  |
-| Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | You can checkpoint an Azure Local VM with on-premises tools. The VM still be manageable from Azure portal.  |
+| Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | You can checkpoint an Azure Local VM with on-premises tools. The VM will remain manageable from the Azure portal.  |
 
 ## Known issues in this release
 
