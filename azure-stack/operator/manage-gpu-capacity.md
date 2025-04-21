@@ -23,6 +23,8 @@ The following flow shows the general process to add memory to each scale unit no
 
 :::image type="content" source="media/manage-gpu-capacity/add-memory-process.png" alt-text="Add GPU capacity flow":::
 
+Each GPU VM can only use GPUs from a single node, and GPU VMs are not automatically load balanced. For example, you have 4 nodes and 2 GPUs on each node, and you create 4 VMs with 1 GPU for each VM. Each VM can exist on a different node. If that happens, any single node will only have 1 available GPU left. From the portal, you can see that there are 4 GPUs available. However, if you try to create a VM with 2 GPUs, it fails with insufficient GPU capacity, because no single node has 2 GPUs available. The solution is to create the VMs with 2 GPUs first.
+
 ## Upgrade GPUs or add to an existing node
 
 The following section provides a high-level overview of the process to add a GPU.
@@ -50,6 +52,7 @@ To change the partition size, do the following:
    ```powershell
    Get-AzsScaleUnit                    # Returns a list of information about scale units in your stamp 
    ```
+
    Update the following `$partitionSize` and `$scaleUnitName` variables using the "**name**" value returned in the previous step, then run the following to update the scale unit partition size:
 
    ```powershell
@@ -66,6 +69,9 @@ To change the partition size, do the following:
    | 4            | 1/4 of a physical GPU.  |
    | 2            | 1/2 of a physical GPU.   |
    | 1            | Entire physical GPU.      |
+
+> [!NOTE]
+> Resizing GPU VMs is not supported.
 
 ## Next steps
 
