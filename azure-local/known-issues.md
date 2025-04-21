@@ -47,12 +47,11 @@ The following table lists the fixed issues in this release:
 
 ## Known issues in this release
 
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------| -->
-
-Microsoft isn't aware of any known issues in this release.
+|---------|---------|---------|
+| Add server <!--32447442--> | Composed image installation fails with the error:<br> `Cluster Build ID matches node to add's Build ID`. | Use the composed image of the same solution as that running on the existing cluster. To get the composed image, contact Microsoft Support or OEM Support. |
 
 ## Known issues from previous releases
 
