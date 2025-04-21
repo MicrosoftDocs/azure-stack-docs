@@ -126,7 +126,7 @@ Set-AzVMExtension  -Location $Location `
                        -Verbose
 ```
 
-Depending on the OS, type and connectivity of your Azure Stack Hub GPU VM, you must replace these values with the settings below.
+Depending on the OS, type, and connectivity of your Azure Stack Hub GPU VM, you must replace these values with the following settings.
 
 ### AMD MI25
 
