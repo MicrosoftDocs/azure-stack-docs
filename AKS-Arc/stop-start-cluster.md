@@ -1,6 +1,6 @@
 ---
 title: Stop and restart a cluster
-description: Learn how to stop and restart a cluster in AKS enabled by Azure Arc.
+description: Learn how to stop and restart a cluster in AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
@@ -17,7 +17,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In AKS enabled by Azure Arc, your workloads might not need to run continuously. To save resource costs, you can stop (or shut down) your Azure Kubernetes Service (AKS) cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also describes how to restart a stopped cluster, and how to verify that the control plane nodes are running after a restart.
+In AKS on Windows Server, your workloads might not need to run continuously. To save resource costs, you can stop (or shut down) your Azure Kubernetes Service (AKS) cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also describes how to restart a stopped cluster, and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 

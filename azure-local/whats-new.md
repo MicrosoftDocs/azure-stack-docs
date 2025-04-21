@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/03/2025
+ms.date: 04/09/2025
 ---
 
 # What's new in Azure Local?
@@ -24,22 +24,28 @@ This is a baseline release with the following features and improvements:
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
-    - Composed image is now supported for Other Equipment Manufacturers (OEMs).
+    - Composed image is now supported for Original Equipment Manufacturers (OEMs).
     - Several security enhancements were done for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.
-    - The Arc installer script is simplified to only use `Start-ArcBootstrap` to register Azure Local machines with Arc.
+
   - **Deployment of current version and previous versions**: Starting with this release, you can deploy the current version of Azure Local using the Azure portal. To deploy a previous version, use an Azure Resource Manager template that matches the version you wish to deploy. For more information, see [Deploy via ARM template](./deploy/deployment-azure-resource-manager-template.md).
+
 - **Environment checker related changes**
   - Environment checker is now integrated for connectivity tests.
   - Environment checker validates the composed image used for bootstrap.
   - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
+
 - **Updates and upgrade improvements**
-  - The differentiation of SKUs is supported when considering the applicability of a Solution Builder Extension update.
-  - A tag is added to indicate a superseded update.
-  - The Download Service is now used to download HTTP content.
-  - A URL-based platform update package is now supported.
-  - Azure Local rebranding changes were made for Update.
+  - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
+  - A tag has been added to indicate whether an update is the latest or has been superseded.
+  - HTTP content is now downloaded using a more resilient service (Download Service).
+  - OS content is packaged with the release, rather than determining appliable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content will be installed using the CAU plug-ins that are shipped with OS.
+  - Azure Local rebranding changes were made for this update.
+
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+
+- **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
 
 ::: moniker-end
@@ -65,7 +71,7 @@ This is a baseline release with the following features and improvements:
 
 - **Arc VMs** - Here are the improvements made to Arc VMs in this release:
     - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
-    - **Live migration**: Live migration is available for Arc VMs via on-premises tools. For more information, see [Live migration of Arc VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-arc-vms).
+    - **Live migration**: Live migration is available for Azure Local VMs via on-premises tools. For more information, see [Live migration of Azure Local VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-local-vms).
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
 

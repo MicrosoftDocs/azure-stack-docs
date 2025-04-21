@@ -168,6 +168,20 @@ items:
     - name: Run SQL Server
       href: deploy/sql-server-23h2.md
 
+- name: Enable
+  items:
+  - name: Read SDN overview
+    href: concepts/sdn-overview.md
+  - name: Enable SDN via ECE action plan  
+    href: deploy/enable-sdn-ece-action-plan.md
+  - name: Create network security groups   
+    href: manage/create-network-security-groups.md
+  - name: Manage network security groups
+    href: manage/manage-network-security-groups.md
+  - name: Troubleshoot SDN
+    href: concepts/sdn-overview.md
+
+
 - name: Update 
   items:
   - name: About Updates
@@ -493,6 +507,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: What's new in VM migration?
+      href: migrate/migrate-whats-new.md
     - name: Hyper-V VMs
       items: 
       - name: Overview

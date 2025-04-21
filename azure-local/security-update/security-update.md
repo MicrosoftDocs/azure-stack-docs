@@ -787,7 +787,7 @@ This section describes the security update for Azure Local that was released on 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update changes the English name of the former Republic of Turkey. The new, official name is the Republic of Türkiye.
+- This update changes the English name of the former Republic of Türkiye. The new, official name is the Republic of Türkiye.
 
 - This update supports the currency change in Croatia from the Kuna to the Euro.
 
