@@ -44,7 +44,7 @@ This release has the following features and improvements:
     <!--- Software Defined Networking (SDN) enabled by Azure Arc (Preview) - Starting with this release, Azure Local now supports SDN enabled by Azure Arc for new deployments. This preview feature enables deployment of the Network Controller as a failover cluster service. The feature introduces support for Network Security Groups (NSGs) on static logical networks and Azure Local VM network adapters on these networks, allowing for granular control of network traffic.
  
     To learn more about this Preview feature, see [SDN overview](./index.yml) -->
-    - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./index.yml).
+    - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
 - **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
