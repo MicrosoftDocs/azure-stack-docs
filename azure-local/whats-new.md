@@ -32,7 +32,8 @@ This release has the following features and improvements:
 
 <!--- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.-->
 
-- **NET update installations**: There are multiple improvements in this release that increase the reliability of .NET security update installations.
+- **.NET update installations improvements**
+  - Increased reliability of .NET security update installations.
 
 - **Registration and deployment changes**
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
@@ -47,14 +48,14 @@ This release has the following features and improvements:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
-- **Update improvements**: This release includes multiple fixes to improve the quality of the product.
-
+- **Update improvements**
     - Improved reliability when downloading updates.
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
+    - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
 <!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
 
-- **Solution Builder Extension (SBE) improvements**: This release includes the following SBE improvements:
+- **Solution Builder Extension (SBE) improvements**
     - Improved error message to fix firewall blocking access to SBE manifest endpoints.
     - Improved reliability of copying SBE content locally to each machine.
     - Added specification of plug-in name in the SBE.
