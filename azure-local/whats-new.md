@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/21/2025
+ms.date: 04/22/2025
 ---
 
 # What's new in Azure Local?
@@ -32,7 +32,8 @@ This release has the following features and improvements:
 
 <!--- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.-->
 
-- **NET update installations**: There are multiple improvements in this release that increase the reliability of .NET security update installations.
+- **.NET update installations improvements**
+  - Increased reliability of .NET security update installations.
 
 - **Registration and deployment changes**
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
@@ -47,9 +48,17 @@ This release has the following features and improvements:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
-- **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
+- **Update improvements**
+    - Improved reliability when downloading updates.
+    - Added a health check to ensure failover cluster nodes are healthy before starting the update.
+    - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
 <!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
+
+- **Solution extension improvements**
+    - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
+    - Improved reliability of copying solution extension content locally to each machine.
+    - Added specification of plug-in name in the solution extension.
 
 ::: moniker-end
 
@@ -83,6 +92,8 @@ This is a baseline release with the following features and improvements:
   - Azure Local rebranding changes were made for this update.
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
+
+- **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as that running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md). 
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
