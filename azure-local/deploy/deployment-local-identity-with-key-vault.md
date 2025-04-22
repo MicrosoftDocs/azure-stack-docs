@@ -3,7 +3,7 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 03/11/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -19,7 +19,7 @@ This article describes how to use local identity with Azure Key Vault for Azure 
 
 ## Overview
 
-Previously known as AD-less deployment, the method of using local identity with Key Vault allows Azure Local to securely manage and store secrets, such as BitLocker keys, node passwords, and other sensitive information, without relying on AD. By integrating with Key Vault and using certificate-based authentication, you can enhance your security posture and ensure the continuity of operations.
+Previously known as AD-less deployment, the method of using local identity with Key Vault allows Azure Local to securely manage and store secrets, such as BitLocker keys, node passwords, and other sensitive information, without relying on Active Directory (AD). By integrating with Key Vault and using certificate-based authentication, you can enhance your security posture and ensure the continuity of operations.
 
 ## Benefits
 

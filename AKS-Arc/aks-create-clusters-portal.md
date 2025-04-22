@@ -4,7 +4,7 @@ description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/26/2025
+ms.date: 04/22/2025
 ms.reviewer: guanghu
 ms.lastreviewed: 01/30/2024
 ---
@@ -82,5 +82,5 @@ This article describes how to create Kubernetes clusters in Azure Local using th
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Local](aks-whats-new-local.md)
+- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md).
+- [What's new in AKS on Azure Local](aks-whats-new-local.md).

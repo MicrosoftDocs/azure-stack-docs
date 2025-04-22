@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -178,5 +178,5 @@ This section contains known issues and workarounds for ARM template deployment.
 
 ## Next steps
 
-- [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- [Deploy Azure Arc VMs on Azure Local](../manage/create-arc-virtual-machines.md)
+- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
+- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md).

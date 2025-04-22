@@ -3,7 +3,7 @@ title: Configure Arc proxy manually for Azure gateway on Azure Local, version 24
 description: Learn how to configure Arc proxy manually for Azure gateway on Azure Local, version 2408 and 2408.1 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -43,7 +43,7 @@ To register new version 2408 or version 2411 machines in Azure Arc, you run the 
 ```azurecli
 #Define the subscription where you want to register your server as Arc device. 
 
-$Subscription = "yoursubscription>" 
+$Subscription = "yoursubscription" 
 
 #Define the resource group where you want to register your server as Arc device.
 
@@ -143,8 +143,8 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ## Next steps
 
-- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
-- [Get support for Azure Local](../manage/get-support.md)
+- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md).
+- [Get support for Azure Local](../manage/get-support.md).
 
 ::: moniker-end
 

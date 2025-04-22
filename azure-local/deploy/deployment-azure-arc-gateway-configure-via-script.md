@@ -3,7 +3,7 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -125,8 +125,8 @@ To view gateway router logs on Windows, run the `azcmagent logs` command in Powe
 
 ## Next steps
 
-- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md)
-- [Get support for Azure Local](../manage/get-support.md)
+- [Get support for deployment issues](../manage/get-support-for-deployment-issues.md).
+- [Get support for Azure Local](../manage/get-support.md).
 
 ::: moniker-end
 
