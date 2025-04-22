@@ -44,10 +44,10 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--30299461--> | Storage path deletion times out if AKS node disks are present. | No timeout and will error out with proper error message listing the resources on the storage path. |
 | Azure Local VMs <!--31569686--> | Issues with deleting resources that are in use by other resources that no longer exist on the cluster.  | Enhanced validation to check if resources are present on the cluster before attempting to delete.  |
 | Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | You can checkpoint an Azure Local VM with on-premises tools. The VM will remain manageable from the Azure portal.  |
-| Solution Builder Extension (SBE) <!--31050791--> | Improved error message to fix firewall blocking access to SBE manifest endpoints. | |
-| SBE <!--31630939--> | Improved reliability of copying SBE content locally to each machine. | |
-| SBE <!--31632765--> | Added specification of plug-in name in the SBE. | |
-| SBE <!--32105125--> | Fixed issue where system was unable to get available SBE updates. | |
+| Solution extension <!--31050791--> | Improved error message to fix firewall blocking access to solution extension manifest endpoints. | |
+| Solution extension <!--31630939--> | Improved reliability of copying solution extension content locally to each machine. | |
+| Solution extension <!--31632765--> | Added specification of plug-in name in the solution extension. | |
+| Solution extension <!--32105125--> | Fixed issue where system was unable to get available solution extension updates. | |
 | Update <!--26952715--> | Simplified the Azure portal experience for viewing the progress and history of update runs. | |
 
 ## Known issues in this release

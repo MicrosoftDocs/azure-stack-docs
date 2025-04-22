@@ -55,10 +55,10 @@ This release has the following features and improvements:
 
 <!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
 
-- **Solution Builder Extension (SBE) improvements**
-    - Improved error message to fix firewall blocking access to SBE manifest endpoints.
-    - Improved reliability of copying SBE content locally to each machine.
-    - Added specification of plug-in name in the SBE.
+- **Solution extension improvements**
+    - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
+    - Improved reliability of copying solution extension content locally to each machine.
+    - Added specification of plug-in name in the solution extension.
 
 ::: moniker-end
 
