@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/21/2025
+ms.date: 04/22/2025
 ---
 
 # What's new in Azure Local?
@@ -47,9 +47,17 @@ This release has the following features and improvements:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
     - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
-- **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
+- **Update improvements**: This release includes multiple fixes to improve the quality of the product.
+
+    - Improved reliability when downloading updates.
+    - Added a health check to ensure failover cluster nodes are healthy before starting the update.
 
 <!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
+
+- **Solution Builder Extension (SBE) improvements**: This release includes the following SBE improvements:
+    - Improved error message to fix firewall blocking access to SBE manifest endpoints.
+    - Improved reliability of copying SBE content locally to each machine.
+    - Added specification of plug-in name in the SBE.
 
 ::: moniker-end
 

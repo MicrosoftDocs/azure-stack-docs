@@ -48,6 +48,7 @@ The following table lists the fixed issues in this release:
 | SBE <!--31630939--> | Improved reliability of copying SBE content locally to each machine. | |
 | SBE <!--31632765--> | Added specification of plug-in name in the SBE. | |
 | SBE <!--32105125--> | Fixed issue where system was unable to get available SBE updates. | |
+| Update <!--26952715--> | Simplified the Azure portal experience for viewing the progress and history of update runs. | |
 
 ## Known issues in this release
 
