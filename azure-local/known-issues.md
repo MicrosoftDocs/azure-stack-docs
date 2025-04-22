@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/21/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -44,6 +44,11 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--30299461--> | Storage path deletion times out if AKS node disks are present. | No timeout and will error out with proper error message listing the resources on the storage path. |
 | Azure Local VMs <!--31569686--> | Issues with deleting resources that are in use by other resources that no longer exist on the cluster.  | Enhanced validation to check if resources are present on the cluster before attempting to delete.  |
 | Azure Local VMs <!--30353875--> | Issues with deleting and resizing an Azure Local VM that has checkpoint(s).  | You can checkpoint an Azure Local VM with on-premises tools. The VM will remain manageable from the Azure portal.  |
+| Solution extension <!--31050791--> | Improved error message to fix firewall blocking access to solution extension manifest endpoints. | |
+| Solution extension <!--31630939--> | Improved reliability of copying solution extension content locally to each machine. | |
+| Solution extension <!--31632765--> | Added specification of plug-in name in the solution extension. | |
+| Solution extension <!--32105125--> | Fixed issue where system was unable to get available solution extension updates. | |
+| Update <!--26952715--> | Simplified the Azure portal experience for viewing the progress and history of update runs. | |
 
 ## Known issues in this release
 
@@ -798,7 +803,6 @@ Here are the fixed issues in this release:
 | Deployment<!--27101544--> |The secret rotation PowerShell command  `Set-AzureStackLCMUserPassword` supports a new parameter to skip the confirmation message.   ||
 | Deployment<!--27837538--> |Improved the reliability of secret rotation when services aren't restarting in a timely manner.  | |
 | Deployment<!----> |Fixed an issue so that the deployment is enabled when a disjoint namespace is used.  | |
-| Deployment<!--26737110--> |Fixed an issue in deployment when setting the diagnostic level in Azure and the device.   | |
 | SBE<!--25093172--> |A new PowerShell command is released that can be used to update the SBE partner property values provided at deployment time.  | |
 | SBE<!--27940543--> |Fixed an issue that prevents the update service to respond to requests after an SBE only update run.  | |
 | Add server<br>Repair server<!--27101597--> | An issue is fixed that prevents a node from joining Active Directory during an add server operation.  | |
@@ -958,7 +962,6 @@ Here are the known issues from previous releases:
 |---------|---------|---------|
 | AKS on HCI <!--27081563--> |AKS cluster creation fails with the `Error: Invalid AKS network resource id`. This issue can occur when the associated logical network name has an underscore. |Underscores aren't supported in logical network names. Make sure to not use underscore in the names for logical networks deployed on your Azure Local. |
 | Deployment <!--26852606--> |In this release, there's a remote task failure on a multi-node deployment that results in the following exception:<br>```ECE RemoteTask orchestration failure with ASRR1N42R01U31 (node pingable - True): A WebException occurred while sending a RestRequest. WebException.Status: ConnectFailure on [https://<URL>](https://<URL>).```  |The mitigation is to restart the ECE agent on the affected node. On your server, open a PowerShell session and run the following command:<br>```Restart-Service ECEAgent```. |
-|Networking <!--28106559--> | The environment checker for 2402 builds still requires to have the same proxy bypass string for WinInet, WinHttp and Environment Variables and fails when a proxy server is used. By design, the bypass list is different for winhttp, wininet and environment variables, which causes the validation check to fail. This issue is fixed in 2405 and later builds. | If you see this issue, contact Microsoft Support to assist you with the next steps. |
 | Arc VM management <!--X--> |Arc Extensions on Arc VMs stay in "Creating" state indefinitely. | Sign in to the VM, open a command prompt, and type the following: <br> **Windows**: <br> `notepad C:\ProgramData\AzureConnectedMachineAgent\Config\agentconfig.json` <br> **Linux**: <br> `sudo vi /var/opt/azcmagent/agentconfig.json` <br>  Next, find the `resourcename` property. Delete the GUID that is appended to the end of the resource name, so this property matches the name of the VM. Then restart the VM.|
 | Arc VM management <!--X--> |Restart of Arc VM operation completes after approximately 20 minutes although the VM itself restarts in about a minute.| There's no known workaround in this release.  |
 | Update <!----> |In rare instances, you may encounter this error while updating your Azure Local: Type 'UpdateArbAndExtensions' of Role 'MocArb' raised an exception: Exception Upgrading ARB and Extension in step [UpgradeArbAndExtensions :Get-ArcHciConfig] UpgradeArb: Invalid applianceyaml = [C:\AksHci\hci-appliance.yaml].  |If you see this issue, contact Microsoft Support to assist you with the next steps.   |
