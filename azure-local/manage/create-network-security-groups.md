@@ -10,7 +10,7 @@ ms.service: azure-local
 
 # Create network security groups on Azure Local Virtual Machines (Preview)
 
-Applies to: Azure Local 2504 or later
+Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
 
 This article describes how to create network security groups (NSGs), network security rules, and default network access policies on your Azure Local virtual machines enabled by Azure Arc. Once the software defined networking (SDN) is enabled on your existing Azure Local instance, you can create and attach NSGs to network interfaces or logical networks to filter network traffic.  
 

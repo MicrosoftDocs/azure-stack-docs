@@ -10,7 +10,7 @@ ms.date: 04/17/2025
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
 
-> Applies to: Azure Local 2504 and later
+> Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
 
 This article provides an overview of Software Defined Networking (SDN) enabled by Azure Arc on Azure Local, including SDN management methods, guidance on when to use each method, and supported as well as unsupported SDN scenarios.
 
@@ -40,7 +40,7 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 | SDN management | Supported SDN resources  | Supported VMs  | Management tools  |
 |---------|---------|---------|---------|
 | SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
-| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br>SCVMM       |
+| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br><br>SCVMM       |
 
 ## Unsupported scenarios for SDN enabled by Arc
 
@@ -55,19 +55,6 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |AKS workloads     | AKS workloads aren't supported.      |
 |Disaster recovery     | Disaster recovery support isn't available.      |
 
-
-<!--- For SDN enabled by Arc, the following resources aren't supported:
-
-    - Virtual networks
-    - Software Load Balancers (SLBs)
-    - Gateways (VPN, L3, GRE)
-
-- Hybrid scenarios aren't supported. Deployment and management methods should be consistent.
-    - If SDN is enabled by Azure Arc, it can only be managed via Azure portal, Azure CLI, and ARM template.
-    - Management via on-premises tools such as Windows Admin Center and SDN Express scripts is not supported.
-- Scenarios requiring multiple network interfaces simultaneously on a VM are not supported.
-- DHCP-based logical networks and network interfaces are not supported.
-- Disaster recovery support is currently not available.-->
 
 ## Supported networking patterns for SDN enabled by Arc
 

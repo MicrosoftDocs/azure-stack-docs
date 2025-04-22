@@ -5,12 +5,12 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/17/2025
+ms.date: 04/22/2025
 ---
 
 # Enable SDN on Azure Local using Enterprise Cloud Engine action plan (Preview)
 
-> Applies to: Azure Local 2504 or later
+> Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
 
 This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an Enterprise Cloud Engine (ECE) action plan via the Azure Command-line interface (CLI) to enable SDN.
 
@@ -31,7 +31,7 @@ Once the Network Controller is integrated, SDN is enabled. You can use the Azure
 ## Considerations for SDN enabled by Arc
 
 > [!IMPORTANT]
-> - SDN enabled by Arc is a preview feature and shouldn't be deployed on production clusters.
+> - SDN enabled by Arc is a preview feature.
 > - Once you enable SDN, you can't roll back or disable.
 
 Consider this information before you enable SDN:
@@ -43,16 +43,39 @@ Consider this information before you enable SDN:
 
 ## Prerequisites
 
-- You have access to an Azure Local instance running 2504 or later.
+- You have access to an Azure Local instance running 2504 or later. The 2504 release must be running OS version 26100.3775.
+    - To verify the OS version, run the following command:
+
+        ```powershell
+        systeminfo.exe
+        ```
+        Here is an example output:
+    
+        ```output
+        [v-host1]: PS C:\DeploymentUser> systeminfo.exe
+     
+        Host Name:                     V-HOST1
+        OS Name:                       Microsoft Azure Stack HCI
+        OS Version:                    10.0.26100 N/A Build 26100
+        OS Manufacturer:               Microsoft Corporation
+        OS Configuration:              Member Server
+        OS Build Type:                 Multiprocessor Free
+        ====SNIPPED========SNIPPED========SNIPPED========SNIPPED====
+                                       Security Features Enabled:
+        Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+        ```
+        - Verify that the `OS Version` in the output is **10.0.26100** or later.  
+
+- You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the ECE action plan.
 - You have access to a client used to connect to Azure Local instance via Azure CLI.
     
-    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel). 
+    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 - Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
-    - The NC rest name should be unique in the Active Directory.
-    - For more information, see [Dynamic DNS updates](../index.yml) or [Precreate a DNS record](../index.yml).
+    - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no resposnse, it means that the name is unique.
+    - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
 ## Sign in and set subscription
 
@@ -67,8 +90,6 @@ The ECE action plan uses the following parameters:
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
 |**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
-|**MacAddressPoolStart**   | Use this optional parameter to define the first MAC address of the custom pool.|
-|**MacAddressPoolEnd**   | Use this optional parameter to define the last MAC address of the custom pool.|
 
 
 ## Run the ECE action plan
@@ -85,7 +106,8 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     Add-EceFeature -Name NC -SDNPrefix v
     ```
 
-    This step can take up to 5 minutes.
+    Confirm when prompted to proceed with the action plan.
+    This step can take up to 20 minutes.
 
 1. Validate that Network Controller is successfully added to your instance. Once the Network Controller is added, the `add-EceFeature` command shows the action plan outcome.
     <br></br>
@@ -93,11 +115,16 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     <summary>Expand this section to see an example output.</summary>
 
     ```output
+    VERBOSE: Adding ECE feature NC; transcript started at C:\MASLogs\Add-EceFeature.2025-04-17.20-52-14
+    Disclaimer: Network Controller installation will cause network connectivity interruptions. Before proceeding with the NC enablement operation, please ensure a maintenance window is properly arranged for running on a production environment.
+    Proceeding? [Yes/NO] : Yes
     Start                  End                    Duration    Type   Status  Name                                                                                         
     -----                  ---                    --------    ----   ------  ----                                                                                         
     03/11/2025 10:29:52 PM 03/11/2025 10:31:13 PM 00.00:01:20 Action Success └─(A)CleanNCSecret                                                                           
-    03/11/2025 10:29:52 PM 03/11/2025 10:31:13 PM 00.00:01:20 Step   Success   └─(S)1 Parallel per-node operation top step                                                
-    SNIPPED			SNIPPED			SNIPPED
+    03/11/2025 10:29:52 PM 03/11/2025 10:31:13 PM 00.00:01:20 Step   Success   └─(S)1 Parallel per-node operation top step   
+                                             
+    ==========SNIPPED======SNIPPED==========SNIPPED=========SNIPPED========
+
     03/11/2025 10:29:52 PM 03/11/2025 10:31:12 PM 00.00:01:20 Step   Success         └─(S)1.1 Clean up NC secrets                                                         
     03/11/2025 10:29:52 PM 03/11/2025 10:31:12 PM 00.00:01:20 Task   Success           └─(T)[RemoteNode=Machine2>] Role=Cloud\Fabric\NC Interface=CleanNCRestSecret  
 
@@ -125,7 +152,7 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     03/11/2025 10:32:53 PM 03/11/2025 10:41:50 PM 00.00:08:57 Step   Success   └─(S)1 FCNC deployment and MOC hydration.                                                                            
     03/11/2025 10:32:53 PM 03/11/2025 10:41:50 PM 00.00:08:57 Task   Success     └─(T)Role=Cloud\Fabric\NC Action=DeployFCNCHydrateMOC                                                              
     
-    SNIPPED			SNIPPED			SNIPPED           
+    ======SNIPPED=========SNIPPED============SNIPPED ==========SNIPPED========          
                            
     03/11/2025 10:40:19 PM 03/11/2025 10:40:25 PM 00.00:00:06 Step   Success         │                 │           ├─(S)1 Check Firewall Rules                                                     
     03/11/2025 10:40:19 PM 03/11/2025 10:40:25 PM 00.00:00:06 Task   Success         │                 │           │ └─(T)Role=Cloud\Fabric\NC Interface=VerifyNCFirewallRulesEnabled               
@@ -149,7 +176,7 @@ Follow these steps on the Azure CLI to run the ECE action plan:
     
     VERBOSE: Full XML progress log file located at: C:\MASLogs\EnableMOCSDN.2025-03-11.22-32-52
     WARNING: Unable to find volume with label Deployment
-    VERBOSE: SDN Network Controller URL is https://v-NC.s45r2305.masd.stbtest.microsoft.com/
+    VERBOSE: SDN Network Controller URL is https://v-NC.domainname/
     VERBOSE: Enabling SDN for MOC completed.
     0
     VERBOSE: Transcript stopped at C:\MASLogs\Add-EceFeature.2025-03-11.22-29-49
