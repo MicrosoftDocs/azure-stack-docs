@@ -105,7 +105,7 @@ The action plan uses the following parameters:
 | Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
-|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
+|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br>If you decide to use a custom prefix, make sure that the prefix meets the following requirements: <br><br>- Must not be null or empty. <br> - Must be less than 8 characters. <br> - Must contain only lowercase, uppercase, numeric, characters. <br> - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen. <br> - The `https://<SDNPrefix>-NC.<DomainName>/` must resolve to the reserved NC Rest IP. The link should not resolve to an existing DNS record.          |
 
 
 ## Run the action plan
