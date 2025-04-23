@@ -11,7 +11,7 @@ ms.lastreviewed: 01/10/2025
 
 # Connect to Windows or Linux worker nodes with SSH
 
-> Applies to: AKS on Azure Local, version 23H2
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 During your AKS Arc cluster's lifecycle, you might need to directly access cluster nodes for maintenance, log collection, or troubleshooting operations. For security purposes, you must use a Secure Shell Protocol (SSH) connection to access Windows or Linux worker nodes. You sign in using the node's IP address.
 

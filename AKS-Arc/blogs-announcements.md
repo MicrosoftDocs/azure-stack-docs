@@ -28,7 +28,7 @@ See the [Microsoft Tech Community - Azure Arc Blogs](https://techcommunity.micro
 |-|-|
 | May | *Blog*: [Achieve distributed high availability: Stack HCI and AKS Hybrid](https://techcommunity.microsoft.com/t5/azure-architecture-blog/achieving-distributed-high-availability-stack-hci-and-aks-hybrid/ba-p/3820279) |
 | March | **GA**: [Bring all your workloads to the edge with AKS Edge Essentials. Now generally available!](https://techcommunity.microsoft.com/t5/internet-of-things-blog/bring-all-your-workloads-to-the-edge-with-aks-edge-essentials/ba-p/3765162) <br/> *Blog*:  [Announcing the 3-year retirement of Windows Server 2019 on Azure Kubernetes Service and AKS hybrid](https://techcommunity.microsoft.com/t5/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure/ba-p/3777341) <br/> *Blog*: [How do AKS and AKS on Azure Stack HCI compare?](https://techcommunity.microsoft.com/t5/azure-arc-blog/how-do-aks-and-aks-on-azure-stack-hci-compare/ba-p/3761670)|
-| Feb | **GA**: [AKS enabled by Azure Arc is now available on Azure Stack HCI 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/aks-enabled-by-azure-arc-is-now-available-on-azure-stack-hci/ba-p/4045648) |
+| Feb | **GA**: [AKS enabled by Azure Arc is now available on Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/aks-enabled-by-azure-arc-is-now-available-on-azure-stack-hci/ba-p/4045648) |
 
 ## 2021
 

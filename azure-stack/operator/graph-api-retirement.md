@@ -4,7 +4,7 @@ description: Learn how to mitigate the retirement of the Entra ID Graph API.
 author: sethmanheim
 ms.author: sethm
 ms.topic: conceptual
-ms.date: 03/14/2025
+ms.date: 04/15/2025
 ms.reviewer: rtiberiu
 
 ---
@@ -39,11 +39,14 @@ $ErrorActionPreference='Stop'
 Import-Module Microsoft.Graph.Authentication
 Import-Module Microsoft.Graph.Applications
  
+# Target your Azure Cloud instance name; use Get-MgEnvironment to list available clouds and Add-MgEnvironment to add new ones as needed for custom private/secure clouds
+$envName = 'Global'
+
 # Repeat this flow for each of your target directory tenants
 $tenantId = 'MyTenantId'
- 
+
 # Sign in with admin permissions to read and write all application objects
-Connect-MgGraph -TenantId $tenantId -Scopes Application.ReadWrite.All
+Connect-MgGraph -Environment $envName -TenantId $tenantId -Scopes Application.ReadWrite.All
  
 # Retrieve all applications in the current directory
 Write-Host "Looking-up all applications in directory '$tenantId'..."
@@ -52,7 +55,7 @@ Write-Host "Found '$($applications.Count)' total applications in directory '$ten
  
 # Find all the unique deployment GUIDs, each one representing an Azure Stack deployment or registration in the current directory
 $deploymentGuids = $applications.IdentifierUris |
-    Where-Object { $_ -like 'https://management.*' -or $_ -like 'https://adminmanagement.*' -or $_ -like 'https://azurebridge.*' } |
+    Where-Object { $_ -like 'https://management.*' -or $_ -like 'https://adminmanagement.*' -or $_ -like 'https://azurebridge*' } |
     ForEach-Object { "$_".Split('/')[3] } |
     Select-Object -Unique
 Write-Host "Found '$($deploymentGuids.Count)' total Azure Stack deployments or registrations in directory '$tenantId'"
@@ -75,7 +78,7 @@ foreach ($application in $applications)
 $azureStackLegacyGraphApplications = $azureStackApplications |
     Where-Object {
         ($_.RequiredResourceAccess.ResourceAppId -contains '00000002-0000-0000-c000-000000000000') -or
-        ($_.IdentifierUris | Where-Object { $_ -like 'https://azurebridge.*' }) }
+        ($_.IdentifierUris | Where-Object { $_ -like 'https://azurebridge*' }) }
  
 # Find which of those applications need to have their authentication behaviors patched to allow access to legacy Graph
 $azureStackLegacyGraphApplicationsToUpdate = $azureStackLegacyGraphApplications |
@@ -126,6 +129,20 @@ Looking-up all applications in directory '<ID>'...
 Found '####' total applications in directory '<ID>>'
 Found '1' total Azure Stack deployments in directory '<ID>>'
 Found '0' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service 
+```
+
+The following output from the `Get-MgEnvironment` command shows the default cloud instances that are included when you install the Graph module:
+
+```output
+C:\> Get-MgEnvironment
+
+Name     AzureADEndpoint                   GraphEndpoint                           Type    
+----     ---------------                   -------------                           ----    
+USGovDoD https://login.microsoftonline.us  https://dod-graph.microsoft.us          Built-in
+Germany  https://login.microsoftonline.de  https://graph.microsoft.de              Built-in
+USGov    https://login.microsoftonline.us  https://graph.microsoft.us              Built-in
+China    https://login.chinacloudapi.cn    https://microsoftgraph.chinacloudapi.cn Built-in
+Global   https://login.microsoftonline.com https://graph.microsoft.com             Built-in
 ```
 
 ## Next steps
