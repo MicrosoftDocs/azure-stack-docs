@@ -529,7 +529,7 @@ items:
     - name: For Hyper-V VMs
       href: /system-center/vmm/manage-azure-stack-hci?view=sc-vmm-2025&preserve-view=true#migrate-vms-from-windows-server-to-azure-local-instance
     - name: For VMware VMs
-      href: /system-center/vmm/vm-convert-vmware?view=sc-vmm-2025&preserve-view=true
+      href: /system-center/vmm/vm-convert-vmware
   - name: Migrate manually (v22H2 only)
     items:
     - name: To same hardware
