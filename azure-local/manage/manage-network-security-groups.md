@@ -4,15 +4,15 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/16/2025
+ms.date: 04/22/2025
 ms.service: azure-local
 ---
 
-# Manage network security groups on Azure Local Virtual Machines (Preview)
+# Manage network security groups on Azure Local (Preview)
 
-Applies to: Azure Local 2504 or later
+Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
 
-This article describes how to manage network security groups (NSGs) and network security rules on your Azure Local virtual machines enabled by Azure Arc. Once you create network security groups and network security rules on your Azure Local VMs, you can list, show details, associate, dissociate, update, and delete these resources.
+This article describes how to manage network security groups (NSGs) on your Azure Local virtual machines (VMs) enabled by Azure Arc. Once you create network security groups on your Azure Local VMs, you can then list, show details, associate, dissociate, update, and delete these resources.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -70,6 +70,13 @@ Follow these steps to list network security groups:
     az stack-hci-vm network nsg list -g $resource_group
     ```
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+
+    ```
+    </details>
 
 ### Show details of a network security group
 
@@ -187,6 +194,14 @@ Follow these steps to delete a network security group:
     ```azurecli
     az stack-hci-vm network nsg delete -g $resource_group --name $nsgname
     ```
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+
+    ```
+    </details>
 
 ## Associate network security group with network interface
 
@@ -411,13 +426,13 @@ In this example,  we associate a static logical network with an existing network
 </details>
 
 
-### Create a network interface 
+<!--### Create a network interface -->
 
-```azurecli
+<!--```azurecli
 az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname
 ```
 
-`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.
+`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.-->
 
 
 ## Manage network security rules

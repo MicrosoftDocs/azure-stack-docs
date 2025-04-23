@@ -167,16 +167,18 @@ items:
 
 - name: Enable
   items:
-  - name: Read SDN overview
-    href: concepts/sdn-overview.md
-  - name: Enable SDN via ECE action plan  
-    href: deploy/enable-sdn-ece-action-plan.md
-  - name: Create network security groups   
-    href: manage/create-network-security-groups.md
-  - name: Manage network security groups
-    href: manage/manage-network-security-groups.md
-  - name: Troubleshoot SDN
-    href: concepts/sdn-overview.md
+  - name: SDN
+    items: 
+    - name: Read SDN overview
+      href: concepts/sdn-overview.md
+    - name: Enable SDN via action plan  
+      href: deploy/enable-sdn-ece-action-plan.md
+    - name: Create network security groups   
+      href: manage/create-network-security-groups.md
+    - name: Manage network security groups
+      href: manage/manage-network-security-groups.md
+    - name: Troubleshoot SDN
+      href: concepts/sdn-overview.md
 
 
 - name: Update 
