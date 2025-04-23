@@ -30,18 +30,18 @@ Once the Network Controller is integrated, SDN is enabled. You can use the Azure
     For more information, see [Create network security groups](../manage/create-network-security-groups.md) and see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
 
 
-<!--## About Network controller architecture on Azure Local
+## About Network controller architecture on Azure Local
 
 Here is an example of a 2-node Azure Local instance with SDN enabled by Arc:
 
-<Insert the light background architecture diagram here>
+:::image type="content" source="./media/enable-sdn-ece-action-plan/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-ece-action-plan/network-controller-architecture.png":::
 
  In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and all its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group. 
  
 1. MGMT VLAN on your Azure Local instance is responsible for configuring and deploying network policies from NC to NC host agent.
-1. NC host agent receives and plumbs policies to your virtual switch. 
+1. NC host agent receives and plumbs policies to your virtual switch.
 1. Tenant VMs reside on logical networks managed by NC. All the traffic from these VMs is routed through the virtual switches that are Virtual Filtering Platform (VFP)-enabled.
--->
+
 
 ## Considerations for SDN enabled by Arc
 
