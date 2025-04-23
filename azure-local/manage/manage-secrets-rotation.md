@@ -91,7 +91,7 @@ This section describes how you can change the storage account key for the cluste
 
 ## Revoke SAS token for storage account used for Azure Local VM images
 
-This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for Azure Local VMs enabled by Arc images.
+This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for images used by Azure Local VMs enabled by Arc.
 
 | SAS policy   | SAS expired?    | Steps to revoke   |
 |---------|---------|---------|
