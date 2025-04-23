@@ -55,6 +55,13 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |AKS workloads     | AKS workloads aren't supported.      |
 |Disaster recovery     | Disaster recovery support isn't available.      |
 
+<!-- The following functionality does not exist
+- Can't add and delete IP pools or expand IP pool range configuration on the logical network.
+- Can't update DNS servers, VLANs for the logical network.
+- Can't update IP configuration, MAC address for the VM NICs.
+- Can't apply NSGs on logical networks with AKS clusters.
+-->
+
 
 ## Supported networking patterns for SDN enabled by Arc
 

@@ -22,6 +22,8 @@ This article describes how to create and configure network security groups (NSGs
 
 Use a network security group to manage network traffic between logical networks or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic.
 
+:::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
+
 > [!IMPORTANT]
 > - NSGs are only available for static logical networks. DHCP-based logical networks aren't supported.
 > - NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
