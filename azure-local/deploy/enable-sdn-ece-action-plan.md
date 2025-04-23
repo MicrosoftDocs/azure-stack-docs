@@ -1,6 +1,6 @@
 ---
-title: Enable SDN on Azure Local using an ECE action plan (Preview)
-description: Describes how to enable SDN using an ECE action on Azure Local (Preview).
+title: Enable SDN on Azure Local using an action plan (Preview)
+description: Describes how to enable SDN using an action on Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -8,17 +8,18 @@ ms.topic: how-to
 ms.date: 04/22/2025
 ---
 
-# Enable SDN on Azure Local using Enterprise Cloud Engine action plan (Preview)
+# Enable SDN on Azure Local using action plan (Preview)
 
 > Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
 
-This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an Enterprise Cloud Engine (ECE) action plan via the Azure Command-line interface (CLI) to enable SDN.
+This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an action plan via the Azure Command-line interface (CLI) to enable SDN.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About enabling SDN in Azure Local
 
-For SDN enabled by Arc, the Network Controller is deployed as a set of Failover Cluster services managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the Network Controller into the Azure Local platform as a managed service.
+For SDN enabled by Arc, the Network Controller is deployed as a Failover Cluster service managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the Network Controller into the Azure Local platform.
+
 
 Once the Network Controller is integrated, SDN is enabled. You can use the Azure portal, Azure CLI, or Azure Resource Manager templates to create and manage the following SDN features:
 
@@ -27,6 +28,20 @@ Once the Network Controller is integrated, SDN is enabled. You can use the Azure
 - **Network Security Group (NSG)**: You can create and apply NSGs to network interfaces or logical networks to filter network traffic. You can also create default network access policies and network security rules to allow or deny traffic to and from network interfaces and logical networks.
 
     For more information, see [Create network security groups](../manage/create-network-security-groups.md) and see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
+
+
+<!--## About Network controller architecture on Azure Local
+
+Here is an example of a 2-node Azure Local instance with SDN enabled by Arc:
+
+<Insert the light background architecture diagram here>
+
+ In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and all its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group. 
+ 
+1. MGMT VLAN on your Azure Local instance is responsible for configuring and deploying network policies from NC to NC host agent.
+1. NC host agent receives and plumbs policies to your virtual switch. 
+1. Tenant VMs reside on logical networks managed by NC. All the traffic from these VMs is routed through the virtual switches that are Virtual Filtering Platform (VFP)-enabled.
+-->
 
 ## Considerations for SDN enabled by Arc
 
@@ -44,6 +59,7 @@ Consider this information before you enable SDN:
 ## Prerequisites
 
 - You have access to an Azure Local instance running 2504 or later. The 2504 release must be running OS version 26100.3775.
+    - In the Azure portal, go to your Azure Local instance and select **Overview**. The **OS version** is displayed in the **Instance details** section.
     - To verify the OS version, run the following command:
 
         ```powershell
@@ -66,7 +82,7 @@ Consider this information before you enable SDN:
         ```
         - Verify that the `OS Version` in the output is **10.0.26100** or later.  
 
-- You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the ECE action plan.
+- You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the action plan.
 - You have access to a client used to connect to Azure Local instance via Azure CLI.
     
     This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).
@@ -81,9 +97,9 @@ Consider this information before you enable SDN:
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
 
-## Review ECE action plan parameters
+## Review action plan parameters
 
-The ECE action plan uses the following parameters:
+The action plan uses the following parameters:
 
 
 | Parameter  | Description  |
@@ -92,13 +108,13 @@ The ECE action plan uses the following parameters:
 |**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance.         |
 
 
-## Run the ECE action plan
+## Run the action plan
 
-Follow these steps on the Azure CLI to run the ECE action plan:
+Follow these steps on the Azure CLI to run the  action plan:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 
-1. Run the ECE action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command.
+1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command.
 
     ```azurecli
     #Run the LCM action plan to install Network Controller as Failover Cluster Service

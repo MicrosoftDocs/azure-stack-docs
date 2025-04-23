@@ -59,7 +59,7 @@ Follow these steps to list network security groups:
 
     ```azurecli
     $resource_group = "examplerg"
-    $location = "eastus2euap"
+    $location = "eastus"
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     ```
@@ -79,7 +79,7 @@ Follow these steps to show details of a network security group:
   
       ```azurecli
       $resource_group = "examplerg"
-      $location = "eastus2euap"
+      $location = "eastus"
       $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
       $nsgname = "examplensg"
       ```
@@ -105,7 +105,7 @@ Follow these steps to show details of a network security group:
             "type": "CustomLocation"
           },
           "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
-          "location": "eastus2euap",
+          "location": "eastus",
           "name": "examplensg",
           "properties": {
             "networkInterfaces": [],
@@ -141,7 +141,7 @@ Follow these steps to show details of a network security group:
             "type": "CustomLocation"
           },
           "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
-          "location": "eastus2euap",
+          "location": "eastus",
           "name": "examplensg",
           "properties": {
             "networkInterfaces": [
@@ -178,7 +178,7 @@ Follow these steps to delete a network security group:
 
     ```azurecli
     $resource_group = "examplerg"
-    $location = "eastus2euap"
+    $location = "eastus"
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     ```
@@ -196,7 +196,7 @@ In this example, we create a network interface with an existing network security
 
     ```azurecli
     $resource_group = "examplerg"
-    $location = "eastus2euap"
+    $location = "eastus"
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     $lnetname="static-lnet" 
@@ -221,7 +221,7 @@ In this example, we create a network interface with an existing network security
       }, 
     
       "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
-      "location": "eastus2euap", 
+      "location": "eastus", 
       "name": "examplenic", 
       "properties": { 
         "dnsSettings": null, 
@@ -282,7 +282,7 @@ In this example,  we associate a static logical network with an existing network
   
     ```azurecli
     $resource_group = "examplerg"
-    $location = "eastus2euap"
+    $location = "eastus"
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     $nicname="examplenic" 
@@ -318,7 +318,7 @@ In this example,  we associate a static logical network with an existing network
       }, 
     
       "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
-      "location": "eastus2euap", 
+      "location": "eastus", 
       "name": "static-lnet3", 
       "properties": { 
         "dhcpOptions": { 

@@ -10,7 +10,7 @@ ms.date: 04/17/2025
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
 
-> Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
+> Applies to: Azure Local 2504 running OS version 26100.3775, or later
 
 This article provides an overview of Software Defined Networking (SDN) enabled by Azure Arc on Azure Local, including SDN management methods, guidance on when to use each method, and supported as well as unsupported SDN scenarios.
 
@@ -22,13 +22,11 @@ SDN offers a centralized way to configure and manage networks and network servic
 
 SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools.
 
-**SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 and later. This preview feature isn't recommended for production use.
+**SDN enabled by Arc** is currently in Preview and available for Azure Local 2504 running OS version 26100.3775, or later.
 
 In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing the management of both existing and new logical networks.
 
-With SDN enabled by Arc:
-- You can create and apply network security groups (NSGs) to logical networks and virtual machine network interfaces (NICs). Additionally, you can create and add network security rules.
-- You can create and delete virtual machine NICs.
+With SDN enabled by Arc, you can create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
 An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. It uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
@@ -41,6 +39,8 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 |---------|---------|---------|---------|
 | SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
 | SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br><br>SCVMM       |
+
+
 
 ## Unsupported scenarios for SDN enabled by Arc
 
