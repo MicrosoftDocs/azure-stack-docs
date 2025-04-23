@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/22/2025
+ms.date: 04/23/2025
 ms.service: azure-local
 ---
 
@@ -110,14 +110,14 @@ You can ignore the Windows Defender for Cloud recommendations below for storage 
 | Storage account | Storage accounts should prevent shared key access. | Azure Local supports accessing storage accounts exclusively through shared keys. |
 | Storage account | Storage account should use a private link connection. | Azure Local doesn't currently support private link connections. |
 | Azure Key Vault | Azure Key Vaults should use a private link. | Azure Local doesn't currently support private link connections. |
-| Azure Arc-enabled server | Windows Defender Exploit Guard should be enabled on Azure Arc-enabled servers. | Windows Defender Exploit Guard isn't applicable to server-core SKUs without a GUI such as the Azure Local OS. |
-| Azure Arc-enabled server | Azure Arc-enabled servers should be configured to periodically check for missing system updates. | Azure Local machines shouldn't be updated individually. Use the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
-| Azure Arc-enabled server | System updates should be installed on your Azure Arc-enabled servers using Azure Update Manager. | Azure Local machines shouldn't be updated individually. Utilize the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
-| Azure Arc-enabled server | Machines should have a vulnerability assessment solution. | Microsoft Defender Vulnerability Management (MDVM) doesn't currently support Azure Local. |
+| Machine – Azure Arc | Windows Defender Exploit Guard should be enabled on Azure Local machines. | Windows Defender Exploit Guard isn't applicable to server-core SKUs without a GUI such as the Azure Local OS. |
+| Machine – Azure Arc | Azure Local machines should be configured to periodically check for missing system updates. | Azure Local machines shouldn't be updated individually. Use the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
+| Machine – Azure Arc | System updates should be installed on your Azure Local machines using Azure Update Manager. | Azure Local machines shouldn't be updated individually. Utilize the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
+| Machine – Azure Arc | Azure Local machines should have a vulnerability assessment solution. | Microsoft Defender Vulnerability Management doesn't currently support Azure Local. |
 
-## Monitor servers and Azure Local VMs
+## Monitor Azure Local machines and Azure Local VMs
 
-Go to the Microsoft Defender for Cloud portal to monitor alerts for individual servers and Azure Local VMs running on Azure Local. You can utilize the regulatory compliance and attack path analysis features, among other enhanced security features.
+Go to the Microsoft Defender for Cloud portal to monitor alerts for individual Azure Local machines and Azure Local VMs.
 
 Follow these steps to access the Microsoft Defender for Cloud portal's pages to monitor individual servers and Azure Local VMs:
 
