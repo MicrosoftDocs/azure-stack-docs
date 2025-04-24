@@ -534,7 +534,7 @@ This section describes the manage operations supported for network security rule
 ### Update a network security rule
 
 
-1. 1. Set the following parameters in your Azure CLI session.
+1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
     $resource_group = "examplerg"
@@ -546,7 +546,6 @@ This section describes the manage operations supported for network security rule
     ```
 
 1. Run this command to update a network security rule:
-
 
     ```azurecli
     az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resouce_group --destination-port-ranges $destinationport
