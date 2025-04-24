@@ -466,113 +466,133 @@ This section describes the manage operations supported for network security rule
 
 ### Show details of a network security rule
 
-Run this command to show details of a network security rule:
+1. Set the following parameters in your Azure CLI session:
+
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    ```
+
+2. Run this command to show details of a network security rule:
 
 
-```azurecli
-az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
-```
+    ```azurecli
+    az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
+    ```
 
-<br></br>
-<details>
-<summary>Expand this section to see an example output.</summary>
+    <br></br>
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+    
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
+      "name": "examplensr",
+      "properties": {
+        "access": "Deny",
+        "description": "Inbound security rule",
+        "destinationAddressPrefixes": [
+          "192.168.99.0/24"
+        ],
+        "destinationPortRanges": [
+          "80"
+        ],
+        "direction": "Inbound",
+        "priority": 400,
+        "protocol": "Icmp",
+        "provisioningState": "Succeeded",
+        "sourceAddressPrefixes": [
+          "10.0.0.0/24"
+        ],
+        "sourcePortRanges": [
+          "*"
+        ]
+      },
+      "resourceGroup": "examplerg",
+      "systemData": {
+        "createdAt": "2025-03-11T23:25:37.369940+00:00",
+        "createdBy": "gus@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2025-03-11T23:25:37.369940+00:00",
+        "lastModifiedBy": "gus@contoso.com",
+        "lastModifiedByType": "User"
+      },
+      "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
+    }
+    
+    ```
 
-```output
-
-{
-  "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
-    "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
-  "name": "examplensr",
-  "properties": {
-    "access": "Deny",
-    "description": "Inbound security rule",
-    "destinationAddressPrefixes": [
-      "192.168.99.0/24"
-    ],
-    "destinationPortRanges": [
-      "80"
-    ],
-    "direction": "Inbound",
-    "priority": 400,
-    "protocol": "Icmp",
-    "provisioningState": "Succeeded",
-    "sourceAddressPrefixes": [
-      "10.0.0.0/24"
-    ],
-    "sourcePortRanges": [
-      "*"
-    ]
-  },
-  "resourceGroup": "examplerg",
-  "systemData": {
-    "createdAt": "2025-03-11T23:25:37.369940+00:00",
-    "createdBy": "gus@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2025-03-11T23:25:37.369940+00:00",
-    "lastModifiedBy": "gus@contoso.com",
-    "lastModifiedByType": "User"
-  },
-  "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
-}
-
-```
-
-</details>
+    </details>
 
 ### Update a network security rule
 
-Run this command to update a network security rule:
+
+1. 1. Set the following parameters in your Azure CLI session.
+
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    $securityrulename = "examplensr"
+    ```
+
+1. Run this command to update a network security rule:
 
 
-```azurecli
-az stack-hci-vm network nsg rule update --name "<Network security rule name>" --nsg-name "<Network security group>" --resource-group "<Resource group name>" --destination-port-ranges "<Destination port range>"
-```
+    ```azurecli
+    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resouce_group --destination-port-ranges "<Destination port range>"
+    ```
 
-<details>
-<summary>Expand this section to see an example output.</summary>
-
-```output
-{
-  "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
-    "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
-  "name": "examplensr",
-  "properties": {
-    "access": "Allow",
-    "description": "This NSG is intended to allow traffic from any source IP/port range to hit any destination IP/port range",
-    "destinationAddressPrefixes": [
-      "*"
-    ],
-    "destinationPortRanges": [
-      "80"
-    ],
-    "direction": "Inbound",
-    "priority": 100,
-    "protocol": "*",
-    "provisioningState": "Succeeded",
-    "sourceAddressPrefixes": [
-      "*"
-    ],
-    "sourcePortRanges": [
-      "*"
-    ]
-  },
-  "resourceGroup": "<Resource group name>",
-  "systemData": {
-    "createdAt": "2025-04-24T17:37:24.766786+00:00",
-    "createdBy": "gus@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
-    "lastModifiedBy": "gus@contoso.com",
-    "lastModifiedByType": "User"
-  },
-  "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
-}
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
+      "name": "examplensr",
+      "properties": {
+        "access": "Allow",
+        "description": "This NSG is intended to allow traffic from any source IP/port range to hit any destination IP/port range",
+        "destinationAddressPrefixes": [
+          "*"
+        ],
+        "destinationPortRanges": [
+          "80"
+        ],
+        "direction": "Inbound",
+        "priority": 100,
+        "protocol": "*",
+        "provisioningState": "Succeeded",
+        "sourceAddressPrefixes": [
+          "*"
+        ],
+        "sourcePortRanges": [
+          "*"
+        ]
+      },
+      "resourceGroup": "examplerg",
+      "systemData": {
+        "createdAt": "2025-04-24T17:37:24.766786+00:00",
+        "createdBy": "gus@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
+        "lastModifiedBy": "gus@contoso.com",
+        "lastModifiedByType": "User"
+      },
+      "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
+    }
 
 ```
 
