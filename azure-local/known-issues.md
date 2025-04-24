@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/22/2025
+ms.date: 04/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -23,10 +23,16 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2504
 
-This software release maps to software version number **2504.1001.19**.
+For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+
+
+| Deployment type  | Solution version  | OS build  |
+|---------|---------|---------|
+| Existing deployments    | 11.2504.1001.19          | 25398.1551         |
+| New deployments    | 12.2504.1001.20         | 26100.3775         |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **2504.1001.19** build. You can also update from 2503.
+> The new deployments of this software use the **12.2504.1001.20** build. You can also update an existing deployment from 2503 using **11.2504.1001.19**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
