@@ -87,7 +87,7 @@ This is a baseline release with the following features and improvements:
   - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
   - A tag has been added to indicate whether an update is the latest or has been superseded.
   - HTTP content is now downloaded using a more resilient service (Download Service).
-  - OS content is packaged with the release, rather than determining appliable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
   - OS content will be installed using the CAU plug-ins that are shipped with OS.
   - Azure Local rebranding changes were made for this update.
 
@@ -205,7 +205,7 @@ This is a baseline release with the following features and improvements:
 - **Azure Local VM management improvements**: Starting this release, following improvements were made to the Azure Local VM management experience:
 
   - You can set a proxy configuration for Azure VMs on the Portal.
-  - You can set a SQL Server configuration for Azure VMs VMs on Portal.
+  - You can set a SQL Server configuration for Azure VMs on Portal.
   - You can now create an image from an Azure VMs VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
 
