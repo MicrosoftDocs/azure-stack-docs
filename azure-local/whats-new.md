@@ -5,14 +5,14 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/23/2025
+ms.date: 04/24/2025
 ---
 
 # What's new in Azure Local?
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local VM management, security, and more.
 
 ::: moniker range="=azloc-2504"
 
@@ -403,7 +403,7 @@ This release includes the following updates to the security documentation:
 - The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
 - Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local](./concepts/security-features.md) article.
 
-### Azure Kubernetes on Azure Local
+### Azure Kubernetes Service on Azure Local
 
 For a list of the changes and improvements in AKS on Azure Local, see [What's new in Azure Kubernetes on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
@@ -512,7 +512,7 @@ In this release:
 
 - Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
 - Proxy is supported for Azure Local VMs. For more information, see [Set up proxy for Azure Local VMs](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
-- Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
+- Storage path selection is available during the Azure Local VM image creation via the Azure portal. For more information, see [Create an Azure Local VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
 ### Migration of Hyper-V VMs to Azure Local (preview)
 
@@ -594,7 +594,7 @@ Beginning this release, the following Azure Local VM management capabilities are
 
 Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. For more information, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
-The following Kubernetes cluster deployment and management capabilities are available:
+The following Azure Kubernetes cluster deployment and management capabilities are available:
 
 - **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of Azure Kubernetes on Azure Local including the Azure Arc resource bridge, custom location, and the Azure Kubernetes Extension for the Azure Kubernetes operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
 - **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of Azure Kubernetes infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
