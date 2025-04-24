@@ -22,6 +22,8 @@ This article describes how to create and configure network security groups (NSGs
 
 Use a network security group to manage network traffic between logical networks or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic.
 
+Here is a diagram that shows how network security groups are attached to logical networks and VMs on Azure Local:
+
 :::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
 
 > [!IMPORTANT]
@@ -161,19 +163,19 @@ After you create a network security group, you're ready to create network securi
     |------------|-------------|
     | **name**  | Name for the network security rule that you create for your Azure Local. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **nsg-name**  | Name for the network security group that contains this network security rule. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
+    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. If the location isn't specified, the resource group location is used. |
     | **resource-group** | Name of the resource group where you create the network security group. For ease of management, we recommend that you use the same resource group as your Azure Local. |
     | **subscription** | Name or ID of the subscription where your Azure Local is deployed. This could be another subscription you use for your Azure Local VMs. |
     | **custom-location** |Use this to provide the custom location associated with your Azure Local where you're creating this network security group. |
-    | **direction** | Direction of the network security rule can be outbound or inbound. |
-    | **source-port-ranges** | Specify the source port range 0 and 65535 to match either an incoming or outgoing packet. You can enter `*` to specify all source ports.  |
-    | **source-address-prefixes** | Specify the source as an address prefix or an IP address but not both.|
-    | **destination-address-prefixes** | Specify the destination as an address prefix or an IP address but not both.  |  
-    | **destination-port-ranges** | Specify the destination port range 0 and 65535 to match either an incoming or outgoing packet. You can enter `*` to specify all destination ports.  |
-    | **protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are **All**, **TCP** and **UDP**. |
-    | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny**. |
-    | **priority** | Priority of the rule must be unique for each rule in the collection. Acceptable values are from **100** to **4096**. A lower value denotes a higher priority.  |
-    | **description** | An optional description for this network security rule.  |
+    | **direction** | Direction of the rule specifies if the rule applies to incoming or outgoing traffic. Allowed values are outbound or inbound (default). |
+    | **source-port-ranges** | Specify the source port range 0 and 65535 to match either an incoming or outgoing packet. The default `*` will specify all source ports. |
+    | **source-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.|
+    | **destination-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.  |  
+    | **destination-port-ranges** | Specify the destination port range from 0 to 65535 (default 80) to match either an incoming or outgoing packet. You can enter `*` to specify all destination ports.  |
+    | **protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are `*` (default), **All**, **TCP** and **UDP**. |
+    | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny** with default being **Allow**. |
+    | **priority** | Specify a unique priority for each rule in the collection. Acceptable values are from **100** to **4096**. A lower value denotes a higher priority.  |
+    | **description** | An optional description for this network security rule. The description is a maximum of 140 characters.  |
 
 1. Run the following command to create an inbound network security rule on your Azure Local instance. This rule blocks all inbound ICMP traffic to Azure Local VMs (except the specified management ports you want enabled) while allowing all outbound access.
 

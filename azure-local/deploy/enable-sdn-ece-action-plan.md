@@ -18,10 +18,10 @@ This article describes how to enable software defined networking (SDN) on your e
 
 ## About enabling SDN in Azure Local
 
-For SDN enabled by Arc, the Network Controller is deployed as a Failover Cluster service managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the Network Controller into the Azure Local platform.
+For SDN enabled by Arc, the Network Controller (NC) is deployed as a Failover Cluster service managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the NC into the Azure Local platform.
 
 
-Once the Network Controller is integrated, SDN is enabled. You can use the Azure portal, Azure CLI, or Azure Resource Manager templates to create and manage the following SDN features:
+Once the NC is integrated, SDN is enabled. You can use the Azure portal, Azure CLI, or Azure Resource Manager templates to create and manage the following SDN features:
 
 - **Logical networks**: You can create SDN static logical networks that project your physical networks. For more information, see [Create logical networks](../manage/create-logical-networks.md).
 - **Network interfaces**: You can create and attach network interfaces to virtual machines and assign them IP addresses from the logical network. For more information, see [Create network interfaces](../manage/create-network-interfaces.md).
@@ -32,7 +32,9 @@ Once the Network Controller is integrated, SDN is enabled. You can use the Azure
 
 ## About Network controller architecture on Azure Local
 
-Here is an example of a 2-node Azure Local instance with SDN enabled by Arc:
+NC is a key component that manages and configures virtual network infrastructure on an Azure Local instance. NC is now natively integrated with the host machine using Failover Clustering, rather than being hosted in a VM. NC is responsible for managing the virtual switch, logical networks, and network interfaces. It also provides a REST API for programmatic access to the network infrastructure.
+
+Here is an architecture diagram of network controller in a 2-node Azure Local instance with SDN enabled by Arc:
 
 :::image type="content" source="./media/enable-sdn-ece-action-plan/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-ece-action-plan/network-controller-architecture.png":::
 
