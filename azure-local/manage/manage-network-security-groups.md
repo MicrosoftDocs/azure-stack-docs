@@ -23,10 +23,11 @@ This article describes how to manage network security groups (NSGs) on your Azur
 
 - You have access to an Azure Local instance.
 
-    - This instance is running 2504 or later.
+    - This instance is running 2504 with OS version 26100.3775, or later.
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+    - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](../manage/create-network-security-groups.md).
 
 <!--# [Azure portal](#tab/azureportal)
 
@@ -74,8 +75,46 @@ Follow these steps to list network security groups:
     <summary>Expand this section to see an example output.</summary>
     
     ```output
-
+    [
+      {
+        "eTag": null,
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft
+    .extendedlocation/customlocations/examplecl",
+          "type": "CustomLocation"
+        },
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.Azu
+    reStackHCI/networkSecurityGroups/examplensg",
+        "location": "eastus",
+        "name": "examplensg",
+        "properties": {
+          "networkInterfaces": [],
+          "provisioningState": "Succeeded",
+          "status": {
+            "errorCode": "",
+            "errorMessage": "",
+            "provisioningStatus": {
+              "operationId": "<Operation ID>",
+              "status": "Succeeded"
+            }
+          },
+          "subnets": []
+        },
+        "resourceGroup": "examplerg",
+        "systemData": {
+          "createdAt": "2025-04-24T17:33:49.304682+00:00",
+          "createdBy": "gus@contoso.com",
+          "createdByType": "User",
+          "lastModifiedAt": "2025-04-24T17:34:00.133215+00:00",
+          "lastModifiedBy": "<User ID>",
+          "lastModifiedByType": "Application"
+        },
+        "tags": {},
+        "type": "microsoft.azurestackhci/networksecuritygroups"
+      }
+    ]
     ```
+
     </details>
 
 ### Show details of a network security group
@@ -103,7 +142,7 @@ Follow these steps to show details of a network security group:
 
         <details>
         <summary>Expand this section to see an example output.</summary>
-        
+
         ```output
         {
           "eTag": null,
@@ -189,19 +228,15 @@ Follow these steps to delete a network security group:
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     ```
+
 2. Run the following command to delete a network security group (NSG) on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nsg delete -g $resource_group --name $nsgname
+    az stack-hci-vm network nsg delete -g $resource_group --name $nsgname --yes
     ```
 
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-    
-    ```output
+    Use the `list` command to verify that the NSG is deleted.
 
-    ```
-    </details>
 
 ## Associate network security group with network interface
 
@@ -425,16 +460,6 @@ In this example,  we associate a static logical network with an existing network
 
 </details>
 
-
-<!--### Create a network interface -->
-
-<!--```azurecli
-az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname
-```
-
-`az stack-hci-vm network nic update -h` (if NIC was already created then use this update command to associate NSG with existing nic) and use that command to associate a NIC with an NSG.-->
-
-
 ## Manage network security rules
 
 This section describes the manage operations supported for network security rules.
@@ -503,14 +528,51 @@ Run this command to update a network security rule:
 
 
 ```azurecli
-
+az stack-hci-vm network nsg rule update --name "<Network security rule name>" --nsg-name "<Network security group>" --resource-group "<Resource group name>" --destination-port-ranges "<Destination port range>"
 ```
 
 <details>
 <summary>Expand this section to see an example output.</summary>
 
 ```output
-
+{
+  "extendedLocation": {
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+    "type": "CustomLocation"
+  },
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
+  "name": "examplensr",
+  "properties": {
+    "access": "Allow",
+    "description": "This NSG is intended to allow traffic from any source IP/port range to hit any destination IP/port range",
+    "destinationAddressPrefixes": [
+      "*"
+    ],
+    "destinationPortRanges": [
+      "80"
+    ],
+    "direction": "Inbound",
+    "priority": 100,
+    "protocol": "*",
+    "provisioningState": "Succeeded",
+    "sourceAddressPrefixes": [
+      "*"
+    ],
+    "sourcePortRanges": [
+      "*"
+    ]
+  },
+  "resourceGroup": "<Resource group name>",
+  "systemData": {
+    "createdAt": "2025-04-24T17:37:24.766786+00:00",
+    "createdBy": "gus@contoso.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
+    "lastModifiedBy": "gus@contoso.com",
+    "lastModifiedByType": "User"
+  },
+  "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
+}
 
 ```
 
@@ -521,7 +583,7 @@ Run this command to update a network security rule:
 Run this command to list network security rules in a network security group:
 
 ```azurecli
-
+az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" --nsg-name "<NSG name>"
 
 ```
 
@@ -530,7 +592,44 @@ Run this command to list network security rules in a network security group:
 <summary>Expand this section to see an example output.</summary>
 
 ```output
-
+{
+    "extendedLocation": {
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft.extendedlocation/customlocations/examplecl",
+      "type": "CustomLocation"
+    },
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/contoso-retail-any-any-rule",
+    "name": "contoso-retail-any-any-rule",
+    "properties": {
+      "access": "Allow",
+      "description": "This NSG is intended to allow traffic from any source IP/port range to hit any destination IP/port range",
+      "destinationAddressPrefixes": [
+        "*"
+      ],
+      "destinationPortRanges": [
+        "80"
+      ],
+      "direction": "Inbound",
+      "priority": 100,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "sourceAddressPrefixes": [
+        "*"
+      ],
+      "sourcePortRanges": [
+        "*"
+      ]
+    },
+    "resourceGroup": "<Resource Group Name>",
+    "systemData": {
+      "createdAt": "2025-04-24T17:37:24.766786+00:00",
+      "createdBy": "gus@microsoft.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
+      "lastModifiedBy": "gus@microsoft.com",
+      "lastModifiedByType": "User"
+    },
+    "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
+  }
 
 ```
 
@@ -541,19 +640,8 @@ Run this command to list network security rules in a network security group:
 Run this command to delete a network security rule:
 
 ```azurecli
-az stack-hci-vm network nsg rule delete -g $resource_group --nsg-name $nsgname -n $securityrulename
+az stack-hci-vm network nsg rule delete --resource-group "<Resource group name>" --name "<Network security rule name>" --yes
 ```
-
-<details>
-<summary>Expand this section to see an example output.</summary>
-
-```output
-
-
-```
-
-</details>
-
 
 <!--# [Azure portal](#tab/azureportal)
 
