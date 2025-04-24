@@ -542,13 +542,14 @@ This section describes the manage operations supported for network security rule
     $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     $securityrulename = "examplensr"
+    $destinationport = "80"
     ```
 
 1. Run this command to update a network security rule:
 
 
     ```azurecli
-    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resouce_group --destination-port-ranges "<Destination port range>"
+    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resouce_group --destination-port-ranges $destinationport
     ```
 
     <details>
@@ -594,9 +595,9 @@ This section describes the manage operations supported for network security rule
       "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
     }
 
-```
+    ```
 
-</details>
+    </details>
 
 ### List network security rules in a network security group
 
@@ -657,11 +658,23 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
 
 ### Delete a network security rule
 
-Run this command to delete a network security rule:
+1. Set the following parameters in your Azure CLI session.
 
-```azurecli
-az stack-hci-vm network nsg rule delete --resource-group "<Resource group name>" --name "<Network security rule name>" --yes
-```
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = "examplensg"
+    $securityrulename = "examplensr"
+    ```
+
+1. Run this command to delete a network security rule:
+
+    ```azurecli
+    az stack-hci-vm network nsg rule delete --resource-group $resource_group --name $securityrulename --yes
+    ```
+
+    Use the `list` command to verify that the network security rule is deleted.
 
 <!--# [Azure portal](#tab/azureportal)
 
