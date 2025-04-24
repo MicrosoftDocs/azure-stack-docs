@@ -132,7 +132,7 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
     </details>
 
 > [!TIP]
-Use `az stack-hci-vm network nsg create -h` for help with CLI.
+> Use `az stack-hci-vm network nsg create -h` for help with CLI.
 
 ## Create a network security rule
 
