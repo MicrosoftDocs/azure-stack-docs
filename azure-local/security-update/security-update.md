@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/21/2025
+ms.date: 04/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -18,20 +18,18 @@ This article lists the various security updates that are available for Azure Loc
 
 This article describes the OS security update for Azure Local that was released on April 21, 2025 and applies to OS build 25398.1551.
 
-<!--For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments.
-
-The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
 
 
 | Deployment type  | Security update  | OS build  |
 |---------|---------|---------|
 | Existing deployments    | KB5055527         | 25398.1551         |
-| New deployments    | KB5055523         | 26100.3775         |-->
+| New deployments    | KB5055523         | 26100.3775         |
 
 
-<!--# [Existing deployments](#tab/existing-deployments) 
+# [Existing deployments](#tab/existing-deployments)
 
-This section applies to existing deployments of 2504 running OS build **25398.1551**.-->
+This section applies to existing deployments of 2504 running OS build **25398.1551**.
 
 ## Improvements
 
@@ -70,7 +68,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
 
-<!--# [New deployments](#tab/new-deployments)
+# [New deployments](#tab/new-deployments)
 
 This section applies to new deployments of 2504 running OS build **26100.3775**.
 
@@ -115,7 +113,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5055523](https://go.microsoft.com/fwlink/?linkid=2313854).
 
 ---
--->
+
 
 ::: moniker-end
 
