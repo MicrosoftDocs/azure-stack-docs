@@ -54,7 +54,7 @@ Consider this information before you enable SDN:
 - SDN enabled by Arc is supported with updates to newer Azure Local releases.
 - Enabling SDN with existing Azure Local VMs and logical networks is supported.
     - The logical networks and network interfaces are automatically hydrated into the Network Controller.
-    - You might experience a short network disruption (about 30 seconds disconnection while SDN Azure Virtual Filtering Platform policies are applied).
+    - Make sure to plan for a maintenance window if you are running on a production environment. Your workloads will experience a short network disruption while SDN Azure Virtual Filtering Platform policies are applied.
 
 ## Prerequisites
 
@@ -93,6 +93,7 @@ Consider this information before you enable SDN:
     - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no resposnse, it means that the name is unique.
     - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
+
 ## Sign in and set subscription
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
@@ -110,6 +111,9 @@ The action plan uses the following parameters:
 
 ## Run the action plan
 
+> [!IMPORTANT]
+> Make sure to plan for a maintenance window if you are running on a production environment.
+
 Follow these steps on the Azure CLI to run the  action plan:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
@@ -119,10 +123,14 @@ Follow these steps on the Azure CLI to run the  action plan:
     ```azurecli
     #Run the LCM action plan to install Network Controller as Failover Cluster Service
     
-    Add-EceFeature -Name NC -SDNPrefix v
+    Add-EceFeature -Name NC -SDNPrefix v 
     ```
 
     Confirm when prompted to proceed with the action plan.
+
+    > [!TIP]
+    > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
+
     This step can take up to 20 minutes.
 
 1. Validate that Network Controller is successfully added to your instance. Once the Network Controller is added, the `add-EceFeature` command shows the action plan outcome.
