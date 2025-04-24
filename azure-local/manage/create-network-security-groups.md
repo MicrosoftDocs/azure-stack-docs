@@ -26,9 +26,6 @@ Here is a diagram that shows how network security groups are attached to logical
 
 :::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
 
-> [!IMPORTANT]
-> - NSGs are only available for static logical networks. DHCP-based logical networks aren't supported.
-> - NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
 
 ## Prerequisites
 
@@ -39,6 +36,7 @@ Here is a diagram that shows how network security groups are attached to logical
     - This instance must be running 2504 with OS version 26100.3775, or later.
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    - You have atleast one static logical network and one static network interface created on this instance. For more information, see [Create logical networks](./create-logical-networks.md#create-a-static-logical-network-via-cli) and [Create network interfaces](./create-network-interfaces.md#virtual-network-interface-with-static-ip).
     - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
@@ -64,6 +62,11 @@ Here is a diagram that shows how network security groups are attached to logical
 ## Create a network security group (NSG)
 
 Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG by itself, or associate NSG with a network interface or a logical network.
+
+NSGs are only available for static logical networks. DHCP-based logical networks aren't supported.
+
+> [!WARNING]
+> NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
 
 1. Set the following parameters in your Azure CLI session.
 

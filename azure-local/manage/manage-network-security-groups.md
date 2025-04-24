@@ -657,6 +657,11 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
 
 ### Delete a network security rule
 
+You may need to delete a network security rule if you no longer need it. You can delete a network security rule from a network security group (NSG).
+
+> [!WARNING]
+> NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
+
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
