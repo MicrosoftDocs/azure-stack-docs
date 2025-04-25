@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/22/2025
+ms.date: 04/25/2025
 ---
 
 # What's new in Azure Local?
@@ -69,6 +69,17 @@ This release has the following features and improvements:
 
 This is a baseline release with the following features and improvements:
 
+- **US Government regions** - Azure Local is now available in the US Government regions. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+    - The following scenarios are not supported with US Gov regions:
+
+        - Azure Arc Gateway.
+        - Deploy using local identity with Key Vault.
+        - Azure Site Recovery.
+        - Azure Backup.
+        - Windows Admin Center in Azure portal.
+
+
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
@@ -87,7 +98,7 @@ This is a baseline release with the following features and improvements:
   - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
   - A tag has been added to indicate whether an update is the latest or has been superseded.
   - HTTP content is now downloaded using a more resilient service (Download Service).
-  - OS content is packaged with the release, rather than determining appliable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
   - OS content will be installed using the CAU plug-ins that are shipped with OS.
   - Azure Local rebranding changes were made for this update.
 
