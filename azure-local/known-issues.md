@@ -147,7 +147,8 @@ The following table lists the known issues in this release:
 | Updates <!--32073115--> | Updating to 2503.0.13 failed `Update PreRequisites` for Role 'MocArb' with exception: `SyntaxWarning: invalid escape sequence '\W' at CheckAndInstall-CliExtensions`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/).  |
 | Security vulnerability <!--32074481--> | There is a known security vulnerability in this release that may affect security scans for the updates. For more information, see [Azure Arc Installer vulnerability CVE-2025-26627 - Host](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-26627) |  |
 | Azure Local VMs <!--32074457O--> | There is a known security vulnerability in this release that may affect security scans for the updates. For more information, see [Azure Arc Installer vulnerability CVE-2025-26627 - Guest](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-26627)  |  |
-| Azure Government Cloud <!--32555179-->| In the Azure Government Cloud, Microsoft Defender for Cloud recommendations for Azure Local do not show up in the Microsoft Defender for Cloud portal.|  |
+| Microsoft Defender for Cloud <br> Azure Government Cloud <!--32555179-->| In the Azure Government Cloud, Microsoft Defender for Cloud recommendations for Azure Local do not show up in the Microsoft Defender for Cloud portal.|  |
+| Metrics <br> Azure Government Cloud <!--IcM-620345316-->| Metrics emitted from Azure Local clusters in the Azure Government Cloud are failing to reach Azure. Due to this, metrics are not visible in the Monitoring, Metrics, or Workbook graphs. Metrics based alerts won't be triggered and new alerts can't be set up.|  |
 
 
 ## Known issues from previous releases
