@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/24/2025
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
