@@ -14,9 +14,9 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2504"
 
-## April OS security updates (KB5055527) for Azure Local
+## April OS security updates (KB5055527 and KB5055523) for Azure Local
 
-This article describes the OS security update for Azure Local that was released on April 21, 2025 and applies to OS build 25398.1551.
+This article describes the OS security update for Azure Local that was released on April 21, 2025 and applies to OS builds 25398.1551 and 26100.3775.
 
 For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
 
