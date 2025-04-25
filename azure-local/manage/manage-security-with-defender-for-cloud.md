@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/23/2025
+
 ms.service: azure-local
 ---
 
@@ -33,6 +34,7 @@ Follow these steps to enable Defender for Cloud for Azure Local.
 
 - Step 1: Turn on Foundational CSPM.
 - Step 2: Turn on Defender for Servers for individual machines and Azure Local virtual machines (VMs) enabled by Azure Arc.
+
 
 ### Step 1: Turn on Foundational CSPM
 
@@ -121,11 +123,12 @@ Go to the Microsoft Defender for Cloud portal to monitor alerts for individual A
 
 Follow these steps to access the Microsoft Defender for Cloud portal's pages to monitor individual servers and Azure Local VMs:
 
+
 1. Sign into the Azure portal, and search for and select **Microsoft Defender for Cloud**.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" alt-text="Screenshot that shows how to search for Defender for Cloud in the Azure portal." lightbox="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" :::
 
-1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view security recommendations for individual servers and Arc VMs running on Azure Local, or **Security alerts** to monitor alerts for them.
+1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view security recommendations for individual servers and VMs running on Azure Local, or **Security alerts** to monitor alerts for them.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" alt-text="Screenshot of the Defender for Cloud Overview page." lightbox="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" :::
 
