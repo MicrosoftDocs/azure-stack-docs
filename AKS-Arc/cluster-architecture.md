@@ -2,15 +2,16 @@
 title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
-ms.date: 05/29/2024
+ms.date: 02/28/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 05/29/2024
+ms.custom: references_regions
 
 ---
 
-# AKS on Azure Local, version 23H2 architecture
+# AKS on Azure Local architecture
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -70,11 +71,15 @@ Azure Arc is automatically enabled on all your Kubernetes clusters created using
 
 ## Cloud-based updates for infrastructure components
 
-Azure Local, version 23H2 consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
+Azure Local consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
 
-AKS is now part of Azure Local starting from version 23H2. The lifecycle management of AKS enabled by Azure Arc infrastructure follows the same approach as any other components on Azure Local, version 23H2. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Local solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS enabled by Arc infrastructure components, as part of solution extensions, are updated by the update package of Azure Local, version 23H2.
+AKS is part of Azure Local, starting with version 23H2. The lifecycle management of AKS enabled by Azure Arc infrastructure follows the same approach as any other components on Azure Local. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Local solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS enabled by Arc infrastructure components, as part of solution extensions, are updated by the update package of Azure Local.
 
-For more information, see the [Update overview for Azure Local, version 23H2](/azure-stack/hci/update/about-updates-23h2).
+For more information, see the [Update overview for Azure Local](/azure/azure-local/update/about-updates-23h2).
+
+## Region availability
+
+AKS on Azure Local is supported in the same regions in which Azure Local is available. For more information about supported Azure regions, see [System requirements for Azure Local](/azure/azure-local/concepts/system-requirements-23h2#azure-requirements).
 
 ## Next steps
 

@@ -5,17 +5,19 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 01/23/2025
+ms.date: 02/25/2025
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
-# Use Azure Update Manager to update your Azure Local, version 23H2
+# Use Azure Update Manager to update Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [IMPORTANT](../includes/hci-applies-to-23h2-cluster-updates.md)]
 
-This article describes how to use Azure Update Manager to find and install available updates on Azure Local. Additionally, we provide guidance on how to review, track progress, and browse the history of system updates.
+This article describes how to use Azure Update Manager to find and install available updates on Azure Local. It also describes how to review, track progress, and browse the history of system updates.
+
+[!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
 ## About Azure Update Manager
 
@@ -35,7 +37,7 @@ Here are some benefits of the Azure Update Manager:
 
 ## Prerequisites
 
-- An Azure Local, version 23H2 system deployed and registered with Azure.
+- An Azure Local system deployed and registered with Azure.
 - Make sure to apply updates via supported navigation paths in Azure portal. Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**. Additionally, use of 3rd party tools to install updates is not supported. 
 
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).

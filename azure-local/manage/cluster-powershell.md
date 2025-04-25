@@ -1,10 +1,10 @@
 ---
 title: Manage Azure Stack HCI and Windows Server clusters using PowerShell
 description: Learn how to manage clusters on Azure Stack HCI and Windows Server using PowerShell
-author: JasonGerend
+author: alkohli
 ms.topic: how-to
-ms.date: 04/17/2023
-ms.author: jgerend
+ms.date: 02/27/2025
+ms.author: alkohli
 ms.reviewer: stevenek
 ---
 
@@ -14,12 +14,14 @@ ms.reviewer: stevenek
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI and Windows Server clusters.
+This article describes how to manage Azure Stack HCI and Windows Server clusters using PowerShell.
+
+You can use Windows PowerShell to manage resources and configure features on your Azure Stack HCI and Windows Server clusters.
 
 You manage clusters from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
 > [!NOTE]
-> When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. In addition, you will need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
+> When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you're managing. In addition, you need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
 For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](/powershell/module/failoverclusters).
 
@@ -30,7 +32,7 @@ Windows PowerShell is used to perform all the tasks in this article. It's recomm
 If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
 > [!NOTE]
-> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. For versions older than Windows 10 22H2, simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. For Windows 10 22H2 and Windows 11, go to **Settings > System > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Add**. To see operation progress, click the Back button to view status on the "Manage optional features" page. The added feature will persist across Windows 10 version upgrades.
+> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. For versions older than Windows 10 22H2, go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. For Windows 10 22H2 and Windows 11, go to **Settings > System > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Add**. To see operation progress, click the Back button to view status on the "Manage optional features" page. The added feature persists across Windows 10 version upgrades.
 ## View cluster settings and resources
 
 Gets information about a cluster named Cluster1:
@@ -84,7 +86,7 @@ Starts the Cluster service on all server nodes of the cluster on which it isn't 
 Start-Cluster -Name Cluster1
 ```
 
-This example stops the Cluster service on all nodes in the cluster named Cluster1, which will stop all services and applications configured in the cluster:
+This example stops the Cluster service on all nodes in the cluster named Cluster1, which stops all services and applications configured in the cluster:
 
 ```powershell
 Stop-Cluster -Name Cluster1
@@ -107,7 +109,7 @@ Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
 >[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
+> If the node is added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
 ## Set up the cluster witness
 
@@ -164,7 +166,7 @@ Before you remove (destroy) a cluster, you must unregister it from Azure first. 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource) reference documentation.
 
 > [!NOTE]
-> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to remove a cluster. For more information, see [Enable-WSManCredSSP](/powershell/module/microsoft.wsman.management/enable-wsmancredssp).
+> You need to temporarily enable Credential Security Service Provider (CredSSP) authentication to remove a cluster. For more information, see [Enable-WSManCredSSP](/powershell/module/microsoft.wsman.management/enable-wsmancredssp).
 
 The following example removes cluster resources by name on cluster Cluster1:
 

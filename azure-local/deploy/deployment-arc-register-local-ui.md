@@ -5,14 +5,15 @@ ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/20/2025
+ms.date: 03/03/2025
 ---
 
 # Register your Azure Local machines via the local UI (preview)
 
 > Applies to: Azure Local 2405.1 and later
 
-<!--[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]-->
+> [!IMPORTANT]
+> Starting 2503 release, local UI is deprecated. If you want to bootstrap your Azure Local machines, you can use the [Configurator App](./deployment-arc-register-configurator-app.md).
 
 This article describes how to use a local web-based UI to bootstrap and register the machines that you intend to cluster as an Azure Local instance.
 
@@ -164,6 +165,9 @@ Follow these steps to configure the network settings and connect the machines to
 1. Repeat all the steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png" alt-text="Screenshot that shows the Azure Arc agent setup configuration status, open in Azure portal option for Azure Local ." lightbox="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png":::
+
+> [!NOTE]
+> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 ## Step 2: Verify machines are connected to Arc
 

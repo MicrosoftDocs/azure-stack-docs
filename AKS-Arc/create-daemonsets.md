@@ -1,6 +1,6 @@
 ---
-title: Create a Kubernetes DaemonSet in AKS enabled by Azure Arc
-description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS) enabled by Azure Arc.
+title: Create a Kubernetes DaemonSet in AKS on Windows Server
+description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
@@ -17,7 +17,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create and use a Kubernetes *DaemonSet* in AKS enabled by Azure Arc to ensure that a copy of a pod is always available on every worker node in a cluster. You can use a DaemonSet to improve cluster performance by ensuring that an app runs on all the worker nodes, and to deploy pods that do maintenance and provide support services for nodes.
+This article describes how to create and use a Kubernetes *DaemonSet* in AKS on Windows Server to ensure that a copy of a pod is always available on every worker node in a cluster. You can use a DaemonSet to improve cluster performance by ensuring that an app runs on all the worker nodes, and to deploy pods that do maintenance and provide support services for nodes.
 
 ## Overview of DaemonSets
 

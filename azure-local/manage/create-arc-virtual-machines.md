@@ -1,34 +1,34 @@
 ---
-title: Create Arc virtual machines on Azure Local 
-description: Learn how to view your system in the Azure portal and create Arc virtual machines on Azure Local.
+title: Create Azure Local virtual machines enabled by Azure Arc 
+description: Learn how to view your Azure Local instance in the Azure portal and create Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 02/24/2025
+ms.date: 03/21/2025
 ---
 
-# Create Arc virtual machines on Azure Local
+# Create Azure Local virtual machines enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc virtual machine (VM) starting with the VM images that you created on your Azure Local instance. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create Azure Local virtual machines (VMs) starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Local resource
 
 Use the [Azure Local resource page](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters) for the following operations:
 
-- Create and manage Arc VM resources such as VM images, disks, network interfaces.
-- View and access Azure Arc Resource Bridge and Custom Location associated with the Azure Local instance.
-- Provision and manage Arc VMs.
+- Create and manage Azure Local VM resources such as VM images, disks, network interfaces.
+- View and access Azure Arc resource bridge and custom location associated with the Azure Local instance.
+- Provision and manage VMs.
 
-The procedure to create Arc VMs is described in the next section.
+The procedure to create VMs is described in the next section.
 
 ## Prerequisites
 
-Before you create an Azure Arc-enabled VM, make sure that the following prerequisites are completed.
+Before you create an Azure Local VM, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -78,9 +78,9 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 ---
 
-## Create Arc VMs
+## Create Azure Local VMs
 
-Follow these steps to create an Arc VM on your Azure Local.
+Follow these steps to create a VM on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -136,7 +136,33 @@ Here we create a VM that uses specific memory and processor counts on a specifie
     | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
     | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
-1. Run the following command to create a VM.
+1. Run the following commands to create the applicable VM.
+
+    **To create a Trusted launch Azure Local VM:**
+
+    1. Specify additional flags to enable secure boot, enable virtual TPM, and choose security type. Note, when you specify security type as Trusted launch, you must enable secure boot and vTPM, otherwise Trusted launch VM creation will fail.
+
+        ```azurecli
+        az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
+        ```
+
+    1. Once the VM is created, to verify the security type of the VM is `Trusted launch`, do the following.
+
+    1. Run the following cmdlet (on one of the cluster nodes) to find the owner node of the VM:
+
+        ```azurecli
+        Get-ClusterGroup $vmName
+        ```
+
+    1. Run the following cmdlet on the owner node of the VM:
+
+        ```azurecli
+        (Get-VM $vmName).GuestStateIsolationType
+        ```
+
+    1. Ensure a value of `TrustedLaunch` is returned.
+
+    **To create a standard Azure Local VM:**
 
    ```azurecli
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
@@ -145,7 +171,7 @@ Here we create a VM that uses specific memory and processor counts on a specifie
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 > [!NOTE]
-> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
+> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Azure Local VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
@@ -153,10 +179,10 @@ If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is au
 
 ### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
-When creating an Arc VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
+When creating a VM using Windows Server 2012 and Windows Server 2012 R2 images, specify the following additional parameters to create the VM:
 
-- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on Arc VMs.
-- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on Arc VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
+- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine agent on VMs.
+- `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine agent on VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM
 
@@ -173,7 +199,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
 
-Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
+Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
 
 As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
@@ -202,17 +228,6 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-<!--Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
-
-- For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
-
-    ```powershell
-    netsh winhttp set proxy proxy-server="http=myproxy;https=sproxy:88" bypass-list="*.foo.com"
-    ```
-
-    After the proxy is enabled, you can then [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management).
-
-- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.-->
 
 # [Azure portal](#tab/azureportal)
 
@@ -247,7 +262,7 @@ Follow these steps in Azure portal for your Azure Local.
     
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
+    1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information on what are Trusted launch Arc virtual machines, see [What is Trusted launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
 
    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
 
@@ -271,12 +286,12 @@ Follow these steps in Azure portal for your Azure Local.
 
     > [!NOTE]
     > - Add at least one network interface through the **Networking** tab to complete guest management setup.
-    > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
+    > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Azure Local VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
-1. In the VM proxy configuration section, to configure a proxy for your Arc VM, input the following parameters:
+1. In the VM proxy configuration section, to configure a proxy for your VM, input the following parameters:
 
     > [!NOTE]
-    > Proxy configuration for Arc VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
+    > Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration. As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
 
     :::image type="content" source="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png" alt-text="Screenshot of local VM administrator on Basics tab." lightbox="./media/create-arc-virtual-machines/arc-vm-proxy-configuration.png":::
 
@@ -362,7 +377,7 @@ Follow these steps to deploy the Resource Manager template:
 
 1. Replace the blank template with the template that you downloaded during the prerequisites step.
 
-    This template creates an Arc VM. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you create. Finally, the VM is created with the guest management enabled.
+    This template creates an Azure Local VM. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you create. Finally, the VM is created with the guest management enabled.
 
    ```json
     {
@@ -675,17 +690,17 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
 
 ---
 
-## Use managed identity to authenticate Arc VMs
+## Use managed identity to authenticate Azure Local VMs
 
-When the Arc VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs.
+When the VMs are created on your Azure Local via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the VMs.
 
-The Arc VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+The VMs on Azure Local are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [system-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
 ## Next steps
 
-- [Delete Arc VMs](./manage-arc-virtual-machines.md#delete-a-vm).
+- [Delete Azure Local VMs](./manage-arc-virtual-machines.md#delete-a-vm).
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
-- [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
-- [Frequently Asked Questions for Arc VM management](./azure-arc-vms-faq.yml).
+- [Troubleshoot Azure Local VMs](troubleshoot-arc-enabled-vms.md).
+- [Frequently Asked Questions for Azure Local VM management](./azure-arc-vms-faq.yml).

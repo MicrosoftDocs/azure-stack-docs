@@ -1,31 +1,31 @@
 ---
-title: Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS enabled by Azure Arc
+title: Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS on Windows Server
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/07/2024
+ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: sulahiri
+ms.reviewer: leslielin
 
 # Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
 # Keyword: secure connection to Kubernetes API server
 
 ---
 
-# Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS enabled by Azure Arc
+# Use Active Directory single sign-on for secure connection to Kubernetes API server in AKS on Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can create a secure connection to your Kubernetes API server in AKS enabled by Arc using Active Directory (AD) single sign-on (SSO) credentials.
+You can create a secure connection to your Kubernetes API server in AKS on Windows Server using Active Directory (AD) single sign-on (SSO) credentials.
 
-## Overview of AD in AKS enabled by Arc
+## Overview of AD in AKS on Windows Server
 
-Without Active Directory authentication, you must rely on a certificate-based _kubeconfig_ file when you connect to the API server via the `kubectl` command. The **kubeconfig** file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
+Without Active Directory authentication, you must rely on a certificate-based *kubeconfig* file when you connect to the API server via the `kubectl` command. The **kubeconfig** file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
-As an alternative to using certificate-based kubeconfig, you can use AD SSO credentials as a secure way to connect to the API server. AD integration with AKS Arc lets users on a Windows domain-joined machine connect to the API server via `kubectl` using their SSO credentials. This removes the need to manage and distribute certificate-based kubeconfig files that contain private keys.
+As an alternative to using certificate-based **kubeconfig**, you can use AD SSO credentials as a secure way to connect to the API server. AD integration with AKS Arc lets users on a Windows domain-joined machine connect to the API server via `kubectl` using their SSO credentials. This removes the need to manage and distribute certificate-based **kubeconfig** files that contain private keys.
 
-AD integration uses AD kubeconfig, which is distinct from the certificate-based kubeconfig files and doesn't contain any secrets. However, the certificate-based kubeconfig file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
+AD integration uses AD **kubeconfig**, which is distinct from the certificate-based **kubeconfig** files and doesn't contain any secrets. However, the certificate-based **kubeconfig** file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 
 Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
@@ -77,7 +77,7 @@ Before you can install AD authentication, the workload cluster must be installed
 
 #### Option 1
 
-For a domain-joined Azure Local or Windows Server cluster, open PowerShell as an administrator and run the following command:
+For a domain-joined Windows Server cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob

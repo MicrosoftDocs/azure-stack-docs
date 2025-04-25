@@ -111,4 +111,4 @@ AKS provides a **default value of 10.96.0.0/12** for the service network CIDR. A
 
 ## Next steps
 
-[Create logical networks for Kubernetes clusters on Azure Local, version 23H2](aks-networks.md)
+[Create logical networks for Kubernetes clusters on Azure Local](aks-networks.md)

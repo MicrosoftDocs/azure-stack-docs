@@ -3,7 +3,7 @@ title: Manage updates
 description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/24/2025
+ms.date: 03/06/2025
 ms.author: sethm
 ms.lastreviewed: 07/14/2021
 
@@ -16,9 +16,6 @@ ms.lastreviewed: 07/14/2021
 # Manage updates in Azure Stack Hub
 
 Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM), all help keep Azure Stack Hub up to date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
-
-> [!NOTE]  
-> You can't apply Azure Stack Hub update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](../asdk/asdk-redeploy.md).
 
 ## Update package types
 

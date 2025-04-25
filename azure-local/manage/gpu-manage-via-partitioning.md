@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/04/2024
+ms.date: 03/26/2025
 ---
 
 # Manage GPUs using partitioning (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU-P with Arc virtual machines (VMs) for Azure Local. GPU Partitioning (GPU-P) allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
+This article describes how to manage GPU-P with Azure Local virtual machines (VMs) enabled by Azure Arc. GPU Partitioning (GPU-P) allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
 
 > [!IMPORTANT]
 > This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -39,11 +39,11 @@ Consider the following limitations when using the GPU-P feature:
 
 ## Prerequisites
 
-- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local and Arc VMs, and to ensure that your GPUs are prepared and partitioned.
+- See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
 
-## Attach a GPU during Arc VM creation
+## Attach a GPU during Azure Local VM creation
 
-Follow the steps outlined in [Create Arc virtual machines on Azure Local](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
+Follow the steps outlined in [Create Azure Local virtual machines](create-arc-virtual-machines.md?tabs=azurecli) and utilize the additional hardware profile details to add GPU to your create process. Run the following:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuP
@@ -51,7 +51,7 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 
 For more information, see [az stack-hci-vm create](/cli/azure/stack-hci-vm).
 
-## Attach a GPU after Arc VM creation
+## Attach a GPU after Azure Local VM creation
 
 Use the following CLI command to attach the GPU:
 
@@ -101,4 +101,4 @@ For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/a
 
 ## Next steps
 
-- [Manage GPUs using Discrete Device Assignment](./gpu-manage-via-device.md)
+- [Manage GPUs using Discrete Device Assignment](./gpu-manage-via-device.md).

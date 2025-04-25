@@ -3,7 +3,7 @@ title: Create Kubernetes clusters using Bicep
 description: Learn how to create Kubernetes clusters in Azure Local using Bicep.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 07/26/2024
+ms.date: 02/26/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: haojiehang
@@ -16,7 +16,7 @@ ms.lastreviewed: 07/24/2024
 This article describes how to create Kubernetes clusters in Azure Local using Bicep. The workflow is as follows:
 
 1. Create an SSH key pair
-1. Create a Kubernetes cluster in Azure Local, version 23H2 using Bicep. By default, the cluster is Azure Arc-connected.
+1. Create a Kubernetes cluster in Azure Local using Bicep. By default, the cluster is Azure Arc-connected.
 1. Validate the deployment and connect to the cluster.
 
 ## Before you begin
@@ -34,22 +34,25 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Create an SSH key pair
 
-To create an SSH key pair (same as Azure AKS), use the following procedure:
+Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli) or in the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 
-1. [Open a Cloud Shell session](https://shell.azure.com) in your browser or open a terminal on your local machine.
-1. Create an SSH key pair using `az sshkey create`:
+1. [Open a Cloud Shell session](https://shell.azure.com/) in your web browser or launch a terminal on your local machine.
+1. Create an SSH key pair using the [az sshkey create](/cli/azure/sshkey#az-sshkey-create) command:  
 
    ```azurecli
-   az sshkey create --name <Public_SSH_Key> --resource-group <Resource_Group_Name>
+   az sshkey create --name "mySSHKey" --resource-group $<resource_group_name>
    ```
 
-   Or, create a local SSH key pair using `ssh-keygen`:
+   or, use the `ssh-keygen` command:
 
-   ```bash  
-   ssh-keygen -t rsa -b 4096
+   ```azurecli
+   ssh-keygen -t rsa -b 4096 
    ```
 
-It's recommended that you create an SSH key pair in Azure, as you can use it later for node access or troubleshooting. For more information about creating SSH keys, see [Create and manage SSH keys for authentication in Azure](/azure/virtual-machines/linux/create-ssh-keys-detailed) and [Restrict SSH Access](restrict-ssh-access.md).
+1. Retrieve the value of your public key from Azure or from your local machine under **/.ssh/id_rsa.pub**.
+
+For more options, you can either follow [Configure SSH keys for an AKS cluster](/azure/aks/aksarc/configure-ssh-keys) to create SSH keys, or use [Restrict SSH access](/azure/aks/aksarc/restrict-ssh-access) during cluster creation. To access nodes afterward, see [Connect to Windows or Linux worker nodes with SSH](/azure/aks/aksarc/ssh-connect-to-windows-and-linux-worker-nodes).
+
 
 ## Download and update the Bicep scripts
 

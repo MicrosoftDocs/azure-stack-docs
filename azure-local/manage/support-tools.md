@@ -4,7 +4,7 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/18/2025
+ms.date: 04/09/2025
 ---
 
 # Use the Support Diagnostic Tool to troubleshoot Azure Local issues

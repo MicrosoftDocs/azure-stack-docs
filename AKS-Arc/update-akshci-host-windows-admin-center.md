@@ -1,6 +1,6 @@
 ---
-title: Update Azure Kubernetes Service host in AKS enabled by Azure Arc using Windows Admin Center
-description: Learn about using Windows Admin Center to update the Azure Kubernetes Service host in AKS enabled by Arc.
+title: Update Azure Kubernetes Service host in AKS on Windows Server using Windows Admin Center
+description: Learn about using Windows Admin Center to update the Azure Kubernetes Service host in AKS on Windows Server.
 ms.topic: how-to
 ms.date: 06/27/2024
 ms.custom: fasttrack-edit
@@ -13,11 +13,11 @@ author: sethmanheim
 # Keyword: auto-update Windows Admin Center
 ---
 
-# Upgrade the Azure Kubernetes Service host in AKS enabled by Azure Arc using Windows Admin Center
+# Upgrade the Azure Kubernetes Service host in AKS on Windows Server using Windows Admin Center
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to upgrade the Azure Kubernetes Service (AKS) host core system to the latest version in AKS enabled by Arc.
+This article describes how to upgrade the Azure Kubernetes Service (AKS) host core system to the latest version in AKS on Windows Server.
 
 ## Overview of AKS host updates
 
@@ -41,7 +41,7 @@ We recommend that you update workload clusters immediately after updating the AK
 
 To update the AKS host using Windows Admin Center, follow these steps:
 
-1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.82.0. You don't need to complete this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.82.0 of the AKS extension installed before proceeding to the next step.
+1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.82.0. You don't need to complete this step if you enabled auto-update for your extensions. However, make sure that you installed version 1.82.0 of the AKS extension before proceeding to the next step.
 
 1. On the **Host settings** page, select **Update AksHci PowerShell module to version x.x.x** under **Updates available**, and then click **Update now**.
 
