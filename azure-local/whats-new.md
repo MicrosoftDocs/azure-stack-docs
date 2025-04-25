@@ -71,13 +71,14 @@ This is a baseline release with the following features and improvements:
 
 - **US Government regions** - Azure Local is now available in the US Government regions. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 
-    The following scenarios are not supported for Azure Local in US Government regions:
+    The following preview features are not supported for Azure Local in Azure Government cloud:
 
     - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
     - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
     - [Azure Site Recovery](./manage/azure-site-recovery.md).
-    - [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
     - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
+<!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
+
 
 
 - **Registration and deployment changes**
