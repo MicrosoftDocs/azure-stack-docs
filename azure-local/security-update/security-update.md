@@ -143,7 +143,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
     Data to be set: 1 
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [February 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Feb).
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [March 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Mar).
 
 ## Known issues
 
@@ -171,7 +171,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5053599](security-update.md).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5053599](https://go.microsoft.com/fwlink/?linkid=2309855).
 
 ::: moniker-end
 
