@@ -69,7 +69,7 @@ This release has the following features and improvements:
 
 This is a baseline release with the following features and improvements:
 
-- **US Government regions** - Azure Local is now available in the US Government regions. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Preview availability of Azure Government Cloud** - Azure Local is now available in the US Government regions in preview. For more information, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 
     The following preview features are not supported for Azure Local in Azure Government cloud:
 
