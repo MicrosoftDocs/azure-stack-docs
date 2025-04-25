@@ -527,7 +527,7 @@ items:
   - name: Migrate using SCVMM
     items:
     - name: For Hyper-V VMs
-      href: /system-center/vmm/manage-azure-stack-hci?pivots=azure-local&context=/azure/azure-local/context/context#migrate-vms-from-windows-server-to-azure-local-instance
+      href: /system-center/vmm/manage-azure-stack-hci??toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#migrate-vms-from-windows-server-to-azure-local-instance
     - name: For VMware VMs
       href: /system-center/vmm/vm-convert-vmware?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
   - name: Migrate manually (v22H2 only)
