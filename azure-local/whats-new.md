@@ -16,7 +16,7 @@ This article lists the various features and improvements that are available in A
 
 ::: moniker range="=azloc-2504"
 
-Starting with 2504 release, Microsoft has introduced a new versioning schema and a release cadence. There are two 2504 releases for April. Here are the details of each release:
+Starting with 2504 release, Microsoft has introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
  
 |Solution version  |OS version |Deployment  |
