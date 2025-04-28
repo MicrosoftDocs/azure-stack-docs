@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 04/14/2025
+ms.date: 04/28/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -55,8 +55,11 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
   - .NET Framework 4.8.1
   - ASP.NET Core 
     - 8.0.7
-    - 8.0.8
-    - 6.0.29
+    - 8.0.14
+    - 8.0.303
+    - 8.0.407
+    - 6.0.36
+    - 6.0.428
   - Eclipse Temurin OpenJDK 8
     - 8u302
     - 8u312
@@ -96,17 +99,26 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
     - 16.7.0
     - 16.11.2
     - 17.11.2
+    - 17.12.0
   - MSDeploy 
     - 3.5.120530.385
+    - 3.5.130404.0
+    - 3.5.140307.0
     - 2.5.1270717.34
   - NodeJS
+    - 10.15.2
     - 10.24.1
     - 12.22.12
     - 14.20.0
     - 16.16.0
     - 18.12.1
     - 18.19.1
+    - 18.20.4
+    - 18.20.7
     - 20.9.0
+    - 20.18.3
+    - 22.5.1
+    - 22.14.0
   - npm
     - 6.4.1
     - 6.13.4
@@ -120,6 +132,9 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
     - 8.19.2
     - 10.1.0
     - 10.2.4
+    - 10.7.0
+    - 10.8.2
+    - 10.9.2
 
   - Tomcat
     - 8.5.20
@@ -148,14 +163,14 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
     - 10.1.25
     - 10.1.31
     - 11.0.0
-  - Git 2.43.0
-  - Updated Kudu to 102.10502.001.
+  - Git 2.46.0
+  - Updated Kudu to 103.110221.001.
   - Continual accessibility and usability updates
 
 - **Updates to underlying operating system of all roles**:
-  - [2025-04 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KBxxxx)](https://support.microsoft.com/help/xxxx)
-  - [2025-04 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KBxxx)](https://support.microsoft.com/help/xxxx)
-  - Defender Definition xxxx
+  - [2025-04 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5055526)](https://support.microsoft.com/help/5055526)
+  - [2025-04 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KB5054693)](https://support.microsoft.com/help/5054693)
+  - Definition updates for Windows Defender Antivirus and other Microsoft antimalware 1.427.311.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
