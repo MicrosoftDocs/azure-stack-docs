@@ -1,5 +1,5 @@
 ---
-title: Use Appliance fallback logging to collect logs and troubleshoot disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
+title: Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (Preview)
 description: Export and send logs using Appliance Fallback Logging for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 ms.topic: how-to
 author: ronmiab

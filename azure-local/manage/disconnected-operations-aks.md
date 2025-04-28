@@ -7,7 +7,7 @@ ms.author: robess
 ms.date: 04/22/2025
 ---
 
-# Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview).
+# Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview)
 
 ::: moniker range=">=azloc-24112"
 
