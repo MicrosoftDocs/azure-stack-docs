@@ -23,7 +23,7 @@ Currently you can't use Windows Admin Center to deploy Azure Stack HCI on a sing
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
+- A server from the [Azure Stack HCI Catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog) certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
 - Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server after it's deployed.
 
