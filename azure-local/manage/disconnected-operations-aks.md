@@ -76,7 +76,7 @@ You can use the az login command to sign in to your Azure account. For more info
 
 ### Create logical networks
 
-Use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch in Static IP configuration. For information on limitations, see [Limitations](#Limitations).
+Use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch in Static IP configuration. For information on limitations, see [Limitations](#limitations).
 
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
