@@ -62,6 +62,10 @@ This release has the following features and improvements:
     - Improved reliability of copying solution extension content locally to each machine.
     - Added specification of plug-in name in the solution extension.
 
+- **Billing changes**: For any new deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in the Azure directly. For mre information, see [Billing](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+
+- **End of Support**: Azure Local, version 23H2 (releases 2311.2 to 2509) will reach the end of support on October 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests will only be available for patching to a supported release.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2503"
