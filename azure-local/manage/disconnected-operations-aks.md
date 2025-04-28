@@ -84,7 +84,8 @@ az stack-hci-vm network lnet create --subscription $subscription --resource-grou
 For more information, see [Create logical networks](/azure/aks/aksarc/aks-networks?tabs=azurecli).
 
 > [!NOTE]
-> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+> Creating logical networks can be created through CLI only ; the operations through the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+> Creating SSH Keys can happen through CLI only; the operation through the portal  isnt't supported. For information on creating SSH through CLI, see https://learn.microsoft.com/en-us/azure/virtual-machines/ssh-keys-azure-cli
 
 ### Create the cluster
 
