@@ -79,8 +79,6 @@ This is a baseline release with the following features and improvements:
     - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
 <!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
 
-
-
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).

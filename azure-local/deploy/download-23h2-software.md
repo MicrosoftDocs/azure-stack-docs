@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/23/2025
+ms.date: 04/28/2025
 ---
 
 # Download operating system for Azure Local deployment
@@ -34,7 +34,8 @@ Before you begin the download of the software from Azure portal, ensure that you
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
-> English is the only supported language for the deployment.
+> - English is the only supported language for the deployment.
+> - If working in Azure Government cloud, you must [Download the OS image from this location](https://aka.ms/hcireleaseimage).
 
 Follow these steps to download the software:
 
