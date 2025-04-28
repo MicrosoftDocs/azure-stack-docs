@@ -26,16 +26,18 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Number of node pools in an AKS cluster  | 1  | 16  |
 | Number of nodes in a node pool (empty node pools not supported)  | 1 | 64 |
 | Total number of nodes in an AKS cluster across nodepools | 1 | 200 |
-| Number of AKS clusters per Azure Local cluster | 0| 32 |
+| Number of AKS clusters per Azure Local cluster | 0 |12 (8 GB ARB)<br>24 (16 GB ARB) |
 
 ## Concurrency for AKS enabled by Arc
 
 | Scale item  | Count  |
 |-------------|--------|
-| Number of concurrent AKS cluster creations on an ARB  | 8 |
-| Number of concurrent node pool creations on an ARB  | 8  |
-| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32  |
+| Number of concurrent AKS cluster creations on an ARB  | 4 |
+| Number of concurrent node pool creations on an ARB  | 4  |
+| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters  |12 (8 GB ARB)<br>24 (16 GB ARB)  |
 | Number of long running operations that can be run simultaneously on an AKS cluster  | 1 per cluster.  |
+
+Note: Each Arc Resource Bridge (ARB) supports a maximum number of AKS clusters based on its memory configuration (12 clusters for 8 GB ARB, 24 clusters for 16 GB ARB). Once these limits are reached, operations that add new clusters or node pools may not succeed. To manage capacity, consider deleting unused clusters using [az aksarc delete](https://learn.microsoft.com/en-us/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-delete). 
 
 ## Default values for virtual machine sizes
 
