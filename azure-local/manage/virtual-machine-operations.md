@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/18/2025
+ms.date: 04/28/2025
 ---
 
 # Supported operations for Azure Local virtual machines (VMs) 
@@ -116,7 +116,6 @@ The following VM operations aren't supported.
 - Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
-- Checkpoint a VM (standard or production).
 - Change the type of disk (static/dynamic/VHD/VHDX).
 - Change the size of disk (compact/expand).
 

@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 03/25/2025
+ms.date: 04/28/2025
 ---
 
 # Repair a node on Azure Local
@@ -125,7 +125,7 @@ Follow these steps on the node you're trying to repair.
 1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
  
     > [!NOTE]
-    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. To get the OS image, contact Microsoft Support or OEM Support.
+    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. Use the [OS image]() table to identify and download the appropriate OS image version.
     > - If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).

@@ -32,7 +32,7 @@ For more information, see [Release information summary](./release-information-23
 
 This release has the following features and improvements:
 
-- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.
+- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new operating system (OS) version **261000.3775**. Existing deployments will continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
 
 - **.NET update installations improvements**
   - Increased reliability of .NET security update installations.
@@ -41,7 +41,7 @@ This release has the following features and improvements:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
 
-**Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
+**Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
 - **Azure Local VM changes**
     - Software Defined Networking (SDN) enabled by Azure Arc (Preview) - Starting with this release, Azure Local now supports SDN enabled by Azure Arc for new deployments. This preview feature enables deployment of the Network Controller as a failover cluster service. The feature introduces support for Network Security Groups (NSGs) on static logical networks and Azure Local VM network adapters on these networks, allowing for granular control of network traffic.
@@ -55,7 +55,7 @@ This release has the following features and improvements:
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+- **OEM license name changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
 
 - **Solution extension improvements**
     - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
