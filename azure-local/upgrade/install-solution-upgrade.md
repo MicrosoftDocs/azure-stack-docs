@@ -45,6 +45,7 @@ You install the solution upgrade via the Azure portal.
 > [!IMPORTANT]
 > - Microsoft only supports upgrade applied from Azure Local resource page. Use of 3rd party tools to install upgrades is not supported.
 > - If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
+> - By installing the solution upgrade, existing Hyper-V VMs won't automatically become Azure Arc VMs.
 
 Follow these steps to install the solution upgrade:
 
