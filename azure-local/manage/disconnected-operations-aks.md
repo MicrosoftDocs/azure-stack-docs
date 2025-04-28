@@ -42,6 +42,7 @@ Here are some limitations associated with disconnected operations for AKS Arc:
 - GPUs aren't supported.
 - Arc Gateway isn't supported for configuring outbound URLs.
 - Create logical networks using the CLI. The portal isn't supported.
+- Create SSH keys using the CLI. The portal isn't supported.
 
 ## Create an AKS cluster
 
@@ -75,7 +76,7 @@ You can use the az login command to sign in to your Azure account. For more info
 
 ### Create logical networks
 
-Use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch in Static IP configuration.
+Use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch in Static IP configuration. For information on limitations, see [Limitations](#limitations).
 
 ```azurecli
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
@@ -84,11 +85,14 @@ az stack-hci-vm network lnet create --subscription $subscription --resource-grou
 For more information, see [Create logical networks](/azure/aks/aksarc/aks-networks?tabs=azurecli).
 
 > [!NOTE]
-> Logical networks can only be created in CLI; the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+> Creating logical networks can be created through CLI only ; the operations through the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
+
 
 ### Create the cluster
 
-To create the AKS cluster, we use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). To use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster).
+To create the AKS cluster, we recommend you use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). 
+
+To use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster). To create the SSH keys, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli).
 
 Use the az aksarc create cmdlet to create a Kubernetes cluster.
 
