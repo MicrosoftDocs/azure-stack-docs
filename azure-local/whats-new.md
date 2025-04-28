@@ -64,7 +64,8 @@ This release has the following features and improvements:
 
 - **Billing changes**: For any new deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in the Azure directly. For mre information, see [Billing](./concepts/billing.md#billing-changes-for-122504100120-and-later).
 
-- **End of Support**: Azure Local, version 23H2 (releases 2311.2 to 2509) will reach the end of support on October 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests will only be available for patching to a supported release.
+
+- **Archival of Azure Local, version 22H2 documentation** - The documentation for version 22H2 will be archived by May 31, 2025. The documentation will be available in the [Azure previous versions documentation](https://learn.microsoft.com/en-us/previous-versions/azure/) for reference. The archived documentation will not be updated and is not supported.
 
 ::: moniker-end
 
