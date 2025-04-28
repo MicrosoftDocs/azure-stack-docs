@@ -86,6 +86,7 @@ The following VM operations are supported only using the local tools such as Win
 - Change automatic start action.
 - Change automatic stop action.
 - Enable secure boot of Generation 2 VM.
+- Checkpoint a VM (standard or production).
 
 #### Cluster or node-level operations
 
@@ -95,6 +96,7 @@ The following VM operations are supported only using the local tools such as Win
 - Change default location of VM files.
 - Change automatic balancing of VMs in the cluster.
 - Change the Hyper-V MAC address range on the node.
+- Change the size of disk (compact/expand).
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
@@ -116,9 +118,7 @@ The following VM operations aren't supported.
 - Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
-- Checkpoint a VM (standard or production).
 - Change the type of disk (static/dynamic/VHD/VHDX).
-- Change the size of disk (compact/expand).
 
 
 ## Related content
