@@ -35,7 +35,7 @@ Before you begin the download of the software from Azure portal, ensure that you
 
 > [!IMPORTANT]
 > - English is the only supported language for the deployment.
-> - If working in Azure Government cloud, you must [Download the OS image from this location](https://aka.ms/hcireleaseimage).
+> - For deployments in Azure Government only, download the OS image from the following location: [OS image](https://aka.ms/hcireleaseimage).
 
 Follow these steps to download the software:
 
