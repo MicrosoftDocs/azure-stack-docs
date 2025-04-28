@@ -67,7 +67,7 @@ The following tables summarize the release information for Azure Local across al
 
 Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504.
 
-#### [Existing deployment](#tab/existing-deployment)
+#### [Existing deployments](#tab/existing-deployments)
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
@@ -79,7 +79,7 @@ Starting in 2504, we offer two releases. One release provides the path to upgrad
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 
-#### [New deployment](#tab/new-deployment)
+#### [New deployments](#tab/new-deployments)
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
