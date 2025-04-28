@@ -181,11 +181,12 @@
       href: check-vm-sku.md
     - name: Connectivity issues with MetalLB
       href: load-balancer-issues.md 
-
   - name: Reference
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
+    - name: Azure PowerShell
+      href: /powershell/module/az.aksarc/
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
