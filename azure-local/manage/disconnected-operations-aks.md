@@ -90,7 +90,7 @@ For more information, see [Create logical networks](/azure/aks/aksarc/aks-networ
 
 ### Create the cluster
 
-To create the AKS cluster, CLI is recommended. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). 
+To create the AKS cluster, we recommend you use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). 
 
 To use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster). To create the SSH keys, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli).
 
