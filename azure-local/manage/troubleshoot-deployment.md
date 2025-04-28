@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment validation failures for Az
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 02/04/2025
+ms.date: 04/14/2025
 ---
 
 
@@ -17,7 +17,7 @@ This article provides guidance on how to troubleshoot deployment validation issu
 ## Error - deployment validation failure
 
 When deploying Azure Local via the Azure portal, you might encounter a deployment validation failure.
-The "Azure Local Network - Check network requirements" validation task fail with the following error:
+The "Azure Local Network - Check network requirements" validation task fails with the following error:
 
 ```
 Could not complete the operation. 400: Resource creation validation failed. Details:
@@ -46,19 +46,19 @@ The issue occurs for the following reason:
 
 The multi-step resolution process includes the following steps:
 
-- [Remove the lock from the seed node](#remove-the-lock-from-the-seed-node)
+- [Remove the lock from the first machine](#remove-the-lock-from-the-first-machine)
 - [Remove the validation error](#remove-the-validation-error)
 - [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure-resource-with-incorrect-vm-switch-information)
 - [Refresh the cloud data](#refresh-the-cloud-edgedevices-data)
 - [Restart the deployment via Azure portal](#restart-the-deployment-via-azure-portal)
-- [Recreate the lock on the seed node resource](#recreate-the-lock-on-the-seed-node-resource)
+- [Recreate the lock on the first machine](#recreate-the-lock-on-the-first-machine)
 
 > [!NOTE]
-> All the steps in this article need to be performed on the seed node.
+> All the steps in this article need to be performed on the first machine.
 
-### Remove the lock from the seed node
+### Remove the lock from the first machine
 
-Follow these steps to remove the lock from the seed node:
+Follow these steps to remove the lock from the first machine:
 
 1. To remove the lock, in the Azure portal, go to the object via the resource group or within Machines - Azure Arc.  
 1. In the left-pane, go to **Settings > Locks**.  You should see a lock named **DoNotDelete**. This is the automatic resource lock that is created when the node is onboarded.
@@ -83,7 +83,7 @@ Message: The scope '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Mic
 
 With the lock removed, follow these steps to remove the validation error.
 
-1. Connect to the seed node. Run the following PowerShell command:
+1. Connect to the first machine. Run the following PowerShell command:
 
     ```PowerShell
     Get-VMSwitch
@@ -143,7 +143,7 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
-1. After confirming the `show` command worked by outputting the `edgeDevices` data, and likely confirming the `"switchDetails"`, it is time to `delete` the resource from ARM so it can be refreshed appropriately from the seed node.
+1. After confirming the `show` command worked by outputting the `edgeDevices` data, and likely confirming the `"switchDetails"`, it is time to `delete` the resource from ARM so it can be refreshed appropriately from the first machine.
 
     > [!NOTE]
     > Deleting the `edgeDevices` data is a safe action to perform, but it should only be performed when explicitly stated. Do not perform this action unless advised to do so.
@@ -182,7 +182,7 @@ With the ARM resource and all the unintentional VM switches removed, refresh the
 
 Follow these steps to refresh the cloud data:
 
-1. Restart the `DeviceManagementService` on the seed node. Run the following PowerShell command:
+1. Restart the `DeviceManagementService` on the first machine. Run the following PowerShell command:
 
    ```PowerShell
     Restart-Service DeviceManagementService
@@ -211,9 +211,9 @@ Follow these steps in the Azure portal:
 
 1. If no other validation issues occur, start the deployment.
 
-### Recreate the lock on the seed node resource
+### Recreate the lock on the first machine
 
-After the mitigation is complete, we strongly recommend that you recreate the lock on the resource.
+After the mitigation is complete, we strongly recommend that you recreate the lock on the first machine.
 
 Follow these steps to recreate the lock:
 
