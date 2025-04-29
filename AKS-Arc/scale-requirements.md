@@ -40,24 +40,22 @@ This article describes the maximum and minimum supported scale count for AKS on 
 ## Scale requirements when using autoscaler with AKS on Azure Local
 
 > [!NOTE]
-> When autoscaler is enabled, Arc Resource Bridge (ARB) memory configuration determines the supported number of AKS clusters:
-> - **Up to 12 clusters** with an **8 GB ARB**
-> - **Up to 24 clusters** with a **16 GB ARB**
+> When autoscaler is enabled, AKS on Azure Local currently supports a maximum of **12 clusters** per Azure Local environment.
 >
-> If these limits are exceeded, operations such as creating additional clusters or node pools may not succeed. To manage capacity, we recommend deleting unused clusters using [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete).
+> If this limit is exceeded, operations such as creating additional clusters or node pools may not succeed. To manage capacity, we recommend deleting unused clusters using [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete).
 >
-> If autoscaler is enabled on an environment that already exceeds these limits, performance may be impacted. Managing to supported limits is recommended.
-
-To increase ARB memory and support additional clusters when using autoscaler, follow the resizing guide (link pending from Aline Tran).
+> If autoscaler is enabled in an environment that already exceeds the supported cluster count, performance may be impacted. Managing within supported limits is recommended.
 
 | Scale item  | Count  |
 |-------------|--------|
-| Max Number of AKS clusters per Azure Local cluster | 12 (8 GB ARB)<br>24 (16 GB ARB) |
-| Number of concurrent AKS cluster creations on an ARB  | 4 |
-| Number of concurrent node pool creations on an ARB  | 4  |
-| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters  | 12 (8 GB ARB)<br>24 (16 GB ARB)  |
+| Maximum number of AKS clusters with autoscaler enabled | 12 |
+| Number of concurrent AKS cluster creations | 4 |
+| Number of concurrent node pool creations | 4 |
+| Number of concurrent operations across all clusters (excluding cluster/node pool creation) | 12 |
 
 Learn more about autoscaling with AKS on Azure Local [here](/azure/aks/aksarc/auto-scale-aks-arc).
+
+If you're operating at enterprise scale and have scenarios that require higher cluster counts with autoscaler enabled, reach out to your Microsoft account team or support to discuss potential options.
 
 ## Default values for virtual machine sizes
 
