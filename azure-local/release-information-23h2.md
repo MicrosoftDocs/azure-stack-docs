@@ -55,7 +55,7 @@ Follow these guidelines to update to each release within your current release tr
   |--------------------------------------|-------------------|
   | Nov 2024                             | 2411 --> 2411.1   |
   | December 2024 or later               | 2411.1 --> 2411.2 |
-  | February 2024                        | 2411.2 --> 2411.3 |
+  | February 2025                        | 2411.2 --> 2411.3 |
 
 - To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2408 feature build, update to a later build within six months.
 
