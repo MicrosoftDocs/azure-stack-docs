@@ -5,12 +5,12 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/18/2025
+ms.date: 04/28/2025
 ---
 
 # Supported operations for Azure Local virtual machines (VMs) 
 
-[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
+> Applies to: Azure Local 2504 or later
 
 This article discusses the most common operations for Azure Local virtual machines (VMs) enabled by Azure Arc. The article identifies the operations that are supported on Azure Local VMs, and the ones that you need to avoid to prevent complications.
 
@@ -95,6 +95,8 @@ The following VM operations are supported only using the local tools such as Win
 - Change default location of VM files.
 - Change automatic balancing of VMs in the cluster.
 - Change the Hyper-V MAC address range on the node.
+- Change the size of disk (compact/expand).
+- Checkpoint a VM (standard or production).
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
@@ -116,9 +118,8 @@ The following VM operations aren't supported.
 - Change IP address of network adapter. To perform this operation, create a new network interface and delete the old one.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
-- Checkpoint a VM (standard or production).
 - Change the type of disk (static/dynamic/VHD/VHDX).
-- Change the size of disk (compact/expand).
+
 
 
 ## Related content
