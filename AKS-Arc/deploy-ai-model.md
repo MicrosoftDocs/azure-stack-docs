@@ -1,5 +1,5 @@
 ---
-title: Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator
+title: Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (preview)
 description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO).
 author: sethmanheim
 ms.author: sethm
@@ -10,7 +10,7 @@ ms.lastreviewed: 12/03/2024
 
 ---
 
-# Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator
+# Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -67,13 +67,11 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    To create a GPU node pool using Azure CLI, run the following command.
 
-<<<<<<< HEAD
+   To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
+
    ```azurecli
-   az aksarc nodepool add --resource-group <Resource_Group_name> --cluster-name <Cluster_Name> --name <Node_Pool_Name> --node-vm-size <GPU_VM_SKU> --node-count 1
+   az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "Standard_NC16_A16" --os-type "Linux"
    ```
-=======
-To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
->>>>>>> 6d944e8388dc092ebfff73392376ba02a4067c46
 
    ---
 
