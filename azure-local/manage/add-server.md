@@ -128,7 +128,7 @@ On a node that already exists on your system, follow these steps:
     Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
-1. Run the following command to add the new incoming node using a local adminsitrator credential for the new node: 
+1. Run the following command to add the new incoming node using a local administrator credential for the new node:
 
     ```powershell
     $HostIpv4 = "<IPv 4 for the new node>"
