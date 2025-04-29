@@ -52,7 +52,7 @@ This release has the following features and improvements:
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
--**Add and repair node changes**:
+- **Add and repair node changes**:
     - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your Original Equipment Manufacturer (OEM).
 
 - **OEM license changes**:
@@ -68,6 +68,8 @@ This release has the following features and improvements:
 - **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
 
 - **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 will be archived by May 31, 2025 and will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
 
 ::: moniker-end
 
