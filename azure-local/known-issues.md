@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/24/2025
+ms.date: 04/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -92,13 +92,12 @@ The following table lists the known issues from previous releases:
 
 ## Expected system behavior
 
-The following table lists the expected behavior of Azure Local solution. These are intentional, not bugs or limitations.
+The following table lists the expected behavior of Azure Local solution, which are not bugs or limitations.
 
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-| Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Local instance in this release. |There's no known workaround in this release. |
 
 ::: moniker-end
 
