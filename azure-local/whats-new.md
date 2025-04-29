@@ -74,6 +74,16 @@ This release has the following features and improvements:
 
 This is a baseline release with the following features and improvements:
 
+- **Preview availability of Azure Government cloud** - Azure Local is now available in the US Government regions in preview. Download the latest Azure Stack HCI OS image for Azure Government from [OS image](https://aka.ms/hcireleaseimage). For more information on where Azure Government is supported, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+    The following preview features are not supported for Azure Local in Azure Government cloud:
+
+    - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
+    - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+    - [Azure Site Recovery](./manage/azure-site-recovery.md).
+    - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
+<!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
+
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
