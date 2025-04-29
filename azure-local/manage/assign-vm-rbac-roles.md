@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/20/2025
+ms.date: 04/29/2025
 ---
 
 # Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc 
@@ -16,7 +16,7 @@ This article describes how to use the Role-based Access Control (RBAC) to contro
 
 You can use the builtin RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
 
-## About builtin RBAC roles
+## About built-in RBAC roles
 
 To control access to VMs and VM resources on Azure Local, you can use the following RBAC roles:
 
@@ -26,7 +26,7 @@ To control access to VMs and VM resources on Azure Local, you can use the follow
 
 Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources. The VM resources are referred to resources required to create a VM and include virtual disks, network interfaces, VM images, logical networks, and storage paths:
 
-| Builtin role | VMs | VM resources |
+| Built-in role | VMs | VM resources |
 |--|--|--|
 | Azure Stack HCI Administrator | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources including logical networks, VM images, and storage paths |
 | Azure Stack HCI VM Contributor | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources except logical networks, VM images, and storage paths |

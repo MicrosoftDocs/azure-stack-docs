@@ -52,8 +52,8 @@ This release has the following features and improvements:
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-<!-- - **Add and repair node changes**:
-    - If you are using a Microsoft image, you can download this image. Contact your Original Equipment Manufacturer (OEM) if your system ships with an OEM image. -->
+<!-- -**Add and repair node changes**:
+    - If you are using a Microsoft image, download the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). Contact your Original Equipment Manufacturer (OEM) if your system ships with an OEM image. -->
 
 - **OEM license changes**:
     
