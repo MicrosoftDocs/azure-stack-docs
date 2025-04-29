@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/21/2025
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -14,28 +14,26 @@ This article lists the various security updates that are available for Azure Loc
 
 ::: moniker range="=azloc-2504"
 
-## April OS security updates (KB5055527) for Azure Local
+## April OS security updates (KB5055527 and KB5055523) for Azure Local
 
-This article describes the OS security update for Azure Local that was released on April 21, 2025 and applies to OS build 25398.1551.
+This article describes the OS security updates for Azure Local that were released for version 2504.
 
-<!--For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments.
-
-The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
 
 
-| Deployment type  | Security update  | OS build  |
-|---------|---------|---------|
-| Existing deployments    | KB5055527         | 25398.1551         |
-| New deployments    | KB5055523         | 26100.3775         |-->
+| Deployment type  | Security update  | OS build  | Release date |
+|---------|---------|---------|---------|
+| Existing deployments    | KB5055527         | 25398.1551         | April 12, 2025        |
+| New deployments    | KB5055523         | 26100.3775         | April 30, 2025         |
 
 
-<!--# [Existing deployments](#tab/existing-deployments) 
+# [Existing deployments](#tab/existing-deployments)
 
-This section applies to existing deployments of 2504 running OS build **25398.1551**.-->
+This section applies to existing deployments of 2504 running OS build **25398.1551**.
 
 ## Improvements
 
-This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
 - **[Daylight saving time (DST)]** Update for the Aysen region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
 
@@ -49,15 +47,15 @@ The following is a known issue with this update.
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
   
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
   
-This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue.  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
 
 **Workaround**
 
 Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see [Citrix support documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
 
-Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available.
+Microsoft is working with Citrix to address this issue and update this documentation once a resolution is available.
 
 ## To install
 
@@ -70,15 +68,15 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
 
-<!--# [New deployments](#tab/new-deployments)
+# [New deployments](#tab/new-deployments)
 
 This section applies to new deployments of 2504 running OS build **26100.3775**.
 
 ## Improvements
 
-This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
-- **[Authentication]** This update addresses an issue affecting machine password rotation in the Identity Update Manager certificate/Pre-Bootstrapping Key Initialization path. This issue occurred particularly when Kerberos was used and Credential Guard was enabled, potentially causing user authentication problems. The feature **Machine Accounts in Credential Guard**, which is dependent on password rotation via Kerberos, has also been disabled until a permanent fix is made available.
+- **[Authentication]** This update addresses an issue affecting machine password rotation in the Identity Update Manager certificate/Pre-Bootstrapping Key Initialization path. This issue occurred particularly when Kerberos was used and Credential Guard was enabled, potentially causing user authentication problems. The feature **Machine Accounts in Credential Guard**, which is dependent on password rotation via Kerberos, is disabled until a permanent fix is made available.
 
 - **[Daylight Saving Time (DST)]** This update is for the Aysen region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
 
@@ -88,7 +86,7 @@ For more information about security vulnerabilities, see the [Security Update Gu
 
 ## Known issues
 
-The following is a known issue with this update.
+This update has the following known issues:
 
 **Symptom**
 
@@ -96,7 +94,7 @@ Devices that have certain Citrix components installed might be unable to complet
   
 Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn’t go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
   
-This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue.  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
 
 **Workaround**
 
@@ -115,7 +113,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5055523](https://go.microsoft.com/fwlink/?linkid=2313854).
 
 ---
--->
+
 
 ::: moniker-end
 
@@ -131,11 +129,11 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Daylight saving time (DST)]** This update supports (DST) changes in Paraguay.
 
-- **[Open Secure Shell (OpenSSH) (known issue)]** Fixed: The service fails to start, which stops SSH connections. There is no detailed logging, and you must run the sshd.exe process manually. 
+- **[Open Secure Shell (OpenSSH) (known issue)]** Fixed: The service fails to start, which stops SSH connections. There's no detailed logging, and you must run the sshd.exe process manually. 
 
 - **[GB18030-2022]** This update adds support for this amendment. 
 
-- **[Azure Virtual Network]** Fixed: You can turn off the VNET metering feature with the following registry key:
+- **[Azure Virtual Network]** Fixed: You can turn off the virtual network metering feature with the following registry key:
 
     **HKLM\CurrentControlSet\Services\NcHostAgent\Parameters\Plugins\Vnet**
 
