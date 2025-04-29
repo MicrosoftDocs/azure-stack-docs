@@ -38,7 +38,7 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Number of long running operations that can be run simultaneously on an AKS cluster  | 1 per cluster.  |
 
 > [!NOTE]
-> Each Arc Resource Bridge (ARB) supports a maximum number of AKS clusters based on its memory configuration (12 clusters for 8 GB ARB, 24 clusters for 16 GB ARB). Once these limits are reached, operations that add new clusters or node pools might not succeed. To manage capacity, consider deleting unused clusters using [az aksarc delete](https://learn.microsoft.com/en-us/cli/azure/aksarc#az-aksarc-delete). 
+> Each Arc Resource Bridge (ARB) supports a maximum number of AKS clusters based on its memory configuration (12 clusters for 8 GB ARB, 24 clusters for 16 GB ARB). Once these limits are reached, operations that add new clusters or node pools might not succeed. To manage capacity, consider deleting unused clusters using [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete). 
 
 ## Default values for virtual machine sizes
 
