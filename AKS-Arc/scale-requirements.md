@@ -28,7 +28,7 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Total number of nodes in an AKS cluster across nodepools | 1 | 200 |
 | Number of AKS clusters per Azure Local cluster | 0 | 32 |
 
-## Concurrency for AKS enabled by Arc
+## Concurrency for AKS on Azure Local
 
 | Scale item  | Count  |
 |-------------|--------|
