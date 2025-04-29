@@ -41,7 +41,7 @@ This release has the following features and improvements:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
 
-**Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
+- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
 - **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
@@ -51,6 +51,8 @@ This release has the following features and improvements:
     - Improved reliability when downloading updates.
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
+
+- **Add and repair node changes**: 
 
 - **OEM license name changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
 
