@@ -11,11 +11,11 @@
     href: data-collection.md
   - name: Blogs and announcements
     href: blogs-announcements.md
-- name: AKS on Azure Local, version 23H2
+- name: AKS on Azure Local
   expanded: true
   items:
-  - name: What's new in AKS on Azure Local, version 23H2
-    href: aks-whats-new-23h2.md
+  - name: What's new in AKS on Azure Local
+    href: aks-whats-new-local.md
   - name: Concepts
     items:
     - name: Architecture
@@ -33,9 +33,11 @@
     - name: High availability
       items: 
       - name: Use availability sets
-        href: availability-sets.md   
+        href: availability-sets.md
     - name: Supported scale requirements
       href: scale-requirements.md
+    - name: Connectivity modes
+      href: connectivity-modes.md  
     - name: Billing
       items:
       - name: Pricing details
@@ -76,6 +78,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
+    - name: Security
+      items:
+      - name: Encrypt etcd secrets
+        href: encrypt-etcd-secrets.md
     - name: AI and Machine Learning
       items:
       - name: Deploy an AI model with the AI toolchain operator
@@ -85,9 +91,9 @@
       - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
         href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
-        href: azure-rbac-23h2.md
+        href: azure-rbac-local.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
-        href: kubernetes-rbac-23h2.md
+        href: kubernetes-rbac-local.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
       - name: Configure SSH keys for a cluster
@@ -133,6 +139,8 @@
             href: kubernetes-monitor-object-events.md
           - name: Get kubelet logs
             href: aks-get-kubelet-logs.md
+          - name: Monitor control plane metrics
+            href: control-plane-metrics.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Monitor Kubernetes audit events
@@ -149,28 +157,36 @@
       href: aks-troubleshoot.md
     - name: Control plane configuration validation errors
       href: control-plane-validation-errors.md
-    - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md 
     - name: K8sVersionValidation error
       href: cluster-k8s-version.md
     - name: Use diagnostic checker
       href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
-    - name: Can't see VM SKUs on Azure portal
-      href: check-vm-sku.md
-    - name: Deleted AKS Arc cluster still visible on Azure portal
-      href: deleted-cluster-visible.md
+    - name: Can't create/scale AKS cluster due to image issues
+      href: gallery-image-not-usable.md
+    - name: Disk space exhaustion on control plane VMs
+      href: kube-apiserver-log-overflow.md
+    - name: Telemetry pod consumes too much memory and CPU  
+      href: telemetry-pod-resources.md
+    - name: Issues after deleting storage volumes
+      href: delete-storage-volume.md
     - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
       href: delete-cluster-pdb.md
     - name: Azure Advisor upgrade recommendation
       href: azure-advisor-upgrade.md
-    - name: Issues after deleting storage volumes
-      href: delete-storage-volume.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
+      href: deleted-cluster-visible.md
+    - name: Can't see VM SKUs on Azure portal
+      href: check-vm-sku.md
+    - name: Connectivity issues with MetalLB
+      href: load-balancer-issues.md 
   - name: Reference
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
+    - name: Azure PowerShell
+      href: /powershell/module/az.aksarc/
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
@@ -269,6 +285,8 @@
     items:
     - name: AKS Edge Essentials PowerShell 
       href: ./reference/aks-edge-ps/index.md
+    - name: Get support
+      href: aks-edge-help-support.md
     - name: Troubleshooting 
       href: aks-edge-troubleshoot-overview.md
     - name: Logs 
@@ -331,6 +349,8 @@
         href: vnet.yml
 - name: AKS on Windows Server
   items:
+  - name: AKS on Windows Server retirement
+    href: aks-windows-server-retirement.md
   - name: Overview
     href: overview.md
   - name: System requirements
@@ -347,23 +367,6 @@
             href: setup.md
           - name: Create a Kubernetes cluster
             href: create-kubernetes-cluster.md
-  - name: Tutorial
-    items:
-      - name: 1 - Prepare an application
-        href: tutorial-kubernetes-prepare-application.md
-      - name: 2 - Create container registry
-        href: tutorial-kubernetes-prepare-azure-container-registry.md
-      - name: 3 - Deploy a workload cluster
-        href: tutorial-kubernetes-deploy-cluster.md
-      - name: 4 - Run an application
-        href: tutorial-kubernetes-deploy-application.md
-      - name: 5 - Scale an application
-        href: tutorial-kubernetes-scale.md
-      - name: 6 - Update an application
-        href: tutorial-kubernetes-app-update.md
-      - name: 7 - Upgrade Kubernetes cluster 
-        # Remove this, we don tneed to upgrade K8s in this tutorial.
-        href: tutorial-kubernetes-upgrade-cluster.md
   - name: Concepts
     items:
     - name: Quotas and resource limits
@@ -543,7 +546,7 @@
       - name: Use OpenFaaS
         href: openfaas.md
       - name: Use Bridge to Kubernetes with Visual Studio Code
-        href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+        href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
       - name: Use Bridge to Kubernetes with Visual Studio
         href: /visualstudio/containers/bridge-to-kubernetes
       - name: Deploy a Java application with Open Liberty or WebSphere Liberty
@@ -562,7 +565,7 @@
       href: aks-hybrid-preview-uninstall.md
     - name: Troubleshooting overview
       href: troubleshoot-overview.md
-    - name: Azure Arc enabled Kubernetes
+    - name: Azure Arc-enabled Kubernetes
       href: known-issues-arc.yml
     - name: Pre-installation validation tests
       href: validation-tests.md
@@ -588,12 +591,6 @@
       href: known-issues-uninstall.yml
     - name: Other
       href: known-issues.yml
-    - name: Azure Local issues
-      items:
-      - name: Cluster validation reporting in Azure Local
-        href: /azure-stack/hci/manage/validate-qos
-      - name: CredSSP in Azure Local
-        href: /azure-stack/hci/manage/troubleshoot-credssp
     - name: Support policies
       href: support-policies.md
     - name: Get support

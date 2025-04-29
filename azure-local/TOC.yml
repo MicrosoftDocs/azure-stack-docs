@@ -124,8 +124,8 @@ items:
     items:
     - name: Via console
       href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via local UI
-      href: deploy/deployment-arc-register-local-ui.md  
+    - name: Via Configurator app
+      href: deploy/deployment-arc-register-configurator-app.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
@@ -152,7 +152,7 @@ items:
     - name: Using Express scripts
       href: deploy/sdn-express-23h2.md
     - name: Using Windows Admin Center
-      href: deploy/sdn-wizard-23h2.md     
+      href: deploy/sdn-wizard-23h2.md  
   
   - name: Deploy workloads
     items:
@@ -486,6 +486,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: What's new in VM migration?
+      href: migrate/migrate-whats-new.md
     - name: Hyper-V VMs
       items: 
       - name: Overview

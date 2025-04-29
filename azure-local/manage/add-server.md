@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 03/25/2025
+ms.date: 04/21/2025
 ---
 
 # Add a node on Azure Local
@@ -98,6 +98,9 @@ On the new node that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
+    >[!NOTE]
+    > For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+
 2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
@@ -125,7 +128,7 @@ On a node that already exists on your system, follow these steps:
     Get-ChildItem -Path "$env:SystemDrive\NugetStore" -Exclude Microsoft.AzureStack.Solution.LCMControllerWinService*,Microsoft.AzureStack.Role.Deployment.Service* | Remove-Item -Recurse -Force
     ```
 
-1. Run the following command to add the new incoming node using a local adminsitrator credential for the new node: 
+1. Run the following command to add the new incoming node using a local administrator credential for the new node:
 
     ```powershell
     $HostIpv4 = "<IPv 4 for the new node>"

@@ -142,6 +142,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5448F](https://www.delltechnologies.com/asset/en-my/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [Z9432F](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-z9432f-spec-sheet.pdf) <br>(10, 25, 100, 400 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [Z9664F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-z9664f-on-spec-sheet.pdf) <br>(10, 25, 100, 400 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -152,6 +158,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [S5448F](https://www.delltechnologies.com/asset/en-my/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [Z9432F](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-z9432f-spec-sheet.pdf) <br>(10, 25, 100, 400 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
+| [Z9664F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-z9664f-on-spec-sheet.pdf) <br>(10, 25, 100, 400 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.

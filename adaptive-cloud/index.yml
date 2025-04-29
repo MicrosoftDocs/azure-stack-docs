@@ -1,16 +1,17 @@
 ### YamlMime:Hub
-title: Azure adaptive cloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
+title: Azure Adaptive Cloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
 summary: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
 brand: azure
 
 metadata:
-  title: Azure adaptive cloud documentation
+  title: Azure Adaptive Cloud documentation
   description: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
-  ms.service: azure-stack
+  ms.service: azure
+  ms.subservice: azure-adaptive-cloud
   ms.topic: hub-page
   author: asergaz 
   ms.author: sergaz
-  ms.date: 02/20/2025
+  ms.date: 04/17/2025
 
 # highlightedContent section (optional)
 # Maximum of 8 items

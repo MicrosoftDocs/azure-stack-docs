@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot networking issues and errors in AKS enabled by Arc
-  description: Get help to troubleshoot networking issues and errors in AKS Arc.
+  title: Troubleshoot networking issues and errors in AKS on Windows Server
+  description: Get help to troubleshoot networking issues and errors in AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid

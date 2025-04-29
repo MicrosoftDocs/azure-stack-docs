@@ -3,14 +3,175 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/19/2025
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
 # Security updates for Azure Local
 
-This article lists the various security updates that are available in Azure Local.
+This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2504"
+
+## April OS security updates (KB5055527 and KB5055523) for Azure Local
+
+This article describes the OS security updates for Azure Local that were released for version 2504.
+
+For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+
+
+| Deployment type  | Security update  | OS build  | Release date |
+|---------|---------|---------|---------|
+| Existing deployments    | KB5055527         | 25398.1551         | April 12, 2025        |
+| New deployments    | KB5055523         | 26100.3775         | April 30, 2025         |
+
+
+# [Existing deployments](#tab/existing-deployments)
+
+This section applies to existing deployments of 2504 running OS build **25398.1551**.
+
+## Improvements
+
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Daylight saving time (DST)]** Update for the Aysen region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [April 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Apr).
+
+## Known issues
+
+The following is a known issue with this update.
+
+**Symptom**
+
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
+  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
+  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
+
+**Workaround**
+
+Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see [Citrix support documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+
+Microsoft is working with Citrix to address this issue and update this documentation once a resolution is available.
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
+
+
+# [New deployments](#tab/new-deployments)
+
+This section applies to new deployments of 2504 running OS build **26100.3775**.
+
+## Improvements
+
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Authentication]** This update addresses an issue affecting machine password rotation in the Identity Update Manager certificate/Pre-Bootstrapping Key Initialization path. This issue occurred particularly when Kerberos was used and Credential Guard was enabled, potentially causing user authentication problems. The feature **Machine Accounts in Credential Guard**, which is dependent on password rotation via Kerberos, is disabled until a permanent fix is made available.
+
+- **[Daylight Saving Time (DST)]** This update is for the Aysen region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
+
+- **[PcaUiArm]** This update addresses an issue affecting the **PcaUiArmUpdate** feature, which results in unexpected behavior in specific scenarios.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [April 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Apr).
+
+## Known issues
+
+This update has the following known issues:
+
+**Symptom**
+
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA) version 2411](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html). The version 2411 version of this application was released in December 2024.
+  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn’t go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
+  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
+
+**Workaround**
+
+Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see the [Citrix documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+
+Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available.
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5055523](https://go.microsoft.com/fwlink/?linkid=2313854).
+
+---
+
+
+::: moniker-end
+
+::: moniker range="=azloc-2503"
+
+## March OS security update (KB5053599) for Azure Local
+
+This article describes the OS security update for Azure Local that was released on March 11, 2025 and applies to OS build 25398.1486.
+
+## Improvements 
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Daylight saving time (DST)]** This update supports (DST) changes in Paraguay.
+
+- **[Open Secure Shell (OpenSSH) (known issue)]** Fixed: The service fails to start, which stops SSH connections. There's no detailed logging, and you must run the sshd.exe process manually. 
+
+- **[GB18030-2022]** This update adds support for this amendment. 
+
+- **[Azure Virtual Network]** Fixed: You can turn off the virtual network metering feature with the following registry key:
+
+    **HKLM\CurrentControlSet\Services\NcHostAgent\Parameters\Plugins\Vnet**
+
+    Registry value:  **MeteringDisabled (DWORD type)**
+
+    Data to be set: 1 
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [March 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Mar).
+
+## Known issues
+
+The following is a known issue with this update.
+
+**Symptom**
+
+Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update. This issue was observed on devices with [Citrix Session Recording Agent (SRA)](https://docs.citrix.com/en-us/session-recording/current-release/install-upgrade-uninstall.html), version 2411. The 2411 version of this application was released in December 2024.
+  
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
+  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue.  
+
+**Workaround**
+
+Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see [Citrix support documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
+
+Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available. ​​​​​​​ 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5053599](https://go.microsoft.com/fwlink/?linkid=2309855).
+
+::: moniker-end
 
 ::: moniker range="=azloc-24113"
 
@@ -187,7 +348,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-24082"
+::: moniker range="azloc-previous"
 
 ## October OS security update (KB 5044288) for Azure Local
 
@@ -224,10 +385,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5044288](https://go.microsoft.com/fwlink/?linkid=2289974).
-
-::: moniker-end
-
-::: moniker range="azloc-24081"
 
 ## September OS security update (KB 5043055) for Azure Local
 
@@ -731,7 +888,7 @@ This section describes the security update for Azure Local that was released on 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update changes the English name of the former Republic of Turkey. The new, official name is the Republic of Türkiye.
+- This update changes the English name of the former Republic of Türkiye. The new, official name is the Republic of Türkiye.
 
 - This update supports the currency change in Croatia from the Kuna to the Euro.
 
@@ -829,7 +986,7 @@ Running [Windows Update Standalone Installer](https://support.microsoft.com/topi
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [cumulative update 5032202](https://go.microsoft.com/fwlink/?linkid=2252437).
+For a list of the files that are provided in this update, download the file information for [cumulative update 5032202](https://go.microsoft.com/fwlink/?linkid=2309855).
 
 <!--For a list of the files that are provided in the servicing stack update, download the file information for the [SSU - version 25398.521](https://go.microsoft.com/fwlink/?linkid=2252176).-->
 

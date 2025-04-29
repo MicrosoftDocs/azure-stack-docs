@@ -1,9 +1,9 @@
 ---
-title: Use GPUs for compute-intensive workloads (AKS on Azure Local, version 23H2)
-description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
+title: Use GPUs for compute-intensive workloads in AKS on Azure Local
+description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Local.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/21/2025
+ms.date: 04/14/2025
 ms.author: sethm 
 ms.lastreviewed: 03/21/2025
 ms.reviewer: abha
@@ -12,14 +12,16 @@ ms.reviewer: abha
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads (AKS on Azure Local, version 23H2)
+# Use GPUs for compute-intensive workloads in AKS on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 > [!NOTE]
-> For information about GPUs in AKS on Azure Local 22H2, see [Use GPUs (Azure Local 22H2)](deploy-gpu-node-pool-22h2.md).
+> For information about GPUs in AKS on Windows Server, see [Use GPUs in AKS on Windows Server](deploy-gpu-node-pool-22h2.md).
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
+
+[!INCLUDE [supported-gpu-models](includes/supported-gpu-models.md)]
 
 ## Before you begin
 
@@ -27,7 +29,7 @@ To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before
 
 ### Step 1: install the OS
 
-Install the Azure Local, version 23H2 operating system locally on each server in your Azure Local cluster.
+Install the Azure Local operating system locally on each server in your Azure Local cluster.
 
 ### Step 2: uninstall the NVIDIA host driver
 
@@ -106,7 +108,7 @@ Repeat steps 1 to 4 for each server in your Azure Local cluster.
 
 ### Step 6: continue deployment of the Azure Local cluster
 
-Continue the deployment of the Azure Local cluster by following the steps in [Azure Local, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
+Continue the deployment of the Azure Local cluster by following the steps in [Azure Local deployment](/azure/azure-local/deploy/deployment-introduction).
 
 ### Get a list of available GPU-enabled VM SKUs
 
@@ -239,5 +241,5 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 ## Next steps
 
 - [Supported VM sizes](scale-requirements.md)
-- [Use GPUs (AKS on Azure Local 22H2)](deploy-gpu-node-pool-22h2.md)
-- [AKS overview](aks-hybrid-options-overview.md)
+- [Use GPUs in AKS on Windows Server](deploy-gpu-node-pool-22h2.md)
+- [AKS overview](aks-overview.md)

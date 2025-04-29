@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2025
+ms.date: 03/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -21,7 +21,7 @@ This article describes how to install the solution upgrade on your Azure Local i
 Throughout this article, we refer to OS version 23H2 as the *new* version and version 22H2 as the *old* version.
 
 > [!IMPORTANT]
-> While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+> While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
 
 ## Prerequisites
 
@@ -31,10 +31,10 @@ Before you install the solution upgrade, make sure that you:
 - Verify that latest `AzureEdgeLifecycleManager` extension on each machine is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
 
     :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on an Azure Local machine." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
-
+- Have failover cluster name between 3 to 15 characters.
 - Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.  
-- Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
-- Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
+- Have IPv4 network range that matches your host IP address subnet with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
+- Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).  
 
     :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade." lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
 
@@ -43,7 +43,9 @@ Before you install the solution upgrade, make sure that you:
 You install the solution upgrade via the Azure portal.
 
 > [!IMPORTANT]
-> Microsoft only supports upgrade applied from **Azure Local** resource page. Use of 3rd party tools to install upgrades is not supported.
+> - Microsoft only supports upgrade applied from Azure Local resource page. Use of 3rd party tools to install upgrades is not supported.
+> - If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
+> - By installing the solution upgrade, existing Hyper-V VMs won't automatically become Azure Arc VMs.
 
 Follow these steps to install the solution upgrade:
 

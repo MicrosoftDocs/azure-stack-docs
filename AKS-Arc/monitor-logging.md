@@ -1,6 +1,6 @@
 ---
 title: Monitoring and logging data
-description: Learn how to create and access monitor and logging data for AKS enabled by Azure Arc.
+description: Learn how to create and access monitor and logging data for AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to monitor your Azure Kubernetes Service (AKS) deployment and collect logging data in AKS enabled by Azure Arc. You learn how to set up and access on-premises monitoring using `Prometheus` and `Graphana`, and how to collect and view logs using `Elasticsearch`, `Fluent Bit`, and `Kibana` (EFK).
+This article describes how to monitor your Azure Kubernetes Service (AKS) deployment and collect logging data in AKS on Windows Server. You learn how to set up and access on-premises monitoring using `Prometheus` and `Graphana`, and how to collect and view logs using `Elasticsearch`, `Fluent Bit`, and `Kibana` (EFK).
 
 Two types of monitoring and logging solutions are available, as described in the following table:
 
@@ -37,7 +37,7 @@ It's crucial that you monitor the health, performance, and resource usage of the
 
 ## Monitoring solution overview
 
-As part of Prometheus solution in AKS enabled by Arc, the following components are deployed and automatically configured:
+As part of Prometheus solution in AKS on Windows Server, the following components are deployed and automatically configured:
 
 - [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator)
 - [Prometheus](https://github.com/prometheus/prometheus)
@@ -101,7 +101,7 @@ The uninstall process removes everything, including the namespace, the StorageCl
 
 ## Deploy Grafana, and configure it to use Prometheus
 
-You can follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS Prometheus instance. This GitHub page also describes how to add Grafana dashboards that Microsoft makes available for AKS enabled by Arc.
+You can follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS Prometheus instance. This GitHub page also describes how to add Grafana dashboards that Microsoft makes available for AKS on Windows Server.
 
 ## On-premises logging
 
