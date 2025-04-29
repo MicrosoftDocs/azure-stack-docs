@@ -52,13 +52,13 @@ This release has the following features and improvements:
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-<!-- -**Add and repair node changes**:
-    - If you are using a Microsoft image, download the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). Contact your Original Equipment Manufacturer (OEM) if your system ships with an OEM image. -->
+-**Add and repair node changes**:
+    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your Original Equipment Manufacturer (OEM).
 
 - **OEM license changes**:
     
     - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
-    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights. 
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
 
 - **Solution extension improvements**:
     - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
