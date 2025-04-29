@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/28/2025
+ms.date: 04/29/2025
 ---
 
 # What's new in Azure Local?
@@ -52,16 +52,20 @@ This release has the following features and improvements:
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-- **Add and repair node changes**: 
+- **Add and repair node changes**:
+    - If you are using a Microsoft image, you can download this image. Contact your Original Equipment Manufacturer (OEM) if your system ships with an OEM image. 
 
-- **OEM license name changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+- **OEM license changes**:
+    
+    - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights. 
 
 - **Solution extension improvements**:
     - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
     - Improved reliability of copying solution extension content locally to each machine.
     - Added specification of plug-in name in the solution extension.
 
-- **Billing changes**: For any new deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
 
 - **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 will be archived by May 31, 2025 and will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 

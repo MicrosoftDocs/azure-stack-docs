@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 04/28/2025
+ms.date: 04/29/2025
 ---
 
 # Azure Local billing and payment
@@ -39,7 +39,7 @@ To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 
 ## Billing changes for 12.2504.1001.20 and later
 
-For any new deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly.
+For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly.
 
 If you shut down or decommission your system without deleting the Azure Local resource in Azure, billing continues until the Azure Local resource in Azure is in a disconnected state for over 31 days.
 

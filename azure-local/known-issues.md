@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/28/2025
+ms.date: 04/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -63,6 +63,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/tree/main/os-image). |
+| Security management <!--57340784--> | Owing to a bug in the compliance report, the **Security defaults**, **Application control**, and **Data protections** pages show *Unknown* for all security settings. | This is an issue only in the security compliance report. The states of the security settings are unaffected. Use PowerShell to verify the compliance statis of the security settings. <br><br>For more information, see [Manage secure baseline via PowerShell cmdlets](./manage/manage-secure-baseline.md#powershell-cmdlet-properties) |
 
 
 ## Known issues from previous releases
