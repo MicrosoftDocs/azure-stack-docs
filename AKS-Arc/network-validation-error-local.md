@@ -18,7 +18,7 @@ This article describes how to resolve the `Not able to connect to http://cloudag
 
 You can deploy `.local` domains on Azure Local but might sometimes encounter failures during AKS scenarios, such as create, scale, update, upgrade, and delete. You might see the following error message:
 
-`Not able to connect to http://cloudagent.contoso.local:50000. Error returned: action failed after 5 attempts: Get "http://cloudagent.contoso.local:50000": dial tcp: lookup http://cloudagent.contoso.local: Temporary failure in name resolution`
+`Error: Network validation failed during cluster creation. Detailed message: Not able to connect to http://cloudagent.contoso.local:50000. Error returned: action failed after 5 attempts: Get "http://cloudagent.contoso.local:50000": dial tcp: lookup http://cloudagent.contoso.local: Temporary failure in name resolution`
 
 ## Possible causes
 
