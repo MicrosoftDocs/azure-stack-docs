@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 04/30/2025
 ---
 
 # What's new in Azure Local?
@@ -20,7 +20,6 @@ This article lists the various features and improvements that are available in A
 
 Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
- 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
@@ -32,7 +31,9 @@ For more information, see [Release information summary](./release-information-23
 
 This release has the following features and improvements:
 
-- **OS version changes**: Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+- **OS version changes**:
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your OEMs to get the compatible OS image and driver for the **12.2504** version.
 
 - **.NET update installations improvements**:
   - Increased reliability of .NET security update installations.
