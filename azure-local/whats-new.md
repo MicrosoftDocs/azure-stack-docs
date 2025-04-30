@@ -32,8 +32,8 @@ For more information, see [Release information summary](./release-information-23
 This release has the following features and improvements:
 
 - **OS version changes**:
-    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
-    - If you've purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your OEMs to get the compatible OS image and driver for the **12.2504** version.
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. You can download the 2504 OS image from the Azure portal. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your OEMs to get the compatible OS image and driver for the **12.2504** version.
 
 - **.NET update installations improvements**:
   - Increased reliability of .NET security update installations.
