@@ -46,6 +46,7 @@ This release has the following features and improvements:
 
 - **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
+    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
     - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
 - **Update improvements**:
