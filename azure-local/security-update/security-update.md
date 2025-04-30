@@ -20,12 +20,10 @@ This article describes the OS security updates for Azure Local that were release
 
 For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
 
-
 | Deployment type  | Security update  | OS build  | Release date |
 |---------|---------|---------|---------|
 | Existing deployments    | KB5055527         | 25398.1551         | April 12, 2025        |
-| New deployments    | KB5055523         | 26100.3775         | April 30, 2025         |
-
+| New deployments    | KB5055523         | 26100.3775         | April 12, 2025         |
 
 # [Existing deployments](#tab/existing-deployments)
 
