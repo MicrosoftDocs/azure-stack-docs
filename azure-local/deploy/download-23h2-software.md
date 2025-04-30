@@ -67,4 +67,4 @@ Follow these steps to download the software:
 
 ## Next steps
 
-- [Install the Azure Stack HCI operating system, version 23H2 ](./deployment-install-os.md).
+- [Install the Azure Stack HCI operating system ](./deployment-install-os.md).
