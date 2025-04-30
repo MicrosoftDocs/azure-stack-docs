@@ -4,7 +4,7 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/25/2025
+ms.date: 04/30/2025
 ms.reviewer: haojiehang
 ms.lastreviewed: 12/03/2024
 
