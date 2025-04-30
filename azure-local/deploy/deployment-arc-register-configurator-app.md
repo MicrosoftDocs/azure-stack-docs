@@ -4,7 +4,7 @@ description: Learn how to use the Configurator application to bootstrap and Arc 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/20/2025
+ms.date: 04/30/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -95,7 +95,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
 
-   1. Select **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list.
+   1. Select **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list. The bypass list is required and can be provided in a comma separated format.
 
    1. Select a time zone.
 
