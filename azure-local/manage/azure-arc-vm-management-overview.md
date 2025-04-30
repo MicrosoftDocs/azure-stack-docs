@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 04/09/2025
+ms.date: 04/28/2025
 ---
 
 # What is Azure Local VM management?
@@ -39,8 +39,6 @@ Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Loc
 ## Limitations of Azure Local VM management
 
 Consider the following limitations when you're managing VMs on Azure Local:
-
-- Taking checkpoints on VMs running on Azure Local by using on-premises tools, such as Windows Admin Center or Hyper-V Manager, will adversely affect the management of these VMs from Azure.
 
 - Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
 
