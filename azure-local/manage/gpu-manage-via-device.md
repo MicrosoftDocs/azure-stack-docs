@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/28/2025
+ms.date: 04/30/2025
 ---
 
 # Manage GPUs via Discrete Device Assignment (preview)
@@ -24,7 +24,9 @@ Discrete Device Assignment (DDA) allows you to dedicate a physical graphical pro
 
 Before you begin, satisfy the following prerequisites:
 
-- Follow the setup instructions found at [Prepare GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local VMs, and to ensure that your GPUs are prepared for DDA.  
+- Follow the setup instructions found at [Prepare GPUs for Azure Local](./gpu-manage-via-device.md) to prepare your Azure Local VMs, and to ensure that your GPUs are prepared for DDA.
+
+# [Azure CLI](#tab/azurecli)
 
 ## Attach a GPU during Azure Local VM creation
 
@@ -75,6 +77,53 @@ After detaching the GPU, the output shows the full VM details. You can confirm t
 ```
 
 For details on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
+
+# [Azure portal](#tab/azureportal)
+
+## Attach GPU during Azure Local VM creation 
+
+1. Follow the steps outlined in [Create Azure Local VMs](create-arc-virtual-machines.md?tabs=azureportal#create-azure-local-vms).  
+
+1. After the VM size details, there is an **Attach GPU** section. To attach a GPU to this VM, select the **Attach GPU** box.
+
+    :::image type="content" source="./media/gpu-manage-via-device/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-device/":::
+
+1. Once the **Attach GPU** box is selected, GPU setup options will come up. Select **DDA**.
+
+    :::image type="content" source="./media/gpu-manage-via-device/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-device/":::
+
+1. Complete the remaining steps and select **Create**. It should take a few minutes to provision the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-device/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-device/":::
+
+## Attach GPU after Azure Local VM creation
+
+To attach GPUs using Azure portal for existing Azure Local VMs, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to your Azure Local resource, then go to **Virtual machines**.  
+
+1. In the list of VMs, select and go to the VM that you want to attach a GPU partition to.  
+
+1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **DDA**.
+
+1.   Select **Save**. Afterwards, Azure Local will shut down the VM, attach the GPU, and restart the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-device/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-device/":::
+
+## Detach GPU partitions
+
+To detach GPU partition using Azure portal for existing Azure Local VMs, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to your Azure Local resource, then go to **Virtual machines**.  
+
+1. In the list of VMs, select and go to the VM that you want to detach a GPU from.
+
+1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **Delete assignment**. 
+
+1. Select **Save**. Afterwards, Azure Local will shut down the VM, detach the GPU, and restart the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-device/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-device/":::
+
 
 ## Next steps
 

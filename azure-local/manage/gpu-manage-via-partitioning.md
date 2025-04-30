@@ -5,14 +5,14 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/26/2025
+ms.date: 04/30/2025
 ---
 
 # Manage GPUs using partitioning (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage GPU-P with Azure Local virtual machines (VMs) enabled by Azure Arc. GPU Partitioning (GPU-P) allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
+This article describes how to manage GPU Partitioning (GPU-P) with Azure Local virtual machines (VMs) enabled by Azure Arc. GPU-P allows you to share a graphical processing unit (GPU) with multiple workloads by splitting the GPU into dedicated fractional partitions.
 
 > [!IMPORTANT]
 > This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -40,6 +40,8 @@ Consider the following limitations when using the GPU-P feature:
 ## Prerequisites
 
 - See [Prepare GPUs for Azure Local](./gpu-manage-via-partitioning.md) for requirements and to prepare your Azure Local VMs, and to ensure that your GPUs are prepared and partitioned.
+
+# [Azure CLI](#tab/azurecli)
 
 ## Attach a GPU during Azure Local VM creation
 
@@ -98,6 +100,52 @@ After detaching the GPU partition, the output will show the full VM details. You
 ```
 
 For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
+
+# [Azure portal](#tab/azureportal)
+
+## Attach GPU during Azure Local VM creation
+
+1. Follow the steps outlined in [Create Azure Local VMs](create-arc-virtual-machines.md?tabs=azureportal#create-azure-local-vms).
+
+1. After the VM size details, there is an Attach GPU section. To attach a GPU to this VM, check the **Attach GPU** box.
+
+    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+
+1. Once the **Attach GPU** box is selected, GPU setup options will come up. Select **GPU Partition**.
+
+    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+
+1. Complete the remaining steps and select **Create**. It should take a few minutes to provision the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+
+## Attach GPU after Azure Local VM creation
+
+To attach GPU partition using Azure portal for existing Azure Local VMs, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to your Azure Local resource, then go to **Virtual machines**.  
+
+1. In the list of VMs, select and go to the VM that you want to attach a GPU partition to.  
+
+1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **GPU Partition**.
+
+1. Select **Save**. Afterwards, Azure Local will shut down the VM, attach the GPU, and restart the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+
+## Detach GPU partitions
+
+To detach GPU partition using Azure portal for existing Azure Local VMs, follow these steps in the Azure portal for your Azure Local instance:
+
+1. Go to your Azure Local resource, then go to **Virtual machines**.  
+
+1. In the list of VMs, select and go to the VM that you want to detach a GPU partition from.  
+
+1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **Delete assignment**.
+
+1. Select **Save**. Afterwards, Azure Local will shut down the VM, detach the GPU, and restart the VM.
+
+    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
 
 ## Next steps
 
