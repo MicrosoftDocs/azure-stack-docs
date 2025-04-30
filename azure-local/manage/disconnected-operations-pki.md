@@ -32,7 +32,7 @@ Mandatory certificates are grouped by area with the appropriate subject alternat
 - Individual certificates should be generated for each endpoint and copied into the corresponding directory/folder structure. These Certificates are mandatory for disconnected operations deployment.
 - All certificates must have Subject and SAN defined, as required by most browsers.
 - All certificates should share the same trust chain and should at least have a two-year expiration from the day of the deployment.
-- All root certificates should be exported in Base64 encoded format. the file will typically have a .cer,.crt or.pem extension
+- All root certificates should be exported in Base64 encoded format. The resulting file typically has a .cer, .crt, or .pem extension.
 
 ### Ingress endpoints
 
