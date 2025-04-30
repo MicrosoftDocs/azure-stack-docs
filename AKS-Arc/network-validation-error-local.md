@@ -36,7 +36,7 @@ If you are on Azure Local 2503 or a later release, don't use `.local` in the dom
 
 Per the [possible cause #2](#possible-causes), if you currently use a `.local` domain for your user accounts in AD DS, we recommend that you change them to use a verified domain; for example, `billa@contoso.com`, to properly synchronize with your Microsoft 365 domain.
 
-As a temporary mitigation, the checks for the `.local` domain are disabled in the Azure Local 2504 release. For more information, see [What's new in Azure Local, version 2504](/azure/azure-local/whats-new?view=azloc-2504).
+As a temporary mitigation, the checks for the `.local` domain are disabled in the Azure Local 2504 release. For more information, see [What's new in Azure Local, version 2504](/azure/azure-local/whats-new?view=azloc-2504&preserve-view=true).
 
 ## Next steps
 
