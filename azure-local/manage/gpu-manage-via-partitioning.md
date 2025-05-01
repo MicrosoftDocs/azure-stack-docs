@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 05/01/2025
+ms.date: 04/29/2025
 ---
 
 # Manage GPUs using partitioning (preview)
