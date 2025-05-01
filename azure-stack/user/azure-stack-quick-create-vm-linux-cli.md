@@ -151,7 +151,6 @@ echo "$extracted"
 
 Results:
 
-<!-- expected_similarity=0.3 -->
 ```HTML
 <!DOCTYPE html>
 <html>
