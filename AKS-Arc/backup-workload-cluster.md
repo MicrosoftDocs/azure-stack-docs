@@ -3,10 +3,9 @@ title: Back up, restore workload clusters using Velero
 description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/03/2024
+ms.date: 05/01/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: scooley
 
 # Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
 # Keyword: workload cluster backup restore Velero Azure Blob MinIO
@@ -28,14 +27,14 @@ If you don't want to store your backups in Azure Blob Storage, you can use MinIO
 
 ## Prerequisites
 
-Complete these prerequisites before you begin your Velero deployment:
+Before you begin, make sure you have the following prerequisites:
 
 - [Install the Azure CLI](/cli/azure/install-azure-cli).
 - [Install `Chocolatey`](https://chocolatey.org/install). You can use `Chocolatey` to [install the Velero client](https://community.chocolatey.org/packages/velero), which includes the Velero CLI, on a Windows machine.
 
 ## Install Velero with Azure Blob Storage
 
-The procedures in this section describe how to install Velero and use Azure Blob Storage for backups. If you don't want to store your backups in Azure, go to [Install Velero with MiniO storage](#install-velero-with-minio-storage).
+The procedures in this section describe how to install Velero and use Azure Blob Storage for backups. If you don't want to store your backups in Azure, see [Install Velero with MiniO storage](#install-velero-with-minio-storage).
 
 1. Open PowerShell as an administrator.
 
@@ -56,7 +55,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
 1. If needed, change to the Azure subscription you want to use for the backups.
 
-   By default, Velero stores backups in the same Azure subscription as your VMs and disks and won't allow you to restore backups to a resource group in a different subscription. To enable backup and restore operations across subscriptions, specify a subscription to use for your backups. You can skip this step if you're already in the subscription you want to use for your backups.
+   By default, Velero stores backups in the same Azure subscription as your VMs and disks and doesn't allow you to restore backups to a resource group in a different subscription. To enable backup and restore operations across subscriptions, specify a subscription to use for your backups. You can skip this step if you're already in the subscription you want to use for your backups.
 
    Switch to the subscription you want to use for your backups:
 
@@ -67,7 +66,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
       $AZURE_BACKUP_SUBSCRIPTION_ID=$(az account list --query="[?name=='$AZURE_BACKUP_SUBSCRIPTION_NAME'].id | [0]" -o tsv)
       ```
 
-   1. Then change the subscription:
+   1. Then, change the subscription:
 
       ```azurecli
       az account set -s $AZURE_BACKUP_SUBSCRIPTION_ID
@@ -118,16 +117,16 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
    1. Create a service principal that has Contributor privileges.
 
-      You can create a service principal with the Contributor role or use a custom role:
+      You can create a service principal with the **Contributor** role, or use a custom role:
 
       - **Contributor role:** The Contributor role grants subscription-wide access, so be sure protect this credential if you assign that role.
       - **Custom role:** If you need a more restrictive role, use a custom role.
 
       Assign the Contributor role:
 
-      If you'll be using Velero to back up multiple clusters with multiple blob containers, you may want to create a unique username for each cluster instead of using the name `velero`.
+      If you're using Velero to back up multiple clusters with multiple blob containers, you might want to create a unique username for each cluster instead of using the name `velero`.
 
-      To create a service principal with the Contributor role, use the following command. Substitute your own subscription ID and, optionally, your own service principal name. Microsoft Entra ID will generate a secret for you.
+      To create a service principal with the Contributor role, run the following command. Substitute your own subscription ID and optionally, your own service principal name. Microsoft Entra ID generates a secret for you:
 
       ```azurecli
       $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
@@ -141,12 +140,10 @@ The procedures in this section describe how to install Velero and use Azure Blob
         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID)
         ```
 
-      - If you don't want to use `velero` as your service principal name, make sure the `--name` you choose is unique in Microsoft Entra ID and doesn't conflict with other service principals or app registrations.
+      - If you don't want to use `velero` as your service principal name, make sure the `--name` value you choose is unique in Microsoft Entra ID and doesn't conflict with other service principals or app registrations.
 
       > [!IMPORTANT]
-      > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
-
-      Use a custom role:
+      > The secret is only shown during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.
 
       If you want to enable the minimum resource provider actions, create a custom role, and assign that role to the service principal.
 
@@ -208,17 +205,15 @@ The procedures in this section describe how to install Velero and use Azure Blob
    ```
 
    > [!IMPORTANT]
-   > Delete this file after you install Velero. The client secret is in plaintext, which can pose a security risk.
+   > Delete this file after you install Velero. The client secret is in plain text, which can pose a security risk.
 
    Before proceeding, verify that the file is properly formatted. The file name extension doesn't matter.
    - Remove any extra spaces or tabs.
    - Make sure the variable names are correct.
 
-1. Install and start Velero.
+1. Install Velero on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
 
-   Install Velero on the cluster, and start the deployment. This procedure creates a namespace called `velero` and adds a deployment named `velero` to the namespace.
-
-   1. Install Velero using the following command. You'll need to customize the example command.
+   1. Install Velero using the following command. Make sure to replace the placeholders in the example command with your own values:
 
       ```powershell
       velero install --provider azure --plugins velero/velero-plugin-for-microsoft-azure:v1.5.0 --bucket $BLOB_CONTAINER --secret-file ./credentials-velero.txt --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID --use-restic
@@ -230,7 +225,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using `Restic`. `Restic` can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS Arc, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS Arc currently doesn't support volume snapshots.
 
-      - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file will provide that information.
+      - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file provides that information.
 
       The Velero service starts automatically on installation.
 
@@ -249,7 +244,7 @@ The procedures in this section describe how to install Velero and use [MinIO](ht
 
 If you don't want to store your backups in MinIO, go to [Set up Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage).
 
-1. Install the Velero CLI by running the following command. [Install `Chocolately`](https://chocolatey.org/install) if you haven't already.
+1. Install the Velero CLI by running the following command. [Install `Chocolately`](https://chocolatey.org/install) if you haven't already:
 
    ```powershell
    choco install velero
@@ -322,7 +317,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                  mountPath: "/storage" 
          ```
 
-         Then create the deployment:
+         Then, create the deployment:
 
          ```shell
          kubectl create -f minio-deployment.yaml
@@ -347,21 +342,19 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
          app: minio 
       ```
 
-      Then create the service:
+      Then, create the service:
 
       ```shell
       kubectl create -f mino-service.yaml
       ```
 
-   1. Get the MinIO pod's external IP address by running the following command. You'll use that address to install Velero.
+   1. Get the MinIO pod's external IP address by running the following command. You use that address to install Velero:
 
-      ```shell
+      ```bash
       kubectl get svc
       ```
 
-   1. To check whether MinIO is up and running, log in to the IP address in a browser, or use the MinIO client, as described below.
-
-      Install the MinIO client, and browse through the MinIO files.
+   1. To check whether MinIO is up and running, sign in to the IP address in a browser, or use the MinIO client, as described in this section. Install the MinIO client, and browse through the MinIO files.
 
       Download the MinIO client:
 
@@ -387,7 +380,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       mc mb minio/velero-backup
       ```
 
-   1. Create a MinIO credentials file **minio.credentials** with the following information:
+   1. Create a MinIO credentials file **minio.credentials** with the following contents:
 
       ```yaml
       [default] 
@@ -454,7 +447,7 @@ To restore a cluster, you must create a new cluster to restore the old cluster t
 
 The `restore` command lets you restore all objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. For more backup options, see [Resource filtering](https://velero.io/docs/v1.9/resource-filtering/).
 
-On the cluster that you want to restore the backup to (the *destination cluster*):
+On the cluster to which you want to restore the backup (the *destination cluster*):
 
 1. Deploy Velero by using the instructions above. Use the same Azure credentials that you used for the source cluster.
 
@@ -477,13 +470,13 @@ To see all options associated with a specific Velero command, use the `--help` f
 For example, to list all options of `velero restore`, run `velero restore --help`, which returns the following information:
 
   ```output
-    velero restore [command]
-    Available Commands:
-    create      Create a restore
-    delete      Delete restores
-    describe    Describe restores
-    get         Get restores
-    logs        Get restore logs
+  velero restore [command]
+  Available Commands:
+  create      Create a restore
+  delete      Delete restores
+  describe    Describe restores
+  get         Get restores
+  logs        Get restore logs
   ```
 
 ## Uninstall Velero
