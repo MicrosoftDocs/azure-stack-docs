@@ -97,7 +97,7 @@ Results:
 }
 ```
 
-The public IP address is returned in the PublicIpAddress parameter. Note the address for later use with the virtual machine.
+The public IP address is returned in the `PublicIpAddress` parameter. Note the address for later use with the virtual machine.
 
 ## Open port 80 for web traffic
 
