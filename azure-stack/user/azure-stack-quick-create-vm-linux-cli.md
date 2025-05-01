@@ -26,7 +26,7 @@ Before you begin, make sure you have the following prerequisites:
 
 * Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack Hub, sign in to a Windows-based external client if you're connected through VPN, and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
 
-* A public Secure Shell (SSH) key with the name id_rsa.pub saved in the **.ssh** directory of your Windows user profile. For more information about creating SSH keys, see [Use an SSH key pair with Azure Stack Hub](azure-stack-dev-start-howto-ssh-public-key.md).
+* A public Secure Shell (SSH) key with the name **id_rsa.pub** saved in the **.ssh** directory of your Windows user profile. For more information about creating SSH keys, see [Use an SSH key pair with Azure Stack Hub](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## Create a resource group
 
