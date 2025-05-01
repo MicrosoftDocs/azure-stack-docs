@@ -83,14 +83,14 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 
 ### Minimum requirements
 
-| Single node | 2-3 nodes<br>switched storage | 2-3 nodes<br>switchless storage |
+| Single node | Two or three node<br>switched storage | Two or three node<br>switchless storage |
 | -- | -- | -- |
-| 1 GbE linked to switch* | - Dedicated network port for storage (10 Gbps minimum)<br>- Switch capable of min. 10 Gbps (RDMA optional)<br>- Management and Compute network (1 Gpbs minimum) | Dedicated network adapter port(s) for storage (10 Gbps minimum)<br>- RDMA automatically enabled if supported by adapter<br>- Management and compute network via switch (1 Gpbs minimum) |
+| 1 GbE linked to switch* | Dedicated network port for storage (10 Gbps minimum)<br><br>Switch capable of 10 Gbps minumum (RDMA optional)<br><br>Management and Compute network (1 Gpbs minimum) | Dedicated network adapter port(s) for storage (10 Gbps minimum)<br><br>RDMA automatically enabled if supported by adapter<br><br>Management and compute network via switch (1 Gpbs minimum) |
 
-> *[!NOTE]
-> You can't add nodes to the system without redeploying Azure Local. If you need additional nodes, use a dedicated storage intent with a minimum of 10 Gbps.
+> [!NOTE]
+> * You can't add nodes to the system without redeploying Azure Local. If you need additional nodes, use a dedicated storage intent with a minimum of 10 Gbps.
 
-(Optional) If you use a layer 3 switch with RDMA (10 Gpbs minimum), you can group all traffic into one (management, compute, and storage intent) across one to three node clusters.  
+(Optional) If you use a layer 3 switch with RDMA (10 Gpbs minimum), you can group all traffic (management, compute, and storage intent) together across one, two, and three node clusters.  
 
 ### Supported grouped network traffic by intent
 
