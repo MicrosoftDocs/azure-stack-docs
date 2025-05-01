@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 04/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -22,7 +22,6 @@ This article details how to use an Azure Resource Manager template in the Azure 
 ## Prerequisites
 
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-  - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
   - All machines are running the same version of OS.
   - All the machines have the same network adapter configuration.
 
@@ -32,14 +31,14 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Get the object ID for Azure Local Resource Provider
 
-This object ID for the Azure Local RP is unique per Azure tenant.
+This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
-1. Select the SPN that is listed and copy the **Object ID**.
+1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
