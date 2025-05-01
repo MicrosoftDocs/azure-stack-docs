@@ -151,7 +151,7 @@ echo "$extracted"
 
 Results:
 
-```HTML
+```html
 <!DOCTYPE html>
 <html>
 <head>
