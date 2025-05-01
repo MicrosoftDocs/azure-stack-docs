@@ -147,42 +147,41 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       If you want to enable the minimum resource provider actions, create a custom role, and assign that role to the service principal.
 
-      1. Create a file named **azure-role.json** with following contents. Substitute your own custom role name and subscription ID:
+   1. Create a file named **azure-role.json** with following contents. Substitute your own custom role name and subscription ID:
 
-         ```json
-         {
-             "Name": <CUSTOM_ROLE_NAME>,
-             "Id": null,
-             "IsCustom": true,
-             "Description": "Velero related permissions to perform backups, restores and deletions",
-             "Actions": [
-                 "Microsoft.Compute/disks/read",
-                 "Microsoft.Compute/disks/write",
-                 "Microsoft.Compute/disks/endGetAccess/action",
-                 "Microsoft.Compute/disks/beginGetAccess/action",
-                 "Microsoft.Compute/snapshots/read",
-                 "Microsoft.Compute/snapshots/write",
-                 "Microsoft.Compute/snapshots/delete",
-                 "Microsoft.Storage/storageAccounts/listkeys/action",
-                 "Microsoft.Storage/storageAccounts/regeneratekey/action",
-                 "Microsoft.Storage/storageAccounts/read"
-             ],
-             "NotActions": [],
-             "AssignableScopes": [
-               "<SUBSCRIPTION_ID>"
-             ]
-         }
-         ```
+      ```json
+      {
+          "Name": <CUSTOM_ROLE_NAME>,
+          "Id": null,
+          "IsCustom": true,
+          "Description": "Velero related permissions to perform backups, restores and deletions",
+          "Actions": [
+              "Microsoft.Compute/disks/read",
+              "Microsoft.Compute/disks/write",
+              "Microsoft.Compute/disks/endGetAccess/action",
+              "Microsoft.Compute/disks/beginGetAccess/action",
+              "Microsoft.Compute/snapshots/read",
+              "Microsoft.Compute/snapshots/write",
+              "Microsoft.Compute/snapshots/delete",
+              "Microsoft.Storage/storageAccounts/listkeys/action",
+              "Microsoft.Storage/storageAccounts/regeneratekey/action",
+              "Microsoft.Storage/storageAccounts/read"
+          ],
+          "NotActions": [],
+          "AssignableScopes": [
+            "<SUBSCRIPTION_ID>"
+          ]
+      }
+      ```
 
-      1. Create the custom role and service principal:
+   1. Create the custom role and service principal:
 
-         ```azurecli
-         az role definition create --role-definition azure-role.json
+      ```azurecli
+      az role definition create --role-definition azure-role.json
+       $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "<CUSTOM_ROLE>" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
+      ```
 
-         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "<CUSTOM_ROLE>" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
-         ```
-
-      For more information about creating custom roles, see [Set permissions for Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#specify-role).
+   For more information about creating custom roles, see [Set permissions for Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#specify-role).
 
 1. Get the service principal name, and assign that name to the **AZURE_CLIENT_ID** variable:
 
