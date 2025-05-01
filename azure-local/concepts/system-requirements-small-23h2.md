@@ -15,13 +15,13 @@ ms.date: 05/01/2025
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use lower capacity hardware. If you purchase class *small* hardware from the [Azure Local Catalog](https://aka.ms/azurelocalcatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
+This article describes the requirements for machines, storage, and networking for building solutions of Azure Local that use lower capacity hardware. If you purchase lower capacity hardware from the [Azure Local Catalog](https://aka.ms/azurelocalcatalog), ensure that these requirements are met before you deploy the Azure Local solutions.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the small hardware class
 
-Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class referenced as *lower capacity* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
+Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class called *lower capacity* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
 ## Device requirements
 
@@ -81,24 +81,24 @@ The minimum networking requirements are as follows:
 
 Removal of RDMA allows the use of a layer 2 network switch with VLAN support. This further simplifies the configuration management and reduces the overall solution cost.
 
-### Minimum requirements
+### Minimum speed requirements
 
-| Single node | Two or three node<br>switched storage | Two or three node<br>switchless storage |
+| Single node | Two or three node,<br>switched storage | Two or three node,<br>switchless storage |
 | -- | -- | -- |
-| 1 GbE linked to switch* | Dedicated network port for storage (10 Gbps minimum)<br><br>Switch capable of 10 Gbps minumum (RDMA optional)<br><br>Management and Compute network (1 Gpbs minimum) | Dedicated network adapter port(s) for storage (10 Gbps minimum)<br><br>RDMA automatically enabled if supported by adapter<br><br>Management and compute network via switch (1 Gpbs minimum) |
+| 1 GbE linked to switch* | Dedicated network port for storage - 10 Gbps minimum.<br><br>Switch capable of 10 Gbps minumum (RDMA optional).<br><br>Management and compute network -1 Gpbs minimum. | Dedicated network adapter port(s) for storage - 10 Gbps minimum.<br><br>RDMA automatically enabled if supported by adapter.<br><br>Management and compute network via switch - 1 Gpbs minimum. |
 
 > [!NOTE]
-> * You can't add nodes to the system without redeploying Azure Local. If you need additional nodes, use a dedicated storage intent with a minimum of 10 Gbps.
+> You can't add nodes to the system without redeploying Azure Local. If you need additional nodes, use a dedicated storage intent with a minimum of 10 Gbps.
 
 (Optional) If you use a layer 3 switch with RDMA (10 Gpbs minimum), you can group all traffic (management, compute, and storage intent) together across one, two, and three node clusters.  
 
-### Supported grouped network traffic by intent
+### Supported network traffic grouping by intent
 
 | Intent grouping | Single node | Two or three nodes |
 | -- | -- | -- |
 | Management and compute (no storage) | yes | n/a |
 | Management and compute (1 Gbps min),<br>and dedicated storage traffic (10 Gbps) | yes | yes|
-| All traffic | Requires RDMA capable switch, 10 Gbps minimum |
+| All traffic | RDMA capable switch, 10 Gbps minimum | RDMA capable switch, 10 Gbps minimum |
 
 ### Supported sample network configurations
 
