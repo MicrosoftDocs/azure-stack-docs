@@ -109,7 +109,6 @@ az vm open-port --port 80 --resource-group $RESOURCE_GROUP --name $VM_NAME
 
 Results:
 
-<!-- expected_similarity=0.3 -->
 ```JSON
 {
   "endPort": 80,
