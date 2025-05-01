@@ -4,19 +4,20 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/27/2025
+ms.date: 04/24/2025
 ---
 
 # Update Azure Local via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
+[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
+
 This article describes how to apply a solution update to your Azure Local via PowerShell.
 
 The procedure in this article applies to both single node and multi-node systems that run the latest version of Azure Local with the orchestrator (Lifecycle Manager) installed. If your system was created via a new deployment of Azure Local, then the orchestrator was automatically installed as part of the deployment.
 
 [!INCLUDE [WARNING](../includes/hci-applies-to-23h2-cluster-updates.md)]
-
 
 ## About solution updates
 

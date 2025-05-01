@@ -34,7 +34,7 @@ Before you install the solution upgrade, make sure that you:
 - Have failover cluster name between 3 to 15 characters.
 - Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.  
 - Have IPv4 network range that matches your host IP address subnet with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
-- Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
+- Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).  
 
     :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade." lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
 
@@ -45,6 +45,7 @@ You install the solution upgrade via the Azure portal.
 > [!IMPORTANT]
 > - Microsoft only supports upgrade applied from Azure Local resource page. Use of 3rd party tools to install upgrades is not supported.
 > - If you have Azure Kubernetes Service (AKS) workloads on Azure Local, wait for the solution upgrade banner to appear on the Azure Local resource page. Then, remove AKS and all AKS hybrid settings before you apply the solution upgrade.
+> - By installing the solution upgrade, existing Hyper-V VMs won't automatically become Azure Arc VMs.
 
 Follow these steps to install the solution upgrade:
 
