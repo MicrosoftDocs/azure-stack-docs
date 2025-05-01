@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 05/01/2025
 ---
 
 # Manage GPUs using partitioning (preview)
@@ -109,15 +109,15 @@ For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/a
 
 1. After the VM size details, there is an Attach GPU section. To attach a GPU to this VM, check the **Attach GPU** box.
 
-    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+    :::image type="content" source="./media/gpu-manage-via-partitioning/create-vm-attach-gpu.png" alt-text="Screenshot of attach GPU during VM creation." lightbox="./media/gpu-manage-via-partitioning/create-vm-attach-gpu.png":::
 
 1. Once the **Attach GPU** box is selected, GPU setup options will come up. Select **GPU Partition**.
 
-    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+    :::image type="content" source="./media/gpu-manage-via-partitioning/create-vm-gpu-partition.png" alt-text="Screenshot of attach GPU using partition method." lightbox="./media/gpu-manage-via-partitioning/create-vm-gpu-partition.png":::
 
 1. Complete the remaining steps and select **Create**. It should take a few minutes to provision the VM.
 
-    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+    :::image type="content" source="./media/gpu-manage-via-partitioning/create-vm-review-gpu-partition.png" alt-text="Screenshot of review GPU settings using partition method." lightbox="./media/gpu-manage-via-partitioning/create-vm-review-gpu-partition.png":::
 
 ## Attach GPU after Azure Local VM creation
 
@@ -129,9 +129,10 @@ To attach GPU partition using Azure portal for existing Azure Local VMs, follow 
 
 1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **GPU Partition**.
 
-1. Select **Save**. Afterwards, Azure Local will shut down the VM, attach the GPU, and restart the VM.
 
-    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+    :::image type="content" source="./media/gpu-manage-via-partitioning/gpu-attach-after-vm-creation.png" alt-text="Screenshot of attach GPU after VM creation." lightbox="./media/gpu-manage-via-partitioning/gpu-attach-after-vm-creation.png":::
+
+1. Select **Save**. Afterwards, Azure Local will shut down the VM, attach the GPU, and restart the VM.
 
 ## Detach GPU partitions
 
@@ -143,9 +144,10 @@ To detach GPU partition using Azure portal for existing Azure Local VMs, follow 
 
 1. Under **Settings**, select **Size**. Edit the GPU assignment section and select **Delete assignment**.
 
-1. Select **Save**. Afterwards, Azure Local will shut down the VM, detach the GPU, and restart the VM.
 
-    :::image type="content" source="./media/gpu-manage-via-partitioning/" alt-text="Screenshot of ." lightbox="./media/gpu-manage-via-partitioning/":::
+    :::image type="content" source="./media/gpu-manage-via-partitioning/gpu-detach-partition.png" alt-text="Screenshot of detach GPU partition." lightbox="./media/gpu-manage-via-partitioning/gpu-detach-partition.png":::
+
+1. Select **Save**. Afterwards, Azure Local will shut down the VM, detach the GPU, and restart the VM.
 
 ## Next steps
 
