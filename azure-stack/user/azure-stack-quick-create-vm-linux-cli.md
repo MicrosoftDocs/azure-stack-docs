@@ -63,7 +63,7 @@ Results:
 
 ## Create a virtual machine
 
-Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. The example uses Demouser as the admin username. Change these values to something that's appropriate for your environment.
+Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. The example uses `Demouser` as the admin username. Change these values to something that's appropriate for your environment.
 
 ```azurecli
 export VM_NAME="myVM$RANDOM_SUFFIX"
