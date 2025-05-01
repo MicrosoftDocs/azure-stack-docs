@@ -3,7 +3,7 @@ title: High availability Kubernetes pattern using Azure and Azure Stack Hub
 description: Learn how a Kubernetes cluster solution provides high availability using Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: article
-ms.date: 04/03/2025
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: bryanla
 ms.lastreviewed: 12/03/2020
@@ -115,7 +115,7 @@ The Kubernetes cluster itself consists of, and is built on top of Azure (Stack) 
 - [Control plane nodes](/azure/aks/concepts-clusters-workloads#control-plane) (master) provide the core Kubernetes services and orchestration of application workloads.
 - [Worker nodes](/azure/aks/concepts-clusters-workloads#nodes-and-node-pools) (worker) run your application workloads.
 
-When selecting VM sizes for the initial deployment, there are several considerations:  
+When you select VM sizes for the initial deployment, there are several considerations:  
 
 - **Cost** - When planning your worker nodes, keep in mind the overall cost per VM you incur. For example, if your application workloads require limited resources, you should plan to deploy smaller sized VMs. Azure Stack Hub, like Azure, is normally billed on a consumption basis, so appropriately sizing the VMs for Kubernetes roles is crucial to optimizing consumption costs. 
 
@@ -125,7 +125,7 @@ When selecting VM sizes for the initial deployment, there are several considerat
 
     Scaling is done manually using the AKS Engine helper VM that was used to deploy the Kubernetes cluster initially. For more information, see [Scaling Kubernetes clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md)
 
-- **Quotas** - Consider the [quotas](/azure-stack/operator/azure-stack-quota-types) you've configured when planning out an AKS deployment on your Azure Stack Hub. Make sure each [subscription](/azure-stack/operator/service-plan-offer-subscription-overview) has the proper plans and the quotas configured. The subscription needs to accommodate the amount of compute, storage, and other services needed for your clusters as they scale out.
+- **Quotas** - Consider the [quotas](/azure-stack/operator/azure-stack-quota-types) you configure when planning out an AKS deployment on your Azure Stack Hub. Make sure each [subscription](/azure-stack/operator/service-plan-offer-subscription-overview) has the proper plans and the quotas configured. The subscription needs to accommodate the amount of compute, storage, and other services needed for your clusters as they scale out.
 
 - **Application workloads** - Refer to the [Clusters and workloads concepts](/azure/aks/concepts-clusters-workloads#nodes-and-node-pools) in the Kubernetes core concepts for Azure Kubernetes Service document. This article helps you scope the proper VM size based on the compute and memory needs of your application.  
 
@@ -151,7 +151,7 @@ For the application layer, the most important consideration is whether the appli
 
 Exposing an application using a public IP via a Load Balancer or an Ingress Controller doesn't nessecarily mean that the application is now accessible via the Internet. It's possible for Azure Stack Hub to have a public IP address that is only visible on the local intranet - not all public IPs are truly Internet-facing.
 
-The previous block considers ingress traffic to the application. Another topic that must be considered for a successful Kubernetes deployment is outbound/egress traffic. Here are a few use cases that require egress traffic:
+The previous block considers ingress traffic to the application. Another consideration for a successful Kubernetes deployment is outbound/egress traffic. Here are a few use cases that require egress traffic:
 
 - Pulling Container Images stored on DockerHub or Azure Container Registry
 - Retrieving Helm Charts
@@ -191,7 +191,7 @@ In our architecture, these layers were considered:
 
 **Configuration**
 
-Configuration includes the configuration of Azure Stack Hub, AKS Engine, and the Kubernetes cluster itself. The configuration should be automated as much as possible, and stored as Infrastructure-as-Code in a Git-based version control system like Azure DevOps or GitHub. These settings cannot easily be synchronized across multiple deployments. Therefore we recommend storing and applying configuration from the outside, and using DevOps pipeline.
+Configuration includes the configuration of Azure Stack Hub, AKS Engine, and the Kubernetes cluster itself. The configuration should be automated as much as possible, and stored as Infrastructure-as-Code in a Git-based version control system like Azure DevOps or GitHub. These settings can't easily be synchronized across multiple deployments. Therefore we recommend storing and applying configuration from the outside, and using DevOps pipeline.
 
 **Application**
 
@@ -372,7 +372,7 @@ There are Microsoft Partner solutions that can extend the capabilities of Azure 
 
 ## Storage and data solutions
 
-As described in [Data and storage considerations](#data-and-storage-considerations), Azure Stack Hub currently doesn't have a native solution to replicate storage across multiple instances. Unlike Azure, the capability of replicating storage across multiple regions does not exist. In Azure Stack Hub, each instance is its own distinct cloud. However, solutions are available from Microsoft Partners that enable storage replication across Azure Stack Hubs and Azure. 
+As described in [Data and storage considerations](#data-and-storage-considerations), Azure Stack Hub currently doesn't have a native solution to replicate storage across multiple instances. Unlike Azure, the capability of replicating storage across multiple regions doesn't exist. In Azure Stack Hub, each instance is its own distinct cloud. However, solutions are available from Microsoft Partners that enable storage replication across Azure Stack Hubs and Azure. 
 
 **SCALITY**
 
