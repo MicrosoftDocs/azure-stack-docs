@@ -206,4 +206,4 @@ The following configuration sample files for deploying SDN are available in the 
 
 ## Next steps
 
-- [Manage VMs](../manage/vm.md).
+- [Manage VMs](../manage/vm.md)

@@ -165,7 +165,7 @@ This section contains known issues and workarounds for ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png" alt-text="Screenshot showing the tenant ID, application ID, principal ID, and scope can't be updated message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png":::
 
-**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
+**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as *Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png" alt-text="Screenshot showing the identity not found message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png":::
 
@@ -177,5 +177,5 @@ This section contains known issues and workarounds for ARM template deployment.
 
 ## Next steps
 
-- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
-- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md).
+- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md)
+- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md)

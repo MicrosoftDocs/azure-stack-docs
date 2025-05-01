@@ -107,7 +107,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 ### Networking tab
 
-1. Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
+- Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
 
       :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
@@ -224,7 +224,7 @@ To address and resolve the issue of the failed extension and restore normal back
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
-- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md)
 
 ::: moniker-end
 

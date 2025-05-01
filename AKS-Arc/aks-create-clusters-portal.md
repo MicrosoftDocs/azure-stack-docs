@@ -82,5 +82,5 @@ This article describes how to create Kubernetes clusters in Azure Local using th
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md).
-- [What's new in AKS on Azure Local](aks-whats-new-local.md).
+- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](aks-whats-new-local.md)
