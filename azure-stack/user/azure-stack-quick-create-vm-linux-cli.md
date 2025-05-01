@@ -138,7 +138,7 @@ echo "$extracted"
 
 ## View the NGINX welcome page
 
-With the NGINX web server installed, and port 80 open on your virtual machine, you can access the web server by using the virtual machine's public IP address. To do so, open a browser, and go to http://<public IP address>. Alternatively, you can use the curl command to view the NGINX welcome page:
+With the NGINX web server installed, and port 80 open on your virtual machine, you can access the web server by using the virtual machine's public IP address. To do so, open a browser, and go to `http://<public IP address>`. Alternatively, you can use the **curl** command to view the NGINX welcome page:
 
 ```bash
 export PUBLIC_IP=$(az vm show -d -g $RESOURCE_GROUP -n $VM_NAME --query publicIps -o tsv)
