@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 04/03/2025
+ms.date: 04/25/2025
 ---
 
 # System requirements for Azure Local
@@ -32,6 +32,10 @@ Here are the Azure requirements for your Azure Local instance:
 
 - **Azure regions**: Azure Local is supported for the following regions:
 
+   # [Azure public](#tab/azure-public)
+
+   These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
+
    - East US
    - West Europe
    - Australia East
@@ -40,6 +44,15 @@ Here are the Azure requirements for your Azure Local instance:
    - Canada Central
    - Japan East
    - South Central US
+
+
+   # [Azure Government (Preview)](#tab/azure-government)
+
+   Regions supported in the Azure Government cloud:
+
+   - US Gov Virginia
+
+   ---
 
 - **Azure Key Vault**: Make sure to enable public network access when you set up a key vault. This setting allows Azure Local instances to connect to the key vault without any access issues.
 

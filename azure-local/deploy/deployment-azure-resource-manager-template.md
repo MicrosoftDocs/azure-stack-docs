@@ -22,7 +22,6 @@ This article details how to use an Azure Resource Manager template in the Azure 
 ## Prerequisites
 
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-  - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
   - All machines are running the same version of OS.
   - All the machines have the same network adapter configuration.
 

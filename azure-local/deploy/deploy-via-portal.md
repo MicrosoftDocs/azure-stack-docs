@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 03/24/2025
+ms.date: 05/01/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Deploy Azure Local using the Azure portal
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+> Applies to: Azure Local 2503 and later
 
 This article helps you deploy an Azure Local instance using the Azure portal.
 

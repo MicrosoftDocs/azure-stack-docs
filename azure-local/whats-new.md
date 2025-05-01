@@ -1,55 +1,78 @@
 ---
-title: What's new in Azure Local, version 23H2 release
-description: Find out what's new in Azure Local, version 23H2 release.
+title: What's new in Azure Local latest release
+description: Find out what's new in Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/21/2025
+ms.date: 04/30/2025
 ---
 
 # What's new in Azure Local?
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+[!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
+
+This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2504"
 
-<!--Starting with 2504 release, Microsoft has introduced a new versioning schema and a release cadence. There are two 2504 releases for April. Here are the details of each release:
+Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
- 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
 |11.2504.1001.19  | 23598.1551        | Existing deployments only.        |
 
-For more information, see [Release information summary](./release-information-23h2.md).-->
+For more information, see [Release information summary](./release-information-23h2.md).
 
 ## Features and improvements in 2504
 
 This release has the following features and improvements:
 
-<!--- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.-->
+- **OS version changes**:
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
 
-- **NET update installations**: There are multiple improvements in this release that increase the reliability of .NET security update installations.
+- **.NET update installations improvements**:
+  - Increased reliability of .NET security update installations.
 
-- **Registration and deployment changes**
+- **Registration and deployment changes**:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
+    - Proxy bypass list is now mandatory if a proxy configuration is specified.
 
-<!--- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).-->
+- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
-- **Azure Local VM changes**
-    <!--- Software Defined Networking (SDN) enabled by Azure Arc (Preview) - Starting with this release, Azure Local now supports SDN enabled by Azure Arc for new deployments. This preview feature enables deployment of the Network Controller as a failover cluster service. The feature introduces support for Network Security Groups (NSGs) on static logical networks and Azure Local VM network adapters on these networks, allowing for granular control of network traffic.
- 
-    To learn more about this Preview feature, see [SDN overview](./index.yml) -->
+- **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
-    - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
+    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
+    - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
-- **Update improvements**: This release includes multiple bug fixes to improve the quality of the product.
+- **Update improvements**:
+    - Improved reliability when downloading updates.
+    - Added a health check to ensure failover cluster nodes are healthy before starting the update.
+    - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-<!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
+- **Add and repair node changes**:
+    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
+
+- **OEM license changes**:
+    
+    - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
+
+- **Solution extension improvements**:
+    - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
+    - Improved reliability of copying solution extension content locally to each machine.
+    - Added specification of plug-in name in the solution extension.
+
+- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+
+- **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 will be archived by May 31, 2025 and will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
 
 ::: moniker-end
 
@@ -58,10 +81,20 @@ This release has the following features and improvements:
 ## Features and improvements in 2503
 
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
+
+- **Preview availability of Azure Government cloud** - Azure Local is now available in the US Government regions in preview. Download the latest Azure Stack HCI OS image for Azure Government from [OS image](https://aka.ms/hcireleaseimage). For more information on where Azure Government is supported, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+    The following preview features aren't supported for Azure Local in Azure Government cloud:
+
+    - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
+    - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+    - [Azure Site Recovery](./manage/azure-site-recovery.md).
+    - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
+<!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
 
 - **Registration and deployment changes**
-  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+  - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
   - **Register via app**: You can bootstrap your Azure Local machines using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
     - Composed image is now supported for Original Equipment Manufacturers (OEMs).
     - Several security enhancements were done for the Bootstrap service.
@@ -75,11 +108,11 @@ This is a baseline release with the following features and improvements:
   - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
 
 - **Updates and upgrade improvements**
-  - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
-  - A tag has been added to indicate whether an update is the latest or has been superseded.
+  - The Solution Builder Extension update now supports both supported and nonsupported SKUs for a given model.
+  - A tag is added to indicate whether an update is the latest or is superseded.
   - HTTP content is now downloaded using a more resilient service (Download Service).
-  - OS content is packaged with the release, rather than determining appliable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
-  - OS content will be installed using the CAU plug-ins that are shipped with OS.
+  - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+  - OS content is installed using the CAU plug-ins that are shipped with OS.
   - Azure Local rebranding changes were made for this update.
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
@@ -95,7 +128,7 @@ This is a baseline release with the following features and improvements:
 
 ## Features and improvements in 2411.3
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
 - **Updated .NET version** - This build has an updated .NET version 8.0.13.
@@ -110,8 +143,8 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 This is a baseline release with the following features and improvements:
 
-- **Arc VMs** - Here are the improvements made to Arc VMs in this release:
-    - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for Arc VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
+- **Azure Local VMs** - Here are the improvements made to VMs in this release:
+    - **Azure Marketplace images**: Three new Azure Marketplace images are available in addition to the existing images. For more information, see the [List of Azure Marketplace images supported for VMs](./manage/virtual-machine-image-azure-marketplace.md#create-azure-local-vm-image-using-azure-marketplace-images).
     - **Live migration**: Live migration is available for Azure Local VMs via on-premises tools. For more information, see [Live migration of Azure Local VMs](./manage/manage-arc-virtual-machines.md#conduct-live-migration-of-azure-local-vms).
 
 - **4-node switchless support documentation** - Documentation for 4-node switchless is now available. For more information, see [4-node switchless support](./plan/four-node-switchless-two-switches-two-links.md).
@@ -124,9 +157,9 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ## Features and improvements in 2411.1
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
-- **Arc VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Arc VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
+- **Azure Local VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Azure Local VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
 
 - **Updates** - In this release, an update precheck is added to ensure that the solution extension content is copied correctly.
 
@@ -140,9 +173,9 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ## Features and improvements in 2411
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
-- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
+- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
 
     For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
 - **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
@@ -157,15 +190,15 @@ This is a baseline release with the following features and improvements:
 
     For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **Arc VM changes**: The following changes were made to Arc VM management:
-    - **Terraform templates for Arc VM** - Starting this release, you can create logical networks and Arc VMs using Terraform templates.
+- **Azure Local VM changes**: The following changes were made to Azure Local VM management:
+    - **Terraform templates for Azure Local VM** - Starting this release, you can create logical networks and Azure Local VMs using Terraform templates.
     
-        For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Arc VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
-    - **Add network interface on static logical network** - After the Arc VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you're required to configure the desired static IP from within the VM.
+        For more information, see [Template to create logical networks](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-logicalnetwork/azurerm/0.4.0) and [Template to create Azure Local VMs](https://registry.terraform.io/modules/Azure/avm-res-azurestackhci-virtualmachineinstance/azurerm/0.1.2).
+    - **Add network interface on static logical network** - After the Azure Local VMs are provisioned, you can now add a network interface on a static logical network. To add this network interface, you're required to configure the desired static IP from within the VM.
         
         For more information, see [Add a network interface on your Azure Local](./manage/manage-arc-virtual-machine-resources.md#add-a-network-interface).
 
-    - **Download data disks** - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Arc virtual machine (VM) image or attach the image to your VMs as needed.
+    - **Download data disks** - Beginning this release, you can download an Azure managed disk from Azure to your Azure Local instance. You use this disk to create an Azure Local VM image or attach the image to your VMs as needed.
   
         For more information, see [Download data disks from Azure to Azure Local](./manage/manage-data-disks.md).
 
@@ -191,22 +224,22 @@ This is a baseline release with the following features and improvements:
 
 ## Features and improvements in 2408.2
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
-- **Arc VM management improvements**: Starting this release, following improvements were made to the Arc VM management experience:
+- **Azure Local VM management improvements**: Starting with this release, following improvements were made to the Azure Local VM management experience:
 
-  - You can set a proxy configuration for Arc VMs on the Portal.
-  - You can set a SQL Server configuration for Arc VMs on Portal.
-  - You can now create an image from an Arc VM's OS disk.
+  - You can set a proxy configuration for Azure VMs on the Portal.
+  - You can set a SQL Server configuration for Azure VMs on Portal.
+  - You can now create an image from an Azure VMs VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
 
 ## Features and improvements in 2408.1
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
 - **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).
-- **Arc VM Management**: Starting in this release, you can attach or detach GPUs to an Arc VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
+- **Azure Local VM Management**: Starting in this release, you can attach or detach GPUs to an Azure Local VM via CLI for GPU-P (preview) and DDA (preview). For more information, see:
   - [Prepare GPUs for Azure Local (preview)](./manage/gpu-preparation.md)
   - [Manage GPUs using partitioning for Azure Local (preview)](./manage/gpu-manage-via-partitioning.md)
   - [Manage GPUs via Discrete Device Assignment for Azure Local (preview)](./manage/gpu-manage-via-device.md)
@@ -234,9 +267,9 @@ This release contains the following changes for updates:
 - Revised the names and descriptions of update steps. 
 - Introduced a health fault alert that is raised when there are available updates on the system. 
 
-### Arc VM management changes
+### Azure Local VM management changes
 
-This release contains the following changes for Arc VM management:
+This release contains the following changes for Azure Local VM management:
 
 - 12 new Azure Marketplace images went live. For more information, see [Create Azure Local VM from Azure Marketplace images via Azure CLI](./manage/virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image).
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
@@ -272,7 +305,7 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues.
 
 This is primarily a bug fix release with a few improvements.
 
-- Arc VM management improvements: Starting this release, following improvements were made to the Arc VM management experience:
+- Azure Local VM management improvements: Starting this release, following improvements were made to the Azure Local VM management experience:
 
   - You can now view and delete VM network interfaces from the Azure portal.
   - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
@@ -294,7 +327,7 @@ This is primarily a bug fix release with a few improvements.
 - **Custom storage IPs for add and repair server scenarios**: Starting this release, it's possible to add machines or repair machines to the Azure Local instance using custom IPs for the storage intent network adapters.
 - **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
 - **Reliability improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
-- **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
+- **Rotation of Arc Resource Bridge service principal credentials**: Starting this release, you can rotate the service principal credentials used by Azure Arc resource bridge.
 - **Multiple bug fixes related to Updates** were made in this release.
 
 For more information on bug fixes, see the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true).
@@ -371,7 +404,7 @@ This release contains the following improvements to observability:
 - Deployment logs are automatically collected by default.
 - The newly added `Test-observability` feature validates whether the telemetry and diagnostic data can be successfully sent to Microsoft.
 
-### Arc VM management changes
+### Azure Local VM management changes
 
 - This release contains new documentation that provides guidance on VM image creation starting with a CentOS image or a Red Hat Enterprise Linux (RHEL) image. For more information, see:
   - [Prepare CentOS Linux image for Azure Local virtual machines (preview)](./manage/virtual-machine-image-centos.md).
@@ -384,7 +417,7 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 - In this release, an issue was fixed that prevented from showing a failed deployment in the Cluster overview when the deployment was canceled.
 - The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
-- This release changes the behavior to not delete the Arc server resources when the Azure Local resource is deleted.
+- This release changes the behavior to not delete the Arc-enabled server resources when the Azure Local resource is deleted.
 
 ### Security changes
 
@@ -394,9 +427,9 @@ This release includes the following updates to the security documentation:
 - The Security Baselines settings have been updated to 315 settings, including six removals and 1 addition. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
 - Updated the [Application Control](./concepts/security-features.md#application-control) section in the [Security features for Azure Local](./concepts/security-features.md) article.
 
-### AKS on Azure Local
+### Azure Kubernetes Service on Azure Local
 
-For a list of the changes and improvements in AKS on Azure Local, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
+For a list of the changes and improvements in AKS on Azure Local, see [What's new in Azure Kubernetes on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
 
 
@@ -426,7 +459,7 @@ This section lists the new features and improvements in the 2402 release of Azur
 
 ### New built in security role
 
-This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Azure Resource Bridge principal.
 
 The role applies the concept of least amount of privilege and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
@@ -467,7 +500,7 @@ This is primarily a bug fix release. See the [Fixed issues list](./known-issues.
 
 A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Local. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
 
-The role applies the concept of the least amount of privilege and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
+The role applies the concept of the least amount of privilege and must be assigned to the Arc Resource Bridge service principal, `clustername.arb`, before you update the cluster.
 
 You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
@@ -497,13 +530,13 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 
 - Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues.md?view=azloc-previous&preserve-view=true).
 
-### Arc VM management changes
+### Azure Local VM management changes
 
 In this release:
 
 - Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
-- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Local](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
-- Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
+- Proxy is supported for Azure Local VMs. For more information, see [Set up proxy for Azure Local VMs](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
+- Storage path selection is available during the Azure Local VM image creation via the Azure portal. For more information, see [Create an Azure Local VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
 ### Migration of Hyper-V VMs to Azure Local (preview)
 
@@ -562,38 +595,38 @@ For more information, see [Monitor Azure Local with Azure Monitor metrics](./man
 
 With Insights for Azure Local, you can now monitor and analyze performance, savings, and usage insights about key Azure Local features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Local features with Insights](./manage/monitor-features.md).
 
-### Azure Arc VM management
+### Azure Local VM management
 
-Beginning this release, the following Azure Arc VM management capabilities are available:
+Beginning this release, the following Azure Local VM management capabilities are available:
 
-- **Simplified Arc Resource Bridge deployment**. The Arc Resource Bridge is now deployed as part of the Azure Local deployment.
+- **Simplified Azure Arc resource bridge deployment**. The Azure Arc resource bridge is now deployed as part of the Azure Local deployment.
     For more information, see [Deploy Azure Local instance using the Azure portal](./deploy/deploy-via-portal.md).
-- **New RBAC roles for Arc VMs**. This release introduces new RBAC roles for Arc VMs.
-    For more information, see [Manage RBAC roles for Arc VMs](./manage/assign-vm-rbac-roles.md).
+- **New RBAC roles for Azure Local VMs**. This release introduces new RBAC roles for Azure Local VMs.
+    For more information, see [Manage RBAC roles for Azure Local VMs](./manage/assign-vm-rbac-roles.md).
 - **New Azure consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces. 
-    For more information, see [Create Arc VMs on Azure Local](./manage/create-arc-virtual-machines.md).
+    For more information, see [Create Azure Local VMs on Azure Local](./manage/create-arc-virtual-machines.md).
 - **Support for static IPs**. This release has the support for static IPs. 
     For more information, see [Create static logical networks on Azure Local](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
-- **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Arc VMs.
+- **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Azure Local VMs.
     For more information, see [Create storage paths on Azure Local](./manage/create-storage-path.md).
-- **Support for Azure VM extensions on Arc VMs on Azure Local**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local Arc VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 
+- **Support for Azure VM extensions on Azure Local VMs**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Local VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 
     For more information, see [Manage VM extensions for Azure Local VMs](./manage/virtual-machine-manage-extension.md).
-- **Trusted launch for Azure Arc VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Local.
-    For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
+- **Trusted launch for Azure Local VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Azure Local VMs.
+    For more information, see [Trusted launch for Azure Local VMs](./manage/trusted-launch-vm-overview.md).
 
 ### AKS on Azure Local
 
 Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Local system. AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. For more information, see [What's new in AKS on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
 
-The following Kubernetes cluster deployment and management capabilities are available:
+The following Azure Kubernetes cluster deployment and management capabilities are available:
 
-- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of AKS on Azure Local including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
-- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
+- **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of Azure Kubernetes on Azure Local including the Azure Arc resource bridge, custom location, and the Azure Kubernetes Extension for the Azure Kubernetes operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](./deploy/deploy-via-portal.md).
+- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of Azure Kubernetes infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
 - **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
 - **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
-- **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc](/azure/aks/hybrid/deploy-container-registry).
-- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools).
+- **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and Azure Kubernetes](/azure/aks/hybrid/deploy-container-registry).
+- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in Azure Kubernetes](/azure/aks/hybrid/manage-node-pools).
 - **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
 
 ### Security capabilities

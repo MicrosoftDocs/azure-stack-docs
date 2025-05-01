@@ -1,19 +1,19 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Stack HCI OEM license and billing FAQ
-  description: The Azure Local FAQ provides information on the Azure Stack HCI OEM license and billing.
+  title: OEM license and billing FAQ for Azure Local
+  description: The FAQ provides information on the OEM license and billing for Azure Local.
   ms.topic: faq
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 01/24/2025
+  ms.date: 04/04/2025
 
-title: Azure Stack HCI OEM license and billing FAQ
+title: OEM license and billing FAQ for Azure Local
 summary: |
-  This FAQ provides information on the Azure Stack HCI OEM license and billing and applies to Azure Local.
+  This FAQ provides information on the OEM license and billing for Azure Local.
 
 sections:
-  - name: Azure Stack HCI OEM license and billing FAQ
+  - name: OEM license and billing FAQ for Azure Local
     questions:
 
       - question: How do I get pricing for this license?
@@ -36,21 +36,21 @@ sections:
       
       - question: Which version of Windows Server is supported for this license?
         answer: |
-          You can use Windows Server Datacenter 2022, or an [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) that Microsoft supports, as a guest license.  
+          You can use Windows Server Datacenter 2025, or an [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) that Microsoft supports, as a guest license.  
 
       - question: Are next version rights for Windows Server Datacenter included?
         answer: |
-          No. This license is limited to Windows Server Datacenter 2022 or earlier and doesn't include newer subsequent versions unless permitted by Microsoft. You can use Windows Server Datacenter 2022, or an earlier version that Microsoft supports, as a guest license.
+          No. This license is limited to Windows Server Datacenter 2025 or earlier and doesn't include newer subsequent versions unless permitted by Microsoft. You can use Windows Server Datacenter 2025, or an earlier version that Microsoft supports, as a guest license.
 
       - question: Where can I get support for this license?
         answer: |
-          For support with your Azure Stack HCI OEM license first contact your OEM vendor. For additional help, file an Azure support request through [the Azure portal](https://portal.azure.com/).
+          For support with OEM license for Azure Local first contact your OEM vendor. For additional help, file an Azure support request through [the Azure portal](https://portal.azure.com/).
       
       - question: Are mixed-node scenarios supported?
         answer: |
           No. This license doesn't currently support environments with mixed nodes in the same Azure Local system. For more information, see [Mixed-node scenarios](oem-license.md#mixed-node-scenarios).
 
-      - question: Does Azure Kubernetes Service (AKS) offer unlimited virtualization?
+      - question: Does Azure Kubernetes Service (AKS) on Azure Local offer unlimited virtualization?
         answer: |
           Yes. AKS on Azure Local offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
 
@@ -68,7 +68,7 @@ sections:
 
       - question: Does this license include an End-User License Agreement (EULA)?
         answer: |
-          Yes. There's an EULA that combines Azure Local (as the host), Azure Kubernetes Services on Azure Local, and Windows Server Datacenter 2022 (as the guest) into a single package.
+          Yes. There's a EULA that combines Azure Local (as the host), Azure Kubernetes Services on Azure Local, and Windows Server Datacenter 2025 (as the guest) into a single package.
 
       - question: Is a product key or Certificate of Authenticity (COA) required?
         answer: |

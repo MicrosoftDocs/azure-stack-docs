@@ -5,10 +5,10 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/22/2025
+ms.date: 04/28/2025
 ---
 
-# Download version 23H2 operating system for Azure Local deployment
+# Download operating system for Azure Local deployment
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -27,13 +27,15 @@ Before you begin the download of the software from Azure portal, ensure that you
    - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
+   - At a minimum, you'll need **Reader** access at the subscription level.
 
 - Register the Microsoft Azure Stack HCI resource provider. For more information, see [Register your machines and assign permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
 
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
-> English is the only supported language for the deployment.
+> - English is the only supported language for the deployment.
+> - For deployments in Azure Government only, download the OS image from the following location: [OS image](https://aka.ms/hcireleaseimage).
 
 Follow these steps to download the software:
 
