@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management for Azure Local
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 05/01/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -18,6 +18,10 @@ This article provides guidance on how to collect logs and troubleshoot issues wi
 ## Troubleshoot Azure Arc VMs
 
 This section describes the errors related to Azure Arc VM management and their recommended resolutions.
+
+## Unable to select an image for Trusted launch VMs
+
+When you create an Azure Local VM, your image must be available on your cluster. If your image isn't available, the drop-down lists for options like security type and image will appear blank during the creation process. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](#guest-operating-system-images).
 
 ## Failure when trying to enable guest management
 

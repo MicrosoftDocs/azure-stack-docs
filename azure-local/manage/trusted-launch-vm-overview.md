@@ -5,7 +5,7 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/20/2025
+ms.date: 05/01/2025
 ---
 
 # Introduction to Trusted launch for Azure Arc VMs on Azure Local
@@ -36,6 +36,8 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 ## Guidance
 
 - IgvmAgent is a component that is installed on all machines in the Azure Local system. It enables support for isolated VMs such as Trusted launch Arc VMs for example.
+
+- Trusted launch for Azure Local VMs uses only a subset of images on Azure Local. When you create Azure Local VMs and want to use Trusted launch, ensure your images are available on your cluster. If the images aren't available, the drop-down list during the creation process will be blank. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](#guest-operating-system-images).
 
 - As part of Trusted launch Arc VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 
