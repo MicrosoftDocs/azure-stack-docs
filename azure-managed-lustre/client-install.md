@@ -76,6 +76,8 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone-end
 
+::: zone pivot="ubuntu-24"
+
 ## Install client software for Ubuntu 24.04
 
 This article shows how to install the client package to set up client VMs running Ubuntu 24.04.
