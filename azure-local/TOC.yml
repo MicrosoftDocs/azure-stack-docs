@@ -602,12 +602,12 @@ items:
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM (v22H2 only)
+  - name: Migrate using SCVMM
     items:
     - name: For Hyper-V VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      href: /system-center/vmm/manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#migrate-vms-from-windows-server-to-azure-local-instance
     - name: For VMware VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+      href: /system-center/vmm/vm-convert-vmware?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
   - name: Migrate manually (v22H2 only)
     items:
     - name: To same hardware
@@ -825,6 +825,12 @@ items:
       href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+  - name: Migrate using SCVMM
+    items:
+    - name: For Hyper-V VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-local-instance
+    - name: For VMware VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-local-instance-using-scvmm
   - name: Concepts
     items:
     - name: Storage and systems
