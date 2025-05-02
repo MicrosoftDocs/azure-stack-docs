@@ -51,7 +51,6 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Maximum number of AKS clusters with autoscaler enabled | 12 |
 | Number of concurrent AKS cluster creations | 4 |
 | Number of concurrent node pool creations | 4 |
-| Number of concurrent operations across all clusters (excluding cluster/node pool creation) | 12 |
 
 Learn more about autoscaling with AKS on Azure Local [here](/azure/aks/aksarc/auto-scale-aks-arc).
 
