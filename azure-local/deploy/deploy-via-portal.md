@@ -15,9 +15,12 @@ ms.service: azure-local
 
 This article helps you deploy an Azure Local instance using the Azure portal.
 
+> [!IMPORTANT]
+> The Azure portal will block deployments of Azure Local for versions 2411.3 or earlier. To deploy these versions, use an Azure Resource Manager (ARM) template. For more information, see [Deploy Azure Local via Azure Resource Manager deployment template](./deployment-azure-resource-manager-template.md).
+
 ## Prerequisites
 
-* Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
+- Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
 <!-- Cristian to confirm * For three-node systems, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node systems with storage network adapters that are directly connected to each machine without a switch isn't supported in this preview.-->
 
 ## Start the wizard and fill out the basics
