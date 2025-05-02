@@ -51,7 +51,7 @@ sections:
     - question: |
         Can I use SDN for Azure Local VMs created from the Azure portal?
       answer: |
-        SDN is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see [SDN in Azure Local](../azure-local/manage/sdn-technical-reference.md).
+        SDN is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see [SDN in Azure Local](sdn-technical-reference.md).
 
     - question: |
         How can I perform live migration of Azure Local virtual machines?
