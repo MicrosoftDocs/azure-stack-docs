@@ -1,9 +1,9 @@
 ---
-author: ManikaDhiman
+author: alkohli
 ms.author: alkohli
-ms.service: azure-stack
+ms.service: azure-local
 ms.topic: include
-ms.date: 11/18/2024
+ms.date: 12/10/2024
 ms.reviewer: alkohli
 ---
 
@@ -11,7 +11,7 @@ ms.reviewer: alkohli
 
 1. Run the following PowerShell command using local administrator credentials or deployment user (AzureStackLCMUser) credentials.
 
-1. Run the following cmdlet to check the WDAC policy mode that is currently enabled:
+1. Run the following cmdlet to check the Application Control policy mode that is currently enabled:
 
    ```powershell
    Get-AsWdacPolicyMode
@@ -43,10 +43,10 @@ ms.reviewer: alkohli
 
    ```azurepowershell
    PS C:\> Get-AsWdacPolicyMode
-   VERBOSE: Getting WDAC Policy Mode on Node01
-   VERBOSE: WDAC Policy Mode on Node01 is Enforced.
-   VERBOSE: Getting WDAC Policy Mode on Node01
-   VERBOSE: WDAC Policy Mode on Node01 is Enforced.
+   VERBOSE: Getting Application Control Policy Mode on Node01.
+   VERBOSE: Application Control Policy Mode on Node01 is Enforced.
+   VERBOSE: Getting Application Control Policy Mode on Node01.
+   VERBOSE: Application Control Policy Mode on Node01 is Enforced.
 
    NodeName     PolicyMode
    --------     ----------
@@ -54,16 +54,16 @@ ms.reviewer: alkohli
    Node01 	Enforced
 
    PS C:\> Enable-AsWdacPolicy -Mode Audit
-   WARNING: Setting WDAC Policy to Audit Mode on all nodes. This will not protect your system against untrusted applications
+   WARNING: Setting Application Control Policy to Audit Mode on all nodes. This will not protect your system against untrusted applications
    VERBOSE: Action plan instance ID specified: 6826fbf2-cb00-450e-ba08-ac24da6df4aa
-   VERBOSE: Started an action plan 6826fbf2-cb00-450e-ba08-ac24da6df4aa to set WDAC Policy to Audit Mode.
+   VERBOSE: Started an action plan 6826fbf2-cb00-450e-ba08-ac24da6df4aa to set Application Control Policy to Audit Mode.
    6826fbf2-cb00-450e-ba08-ac24da6df4aa
 
    PS C:\> Get-AsWdacPolicyMode
-   VERBOSE: Getting WDAC Policy Mode on Node01
-   VERBOSE: WDAC Policy Mode on Node01 is Audit.
-   VERBOSE: Getting WDAC Policy Mode on Node01
-   VERBOSE: WDAC Policy Mode on Node01 is Audit.
+   VERBOSE: Getting Application Control Policy Mode on Node01.
+   VERBOSE: Application Control Policy Mode on Node01 is Audit.
+   VERBOSE: Getting Application Control Policy Mode on Node01.
+   VERBOSE: Application Control Policy Mode on Node01 is Audit.
 
    NodeName     PolicyMode
    --------     ----------

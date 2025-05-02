@@ -4,11 +4,11 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 10/22/2024
-ms.service: azure-stack-hci
+ms.date: 04/09/2025
+ms.service: azure-local
 ---
 
-# Rotate secrets on Azure Local, version 23H2
+# Rotate secrets on Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -59,6 +59,49 @@ WARNING: Please close this session and log in again.
 PS C:\Users\MGMT> 
 ```
 
+## Change cluster witness storage account key
+
+This section describes how you can change the storage account key for the cluster witness storage account.
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+
+1. Configure the witness quorum using the secondary storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account secondary key>
+    ```
+
+1. Rotate the storage account primary key.
+
+1. Configure the witness quorum using the rotated storage account key:
+
+    ```powershell
+    Set-ClusterQuorum -CloudWitness -AccountName <storage account name> -AccessKey <storage account primary key>
+    ```
+
+1. Rotate the storage account secondary key.
+
+1. Update the storage account primary key in the ECE store:
+
+    ```powershell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace Storage account key>" -AsPlainText -Force
+    $WitnessCred = New-Object -Type PSCredential -ArgumentList "WitnessCredential,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName WitnessCredential -Credential $WitnessCred
+    ```
+
+## Revoke SAS token for storage account used for Azure Local VM images
+
+This section describes how you can revoke the Shared Access Signature (SAS) token for the storage account used for images used by Azure Local VMs enabled by Arc.
+
+| SAS policy   | SAS expired?    | Steps to revoke   |
+|---------|---------|---------|
+| Any SAS     | Yes      | No action is required as the SAS is no longer valid.        |
+| Ad hoc SAS signed with an account key      | No      | [Manually rotate or regenerate Storage account key](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#manually-rotate-access-keys) used to create SAS.         |
+| Ad hoc SAS signed with a user delegation key      | No       | To revoke user delegation key or change role assignments, see [Revoke a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas#revoke-a-user-delegation-sas).         |
+| SAS with stored access policy      | No       | To update the expiration time to a past date or time, or delete the stored access policy, see [Modify or revoke a stored access policy](/rest/api/storageservices/define-stored-access-policy#modify-or-revoke-a-stored-access-policy).           |
+
+For more information, see [Revoke a SAS](/rest/api/storageservices/create-service-sas#revoke-a-sas).
+
 ## Change deployment service principal
 
 This section describes how you can change the service principal used for deployment. 
@@ -100,7 +143,7 @@ This section describes how you can change the service principal used for Azure r
 To change the deployment service principal, follow these steps:
 
 1. Sign in to your Microsoft Entra ID.
-1. Locate the service principal for Azure resource bridge. The name of the service principal includes **DefaultARBApplication**.
+1. Locate the service principal for Azure resource bridge. The name of the service principal has the format **ClusternameXX.arb**.
 1. Create a new client secret for the service principal.
 1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
 1. Sign in to one of your Azure Local machines using the deployment user credentials.
@@ -115,6 +158,64 @@ To change the deployment service principal, follow these steps:
    Set-AzureStackRPSpCredential -SubscriptionID $SubscriptionId -TenantID $TenantId -AppId $AppId -NewPassword $NewPassword 
    ```
 
+## Rotate internal secrets
+
+This section describes how you can rotate internal secrets. Internal secrets include certificates, passwords, secure strings, and keys used by the Azure Local infrastructure. Internal secret rotation is only required if you suspect one has been compromised, or you've received an expiration alert.
+
+The exact steps for secret rotation are different depending on the software version your Azure Local instance is running.
+
+### Azure Local instance running 2411.2 and later
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+### Azure Local instance running 2411.1 to 2411.0
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Update the CA Certificate password in ECE store. Run the following PowerShell command:
+
+    ```PowerShell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace with a strong password>" -AsPlainText -Force
+    $CACertCred = New-Object -Type PSCredential -ArgumentList "CACertUser,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName CACertificateCred -Credential $CACertCred
+    ```
+
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+### Azure Local instance running 2408.2 to 2405.3
+
+1. Sign in to one of the Azure Local nodes using deployment user credentials.
+1. Update the CA Certificate password in ECE store. Run the following PowerShell command:
+
+    ```PowerShell
+    $SecureSecretText = ConvertTo-SecureString -String "<Replace with a strong password>" -AsPlainText -Force
+    $CACertCred = New-Object -Type PSCredential -ArgumentList "CACertificateCred,$SecureSecretText"
+    Set-ECEServiceSecret -ContainerName CACertificateCred -Credential $CACertCred
+    ```
+
+1. Delete FCA cert from all the cluster nodes and restart FCA service. Run the following command on each node of your Azure Local instance:
+
+    ```PowerShell
+    $cert = Get-ChildItem -Recurse cert:\LocalMachine\My | Where-Object { $_.Subject -like "CN=FileCopyAgentKeyIdentifier*" } 
+    $cert | Remove-Item 
+    restart-service "AzureStack File Copy Agent*"
+    ```
+
+1. Start secret rotation. Run the following PowerShell command:
+
+    ```PowerShell
+    Start-SecretRotation
+    ```
+
+
 ## Next steps
 
-[Complete the prerequisites and checklist and install Azure Local, version 23H2](../deploy/deployment-prerequisites.md).
+[Complete the prerequisites and checklist and install Azure Local](../deploy/deployment-prerequisites.md).

@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: conceptual
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 11/11/2024
+ms.date: 01/10/2025
 ms.reviewer: brianl
 
 # Intent: As an IT Pro, I want to be able to seamlessly use Azure Blob Storage for long-term storage of files in my Azure Managed Lustre file system.
@@ -26,7 +26,7 @@ When you import data from a blob container to an Azure Managed Lustre file syste
 
 You can prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from Blob Storage](#restore-data-from-blob-storage).
 
-Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
+Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a nonhierarchical, or flat, namespace. The following minor differences apply:
 
 - For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
 - For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate, empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
@@ -50,9 +50,9 @@ For an import job, you can specify import prefixes when you create the job. From
 Keep the following considerations in mind when specifying import prefixes:
 
 - The default import prefix is `/`. This default behavior imports the contents of the entire blob container.
-- If you specify multiple prefixes, the prefixes must be non-overlapping. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
+- If you specify multiple prefixes, the prefixes must not overlap. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
 - If the blob container is in a storage account with hierarchical namespace enabled, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
-- If the blob container is in a storage account with a non-hierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and `/` characters in blob names become directory delimiters when stored in Lustre.
+- If the blob container is in a storage account with a nonhierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and `/` characters in blob names become directory delimiters when stored in Lustre.
 
 ### Conflict resolution mode
 
@@ -81,7 +81,7 @@ When importing data from a blob container, you can specify the error tolerance. 
 
 The following error tolerance options are available for import jobs:
 
-- **Do not allow errors** (default): The import job fails immediately if any error occurs during the import. This is the default behavior.
+- **Do not allow errors** (default): The import job fails immediately if any error occurs during the import. This behavior is the default.
 - **Allow errors**: The import job continues if an error occurs, and the error is logged. After the import job completes, you can view errors in the logging container.
 
 ### Considerations for blob import jobs
@@ -106,7 +106,7 @@ nohup find local/directory -type f -print0 | xargs -0 -n 1 sudo lfs hsm_restore 
 
 This command tells the metadata server to asynchronously process a restoration request. The command line doesn't wait for the restore to complete, which means that the command line has the potential to queue up a large number of entries for restore at the metadata server. This approach can overwhelm the metadata server and degrade performance for restores.
 
-To avoid this potential performance issue, you can create a basic script that attempts to walk the path and issues restore requests in batches of a specified size. To achieve reasonable performance and avoid overwhelming the metadata server, it's recommended to use batch sizes anywhere from 1,000 to 5,000 requests.
+To avoid this potential performance issue, you can create a basic script that attempts to walk the path and issues restore requests in batches of a specified size. To achieve reasonable performance and avoid overwhelming the metadata server, we recommend using batch sizes anywhere from 1,000 to 5,000 requests.
 
 ### Example: Create a batch restore script
 
@@ -196,12 +196,13 @@ When you export files from your Azure Managed Lustre system, not all files are c
 - Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
 - Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
 - Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
+- Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names), meaning that acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob naming rule, such as a file name that exceeds the maximum blob name length, results in an error when attempting to export that file.
 
 ### Running export jobs in active file systems
 
 In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 
-In file systems with a lot of activity, retries may fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+In file systems with a lot of activity, retries might fail multiple times because files are frequently changing. To verify that a file was successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
 
 If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
 

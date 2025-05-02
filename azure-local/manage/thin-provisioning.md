@@ -1,10 +1,10 @@
 ---
 title: Storage thin provisioning in Azure Stack HCI
 description: How to use storage thin provisioning on Azure Stack HCI clusters by using Windows PowerShell or Windows Admin Center.
-author: TinaWu-Msft
-ms.author: tinawu
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 12/09/2022
 ---
 
@@ -152,5 +152,5 @@ Yes. When creating a volume, the size can be greater than the pool's available c
 
 For more information, see also:
 
-- [Plan volumes](../concepts/plan-volumes.md)
-- [Create volumes](create-volumes.md)
+- [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes)
+- [Create volumes](/windows-server/storage/storage-spaces/create-volumes)

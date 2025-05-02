@@ -4,9 +4,9 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 11/11/2024
+ms.date: 05/02/2025
 ms.lastreviewed: 06/06/2023
-ms.reviewer: mayabishop
+ms.reviewer: brlepore
 
 #customer intent: As an IT pro, I want to use a Lustre file system to process files that involve a heavy computation load.
 
@@ -66,15 +66,15 @@ Currently, the following throughput configurations are available:
 
 | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |-----------|-----------|-----------|-----------|
-| 40 MBps | 48 TiB | 768 TiB | 48 TiB |
-| 125 MBps | 16 TiB | 128 TiB | 16 TiB |
-| 250 MBps | 8 TiB | 128 TiB | 8 TiB |
+| 40 MBps | 48 TiB | 1536 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 512 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 256 TiB | 8 TiB |
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
-> Upon request, Azure Managed Lustre can support larger storage capacities up to 2.5 petabytes (PB). To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+> Azure Managed Lustre can support larger storage capacities up to 12.5 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 >
-> If you need cluster sizes greater than 2.5 PB, you can open a support ticket to discuss additional options.
+> If you need cluster sizes greater than 12.5 PiB, you can open a support ticket to discuss additional options.
 
 ### Maintenance window
 

@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 11/07/2024
+ms.date: 03/10/2025
 ms.author: sethm 
 ms.reviewer: anirbanpaul 
 ---
@@ -14,7 +14,7 @@ ms.reviewer: anirbanpaul
 
 [!INCLUDE [azure-local-banner-22h2](../includes/azure-local-banner-22h2.md)]
 
-In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+This article describes how to deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW). The scripts support a phased deployment, in which you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure using Windows Admin Center or using System Center Virtual Machine Manager (VMM). For more information, see [Create a cluster - Step 5: SDN](../deploy/create-cluster.md#step-5-sdn-optional) and [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
@@ -61,13 +61,15 @@ Run the following command to install the latest version of the SDN Express Power
 Install-Module -Name SDNExpress
 ```
 
-The files automatically install in the default PowerShell module directory: **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\**.
+The files automatically install in the default PowerShell module directory: `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\`.
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file (located at the above mentioned install path) contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, based on whether you're deploying just the Network Controller component or also the Software Load Balancer and Gateway components.
 
-Navigate to the **C:\Program Files\WindowsPowerShell\Modules\SdnExpress\** folder and open the **MultiNodeSampleConfig.psd1** file in a text editor. Change specific parameter values to fit your infrastructure and deployment, as described in the next section.
+For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
+
+Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the relevant config file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment.
 
 ### General settings and parameters
 
@@ -145,7 +147,7 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 
 ### Additional settings for SLB and Gateway
 
-The following additional parameters are used by SLB and Gateway VMs. Leave these values empty if you are not deploying SLB or Gateway VMs:
+The following additional parameters are used by SLB and Gateway VMs. Leave these values empty if you're not deploying SLB or Gateway VMs:
 
 - **SDNASN** - Autonomous System Number (ASN) used by SDN to peer with network switches
 - **RouterASN** - Gateway router ASN
@@ -153,7 +155,7 @@ The following additional parameters are used by SLB and Gateway VMs. Leave these
 - **PrivateVIPSubnet** -  virtual IP address (VIP) for the private subnet
 - **PublicVIPSubnet** - virtual IP address for the public subnet
 
-The following additional parameters are only used by Gateway VMs. Leave these values blank if you are not deploying Gateway VMs:
+The following additional parameters are only used by Gateway VMs. Leave these values blank if you're not deploying Gateway VMs:
 
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
@@ -161,12 +163,11 @@ The following additional parameters are only used by Gateway VMs. Leave these va
 - **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway move to the redundant gateway and the redundant gateway becomes active.
 
    > [!NOTE]
-   > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the
-   > **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
+   > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
 
 ### Settings for tenant overlay networks
 
-The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you are using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
+The following parameters are used if you're deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
 
 - **PASubnet** -  subnet for the Provider Address (PA) network
 - **PAVLANID** - VLAN ID for the PA network
@@ -189,7 +190,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the cluster host servers:
 
     ```powershell
-    SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
+    .\SDNExpress.ps1 -ConfigurationDataFile “Traditional VLAN networks.psd1” -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).

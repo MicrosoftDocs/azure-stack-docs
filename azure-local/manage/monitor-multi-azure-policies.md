@@ -1,12 +1,12 @@
 ---
 title: Enable Insights for Azure Local at scale using Azure policies
 description: How to enable Insights for Azure Local systems at scale using Azure policies.
-author: ManikaDhiman
-ms.author: v-manidhiman
+author: alkohli
+ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 09/12/2024
+ms.service: azure-local
+ms.date: 04/09/2025
 ---
 
 # Enable Insights for Azure Local at scale using Azure policies
@@ -656,7 +656,7 @@ Before you enable Insights for Azure Local at scale using Azure policies, comple
 To enable Insights at scale for Azure Local systems, apply the Azure policies in the following order:
 
 1. Repair AMA (for Azure Local, version 22H2 systems only):
-    - If you're using Azure Local, version 22H2 systems, start by applying the policy to repair AMA. This step isn't required for Azure Local, version 23H2 systems.
+    - If you're using Azure Stack HCI, version 22H2 systems, start by applying the policy to repair AMA. This step isn't required for Azure Local 2311.2 and later systems.
     - For policy definition template, see [Policy to repair AMA](#policy-to-repair-ama).
     
 1. Install AMA:
@@ -722,7 +722,7 @@ To create a policy assignment, follow these steps:
 
 1. Select **Next** to view the **Parameters** tab. If the policy definition you selected on the **Basics** tab included parameters, they show up on the **Parameters** tab.
 
-    For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc connected machines in the policy assignment.
+    For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc-enabled servers in the policy assignment.
 
     :::image type="content" source="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png" alt-text="Screenshot of the Parameters tab on Assign policy page to define or modify parameters." lightbox="./media/monitor-multi-azure-policies/policy-assign-parameters-tab.png":::
 

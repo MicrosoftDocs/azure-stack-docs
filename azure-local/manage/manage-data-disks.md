@@ -3,16 +3,16 @@ title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 04/09/2025
 ms.author: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Download managed data disks to Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to download an Azure managed disk from Azure to your Azure Local instance. You can then use the disk to create an image or to attach it to your Arc virtual machines (VMs) as needed.
+This article describes how to download an Azure managed disk from Azure to your Azure Local instance. You can then use the disk to create an image or to attach it to your Azure Local virtual machines (VMs) enabled by Arc, as needed.
 
 ## Prerequisites
 

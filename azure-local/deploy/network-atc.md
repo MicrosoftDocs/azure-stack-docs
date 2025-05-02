@@ -5,7 +5,7 @@ author: dcuomo
 ms.topic: how-to
 ms.date: 11/13/2024
 ms.author: dacuo
-ms.reviewer: jgerend
+ms.reviewer: alkohli
 zone_pivot_groups: windows-os
 ---
 
@@ -58,7 +58,6 @@ Complete the following prerequisites for using Network ATC in Azure Stack HCI:
 - Each node must have the following Azure Stack HCI features installed:
 
   - Network ATC
-  - Network HUD
   - Hyper-V
   - Failover Clustering
   - Data Center Bridging
@@ -66,7 +65,7 @@ Complete the following prerequisites for using Network ATC in Azure Stack HCI:
    Here's an example of installing the required features via PowerShell:
 
    ```powershell
-  Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
+  Install-WindowsFeature -Name NetworkATC, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
@@ -90,7 +89,6 @@ The following are requirements and best practices for using Network ATC in Azure
 - Each node must have the following Azure Stack HCI features installed:
 
   - Network ATC
-  - Network HUD
   - Hyper-V
   - Failover Clustering
   - Data Center Bridging
@@ -98,12 +96,12 @@ The following are requirements and best practices for using Network ATC in Azure
    Here's an example of installing the required features via PowerShell:
 
    ```powershell
-   Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
+   Install-WindowsFeature -Name NetworkATC, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. For more information, please see [Physical Network Requirements](../concepts/physical-network-requirements.md). In 21H2 and 22H2, Network HUD can help you identify misconfiguration of the physical network.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. For more information, please see [Physical Network Requirements](../concepts/physical-network-requirements.md).
 
 ---
 
@@ -130,7 +128,6 @@ Complete the following prerequisites for using Network ATC in Windows Server:
 - Each node must have the following Windows Server features installed:
 
   - Network ATC
-  - Network HUD
   - Hyper-V
   - Failover Clustering
   - Data Center Bridging
@@ -138,7 +135,7 @@ Complete the following prerequisites for using Network ATC in Windows Server:
    Here's an example of installing the required features via PowerShell:
 
    ```powershell
-  Install-WindowsFeature -Name NetworkATC, NetworkHUD, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
+  Install-WindowsFeature -Name NetworkATC, Hyper-V, 'Failover-Clustering', 'Data-Center-Bridging' -IncludeManagementTools
    ```
 
 - Insert each adapter in the same PCI slot(s) in each host. This practice leads to ease in automated naming conventions by imaging systems.

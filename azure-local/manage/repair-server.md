@@ -4,10 +4,10 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/31/2024
+ms.date: 04/28/2025
 ---
 
-# Repair a node on Azure Local, version 23H2
+# Repair a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -111,17 +111,29 @@ Make sure that you have reviewed the [prerequisites](#prerequisites).
 
 Follow these steps on the node you're trying to repair.
 
-1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+1. Sign into the Azure portal with [Azure Stack HCI Administrator role permissions](./assign-vm-rbac-roles.md#about-built-in-rbac-roles).
+    1. Go to the resource group used to deploy your Azure Local instance. In the resource group, identify the Azure Arc machine resource for the faulty node that you wish to repair.
+    1. In the Azure Arc machine resource, go to **Settings > Locks**. In the right-pane, you see a resource lock.
+    1. Select the lock and then select the trash can icon to delete the lock.
+    
+        :::image type="content" source="./media/repair-server/delete-resource-lock-1.png" alt-text="Screenshot of deletion of resource lock on the faulty Azure Arc machine node." lightbox="./media/repair-server/delete-resource-lock-1.png":::
 
+    1. On the **Overview** page of the Azure Arc machine resource, in the right-pane, select **Delete**. This action should delete the faulty machine node.  
+
+        :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
+
+1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+ 
     > [!NOTE]
-    > If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
+    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is repaired.
 
-2. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tenant.
 
-3. Assign the following permissions to the repaired node:
+1. Assign the following permissions to the repaired node:
 
     - Azure Local Device Management Role
     - Key Vault Secrets User
@@ -129,11 +141,6 @@ Follow these steps on the node you're trying to repair.
 
 Follow these steps on another node that is a member of the same Azure Local instance.
 
-1. Before you add the node, make sure to get an updated authentication token. Run the following command:
-
-   ```powershell
-    Update-AuthenticationToken
-   ```
 
 1. If you are running a version prior to 2405.3, you must run the following command to clean up conflicting files:
 
@@ -149,7 +156,7 @@ Follow these steps on another node that is a member of the same Azure Local inst
     ```
 
     > [!NOTE]
-    > The node name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names).
+    > The node name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names). The parameter `LocalAdminCredential` by default, is the builtin Administrator account created by the Windows OS installation.
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
@@ -165,7 +172,7 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 
 | Scenario description | Mitigation | Supported? |
 |--|--|--|
-| Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
+| Repair node operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Repair-Server -Rerun`. | Yes |
 | Repair node operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
 
 ### Troubleshooting
@@ -183,6 +190,10 @@ If you experience failures or errors while repairing a node, you can capture the
     ```powershell
     Repair-Server -Rerun
     ```
+
+If you encounter an issue during the repair node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send diagnostic logs to Microsoft.
+
+You might need to provide diagnostic logs from the node under repair. Make sure you run the `Send-DiagnosticData` cmdlet from this node.
 
 ## Next steps
 

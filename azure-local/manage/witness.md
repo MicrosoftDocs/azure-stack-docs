@@ -1,10 +1,10 @@
 --- 
 title: Set up a cluster witness 
 description: Learn how to set up a cluster witness 
-author: jasongerend 
-ms.topic: how-to 
-ms.date: 01/31/2024
-ms.author: jgerend 
+author: alkohli 
+ms.topic: how-to
+ms.date: 04/29/2025
+ms.author: alkohli 
 ms.reviewer: stevenek 
 ---
 
@@ -20,7 +20,7 @@ This article describes how to set up an Azure Stack HCI or Windows Server cluste
 
 We recommend setting up a cluster witness for clusters with two, three, or four nodes. The witness helps the cluster determine which nodes have the most up-to-date cluster data if some nodes can't communicate with the rest of the cluster. You can host the cluster witness on a file share located on another server, or use a cloud witness.
 
-To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
+To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
 
 ## Before you begin
 
@@ -55,15 +55,15 @@ This section describes how to create an Azure storage account. This account is u
     1. For **Performance**, select **Standard**.
     1. For **Account kind**, select **Storage general purpose**.
     1. For **Replication**, select **Locally-redundant storage (LRS)**.
-    1. When finished, click **Review + create**.
+    1. When finished, select **Review + create**.
 
     :::image type="content" source="media/witness/cloud-witness-create-storage-account.png" alt-text="Azure create storage account" lightbox="media/witness/cloud-witness-create-storage-account.png":::
 
-1. Ensure that the storage account passes validation and then review account settings. When finished, click **Create**.
+1. Ensure that the storage account passes validation and then review account settings. When finished, select **Create**.
 
     :::image type="content" source="media/witness/cloud-witness-validation.png" alt-text="Azure storage account validation" lightbox="media/witness/cloud-witness-validation.png":::
 
-1. It may take a few seconds for account deployment to occur in Azure. When deployment is complete, click **Go to resource**.
+1. It may take a few seconds for account deployment to occur in Azure. When deployment is complete, select **Go to resource**.
 
     :::image type="content" source="media/witness/cloud-witness-deployment.png" alt-text="Azure storage account deployment" lightbox="media/witness/cloud-witness-deployment.png":::
 
@@ -80,7 +80,7 @@ An Azure cloud witness uses a blob file for storage, with an endpoint generated 
 
 1. In the Azure portal, under **Settings**, select **Access keys**.
 1. Select **Show keys** to display key information.
-1. Click the copy-and-paste icon to the right of the **Storage account name** and **key1** fields and paste each text string to Notepad or other text editor.
+1. Select the copy-and-paste icon to the right of the **Storage account name** and **key1** fields and paste each text string to Notepad or other text editor.
 
     :::image type="content" source="media/witness/cloud-witness-access-keys.png" alt-text="Azure storage account access keys" lightbox="media/witness/cloud-witness-access-keys.png":::
 
@@ -90,13 +90,13 @@ The endpoint URL is optional and may not be needed for a cloud witness.
 
 1. In the Azure portal, select **Properties**.
 1. Select **Show keys** to display endpoint information.
-1. Under **Blob service**, click the copy-and-paste icon to the right of the **Blob service** field and paste the text string to Notepad or other text editor.
+1. Under **Blob service**, select the copy-and-paste icon to the right of the **Blob service** field and paste the text string to Notepad or other text editor.
 
     :::image type="content" source="media/witness/cloud-witness-blob-service.png" alt-text="Azure blob endpoint" lightbox="media/witness/cloud-witness-blob-service.png":::
 
 ## Create a cloud witness using Windows Admin Center
 
-Now you are ready to create a witness instance for your cluster using Windows Admin Center.
+Now you're ready to create a witness instance for your cluster using Windows Admin Center.
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -112,10 +112,10 @@ Now you are ready to create a witness instance for your cluster using Windows Ad
 
     :::image type="content" source="media/witness/cloud-witness-1.png" alt-text="Cloud Witness access keys" lightbox="media/witness/cloud-witness-1.png":::
 
-1. When finished, click **Save**. It might take a bit for the information to propagate to Azure.
+1. When finished, select **Save**. It might take a bit for the information to propagate to Azure.
 
 > [!NOTE]
-> The third option, **Disk witness**, is not suitable for use in stretched clusters.
+> The third option, **Disk witness**, isn't suitable for use in stretched clusters.
 
 ## Create a cloud witness using Windows PowerShell
 
@@ -139,6 +139,6 @@ To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
 > [Connect Azure Stack HCI to Azure](..\deploy\register-with-azure.md)
 
-- For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+- For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum).
 
 - For more information about creating and managing Azure Storage Accounts, see [Create a storage account](/azure/storage/common/storage-account-create).

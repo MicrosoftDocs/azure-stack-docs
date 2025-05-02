@@ -3,17 +3,19 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 11/11/2024
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
-# Upgrade Azure Stack HCI OS, version 22H2 via PowerShell
+# Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS
+[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
+
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
 
 There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
@@ -29,6 +31,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete the prerequisites.](#complete-prerequisites)
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to Azure Local, version 22H2.](#step-1-connect-to-azure-local)
 1. [Check for the available updates using PowerShell.](#step-1-connect-to-azure-local)
 1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
@@ -41,12 +44,48 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local running version 22H2.
 - The system is registered in Azure.
-- Make sure that all the machines  in your Azure Local, version 22H2 instance are healthy and show as **Online**.
+- All the machines  in your Azure Local, version 22H2 instance are healthy and show as **Online**.
+- You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
+- (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
+   To enable Secure Boot, follow these steps:
+   1. Drain the cluster node.
+   1. Restart the OS.
+   1. Enter the BIOS/UEFI menu.
+   1. Review the **Boot** or **Security** section of the UEFI configuration options Locate the Secure Boot option.
+   1. Set the option to **Enabled** or **On**.
+   1. Save the changes and restart your computer.
+
+   Consult with your hardware vendor for assistance if required.
 
 > [!NOTE]
 > The ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#step-1-connect-to-azure-local), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
+> Use of 3rd party tools to install upgrades is not supported.
+
+## Step 0: Update registry keys
+
+To ensure Resilient File System (ReFS) and live migrations function properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
+
+1. Set `RefsEnableMetadataValidation` to `0`:
+
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+   ```
+
+1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
+
+   ```powershell
+   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+   ```
+
+1. Set `SkipSmallLocalAllocations` to `0`:
+
+   ```powershell
+   New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
+   ```
+
+1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
 ## Step 1: Connect to Azure Local
 

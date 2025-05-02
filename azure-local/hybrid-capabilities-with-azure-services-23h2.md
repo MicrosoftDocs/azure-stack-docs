@@ -2,13 +2,13 @@
 title: Hybrid capabilities with Azure services in Azure Local, version 23H2
 description: This article describes the cloud service components of Azure Local, version 23H2.
 ms.topic: overview
-author: ManikaDhiman
-ms.author: v-manidhiman
-ms.date: 10/09/2024
+author: alkohli
+ms.author: alkohli
+ms.date: 04/16/2025
 ms.custom: e2e-hybrid
 ---
 
-# Hybrid capabilities with Azure services in Azure Local, version 23H2
+# Hybrid capabilities with Azure services in Azure Local
 
 [!INCLUDE [applies-to](./includes/hci-applies-to-23h2.md)]
 
@@ -18,17 +18,17 @@ Your on-premises Azure Local solution integrates with Azure cloud via several cl
 
 ## Azure Local cloud service
 
-The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc servers and Arc virtual machines (VMs).
+The Azure Local cloud service in Azure is a key part of the Azure Local product offering. It includes standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Local functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Local cloud service also enables contextual navigation from an Azure Local resource to its Arc-enabled servers and Azure Local virtual machines (VMs) enabled by Azure Arc.
 
 The Azure Local cloud service extends the hybrid capabilities for Azure Local by enabling the following cloud-based functionalities:
 
-- **Registration.** To enable hybrid capabilities, you must register every Azure Local that you intend to connect with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md).
+- **Registration.** To enable hybrid capabilities, you must register every Azure Local that you intend to connect with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local deployment](deploy/deployment-arc-register-server-permissions.md).
 
 - **Deployment and security.** Azure Local supports cloud-based deployment through the Azure portal or an Azure Resource Manager deployment template. For more information, see [Deploy Azure Local using the Azure portal](deploy/deploy-via-portal.md) and [Deploy Azure Local via the Azure Resource Manager deployment template](deploy/deployment-azure-resource-manager-template.md).
 
     The Azure Local deployment follows a secure-by-default strategy, including a tailored security baseline, a security drift control mechanism, and default security features. Post-deployment, you can view the security settings for Azure Local via the Azure portal. For more information, see [About security features](concepts/security-features.md).
 
-- **Updates.** You can keep your Azure Local solution up-to-date with security fixes and feature improvements. The latest updates are identified and applied from the cloud through the Azure Update Manager tool. For more information, see [About updates for Azure Local, version 23H2](update/about-updates-23h2.md).
+- **Updates.** You can keep your Azure Local solution up-to-date with security fixes and feature improvements. The latest updates are identified and applied from the cloud through the Azure Update Manager tool. For more information, see [About updates for Azure Local](update/about-updates-23h2.md).
 
 - **Monitoring.** You can perform basic monitoring of all Azure Local resources and confirm the deployment via the Azure portal. For more information, see [Verify a successful deployment](deploy/deploy-via-portal.md#verify-a-successful-deployment). Advanced monitoring utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. For information about monitoring Azure Local, see [What is Azure Local monitoring?](concepts/monitoring-overview.md).
 
@@ -50,13 +50,13 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Local delivers hybrid value through the following Azure Arc technologies:
 
-- [**Arc machines.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local that you intend to join with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md)
+- [**Arc-enabled servers.**](/azure/azure-arc/servers/overview) As part of the Azure Local deployment process, you must register every Azure Local that you intend to join with Azure Arc. For more information, see [Register your machines and assign permissions for Azure Local deployment](deploy/deployment-arc-register-server-permissions.md).
 
     You can install, upgrade, and manage Azure Arc extensions on Azure Local to run hybrid services like monitoring and Windows Admin Center in the Azure portal. For more information, see [Azure Arc extension management on Azure Local](manage/arc-extension-management.md).
 
-- **Arc VMs.** Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage Arc VMs on their Azure Local by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
+- **Azure Local VMs.** Azure Local VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. Administrators can manage VMs on their Azure Local by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
 
-- [**Azure Kubernetes Service (AKS) enabled by Arc.**](/azure/aks/hybrid/) AKS on Azure Local, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. For more information, see [What's new in AKS on Azure Local version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+- [**Azure Kubernetes Service (AKS) enabled by Arc.**](/azure/aks/hybrid/) AKS on Azure Local uses Azure Arc to create new Kubernetes clusters on Azure Local directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## Other Azure hybrid services
 
@@ -66,9 +66,9 @@ In addition to hybrid functionality provided through Azure Arc, you can enable t
 
 - **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Local to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
 
-- **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local instances. You can view each Azure Local across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local, version 23H2](update/azure-update-manager-23h2.md).
+- **Azure Update Manager.** Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Local instances. You can view each Azure Local across your entire infrastructure, or in remote or branch offices and update at scale. For more information, see [Use Azure Update Manager to update your Azure Local](update/azure-update-manager-23h2.md).
 
 ## Next steps
 
-- [Azure Local overview](overview.md)
-- [Azure Local FAQ](faq.yml)
+- [Azure Local overview](overview.md).
+- [Azure Local FAQ](faq.yml).

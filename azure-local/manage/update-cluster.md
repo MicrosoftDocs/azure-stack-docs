@@ -1,10 +1,10 @@
 ---
 title: Update clusters for Azure Stack HCI, version 22H2
 description: How to apply operating system and firmware updates to Azure Stack HCI, version 22H2 using Windows Admin Center and PowerShell.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/15/2024
+ms.date: 01/08/2025
 ---
 
 # Update Azure Stack HCI clusters, version 22H2
@@ -25,12 +25,10 @@ When updating Azure Stack HCI clusters, the goal is to maintain availability by 
    > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrades](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 (original release) to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
    >
    > If you're currently using System Center 2019, do not install feature updates to Azure Stack HCI yet. Upgrade to [System Center 2022](/system-center/vmm/whats-new-in-vmm#new-features-in-vmm-2022) before updating to Azure Stack HCI, version 21H2. After you've upgraded to System Center 2022, you can update to Azure Stack HCI, version 21H2 using any available option: Windows Admin Center, PowerShell, or the cluster rolling upgrade feature in Virtual Machine Manager.
-   >
-   > Please do not enroll the clusters managed by Virtual Machine Manager to the [Azure Stack HCI preview channel](/azure-stack/hci/manage/preview-channel). System Center 2022 does not support Azure Stack HCI preview versions. You can monitor the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) if you're interested in Azure Stack HCI previews.
 
 This article focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
-If you are using Azure Stack HCI, version 23H2 (preview), the operating system updates are performed using Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2 (preview)](../update/azure-update-manager-23h2.md). Additionally, to check for and install available firmware and driver updates for Azure Stack HCI, version 23H2 (preview) using Windows Admin Center, see [Update your hardware via Windows Admin Center](../update/azure-update-manager-23h2.md#update-your-hardware-via-windows-admin-center).
+If you are using Azure Local, the operating system updates are performed using Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Local](../update/azure-update-manager-23h2.md). Additionally, to check for and install available firmware and driver updates for Azure Local using Windows Admin Center, see [Identify a Solution Builder Extension update for your hardware](../update/solution-builder-extension.md#identify-a-solution-builder-extension-update-for-your-hardware).
 
 ## Install operating system and hardware updates using Windows Admin Center
 
@@ -99,19 +97,19 @@ Microsoft recommends installing new feature updates as soon as possible, using t
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. Any new feature updates will be displayed.
 
-   :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
+   :::image type="content" source="media/update-cluster/feature-updates.png" alt-text="Screenshot of the Updates page in Windows Admin Center." lightbox="media/update-cluster/feature-updates.png":::
 
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
-   :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
+   :::image type="content" source="media/update-cluster/readiness-check.png" alt-text="Screenshot of the Readiness Check before installing updates in Windows Admin Center." lightbox="media/update-cluster/readiness-check.png":::
 
 3. When the readiness check is complete, you're ready to install the updates. Unless you want the ability to roll back the updates, check the optional **Update the cluster functional level to enable new features** checkbox; otherwise, you can update the cluster functional level post-installation using PowerShell. Review the updates listed and select **Install** to start the update.
 
-   :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
+   :::image type="content" source="media/update-cluster/install-updates.png" alt-text="Screenshot of updates to be installed using Windows Admin Center." lightbox="media/update-cluster/install-updates.png":::
 
 4. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
-   :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
+   :::image type="content" source="media/update-cluster/updates-in-progress.png" alt-text="Screenshot that shows installation progress of updates using Windows Admin Center." lightbox="media/update-cluster/updates-in-progress.png":::
 
    > [!NOTE]
    > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
@@ -426,17 +424,13 @@ This CredSSP error is seen when Windows Admin Center is running on a local PC an
 
 To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC and then sign back in, and the error should go away.
 
-### Naming mismatch on operating system versions
-
-Although the update header says Azure Stack HCI 22H2, if a cluster hasn't joined the preview channel, it will only receive the publicly offered 21H2 GA update. This is a hard-coding mismatch.
-
 ## Next steps
 
 For related information, see also:
 
-- [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating)
-- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
-- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx)
-- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md)
-- [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
-- [Validate an Azure Stack HCI cluster](../deploy/validate.md)
+- [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating).
+- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements).
+- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx).
+- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md).
+- [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware).
+- [Validate an Azure Stack HCI cluster](../deploy/validate.md).

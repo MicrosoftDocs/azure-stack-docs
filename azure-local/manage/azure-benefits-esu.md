@@ -7,7 +7,7 @@ ms.topic: overview
 ms.reviewer: jlei
 ms.date: 10/22/2024
 ms.lastreviewed: 02/23/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Free Extended Security Updates (ESU) through Azure Local

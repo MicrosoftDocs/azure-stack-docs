@@ -3,10 +3,10 @@ title: Deploy AKS engine on Windows in Azure Stack Hub
 description: Learn how to use a Windows machine in your Azure Stack Hub to host AKS engine in order to deploy and manage a Kubernetes cluster.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/22/2024
+ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: sumsmith
-ms.lastreviewed: 3/4/2021
+ms.lastreviewed: 03/04/2021
 
 # Intent: As an Azure Stack Hub user, I want to learn how to host AKS engine on a Windows VM so that I can deploy AKS engine on Windows in Azure Stack Hub.
 # Keyword: host aks on windows vm in azure stack hub 
@@ -36,7 +36,7 @@ To install AKS Engine version 0.81.1 or later:
 
 1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md).
 1. Connect to your VM.
-1. Go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS Engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+1. Go to the [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest) GitHub repo. Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS Engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 # [AKS Engine 0.80.2 or earlier](#tab/earlier)
 
@@ -65,17 +65,15 @@ To install AKS Engine version 0.80.2 or earlier:
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack Hub disconnected from the Internet.
 
-1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+1. From a machine with access to the Internet, go to the [Azure/aks-engine-azurestack](https://github.com/Azure/aks-engine-azurestack/releases/latest) GitHub repo. Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-azurestack-v0.xx.x-windows-amd64.tar.gz`. Find the version of AKS engine in the [Supported Kubernetes Versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
-2.  Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
+1. Create a storage account in your Azure Stack Hub instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack Hub](./azure-stack-storage-connect-se.md).
 
-3. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md)
+1. Create a Windows VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack Hub portal](./azure-stack-quick-windows-portal.md)
 
-4. Connect to your VM.
+1. Connect to your VM.
 
-5.  From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
-
-
+1. From the Azure Stack Hub storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
 
 ## Verify the installation
 
@@ -92,15 +90,6 @@ Once your client VM is set up, check that you have installed AKS engine.
     ```
 
 If you are unable to verify that you have installed AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md).
-
-## ASDK installation
-
-You need to add a certificate when running the client VM for the AKS engine on the ASDK on a machine outside of the ASDK. If you're using a Windows VM within the ASDK environment itself, the machine already trusts the ASDK certificate. If your client machine is outside of the ASDK, you need to extract the certificate from the ASDK and add it to your Windows machine.
-
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine's trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
-
-1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#export-the-azure-stack-hub-ca-root-certificate).
-2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](../asdk/asdk-cli.md#trust-the-certificate).
 
 ## Next steps
 

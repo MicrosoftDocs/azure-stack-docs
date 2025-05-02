@@ -3,17 +3,17 @@ title: Azure Local, version 23H2 deployment overview
 description: Learn about the deployment methods for Azure Local, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 10/15/2024
+ms.date: 02/20/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
-# About Azure Local, version 23H2 deployment
+# About Azure Local deployment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article is the first in the series of deployment articles that describe how to deploy Azure Local, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
+This article is the first in the series of deployment articles that describe how to deploy Azure Local. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Local in their organization.
 
 ## About deployment methods
 
@@ -26,10 +26,6 @@ In this release, you can deploy Azure Local using one of the following methods:
 - **Deploy from an Azure Resource Manager template**: Select this option to deploy an Azure Local instance using an Azure Resource Manager deployment template and the corresponding parameters file. A Resource Manager template is a JSON file containing customized template expressions where you can define dynamic values and logic that determine the Azure resources to deploy.
 
     For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
-
-- **Deploy with assistance from FastTrack for Azure**: For guided assistance with Azure Local deployment projects, consult your Microsoft account team to use the FastTrack for Azure deployment acceleration program. This program is available for select customers who deploy Azure Local. 
-
-    For more information about this program, see https://aka.ms/fasttrackforazure
 
 ## Deployment sequence
 

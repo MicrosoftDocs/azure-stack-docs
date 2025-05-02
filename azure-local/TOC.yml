@@ -14,85 +14,9 @@ items:
     - name: Release information
       href: release-information-23h2.md
     - name: Known issues 
-      items:
-      - name: Known issues 2411
-        items:
-        - name: 2411 - Current
-          href: known-issues-2411.md
-      - name: Known issues 2408
-        items:
-        - name: 2408.2 - Current 
-          href: known-issues-2408-2.md
-        - name: 2408.1
-          href: known-issues-2408-1.md
-        - name: 2408
-          href: known-issues-2408.md
-      - name: Archived known issues 
-        items:
-        - name: Known issues 2405 
-          items:
-          - name: 2405.3 - Current
-            href: known-issues-2405-3.md
-          - name: 2405.2
-            href: known-issues-2405-2.md      
-          - name: 2405.1
-            href: known-issues-2405-1.md
-          - name: 2405.0
-            href: known-issues-2405.md
-        - name: Known issues 2402 
-          items:
-          - name: 2402.4 - Current
-            href: known-issues-2402-4.md
-          - name: 2402.3
-            href: known-issues-2402-3.md
-          - name: 2402.2
-            href: known-issues-2402-2.md
-          - name: 2402.1
-            href: known-issues-2402-1.md
-          - name: 2402.0 
-            href: known-issues-2402.md
-        - name: Known issues 2311
-          items:
-          - name: 2311.5 - Current
-            href: known-issues-2311-5.md
-          - name: 2311.4 
-            href: known-issues-2311-4.md
-          - name: 2311.3 
-            href: known-issues-2311-3.md
-          - name: 2311.2 - GA
-            href: known-issues-2311-2.md
-          - name: 2311
-            href: known-issues-2311.md
+      href: known-issues.md
     - name: Security updates
-      items:
-      - name: November 2024 - Current
-        href: security-update/security-update-nov-2024.md
-      - name: October 2024
-        href: security-update/security-update-oct-2024.md
-      - name: September 2024
-        href: security-update/security-update-sep-2024.md
-      - name: August 2024
-        href: security-update/security-update-aug-2024.md
-      - name: July 2024
-        href: security-update/security-update-jul-2024.md
-      - name: June 2024 
-        href: security-update/security-update-jun-2024.md
-      - name: Archived security updates 
-        items:  
-        - name: May 2024
-          href: security-update/security-update-may-2024.md
-        - name: April 2024
-          href: security-update/security-update-apr-2024.md
-        - name: March 2024 
-          href: security-update/security-update-mar-2024.md
-        - name: February 2024 
-          href: security-update/security-update-feb-2024.md      
-        - name: January 2024 
-          href: security-update/security-update-jan-2024.md
-        - name: December 2023 
-          href: security-update/security-update-dec-2023.md
-        - name: November 2023 
-          href: security-update/security-update-nov-2023.md
+      href: security-update/security-update.md
   - name: Disconnected operations
     href: manage/disconnected-operations-overview.md
   - name: OEM License
@@ -165,6 +89,10 @@ items:
         href: plan/three-node-components.md
       - name: Pattern IP requirements
         href: plan/three-node-ip-requirements.md
+    - name: Four-node switchless deployments
+      items:
+      - name: Storage switchless, dual TOR, dual link
+        href: plan/four-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -174,7 +102,7 @@ items:
     - name: About security features
       href: concepts/security-features.md
     - name: Download Azure Local security book
-      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
+      href: https://github.com/Azure-Samples/AzureLocal/blob/main/SecurityBook/Azure%20Local%20Security%20Book_01172025.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
   - name: Configure advanced Active Directory settings
@@ -196,8 +124,8 @@ items:
     items:
     - name: Via console
       href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via local UI
-      href: deploy/deployment-arc-register-local-ui.md  
+    - name: Via Configurator app
+      href: deploy/deployment-arc-register-configurator-app.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
@@ -224,7 +152,7 @@ items:
     - name: Using Express scripts
       href: deploy/sdn-express-23h2.md
     - name: Using Windows Admin Center
-      href: deploy/sdn-wizard-23h2.md     
+      href: deploy/sdn-wizard-23h2.md  
   
   - name: Deploy workloads
     items:
@@ -232,7 +160,7 @@ items:
       href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on Azure Local
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
-    - name: Run Azure Arc VMs
+    - name: Run Azure Local VMs
       href: manage/create-arc-virtual-machines.md
     - name: Run SQL Server
       href: deploy/sql-server-23h2.md
@@ -279,15 +207,19 @@ items:
 - name: Manage
   items:
 
-  - name: Azure Arc VMs
+  - name: Azure Local VMs
     items:
-    - name: What is Azure Arc VM management?
+    - name: What is Azure Local VM management?
       href: manage/azure-arc-vm-management-overview.md
+    - name: Compare VM management capabilities
+      href: concepts/compare-vm-management-capabilities.md
+    - name: Supported operations for VMs
+      href: manage/virtual-machine-operations.md
     - name: Review prerequisites
       href: manage/azure-arc-vm-management-prerequisites.md
     - name: Assign RBAC role
       href: manage/assign-vm-rbac-roles.md
-    - name: Create Arc VM resources
+    - name: Create Azure Local VM resources
       items:
       - name: 1. Create a storage path
         href: manage/create-storage-path.md
@@ -299,7 +231,7 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
-        - name: Using an existing Arc VM
+        - name: Using an existing Azure Local VM
           href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
@@ -315,42 +247,44 @@ items:
         href: manage/create-logical-networks.md
       - name: 4. Create network interfaces
         href: manage/create-network-interfaces.md
-      - name: 5. Create Arc VMs
+      - name: 5. Create Azure Local VMs
         href: manage/create-arc-virtual-machines.md
-    - name: Manage Arc VMs
+    - name: Connect to VM via SSH
+      href: manage/connect-arc-vm-using-ssh.md
+    - name: Manage Azure Local VMs
       href: manage/manage-arc-virtual-machines.md
-    - name: Manage Arc VM resources
+    - name: Manage Azure Local VM resources
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
-    - name: License Arc VMs
+    - name: Activate Azure Local VMs
       items:
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
-      - name: License Windows Server VMs
+      - name: Activate Windows Server VMs
         href: manage/vm-activate.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition-23h2.md
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
    
-    - name: Collect log files for Azure Arc VM
+    - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
 
-  - name: Trusted launch for Arc VMs
+  - name: Trusted launch for Azure Local VMs
     items: 
-      - name: What is Trusted Launch for Arc VMs?
+      - name: What is Trusted launch for Azure Local VMs?
         href: manage/trusted-launch-vm-overview.md
-      - name: Deploy Trusted Launch for Arc VMs
-        href: manage/trusted-launch-vm-deploy.md
-      - name: Manage guest state protection key
+      - name: Automatic virtual TPM state transfer
+        href: manage/trusted-launch-automatic-state-transfer.md
+      - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 
-  - name: Non Arc VMs
+  - name: Unmanaged VMs
     items:
       - name: Manage VMs
         href: manage/vm.md
@@ -360,14 +294,6 @@ items:
         href: manage/vm-affinity.md
       - name: VM load balancing
         href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: Use GPUs with clustered VMs
-        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: GPU Partitioning
-        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-local&context=/azure/azure-local/context/context
-      - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-local&context=/azure/azure-local/context/context
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
@@ -384,7 +310,7 @@ items:
     items:
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
-    - name: Manage application control (WDAC)
+    - name: Manage Application Control
       href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
@@ -419,7 +345,7 @@ items:
 
   - name: Azure Arc extensions
     items:
-    - name: Arc extension management
+    - name: Azure Arc extension management
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
@@ -518,17 +444,15 @@ items:
         href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
-    - name: Health service
-      items:
-      - name: Monitor systems
+      - name: Monitor clusters with Health Service
         href: manage/health-service-overview.md
-      - name: Get system performance history
+      - name: Get cluster performance history
         href: manage/health-service-cluster-performance-history.md
-      - name: View faults
+      - name: View Health Service faults
         href: manage/health-service-faults.md
-      - name: Track actions
+      - name: Track Health Service actions
         href: manage/health-service-actions.md
-      - name: Modify settings
+      - name: Modify Health Service settings
         href: manage/health-service-settings.md
 
 - name: Troubleshoot
@@ -562,6 +486,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: What's new in VM migration?
+      href: migrate/migrate-whats-new.md
     - name: Hyper-V VMs
       items: 
       - name: Overview
@@ -590,18 +516,20 @@ items:
         href: migrate/migrate-vmware-replicate.md
       - name: Migrate, verify
         href: migrate/migrate-vmware-migrate.md
-      - name: Enable guest management
-        href: migrate/migrate-enable-guest-management.md
+    - name: Enable guest management
+      href: migrate/migrate-enable-guest-management.md
+    - name: Maintain static IP addresses
+      href: migrate/migrate-maintain-ip-addresses.md
     - name: FAQ
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM (v22H2 only)
+  - name: Migrate using SCVMM
     items:
     - name: For Hyper-V VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      href: /system-center/vmm/manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#migrate-vms-from-windows-server-to-azure-local-instance
     - name: For VMware VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+      href: /system-center/vmm/vm-convert-vmware?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
   - name: Migrate manually (v22H2 only)
     items:
     - name: To same hardware
@@ -700,28 +628,16 @@ items:
         href: manage/windows-server-azure-edition.md
       - name: Upgrade VMs to Windows Server Azure Edition
         href: manage/upgrade-vm-windows-server-azure-edition.md
+      - name: Use GPUs with clustered VMs
+        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-local&context=/azure/azure-local/context/context
     - name: Manage storage
       items:
-      - name: Create volumes
-        href: manage/create-volumes.md
       - name: Create stretched volumes
         href: manage/create-stretched-volumes.md
-      - name: Encrypt and deduplicate volumes
-        href: manage/volume-encryption-deduplication.md
-      - name: Manage volumes
-        href: manage/manage-volumes.md
-      - name: Replace drives
-        href: manage/replace-drives.md
-      - name: Use the CSV in-memory read cache
-        href: manage/use-csv-cache.md
-      - name: Manage SMB Multichannel
-        href: manage/manage-smb-multichannel.md
       - name: Storage thin provisioning
         href: manage/thin-provisioning.md
       - name: Thin provisioning conversion
         href: manage/thin-provisioning-conversion.md
-      - name: Adjustable storage repair speed
-        href: manage/storage-repair-speed.md
     - name: Monitor systems
       items:
       - name: Monitor single system with Insights
@@ -792,42 +708,22 @@ items:
       href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+  - name: Migrate using SCVMM
+    items:
+    - name: For Hyper-V VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-local-instance
+    - name: For VMware VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-local-instance-using-scvmm
   - name: Concepts
     items:
     - name: Storage and systems
       items:
       - name: Single-node systems
         href: concepts/single-server-clusters.md
-      - name: Choose drives
-        href: concepts/choose-drives.md
-      - name: Drive symmetry considerations
-        href: concepts/drive-symmetry-considerations.md
-      - name: Plan volumes
-        href: concepts/plan-volumes.md
-      - name: Understand Storage Spaces Direct
-        href: concepts/storage-spaces-direct-overview.md
-      - name: Understand nested resiliency for Storage Spaces Direct
-        href: concepts/nested-resiliency.md      
-      - name: Understand the storage pool cache
-        href: concepts/cache.md
-      - name: Fault tolerance and storage efficiency
-        href: concepts/fault-tolerance.md
-      - name: Understand and monitor storage resync
-        href: concepts/understand-storage-resync.md
       - name: Stretched clusters
         href: concepts/stretched-clusters.md
-      - name: System and storage pool quorum
-        href: concepts/quorum.md
-      - name: Understand and deploy persistent memory
-        href: concepts/deploy-persistent-memory.md
-      - name: Persistent memory health management
-        href: concepts/persistent-memory-health.md
       - name: Nested virtualization
         href: concepts/nested-virtualization.md
-    - name: Host networking
-      items:
-      - name: Network HUD overview
-        href: concepts/network-hud-overview.md
     - name: Software Defined Networking (SDN)
       items:
       - name: SDN overview
@@ -849,10 +745,12 @@ items:
 
 - name: Reference
   items:
-  - name: For Azure Arc VM management
+  - name: For Azure Local VM management
     items:
     - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
+    - name: Azure Local VMs Azure CLI commands
+      href: /cli/azure/stack-hci-vm
   - name: For Azure Local instance, service, and management
     items:
     - name: Azure registration Azure CLI commands

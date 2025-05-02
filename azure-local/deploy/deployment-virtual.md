@@ -5,21 +5,21 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 04/08/2025
 ---
 
-# Deploy a virtual Azure Local, version 23H2 system
+# Deploy a virtual Azure Local system
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
-This article describes how to deploy a virtualized Azure Local instance running version 23H2 on a host system running Hyper-V on the Windows Server 2022, Windows 11, or later operating system (OS).
+This article describes how to deploy a virtualized Azure Local instance on a host system with Windows Server 2022, Windows 11, or later operating system (OS). The host should also have Hyper-V enabled for the deployment.
 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Local, version 23H2 is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
+> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
-The following are the minimum requirements to successfully deploy Azure Local, version 23H2.
+The following are the minimum requirements to successfully deploy Azure Local.
 
 Before you begin, make sure that:
 
@@ -39,7 +39,7 @@ Before you begin, make sure that:
 
     | Component | Minimum |
     | ------------- | -------- |
-    | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel&reg; virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html).
+    | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel&reg; virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html)
     | Memory| The physical host must have a minimum of 32 GB RAM for single virtual node deployments. The virtual host VM should have at least 24 GB RAM.<br><br>The physical host must have a minimum of 64 GB RAM for two virtual node deployments. Each virtual host VM should have at least 24 GB RAM for deployment and 32 GB for applying updates.|
     | Host network adapters| A single network adapter.|
     | Storage| 1 TB Solid state drive (SSD). |
@@ -54,13 +54,13 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | vCPUs | Four cores. |
 | Memory | A minimum of 24 GB. |
 | Networking | At least two network adapters connected to internal network. MAC spoofing must be enabled. |
-| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB |
+| Boot disk | One disk to install the Azure Stack HCI operating system from ISO. At least 200 GB. |
 | Hard disks for Storage Spaces Direct | Four dynamic expanding disks. Maximum disk size is 1024 GB. |
-| Data disks | At least 127 GB each. The size must be the same for each disk |
+| Data disks | At least 127 GB each. The size must be the same for each disk. |
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
-> These are the minimum requirements to successfully deploy Azure Local, version 23H2.  Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
+> These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
@@ -71,6 +71,8 @@ However, if your physical network where you're planning to deploy the Azure Loca
 The following lists the steps for the two options:
 
 ### Deploy with external virtual switch
+
+The parameters for the cmdlet `new-vmswitch` might be different based on your Windows operating system. For more information, see [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch?view=windowsserver2022-ps#-switchtype&preserve-view=true).
 
 On your physical host computer, run the following PowerShell command to create an external virtual switch:
 
@@ -229,7 +231,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Download Azure Local 23H2 software](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
+1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
 1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 
@@ -357,4 +359,4 @@ Repeat the process above for extra nodes if you plan to test multi-node deployme
 
 ## Next steps
 
-- [Register to Arc and assign permissions for deployment](deployment-arc-register-server-permissions.md)
+- [Register to Arc and assign permissions for deployment](deployment-arc-register-server-permissions.md).

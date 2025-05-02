@@ -4,12 +4,12 @@ description: How to choose machines, storage, and networking components for Azur
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.custom: references_regions
-ms.date: 11/25/2024
+ms.date: 04/25/2025
 ---
 
-# System requirements for Azure Local, version 23H2
+# System requirements for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -32,6 +32,10 @@ Here are the Azure requirements for your Azure Local instance:
 
 - **Azure regions**: Azure Local is supported for the following regions:
 
+   # [Azure public](#tab/azure-public)
+
+   These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
+
    - East US
    - West Europe
    - Australia East
@@ -41,18 +45,31 @@ Here are the Azure requirements for your Azure Local instance:
    - Japan East
    - South Central US
 
+
+   # [Azure Government (Preview)](#tab/azure-government)
+
+   Regions supported in the Azure Government cloud:
+
+   - US Gov Virginia
+
+   ---
+
+- **Azure Key Vault**: Make sure to enable public network access when you set up a key vault. This setting allows Azure Local instances to connect to the key vault without any access issues.
+
 ## Machine and storage requirements
+
+Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
 Before you begin, make sure that the physical machine and storage hardware used to deploy Azure Local meets the following requirements:
 
 |Component|Minimum|
 |--|--|
-|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
-|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
+|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
+|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
-|Boot drive|A minimum size of 200-GB size.|
+|Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
 |Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single machines must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
@@ -69,7 +86,7 @@ For more feature-specific requirements for Hyper-V, see [System requirements for
 
 ## Networking requirements
 
-An Azure Local instance requires a reliable high-bandwidth, low-latency network connection between each machine.
+Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. Multi-machine deployments of Azure Local require a reliable high-bandwidth, low-latency network connection between each machine in the instance.
 
 Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 
@@ -80,26 +97,30 @@ Azure Local deployments that exceed the following specifications are not support
 | Resource | Maximum |
 | --- | --- |
 | Physical machines per system |16 |
-| Storage per system |	4 PB |
+| Storage per system | 4 PB |
 | Storage per machine | 400 TB |
-| Volumes per system |	64 |
-| Volume size |	64 TB |
-| Logical processors per host |	512 |
-| RAM per host | 24 TB
+| Volumes per system | 64 |
+| Volume size | 64 TB |
+| Logical processors per host | 512 |
+| RAM per host | 24 TB |
 | Virtual processors per host | 2,048 |
+
+## Support and diagnosability
+
+To ensure adequate support and diagnosability for large memory Azure Local instances (those with more than 768 GB of physical memory per machine), we recommend that you install OS disks with a capacity of 400 GB or more. This additional disk capacity provides sufficient space to troubleshoot hardware, driver, or software issues should they require a kernel memory dump to be written to the OS volume.
 
 ## Hardware requirements
 
 In addition to Microsoft Azure Local updates, many OEMs also release regular updates for your Azure Local hardware, such as driver and firmware updates. To ensure that OEM package update notifications, reach your organization check with your OEM about their specific notification process.
 
-Before deploying Azure Local, version 23H2, ensure that your hardware is up to date by:
+Before deploying Azure Local, ensure that your hardware is up to date by:
 
 - Determining the current version of your Solution Builder Extension (SBE) package.
 - Finding the best method to download, install, and update your SBE package.
 
 ### OEM information
 
-This section contains OEM contact information and links to OEM Azure Local, version 23H2 reference material.
+This section contains OEM contact information and links to OEM Azure Local reference material.
 
 | Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the system after it's running |
 |-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
@@ -113,11 +134,11 @@ For a comprehensive list of all OEM contact information, download the [Azure Loc
 
 ### BIOS setting
 
-Check with your OEM regarding the necessary generic BIOS settings for Azure Local, version 23H2. These settings may include hardware virtualization, TPM enabled, and secure core.
+Check with your OEM regarding the necessary generic BIOS settings for Azure Local. These settings may include hardware virtualization, TPM enabled, and secure core.
 
 ## Driver
 
-Check with your OEM regarding the necessary drivers that need to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
 
 ### Driver installation steps
 
@@ -226,11 +247,11 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
 ## Firmware
 
-Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local, version 23H2. Additionally, your OEM can provide you with their preferred installation steps.
+Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Local, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+You should always follow the OEM's recommended installation steps. With Azure Local, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|

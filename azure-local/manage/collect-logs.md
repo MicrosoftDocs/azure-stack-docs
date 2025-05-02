@@ -4,8 +4,8 @@ description: Learn how to collect diagnostic logs and share them with Microsoft 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 11/11/2024
+ms.service: azure-local
+ms.date: 04/08/2025
 ---
 
 # Collect diagnostic logs for Azure Local (preview)
@@ -627,4 +627,4 @@ When requested, share the following information with Microsoft Support. Get this
 
 ## Next steps
 
-- [Contact Microsoft Support](get-support.md)
+- [Contact Microsoft Support](get-support.md).

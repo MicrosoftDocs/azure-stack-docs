@@ -5,12 +5,11 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 10/10/2024
-# zone_pivot_groups: hci-versions
+ms.service: azure-local
+ms.date: 03/04/2025
 ---
 
-# Monitor a single Azure Local, version 23H2 system with Insights
+# Monitor a single Azure Local system with Insights
 
 [!INCLUDE [applies-to-23H2](../includes/hci-applies-to-23h2.md)]
 
@@ -179,6 +178,8 @@ Once Insights is enabled, the following tables provide details about all resourc
 
 Provides health faults on a cluster.
 
+You can view health issues like unsupported hardware, unresponsive disk, bad block writes, detached drives, repair needs, exceeded CPU, memory and storage usage, and high latency. For a complete list of supported health faults, see [View Health Service faults](./health-service-faults.md).
+
 | Metric | Description | Unit | Example |
 |--|--|--|--|
 | Fault | A short description of health faults. On clicking the link, a side panel opens with more information. | No unit | PoolCapacityThresholdExceeded |
@@ -188,6 +189,8 @@ Provides health faults on a cluster.
 | Initial fault time | Timestamp of when the node was last updated. | Datetime | 4/9/2022, 12:15:42 PM |
 
 ### Nodes
+
+Provides health and performance information for the servers.
 
 | Metric | Description | Unit | Example |
 |--|--|--|--|

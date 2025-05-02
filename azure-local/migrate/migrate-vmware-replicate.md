@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 04/08/2025
 ms.author: alkohli
 ---
 
@@ -20,6 +20,8 @@ For more information on appliances for Azure Migrate and how to manage them, see
 ## Before you begin
 
 For both the source VMware vCenter Server and target Azure Local appliances, make sure that the underlying hardware has sufficient resources to support the creation of a Windows Server 2022 VM with a minimum of 16 GB RAM, 80 GB of disk storage (HDD), 8 vCPUs, and an external virtual switch.
+
+Ensure all VMs that you wish to migrate are powered on and have VMware tools installed. Migration will fail if the VMs are not powered on and do not have VMware tools installed.
 
 ## Step 1: Create and configure the source VMware appliance
 
@@ -131,6 +133,8 @@ The information table is updated and the status changes to **Validated**.
 ### Wait for the discovery to complete
 
 Wait until you have a green checkmark indicating that the discovery is finished. The migration readiness checks are also completed successfully. After the discovery is complete, go to the Azure portal to review the VM inventory.
+
+Ensure that all VMs you want to migrate are powered on and have VMware tools installed before or during the discovery process.
 
 :::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png":::
 
@@ -303,7 +307,7 @@ This step applies to the downloaded .zip file.
     1. The subscription field is automatically populated. If this isn't the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
 	1. For **Target system**, select the Azure Local resource.
-	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this system.
+	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Azure Arc resource bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::

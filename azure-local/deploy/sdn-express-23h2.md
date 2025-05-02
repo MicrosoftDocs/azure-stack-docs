@@ -3,21 +3,21 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Local, version 2
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Local, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 11/18/2024
+ms.date: 04/22/2025
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
 
 # Deploy an SDN infrastructure using SDN Express for Azure Local
 
-> Applies to: Azure Local, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Local 2311.2 and later; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Local using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
 > [!IMPORTANT]
-> If you are deploying SDN on Azure Local, version 23H2, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
+> If you're deploying SDN on Azure Local, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Local](../manage/update-sdn.md).
 
 ## Before you begin
 
@@ -38,7 +38,7 @@ The following requirements must be met for a successful SDN deployment:
 - All host machines must have Hyper-V enabled.
 - All host machines must be joined to Active Directory.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Local. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured for the subnets and VLANs defined in the configuration file.
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
@@ -62,9 +62,11 @@ The files automatically install in the default PowerShell module directory: `C:\
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you're deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) article.
+The PowerShell configuration data file (psd1 file) stores the input parameters and configuration settings that the SDN Express script requires to run. This file contains specific information about what needs to be configured, based on whether you're deploying just the Network Controller component or also the Software Load Balancer and Gateway components.
 
-Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
+For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md). For details about the relevant config file to be used, see [Configuration sample files](#configuration-sample-files).
+
+Navigate to the `C:\Program Files\WindowsPowerShell\Modules\SdnExpress\` folder and open the relevant config file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment.
 
 ### General settings and parameters
 
@@ -162,7 +164,7 @@ The following other parameters are used by Gateway VMs only. Leave these values 
 
 ### Settings for tenant overlay networks
 
-The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
+The following parameters are used if you're deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
 
 - **PASubnet** -  subnet for the Provider Address (PA) network
 - **PAVLANID** - VLAN ID for the PA network
@@ -185,7 +187,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 1. Run the following command from a user account with administrative credentials for the host machines:
 
     ```powershell
-    .\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
+    .\SDNExpress.ps1 -ConfigurationDataFile “Traditional VLAN networks.psd1” -DomainJoinCredential $cred -NCCredential $cred -LocalAdminCredential $cred -Verbose
     ```
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).

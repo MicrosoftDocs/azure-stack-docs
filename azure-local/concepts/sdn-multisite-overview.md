@@ -4,9 +4,9 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.subservice: core-os
 zone_pivot_groups: windows-os
-ms.date: 11/12/2024
+ms.service: azure-local
+ms.date: 12/17/2024
 ---
 
 # What is SDN Multisite?
@@ -51,9 +51,10 @@ Here are the benefits of using SDN Multisite:
 
 The SDN Multisite feature currently has a few limitations:
 
-- Supported only between two sites.
+- It's supported only between two sites.
 - Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
 - Internal load balancing isn't supported cross-site.
+- The deployment and management of Multisite with Native SDN, also known as Network Controller on Failover Cluster is supported only through PowerShell.
 
 ## Multisite peering
 

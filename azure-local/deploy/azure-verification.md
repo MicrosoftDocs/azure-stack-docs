@@ -7,9 +7,9 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 10/22/2024
+ms.date: 03/30/2025
 ms.lastreviewed: 03/05/2024
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
 # Azure verification for VMs on Azure Local
@@ -18,9 +18,9 @@ ms.service: azure-stack-hci
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Local extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-*Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Local, version 23H2 or later. It helps to provide guarantees for these VMs to operate in other Azure environments.
+*Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Local. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about the previous version of this feature on Azure Local, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
+For more information about the previous version of this feature, version 22H2 or earlier, see [Azure Benefits on Azure Local](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Local
 
@@ -31,22 +31,22 @@ Azure verification for VM enables you to use these benefits available only on Az
 | Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Local. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Local](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012 or earlier with [Latest Servicing Stack Updates](https://msrc.microsoft.com/update-guide/advisory/ADV990001).|
 | Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Local using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 4B update released on April 9, 2024 (22H2: [KB5036893](https://support.microsoft.com/topic/april-9-2024-kb5036893-os-builds-22621-3447-and-22631-3447-a674a67b-85f5-4a40-8d74-5f8af8ead5bb), 21H2: [KB5036894](https://support.microsoft.com/topic/april-9-2024-kb5036894-os-build-22000-2899-165dd6e1-74be-45b7-84e3-0f2a25d375f3)) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session with 4B update released on April 9, 2024  [KB5036892](https://support.microsoft.com/topic/april-9-2024-kb5036892-os-builds-19044-4291-and-19045-4291-cb5d2d42-6b10-48f7-829a-be7d416a811b) or later. |
 | Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/windows-server/get-started/azure-edition) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Licensing requirements still apply. See ways to [license Windows Server VMs on Azure Local](../manage/vm-activate.md?tabs=azure-portal).         | Activated automatically for VMs running Windows Server Azure Edition 2022 with 4B update released on April 9, 2024 ([KB5036909](https://support.microsoft.com/topic/april-9-2024-kb5036909-os-build-20348-2402-36062ce9-f426-40c6-9fb9-ee5ab428da8c)) or later. |
-| Azure Update Manager | Get [Azure Update Manager](/azure/update-manager/overview?branch=main&tabs=azure-arc-vms) at no cost. This service provides a SaaS solution to manage and govern software updates to VMs on Azure Local. | Available automatically for Arc VMs. You must enable Azure verification for non Arc VMs. For more information, see [Azure Update Manager frequently asked questions](/azure/update-manager/update-manager-faq#what-is-the-pricing-for-azure-update-manager). |
-| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for machines and VMs. | Arc agent version 1.39 or later. See [Latest Arc agent release](/azure/azure-arc/servers/agent-release-notes). |
+| Azure Update Manager | Get [Azure Update Manager](/azure/update-manager/overview?branch=main&tabs=azure-arc-vms) at no cost. This service provides a SaaS solution to manage and govern software updates to VMs on Azure Local. | Available automatically for Azure Local VMs created through the Azure Arc resource bridge on Azure Local. With Software Assurance, you can attest your machine using Windows Server Azure benefits and licenses, and get AUM for free. For more information, see [Azure Update Manager frequently asked questions](/azure/update-manager/update-manager-faq#what-is-the-pricing-for-azure-update-manager). |
+| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This extension enables the auditing and configuration of OS settings as code for machines and VMs. | Arc agent version 1.39 or later. See [Latest agent release](/azure/azure-arc/servers/agent-release-notes). |
 
 > [!NOTE]
 > To ensure continued functionality, update your VMs on Azure Local to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits. See the [Azure Local blog post](https://techcommunity.microsoft.com/t5/azure-stack-blog/apply-critical-update-for-azure-stack-hci-vms-to-maintain-azure/ba-p/4115023) for more information.
 
 ## Manage Azure VM verification
 
-Azure VM verification is automatically enabled by default in Azure Local, version 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
+Azure VM verification is automatically enabled by default in Azure Local. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
 > [!NOTE]
 > To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
 
 ### Host prerequisites
 
-- Make sure that you have access to Azure Local, version 23H2. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
+- Make sure that you have access to Azure Local. All machines must be online, registered, and the system deployed. For more information, see [Register your machines with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - (Optional) If you're using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
@@ -341,9 +341,9 @@ No. Turning on Azure VM verification incurs no extra fees.
 
 No. Azure VM verification is a feature built into Azure Local, and can only be used on Azure Local.
 
-### If I just upgraded to version 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
+### If I just upgraded from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local, version 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus in version 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
+If you upgraded a system that previously had [Azure Benefits on Azure Local](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to Azure Local. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
 
 ### I just set up Azure VM verification on my system. How do I ensure that Azure VM verification stays active?
 

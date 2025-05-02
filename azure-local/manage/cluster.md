@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: stevenek
-ms.date: 02/26/2024
+ms.date: 12/02/2024
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -44,7 +44,7 @@ There are currently two storage settings that can be applied to your cluster. To
 
 2. In the **Cluster Manager** view, from the **Tools** pane on the left, select **Settings**.
 
-    - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](../concepts/cache.md).
+    - To change your in-memory cache, select **In-memory cache** and set the memory per server to cache reads. Note, writes can't be cached in memory. For more information, see [Understanding the cache in Azure Stack HCI](/windows-server/storage/storage-spaces/cache).
 
        :::image type="content" source="media/cluster/in-memory-cache.png" alt-text="Screenshot of the cluster In-memory cache screen." lightbox="media/cluster/in-memory-cache.png":::
 
@@ -108,7 +108,7 @@ There are several general settings that can be applied to your cluster. Here you
 
         - **File share witness** - to use a file share as witness
 
-        For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
+        For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also, see [Understanding cluster and pool quorum on Azure Stack HCI](/windows-server/storage/storage-spaces/quorum).
 
         :::image type="content" source="media/cluster/witness.png" alt-text="Screenshot of the cluster Witness screen." lightbox="media/cluster/witness.png":::
 
@@ -192,16 +192,12 @@ There are several Azure Stack HCI settings that you can apply to your cluster.
 
         :::image type="content" source="media/cluster/azure-benefits.png" alt-text="Screenshot of the cluster Azure benefits screen." lightbox="media/cluster/azure-benefits.png":::
 
-    - To opt in as a customer to install the next version of the Azure Stack HCI OS, before it's officially released, select **Join the preview channel**. For more information on this program, see [Join the Azure Stack HCI preview channel](../manage/preview-channel.md).
-
-        :::image type="content" source="media/cluster/join-the-preview-channel.png" alt-text="Screenshot of the cluster Join the preview channel screen." lightbox="media/cluster/join-the-preview-channel.png":::
-
 ## Next steps
 
 For more detailed information, see also:
 
-- [Manage clusters with PowerShell](cluster-powershell.md)
-- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
-- [Register a cluster with Azure](../deploy/register-with-azure.md)
-- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci)
-- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster)
+- [Manage clusters with PowerShell](cluster-powershell.md).
+- [Manage the cluster using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+- [Register a cluster with Azure](../deploy/register-with-azure.md).
+- [Unregister Azure Stack HCI](./manage-cluster-registration.md?tab=windows-admin-center#unregister-azure-stack-hci).
+- [Remove (destroy) a cluster with PowerShell](cluster-powershell.md#remove-a-cluster).

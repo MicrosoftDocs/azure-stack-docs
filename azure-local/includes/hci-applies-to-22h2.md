@@ -1,11 +1,10 @@
 ---
-author: ManikaDhiman
-ms.author: v-mandhiman
-ms.service: azure-stack-hci
+author: alkohli
+ms.author: alkohli
+ms.service: azure-local
 ms.topic: include
-ms.date: 11/06/2022
+ms.date: 01/08/2025
 ms.reviewer: alkohli
-ms.lastreviewed: 11/02/2022
 ---
 
-> Applies to: Azure Local, version 22H2
+> Applies to: Azure Stack HCI, version 22H2

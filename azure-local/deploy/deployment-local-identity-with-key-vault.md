@@ -3,23 +3,23 @@ title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vaul
 description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/22/2024
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
+ms.service: azure-local
 ---
 
-# Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
+# Deploy Azure Local using local identity with Azure Key Vault (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+::: moniker range=">=azloc-2411"
 
-This article describes how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment.
+This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
-Previously known as AD-less deployment, the method of using local identity with Key Vault allows Azure Local to securely manage and store secrets, such as BitLocker keys, node passwords, and other sensitive information, without relying on AD. By integrating with Key Vault and using certificate-based authentication, you can enhance your security posture and ensure the continuity of operations.
+Previously known as AD-less deployment, the method of using local identity with Key Vault allows Azure Local to securely manage and store secrets, such as BitLocker keys, node passwords, and other sensitive information, without relying on Active Directory (AD). By integrating with Key Vault and using certificate-based authentication, you can enhance your security posture and ensure the continuity of operations.
 
 ## Benefits
 
@@ -37,7 +37,7 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 Before you start, make sure that you:
 
-- Sign the [Local Identity with Azure Key Vault Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__v7SnuFUNjBYOTVZTjRaTUtVVFVWSU1EM1dWWFpSOC4u&route=shorturl) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+- Send an email to [azurelocalidentity@microsoft.com](mailto:azurelocalidentity@microsoft.com) to participate in the limited public preview. For more information about how we collect, use, and protect your personal data during your participation in the preview, review [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
 
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md). Skip the AD-specific prerequisites.
 
@@ -103,13 +103,13 @@ Follow these steps to configure DNS for Azure Local:
 
 During deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This allows you to use a local identity with Key Vault to securely manage and store secrets instead of relying on AD for authentication.
 
-The general deployment steps are the same as those outlined in [Deploy an Azure Local, version 23H2 system using the Azure portal](./deploy-via-portal.md). However, when using local identity with Key Vault, you need to perform specific steps on the **Networking** and **Management** tabs.
+The general deployment steps are the same as those outlined in [Deploy an Azure Local system using the Azure portal](./deploy-via-portal.md). However, when using local identity with Key Vault, you need to perform specific steps on the **Networking** and **Management** tabs.
 
 ### Networking tab
 
-1. Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
+- Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
 
-      :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
 ### Management tab
 
@@ -223,5 +223,13 @@ To address and resolve the issue of the failed extension and restore normal back
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Local](../manage/create-storage-path.md).
-- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2411"
+
+This feature is available only in Azure Local 2411 or later.
+
+::: moniker-end

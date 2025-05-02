@@ -5,8 +5,8 @@ ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.service: azure-stack-hci
-ms.date: 10/17/2024
+ms.service: azure-local
+ms.date: 02/15/2025
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Local
@@ -106,8 +106,8 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 Optional - this pattern doesn't require a storage network.
 
-[!INCLUDE [includes](includes/hci-patterns-single-node.md)]
+[!INCLUDE [includes](../includes/hci-patterns-single-node.md)]
 
 ## Next steps
 
-Learn about two-node patterns - [Azure Local network deployment patterns](choose-network-pattern.md).
+Learn about [Two-node Azure Local network deployment patterns](choose-network-pattern.md).

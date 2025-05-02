@@ -4,8 +4,8 @@ description: Azure Local is a hyperconverged infrastructure (HCI) cluster soluti
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
-ms.service: azure-stack-hci
-ms.date: 11/19/2024
+ms.service: azure-local
+ms.date: 04/30/2025
 ms.custom: e2e-hybrid, linux-related-content
 ---
 
@@ -73,13 +73,13 @@ Customers often choose Azure Local in the following scenarios.
 |:-|:-|
 | Azure Virtual Desktop (AVD) | Azure Virtual Desktop for Azure Local lets you deploy Azure Virtual Desktop session hosts on your on-premises infrastructure. You manage your session hosts from the Azure portal. To learn more, see [Azure Virtual Desktop for Azure Local](/azure/virtual-desktop/azure-stack-hci-overview). |
 | Azure Kubernetes Service (AKS) enabled by Azure Arc | You can leverage Azure Local to host container-based deployments, which increases workload density and resource usage efficiency. Azure Local also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Local manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more, see [Azure Kubernetes Service on Azure Local and Windows Server](/azure/aks/hybrid/aks-overview). |
-| Run Azure Arc services on-premises | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Arc VMs, Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
+| Run Azure Arc services on-premises | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure Local VMs, Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
 | Highly performant SQL Server | Azure Local provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Local](./deploy/sql-server-23h2.md). |
-| Trusted enterprise virtualization | Azure Local satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [About Trusted Launch for Arc VMs on Azure Local](./manage/trusted-launch-vm-overview.md). |
+| Trusted enterprise virtualization | Azure Local satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [About Trusted Launch for Azure Local VMs enabled by Arc](./manage/trusted-launch-vm-overview.md). |
 | Scale-out storage | Storage Spaces Direct is a core technology of Azure Local that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication. |
 | Disaster recovery for virtualized workloads | A stretched cluster of Azure Local (functionality only available in Azure Stack HCI OS, version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
 | Data center consolidation and modernization | Refreshing and consolidating aging virtualization hosts with Azure Local can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support. |
-| Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Local deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Local](deploy/branch-office-edge.md). |
+| Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as a cloud witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Local deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Local](deploy/branch-office-edge.md). |
 
 <!--#### Demo of Azure Local
 
@@ -102,7 +102,7 @@ You can use the Azure portal for an increasing number of tasks including:
 
 You can also subscribe to additional Azure hybrid services.
 
-For more details on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](./hybrid-capabilities-with-azure-services-23h2.md
+For more details on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](./hybrid-capabilities-with-azure-services-23h2.md).
 
 ## What you need for Azure Local
 
@@ -135,4 +135,4 @@ Some Microsoft partners are developing software that extends the capabilities of
 ## Next steps
 
 - Read the blog post: [Introducing Azure Local: cloud infrastructure for distributed locations enabled by Azure Arc](https://techcommunity.microsoft.com/blog/azurearcblog/introducing-azure-local-cloud-infrastructure-for-distributed-locations-enabled-b/4296017).
-- Learn more about [Azure Local, version 23H2 deployment](./deploy/deployment-introduction.md).
+- Learn more about [Azure Local deployment](./deploy/deployment-introduction.md).

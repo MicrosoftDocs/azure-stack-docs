@@ -4,15 +4,15 @@ description: Learn how to create storage path for use with VM images for your Az
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
-ms.date: 10/24/2024
+ms.service: azure-local
+ms.date: 03/21/2025
 ---
 
 # Create storage path for Azure Local 
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create storage path for VM images used on your Azure Local instance. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your system. You can create a storage path using the Azure CLI.
+This article describes how to create storage path for VM images used on your Azure Local instance. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your system. You can create a storage path using the Azure CLI or Azure portal.
 
 
 ## About storage path
@@ -36,7 +36,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Create a storage path on your system
 
-You can use the Azure CLI or the Azure portal to create a storage path on your system.
+You can use the Azure CLI or Azure portal to create a storage path on your system.
 
 
 # [Azure CLI](#tab/azurecli)
@@ -154,11 +154,9 @@ az stack-hci-vm storagepath show --resource-group "<resource group name>" --name
 
 You receive a notification that the storage path doesn't exist.
 
-To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](./manage-volumes.md#delete-volumes).
+To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](/windows-server/storage/storage-spaces/manage-volumes#delete-volumes).
 
-If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](./manage-volumes.md#expand-volumes).
-
-To troubleshoot any error when trying to delete a storage path, see [Failure deleting storage path](./troubleshoot-arc-enabled-vms.md#failure-deleting-storage-path).
+If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](/windows-server/storage/storage-spaces/manage-volumes#expand-volumes).
 
 # [Azure portal](#tab/azureportal)
 

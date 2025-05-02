@@ -22,6 +22,7 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-2311"
+
 <!-- ## Update -->
 
 <!-- ## Networking -->
@@ -31,7 +32,7 @@ To access known issues for a different archived version, use the version selecto
 ### Azure Kubernetes Service on Azure Stack Hub
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and will not be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 
@@ -51,9 +52,20 @@ To access known issues for a different archived version, use the version selecto
 - Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
+## Networking
+
+### Outbound ICMP to internet is blocked by default for tenant VM
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The issue is caused by a change in the default ICMP behavior introduced with Windows Server 2022 that diverges from previous behavior, as well as Azure behavior.
+- Remediation: You can add an inbound NSG rule to allow outbound ICMP packets to the internet. Microsoft is aware of the issue.
+- Occurrence: Common.
+
 <!-- ## Alerts -->
 
 ## Portal
+
+### Can't use Flow Timeout and BGP community string DNS options in the portal
 
 - Applicable: This issue applies to release 2311.
 - Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
@@ -66,6 +78,13 @@ To access known issues for a different archived version, use the version selecto
 - Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
 - Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
+
+### Nodes blade fails to load
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The **Nodes** blade on the portal fails to load when a GPU property isn't configured.
+- Remediation: Microsoft is aware of the issue and is working on a fix.
+- Occurrence: Occasional.
 
 <!-- ## Datacenter integration -->
 
@@ -756,7 +775,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account options
@@ -964,7 +983,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1216,7 +1235,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1372,7 +1391,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
@@ -1527,7 +1546,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Subscriptions Properties blade
@@ -1703,7 +1722,7 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Marketplace management
@@ -1861,7 +1880,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/az.resources/get-azroleassignment).
 - Occurrence: Common
 
 ### Docker extension
@@ -2021,7 +2040,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## Storage
 
 - Applicable: This issue applies to all supported releases.
-- Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
+- Cause: [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
 - Remediation: To convert your disks correctly, follow the [convert to managed disks guide](../../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## App Service

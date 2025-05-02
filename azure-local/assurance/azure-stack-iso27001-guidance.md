@@ -1,15 +1,17 @@
 ---
 title: ISO 27001 guidance for Azure Local
 description: Learn about ISO 27001 compliance using Azure Local.
-ms.date: 11/07/2024
+ms.date: 04/09/2025
 ms.topic: conceptual
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000
 ms.reviewer: alkohli
 ---
 
 # Azure Local and ISO/IEC 27001:2022
+
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article outlines how Azure Local helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Local and other security standards at [Azure Local and security standards](azure-stack-security-standards.md).
 
@@ -122,7 +124,7 @@ If you're using Microsoft Entra ID to manage identity and access to the platform
 
 #### SIEM integration
 
-Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled Azure Local machines. You can enable and onboard your logs to Microsoft Sentinel, which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, also complies with many well-established security standards such as ISO/IEC 27001, which can help you with your certification process. Additionally, Azure Local provides a native syslog event forwarder to send the system events to the third party SIEM solutions.
+Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled servers. You can enable and onboard your logs to Microsoft Sentinel, which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, also complies with many well-established security standards such as ISO/IEC 27001, which can help you with your certification process. Additionally, Azure Local provides a native syslog event forwarder to send the system events to the third party SIEM solutions.
 
 ### Monitoring
 

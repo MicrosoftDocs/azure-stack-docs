@@ -3,7 +3,7 @@ title: Host network requirements for Azure Local
 description: Learn the host network requirements for Azure Local
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 04/07/2025
 ms.author: dacuo
 ---
 
@@ -133,19 +133,7 @@ Use RoCE if:
 
 ### Guest RDMA
 
-Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA on hosts.
-
-**Applicable traffic types:** Guest-based storage
-
-**Certifications required:** Compute (Premium)
-
- The primary benefits of using Guest RDMA are:
-
-- CPU offload to the NIC for network traffic processing.
-- Extremely low latency.
-- High throughput.
-
-For more information, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
+Guest RDMA is not supported on Azure Local.
 
 ### Switch Embedded Teaming (SET)
 

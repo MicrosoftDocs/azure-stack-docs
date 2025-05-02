@@ -1,17 +1,19 @@
 ---
 title: Get support for Azure Local
-description: This topic provides guidance on how to get support for the Azure Stack HCI Operating System.
-author: jasongerend
-ms.author: jgerend
+description: This topic provides guidance on how to get support for Azure Local.
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 01/21/2025
 ---
 
 # Get support for Azure Local
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-This topic provides guidance on how to get support for the Azure Stack HCI Operating System. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+
+Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
 
 To create an Azure Local support request requires one of the following Azure support plans: Standard, Professional Direct, or Developer. You cannot use the Basic plan.
 

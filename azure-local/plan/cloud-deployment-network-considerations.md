@@ -3,16 +3,16 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/17/2024
+ms.date: 02/14/2025
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
 
-# Network considerations for cloud deployments of Azure Local, version 23H2
+# Network considerations for cloud deployments of Azure Local
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article discusses how to design and plan an Azure Local, version 23H2 system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
+This article discusses how to design and plan an Azure Local system network for cloud deployment. Before you continue, familiarize yourself with the various [Azure Local networking patterns](../plan/choose-network-pattern.md) and available configurations.
 
 ## Network design framework
 
@@ -26,7 +26,7 @@ The following diagram shows the various decisions and steps that define the netw
 
 To help determine the size of your Azure Local instance, use the [Azure Local sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
 
-As described in the Azure Local [system machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
+As described in the Azure Local [machine requirements](../concepts/system-requirements-23h2.md#machine-and-storage-requirements) article, the maximum number of machines supported on Azure Local instance is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of machine nodes required to run workloads on your infrastructure.
 
 - **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Local instance network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
@@ -209,6 +209,9 @@ $IntentName = "MgmtCompute"
 New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
+> [!NOTE]
+> Once an Azure Local instance is deployed, changing the management intent name or the virtual switch name isn't supported. You must use the same intent name and virtual switch name if you need to update or recreate the intent after deployment.
+
 #### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
 Once the virtual switch and the associated management virtual network adapter are created, make sure that the network adapter name is compliant with Network ATC naming standards.
@@ -227,7 +230,7 @@ $IntentName = "MgmtCompute"
 #Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
 Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
 
-#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+#Rename NetAdapter because during creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
 Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
 ```
@@ -326,6 +329,31 @@ Here are the summarized considerations for the IP addresses:
 |4     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
 |5     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
 
+### DNS server considerations
+
+Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it is required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it is not supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
+
+The DNS servers used for Azure Local must be external and operational before deployment. It is not supported to run them as Azure Local virtual machines.
+
+Here are the summarized considerations for DNS servers addresses:
+
+|#  | Considerations  |
+|---------|---------|
+|1     | DNS servers across all the nodes of the cluster must be the same.       |
+|2     | The infrastructure IP address range DNS servers must be the same used for the nodes.       |
+|3     | Azure Resource Bridge VM control plane and AKS control plane will use the DNS Servers configured on the infrastructure IP address range.      |
+|4     | It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the Azure Local deployment.       |
+|5     | When defining an array of multiple DNS servers on an ARM template for the Infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.  |
+|6     | It is not supported to run the DNS servers used by Azure Local infrastructure in virtual machines running inside the Azure Local instance. |
+
+```powershell
+"dnsServers": [
+                        "10.250.16.124",
+                        "10.250.17.232",
+                        "10.250.18.107"
+                    ]
+```
+
 ### Proxy requirements
 
 A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Local supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before machine nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
@@ -384,4 +412,4 @@ Here are the summarized considerations for network adapter configuration:
 
 ## Next steps
 
-- [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md).
+- [About Azure Local deployment](../deploy/deployment-introduction.md).

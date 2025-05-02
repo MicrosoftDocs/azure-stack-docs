@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2024
+ms.date: 01/08/2025
 ---
 
 # Firewall requirements for Azure Local
@@ -18,7 +18,7 @@ This article also describes how to optionally use a highly locked-down firewall 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Local](../manage/configure-proxy-settings-23h2.md).
 
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link are not supported for Azure Local, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Local, version 23H2.
+> Azure Express Route and Azure Private Link are not supported for Azure Local or any of its components as it is not possible to access the public endpoints required for Azure Local.
 
 ## Firewall requirements for outbound endpoints
 
@@ -31,30 +31,58 @@ Azure Local needs to periodically connect to Azure for:
 - Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors.
+> Azure Local doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Local to prevent any connectivity errors. This includes use of [Entra ID **tenant restrictions v1**](/entra/identity/enterprise-apps/tenant-restrictions) which is not supported for Azure Local management network communication.
 
 As shown in the following diagram, Azure Local can access Azure using more than one firewall potentially.
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Local accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-## Required firewall URLs for Azure Local, version 23H2 deployments
+## Required firewall URLs for Azure Local deployments
 
-Starting with Azure Local, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
+Azure Local instances automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in East US for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
+- [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
 For a consolidated list of endpoints for West Europe that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in West Europe for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
+- [Required endpoints in West Europe for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
 
 For a consolidated list of endpoints for Australia East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Australia East for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
+- [Required endpoints in Australia East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
 For a consolidated list of endpoints for Canada Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in Canada Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
+- [Required endpoints in Canada Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
 For a consolidated list of endpoints for India Central that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in India Central for Azure Local, version 23H2](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
+- [Required endpoints in India Central for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/IndiaCentralEndpoints/IndiaCentral-hci-endpoints.md)
+
+For a consolidated list of endpoints for Southeast Asia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Southeast Asia for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthEastAsiaEndpoints/southeastasia-hci-endpoints.md)
+
+For a consolidated list of endpoints for Japan East that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in Japan East for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/JapanEastEndpoints/japaneast-hci-endpoints.md)
+
+For a consolidated list of endpoints for South Central US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in South Central US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthCentralUSEndpoints/southcentralus-hci-endpoints.md)
+
+## Firewall requirements for OEMs
+
+Depending on the OEM you are using for Azure Local you may need to open additional endpoints in your firewall.
+
+DataON required endpoints for Azure Local deployments
+- [DataOn required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/DataOn/DataOnAzureLocalEndpoints.md)
+
+Dell required endpoints for Azure Local deployments
+- [Dell required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Dell/DellAzureLocalEndpoints.md)
+
+HPE required endpoints for Azure Local deployments
+- [HPE required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/HPE/HPEAzureLocalEndpoints.md)
+
+Hitachi required endpoints for Azure Local deployments
+- [Hitachi required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Hitachi/HitachiAzureLocalEndpoints.md)
+
+Lenovo required endpoints for Azure Local deployments
+- [Lenovo required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/OEMEndpoints/Lenovo/LenovoAzureLocalEndpoints.md)
 
 ## Firewall requirements for additional Azure services
 
@@ -73,7 +101,7 @@ Depending on additional Azure services you enable for Azure Local, you may need 
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Local, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
+Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Stack HCI, version 22H2). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
 
 When using the **Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each machine, open the ports as described in the following sections:
 
@@ -83,7 +111,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local instance machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
+| Allow inbound/outbound traffic to and from the Azure Local service on Azure Local machines | Allow | Instance nodes | Instance nodes | TCP | 30301 |
 
 ### Windows Admin Center
 
@@ -98,14 +126,21 @@ Ensure that the following firewall rules are configured in your on-premises fire
 >[!NOTE]
 > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
 
-
 ### Active Directory
 
 Ensure that the following firewall rules are configured in your on-premises firewall for Active Directory (local security authority).
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Local | TCP | 9389 |
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Azure Local | Active Directory Services | TCP | 9389 |
+
+### Network Time Protocol
+
+Ensure that the following firewall rules are configured in your on-premises firewall for Network Time Protocol (NTP).
+
+| Rule | Action | Source | Destination | Service | Ports |
+|:--|:--|:--|:--|:--|:--|
+| Allow inbound/outbound connectivity to the Network Time Protocol (NTP) server. This server can be Active Directory domain controllers, or an NTP appliance. | Allow | Azure Local | Network Time Protocol (NTP/SNTP) server | UDP | 123 |
 
 ### Failover Clustering
 
@@ -181,5 +216,5 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 
 For more information, see also:
 
-- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
-- See [About Azure Local, version 23H2 deployment](../deploy/deployment-introduction.md)
+- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports).
+- [About Azure Local deployment](../deploy/deployment-introduction.md).

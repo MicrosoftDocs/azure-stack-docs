@@ -1,10 +1,10 @@
 ---
 title: Monitor Azure Stack HCI clusters from Windows Admin Center
 description: How to monitor Azure Stack HCI clusters, servers, virtual machines, drives, and volumes using Windows Admin Center.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
-ms.service: azure-stack-hci
+ms.service: azure-local
 ms.date: 02/26/2024
 ---
 
@@ -114,7 +114,7 @@ To view a complete inventory of storage volumes on the cluster, select **Invento
 
 ## Monitor drives
 
-Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](replace-drives.md), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication. 
+Azure Stack HCI virtualizes storage in such a way that losing an individual drive will not significantly impact the cluster. However, failed drives will [need to be replaced](/windows-server/storage/storage-spaces/replace-drives), and drives can impact performance by filling up or introducing latency. If the operating system cannot communicate with a drive, the drive may be loose or disconnected, its connector may have failed, or the drive itself may have failed. Windows automatically retires drives after 15 minutes of lost communication. 
 
 To monitor drives in Windows Admin Center, select **Drives** from the **Tools** menu on the left.
 
