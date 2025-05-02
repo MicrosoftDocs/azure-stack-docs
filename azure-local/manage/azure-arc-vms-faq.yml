@@ -1,39 +1,40 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Arc VM management FAQ 
-  description: The Azure Arc VM management FAQ provides information on questions related to Azure Local.
+  title: Azure Local VMs enabled by Azure Arc FAQ 
+  description: The Azure Local VM management FAQ provides information on questions related to Azure Local.
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
+<<<<<<< HEAD
   ms.date: 05/01/2025
 title: Azure Arc VM management FAQ
+=======
+  ms.date: 03/21/2025
+title: Azure Local VMs enabled by Azure Arc FAQ
+>>>>>>> 2c96c446253cbcd368606f189ef42a5b1f61097c
 summary:
-  Frequently asked questions about Azure Arc VMs for Azure Local for 2311.2 and later.
+  Frequently asked questions about Azure Local VMs enabled by Azure Arc for 2311.2 and later.
 
 sections:
   - name: ignored
     questions:
+    
     - question: |
-        What major improvements and features can I expect for Arc VMs in Azure Local?
+        How do I upgrade my VM management infrastructure components?
       answer: |
-        Arc VM management on Azure Local has several enhancements and new features. Improvements include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, more VM Extensions, improvements to Azure CLI, and more.
-
-    - question: |
-        How do I upgrade my Azure Arc VM management infrastructure components?
-      answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Local 2311.2 or later are handled automatically. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
+        Updates for VM management infrastructure components like MOC, Azure Arc resource bridge, and Kubernetes extensions on Azure Local 2311.2 or later are handled automatically. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
 
     - question: | 
-        Will I be charged when updating my Arc VM using the Azure Update Manager service?
+        Will I be charged when updating my VM using the Azure Update Manager service?
       answer: |
-        No. You can update Arc VMs for free when using the Azure Update Manager service. However, updating non-Arc VMs created using Windows Admin Center or Hyper-V Manager, and Arc-enabled independently (these are now arc-enabled servers), will incur a charge. For more information, see [Azure Update Manager Pricing for Arc-enabled machines](
+        No. You can update VMs for free when using the Azure Update Manager service. However, updating unmanaged VMs created using Windows Admin Center or Hyper-V Manager, and Arc-enabled independently (these are now Arc-enabled servers), will incur a charge. For more information, see [Azure Update Manager Pricing for Arc-enabled servers](
         /azure/update-manager/update-manager-faq#pricing).
         
     - question: |
         Why do I need to move to Azure Local?
       answer: |
-        Moving to Azure Local is essential to continue using Azure Arc VM management since version 22H2 will no longer be supported after 15 February 2024. Azure Local has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
+        Moving to Azure Local is essential to continue using Azure Local VM management since version 22H2 will no longer be supported after 15 February 2024. Azure Local has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
 
     - question: |
         How can I seek assistance during the transition to Azure Local?
@@ -41,12 +42,12 @@ sections:
         The Microsoft Support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
 
     - question: |
-        Can Azure Kubernetes Service on Azure Local and Windows Server and Azure Arc Resource Bridge coexist on the same Azure Local instance?
+        Can Azure Kubernetes Service on Azure Local and Windows Server and Azure Arc resource bridge coexist on the same Azure Local instance?
       answer: |
-        Yes. Azure Kubernetes Service on Azure Local and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Local instance. You can deploy the AKS-HCI management system first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Local removes Arc Resource Bridge.
+        Yes. Azure Kubernetes Service on Azure Local and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Local instance. You can deploy the AKS-HCI management system first and then Azure Arc resource bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Local removes Azure Arc resource bridge.
     
     - question: |
-        I used to be able to create virtual networks for my Arc VMs in past releases. Starting 2310 (November 2023), I can only create logical networks. What changed?
+        I used to be able to create virtual networks for my VMs in past releases. Starting 2310 (November 2023), I can only create logical networks. What changed?
       answer: |
         Starting with the 2311.2 release Azure Local, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on earlier versions cannot be used with the Azure Local 2311.2 release and later, and need to be manually deleted.
 
@@ -56,14 +57,14 @@ sections:
         SDN is currently not supported for VMs created from the Azure portal.
 
     - question: |
-        How can I perform live migration of Arc-enabled virtual machines?
+        How can I perform live migration of Azure Local virtual machines?
       answer: |
-        Live migration of Arc VMs across Azure Local machines is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
+        Live migration of VMs across Azure Local machines is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
     - question: |
-        Is there a fee to use Arc management for VMs on Azure Local?
+        Is there a fee to manage Azure Local VMs?
       answer: |
-        VM management for Azure Local from the Azure control plane doesn't have any extra fees. Some VM extensions might have a fee.
+        No. Azure Local VMs can be managed by Azure CLI or Azure portal. In either case, no fee is charged. Some VM extensions might have a fee.
 
     - question: |
         Why is my image drop-down list blank when creating my Azure Local VM using Trusted launch?
@@ -86,7 +87,7 @@ sections:
         Deleting a gallery image doesn't affect the VMs that were created using that gallery image. The VMs won't be able to show the image name in the VM details.
 
     - question: | 
-        If I delete Arc Resource Bridge, are the VMs also deleted?
+        If I delete Azure Arc resource bridge, are the VMs also deleted?
       answer: |
-        If you inadvertently remove the Arc Resource Bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises Arc Appliance VM. Importantly, this action doesn't impact your existing workloads. To restore the Azure projection of the Arc Resource Bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). If the Arc Appliance on-premises VM is accidentally deleted, you lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Arc Resource Bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
+        If you inadvertently remove the Azure Arc resource bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises appliance VM. Importantly, this action doesn't impact your existing workloads. To restore the Azure projection of the Azure Arc resource bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). If the appliance on-premises VM is accidentally deleted, you lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Azure Arc resource bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
 

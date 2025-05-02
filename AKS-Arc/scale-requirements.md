@@ -2,7 +2,7 @@
 title: Scale requirements for AKS on Azure Local
 description: Learn about scale requirements for AKS on Azure Local.
 ms.topic: conceptual
-ms.date: 03/10/2025
+ms.date: 03/25/2025
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
@@ -49,24 +49,28 @@ This article describes the maximum and minimum supported scale count for AKS on 
 
 | VM Size                     | CPU  | Memory (GB)  |
 |-----------------------------|------|--------------|
+| Standard_K8S3_v1            | 4    | 6            |
 | Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
-| Standard_K8S3_v1            | 4    | 6            |
 
 ## Supported values for worker node sizes
 
 | VM Size                     | CPU  | Memory (GB)  |
 |-----------------------------|------|--------------|
-| Standard_A4_v2              | 4    | 8            |
 | Standard_A2_v2              | 2    | 4            |
+| Standard_K8S3_v1            | 4    | 6            |
+| Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
-| Standard_K8S3_v1            | 4    | 6            |
+| Standard_D16s_v3            | 16   | 64           |
+| Standard_D32s_v3            | 32   | 128          |
 
-For more worker node sizes with GPU support, see [Use GPUs](deploy-gpu-node-pool.md). 
+For more worker node sizes with GPU support, see the next section.
+
+[!INCLUDE [supported-gpu-models](includes/supported-gpu-models.md)]
 
 ## Next steps
 
-- [Review AKS on Azure Local, version 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Local](aks-whats-new-23h2.md)
+- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [What's new in AKS on Azure Local](aks-whats-new-local.md)

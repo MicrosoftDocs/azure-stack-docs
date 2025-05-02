@@ -13,7 +13,7 @@ ms.date: 02/26/2025
 This article describes how to create Kubernetes clusters in Azure Local using Terraform and the Azure Verified Module. The workflow is as follows:
 
 - Create an SSH key pair.
-- Create a Kubernetes cluster in Azure Local 23H2 using Terraform. By default, the cluster is Azure Arc-connected.
+- Create a Kubernetes cluster in Azure Local using Terraform. By default, the cluster is Azure Arc-connected.
 - Validate the deployment and connect to the cluster.
 
 > [!IMPORTANT]
@@ -53,7 +53,7 @@ For more options, you can either follow [Configure SSH keys for an AKS cluster](
 
 ## Sign in to Azure
 
-Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
+Terraform only supports authenticating to Azure with the Azure CLI using [`az login`](/cli/azure/reference-index#az-login). Authenticating using Azure PowerShell isn't supported. Therefore, while you can use the Azure PowerShell module when doing your Terraform work, you must first [authenticate to Azure](/azure/developer/terraform/authenticate-to-azure):
 
 ```azurecli
 az login 
@@ -62,7 +62,7 @@ az login
 ## Implement the Terraform code
 
 1. Create a directory you can use to test the sample Terraform code, and make it your current directory.
-1. In the same directory, create a file named **providers.tf** and paste the following code:
+1. In the same directory, create a file named **providers.tf** and paste the following code. Make sure to replace `<subscription_ID>` with your subscription ID:
 
    ```terraform
    terraform { 
@@ -79,7 +79,8 @@ az login
      }
     }
   
-    provider "azurerm" { 
+    provider "azurerm" {
+    subscription_id = "<subscription_ID>"
     features { 
      resource_group { 
       prevent_deletion_if_contains_resources = false 
@@ -88,7 +89,7 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-23h2.md) for prerequisites.
+1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the description and input of the module and add optional parameters as needed. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). You can [follow this guidance](https://github.com/Azure/Edge-infrastructure-quickstart-template/blob/main/doc/AKS-Arc-Admin-Groups.md) to find it in your Azure environment. To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 

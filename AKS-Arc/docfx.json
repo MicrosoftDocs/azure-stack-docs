@@ -56,7 +56,6 @@
       "breadcrumb_path": "/azure/aks/aksarc/breadcrumb/toc.json",
       "extendBreadcrumb": false,
       "manager":"lizross",
-      "ms.service": "azure-stack",
       "recommendations": true,
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
 

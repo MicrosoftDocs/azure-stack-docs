@@ -4,13 +4,13 @@ description: Learn how to run the quickstart script that creates an Arc-enabled 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 01/13/2025
+ms.date: 03/24/2025
 ms.custom: template-how-to
 ---
 
 # Create and configure an AKS Edge Essentials cluster that can run Azure IoT Operations
 
-Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc. 
+Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster platforms for [Azure IoT Operations](/azure/iot-operations/overview-iot-operations). You can use AKS Edge Essentials to create a Microsoft-managed Kubernetes cluster and deploy Azure IoT Operations on it as a workload. This article describes the steps to run a script that creates an AKS Edge Essentials Kubernetes cluster with the required configurations for Azure IoT Operations and then connects that cluster to Azure Arc.
 
 > [!NOTE]
 > Azure IoT Operations supports AKS Edge Essentials when deployed on k3s single machine clusters only. K8s clusters are not supported for AIO and deploying clusters on multiple machines is an experimental feature.
@@ -58,61 +58,62 @@ To run the quickstart script, perform the following steps:
 1. Run the following commands:
 
    ```powershell
-   $url = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
-   Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1
+   $giturl = "https://raw.githubusercontent.com/Azure/AKS-Edge/main/tools"
+   $url = "$giturl/scripts/AksEdgeQuickStart/AksEdgeQuickStartForAio.ps1"
+   Invoke-WebRequest -Uri $url -OutFile .\AksEdgeQuickStartForAio.ps1 -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aide-userconfig.json" -OutFile .\aio-aide-userconfig.json -UseBasicParsing
+   Invoke-WebRequest -Uri "$giturl/aio-aksedge-config.json" -OutFile .\aio-aksedge-config.json -UseBasicParsing
    Unblock-File .\AksEdgeQuickStartForAio.ps1
    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
    ```
 
-1. [Optional] [Azure Arc gateway (preview)](/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only 7 endpoints. To use Azure Arc Gateway with Azure IoT Operations on AKS Edge Essentials:
+1. Add the required parameter values in the **aio-aide-userconfig.json** and **aio-aksedge-config.json** files:
 
-   - [Follow step 1 to create an Arc gateway resource](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
-   - Note the [URLs listed in step 2](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-skip-range` in step 2.
-   - Follow [step 3a in the Arc gateway documentation](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway ID.
-   - In **AksEdgeQuickStartForAio.ps1**, find the `$aideuserConfig` definition. Set the value of `GatewayResourceId` to the gateway ID saved from the previous step.
+   In **aio-aide-userconfig.json**, fill in the following values:
 
-1. Run the following command, and replace the placeholder values with your information:
-
-   ```powershell
-   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>"
-   ```
-
-   |Placeholder|Value  |
+   |Flag|Value  |
    |---------|---------|
-   |SUBSCRIPTION_ID     |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).   |
-   |TENANT_ID  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
-   |RESOURCE_GROUP_NAME     |   The name of an existing resource group or a name for a new resource group to be created. Only one Azure IoT Operations instance is supported per resource group.     |
-   |LOCATION     |      An Azure region close to you. For the list of Azure IoT Operations's supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
-   |CLUSTER_NAME     |    A name for the new cluster to be created.     |
-   |ARC_APP_OBJECT_ID     |  The object ID value that you retrieved in step 2.       |
+   |SubscriptionId    |      The ID of your Azure subscription. If you don't know your subscription ID, see [Find your Azure subscription](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription). |
+   |TenantId  |    The ID of your Microsoft Entra tenant. If you don't know your tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant).     |
+   |ResourceGroupName     |   The name of an existing resource group or a name for a new resource group to be created. Only one Azure IoT Operations instance is supported per resource group.     |
+   |Location     |      An Azure region close to you. For a list of the Azure IoT Operations's supported Azure regions, see [Supported regions](/azure/iot-operations/overview-iot-operations#supported-regions).   |
+   |CustomLocationOID     |     The object ID value that you retrieved in step 2.     |
+   |EnableWorkloadIdentity (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
 
-   There are other optional flags that you can include when you run **AksEdgeQuickStartForAio.ps1**. The optional flags are as follows: 
+   In **aio-aksedge-config.json**, add the required **ClusterName** field and other optional fields, as follows:
 
-   |Optional flags|Value  |
+   |Flag | Value  |
    |---------|---------|
-   | `enableWorkloadIdentity` (preview) | Enabled by default. While you can opt out before deploying the cluster, you cannot enable it after cluster creation. Workload identity federation lets you configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from external identity providers (IdPs) such as Kubernetes. To configure workload identity federation, [see this article](aks-edge-workload-identity.md). |
-   | `proxy-https` | Provide the proxy value: `https://<proxy-server-ip-address>:<port>`. |
-   | `proxy-http` | Provide the proxy value: `http://<proxy-server-ip-address>:<port>`. |
-   | `proxy-skip-range` | Provide the proxy skip range: `<excludedIP>`,`<excludedCIDR>`. If the `http(s)_proxy` is provided, then `no_proxy` should also be updated to `localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc,169.254.169.254`. |
-
-   You can add these flags as shown in the following example:
-
-   ```powershell
-   .\AksEdgeQuickStartForAio.ps1 -SubscriptionId "<SUBSCRIPTION_ID>" -TenantId "<TENANT_ID>" -ResourceGroupName "<RESOURCE_GROUP_NAME>"  -Location "<LOCATION>"  -ClusterName "<CLUSTER_NAME>" -CustomLocationOid "<ARC_APP_OBJECT_ID>" --enableWorkloadIdentity:false
-   ``` 
+   | ClusterName  |    A name for the new cluster to be created.     |
+   | `Proxy-Https` | Provide the proxy value: `https://<proxy-server-ip-address>:<port>`. |
+   | `Proxy-Http` | Provide the proxy value: `http://<proxy-server-ip-address>:<port>`. |
+   | `Proxy-No` | Provide the proxy skip range: `<excludedIP>`,`<excludedCIDR>`. If the `http(s)_proxy` is provided, then `No` should also be updated to `localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.42.0.0/16,10.43.0.0/16,10.96.0.0/12,10.244.0.0/16,.svc,169.254.169.254`. |
 
    > [!IMPORTANT]
    > Preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. AKS Edge Essentials previews are partially covered by customer support on a best-effort basis.
 
+1. [Optional] [Azure Arc gateway (preview)](/azure/azure-arc/servers/arc-gateway?tabs=portal) lets you onboard infrastructure to Azure Arc using only 7 endpoints. To use Azure Arc Gateway with Azure IoT Operations on AKS Edge Essentials:
+
+   - [Follow step 1 to create an Arc gateway resource](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-1-create-an-arc-gateway-resource).
+   - Note [the URLs listed in step 2](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-2-ensure-the-required-urls-are-allowed-in-your-environment) to add to the `proxy-no` in **aio-aksedge-config.json**.
+   - Follow [step 3a in the Arc gateway documentation](/azure/azure-arc/servers/arc-gateway?tabs=portal#step-3a-onboard-azure-arc-resources-with-your-arc-gateway-resource) and save the gateway ID.
+   - In **aio-aide-userconfig.json**, set the value of `GatewayResourceId` to the gateway ID saved from the previous step.
+
+1. Run the following command:
+
+   ```powershell
+   .\AksEdgeQuickStartForAio.ps1 -aideUserConfigfile .\aio-aide-userconfig.json -aksedgeConfigFile .\aio-aksedge-config.json
+   ```
+
    If there are issues during deployment; for example, if your machine reboots as part of this process, run the set of commands again.
-
+  
    Run the following commands to check that the deployment was successful:
-
+  
    ```powershell
    Import-Module AksEdge
    Get-AksEdgeDeploymentInfo
    ```
-
+  
    In the output of the `Get-AksEdgeDeploymentInfo` command, you should see that the cluster's Arc status is **Connected**.
 
 ## Verify your cluster

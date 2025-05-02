@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -31,7 +31,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 To upgrade the OS on your system, follow these high-level steps:
 
 1. [Complete prerequisites.](#complete-prerequisites)
-1. [Update registry key.](#step-0-update-registry-key)
+1. [Update registry keys.](#step-0-update-registry-keys)
 1. [Connect to your system.](#step-1-connect-to-your-system)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
@@ -45,18 +45,44 @@ Before you begin, make sure that:
 
 - You have access to an Azure Local running version 22H2.
 - The system is registered in Azure.
-- Make sure that all the machines in your Azure Local are healthy and show as **Online**.
+- All the machines in your Azure Local are healthy and show as **Online**.
+- You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local. This client should be running PowerShell 5.0 or later.
+- (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
+   To enable Secure Boot, follow these steps:
+   1. Drain the cluster node.
+   1. Restart the OS.
+   1. Enter the BIOS/UEFI menu.
+   1. Review the **Boot** or **Security** section of the UEFI configuration options Locate the Secure Boot option.
+   1. Set the option to **Enabled** or **On**.
+   1. Save the changes and restart your computer.
 
-## Step 0: Update registry key
+   Consult with your hardware vendor for assistance if required.
 
-To avoid issues with Resilient File System (ReFS) during OS upgrade, run the following command on each machine in the system to update registry key:
+## Step 0: Update registry keys
 
-```powershell
-# Set RefsEnableMetadataValidation to 0
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
-```
+To ensure Resilient File System (ReFS) and live migrations function properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
+
+1. Set `RefsEnableMetadataValidation` to `0`:
+
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+   ```
+
+1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
+
+   ```powershell
+   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
+   ```
+
+1. Set `SkipSmallLocalAllocations` to `0`:
+
+   ```powershell
+   New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
+   ```
+
+1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
 ## Step 1: Connect to your system
 
