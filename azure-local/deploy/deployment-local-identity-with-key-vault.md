@@ -109,7 +109,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 - Provide the DNS server details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
 
-      :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the DNS Server field." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
 ### Management tab
 
