@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2025
+ms.date: 04/17/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -21,10 +21,10 @@ Throughout this article, we refer to Azure Local 2311.2 as the *new* version and
 
 This *optional* but *recommended* step helps you assess the readiness of Azure Local for the upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Arc Resource Bridge running on your system.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the machine. Verify that there are no Preview versions for Azure Arc Resource Bridge running on your system.
 - Ensure that sufficient storage space is available for the infrastructure volume.
-- Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
-- Review and remediate the validation checks that block the upgrade.
+- Perform other checks like installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Review and remediate validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
 
@@ -280,7 +280,7 @@ If you used the English ISO but configured a different language during setup, yo
 
 ## Remediation 6: Check storage pool space
 
-Azure Local 2311.2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge.
+Azure Local 2311.2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Azure Arc Resource Bridge.
 
 The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
@@ -418,13 +418,19 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, Preview versions of Arc VMs can't be updated.
+Follow these steps to apply solution upgrade if you're running Azure Kubernetes Service (AKS) workloads on your Azure Local:
+
+1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local. Additionally, preview versions of Azure Local VMs enabled by Azure Arc can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
 ## Remediation 11: Check the AKS install state
 
-If you were running AKS workloads on your Azure Local, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
+Follow these steps to apply solution upgrade if you're running AKS workloads on your Azure Local:
+
+1. Wait for the solution upgrade banner to appear on your Azure Local resource page.
+1. Remove AKS and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between the *old* and *new* versions of Azure Local.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 

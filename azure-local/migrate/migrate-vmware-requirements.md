@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 04/08/2025
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -63,9 +63,11 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 ## Source VMware server requirements
 
-- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs. For more information, see [Enable your VMware vCenter resources in Azure](/azure/azure-arc/vmware-vsphere/browse-and-enable-vcenter-resources-in-azure).
 
-- In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated
+- Ensure that adequate vCenter Server permissions are met. For more information, see [VMware vSphere agentless requirements](/azure/migrate/vmware/migrate-support-matrix-vmware-migration#vmware-vsphere-requirements-agentless).
+
+- In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated.
 
 - Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
@@ -77,11 +79,11 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - The target system must be running Azure Local.
 
-- An Arc Resource Bridge must exist on Azure Local for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Azure Arc resource bridge must exist on Azure Local for migration. The Azure Arc resource bridge is automatically created during the deployment. To verify that an Arc resource bridge exists on your Azure Local system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
-- Make sure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
+- Make sure that a logical network is configured on your Azure Arc resource bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 
-- Make sure that a custom storage path is configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
+- Make sure that a custom storage path is configured on your Azure Arc resource bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
 
 - The Azure Local target system must be able to initiate a network connection with the VMware source environment, either by being on the same on-premises network or by using a VPN.
 
