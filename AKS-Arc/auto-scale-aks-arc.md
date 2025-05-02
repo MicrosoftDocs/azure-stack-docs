@@ -19,6 +19,9 @@ ms.lastreviewed: 08/01/2024
 
 To keep up with application demands in Kubernetes, you might need to adjust the number of nodes that run your workloads. The cluster autoscaler component watches for pods in your cluster that can't be scheduled because of resource constraints. When the cluster autoscaler detects issues, it scales up the number of nodes in the node pool to meet the application demands. It also regularly checks nodes for a lack of running pods and scales down the number of nodes as needed. This article shows you how to enable and manage the cluster autoscaler in AKS Arc.
 
+>[!NOTE]
+>Before enabling autoscaling on your Azure Local cluster, review the [Scale requirements for AKS on Azure Local](/azure/aks/aksarc/scale-requirements#scale-requirements-when-using-autoscaler-with-aks-on-azure-local) to ensure your environment meets the necessary limits.
+
 ## Enable the cluster autoscaler on a new cluster
 
 Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command, and enable and configure the cluster autoscaler on the node pool for the cluster using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command creates a cluster with a single node, enables the cluster autoscaler, and sets a minimum of one and maximum of three nodes:
