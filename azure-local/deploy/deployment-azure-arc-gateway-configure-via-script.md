@@ -3,7 +3,7 @@ title: Configure Arc proxy via registration script for Azure gateway on Azure Lo
 description: Learn how to Configure Arc proxy via registration script for Azure gateway on Azure Local, version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
