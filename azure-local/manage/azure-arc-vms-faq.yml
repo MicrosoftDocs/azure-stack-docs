@@ -36,7 +36,7 @@ sections:
       answer: |
         The Microsoft Support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
 
-        You can also learn more about upgrading at [About Azure Local upgrades](/upgrade/about-upgrades-23h2).
+        You can also learn more about upgrading at [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
 
     - question: |
         Can Azure Kubernetes Service on Azure Local and Windows Server and Azure Arc resource bridge coexist on the same Azure Local instance?
@@ -51,7 +51,7 @@ sections:
     - question: |
         Can I use SDN for Azure Local VMs created from the Azure portal?
       answer: |
-        SDN is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see [SDN in Azure Local](/azure-local/manage/sdn-technical-reference).
+        SDN is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see [SDN in Azure Local](../azure-local/manage/sdn-technical-reference.md).
 
     - question: |
         How can I perform live migration of Azure Local virtual machines?
@@ -61,7 +61,7 @@ sections:
     - question: |
         Is there a fee to manage Azure Local VMs?
       answer: |
-        No. Azure Local VMs can be managed by Azure CLI or Azure portal. In either case, no fee is charged. Some VM extensions might have a fee.
+        No. Azure Local VMs can be managed by Azure CLI or Azure portal. In either case, no fee is charged. Some VM extensions might have a fee. 
 
     - question: |
         Can I use the same name for gallery image projections and do existing VMs use the new image?
