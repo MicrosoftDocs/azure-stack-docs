@@ -1,23 +1,19 @@
 ---
-title: Troubleshoot Azure Arc VM management for Azure Local
-description: Learn how to troubleshoot Azure Arc VM management
+title: Troubleshoot Azure Local VMs enabled by Azure Arc
+description: Learn how to troubleshoot Azure Local VMs.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/19/2025
+ms.date: 03/27/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ---
 
-# Troubleshoot Azure Arc VM management for Azure Local
+# Troubleshoot Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) on your Azure Local instance. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
-
-## Troubleshoot Azure Arc VMs
-
-This section describes the errors related to Azure Arc VM management and their recommended resolutions.
+This article describes how to collect logs and troubleshoot issues with Azure Local VMs enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
 
 ## Failure when trying to enable guest management
 
@@ -105,9 +101,9 @@ Upload the image into your storage account in `page blob format` and retry deplo
 Ensure that the user has the right permissions, and the blob is in the correct format. For more information, see [Add VM image from Azure Storage account](virtual-machine-image-storage-account.md?tabs=azurecli#prerequisites).
 
 
-## Failure deploying an Arc VM
+## Failure to deploy an Azure Local VM
 
-You see the following error when trying to deploy an Arc VM on your Azure Local:
+You see the following error when trying to deploy an Azure Local VM:
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
@@ -119,7 +115,7 @@ Verify in your deployment template that:
 
 The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
 
-The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Local](./create-arc-virtual-machines.md).
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Azure Local virtual machines enabled by Azure Arc](./create-arc-virtual-machines.md).
 
 ## Azure CLI installation isn't recognized
 
@@ -133,30 +129,6 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
 ```
 
 
-<!--## Limitations and known issues
-
-Here's a list of existing limitations and known issues with Azure Arc VM management:
-
-- Resource name must be unique for an Azure Local instance and must contain only alphabets, numbers, and hyphens.
-
-- VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
-
-- You must update Arc VMs on Azure Local only from the Azure management plane. Any modifications to these VMs from other management tools aren't updated in the Azure portal.
-
-- Arc VMs must be created in the same Azure subscription as the Custom location.
-
-- An IT administrator can't view or manage VMs from system resource page in the Azure portal, if they are created in a subscription where the IT administrator doesn't have at least read-only access role.
-
-- If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
-
-- Arc VM management is currently not available for stretched cluster configurations on Azure Local.
-
-- Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
-
-- Azure Arc Linux VMs aren't supported behind a network proxy.
-
-- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).-->
-
 ## Next steps
 
-- [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)
+- [Azure Local VM management FAQs](./azure-arc-vms-faq.yml)

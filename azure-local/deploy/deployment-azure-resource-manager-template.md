@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 05/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -22,70 +22,24 @@ This article details how to use an Azure Resource Manager template in the Azure 
 ## Prerequisites
 
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-  - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
   - All machines are running the same version of OS.
   - All the machines have the same network adapter configuration.
+- For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 ## Step 1: Prepare Azure resources
 
 Follow these steps to prepare the Azure resources you need for the deployment:
 
-### Create a service principal and client secret
-
-To authenticate your system, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
-
-### Create a service principal for ARB
-
-Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-
-The steps are also summarized here:
-
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a Cloud Application Administrator. Browse to **Identity > Applications > App registrations** then select **New registration**.
-
-1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png":::
-
-1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
-
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
-
-1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
-
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
-
-    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
-
-### Create a client secret for ARB service principal
-
-1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
-1. Select **+ New client** secret.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
-
-1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
-
-1. Copy the **client secret value** as you use it later.
-
-    > [!Note]
-    > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
-
-    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
-
 ### Get the object ID for Azure Local Resource Provider
 
-This object ID for the Azure Local RP is unique per Azure tenant.
+This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
-1. Select the SPN that is listed and copy the **Object ID**.
+1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
@@ -121,6 +75,9 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 1. When finished, **Select template**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
+
+    > [!NOTE]
+    > For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
@@ -200,9 +157,11 @@ This section contains known issues and workarounds for ARM template deployment.
 
 **Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Local instance deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
 
-:::image type="content" source="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png" alt-text="Screenshot showing the role assignment exists message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png":::
+:::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-3.png" alt-text="Screenshot showing the role assignment error in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-3.png":::
 
-**Workaround**: Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.
+**Workaround**: The failed resource on the Deployment details page specifies the role assignment name. If the resource name is **AzureStackHCIDeviceManagementRole-RoleAssignment** then role assignment failed for the **Azure Stack HCI Device Management Role**. Note this role name and go to **Resource Group > Access Control (IAM) > Role Assignments**. Search for the corresponding name and delete the existing role assignments there. Redeploy your template.
+
+:::image type="content" source="./media/deployment-azure-resource-manager-template/workaround-details-2.png" alt-text="Screenshot showing the role assignment name on the Details page." lightbox="./media/deployment-azure-resource-manager-template/workaround-details-2.png":::
 
 #### Tenant ID, application ID, principal ID, and scope aren't allowed to be updated
 
@@ -210,7 +169,7 @@ This section contains known issues and workarounds for ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png" alt-text="Screenshot showing the tenant ID, application ID, principal ID, and scope can't be updated message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png":::
 
-**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
+**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as *Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png" alt-text="Screenshot showing the identity not found message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png":::
 
@@ -222,5 +181,5 @@ This section contains known issues and workarounds for ARM template deployment.
 
 ## Next steps
 
-- [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- [Deploy Azure Arc VMs on Azure Local](../manage/create-arc-virtual-machines.md)
+- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md)
+- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md)

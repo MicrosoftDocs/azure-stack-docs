@@ -124,8 +124,8 @@ items:
     items:
     - name: Via console
       href: deploy/deployment-arc-register-server-permissions.md
-    - name: Via local UI
-      href: deploy/deployment-arc-register-local-ui.md  
+    - name: Via Configurator app
+      href: deploy/deployment-arc-register-configurator-app.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
@@ -152,7 +152,7 @@ items:
     - name: Using Express scripts
       href: deploy/sdn-express-23h2.md
     - name: Using Windows Admin Center
-      href: deploy/sdn-wizard-23h2.md     
+      href: deploy/sdn-wizard-23h2.md  
   
   - name: Deploy workloads
     items:
@@ -160,7 +160,7 @@ items:
       href: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on Azure Local
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
-    - name: Run Azure Arc VMs
+    - name: Run Azure Local VMs
       href: manage/create-arc-virtual-machines.md
     - name: Run SQL Server
       href: deploy/sql-server-23h2.md
@@ -207,9 +207,9 @@ items:
 - name: Manage
   items:
 
-  - name: Azure Arc VMs
+  - name: Azure Local VMs
     items:
-    - name: What is Azure Arc VM management?
+    - name: What is Azure Local VM management?
       href: manage/azure-arc-vm-management-overview.md
     - name: Compare VM management capabilities
       href: concepts/compare-vm-management-capabilities.md
@@ -219,7 +219,7 @@ items:
       href: manage/azure-arc-vm-management-prerequisites.md
     - name: Assign RBAC role
       href: manage/assign-vm-rbac-roles.md
-    - name: Create Arc VM resources
+    - name: Create Azure Local VM resources
       items:
       - name: 1. Create a storage path
         href: manage/create-storage-path.md
@@ -231,7 +231,7 @@ items:
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
-        - name: Using an existing Arc VM
+        - name: Using an existing Azure Local VM
           href: manage/virtual-machine-image-existing-arc-vm.md
         - name: Using Linux VM image
           items: 
@@ -247,17 +247,17 @@ items:
         href: manage/create-logical-networks.md
       - name: 4. Create network interfaces
         href: manage/create-network-interfaces.md
-      - name: 5. Create Arc VMs
+      - name: 5. Create Azure Local VMs
         href: manage/create-arc-virtual-machines.md
     - name: Connect to VM via SSH
       href: manage/connect-arc-vm-using-ssh.md
-    - name: Manage Arc VMs
+    - name: Manage Azure Local VMs
       href: manage/manage-arc-virtual-machines.md
-    - name: Manage Arc VM resources
+    - name: Manage Azure Local VM resources
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
-    - name: Activate Arc VMs
+    - name: Activate Azure Local VMs
       items:
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
@@ -268,23 +268,23 @@ items:
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
    
-    - name: Collect log files for Azure Arc VM
+    - name: Collect log files for Azure Local VM
       href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
 
-  - name: Trusted launch for Arc VMs
+  - name: Trusted launch for Azure Local VMs
     items: 
-      - name: What is Trusted launch for Arc VMs?
+      - name: What is Trusted launch for Azure Local VMs?
         href: manage/trusted-launch-vm-overview.md
       - name: Automatic virtual TPM state transfer
         href: manage/trusted-launch-automatic-state-transfer.md
       - name: Manual backup and recovery
         href: manage/trusted-launch-vm-import-key.md
 
-  - name: Non Arc VMs
+  - name: Unmanaged VMs
     items:
       - name: Manage VMs
         href: manage/vm.md
@@ -345,7 +345,7 @@ items:
 
   - name: Azure Arc extensions
     items:
-    - name: Arc extension management
+    - name: Azure Arc extension management
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
@@ -486,6 +486,8 @@ items:
     href: migrate/migration-options-overview.md
   - name: Migrate using Azure Migrate
     items:
+    - name: What's new in VM migration?
+      href: migrate/migrate-whats-new.md
     - name: Hyper-V VMs
       items: 
       - name: Overview
@@ -522,12 +524,12 @@ items:
       href: migrate/migrate-faq.yml
     - name: Troubleshoot
       href: migrate/migrate-troubleshoot.md
-  - name: Migrate using SCVMM (v22H2 only)
+  - name: Migrate using SCVMM
     items:
     - name: For Hyper-V VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      href: /system-center/vmm/manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#migrate-vms-from-windows-server-to-azure-local-instance
     - name: For VMware VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+      href: /system-center/vmm/vm-convert-vmware?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
   - name: Migrate manually (v22H2 only)
     items:
     - name: To same hardware
@@ -706,6 +708,12 @@ items:
       href: /windows-server/storage/storage-spaces/storage-spaces-states?context=/azure/azure-local/context/context
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+  - name: Migrate using SCVMM
+    items:
+    - name: For Hyper-V VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-local-instance
+    - name: For VMware VMs
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-local-instance-using-scvmm
   - name: Concepts
     items:
     - name: Storage and systems
@@ -737,11 +745,11 @@ items:
 
 - name: Reference
   items:
-  - name: For Azure Arc VM management
+  - name: For Azure Local VM management
     items:
     - name: Azure Local VM PowerShell commands
       href: /powershell/module/az.stackhcivm
-    - name: Azure Local Arc VMs Azure CLI commands
+    - name: Azure Local VMs Azure CLI commands
       href: /cli/azure/stack-hci-vm
   - name: For Azure Local instance, service, and management
     items:

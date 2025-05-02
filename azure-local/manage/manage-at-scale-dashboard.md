@@ -5,7 +5,7 @@ ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/11/2024
+ms.date: 04/23/2025
 ---
 
 # Use the dashboard to manage Azure Local (preview)
@@ -77,4 +77,4 @@ Use the following information when no system data is displayed in the **All syst
 
 ## Next steps
 
-- Learn about the various options available to monitor your Azure Local in [What is Azure Local monitoring?](../concepts/monitoring-overview.md).
+- Learn about the various options available to monitor your Azure Local in [What is Azure Local monitoring?](../concepts/monitoring-overview.md)

@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/17/2025
+ms.date: 03/21/2025
 ---
 
 # Create storage path for Azure Local 

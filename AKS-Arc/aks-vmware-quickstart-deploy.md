@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.date: 03/22/2024
-ms.lastreviewed: 03/22/2024
+ms.date: 03/19/2025
+ms.lastreviewed: 03/19/2025
 ms.reviewer: leslielin
 ---
 
@@ -96,6 +96,17 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
 
    > [!NOTE]
    > In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. The Kubernetes version you provide in the command must align with the Arc Resource Bridge version. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
+
+## Delete the cluster
+
+Run the `az aksarc delete` command to clean up the cluster you created:
+
+```azurecli
+az aksarc delete -n '<name of your cluster>' -g $resource_group
+```
+
+> [!IMPORTANT]
+> The delete operation can fail if your vCenter credentials are invalid. To prevent this, verify that you have proper administrative access for Arc-enabled VMware vSphere. For more information, see [Updating the vSphere account credentials](/azure/azure-arc/vmware-vsphere/administer-arc-vmware#updating-the-vsphere-account-credentials-using-a-new-password-or-a-new-vsphere-account-after-onboarding).
 
 
 ## Next steps
