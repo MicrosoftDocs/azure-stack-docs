@@ -66,9 +66,9 @@ Currently, the following throughput configurations are available:
 
 | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |-----------|-----------|-----------|-----------|
-| 40 MBps | 48 TiB | 768 TiB | 48 TiB |
-| 125 MBps | 16 TiB | 128 TiB | 16 TiB |
-| 250 MBps | 8 TiB | 128 TiB | 8 TiB |
+| 40 MBps | 48 TiB | 1536 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 512 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 256 TiB | 8 TiB |
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
