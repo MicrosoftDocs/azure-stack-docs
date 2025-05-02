@@ -209,7 +209,7 @@ When configuring the Environment Variables proxy bypass list string, keep the fo
 - Asterisk `*` as wildcards to bypass subnets or domain names isn't supported.
 - Dots `.` Should be used as wildcards to bypass domain names or local services. For example `.contoso.com` or `.svc`.
 - Proxy name must be specified with `http://` and the port for both HTTP_PROXY and HTTPS_PROXY variables. For example, `http://192.168.1.250:8080`.
-- `.svc`, `kubernetes.default.svc` and `.svc.cluster.local,.svc` bypass is for AKS internal services communication in Linux notation. This is required for Arc Resource Bridge and AKS.
+- `.svc`, `kubernetes.default.svc` and `.svc.cluster.local` bypass is for AKS internal services communication in Linux notation. This is required for Arc Resource Bridge and AKS.
 - AKS requires to bypass the following subnets. `10.0.0.0/8`, `172.16.0.0/12` and `192.168.0.0/16`. These subnets will be added to the Environment Variables bypass list automatically if they aren't defined.
 
 ### Confirm and remove the Environment Variables proxy configuration
