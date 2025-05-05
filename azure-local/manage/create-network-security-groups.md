@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/24/2025
+ms.date: 05/05/2025
 ms.service: azure-local
 ---
 
@@ -29,7 +29,7 @@ Here is a diagram that shows how network security groups are attached to logical
 
 ## Prerequisites
 
-<!--# [Azure CLI](#tab/azurecli)-->
+# [Azure CLI](#tab/azurecli)
 
 - You have access to an Azure Local instance.
 
@@ -40,7 +40,7 @@ Here is a diagram that shows how network security groups are attached to logical
     - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
-<!--# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azureportal)
 
 - You have access to an Azure Local instance.
 
@@ -48,11 +48,11 @@ Here is a diagram that shows how network security groups are attached to logical
     - This instance has a custom location created.
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
 ---
--->
 
-<!--## Create network security groups and network security rules-->
 
-<!--# [Azure CLI](#tab/azurecli)-->
+## Create network security groups and network security rules
+
+# [Azure CLI](#tab/azurecli)
 
 ## Sign in and set subscription
 
@@ -254,7 +254,7 @@ Run the following command to create an outbound network security rule that block
   az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
   ```
 
-<!--# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azureportal)
 
 ## Create a network security group
 
@@ -373,7 +373,7 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
 You can apply a default network access policy to an existing VM.
 
 ---
--->
+
 
 ## Next steps
 

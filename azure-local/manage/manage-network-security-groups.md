@@ -4,7 +4,7 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/22/2025
+ms.date: 05/05/2025
 ms.service: azure-local
 ---
 
@@ -19,7 +19,7 @@ This article describes how to manage network security groups (NSGs) on your Azur
 
 ## Prerequisites
 
-<!--# [Azure CLI](#tab/azurecli)-->
+# [Azure CLI](#tab/azurecli)
 
 - You have access to an Azure Local instance.
 
@@ -29,7 +29,7 @@ This article describes how to manage network security groups (NSGs) on your Azur
     - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
     - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](../manage/create-network-security-groups.md).
 
-<!--# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azureportal)
 
 - You have access to an Azure Local instance.
 
@@ -38,10 +38,10 @@ This article describes how to manage network security groups (NSGs) on your Azur
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     
 ---
--->
-<!--## Manage network security groups and network security rules-->
 
-<!--# [Azure CLI](#tab/azurecli)-->
+## Manage network security groups and network security rules
+
+# [Azure CLI](#tab/azurecli)
 
 ## Sign in and set subscription
 
@@ -680,7 +680,7 @@ You may need to delete a network security rule if you no longer need it. You can
 
     Use the `list` command to verify that the network security rule is deleted.
 
-<!--# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azureportal)
 
 This section describes the manage operations supported for network security groups and network security rules. These operations are available in the Azure portal.
 
@@ -803,7 +803,7 @@ To update a network security rule, follow these steps:
 1. Once the network security rule is updated, the page refreshes to indicate the update.
 
 ---
--->
+
 
 ## Next steps
 
