@@ -23,7 +23,7 @@ Starting with 2504 release, Microsoft introduced a new versioning schema. There 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.19  | 23598.1551        | Existing deployments only.        |
+|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
