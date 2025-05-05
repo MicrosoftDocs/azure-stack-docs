@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 04/22/2025
+ms.date: 05/05/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
@@ -90,7 +90,7 @@ Consider this information before you enable SDN:
     This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
-    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 - Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
     - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no resposnse, it means that the name is unique.
     - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
