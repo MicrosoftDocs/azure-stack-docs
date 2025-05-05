@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Local instance (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/15/2024
+ms.date: 05/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -37,6 +37,9 @@ With Azure Migrate, you can choose to migrate your data from your on-premises Hy
 The following diagram shows the migration process to your on-premises Azure Local instance:
 
 :::image type="content" source="./media/migration-azure-migrate-azure-local-overview/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for migration using Azure Migrate.":::
+
+> [!NOTE]
+> The above architecture diagram was created as part of Arc Jumpstart. To download its source file in a high-resolution format, see [Jumpstart Gems](https://jumpstart.azure.com/azure_jumpstart_gems).
 
 The migration process requires the following components:
 

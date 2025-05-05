@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Local instance (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/28/2024
+ms.date: 05/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -37,6 +37,9 @@ The following diagram shows the migration process to your on-premises Azure Loca
 
 :::image type="content" source="./media/migration-azure-migrate-vmware-overview/azure-migrate-vmware-workflow-1.png" alt-text="Diagram that shows a high-level workflow for VMware migration using Azure Migrate.":::
 
+> [!NOTE]
+> The above architecture diagram was created as part of Arc Jumpstart. To download its source file in a high-resolution format, see [Jumpstart Gems](https://jumpstart.azure.com/azure_jumpstart_gems).
+
 The migration process requires the following components:
 
 - An Azure Migrate project. Both the source and target appliances need to be registered with this project.
@@ -44,7 +47,7 @@ The migration process requires the following components:
 - Target appliance running on your on-premises Azure Local instance. The target system hosts the VMs that you migrated from your VMware source environment.
 
 > [!NOTE]
-> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Local instance. The VMware VM disks and data that are being migrated are not stored in the associated Azure Storage account. Only the metadata is stored in Storage account.
+> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Local instance. The VMware VM disks and data that are being migrated are not stored in the associated Azure Storage account. Only the metadata is stored in the Azure Storage account.
 
 ## Migration phases
 

@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 05/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -165,10 +165,30 @@ The target system fails to validate because the FQDN is not DNS-resolvable by de
 
 **Recommended resolution**
 
-Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+If the target machine validation step fails during migration, follow these steps to resolve the issue:
 
-Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>.
+1. Manually map the Azure Local IP to its corresponding FQDN:
 
+    1. Edit the hosts file located at C:\Windows\System32\drivers\etc\hosts. 
+
+    1. Add a new line using the format: 
+        `<Cluster IP>    <Cluster FQDN>`
+
+1. Verify the FQDN is reachable by ensuring that the system FQDN can be successfully pinged from the source appliance.
+
+1. Enable WinRM on each target cluster node (if not already enabled). Run the following PowerShell command on each machine:
+ 
+    ```PowerShell
+        Enable-PSRemoting -Force
+    ```
+
+1. Test remote PowerShell connectivity. From the source appliance, ensure the following command completes successfully:
+
+    ```PoweShell
+        Enter-PSSession -ComputerName <Cluster FQDN> -Credential $Cred
+    ```
+
+1. Confirm required ports are open. See Prerequisites section to ensure all necessary ports are allowed between the source appliance and the Azure Local instance.
 
 ### Deleting or changing target system information from Source Appliance Configuration Manager doesn't work.
 
