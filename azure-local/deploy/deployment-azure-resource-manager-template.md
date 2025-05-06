@@ -129,7 +129,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. When finished, select the **Select template** button.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-ealier" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-ealier":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png":::
 
 ::: moniker-end
 
