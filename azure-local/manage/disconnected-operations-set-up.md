@@ -82,7 +82,7 @@ To create a virtual appliance and download the required files for your on-premis
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
 
-9. When the steps are complete - put all the files in a share or onto a portable media. You need these files during the deployment process.
+9. When the steps are complete, put all the files in a share or onto a portable media. You need these files during the deployment process.
 
 ## Related content
 
