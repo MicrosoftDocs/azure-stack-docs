@@ -12,8 +12,6 @@ ms.custom: devx-track-arm-template
 
 # Deploy Azure Local via Azure Resource Manager deployment template
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Local in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
@@ -121,8 +119,6 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
 
-1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
-
 ::: moniker range="<=azloc-24113"
 
 1. From the **Quickstart template (disclaimer)** dropdown list, select the **create-cluster-2411.3** template.
@@ -133,9 +129,15 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 ::: moniker-end
 
+::: moniker range=">=azloc-2503"
+
+1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
+
 1. When finished, select the **Select template** button.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
+
+::: moniker-end
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
