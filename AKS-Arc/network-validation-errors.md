@@ -29,6 +29,14 @@ The following table summarizes the error codes, possible causes of the errors, a
 
 If the problem persists, [collect AKS cluster logs](get-on-demand-logs.md) before you [create the support request](aks-troubleshoot.md#open-a-support-request).
 
+## Test
+
+| Header 1 | Header 2 |
+|----------|----------|
+| - Item 1 | - Item A |
+| - Item 2 | - Item B |
+| - Item 3 | - Item C |
+
 ## Next steps
 
 [Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
