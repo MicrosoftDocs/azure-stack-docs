@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 05/05/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -186,6 +186,13 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
+
+1. In the Azure portal, go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
+
+    > [!NOTE]
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed. 
 
 ## Next steps
 

@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 05/01/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
@@ -11,12 +11,9 @@ ms.service: azure-local
 
 # Deploy Azure Local using the Azure portal
 
-> Applies to: Azure Local 2503 and later
+::: moniker range=">=azloc-2503"
 
 This article helps you deploy an Azure Local instance using the Azure portal.
-
-> [!IMPORTANT]
-> The Azure portal will block deployments of Azure Local for versions 2411.3 or earlier. To deploy these versions, use an Azure Resource Manager (ARM) template. For more information, see [Deploy Azure Local via Azure Resource Manager deployment template](./deployment-azure-resource-manager-template.md).
 
 ## Prerequisites
 
@@ -339,3 +336,11 @@ You might need to connect to the system via RDP to deploy workloads. Follow thes
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-24113"
+
+To deploy Azure Local versions 2411.3 or earlier, use the **create-cluster-2411.3** Azure Resource Manager (ARM) template. For more information, see [Deploy Azure Local via Azure Resource Manager deployment template](./deployment-azure-resource-manager-template.md).
+
+::: moniker-end
