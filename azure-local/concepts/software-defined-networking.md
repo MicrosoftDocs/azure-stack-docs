@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 04/17/2023
+ms.date: 05/06/2025
 ---
 
 # Software Defined Networking (SDN) in Azure Stack HCI and Windows Server
@@ -21,7 +21,7 @@ Virtual network elements such as [Hyper-V Virtual Switch](/windows-server/virtua
 There are three major SDN components, and you can choose which you want to deploy: Network Controller, Software Load Balancer, and Gateway.
 
    > [!NOTE]
-   > SDN is not supported on stretched (multi-site) clusters.
+   > SDN isn't supported on stretched (multi-site) clusters.
 
 ## Network Controller
 
@@ -45,7 +45,7 @@ You have the option to [deploy SDN Network Controller using SDN Express](../mana
 Gateways are used for routing network traffic between a virtual network and another network, either local or remote. Gateways can be used to:
 
 - Create secure site-to-site IPsec connections between SDN virtual networks and external customer networks over the internet.
-- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter is not an encrypted connection. For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server).
+- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter isn't an encrypted connection. For more information about GRE connectivity scenarios, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server).
 - Create Layer 3 connections between SDN virtual networks and external networks. In this case, the SDN gateway simply acts as a router between your virtual network and the external network.
 
 Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) to advertise GRE endpoints and establish point-to-point connections. SDN deployment creates a default gateway pool that supports all connection types. Within this pool, you can specify how many gateways are reserved on standby in case an active gateway fails.
