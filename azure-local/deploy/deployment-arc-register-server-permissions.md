@@ -71,7 +71,7 @@ Before you begin, make sure you complete the following prerequisites:
     Here's a sample output of the parameters:
 
     ```output
-    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+    PS C:\Users\SetupUser> $SubscriptionId = "<Subscription ID>"
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
