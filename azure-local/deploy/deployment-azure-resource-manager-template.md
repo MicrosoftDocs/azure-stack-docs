@@ -111,19 +111,19 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
-1. Select **Create** under **Template deployment (deploy using custom templates)**.
+2. Select **Create** under **Template deployment (deploy using custom templates)**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing the template deployment (deploy using custom template)." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png":::
 
-1. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
+3. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
 
 ::: moniker range="<=azloc-24113"
 
-1. From the **Quickstart template (disclaimer)** dropdown list, select the **create-cluster-2411.3** template.
+4. From the **Quickstart template (disclaimer)** dropdown list, select the **create-cluster-2411.3** template.
 
-1. When finished, select the **Select template** button.
+5. When finished, select the **Select template** button.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png":::
 
@@ -131,53 +131,53 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 ::: moniker range=">=azloc-2503"
 
-1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
+4. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
-1. When finished, select the **Select template** button.
+5. When finished, select the **Select template** button.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
 ::: moniker-end
 
-1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
+6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
 
-1. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
+7. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
-1. Select the appropriate resource group for your environment.
+8. Select the appropriate resource group for your environment.
 
-1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
+9. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
-1. Select **Review + create**.
+10. Select **Review + create**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
-1. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
+11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
 
-1. Once validation is complete, select **Redeploy**.
+12. Once validation is complete, select **Redeploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png":::
 
-1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
+13. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
-1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
+14. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
-1. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
+15. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
 
-1. Select the appropriate resource group for your environment.
+16. Select the appropriate resource group for your environment.
 
-1. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
+17. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
 
-1. Select **Review + create**.
+18. Select **Review + create**.
 
-1. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
+19. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
 
     The Deployment screen cycles on the cluster resource during deployment.
 
@@ -185,13 +185,13 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
 
-1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
+20. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
-1. Select **Deployments**.
+21. Select **Deployments**.
 
-1. Refresh and watch the deployment progress from the first machine (also known as the seed machine and is the first machine where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
+22. Refresh and watch the deployment progress from the first machine (also known as the seed machine and is the first machine where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
-1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
+23. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
     Once complete, the task at the top updates with status and end time.
 
