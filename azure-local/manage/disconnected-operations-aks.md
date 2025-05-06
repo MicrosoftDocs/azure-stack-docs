@@ -72,7 +72,7 @@ For more information, see [Install the Azure CLI extension](/azure/aks/aksarc/ak
 
 ### Sign in with Azure CLI
 
-You can use the az login command to sign in to your Azure account. For more information, see [Sign in with credentials on the command line](/cli/azure/authenticate-azure-cli-interactively#sign-in-with-credentials-on-the-command-line).
+You can use the `az login` command to sign in to your Azure account. For more information, see [Sign in with credentials on the command line](/cli/azure/authenticate-azure-cli-interactively#sign-in-with-credentials-on-the-command-line).
 
 ### Create logical networks
 
@@ -87,14 +87,13 @@ For more information, see [Create logical networks](/azure/aks/aksarc/aks-networ
 > [!NOTE]
 > Creating logical networks can be created through CLI only ; the operations through the portal isn't supported. For more information, see [Azure Local VM limitations](../manage/disconnected-operations-arc-vm.md#limitations).
 
-
 ### Create the cluster
 
-To create the AKS cluster, we recommend you use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster). 
+To create the AKS cluster, we recommend you use CLI. For more information, see [Create an AKS cluster through CLI](/azure/aks/aksarc/aks-create-clusters-cli#create-a-kubernetes-cluster).
 
 To use the Azure portal, see [Create a Kubernetes cluster using the Azure portal](/azure/aks/aksarc/aks-create-clusters-portal#create-a-kubernetes-cluster). To create the SSH keys, see [Generate and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli).
 
-Use the az aksarc create cmdlet to create a Kubernetes cluster.
+Use the `az aksarc create` cmdlet to create a Kubernetes cluster.
 
 ```azurecli
 az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --generate-ssh-keys
