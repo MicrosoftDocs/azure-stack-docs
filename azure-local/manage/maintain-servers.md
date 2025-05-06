@@ -40,7 +40,7 @@ Before either shutting down or restarting a server, you should pause the server 
 
    *Pause server(s) for maintenance: Are you sure you want to pause server(s)? This moves workloads, such as virtual machines, to other servers in the cluster.​*
 
-3. Select **yes** to pause the server and initiate the drain process. The server status shows as **In maintenance, Draining**, and roles such as Hyper-V and VMs immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until resumes. When the draining process is finished, the server status shows as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it's safe to proceed. If there are unhealthy volumes, it stops and alerts you that it's not safe to proceed.
+3. Select **yes** to pause the server and initiate the drain process. The server status shows as **In maintenance, Draining**, and roles such as Hyper-V and VMs immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it resumes. When the draining process is finished, the server status shows as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it's safe to proceed. If there are unhealthy volumes, it stops and alerts you that it's not safe to proceed.
 
 ### Shut down the server
 
