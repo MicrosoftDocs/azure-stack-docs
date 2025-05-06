@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/01/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -58,7 +58,7 @@ A Resource Manager template creates and assigns all the resource permissions req
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 > [!IMPORTANT]
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those parameters need to be populated or the validation fails.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
