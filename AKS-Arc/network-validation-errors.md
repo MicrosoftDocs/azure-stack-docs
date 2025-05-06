@@ -33,7 +33,7 @@ If the problem persists, [collect AKS cluster logs](get-on-demand-logs.md) b
 
 | Header 1 | Header 2 |
 |----------|----------|
-| - Item 1 | - Item A |
+| - Item 1 - Item 1a | - Item A |
 | - Item 2 | - Item B |
 | - Item 3 | - Item C |
 
