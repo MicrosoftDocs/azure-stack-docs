@@ -12,9 +12,9 @@ ms.lastreviewed: 05/06/2025
 
 # Troubleshoot network validation errors
 
-This article provides guidance on identifying and resolving various network validation errors encountered during cluster creation, emphasizing the importance of pre-checks for early issue detection. These errors are detected by pre-checks designed to highlight issues early, allowing for easier resolution before the cluster is created.
+This article describes how to identify and resolve various network validation errors encountered during cluster creation, emphasizing the importance of pre-checks for early issue detection. These errors are detected by pre-checks designed to highlight issues early, allowing for easier resolution before the cluster is created.
 
-The article summarizes the error codes, possible causes of the errors, and mitigation steps.
+The article summarizes error codes, their potential causes, and actionable mitigation steps to help you resolve issues effectively.
 
 ## CloudAgentConnectivityError
 
@@ -31,7 +31,7 @@ The MOC cloud agent is created using one of the IP addresses from the [Managemen
 Logical network IP addresses can't connect to management IP pool addresses, due to:
 
 - Incorrect DNS server resolution.
-- Firewall rules between the Arc VM logical network and the cloud agent endpoint.<br/>
+- Firewall rules between the Arc VM logical network and the cloud agent endpoint.
 - The logical network is in a different VLAN than the management IP pool and there's no cross-VLAN connectivity.
 
 ### Mitigation
@@ -39,7 +39,7 @@ Logical network IP addresses can't connect to management IP pool addresses, due 
 To resolve this error, you can take the following steps:
 
 - Make sure that the DNS servers specified in the Arc VM logical network can resolve the MOC cloud agent FQDN.
-- Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. See the [AKS network port and cross VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for a detailed list of ports that need to be opened.
+- Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements).
 
 ## InternetConnectivityError
 
@@ -79,7 +79,7 @@ The Arc VM logical network is not reachable from management IP pool addresses.
 To resolve this error, you can take the following steps:
 
 - Make sure that the management IP pool addresses can reach the logical network IP addresses.
-- Check the [AKS network port and cross VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for a detailed list of ports that need to be opened.
+- For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements).
 
 ## DNSResolutionError
 
@@ -95,7 +95,7 @@ To resolve this error, check the DNS servers specified in the logical network so
 
 ## Contact Microsoft Support
 
-If the problems persist, [collect AKS cluster logs](get-on-demand-logs.md) before you [create a support request](aks-troubleshoot.md#open-a-support-request).
+If problems persist, [collect AKS cluster logs](get-on-demand-logs.md) before you [create a support request](aks-troubleshoot.md#open-a-support-request).
 
 ## Next steps
 
