@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 05/06/2025
 ---
 
 # Failover cluster maintenance procedures
@@ -40,7 +40,7 @@ Before either shutting down or restarting a server, you should pause the server 
 
    *Pause server(s) for maintenance: Are you sure you want to pause server(s)? This moves workloads, such as virtual machines, to other servers in the cluster.​*
 
-3. Select **yes** to pause the server and initiate the drain process. The server status shows as **In maintenance, Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it's resumed. When the draining process is finished, the server status shows as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it's safe to proceed. If there are unhealthy volumes, it stops and alerts you that it's not safe to proceed.
+3. Select **yes** to pause the server and initiate the drain process. The server status shows as **In maintenance, Draining**, and roles such as Hyper-V and VMs immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until resumes. When the draining process is finished, the server status shows as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it's safe to proceed. If there are unhealthy volumes, it stops and alerts you that it's not safe to proceed.
 
 ### Shut down the server
 
@@ -168,7 +168,7 @@ Resume-ClusterNode –Failback Immediate
 
 To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Resume** > **Fail Roles Back**.
 
-Once the server has resumed, it shows as **Up** in PowerShell and Failover Cluster Manager.
+Once the server resumes, it shows as **Up** in PowerShell and Failover Cluster Manager.
 
 ### Wait for storage to resync
 
