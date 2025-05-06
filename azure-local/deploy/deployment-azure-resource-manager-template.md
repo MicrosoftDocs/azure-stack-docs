@@ -123,16 +123,19 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
-1. When finished, **Select template**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
-
 ::: moniker range="<=azloc-24113"
 
-    > [!NOTE]
-    > For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
+1. From the **Quickstart template (disclaimer)** dropdown list, select the **create-cluster-2411.3** template.
+
+1. When finished, select the **Select template** button.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png":::
 
 ::: moniker-end
+
+1. When finished, select the **Select template** button.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
