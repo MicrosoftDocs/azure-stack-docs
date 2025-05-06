@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 04/29/2025
+ms.date: 05/06/2025
 ---
 
 # System requirements for Azure Stack HCI, version 22H2
@@ -112,7 +112,7 @@ For best results, adhere to the following requirements:
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
 - Verify at least one network adapter is available and dedicated for cluster management.
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you'll use.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you use.
 
 For physical networking considerations and requirements, see [Physical network requirements](physical-network-requirements.md).
 
@@ -153,7 +153,7 @@ If you use Windows Admin Center to [create](../deploy/create-cluster.md) or [man
 
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 
-- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 ## Maximum supported hardware specifications
 
