@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/29/2025
+ms.date: 05/07/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
