@@ -117,7 +117,7 @@ A Resource Manager template creates and assigns all the resource permissions req
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 > [!IMPORTANT]
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those parameters need to be populated or the validation fails.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
