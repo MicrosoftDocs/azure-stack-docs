@@ -3,7 +3,7 @@ title: Set up a cluster witness
 description: Learn how to set up a cluster witness 
 author: alkohli 
 ms.topic: how-to
-ms.date: 04/29/2025
+ms.date: 05/06/2025
 ms.author: alkohli 
 ms.reviewer: stevenek 
 ---
@@ -24,7 +24,7 @@ To learn more about cluster witnesses and quorum, see [Understanding cluster and
 
 ## Before you begin
 
-Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. See the following articles for more information:
+Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. For more information, see the following articles:
 
 - Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allowlists you're using between the cluster and Azure Storage. For details, see [Required firewall URLs](../concepts/firewall-requirements.md).
 - If your network uses a proxy server for internet access, you must [configure proxy settings for Azure Stack HCI](./configure-proxy-settings.md).
