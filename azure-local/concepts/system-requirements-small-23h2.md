@@ -1,6 +1,6 @@
 ---
-title: System requirements for low capacity deployments of Azure Local, version 23H2 (preview)
-description: How to choose machines, storage, and networking components for low capacity deployments of Azure Local, version 23H2 (preview).
+title: System requirements for low capacity deployments of Azure Local (preview)
+description: How to choose machines, storage, and networking components for low capacity deployments of Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -19,32 +19,29 @@ This article describes the requirements for machines, storage, and networking fo
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About the small hardware class
+## About the low capacity class
 
-Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class called *lower capacity* is suited for various edge scenarios across the industry horizontals. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
+Azure Local supports a new class of devices with reduced hardware requirements. This new, low-cost hardware class called *low capacity* is suited for various edge scenarios across industry. To ensure compatibility, interoperability, security, and reliability, this class of hardware must meet Azure Local solution requirements.
 
 ## Device requirements
 
 Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
-The following table lists the requirements for the small hardware:
+The following table lists the requirements for low capacity hardware:
 
 | Component | Description |
 |-----------|-------|
-| Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
+| Number of machines | One to three machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
 | CPU | An Intel Xeon or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> Up to 14 physical cores |
 | Memory | A minimum of 32 GB per machine and a maximum of 128 GB per machine with Error-Correcting Code (ECC). |
-| Host network adapters | 1 network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intent is not required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In 2 or 3 node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
+| Host network adapters | One network adapter that meets the [Azure Local host network requirements](./host-network-requirements.md)<br> Enabling RDMA on storage intent isn't required.<br> Minimum link speed must be 1 Gbps for single node deployment.<br>In two or three node deployments, a dedicated network port for storage with minimum 10 Gbps is required.   |
 | BIOS | Intel VT or AMD-V must be turned on.|
 | Boot drive | A minimum size of 200 GB.|
 | Data drives | A minimum single disk of capacity 1 TB. <br> The drives must be all flash single drive type, either Nonvolatile Memory Express (NVME) or Solid-State Drive (SSD). <br> All the drives must be of the same type. <br> No caching. |
 | Trusted Platform Module (TPM) | TPM version 2.0 hardware must be present and enabled. |
 | Secure Boot | Secure Boot must be present and turned on. |
 | Storage Controller | Pass-through. <br> RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) aren't supported. |
-| GPU | Optional<br>Up to 192 GB GPU memory per machine. |
-
-<!-- >>[!IMPORTANT]
-> For 2411 release, Update, `Add-server`, and `Repair-server` operations aren't supported for the small hardware class. -->
+| GPU | Optional<br>Up to 192-GB GPU memory per machine. |
 
 ## Storage requirements
 
@@ -52,7 +49,7 @@ The storage subsystem for an Azure Local running the Azure Stack HCI OS is layer
 
 - A minimum of one data drive is required to create a storage pool.
 - All drives in the pool must be of the same type, either NVMe or SSD.
-- Mixing drive types for caching (NVMe and SSD) isn't supported. This doesn't apply to the boot drive.  
+- Mixing drive types used for caching (NVMe and SSD) isn't supported. It is supported for the boot drive however.  
 
 The supported volume configuration for the system is:
 
@@ -83,12 +80,12 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 
 ### Minimum speed requirements
 
-| Single node | Two or three node,<br>switched storage | Two or three node,<br>switchless storage |
+| Single node | Two or three nodes,<br>Switched storage | Two or three nodes,<br>Switchless storage |
 | -- | -- | -- |
-| 1 GbE linked to switch* | Dedicated network port for storage - 10 Gbps minimum.<br><br>Switch capable of 10 Gbps minumum (RDMA optional).<br><br>Management and compute network -1 Gpbs minimum. | Dedicated network adapter port(s) for storage - 10 Gbps minimum.<br><br>RDMA automatically enabled if supported by adapter.<br><br>Management and compute network via switch - 1 Gpbs minimum. |
+| 1 GbE linked to switch* | Dedicated network port for storage - 10 Gbps minimum.<br><br>Switch capable of 10 Gbps minimum (RDMA optional).<br><br>Management and compute network -1 Gpbs minimum. | Dedicated network adapter ports for storage - 10 Gbps minimum.<br><br>RDMA automatically enabled if supported by adapter.<br><br>Management and compute network via switch - 1 Gpbs minimum. |
 
 > [!NOTE]
-> You can't add nodes to the system without redeploying Azure Local. If you need additional nodes, use a dedicated storage intent with a minimum of 10 Gbps.
+> You can't add nodes to the system without redeploying Azure Local. If you need more nodes, use a dedicated storage intent with a minimum of 10 Gbps.
 
 (Optional) If you use a layer 3 switch with RDMA (10 Gpbs minimum), you can group all traffic (management, compute, and storage intent) together across one, two, and three node clusters.  
 
@@ -97,7 +94,7 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 | Intent grouping | Single node | Two or three nodes |
 | -- | -- | -- |
 | Management and compute (no storage) | yes | n/a |
-| Management and compute (1 Gbps min),<br>and dedicated storage traffic (10 Gbps) | yes | yes|
+| Management and compute (1 Gbps min),<br>And dedicated storage traffic (10 Gbps) | yes | yes|
 | All traffic | RDMA capable switch, 10 Gbps minimum | RDMA capable switch, 10 Gbps minimum |
 
 ### Supported sample network configurations
@@ -112,13 +109,13 @@ Removal of RDMA allows the use of a layer 2 network switch with VLAN support. Th
 
 ## Considerations
 
-The following are some workload considerations for building a solution using the small hardware class:
+The following are some workload considerations for building a solution using the low capacity hardware:
 
-- Baseline workload IOP requires sizing storage configuration to see if small hardware class is the right fit.
-- vCPU requirements and target ratio due to lower total physical cores when using the small hardware class.
-- The total memory requirement for three servers using the small hardware class should be calculated. It's important to ensure that there is enough capacity to keep one node free to handle updates and manage failures.
+- Baseline workload Input Output operations per second (IOPS) require sizing storage configuration to see if the low capacity hardware is the right fit.
+- vCPU requirements and target ratio due to lower total physical cores when using low capacity hardware.
+- The total memory requirement for three servers using low capacity hardware should be calculated. It's important to ensure that there's enough capacity to keep one node free to handle updates and manage failures.
 - Network bandwidth requirements.
-- The VM creation time is critical as it's influenced by network bandwidth.
+- Virtual machine (VM) creation time is critical and is influenced by network bandwidth.
 
 ### Availability
 
