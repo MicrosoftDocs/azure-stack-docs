@@ -43,7 +43,7 @@ items:
     items:
     - name: System requirements
       href: concepts/system-requirements-23h2.md
-    - name: System requirements for Small Form Factor
+    - name: System requirements for low capacity class
       href: concepts/system-requirements-small-23h2.md
     - name: Physical network requirements
       href: concepts/physical-network-requirements.md
