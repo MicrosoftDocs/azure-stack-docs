@@ -4,7 +4,7 @@ description: Learn how to troubleshoot general network validation errors in AKS 
 author: sethmanheim
 ms.author: sethm
 ms.topic: troubleshooting
-ms.date: 05/06/2025
+ms.date: 05/07/2025
 ms.reviewer: pradwivedi
 ms.lastreviewed: 05/06/2025
 
@@ -12,7 +12,7 @@ ms.lastreviewed: 05/06/2025
 
 # Troubleshoot network validation errors
 
-This article describes how to identify and resolve various network validation errors encountered during cluster creation, emphasizing the importance of pre-checks for early issue detection. These errors are detected by pre-checks designed to highlight issues early, allowing for easier resolution before the cluster is created.
+This article describes how to identify and resolve various network validation errors you might encounter during cluster creation. The article emphasizes the importance of pre-checks for early issue detection. These errors are detected by pre-checks designed to highlight issues early, allowing for easier resolution before the cluster is created.
 
 The article summarizes error codes, their potential causes, and actionable mitigation steps to help you resolve issues effectively.
 
