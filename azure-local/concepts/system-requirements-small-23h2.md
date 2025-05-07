@@ -28,6 +28,7 @@ Azure Local supports a new class of devices with reduced hardware requirements. 
 Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
 The following table lists the requirements for the small hardware:
+
 | Component | Description |
 |-----------|-------|
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
