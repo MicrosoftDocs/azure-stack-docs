@@ -55,7 +55,7 @@ Follow these guidelines to update to each release within your current release tr
   |--------------------------------------|-------------------|
   | Nov 2024                             | 2411 --> 2411.1   |
   | December 2024 or later               | 2411.1 --> 2411.2 |
-  | February 2024                        | 2411.2 --> 2411.3 |
+  | February 2025                        | 2411.2 --> 2411.3 |
 
 - To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2408 feature build, update to a later build within six months.
 
@@ -83,7 +83,7 @@ Starting in 2504, we offer two releases. One release provides the path to upgrad
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
-| 12.2504.1001.20 <br><br> Availability date: 2025-04-23 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) | 
+| 12.2504.1001.20 <br><br> Availability date: 2025-04-29 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
 
 ---
 
