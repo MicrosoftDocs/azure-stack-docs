@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 04/30/2025
+ms.date: 05/07/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 12/03/2024
+ms.lastreviewed: 05/07/2025
 
 ---
 
@@ -32,6 +32,8 @@ Before you begin, make sure you have the following prerequisites:
 - Make sure that **kubectl** is installed on your local machine. If you need to install **kubectl**, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).  
 - Install the **aksarc** extension, and make sure the version is at least 1.5.37. To get the list of installed CLI extensions, run `az extension list -o table`.
 - If you use a Powershell terminal, make sure the version is at least 7.4.
+
+For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). The AI toolchain operator extension currently supports KAITO version 0.4.5. Make a note of this in considering your choice of model from the KAITO model repository.
 
 ## Create a cluster with KAITO
 
@@ -100,7 +102,7 @@ To deploy the AI model, follow these steps:
 1. Create a YAML file with the following sample file. In this example, we use the Phi 3.5 Mini model by specifying the preset name as **phi-3.5-mini-instruct**. If you want to use other LLMs, use the preset name from the KAITO repo. You should also make sure that the LLM can deploy on the VM SKU based on the matrix table in the "Model VM SKU Matrix" section.
 
    ```yaml
-   apiVersion: kaito.sh/v1alpha1
+   apiVersion: kaito.sh/v1beta1
    kind: Workspace
    metadata:
     name: workspace-llm # Update the workspace name as needed
