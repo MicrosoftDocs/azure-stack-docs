@@ -67,7 +67,7 @@ sections:
     - question: |
         Why is my image drop-down list blank when creating my Azure Local VM using Trusted launch?
       answer: | 
-        When you create an Azure Local VM using Trusted launch, your image must be available on your cluster. If your image isn't available, the drop-down lists during the creation process will be blank. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](./virtual-machines/windows/trusted-launch#guest-operating-system-images).
+        When you create an Azure Local VM using Trusted launch, your image must be available on your cluster. If your image isn't available, the drop-down lists during the creation process will be blank. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](/azure/azure-local/manage/trusted-launch-vm-overview?view=azloc-24113#guest-operating-system-images).
 
     - question: |
         Can I use the same name for gallery image projections and do existing VMs use the new image?

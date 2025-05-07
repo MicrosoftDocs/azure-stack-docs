@@ -15,7 +15,9 @@ ms.service: azure-local
 
 This article describes how to collect logs and troubleshoot issues with Azure Local VMs enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
 
-When you create an Azure Local VM, your image must be available on your cluster. If your image isn't available, the drop-down lists for options like security type and image will appear blank during the creation process. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](#guest-operating-system-images).
+## Unable to select an image for Trusted launch VMs
+
+When you create an Azure Local VM, your image must be available on your cluster. If your image isn't available, the drop-down lists for options like security type and image will appear blank during the creation process. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images).
 
 ## Failure when trying to enable guest management
 
