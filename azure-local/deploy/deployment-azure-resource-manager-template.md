@@ -29,6 +29,12 @@ This article details how to use an Azure Resource Manager template in the Azure 
 
 ::: moniker-end
 
+::: moniker range=">=azloc-2503"
+
+- For Azure Local 2503 and later versions, make sure to select the **create-cluster** template for deployment.
+
+::: moniker-end
+
 ## Step 1: Prepare Azure resources
 
 Follow these steps to prepare the Azure resources you need for the deployment:
