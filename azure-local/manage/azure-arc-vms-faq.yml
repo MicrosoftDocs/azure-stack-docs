@@ -9,8 +9,6 @@ metadata:
   ms.date: 05/02/2025
   sections: []
 title: Azure Local VMs enabled by Azure Arc FAQ
->>>>>>> 2c96c446253cbcd368606f189ef42a5b1f61097c
-
 summary:
   Frequently asked questions about Azure Local VMs enabled by Azure Arc for versions 2311.2 and later.
 
