@@ -1,64 +1,78 @@
 ---
-title: What's new in Azure Local, version 23H2 release
-description: Find out what's new in Azure Local, version 23H2 release.
+title: What's new in Azure Local latest release
+description: Find out what's new in Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/28/2025
+ms.date: 04/30/2025
 ---
 
 # What's new in Azure Local?
 
 [!INCLUDE [azure-local-banner-23h2](./includes/azure-local-banner-23h2.md)]
 
-This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local VM management, security, and more.
+[!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
+
+This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2504"
 
-<!--Starting with 2504 release, Microsoft has introduced a new versioning schema and a release cadence. There are two 2504 releases for April. Here are the details of each release:
+Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
- 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.19  | 23598.1551        | Existing deployments only.        |
+|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
 
-For more information, see [Release information summary](./release-information-23h2.md).-->
+For more information, see [Release information summary](./release-information-23h2.md).
 
 ## Features and improvements in 2504
 
 This release has the following features and improvements:
 
-<!--- **OS version changes**: Starting 2504, all new Azure Local deployments will use a new Operating System version 261000.3775.-->
+- **OS version changes**:
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
 
-- **.NET update installations improvements**
+- **.NET update installations improvements**:
   - Increased reliability of .NET security update installations.
 
-- **Registration and deployment changes**
+- **Registration and deployment changes**:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
+    - Proxy bypass list is now mandatory if a proxy configuration is specified.
 
-<!--- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) will be enabled by default for all new 2504 deployments running Operating System version 21600.3775. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).-->
+- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
-- **Azure Local VM changes**
-    <!--- Software Defined Networking (SDN) enabled by Azure Arc (Preview) - Starting with this release, Azure Local now supports SDN enabled by Azure Arc for new deployments. This preview feature enables deployment of the Network Controller as a failover cluster service. The feature introduces support for Network Security Groups (NSGs) on static logical networks and Azure Local VM network adapters on these networks, allowing for granular control of network traffic.
- 
-    To learn more about this Preview feature, see [SDN overview](./index.yml) -->
+- **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
-    - Documentation describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
+    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
+    - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
-- **Update improvements**
+- **Update improvements**:
     - Improved reliability when downloading updates.
     - Added a health check to ensure failover cluster nodes are healthy before starting the update.
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
-<!--- **OEM license changes**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).-->
+- **Add and repair node changes**:
+    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
 
-- **Solution extension improvements**
+- **OEM license changes**:
+    
+    - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
+
+- **Solution extension improvements**:
     - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
     - Improved reliability of copying solution extension content locally to each machine.
     - Added specification of plug-in name in the solution extension.
+
+- **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-122504100120-and-later).
+
+- **Archival of Azure Local, version 22H2 documentation**: The documentation for version 22H2 will be archived by May 31, 2025 and will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
 
 ::: moniker-end
 
@@ -67,11 +81,11 @@ This release has the following features and improvements:
 ## Features and improvements in 2503
 
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Preview availability of Azure Government cloud** - Azure Local is now available in the US Government regions in preview. Download the latest Azure Stack HCI OS image for Azure Government from [OS image](https://aka.ms/hcireleaseimage). For more information on where Azure Government is supported, see [Azure Local supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 
-    The following preview features are not supported for Azure Local in Azure Government cloud:
+    The following preview features aren't supported for Azure Local in Azure Government cloud:
 
     - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
     - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
@@ -94,11 +108,11 @@ This is a baseline release with the following features and improvements:
   - Environment checker validates PowerShell modules as per the validated solution recipe in the Pre-Update checks.
 
 - **Updates and upgrade improvements**
-  - The Solution Builder Extension update now supports both supported and non-supported SKUs for a given model.
-  - A tag has been added to indicate whether an update is the latest or has been superseded.
+  - The Solution Builder Extension update now supports both supported and nonsupported SKUs for a given model.
+  - A tag is added to indicate whether an update is the latest or is superseded.
   - HTTP content is now downloaded using a more resilient service (Download Service).
   - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
-  - OS content will be installed using the CAU plug-ins that are shipped with OS.
+  - OS content is installed using the CAU plug-ins that are shipped with OS.
   - Azure Local rebranding changes were made for this update.
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
@@ -114,7 +128,7 @@ This is a baseline release with the following features and improvements:
 
 ## Features and improvements in 2411.3
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
 - **Updated .NET version** - This build has an updated .NET version 8.0.13.
@@ -143,7 +157,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ## Features and improvements in 2411.1
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Azure Local VMs** - Starting this release, the deletion for attached resources (network interface, disk) is blocked while the associated Azure Local VM is in creation. For more information, see [Delete a network interface](./manage/manage-arc-virtual-machine-resources.md#delete-a-network-interface) and [Delete a data disk](./manage/manage-arc-virtual-machine-resources.md#delete-a-data-disk).
 
@@ -159,9 +173,9 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ## Features and improvements in 2411
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
-- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft has renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
+- **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
 
     For more information, see [Renaming Azure Stack HCI to Azure Local](./rename-to-azure-local.md).
 - **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
@@ -210,9 +224,9 @@ This is a baseline release with the following features and improvements:
 
 ## Features and improvements in 2408.2
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
-- **Azure Local VM management improvements**: Starting this release, following improvements were made to the Azure Local VM management experience:
+- **Azure Local VM management improvements**: Starting with this release, following improvements were made to the Azure Local VM management experience:
 
   - You can set a proxy configuration for Azure VMs on the Portal.
   - You can set a SQL Server configuration for Azure VMs on Portal.
@@ -221,7 +235,7 @@ This is a baseline release with the following features and improvements:
 
 ## Features and improvements in 2408.1
 
-This is a baseline release with the following features and improvements:
+This release has the following features and improvements:
 
 - **Environment checker improvements**: Starting in this release, a new validator was added in the environment checker that checks all storage adapters in each of the nodes.
 - **Install module version numbers**: Starting in this release, the install module version numbers for *Az.Accounts*, *Az. Resources*, and *Az.ConnectedMachine* were changed. For more information, see [Register machines with Azure Arc](./deploy/deployment-arc-register-server-permissions.md#register-machines-with-azure-arc).

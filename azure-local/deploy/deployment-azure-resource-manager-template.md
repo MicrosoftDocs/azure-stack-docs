@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -22,9 +22,9 @@ This article details how to use an Azure Resource Manager template in the Azure 
 ## Prerequisites
 
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-  - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
   - All machines are running the same version of OS.
   - All the machines have the same network adapter configuration.
+- For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 ## Step 1: Prepare Azure resources
 
@@ -32,14 +32,14 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Get the object ID for Azure Local Resource Provider
 
-This object ID for the Azure Local RP is unique per Azure tenant.
+This object ID for the Azure Local Resource Provide (RP) is unique per Azure tenant.
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
-1. Select the SPN that is listed and copy the **Object ID**.
+1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Local Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
@@ -58,7 +58,7 @@ A Resource Manager template creates and assigns all the resource permissions req
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 > [!IMPORTANT]
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those parameters need to be populated or the validation fails.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
@@ -75,6 +75,9 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 1. When finished, **Select template**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
+
+    > [!NOTE]
+    > For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
@@ -166,7 +169,7 @@ This section contains known issues and workarounds for ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png" alt-text="Screenshot showing the tenant ID, application ID, principal ID, and scope can't be updated message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png":::
 
-**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
+**Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as *Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
 
 :::image type="content" source="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png" alt-text="Screenshot showing the identity not found message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png":::
 
@@ -178,5 +181,5 @@ This section contains known issues and workarounds for ARM template deployment.
 
 ## Next steps
 
-- [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- [Deploy Azure Arc VMs on Azure Local](../manage/create-arc-virtual-machines.md)
+- [About Azure Local VM management](../manage/azure-arc-vm-management-overview.md)
+- [Create Azure Local VMs enabled by Azure Arc](../manage/create-arc-virtual-machines.md)

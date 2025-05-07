@@ -3,7 +3,7 @@ title: Geo-distributed app pattern in Azure Stack Hub
 description: Learn about the geo-distributed app pattern for the intelligent edge using Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: article
-ms.date: 04/03/2025
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod2019
 
