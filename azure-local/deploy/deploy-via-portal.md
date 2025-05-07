@@ -3,15 +3,13 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: alkohli
 ms.topic: how-to
-ms.date: 05/06/2025
+ms.date: 05/07/2025
 ms.author: alkohli
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Local instance of 1-16 machines via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
 # Deploy Azure Local using the Azure portal
-
-::: moniker range=">=azloc-2503"
 
 This article helps you deploy an Azure Local instance using the Azure portal.
 
@@ -20,9 +18,15 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
 <!-- Cristian to confirm * For three-node systems, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node systems with storage network adapters that are directly connected to each machine without a switch isn't supported in this preview.-->
 
+::: moniker range="<=azloc-24113"
+
+- For the deployment of Azure Local 2411.3 and earlier versions, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use it exclusively for deployment and not for any other purpose.
+
+::: moniker-end
+
 ## Start the wizard and fill out the basics
 
-1. Open a web browser and navigate to [**Azure portal**](https://portal.azure.com). Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
+1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc|Azure Local**, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
    :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
@@ -336,11 +340,3 @@ You might need to connect to the system via RDP to deploy workloads. Follow thes
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
-
-::: moniker-end
-
-::: moniker range="<=azloc-24113"
-
-To deploy Azure Local versions 2411.3 or earlier, use the **create-cluster-2411.3** Azure Resource Manager (ARM) template. For more information, see [Deploy Azure Local via Azure Resource Manager deployment template](./deployment-azure-resource-manager-template.md).
-
-::: moniker-end

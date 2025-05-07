@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/06/2025
+ms.date: 05/07/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -137,6 +137,13 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png":::
 
+6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
+
+> [!NOTE]
+> For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-2411.3/azuredeploy.parameters.json).
+
 ::: moniker-end
 
 ::: moniker range=">=azloc-2503"
@@ -147,11 +154,14 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
-::: moniker-end
-
 6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
+
+> [!NOTE]
+> For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json).
+
+::: moniker-end
 
 7. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
 
