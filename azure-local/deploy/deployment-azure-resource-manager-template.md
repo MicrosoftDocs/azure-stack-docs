@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/29/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -24,6 +24,7 @@ This article details how to use an Azure Resource Manager template in the Azure 
 - Completion of [Register your machines with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
   - All machines are running the same version of OS.
   - All the machines have the same network adapter configuration.
+- For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 ## Step 1: Prepare Azure resources
 
@@ -57,7 +58,7 @@ A Resource Manager template creates and assigns all the resource permissions req
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 > [!IMPORTANT]
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those parameters need to be populated or the validation fails.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
@@ -74,6 +75,9 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 1. When finished, **Select template**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
+
+    > [!NOTE]
+    > For Azure Local 2411.3 and earlier versions, make sure to select the **create-cluster-2411.3** template for deployment.
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 

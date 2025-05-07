@@ -6,15 +6,11 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-<<<<<<< HEAD
-  ms.date: 05/01/2025
-title: Azure Arc VM management FAQ
-=======
-  ms.date: 03/21/2025
+  ms.date: 05/02/2025
 title: Azure Local VMs enabled by Azure Arc FAQ
 >>>>>>> 2c96c446253cbcd368606f189ef42a5b1f61097c
 summary:
-  Frequently asked questions about Azure Local VMs enabled by Azure Arc for 2311.2 and later.
+  Frequently asked questions about Azure Local VMs enabled by Azure Arc for versions 2311.2 and later.
 
 sections:
   - name: ignored
@@ -41,6 +37,8 @@ sections:
       answer: |
         The Microsoft Support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
 
+        You can also learn more about upgrading at [About Azure Local upgrades](../upgrade/about-upgrades-23h2.md).
+
     - question: |
         Can Azure Kubernetes Service on Azure Local and Windows Server and Azure Arc resource bridge coexist on the same Azure Local instance?
       answer: |
@@ -54,7 +52,7 @@ sections:
     - question: |
         Can I use SDN for Azure Local VMs created from the Azure portal?
       answer: |
-        SDN is currently not supported for VMs created from the Azure portal.
+        SDN is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see [SDN in Azure Local](sdn-technical-reference.md).
 
     - question: |
         How can I perform live migration of Azure Local virtual machines?
@@ -64,7 +62,7 @@ sections:
     - question: |
         Is there a fee to manage Azure Local VMs?
       answer: |
-        No. Azure Local VMs can be managed by Azure CLI or Azure portal. In either case, no fee is charged. Some VM extensions might have a fee.
+        No. Azure Local VMs can be managed by Azure CLI or Azure portal. In either case, no fee is charged. Some VM extensions might have a fee. 
 
     - question: |
         Why is my image drop-down list blank when creating my Azure Local VM using Trusted launch?
