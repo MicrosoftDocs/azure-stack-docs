@@ -33,6 +33,8 @@ This article details how to use an Azure Resource Manager template in the Azure 
 
 Follow these steps to prepare the Azure resources you need for the deployment:
 
+::: moniker range="<=azloc-24113"
+
 ### Create a service principal and client secret
 
 To authenticate your system, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
@@ -78,6 +80,8 @@ The steps are also summarized here:
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
     You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
+
+::: moniker-end
 
 ### Get the object ID for Azure Local Resource Provider
 
