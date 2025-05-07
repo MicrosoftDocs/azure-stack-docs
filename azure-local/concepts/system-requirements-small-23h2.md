@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/01/2025
+ms.date: 05/07/2025
 ---
 
 # System requirements for low capacity deployments of Azure Local (Preview)
@@ -25,10 +25,9 @@ Azure Local supports a new class of devices with reduced hardware requirements. 
 
 ## Device requirements
 
-Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://azurelocalsolutions.azure.microsoft.com/).
+Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
 The following table lists the requirements for the small hardware:
-
 | Component | Description |
 |-----------|-------|
 | Number of machines | 1 to 3 machines are supported. Each machine must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives. |
