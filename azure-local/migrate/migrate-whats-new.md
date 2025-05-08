@@ -4,13 +4,17 @@ description: Learn about new features for Azure Migrate on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/07/2025
+ms.date: 05/08/2025
 ms.service: azure-local
 ---
 
 # What's new for VM migration on Azure Local
 
 This article lists the various features and improvements that are available in VM migration to Azure Local.
+
+## April 2025
+
+This release includes the following features and improvements:
 
 ## March 2025
 

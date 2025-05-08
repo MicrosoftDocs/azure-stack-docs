@@ -36,7 +36,7 @@ With Azure Migrate, you can choose to migrate your data from your on-premises Hy
 
 The following diagram shows the migration process to your on-premises Azure Local instance:
 
-:::image type="content" source="./media/migration-azure-migrate-azure-local-overview/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for migration using Azure Migrate.":::
+:::image type="content" source="./media/migration-azure-migrate-azure-local-overview/azure-migrate-hyperv-components.png" alt-text="Diagram showing migration components for Hyper-V in Azure Local." lightbox="./media/migration-azure-migrate-azure-local-overview/azure-migrate-hyperv-components.png":::
 
 > [!NOTE]
 > The above architecture diagram was created as part of Arc Jumpstart. To download its source file in a high-resolution format, see [Jumpstart Gems](https://jumpstart.azure.com/azure_jumpstart_gems).
