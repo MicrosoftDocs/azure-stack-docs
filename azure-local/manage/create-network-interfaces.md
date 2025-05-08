@@ -1,20 +1,20 @@
 ---
 title: Create network interfaces for virtual machines on Azure Local
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Local. The Arc VM running on your system uses these network interfaces.
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Local. The Azure Local VM enabled by Azure Arc uses these network interfaces.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 10/24/2024
+ms.date: 03/27/2025
 ---
 
-# Create network interfaces for Arc virtual machines on Azure Local
+# Create network interfaces for Azure Local VMs enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Local instance. You can create network interfaces using the Azure portal or the Azure CLI. 
+This article describes how to create network interfaces that you can associate with an Azure Local VM. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI). 
 
 
 ## About network interfaces
@@ -229,5 +229,5 @@ In the Azure portal, you create a network interface during the VM creation flow.
 
 ## Next steps
 
-- Use this network interface when you [Create an Arc VM on your Azure Local](./create-arc-virtual-machines.md).
+- Use this network interface when you [Create Azure Local VMs enabled by Azure Arc](./create-arc-virtual-machines.md).
 

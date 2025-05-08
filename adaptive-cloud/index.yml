@@ -1,16 +1,17 @@
 ### YamlMime:Hub
-title: Azure adaptive cloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
+title: Azure Adaptive Cloud documentation # azure hybrid multicloud docs documentation cloud stack hci apps solutions resources guidance
 summary: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
 brand: azure
 
 metadata:
-  title: Azure adaptive cloud documentation
+  title: Azure Adaptive Cloud documentation
   description: Leverage cloud-native and AI technologies to work simultaneously across hybrid, multicloud, edge, and IoT.
-  ms.service: azure-stack
+  ms.service: azure
+  ms.subservice: azure-adaptive-cloud
   ms.topic: hub-page
   author: asergaz 
   ms.author: sergaz
-  ms.date: 02/20/2025
+  ms.date: 04/17/2025
 
 # highlightedContent section (optional)
 # Maximum of 8 items
@@ -107,9 +108,6 @@ conceptualContent:
      - url: /azure-stack/user/azure-stack-kubernetes-aks-engine-overview
        itemType: overview
        text: Azure Kubernetes Services on Azure Stack Hub
-     - url: /azure/aks/hybrid
-       itemType: overview
-       text: Azure Kubernetes Services on Azure Stack HCI/AKS hybrid
      - url: /azure/docker/
        itemType: overview
        text: Docker on Azure
@@ -166,7 +164,7 @@ conceptualContent:
      links:
       - url: /azure/databox-online/data-box-gateway-overview
         itemType: overview
-        text: Azure Databox Gateway
+        text: Azure Data Box Gateway
       - url: /azure/iot-edge/
         itemType: overview
         text: Azure IoT Edge
@@ -231,9 +229,9 @@ conceptualContent:
       - url: /azure/site-recovery/
         itemType: overview
         text: Azure Site Recovery        
-      - url: /azure-stack/hci/overview
+      - url: /azure/azure-local/hybrid-capabilities-with-azure-services-23h2
         itemType: overview
-        text: Azure Stack HCI hybrid capabilities
+        text: Azure Local hybrid capabilities
       - url: /windows-server/manage/windows-admin-center/azure/
         itemType: overview
         text: Windows Admin Center Azure hybrid services
@@ -326,20 +324,6 @@ additionalContent:
     - title: Evaluation and learning resources
       items:
       # Cards
-      - title: Azure Stack 
-        links:
-          - url: /azure-stack/hci/guided-quick-deploy-eval
-            text: Azure Stack HCI evaluation guide
-          - url: https://www.youtube.com/watch?v=to8D7Xl9SU8
-            text: Azure Stack hybrid apps intro
-          - url: https://channel9.msdn.com/Shows/Azure-Friday/Building-modern-hybrid-applications-with-Azure-Arc-and-Azure-Stack 
-            text: Building modern hybrid applications with Azure Arc and Azure Stack
-          - url: https://www.youtube.com/watch?v=2lw8zOpJTn0
-            text: Dynamically scale from Azure Stack Hub to Azure 
-          - url: https://azure.microsoft.com/resources/videos/azure-modular-datacenter/             
-            text: Introducing the Azure Modular Datacenter
-          - url: https://www.youtube.com/watch?v=DPG7wGhh3sA
-            text: What's new for Azure Stack HCI
       - title: Development and integration
         links:
           - url: https://www.youtube.com/watch?v=to8D7Xl9SU8

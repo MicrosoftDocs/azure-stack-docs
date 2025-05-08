@@ -1,6 +1,6 @@
 ---
 title: Install existing applications with Helm
-description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service (AKS) clusters in AKS enabled by Azure Arc.
+description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service (AKS) clusters in AKS on Windows Server.
 services: container-service
 author: sethmanheim
 ms.topic: how-to
@@ -17,7 +17,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS enabled by Azure Arc.
+This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS on Windows Server.
 
 [Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as **APT** and **Sum**, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 

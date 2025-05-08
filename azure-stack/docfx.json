@@ -165,7 +165,6 @@
         }
       },
       "manager":"lizross",
-      "ms.service": "azure-stack",
       "recommendations": true
     },
     "fileMetadata": {
@@ -174,7 +173,8 @@
         "operator/**/*.md": "azure-stack-hub",
         "partner/**/*.md": "azure-stack-hub",
         "reference/**/*.md": "azure-stack-hub",
-        "user/**/*.md": "azure-stack-hub"
+        "user/**/*.md": "azure-stack-hub",
+        "ruggedized/**/*.md": "azure-stack-hub"
       },
       "titleSuffix": {
         "**/*.md": "Azure Stack Hub"
