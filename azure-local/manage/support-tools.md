@@ -149,51 +149,57 @@ For complete guidance on troubleshooting storage related issues, refer to [Troub
 Invoke-AzsSupportDiagnosticCheck -Component Registration
 ```
 
-    Here's a sample output for a registration issue:
+Here's a sample output for a registration issue:
 
-    ```output
-    PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component Registration
-    Starting known issue check for Azure Stack HCI: Registration.
-    Starting Azure Stack HCI base system validation.
-    Gathering information from all clustered nodes.
-    We are preparing to collect diagnostic information from your environment
-    We started the diagnostic data collection! This might take some time.
-    Finished collecting diagnostic information.
-    ====[ Validating registration state on node: HCI-N-1 ]====
-    [Pass] [Azure Stack HCI - General registration state]
-    Validate that the cluster is registered
-    Details: Validation successfull
-    [Fail] [Azure Stack HCI - Azure Connection state]
-    Validate that the cluster is in a connected state
-    Details: This Azure Stack HCI node does not seem to be connected to azure. Ensure that this node is in a connected state.
-    Documentation: https://learn.microsoft.com/azure-stack/hci/deploy/troubleshoot-hci-registration.
-    [Pass] [Azure Arc Agent - Connection state]
-    Validate that the azure arc agent is connected
-    Details: Validation successfull
-    [Pass] [Azure Arc Agent - Service state]
-    Validate that all azure arc services are running
-    Details: Validation successfull
-    [Pass] [Azure Arc Agent - Heartbeat state]
-    Validate that the azure arc agent has sent out a heartbeat at least a day ago
-    Details: Validation successfull
-    [Pass] [Azure Stack HCI - Arc Agent onboarded]
-    Validate that all arc agent checks are passed
-    Details: Validation successfull
-    [Fail] [Validation summary]
-    Details: At least one node reported an invalid registration state.
-    We will collect log information from your envirorment.
-    Creating local storage container for diagnostic data.
-    Gathering cluster data ... this might take a while.
-    Cluster data collection complete.
-    We are preparing to collect diagnostic information from your environment
-    We started the diagnostic data collection! This might take some time.
-    Waiting for all diagnostic output to be generated and compressed ... this might take a while.
-    Finished collecting diagnostic information.
-    Starting copy of items ... this might take a while.
-    All items copied.
-    Successfully created archive C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\log-collection-RegistrationInformation07-22_06-03-2024.zip. Removing raw data C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\container.
-    Data collection done . Please upload the file to the Microsoft Workspace.
-    ```
+```output
+PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component Registration
+Starting known issue check for Azure Stack HCI: Registration.
+Starting Azure Stack HCI base system validation.
+Gathering information from all clustered nodes.
+We are preparing to collect diagnostic information from your environment
+We started the diagnostic data collection! This might take some time.
+Finished collecting diagnostic information.
+====[ Validating registration state on node: HCI-N-1 ]====
+[Pass] [Azure Stack HCI - General registration state]
+Validate that the cluster is registered
+Details: Validation successfull
+
+[Fail] [Azure Stack HCI - Azure Connection state]
+Validate that the cluster is in a connected state
+Details: This Azure Stack HCI node does not seem to be connected to azure. Ensure that this node is in a connected state.
+Documentation: https://learn.microsoft.com/azure-stack/hci/deploy/troubleshoot-hci-registration.
+
+[Pass] [Azure Arc Agent - Connection state]
+Validate that the azure arc agent is connected
+Details: Validation successfull
+
+[Pass] [Azure Arc Agent - Service state]
+Validate that all azure arc services are running
+Details: Validation successfull
+
+[Pass] [Azure Arc Agent - Heartbeat state]
+Validate that the azure arc agent has sent out a heartbeat at least a day ago
+Details: Validation successfull
+
+[Pass] [Azure Stack HCI - Arc Agent onboarded]
+Validate that all arc agent checks are passed
+Details: Validation successfull
+
+[Fail] [Validation summary]
+Details: At least one node reported an invalid registration state.
+We will collect log information from your envirorment.
+Creating local storage container for diagnostic data.
+Gathering cluster data ... this might take a while.
+Cluster data collection complete.
+We are preparing to collect diagnostic information from your environment
+We started the diagnostic data collection! This might take some time.
+Waiting for all diagnostic output to be generated and compressed ... this might take a while.
+Finished collecting diagnostic information.
+Starting copy of items ... this might take a while.
+All items copied.
+Successfully created archive C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\log-collection-RegistrationInformation07-22_06-03-2024.zip. Removing raw data C:\temp\6c5a4685-6e32-4b68-aeec-05475f8d6c6f\container.
+Data collection done . Please upload the file to the Microsoft Workspace.
+```
 
 ### For base Azure Local system issues
 
@@ -201,36 +207,40 @@ Invoke-AzsSupportDiagnosticCheck -Component Registration
 Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
 ```
 
-    Here's a sample output for base system issues:
+Here's a sample output for base system issues:
 
-    ```output
-    PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
-    Starting known issue check for Azure Stack HCI: BaseSystem.
-    Gathering information from all clustered nodes.
-    We are preparing to collect diagnostic information from your environment
-    We started the diagnostic data collection! This might take some time.
-    Starting to validate cluster settings.
-    [Pass] [Failover Clustering - Cluster validation report contains no errors]
-    Validate that there are no critical errors in the cluster validation report
-    Details: Validation successfull
-    [Pass] [Failover Clustering - Cluster Networks have redundancy]
-    Validate that we have redundancy in clustered networks
-    Details: Validation successfull
-    [Pass] [Failover Clustering - Validation Summary]
-    Validate that there are no critical issues in our cluster validation report.
-    Details: Validation successfull
-    Collecting node data.
-    Finished collecting diagnostic information.
-    ====[ Validating data from node: HCI-N-1 ]====
-    [Pass] [Windows Features - All windows features installed]
-    Verify that all features required for Azure Local are installed.
-    Details: Validation successfull
-    [Pass] [Validation summary]
-    Ensure that no other check has returned a failed state
-    Details: Validation successfull
+```output
+PS C:\temp> Invoke-AzsSupportDiagnosticCheck -Component BaseSystem
+Starting known issue check for Azure Stack HCI: BaseSystem.
+Gathering information from all clustered nodes.
+We are preparing to collect diagnostic information from your environment
+We started the diagnostic data collection! This might take some time.
+Starting to validate cluster settings.
+[Pass] [Failover Clustering - Cluster validation report contains no errors]
+Validate that there are no critical errors in the cluster validation report
+Details: Validation successfull
+
+[Pass] [Failover Clustering - Cluster Networks have redundancy]
+Validate that we have redundancy in clustered networks
+Details: Validation successfull
+
+[Pass] [Failover Clustering - Validation Summary]
+Validate that there are no critical issues in our cluster validation report.
+Details: Validation successfull
+
+Collecting node data.
+Finished collecting diagnostic information.
+====[ Validating data from node: HCI-N-1 ]====
+[Pass] [Windows Features - All windows features installed]
+Verify that all features required for Azure Local are installed.
+Details: Validation successfull
+
+[Pass] [Validation summary]
+Ensure that no other check has returned a failed state
+Details: Validation successfull
 ```
 
-    Afterwards, a comprehensive overview of the different components that are required for properly connected Azure Local systems is created. Based on this overview, you can either follow troubleshooting guidance or reach out to Microsoft Support for assistance.
+Afterwards, a comprehensive overview of the different components that are required for properly connected Azure Local systems is created. Based on this overview, you can either follow troubleshooting guidance or reach out to Microsoft Support for assistance.
 
 To collect data, refer to the following two example scenarios:
 
