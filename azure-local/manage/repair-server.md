@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 04/28/2025
+ms.date: 05/08/2025
 ---
 
 # Repair a node on Azure Local
@@ -71,11 +71,9 @@ The following scenarios are supported during node replacement:
 |--|--|--|
 | New node | New disks | Yes |
 | New node | Current disks | Yes |
-| Current node (reimaged) | Current disks reformatted ** | No |
 | Current node (reimaged) | New disks | Yes |
 | Current node (reimaged) | Current disks | Yes |
-
-**Disks that have been used by Storage Spaces Direct require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
+| Current node (reimaged) | Current data disks reformatted | No |
 
 > [!IMPORTANT]
 > If you replace a component during node repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the node joins the system.
