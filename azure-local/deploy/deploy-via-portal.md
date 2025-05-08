@@ -20,7 +20,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 ::: moniker range="<=azloc-24113"
 
-- For the deployment of Azure Local 2411.3 and earlier versions, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use it exclusively for deployment and not for any other purpose.
+- To deply Azure Local 2411.3 and earlier, use the alternative version of the [Azure portal](https://aka.ms/dfc-2411deploycluster). Use this version only for deployment, don't use it for any other purpose.
 
 ::: moniker-end
 
