@@ -132,7 +132,7 @@ This release has the following features and improvements:
 
 - **Quality updates** - This build contains the latest quality updates and is based off the Operating system version 25398.1425.
 - **Updated .NET version** - This build has an updated .NET version 8.0.13.
-- **New Lifecycle Manager version** - Local Configuration Manager (LCM) extension version 30.2503.0.854 is released to deploy the 2411.3 build. This new version moves the content download from extension installation to a visible step in validation. This reduces the overall content download size from a per machine to a one-time download.
+- **New Lifecycle Manager version** - Lifecycle Manager version 30.2503.0.854 is released to deploy the 2411.3 build. This new version moves the content download from extension installation to a visible step in validation. This reduces the overall content download size from a per machine to a one-time download.
 
 For more information on improvements in this release, see the [Fixed issues in 2411.3](./known-issues.md?view=azloc-24113&preserve-view=true#fixed-issues).
 
