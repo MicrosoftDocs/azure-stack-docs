@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/02/2025
+ms.date: 05/08/2025
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
@@ -75,7 +75,7 @@ The parameters are described in the following table:
 | `resource_group` | Resource group for Azure Local that you associate with this image.        |
 | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all ampersands (&) in the path are escaped with double quotes and the entire path string is then enclosed within single quotes. |
+| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). |
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
