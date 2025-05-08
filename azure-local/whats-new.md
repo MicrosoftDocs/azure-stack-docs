@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 04/30/2025
 ---
 
 # What's new in Azure Local?
@@ -20,11 +20,10 @@ This article lists the various features and improvements that are available in A
 
 Starting with 2504 release, Microsoft introduced a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
- 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
 |12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.19  | 23598.1551        | Existing deployments only.        |
+|11.2504.1001.19  | 25398.1551        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -32,7 +31,9 @@ For more information, see [Release information summary](./release-information-23
 
 This release has the following features and improvements:
 
-- **OS version changes**: Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. Existing deployments continue to use the OS version **23598.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+- **OS version changes**:
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
 
 - **.NET update installations improvements**:
   - Increased reliability of .NET security update installations.
@@ -40,11 +41,13 @@ This release has the following features and improvements:
 - **Registration and deployment changes**:
     - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
     - The error logging in the registration script is enhanced.
+    - Proxy bypass list is now mandatory if a proxy configuration is specified.
 
 - **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
 - **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
+    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
     - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
 - **Update improvements**:
@@ -53,7 +56,7 @@ This release has the following features and improvements:
     - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
 - **Add and repair node changes**:
-    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your Original Equipment Manufacturer (OEM).
+    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
 
 - **OEM license changes**:
     

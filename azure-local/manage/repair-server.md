@@ -4,7 +4,7 @@ description: Learn how to repair a node on your Azure Local, version 23H2 system
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 04/30/2025
+ms.date: 05/08/2025
 ---
 
 # Repair a node on Azure Local

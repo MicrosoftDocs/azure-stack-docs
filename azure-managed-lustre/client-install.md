@@ -7,7 +7,6 @@ ms.author: pauljewell
 ms.reviewer: dsundarraj
 ms.date: 04/29/2025
 zone_pivot_groups: select-os
-
 ---
 
 # Install prebuilt Lustre client software
@@ -74,6 +73,14 @@ This article shows how to install the client package to set up client VMs runnin
 ## Install client software for Ubuntu 22.04
 
 This article shows how to install the client package to set up client VMs running Ubuntu 22.04.
+
+::: zone-end
+
+::: zone pivot="ubuntu-24"
+
+## Install client software for Ubuntu 24.04
+
+This article shows how to install the client package to set up client VMs running Ubuntu 24.04.
 
 ::: zone-end
 
