@@ -3,7 +3,7 @@ title: Overview of Azure Arc gateway for Azure Local, version 23H2 (preview)
 description: Learn what is Azure Arc gateway for Azure Local, version 23H2 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 05/07/2025
+ms.date: 05/08/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -42,19 +42,19 @@ When Arc gateway is used, the *http* and *https* traffic flow changes as follows
 
 1. Based on the configuration in the Arc gateway, if allowed, the traffic is sent to target services. If not allowed, Arc proxy redirects this traffic to the enterprise proxy (or direct outbound if no proxy set). Arc proxy automatically determines the right path for the endpoint.
 
-**Traffic flow for Arc appliance Arc resource bridge (ARB) and AKS control plane**
+**Traffic flow for Arc appliance Azure Arc resource bridge and AKS control plane**
 
 1. Routable IP (failover clustered IP resource as of now) is used to forward the traffic through Arc proxy running on the Azure Local host machines.
 
-1. ARB and Azure Kubernetes Service (AKS) forward proxy are configured to use routable IP.
+1. Azure Arc resource bridge and Azure Kubernetes Service (AKS) forward proxy are configured to use routable IP.
 
-1. With proxy settings in place, ARB, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Local machines over routable IP.
+1. With proxy settings in place, Arc resource bridge, and AKS outbound traffic is forwarded to Arc Proxy running on one of the Azure Local machines over routable IP.
 
 1. When traffic reaches the Arc proxy, the remaining flow takes the same path as described. If traffic to the target service is allowed, it is sent to Arc gateway. If not, it's sent to the enterprise proxy (or direct outbound if no proxy set). For AKS specifically, this path is used for downloading docker images for Arc Agentry and Arc Extension Pods.
 
 **Traffic flow for Azure Local VMs**
 
-*Http* and *https* traffic are forwarded to the enterprise proxy. Arc proxy inside an Azure Local virtual machine (VM) enabled by Arc is not yet supported in this version.
+HTTP and HTTPS traffic are forwarded to the enterprise proxy. Arc proxy inside an Azure Local virtual machine (VM) enabled by Arc is not yet supported in this version.
 
 Traffic flows are illustrated in the following diagram:
 
