@@ -3,7 +3,7 @@ title: Hybrid patterns and examples for Azure and Azure Stack Hub
 description: An overview of hybrid patterns and solution examples for learning and building hybrid solutions on Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: overview
-ms.date: 05/24/2021
+ms.date: 04/25/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 05/24/2021
@@ -19,7 +19,7 @@ Microsoft provides Azure and Azure Stack products and solutions as one consisten
 
 ## The hybrid cloud and hybrid apps
 
-Azure Stack brings the agility of cloud computing to your on-premises environment and the edge by enabling a *hybrid cloud*. Azure Stack Hub, Azure Local, and Azure Stack Edge extend Azure from the cloud into your sovereign datacenters, branch offices, field, and beyond. With this diverse set of capabilities, you can:
+Azure Stack brings the agility of cloud computing to your on-premises environment and the edge by enabling a *hybrid cloud*. Azure Stack Hub, Azure Local, and Azure Stack Edge extend Azure from the cloud into your sovereign datacenters, branch offices, to the field, and beyond. With this diverse set of capabilities, you can:
 
 - Reuse code and run cloud-native apps consistently across Azure and your on-premises environments.
 - Run traditional virtualized workloads with optional connections to Azure services.
@@ -41,7 +41,7 @@ There are two types of pattern articles:
 
 ## Solution deployment guides
 
-Step-by-step deployment guides assist in deploying a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
+Step-by-step deployment guides help you deploy a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
 
 ## Next steps
 

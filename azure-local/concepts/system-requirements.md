@@ -1,12 +1,12 @@
 ---
 title: System requirements for Azure Stack HCI, version 22H2
 description: How to choose servers, storage, and networking components for Azure Stack HCI, version 22H2.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/22/2024
+ms.date: 05/06/2025
 ---
 
 # System requirements for Azure Stack HCI, version 22H2
@@ -18,7 +18,7 @@ ms.date: 05/22/2024
 > [!WARNING]
 > The system requirements listed in this article apply to an older version, Azure Stack HCI, version 22H2. To find the system requirements for the latest generally available version, Azure Stack HCI, version 23H2, see [System requirements for Azure Stack HCI, version 23H2](./system-requirements-23h2.md).
 
-This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
 ## Azure requirements
 
@@ -35,7 +35,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 - **Azure regions**
 
-   The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions:
+   The Azure Stack HCI service is used for registration, billing, and management. It's currently supported in the following regions:
 
    # [Azure public](#tab/azure-public)
 
@@ -76,9 +76,9 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 A standard Azure Stack HCI cluster requires a minimum of one server and a maximum of 16 servers.
 
-Keep the following in mind for various types of Azure Stack HCI deployments:
+Keep the following requirements in mind for various types of Azure Stack HCI deployments:
 
-- It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
+- All servers must be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
 
 - Make sure that the servers are equipped with at least 32 GB of RAM per node to accommodate the server operating system, VMs, and other apps or workloads. In addition, allow 4 GB of RAM per terabyte (TB) of cache drive capacity on each server for Storage Spaces Direct metadata.
 
@@ -88,7 +88,7 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
 
 - Ensure all the servers are in the same time zone as your local domain controller.
 
-- You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required but is supported for boot. A 200 GB minimum size is recommended.
+- You can use any boot device supported by Windows Server, which [now includes SATADOM](https://cloudblogs.microsoft.com/windowsserver/2017/08/30/announcing-support-for-satadom-boot-drives-in-windows-server-2016/). RAID 1 mirror is **not** required but is supported for boot. A 200-GB minimum size is recommended.
 
 - For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
@@ -96,7 +96,7 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
 
 Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
 
-For best results, adhere to the following:
+For best results, adhere to the following requirements:
 
 - Every server in the cluster should have the same types of drives and the same number of each type. It's also recommended (but not required) that the drives be the same size and model. Drives can be internal to the server or in an external enclosure that is connected to just one server. To learn more, see [Drive symmetry considerations](/windows-server/storage/storage-spaces/drive-symmetry-considerations).
 
@@ -112,19 +112,19 @@ For best results, adhere to the following:
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
 - Verify at least one network adapter is available and dedicated for cluster management.
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you use.
 
 For physical networking considerations and requirements, see [Physical network requirements](physical-network-requirements.md).
 
 For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
-Stretched clusters require servers be deployed at two separate sites. The sites can be in different countries/regions, different cities, different floors, or different rooms. For synchronous replication, you must have a network between servers with enough bandwidth to contain your IO write workload and an average of 5 ms round trip latency or lower. Asynchronous replication doesn't have a latency recommendation.
+Stretched clusters require servers be deployed at two separate sites. The sites can be in different countries/regions, different cities, different floors, or different rooms. For synchronous replication, you must have a network between servers with enough bandwidth to contain your IO write workload and an average of 5-ms round trip latency or lower. Asynchronous replication doesn't have a latency recommendation.
 
--	A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). You can’t create a stretched cluster with two single servers.
+-	A stretched cluster requires a minimum of four servers (2 per site) and a maximum of 16 servers (8 per site). You can’t create a stretched cluster with two single servers.
 -	Each site must have the same number of servers and drives.
 -	SDN isn’t supported on stretched clusters.
 
-For additional discussion of stretched cluster networking requirements, see [Host network requirements](../concepts/host-network-requirements.md#stretched-clusters).
+For additional discussion about stretched cluster networking requirements, see [Host network requirements](../concepts/host-network-requirements.md#stretched-clusters).
 
 ### Software Defined Networking (SDN) requirements
 
@@ -137,7 +137,7 @@ When you create an Azure Stack HCI cluster using Windows Admin Center, you have 
 For more information about preparing for using SDN in Azure Stack HCI, see [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md) and [Plan to deploy Network Controller](../concepts/network-controller.md).
 
    > [!NOTE]
-   > SDN is not supported on stretched (multi-site) clusters.
+   > SDN isn't supported on stretched (multi-site) clusters.
 
 ### Active Directory Domain requirements
 
@@ -149,15 +149,15 @@ If you use Windows Admin Center to [create](../deploy/create-cluster.md) or [man
 
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 
-- Ensure that Windows Admin Center and your domain controller are not installed on the same instance. Also, ensure that the domain controller is not hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
+- Ensure that Windows Admin Center and your domain controller aren't installed on the same instance. Also, ensure that the domain controller isn't hosted on the Azure Stack HCI cluster or one of the nodes in the cluster.
 
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 
-- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 
 ## Maximum supported hardware specifications
 
-Azure Stack HCI deployments that exceed the following specifications are not supported:
+Azure Stack HCI deployments that exceed the following specifications aren't supported:
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -178,5 +178,5 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 
 For related information, see also:
 
-- [Choose drives](/windows-server/storage/storage-spaces/choose-drives)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+- [Choose drives](/windows-server/storage/storage-spaces/choose-drives).
+- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements).

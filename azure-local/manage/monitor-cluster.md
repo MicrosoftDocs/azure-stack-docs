@@ -1,8 +1,8 @@
 ---
 title: Monitor Azure Stack HCI clusters from Windows Admin Center
 description: How to monitor Azure Stack HCI clusters, servers, virtual machines, drives, and volumes using Windows Admin Center.
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/26/2024

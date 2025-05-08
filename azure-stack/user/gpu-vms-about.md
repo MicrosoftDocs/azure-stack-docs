@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 10/24/2024
-ms.reviewer: unknown
+ms.date: 04/21/2025
+ms.reviewer: rtibi
 ms.lastreviewed: 4/28/2021
 
 # Intent: As a a developer on Azure Stack Hub, I want to use a machine with a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
@@ -40,9 +40,9 @@ NCv3-series VMs are powered by NVIDIA Tesla V100 GPUs. Customers can take advant
 
 ## NVv4
 
-The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With the NVv4-series, Azure Stack Hub introduces virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only the Windows guest operating system. 
+The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With the NVv4-series, Azure Stack Hub introduces virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only the Windows guest operating system.
 
-| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
 | Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
@@ -80,7 +80,10 @@ The NC_A100 series VMs are powered by NVIDIA Ampere A100 GPUs, the successor of 
 - Number of GPUs per server supported (1, 2, 3, 4). Preferred are: 1, 2, and 4.
 - All GPUs must be of the exact same SKU throughout the scale unit.
 - All GPU quantities per server must be the same throughout the scale unit.
-- GPU partition size (for AMD Mi25) needs to be the same throughout all GPU VMs on the scale unit.
+- GPU partition size (for AMD Mi25) needs to be the same for all GPU VMs on the scale unit.
+
+> [!NOTE]
+> Resizing GPU VMs is not supported.
 
 ## Capacity planning
 
@@ -94,14 +97,14 @@ Azure Stack Hub now supports adding GPUs to any existing system. To add a GPU, r
 
 GPU VMs undergo downtime during operations such as patch and update (PnU) and hardware replacement (FRU) of Azure Stack Hub. The following table covers the state of the VM as observed during these activities and the manual action you can do to make these VMs available after the operation.
 
-| Operation | PnU - Full Update, OEM update | FRU | 
-| --- | --- | --- | 
-| VM state  | Unavailable during update. Can be made available with manual operation. VM is automatically online post update. | Unavailable during FRU. Can be made available with manual operation. VM needs to be brought back up after FRU| 
+| Operation | PnU - Full Update, OEM update | FRU |
+| --- | --- | --- |
+| VM state  | Unavailable during update. Can be made available with manual operation. VM is automatically online post update. | Unavailable during FRU. Can be made available with manual operation. VM needs to be brought back up after FRU|
 | Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. VM automatically comes back up post update. | VM is not available during FRU. If there are available GPUs, VM may be stop-deallocated and restarted during FRU. Post FRU completion, the VM must be `stop-deallocated` using the **Stop** button, then restarted using the **Start** button.|
 
 ## Guest driver installation
 
-The following PowerShell cmdlets can be used for driver installation:
+You can use the [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) PowerShell cmdlet for driver installation:
 
 ```powershell
 $VmName = <VM Name In Portal>
@@ -112,18 +115,18 @@ $driverPublisher = "Microsoft.HpcCompute"
 $driverType = <Specify Driver Type> #GPU Driver Types: "NvidiaGpuDriverWindows"; "NvidiaGpuDriverLinux"; "AmdGpuDriverWindows"
 $driverVersion = <Specify Driver Version> #Nvidia Driver Version:"1.3"; AMD Driver Version:"1.0"
 
-Set-AzureRmVMExtension  -Location $Location `
-                            -Publisher $driverPublisher `
-                            -ExtensionType $driverType `
-                            -TypeHandlerVersion $driverVersion `
-                            -VMName $VmName `
-                            -ResourceGroupName $ResourceGroupName `
-                            -Name $driverName `
-                            -Settings $Settings ` # If no settings are set, omit this parameter
-                            -Verbose
+Set-AzVMExtension  -Location $Location `
+                       -Publisher $driverPublisher `
+                       -ExtensionType $driverType `
+                       -TypeHandlerVersion $driverVersion `
+                       -VMName $VmName `
+                       -ResourceGroupName $ResourceGroupName `
+                       -Name $driverName `
+                       -Settings $Settings ` # If no settings are set, omit this parameter
+                       -Verbose
 ```
 
-Depending on the OS, type and connectivity of your Azure Stack Hub GPU VM, you must replace these values with the settings below.
+Depending on the OS, type, and connectivity of your Azure Stack Hub GPU VM, you must replace these values with the following settings.
 
 ### AMD MI25
 
@@ -157,7 +160,7 @@ NVIDIA drivers must be installed inside the virtual machine for CUDA or GRID wor
 
 #### Use case: graphics/visualization GRID
 
-This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM. 
+This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM.
 
 ```powershell  
 $Settings = @{
@@ -172,8 +175,7 @@ CUDA drivers don't need a license server and don't need modified settings.
 
 ### Use case: compute/CUDA - Disconnected
 
-Links to NVIDIA CUDA drivers can be obtained using the link:
-https://raw.githubusercontent.com/Azure/azhpc-extensions/master/NvidiaGPU/resources.json
+You can get [links to NVIDIA CUDA drivers here](https://raw.githubusercontent.com/Azure/azhpc-extensions/master/NvidiaGPU/resources.json).
 
 **Windows:**
 

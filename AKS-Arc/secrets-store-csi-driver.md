@@ -1,9 +1,9 @@
 ---
 title: Kubernetes Secrets Store CSI driver integration
-description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS enabled by Azure Arc.
+description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS on Windows Server.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/27/2024
+ms.date: 05/01/2025
 ms.author: sethm 
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
@@ -15,7 +15,7 @@ ms.author: sethm
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI Driver with AKS enabled by Azure Arc, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system.
+The *Kubernetes Secrets Store CSI driver* integrates secrets stores with Kubernetes using a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI driver with AKS on Windows Server, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system.
 
 With the Secrets Store CSI driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
@@ -24,7 +24,7 @@ With the Secrets Store CSI driver, you can also integrate a key vault with one o
 Before you begin, make sure you have the following prerequisites:
 
 - An Azure account and subscription.
-- An existing deployment of AKS enabled by Arc with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
+- An existing deployment of AKS on Windows Server with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you're running Linux clusters, they must be on version Linux 1.16.0 or later.
 - If you're running Windows clusters, they must be on version Windows 1.18.0 or later.
 - Make sure you've completed the following installations:
@@ -105,7 +105,7 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 ## Create an identity in Azure
 
-Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the outputs when running the following commands. You use both the client secret and client ID in the next steps.
+Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the output when running the following commands. You use both the client secret and client ID in the next steps.
 
 Provide the client secret by running the following command:
 
@@ -143,28 +143,28 @@ kubectl label secret secrets-store-creds secrets-store.csi.k8s.io/used=true
 
 ## Create and apply your own SecretProviderClass object
 
-To use and configure the Secrets Store CSI driver for your Kubernetes cluster, create a `SecretProviderClass` custom resource. Ensure the `objects` array matches the objects you've stored in the Azure Key Vault instance:
+To use and configure the Secrets Store CSI driver for your Kubernetes cluster, create a `SecretProviderClass` custom resource. Ensure the `objects` array matches the objects you stored in the Azure Key Vault instance:
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
 kind: SecretProviderClass
 metadata:
-  name: <keyvault-name>                  # The name of the Azure Key Vault
+  name: <keyvault-name>                  # The name of the Azure key vault
   namespace: kube-system
 spec:
   provider: azure
   parameters:
-    keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
+    keyvaultName: "<keyvault-name>"       # The name of the Azure key vault
     useVMManagedIdentity: "false"         
     userAssignedIdentityID: "false" 
-    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment defaults to AzurePublicCloud 
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, the Azure environment defaults to AzurePublicCloud 
     objects:  |
       array:
         - |
           objectName: <secret-name>       # In this example, 'ExampleSecret'   
           objectType: secret              # Object types: secret, key or cert
           objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
-    tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance
+    tenantId: "<tenant-id>"               # The tenant ID containing the Azure Key Vault instance
 ```
 
 ## Apply the SecretProviderClass to your cluster
