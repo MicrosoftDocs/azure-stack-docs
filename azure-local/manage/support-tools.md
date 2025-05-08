@@ -33,9 +33,9 @@ The tool provides:
 
 Before you use the PowerShell module:
 
-- Ensure that you are using an account that has administrative access to the Azure Local machines.
+- Make sure to use an account that has administrative access to the Azure Local machines.
 
-- Ensure that PSRemoting has been configured on the Azure Local machines. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting) reference documentation.
+- Ensure that PSRemoting is configured on the Azure Local machines. Run `Enable-PSRemoting` to configure remote PowerShell. For more information, see the [Enable-PSRemoting](/powershell/module/microsoft.powershell.core/enable-psremoting) reference documentation.
 
 ## Install or update the Azure Local Support Diagnostic Tool
 
@@ -54,7 +54,7 @@ Update-Module -Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
 >[!NOTE]
->When you import the module, it will attempt to automatically update from PowerShell Gallery. You can also update manually using methods below.
+>When you import the module, it attempts to automatically update from PowerShell gallery. You can also update manually using methods below.
 
 Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
 
