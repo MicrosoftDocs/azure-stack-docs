@@ -128,6 +128,35 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
+## Live Migrations on Azure Local 23H2 May Fail Without Error
+
+After upgrading from Azure Local 22H2 to 23H2, or on a clean install of 23H2, you may encounter issues where VMs fail to live migrate in an Azure Local Cluster.  
+
+**Issue:** Live migration attempts may fail silently — no error messages are logged.
+
+This problem is caused by a known issue in Azure Local 23H2 that manifests under specific system configurations.
+
+**Resolution:**  
+
+Run the following PowerShell script locally on one of the cluster nodes. This script will apply a registry fix on all nodes. After running it, reboot each node one at a time for the change to take effect.
+
+```PowerShell
+Get-ClusterNode | ForEach-Object {
+    Invoke-Command -ComputerName $_.Name -ScriptBlock {
+        $RegPath = "HKLM:\System\CurrentControlSet\Services\Vid\Parameters"
+        $ValueName = "SkipSmallLocalAllocations"
+        $ValueData = 0
+
+        # Create the key if it doesn't exist
+        if (-Not (Test-Path $RegPath)) {
+            New-Item -Path $RegPath -Force | Out-Null
+        }
+
+        # Create or update the DWORD value
+        New-ItemProperty -Path $RegPath -Name $ValueName -Value $ValueData -PropertyType DWord -Force
+    }
+}
+```
 
 ## Next steps
 
