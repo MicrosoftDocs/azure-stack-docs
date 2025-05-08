@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 04/21/2025
+ms.date: 05/08/2025
 ---
 
 # Add a node on Azure Local
@@ -114,7 +114,7 @@ On the new node that you plan to add, follow these steps.
 
 On a node that already exists on your system, follow these steps:
 
-1. Sign in with the domain user credentials (AzureStaclLCMUser or another user with equivalent permissions) that you provided during the deployment of the system. 
+1. Sign in with the domain user credentials (AzureStackLCMUser or another user with equivalent permissions) that you provided during the deployment of the system. 
 
 1. (Optional) Before you add the node, make sure to get an updated authentication token. Run the following command:
 
