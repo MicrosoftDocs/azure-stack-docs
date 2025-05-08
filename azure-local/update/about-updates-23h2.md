@@ -56,14 +56,14 @@ Microsoft might release the following types of updates for Azure Local:
 |------------|-----------------|------------|
 |Cumulative Updates | Monthly | Cumulative updates primarily include quality and reliability improvements. They might also include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others do not. |
 |Feature Updates |Semi-annually|Feature updates introduce new features and improvements. They typically require host system reboots and might take longer to apply. |
-|Hotfixes | As needed | Hotfixes address critical issues that could block regular monthly or baseline updates. These updates might be released sooner than the monthly cadence to resolve urgent security or functionality issues. |
+|Hotfixes | As needed | Hotfixes address critical issues that could block regular monthly or semi-annual updates. These updates might be released sooner than the monthly cadence to resolve urgent security or functionality issues. |
 |Solution Builder Extension | As needed | Solution Builder Extension² provides drivers, firmware, and other partner-specific content. These updates might require host system reboots. |
 
 ¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and include both security and non-security changes.
 
 ² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates. These updates often align with Azure Local feature releases, allowing customers to install a combined update.
 
-Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your system must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
+Sometimes you might see updates to the latest patch level of your current feature. If a new feature is available, you might see the feature update itself or the latest patch level of the feature. Your system must stay within six months of the most recent feature to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 
