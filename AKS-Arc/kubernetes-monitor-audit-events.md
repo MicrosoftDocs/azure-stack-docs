@@ -3,7 +3,7 @@ title: Monitor Kubernetes audit events in AKS enabled by Azure Arc
 description: Learn how to create a diagnostic setting to access Kubernetes audit logs.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/18/2024
+ms.date: 05/08/2024
 ms.author: sethm 
 ms.lastreviewed: 02/26/2024
 ms.reviewer: guanghu
@@ -14,7 +14,7 @@ ms.reviewer: guanghu
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
 
-You can access Kubernetes audit logs in Kubernetes control plane logs. Control plane logs for AKS clusters are implemented as [resource logs](/azure/azure-monitor/essentials/resource-logs) in Azure Monitor. Resource logs aren't collected and stored until you create a diagnostic setting to route them to one or more locations. You typically send them to a Log Analytics workspace, which is where most of the data for Container Insights is stored.
+You can access Kubernetes audit logs in Kubernetes control plane logs. Control plane logs for AKS clusters are implemented as [resource logs](/azure/azure-monitor/essentials/resource-logs) in Azure Monitor. Resource logs aren't collected and stored until you create a diagnostic setting to route them to one or more locations. You typically send them to a Log Analytics workspace, which is where most of the data for Container Insights is stored.
 
 ## Create a diagnostic setting
 
