@@ -34,7 +34,16 @@ The following diagram illustrates the release trains, their associated feature b
 
 :::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
-#### Move to the next release train
+## Feature release availability timing
+
+Feature release availability dates depend on the model and SKU of the servers in your cluster.
+
+If your cluster supports [Solution Builder Extension software updates](./update/solution-builder-extension.md), you'll receive feature release updates (e.g., 2504 or 2510) after your hardware vendor completes their validation and confirms the release is ready. This process typically takes a few weeks following the Microsoft release and varies by hardware vendor.
+
+> [!NOTE]
+> The validation process ensures a reliable update experience for your cluster. It minimizes potential issues and reduces the overall number of updates you need to manage for Azure Local.
+
+### Move to the next release train
 
 Follow these guidelines to move to the next release train:
 
@@ -46,7 +55,7 @@ Follow these guidelines to move to the next release train:
   | From 2402 to 2405.1   | June 2024  or later | 2402 --> 2402.4 --> 2405.1                       |
   | From 2402.3 to 2408.2 | August 2024         | 2402.3 --> 2405.0 --> 2405.3 --> 2408 --> 2408.2 |
 
-#### Move within the same release train
+### Move within the same release train
 
 Follow these guidelines to move within the same release train:
 
