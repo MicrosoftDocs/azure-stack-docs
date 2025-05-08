@@ -71,9 +71,9 @@ The following scenarios are supported during node replacement:
 |--|--|--|
 | New node | New disks | Yes |
 | New node | Current disks | Yes |
-| Current node (reimaged) | Current disks reformatted | No |
 | Current node (reimaged) | New disks | Yes |
 | Current node (reimaged) | Current disks | Yes |
+| Current node (reimaged) | Current data disks reformatted | No |
 
 > [!IMPORTANT]
 > If you replace a component during node repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the node joins the system.
