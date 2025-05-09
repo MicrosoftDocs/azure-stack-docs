@@ -32,7 +32,16 @@ The following diagram illustrates the release trains, their associated feature b
 
 :::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
-#### Move to the next release train
+## Feature release availability timing
+
+Feature release availability dates depend on the model and SKU of the servers in your cluster.
+
+If your cluster supports [Solution Builder Extension software updates](./update/solution-builder-extension.md), you'll receive feature release updates (e.g., 2504 or 2510) after your hardware vendor completes their validation and confirms the release is ready. This process typically takes a few weeks following the Microsoft release and varies by hardware vendor.
+
+> [!NOTE]
+> The validation process ensures a reliable update experience for your cluster. It minimizes potential issues and reduces the overall number of updates you need to manage for Azure Local.
+
+### Move to the next release train
 
 Follow these guidelines to skip releases with the same release train as you move to the next release train:
 
@@ -45,7 +54,7 @@ Follow these guidelines to skip releases with the same release train as you move
 
 <!-- Update the 2503 train to 2504 or create a new deployment.-->
 
-#### Move within the same release train
+### Move within the same release train
 
 Follow these guidelines to update to each release within your current release train:
 
