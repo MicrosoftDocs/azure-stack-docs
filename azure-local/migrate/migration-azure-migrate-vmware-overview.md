@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Local instance (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 05/08/2025
+ms.date: 05/09/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -37,8 +37,7 @@ The following diagram shows the migration process to your on-premises Azure Loca
 
 :::image type="content" source="./media/migration-azure-migrate-vmware-overview/azure-migrate-vmware-components.png" alt-text="Diagram showing migration components for VMware in Azure Local." lightbox="./media/migration-azure-migrate-vmware-overview/azure-migrate-vmware-components.png":::
 
-> [!NOTE]
-> The above architecture diagram was created as part of Arc Jumpstart. To download its source file in a high-resolution format, see [Jumpstart Gems](https://jumpstart.azure.com/azure_jumpstart_gems).
+[!INCLUDE [important](../includes/azure-local-jumpstart-gems.md)]
 
 The migration process requires the following components:
 
