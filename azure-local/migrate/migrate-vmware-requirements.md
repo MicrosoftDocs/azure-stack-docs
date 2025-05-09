@@ -28,7 +28,7 @@ The following operating systems (OSs) are supported for the VMware source applia
 |Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
 |Guest VM (Windows)    |Windows Server 2025<br>Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM (Linux) | Red Hat Linux 6.x, 7.x, 8.x, 9.x<br>Ubuntu Server and Pro. 18.x, 20.x<br>CentOS 7.x, 8.x, 9.x<br>SUSE Linux Enterprise<br>Debian 9.x, 10.x, 11.x, 12.x |      |
+|Guest VM (Linux) | Red Hat Linux 6.x, 7.x, 8.x, 9.x<br>Ubuntu Server and Pro. 18.x, 20.x<br>CentOS 7.x, 8.x, 9.x<br>SUSE Linux Enterprise<br>Debian 9.x, 10.x, 11.x, 12.x |
 
 \*To migrate Windows Server 2008 R2 VMs, see the [FAQ](./migrate-faq.yml).
 
