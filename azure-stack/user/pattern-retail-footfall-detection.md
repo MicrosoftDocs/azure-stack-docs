@@ -3,7 +3,7 @@ title: Footfall detection pattern using Azure and Azure Stack Hub
 description: Learn how to use Azure and Azure Stack Hub to implement an AI-based footfall detection solution for analyzing retail store traffic.
 author: ronmiab 
 ms.topic: article
-ms.date: 04/25/2025
+ms.date: 05/09/2025
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 10/31/2019
@@ -84,7 +84,7 @@ This solution captures customer images, making security a paramount consideratio
 
 To learn more about the topics introduced in this article:
 
-- See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is leveraged by the footfall detection pattern.
-- See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
+- See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is used by the footfall detection pattern.
+- See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision.
 
 When you're ready to test the solution example, continue with the [Footfall detection deployment guide](/azure/architecture/hybrid/deployments/solution-deployment-guide-retail-footfall-detection?toc=/hybrid/app-solutions/toc.json&bc=/hybrid/breadcrumb/toc.json). The deployment guide provides step-by-step instructions for deploying and testing its components.
