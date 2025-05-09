@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/06/2025
+ms.date: 05/09/2025
 ---
 
 # System requirements for Azure Stack HCI, version 22H2
@@ -153,7 +153,7 @@ If you use Windows Admin Center to [create](../deploy/create-cluster.md) or [man
 
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 
-- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you create the cluster, or joined to a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
+- Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you create the cluster, or joined to a fully trusted domain. The servers that you cluster aren't required to belong to the domain yet; they can be added to the domain during cluster creation.
 
 ## Maximum supported hardware specifications
 
