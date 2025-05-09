@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/07/2025
+ms.date: 05/09/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/07/2025
+ms.lastreviewed: 05/09/2025
 
 ---
 
@@ -33,7 +33,9 @@ Before you begin, make sure you have the following prerequisites:
 - Install the **aksarc** extension, and make sure the version is at least 1.5.37. To get the list of installed CLI extensions, run `az extension list -o table`.
 - If you use a Powershell terminal, make sure the version is at least 7.4.
 
-For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). The AI toolchain operator extension currently supports KAITO version 0.4.5. Make a note of this in considering your choice of model from the KAITO model repository.
+For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). All the preset models are originally from HuggingFace, and we do not change the model behavior during the redistribution. See the [content policy from HuggingFace here](https://huggingface.co/content-policy). 
+
+The AI toolchain operator extension currently supports KAITO version 0.4.5. Make a note of this in considering your choice of model from the KAITO model repository.
 
 ## Create a cluster with KAITO
 
@@ -102,20 +104,19 @@ To deploy the AI model, follow these steps:
 1. Create a YAML file with the following sample file. In this example, we use the Phi 3.5 Mini model by specifying the preset name as **phi-3.5-mini-instruct**. If you want to use other LLMs, use the preset name from the KAITO repo. You should also make sure that the LLM can deploy on the VM SKU based on the matrix table in the "Model VM SKU Matrix" section.
 
    ```yaml
-   apiVersion: kaito.sh/v1beta1
-   kind: Workspace
+   apiVersion: v1
+   kind: ConfigMap
    metadata:
-    name: workspace-llm # Update the workspace name as needed
-   resource:
-    instanceType: <GPU_VM_SKU> # Update this value with GPU VM SKU
-    labelSelector:
-      matchLabels:
-        apps: llm-inference # Update the label as needed
-    preferredNodes:
-    - moc-l36c6vu97d5 # Update the value with GPU VM name
-   inference:
-    preset:
-      name: phi-3.5-mini-instruct # Update preset name as needed
+     name: ds-inference-params
+   data:
+     inference_config.yaml: |
+       max_probe_steps: 6 # Maximum number of steps to find the max available seq len fitting in the GPU memory.
+       vllm:
+         cpu-offload-gb: 0
+         swap-space: 4
+         gpu-memory-utilization: 0.9
+         max-model-len: 4096
+         # For more options, see https://docs.vllm.ai/en/latest/serving/engine_args.html.
    ```
 
 1. Apply the YAML and wait until the deployment completes. Make sure that internet connectivity is good so that the model can be downloaded from the Hugging Face website within a few minutes. When the inference workspace is successfully provisioned, both **ResourceReady** and **InferenceReady** become **True**. See the "Troubleshooting" section if you encounter any failures in the workspace deployment.
