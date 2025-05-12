@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Local, version 23H2
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/19/2025
+ms.date: 03/20/2025
 ---
 
 # Configure proxy settings for Azure Local
@@ -59,14 +59,14 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
 Here's an example of the command usage:
 
 ```powershell
-Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer http://192.168.1.250:8080 -ProxyBypass "localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster"
+Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer http://192.168.1.250:8080 -ProxyBypass "localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster"
 ```
 
 ### WinInet proxy bypass list string considerations
 
 When configuring the `WinInet` proxy bypass list, keep the following points in mind:
 
-- Parameters must be separated with comma `,` or semicolon `;`.
+- Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
@@ -83,7 +83,7 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
     Current WinHTTP proxy settings:
 
     Proxy Server(s) :  http://192.168.1.250:8080
-    Bypass List     :  localhost;127.0.0.1;*. contoso.com;node1;node2;192.168.1.*;s-cluster
+    Bypass List     :  localhost,127.0.0.1,*. contoso.com,node1,node2,192.168.1.*,s-cluster
 
     PS C:\>
     ```
@@ -125,14 +125,14 @@ The parameters are described in the following table:
 Here's an example of the command usage:
 
 ```powershell
-Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster"
+Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster"
 ```
 
 ### WinHTTP proxy bypass list string considerations
 
 When configuring the `WinHTTP` proxy bypass list string, keep the following points in mind:
 
-- Parameters must be separated with comma `,` or semicolon `;`.
+- Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
@@ -149,7 +149,7 @@ When configuring the `WinHTTP` proxy bypass list string, keep the following poin
     Current WinHTTP proxy settings:
 
     Proxy Server(s) :  http://192.168.1.250:8080
-    Bypass List     :  localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster
+    Bypass List     :  localhost,127.0.0.1,*.contoso.com,node1,node2,192.168.1.*,s-cluster
 
     PS C:\>
     ```
@@ -260,7 +260,6 @@ Please review the Arc-enabled servers agent page for further details [Managing a
 
 If you're using or plan to use any of the following Azure services, refer to the following articles for information about how to configure proxy server settings for each Azure service:
 
-- [Azure Kubernetes Service (AKS) hybrid](/azure/aks/hybrid/set-proxy-settings)
 - [Azure Virtual Desktop](/azure/virtual-desktop/proxy-server-support)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#proxy-configuration)
 - [Microsoft Defender](/defender-endpoint/production-deployment#network-configuration)

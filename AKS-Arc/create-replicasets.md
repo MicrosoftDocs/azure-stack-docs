@@ -1,6 +1,6 @@
 ---
-title: Create a ReplicaSet in AKS enabled by Azure Arc
-description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS) enabled by Arc.
+title: Create a ReplicaSet in AKS on Windows Server
+description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
@@ -15,7 +15,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create, scale, and delete *ReplicaSets* in AKS enabled by Azure Arc. ReplicaSets are used to ensure that a stable set of replica pods are running at any given time.
+This article describes how to create, scale, and delete *ReplicaSets* in AKS on Windows Server. ReplicaSets are used to ensure that a stable set of replica pods are running at any given time.
 
 ## Overview of ReplicaSets
 

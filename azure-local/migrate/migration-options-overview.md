@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Local (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 11/13/2024
+ms.date: 04/02/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -51,11 +51,11 @@ Manual migration options are provided by Microsoft. These options are available 
 
 The following manual migration options are available:
 
-- [Migrate VMs manually to same hardware](../deploy/migrate-cluster-same-hardware.md): This option is used when you want to migrate a Windows Server failover cluster to Azure Local using your existing hardware. This process installs the new operating system for Azure Local and retains your existing cluster settings and storage, and imports your VMs.
+- [Migrate VMs manually to same hardware](migrate-cluster-same-hardware.md): This option is used when you want to migrate a Windows Server failover cluster to Azure Local using your existing hardware. This process installs the new operating system for Azure Local and retains your existing cluster settings and storage, and imports your VMs.
 
-- [Migrate VMs manually to new hardware](../deploy/migrate-cluster-new-hardware.md): This option is used when you want to migrate VMs from an existing Windows Server 2016 or later cluster to a new Azure Local instance. You migrate the VMs to the same hardware using PowerShell and Robocopy.
+- [Migrate VMs manually to new hardware](migrate-cluster-new-hardware.md): This option is used when you want to migrate VMs from an existing Windows Server 2016 or later cluster to a new Azure Local instance. You migrate the VMs to the same hardware using PowerShell and Robocopy.
 
-    If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](../deploy/migrate-cluster-new-hardware.md#migrating-older-vms).
+    If you have VMs on Windows 2012 R2 or older that you want to migrate, see [Migrating older VMs](migrate-cluster-new-hardware.md#migrating-older-vms).
 
 
 

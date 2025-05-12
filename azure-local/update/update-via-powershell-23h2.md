@@ -4,12 +4,14 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/27/2025
+ms.date: 04/24/2025
 ---
 
 # Update Azure Local via PowerShell
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article describes how to apply a solution update to your Azure Local via PowerShell.
 
@@ -17,11 +19,11 @@ The procedure in this article applies to both single node and multi-node systems
 
 [!INCLUDE [WARNING](../includes/hci-applies-to-23h2-cluster-updates.md)]
 
-
 ## About solution updates
 
 The Azure Local solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
+[!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
 When you apply a solution update, here are the high-level steps that you take:
 
@@ -43,7 +45,7 @@ The time taken to install the updates varies based on the following factors:
 
 The approximate time estimates for a typical single or multi-node system are summarized in the following table:
 
-|System/Time           |Time for health check<br>*hh:mm:ss*  |Time to install update<br>*hh:mm:ss*  |
+|System/Time           |Time for health check<br>*hh:mm*  |Time to install update<br>*hh:mm*  |
 |------------------|-------------------------------------|---------|
 |Single node     | ~ 03:00        |~ 01:30         |
 |4-nodes    | ~ 05:00       |~ 04:00         |

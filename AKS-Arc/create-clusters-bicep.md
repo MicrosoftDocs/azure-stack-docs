@@ -16,7 +16,7 @@ ms.lastreviewed: 07/24/2024
 This article describes how to create Kubernetes clusters in Azure Local using Bicep. The workflow is as follows:
 
 1. Create an SSH key pair
-1. Create a Kubernetes cluster in Azure Local, version 23H2 using Bicep. By default, the cluster is Azure Arc-connected.
+1. Create a Kubernetes cluster in Azure Local using Bicep. By default, the cluster is Azure Arc-connected.
 1. Validate the deployment and connect to the cluster.
 
 ## Before you begin

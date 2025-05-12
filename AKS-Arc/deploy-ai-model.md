@@ -4,7 +4,7 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 12/06/2024
+ms.date: 03/25/2025
 ms.reviewer: haojiehang
 ms.lastreviewed: 12/03/2024
 
@@ -66,7 +66,7 @@ To create a GPU node pool using the Azure portal, follow these steps:
 
 ### [Azure CLI](#tab/azurecli)
 
-To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-vm-sizes).
+To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
 
 ```azurecli
 az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "Standard_NC16_A16" --os-type "Linux"

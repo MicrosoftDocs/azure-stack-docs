@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
-ms.date: 12/09/2024
+ms.date: 05/08/2025
 ---
 
 # Azure Hybrid Benefit for Azure Local
@@ -48,6 +48,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
 ### Activate Azure Hybrid Benefit
 
 # [Azure portal](#tab/azure-portal)
+
 Follow these steps to activate Azure Hybrid Benefit for Azure Local via the Azure portal:
 
 1. Use your Microsoft Azure credentials to sign in to the Azure portal at this URL: https://portal.azure.com.
@@ -73,83 +74,88 @@ Follow these steps to activate Azure Hybrid Benefit for Azure Local via the Azur
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
 # [Azure PowerShell](#tab/azure-powershell)
-Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Azure PowerShell can be run in Azure Cloud Shell. This section describes how to use PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following steps:
 
 1. Set up parameters from your subscription, resource group, and system name
-    ```powershell
-    $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-    $resourceGroup = "local-rg" # Replace with your resource group name
-    $clusterName = "MyLocal" # Replace with your system name
 
-    Set-AzContext -Subscription "${subscription}"
-    ```
+   ```powershell
+   $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+   $resourceGroup = "local-rg" # Replace with your resource group name
+   $clusterName = "MyLocal" # Replace with your system name
 
+   Set-AzContext -Subscription "${subscription}"
+   ```
 
-1. To view Azure Hybrid Benefits status on a system, run the following command:
-    ```powershell
-    Install-Module -Name Az.ResourceGraph
-    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
-    ```
+1. To view Azure Hybrid Benefit status on a system, run the following command:
 
-    
-1. To enable Azure Hybrid Benefits, run the following command and check if Azure Hybrid Benefits got enabled using above command:
-    ```powershell    
-    Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
-    ```
+   ```powershell
+   Install-Module -Name Az.ResourceGraph
+   Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+   ```
+
+1. To enable Azure Hybrid Benefit, run the following command and check if Azure Hybrid Benefit was enabled using the previous command:
+
+   ```powershell
+   Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
+   ```
 
 # [Azure CLI](#tab/azure-cli)
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
 
-1. Set up parameters from your subscription, resource group, and system name
-    ```azurecli
-    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-    resourceGroup="hcicluster-rg" # Replace with your resource group name
-    clusterName="HCICluster" # Replace with your system name
+1. Set up parameters for your subscription, resource group, and system name:
 
-    az account set --subscription "${subscription}"
-    ```
+   ```azurecli
+   subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+   resourceGroup="hcicluster-rg" # Replace with your resource group name
+   clusterName="HCICluster" # Replace with your system name
 
-1. To view Azure Hybrid Benefits status on a system, run the following command:
-    ```azurecli    
-    az stack-hci cluster list \
-    --resource-group "${resourceGroup}" \
-    --query "[?name=='${clusterName}'].{Name:name, SoftwareAssurance:softwareAssuranceProperties.softwareAssuranceStatus}" \
-    -o table
-    ```
+   az account set --subscription "${subscription}"
+   ```
 
-    
-1. To enable Azure Hybrid Benefits, run the following command:
-    ```azurecli    
-    az stack-hci cluster extend-software-assurance-benefit \
-    --cluster-name "${clusterName}" \
-    --resource-group "${resourceGroup}" \
-    --software-assurance-intent enable
-    ```
+1. To view Azure Hybrid Benefit status on a system, run the following command:
+
+   ```azurecli
+   az stack-hci cluster list \
+   --resource-group "${resourceGroup}" \
+   --query "[?name=='${clusterName}'].{Name:name, SoftwareAssurance:softwareAssuranceProperties.softwareAssuranceStatus}" \
+   -o table
+   ```
+
+1. To enable Azure Hybrid Benefit, run the following command:
+
+   ```azurecli
+   az stack-hci cluster extend-software-assurance-benefit \
+   --cluster-name "${clusterName}" \
+   --resource-group "${resourceGroup}" \
+   --software-assurance-intent enable
+   ```
 
 ---
 
 ## Maintain compliance for Azure Hybrid Benefit
 
-After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiry, you need to either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or de-provision the systems that are using Azure Hybrid Benefit.
+After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiration, you must either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or de-provision the systems that are using Azure Hybrid Benefit.
 
 You can perform an inventory of your systems through the Azure portal and [Azure Resource Graph](/azure/governance/resource-graph/first-query-azurecli) as described in the following section.
 
 ### Verify that your system is using Azure Hybrid Benefit
 
-You can verify if your system is using Azure Hybrid Benefit via Azure portal, PowerShell, or Azure CLI.
+You can verify if your system is using Azure Hybrid Benefit via the Azure portal, PowerShell, or Azure CLI.
 
 # [Azure portal](#tab/azure-portal)
 
 1. In your Azure Local resource page, under **Settings**, select **Configuration**.
 1. Under **Azure Hybrid Benefit**, the status shows as:
-    - Activated - indicates Azure Hybrid Benefit is activated
-    - Not activated - indicates Azure Hybrid Benefit isn't activated
+    - **Activated** - indicates Azure Hybrid Benefit is activated
+    - **Not activated** - indicates Azure Hybrid Benefit isn't activated
 
-You can also navigate to **Cost Analysis** > **Cost by Resource** > **Cost by Resource**. Expand your Azure Local resource to check that the meter is under **Software Assurance**.
+You can also navigate to **Cost Analysis > Cost by Resource > Cost by Resource**. Expand your Azure Local resource to check that the meter is under **Software Assurance**.
 
 # [Azure PowerShell](#tab/azure-powershell)
 
@@ -196,17 +202,17 @@ az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' 
 
 This section describes the errors that you might get when activating Azure Hybrid Benefit for Azure Local.
 
-**Error**
+### Error
 
-*Failed to activate Azure Hybrid Benefit. We couldn’t find your Software Assurance contract.*
+Failed to activate Azure Hybrid Benefit. We couldn't find your Software Assurance contract.
 
-**Suggested solution**
+#### Suggested solution
 
-This error can occur if you have a new Software Assurance contract or if you have set up this Azure subscription recently, but your information isn't updated in the portal yet. If you get this error, reach out to us at [AHBonHCI@microsoft.com](mailto:AHBonHCI@microsoft.com) and share the following information:
+This error can occur if you have a new Software Assurance contract or if you set up this Azure subscription recently, but your information isn't updated in the portal yet. If you get this error, reach out to us at [AHBonHCI@microsoft.com](mailto:AHBonHCI@microsoft.com) and share the following information:
 
 - Customer/organization name - the name registered on your Software Assurance contract.
 - Azure subscription ID – to which your Azure Local instance is registered.
-- Agreement number for Software Assurance – this can be found on your purchase order, and is the number you would use to install software from the Volume Licensing Service Center (VLSC).
+- Agreement number for Software Assurance – this can be found on your purchase order, and is the number you use to install software from the Volume Licensing Service Center (VLSC).
 
 ## FAQs
 
@@ -228,12 +234,10 @@ No additional costs are incurred, as Azure Hybrid Benefit is included as part of
 
 Consult your Account Manager or licensing partner.
 
-### When would the new pricing benefit for Azure Hybrid Benefit take effect?
+### When does the new pricing benefit for Azure Hybrid Benefit take effect?
 
 The pricing benefit for Azure Local host fees takes effect immediately upon activation of Azure Hybrid Benefit for your system. The pricing benefit for Windows Server subscription takes effect immediately after you activate both Azure Hybrid Benefit and Windows Server subscription.
 
 ## Next steps
-
-For related information, see also:
 
 - [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).

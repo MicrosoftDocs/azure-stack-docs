@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 03/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -29,20 +29,6 @@ Before you begin, make sure that:
 
 - Make sure that all the machines in your system are healthy and show as **Online**.
 - You have access to a client that can connect to your system. This client should be running PowerShell 5.0 or later.
-
-## Step 0: Update registry keys
-
-Post-OS upgrade, update registry keys on each machine in the system to ensure that Resilient File System (ReFS) volume upgrade is enabled and metadata validation is turned on.
-
-Run the following command on each machine in the system to update registry keys:
-
-```powershell
-# Set RefsDisableVolumeUpgrade to 0
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsDisableVolumeUpgrade" -Value 0 -Type DWord -ErrorAction Stop
-
-# Set RefsEnableMetadataValidation to 1
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 1 -Type DWord  -ErrorAction Stop
-```
 
 ## Step 1: Connect to your system
 

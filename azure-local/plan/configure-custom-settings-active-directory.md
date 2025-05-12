@@ -3,7 +3,7 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2025
+ms.date: 03/04/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -51,7 +51,9 @@ Here's a table that contains the permissions required for the deployment user an
 You can use PowerShell cmdlets to assign appropriate permissions to deployment user over OU. The following example shows how you can assign the required permissions to a *deploymentuser* over the OU *HCI001* that resides in the Active Directory domain *contoso.com*.
 
 > [!NOTE]
-> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps&preserve-view=true) and [OU](/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps&preserve-view=true) in your Active Directory. For more information on how to block group policy inheritance, see [Set-GPInheritance](/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps&preserve-view=true).
+> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps&preserve-view=true) and [OU](/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps&preserve-view=true) in your Active Directory. **The msFVE-RecoveryInformation must be set via PowerShell. Using the Active Directory delegation wizard is not applicable for that scenario.**
+>
+> For more information on how to block group policy inheritance, see [Set-GPInheritance](/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps&preserve-view=true).
 
 Run the following PowerShell cmdlets to import the Active Directory module and assign required permissions:
 
@@ -66,7 +68,7 @@ $DeploymentUser="deploymentuser"
 #Assign required permissions
 $userSecurityIdentifier = Get-ADuser -Identity $Deploymentuser
 $userSID = [System.Security.Principal.SecurityIdentifier] $userSecurityIdentifier.SID
-$acl = Get-Acl -Path $ouPath
+$acl = Get-Acl -Path "AD:$ouPath"
 $userIdentityReference = [System.Security.Principal.IdentityReference] $userSID
 $adRight = [System.DirectoryServices.ActiveDirectoryRights]::CreateChild -bor [System.DirectoryServices.ActiveDirectoryRights]::DeleteChild
 $genericAllRight = [System.DirectoryServices.ActiveDirectoryRights]::GenericAll
@@ -86,7 +88,7 @@ $rule3 = New-Object System.DirectoryServices.ActiveDirectoryAccessRule($userIden
 $acl.AddAccessRule($rule1)
 $acl.AddAccessRule($rule2)
 $acl.AddAccessRule($rule3)
-Set-Acl -Path $ouPath -AclObject $acl
+Set-Acl -Path "AD:$ouPath" -AclObject $acl
 ```
 
 ## Required DNS records
@@ -118,7 +120,7 @@ A disjoint namespace occurs when the primary DNS suffix of one or more domain me
 
 Before deploying an Azure Local instance, you must:
 
-- Append the DNS suffix to the management adapter of every node.
+- Append the DNS suffix to the management adapter of every node. The DNS suffix must match the Active Directory domain name.
 - Verify you can resolve the hostname to the FQDN of the Active Directory.
 
 ### Example - append the DNS suffix

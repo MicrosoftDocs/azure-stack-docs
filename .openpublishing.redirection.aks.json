@@ -1434,6 +1434,61 @@
         "source_path": "AKS-Arc/azure-hybrid-benefit.md",
         "redirect_url": "/azure/aks/aksarc/pricing",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/aks-known-issues.md",
+        "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/aks-whats-new-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/aks-whats-new-local",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/azure-rbac-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/azure-rbac-local",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/kubernetes-rbac-23h2.md",
+        "redirect_url": "/azure/aks/aksarc/kubernetes-rbac-local",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-prepare-application.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-prepare-azure-container-registry.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-deploy-cluster.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-deploy-application.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-scale.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-app-update.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Arc/tutorial-kubernetes-upgrade-cluster.md",
+        "redirect_url": "/azure/aks/aksarc/overview",
+        "redirect_document_id": false
       }
     ]
   }

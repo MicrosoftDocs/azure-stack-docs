@@ -3,10 +3,10 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 02/28/2025
+ms.date: 04/30/2025
 ms.author: sethm 
-ms.lastreviewed: 02/27/2024
-ms.reviewer: guanghu
+ms.lastreviewed: 04/01/2025
+ms.reviewer: abha
 
 ---
 
@@ -20,18 +20,29 @@ To open a support request, see the [Get support](/azure/aks/hybrid/help-support)
 
 ## Known issues
 
-The following sections describe known issues and workarounds for AKS enabled by Azure Arc:
+The following sections describe known issues for AKS enabled by Azure Arc:
 
-- [Control plane configuration validation errors](control-plane-validation-errors.md)
-- [Connectivity issues with MetalLB](load-balancer-issues.md)
-- [K8sVersionValidation error](cluster-k8s-version.md)
-- [Use diagnostic checker](aks-arc-diagnostic-checker.md)
-- [KubeAPIServer unreachable error](kube-api-server-unreachable.md)
-- [Can't see VM SKUs on Azure portal](check-vm-sku.md)
-- [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md)
-- [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md)
-- [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md)
-- [Issues after deleting storage volume](delete-storage-volume.md)
+| AKS Arc CRUD operation | Issue | Fix status |
+|------------------------|-------|------------|
+| AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS Arc images](gallery-image-not-usable.md) | Partially fixed in 2503 release |
+| AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Active |
+| AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Active |
+| AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
+| AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
+| Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
+| MetalLB Arc extension  | [Connectivity issues with MetalLB](load-balancer-issues.md) | Fixed in 2411 release |
+
+## Guides to diagnose and troubleshoot Kubernetes CRUD failures
+
+| AKS Arc operation | Issue |
+|------------------------|-------|
+| Create validation      | [Control plane configuration validation errors](control-plane-validation-errors.md) |
+| Create validation      | [K8sVersionValidation error](cluster-k8s-version.md) |
+| Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md) |
+| Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md) |
+| Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
+| Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
+| Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
 
 ## Next steps
 

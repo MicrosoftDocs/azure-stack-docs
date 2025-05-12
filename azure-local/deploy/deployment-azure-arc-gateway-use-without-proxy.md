@@ -3,7 +3,7 @@ title: Use Azure gateway without a proxy on Azure Local, version 2408 (preview)
 description: Learn how to use Azure gateway without a proxy, on Azure Local instance running version 2408 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/20/2025
+ms.date: 04/22/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
