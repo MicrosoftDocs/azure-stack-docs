@@ -65,6 +65,13 @@ You deploy and configure Azure Local with disconnected operations in multiple st
 
 :::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
 
+The following gives and overview of what tools and processes is involved and if any access to Azure Local nodes (OS/host) is required):
+
+1. Using existing tools and processes for OS installation and OS configuration (All Azure Local nodes, Local admin access)
+2. Using Powershell and Operations module (First node (sorted by node name) - a.k.a Seed node, Local admin access)
+3. Using local Azure portal, Azure CLI (No physical node access needed, Azure RBAC - Owner role)
+4. Using local Azure portal, Azure CLI (No physical node access needed, Azure RBAC - Operator role)
+
 ## Prepare Azure Local machines  
 
 To prepare each machine for the disconnected operations appliance, follow these steps:
@@ -105,10 +112,11 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import this key on each node.
 
-9. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster.
+9. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster. Make sure that the disconnected operations deployment is done on this node in the next step. 
 
     ```powershell
-    $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1 $seednode
+    $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1
+    $seednode
     ```
 
 ## Deploy disconnected operations
