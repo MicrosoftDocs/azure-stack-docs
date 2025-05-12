@@ -54,8 +54,8 @@ Microsoft might release the following types of updates for the Azure Local:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Monthly Updates | Monthly |Monthly updates primarily contain quality and reliability improvements. They might include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others don't. |
-|Baseline Updates |Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer. |
+|Monthly updates | Monthly |Monthly updates primarily contain quality and reliability improvements. They might include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others don't. |
+|Baseline updates | Quarterly |Baseline updates include new features and improvements. They typically require host system reboots and might take longer. |
 |Hotfixes | As needed | Hotfixes address blocking issues that could prevent regular monthly or baseline updates. To fix critical or security issues, hotfixes might be released sooner than monthly.  |
 |Solution Builder Extension | As needed | Solution Builder Extension² provides driver, firmware, and other partner content specific to the system solution used. They might require host system reboots. |
 
