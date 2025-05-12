@@ -410,7 +410,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following issues are fixed in this release:
 
@@ -419,7 +419,7 @@ The following issues are fixed in this release:
 | Azure Local VM management <!--ADO--> | If you try to enable guest management on a migrated VM, the operation fails with the following error: *(InternalError) admission webhook "createupdatevalidationwebhook.infrastructure.azstackhci.microsoft.com" denied the request: OsProfile cannot be changed after resource creation*||
 | Upgrade <!--29319539-->| When upgrading the stamp from 2311 or prior builds to 2408 or later, add node and repair node operations may fail. For example, you could see an error: `Type 'AddAsZHostToDomain' of Role 'BareMetal' raised an exception`. | |
 
-## Known issues in this release
+### Known issues in this release
 
 The following table lists the known issues in this release:
 
@@ -431,7 +431,7 @@ The following table lists the known issues in this release:
 | Update <!--ADO--> | With the 2411 release, solution and Solution Builder Extension update are not combined in a single update run.  |To apply a Solution Builder Extension package, you need a separate update run.|
 | Update <!--30221399--> | When applying solution update in this release, the update can fail. This will occur only if the update was started prior to November 26. The issue that causes the failure can result in one of the following error messages: <br><br>**Error 1** - The step "update ARB and extension" error "Clear-AzContext failed with 0 and Exception calling "Initialize" with "1" argument(s): "Object reference not set to an instance of an object." at "Clear-AzPowerShellCache". <br><br>**Error 2** - The step "EvalTVMFlow" error "CloudEngine.Actions.InterfaceInvocationFailedException: Type 'EvalTVMFlow' of Role 'ArcIntegration' raised an exception: This module requires `Az.Accounts` version 3.0.5. An earlier version of `Az.Accounts` is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." <br><br> Depending on the version of PowerShell modules, the above error could be reported for both versions 3.0.4 and 3.0.5.|For detailed steps on how to mitigate this issue, go to: [https://aka.ms/azloc-update-30221399](https://aka.ms/azloc-update-30221399).     |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -466,7 +466,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following issues are fixed in this release:
 
@@ -479,7 +479,7 @@ The following issues are fixed in this release:
 | Upgrade <!--29498611--> | Added validation to ensure the package is the latest version ||
 | Upgrade <!--29546100--> | Validation would fail due to group policies. ||
 
-## Known issues in this release
+### Known issues in this release
 
 <!--The following table lists the known issues in this release:
 
@@ -488,7 +488,7 @@ The following issues are fixed in this release:
 
 Microsoft isn't aware of any known issues in this release.
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
