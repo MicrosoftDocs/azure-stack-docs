@@ -113,7 +113,9 @@ To prepare each machine for the disconnected operations appliance, follow these 
 
 ## Deploy disconnected operations
 
-To prepare the first machine for the disconnected operations appliance, follow these steps:
+Disconnected operations must be deployed on the seed node (first machine). To ensure the following steps are done on the first machine, see [Prepare Azure Local machines](#prepare-azure-local-machines).
+
+To prepare the first machine for the disconnected operations appliance:
 
 1. Copy the disconnected operations installation files (appliance and manifest) to the first machine. Save these files into the base folder you created earlier.  
 
