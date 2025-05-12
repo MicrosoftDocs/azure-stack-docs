@@ -120,7 +120,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     ```
 
     > [!NOTE]
-    > Make sure that the disconnected operations deployment is done on this node.
+    > Make sure you deploy disconnected operations on this node.
    
 ## Deploy disconnected operations
 
