@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/07/2025
+ms.date: 05/12/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -396,7 +396,7 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2411"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2411
 
@@ -456,10 +456,6 @@ The following table lists the known issues from previous releases:
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the system is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Local instance resource and then go to new **Deployments** entry. |
 | Update | When updating the Azure Local instance via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-6-track-update-progress). |
 | Update <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2408.2
 

@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 05/08/2025
+ms.date: 05/12/2025
 ---
 
 # What's new in Azure Local?
@@ -170,7 +170,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ::: moniker-end
 
-::: moniker range="=azloc-2411"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411
 
@@ -218,10 +218,6 @@ This release has the following features and improvements:
     For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408.2
 
