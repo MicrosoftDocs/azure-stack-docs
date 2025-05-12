@@ -68,7 +68,7 @@ You deploy and configure Azure Local with disconnected operations in multiple st
 The following gives and overview of what tools and processes is involved and if any access to Azure Local nodes (OS/host) is required):
 
 1. Using existing tools and processes for OS installation and OS configuration (All Azure Local nodes, Local admin access)
-2. Using Powershell and Operations module (First node (sorted by node name) - a.k.a Seed node, Local admin access)
+2. Using Powershell and Operations module (First node (sorted by node name) e.g. Seed node, Local admin access)
 3. Using local Azure portal, Azure CLI (No physical node access needed, Azure RBAC - Owner role)
 4. Using local Azure portal, Azure CLI (No physical node access needed, Azure RBAC - Operator role)
 
