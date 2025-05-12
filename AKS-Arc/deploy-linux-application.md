@@ -1,6 +1,6 @@
 ---
-title: Deploy a Linux app in AKS enabled by Azure Arc
-description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS enabled by Arc using a custom image stored in Azure Container Registry.
+title: Deploy a Linux app in AKS on Windows Server
+description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS on Windows Server using a custom image stored in Azure Container Registry.
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This guide describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Kubernetes cluster in AKS enabled by Azure Arc. You also learn how to test and scale your app.
+This guide describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Kubernetes cluster in AKS on Windows Server. You also learn how to test and scale your app.
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts](kubernetes-concepts.md).
 

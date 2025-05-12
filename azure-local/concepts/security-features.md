@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 03/06/2025
+ms.date: 03/24/2025
 ---
 
 # Security features for Azure Local
@@ -193,5 +193,5 @@ For more information, see:
 ## Next steps
 
 - [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
-- [Read the Azure Local security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
+- [Read the Azure Local security book](https://github.com/Azure-Samples/AzureLocal/blob/main/SecurityBook/Azure%20Local%20Security%20Book_01172025.pdf).
 - [View the Azure Local security standards](/azure-stack/hci/assurance/azure-stack-security-standards).

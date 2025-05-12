@@ -25,7 +25,7 @@ To deploy an ARM template, you need write access on the resources you're deployi
 ### Prerequisites
 
 - An Azure account with an active subscription.
-- An Azure Local, version 23H2 cluster.
+- An Azure Local cluster.
 - The latest Azure CLI version.
 
 ## Step 1: Prepare your Azure account

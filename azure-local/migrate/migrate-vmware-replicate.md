@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/16/2024
+ms.date: 04/08/2025
 ms.author: alkohli
 ---
 
@@ -307,7 +307,7 @@ This step applies to the downloaded .zip file.
     1. The subscription field is automatically populated. If this isn't the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
 	1. For **Target system**, select the Azure Local resource.
-	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this system.
+	1. Verify there's a green check for the system. A green check indicates that all the prerequisites such as Azure Arc resource bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::

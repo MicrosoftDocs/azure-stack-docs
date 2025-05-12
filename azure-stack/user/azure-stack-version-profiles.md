@@ -19,7 +19,7 @@ ms.lastreviewed: 12/6/2021
 
 API profiles specify the Azure resource provider and the API version for Azure REST endpoints. You can create custom clients in different languages using API profiles. Each client uses an API profile to contact the correct resource provider and API version for Azure Stack Hub.
 
-You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK reverts to the correct API version.
+You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK aligns to the correct API version.
 
 This topic helps you:
 
