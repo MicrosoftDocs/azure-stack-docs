@@ -112,15 +112,12 @@ To prepare each machine for the disconnected operations appliance, follow these 
     > [!NOTE]
     > If you use a different root for the management certificate, repeat the process and import this key on each node.
 
-9. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster. 
+9. Find the first machine from the list of node names and specify it as the `seednode` you want to use in the cluster. Make sure that the disconnected operations deployment is done on this node.
 
     ```powershell
     $seednode = @(‘azlocal-1, ‘azlocal-2,’ azlocal-3’)|Sort|select –first 1
     $seednode
     ```
-
-  > [!NOTE]
-  > In the next section, make sure that the disconnected operations deployment is done on this node.
 
 ## Deploy disconnected operations
 
