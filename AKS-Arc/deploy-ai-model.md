@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/09/2025
+ms.date: 05/12/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/09/2025
+ms.lastreviewed: 05/12/2025
 
 ---
 
@@ -33,7 +33,7 @@ Before you begin, make sure you have the following prerequisites:
 - Install the **aksarc** extension, and make sure the version is at least 1.5.37. To get the list of installed CLI extensions, run `az extension list -o table`.
 - If you use a Powershell terminal, make sure the version is at least 7.4.
 
-For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). All the preset models are originally from HuggingFace, and we do not change the model behavior during the redistribution. See the [content policy from HuggingFace](https://huggingface.co/content-policy). 
+For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). All the preset models are originally from HuggingFace, and we do not change the model behavior during the redistribution. See the [content policy from HuggingFace](https://huggingface.co/content-policy).
 
 The AI toolchain operator extension currently supports KAITO version 0.4.5. Make a note of this in considering your choice of model from the KAITO model repository.
 
@@ -104,6 +104,22 @@ To deploy the AI model, follow these steps:
 1. Create a YAML file with the following sample file. In this example, we use the Phi 3.5 Mini model by specifying the preset name as **phi-3.5-mini-instruct**. If you want to use other LLMs, use the preset name from the KAITO repo. You should also make sure that the LLM can deploy on the VM SKU based on the matrix table in the "Model VM SKU Matrix" section.
 
    ```yaml
+   apiVersion: kaito.sh/v1beta1
+   kind: Workspace
+   metadata:
+     name: workspace-llm
+   resource:
+     instanceType: <GPU_VM_SKU> # Update this value with GPU VM SKU
+     labelSelector:
+       matchLabels:
+         apps: llm-inference
+     preferredNodes:
+       - moc-l36c6vu97d5 # Update the value with GPU VM name
+   inference:
+     preset:
+       name: phi-3.5-mini-instruct # Update preset name as needed
+   config: "ds-inference-params"
+   ---
    apiVersion: v1
    kind: ConfigMap
    metadata:
@@ -116,7 +132,6 @@ To deploy the AI model, follow these steps:
          swap-space: 4
          gpu-memory-utilization: 0.9
          max-model-len: 4096
-         # For more options, see https://docs.vllm.ai/en/latest/serving/engine_args.html.
    ```
 
 1. Apply the YAML and wait until the deployment completes. Make sure that internet connectivity is good so that the model can be downloaded from the Hugging Face website within a few minutes. When the inference workspace is successfully provisioned, both **ResourceReady** and **InferenceReady** become **True**. See the "Troubleshooting" section if you encounter any failures in the workspace deployment.
@@ -138,14 +153,26 @@ After the resource and inference states become ready, the inference service is e
 ```bash
 export CLUSTERIP=$(kubectl get svc workspace-llm  -o jsonpath="{.spec.clusterIPs[0]}") 
 
-kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"hello how are you\"}" 
+kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions
+  -H "Content-Type: application/json"
+  -d '{
+    "model": "phi-3.5-mini-instruct",
+    "prompt": "What is kubernetes?",
+    "max_tokens": 20,
+    "temperature": 0
+  }' 
 ```
 
 ```powershell
 $CLUSTERIP = $(kubectl get svc workspace-llm -o jsonpath="{.spec.clusterIPs[0]}" )
-$jsonContent = '{"prompt":"hello how are you"}'
+$jsonContent = '{
+    "model": "phi-3.5-mini-instruct",
+    "prompt": "What is kubernetes?",
+    "max_tokens": 20,
+    "temperature": 0
+  }'
 
-kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d $jsonContent  
+kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions -H "accept: application/json" -H "Content-Type: application/json" -d $jsonContent
 ```
 
 ## Clean up resources
@@ -178,7 +205,6 @@ The following table shows the supported GPU models and their corresponding VM SK
 
 1. If you want to deploy an LLM and see the error **OutOfMemoryError: CUDA out of memory**, please raise an issue in the [KAITO repo](https://github.com/kaito-project/kaito/).
 1. If you see the error **(ExtensionOperationFailed) The extension operation failed with the following error: Unable to get a response from the Agent in time** during extension installation, [see this TSG](/troubleshoot/azure/azure-kubernetes/extensions/cluster-extension-deployment-errors#error-unable-to-get-a-response-from-the-agent-in-time) and ensure the extension agent in the AKS Arc cluster can connect to Azure.
-1. If you see an error such as **Unexpected error: (ExtensionOperationFailed) The extension operation failed with the following error: Error: [ InnerError: [Helm installation failed : Resource already existing in your cluster : Recommendation Manually delete the resource(s) that currently exist in your cluster and try installation again.**, it's possible that you previously enabled the KAITO extension on the cluster. Make sure to delete the KAITO namespace and try again. 
 1. If you see an error during prompt testing such as **{"detail":[{"type":"json_invalid","loc":["body",1],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}**, it's possible that your PowerShell terminal version is 5.1. Make sure the terminal version is at least 7.4.
 
 ## Next steps
