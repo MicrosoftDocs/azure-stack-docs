@@ -49,9 +49,9 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - You run the repair registration cmdlet:
 
-    ```powershell
-    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration
-    ```
+   ```powershell
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>"  -RepairRegistration
+   ```
 
 - (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
    To enable Secure Boot, follow these steps:
