@@ -3,10 +3,10 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 10/23/2024
+ms.date: 04/10/2025
 ---
 
-- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local Arc VM management](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
+- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Local VM management](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Local. These VM images could be created by one of the following procedures:
     - [VM image starting from an image in Azure Marketplace](../manage/virtual-machine-image-azure-marketplace.md).

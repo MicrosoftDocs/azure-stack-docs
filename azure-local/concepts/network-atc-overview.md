@@ -4,8 +4,8 @@ description: This article introduces Network ATC for Azure Local and Windows Ser
 author: parammahajan5
 ms.topic: overview
 ms.date: 11/13/2024
-ms.author: jgerend 
-ms.reviewer: JasonGerend
+ms.author: alkohli 
+ms.reviewer: alkohli
 zone_pivot_groups: windows-os
 ---
 

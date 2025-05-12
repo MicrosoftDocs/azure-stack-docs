@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This how-to guide describes how to use PowerShell to configure your AKS host deployment if you pre-staged cluster service objects and DNS records in AKS enabled by Azure Arc.
+This how-to guide describes how to use PowerShell to configure your AKS host deployment if you pre-staged cluster service objects and DNS records in AKS on Windows Server.
 
 ## Before you begin
 
@@ -26,7 +26,7 @@ This how-to guide describes how to use PowerShell to configure your AKS host dep
 
 ## Step 1: Prepare your Active Directory and DNS server for deployment
 
-If you can't enable dynamic DNS updates in your DNS environment to allow AKS enabled by Arc to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you must pre-create the respective records in Active Directory and DNS.
+If you can't enable dynamic DNS updates in your DNS environment to allow AKS on Windows Server to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you must pre-create the respective records in Active Directory and DNS.
 
 Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice that doesn't exceed 32 characters). Also, create an associated DNS record that points to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. For more information about the steps in this process, see the [failover clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
 

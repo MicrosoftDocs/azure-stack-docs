@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Troubleshoot issues when uninstalling AKS Arc
-  description: Get help to troubleshoot issues and errors when uninstalling AKS enabled by Arc.
+  description: Get help to troubleshoot issues and errors when uninstalling AKS on Windows Server.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-kubernetes-service-hybrid
