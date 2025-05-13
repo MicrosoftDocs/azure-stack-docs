@@ -10,7 +10,7 @@ ms.date: 05/13/2025
 
 # Import and discover update packages offline for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-2503-later.md)]
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
