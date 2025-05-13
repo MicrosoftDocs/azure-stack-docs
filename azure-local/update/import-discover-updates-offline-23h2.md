@@ -26,7 +26,7 @@ This article explains how to discover and import update packages offline for Azu
 
 ## Step 1: Download Solution update bundle
 
-The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip. Follow these steps to download the CombinedSolutionBundle:
+The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip. Follow these steps:
 <!--The following table lists the CombinedSolutionBundle available for Azure Local starting with 2503. The CombinedSolutionBundle contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension.
 
 Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip.
