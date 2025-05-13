@@ -57,7 +57,6 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Table storage | *.table.fqdn |
 | Azure Blob storage | *.blob.fqdn |
 | Front end appliances | frontend.appliances.fqdn |
-| Front end monitoring | pqsqueryfrontend.monitoring.fqdn |
 | Graph | graph.fqdn |
 | Azure Key Vault | *.vault.<'fqdn'> (wildcard Secure Sockets Layer (SSL) certificate) |
 | Kubernetes configuration | dp.kubernetesconfiguration.fqdn |
