@@ -186,11 +186,11 @@ items:
     href: upgrade/about-upgrades-23h2.md
   - name: 1 - Upgrade to version 23H2 OS
     items: 
-    - name: 1A - Via PowerShell
+    - name: Via PowerShell (recommended)
       href: upgrade/upgrade-22h2-to-23h2-powershell.md
-    - name: 1B - Via Windows Admin Center
+    - name: Via Windows Admin Center
       href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
-    - name: 1C - Via other methods
+    - name: Via other methods
       href: upgrade/upgrade-22h2-to-23h2-other-methods.md
   - name: 2 - Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
