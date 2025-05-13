@@ -1,6 +1,6 @@
 ---
-title: Discover and Import Update Packages Offline for Azure Local
-description: This article describes how to discover and import update packages offline for Azure Local.
+title: Import and Discover Update Packages Offline for Azure Local
+description: This article describes how to import and discover update packages offline for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.reviewer: arduppal
 ms.date: 05/13/2025
 ---
 
-# Discover and import update packages offline for Azure Local
+# Import and discover update packages offline for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -20,7 +20,7 @@ This article explains how to discover and import update packages offline for Azu
 
 ## Prerequisites
 
-- You must be running Azure Stack HCI OS version 2503 or later.
+- You must be running Azure Stack HCI OS version 2411.3 or later.
 - Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
 - Review [Azure Local release information](../release-information-23h2.md).
 
@@ -30,10 +30,10 @@ The following table lists the CombinedSolutionBundle available for Azure Local s
 
 Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip.
 
-| OS version | Download | SHA256 |
-|------------|----------|--------|
-| 2503       | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
-| 2504       | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip ) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
+| Solution version download URI | SHA256 |
+|----------|--------|
+| [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
+| [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip ) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
 
 1. Download the appropriate CombinedSolutionBundle from the link in the table.
 
