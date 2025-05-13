@@ -6,7 +6,6 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
 ms.date: 05/13/2025
-
 ---
 
 # Discover and import update packages offline for Azure Local
@@ -18,8 +17,6 @@ ms.date: 05/13/2025
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload. This lets you import the update payload and install updates offline.
-
-To discover and import updates online, see [Update Azure Local, version 23H2 systems via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
 
 ## Prerequisites
 
