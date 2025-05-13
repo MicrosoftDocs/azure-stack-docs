@@ -43,7 +43,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Container Registry | *.edgeacr.fqdn |
 | Appliances | dp.appliances.fqdn <br></br> adminmanagement.fqdn |
 | Azure Data Policy | data.policy.fqdn |
-| Arc configuration data plane |dp.kubernetesconfiguration.fqdn |
+| Arc configuration data plane | autonomous.dp.kubernetesconfiguration.fqdn |
 | Arc for Server Agent data service | agentserviceapi.fqdn |
 | Arc for server | his.fqdn |
 | Arc guest notification service | guestnotificationservice.fqdn |
