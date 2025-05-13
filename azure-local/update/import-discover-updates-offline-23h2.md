@@ -32,8 +32,8 @@ Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip fil
 
 | OS version | Download | SHA256 |
 |------------|----------|--------|
-| 2503       | [10.2503.0.13](/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
-| 2504       | [11.2504.1001.19](/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
+| 2503       | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
+| 2504       | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip ) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
 
 1. Download the appropriate CombinedSolutionBundle from the link in the table.
 
