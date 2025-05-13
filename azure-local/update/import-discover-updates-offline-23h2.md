@@ -54,7 +54,7 @@ Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip fil
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the directory created above.
+1. Copy the CombinedSolutionBundle you downloaded to the directory you created.
 
 1. Extract the contents to the Solution subdirectory.
 
@@ -70,9 +70,9 @@ Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip fil
    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. Run the `Get-SolutionUpdate` command to discover the updates. Update discovery is done asynchronously by the update service, so you may need to run `Get-SolutionUpdate` more than once.
+1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. Update discovery is done asynchronously by the update service, so you may need to run `Get-SolutionUpdate` more than once.
 
-1. If the update is returned with a state of `AdditionalContentRequired`, follow the instructions in this article to import the required Solution Builder Extension (SBE) updates: [Update Azure Local, version 23H2 systems via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+1. If the update is returned with a state of `AdditionalContentRequired`, follow the instructions in this article to import the required Solution Builder Extension (SBE) updates: [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
 
 ## Next steps
 
