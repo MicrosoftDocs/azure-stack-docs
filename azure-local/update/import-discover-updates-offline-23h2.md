@@ -26,16 +26,17 @@ This article explains how to discover and import update packages offline for Azu
 
 ## Step 1: Download Solution update bundle
 
-The following table lists the CombinedSolutionBundle available for Azure Local starting with 2503. The CombinedSolutionBundle contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension.
+The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip. Follow these steps to download the CombinedSolutionBundle:
+<!--The following table lists the CombinedSolutionBundle available for Azure Local starting with 2503. The CombinedSolutionBundle contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension.
 
 Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip.
 
 | Solution version download URI | SHA256 |
 |----------|--------|
 | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
-| [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip ) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
+| [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip ) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |-->
 
-1. Download the appropriate CombinedSolutionBundle from the link in the table.
+1. Download the appropriate CombinedSolutionBundle from [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
 
 1. Verify the SHA256 hash of the downloaded CombinedSolutionBundle.
 
