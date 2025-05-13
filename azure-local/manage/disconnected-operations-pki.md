@@ -60,7 +60,7 @@ This table lists the mandatory certificates required for disconnected operations
 | Graph | graph.fqdn |
 | Azure Key Vault | *.vault.<'fqdn'> (wildcard Secure Sockets Layer (SSL) certificate) |
 | Kubernetes configuration | dp.kubernetesconfiguration.fqdn |
-| Licensing | licensing.aszrp.fqdn <br></br> dp.aszrp.fwdn <br></br> lbc.fqdn |
+| Licensing | licensing.aszrp.fqdn <br></br> dp.aszrp.fqdn <br></br> lbc.fqdn |
 | Managed Arc proxy services (MAPS) Azure Kubernetes Service (AKS) | *.k8sconnect.fqdn |
 | Public extension host | *.hosting.fqdn (wildcard SSL certificate) |
 | Public portal     | portal.fqdn <br></br> hosting.fqdn <br></br> portalcontroller.fqdn <br></br> catalogapi.fqdn |
