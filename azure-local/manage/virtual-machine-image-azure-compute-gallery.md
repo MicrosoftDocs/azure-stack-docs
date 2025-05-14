@@ -41,9 +41,9 @@ To transfer your Azure compute gallery image to be an Azure Local compatible ima
     az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
-## Create Azure Local image
+## Create an Azure Local VM image
 
-To create an Azure Local image:
+To create an Azure Local VM image:
 
 1. Follow the steps in [Create Azure Local VM image in Azure Storage account](virtual-machine-image-storage-account.md#set-some-parameters), using the SAS token from the managed disk instead of the storage account container.
 
