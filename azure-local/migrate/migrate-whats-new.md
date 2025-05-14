@@ -12,10 +12,6 @@ ms.service: azure-local
 
 This article lists the various features and improvements that are available in VM migration to Azure Local.
 
-## May 2025
-
-This release includes the following features and improvements:
-
 ## April 2025
 
 This release includes the following features and improvements:

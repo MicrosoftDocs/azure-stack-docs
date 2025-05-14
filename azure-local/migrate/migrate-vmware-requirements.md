@@ -57,7 +57,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
 
-For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1).
+For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 :::image type="content" source="./media/migrate-vmware-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-vmware-requirements/migrate-resource-providers.png":::
 
