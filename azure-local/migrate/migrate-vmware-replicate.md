@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 05/13/2025
 ms.author: alkohli
 ---
 
@@ -226,7 +226,7 @@ Now you can install the appliance using the .VHD file.
 
 This step applies to the downloaded .zip file.
 
-1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Local machine running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
+1. You can download the appliance from a .zip or .VHD file. Under  **Step 2: Download Azure Migrate appliance**, select **Download installer**. 
 
 1. In  **Hyper-V Manager**, select the host.
 

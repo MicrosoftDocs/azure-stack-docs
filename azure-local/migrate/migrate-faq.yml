@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 04/08/2025
+  ms.date: 05/14/2025
 
 
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate (preview)
@@ -103,7 +103,7 @@ sections:
 
           ### How do I enable guest management on my migrated VMs? 
           
-          First, ensure that the target Azure Local that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Azure Local VMs enabled by Azure Arc](migrate-enable-guest-management.md).
+          Guest management is not enabled by default on migrated VMs. To enable guest management on migrated VMs, see [Enable Guest Management on Azure Local VMs enabled by Azure Arc](migrate-enable-guest-management.md).
           
           ### Can I use the same Azure Migrate project for both Hyper-V and VMware migrations?
           
@@ -119,6 +119,10 @@ sections:
 
           See the FAQ at [Common Questions About the Migration and Modernization Tool](/azure/migrate/common-questions-server-migration#how-do-i-throttle-replication-when-using-the-azure-migrate-appliance-for-agentless-vmware-replication) for details on throttling replication and migration bandwidth.
         
+          ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
+
+          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration will fail with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
+
           ## [VMware VMs only](#tab/vmware-vms)
           
           ### How many VMs can I replicate in parallel from VMware?

@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/05/2025
+ms.date: 05/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -359,6 +359,21 @@ $ShutdownIC = Get-WmiObject -Namespace root\virtualization\v2  -Query "Associato
 $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 ```
 
+### Migration fails with address is already in use error
+
+**Root cause**
+
+This error typically occurs during migration of VMs configured to retain their static IP address. If the target logical network already has the same IP assigned to another network interface, migration fails with the following message:  
+
+`The moc-operator network interface service returned an error while reconciling: rpc error: code = Unknown desc = The address is already in use: Already Set`.
+
+**Recommended resolution**
+
+Complete the following steps:
+
+1. Navigate to the Azure Local logical network that the migrated VM is targeting. 
+1. Verify that the intended IP address isn't currently assigned to another network interface.
+1. Update the logical network configuration as needed to ensure no IP conflicts exist before retrying the migration.
 
 ## Next steps
 
