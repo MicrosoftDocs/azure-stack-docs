@@ -30,9 +30,9 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Azure Virtual Network]** Fixed: You can turn off the network interface card (NIC) symmetry check feature with the following registry keys:  
 
-    Registry key: **SYSTEM\CurrentControlSet\Services\NetworkAtc\\**
+    - Registry key: **SYSTEM\CurrentControlSet\Services\NetworkAtc\\**
 
-    Registry value: **NicSymmetryCheckEnabled**
+    - Registry value: **NicSymmetryCheckEnabled**
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-May).
 
