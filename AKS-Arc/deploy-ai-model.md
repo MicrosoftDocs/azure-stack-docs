@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/12/2025
+ms.date: 05/14/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/12/2025
+ms.lastreviewed: 05/14/2025
 
 ---
 
@@ -22,6 +22,10 @@ This article describes how to deploy an AI model on AKS Arc with the *Kubernetes
 1. Validate the model with a test prompt.
 1. Clean up resources.
 1. Troubleshoot as needed.
+
+> [!IMPORTANT]
+> The KAITO Extension for AKS on Azure Local is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
 
@@ -192,14 +196,13 @@ The following table shows the supported GPU models and their corresponding VM SK
 |     Type                            |     T4              |     A2 or A16                     |     A2 or A16                       |
 |-------------------------------------|---------------------|-----------------------------------|-------------------------------------|
 |     Model VM SKU Matrix             |     Standard_NK6    |     Standard_NC4, Standard_NC8    |     Standard_NC32, Standard_NC16    |
-|     phi-2                           |     Y               |     Y                             |     Y                               |
 |     phi-3-mini-4k-instruct          |     Y               |     Y                             |     Y                               |
-|     phi-3-mini-128k-instruct        |     Y               |     Y                             |     Y                               |
-|     phi-3-medium-4k-instruct        |     N               |     N                             |     Y                               |
-|     phi-3-medium-128k-instruct      |     N               |     N                             |     Y                               |
-|     phi-3.5-mini-instruct           |     Y               |     Y                             |     Y                               |
+|     phi-3-mini-128k-instruct        |     N               |     Y                             |     Y                               |
+|     phi-3.5-mini-instruct           |     N               |     Y                             |     Y                               |
+|     phi-4-mini-instruct             |     N               |     N                             |     Y                               |
 |     deepseek-r1-distill-llama-8b    |     N               |     N                             |     Y                               |
-|     deepseek-r1-distill-qwen-14b    |     N               |     N                             |     Y                               |
+|     mistral-7b/mistral-7b-instruct  |     N               |     N                             |     Y                               |
+|     qwen2.5-coder-7b-instruct       |     N               |     N                             |     Y                               |
 
 ## Troubleshooting
 
