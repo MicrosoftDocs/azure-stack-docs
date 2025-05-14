@@ -32,7 +32,7 @@ This security update includes quality improvements. The following summary outlin
 
 The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip. Follow these steps:
 
-1. Download the appropriate CombinedSolutionBundle from [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local) and make note of the associated SHA256.
+1. Download the appropriate CombinedSolutionBundle from [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local) and make note of the associated SHA256 hash.
 
    - The CombinedSolutionBundle is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number of the release.
 
