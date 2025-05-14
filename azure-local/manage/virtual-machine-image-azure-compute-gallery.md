@@ -31,7 +31,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Export image to managed disk
 
-To transfer your Azure compute gallery image to be an Azure Local compatible image, you need to export your Azure Compute Gallery image version to a managed disk.
+To transfer your Azure Compute Gallery image to be an Azure Local compatible image, you need to export your Azure Compute Gallery image version to a managed disk.
 
 1. To download the Azure Compute Gallery image to your resource group, follow the steps in [Export an image version to a managed disk](/azure/virtual-machines/managed-disk-from-image-version). Note the name of the managed disk.  
 
