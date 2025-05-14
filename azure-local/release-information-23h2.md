@@ -76,7 +76,7 @@ The following tables summarize the release information for Azure Local across al
 
 Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504.
 
-To support offline updates, the table now includes download links and associated SHA256 hashes for each release. For more information, see [Import and discover updates offline](./update/import-discover-updates-offline-23h2.md).
+To support offline updates, the table now includes download links and associated SHA256 hashes for specified releases. For more information, see [Import and discover updates offline](./update/import-discover-updates-offline-23h2.md).
 
 #### [Existing deployments](#tab/existing-deployments)
 
