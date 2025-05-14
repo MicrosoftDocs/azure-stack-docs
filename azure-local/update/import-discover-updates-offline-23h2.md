@@ -18,6 +18,8 @@ ms.date: 05/13/2025
 
 This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, which allows you to import the update payload and install updates offline.
 
+This security update includes quality improvements. The following summary outlines the main issues addressed by this update. Any new features included are also listed. Bold text in brackets identifies the specific item or area affected by each change.
+
 ## Prerequisites
 
 - You must be running Azure Stack HCI OS version 2411.3 or later.
@@ -30,7 +32,11 @@ This article explains how to discover and import update packages offline for Azu
 
 The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. Additionally, the CombinedSolutionBundle contains the SHA256 hash of the zip file. You can use this hash to verify the integrity of the downloaded zip. Follow these steps:
 
-1. Download the appropriate CombinedSolutionBundle from [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
+1. Download the appropriate CombinedSolutionBundle from [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local) and make note of the associated SHA256.
+
+   - The CombinedSolutionBundle is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number of the release.
+
+   - The SHA256 hash is provided in the release notes.
 
 1. Verify the SHA256 hash of the downloaded CombinedSolutionBundle.
 
