@@ -74,7 +74,9 @@ Follow these guidelines to update to each release within your current release tr
 
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*.
 
-Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504.
+Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504. 
+
+To support offline updates, the table now includes download links and associated SHA256 hashes for each release. For more information, see [Import and discover updates offline](./update/import-discover-updates-offline-23h2.md).
 
 #### [Existing deployments](#tab/existing-deployments)
 
