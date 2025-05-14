@@ -18,8 +18,6 @@ ms.date: 05/13/2025
 
 This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, which allows you to import the update payload and install updates offline.
 
-This security update includes quality improvements. The following summary outlines the main issues addressed by this update. Any new features included are also listed. Bold text in brackets identifies the specific item or area affected by each change.
-
 ## Prerequisites
 
 - You must be running Azure Stack HCI OS version 2411.3 or later.
