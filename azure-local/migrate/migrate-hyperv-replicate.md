@@ -295,7 +295,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps
