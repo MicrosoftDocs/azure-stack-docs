@@ -30,7 +30,7 @@ sections:
       
           The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with the following update patch installed: KB3138612. This patch allows the appliance to successfully discover Windows Server 2008 R2 SP1 VMs. You can then update all the patches to get the latest Hyper-V integration services.
           
-          Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
+          Run `winrm quickconfig` to add `winrm` access through the firewall.
 
           After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
@@ -107,11 +107,11 @@ sections:
           
           ### Can I use the same Azure Migrate project for both Hyper-V and VMware migrations?
           
-          No, this is not a supported scenario with this release. Create a separate project for each source from which you wish to migrate.
+          No, this scenario isn't supported in this release. Create a separate project for each source from which you wish to migrate.
 
-          ### I have the Azure Connected Machine Agent deployed on my source VM(s) that I wish to migrate. Do I need to uninstall the agent on my VM(s) before migration?
+          ### I have the Azure Connected Machine Agent deployed on my source VMs that I wish to migrate. Do I need to uninstall the agent on my VMs before migration?
 
-          Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before migration. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so will result in unsupported behavior.
+          Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before migration. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
 
           When the VM is migrated, it will be created as a native Azure Local VM in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
 
@@ -121,7 +121,7 @@ sections:
         
           ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
 
-          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration will fail with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
+          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration fails with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
 
           ## [VMware VMs only](#tab/vmware-vms)
           
