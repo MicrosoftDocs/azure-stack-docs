@@ -18,7 +18,7 @@ This article introduces Trusted launch for Azure Local virtual machines (VMs) en
 
 Trusted launch for Azure Local VMs enables secure boot, installs a virtual Trusted Platform Module (vTPM) device, automatically transfers the vTPM state when the VM migrates or fails over to another machine within the system, and supports the ability to attest whether the VM started in a known good state.
 
-Trusted launch is a security type that can be specified when creating Azure Local VMs. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
+Trusted launch is a security type that can be specified when you create Azure Local VMs. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
 
 ## Capabilities and benefits
 
@@ -36,7 +36,7 @@ Trusted launch is a security type that can be specified when creating Azure Loca
 
 - IgvmAgent is a component that is installed on all machines in the Azure Local system. It enables support for isolated VMs like Trusted launch for Azure Local VMs, for example.
 
-- Trusted launch for Azure Local VMs uses only a subset of images on Azure Local. When you create Azure Local VMs and want to use Trusted launch, ensure your images are available on your cluster. If the images aren't available, the dropdown lists during the creation process will be blank. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](#guest-operating-system-images).
+- Trusted launch Azure Local VMs currently support only select images from Azure Marketplace. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch Azure Local VM in the Azure portal, the image dropdown list shows only images supported by Trusted launch. If you select any image that isn't supported, including a custom image, the image dropdown list is blank. If none of the images available on your Azure Local system are supported by Trusted launch, the image dropdown list is also blank.
 
 - As part of Trusted launch for Azure Local VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 

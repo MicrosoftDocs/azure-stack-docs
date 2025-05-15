@@ -17,7 +17,7 @@ This article describes how to collect logs and troubleshoot issues with Azure Lo
 
 ## Unable to select an image for Trusted launch VMs
 
-When you create an Azure Local VM, your image must be available on your cluster. If your image isn't available, the dropdown lists for options like security type and image will appear blank during the creation process. This is by design. For information on which images work for Trusted launch VMs, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images).
+Trusted launch Azure Local VMs currently support only select images from Azure Marketplace. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch Azure Local VM in the Azure portal, the image dropdown list shows only images supported by Trusted launch. If you select any image that isn't supported, including a custom image, the image dropdown list is blank. If none of the images available on your Azure Local system are supported by Trusted launch, the image dropdown list is also blank.
 
 ## Failure when trying to enable guest management
 
