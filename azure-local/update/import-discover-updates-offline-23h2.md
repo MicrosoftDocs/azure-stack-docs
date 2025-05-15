@@ -1,5 +1,5 @@
 ---
-title: Import and Discover Update Packages for Azure Local with limited connectivity
+title: Import and Discover Update Packages For Azure Local With Limited Connectivity
 description: This article describes how to import and discover update packages for Azure Local with limited connectivity.
 author: ronmiab
 ms.author: robess
@@ -16,7 +16,7 @@ ms.date: 05/13/2025
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
-This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, so you can import the update payload and install updates offline.
+This article explains how to discover and import update packages for Azure Local with limited connectivity. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, so you can import the update payload and install updates with limited connectivity to Azure.
 
 <!--To install updates online via PowerShell, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md).-->
 
