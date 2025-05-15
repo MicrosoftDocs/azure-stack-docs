@@ -32,7 +32,7 @@ The disaster recovery strategy for Azure Site Recovery consists of the following
 In the current implementation of Azure Site Recovery integration with Azure Local, you can start the disaster recovery and prepare the infrastructure from the Azure Local resource in the Azure portal. After the preparation is complete, you can finish the remaining steps from the Site Recovery resource in the Azure portal.
 
 > [!NOTE]
-> Azure Site Recovery doesn't support the replication, failover, and failback of the Azure Arc resource bridge and Azure Local VMs enabled by Azure Arc.
+> You can use this preview to test Azure Site Recovery of Azure Local VMs by setting WDAC to "Audit" mode temporarily to allow the installation to complete. However, this isn't recommended for production environments. To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#switch-application-control-policy-modes). Once the installation is complete, you can set the WDAC back to "Enforced" mode. 
 
 ## Overall workflow
 
