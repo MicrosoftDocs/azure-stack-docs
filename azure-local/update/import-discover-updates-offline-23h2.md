@@ -16,11 +16,11 @@ ms.date: 05/13/2025
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
-This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, which allows you to import the update payload and install updates offline.
+This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, so you can import the update payload and install updates offline.
 
 ## Prerequisites
 
-- You must be running Azure Local 2411.3 or later.
+- Make sure you're running Azure Local 2411.3 or later.
 
 - Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
 
@@ -30,11 +30,11 @@ This article explains how to discover and import update packages offline for Azu
 
 The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip. Follow these steps:
 
-1. Download the appropriate CombinedSolutionBundle and make note of the associated SHA256 hash. For information, see [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
+1. Download the appropriate CombinedSolutionBundle and note the associated SHA256 hash. For more information, see [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
 
-   - The CombinedSolutionBundle is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number of the release.
+   - The CombinedSolutionBundle is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
 
-   - The SHA256 hash is also provided in the release notes. You need the hash to verify the integrity of your download.
+   - The SHA256 hash is also in the release notes. Use the hash to check the integrity of your download.
 
 1. Verify the SHA256 hash of the downloaded CombinedSolutionBundle.
 
@@ -45,19 +45,19 @@ The CombinedSolutionBundle is a zip file that contains the update package for th
 
 ## Step 2: Import the Solution update bundle
 
-1. Create a folder for discovery by the update service at the following location in the infrastructure volume of your system.
+1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system.
 
    ```PowerShell
-   # Create a directory for the update service to discover
+   # Create a folder for the update service to discover
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the directory you created.
+1. Copy the CombinedSolutionBundle you downloaded to the folder you created.
 
-1. Extract the contents to the Solution subdirectory.
+1. Extract the contents to the Solution subfolder.
 
    ```PowerShell
-   # Extract the contents of the CombinedSolutionBundle to the Solution subdirectory
+   # Extract the contents of the CombinedSolutionBundle to the Solution subfolder
    Expand-Archive -Path C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip -DestinationPath C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
@@ -68,9 +68,9 @@ The CombinedSolutionBundle is a zip file that contains the update package for th
    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. Update discovery is done asynchronously by the update service and you may need to run `Get-SolutionUpdate` more than once.
+1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you may need to run `Get-SolutionUpdate` more than once.
 
-1. If the update is returned with a state of `AdditionalContentRequired`, follow the instructions in this article to import the required Solution Builder Extension (SBE) updates: [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
+1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates.
 
 ## Next steps
 
