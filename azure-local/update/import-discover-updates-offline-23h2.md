@@ -10,13 +10,17 @@ ms.date: 05/13/2025
 
 # Import and discover update packages offline for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-2503-later.md)]
+::: moniker range=">=azloc-2503"
+
+[!INCLUDE [applies-to](../includes/applies-to-2503-later.md)]
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article explains how to discover and import update packages offline for Azure Local. Starting with version 2503, the OS update components for Azure Local are distributed as a static payload, so you can import the update payload and install updates offline.
+
+<!--To install updates online via PowerShell, see [Update Azure Local via PowerShell](./update-via-powershell-23h2.md).-->
 
 ## Prerequisites
 
@@ -28,15 +32,17 @@ This article explains how to discover and import update packages offline for Azu
 
 ## Step 1: Download Solution update bundle
 
-The CombinedSolutionBundle is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip. Follow these steps:
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip.
 
-1. Download the appropriate CombinedSolutionBundle and note the associated SHA256 hash. For more information, see [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
+Follow these steps:
 
-   - The CombinedSolutionBundle is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
+1. To download the bundle and note the SHA256 hash, see the **Download URI** column in [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
+
+   - The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
 
    - The SHA256 hash is also in the release notes. Use the hash to check the integrity of your download.
 
-1. Verify the SHA256 hash of the downloaded CombinedSolutionBundle.
+1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**.
 
    ```PowerShell
    # Verify the SHA256 hash of the downloaded CombinedSolutionBundle
@@ -77,3 +83,11 @@ The CombinedSolutionBundle is a zip file that contains the update package for th
 - Learn more about [Understanding update phases](./update-phases-23h2.md).
 
 - Review [Troubleshooting updates](./update-troubleshooting-23h2.md).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2503"
+
+This feature is available only in Azure Local 2503 and later.
+
+::: moniker-end
