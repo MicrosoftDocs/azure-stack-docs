@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/12/2025
+ms.date: 05/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -170,7 +170,7 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 
 <!--ASK-->
 
-You're now ready to perform the post-upgrade steps for your system.
+[!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
 ## Next steps
 
