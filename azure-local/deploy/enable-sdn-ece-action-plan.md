@@ -30,15 +30,15 @@ Once the NC is integrated, SDN is enabled. You can use the Azure portal, Azure C
     For more information, see [Create network security groups](../manage/create-network-security-groups.md) and see [Create network security rules](../manage/create-network-security-groups.md#create-a-network-security-rule).
 
 
-## About Network controller architecture on Azure Local
+## About Network Controller architecture on Azure Local
 
 NC is a key component that manages and configures virtual network infrastructure on an Azure Local instance. NC is now natively integrated with the host machine using Failover Clustering, rather than being hosted in a VM. NC is responsible for managing the virtual switch, logical networks, and network interfaces. It also provides a REST API for programmatic access to the network infrastructure.
 
-Here is an architecture diagram of network controller in a 2-node Azure Local instance with SDN enabled by Arc:
+Here is an architecture diagram of Network Controller in a 2-node Azure Local instance with SDN enabled by Arc:
 
 :::image type="content" source="./media/enable-sdn-ece-action-plan/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-ece-action-plan/network-controller-architecture.png":::
 
- In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and all its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group. 
+ In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group.
  
 1. MGMT VLAN on your Azure Local instance is responsible for configuring and deploying network policies from NC to NC host agent.
 1. NC host agent receives and plumbs policies to your virtual switch.
@@ -92,7 +92,7 @@ Consider this information before you enable SDN:
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 - Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
-    - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no resposnse, it means that the name is unique.
+    - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no response, it means that the name is unique.
     - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
 
@@ -116,7 +116,7 @@ The action plan uses the following parameters:
 > [!IMPORTANT]
 > Make sure to plan for a maintenance window if you are running on a production environment.
 
-Follow these steps on the Azure CLI to run the  action plan:
+Follow these steps on the Azure CLI to run the action plan:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 
