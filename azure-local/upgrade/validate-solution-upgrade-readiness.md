@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/17/2025
+ms.date: 05/13/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -95,7 +95,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other machines in the system, run the following PowerShell command:
+1. To remotely validate other machines in the system, run the following PowerShell command for each remote machine:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
