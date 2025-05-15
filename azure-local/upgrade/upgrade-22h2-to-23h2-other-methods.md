@@ -15,7 +15,7 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 using manual methods, such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 using manual methods, such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade. This is the first step in the upgrade process, which upgrades only the OS.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
