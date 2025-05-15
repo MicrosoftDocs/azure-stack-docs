@@ -12,8 +12,6 @@ ms.date: 05/13/2025
 
 ::: moniker range=">=azloc-2503"
 
-[!INCLUDE [applies-to](../includes/applies-to-2503-later.md)]
-
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](../includes/azure-local-end-of-support-banner-23h2.md)]
