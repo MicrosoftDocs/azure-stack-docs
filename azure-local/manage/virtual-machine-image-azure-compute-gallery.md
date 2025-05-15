@@ -22,7 +22,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 - Make sure that your image is using a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
-    - For custom images in Azure Compute Gallery, you have the following extra prerequisites:
+- For custom images in Azure Compute Gallery, ensure you meet the following extra prerequisites:
     - You should have a VHD loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
     - If using a VHDX:
         - The VHDX image must be Gen 2 type and secure boot enabled.
