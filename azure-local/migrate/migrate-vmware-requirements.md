@@ -65,7 +65,7 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs. For more information, see [Enable your VMware vCenter resources in Azure](/azure/azure-arc/vmware-vsphere/browse-and-enable-vcenter-resources-in-azure).
 
-- Ensure that vCenter Server permission requirements are met. For more information, see [VMware vSphere agentless requirements](/azure/azure-arc/vmware-vsphere/browse-and-enable-vcenter-resources-in-azure).
+- Ensure that vCenter Server permission requirements are met. For more information, see [VMware vSphere requirements (agentless)](/azure/migrate/migrate-support-matrix-vmware-migration#agentless-migration).
 
 - In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated.
 

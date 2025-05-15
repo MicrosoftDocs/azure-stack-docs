@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 05/15/2025
 ms.author: alkohli
 ---
 
@@ -171,9 +171,7 @@ Complete the following tasks to generate the target appliance key:
 
 ### Create the target appliance
 
-You can download the appliance from a .zip file. Under **Step 2: Download Azure Migrate appliance**, select **Download installer**.
-
-:::image type="content" source="media/migrate-vmware-replicate/download-target-appliance-1.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance-1.png":::
+:::image type="content" source="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png" alt-text="Screenshot showing the Download using zip option." lightbox="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png":::
 
 <!--#### Install using a .VHD file
 
@@ -224,9 +222,9 @@ Now you can install the appliance using the .VHD file.
 
 #### Install using a script (.zip file)
 
-This step applies to the downloaded .zip file.
+This step applies to using a .zip file.
 
-1. You can download the appliance from a .zip or .VHD file. Under  **Step 2: Download Azure Migrate appliance**, select **Download installer**. 
+1. You can download the appliance from a .zip file. Under  **Step 2: Download and install the target appliance**, select **.zip** and then select **Download**.
 
 1. In  **Hyper-V Manager**, select the host.
 

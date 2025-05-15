@@ -85,7 +85,7 @@ Complete the following tasks to generate the target appliance key:
 
 You can download the appliance using either a .VHD file or a .zip file.
 
-Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD** or **.zip**, and then select **Download installer**.
 
 :::image type="content" source="media/migrate-hyperv-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-hyperv-replicate/download-target-appliance.png":::
 
