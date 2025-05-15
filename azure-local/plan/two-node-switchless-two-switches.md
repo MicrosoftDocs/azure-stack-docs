@@ -23,7 +23,7 @@ Scenarios for this network pattern include laboratories, branch offices, and dat
 
 Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components.
 
-Remember that is not supported to scale out storage switchless deployments in Azure Local. If you need to add an additional node you will need to redeploy de cluster because it requires to reconfigure storage physical connectivity and the storage networks.
+Remember that scale out of storage switchless Azure Local deployments isn't supported. To add an additional node, redeploy the cluster as you need to reconfigure the storage physical connectivity and the storage networks.
 
 ## Physical connectivity components
 

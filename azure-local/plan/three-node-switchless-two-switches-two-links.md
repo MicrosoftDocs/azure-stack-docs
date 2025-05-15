@@ -25,7 +25,7 @@ Scenarios for this network pattern include laboratories, factories, branch offic
 
 Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
-Remember that is not supported to scale out storage switchless deployments in Azure Local. If you need to add an additional node you will need to redeploy de cluster because it requires to reconfigure storage physical connectivity and the storage networks.
+Remember that scale out of storage switchless Azure Local deployments isn't supported. To add an additional node, redeploy the cluster as you need to reconfigure the storage physical connectivity and the storage networks.
 
 ## Physical connectivity components
 
@@ -61,7 +61,7 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true, and you are responsible to specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
+- Set `StorageAutoIP` parameter to false and `Switchless` parameter to true. Specify the IPs on the ARM template used to deploy the Azure Local instance from Azure.
 
 - For Azure Local cloud deployments:
 
