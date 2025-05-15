@@ -25,7 +25,7 @@ Scenarios for this network pattern include laboratories, factories, retail store
 
 Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. Software Defined Network (SDN) L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or Quality of Service (QoS) don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
-Remember that scale out of storage switchless Azure Local deployments isn't supported. To add an additional node, redeploy the cluster as you need to reconfigure the storage physical connectivity and the storage networks.
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
 ## Physical connectivity components
 

@@ -23,7 +23,7 @@ Scenarios for this network pattern include laboratories, factories, retail store
 
 Consider this pattern for a cost-effective solution that includes fault-tolerance at the system level, but can tolerate northbound connectivity interruptions if the single physical switch fails or requires maintenance.
 
-Remember that scale out of storage switchless Azure Local deployments isn't supported. To add an additional node, redeploy the cluster as you need to reconfigure the storage physical connectivity and the storage networks.
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
 ## Physical connectivity components
 
