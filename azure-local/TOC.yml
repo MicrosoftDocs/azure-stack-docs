@@ -184,21 +184,21 @@ items:
   items:
   - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
-  - name: 1 - Upgrade to version 23H2 OS
+  - name: 1. Upgrade to version 23H2 OS
     items: 
-    - name: 1A - Via PowerShell
+    - name: Via PowerShell (recommended)
       href: upgrade/upgrade-22h2-to-23h2-powershell.md
-    - name: 1B - Via Windows Admin Center
+    - name: Via Windows Admin Center
       href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
-    - name: 1C - Via other methods
+    - name: Via other methods
       href: upgrade/upgrade-22h2-to-23h2-other-methods.md
-  - name: 2 - Perform post-OS upgrade tasks
+  - name: 2. Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
-  - name: 3 - Install, enable Network ATC
+  - name: 3. Install, enable Network ATC
     href: upgrade/install-enable-network-atc.md
-  - name: 4 - Validate solution upgrade readiness
+  - name: 4. Validate solution upgrade readiness
     href: upgrade/validate-solution-upgrade-readiness.md
-  - name: 5 - Apply solution upgrade
+  - name: 5. Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
   - name: Troubleshoot upgrades
     href: upgrade/troubleshoot-upgrade-to-23h2.md
