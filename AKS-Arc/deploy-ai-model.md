@@ -14,7 +14,7 @@ ms.lastreviewed: 05/14/2025
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy an AI model on AKS Arc with the *Kubernetes AI toolchain operator* (KAITO). The AI toolchain operator runs as cluster extension in AKS Arc, and simplifies the experience of deploying and running OSS-based LLM models on your AKS Arc clusters. To enable this feature, follow this workflow:
+This article describes how to deploy an AI model on AKS Arc with the *Kubernetes AI toolchain operator* (KAITO). The AI toolchain operator runs as a cluster extension in AKS Arc and makes it easier to deploy and run open source LLM models on your AKS Arc cluster. To enable this feature, follow this workflow:
 
 1. Create a cluster with KAITO.
 1. Add a GPU node pool.
@@ -43,7 +43,7 @@ The AI toolchain operator extension currently supports KAITO version 0.4.5. Make
 
 ## Create a cluster with KAITO
 
-To create an AKS Arc on Azure Local with KAITO, follow these steps:
+To create an AKS Arc cluster on Azure Local with KAITO, follow these steps:
 
 1. Gather [all required parameters](aks-create-clusters-cli.md) and include the `--enable-ai-toolchain-operator` parameter to enable KAITO as part of the cluster creation.
 
