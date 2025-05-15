@@ -86,8 +86,8 @@ Follow these steps:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2503"
+::: moniker range="<=azloc-24111"
 
-This feature is available only in Azure Local 2503 and later.
+This feature is available in Azure Local 2503 and later.
 
 ::: moniker-end
