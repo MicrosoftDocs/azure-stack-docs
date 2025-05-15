@@ -22,7 +22,7 @@ This article explains how to discover and import update packages for Azure Local
 
 ## Prerequisites
 
-- Make sure you're running Azure Local 2411.3 or later.
+- Make sure you're running Azure Local 2411.3 or later to use this feature.
 
 - Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
 
