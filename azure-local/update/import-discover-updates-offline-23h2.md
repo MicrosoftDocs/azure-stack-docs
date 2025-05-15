@@ -1,6 +1,6 @@
 ---
-title: Import and Discover Update Packages Offline for Azure Local
-description: This article describes how to import and discover update packages offline for Azure Local.
+title: Import and Discover Update Packages for Azure Local with limited connectivity
+description: This article describes how to import and discover update packages for Azure Local with limited connectivity.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -8,9 +8,9 @@ ms.reviewer: arduppal
 ms.date: 05/13/2025
 ---
 
-# Import and discover update packages offline for Azure Local
+# Import and discover update packages with limited connectivity
 
-::: moniker range=">=azloc-2503"
+::: moniker range=">=azloc-24113"
 
 [!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
 
@@ -84,8 +84,8 @@ Follow these steps:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2503"
+::: moniker range="<=azloc-24112"
 
-This feature is available in Azure Local 2503 and later.
+This feature is available in Azure Local 2411.3 and later.
 
 ::: moniker-end
