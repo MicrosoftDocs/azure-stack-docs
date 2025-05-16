@@ -43,14 +43,15 @@ Altaro VM Backup is an award-winning VM backup and replication solution for Hype
 
 To learn how you can back up VMs running on Azure Stack HCI with ease, check out the [solution brief](https://www.altaro.com/azurestackhci).
 
-:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" lightbox="./media/utility-applications/commvault-logo.png":::
+<!--Commented out Commvault due to blocked reference links.>
+<!--:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" lightbox="./media/utility-applications/commvault-logo.png":::
 
 Commvault is a complete data management platform to store, protect, manage, and use data across on-premises and cloud locations.
 
 - Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
 - Application support: [Azure Stack HCI](https://documentation.commvault.com/v11/essential/azure_stack_hci.html)
 
-To enhance your Azure Stack HCI deployment with intelligent data management, check out the [Solution Brief](https://bit.ly/2ONrZGv).
+To enhance your Azure Stack HCI deployment with intelligent data management, check out the [Solution Brief](https://bit.ly/2ONrZGv).-->
 
 :::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadog company logo" lightbox="./media/utility-applications/datadog-logo.png":::
 
