@@ -27,7 +27,7 @@ For the 2505 release of Azure Local, Microsoft released two security updates: on
 
 # [Existing deployments](#tab/existing-deployments)
 
-This section applies to existing deployments of 2504 running OS build **25398.1611**.
+This section applies to existing deployments of 2505 running OS build **25398.1611**.
 
 ## Improvements
 
