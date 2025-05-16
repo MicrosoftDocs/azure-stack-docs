@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: article
 ms.date: 10/22/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Validate an Azure Stack HCI cluster

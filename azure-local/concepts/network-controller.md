@@ -5,6 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.date: 11/29/2023
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Plan to deploy Network Controller

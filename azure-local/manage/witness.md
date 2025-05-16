@@ -5,7 +5,8 @@ author: alkohli
 ms.topic: how-to
 ms.date: 05/06/2025
 ms.author: alkohli 
-ms.reviewer: stevenek 
+ms.reviewer: stevenek
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Set up a cluster witness

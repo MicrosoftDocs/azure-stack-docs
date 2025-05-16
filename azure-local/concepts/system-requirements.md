@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
 ms.date: 05/09/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # System requirements for Azure Stack HCI, version 22H2

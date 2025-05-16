@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 12/01/2022
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Upgrade VMs to Windows Server Azure Edition
