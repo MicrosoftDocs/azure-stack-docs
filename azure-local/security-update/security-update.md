@@ -22,7 +22,7 @@ For the 2505 release of Azure Local, Microsoft released two security updates: on
 
 | Deployment type  | Security update  | OS build  | Release date |
 |---------|---------|---------|---------|
-| Existing deployments    | KB5055527         | 25398.1611         | May 13, 2025        |
+| Existing deployments    | KB5058384         | 25398.1611         | May 13, 2025        |
 | New deployments    | KB5058411         | 26100.4061         | May 13, 2025         |
 
 # [Existing deployments](#tab/existing-deployments)
@@ -97,9 +97,6 @@ Microsoft is not currently aware of any issues with this update.​​​​​
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
-
-> [!NOTE]
-> This LCU includes an update for AI components in the Microsoft Update Catalog. Even though the AI component updates are included in this LCU, the AI components are only applicable to Windows Copilot+ PCs and won't install on Windows PC or Windows Server.
 
 ## File list
 
