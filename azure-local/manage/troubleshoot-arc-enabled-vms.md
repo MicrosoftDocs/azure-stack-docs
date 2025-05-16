@@ -17,7 +17,7 @@ This article describes how to collect logs and troubleshoot issues with Azure Lo
 
 ## Unable to select an image for Trusted launch VMs
 
-Trusted launch Azure Local VMs currently support only select images from Azure Marketplace. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch Azure Local VM in the Azure portal, the image dropdown list shows only images supported by Trusted launch. If you select any image that isn't supported, including a custom image, the image dropdown list is blank. If none of the images available on your Azure Local system are supported by Trusted launch, the image dropdown list is also blank.
+Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
 ## Failure when trying to enable guest management
 

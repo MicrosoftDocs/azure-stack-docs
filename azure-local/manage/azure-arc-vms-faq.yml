@@ -67,7 +67,7 @@ sections:
     - question: |
         When creating an Azure Local VM via Azure portal, why does the image dropdown shows a blank list, when I choose security type as Trusted launch?
       answer: | 
-        Trusted launch Azure Local VMs currently support only select images from Azure Marketplace. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch Azure Local VM in the Azure portal, the image dropdown list shows only images supported by Trusted launch. If you select any image, including a custom image, that isn't supported, the image dropdown list is blank. If none of the images available on your Azure Local system are supported by Trusted launch, the image dropdown list is also blank.
+        Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](./trusted-launch-vm-overview.md#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
     - question: |
         Can I use the same name for gallery image projections and do existing VMs use the new image?
