@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/08/2025
 ms.author: alkohli
 ms.reviewer: johnmar
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Stretched clusters overview

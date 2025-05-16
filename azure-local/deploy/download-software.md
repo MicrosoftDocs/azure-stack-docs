@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/14/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Download the Azure Stack HCI software

@@ -6,6 +6,7 @@ author: sethmanheim
 ms.custom: devx-track-azurepowershell
 ms.author: sethm
 ms.date: 02/21/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Manage Azure Stack HCI cluster registration

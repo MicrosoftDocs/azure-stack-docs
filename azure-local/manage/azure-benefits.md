@@ -9,6 +9,7 @@ ms.custom:
 ms.reviewer: jlei
 ms.date: 02/21/2025
 ms.lastreviewed: 02/23/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Benefits on Azure Stack HCI (22H2 and earlier)

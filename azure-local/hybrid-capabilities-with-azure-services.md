@@ -6,6 +6,7 @@ author: sethmanheim
 ms.author: sethm
 ms.date: 05/14/2024
 ms.custom: e2e-hybrid
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Stack HCI hybrid capabilities with Azure services

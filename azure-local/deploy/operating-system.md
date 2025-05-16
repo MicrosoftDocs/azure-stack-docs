@@ -6,6 +6,7 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-local
 ms.date: 04/12/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy the Azure Stack HCI operating system
