@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 05/13/2025
+ms.date: 05/16/2025
 ---
 
 # Import and discover update packages with limited connectivity
