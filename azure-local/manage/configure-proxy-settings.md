@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/21/2023
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Configure proxy settings for Azure Stack HCI

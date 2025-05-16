@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 01/08/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI

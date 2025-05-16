@@ -8,6 +8,7 @@ ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 05/08/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Troubleshoot Azure Stack HCI registration

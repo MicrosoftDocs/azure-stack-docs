@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/17/2023
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy branch office and edge on Azure Stack HCI

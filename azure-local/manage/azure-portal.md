@@ -6,6 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/23/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Use the Azure portal with Azure Stack HCI

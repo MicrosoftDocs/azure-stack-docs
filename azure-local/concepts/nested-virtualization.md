@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
 ms.date: 02/27/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Nested virtualization in Azure Stack HCI

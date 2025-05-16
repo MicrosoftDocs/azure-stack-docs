@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 10/03/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Use DISKSPD to test workload storage performance
