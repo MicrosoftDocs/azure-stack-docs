@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.reviewer: stevenek
 ms.topic: how-to
 ms.date: 02/27/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Create stretched cluster volumes and set up replication

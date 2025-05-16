@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 05/15/2025
 ---
 
 # Review two-node storage switchless, single switch deployment network reference pattern for Azure Local
@@ -23,7 +23,7 @@ Scenarios for this network pattern include laboratories, factories, retail store
 
 Consider this pattern for a cost-effective solution that includes fault-tolerance at the system level, but can tolerate northbound connectivity interruptions if the single physical switch fails or requires maintenance.
 
-You can scale out this pattern, but it requires workload downtime to reconfigure storage physical connectivity and storage network reconfiguration. Although SDN L3 services are fully supported for this pattern, the routing services such as BGP must be configured on the firewall device on top of the TOR switch if it doesn't support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device, as they're implemented on the virtual switch.
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
 ## Physical connectivity components
 

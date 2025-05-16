@@ -5,6 +5,7 @@ author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
 ms.date: 02/27/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Stack HCI security considerations

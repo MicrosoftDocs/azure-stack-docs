@@ -5,7 +5,8 @@ author: sethmanheim
 ms.topic: how-to 
 ms.date: 03/10/2025
 ms.author: sethm 
-ms.reviewer: anirbanpaul 
+ms.reviewer: anirbanpaul
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy an SDN infrastructure using SDN Express
