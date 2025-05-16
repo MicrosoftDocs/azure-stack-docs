@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.reviewer: kimlam
 ms.lastreviewed: 01/17/2023
 ms.date: 02/27/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy Azure Stack HCI on a single server

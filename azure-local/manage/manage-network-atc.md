@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 11/13/2024
 ms.author: alkohli
 zone_pivot_groups: windows-os
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Manage Network ATC

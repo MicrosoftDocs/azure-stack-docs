@@ -6,6 +6,7 @@ ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
 ms.date: 05/22/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Use default network access policies on virtual machines on Azure Stack HCI

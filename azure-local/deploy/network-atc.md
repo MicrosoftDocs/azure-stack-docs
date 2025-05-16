@@ -7,6 +7,7 @@ ms.date: 11/13/2024
 ms.author: dacuo
 ms.reviewer: alkohli
 zone_pivot_groups: windows-os
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy host networking with Network ATC
