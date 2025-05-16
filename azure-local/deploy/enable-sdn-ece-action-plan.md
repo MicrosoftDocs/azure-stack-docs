@@ -60,7 +60,8 @@ Consider this information before you enable SDN:
 
 ## Prerequisites
 
-- You have access to an Azure Local instance running 2504 or later. The 2504 release must be running OS version 26100.3775.
+- You have access to an Azure Local instance running 2505 and later. The 2505 release must be running OS version XXXXX.XXXX
+
     - In the Azure portal, go to your Azure Local instance and select **Overview**. The **OS version** is displayed in the **Instance details** section.
     - To verify the OS version, run the following command:
 
@@ -82,12 +83,15 @@ Consider this information before you enable SDN:
                                        Security Features Enabled:
         Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.
         ```
-        - Verify that the `OS Version` in the output is **10.0.26100** or later.  
+
+        - Verify that the `OS Version` in the output is **10.0.26100** and later.
 
 - You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the action plan.
+
 - You have access to a client used to connect to Azure Local instance via Azure CLI.
     
     This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).
+
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
