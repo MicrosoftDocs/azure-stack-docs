@@ -83,13 +83,13 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
 2. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name:
 
-   ### [Azure portal](#tab/portal)
+   ### [Azure CLI](#tab/azurecli)
 
    ```azurecli
    kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
    ```
 
-   ### [Azure CLI](#tab/azurecli)
+   ### [PowerShell](#tab/powershell)
 
    For PowerShell, you can use the following command:
 
