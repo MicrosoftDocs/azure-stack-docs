@@ -6,6 +6,7 @@ ms.author: chcurlet
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/17/2023
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Enable quick restarts with Kernel Soft Reboot

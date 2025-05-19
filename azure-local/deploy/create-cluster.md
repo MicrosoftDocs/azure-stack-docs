@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/03/2025
 ms.author: alkohli
 ms.reviewer: shsathee
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center

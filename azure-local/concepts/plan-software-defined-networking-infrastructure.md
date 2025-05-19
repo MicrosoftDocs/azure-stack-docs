@@ -5,7 +5,9 @@ ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
 ms.date: 01/10/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
+
 # Plan a Software Defined Network infrastructure
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016

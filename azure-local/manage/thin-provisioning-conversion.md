@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 10/05/2022
 ms.author: alkohli
 ms.reviewer: alkohli
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Convert fixed to thin provisioned volumes on Azure Stack HCI

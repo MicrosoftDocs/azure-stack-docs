@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/26/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Monitor Azure Stack HCI clusters from Windows Admin Center

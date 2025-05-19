@@ -5,6 +5,7 @@ author: alkohli
 ms.topic: troubleshooting
 ms.date: 02/27/2025
 ms.author: alkohli
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Troubleshoot cluster validation reporting

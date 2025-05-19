@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.date: 02/23/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Updates and upgrades

@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/09/2022
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Storage thin provisioning in Azure Stack HCI
