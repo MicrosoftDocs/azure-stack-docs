@@ -6,6 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: stevenek
 ms.date: 02/23/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster

@@ -6,6 +6,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: stevenek
 ms.date: 12/02/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center

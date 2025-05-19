@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 02/27/2025
 ms.author: alkohli
 ms.reviewer: stevenek
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Manage Azure Stack HCI and Windows Server clusters using PowerShell

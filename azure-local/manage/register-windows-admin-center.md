@@ -5,6 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.date: 02/21/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Register Windows Admin Center with Azure

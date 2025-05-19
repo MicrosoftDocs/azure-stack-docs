@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 05/16/2025
 ms.author: alkohli
 ms.custom: references_regions
 ---
@@ -27,8 +27,8 @@ The following operating systems (OSs) are supported for the VMware source applia
 |Source appliance     |Windows Server 2022          |
 |Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM (Linux)     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
+|Guest VM (Windows)    |Windows Server 2025<br>Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux) | Red Hat Linux 6.x, 7.x, 8.x, 9.x<br>Ubuntu Server and Pro. 18.x, 20.x<br>CentOS 7.x, 8.x, 9.x<br>SUSE Linux Enterprise<br>Debian 9.x, 10.x, 11.x, 12.x |
 
 \*To migrate Windows Server 2008 R2 VMs, see the [FAQ](./migrate-faq.yml).
 
@@ -57,15 +57,15 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
 
-For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
+For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 :::image type="content" source="./media/migrate-vmware-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-vmware-requirements/migrate-resource-providers.png":::
 
 ## Source VMware server requirements
 
-- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs. For more information, see [Enable your VMware vCenter resources in Azure](/azure/azure-arc/vmware-vsphere/browse-and-enable-vcenter-resources-in-azure).
+- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
-- Ensure that adequate vCenter Server permissions are met. For more information, see [VMware vSphere agentless requirements](/azure/migrate/vmware/migrate-support-matrix-vmware-migration#vmware-vsphere-requirements-agentless).
+- Ensure that vCenter Server permission requirements are met. For more information, see [VMware vSphere requirements (agentless)](/azure/migrate/migrate-support-matrix-vmware-migration#agentless-migration).
 
 - In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated.
 

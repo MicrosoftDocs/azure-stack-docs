@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 01/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Single server scale-out for your Azure Stack HCI

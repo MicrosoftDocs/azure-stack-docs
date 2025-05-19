@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 05/06/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Failover cluster maintenance procedures
