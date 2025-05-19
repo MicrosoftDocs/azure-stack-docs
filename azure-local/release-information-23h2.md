@@ -14,7 +14,7 @@ ms.date: 05/19/2025
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
-[!INCLUDE [azure-local-banner-resource-bridge](../includes/azure-local-banner-resource-bridge.md)]
+[!INCLUDE [azure-local-banner-resource-bridge](includes/azure-local-banner-resource-bridge.md)]
 
 To enhance your Azure Local experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
 
