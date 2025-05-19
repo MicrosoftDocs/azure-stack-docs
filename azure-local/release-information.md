@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
 ms.date: 05/13/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Stack HCI, version 22H2 release information

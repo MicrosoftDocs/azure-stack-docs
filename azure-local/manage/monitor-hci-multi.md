@@ -7,6 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/31/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Monitor multiple Azure Stack HCI clusters with Insights

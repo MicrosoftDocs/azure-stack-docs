@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate 
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/08/2025
+ms.date: 05/14/2025
 ms.author: alkohli
 ---
 
@@ -22,7 +22,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 |Prerequisite|Applies to|More information|
 |--|--|--|
 |Open required VMware firewall ports.|source| **3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **443** – Inbound and outbound connections on port 443 to communicate with Azure Migrate services orchestrating replication and migration, and to allow the appliance to communicate with vCenter Server. <br> **902** – Inbound and outbound connections on port 902 for the appliance to replicate data from snapshots of ESXi hosts and send heartbeat traffic to vCenter. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance.|
-|Open required Hyper-V firewall ports.|target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance. <br> **5985** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host.|
+|Open required Hyper-V firewall ports.|target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance. <br> **5985, 5986** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host.|
 |Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN policy on VMware VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
