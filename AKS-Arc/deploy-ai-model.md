@@ -73,9 +73,7 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    ### [Azure CLI](#tab/azurecli)
 
-   To create a GPU node pool using Azure CLI, run the following command.
-
-   To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
+   To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model. For the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
 
    ```azurecli
    az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "Standard_NC16_A16" --os-type "Linux"
@@ -83,11 +81,15 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    ---
 
-2. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name.
+2. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name:
+
+   ### [Azure portal](#tab/portal)
 
    ```azurecli
    kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
    ```
+
+   ### [Azure CLI](#tab/azurecli)
 
    For PowerShell, you can use the following command:
 
@@ -95,9 +97,11 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
    kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
    ```
 
+   ---
+
 3. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
 
-   ```azurecli
+   ```powershell
    kubectl label node moc-l36c6vu97d5 apps=llm-inference
    ```
 
