@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via Windows Admi
 description: Learn how to upgrade Azure Stack HCI OS, version 22H2 to version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 05/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -45,7 +45,7 @@ Before you begin, make sure that:
 - The system is registered in Azure.
 - All the machines in your Azure Local are healthy and show as **Online**.
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the Azure Stack HCI OS, version 23H2 software update. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should have Windows Admin Center installed on it. For more information, see [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - You run the repair registration cmdlet:
 
@@ -65,7 +65,7 @@ Before you begin, make sure that:
    Consult with your hardware vendor for assistance if required.
 
 > [!NOTE]
-> The offline ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
+> The offline **2503** ISO upgrade method is not available when using Windows Admin Center. For these steps, see [Upgrade the operating system on Azure Local via PowerShell](./upgrade-22h2-to-23h2-powershell.md)
 
 ## Step 0: Update registry keys
 
