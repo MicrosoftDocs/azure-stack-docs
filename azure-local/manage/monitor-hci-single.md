@@ -7,6 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/06/2023
+ROBOTS: NOINDEX, NOFOLLOW
 # zone_pivot_groups: hci-versions
 ---
 

@@ -7,6 +7,7 @@ ms.topic: overview
 ms.reviewer: kimlam
 ms.lastreviewed: 04/01/2024
 ms.date: 04/25/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Using Azure Stack HCI on a single server

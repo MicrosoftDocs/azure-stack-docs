@@ -5,6 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 08/26/2024
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy SQL Server on Azure Stack HCI

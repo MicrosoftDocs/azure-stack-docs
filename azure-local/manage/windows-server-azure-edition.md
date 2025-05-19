@@ -9,6 +9,7 @@ ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
 ms.date: 03/03/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Deploy Windows Server Azure Edition VMs

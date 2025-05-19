@@ -5,6 +5,7 @@ ms.author: sethm
 ms.topic: article
 author: sethmanheim
 ms.date: 02/21/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 # Collect diagnostic data for clusters
 

@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
 ms.date: 02/20/2025
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Register Azure Stack HCI with Azure
