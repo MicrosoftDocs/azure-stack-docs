@@ -1,20 +1,20 @@
 ---
-title: Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (preview)
-description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO).
+title: Deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (preview)
+description: Learn how to deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (KAITO).
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/19/2025
+ms.date: 05/20/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/14/2025
+ms.lastreviewed: 05/20/2025
 
 ---
 
-# Deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (preview)
+# Deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy an AI model on AKS Arc with the *Kubernetes AI toolchain operator* (KAITO). The AI toolchain operator runs as a cluster extension in AKS Arc and makes it easier to deploy and run open source LLM models on your AKS Arc cluster. To enable this feature, follow this workflow:
+This article describes how to deploy an AI model on AKS enabled by Azure Arc with the *Kubernetes AI toolchain operator* (KAITO). The AI toolchain operator runs as a cluster extension in AKS enabled by Azure Arc and makes it easier to deploy and run open source LLM models on your AKS enabled by Azure Arc cluster. To enable this feature, follow this workflow:
 
 1. Create a cluster with KAITO.
 1. Add a GPU node pool.
@@ -24,7 +24,7 @@ This article describes how to deploy an AI model on AKS Arc with the *Kubernetes
 1. Troubleshoot as needed.
 
 > [!IMPORTANT]
-> The KAITO Extension for AKS on Azure Local is currently in PREVIEW.
+> The KAITO Extension for AKS enabled by Azure Arc on Azure Local is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
@@ -32,7 +32,7 @@ This article describes how to deploy an AI model on AKS Arc with the *Kubernetes
 Before you begin, make sure you have the following prerequisites:
 
 - Make sure the Azure Local cluster has a supported GPU, such as A2, A16, or T4.
-- Make sure the AKS Arc cluster can deploy GPU node pools with the corresponding GPU VM SKU. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
+- Make sure the AKS enabled by Azure Arc cluster can deploy GPU node pools with the corresponding GPU VM SKU. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
 - Make sure that **kubectl** is installed on your local machine. If you need to install **kubectl**, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).  
 - Install the **aksarc** extension, and make sure the version is at least 1.5.37. To get the list of installed CLI extensions, run `az extension list -o table`.
 - If you use a Powershell terminal, make sure the version is at least 7.4.
@@ -43,7 +43,7 @@ The AI toolchain operator extension currently supports KAITO version 0.4.5. Make
 
 ## Create a cluster with KAITO
 
-To create an AKS Arc cluster on Azure Local with KAITO, follow these steps:
+To create an AKS enabled by Azure Arc cluster on Azure Local with KAITO, follow these steps:
 
 1. Gather [all required parameters](aks-create-clusters-cli.md) and include the `--enable-ai-toolchain-operator` parameter to enable KAITO as part of the cluster creation.
 
@@ -55,7 +55,7 @@ To create an AKS Arc cluster on Azure Local with KAITO, follow these steps:
 
 ## Update an existing cluster with KAITO
 
-If you want to enable KAITO on an existing AKS Arc cluster with a GPU, you can run the following command to install the KAITO operator on the existing node pool:
+If you want to enable KAITO on an existing AKS enabled by Azure Arc cluster with a GPU, you can run the following command to install the KAITO operator on the existing node pool:
 
 ```azurecli
 az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --enable-ai-toolchain-operator
@@ -67,7 +67,7 @@ az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --
 
    ### [Azure portal](#tab/portal)
 
-   Sign in to the Azure portal and find your AKS Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
+   Sign in to the Azure portal and find your AKS enabled by Azure Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
 
    :::image type="content" source="media/deploy-ai-model/add-gpu-node-pool.png" alt-text="Screenshot of portal showing add GPU node pool." lightbox="media/deploy-ai-model/add-gpu-node-pool.png":::
 
@@ -198,16 +198,15 @@ The following table shows the supported GPU models and their corresponding VM SK
 |     phi-3-mini-128k-instruct        |     N               |     Y                             |     Y                               |
 |     phi-3.5-mini-instruct           |     N               |     Y                             |     Y                               |
 |     phi-4-mini-instruct             |     N               |     N                             |     Y                               |
-|     deepseek-r1-distill-llama-8b    |     N               |     N                             |     Y                               |
 |     mistral-7b/mistral-7b-instruct  |     N               |     N                             |     Y                               |
 |     qwen2.5-coder-7b-instruct       |     N               |     N                             |     Y                               |
 
 ## Troubleshooting
 
 1. If you want to deploy an LLM and see the error **OutOfMemoryError: CUDA out of memory**, please raise an issue in the [KAITO repo](https://github.com/kaito-project/kaito/).
-1. If you see the error **(ExtensionOperationFailed) The extension operation failed with the following error: Unable to get a response from the Agent in time** during extension installation, [see this TSG](/troubleshoot/azure/azure-kubernetes/extensions/cluster-extension-deployment-errors#error-unable-to-get-a-response-from-the-agent-in-time) and ensure the extension agent in the AKS Arc cluster can connect to Azure.
+1. If you see the error **(ExtensionOperationFailed) The extension operation failed with the following error: Unable to get a response from the Agent in time** during extension installation, [see this TSG](/troubleshoot/azure/azure-kubernetes/extensions/cluster-extension-deployment-errors#error-unable-to-get-a-response-from-the-agent-in-time) and ensure the extension agent in the AKS enabled by Azure Arc cluster can connect to Azure.
 1. If you see an error during prompt testing such as **{"detail":[{"type":"json_invalid","loc":["body",1],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}**, it's possible that your PowerShell terminal version is 5.1. Make sure the terminal version is at least 7.4.
 
 ## Next steps
 
-In this article, you learned how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO). For more information about the KAITO project, see the [KAITO GitHub repo](https://github.com/kaito-project/kaito).
+In this article, you learned how to deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (KAITO). For more information about the KAITO project, see the [KAITO GitHub repo](https://github.com/kaito-project/kaito).
