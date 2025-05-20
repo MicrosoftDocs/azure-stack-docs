@@ -27,6 +27,7 @@ Here are some important considerations to keep in mind before you configure prox
 - Understand that proxy settings are separate for different components and features of Azure Local (`WinInet`,`WinHTTP`, and `Environment Variables`). You must configure the proxy settings for all the required components and any other features that you plan on using.
 - Although each component has specific command parameters and proxy bypass list string requirements, we recommend keeping the same proxy configuration across the different component and features.
 - Authenticated proxies using username and password aren't supported due to security constraints.
+- Proxy server endpoints with a `.local` domain aren't supported. For example - `http://proxy.contosos.local`.
 - If you're using SSL inspection in your proxy, you need to bypass the required Azure Local and its components (Arc Resource Bridge, Azure Kubernetes Service (AKS), etc.) outbound URLs.
 - Each of the three proxy components on the operating system has specific proxy bypass list string requirements. Don't use the same string for all three components.
 - Proxy Auto-Configuration (PAC) files aren't supported.
