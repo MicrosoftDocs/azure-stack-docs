@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS Arc with the Kubernetes AI t
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/19/2025
+ms.date: 03/25/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/14/2025
+ms.lastreviewed: 12/03/2024
 
 ---
 
@@ -14,199 +14,193 @@ ms.lastreviewed: 05/14/2025
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy an AI model on AKS Arc with the *Kubernetes AI toolchain operator* (KAITO). The AI toolchain operator runs as a cluster extension in AKS Arc and makes it easier to deploy and run open source LLM models on your AKS Arc cluster. To enable this feature, follow this workflow:
+This article describes how to deploy an AI model on AKS Arc with the Kubernetes AI toolchain operator (KAITO). The AI toolchain operator (KAITO) is an add-on for AKS Arc, and it simplifies the experience of running OSS AI models on your AKS Arc clusters. To enable this feature, follow this workflow:
 
-1. Create a cluster with KAITO.
+1. Deploy KAITO on an existing cluster.
 1. Add a GPU node pool.
-1. Model deployment.
-1. Validate the model with a test prompt.
-1. Clean up resources.
-1. Troubleshoot as needed.
+1. Deploy the AI model.
+1. Validate the model deployment.
 
 > [!IMPORTANT]
-> The KAITO Extension for AKS on Azure Local is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
 
 ## Prerequisites
 
 Before you begin, make sure you have the following prerequisites:
 
-- Make sure the Azure Local cluster has a supported GPU, such as A2, A16, or T4.
-- Make sure the AKS Arc cluster can deploy GPU node pools with the corresponding GPU VM SKU. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
-- Make sure that **kubectl** is installed on your local machine. If you need to install **kubectl**, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).  
-- Install the **aksarc** extension, and make sure the version is at least 1.5.37. To get the list of installed CLI extensions, run `az extension list -o table`.
-- If you use a Powershell terminal, make sure the version is at least 7.4.
+1. The following details from your infrastructure administrator:
 
-For all hosted model preset images and default resource configuration, see the [KAITO GitHub repository](https://github.com/kaito-project/kaito/tree/main/presets). All the preset models are originally from HuggingFace, and we do not change the model behavior during the redistribution. See the [content policy from HuggingFace](https://huggingface.co/content-policy).
+   - An AKS Arc cluster that's up and running. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).
+   - Make sure that the AKS Arc cluster runs on the Azure Local cluster with a supported GPU model. Before you create the node pool, you must also identify the correct GPU VM SKUs based on the model. For more information, see [use GPU for compute-intensive workloads](deploy-gpu-node-pool.md).
+   - We recommend using a computer running Linux for this feature.
+   - Use `az connectedk8s proxy` to connect to your AKS Arc cluster.
 
-The AI toolchain operator extension currently supports KAITO version 0.4.5. Make a note of this in considering your choice of model from the KAITO model repository.
+1. Make sure that **helm** and **kubectl** are installed on your local machine.
 
-## Create a cluster with KAITO
+   - If you need to install or upgrade, see [Install Helm](https://helm.sh/docs/intro/install/).
+   - If you need to install **kubectl**, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).  
 
-To create an AKS Arc cluster on Azure Local with KAITO, follow these steps:
+## Deploy KAITO from GitHub
 
-1. Gather [all required parameters](aks-create-clusters-cli.md) and include the `--enable-ai-toolchain-operator` parameter to enable KAITO as part of the cluster creation.
+You must have a running AKS Arc cluster with a default node pool. To deploy the KAITO operator, follow these steps:
 
-   ```azurecli
-   az aksarc create --resource-group <Resource_Group_name> --name <Cluster_Name> --custom-location <Custom_Location_Name> --vnet-ids <VNet_ID> --enable-ai-toolchain-operator
+1. Clone the [KAITO repo](https://github.com/Azure/kaito.git) to your local machine.
+1. Install the KAITO operator using the following command:
+
+   ```bash
+   helm install workspace ./charts/kaito/workspace --namespace kaito-workspace --create-namespace
    ```
-
-1. After the command succeeds, make sure the KAITO extension is installed correctly and the KAITO operator under the `kaito` namespace is in a running state.
-
-## Update an existing cluster with KAITO
-
-If you want to enable KAITO on an existing AKS Arc cluster with a GPU, you can run the following command to install the KAITO operator on the existing node pool:
-
-```azurecli
-az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --enable-ai-toolchain-operator
-```
 
 ## Add a GPU node pool
 
-1. Before you add a GPU node pool, make sure that Azure Local is enabled with a supported GPU such as A2, T4, or A16, and that the GPU drivers are installed on all the host nodes. To add a GPU node pool, follow these steps:
+Before you add a GPU node, make sure that Azure Local is enabled with a supported GPU model, and that the GPU drivers are installed on all the host nodes. To create a GPU node pool using the Azure portal or Azure CLI, follow these steps:
 
-   ### [Azure portal](#tab/portal)
+### [Azure portal](#tab/portal)
 
-   Sign in to the Azure portal and find your AKS Arc cluster. Under **Settings > Node pools**, select **Add**. Fill in the other required fields, then create the node pool.
+To create a GPU node pool using the Azure portal, follow these steps:
 
-   :::image type="content" source="media/deploy-ai-model/add-gpu-node-pool.png" alt-text="Screenshot of portal showing add GPU node pool." lightbox="media/deploy-ai-model/add-gpu-node-pool.png":::
+1. Sign in to the Azure portal and find your AKS Arc cluster.
+1. Under **Settings** and **Node pools**, select **Add**. During the preview, we only support Linux nodes. Fill in the other required fields and create the node pool.
 
-   ### [Azure CLI](#tab/azurecli)
+   :::image type="content" source="media/deploy-ai-model/nodepools-portal.png" alt-text="Screenshot of node pools portal page." lightbox="media/deploy-ai-model/nodepools-portal.png":::
 
-   To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model. For the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
+### [Azure CLI](#tab/azurecli)
 
-   ```azurecli
-   az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "Standard_NC16_A16" --os-type "Linux"
-   ```
+To create a GPU node pool using Azure CLI, run the following command. The GPU VM SKU used in the following example is for the **A16** model; for the full list of VM SKUs, see [Supported VM sizes](deploy-gpu-node-pool.md#supported-gpu-vm-sizes).
 
-   ---
+```azurecli
+az aksarc nodepool add --name "samplenodepool" --cluster-name "samplecluster" --resource-group "sample-rg" --node-vm-size "Standard_NC16_A16" --os-type "Linux"
+```
 
-2. After the node pool is provisioned, you can confirm whether the node is successfully provisioned using the node pool name:
+---
 
-   ```azurecli
-   kubectl get nodes --show-labels | grep "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | awk '{print $1}'
-   ```
+### Validate the node pool deployment
 
-   For PowerShell, you can use the following command:
+After the node pool creation succeeds, you can confirm whether the GPU node is provisioned using `kubectl get nodes`. In the following example, the GPU node is **moc-l1i9uh0ksne**. The other node is from the default node pool that was created during the cluster creation:
 
-   ```powershell
-   kubectl get nodes --show-labels | Select-String "msft.microsoft/nodepool-name=.*<Node_Pool_Name>" | ForEach-Object { ($_ -split '\s+')[0] }
-   ```
+```bash
+kubectl get nodes
+```
 
-3. Label the newly provisioned GPU node so the inference workspace can be deployed to the node in the next step. You can make sure the label is applied using `kubectl get nodes`.
+Expected output:
 
-   ```powershell
-   kubectl label node moc-l36c6vu97d5 apps=llm-inference
-   ```
+```output
+NAME            STATUS   ROLES                  AGE   VERSION
+moc-l09jexqpg2k Ready    <none>                 31d   v1.29.4
+moc-l1i9uh0ksne Ready    <none>                 26s   v1.29.4
+moc-lkp2603zcvg Ready    control-plane          31d   v1.29.4
+```
 
-## Model deployment
+You should also ensure that the node has allocatable GPU cores:
+
+```bash
+kubectl get node moc-l1i9uh0ksne -o yaml | grep -A 10 "allocatable:"
+```
+
+Expected output:
+
+```output
+allocatable:
+  cpu: 15740m
+  ephemeral-storage: "95026644016"
+  hugepages-1Gi: "0"
+  hugepages-2Mi: "0"
+  memory: 59730884Ki
+  nvidia.com/gpu: "2"
+  pods: "110"
+capacity:
+  cpu: "16"
+  ephemeral-storage: 103110508Ki
+```
+
+## Deploy the AI model
 
 To deploy the AI model, follow these steps:
 
-1. Create a YAML file with the following sample file. In this example, we use the Phi 3.5 Mini model by specifying the preset name as **phi-3.5-mini-instruct**. If you want to use other LLMs, use the preset name from the KAITO repo. You should also make sure that the LLM can deploy on the VM SKU based on the matrix table in the "Model VM SKU Matrix" section.
+1. Create a YAML file using the following template. KAITO supports popular OSS models such as Falcon, Phi3, Llama2, and Mistral. This list might increase over time.
+
+   - The **PresetName** is used to specify which model to deploy, and you can find its value in the [supported model file](https://github.com/kaito-project/kaito/blob/main/presets/workspace/models/supported_models.yaml) in the GitHub repo. In the following example, `falcon-7b-instruct` is used for the model deployment.
+   - We recommend using `labelSelector` and `preferredNodes` to explicitly select the GPU node by name. In the following example, `app: llm-inference` is used for the GPU node `moc-le4aoguwyd9`. You can choose any node label you want, as long as the labels match. The next step shows how to label the node.
 
    ```yaml
-   apiVersion: kaito.sh/v1beta1
+   apiVersion: kaito.sh/v1alpha1
    kind: Workspace
    metadata:
-     name: workspace-llm
+    name: workspace-falcon-7b
    resource:
-     instanceType: <GPU_VM_SKU> # Update this value with GPU VM SKU
-     labelSelector:
-       matchLabels:
-         apps: llm-inference
-     preferredNodes:
-       - moc-l36c6vu97d5 # Update the value with GPU VM name
+    labelSelector:
+      matchLabels:
+        apps: llm-inference
+    preferredNodes:
+    - moc-le4aoguwyd9
    inference:
-     preset:
-       name: phi-3.5-mini-instruct # Update preset name as needed
-   config: "ds-inference-params"
-   ---
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: ds-inference-params
-   data:
-     inference_config.yaml: |
-       max_probe_steps: 6 # Maximum number of steps to find the max available seq len fitting in the GPU memory.
-       vllm:
-         cpu-offload-gb: 0
-         swap-space: 4
-         gpu-memory-utilization: 0.9
-         max-model-len: 4096
+    preset:
+      name: "falcon-7b-instruct"
    ```
 
-1. Apply the YAML and wait until the deployment completes. Make sure that internet connectivity is good so that the model can be downloaded from the Hugging Face website within a few minutes. When the inference workspace is successfully provisioned, both **ResourceReady** and **InferenceReady** become **True**. See the "Troubleshooting" section if you encounter any failures in the workspace deployment.
+1. Label the GPU node using **kubectl**, so that the YAML file knows which node can be used for deployment:
 
-   ```azurecli
+   ```bash
+   kubectl label node moc-le4aoguwyd9 app=llm-inference
+   ```
+
+1. Apply the YAML file and wait until the workplace deployment completes:
+
+   ```bash
    kubectl apply -f sampleyamlfile.yaml
    ```
 
-1. Validate that the workspace deployment succeeded:
+## Validate the model deployment
 
-   ```azurecli
-   kubectl get workspace -A
+To validate the model deployment, follow these steps:
+
+1. Validate the workspace using the `kubectl get workspace` command. Also make sure that both the `ResourceReady` and `InferenceReady` fields are set to **True** before testing with the prompt:
+
+   ```bash
+   kubectl get workspace
    ```
 
-## Validate the model with a test prompt
+   Expected output:
 
-After the resource and inference states become ready, the inference service is exposed internally via a Cluster IP. You can test the model with the following prompt:
+   ```output
+   NAME                 INSTANCE               RESOURCEREADY   INFERENCEREADY   JOBSTARTED   WORKSPACESUCCEEDED   AGE
+   workspace-falcon-7b  Standard_NC16_A16      True            True                          True                 18h
+   ```
 
-```bash
-export CLUSTERIP=$(kubectl get svc workspace-llm  -o jsonpath="{.spec.clusterIPs[0]}") 
+1. After the resource and inference is ready, the **workspace-falcon-7b** inference service is exposed internally and can be accessed with a cluster IP. You can test the model with the following prompt. For more information about features in the KAITO inference, see the [instructions in the KAITO repo](https://github.com/kaito-project/kaito/blob/main/docs/inference/README.md#inference-workload).
 
-kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions
-  -H "Content-Type: application/json"
-  -d '{
-    "model": "phi-3.5-mini-instruct",
-    "prompt": "What is kubernetes?",
-    "max_tokens": 20,
-    "temperature": 0
-  }' 
-```
+   ```bash
+   export CLUSTERIP=$(kubectl get svc workspace-falcon-7b -o jsonpath="{.spec.clusterIPs[0]}") 
 
-```powershell
-$CLUSTERIP = $(kubectl get svc workspace-llm -o jsonpath="{.spec.clusterIPs[0]}" )
-$jsonContent = '{
-    "model": "phi-3.5-mini-instruct",
-    "prompt": "What is kubernetes?",
-    "max_tokens": 20,
-    "temperature": 0
-  }'
+   kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"<sample_prompt>\"}"
+   ```
 
-kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions -H "accept: application/json" -H "Content-Type: application/json" -d $jsonContent
-```
+   Expected output:
 
-## Clean up resources
-
-To clean up the resources, remove both the inference workspace and the extension:
-
-```azurecli
-kubectl delete workspace workspace-llm
-
-az aksarc update --resource-group <Resource_Group_name> --name <Cluster_Name> --disable-ai-toolchain-operator
-```
-
-## Model VM SKU Matrix
-
-The following table shows the supported GPU models and their corresponding VM SKUs. The GPU model is used to determine the VM SKU when you create a node pool. For more information about the GPU models, see [Supported GPU models](scale-requirements.md#supported-gpu-models).
-
-|     Type                            |     T4              |     A2 or A16                     |     A2 or A16                       |
-|-------------------------------------|---------------------|-----------------------------------|-------------------------------------|
-|     Model VM SKU Matrix             |     Standard_NK6    |     Standard_NC4, Standard_NC8    |     Standard_NC32, Standard_NC16    |
-|     phi-3-mini-4k-instruct          |     Y               |     Y                             |     Y                               |
-|     phi-3-mini-128k-instruct        |     N               |     Y                             |     Y                               |
-|     phi-3.5-mini-instruct           |     N               |     Y                             |     Y                               |
-|     phi-4-mini-instruct             |     N               |     N                             |     Y                               |
-|     deepseek-r1-distill-llama-8b    |     N               |     N                             |     Y                               |
-|     mistral-7b/mistral-7b-instruct  |     N               |     N                             |     Y                               |
-|     qwen2.5-coder-7b-instruct       |     N               |     N                             |     Y                               |
+   ```bash
+   usera@quke-desktop: $ kubectl run -it -rm -restart=Never curl -image=curlimages/curl - curl -X POST http
+   ://$CLUSTERIP/chat -H "accept: application/json" -H "Content-Type: application/json" -d "{\"prompt\":\"Write a short story about a person who discovers a hidden room in their house .? \"}"
+   If you don't see a command prompt, try pressing enter.
+   {"Result": "Write a short story about a person who discovers a hidden room in their house .? ?\nThe door is lo
+   cked from both the inside and outside, and there appears not to be any other entrance. The walls of the room
+   seem to be made of stone, although there are no visible seams, or any other indication of where the walls e
+   nd and the floor begins. The only furniture in the room is a single wooden chair, a small candle, and what a
+   ppears to be a bed. (The bed is covered entirely with a sheet, and is not visible from the doorway. )\nThe on
+   ly light in the room comes from a single candle on the floor of the room. The door is solid and does not app
+   ear to have hinges or a knob. The walls seem to go on forever into the darkness, and there is a chill, wet f
+   eeling in the air that makes the hair stand up on the back of your neck. \nThe chair sits on the floor direct
+   ly across from the door. The chair"}pod "curl" deleted
+   ```
 
 ## Troubleshooting
 
-1. If you want to deploy an LLM and see the error **OutOfMemoryError: CUDA out of memory**, please raise an issue in the [KAITO repo](https://github.com/kaito-project/kaito/).
-1. If you see the error **(ExtensionOperationFailed) The extension operation failed with the following error: Unable to get a response from the Agent in time** during extension installation, [see this TSG](/troubleshoot/azure/azure-kubernetes/extensions/cluster-extension-deployment-errors#error-unable-to-get-a-response-from-the-agent-in-time) and ensure the extension agent in the AKS Arc cluster can connect to Azure.
-1. If you see an error during prompt testing such as **{"detail":[{"type":"json_invalid","loc":["body",1],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}**, it's possible that your PowerShell terminal version is 5.1. Make sure the terminal version is at least 7.4.
+If the pod is not deployed properly or the **ResourceReady** field shows empty or **false**, it's usually because the preferred GPU node isn't labeled correctly. Check the node label with `kubectl get node <yourNodeName> --show-labels`. For example, in the YAML file, the following code specifies that the node must have the label `apps=llm-inference`:
+
+```yaml
+labelSelector:
+  matchLabels:
+    apps: llm-inference
+```
 
 ## Next steps
 
