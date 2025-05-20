@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 04/24/2025
+ms.date: 05/19/2025
 ---
 
 # About updates for Azure Local
@@ -47,6 +47,8 @@ This new approach:
 - Whether managed locally or via the Azure portal, the common back-end drives a consistent experience.
 
 ## Lifecycle cadence
+
+[!INCLUDE [azure-local-banner-resource-bridge](../includes/azure-local-banner-resource-bridge.md)]
 
 Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern), which defines products and services that are continuously serviced and supported. To remain compliant with this policy, you must stay within six months of the most recent release. For more information on support windows, see [Azure Local release information](../release-information-23h2.md).
 
