@@ -80,6 +80,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 2. Under the **Access** tab, locate the authentication and authorization settings. Select **Microsoft Entra Authentication with Azure RBAC**.
 3. Complete all other desired configurations for your cluster.
 4. Select **Review + create** to create the cluster.
+---
 
 ## Step 2: Create role assignments for users to access the cluster
 
@@ -109,6 +110,7 @@ In this example, the scope is the Azure Resource Manager ID of the cluster. It c
 2. Navigate to **Access control (IAM)**, click the **Add** icon, and select **Add role assignment**. Note: If the Add role assignment option is disabled, verify if Azure RBAC is enabled by checking **Settings >> Properties >> AAD profile >> Enable Azure RBAC**.
 3. Follow the instruction to complete the role assignment. 
 ---
+
 ### Create custom role definitions
 
 You can choose to create your own role definition for use in role assignments.
