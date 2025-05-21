@@ -8,4 +8,4 @@ ms.reviewer: alkohli
 ---
 
 > [!IMPORTANT]
-> Azure Local, version 23H2 (releases 2311.2 to 2509) will reach end of support on October 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests will only be available for patching to a supported release.
+> Azure Local OS, version 23H2 (releases 2311.2 to 2509, OS version 25398.x) will reach end of support on October 31, 2025. After this date, you won't receive monthly security and quality updates. Support requests will only be available for patching to a supported release.
