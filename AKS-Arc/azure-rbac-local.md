@@ -90,6 +90,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 You can use the [`az role assignment create`](/cli/azure/role/assignment#az-role-assignment-create) command to create role assignments.
 
 ### [Azure CLI](#tab/azurecli)
+
 First, get the `$ARM-ID` for the target cluster to which you want to assign a role.
 
 ```azurecli
@@ -106,10 +107,11 @@ az role assignment create --role "Azure Arc Kubernetes Viewer" --assignee <assig
 
 In this example, the scope is the Azure Resource Manager ID of the cluster. It can also be the resource group containing the Kubernetes cluster.
 
-### [Azure Portal](#tab/azureportal)
-1. Go to **Azure Arc | Kubernetes clusters** and locate your Azure RBAC-enabled cluster where you want to assign roles.
-2. Navigate to **Access control (IAM)**, click the **Add** icon, and select **Add role assignment**. Note: If the Add role assignment option is disabled, verify if Azure RBAC is enabled by checking **Settings >> Properties >> AAD profile >> Enable Azure RBAC**.
-3. Follow the instruction to complete the role assignment. 
+### [Azure portal](#tab/azureportal)
+
+1. Go to **Azure Arc | Kubernetes clusters** and locate your Azure RBAC-enabled cluster for which you want to assign roles.
+1. Navigate to **Access control (IAM)**, select the **Add** icon, and then select **Add role assignment**. If the **Add role assignment** option is disabled, verify that Azure RBAC is enabled by checking **Settings > Properties > AAD profile > Enable Azure RBAC**.
+1. Follow the instructions to complete the role assignment. 
 ---
 
 ### Create custom role definitions
