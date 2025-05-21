@@ -108,7 +108,7 @@ In this example, the scope is the Azure Resource Manager ID of the cluster. It c
 1. Go to **Azure Arc | Kubernetes clusters** and locate your Azure RBAC-enabled cluster where you want to assign roles.
 2. Navigate to **Access control (IAM)**, click the **Add** icon, and select **Add role assignment**. Note: If the Add role assignment option is disabled, verify if Azure RBAC is enabled by checking **Settings >> Properties >> AAD profile >> Enable Azure RBAC**.
 3. Follow the instruction to complete the role assignment. 
-
+---
 ### Create custom role definitions
 
 You can choose to create your own role definition for use in role assignments.
