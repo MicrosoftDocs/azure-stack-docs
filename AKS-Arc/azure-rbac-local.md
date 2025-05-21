@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 02/21/2025
-ms.lastreviewed: 02/21/2025
+ms.date: 05/21/2025
+ms.lastreviewed: 05/21/2025
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -75,11 +75,12 @@ az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location 
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
-### [Azure Portal](#tab/azureportal)
-1. Go to **Kubernetes - Azure Arc**, click the **Add** icon, and select **Create a Kubernetes cluster with Azure Arc**.
-2. Under the **Access** tab, locate the authentication and authorization settings. Select **Microsoft Entra Authentication with Azure RBAC**.
-3. Complete all other desired configurations for your cluster.
-4. Select **Review + create** to create the cluster.
+### [Azure portal](#tab/azureportal)
+
+1. Go to **Kubernetes - Azure Arc**, select the **Add** icon, and then select **Create a Kubernetes cluster with Azure Arc**.
+1. Under the **Access** tab, locate the authentication and authorization settings. Select **Microsoft Entra Authentication with Azure RBAC**.
+1. Complete all other desired configurations for your cluster.
+1. Select **Review + create** to create the cluster.
 ---
 
 ## Step 2: Create role assignments for users to access the cluster
