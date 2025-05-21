@@ -31,7 +31,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 Before you begin, make sure you have the following prerequisites:
 
 - AKS on Azure Local currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
-- You can enable Azure RBAC through either Azure CLI or Azure Portal. To use Azure CLI, you'll need to install the latest versions of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- You can enable Azure RBAC using either Azure CLI or the Azure portal. To use Azure CLI, you must install the latest versions of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
   ```azurecli
   az extension add --name aksarc
