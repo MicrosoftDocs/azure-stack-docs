@@ -56,7 +56,7 @@ sections:
         Software-defined networking (SDN) is currently not supported for VMs created from the Azure portal. For more information on using SDN in Azure Local, see the [technical reference for SDN in Azure Local](sdn-technical-reference.md).
 
     - question: |
-        How can I perform live migration of Azure Local virtual machines?
+        How can I perform live migration of Azure Local VMs?
       answer: |
         Live migration of Azure Local VMs is supported via on-premises tools like [Failover Cluster Manager](/windows-server/manage/windows-admin-center/use/manage-failover-clusters#adding-a-failover-cluster-to-windows-admin-center) or [Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-virtual-machines#live-migrate-a-virtual-machine-to-another-cluster-node). Live migration of VM storage is not supported.
 
@@ -87,7 +87,7 @@ sections:
     - question: |
         If I delete a gallery image, are all the deployed VMs also deleted?
       answer: |
-        Deleting a gallery image doesn't affect the VMs that you created by using that image. It just removes the image name from the VM details.
+        Deleting a gallery image removes the image name from VM details. It doesn't affect the VMs that you created by using the image.
 
     - question: | 
         If I delete Azure Arc resource bridge, are the VMs also deleted?

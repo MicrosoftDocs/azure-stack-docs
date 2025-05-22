@@ -26,9 +26,9 @@ When IT admins manage Azure Local VMs by using the same tools and scripts as tho
 >
 > - We recommend that you use the Azure portal or the Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the [list of supported operations for local tools](#local-tools) later in this article.
 > - Though the supported operations for local tools don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
-> - Only the following operations update the state of the Azure Local VM in the portal (when you perform them by using local tools): change the size of VM memory, change the vCPU count, or change the power state status (start/stop a VM) resulting from the power cycle operation.
+> - Only the following operations update the state of an Azure Local VM in the portal, when you perform them by using local tools: change the size of VM memory, change the vCPU count, or change the power state (start or stop a VM) resulting from the power cycle operation.
 
-## Supported operations for VMs
+## Supported VM operations
 
 You can use multiple interfaces to perform supported operations for VMs.
 
