@@ -24,7 +24,7 @@ sections:
     - question: | 
         Will I be charged when I update my VM by using the Azure Update Manager service?
       answer: |
-        No. You can update VMs for free when you use Azure Update Manager. However, updating unmanaged VMs that you created by using Windows Admin Center or Hyper-V Manager, and that were Azure Arc-enabled independently (these are now Arc-enabled servers), will incur a charge. For more information, see the [Azure Update Manager pricing for Azure Arc-enabled servers](/azure/update-manager/update-manager-faq#pricing).
+        No. You can update VMs for free when you use Azure Update Manager. However, updating unmanaged VMs that you created by using Windows Admin Center or Hyper-V Manager, and that were Azure Arc-enabled independently (these are now Arc-enabled servers), does incur a charge. For more information, see the [Azure Update Manager pricing for Azure Arc-enabled servers](/azure/update-manager/update-manager-faq#pricing).
         
     - question: |
         Why do I need to move to Azure Local?

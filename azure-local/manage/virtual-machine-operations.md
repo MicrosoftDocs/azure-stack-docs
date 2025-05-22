@@ -18,14 +18,14 @@ This article discusses the most common operations for Azure Local virtual machin
 
 Azure Local can host various types of VMs, including unmanaged VMs, Azure Arc-enabled servers, and Azure Arc-enabled VMs. Azure Arc-enabled VMs provide the highest level of management capabilities in the Azure portal, second only to [native Azure VMs](/azure/azure-local/concepts/compare-vm-management-capabilities).
 
-Although Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal, on-premises local tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager, Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
+Azure Local VMs are designed to be managed through the Azure control plane and have numerous management features within the portal. However, on-premises local tools offer a broader range of capabilities. These tools include System Center Virtual Machine Manager, Failover Cluster Manager, Hyper-V Manager, and Windows Admin Center. Many IT admins use these tools to manage their on-premises VMs.
 
 When IT admins manage Azure Local VMs by using the same tools and scripts as those for on-premises VMs, it can result in synchronization errors or more severe problems between the Azure Local VMs and the portal.
 
 > [!NOTE]
 >
 > - We recommend that you use the Azure portal or the Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the [list of supported operations for local tools](#local-tools) later in this article.
-> - Though the operations in the [list of supported operations for local tools](#local-tools) later in this article don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
+> - Though the supported operations for local tools don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
 > - Only the following operations update the state of the Azure Local VM in the portal (when you perform them by using local tools): change the size of VM memory, change the vCPU count, or change the power state status (start/stop a VM) resulting from the power cycle operation.
 
 ## Supported operations for VMs
