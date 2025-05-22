@@ -28,23 +28,28 @@ This article explains how to discover and import update packages for Azure Local
 
 - Review [Azure Local release information](../release-information-23h2.md).
 
-## Step 1: Download Solution update bundle
+## Solution update bundle
 
-The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip.
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. Use the SHA256 hash to check the integrity of your download.
+
+> [!NOTE]
+> It may take up to 24 hours for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available.
+
+The following table lists the available **CombinedSolutionBundle** versions and their SHA256 hashes.
 
 | Download URI | SHA256                          |
 |--------------|---------------------------------|
-| 11.0.2411.3 | |
-| 11.0.2411.4 | |
-| 11.0.2411.5 | |
+| [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip)  | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
+| [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
 
-Follow these steps:
+## Step 1: Download Solution update bundle
 
-1. To download the bundle and note the SHA256 hash, see the **Download URI** column in [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
+1. To download the bundle and note the SHA256 hash, see the [Solution update bundle](#solution-update-bundle) table.
 
-   - The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
-
-   - The SHA256 hash is also in the release notes. Use the hash to check the integrity of your download.
+   ```PowerShell
+   # Download the CombinedSolutionBundle
+   Invoke-WebRequest -Uri "<download URI>" -OutFile "C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip"
+   ```
 
 1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**.
 
