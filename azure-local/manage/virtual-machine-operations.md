@@ -1,5 +1,5 @@
 ---
-title: Supported operations for Azure Local virtual machines (VMs) enabled by Azure Arc
+title: Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc
 description: Learn the supported virtual machine (VM) operations for Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
@@ -23,6 +23,7 @@ While Azure Local VMs are designed to be managed through the Azure control plane
 When IT admins manage Azure Local VMs using the same tools and scripts as those for on-premises VMs, it can result in synchronization errors or more severe problems between the Azure Local VMs and the portal.
 
 > [!NOTE]
+>
 > - We recommend that you use the Azure portal or Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the list of [Supported operations for local tools](#using-local-tools).
 > - Though the operations listed under [Supported operations for local tools](#using-local-tools) don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
 > - Only the following operations when performed using local tools update the state of the Azure Local VM in the portal: Changing the size of VM memory, vCPU count, change the power state status (Start/Stop VM) resulting from the power cycle operation.
@@ -63,7 +64,7 @@ The supported operations can be performed via multiple interfaces.
 
 ### Using local tools
 
-The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node. 
+The following VM operations are supported only using the local tools such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and SCVMM. These operations are performed either on the VM itself or on the cluster/node.
 
 > [!IMPORTANT]
 > These changes aren't reflected in the portal.
@@ -119,8 +120,6 @@ The following VM operations aren't supported.
 - Enable/change VLAN ID per network adapter. To perform this operation, create a new network interface and delete the old one.
 - Live migrate a VM from one cluster to another.
 - Change the type of disk (static/dynamic/VHD/VHDX).
-
-
 
 ## Related content
 
