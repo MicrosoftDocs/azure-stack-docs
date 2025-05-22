@@ -44,7 +44,7 @@ The following table lists the available **CombinedSolutionBundle** versions and 
 
 ## Step 1: Download Solution update bundle
 
-1. To download the bundle and note the SHA256 hash, see the [Solution update bundle](#solution-update-bundle) table.
+1. Download the bundle and note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table.
 
    ```PowerShell
    # Download the CombinedSolutionBundle
