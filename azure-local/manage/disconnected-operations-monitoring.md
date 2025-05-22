@@ -40,7 +40,7 @@ The management pack for disconnected operations includes these capabilities:
 
 To download the System Center Management Pack and user guide, see [Microsoft System Center Management Pack for Azure Local with disconnected operations](https://aka.ms/disconnected-operations-scom-mp).
 
-For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025).
+For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
 ## Monitor Azure Local infrastructure
 
@@ -57,7 +57,7 @@ To monitor the Azure Local instance and nodes, integrate with System Center Oper
 
 - [AzS HCI S2D MP for Storage Spaces Direct (S2D)](https://aka.ms/AAvqwo9).
 
-For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025).
+For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
 For more information on monitoring failover clusters, see [Monitoring Failover Cluster with Operations Manager
 ](/system-center/scom/manage-monitor-clusters-overview).
@@ -66,7 +66,7 @@ For more information on monitoring failover clusters, see [Monitoring Failover C
 
 running Windows Server or Linux on Azure Local with disconnected operations by integrating System Center Operations Manager or third-party and open-source solutions. Install the agents from these products in the VM.
 
-For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025).
+For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
 ## Monitor AKS clusters
 
