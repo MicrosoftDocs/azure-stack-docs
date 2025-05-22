@@ -59,7 +59,7 @@ There are a few prerequisites you need to perform log collection in a connected 
   
     - A resource group in Azure used for the appliance.
     - A Service Principal (SPN) with contributor rights on the resource group.
-    - Copy the `AppId` and `Password` form the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
+    - Copy the `AppId` and `Password` from the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
 
 2. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and modify the path to match your folder structure.
 
