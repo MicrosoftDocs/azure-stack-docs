@@ -428,11 +428,11 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2411"
+::: moniker range="=azloc-24111"
 
 ## Known issues for version 2411
 
-This software release maps to software version number **2411.0.24**. 
+This software release maps to software version number **2411.0.24**.
 
 > [!IMPORTANT]
 > The new deployments of this software will use the 2411.0.22 build whereas if you update from 2408.2, you'll get the 2411.0.24 build. No action is required if you have already updated from 2408.2 to 2411.0.22.
