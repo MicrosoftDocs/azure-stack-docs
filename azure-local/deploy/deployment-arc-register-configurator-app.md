@@ -1,5 +1,5 @@
 ---
-title: Configurator App for Azure Local: Register Machines (Preview)
+title: Configurator App for Azure Local to Register Machines (Preview)
 description: Learn how to use the Configurator app to bootstrap and quickly register your Azure Local machines with Azure Arc. (Preview)
 author: alkohli
 ms.author: alkohli
@@ -166,7 +166,7 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 
 If you can't access the app, you can get the logs from a machine. Logs are stored in the following location: `C:\Windows\System32\Bootstrap\Logs`. You can access the logs by connecting to the machine via Remote Desktop Protocol (RDP).
 
-If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-app) to troubleshoot the issue and if needed, [Collect a support package](#collect-a-support-package-from-the-app).
+If you can access the app, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-app) to troubleshoot the issue and if needed, [Collect a support package](#collect-a-support-log-package-from-the-app).
 
 ### Run diagnostic tests from the app
 
@@ -214,11 +214,11 @@ Follow these steps to collect and download a Support package:
 Follow these steps to upload the Support package to Microsoft:
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
 
 1. Provide the required information in the **Upload Support package** dialog:
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
 
     1. The **Cloud type** is populated automatically as `Azure`.
    
@@ -241,7 +241,7 @@ Follow these steps to upload the Support package to Microsoft:
    1. Select **Upload** to upload the Support package.
    1. Authenticate in the browser with the same account that you used to sign in to the Configurator app. The upload process might take several minutes.
 
-       :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
+       :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
 
    1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
