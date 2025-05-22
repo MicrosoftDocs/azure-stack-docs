@@ -24,7 +24,7 @@ Disconnected operations for Azure Local let you deploy and manage Azure Local in
 
 ## Monitor disconnected operations appliance
 
-The disconnected operations appliance provides the local Azure portal and Arc services to deploy and manage Azure Local instances. It's important to monitor the health of the appliance to ensure the local portal and services are available. To monitor the appliance, you can use the System Center Operations manager and the disconnected operations management pack.  
+The disconnected operations appliance provides the local Azure portal and Arc services to deploy and manage Azure Local instances. It's important to monitor the health of the appliance to ensure the local portal and services are available. To monitor the appliance, you can use the System Center Operations Manager and the disconnected operations management pack.  
 
 The management pack for disconnected operations includes these capabilities:
 
@@ -64,7 +64,7 @@ For more information on monitoring failover clusters, see [Monitoring Failover C
 
 ## Monitor virtual machines
 
-running Windows Server or Linux on Azure Local with disconnected operations by integrating System Center Operations Manager or third-party and open-source solutions. Install the agents from these products in the VM.
+Run Windows Server or Linux on Azure Local with disconnected operations by integrating System Center Operations Manager or third-party and open-source solutions. Install the agents from these products in the VM.
 
 For more information on System Center Operations Manager, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
