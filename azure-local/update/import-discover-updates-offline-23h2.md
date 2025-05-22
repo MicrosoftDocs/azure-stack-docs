@@ -32,6 +32,12 @@ This article explains how to discover and import update packages for Azure Local
 
 The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip.
 
+| Download URI | SHA256                          |
+|--------------|---------------------------------|
+| 11.0.2411.3 | |
+| 11.0.2411.4 | |
+| 11.0.2411.5 | |
+
 Follow these steps:
 
 1. To download the bundle and note the SHA256 hash, see the **Download URI** column in [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
