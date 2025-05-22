@@ -30,10 +30,12 @@ This article explains how to discover and import update packages for Azure Local
 
 ## Solution update bundle
 
-The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. Use the SHA256 hash to check the integrity of your download.
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
+
+To check the integrity of your download, use the SHA256 hash.
 
 > [!NOTE]
-> It may take up to 24 hours for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available.
+> It may take up to 24 hours after a release for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available. For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
 
 The following table lists the available **CombinedSolutionBundle** versions and their SHA256 hashes.
 
