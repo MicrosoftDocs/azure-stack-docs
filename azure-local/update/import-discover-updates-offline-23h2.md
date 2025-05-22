@@ -35,7 +35,7 @@ The **CombinedSolutionBundle** is a zip file that contains the update package fo
 > [!NOTE]
 > It may take up to 24 hours after a release for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available. For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
 
-The following table lists the available **CombinedSolutionBundle** versions and their associated SHA256 hash.
+The following table lists the available **CombinedSolutionBundle** versions and associated SHA256 hash.
 
 | Download URI | SHA256                          |
 |--------------|---------------------------------|
