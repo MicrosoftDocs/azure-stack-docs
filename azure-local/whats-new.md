@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 05/19/2025
+ms.date: 05/22/2025
 ---
 
 # What's new in Azure Local?
@@ -22,8 +22,8 @@ There are two 2505 releases for May. Here are the details of each release:
 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
-|12.2505.10XX.XX | 26XXX.XXXX        | New deployments only.        |
-|11.2505.10XX.XX  | 25398.XXXX        | Existing deployments only.        |
+|12.2505.1001.23 |  26100.4061        | New deployments only.        |
+|11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -33,11 +33,18 @@ This release has the following features and improvements:
 
 - **OS version changes**:
 
-    - For 2505, all new Azure Local deployments use a new operating system (OS) version **26XXX.XXXX**. You can download the 2505 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. Existing deployments continue to use the OS version **25398.XXXX**. For more information, see [Release information summary](./release-information-23h2.md).
+    - For 2505, all new Azure Local deployments use a new operating system (OS) version **26100.4061**. You can download the 2505 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025.
+    
+        Existing deployments continue to use the OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
 
     - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
 
-- **.NET updates**: This build has an updated .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more details see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+- **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Update changes**:
+
+    - If you're using OS version 26100.3775, this release includes solution updates. For more information, see [Update Azure Local via PowerShell](./update/update-via-powershell-23h2.md).
+    - This release includes reliability improvements to the update process
 
 ::: moniker-end
 
