@@ -44,7 +44,7 @@ This release has the following features and improvements:
 - **Update changes**:
 
     - If you're using OS version 26100.3775, this release includes solution updates. For more information, see [Update Azure Local via PowerShell](./update/update-via-powershell-23h2.md).
-    - This release includes reliability improvements to the update process
+    - This release includes reliability improvements to the update process.
 
 ::: moniker-end
 
