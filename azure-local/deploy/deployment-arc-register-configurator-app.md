@@ -1,10 +1,10 @@
 ---
-title: Configurator application for Azure Local (Preview)
-description: Learn how to use the Configurator application to bootstrap and Arc register the Azure Local machines. (Preview)
+title: Configurator App for Azure Local: Register Machines (Preview)
+description: Learn how to use the Configurator app to bootstrap and quickly register your Azure Local machines with Azure Arc. (Preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2025
+ms.date: 05/22/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -13,7 +13,7 @@ ms.service: azure-local
 
 > Applies to: Azure Local 2502 and later
 
-This article describes how to use the Configurator app to bootstrap and register the machines you plan to include in your Azure Local instance.
+This article explains how to use the Configurator app to quickly bootstrap and register machines in your Azure Local instance, enabling seamless Azure Arc integration.
 
 You can use the Configurator app or [Azure CLI](./deployment-arc-register-server-permissions.md) to register your machines. If you plan to deploy a few machines per site, use the Configurator app.
 
@@ -192,15 +192,47 @@ Here's a table that describes the diagnostic tests:
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the machine. |
 | Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool). |
 
-### Collect a Support package from the app
+### Collect a Support log package from the app
 
-A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app. Follow these steps to collect a Support package:
+A Support package is composed of all the relevant logs that can help Microsoft Support troubleshoot any machine issues. You can generate a Support package via the app.
+
+#### Download the Support log package
+
+Follow these steps to collect and download a Support package:
 
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-configurator-app/collect-support-package-1.png":::
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
+
+#### Upload the Support log package
+
+>[!IMPORTANT]
+> Uploading the Support package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process. 
+
+Follow these steps to upload the Support package to Microsoft:
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
+
+1. Provide the required information in the **Upload Support package** dialog:
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
+
+   - **Cloud type**: Name of the person who is uploading the package.
+   - **Subscription**: The subscription ID that you used to register the machine.
+   - **Resource group**: The resource group name that you used to register the machine.
+   - **Region**: The region where the issue occurred.
+   - **Tenant ID**: The tenant ID of the person who is uploading the package.
+   - **Arc gateway ID**: The resource ID of the Arc gateway that you set up. This field is optional and only required if you set up an Azure Arc gateway.
+   
+1. Select **Upload** to upload the Support package.
+1. Authenticate in the browser with the same account that you used to sign in to the Configurator app. The upload process might take several minutes.
+
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
+
+1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
 ### Clean previous installation
 
