@@ -33,18 +33,15 @@ This release has the following features and improvements:
 
 - **OS version changes**:
 
-    - For 2505, all new Azure Local deployments use a new operating system (OS) version **26100.4061**. You can download the 2505 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025.
+    - In the last release (2504), a new operating system was introduced for Azure Local deployments. For 2505, all the new deployments of Azure Local will run OS version **26100.4061**. You can download the 2505 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver is not available, you can use the 2503 image.
     
-        Existing deployments continue to use the OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+        Existing deployments of Azure Local will continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
 
     - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Update changes**:
-
-    - If you're using OS version 26100.3775, this release includes solution updates. For more information, see [Update Azure Local via PowerShell](./update/update-via-powershell-23h2.md).
-    - This release includes reliability improvements to the update process.
+- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
 
 ::: moniker-end
 
