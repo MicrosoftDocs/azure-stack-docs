@@ -429,7 +429,7 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24111"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2411
 
