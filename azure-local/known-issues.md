@@ -65,12 +65,11 @@ The following table lists the fixed issues in this release:
 
 ## Known issues in this release
 
-Microsoft isn't aware of any known issues in this release.
-
-<!--The following table lists the known issues in this release:
+The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------|-->
+|---------|---------|---------|
+| Update <!--54889342--> |  A critical VM operational status not OK alert is shown in the Azure portal after the update has completed successfully | No action is required on your part. This alert will resolve automatically in a few days. |
 
 ## Known issues from previous releases
 
