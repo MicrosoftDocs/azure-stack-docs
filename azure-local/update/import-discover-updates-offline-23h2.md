@@ -26,7 +26,7 @@ This article explains how to discover and import update packages for Azure Local
 
 - Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
 
-- Review [Azure Local release information](../release-information-23h2.md).
+- Review [Azure Local release information](../release-information-23h2.md) to check supported paths.
 
 ## Solution update bundle
 
