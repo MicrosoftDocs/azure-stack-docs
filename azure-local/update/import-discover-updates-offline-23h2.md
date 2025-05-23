@@ -32,9 +32,6 @@ This article explains how to discover and import update packages for Azure Local
 
 The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. The SHA256 is used to check the integrity of your download.
 
-> [!NOTE]
-> It may take up to 24 hours after a release for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available. For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
-
 The following table lists the available **CombinedSolutionBundle** versions and associated SHA256 hash.
 
 | Download URI | SHA256                          |
@@ -42,16 +39,19 @@ The following table lists the available **CombinedSolutionBundle** versions and 
 | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip)  | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
 | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
 
+> [!NOTE]
+> It may take up to 24 hours after a release for the latest version of the **CombinedSolutionBundle**  and the associated SHA256 hash to be available. For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
+
 ## Step 1: Download Solution update bundle
 
-1. Download the bundle and note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table.
+1. Download the bundle and note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table. Run this command:
 
    ```PowerShell
    # Download the CombinedSolutionBundle
    Invoke-WebRequest -Uri "<download URI>" -OutFile "C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip"
    ```
 
-1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**.
+1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
 
    ```PowerShell
    # Verify the SHA256 hash of the downloaded CombinedSolutionBundle
@@ -60,23 +60,23 @@ The following table lists the available **CombinedSolutionBundle** versions and 
 
 ## Step 2: Import the Solution update bundle
 
-1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system.
+1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system. Run this command:
 
    ```PowerShell
    # Create a folder for the update service to discover
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the folder you created.
+1. Copy the CombinedSolutionBundle you downloaded to the folder you created. Run this command:
 
-1. Extract the contents to the Solution subfolder.
+1. Extract the contents to the Solution subfolder. Run this command:
 
    ```PowerShell
    # Extract the contents of the CombinedSolutionBundle to the Solution subfolder
    Expand-Archive -Path C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip -DestinationPath C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Import the package to the update service.
+1. Import the package to the update service. Run this command:
 
    ```PowerShell
    # Import the module
