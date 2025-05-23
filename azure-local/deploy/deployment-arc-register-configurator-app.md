@@ -150,7 +150,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local ." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
 
 ## Troubleshooting
 
@@ -221,7 +221,7 @@ Collect a Support log package before you upload it. Follow these steps to upload
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
 
-   The fields in the dialog are pre-populated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
+   The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
 
 
    1. Select **Begin upload** to upload the Support package.
