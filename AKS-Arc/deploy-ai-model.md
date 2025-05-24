@@ -167,12 +167,7 @@ kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POS
 
 ```powershell
 $CLUSTERIP = $(kubectl get svc workspace-llm -o jsonpath="{.spec.clusterIPs[0]}" )
-$jsonContent = '{
-    "model": "phi-3.5-mini-instruct",
-    "prompt": "What is kubernetes?",
-    "max_tokens": 20,
-    "temperature": 0
-  }'
+$jsonContent = '{"model":"phi-3.5-mini-instruct","prompt":"What is kubernetes","max_tokens":200,"temperature":0}' | ConvertTo-Json
 
 kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions -H "accept: application/json" -H "Content-Type: application/json" -d $jsonContent
 ```
@@ -208,5 +203,6 @@ The following table shows the supported GPU models and their corresponding VM SK
 1. If you see an error during prompt testing such as **{"detail":[{"type":"json_invalid","loc":["body",1],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}**, it's possible that your PowerShell terminal version is 5.1. Make sure the terminal version is at least 7.4.
 
 ## Next steps
+* [Monitor the inference metrics](https://learn.microsoft.com/en-us/azure/aks/ai-toolchain-operator-monitoring) in Managed Prometheus and Managed Grafana
+* Learn more about KAITO, visit [KAITO GitHub Repo](https://github.com/kaito-project/kaito)
 
-In this article, you learned how to deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (KAITO). For more information about the KAITO project, see the [KAITO GitHub repo](https://github.com/kaito-project/kaito).
