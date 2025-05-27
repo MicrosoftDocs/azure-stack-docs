@@ -40,19 +40,19 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
     az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
-## Set some parameters
+## Set parameters
 
-### Set some parameters
+Before creating an Azure Local VM image, you'll first need to set some parameters:
 
 1. Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
-```azurecli
-$subscription = "<Subscription ID>"
-$resource_group = "<Resource group>"
-$location = "<Location for your Azure Local>"
-$osType = "<OS of source image>"
-$imageName = "<VM image name>"
-```
+    ```azurecli
+    $subscription = "<Subscription ID>"
+    $resource_group = "<Resource group>"
+    $location = "<Location for your Azure Local>"
+    $osType = "<OS of source image>"
+    $imageName = "<VM image name>"
+    ```
 
 The parameters are described in the following table:
 
@@ -66,13 +66,13 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
-```
-PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mylocal-rg"
-PS C:\Users\azcli> $location = "eastus"
-PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
-```
+    ```azurecli
+    PS C:\Users\azcli> $subscription = "<Subscription ID>"
+    PS C:\Users\azcli> $resource_group = "mylocal-rg"
+    PS C:\Users\azcli> $location = "eastus"
+    PS C:\Users\azcli> $osType = "Windows"
+    PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+    ```
 
 ## Create an Azure Local VM image
 
@@ -99,66 +99,65 @@ To create an Azure Local VM image:
 The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
 
 Here's a sample output:
-
-```
-PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "mylocal-cl" --query id -o tsv)
-PS C:\Users\azcli> az stack-hci-vm image create -g $rg --custom-location $cl --name "ws2022-acg" --os-type "Windows" --image-path $sas 
-
-{ 
-  "extendedLocation": { 
-    "name": "/subscriptions/304d8fdf-1c02-4907-9c3a-ddbd677199cd/resourceGroups/EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5/providers/Microsoft.ExtendedLocation/customLocations/s45r2305-cl-customlocation", 
-    "type": "CustomLocation" 
-  }, 
-  "id": "/subscriptions/304d8fdf-1c02-4907-9c3a-ddbd677199cd/resourceGroups/EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5/providers/Microsoft.AzureStackHCI/galleryImages/ws2022-acg", 
-  "location": "eastus2euap", 
-  "name": "ws2022-acg", 
-  "properties": { 
-    "cloudInitDataSource": null, 
-    "containerId": "/subscriptions/304d8fdf-1c02-4907-9c3a-ddbd677199cd/resourceGroups/EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-213e900d7d9646a18b0f0d78e05d2fac", 
-    "hyperVGeneration": null, 
-    "identifier": null, 
-    "imagePath": null, 
-    "osType": "Windows", 
-    "provisioningState": "Succeeded", 
-    "sourceVirtualMachineId": null, 
-    "status": { 
-      "downloadStatus": { 
-        "downloadSizeInMb": 11482 
+    
+    ```azurecli
+    PS C:\Users\azcli> az stack-hci-vm image create -g $rg --custom-location $cl --name "mylocal-image" --os-type "Windows" --image-path $sas 
+    
+    { 
+      "extendedLocation": { 
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
+        "type": "CustomLocation" 
       }, 
-      "errorCode": "", 
-      "errorMessage": "", 
-      "progressPercentage": 100, 
-      "provisioningStatus": { 
-        "operationId": "c8ddceb0-024a-4c2c-b085-5851f49c8e70*C185A1631E1C1B45E1069847327BBD6B413DB17AA1F8C87B2911596ACA473D16", 
-        "status": "Succeeded" 
-      } 
-    }, 
-    "version": { 
-      "name": null, 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryImages/mylocal-image", 
+      "location": "eastus2euap", 
+      "name": "mylocal-image", 
       "properties": { 
-        "storageProfile": { 
-          "osDiskImage": { 
-            "sizeInMb": 130050 
+        "cloudInitDataSource": null, 
+        "containerId": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/storageContainers/mylocal-storagepath", 
+        "hyperVGeneration": null, 
+        "identifier": null, 
+        "imagePath": null, 
+        "osType": "Windows", 
+        "provisioningState": "Succeeded", 
+        "sourceVirtualMachineId": null, 
+        "status": { 
+          "downloadStatus": { 
+            "downloadSizeInMb": 11482 
+          }, 
+          "errorCode": "", 
+          "errorMessage": "", 
+          "progressPercentage": 100, 
+          "provisioningStatus": { 
+            "operationId": "c8ddceb0-024a-4c2c-b085-5851f49c8e70*C185A1631E1C1B45E1069847327BBD6B413DB17AA1F8C87B2911596ACA473D16", 
+            "status": "Succeeded" 
           } 
-        } 
-      } 
-    }, 
-    "vmImageRepositoryCredentials": null 
-  }, 
-  "resourceGroup": "EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5", 
-  "systemData": { 
-    "createdAt": "2025-05-21T00:44:16.385633+00:00", 
-    "createdBy": "guspinto@contoso.com", 
-    "createdByType": "User", 
-    "lastModifiedAt": "2025-05-21T00:48:34.016113+00:00", 
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
-    "lastModifiedByType": "Application" 
-  }, 
-  "tags": null, 
-  "type": "microsoft.azurestackhci/galleryimages" 
-} 
-```
-
+        }, 
+        "version": { 
+          "name": null, 
+          "properties": { 
+            "storageProfile": { 
+              "osDiskImage": { 
+                "sizeInMb": 130050 
+              } 
+            } 
+          } 
+        }, 
+        "vmImageRepositoryCredentials": null 
+      }, 
+      "resourceGroup": "EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5", 
+      "systemData": { 
+        "createdAt": "2025-05-21T00:44:16.385633+00:00", 
+        "createdBy": "guspinto@contoso.com", 
+        "createdByType": "User", 
+        "lastModifiedAt": "2025-05-21T00:48:34.016113+00:00", 
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+        "lastModifiedByType": "Application" 
+      }, 
+      "tags": null, 
+      "type": "microsoft.azurestackhci/galleryimages" 
+    } 
+    ```
+    
 1. To avoid costs associated with a disk, make sure to delete the managed disk that was used to create this image using the following command:
 
     ```azurecli
