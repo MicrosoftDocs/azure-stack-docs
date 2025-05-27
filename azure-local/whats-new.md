@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 05/08/2025
+ms.date: 05/22/2025
 ---
 
 # What's new in Azure Local?
@@ -15,6 +15,35 @@ ms.date: 05/08/2025
 [!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2505"
+
+There are two 2505 releases for May. Here are the details of each release:
+
+|Solution version  |OS version |Deployment  |
+|---------|---------|---------|
+|12.2505.1001.23 |  26100.4061        | New deployments only.        |
+|11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+## Features and improvements in 2505
+
+This release has the following features and improvements:
+
+- **OS version changes**:
+
+    - In the last release (2504), a new operating system was introduced for Azure Local deployments. For 2505, all the new deployments of Azure Local will run OS version **26100.4061**. You can download the 2505 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver is not available, you can use the 2503 image.
+    
+        Existing deployments of Azure Local will continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
+
+- **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2504"
 
@@ -170,7 +199,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ::: moniker-end
 
-::: moniker range="=azloc-2411"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411
 
@@ -218,10 +247,6 @@ This release has the following features and improvements:
     For more information, see [System requirements for Azure Local](./concepts/system-requirements-23h2.md).
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408.2
 
