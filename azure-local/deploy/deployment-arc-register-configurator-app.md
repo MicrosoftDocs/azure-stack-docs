@@ -206,7 +206,7 @@ Follow these steps to collect and download a Support package:
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
 
-#### Upload the Support log package
+<!--#### Upload the Support log package
 
 >[!IMPORTANT]
 > Uploading the Support package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process.
@@ -243,7 +243,7 @@ Follow these steps to upload the Support package to Microsoft:
 
        :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
 
-   1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
+   1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.-->
 
 ### Clean previous installation
 
