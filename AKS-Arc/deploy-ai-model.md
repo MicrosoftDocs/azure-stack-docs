@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS enabled by Azure Arc with th
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/20/2025
+ms.date: 05/27/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/20/2025
+ms.lastreviewed: 05/27/2025
 
 ---
 
@@ -203,6 +203,6 @@ The following table shows the supported GPU models and their corresponding VM SK
 1. If you see an error during prompt testing such as **{"detail":[{"type":"json_invalid","loc":["body",1],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}**, it's possible that your PowerShell terminal version is 5.1. Make sure the terminal version is at least 7.4.
 
 ## Next steps
-* [Monitor the inference metrics](https://learn.microsoft.com/en-us/azure/aks/ai-toolchain-operator-monitoring) in Managed Prometheus and Managed Grafana
-* Learn more about KAITO, visit [KAITO GitHub Repo](https://github.com/kaito-project/kaito)
 
+* [Monitor the inference metrics](/azure/aks/ai-toolchain-operator-monitoring) in Managed Prometheus and Managed Grafana
+* For more information about KAITO, see [KAITO GitHub Repo](https://github.com/kaito-project/kaito)
