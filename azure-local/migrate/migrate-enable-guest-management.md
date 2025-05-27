@@ -28,7 +28,7 @@ Before you begin, complete the following:
 
 - Your system is running Azure Local release 2405 or later.
 
-- You are able to [connect to the target Azure Local instance remotely](../manage/azure-arc-vm-management-prerequisites#connect-to-the-system-remotely).
+- You are able to [connect to the target Azure Local instance remotely](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-remotely).
 
 - Familiarize yourself with Azure Local VMs and guest management features and considerations - see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
