@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 04/24/2025
+ms.date: 05/28/2025
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
@@ -168,6 +168,18 @@ For systems that support solution builder extensions:
 Azure Update Manager only supports the installation of hardware updates via solution builder extensions. If your hardware doesn't support the solution builder extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center.
 
 To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
+
+## Get solution version
+
+Follow these steps to find the solution version of your Azure Local instance:
+
+
+1. In the Azure portal, go to your Azure Local resource page and then go to **Overview**.
+1. In the right-pane, go to the **Properties** tab and then to **Updates**.
+1. Identify the solution version. Make a note of this version to use this information for your specific scenario.
+
+    :::image type="content" source="./media/azure-update-manager-23h2/get-solution-version-1.png" alt-text="Screenshot of the Overview page for your Azure Local resource in Azure portal." lightbox="./media/azure-update-manager-23h2/get-solution-version-1.png":::
+
 
 ## Next steps
 
