@@ -144,8 +144,7 @@ Error message #2: The cluster extension '{0}' doesn't support resource type '{1}
 
 **Resolution:**
 
-To resolve this issue, you need to update your cluster to a version that supports the property you're trying to set or supported the resource types for your cluster extension. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/update-via-azure-portal-23h2.md).
-
+To resolve this issue, you need to update your cluster to a version that supports the property you're trying to set or support the resource types for your cluster extension. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
 
 ## Next steps
 
