@@ -145,7 +145,7 @@ This release has the following features and improvements:
   - HTTP content is now downloaded using a more resilient service (Download Service).
   - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
   - OS content is installed using the CAU plug-ins that are shipped with OS.
-  - Azure Local rebranding changes were made for this update
+  - Azure Local rebranding changes were made for this update.
   - OS update components for Azure Local are distributed as a static payload, so you can import and discover update packages with limited connectivity to Azure. For more information, see [Import and discover updates with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
