@@ -185,7 +185,7 @@ You might encounter issues when you create VMs outside of Windows Admin Center a
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../includes/hci-display-correct-default-network-policies-windows.md)]
 
-    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines-2/enable-policies-other-vms-1.png":::
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines-23h2/enable-policies-other-vms-1.png":::
 
 ::: zone-end
 

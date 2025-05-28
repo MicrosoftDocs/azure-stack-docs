@@ -66,7 +66,7 @@
       "redirect_document_id": false    
     },
     {
-      "source_path": "azure-local/deploy/sdn-express.md",
+      "source_path": "azure-local/manage/sdn-express.md",
       "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
       "redirect_document_id": false    
     },
