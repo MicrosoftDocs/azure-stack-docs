@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local VMs enabled by Azure Arc
 description: Learn how to troubleshoot Azure Local VMs.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/27/2025
+ms.date: 05/28/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -86,17 +86,17 @@ Or, you see this error:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=NoAuthenticationInformation) =====\nDescription=, Details: (none)\n"}`
 
-The failure occurs because the user creating the image does not have the right permissions to access the image from the storage account. The user must have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal?tabs=current) for access to blob data.
+The failure occurs because the user creating the image doesn't have the right permissions to access the image from the storage account. The user must have the **Storage Blob Data Contributor** role on the storage account that you use for the image. For more information, see [Assign Azure roles](/azure/role-based-access-control/role-assignments-portal?tabs=current) for access to blob data.
 
 **Resolution:**
 
-Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role has been added, retry deploying the image.
+Add the **Storage Blob Data Contributor** role to the user that needs to create an image from this storage account. Once role is added, retry deploying the image.
 
-You may also see the following error when trying to deploy a VM image from a storage account:
+You might also see the following error when trying to deploy a VM image from a storage account:
 
 **Error:** `{"code":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","message":"moc-operator galleryimage serviceClient returned an error while reconciling: rpc error: code = Unknown desc = ===== RESPONSE ERROR (ErrorCode=InvalidBlobType) =====\nDescription=The blob type is invalid for this operation.\nRequestId:5e74055f-e01e-0033-66eb-ff9734000000\nTime:2024-09-05T23:32:56.3001852Z, Details: (none)\n","additionalInfo":[{"type":"ErrorInfo","info":{"category":"Uncategorized","recommendedAction":"","troubleshootingURL":""}}]}`
 
-This failure is because the blob type is not correct within the storage account. The image must be of `page blob` type.
+This failure is because the blob type isn't correct within the storage account. The image must be of `page blob` type.
 
 **Resolution:**
 
@@ -131,6 +131,20 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
             Write-Host "Updated path $env:PATH"
         }
 ```
+
+## Property not supported or resource types not supported by cluster extension
+
+**Error:**
+
+You see one of the following errors:
+
+Error message #1: Property '{0}' isn't supported for this operation on your Azure Local cluster version. Please update your cluster if you want to set this property for this operation. Please view aka.ms/hciproperties.
+
+Error message #2: The cluster extension '{0}' doesn't support resource type '{1}'. The currently enabled resource types are '{2}'. Please ensure the '{3}' cluster extension version metadata file supports the resource type. [ClusterExtensionVersion='{4}'] [CorrelationId='{5}']
+
+**Resolution:**
+
+To resolve this issue, you need to update your cluster to a version that supports the property you're trying to set or supported the resource types for your cluster extension. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/update-via-azure-portal-23h2.md).
 
 
 ## Next steps
