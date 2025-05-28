@@ -64,7 +64,7 @@ For more information, see [Release information summary](./release-information-23
 This release has the following features and improvements:
 
 - **OS version changes**:
-    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **261000.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+    - Starting 2504, all new Azure Local deployments use a new operating system (OS) version **26100.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
     - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
 
 - **.NET update installations improvements**:
@@ -75,7 +75,7 @@ This release has the following features and improvements:
     - The error logging in the registration script is enhanced.
     - Proxy bypass list is now mandatory if a proxy configuration is specified.
 
-- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **21600.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
+- **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **26100.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
 - **Azure Local VM changes**:
     - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
@@ -145,7 +145,8 @@ This release has the following features and improvements:
   - HTTP content is now downloaded using a more resilient service (Download Service).
   - OS content is packaged with the release, rather than determining applicable content on the device at runtime. This change is aimed to minimize failure points and support [Importing content](update/update-via-powershell-23h2.md#step-3-import-and-rediscover-updates).
   - OS content is installed using the CAU plug-ins that are shipped with OS.
-  - Azure Local rebranding changes were made for this update.
+  - Azure Local rebranding changes were made for this update
+  - OS update components for Azure Local are distributed as a static payload, so you can import and discover update packages with limited connectivity to Azure. For more information, see [Import and discover updates with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
 
@@ -263,7 +264,7 @@ This release has the following features and improvements:
 
   - You can set a proxy configuration for Azure VMs on the Portal.
   - You can set a SQL Server configuration for Azure VMs on Portal.
-  - You can now create an image from an Azure VMs VM's OS disk.
+  - You can now create an image from an Azure VM's OS disk.
   - You can now select the virtual switch of a logical network from a dropdown menu.
 
 ## Features and improvements in 2408.1
@@ -413,7 +414,7 @@ This release contains the following changes for updates:
   - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
   - An issue for Cluster-Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
 
-For more information, see the [Fixed issues list in in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
+For more information, see the [Fixed issues list in 2405](./known-issues.md?view=azloc-previous&preserve-view=true).
 
 ### Environment checker changes
 
@@ -664,7 +665,7 @@ The following Azure Kubernetes cluster deployment and management capabilities ar
 
 ### Security capabilities
 
-The new installations with this release of Azure Local start with a *secure-by-default* strategy. The new version #has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default. This release provides:
+The new installations with this release of Azure Local start with a *secure-by-default* strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default. This release provides:
 
 - A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Local](./concepts/secure-baseline.md).
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Local](./concepts/security-bitlocker.md).
