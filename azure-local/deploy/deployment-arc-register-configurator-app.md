@@ -4,7 +4,7 @@ description: Learn how to use the Configurator app to bootstrap and quickly regi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/22/2025
+ms.date: 05/28/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -151,7 +151,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
 1. On the resource group used to bootstrap, you should see your Arc-enabled machines. In this example, you see a single machine.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local ." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
+   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Arc agent Arc-enabled servers in Azure portal for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-arc-enabled-servers.png":::
 
 ## Troubleshooting
 
@@ -206,44 +206,30 @@ Follow these steps to collect and download a Support package:
 
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
 
-<!--#### Upload the Support log package
+#### Upload the Support log package
 
->[!IMPORTANT]
-> Uploading the Support package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process.
+> [!IMPORTANT]
+> - Make sure to run the Configurator app as an administrator to upload the Support log package.
+> - Uploading the Support log package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process.
 
 Follow these steps to upload the Support package to Microsoft:
+
 1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-1.png":::
 
-1. Provide the required information in the **Upload Support package** dialog:
+1. Provide the required information in the **Upload Support package to Microsoft** dialog:
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-2.png":::
 
-    1. The **Cloud type** is populated automatically as `Azure`.
-   
-    1. Enter a **Subscription ID** to register the machine.
+    The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](#step-1-configure-the-network-and-connect-to-azure). You can modify the fields as needed.
 
-    1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
+1. Select **Begin upload** to upload the Support log package.
+1. Authenticate in the browser with the same account that you used to sign in to register with Azure Arc. The upload process might take several minutes. Leave the app open and running until the upload is complete.
 
-    1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
+   :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
 
-       > [!IMPORTANT]
-       > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
-
-    1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
-
-       > [!IMPORTANT]
-       > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in an upload failure.
-
-   1. Select **Upload** to upload the Support package.
-   1. Authenticate in the browser with the same account that you used to sign in to the Configurator app. The upload process might take several minutes.
-
-       :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
-
-   1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.-->
+   1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
 ### Clean previous installation
 
