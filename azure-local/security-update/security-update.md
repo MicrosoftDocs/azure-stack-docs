@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/12/2025
+ms.date: 04/25/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -306,7 +306,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-previous"
+::: moniker range="azloc-2411"
 
 ## November OS security update (KB) for Azure Local
 
@@ -343,6 +343,10 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5046618](https://go.microsoft.com/fwlink/?linkid=2296832).
+
+::: moniker-end
+
+::: moniker range="azloc-previous"
 
 ## October OS security update (KB 5044288) for Azure Local
 
