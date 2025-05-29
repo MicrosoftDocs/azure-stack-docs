@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local VMs enabled by Azure Arc
 description: Learn how to troubleshoot Azure Local VMs.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/28/2025
+ms.date: 05/29/2025
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ms.service: azure-local
@@ -14,6 +14,36 @@ ms.service: azure-local
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect logs and troubleshoot issues with Azure Local VMs enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
+
+
+## Property isn't supported for this operation
+
+**Error:**
+
+`Property '<Property Name>' isn't supported for this operation on your Azure Local cluster version. Please update your cluster if you want to set this property for this operation. Please view aka.ms/hciproperties.`
+
+**Cause:**
+
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdates of the feature was introduced in a later version of the extension.
+
+**Resolution:**
+
+To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
+
+
+## Cluster extension doesn't support resource type
+
+**Error:**
+
+`The cluster extension '<Cluster Extension Azure Resource Manager ID>' doesn't support resource type 'Microsoft.AzureStackHCI/<Resource Type>'. The currently enabled resource types are '<Supported Resource Type Names>'. Please ensure the 'Microsoft.AzureStackHCI' cluster extension version metadata file supports the resource type. [ClusterExtensionVersion='<Cluster Extension Version>'] [CorrelationId='<Correlation ID>'].`
+
+**Cause:**
+
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version of the extension.
+
+**Resolution:**
+
+To resolve this issue, update your Azure Local instance to the latest version. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
 
 ## Unable to select an image for Trusted launch VMs
 
@@ -132,19 +162,7 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-## Property not supported or resource types not supported by cluster extension
 
-**Error:**
-
-You see one of the following errors:
-
-Error message #1: Property '{0}' isn't supported for this operation on your Azure Local cluster version. Please update your cluster if you want to set this property for this operation. Please view aka.ms/hciproperties.
-
-Error message #2: The cluster extension '{0}' doesn't support resource type '{1}'. The currently enabled resource types are '{2}'. Please ensure the '{3}' cluster extension version metadata file supports the resource type. [ClusterExtensionVersion='{4}'] [CorrelationId='{5}']
-
-**Resolution:**
-
-To resolve this issue, you need to update your cluster to a version that supports the property you're trying to set or support the resource types for your cluster extension. For more information, see [Update via PowerShell](../update/update-via-powershell-23h2.md) or [Update via Azure portal](../update/azure-update-manager-23h2.md).
 
 ## Next steps
 
