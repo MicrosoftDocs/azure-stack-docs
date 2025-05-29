@@ -92,7 +92,7 @@ If there are errors with the KMS plugin, follow this procedure:
    Repair-AksEdgeKms
    ```
 
-1. If you still encounter errors, contact [Microsoft Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-get-kubelet-logs.md).
+1. If you still encounter errors, contact [Microsoft Customer Support](aks-edge-troubleshoot-overview.md) and [collect logs](aks-edge-resources-logs.md).
 
 ## Next steps
 
