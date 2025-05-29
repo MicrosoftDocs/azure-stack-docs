@@ -39,8 +39,8 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Restart a VM
 - Stop a VM
 - Delete a VM
-- Add a network adapter
-- Delete a network adapter
+- Add a network interface
+- Delete a network interface
 - Enable and use Windows Admin Center (for read-only)
 - Add a data disk
 - Delete a data disk
@@ -70,20 +70,20 @@ You perform these operations either on the VM itself or on the cluster/node. The
 
 - Rename a VM on local tools
 - Change the MAC address of a network adapter
-- Enable/disable MAC address spoofing for a network adapter
-- Configure a processor's compatibility mode
-- Configure a processor's non-uniform memory access (NUMA) topology
-- Configure a processor's VM reserve, limit, and weight
-- Enable quality of service (QoS) management for a disk
+- Enable/disable MAC address spoofing per network adapter
+- Configure processor compatibility mode
+- Configure processor Non-Uniform Memory Access (NUMA) topology
+- Configure processor VM reserve, limit, and weight
+- Enable Quality of Service (QoS) management per disk
 - Add a Small Computer System Interface (SCSI) controller and move an existing data disk to another SCSI controller
 - Remove a SCSI controller
 - Add or remove a DVD drive
 - Configure dynamic memory
-- Change the VM startup order
+- Change VM boot order
 - Enable or disable integration services
 - Change an automatic start action
 - Change an automatic stop action
-- Enable secure startup of a generation 2 VM
+- Enable secure boot of a generation 2 VM
 
 #### Cluster or node-level operations
 
@@ -100,22 +100,25 @@ You perform these operations either on the VM itself or on the cluster/node. The
 
 The following VM operations are supported only when you use the Network ATC PowerShell cmdlets. For more information, see [Customize cluster network settings](./manage-network-atc.md#customize-cluster-network-settings).
 
-- Enable or disable single-root input/output virtualization (SR-IOV) for a network adapter
+- Enable or disable single-root input/output virtualization (SR-IOV) per network interface
 - Configure the number of simultaneous live migrations of a cluster
 - Configure the number of simultaneous storage live migrations of a cluster
 - Add, remove, or change the order of host networks for live migration of a cluster
 
 ## Unsupported VM operations
 
-The following VM operations aren't supported. You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
+The following VM operations aren't supported.
+
+> [!IMPORTANT]
+> You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
 
 - Rename a VM inside the guest operating system
-- Change the IP address of a network adapter
-- Enable or change the VLAN ID of a network adapter
+- Change the IP address of a network interface
+- Enable or change the VLAN ID of a network interface
 - Live migrate a VM from one cluster to another
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 
-If you need to change the IP address or the VLAN ID of a network adapter, create a new network adapter and delete the old one.
+If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
 
 ## Related content
 
