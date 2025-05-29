@@ -4,7 +4,7 @@ description: Learn how to use the Configurator app to bootstrap and quickly regi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/28/2025
+ms.date: 05/29/2025
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -133,7 +133,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/review-apply-tab-1.png" alt-text="Screenshot of the Review and apply tab in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/review-apply-tab-1.png":::
 
-### Step 2: Complete registration of machines to Azure
+## Step 2: Complete registration of machines to Azure
 
 1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
 
@@ -229,7 +229,7 @@ Follow these steps to upload the Support package to Microsoft:
 
    :::image type="content" source="media/deployment-arc-register-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/deployment-arc-register-configurator-app/upload-support-package-3.png":::
 
-   1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
+1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
 
 ### Clean previous installation
 
