@@ -12,6 +12,99 @@ ms.reviewer: alkohli
 
 This article lists the various security updates that are available for Azure Local.
 
+::: moniker range="=azloc-2505"
+
+## May OS security updates (KB5058384 and KB5058411) for Azure Local
+
+This article describes the OS security updates for Azure Local that were released for version 2505.
+
+For the 2505 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+
+| Deployment type  | Security update  | OS build  | Release date |
+|---------|---------|---------|---------|
+| Existing deployments    | KB5058384         | 25398.1611         | May 13, 2025        |
+| New deployments    | KB5058411         | 26100.4061         | May 13, 2025         |
+
+# [Existing deployments](#tab/existing-deployments)
+
+This section applies to existing deployments of 2505 running OS build **25398.1611**.
+
+## Improvements
+
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Graphics]** Fixed: This update addresses an issue where users are unable to export or generate PDF or XLSX format reports with charts. 
+
+- **[Graphics kernel]** Fixed: This update addresses an issue that affects users trying to start a new console session after closing the previous one, where the new session doesn’t start successfully. 
+
+- **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks. 
+
+- **[Azure Virtual Network]** Fixed: You can turn off the network interface card (NIC) symmetry check feature with the following registry keys:  
+
+    - Registry key: **SYSTEM\CurrentControlSet\Services\NetworkAtc\\**
+
+    - Registry value: **NicSymmetryCheckEnabled**
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-May).
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.​​​​​ 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+> [!NOTE]
+> This LCU includes an update for AI components in the Microsoft Update Catalog. Even though the AI component updates are included in this LCU, the AI components are only applicable to Windows Copilot+ PCs and won't install on Windows PC or Windows Server.
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058384.](https://go.microsoft.com/fwlink/?linkid=2320746).
+
+# [New deployments](#tab/new-deployments)
+
+This section applies to new deployments of 2505 running OS build **26100.4061**.
+
+## Improvements
+
+This security update includes quality improvements. Here is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
+
+- **[Audio]** Fixed: This update addresses an issue where the audio from your microphone might mute unexpectedly.
+
+- **[Eye controller]** Fixed: The eye controller app doesn’t launch.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-May).
+
+## AI components
+
+The following AI components have been updated with this release: 
+
+| AI Component | Version |
+| -- | -- |
+| Image Search | 1.7.824.0 |
+| Content Extraction | 1.7.824.0 |
+| Semantic Analysis | 1.7.824.0 |
+
+## Known issues
+
+Microsoft is not currently aware of any issues with this update.​​​​​ 
+
+## To install
+
+Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
+
+## File list
+
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058411.](https://go.microsoft.com/fwlink/?linkid=2320918).
+
+
+::: moniker-end
+
 ::: moniker range="=azloc-2504"
 
 ## April OS security updates (KB5055527 and KB5055523) for Azure Local
@@ -47,13 +140,12 @@ Devices that have certain Citrix components installed might be unable to complet
   
 Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn’t go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
   
-This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.
 
 **Workaround**
 
-Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see [Citrix support documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
-
-Microsoft is working with Citrix to address this issue and update this documentation once a resolution is available.
+The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
+For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
 
 ## To install
 
@@ -155,9 +247,8 @@ This issue likely affects a limited number of organizations as version 2411 of t
 
 **Workaround**
 
-Citrix has documented this issue, including a workaround, which can be performed prior to installing the January 2025 Windows security update. For details, see [Citrix support documentation](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).
-
-Microsoft is working with Citrix to address this issue and will update this documentation once a resolution is available. ​​​​​​​ 
+The issue has been resolved in Citrix Session Recording Agent version 2503, released on April 28, 2025, and newer versions.
+For details, see the documentation provided by Citrix at [Microsoft's January Security Update Fails/Reverts on a machine with 2411 Session Recording Agent](https://support.citrix.com/s/article/CTX692505-microsofts-january-security-update-failsreverts-on-a-machine-with-2411-session-recording-agent?language=en_US).​​​​​​​ 
 
 ## To install
 
