@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Azure Local VMs enabled by Azure Arc
-description: Learn how to troubleshoot Azure Local VMs.
+title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
+description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
 author: alkohli
 ms.topic: how-to
 ms.date: 05/29/2025
@@ -9,11 +9,11 @@ ms.reviewer: vlakshmanan
 ms.service: azure-local
 ---
 
-# Troubleshoot Azure Local VMs enabled by Azure Arc
+# Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect logs and troubleshoot issues with Azure Local VMs enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
+This article describes how to collect logs and troubleshoot issues with Azure Local Virtual Machines (VMs) enabled by Azure Arc. It also lists the current limitations and known issues with Azure Local VM management, along with recommended resolutions.
 
 
 ## Property isn't supported for this operation
@@ -24,7 +24,7 @@ This article describes how to collect logs and troubleshoot issues with Azure Lo
 
 **Cause:**
 
-This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdates of the feature was introduced in a later version of the extension.
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version of the extension.
 
 **Resolution:**
 
@@ -69,7 +69,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, connect to the Azure Local machine via RDP. Run the following command:
+1. To create managed identity, connect to the Azure Local machine via Remote Desktop Protocol (RDP). Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
