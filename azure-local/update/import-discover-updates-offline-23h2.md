@@ -56,7 +56,7 @@ For more information on the release cadence, see [Azure Local release informatio
 ---
 
 > [!NOTE]
-> You might need to wait for up to 24 hours after the release for the latest version of the CombinedSolutionBundle and the associated SHA256 hash to be available.
+> You might need to wait for up to 24 hours after the release for the latest version of the CombinedSolutionBundle and the associated SHA256 hash to be available
 
 ## Step 1: Download Solution update bundle
 
