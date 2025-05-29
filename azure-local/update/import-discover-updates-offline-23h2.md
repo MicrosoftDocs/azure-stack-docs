@@ -34,7 +34,7 @@ The **CombinedSolutionBundle** is a zip file that contains the update package fo
 
 The following tables list the **CombinedSolutionBundle** versions and associated SHA256 hashes for existing deployments of Azure Local.
 
-- For 25398.xxxx builds, use the **CombinedSolutionBundle** to update the Azure Local OS and solution components.
+- For 25398.xxxx builds, use the **CombinedSolutionBundle** to update the OS and solution components for Azure Local.
 - For 26100.xxxx builds, use the **CombinedSolutionBundle** to install a specific version of Azure Local.
 
 For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
