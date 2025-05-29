@@ -24,7 +24,7 @@ This article describes how to collect logs and troubleshoot issues with Azure Lo
 
 **Cause:**
 
-This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version of the extension.
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
 
 **Resolution:**
 
@@ -39,7 +39,7 @@ To resolve this issue, update your Azure Local instance to the latest version. F
 
 **Cause:**
 
-This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version of the extension.
+This error occurs when the feature you're trying to use isn't available for the software version running on your Azure Local instance. This can happen if the software version on your cluster is outdated or the feature was introduced in a later version.
 
 **Resolution:**
 
