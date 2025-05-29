@@ -47,7 +47,7 @@ This release has the following features and improvements:
 
 - **Troubleshooting updates**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine issues, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
 
-- **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will be completed by May 31, 2025. Once archived, the articles will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+- **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will be completed soon. Once archived, the articles will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
 ::: moniker-end
 
