@@ -39,7 +39,7 @@ The following tables list the **CombinedSolutionBundle** versions and associated
 
 For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
 
-### [OS Build 25398.x](#tab/Os-build-25398)
+### [Existing deployments](#tab/existing-deployments)
 
 | OS Build     | Download URI       | SHA256                          |
 |--------------|--------------------|---------------------------------|
@@ -47,7 +47,7 @@ For more information on the release cadence, see [Azure Local release informatio
 | 25398.1551   | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip) <br><br> Availability date: <br><br> 2025-04-21  | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
 | 25398.1486   | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) <br><br> Availability date: <br><br> 2025-03-31 | 3A2E5D7F1B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6A2D7E5B8C9F6 |
 
-#### [OS Build 26100.x](#tab/OS-build-26100)
+#### [New deployments](#tab/new-deployments)
 
 | OS Build     | Download URI       | SHA256                          |
 |--------------|--------------------|---------------------------------|
