@@ -66,7 +66,7 @@ The following tables summarize the release information for Azure Local across al
 
 Starting with Azure Local 2503, you can discover and import update packages for Azure Local with limited connectivity to Azure. For more information on how to import and discover update packages with limited connectivity, see [Update via PowerShell with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
-#### [OS 25398.xxxx updates](#tab/OS-25398.xxxx-updates)
+#### [OS 25398 updates](#tab/OS-25398-updates)
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|------|
@@ -77,7 +77,7 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 | 10.2411.2.12 <br><br> Availability date: 2025-02-10 | 25398.1369 | [January OS security update](security-update/security-update.md?view=azloc-24112&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24112&preserve-view=true#features-and-improvements-in-24112) | [Known issues](./known-issues.md?view=azloc-24112&preserve-view=true) |
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](security-update/security-update.md?view=azloc-24111&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24111&preserve-view=true#features-and-improvements-in-24111) | [Known issues](./known-issues.md?view=azloc-24111&preserve-view=true) |
 
-#### [OS 26100.xxxx deployments](#tab/OS-26100.xxxx-deployments)
+#### [OS 26100 deployments](#tab/OS-26100-deployments)
 
 |Version| OS Build |Security update| What's new | Known issues |
 |------|-------|---------------|------------|--------------|
