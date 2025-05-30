@@ -32,20 +32,28 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 ## Key considerations
 
-- Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
+- Prior to the 2504 release, only one solution version was released monthly with OS build 25398.xxxx.
+
+- Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
 
   | Solution version | OS build   | Use case                 |
   |------------------| -----------| -------------------------|
-  | 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
+  | 10.24xx or 11.25xx   | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
   | 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
 
-  The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment. For example:
+  The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment.
 
-  - To update from 2503 to 2504, select OS version 25398.1551 which has a solution version 11.2504.1001.19.
+  - To update from 2503 to 2504, use solution version 11.2504.1001.19 which corresponds to OS version 25398.1551.
 
-  - To install 2504 directly use OS version 26100.3775 and solution version 12.2504.1001.20.
+    Here's an example:
 
-- Prior to the 2504 release, only one solution version was released monthly with OS build 25398.xxxx.
+    2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth.
+
+  - To install 2504 directly, use solution version 12.2504.1001.20 and OS version 26100.3775.
+  
+    Here's an example:
+
+    2504 -->  2505 --> so forth.
 
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
@@ -70,7 +78,7 @@ The following tables summarize the release information for Azure Local across al
 
 #### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
 
-| Version | OS Build | Security update | What's new | Known issues |
+| Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|------|
 | 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -81,7 +89,7 @@ The following tables summarize the release information for Azure Local across al
 
 #### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
-| Version | OS Build | Security update | What's new | Known issues |
+| Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 12.2505.1001.23 <br><br> Availability date: 2025-05-28 | 26100.4061 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 12.2504.1001.20 <br><br> Availability date: 2025-04-29 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
