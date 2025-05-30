@@ -55,8 +55,14 @@ Starting with the 2504 release, two solutions versions are available each month,
 
 | Solution version | OS build   | Use case                 |
 |------------------| -----------| -------------------------|
-| 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. For example, if you update from 2503 to 2504 the new OS version is 25398.1551 and the solution version is 11.2504.1001.19. |
-| 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. For example, you can install the 2504 build which has an OS version 261000.3775 and solution version 12.2504.1001.20.|
+| 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
+| 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
+
+The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment. For example:
+
+- If you update from 2503 to 2504, 2504 has an OS version 25398.1551 and a solution version 11.2504.1001.19.
+
+- If you install 2504 directly it has an OS version 26100.3775 and solution version 12.2504.1001.20.
 
 ## Azure Local release information summary
 
