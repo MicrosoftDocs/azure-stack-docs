@@ -78,7 +78,7 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 | 10.2411.2.12 <br><br> Availability date: 2025-02-10 | 25398.1369 | [January OS security update](security-update/security-update.md?view=azloc-24112&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24112&preserve-view=true#features-and-improvements-in-24112) | [Known issues](./known-issues.md?view=azloc-24112&preserve-view=true) |
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](security-update/security-update.md?view=azloc-24111&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24111&preserve-view=true#features-and-improvements-in-24111) | [Known issues](./known-issues.md?view=azloc-24111&preserve-view=true) |
 
-#### [OS build 26100.xxxx](#tab/OS-uild-26100-xxxx)
+#### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
 | Version | OS Build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
