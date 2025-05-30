@@ -12,11 +12,9 @@ ms.date: 05/28/2025
 
 [!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
-[!INCLUDE [azure-local-banner-resource-bridge](includes/azure-local-banner-resource-bridge.md)]
+<!--[!INCLUDE [azure-local-banner-resource-bridge](includes/azure-local-banner-resource-bridge.md)]-->
 
 To enhance your Azure Local (formerly known as Azure Stack HCI) experience, we periodically release feature updates that introduce new capabilities and improvements. Additionally, Azure Local provides cumulative updates that include monthly quality and security enhancements. These updates are listed for each instance, ensuring your devices remain protected and productive.
-
-To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
 This article provides the release information for Azure Local, including the release build and OS build information.
 
@@ -30,7 +28,24 @@ The Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so
 
 The following diagram illustrates the feature builds, cumulative updates, and update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Screenshot of Azure Local release trains with supported update paths." lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
+
+## Key considerations
+
+- Prior to the 2504 release, only one solution version was released monthly with OS build 25398.xxxx.
+
+- Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
+
+  | Solution version    | OS build    | Update path              | Use case        |
+  |---------------------| ------------| -------------------------| ----------------|
+  | 10.24xx or 11.25xx  | 25398.xxxx  |  2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
+  | 12.25xx  | 26100.xxxx | 2504 -->  2505 --> so forth. |  Use this version to install a specific build directly. |
+
+- To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
+
+- Azure Arc resource bridge requires solution updates to be applied within one year. This is critical to keep certificates valid and the Azure Local VM functionality working.
+
+- Starting with Azure Local 2503, you can discover and import update packages for Azure Local with limited connectivity to Azure. For more information on how to import and discover update packages with limited connectivity, see [Update via PowerShell with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
 ## Feature release availability timing
 
@@ -41,59 +56,15 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 > [!NOTE]
 > The validation process ensures a reliable update experience for your cluster. It minimizes potential issues and reduces the overall number of updates you need to manage for Azure Local.
 
-## Update paths
-
-### Existing deployments
-
-For existing deployments, such as the 2411 feature build, you can update to any of the 2411 cumulative update builds. This path includes the 2411.2 and 2411.3 cumulative updates, which are required to update to the 2503 feature build. The 2503 feature build is required to update to the 2504 feature build.
-
-Here's an example:
-
-**Update path**: 2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504
-
-### New deployments
-
-For new deployments, install a feature build directly. For example, you can install the 2504 build which has an OS version 261000.3775 and solution version 12.2504.1001.20. After the installation, you can install the latest cumulative update build (2505) to keep your system up to date.
-
-<!-- ### Move to the next release train
-
-Follow these guidelines to skip releases with the same release train as you move to the next release train:
-
-- Update the existing deployment to a build that allows you to move to the next release train. The following table provides examples of how to move between release trains:
-
-  | Update scenario       | Update path                             |
-  |-----------------------|-----------------------------------------|
-  | From 2411 to 2503     | 2411 -- 2411.2 -- 2411.3 -- 2503     |
-  | From 2411 to 2504     | 2411 -- 2411.2 -- 2411.3 -- 2503 -- 2504|
-
-### Move within the same release train
-
-Follow these guidelines to update to each release within your current release train:
-
-- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2411 feature build, you can update to any of the 2411 cumulative update builds, such as 2411.1, 2411.2, or 2411.3.
-
-  | Timeframe for 2411 release train     | Update path       |
-  |--------------------------------------|-------------------|
-  | Nov 2024                             | 2411 -- 2411.1   |
-  | December 2024 or later               | 2411.1 -- 2411.2 |
-  | February 2025                        | 2411.2 -- 2411.3 | -->
-
-> [!NOTE]
-> To keep your Azure Local instance in a supported state, you have up to six months to install updates. For example, if you're running the 2408 feature build, update to a later build within six months.
-
 ## Azure Local release information summary
 
 ### Supported versions of Azure Local
 
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*.
 
-Starting in 2504, we offer two releases. One release provides the path to upgrade from 2503 to 2504. The other release supports a new deployment of 2504.
+#### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
 
-Starting with Azure Local 2503, you can discover and import update packages for Azure Local with limited connectivity to Azure. For more information on how to import and discover update packages with limited connectivity, see [Update via PowerShell with limited connectivity](./update/import-discover-updates-offline-23h2.md).
-
-#### [Existing deployments](#tab/existing-deployments)
-
-|Version| OS Build |Security update| What's new | Known issues |
+| Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|------|
 | 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -102,9 +73,9 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 | 10.2411.2.12 <br><br> Availability date: 2025-02-10 | 25398.1369 | [January OS security update](security-update/security-update.md?view=azloc-24112&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24112&preserve-view=true#features-and-improvements-in-24112) | [Known issues](./known-issues.md?view=azloc-24112&preserve-view=true) |
 | 10.2411.1.10 <br><br> Availability date: 2024-12-17 | 25398.1308 | [December OS security update](security-update/security-update.md?view=azloc-24111&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24111&preserve-view=true#features-and-improvements-in-24111) | [Known issues](./known-issues.md?view=azloc-24111&preserve-view=true) |
 
-#### [New deployments](#tab/new-deployments)
+#### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
-|Version| OS Build |Security update| What's new | Known issues |
+| Solution version | OS build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 12.2505.1001.23 <br><br> Availability date: 2025-05-28 | 26100.4061 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 12.2504.1001.20 <br><br> Availability date: 2025-04-29 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -115,11 +86,11 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 
 The following table summarizes the release information for Azure Local across older versions.
 
-|Version| OS Build |Security update| What's new | Known issues |
+| Version | OS Build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
-| 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](security-update/security-update.md?view=azloc-24082&preserve-view=true) |[Features and improvements](./whats-new.md?view=azloc-24082&preserve-view=true#features-and-improvements-in-24082) | [Known issues](./known-issues.md?view=azloc-24082&preserve-view=true) |
+| 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](security-update/security-update.md?view=azloc-24082&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24082&preserve-view=true#features-and-improvements-in-24082) | [Known issues](./known-issues.md?view=azloc-24082&preserve-view=true) |
 | 10.2408.1.9 <br><br> Availability date: 2024-09-25 |  25398.1128 | [September OS Security update](security-update/security-update.md?view=azloc-24081&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24081&preserve-view=true#features-and-improvements-in-24081) | [Known issues](./known-issues.md?view=azloc-24081&preserve-view=true) |
 | 10.2408.0.29 <br><br> Availability date: 2024-09-05 | 25398.1085 | [August OS security update](security-update/security-update.md?view=azloc-2408&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2408&preserve-view=true#features-and-improvements-in-2408) | [Known issues](./known-issues.md?view=azloc-2408&preserve-view=true) |
 | 10.2405.3.7 <br><br> Availability date: 2024-08-20 | 25398.1085 | [August OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-24053) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
