@@ -43,10 +43,6 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
   The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment.
 
-  - To update from 2503 to 2504, use solution version 11.2504.1001.19 which corresponds to OS version 25398.1551.
-
-  - To install 2504 directly, use solution version 12.2504.1001.20 and OS version 26100.3775.
-
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
 - Azure Arc resource bridge requires solution updates to be applied within one year. This is critical to keep certificates valid and the Azure Local VM functionality working.
