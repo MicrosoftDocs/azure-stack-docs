@@ -44,7 +44,6 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Enable and use Windows Admin Center (for read-only)
 - Add a data disk
 - Delete a data disk
-- Expand a data disk
 - Change CPU cores
 - Change memory
 - Add extensions
@@ -60,6 +59,7 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 - Save the VM state
 - Attach a GPU
 - Detach a GPU
+- Expand a data disk
 
 ### Local tools
 
@@ -98,7 +98,7 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Checkpoint a VM (standard or production)
 
 > [!NOTE]
-> Taking a VM checkpoint is only supported for Azure Local 2504 and later.
+> Taking a VM checkpoint locally is only supported for Azure Local 2504 and later.
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
@@ -120,7 +120,7 @@ The following VM operations aren't supported.
 - Change the IP address of a network interface
 - Enable or change the VLAN ID of a network interface
 - Live migrate a VM from one cluster to another
-- Storage live migrate a VM from one cluster to another
+- Storage live migrate a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
