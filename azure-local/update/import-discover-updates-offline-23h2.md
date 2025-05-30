@@ -30,7 +30,7 @@ This article explains how to discover and import update packages for Azure Local
 
 ## Solution update bundle
 
-The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. The SHA256 is used to check the integrity of your download.
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. The SHA256 hash is used to check the integrity of your download.
 
 The following tables list the **CombinedSolutionBundle** versions and associated SHA256 hashes for existing deployments of Azure Local.
 
@@ -99,7 +99,7 @@ For more information on the release cadence, see [Azure Local release informatio
    Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Verify that the Update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you may need to run `Get-SolutionUpdate` more than once.
+1. Verify that the update service discovers the update package and that it's available to start preparation and installation. To discover the updates, run the `Get-SolutionUpdate` command. The update service discovers updates asynchronously, so you might need to run `Get-SolutionUpdate` command more than once.
 
 1. If the update returns a state of `AdditionalContentRequired`, follow the instructions in [Update Azure Local via PowerShell](./update-via-powershell-23h2.md#step-3-import-and-rediscover-updates) to import the required Solution Builder Extension (SBE) updates.
 
