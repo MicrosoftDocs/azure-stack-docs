@@ -25,7 +25,7 @@ For the 2505 release of Azure Local, Microsoft released two security updates, ea
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
-This section provides 2505 security updates associated with OS build **25398.1611**.
+This section provides the 2505 security updates associated with OS build **25398.1611**.
 
 ## Improvements
 
@@ -64,7 +64,7 @@ For a list of the files that are provided in this update, download the file info
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides 2505 security updates associated with OS build **26100.4061**.
+This section provides the 2505 security updates associated with OS build **26100.4061**.
 
 ## Improvements
 
@@ -100,7 +100,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058411.](https://go.microsoft.com/fwlink/?linkid=2320918).
 
-
 ::: moniker-end
 
 ::: moniker range="=azloc-2504"
@@ -116,7 +115,7 @@ For the 2504 release of Azure Local, Microsoft released two security updates, ea
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
-This section provides 2504 security updates associated with OS build **25398.1551**.
+This section provides the 2504 security updates associated with OS build **25398.1551**.
 
 ## Improvements
 
@@ -153,10 +152,9 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
-
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides 2504 security updates associated with OS build **26100.3775**.
+This section provides the 2504 security updates associated with OS build **26100.3775**.
 
 ## Improvements
 
