@@ -65,7 +65,7 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 
 The following VM operations are supported only when you use the local tools, such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
 
-You perform these operations either on the VM itself or on the system/machine. The changes aren't reflected in the portal.
+You perform these operations either on the VM itself or on the cluster/node. The changes aren't reflected in the portal.
 
 #### VM-level operations
 
@@ -86,14 +86,14 @@ You perform these operations either on the VM itself or on the system/machine. T
 - Change an automatic stop action
 - Enable secure boot of a generation 2 VM
 
-#### System or machine-level operations
+#### Cluster or node-level operations
 
 - Connect to a VM
-- Quickly migrate a VM to another machine in the same system
-- Live migrate a VM to another machine in the same system
+- Quickly migrate a VM to another node in the same cluster
+- Live migrate a VM to another node in the same cluster
 - Change the default location of VM files
-- Change automatic balancing of VMs in the system
-- Change the Hyper-V MAC address range on the machine
+- Change automatic balancing of VMs in the cluster
+- Change the Hyper-V MAC address range on the node
 - Compact a disk
 - Checkpoint a VM (standard or production)
 
@@ -105,9 +105,9 @@ You perform these operations either on the VM itself or on the system/machine. T
 The following VM operations are supported only when you use the Network ATC PowerShell cmdlets. For more information, see [Customize cluster network settings](./manage-network-atc.md#customize-cluster-network-settings).
 
 - Enable or disable single-root input/output virtualization (SR-IOV) per network interface
-- Configure the number of simultaneous live migrations of a system
-- Configure the number of simultaneous storage live migrations of a system
-- Add, remove, or change the order of host networks for live migration of a system
+- Configure the number of simultaneous live migrations of a cluster
+- Configure the number of simultaneous storage live migrations of a cluster
+- Add, remove, or change the order of host networks for live migration of a cluster
 
 ## Unsupported VM operations
 
@@ -116,11 +116,11 @@ The following VM operations aren't supported.
 > [!IMPORTANT]
 > You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
 
-- Rename a VM inside the guest operating system
+- Rename a VM inside the guest operating cluster
 - Change the IP address of a network interface
 - Enable or change the VLAN ID of a network interface
-- Live migrate a VM from one system to another
-- Storage live migrate a VM from one system to another
+- Live migrate a VM from one cluster to another
+- Storage live migrate a VM from one cluster to another
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
