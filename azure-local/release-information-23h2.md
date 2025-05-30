@@ -28,7 +28,7 @@ The Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so
 
 The following diagram illustrates the feature builds, cumulative updates, and update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Local release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Screenshot of Azure Local release trains with supported update paths." lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
 ## Key considerations
 
@@ -68,7 +68,7 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 
 #### [OS 25398 updates](#tab/OS-25398-updates)
 
-|Version| OS Build |Security update| What's new | Known issues |
+| Version | OS Build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|------|
 | 11.2505.1001.22 <br><br> Availability date: 2025-05-28 | 25398.1611 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 11.2504.1001.19 <br><br> Availability date: 2025-04-21 | 25398.1551 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -79,7 +79,7 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 
 #### [OS 26100 deployments](#tab/OS-26100-deployments)
 
-|Version| OS Build |Security update| What's new | Known issues |
+| Version | OS Build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 12.2505.1001.23 <br><br> Availability date: 2025-05-28 | 26100.4061 | [May OS security update](security-update/security-update.md?view=azloc-2505&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2505&preserve-view=true#features-and-improvements-in-2505) | [Known issues](./known-issues.md?view=azloc-2505&preserve-view=true) |
 | 12.2504.1001.20 <br><br> Availability date: 2025-04-29 | 26100.3775 | [April OS security update](security-update/security-update.md?view=azloc-2504&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2504&preserve-view=true#features-and-improvements-in-2504) | [Known issues](./known-issues.md?view=azloc-2504&preserve-view=true) |
@@ -90,11 +90,11 @@ Starting with Azure Local 2503, you can discover and import update packages for 
 
 The following table summarizes the release information for Azure Local across older versions.
 
-|Version| OS Build |Security update| What's new | Known issues |
+| Version | OS Build | Security update | What's new | Known issues |
 |------|-------|---------------|------------|--------------|
 | 10.2411.0.24 <br><br> Availability date: 2024-11-26 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
 | 10.2411.0.22 <br><br> Availability date: 2024-11-14 | 25398.1251 | [November OS security update](security-update/security-update.md?view=azloc-2411&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2411&preserve-view=true#features-and-improvements-in-2411) | [Known issues](./known-issues.md?view=azloc-2411&preserve-view=true) |
-| 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](security-update/security-update.md?view=azloc-24082&preserve-view=true) |[Features and improvements](./whats-new.md?view=azloc-24082&preserve-view=true#features-and-improvements-in-24082) | [Known issues](./known-issues.md?view=azloc-24082&preserve-view=true) |
+| 10.2408.2.7 <br><br> Availability date: 2024-10-23 | 25398.1189 | [October OS Security update](security-update/security-update.md?view=azloc-24082&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24082&preserve-view=true#features-and-improvements-in-24082) | [Known issues](./known-issues.md?view=azloc-24082&preserve-view=true) |
 | 10.2408.1.9 <br><br> Availability date: 2024-09-25 |  25398.1128 | [September OS Security update](security-update/security-update.md?view=azloc-24081&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-24081&preserve-view=true#features-and-improvements-in-24081) | [Known issues](./known-issues.md?view=azloc-24081&preserve-view=true) |
 | 10.2408.0.29 <br><br> Availability date: 2024-09-05 | 25398.1085 | [August OS security update](security-update/security-update.md?view=azloc-2408&preserve-view=true) | [Features and improvements](./whats-new.md?view=azloc-2408&preserve-view=true#features-and-improvements-in-2408) | [Known issues](./known-issues.md?view=azloc-2408&preserve-view=true) |
 | 10.2405.3.7 <br><br> Availability date: 2024-08-20 | 25398.1085 | [August OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true)  | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-24053) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
