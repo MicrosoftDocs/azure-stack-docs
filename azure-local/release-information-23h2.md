@@ -41,8 +41,6 @@ The following diagram illustrates the feature builds, cumulative updates, and up
   | 10.24xx or 11.25xx  | 25398.xxxx  |  2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
   | 12.25xx  | 26100.xxxx | 2504 -->  2505 --> so forth. |  Use this version to install a specific build directly. |
 
-  The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment.
-
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
 - Azure Arc resource bridge requires solution updates to be applied within one year. This is critical to keep certificates valid and the Azure Local VM functionality working.
