@@ -32,13 +32,26 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 ## Key considerations
 
-- Azure Arc resource bridge requires solution updates to be applied within one year. This is critical to keep certificates valid and the Azure Local VM functionality working.
+- Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
+
+  | Solution version | OS build   | Use case                 |
+  |------------------| -----------| -------------------------|
+  | 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
+  | 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
+
+  The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment. For example:
+
+  - To update from 2503 to 2504, select OS version 25398.1551 which has a solution version 11.2504.1001.19.
+
+  - To install 2504 directly use OS version 26100.3775 and solution version 12.2504.1001.20.
 
 - Prior to the 2504 release, only one solution version was released monthly with OS build 25398.xxxx.
 
-- All future updates will continue using the OS build associated with their respective solution version.
-
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
+
+- Azure Arc resource bridge requires solution updates to be applied within one year. This is critical to keep certificates valid and the Azure Local VM functionality working.
+
+- Starting with Azure Local 2503, you can discover and import update packages for Azure Local with limited connectivity to Azure. For more information on how to import and discover update packages with limited connectivity, see [Update via PowerShell with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
 ## Feature release availability timing
 
@@ -49,28 +62,11 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 > [!NOTE]
 > The validation process ensures a reliable update experience for your cluster. It minimizes potential issues and reduces the overall number of updates you need to manage for Azure Local.
 
-## Update paths
-
-Starting with the 2504 release, two solutions versions are available each month, each aligned with a specific OS build. One solution runs OS image version 25398.xxxx and the other solution runs OS image version 26100.xxxx.
-
-| Solution version | OS build   | Use case                 |
-|------------------| -----------| -------------------------|
-| 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
-| 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
-
-The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment. For example:
-
-- To update from 2503 to 2504, select OS version 25398.1551 which has a solution version 11.2504.1001.19.
-
-- To install 2504 directly use OS version 26100.3775 and solution version 12.2504.1001.20.
-
 ## Azure Local release information summary
 
 ### Supported versions of Azure Local
 
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*.
-
-Starting with Azure Local 2503, you can discover and import update packages for Azure Local with limited connectivity to Azure. For more information on how to import and discover update packages with limited connectivity, see [Update via PowerShell with limited connectivity](./update/import-discover-updates-offline-23h2.md).
 
 #### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
 
