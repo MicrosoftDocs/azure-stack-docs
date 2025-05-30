@@ -49,6 +49,8 @@ For more information on the release cadence, see [Azure Local release informatio
 
 ### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
+| OS Build     | Download URI       | SHA256                          |
+|--------------|--------------------|---------------------------------|
 | 26100.4061   | [12.2505.1001.23](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2505.1001.23/CombinedSolutionBundle.12.2505.1001.23.zip) <br><br> Availability date: <br><br> 2025-05-28 | 29E5F6732D9B1BD4E0C2667F6FB1D7F43ADF78B4AEA8E34486C7F03DD46D155C |
 
 ---
