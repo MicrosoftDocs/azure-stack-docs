@@ -3,7 +3,7 @@ title: Install Azure Stack HCI operating system, version 23H2
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/03/2025
+ms.date: 05/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -77,7 +77,7 @@ To install the operating system, follow these steps:
 
 To install the latest drivers and firmware, follow these steps:
 
-1. Skip this step if your hardware partner provides a solution builder extension (SBE). Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
+1. Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
 
 1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
