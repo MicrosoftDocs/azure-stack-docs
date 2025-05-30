@@ -58,7 +58,8 @@ Starting with the 2504 release, two solutions versions are available each month,
 | 11.25xx          | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
 | 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
 
-The solution and version numbers as shown are placeholders. Replace x with the actual 
+The version numbers as shown are placeholders. Replace x with the actual build number applicable to your enviornment.
+
 ## Azure Local release information summary
 
 ### Supported versions of Azure Local
