@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/25/2025
+ms.date: 05/30/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -16,18 +16,16 @@ This article lists the various security updates that are available for Azure Loc
 
 ## May OS security updates (KB5058384 and KB5058411) for Azure Local
 
-This article describes the OS security updates for Azure Local that were released for version 2505.
+For the 2505 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
 
-For the 2505 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5058384 | 25398.1611 | May 13, 2025 |
+| KB5058411 | 26100.4061 | May 13, 2025 |
 
-| Deployment type  | Security update  | OS build  | Release date |
-|---------|---------|---------|---------|
-| Existing deployments    | KB5058384         | 25398.1611         | May 13, 2025        |
-| New deployments    | KB5058411         | 26100.4061         | May 13, 2025         |
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
-# [Existing deployments](#tab/existing-deployments)
-
-This section applies to existing deployments of 2505 running OS build **25398.1611**.
+This section provides 2505 security updates associated with OS build **25398.1611**.
 
 ## Improvements
 
@@ -64,9 +62,9 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058384.](https://go.microsoft.com/fwlink/?linkid=2320746).
 
-# [New deployments](#tab/new-deployments)
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section applies to new deployments of 2505 running OS build **26100.4061**.
+This section provides 2505 security updates associated with OS build **26100.4061**.
 
 ## Improvements
 
@@ -109,18 +107,16 @@ For a list of the files that are provided in this update, download the file info
 
 ## April OS security updates (KB5055527 and KB5055523) for Azure Local
 
-This article describes the OS security updates for Azure Local that were released for version 2504.
+For the 2504 release of Azure Local, Microsoft released two security updates, each corresponding to a specific OS build. The following table provides the details of these security updates, including their associated OS builds and release dates.
 
-For the 2504 release of Azure Local, Microsoft released two security updates: one for existing deployments and another for new deployments. The following table provides information about different deployment types, their corresponding security updates, and OS builds:
+| Security update | OS build | Release date |
+|--|--|--|
+| KB5055527 | 25398.1551 | April 12, 2025 |
+| KB5055523 | 26100.3775 | April 12, 2025 |
 
-| Deployment type  | Security update  | OS build  | Release date |
-|---------|---------|---------|---------|
-| Existing deployments    | KB5055527         | 25398.1551         | April 12, 2025        |
-| New deployments    | KB5055523         | 26100.3775         | April 12, 2025         |
+# [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
-# [Existing deployments](#tab/existing-deployments)
-
-This section applies to existing deployments of 2504 running OS build **25398.1551**.
+This section provides 2504 security updates associated with OS build **25398.1551**.
 
 ## Improvements
 
@@ -158,9 +154,9 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5055527](https://go.microsoft.com/fwlink/?linkid=2313660).
 
 
-# [New deployments](#tab/new-deployments)
+# [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section applies to new deployments of 2504 running OS build **26100.3775**.
+This section provides 2504 security updates associated with OS build **26100.3775**.
 
 ## Improvements
 
