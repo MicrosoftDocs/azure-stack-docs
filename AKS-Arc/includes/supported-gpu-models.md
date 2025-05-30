@@ -10,7 +10,7 @@ ms.lastreviewed: 04/14/2025
 
 ## Supported GPU models
 
-The following GPU models are supported by AKS on Azure Local.
+The following GPU models are supported by AKS on Azure Local. Note that GPUs are only supported on nodepools of Linux OS type. GPUs are not supported on nodepools of Windows OS type.
 
 | Manufacturer | GPU model | Supported version |
 |--------------|-----------|-------------------|
