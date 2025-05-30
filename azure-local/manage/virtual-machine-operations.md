@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 04/28/2025
+ms.date: 05/30/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -44,6 +44,7 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Enable and use Windows Admin Center (for read-only)
 - Add a data disk
 - Delete a data disk
+- Expand a data disk
 - Change CPU cores
 - Change memory
 - Add extensions
@@ -64,7 +65,7 @@ Perform the following VM operations only via the Azure CLI. Don't use the local 
 
 The following VM operations are supported only when you use the local tools, such as Windows Admin Center, Hyper-V Manager, Failover Cluster Manager, and Virtual Machine Manager.
 
-You perform these operations either on the VM itself or on the cluster/node. The changes aren't reflected in the portal.
+You perform these operations either on the VM itself or on the system/machine. The changes aren't reflected in the portal.
 
 #### VM-level operations
 
@@ -85,25 +86,28 @@ You perform these operations either on the VM itself or on the cluster/node. The
 - Change an automatic stop action
 - Enable secure boot of a generation 2 VM
 
-#### Cluster or node-level operations
+#### System or machine-level operations
 
 - Connect to a VM
-- Quickly migrate a VM to another node in the same cluster
-- Live migrate a VM to another node in the same cluster
+- Quickly migrate a VM to another machine in the same system
+- Live migrate a VM to another machine in the same system
 - Change the default location of VM files
-- Change automatic balancing of VMs in the cluster
-- Change the Hyper-V MAC address range on the node
-- Change the size of a disk (compact or expand)
+- Change automatic balancing of VMs in the system
+- Change the Hyper-V MAC address range on the machine
+- Compact a disk
 - Checkpoint a VM (standard or production)
+
+> [!NOTE]
+> Taking a VM checkpoint is only supported for Azure Local 2504 and later.
 
 #### Operations supported only via Network ATC PowerShell cmdlets
 
 The following VM operations are supported only when you use the Network ATC PowerShell cmdlets. For more information, see [Customize cluster network settings](./manage-network-atc.md#customize-cluster-network-settings).
 
 - Enable or disable single-root input/output virtualization (SR-IOV) per network interface
-- Configure the number of simultaneous live migrations of a cluster
-- Configure the number of simultaneous storage live migrations of a cluster
-- Add, remove, or change the order of host networks for live migration of a cluster
+- Configure the number of simultaneous live migrations of a system
+- Configure the number of simultaneous storage live migrations of a system
+- Add, remove, or change the order of host networks for live migration of a system
 
 ## Unsupported VM operations
 
@@ -115,7 +119,8 @@ The following VM operations aren't supported.
 - Rename a VM inside the guest operating system
 - Change the IP address of a network interface
 - Enable or change the VLAN ID of a network interface
-- Live migrate a VM from one cluster to another
+- Live migrate a VM from one system to another
+- Storage live migrate a VM from one system to another
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
