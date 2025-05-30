@@ -36,24 +36,16 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
 
-  | Solution version | OS build   | Use case                 |
-  |------------------| -----------| -------------------------|
-  | 10.24xx or 11.25xx   | 25398.xxxx | Use this version to update your system through each feature and cumulative build. |
-  | 12.25xx          | 26100.xxxx | Use this version to install a specific build directly. |
+  | Solution version    | OS build    | Use case                 | Update path     |
+  |---------------------| ------------| -------------------------| ----------------|
+  | 10.24xx or 11.25xx  | 25398.xxxx | Use this version to update your system through each feature and cumulative build. | 2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. |
+  | 12.25xx  | 26100.xxxx | Use this version to install a specific build directly. | 2504 -->  2505 --> so forth. |
 
   The version numbers shown as 25398.xxxx or 26100.xxxx, are placeholders. Replace **x** with the actual build number applicable to your environment.
 
   - To update from 2503 to 2504, use solution version 11.2504.1001.19 which corresponds to OS version 25398.1551.
 
-    Here's an example:
-
-    2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth.
-
   - To install 2504 directly, use solution version 12.2504.1001.20 and OS version 26100.3775.
-  
-    Here's an example:
-
-    2504 -->  2505 --> so forth.
 
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
