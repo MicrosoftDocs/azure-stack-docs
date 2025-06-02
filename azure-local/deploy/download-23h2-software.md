@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/28/2025
+ms.date: 06/02/2025
 ---
 
 # Download operating system for Azure Local deployment
@@ -52,7 +52,7 @@ Follow these steps to download the software:
     
 1. On the **Download Azure Stack HCI** page, do the following:
 
-    1. Select the subscription in which you intend to deploy Azure Local. Ensure that the selected subscription has the Microsoft Azure Stack HCI resource provider registered.
+    1. Select the subscription in which you intend to deploy Azure Local. Ensure that the selected subscription has the Microsoft Azure Stack HCI resource provider registered and which you have **Reader** access at a minimum.
 
     :::image type="content" source="media/download-23h2-software/download-azure-stack-hci.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 1." lightbox="media/download-23h2-software/download-azure-stack-hci.png":::
 
