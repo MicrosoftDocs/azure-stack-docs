@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 05/30/2025
+ms.date: 06/02/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -120,7 +120,7 @@ The following VM operations aren't supported.
 - Change the IP address of a network interface
 - Enable or change the VLAN ID of a network interface
 - Live migrate a VM from one cluster to another
-- Storage live migrate a VM
+- Storage live migration on a VM
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 
 If you need to change the IP address or the VLAN ID of a network interface, create a new network interface and delete the old one.
