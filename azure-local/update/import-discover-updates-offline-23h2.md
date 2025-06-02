@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 05/16/2025
+ms.date: 05/27/2025
 ---
 
 # Import and discover update packages with limited connectivity
@@ -26,21 +26,48 @@ This article explains how to discover and import update packages for Azure Local
 
 - Review [About updates for Azure Local](./about-updates-23h2.md) to understand the update process.
 
-- Review [Azure Local release information](../release-information-23h2.md).
+- Review [Azure Local release information](../release-information-23h2.md) to check supported paths.
+
+## Solution update bundle
+
+The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release. The SHA256 is used to check the integrity of your download.
+
+The following tables list the **CombinedSolutionBundle** versions and associated SHA256 hashes for existing deployments of Azure Local.
+
+- For 25398.xxxx builds, use the **CombinedSolutionBundle** to update the OS and solution components for Azure Local.
+- For 26100.xxxx builds, use the **CombinedSolutionBundle** to install a specific version of Azure Local.
+
+For more information on the release cadence, see [Azure Local release information](../release-information-23h2.md).
+
+### [OS build 25398.xxxx](#tab/OS-build-25398-xxxx)
+
+| OS Build     | Download URI       | SHA256                          |
+|--------------|--------------------|---------------------------------|
+| 25398.1611   | [11.2505.1001.22](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2505.1001.22/CombinedSolutionBundle.11.2505.1001.22.zip) <br><br> Availability date: <br><br> 2025-05-28 | AB2C7CE74168BF9FD679E7CE644BC57A20A0A3A418C5E8663EBCF53FC0B45113 |
+| 25398.1551   | [11.2504.1001.19](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/11.2504.1001.19/CombinedSolutionBundle.11.2504.1001.19.zip) <br><br> Availability date: <br><br> 2025-04-21  | 7658C5CBAE241951C786D06D35E8B09A1160FDC5E9B8CAEDEB374ECC22A2CB68 |
+| 25398.1486   | [10.2503.0.13](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/10.2503.0.13/CombinedSolutionBundle.10.2503.0.13.zip) <br><br> Availability date: <br><br> 2025-03-31 | BAA0CEB0CF695CCCF36E39F70BF2E67E0B886B91CDE97F8C2860CE299E2A5126 |
+
+### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
+
+| OS Build     | Download URI       | SHA256                          |
+|--------------|--------------------|---------------------------------|
+| 26100.4061   | [12.2505.1001.23](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2505.1001.23/CombinedSolutionBundle.12.2505.1001.23.zip) <br><br> Availability date: <br><br> 2025-05-28 | 29E5F6732D9B1BD4E0C2667F6FB1D7F43ADF78B4AEA8E34486C7F03DD46D155C |
+
+---
+
+> [!NOTE]
+> You might need to wait for up to 24 hours after the release for the latest version of the CombinedSolutionBundle and the associated SHA256 hash to be available.
 
 ## Step 1: Download Solution update bundle
 
-The **CombinedSolutionBundle** is a zip file that contains the update package for the Azure Stack HCI OS, core agents and services, and the solution extension. The associated SHA256 hash helps verify the integrity of the downloaded zip.
+1. Download the bundle and note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table. Run this command:
 
-Follow these steps:
+   ```PowerShell
+   # Download the CombinedSolutionBundle
+   Invoke-WebRequest -Uri "<download URI>" -OutFile "C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip"
+   ```
 
-1. To download the bundle and note the SHA256 hash, see the **Download URI** column in [Azure Local release information summary](../release-information-23h2.md#supported-versions-of-azure-local).
-
-   - The **CombinedSolutionBundle** is named `CombinedSolutionBundle.<build number>.zip`, where `<build number>` is the build number for the release.
-
-   - The SHA256 hash is also in the release notes. Use the hash to check the integrity of your download.
-
-1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**.
+1. Verify the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
 
    ```PowerShell
    # Verify the SHA256 hash of the downloaded CombinedSolutionBundle
@@ -49,23 +76,23 @@ Follow these steps:
 
 ## Step 2: Import the Solution update bundle
 
-1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system.
+1. Create a folder for the update service to discover at the following location in the infrastructure volume of your system. Run this command:
 
    ```PowerShell
    # Create a folder for the update service to discover
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the folder you created.
+1. Copy the CombinedSolutionBundle you downloaded to the folder you created. Run this command:
 
-1. Extract the contents to the Solution subfolder.
+1. Extract the contents to the Solution subfolder. Run this command:
 
    ```PowerShell
    # Extract the contents of the CombinedSolutionBundle to the Solution subfolder
    Expand-Archive -Path C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip -DestinationPath C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
    ```
 
-1. Import the package to the update service.
+1. Import the package to the update service. Run this command:
 
    ```PowerShell
    # Import the module
