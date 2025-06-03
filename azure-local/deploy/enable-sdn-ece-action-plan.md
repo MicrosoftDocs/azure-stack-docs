@@ -10,7 +10,7 @@ ms.date: 06/03/2025
 
 # Enable SDN on Azure Local using action plan (Preview)
 
-> Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
+
 
 This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an action plan via the Azure Command-line interface (CLI) to enable SDN.
 
