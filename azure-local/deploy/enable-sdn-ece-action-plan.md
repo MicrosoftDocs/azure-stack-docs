@@ -34,7 +34,7 @@ Once the NC is integrated, SDN is enabled. You can use the Azure portal, Azure C
 
 NC is a key component that manages and configures virtual network infrastructure on an Azure Local instance. NC is now natively integrated with the host machine using Failover Clustering, rather than being hosted in a VM. NC is responsible for managing the virtual switch, logical networks, and network interfaces. It also provides a REST API for programmatic access to the network infrastructure.
 
-Here is an architecture diagram of Network Controller in a 2-node Azure Local instance with SDN enabled by Arc:
+Here's an architecture diagram of Network Controller in a 2-node Azure Local instance with SDN enabled by Arc:
 
 :::image type="content" source="./media/enable-sdn-ece-action-plan/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-ece-action-plan/network-controller-architecture.png":::
 
@@ -56,7 +56,7 @@ Consider this information before you enable SDN:
 - SDN enabled by Arc is supported with updates to newer Azure Local releases.
 - Enabling SDN with existing Azure Local VMs and logical networks is supported.
     - The logical networks and network interfaces are automatically hydrated into the Network Controller.
-    - Make sure to plan for a maintenance window if you are running on a production environment. Your workloads will experience a short network disruption while SDN Azure Virtual Filtering Platform policies are applied.
+    - Make sure to plan for a maintenance window if you're running on a production environment. Your workloads experience a short network disruption while SDN Azure Virtual Filtering Platform policies are applied.
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ Consider this information before you enable SDN:
         ```powershell
         systeminfo.exe
         ```
-        Here is an example output:
+        Here's an example output:
     
         ```output
         [v-host1]: PS C:\DeploymentUser> systeminfo.exe
@@ -109,23 +109,23 @@ When you run the action plan to enable SDN, you can choose to use the default SD
 - **Custom SDN prefix**: You can also use a custom SDN prefix. Make sure that the custom SDN prefix meets the following requirements:
 
     - Must not be null or empty.
-    - Must be less than 8 characters.
+    - Must be fewer than eight characters.
     - Must contain only lowercase, uppercase, numeric, characters.
     - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
     
-    If the prefix does not meet these requirements, the action plan will fail.
+    If the prefix doesn't meet these requirements, the action plan fails.
 
 ## Check dynamic DNS updates are enabled
 
 - **Dynamic DNS environment**: Check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
 
-    If these updates are not enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
+    If these updates aren't enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
 - **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
     - The name for your DNS record must match your SDN prefix. For example, if you choose the default SDN prefix `v`, the DNS record must be `v-NC.<DomainName>`. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC.<DomainName>`.
-    - The DNS record must resolve to the reserved IP. This is the IP address you provided via the reserved IP address range when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link should not resolve to an existing DNS record.
-    - Make a note of the DNS record name, as you will need it later when you run the action plan to enable SDN.
+    - The DNS record must resolve to the reserved IP. This is the IP address you provided via the reserved IP address range when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
+    - Make a note of the DNS record name, as you need it later when you run the action plan to enable SDN.
 
 ## Review action plan parameters
 
@@ -141,7 +141,7 @@ The action plan uses the following parameters:
 ## Run the action plan
 
 > [!IMPORTANT]
-> Make sure to plan for a maintenance window if you are running on a production environment.
+> Make sure to plan for a maintenance window if you're running on a production environment.
 
 Follow these steps on the Azure CLI to run the action plan:
 
