@@ -80,11 +80,11 @@ Monitor Azure Kubernetes Service (AKS) clusters and container applications on Az
 
 - **Prometheus**: An open-source monitoring and alerting toolkit designed for reliability and scalability. It collects metrics from configured targets at specified intervals, evaluates rule expressions, and can trigger alerts if certain conditions are met.
 
-For more information on Prometheus, see [Overview Prometheus](https://prometheus.io/docs/introduction/overview/).
+    For more information on Prometheus, see [Overview Prometheus](https://prometheus.io/docs/introduction/overview/).
 
 - **Grafana**: An open-source analytics and monitoring platform that integrates with Prometheus and other data sources to visualize metrics and logs. It provides a rich set of features for creating dashboards, alerts, and reports.
 
-For more information on Grafana, see [Grafana OSS](https://grafana.com/oss/grafana/).
+    For more information on Grafana, see [Grafana OSS](https://grafana.com/oss/grafana/).
 
 Download these solutions from their repositories and install them on an AKS cluster running on Azure Local, or deploy them on a Kubernetes cluster running outside Azure Local.
 
