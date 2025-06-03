@@ -13,11 +13,11 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell. Here are the supported upgrade paths:
+This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell. Supported upgrade paths include:
 
-- OS version 20349.xxxx to 26100.xxxx.
+- From OS version 20349.xxxx to 26100.xxxx.
 
-- OS version 25398.xxxx to 26100.xxxx.
+- From OS version 25398.xxxx to 26100.xxxx.
 
 > [!IMPORTANT]
 > This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed.
@@ -42,15 +42,15 @@ To upgrade the OS on your system, follow these high-level steps:
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
-- Check if the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`. You can verify this in the resource's JSON in the Azure portal or by running the following cmdlet:
-   
-   ```powershell
-   Get-AzResource -Name <cluster_name> -ResourceGroupName <name of the resource group> -ResourceType "Microsoft.AzureStackHCI/clusters" -ExpandProperties
-   ```
-   If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, repair the registration using the following cmdlet:
+- Ensure the instance is properly registered. If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following command to repair the registration:
 
    ```powershell
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   ```
+   You can verify the *identity* property in the Azure portal in resource's JSON or by running the following cmdlet:
+   
+   ```powershell
+   Get-AzResource -Name <cluster_name> -ResourceGroupName <name of the resource group> -ResourceType "Microsoft.AzureStackHCI/clusters" -ExpandProperties
    ```
 - (Recommended) Enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS. To enable Secure Boot, follow these steps:
    1. Drain the cluster node.
