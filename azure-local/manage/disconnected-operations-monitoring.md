@@ -70,7 +70,7 @@ For monitoring failover clusters, see [Monitoring Failover Cluster with Operatio
 
 ## Monitor virtual machines
 
-Monitor VMs on Azure Local with disconnected operations using System Center Operations Manager or third-party/open-source solutions. Install the appropriate agents in each VM.
+Monitor virtual machines (VMs) on Azure Local with disconnected operations using System Center Operations Manager or third-party/open-source solutions. Install the appropriate agents in each VM.
 
 For more information, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
