@@ -34,15 +34,16 @@ The disconnected operations appliance provides the local Azure portal and Arc se
 When managed by Azure, Azure Local instances, and nodes, use integration with Azure Monitor to collect and analyze logs, metrics, and generate alerts. When you deploy Azure Local using the disconnected operations feature, you can integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
 
 1. Install the agents on each node.
+
 1. Import the management packs.
 
-- [Windows Server Operating System 2016 and above for Base OS](https://aka.ms/AAvqh49).
+    - [Windows Server Operating System 2016 and above for Base OS](https://aka.ms/AAvqh49).
 
-- [Microsoft System Center Management Pack for Windows Server Cluster 2016 and above for Cluster](https://aka.ms/AAvqwlr).
+    - [Microsoft System Center Management Pack for Windows Server Cluster 2016 and above for Cluster](https://aka.ms/AAvqwlr).
 
-- [Microsoft System Center 2019 Management Pack for Hyper-V](https://aka.ms/AAvqh4i).
+    - [Microsoft System Center 2019 Management Pack for Hyper-V](https://aka.ms/AAvqh4i).
 
-- [AzS HCI S2D MP for Storage Spaces Direct (S2D)](https://aka.ms/AAvqwo9).
+    - [AzS HCI S2D MP for Storage Spaces Direct (S2D)](https://aka.ms/AAvqwo9).
 
 For more information, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
@@ -79,13 +80,13 @@ Monitor Azure Kubernetes Service (AKS) clusters and container applications on Az
 
 - **Prometheus**: An open-source monitoring and alerting toolkit designed for reliability and scalability. It collects metrics from configured targets at specified intervals, evaluates rule expressions, and can trigger alerts if certain conditions are met.
 
-- **Grafana**: An open-source analytics and monitoring platform that integrates with Prometheus and other data sources to visualize metrics and logs. It provides a rich set of features for creating dashboards, alerts, and reports.
-
-Download these solutions from their repositories and install them on an AKS cluster running on Azure Local, or deploy them on a Kubernetes cluster running outside Azure Local.
-
 For more information on Prometheus, see [Overview Prometheus](https://prometheus.io/docs/introduction/overview/).
 
+- **Grafana**: An open-source analytics and monitoring platform that integrates with Prometheus and other data sources to visualize metrics and logs. It provides a rich set of features for creating dashboards, alerts, and reports.
+
 For more information on Grafana, see [Grafana OSS](https://grafana.com/oss/grafana/).
+
+Download these solutions from their repositories and install them on an AKS cluster running on Azure Local, or deploy them on a Kubernetes cluster running outside Azure Local.
 
 ::: moniker-end
 
