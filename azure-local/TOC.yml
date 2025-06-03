@@ -186,11 +186,11 @@ items:
   items:
   - name: About Azure Local upgrades
     href: upgrade/about-upgrades-23h2.md
-  - name: 1. Choose OS version to upgrade
+  - name: 1. Select upgrade path
     items: 
-    - name: Upgrade to 26100.xxxx
-      href: upgrade/upgrade-22h2-to-24h2-powershell.md
-    - name: Upgrade to 25398.xxxx
+    - name: To 26100.xxxx from 25398.xxxx or 20349.xxxx
+      href: upgrade/upgrade-to-24h2-powershell.md
+    - name: To 25398.xxxx from 20349.xxxx
       items: 
       - name: Via PowerShell (recommended)
         href: upgrade/upgrade-22h2-to-23h2-powershell.md

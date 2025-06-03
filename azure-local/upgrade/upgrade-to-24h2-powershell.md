@@ -11,11 +11,9 @@ ms.service: azure-local
 
 # Upgrade Azure Stack HCI OS to version 26100.xxxx using PowerShell
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
-
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell, which is the recommended method. Here are the supported upgrade paths:
+This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell, which is the recommended method for OS upgrades. Here are the supported upgrade paths:
 
 - OS version 20349.xxxx to 26100.xxxx.
 
@@ -24,7 +22,7 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 Throughout this article, we refer to OS version 26100.xxxx as the *new* version and versions 20349.xxxx and 25398.xxxx as the *old* versions.
 
 > [!IMPORTANT]
-> This article covers OS upgrades only. Don't proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed.
+> This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed.
 > To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
 
 ## High-level workflow for the OS upgrade
@@ -41,19 +39,17 @@ To upgrade the OS on your system, follow these high-level steps:
 
 ## Complete prerequisites
 
-- Make sure your Azure Local is running either OS version 20349.3692 or OS version greater than 25398.1611.
+- Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- Confirm that have access to the Azure Local **2505** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
-- Consult your hardware OEM before you upgrade Azure Local to OS version 26100.xxxx. Check with your OEM regarding the Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx compatible drivers that need to be installed before the upgrade.
-- Confirm if the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`. To check:
-   - View the resource's JSON in the Azure portal, or
-   - Run the following cmdlet:
+- Confirm that you have access to the Azure Local **2505** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
+- Consult your hardware OEM to verify driver compatability. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
+- Check if the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`. You can verify this in the resource's JSON in the Azure portal or by running the following cmdlet:
    
    ```powershell
    Get-AzResource -Name <cluster_name> -ResourceGroupName <name of the resource group> -ResourceType "Microsoft.AzureStackHCI/clusters" -ExpandProperties
    ```
-   If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following cmdlet:
+   If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, repair the registration using the following cmdlet:
 
    ```powershell
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
@@ -128,36 +124,36 @@ To install the new OS using PowerShell, follow these steps:
 
 1. To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
 
-```powershell
-Get-CauRun -ClusterName <SystemName>
-```
+   ```powershell
+   Get-CauRun -ClusterName <SystemName>
+   ```
 
-Here's a sample output:
+   Here's a sample output:
 
-```output
-RunId                   : <Run ID>  
-RunStartTime            : 10/13/2024 1:35:39 PM  
-CurrentOrchestrator     : NODE1  
-NodeStatusNotifications : {  
-Node      : NODE1  
-Status    : Waiting  
-Timestamp : 10/13/2024 1:35:49 PM  
-}  
-NodeResults             : {  
-Node                     : NODE2  
-Status                   : Succeeded  
-ErrorRecordData          :  
-NumberOfSucceededUpdates : 0  
-NumberOfFailedUpdates    : 0  
-InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]  
-} 
-```
+   ```output
+   RunId                   : <Run ID>  
+   RunStartTime            : 10/13/2024 1:35:39 PM  
+   CurrentOrchestrator     : NODE1  
+   NodeStatusNotifications : {  
+   Node      : NODE1  
+   Status    : Waiting  
+   Timestamp : 10/13/2024 1:35:49 PM  
+   }  
+   NodeResults             : {  
+   Node                     : NODE2  
+   Status                   : Succeeded  
+   ErrorRecordData          :  
+   NumberOfSucceededUpdates : 0  
+   NumberOfFailedUpdates    : 0  
+   InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]  
+   } 
+   ```
 
 1. Validate the health of your system by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step.
 
-```powershell
-Test-Cluster
-```
+   ```powershell
+   Test-Cluster
+   ```
 
 You're now ready to perform the post-OS upgrade steps for your system.
 
