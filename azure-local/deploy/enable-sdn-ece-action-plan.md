@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 05/05/2025
+ms.date: 06/03/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
@@ -95,14 +95,41 @@ Consider this information before you enable SDN:
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-- Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
+<!--- Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
     - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no response, it means that the name is unique.
-    - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
+    - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).-->
 
 
-## Sign in and set subscription
+<!--## Sign in and set subscription
 
-[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]-->
+
+## Choose between default or custom SDN prefix
+
+When you run the action plan to enable SDN, you can choose to use the default SDN prefix or a custom SDN prefix.
+
+- **Default SDN prefix**: The default SDN prefix is `v`.
+
+- **Custom SDN prefix**: You can also use a custom SDN prefix. Make sure that the custom SDN prefix meets the following requirements:
+
+    - Must not be null or empty.
+    - Must be less than 8 characters.
+    - Must contain only lowercase, uppercase, numeric, characters.
+    - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
+    
+    If the prefix does not meet these requirements, the action plan will fail.
+
+## Check dynamic DNS updates are enabled
+
+- If you have a dynamic DNS environment, check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
+
+    If these updates are not enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
+
+- If you have a static DNS environment, precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
+
+    - The name for your DNS record must match your SDN prefix. For example, if you choose the default SDN prefix `v`, the DNS record must be `v-NC.<DomainName>`. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC.<DomainName>`.
+    - The DNS record must resolve to the reserved IP. This is the IP address you provided via the reserved IP address range when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link should not resolve to an existing DNS record.
+    - Make a note of the DNS record name, as you will need it later when you run the action plan to enable SDN.
 
 ## Review action plan parameters
 
@@ -112,7 +139,7 @@ The action plan uses the following parameters:
 | Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
-|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br>If you decide to use a custom prefix, make sure that the prefix meets the following requirements: <br><br>- Must not be null or empty. <br> - Must be less than 8 characters. <br> - Must contain only lowercase, uppercase, numeric, characters. <br> - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen. <br> - The `https://<SDNPrefix>-NC.<DomainName>/` must resolve to the reserved NC Rest IP. The link should not resolve to an existing DNS record.          |
+|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br>If you decide to use a custom prefix, make sure that the prefix meets the requirements included in [Custom SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
 
 
 ## Run the action plan
