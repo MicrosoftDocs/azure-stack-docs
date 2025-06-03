@@ -16,8 +16,14 @@
       items:
       - name: Currently supported versions
         items:
+        - name: 2501
+          items:
+          - name: Hotfix 1.2501.1.40
+            href: hotfix-1-2501-1-40.md
         - name: 2408
           items:
+          - name: Hotfix 1.2408.1.46
+            href: hotfix-1-2408-1-46.md
           - name: Hotfix 1.2408.1.44
             href: hotfix-1-2408-1-44.md            
           - name: Hotfix 1.2408.1.39
@@ -26,6 +32,8 @@
             href: hotfix-1-2408-1-38.md            
         - name: 2406
           items:
+          - name: Hotfix 1.2406.1.20
+            href: hotfix-1-2406-1-20.md      
           - name: Hotfix 1.2406.1.19
             href: hotfix-1-2406-1-19.md      
           - name: Hotfix 1.2406.1.18
