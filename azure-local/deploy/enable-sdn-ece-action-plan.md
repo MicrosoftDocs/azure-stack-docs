@@ -1,5 +1,5 @@
 ---
-title: Enable SDN on Azure Local using an action plan (Preview)
+title: Enable SDN on Azure Local using an Action Plan (Preview)
 description: Describes how to enable SDN using an action on Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
@@ -117,7 +117,7 @@ When you run the action plan to enable SDN, you can choose to use the default SD
 
 ## Check dynamic DNS updates are enabled
 
-- **Dynamic DNS environment**: check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
+- **Dynamic DNS environment**: Check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
 
     If these updates are not enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
