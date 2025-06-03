@@ -13,13 +13,11 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell, which is the recommended method for OS upgrades. Here are the supported upgrade paths:
+This article describes how to upgrade the Azure Stack HCI operating system (OS) via PowerShell. Here are the supported upgrade paths:
 
 - OS version 20349.xxxx to 26100.xxxx.
 
 - OS version 25398.xxxx to 26100.xxxx.
-
-Throughout this article, we refer to OS version 26100.xxxx as the *new* version and versions 20349.xxxx and 25398.xxxx as the *old* versions.
 
 > [!IMPORTANT]
 > This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed.
