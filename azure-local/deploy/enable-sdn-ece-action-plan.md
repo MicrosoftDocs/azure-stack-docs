@@ -162,7 +162,7 @@ Follow these steps on the Azure CLI to run the action plan:
 
     This step can take up to 20 minutes.
 
-1. Validate that Network Controller is successfully added to your instance. Once the Network Controller is added, the `add-EceFeature` command shows the action plan outcome.
+1. Validate that Network Controller is successfully added to your instance. Once the Network Controller is added, the `Add-EceFeature` command shows the action plan outcome.
     <br></br>
     <details>
     <summary>Expand this section to see an example output.</summary>
