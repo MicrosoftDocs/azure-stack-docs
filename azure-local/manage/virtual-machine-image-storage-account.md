@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/21/2025
+ms.date: 05/27/2025
 ---
 
 # Create Azure Local VM image using image in Azure Storage account
@@ -61,9 +61,11 @@ $resource_group = "<Resource group>"
 $location = "<Location for your Azure Local>"
 $osType = "<OS of source image>"
 $imageName = "<VM image name>"
-$imageSourcePath = "<path to the source image in the Storage account>"
-
+$imageSourcePath = '"<Blob SAS URL path to the source image in the storage account>"'
 ```
+
+> [!NOTE]
+> For `$imageSourcePath`, the string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`.
 
 The parameters are described in the following table:
 
@@ -73,7 +75,7 @@ The parameters are described in the following table:
 | `resource_group` | Resource group for Azure Local that you associate with this image.        |
 | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. |
+| `imageSourcePath`| Blob SAS URL path to the source image in the storage account. For instructions, see [Generating SAS tokens](/azure/applied-ai-services/form-recognizer/create-sas-tokens#generating-sas-tokens).<br>**Note**: The path string must be escaped by double quotes, then enclosed by single quotes as follows: `'""'`. |
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
@@ -84,7 +86,7 @@ PS C:\Users\azcli> $resource_group = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
 PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
-PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D'
+PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D"'
 ```
 
 ### Create VM image from image in Azure Storage account

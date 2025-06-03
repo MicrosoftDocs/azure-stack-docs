@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/28/2024
+ms.date: 05/14/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: linux-related-content
@@ -165,10 +165,30 @@ The target system fails to validate because the FQDN is not DNS-resolvable by de
 
 **Recommended resolution**
 
-Manually map the Azure Local IP to its corresponding FQDN by editing the hosts file located at *C:\Windows\System32\drivers\etc\hosts*.
+If the target machine validation step fails during migration, follow these steps to resolve the issue:
 
-Add a new line with the system IP and FQDN in the following format: \<Cluster IP\>\<Cluster FQDN\>.
+1. Manually map the Azure Local IP to its corresponding FQDN:
 
+    1. Edit the hosts file located at C:\Windows\System32\drivers\etc\hosts. 
+
+    1. Add a new line using the format: 
+        `<Cluster IP>    <Cluster FQDN>`
+
+1. Verify the FQDN is reachable by ensuring that the system FQDN can be successfully pinged from the source appliance.
+
+1. Enable WinRM on each target cluster node (if not already enabled). Run the following PowerShell command on each machine:
+ 
+    ```PowerShell
+        Enable-PSRemoting -Force
+    ```
+
+1. Test remote PowerShell connectivity. From the source appliance, ensure the following command completes successfully:
+
+    ```PoweShell
+        Enter-PSSession -ComputerName <Cluster FQDN> -Credential $Cred
+    ```
+
+1. Confirm required ports are open. See Prerequisites section to ensure all necessary ports are allowed between the source appliance and the Azure Local instance.
 
 ### Deleting or changing target system information from Source Appliance Configuration Manager doesn't work.
 
@@ -339,6 +359,21 @@ $ShutdownIC = Get-WmiObject -Namespace root\virtualization\v2  -Query "Associato
 $ShutdownIC.InitiateShutdown("TRUE", "Need to shutdown")
 ```
 
+### Migration fails with address is already in use error
+
+**Root cause**
+
+This error typically occurs during migration of VMs configured to retain their static IP address. If the target logical network already has the same IP assigned to another network interface, migration fails with the following message:  
+
+`The moc-operator network interface service returned an error while reconciling: rpc error: code = Unknown desc = The address is already in use: Already Set`.
+
+**Recommended resolution**
+
+Complete the following steps:
+
+1. Navigate to the Azure Local logical network that the migrated VM is targeting. 
+1. Verify that the intended IP address isn't currently assigned to another network interface.
+1. Update the logical network configuration as needed to ensure no IP conflicts exist before retrying the migration.
 
 ## Next steps
 

@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 02/10/2025
+ms.date: 04/08/2025
 ms.author: alkohli
 ---
 
@@ -85,7 +85,7 @@ Complete the following tasks to generate the target appliance key:
 
 You can download the appliance using either a .VHD file or a .zip file.
 
-Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD** or **.zip**, and then select **Download installer**.
 
 :::image type="content" source="media/migrate-hyperv-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-hyperv-replicate/download-target-appliance.png":::
 
@@ -218,7 +218,7 @@ This step applies only if you downloaded the .zip file.
     1. This field is automatically populated. If this is not the subscription that has your target Azure Local instance, choose the Azure subscription that has the system.
     1. Select the resource group associated with your target system.
 	1. For **Target system**, select the Azure Local resource.
-	1. Verify there is a green check for the system. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this system.
+	1. Verify there is a green check for the system. A green check indicates that all the prerequisites such as Azure Arc resource bridge are configured on this system.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::
@@ -295,7 +295,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps

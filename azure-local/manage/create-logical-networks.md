@@ -75,6 +75,16 @@ The prerequisites for the Azure portal are the same as those for the Azure CLI. 
 
 You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
 
+> [!NOTE]
+> Once a logical network is created, you can't update the following:
+>
+> - DNS server
+> - Default gateway
+> - IP pools
+> - IP address space
+> - VLAN ID
+> - Virtual switch name
+
 # [Azure CLI](#tab/azurecli)
 
 Complete the following steps to create a logical network using Azure CLI.

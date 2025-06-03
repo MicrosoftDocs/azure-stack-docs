@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 04/02/2025
+ms.date: 04/30/2025
 ms.reviewer: alkohli
 ms.lastreviewed: 03/20/2025
 ---
@@ -14,16 +14,17 @@ ms.lastreviewed: 03/20/2025
    Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
    ```powershell
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Kubernetes" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.KubernetesConfiguration" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ExtendedLocation" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.ResourceConnector" 
-   Register-ResourceProviderIfRequired -ProviderNamespace "HybridContainerService"
-   Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.Attestation"
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridCompute" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.Kubernetes" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguration" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.ExtendedLocation" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.ResourceConnector" 
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
    ```
 
     > [!NOTE]
