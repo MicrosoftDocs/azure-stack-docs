@@ -42,8 +42,8 @@ To upgrade the OS on your system, follow these high-level steps:
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- Confirm that you have access to the Azure Local **2505** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
-- Consult your hardware OEM to verify driver compatability. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
+- Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
+- Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Check if the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`. You can verify this in the resource's JSON in the Azure portal or by running the following cmdlet:
    
    ```powershell
@@ -80,7 +80,7 @@ To ensure Resilient File System (ReFS) functions properly during and after OS up
    New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
    ```
 
-1. Restart the machine to apply changes. If ReFS volumes fail to come online after reboot and the `RefsEnableMetadataValidation` key is reset, toggle the key. Set `RefsEnableMetadataValidation` to `1` and then back to `0`. To check volume status, run the `Get-ClusterSharedVolumeState` command.
+1. Restart the machine to apply changes. If ReFS volumes fail to come online after reboot and the `RefsEnableMetadataValidation` key is reset, toggle the key. Set `RefsEnableMetadataValidation` to **1** and then back to **0**. To check volume status, run the `Get-ClusterSharedVolumeState` command.
 
 1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
 
@@ -155,7 +155,7 @@ To install the new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-You're now ready to perform the post-OS upgrade steps for your system.
+   You're now ready to perform the post-OS upgrade steps for your system.
 
 ## Next steps
 
