@@ -60,7 +60,7 @@ Consider this information before you enable SDN:
 
 ## Prerequisites
 
-- You have access to an Azure Local instance running 2505 and later. The 2505 release must be running OS version XXXXX.XXXX
+- You have access to an Azure Local instance running 2504 and later. The OS build must be 26100.xxxx or later. You can check the OS version in the following ways:
 
     - In the Azure portal, go to your Azure Local instance and select **Overview**. The **OS version** is displayed in the **Instance details** section.
     - To verify the OS version, run the following command:
@@ -84,7 +84,7 @@ Consider this information before you enable SDN:
         Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.
         ```
 
-        - Verify that the `OS Version` in the output is **10.0.26100** and later.
+        - Verify that the `OS Version` in the output is **10.0.26100** or later.
 
 - You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the action plan.
 
@@ -99,10 +99,6 @@ Consider this information before you enable SDN:
     - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no response, it means that the name is unique.
     - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).-->
 
-
-<!--## Sign in and set subscription
-
-[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]-->
 
 ## Choose between default or custom SDN prefix
 
@@ -121,11 +117,11 @@ When you run the action plan to enable SDN, you can choose to use the default SD
 
 ## Check dynamic DNS updates are enabled
 
-- If you have a dynamic DNS environment, check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
+- **Dynamic DNS environment**: check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
 
     If these updates are not enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
-- If you have a static DNS environment, precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
+- **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
     - The name for your DNS record must match your SDN prefix. For example, if you choose the default SDN prefix `v`, the DNS record must be `v-NC.<DomainName>`. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC.<DomainName>`.
     - The DNS record must resolve to the reserved IP. This is the IP address you provided via the reserved IP address range when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link should not resolve to an existing DNS record.
