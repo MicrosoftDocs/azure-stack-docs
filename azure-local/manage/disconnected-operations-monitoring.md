@@ -35,7 +35,7 @@ When managed by Azure, Azure Local instances, and nodes, use integration with Az
 
 1. Install the agents on each node.
 
-1. Import the management packs.
+1. Import these management packs:
 
     - [Windows Server Operating System 2016 and above for Base OS](https://aka.ms/AAvqh49).
 
