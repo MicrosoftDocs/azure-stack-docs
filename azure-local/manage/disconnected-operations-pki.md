@@ -33,6 +33,12 @@ Mandatory certificates are grouped by area with the appropriate subject alternat
 - All certificates must have Subject and SAN defined, as required by most browsers.
 - All certificates should share the same trust chain and should at least have a two-year expiration from the day of the deployment.
 - All root certificates should be exported in Base64 encoded format. The resulting file typically has a .cer, .crt, or .pem extension.
+- For fully disconnected deployments:
+  - Use a private or internal Certificate Authority (CA).
+  - Only internal network access to the Certificate Revocation List (CRL) endpoint is required.
+  - Internet connectivity is not required.
+  - Ensure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates’ CRL Distribution Point (CDP) extension.
+  - Do not use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoints
 
