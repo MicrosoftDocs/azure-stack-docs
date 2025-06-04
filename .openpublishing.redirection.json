@@ -67,7 +67,7 @@
     },
     {
       "source_path": "azure-local/manage/sdn-express.md",
-      "redirect_url": "previous-versions/azure/azure-local/manage/sdn-express",
+      "redirect_url": "../previous-versions/azure/azure-local/manage/sdn-express",
       "redirect_document_id": false    
     },
     {
