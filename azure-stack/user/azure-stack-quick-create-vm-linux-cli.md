@@ -10,7 +10,7 @@ ms.custom: mode-api, devx-track-azurecli, linux-related-content
 
 # Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub
 
-> [!div class=""nextstepaction""]
+> [!div class="nextstepaction"]
 > [Deploy and Explore](https://go.microsoft.com/fwlink/?linkid=2321848)
 
 You can create an Ubuntu Server 20.04 LTS virtual machine (VM) by using the Azure CLI. In this article, you create and use a virtual machine. This article also shows you how to:
