@@ -226,16 +226,15 @@ With the virtual switch renamed and VMs reconnected, virtual machines can be liv
 > [!NOTE]
 > Network ATC should manage the live migration networks. If live migrations fail due to an error `Cluster network not found`, you may need to manually update the live migration networks. You can use the following script to set the storage networks as available live migration networks and exclude the management network. Alternatively, these networks can be updated via Failover Cluster Manager.
 
-    ```powershell
-    # Configure the Virtual Machine ClusterResourceType not to use the management network for live migration
-    $mgmtID = (Get-ClusterNetwork | where "Name" -match "Management").ID
-    Get-ClusterResourceType "Virtual Machine" | Set-ClusterParameter -Name "MigrationExcludeNetworks" -Value $mgmtID
-
-    # Configure the Virtual Machine ClusterResourceType to use the storage networks for live migration
-    $storageID = (Get-ClusterNetwork | where "Name" -match "Storage").ID
-    $storageIDs = $storageID -join ";"
-    Get-ClusterResourceType "Virtual Machine" | Set-ClusterParameter -Name "MigrationNetworkOrder" -Value $storageIDs
-    ```
+```powershell
+# Configure the Virtual Machine ClusterResourceType not to use the management network for live migration
+$mgmtID = (Get-ClusterNetwork | where "Name" -match "Management").ID
+Get-ClusterResourceType "Virtual Machine" | Set-ClusterParameter -Name "MigrationExcludeNetworks" -Value $mgmtID
+# Configure the Virtual Machine ClusterResourceType to use the storage networks for live migration
+$storageID = (Get-ClusterNetwork | where "Name" -match "Storage").ID
+$storageIDs = $storageID -join ";"
+Get-ClusterResourceType "Virtual Machine" | Set-ClusterParameter -Name "MigrationNetworkOrder" -Value $storageIDs
+```
 
 1. Pause and drain the cluster node using the command `Suspend-ClusterNode -Drain -Wait`.
 
@@ -271,7 +270,7 @@ Reference articles:
 
 - For information on the default values, see [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
 - For information on configuring overrides, see [Manage Network ATC](/windows-server/networking/network-atc/manage-network-atc).
-- For information on Network ATC commands, see [NetworkATC](https://learn.microsoft.com/en-us/powershell/module/networkatc/?view=windowsserver2025-ps).
+- For information on Network ATC commands, see [NetworkATC](/powershell/module/networkatc).
 
 For simplicity, the examples demonstrate only two physical adapters per SET team, however it's possible to add more. For more information, see [Network reference patterns overview for Azure Local](../plan/network-patterns-overview.md).
 
