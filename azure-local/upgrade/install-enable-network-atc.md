@@ -80,8 +80,8 @@ Remove any previous configurations from the paused machine that could interfere 
 Although Network ATC attempts to adopt existing configurations with matching names, including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
 > [!IMPORTANT]
-> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
-> The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention. The renaming process is covered in a later step.
+> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allowing Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
+> The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention, which is performed in a later step.
 
 To remove your existing NetQos configurations, use the following commands:
 
@@ -179,13 +179,15 @@ If `ConfigurationStatus` shows **Failed**, check if the error message indicates 
 
 ## Step 8: Resume the paused node
 
-With the Network ATC configuration completed on the first node, resume the node and allow it to come back into the cluster. To reenter or put your system back in service, run the following command:
+With the Network ATC configuration completed on the first node, resume the node and allow it to come back into the cluster. 
 
-```powershell
-Resume-ClusterNode
-```
+1. To reenter or put your system back in service, run the following command:
 
-Run `Get-StorageJob` to check for any running storage jobs. Allow them to complete before moving to the next step.
+    ```powershell
+    Resume-ClusterNode
+    ```
+
+1. Run `Get-StorageJob` to check for any running storage jobs. Allow them to complete before moving to the next step.
 
 ## Step 9: Rename the virtual components on other machines
 
