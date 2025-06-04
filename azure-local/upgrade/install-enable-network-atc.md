@@ -37,7 +37,7 @@ Network ATC provides the following benefits for Azure Local:
 Before you install and enable Network ATC on your existing Azure Local, ensure the following conditions are met:
 
 - The host doesn't have any running VM on it.
-- The system is actively running workloads. If there're no running workloads on your Azure Local instance, you can optionally remove all virtual switches and QoS policies, then add your intents using the standard procedures described in [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
+- The system is actively running workloads. If there are no running workloads on your Azure Local instance, you can optionally remove all virtual switches and QoS policies, then add your intents using the standard procedures described in [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
 - All checkpoints associated with your VMs are removed. Failure to do so may result in live migration failure between hosts.
 
 ## Step 1: Install Network ATC
@@ -80,7 +80,7 @@ Remove any previous configurations from the paused machine that could interfere 
 Although Network ATC attempts to adopt existing configurations with matching names, including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
 > [!IMPORTANT]
-> Previous versions of this document recommended to delete the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
+> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
 > The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention. The renaming process is covered in a later step.
 
 To remove your existing NetQos configurations, use the following commands:
@@ -119,13 +119,13 @@ Some Azure Local deployments require a VLAN to be configured on the management o
     - If `Mode` is `Untagged`, no VLAN is configured using this method.
 
     Output from `Get-VMNetworkAdapterIsolation`:
-    - If `IsolationMode` is `Vlan` and `DefaultIsolationID` has a numeric value other than `0`, the adapter is tagged with a VLAN and does not need to be updated.
+    - If `IsolationMode` is `Vlan` and `DefaultIsolationID` has a numeric value other than `0`, the adapter is tagged with a VLAN and doesn't need to be updated.
     - If `IsolationMethod` is `None`, no VLAN is configured using this method.
 
 1. To convert a VLAN from the `VMNetworkAdapterVlan` method to the `VMNetworkAdapterIsolation` method, use the following commands:
 
     > [!IMPORTANT]
-    > Running the following commands disconnect the cluster node from the network until the VLAN is reconfigured. It's recommended to run these commands from a BMC console.
+    > Running the following commands disconnects the cluster node from the network until the VLAN is reconfigured. It's recommended to run these commands from a BMC console.
 
     ```powershell
     Set-VMNetworkAdapterVlan -ManagementOS -VMNetworkAdapterName "vNICName" -Untagged
@@ -319,7 +319,7 @@ In this example, there's a single intent managed across machines.
 Here's an example to implement this host network pattern:
 
 > [!IMPORTANT]
-> - The following commands assume your environment has only one virtual switch present. The commands will error if multiple virtual switches are present. If your environment has more than one virtual switch, replace the variable in the commands with the full name of the virtual switch you want to modify in double quotes. Don't change any other part of the commands.
+> - The following commands assume your environment has only one virtual switch present. The commands return error if multiple virtual switches are present. If your environment has more than one virtual switch, replace the variable in the commands with the full name of the virtual switch you want to modify in double quotes. Don't change any other part of the commands.
 > - Use extra caution when implementing these commands.
 
 ```powershell
