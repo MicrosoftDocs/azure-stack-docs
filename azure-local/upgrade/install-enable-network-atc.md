@@ -13,11 +13,11 @@ ms.service: azure-local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to install and enable Network ATC on an existing Azure Local instance that has been upgraded from version 22H2. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
+This article provides information on how to install and enable Network ATC on an existing Azure Local instance that is upgraded from version 22H2. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
 
 > [!IMPORTANT]
 > - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Local instance. If Network ATC is already enabled on your existing system, you can skip this step. 
-> - We recommend that you set up Network ATC after you have upgraded the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Local to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+> - We recommend that you set up Network ATC after you upgrade the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Local to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 ## About Network ATC
 
@@ -34,7 +34,7 @@ Network ATC provides the following benefits for Azure Local:
 
 ## Key considerations
 
-Before you install and enable Network ATC on your existing Azure Local, ensure the following:
+Before you install and enable Network ATC on your existing Azure Local, ensure the following conditions are met:
 
 - The host doesn't have any running VM on it.
 - The system is actively running workloads. If there're no running workloads on your Azure Local instance, you can optionally remove all virtual switches and QoS policies, then add your intents using the standard procedures described in [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
@@ -72,7 +72,7 @@ Set-Service -Name NetworkATC -StartupType Disabled
 
 ## Step 4: Remove previous configurations
 
-Remove any previous configurations from the paused machine that could interfere with Network ATC’s ability to apply the new intent. This includes:
+Remove any previous configurations from the paused machine that could interfere with Network ATC’s ability to apply the new intent. The previous configurations include:
 
 - Data Center Bridging (NetQos) policy for RDMA traffic
 - Load Balancing Failover (LBFO)
@@ -80,7 +80,8 @@ Remove any previous configurations from the paused machine that could interfere 
 Although Network ATC attempts to adopt existing configurations with matching names, including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
 > [!IMPORTANT]
-> Previous versions of this document recommended to delete the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. However, deleting the virtual switch can lead to unexpected connectivity loss and will break existing Software Defined Networking (SDN) deployments. The recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention which will be performed in a later step.
+> Previous versions of this document recommended to delete the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
+> The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention. The renaming process is covered in a later step.
 
 To remove your existing NetQos configurations, use the following commands:
 
@@ -102,7 +103,7 @@ If your machines were configured via Virtual Machine Manager (VMM), you may also
 
 Some Azure Local deployments require a VLAN to be configured on the management or storage virtual network adapters. Network ATC requires the VLAN ID to be set using the `VMNetworkAdapterIsolation` method. However, Hyper-V also allows VLANs to be set using the `VMNetworkAdapterVlan` method.
 
-1. Use the following commands to check if your virtual adapter has a VLAN and reconfigure it if required.
+1. Use the following commands to check if your virtual adapter has a VLAN and reconfigure it if necessary.
 
     ```powershell
     # Use the command below to list the virtual adapters present on the system
@@ -124,7 +125,7 @@ Some Azure Local deployments require a VLAN to be configured on the management o
 1. To convert a VLAN from the `VMNetworkAdapterVlan` method to the `VMNetworkAdapterIsolation` method, use the following commands:
 
     > [!IMPORTANT]
-    > Running the following commands will disconnect the cluster node from the network until the VLAN is reconfigured. It is strongly recommended to run these commands from a BMC console.
+    > Running the following commands disconnect the cluster node from the network until the VLAN is reconfigured. It's recommended to run these commands from a BMC console.
 
     ```powershell
     Set-VMNetworkAdapterVlan -ManagementOS -VMNetworkAdapterName "vNICName" -Untagged
@@ -139,7 +140,7 @@ Some Azure Local deployments require a VLAN to be configured on the management o
 
 There are various intents that you can add. Identify the intents you'd like by using the examples in the [Example intents](#example-intents) section.
 
-Once you've identified the example that matches your environment, use the commands provided in that example to perform the required steps on the paused node only.
+Once you identify the example that matches your environment, use the commands provided in that example to perform the required steps on the paused node only.
 
 ## Step 7: Verify the deployment on one machine
 
@@ -191,9 +192,9 @@ Run `Get-StorageJob` to check for any running storage jobs. Allow them to comple
 In this step, you move from the machine deployed with Network ATC to the next machine and migrate the VMs from this second machine. You must verify that the second machine has the same VMSwitch name as the machine deployed with Network ATC.
 
 > [!IMPORTANT]
-> After the virtual switch is renamed, you must disconnect and reconnect each VM so that it can appropriately cache the new name of the virtual switch. This is a disruptive action that requires planning to complete. If you do not perform this action, live migrations will fail with an error indicating the virtual switch doesn't exist on the destination.
+> After the virtual switch is renamed, you must disconnect and reconnect each VM so that it can appropriately cache the new name of the virtual switch. Because this step affects VM connectivity, it's considered a disruptive action that requires planning to complete. If you skip this step, live migrations will fail with an error indicating the virtual switch doesn't exist on the destination.
 
-1. Renaming the virtual switch is a non-disruptive change and can be done on all the machines simultaneously. Run the following command:
+1. Renaming the virtual switch is a nondisruptive change and can be done on all the machines simultaneously. Run the following command:
 
     ```powershell
     #Run on the machine where you configured Network ATC
@@ -206,7 +207,7 @@ In this step, you move from the machine deployed with Network ATC to the next ma
 1. After your switch is renamed, disconnect and reconnect your vNICs for the VMSwitch name change to go through. The following command can be used to perform this action for all VMs:
 
     > [!IMPORTANT]
-    > The following commands assume the host has only one virtual switch and all virtual machines are connected to that virtual switch. If your environment differs, you will need to modify the commands or manually disconnect and reconnect your VMs.
+    > The following commands assume the host has only one virtual switch and all virtual machines are connected to that virtual switch. If your environment differs, you need to modify the commands, or manually disconnect and reconnect your VMs.
 
     ```powershell
     $VMSW = Get-VMSwitch
@@ -221,7 +222,7 @@ You don't change the Network ATC `VMSwitch` for two reasons:
 
 ## Step 10: Apply the required changes to the remaining cluster nodes
 
-With the virtual switch renamed and VMs reconnected, virtual machines can be live migrated between cluster nodes. Follow these steps, repeating for each additional node in the cluster until all nodes have been completed.
+With the virtual switch renamed and VMs reconnected, virtual machines can be live migrated between cluster nodes. Follow these steps, repeating for each additional node in the cluster until all nodes are completed.
 
 > [!NOTE]
 > Network ATC should manage the live migration networks. If live migrations fail due to an error `Cluster network not found`, you may need to manually update the live migration networks. You can use the following script to set the storage networks as available live migration networks and exclude the management network. Alternatively, these networks can be updated via Failover Cluster Manager.
@@ -240,9 +241,9 @@ Get-ClusterResourceType "Virtual Machine" | Set-ClusterParameter -Name "Migratio
 
 1. Remove existing NetQos configurations using the commands in [Step 4](#step-4-remove-previous-configurations).
 
-1. If required, update the VLAN ID of the virtual adapters using the commands in [Step 5](#step-5-convert-vlan-settings).
+1. If necessary, update the VLAN ID of the virtual adapters using the commands in [Step 5](#step-5-convert-vlan-settings).
 
-1. Rename the virtual network adapters using the `Rename-VMNetworkAdapter` and `Rename-NetAdapter` commands used in [Step 6](#step-6-plan-and-deploy-the-intents). You do not need to run any of the `Rename-VMSwitch` or `Add-NetIntent` commands.
+1. Rename the virtual network adapters using the `Rename-VMNetworkAdapter` and `Rename-NetAdapter` commands used in [Step 6](#step-6-plan-and-deploy-the-intents). You don't need to run any of the `Rename-VMSwitch` or `Add-NetIntent` commands.
 
 1. Enable and start the Network ATC service on the paused node using the following commands:
 
@@ -286,7 +287,7 @@ In this example, there are two intents that are managed across machines.
 Here's an example to implement this host network pattern:
 
 > [!IMPORTANT]
-> The following commands assume your environment has only one virtual switch and one virtual network adapter present. The commands will error if multiple virtual switches or virtual network adapters are present. If your environment has more than one virtual switch or one virtual network adapter present, replace the variable in the commands with the full name of the virtual switch or virtual network adapter you want to modify in double quotes. Don't change any other part of the commands.
+> The following commands assume your environment has only one virtual switch and one virtual network adapter present. The commands return an error if multiple virtual switches or virtual network adapters are present. If your environment has more than one virtual switch or one virtual network adapter present, replace the variable in the commands with the full name of the virtual switch or virtual network adapter you want to modify in double quotes. Don't change any other part of the commands.
 
 ```powershell
 # These commands rename the virtual components to the Network ATC naming convention
