@@ -4,13 +4,13 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/05/2025
+ms.date: 06/04/2025
 ms.service: azure-local
 ---
 
 # Create network security groups on Azure Local (Preview)
 
-Applies to: Azure Local 2504 running OS version 26100.3775, or later
+::: moniker range=">=azloc-2506"
 
 This article describes how to create and configure network security groups (NSGs) to manage the data traffic flow after network controller is enabled on your Azure Local.
 
@@ -33,8 +33,9 @@ Here is a diagram that shows how network security groups are attached to logical
 
 - You have access to an Azure Local instance.
 
-    - This instance must be running 2504 with OS version 26100.3775, or later.
+    - This instance must be running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
+    - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     - You have atleast one static logical network and one static network interface created on this instance. For more information, see [Create logical networks](./create-logical-networks.md#create-a-static-logical-network-via-cli) and [Create network interfaces](./create-network-interfaces.md#virtual-network-interface-with-static-ip).
     - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
@@ -44,8 +45,9 @@ Here is a diagram that shows how network security groups are attached to logical
 
 - You have access to an Azure Local instance.
 
-    - This instance is running 2504 or later.
+    - This instance must be running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
+    - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
 ---
 
@@ -378,3 +380,11 @@ You can apply a default network access policy to an existing VM.
 ## Next steps
 
 - [Manage NSGs on Azure Local](../manage/manage-network-security-groups.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506 or later.
+
+::: moniker-end

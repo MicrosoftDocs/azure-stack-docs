@@ -4,13 +4,13 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/05/2025
+ms.date: 06/04/2025
 ms.service: azure-local
 ---
 
 # Manage network security groups on Azure Local (Preview)
 
-Applies to: Azure Local 2504 or later, OS version 26100.3775 or later
+::: moniker range=">=azloc-2506"
 
 This article describes how to manage network security groups (NSGs) on your Azure Local virtual machines (VMs) enabled by Azure Arc. Once you create network security groups on your Azure Local VMs, you can then list, show details, associate, dissociate, update, and delete these resources.
 
@@ -23,8 +23,9 @@ This article describes how to manage network security groups (NSGs) on your Azur
 
 - You have access to an Azure Local instance.
 
-    - This instance is running 2504 with OS version 26100.3775, or later.
+    - This instance is running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
+    - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
     - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](../manage/create-network-security-groups.md).
@@ -33,8 +34,9 @@ This article describes how to manage network security groups (NSGs) on your Azur
 
 - You have access to an Azure Local instance.
 
-    - This instance is running 2504 or later.
+    - This instance is running 2506 or later.
     - This instance has a custom location created.
+    - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
     
 ---
@@ -808,3 +810,12 @@ To update a network security rule, follow these steps:
 ## Next steps
 
 - [Troubleshoot SDN enabled by Arc](../index.yml).
+
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506 or later.
+
+::: moniker-end

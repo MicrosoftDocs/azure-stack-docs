@@ -5,12 +5,12 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/03/2025
+ms.date: 06/04/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
 
-
+::: moniker range=">=azloc-2506"
 
 This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an action plan via the Azure Command-line interface (CLI) to enable SDN.
 
@@ -60,7 +60,7 @@ Consider this information before you enable SDN:
 
 ## Prerequisites
 
-- You have access to an Azure Local instance running 2504 and later. The OS build must be 26100.xxxx or later. You can check the OS version in the following ways:
+- You have access to an Azure Local instance running 2506 and later. The OS build must be 26100.xxxx or later. You can check the OS version in the following ways:
 
     - In the Azure portal, go to your Azure Local instance and select **Overview**. The **OS version** is displayed in the **Instance details** section.
     - To verify the OS version, run the following command:
@@ -115,18 +115,19 @@ When you run the action plan to enable SDN, you can choose to use the default SD
     
     If the prefix doesn't meet these requirements, the action plan fails.
 
-## Check dynamic DNS updates are enabled
+## Check DNS environment readiness
 
-- **Dynamic DNS environment**: Check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. 
+Ensure that your DNS environment is ready before you run the action plan to enable SDN. The action plan requires a DNS record for the Network Controller REST URL, which is used to access the Network Controller REST API.
+
+- **Dynamic DNS environment**: Check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. If these updates are enabled, the action plan automatically creates the DNS record for the Network Controller REST URL.
 
     If these updates aren't enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
 - **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
-    - The name for your DNS record must match your SDN prefix. For example, if you choose the default SDN prefix `v`, the DNS record must be `v-NC.<DomainName>`. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC.<DomainName>`.
-    - The DNS record must resolve to the reserved IP. This is the IP address you provided via the reserved IP address range when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
-    - Make a note of the DNS record name, as you need it later when you run the action plan to enable SDN.
-
+    - The name for your DNS record is derived from your SDN prefix. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC`. If you chose the a default SDN prefix, a DNS record `<v-NC>` is automatically created.  
+    - The DNS record must resolve to the reserved IP. This is the 5th IP address in the IP address range you provided when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
+    
 ## Review action plan parameters
 
 The action plan uses the following parameters:
@@ -135,7 +136,7 @@ The action plan uses the following parameters:
 | Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
-|**SDNPrefix**     | Pass the value as `v`. This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. <br> For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br>If you decide to use a custom prefix, make sure that the prefix meets the requirements included in [Custom SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
+|**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br>Pass the value as `v` for a default SDN prefix. If you chose the custom SDN prefix, provide that when running the cmdlet. <br><br> Make sure that the custom SDN prefix meets the requirements included in [Custom SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
 
 
 ## Run the action plan
@@ -147,7 +148,9 @@ Follow these steps on the Azure CLI to run the action plan:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 
-1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command.
+1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command. If you chose a custom SDN prefix, replace `v` with your custom SDN prefix.
+
+    ```powershell
 
     ```azurecli
     #Run the LCM action plan to install Network Controller as Failover Cluster Service
@@ -155,7 +158,7 @@ Follow these steps on the Azure CLI to run the action plan:
     Add-EceFeature -Name NC -SDNPrefix v 
     ```
 
-    Confirm when prompted to proceed with the action plan.
+    Confirm when prompted to proceed with the action plan. 
 
     > [!TIP]
     > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
@@ -240,3 +243,12 @@ Follow these steps on the Azure CLI to run the action plan:
 ## Next steps
 
 - Learn how to [Create network security groups, network security rules, and default network access policies](../manage/create-network-security-groups.md).
+
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506 or later.
+
+::: moniker-end
