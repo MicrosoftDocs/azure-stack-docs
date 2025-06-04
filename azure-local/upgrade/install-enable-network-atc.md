@@ -1,6 +1,6 @@
 ---
-title:  Install and enable Network ATC on Azure Local (upgrade scenario only)
-description: Learn how to install and enable Network ATC on Azure Local post upgrade from version 22H2.
+title:  Configure Network ATC on Azure Local
+description: Learn how to configure Network ATC on Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -9,15 +9,14 @@ ms.date: 06/03/2025
 ms.service: azure-local
 ---
 
-# Install and enable Network ATC on Azure Local (upgrade scenario only)
+# Configure Network ATC on Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
-
-This article provides information on how to install and enable Network ATC on an existing Azure Local instance that is upgraded from version 22H2. After Network ATC is enabled, you can take advantage of several benefits and utilize this configuration across all new deployments.
+This article describes how to configure Network ATC on an existing Azure Local system that doesn't already have it configured.
 
 > [!IMPORTANT]
-> - Before you apply the solution upgrade, make sure to install and enable Network ATC on your existing Azure Local instance. If Network ATC is already enabled on your existing system, you can skip this step. 
-> - We recommend that you set up Network ATC after you upgrade the operating system from version 22H2 to version 23H2. For more information, see [Upgrade Azure Local to version 23H2 via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+> In Azure Local upgrade scenarios where Network ATC isn't already configured, we recommend upgrading the operating system first, then configuring Network ATC, and then proceeding with the solution upgrade.
+> If Network ATC is already configured on your system, you don't need to repeat the installation and configuration.
+> For more information on upgrades, see [About Azure Local upgrades](./about-upgrades-23h2.md).
 
 ## About Network ATC
 
