@@ -17,21 +17,17 @@ ai-usage: ai-assisted
 
 This article explains how to monitor infrastructure and workloads running on Azure Local with disconnected operations by integrating with external monitoring solutions. You can use Microsoft, non-Microsoft, and open-source monitoring systems for specific resource types.
 
+For more information on disconnected operations, see [Disconnected operations for Azure Local (preview)](./disconnected-operations-overview.md).
+
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
-
-## Overview
-
-Disconnected operations for Azure Local let you deploy and manage Azure Local instances and workloads in environments without internet connectivity. This feature is designed for organizations that need a local Azure portal and Arc services to manage resources offline.
-
-## Why monitor the appliance
-
-The disconnected operations appliance provides the local Azure portal and Arc services to deploy and manage Azure Local instances. Monitoring the appliance ensures the local portal and services remain available. Use **System Center Operations Manager** and the **disconnected operations management pack** for this purpose.
 
 ## Monitor Azure Local infrastructure
 
+The disconnected operations appliance provides the local Azure portal and Arc services to deploy and manage Azure Local instances. Monitoring the appliance ensures the local portal and services remain available. Use System Center Operations Manager and the disconnected operations management pack for this purpose.
+
 ### System Center Operations Manager
 
-When managed by Azure, Azure Local instances, and nodes, use integration with Azure Monitor to collect and analyze logs, metrics, and generate alerts. When you deploy Azure Local using the disconnected operations feature, you can integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
+When you deploy Azure Local using the disconnected operations feature, you can integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
 
 1. Install the agents on each node.
 
