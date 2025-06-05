@@ -12,7 +12,7 @@ ms.reviewer: rmody
 
 Azure Kubernetes Service (AKS) is a fully managed Kubernetes platform that simplifies how organizations deploy, scale, and manage containerized applications in the cloud. As customer needs evolve to span cloud, on-premises, and edge environments, AKS expands its footprint and brings the same trusted Kubernetes capabilities to a broader range of edge and on-premises infrastructure.
 
-With solutions like AKS on Azure Local, enabled by Azure Arc, organizations can now run AKS clusters closer to where their workloads and data reside whether in remote edge sites or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
+With solutions like AKS on Azure Local enabled by Azure Arc, organizations can now run AKS clusters closer to where their workloads and data reside, whether in remote edge sites or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
 
 The focus is on delivering a cohesive and adaptable AKS offering that meets customers across cloud and edge, while preserving the simplicity and power that define the AKS experience.
 
@@ -23,7 +23,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 ## General comparison of AKS across platforms
 
-| Platform | Azure | Azure Local | Edge Essentials (Windows IOT /Client/Server) | Windows Server \* |
+| Platform | Azure | Azure Local | Edge Essentials (Windows IoT client/server) | Windows Server |
 | --- | --- | --- | --- | --- |
 | Supported infrastructure for K8s cluster | Azure cloud | Azure Local, version 23H2 or later | Windows 10/11 IoT Enterprise<br>Windows 10/11 Enterprise<br>Windows 10/11 Pro<br>Windows Server 2019/2022 | Windows Server 2019<br>Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
@@ -33,7 +33,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 | Supported K8s Versions | Continuous updates to supported Kubernetes versions. For latest version support, run [az aks get-versions.](/cli/azure/aks#az_aks_get_versions) | Supports K8s only.<br>For latest version support, run: [az aksarc get-versions](/cli/azure/aks#az_aks_get_versions) | Supports K3s and K8s. For the latest K8s version support, visit [steps to prepare your machine for AKS Edge Essentials](aks-edge-howto-setup-machine.md#download-aks-edge-essentials). | Supports K8s only.<br>Continuous updates to supported Kubernetes versions. For latest version support, visit [AKS hybrid releases on GitHub.](https://github.com/Azure/aksArc/releases) |
 | Azure Fleet Manager integration | Yes | No | No | No |
 | Terraform integration | Yes | Yes (Preview) | No | No |
-| Support for Taints and Label | Yes | Yes | Unvalidated – These settings will not persist when cluster is upgraded. | Yes |
+| Support for Taints and Label | Yes | Yes | Not validated – these settings do not persist when cluster is upgraded. | Yes |
 | AKS Automatic | Yes | No | No | No |
 
 ## Monitoring and diagnostic capabilities
@@ -80,7 +80,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 ## Storage features
 
-| Feature                       | Azure Cloud                                                          | AKS on Azure Local                                                                                 | Edge Essentials (Windows IoT /Client/Server) | Windows Server\*                        |
+| Feature                       | Azure Cloud                                                          | AKS on Azure Local                                                                                 | Edge Essentials (Windows IoT /Client/Server) | Windows Server                        |
 | --- | --- | --- | --- | --- |
 | Types of supported persistent volumes | Read Write Once<br>Read Write Many                                         | VHDX – ReadWriteOnce<br>SMB or NFS – ReadWriteMany<br>ACSA - ReadWriteMany                             | PVC using local storage<br>ACSA                 | VHDX – ReadWriteOnce<br>SMB or NFS - ReadWriteMany |
 | Container storage interface (CSI) support | Yes                                                                      | Yes                                                                                                    | Yes                                             | Yes                                         |
@@ -116,7 +116,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 AI/ML capabilities offered in each platform:
 
-|  Feature                      | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT /Client/Server) | Windows Server\* |
+|  Feature                      | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT /Client/Server) | Windows Server |
 | --- | --- | --- | --- | --- |
 | GPU support                       | Yes             | Yes                       | Yes                                             | Yes                  |
 | KAITO (K8s AI toolchain operator) | Yes             | Yes, via Arc extensions   | No                                              | No                   |
