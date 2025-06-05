@@ -29,7 +29,8 @@ The disconnected operations appliance provides the local Azure portal and Arc se
 
 When you deploy Azure Local using the disconnected operations feature, you can integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
 
-1. Install the agents on each node.
+1. Install the agents on each node via [Install Windows Agent Manually Using MOMAgent.msi
+](/system-center/scom/manage-deploy-windows-agent-manually?view=sc-om-2025#deploy-the-operations-manager-agent-with-the-agent-setup-wizard). Choose the method that works best for your environment.
 
 1. Import these management packs:
 
