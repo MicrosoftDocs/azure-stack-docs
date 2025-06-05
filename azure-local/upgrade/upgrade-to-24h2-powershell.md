@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS to version 26100.xxxx using PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS to version 26100.xxxx.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/02/2025
+ms.date: 06/05/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -42,6 +42,11 @@ To upgrade the OS on your system, follow these high-level steps:
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
 - Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
+- Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two vendors:
+   | NIC vendor | Inbox driver version | Recommended Latest compatible driver |
+   |--|--|--|
+   | Intel | 1.15.121.0 | 1.17.73.0 |
+   | NVIDIA | 24.4.26429.0 | 25.4.50020 |
 - Ensure the instance is properly registered. If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following command to repair the registration:
 
    ```powershell
@@ -110,11 +115,27 @@ To install the new OS using PowerShell, follow these steps:
 
 1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the ISO image.
 
+   ```powershell
+   # Define ISO and destination paths 
+   $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
+   $destinationPath = "C:\SetupFiles\WindowsServer\Files" 
+   # Mount the ISO file 
+   $iso = Mount-DiskImage -ImagePath $isoFilePath 
+   # Get the drive letter 
+   $driveLetter = ($iso | Get-Volume).DriveLetter 
+   # Create the destination directory 
+   New-Item -ItemType Directory -Path $destinationPath 
+   # Copy contents to the local directory 
+   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath –Recurse 
+   # Dismount the ISO file 
+   Dismount-DiskImage -ImagePath $isoFilePath
+   ```
+
 1. Upgrade the system.
 
    ```powershell
    Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin  -EnableFirewallRules -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -ForceSelfUpdate -Force 
-    ```
+   ```
 
 1. Wait for the update to complete and check the status of the update.
 
@@ -152,8 +173,32 @@ To install the new OS using PowerShell, follow these steps:
    ```powershell
    Test-Cluster
    ```
+1. Verify that the registry keys are still applied on each machine in the system before moving to the next step.
+
+   To check if the registry key exists:
+   
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" 
+   ```
+   
+   To reapply the registry keys if needed and reboot each machine for the changes to take effect:
+
+   ```powershell
+   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
+   ```
 
    You're now ready to perform the post-OS upgrade steps for your system.
+
+If the OS upgrade fails, run the following command to recover the CAU run:
+
+```powershell
+Invoke-CauRun –ForceRecovery -Force
+```
+
+## Known issues
+
+If the system is configured with Network ATC prior to performing the OS upgrade, the Network ATC management intent may fail with error `PhysicalAdapterNotFound` after upgrading the OS. For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Upgrade/Known%252Dissue-%252D-Network-ATC-management-intent-fails-with-%E2%80%98PhysicalAdapterNotFound%E2%80%99-after-upgrading-OS-from-22H2-to-23H2.md).
+
 
 ## Next steps
 
