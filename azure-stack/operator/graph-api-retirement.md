@@ -81,8 +81,11 @@ $azureStackLegacyGraphApplications = $azureStackApplications |
         ($_.IdentifierUris | Where-Object { $_ -like 'https://azurebridge*' }) }
  
 # Find which of those applications need to have their authentication behaviors patched to allow access to legacy Graph
-$azureStackLegacyGraphApplicationsToUpdate = $azureStackLegacyGraphApplications |
-    Where-Object { -not ($ab = $_.AdditionalProperties.authenticationBehaviors) -or -not $ab.ContainsKey(($key='blockAzureADGraphAccess')) -or $ab[$key] }
+$azureStackLegacyGraphApplicationsToUpdate = $azureStackLegacyGraphApplications | Where-Object {
+    $oldLocationSet = $false -eq $_.AdditionalProperties.authenticationBehaviors.blockAzureADGraphAccess
+    $newLocationNotSet = $false -eq $_.AuthenticationBehaviors.BlockAzureAdGraphAccess
+    return (-not $oldLocationSet -and -not $newLocationNotSet)
+}
  
 # Update the applications that require their authentication behaviors patched to allow access to legacy Graph
 Write-Host "Found '$($azureStackLegacyGraphApplicationsToUpdate.Count)' total Azure Stack applications which need permission to continue calling Legacy Microsoft Graph Service"

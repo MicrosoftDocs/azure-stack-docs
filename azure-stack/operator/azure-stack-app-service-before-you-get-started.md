@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.custom:
   - devx-track-arm-template
-ms.date: 03/06/2025
+ms.date: 06/05/2025
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019
@@ -241,7 +241,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 For the Azure App Service on Azure Stack Hub hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
-For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
+For production and high-availability purposes, you should use a full version of SQL Server 2016 SP3 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
 The SQL Server instance for Azure App Service on Azure Stack Hub must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack Hub. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack Hub). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
 
