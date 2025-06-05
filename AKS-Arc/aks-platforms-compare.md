@@ -50,16 +50,16 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 |  Feature                      | **Azure Cloud** | **AKS on Azure Local**    | **Edge Essential (Windows IOT /Client/Server)** | **Windows Server\*** |
 | --- | --- | --- | --- | --- |
-| **Windows nodepool support**      | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter | Yes<br>Windows Server 2022 Datacenter (Core) | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter |
-| **Linux OS offerings**            | Ubuntu 18.04<br>Azure Linux | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) |
-| **Container Runtime**             | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes |
-| **Node pool auto-scaler**         | Manual<br>Auto-scalar<br>Horizontal pod scalar | Manual<br>Auto-scalar | Manual | Manual<br>Auto-scalar<br>Horizontal pod scalar |
-| **Azure container registry**      | Yes             | Yes                       | Yes                                             | Yes                  |
-| **Azure Container Instance**      | Yes             | Yes                       |                                                 |                      |
-| **Start/stop a Kubernetes cluster** | Yes           | Yes                       |                                                 |                      |
-| **Virtual nodes**                 | Yes             | Yes                       |                                                 |                      |
-| **Private cluster**               | Yes             | No                        |                                                 |                      |
-| **Node pool snapshot**            | Yes             | No                        |                                                 |                      |
+| Windows nodepool support      | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter | Yes<br>Windows Server 2022 Datacenter (Core) | Yes<br>Windows Server 2019 Datacenter<br>Windows Server 2022 Datacenter |
+| Linux OS offerings            | Ubuntu 18.04<br>Azure Linux | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) |
+| Container Runtime             | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes |
+| Node pool auto-scaler         | Manual<br>Auto-scalar<br>Horizontal pod scalar | Manual<br>Auto-scalar | Manual | Manual<br>Auto-scalar<br>Horizontal pod scalar |
+| Azure container registry      | Yes             | Yes                       | Yes                                             | Yes                  |
+| Azure Container Instance      | Yes             | Yes                       |                                                 |                      |
+| Start/stop a Kubernetes cluster | Yes           | Yes                       |                                                 |                      |
+| Virtual nodes             | Yes             | Yes                       |                                                 |                      |
+| Private cluster               | Yes             | No                        |                                                 |                      |
+| Node pool snapshot            | Yes             | No                        |                                                 |                      |
 | **Custom node configuration**     | Yes             | Yes                       |                                                 |                      |
 | **SSH to nodes**                  | Yes             | Yes                       |                                                 |                      |
 | **Availability zones**            | Yes             | No                        |                                                 |                      |
@@ -80,8 +80,8 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 ## Storage features
 
-| --- | --- | --- | --- | --- |
 | Feature                       | **Azure Cloud**                                                          | **AKS on Azure Local**                                                                                 | **Edge Essential (Windows IOT /Client/Server)** | **Windows Server\***                        |
+| --- | --- | --- | --- | --- |
 | Types of supported persistent volumes | Read Write Once<br>Read Write Many                                         | VHDX – ReadWriteOnce<br>SMB or NFS – ReadWriteMany<br>ACSA - ReadWriteMany                             | PVC using local storage<br>ACSA                 | VHDX – ReadWriteOnce<br>SMB or NFS - ReadWriteMany |
 | Container storage interface (CSI) support | Yes                                                                      | Yes                                                                                                    | Yes                                             | Yes                                         |
 | CSI drivers                       | Azure Storage<br>Azure Files and Azure Disk<br>Premium CSI drivers deployed by default. | Disk and Files (SMB and NFS) drivers installed by default.                                             | Support for SMB and NFS storage drivers.        | Support for SMB and NFS storage drivers.     |
