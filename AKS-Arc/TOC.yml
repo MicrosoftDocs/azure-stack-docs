@@ -5,6 +5,8 @@
   items:
   - name: What is AKS enabled by Azure Arc?
     href: aks-overview.md
+  - name: Compare AKS across platforms
+    href: aks-platforms-compare.md 
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
