@@ -133,7 +133,7 @@ Some Azure Local deployments require a VLAN to be configured on the management o
     Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vNICName" -IsolationMode Vlan -AllowUntaggedTraffic $true -DefaultIsolationID 100
     ```
 
-1. Complete these steps for all management and storage virtual network adapters present on the cluster. If neither output had a VLAN configured, move to the next step.
+1. Complete these steps for all management and storage virtual network adapters present on the cluster node. If neither output had a VLAN configured, move to the next step.
 
 ## Step 6: Plan and deploy the intents
 
@@ -180,7 +180,7 @@ If `ConfigurationStatus` shows **Failed**, check if the error message indicates 
 
 With the Network ATC configuration completed on the first node, resume the node and allow it to come back into the cluster.
 
-1. To reenter or put your cluster back in service, run the following command:
+1. To reenter or put your cluster node back in service, run the following command:
 
     ```powershell
     Resume-ClusterNode
