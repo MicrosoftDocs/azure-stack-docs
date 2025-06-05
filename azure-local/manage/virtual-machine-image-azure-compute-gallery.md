@@ -28,7 +28,15 @@ Before you begin, make sure that the following prerequisites are completed.
         - The VHDX image must be Gen 2 type and secure boot enabled.
         - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
 
-## Export image to managed disk
+## Create an Azure Local VM image from Azure Compute Gallery
+
+Follow these steps to create an Azure Local VM image using Azure CLI.
+
+### Sign in and set subscription
+
+[!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
+
+### Export image to managed disk
 
 To transfer your Azure Compute Gallery image to be an Azure Local compatible image, you need to export your Azure Compute Gallery image version to a managed disk.
 
@@ -40,9 +48,9 @@ To transfer your Azure Compute Gallery image to be an Azure Local compatible ima
     az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv
     ```
 
-## Set parameters
+### Set parameters
 
-Before creating an Azure Local VM image, you'll first need to set some parameters:
+Before creating an Azure Local VM image, you'll need to set some parameters.
 
 1. Set your subscription, resource group, location, path to the image in local share, and OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
@@ -66,15 +74,15 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
-    ```azurecli
-    PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "mylocal-rg"
-    PS C:\Users\azcli> $location = "eastus"
-    PS C:\Users\azcli> $osType = "Windows"
-    PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
-    ```
+```azurecli
+PS C:\Users\azcli> $subscription = "<Subscription ID>"
+PS C:\Users\azcli> $resource_group = "mylocal-rg"
+PS C:\Users\azcli> $location = "eastus"
+PS C:\Users\azcli> $osType = "Windows"
+PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+```
 
-## Create an Azure Local VM image
+### Create an Azure Local VM image
 
 To create an Azure Local VM image:
 
@@ -96,14 +104,12 @@ To create an Azure Local VM image:
 
     If the flag is not specified, the workload data is automatically placed in a high availability storage path.
 
-The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
+    The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image and the network bandwidth available for the download.
 
-Here's a sample output:
-    
+    Here's a sample output:
+
     ```azurecli
-    PS C:\Users\azcli> az stack-hci-vm image create -g $rg --custom-location $cl --name "mylocal-image" --os-type "Windows" --image-path $sas 
-    
-    { 
+      { 
       "extendedLocation": { 
         "name": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl", 
         "type": "CustomLocation" 
@@ -128,7 +134,7 @@ Here's a sample output:
           "errorMessage": "", 
           "progressPercentage": 100, 
           "provisioningStatus": { 
-            "operationId": "c8ddceb0-024a-4c2c-b085-5851f49c8e70*C185A1631E1C1B45E1069847327BBD6B413DB17AA1F8C87B2911596ACA473D16", 
+            "operationId": "00000000-0000-0000-0000-000000000000*0000000000000000000000000000000000000000000000000000000000000000", 
             "status": "Succeeded" 
           } 
         }, 
@@ -144,13 +150,13 @@ Here's a sample output:
         }, 
         "vmImageRepositoryCredentials": null 
       }, 
-      "resourceGroup": "EDGECI-REGISTRATION-rr1s45r2305-yxwEPQD5", 
+      "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2025-05-21T00:44:16.385633+00:00", 
         "createdBy": "guspinto@contoso.com", 
         "createdByType": "User", 
         "lastModifiedAt": "2025-05-21T00:48:34.016113+00:00", 
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+        "lastModifiedBy": "00000000-0000-0000-0000-000000000000", 
         "lastModifiedByType": "Application" 
       }, 
       "tags": null, 
