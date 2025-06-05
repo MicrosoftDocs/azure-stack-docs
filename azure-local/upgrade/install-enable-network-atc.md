@@ -5,17 +5,17 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 06/03/2025
+ms.date: 06/05/2025
 ms.service: azure-local
 ---
 
 # Configure Network ATC on Azure Local
 
-This article describes how to configure Network ATC on an existing Azure Local system that doesn't already have it configured.
+This article describes how to configure Network ATC on an existing Azure Local cluster that doesn't already have it configured.
 
 > [!IMPORTANT]
 > In Azure Local upgrade scenarios where Network ATC isn't already configured, we recommend upgrading the operating system first, then configuring Network ATC, and then proceeding with the solution upgrade.
-> If Network ATC is already configured on your system, you don't need to repeat the installation and configuration.
+> If Network ATC is already configured on your cluster, you don't need to repeat the installation and configuration.
 > For more information on upgrades, see [About Azure Local upgrades](./about-upgrades-23h2.md).
 
 ## About Network ATC
@@ -33,24 +33,24 @@ Network ATC provides the following benefits for Azure Local:
 
 ## Key considerations
 
-Before you install and enable Network ATC on your existing Azure Local, ensure the following conditions are met:
+Before you configure Network ATC on your existing Azure Local, ensure the following conditions are met:
 
 - The host doesn't have any running VM on it.
-- The system is actively running workloads. If there are no running workloads on your Azure Local instance, you can optionally remove all virtual switches and QoS policies, then add your intents using the standard procedures described in [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
-- All checkpoints associated with your VMs are removed. Failure to do so may result in live migration failure between hosts.
+- The cluster is actively running workloads. If there are no running workloads on your Azure Local cluster, you can optionally remove all virtual switches and QoS policies, then add your intents using the standard procedures described in [Deploy host networking with Network ATC](/windows-server/networking/network-atc/network-atc).
+- All checkpoints associated with your VMs are removed. Failure to do so will result in live migration failure between hosts.
 
 ## Step 1: Install Network ATC
 
-In this step, you install Network ATC on every machine in the system using the following command. No reboot is required.
+In this step, you install Network ATC and the required FS-SMBBW feature on every machine in the cluster using the following command. No reboot is required.
 
 ```powershell
 Install-WindowsFeature -Name NetworkATC
 Install-WindowsFeature -Name FS-SMBBW
 ```
 
-## Step 2: Pause one machine in the system
+## Step 2: Pause one machine in the cluster
 
-When you pause one machine in the system, all workloads are moved to other machines, making your machine available for changes. The paused machine is then migrated to Network ATC.
+When you pause one machine in the cluster, all workloads are moved to other machines, making your machine available for changes. The paused machine is then migrated to Network ATC.
 
 To pause your machine, use the following command:
 
@@ -73,13 +73,13 @@ Set-Service -Name NetworkATC -StartupType Disabled
 
 Remove any previous configurations from the paused machine that could interfere with Network ATC’s ability to apply the new intent. The previous configurations include:
 
-- Data Center Bridging (NetQos) policy for RDMA traffic
+- Data Center Bridging (NetQos) policies for RDMA traffic
 - Load Balancing Failover (LBFO)
 
 Although Network ATC attempts to adopt existing configurations with matching names, including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
 > [!IMPORTANT]
-> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allowing Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and may disrupt existing Software Defined Networking (SDN) deployments.
+> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allowing Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and will disrupt existing Software Defined Networking (SDN) deployments.
 > The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention, which is performed in a later step.
 
 To remove your existing NetQos configurations, use the following commands:
@@ -133,7 +133,7 @@ Some Azure Local deployments require a VLAN to be configured on the management o
     Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vNICName" -IsolationMode Vlan -AllowUntaggedTraffic $true -DefaultIsolationID 100
     ```
 
-1. Complete these steps for all management and storage virtual network adapters present on the system. If neither output had a VLAN configured, move to the next step.
+1. Complete these steps for all management and storage virtual network adapters present on the cluster. If neither output had a VLAN configured, move to the next step.
 
 ## Step 6: Plan and deploy the intents
 
@@ -143,7 +143,7 @@ Once you identify the example that matches your environment, use the commands pr
 
 ## Step 7: Verify the deployment on one machine
 
-The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each machine in the system.
+The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each machine in the cluster.
 
 To verify your machine's successful deployment of the intents submitted in [step 6](#step-6-plan-and-deploy-the-intents), run the following command:
 
@@ -178,9 +178,9 @@ If `ConfigurationStatus` shows **Failed**, check if the error message indicates 
 
 ## Step 8: Resume the paused node
 
-With the Network ATC configuration completed on the first node, resume the node and allow it to come back into the cluster. 
+With the Network ATC configuration completed on the first node, resume the node and allow it to come back into the cluster.
 
-1. To reenter or put your system back in service, run the following command:
+1. To reenter or put your cluster back in service, run the following command:
 
     ```powershell
     Resume-ClusterNode
@@ -218,7 +218,7 @@ In this step, you move from the machine deployed with Network ATC to the next ma
 
 You don't change the Network ATC `VMSwitch` for two reasons:
 
-- Network ATC ensures that all machines in the system have the same name to support live migration and symmetry.
+- Network ATC ensures that all machines in the cluster have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
 
 ## Step 10: Apply the required changes to the remaining cluster nodes
