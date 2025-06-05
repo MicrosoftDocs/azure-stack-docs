@@ -86,7 +86,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 
 | Step | Description |
 |------------|------------------|
-| [Review the participation criteria](#preview-participation-criteria) | Review the participation criteria before you get started. |
+| Review the [Preview participation criteria](#preview-participation-criteria) | Review the preview participation criteria before you get started. |
 | **Plan** |        |
 | Review [Network requirements for disconnected operations](disconnected-operations-network.md). | Configure the required network settings. |
 | Review [Identity integration for disconnected operations](disconnected-operations-identity.md). | Understand and configure your identity solution. |
