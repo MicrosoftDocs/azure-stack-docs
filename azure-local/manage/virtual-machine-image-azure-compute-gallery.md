@@ -62,25 +62,25 @@ Before creating an Azure Local VM image, you'll need to set some parameters.
     $imageName = "<VM image name>"
     ```
 
-The parameters are described in the following table:
-
-| Parameter        | Description                                                                                |
-|------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Subscription for Azure Local that you associate with this image.        |
-| `resource_group` | Resource group for Azure Local that you associate with this image.        |
-| `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
-| `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
-
-Here's a sample output:
-
-```azurecli
-PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mylocal-rg"
-PS C:\Users\azcli> $location = "eastus"
-PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
-```
+    The parameters are described in the following table:
+    
+    | Parameter        | Description                                                                                |
+    |------------------|--------------------------------------------------------------------------------------------|
+    | `subscription`   | Subscription for Azure Local that you associate with this image.        |
+    | `resource_group` | Resource group for Azure Local that you associate with this image.        |
+    | `location`       | Location for your Azure Local instance. For example, this could be `eastus`. |
+    | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
+    | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    
+    Here's a sample output:
+    
+    ```azurecli
+    PS C:\Users\azcli> $subscription = "<Subscription ID>"
+    PS C:\Users\azcli> $resource_group = "mylocal-rg"
+    PS C:\Users\azcli> $location = "eastus"
+    PS C:\Users\azcli> $osType = "Windows"
+    PS C:\Users\azcli> $imageName = "mylocal-computegalleryimage"
+    ```
 
 ### Create an Azure Local VM image
 
