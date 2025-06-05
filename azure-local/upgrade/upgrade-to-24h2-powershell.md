@@ -43,10 +43,12 @@ To upgrade the OS on your system, follow these high-level steps:
 - Confirm that you have access to the Azure Local **2505** ISO file, which you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/hciGetStarted).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two vendors:
+
    | NIC vendor | Inbox driver version | Recommended Latest compatible driver |
    |--|--|--|
    | Intel | 1.15.121.0 | 1.17.73.0 |
    | NVIDIA | 24.4.26429.0 | 25.4.50020 |
+
 - Ensure the instance is properly registered. If the *identity* property is missing or doesn’t contain `type = "SystemAssigned"`, run the following command to repair the registration:
 
    ```powershell
