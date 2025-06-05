@@ -79,8 +79,8 @@ Remove any previous configurations from the paused machine that could interfere 
 Although Network ATC attempts to adopt existing configurations with matching names, including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
 > [!IMPORTANT]
-> Previous versions of this document recommended deleting the Switch Embedded Teaming (SET) virtual switch and allowing Network ATC to recreate it. However, deleting the virtual switch can result in unexpected connectivity loss and will disrupt existing Software Defined Networking (SDN) deployments.
-> The current recommended method is to rename the SET virtual switch and virtual NICs to the expected Network ATC convention, which is performed in a later step.
+> Do not delete the Switch Embedded Teaming (SET) virtual switch and allow Network ATC to recreate it. Deleting the virtual switch can result in unexpected connectivity loss and will disrupt existing Software Defined Networking (SDN) deployments.
+> Instead, we recommend renaming the SET virtual switch and virtual NICs to the expected Network ATC convention, which is performed in a later step.
 
 To remove your existing NetQos configurations, use the following commands:
 
