@@ -408,7 +408,7 @@ Test-SslCertificateCrypto -SslCertificate $SslCertificate | Out-Null
 
 ## Install and configure the appliance  
 
-To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
+To install and configure the appliance on the first machine (seed node), use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
@@ -428,6 +428,8 @@ $installAzureLocalParams = @{
 }  
 Install-Appliance @installAzureLocalParams -Verbose  
 ```  
+> [!NOTE]
+> The applianc must be installed on the seed node (first node). This is important for the full deployment of Azure Local to work after deploying the appliance.
 
 > [!NOTE]
 > This process takes a couple of hours and must be completed successfully before you continue. After a successful configuration, you'll have a local control plane running in your datacenter.
