@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via other method
 description: Learn how to upgrade from Azure Stack HCI OS, version 22H2 to version 23H2 using other manual methods on Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/21/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -97,6 +97,8 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
 
 1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
+
 ## Step 1: Connect to your system
 
 Follow these steps on your client to connect to one of the machines on your system.
@@ -176,6 +178,8 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 
 <!--ASK-->
+
+## Step 3: Check the status of an update
 
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
