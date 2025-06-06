@@ -25,6 +25,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 | Platform | Azure | Azure Local | Edge Essentials (Windows IoT client/server) | Windows Server |
 | --- | --- | --- | --- | --- |
+|Location | Cloud | Edge/On-premises | Edge/On-premises | Edge/On-premises |
 | Supported infrastructure for K8s cluster | Azure cloud | Azure Local, version 23H2 or later | Windows 10/11 IoT Enterprise<br>Windows 10/11 Enterprise<br>Windows 10/11 Pro<br>Windows Server 2019/2022 | Windows Server 2019<br>Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
 | K8s cluster lifecycle management tools (create, scale, upgrade and delete clusters) | Az CLI<br>Az PowerShell<br>Azure Portal<br>ARM templates<br>Bicep<br>Bicep Kubernetes Provider<br>Azure Developer CLI | Azure Portal<br>Azure CLI<br>ARM templates<br>Bicep templates | PowerShell | PowerShell<br>Windows Admin Center |
