@@ -566,7 +566,7 @@ To initialize each node, follow these steps. Modify where necessary to match you
     ```azurecli
     Write-Host "az login to Disconnected operations cloud"
     az cloud set -n $applianceCloudName --only-show-errors
-    az login --service-principal --username $appId --password $clientSecret
+    az login --service-principal --username $appId --password $clientSecret --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f    
     Write-Host "Connected to Disconnected operations Cloud through az cli"
     ```
 
