@@ -46,8 +46,11 @@ Logs created in your configured Logging container can help identify synchronizat
 ## Monitoring and Managing Auto-Export
 
 You can monitor Auto-Export activities and manage configurations using the Azure portal:
+
 The Blob Integration pane displays details of export activities in the **Recent jobs** section, including the status of recent jobs and metrics related to automatic synchronization.
+
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current auto-export.
+
 To view the metrics of an Auto-Export job, click on the **Name** of the job, and the **Metrics blade** will appear on the right-hand side panel in the Portal.
 
 :::image type="content" source="media/auto-export/auto-export-job-details.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre highlighting an auto-export job name and showing Job details on the right." lightbox="media/auto-export/auto-export-job-details.png":::
