@@ -27,7 +27,7 @@ Monitoring is essential for ensuring the reliability, performance, and security 
 
 Monitored data can be stored on-premises or in the cloud, depending on the monitoring solution used. This flexibility allows you to choose the best approach for your organizations specific needs and requirements.
 
-## Benefits of monitoring
+## Benefits
 
 Monitoring disconnected operations for Azure Local provides several benefits, including:
 
