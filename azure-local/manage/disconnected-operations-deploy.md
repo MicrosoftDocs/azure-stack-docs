@@ -432,6 +432,16 @@ Install-Appliance @installAzureLocalParams -Verbose
 > [!NOTE]
 > This process takes a couple of hours and must be completed successfully before you continue. After a successful configuration, you'll have a local control plane running in your datacenter.
 
+> [!NOTE]
+> If your installation fails (e.g. due wrong inputs in network configuration, identity or observability config object) - you can change those parameters and re-run install-appliance with an updated config object. 
+
+1) Modify the config object, e.g. 
+
+```$ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115' ```
+
+2) Set $installAzureLocalParams and Re-run the Install-appliance as shown previously.
+
+
 ## Configure observability for diagnostics and support
 
 We recommend that you configure observability to get telemetry and logs for support for your first deployment. This doesn't apply if you're planning to run air-gapped, as telemetry and diagnostics require connectivity.
