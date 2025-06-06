@@ -189,13 +189,13 @@ To install the new OS using PowerShell, follow these steps:
    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
    ```
 
+   If the OS upgrade fails, run the following command to recover the CAU run:
+
+   ```powershell
+   Invoke-CauRun –ForceRecovery -Force
+   ```
+
    You're now ready to perform the post-OS upgrade steps for your system.
-
-If the OS upgrade fails, run the following command to recover the CAU run:
-
-```powershell
-Invoke-CauRun –ForceRecovery -Force
-```
 
 ## Known issues
 
