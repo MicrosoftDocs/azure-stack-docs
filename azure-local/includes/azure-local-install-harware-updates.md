@@ -28,4 +28,4 @@ If your hardware doesn't support the Solution Builder Extension update experienc
 
 Your firmware and driver updates may need to be performed separately, if your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center. Follow the recommendations of your hardware vendor.
 
-To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
+To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](../update/solution-builder-extension.md).
