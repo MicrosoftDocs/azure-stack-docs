@@ -150,9 +150,9 @@ Use the following commands for each machine to install the required features. If
 $windowsFeature =  @( 
 
                 "Failover-Clustering",
-                "FileServerVSSAgent", 
-                "FSRM-Infrastructure", 
-                "Microsoft-Windows-GroupPolicy-ServerAdminTools-Update", 
+                "FS-VSS-Agent", 
+                "FS-Resource-Manager", 
+                "GPMC", 
                 "NetworkATC", 
                 "NetworkController",
                 "RSAT-AD-Powershell", 
