@@ -29,7 +29,7 @@ To create a new Auto-Export job, follow these steps:
 1. In the **Job Type** dropdown, select **Auto-Export**.
 1. In the **File system path** field, you can enter a string to specify a directory path. All new or changed files in the file system under this path (prefix) are continually exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, ensure that the path of the file in your Lustre system doesn't overlap with the existing path of the file in the blob container unless your Lustre file was imported from that path in the Blob Container.
 
- :::image type="content" source="media/auto-export/auto-export-create-job.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre highlighting the Create new job button and showing Create import/export job on the right." lightbox="media/auto-export/create-auto-export.png":::
+ :::image type="content" source="media/auto-export/auto-export-create-job.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre highlighting the Create new job button and showing Create import/export job on the right." lightbox="media/auto-export/auto-export-create-job.png":::
 
 ### Auto-Export Behavior
 
