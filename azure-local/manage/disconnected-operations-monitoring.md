@@ -21,6 +21,36 @@ For more information on disconnected operations, see [Disconnected operations fo
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
+## Why monitor disconnected operations?
+
+Monitoring is essential for ensuring the reliability, performance, and security of IT systems that support modern business operations. By continuously collecting and analyzing telemetry data — such as CPU usage, disk usage and utilization, memory consumption, network traffic, and error rates organizations gain real-time visibility into the health of their environments, whether on-premises, in the cloud, or across hybrid deployments.
+
+Monitored data can be stored on-premises or in the cloud, depending on the monitoring solution used. This flexibility allows you to choose the best approach for your organizations specific needs and requirements.
+
+## Benefits of monitoring
+
+Monitoring disconnected operations for Azure Local provides several benefits, including:
+
+- Ensure the availability and performance of critical systems.
+- Detect and diagnose issues in real-time.
+- Analyze performance trends and patterns.
+- Optimize resource utilization.
+- Ensure compliance with security and regulatory requirements.
+- Provide insights for capacity planning and resource allocation.
+
+For information on the views that provide insights, visualization, and analysis of your monitored telemetry data, see [View types in Operations Manager](/system-center/scom/manage-console-view-types?view=sc-om-2025&preserve-view=true).
+
+## What can be monitored?
+
+The following components of Azure Local with disconnected operations can be monitored using external solutions:
+- [Azure Local](#monitor-azure-local-infrastructure) (infrastructure) and the [disconnected operations appliance](#monitor-azure-local-infrastructure) (local Azure portal and Arc services).
+- [Virtual machines](#monitor-virtual-machines) (VMs).
+- [Azure Kubernetes Service (AKS)](#monitor-azure-kubernetes-service-clusters) clusters.
+
+## Prerequisites
+
+Install and deploy System Center Operations Manager (SCOM), see [System Center Operations Manager](/system-center/scom/system-requirements?view=sc-om-2025&preserve-view=true).
+
 ## Monitor Azure Local infrastructure
 
 The disconnected operations appliance provides the local Azure portal and Arc services to deploy and manage Azure Local instances. Monitoring the appliance ensures the local portal and services remain available. Use System Center Operations Manager and the disconnected operations management pack for this purpose.
