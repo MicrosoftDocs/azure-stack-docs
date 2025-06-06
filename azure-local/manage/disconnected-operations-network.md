@@ -89,9 +89,32 @@ The ingress network has several endpoints that are based on the configured FQDN.
 > [!NOTE]
 > The wildcard endpoints serve as backing services where your users dynamically create services such as Azure Key Vault or Azure Container Registry. Your infrastructure needs to resolve a wildcard for these specific endpoints.
 
-If you plan to connect the appliance to Azure, make sure your DNS infrastructure resolves the necessary Microsoft endpoints. Allow DNS requests from the disconnected operations appliance and ensure there's a network path from disconnected operations to the ingress network to reach the external endpoints.
+If you plan to connect the appliance to Azure, make sure your DNS infrastructure resolves the necessary Microsoft endpoints. Allow DNS requests from the disconnected operations appliance and ensure there's a network path from disconnected operations to the ingress network to reach the external endpoints. 
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
+
+#### Here is an example for how you can configure your DNS server (if you are running Windows Server DNS role):
+
+```console  
+$externalFqdn = 'autonomous.cloud.private'
+$IngressIPAddress = '192.168.200.115'
+
+Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
+
+Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
+```
+#### Here is an example of verifying your DNS setup 
+```console  
+nslookup portal.autonomous.cloud.private
+```
+#### Here is an example of expected response 
+```console  
+Name:    portal.autonomous.cloud.private
+Address:  192.168.200.115
+```
+
+
+
 
 ## Run appliance with limited connectivity  
 
