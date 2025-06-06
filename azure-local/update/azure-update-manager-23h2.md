@@ -159,14 +159,6 @@ To view the progress of your update installation, and completion results, follow
 
 ## Install hardware updates
 
-There are several methods to install hardware updates for Azure Local depending on what your Azure Local instance supports.
-
-- Solution Builder Extension
-- Windows Admin Center
-- Hardware vendor recommendation
-
-### Solution Builder Extension
-
 [!INCLUDE [azure-local-install-harware-updates](../includes/azure-local-install-harware-updates.md)]
 
 ## Get solution version
