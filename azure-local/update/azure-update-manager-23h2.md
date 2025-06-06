@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 05/28/2025
+ms.date: 06/06/2025
 #customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
@@ -159,7 +159,7 @@ To view the progress of your update installation, and completion results, follow
 
 ## Install hardware updates
 
-There are several methods to install hardware updates for Azure Local depending on what your Azure Local instance supports. 
+There are several methods to install hardware updates for Azure Local depending on what your Azure Local instance supports.
 
 - Solution Builder Extension
 - Windows Admin Center
@@ -167,20 +167,7 @@ There are several methods to install hardware updates for Azure Local depending 
 
 ### Solution Builder Extension
 
-For systems that support Solution Builder Extensions:
-
-- The appropriate Solution Builder Extension updates are automatically included when installing Azure Local Feature updates.
-- The Solution Builder Extension updates can be installed separately (hardware updates can be installed without a combined Azure Local update).
-
-### Windows Admin Center
-
-If your hardware doesn't support the Solution Builder Extension update experience, the process for updating your hardware remains similar to the process used with Azure Local, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see [Update Azure Local, version 22H2](/previous-versions/azure/azure-local/manage/update-cluster#install-operating-system-and-hardware-updates-using-windows-admin-center).
-
-### Hardware vendor recommendation
-
-Your firmware and driver updates may need to be performed separately, if your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center. Follow the recommendations of your hardware vendor.
-
-To determine if your system supports solution builder extension and for details on installing hardware updates, see [About Solution Builder Extension software updates](./solution-builder-extension.md).
+[!INCLUDE [azure-local-install-harware-updates](../includes/azure-local-install-harware-updates.md)]
 
 ## Get solution version
 
