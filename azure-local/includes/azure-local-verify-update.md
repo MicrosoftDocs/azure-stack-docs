@@ -35,9 +35,9 @@ ms.date: 05/13/2024
 
 1. Validate the health of your system by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step.
 
-```powershell
-Test-Cluster
-```
+    ```powershell
+    Test-Cluster
+    ```
 
 1. Verify that the registry keys are still applied on each machine in the system before moving to the next step.
 
