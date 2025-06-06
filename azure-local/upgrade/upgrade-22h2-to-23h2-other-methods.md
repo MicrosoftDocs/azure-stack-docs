@@ -177,6 +177,8 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 
 <!--ASK-->
 
+## Step 3: Check the status of an update
+
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
 ## Next steps

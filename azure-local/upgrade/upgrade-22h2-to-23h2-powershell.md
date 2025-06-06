@@ -179,6 +179,8 @@ To install the new OS using PowerShell, follow these steps:
 
 Wait for the update to complete and check the status of the update.
 
+## Step 3: Check the status of an update
+
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
 ## Next steps
