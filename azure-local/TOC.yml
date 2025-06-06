@@ -196,7 +196,7 @@ items:
       href: upgrade/upgrade-22h2-to-23h2-other-methods.md
   - name: 2. Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
-  - name: 3. Install, enable Network ATC
+  - name: 3. Configure Network ATC
     href: upgrade/install-enable-network-atc.md
   - name: 4. Validate solution upgrade readiness
     href: upgrade/validate-solution-upgrade-readiness.md
