@@ -83,8 +83,18 @@ To prepare each machine for the disconnected operations appliance, follow these 
 3. On physical hardware, install firmware and drivers as instructed by your OEM.
 
 4. Set up the virtual switches according to your planned network:  
-   - [Network considerations for cloud deployments of Azure Local](../deploy/deployment-install-os.md).
+   - [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md).
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
+
+   ```console
+    # Example
+    $networkIntentName = 'ManagementComputeStorage'
+    New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
+   ```
+   - If you use VLANs - make sure you set the network adapter VLAN
+   ```console
+   Set-NetAdapter -Name "ethernet 1" -VlanID 10
+   ```
 
 5. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
