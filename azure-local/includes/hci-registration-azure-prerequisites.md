@@ -30,7 +30,7 @@ ms.lastreviewed: 03/20/2025
 
     > [!NOTE]
     > - The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Local machines with Arc.
-   > - `Microsoft.Insights` resource provider is required for monitoring and logging. If you don't register this resource provider, you won't be able to use Azure Monitor for your Azure Local instance.
+   > - `Microsoft.Insights` resource provider is required for monitoring and logging. If this RP is not registered, the diagnostic account and Key Vault audit logging fails during validation.
 
 - **Create a resource group**. Follow the steps to [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your machines. Make a note of the resource group name and the associated subscription ID.
 
