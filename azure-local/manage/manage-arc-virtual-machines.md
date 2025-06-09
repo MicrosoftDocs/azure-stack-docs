@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 06/04/2025
+ms.date: 06/09/2025
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
@@ -197,10 +197,6 @@ To view VM properties for your Azure Local instance, follow these steps in the A
 1. On the **Overview** page, select the **Properties** tab to view the properties of your VM.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png" alt-text="Screenshot of the properties of a selected Azure Local virtual machine." lightbox="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png":::
-
-> [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 ## Start a VM
 
