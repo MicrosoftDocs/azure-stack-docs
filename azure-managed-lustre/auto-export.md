@@ -40,7 +40,7 @@ Auto-Export handles different types of changes as follows:
 - **Deletion**: When files, directories, or symlinks are deleted in the file system, they are **not removed** from the Blob Storage Container.
 
 No more than one Blob Integration job (Manual Export, Auto Export, Import) can be run at a time.
-Auto-Export is implemented as continuous export iterations. Upon completion of an iteration, Blob Integration scans the filesystem for any new files, directories, or content changes and start a new iteration of an export job.
+Auto-Export is implemented as continuous export iterations. Upon completion of an iteration, Blob Integration scans the filesystem for any new files, directories, or content changes and starts a new iteration of an export job.
 Logs created in your configured Logging container can help identify synchronization issues and understand the reasons behind failed operations.
 
 ## Monitoring and Managing Auto-Export
