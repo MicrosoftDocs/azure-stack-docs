@@ -43,7 +43,9 @@ For information on the views that provide insights, visualization, and analysis 
 ## What can be monitored?
 
 The following components of Azure Local with disconnected operations can be monitored using external solutions:
-- [Azure Local](#monitor-azure-local-infrastructure) (infrastructure) and the [disconnected operations appliance](#monitor-azure-local-infrastructure) (local Azure portal and Arc services).
+
+- [Azure Local](#monitor-azure-local-infrastructure) (infrastructure)
+- The disconnected operations appliance (local Azure portal and Arc services).
 - [Virtual machines](#monitor-virtual-machines) (VMs).
 - [Azure Kubernetes Service (AKS)](#monitor-azure-kubernetes-service-clusters) clusters.
 
