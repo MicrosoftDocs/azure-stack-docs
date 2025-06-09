@@ -116,16 +116,18 @@ Prepare your DNS environment before you run the action plan to enable SDN. The a
 - **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
     - The name for your DNS record is derived from your SDN prefix. The A DNS record must be `<SDNPrefix>-NC`.  
-    - The DNS record must resolve to the reserved IP. Assign the 5th IP address in the IP address range you provided when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
+    - The DNS record must resolve to the reserved IP. 
+        - Assign the 5th IP address in the IP address range to the A DNS record. You provided this IP ranged when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). 
+        - The link shouldn't resolve to an existing DNS record.
 
 - **Dynamic DNS environment**: If you have an Active Directory integrated dynamic DNS environment, no action is required on your part. The action plan automatically creates A DNS record.
 
     For a non-domain joined DNS environment, enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
 
-    a. On the DNS server, open the **DNS Manager** console.
-    b. In the left pane, select **Forward Lookup Zones**.
-    c. Right-click the zone that hosts the Network Controller name record, then select **Properties**.
-    d. On the **General** tab, next to **Dynamic updates**, select **Secure only**.
+    1. On the DNS server, open the **DNS Manager** console.
+    1. In the left pane, select **Forward Lookup Zones**.
+    1. Right-click the zone that hosts the Network Controller name record, then select **Properties**.
+    1. On the **General** tab, next to **Dynamic updates**, select **Secure only**.
 
     For more information, see [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
