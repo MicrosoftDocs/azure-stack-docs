@@ -91,7 +91,7 @@ sections:
 
     - question: | 
           If I delete Azure Arc resource bridge, are the VMs also deleted?
-    - answer: |
+      answer: |
         If you inadvertently remove Azure Arc resource bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises appliance VM. Importantly, this action doesn't affect your existing workloads.
       
         To restore the Azure projection of the Azure Arc resource bridge, run `az arcappliance create`. For more information, see [`az arcappliance create hci`](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci).
@@ -100,7 +100,7 @@ sections:
 
     - question: | 
         How can I delete the empty DVD drives created during VM provisioning?
-    - answer: |
+      answer: |
         Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
         
         To  delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
