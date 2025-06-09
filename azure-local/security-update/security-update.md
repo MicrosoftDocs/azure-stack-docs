@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/03/2025
+ms.date: 06/09/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -21,7 +21,7 @@ For the 2506 release of Azure Local, Microsoft released two security updates, ea
 | Security update | OS build | Release date |
 |--|--|--|
 | KB5060118 | 25398.1662 | June 10, 2025 |
-| KB5060842 | 26100.4335 | June 10, 2025 |
+| KB5060842 | 26100.4193 | June 10, 2025 |
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
@@ -51,11 +51,11 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060118.](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060118.](https://go.microsoft.com/fwlink/?linkid=2323858).
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
-This section provides the 2506 security updates associated with OS build **26100.4335**.
+This section provides the 2506 security updates associated with OS build **26100.4343**.
 
 ## Improvements
 
@@ -87,7 +87,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=2323769).
 
 ::: moniker-end
 
