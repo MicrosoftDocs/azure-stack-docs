@@ -65,7 +65,7 @@ You deploy and configure Azure Local with disconnected operations in multiple st
 
 :::image type="content" source="./media/disconnected-operations/deployment/deployment-journey.png" alt-text="Screenshot of the deployment flow." lightbox=" ./media/disconnected-operations/deployment/deployment-journey.png":::
 
-Here's a brief overview of the tools and process used during the deployment. Access to Azure Local nodes (OS/host) might be required.
+Here's a brief overview of the tools and processes used during the deployment. Access to Azure Local nodes (OS/host) might be required.
 
 1. Use the existing tools and processes to install and configure the OS. You'll need Local admin access on all Azure Local nodes.
 2. Run Powershell and the Operations module on the first node (sorted by node name like `seed node`). You'll need Local admin access.
