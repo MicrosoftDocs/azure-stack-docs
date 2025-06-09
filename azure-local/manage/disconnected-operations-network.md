@@ -97,7 +97,7 @@ For more information, see [Firewall requirements for Azure Local](../concepts/fi
 
 Here is an example:
 
-```console  
+```powershell  
 $externalFqdn = 'autonomous.cloud.private'
 $IngressIPAddress = '192.168.200.115'
 
