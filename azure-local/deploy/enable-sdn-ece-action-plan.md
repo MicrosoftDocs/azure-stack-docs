@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/04/2025
+ms.date: 06/09/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
@@ -60,10 +60,10 @@ Consider this information before you enable SDN:
 
 ## Prerequisites
 
-- You have access to an Azure Local instance running 2506 and later. The OS build must be 26100.xxxx or later. You can check the OS version in the following ways:
+- You have access to an Azure Local instance running 2506 and later. The OS build must be 26100.xxxx or later. Check the OS version via Azure portal or via the PowerShell:
 
     - In the Azure portal, go to your Azure Local instance and select **Overview**. The **OS version** is displayed in the **Instance details** section.
-    - To verify the OS version, run the following command:
+    - Connect to a machine on your Azure Local instance and run the following PowerShell command to verify the OS version:
 
         ```powershell
         systeminfo.exe
@@ -84,7 +84,7 @@ Consider this information before you enable SDN:
         Hyper-V Requirements:          A hypervisor has been detected. Features required for Hyper-V will not be displayed.
         ```
 
-        - Verify that the `OS Version` in the output is **10.0.26100** or later.
+        - Verify that the `OS Version` in the output is **10.0.26100**.
 
 - You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the action plan.
 
@@ -95,18 +95,12 @@ Consider this information before you enable SDN:
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
     An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-<!--- Make sure that Dynamic DNS updates are enabled or precreate the NC rest name DNS record before you run `Add-EceFeature`.
-    - The NC rest name should be unique in the Active Directory. To verify, ping the NC rest name and if there is no response, it means that the name is unique.
-    - For more information, see [Dynamic DNS updates](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone) or [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).-->
 
 
-## Choose between default or custom SDN prefix
 
-When you run the action plan to enable SDN, you can choose to use the default SDN prefix or a custom SDN prefix.
+## Choose an SDN prefix
 
-- **Default SDN prefix**: The default SDN prefix is `v`.
-
-- **Custom SDN prefix**: You can also use a custom SDN prefix. Make sure that the custom SDN prefix meets the following requirements:
+When you run the action plan to enable SDN, choose an SDN prefix. Make sure that the SDN prefix meets the following requirements:
 
     - Must not be null or empty.
     - Must be fewer than eight characters.
@@ -115,18 +109,26 @@ When you run the action plan to enable SDN, you can choose to use the default SD
     
     If the prefix doesn't meet these requirements, the action plan fails.
 
-## Check DNS environment readiness
+## Prepare the DNS environment
 
-Ensure that your DNS environment is ready before you run the action plan to enable SDN. The action plan requires a DNS record for the Network Controller REST URL, which is used to access the Network Controller REST API.
-
-- **Dynamic DNS environment**: Check that the dynamic DNS updates are enabled for the DNS zone where the Network Controller REST URL will be registered. If these updates are enabled, the action plan automatically creates the DNS record for the Network Controller REST URL.
-
-    If these updates aren't enabled, follow the instructions to [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
+Prepare your DNS environment before you run the action plan to enable SDN. The action plan requires A DNS record for the Network Controller REST URL, which is used to access the Network Controller REST API.
 
 - **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
-    - The name for your DNS record is derived from your SDN prefix. If you choose a custom SDN prefix, the DNS record must be `<CustomSDNPrefix>-NC`. If you chose the a default SDN prefix, a DNS record `<v-NC>` is automatically created.  
-    - The DNS record must resolve to the reserved IP. This is the 5th IP address in the IP address range you provided when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
+    - The name for your DNS record is derived from your SDN prefix. The A DNS record must be `<SDNPrefix>-NC`.  
+    - The DNS record must resolve to the reserved IP. Assign the 5th IP address in the IP address range you provided when configuring the [Network settings during the deployment of your Azure Local instance](./deploy-via-portal.md#specify-network-settings). The link shouldn't resolve to an existing DNS record.
+
+- **Dynamic DNS environment**: If you have an Active Directory integrated dynamic DNS environment, no action is required on your part. The action plan automatically creates A DNS record.
+
+    For a non-domain joined DNS environment, enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
+
+    a. On the DNS server, open the **DNS Manager** console.
+    b. In the left pane, select **Forward Lookup Zones**.
+    c. Right-click the zone that hosts the Network Controller name record, then select **Properties**.
+    d. On the **General** tab, next to **Dynamic updates**, select **Secure only**.
+
+    For more information, see [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
+
     
 ## Review action plan parameters
 
@@ -136,7 +138,7 @@ The action plan uses the following parameters:
 | Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
-|**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `-SDNPrefix v` makes `https://v-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br>Pass the value as `v` for a default SDN prefix. If you chose the custom SDN prefix, provide that when running the cmdlet. <br><br> Make sure that the custom SDN prefix meets the requirements included in [Custom SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
+|**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `<SDNPrefix>` makes `https://<SDNPrefix>-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br> Make sure that the SDN prefix meets the requirements included in [Choose an SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
 
 
 ## Run the action plan
@@ -148,17 +150,17 @@ Follow these steps on the Azure CLI to run the action plan:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 
-1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command. If you chose a custom SDN prefix, replace `v` with your custom SDN prefix.
+1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command. 
 
     ```powershell
 
     ```azurecli
-    #Run the LCM action plan to install Network Controller as Failover Cluster Service
+    #Run the LCM action plan to install Network Controller as Failover Cluster Service. Replace <SDNPrefix> with your SDN prefix.
     
-    Add-EceFeature -Name NC -SDNPrefix v 
+    Add-EceFeature -Name NC -SDNPrefix <SDNPrefix>
     ```
 
-    Confirm when prompted to proceed with the action plan. 
+    Confirm when prompted to proceed with the action plan.
 
     > [!TIP]
     > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
