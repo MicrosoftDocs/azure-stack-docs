@@ -30,7 +30,8 @@ Here's a checklist to help you plan your network for disconnected operations on 
 - Review [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 - Verify [System requirements for Azure Local](../concepts/system-requirements.md).
 - Develop the Azure Local network plan (Disconnected operations and Azure Local):
-  - Create the [Host network plan (intents and switches)](../plan/cloud-deployment-network-considerations).  - Reserve the management IP address pool.
+  - Create the [Host network plan (intents and switches)](../plan/cloud-deployment-network-considerations).
+  - Reserve the management IP address pool.
 - Configure the network for disconnected operations (ingress and management network):
   - Assign an ingress IP within the management IP address pool subnet, ensuring it doesn't overlap with the range provided during deployment.  
   - Ensure the container network range doesn't conflict with the external network.
@@ -92,7 +93,9 @@ If you plan to connect the appliance to Azure, make sure your DNS infrastructure
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
-#### Here is an example for how you can configure your DNS server (if you are running Windows Server DNS role):
+#### Configure your DNS server (if you are running Windows Server DNS role):
+
+Here is an example:
 
 ```console  
 $externalFqdn = 'autonomous.cloud.private'
@@ -102,18 +105,20 @@ Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
 
 Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
 ```
-#### Here is an example of verifying your DNS setup 
+#### Verify your DNS setup
+
+Here is an example:
+
 ```console  
 nslookup portal.autonomous.cloud.private
 ```
-#### Here is an example of expected response 
+
+Here's a sample output:
+
 ```console  
 Name:    portal.autonomous.cloud.private
 Address:  192.168.200.115
 ```
-
-
-
 
 ## Run appliance with limited connectivity  
 
