@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.subservice: 
 zone_pivot_groups: windows-os
-ms.date: 01/28/2025
+ms.date: 06/03/2025
 ---
 
 # Manage SDN Multisite for Azure Local and Windows Server

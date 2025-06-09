@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/17/2025
+ms.date: 05/29/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -95,7 +95,7 @@ Follow these steps to set up the Environment Checker on a machine of your Azure 
    Invoke-AzStackHciUpgradeValidation
    ```
 
-1. To validate other machines in the system, run the following PowerShell command:
+1. To remotely validate other machines in the system, run the following PowerShell command for each remote machine:
 
    ```powershell
    $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
@@ -150,7 +150,11 @@ Use the following commands for each machine to install the required features. If
 $windowsFeature =  @( 
 
                 "Failover-Clustering",
+                "FileServerVSSAgent", 
+                "FSRM-Infrastructure", 
+                "Microsoft-Windows-GroupPolicy-ServerAdminTools-Update", 
                 "NetworkATC", 
+                "NetworkController",
                 "RSAT-AD-Powershell", 
                 "RSAT-Hyper-V-Tools", 
                 "Data-Center-Bridging", 
@@ -185,7 +189,6 @@ $windowsOptionalFeature = @(
                 "EnhancedStorage", 
                 "WCF-Services45", 
                 "WCF-TCP-PortSharing45", 
-                "NetworkController", 
                 "NetFx4ServerFeatures", 
                 "NetFx4", 
                 "MicrosoftWindowsPowerShellRoot", 
@@ -194,7 +197,6 @@ $windowsOptionalFeature = @(
                 "KeyDistributionService-PSH-Cmdlets", 
                 "TlsSessionTicketKey-PSH-Cmdlets", 
                 "Tpm-PSH-Cmdlets", 
-                "FSRM-Infrastructure", 
                 "ServerCore-WOW64", 
                 "SmbDirect", 
                 "FailoverCluster-AdminPak", 
@@ -202,11 +204,9 @@ $windowsOptionalFeature = @(
                 "SMBBW", 
                 "FailoverCluster-FullServer", 
                 "FailoverCluster-PowerShell", 
-                "Microsoft-Windows-GroupPolicy-ServerAdminTools-Update", 
                 "DataCenterBridging", 
                 "BitLocker", 
                 "Dedup-Core", 
-                "FileServerVSSAgent", 
                 "FileAndStorage-Services", 
                 "Storage-Services", 
                 "File-Services", 

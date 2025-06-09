@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 02/14/2025
+ms.date: 05/15/2025
 ---
 
 # Review four-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Local
@@ -24,6 +24,8 @@ This article describes how you can use a four-node storage switchless network re
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenters.
 
 Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components.
+
+[!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
 SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
