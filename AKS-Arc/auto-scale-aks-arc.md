@@ -147,6 +147,17 @@ az aksarc update \
   --cluster-autoscaler-profile ""
 ```
 
+## Making effective use of autoscaler
+
+Now that the cluster and node pool are configured to automatically scale, you can optionally configure a workload to also scale in a way that makes use of the horizontal autoscaler capabilities. **Please note that the following guidance is not officially supported by Microsoft. It is shared as a best-effort recommendation based on open-source practices.**
+
+Two methods are available for workload scaling:
+
+* **Kubernetes Horizontal Pod Autoscaler**: Based on load characteristics, the Horizontal Pod Autoscaler (also known as the *horizontal autoscaler*) scales the pods of an application deployment to available nodes in the Kubernetes cluster. If no more nodes are available to be scheduled, the horizontal autoscaler instantiates a new node to which to schedule the pods. If application load goes down, the nodes are scaled back again. For the Horizontal Pod Autoscaler to work, **you must manually deploy the Metrics Server component in your AKS cluster**. For more information about horizontal pod autoscalar rules, see [Kubernetes horizontal pod autoscalar](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+
+* **Kubernetes node anti-affinity rules**: Anti-affinity rules for a Kubernetes deployment can specify that a set of pods can't be scaled on the same node, and a different node is required to scale the workload. In combination with either load characteristics or the number of target pods for the application instances, the horizontal autoscaler instantiates new nodes in the node pool to satisfy requests. If application demand subsides, the horizontal autoscaler scales down the node pool again. For more information about Kubernetes pod affinity rules, see [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node).
+
+
 ## Next steps
 
 This article showed you how to automatically scale the number of AKS Arc nodes. To scale node pools manually, see [manage node pools in AKS Arc clusters](manage-node-pools.md).
