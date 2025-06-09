@@ -91,7 +91,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
     $networkIntentName = 'ManagementComputeStorage'
     New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
    ```
-   - If you use VLANs - make sure you set the network adapter VLAN
+   - If you use VLANs make sure you set the network adapter VLAN
    ```console
    Set-NetAdapter -Name "ethernet 1" -VlanID 10
    ```
@@ -427,21 +427,21 @@ $installAzureLocalParams = @{
     AutoScaleVMToHostHW = $false  
 }  
 Install-Appliance @installAzureLocalParams -Verbose  
-```  
-> [!NOTE]
-> The applianc must be installed on the seed node (first node). This is important for the full deployment of Azure Local to work after deploying the appliance.
+```
 
 > [!NOTE]
+> The appliance must be installed on the first machine (seed node). This is important for the full deployment of Azure Local to work after deploying the appliance.
 > This process takes a couple of hours and must be completed successfully before you continue. After a successful configuration, you'll have a local control plane running in your datacenter.
 
-> [!NOTE]
-> If your installation fails (e.g. due wrong inputs in network configuration, identity or observability config object) - you can change those parameters and re-run install-appliance with an updated config object. 
+If your installation fails due to wrong inputs in network configuration, identity or observability configuration object) you can change those parameters and re-run the `Install-appliance` command with an updated configuration object.
 
-1) Modify the config object, e.g. 
+Here's an example via a configuration object:
+
+1) Modify the configuration object.
 
 ```$ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115' ```
 
-2) Set $installAzureLocalParams and Re-run the Install-appliance as shown previously.
+2) Set `$installAzureLocalParams` and Re-run the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 
 ## Configure observability for diagnostics and support
