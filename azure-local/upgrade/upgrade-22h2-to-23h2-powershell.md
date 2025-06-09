@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/21/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -100,6 +100,8 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
 
 1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
 
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
+
 ## Step 1: Connect to Azure Local
 
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
@@ -176,6 +178,8 @@ To install the new OS using PowerShell, follow these steps:
 1. Check for any further updates and install them.
 
 Wait for the update to complete and check the status of the update.
+
+## Step 3: Check the status of an update
 
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
