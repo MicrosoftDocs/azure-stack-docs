@@ -83,7 +83,7 @@ To prepare each machine for the disconnected operations appliance, follow these 
 3. On physical hardware, install firmware and drivers as instructed by your OEM.
 
 4. Set up the virtual switches according to your planned network:  
-   - [Network considerations for cloud deployments of Azure Local](./plan/cloud-deployment-network-considerations.md).
+   - [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md).
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
      ```powershell
