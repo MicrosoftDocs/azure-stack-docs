@@ -21,7 +21,7 @@ For the 2506 release of Azure Local, Microsoft released two security updates, ea
 | Security update | OS build | Release date |
 |--|--|--|
 | KB5060118 | 25398.1662 | June 10, 2025 |
-| KB5060842 | 26100.4193 | June 10, 2025 |
+| KB5060842 | 26100.4343 | June 10, 2025 |
 
 # [OS build 25398.xxxx](#tab/os-build-25398-xxxx)
 
