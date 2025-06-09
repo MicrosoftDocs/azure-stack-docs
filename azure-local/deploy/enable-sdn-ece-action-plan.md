@@ -102,12 +102,12 @@ Consider this information before you enable SDN:
 
 When you run the action plan to enable SDN, choose an SDN prefix. Make sure that the SDN prefix meets the following requirements:
 
-    - Must not be null or empty.
-    - Must be fewer than eight characters.
-    - Must contain only lowercase, uppercase, numeric, characters.
-    - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
-    
-    If the prefix doesn't meet these requirements, the action plan fails.
+- Must not be null or empty.
+- Must be fewer than eight characters.
+- Must contain only lowercase, uppercase, numeric, characters.
+- Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
+
+If the prefix doesn't meet these requirements, the action plan fails.
 
 ## Prepare the DNS environment
 
@@ -122,7 +122,7 @@ Prepare your DNS environment before you run the action plan to enable SDN. The a
 
 - **Dynamic DNS environment**: If you have an Active Directory integrated dynamic DNS environment, no action is required on your part. The action plan automatically creates A DNS record.
 
-    For a non-domain joined DNS environment, enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
+    If updates are not enabled for your Dynamic DNS environment, you can choose to enable dynamic DNS updates for the DNS zone where the Network Controller REST URL is registered.
 
     1. On the DNS server, open the **DNS Manager** console.
     1. In the left pane, select **Forward Lookup Zones**.
@@ -131,7 +131,7 @@ Prepare your DNS environment before you run the action plan to enable SDN. The a
 
     For more information, see [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
-    
+
 ## Review action plan parameters
 
 The action plan uses the following parameters:
