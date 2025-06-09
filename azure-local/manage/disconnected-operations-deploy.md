@@ -86,17 +86,17 @@ To prepare each machine for the disconnected operations appliance, follow these 
    - [Network considerations for cloud deployments of Azure Local](./plan/cloud-deployment-network-considerations.md).
    - If your network plan groups all traffic (management, compute, and storage), create a virtual switch called `ConvergedSwitch(ManagementComputeStorage)` on each node.  
 
-   ```powershell
-    # Example
-    $networkIntentName = 'ManagementComputeStorage'
-    New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
-   ```
+     ```powershell
+      # Example
+      $networkIntentName = 'ManagementComputeStorage'
+      New-VMSwitch -Name "ConvergedSwitch($networkIntentName)" -NetAdapterName "ethernet","ethernet 2"  
+     ```
    
    - If you use VLANs make sure you set the network adapter VLAN
    
-   ```powershell
-   Set-NetAdapter -Name "ethernet 1" -VlanID 10
-   ```
+     ```powershell
+     Set-NetAdapter -Name "ethernet 1" -VlanID 10
+     ```
 
 5. [Rename each node](/powershell/module/microsoft.powershell.management/rename-computer?view=powershell-7.4&preserve-view=true) according to your naming conventions. For example, azlocal-n1, azlocal-n2, and azlocal-n3.  
 
@@ -152,9 +152,9 @@ To prepare the first machine for the disconnected operations appliance:
     - AzureLocal.DisconnectedOperations.zip
     - AzureLocal.DisconnectedOperations.Appliance.manifest
 
-    ```powershell  
-    Get-ChildItem $applianceConfigBasePath  
-    ```  
+      ```powershell  
+      Get-ChildItem $applianceConfigBasePath  
+      ```  
 
 3. Extract the zip file in the same folder:  
 
@@ -168,12 +168,12 @@ To prepare the first machine for the disconnected operations appliance:
     - IRVM01.zip
     - AzureLocal.DisconnectedOperations.Appliance.manifest
 
-    ```powershell  
-    Get-ChildItem $applianceConfigBasePath   
-    ```  
+      ```powershell  
+      Get-ChildItem $applianceConfigBasePath   
+      ```  
 
-    > [!NOTE]  
-    > At this point, you can remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
+      > [!NOTE]  
+      > At this point, you can remove the `AzureLocal.DisconnectedOperations.zip` file to save some space.
 
 5. Copy the certificates root directory. Save these files into the base folder you created earlier.  
 
@@ -432,20 +432,19 @@ Install-Appliance @installAzureLocalParams -Verbose
 ```
 
 > [!NOTE]
-> The appliance must be installed on the first machine (seed node). This is important for the full deployment of Azure Local to work after deploying the appliance.
-> This process takes a couple of hours and must be completed successfully before you continue. After a successful configuration, you'll have a local control plane running in your datacenter.
+> Install the appliance on the first machine (seed node) to ensure Azure Local deploys correctly. The setup takes a few hours and must finish successfully before you move on. Once it’s complete, you’ll have a local control plane running in your datacenter.
 
-If your installation fails due to wrong inputs in network configuration, identity or observability configuration object) you can change those parameters and re-run the `Install-appliance` command with an updated configuration object.
+If the installation fails due to incorrect network, identity, or observability settings, update the configuration object and re-run the `Install-appliance` command
 
 Here's an example via a configuration object:
 
-1) Modify the configuration object.
+1. Modify the configuration object.
 
   ```powershell
   $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
   ```
 
-2) Set `$installAzureLocalParams` and Re-run the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
+2. Set `$installAzureLocalParams` and Re-run the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
 
 
 ## Configure observability for diagnostics and support
@@ -647,16 +646,16 @@ Follow these steps to create an Azure Local instance (cluster):
 2. Navigate to `portal.FQDN`. For example, `https://portal.autonomous.cloud.private`
 3. Select your nodes and complete the deployment steps outlined in [Deploy Azure Local using the Azure portal](../deploy/deploy-via-portal.md).  
 
-> [!NOTE]
-> If you create Azure Key Vault during the deployment, wait about 20 minutes for role-based access control permissions to propagate.
->
-> If you get a validation error with Azure Key Vault, it's a known issue. Permissions take time to propagate. Wait a bit, refresh the browser, and try the cluster deployment again.
+  > [!NOTE]
+  > If you create Azure Key Vault during deployment, wait about 20 minutes for RBAC permissions to take effect.
+  > 
+  > If you see a validation error, it’s a known issue. Permissions may still be propagating. Wait a bit, refresh your browser, and redeploy the cluster.
 
 ## Post-deployment tasks
 
 Here are some tasks you can perform after deploying Azure Local with disconnected operations:
 
-1. Back up the BitLocker keys. Used to encrypt volumes to ensure you can recover your appliance if you need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
+1. Back up the BitLocker keys. This encrypts your volumes and lets you recover the appliance if you ever need to restore the VM. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
 1. Assign extra operators. You can assign one or many operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.  
 <!--1. Create more subscriptions. You can create more subscriptions by navigating to **Subscriptions** in the portal and selecting **Create**. You can also use the CLI to automate subscription creation.
 
