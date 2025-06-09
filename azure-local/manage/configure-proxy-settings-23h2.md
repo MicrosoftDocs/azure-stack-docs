@@ -27,6 +27,7 @@ Here are some important considerations to keep in mind before you configure prox
 - Understand that proxy settings are separate for different components and features of Azure Local (`WinInet`,`WinHTTP`, and `Environment Variables`). You must configure the proxy settings for all the required components and any other features that you plan on using.
 - Although each component has specific command parameters and proxy bypass list string requirements, we recommend keeping the same proxy configuration across the different component and features.
 - Authenticated proxies using username and password aren't supported due to security constraints.
+- Proxy server endpoints with a `.local` domain aren't supported. For example - `http://proxy.contosos.local`.
 - If you're using SSL inspection in your proxy, you need to bypass the required Azure Local and its components (Arc Resource Bridge, Azure Kubernetes Service (AKS), etc.) outbound URLs.
 - Each of the three proxy components on the operating system has specific proxy bypass list string requirements. Don't use the same string for all three components.
 - Proxy Auto-Configuration (PAC) files aren't supported.
@@ -165,7 +166,7 @@ When configuring the `WinHTTP` proxy bypass list string, keep the following poin
 
 ## Configure proxy settings for Environment Variables
 
-You must configure the proxy for Azure Resource Bridge and AKS before you [Register the machines with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the proxy for Azure Resource Bridge, AKS and Arc enabled Kubernetes agents before you [Register the machines with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
 To set the proxy server Environment Variable, run the following commands as administrator on each machine in the system:
 
@@ -186,7 +187,7 @@ The parameters are described in the following table:
 |---|---|
 | HTTPS_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
 | HTTP_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. On your Azure Local the list must include:<br><br>- At least the IP address of each machine.<br>- At least the IP address of system.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each machine.<br>- NetBIOS name of the system.<br>- Domain name or domain name with dot `.` wildcard for any host or subdomain.<br>- `.svc` for internal Kubernetes service traffic.|
+| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. On your Azure Local the list must include: <br><br>- At least the IP address of each machine. <br>- At least the IP address of system. <br>- NetBIOS name of each machine. <br>- NetBIOS name of the system. <br>- Domain name or domain name with dot `.` wildcard for any host or subdomain. <br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, and future infrastructure services using these IPs require outbound connectivity. <br>- Or you can bypass the entire infrastructure subnet. <br>- The subnets on which you plan on deploying your AKS clusters. <br>- `.svc`, `kubernetes.default.svc` and `.svc.cluster.local` for internal Kubernetes service traffic. <br>- `10.0.0.0/8`, `172.16.0.0/12` and `192.168.0.0/16`. These subnets are required for creating AKS clusters and Azure Arc agents. |
 
 Here's an example of the command usage:
 
@@ -195,7 +196,7 @@ Here's an example of the command usage:
 $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
 [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://192.168.1.250:8080", "Machine")
 $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
-$no_proxy = "localhost,127.0.0.1,.svc,192.168.1.0/24,.contoso.com,node1,node2,s-cluster"
+$no_proxy = "localhost,127.0.0.1,.svc,kubernetes.default.svc,.svc.cluster.local,192.168.1.0/24,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com,node1,node2,s-cluster"
 [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
 $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
 ```
@@ -209,9 +210,8 @@ When configuring the Environment Variables proxy bypass list string, keep the fo
 - Asterisk `*` as wildcards to bypass subnets or domain names isn't supported.
 - Dots `.` Should be used as wildcards to bypass domain names or local services. For example `.contoso.com` or `.svc`.
 - Proxy name must be specified with `http://` and the port for both HTTP_PROXY and HTTPS_PROXY variables. For example, `http://192.168.1.250:8080`.
-- `.svc` bypass is for AKS internal services communication in Linux notation. This is required for Arc Resource Bridge and AKS.
-- AKS requires to bypass the following subnets. 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16. These subnets will be added to the Environment Variables bypass list automatically if they aren't defined.
-- The use of `<local>` strings isn't supported in the proxy bypass list.
+- `.svc`, `kubernetes.default.svc` and `.svc.cluster.local` bypass is for AKS internal services communication in Linux notation. This is required for Arc Resource Bridge and AKS.
+- AKS requires to bypass the following subnets. `10.0.0.0/8`, `172.16.0.0/12` and `192.168.0.0/16`. These subnets will be added to the Environment Variables bypass list automatically if they aren't defined.
 
 ### Confirm and remove the Environment Variables proxy configuration
 
