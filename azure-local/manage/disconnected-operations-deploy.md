@@ -439,7 +439,9 @@ Here's an example via a configuration object:
 
 1) Modify the configuration object.
 
-```$ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115' ```
+  ```powershell
+  $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
+  ```
 
 2) Set `$installAzureLocalParams` and Re-run the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
 
