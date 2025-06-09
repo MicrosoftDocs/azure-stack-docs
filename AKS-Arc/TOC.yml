@@ -125,7 +125,7 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use auto-scaler
+    - name: Use autoscaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md

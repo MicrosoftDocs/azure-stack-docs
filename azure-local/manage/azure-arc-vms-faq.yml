@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 05/02/2025
+  ms.date: 06/09/2025
   sections: []
 title: FAQ for Azure Local VMs enabled by Azure Arc
 summary:
@@ -90,11 +90,19 @@ sections:
         Deleting a gallery image removes the image name from VM details. It doesn't affect the VMs that you created by using the image.
 
     - question: | 
-        If I delete Azure Arc resource bridge, are the VMs also deleted?
+          If I delete Azure Arc resource bridge, are the VMs also deleted?
       answer: |
         If you inadvertently remove Azure Arc resource bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises appliance VM. Importantly, this action doesn't affect your existing workloads.
-        
+      
         To restore the Azure projection of the Azure Arc resource bridge, run `az arcappliance create`. For more information, see [`az arcappliance create hci`](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci).
         
         If the on-premises appliance VM is accidentally deleted, you lose the ability to manage your VMs through the Azure portal. However, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate Azure Arc resource bridge, you need to redeploy it. For assistance with this process, contact Microsoft support.
+
+    - question: | 
+        How can I delete the empty DVD drives created during VM provisioning?
+      answer: |
+        Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+        
+        To  delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
+         
 
