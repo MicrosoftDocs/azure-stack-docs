@@ -12,11 +12,11 @@ ms.reviewer: brianl
 ---
 # Azure Managed Lustre Auto-Export (Preview)
 
-The Auto-Export feature for Azure Managed Lustre is a capability that automatically synchronizes changes in your Azure Managed Lustre file system with a linked Azure Blob Storage Container. This feature ensures that new and modified files in the file system are reflected in the associated Blob Storage Container without manual intervention, streamlining data management and improving synchronization for long-term storage.
+The Auto-Export feature for Azure Managed Lustre is a capability that automatically synchronizes changes in your Azure Managed Lustre file system with a linked Azure Blob Storage Container. This feature ensures that new and modified files in the file system are reflected in the associated Blob Storage Container without manual intervention. This streamlines data management and improves synchronization for long-term storage.
 
 ## How auto-export works
 
-Auto-Export operates by continuously monitoring changes in the Azure Managed Lustre file system. Based on the configured export policy, it updates the contents of the associated Blob Storage Container to reflect these changes. This provides users with a seamless and automated data replication process.
+Auto-Export operates by continuously monitoring changes in the Azure Managed Lustre file system. Based on the configured export policy, it updates the contents of the associated Blob Storage Container to reflect these changes. This feature provides users with a seamless and automated data replication process.
 
 ### Configuration
 
@@ -29,7 +29,7 @@ To create a new Auto-Export job, follow these steps:
 1. In the **Job Type** dropdown, select **Auto-Export**.
 1. In the **File system path** field, you can enter a string to specify a directory path. All new or changed files in the file system under this path (prefix) are continually exported. Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. To avoid overwriting existing files in the blob container, ensure that the path of the file in your Lustre system doesn't overlap with the existing path of the file in the blob container unless your Lustre file was imported from that path in the Blob Container.
 
- :::image type="content" source="media/auto-export/auto-export-create-job.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre highlighting the Create new job button and showing Create import/export job on the right." lightbox="media/auto-export/auto-export-create-job.png":::
+ :::image type="content" source="media/auto-export/auto-export-create-job.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre showing Create import/export job." lightbox="media/auto-export/auto-export-create-job.png":::
 
 ### Auto-Export Behavior
 
@@ -40,7 +40,7 @@ Auto-Export handles different types of changes as follows:
 - **Deletion**: When files, directories, or symlinks are deleted in the file system, they are **not removed** from the Blob Storage Container.
 
 No more than one Blob Integration job (Manual Export, Auto Export, Import) can be run at a time.
-Auto-Export is implemented as continuous export iterations. Upon completion of an iteration, Blob Integration will scan the filesystem for any new files, directories, or content changes and start a new iteration of an export job.
+Auto-Export is implemented as continuous export iterations. Upon completion of an iteration, Blob Integration scans the filesystem for any new files, directories, or content changes and start a new iteration of an export job.
 Logs created in your configured Logging container can help identify synchronization issues and understand the reasons behind failed operations.
 
 ## Monitoring and Managing Auto-Export
@@ -51,15 +51,15 @@ The Blob Integration pane displays details of export activities in the **Recent 
 
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current auto-export.
 
-To view the metrics of an Auto-Export job, click on the **Name** of the job, and the **Metrics blade** will appear on the right-hand side panel in the Portal.
+To view the metrics of an Auto-Export job, click on the **Name** of the job, and the **Metrics blade** appears on the side panel in the Portal.
 
-:::image type="content" source="media/auto-export/auto-export-job-details.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre highlighting an auto-export job name and showing Job details on the right." lightbox="media/auto-export/auto-export-job-details.png":::
+:::image type="content" source="media/auto-export/auto-export-job-details.png" alt-text="Screenshot of the Blob integration page for Azure Managed Lustre showing Job details." lightbox="media/auto-export/auto-export-job-details.png":::
 
 ### Auto-Export Job Monitoring
 
 The Blob Integration pane displays details of export activities in the **Recent jobs** section, including the status of recent jobs and metrics related to automatic synchronization.
 To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link is only available for the current auto-export.
-To view the metrics of an Auto-Export job, click on the **Name** of the job, and the **Metrics blade** will appear on the right-hand side panel in the Portal.
+To view the metrics of an Auto-Export job, click on the **Name** of the job, and the **Metrics blade** appears on the side panel in the Portal.
 
 ### Metrics
 
@@ -154,14 +154,14 @@ Metrics are grouped into two main categories, *Overall* and *Current Iteration*.
       Total number of files that failed to copy during the current iteration. Click on this link to be taken to the Logging Container page to view the logs associated with this Auto-Export job.
    :::column-end:::
 :::row-end:::
-\* The metrics for the current ongoing iteration should be read as “so far.” For example, Files Discovered is the number of the files discovered for exporting at the moment of reporting. The next stats reporting cycle may show that more files have been discovered.
+\* The metrics for the current ongoing iteration should be read as “so far.” For example, Files Discovered is the number of the files discovered for exporting at the moment of reporting. The next stats reporting cycle may show that more files are discovered.
 
 ## Considerations and Best Practices
 
 While using Auto-Export, consider the following best practices to ensure smooth operation:
 
 - **Conflict Management**: If a file is modified in both the file system and Blob Storage, there is a risk of overwrite. Use application-level coordination to prevent conflicting edits.
-- **Disable Auto-Export Before Deletion**: Before deleting a file system or its Blob Integration, ensure that all queued updates have been synchronized. Verify that the **Last Successful Iteration Time** is recent and the **Files Failed** metric is zero to avoid data loss. Then, disable Auto-Export.
+- **Disable Auto-Export Before Deletion**: Before deleting a file system or its Blob Integration, ensure that all queued updates are synchronized. Verify that the **Last Successful Iteration Time** is recent and the **Files Failed** metric is zero to avoid data loss. Then, disable Auto-Export.
 
 ## Next step
 
