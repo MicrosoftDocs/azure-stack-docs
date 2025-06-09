@@ -2,282 +2,282 @@
   "redirections": [
     {
       "source_path": "azure-local/release-information.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/release-information",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/azure-benefits.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/azure-benefits",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/system-requirements.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/system-requirements",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/download-software.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/download-software",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/operating-system.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/operating-system",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/create-cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/create-cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/witness.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/witness",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/register-with-azure.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/register-with-azure",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/validate.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/validate",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/single-server.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/single-server",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/single-node-scale-out.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/single-node-scale-out",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/create-cluster-powershell.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/create-cluster-powershell",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/sdn-wizard.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/sdn-wizard",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/sdn-express.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/sdn-express",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/branch-office-edge.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/branch-office-edge",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/virtual-desktop-infrastructure.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/virtual-desktop-infrastructure",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/sql-server.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/sql-server",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/trusted-enterprise-virtualization.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/trusted-enterprise-virtualization",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/windows-server-azure-edition.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/windows-server-azure-edition",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/upgrade-vm-windows-server-azure-edition.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/upgrade-vm-windows-server-azure-edition",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/create-stretched-volumes.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/create-stretched-volumes",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/thin-provisioning.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/thin-provisioning",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/thin-provisioning-conversion.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/thin-provisioning-conversion",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/monitor-hci-single.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-hci-single",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/monitor-hci-multi.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-hci-multi",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/monitor-cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/monitor-cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/diskspd-overview.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/diskspd-overview",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/configure-proxy-settings.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/configure-proxy-settings",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/manage-cluster-registration.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/manage-cluster-registration",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/cluster-powershell.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/cluster-powershell",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/update-cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/update-cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/kernel-soft-reboot.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/kernel-soft-reboot",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/add-cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/add-cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/convert-to-stretched-cluster.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/convert-to-stretched-cluster",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/maintain-servers.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/maintain-servers",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/languages.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/languages",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/change-privacy-settings.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/change-privacy-settings",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/hybrid-capabilities-with-azure-services.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/hybrid-capabilities-with-azure-services",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/register-windows-admin-center.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/register-windows-admin-center",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/azure-portal.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/azure-portal",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/manage-default-network-access-policies-virtual-machines.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/manage-default-network-access-policies-virtual-machines",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/deploy/troubleshoot-hci-registration.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/deploy/troubleshoot-hci-registration",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/validate-qos.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/validate-qos",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/troubleshoot-credssp.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/troubleshoot-credssp",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/manage/collect-diagnostic-data.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/manage/collect-diagnostic-data",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/single-server-clusters.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/single-server-clusters",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/stretched-clusters.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/stretched-clusters",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/nested-virtualization.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/nested-virtualization",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/software-defined-networking.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/software-defined-networking",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/plan-software-defined-networking-infrastructure.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/plan-software-defined-networking-infrastructure",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/network-controller.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/network-controller",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/updates.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/updates",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/security.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/security",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/utility-applications.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/utility-applications",
       "redirect_document_id": false    
     },
     {
       "source_path": "azure-local/concepts/data-collection.md",
-      "redirect_url": "/azure/azure-local/overview?view=azloc-2504",
+      "redirect_url": "/previous-versions/azure/azure-local/concepts/data-collection",
       "redirect_document_id": false    
     },
     {
