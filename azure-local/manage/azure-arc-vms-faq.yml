@@ -90,7 +90,7 @@ sections:
         Deleting a gallery image removes the image name from VM details. It doesn't affect the VMs that you created by using the image.
 
     - question: | 
-         If I delete Azure Arc resource bridge, are the VMs also deleted?
+          If I delete Azure Arc resource bridge, are the VMs also deleted?
     - answer: |
         If you inadvertently remove Azure Arc resource bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises appliance VM. Importantly, this action doesn't affect your existing workloads.
       
