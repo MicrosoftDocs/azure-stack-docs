@@ -5,12 +5,12 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 05/15/2025
+ms.date: 06/09/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
 
-> Applies to: Azure Local 2506 running OS version 2XXXX.XXXX and later
+::: moniker range=">=azloc-2506"
 
 This article provides an overview of Software Defined Networking (SDN) enabled by Azure Arc on Azure Local. The overview includes SDN management methods, guidance on when to use each method, and supported as well as unsupported SDN scenarios.
 
@@ -22,11 +22,11 @@ SDN offers a centralized way to configure and manage networks and network servic
 
 SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools.
 
-**SDN enabled by Arc** is currently in Preview and available for Azure Local 2505 running OS version 2XXXX.XXXX and later.
+**SDN enabled by Arc** is currently in Preview and available for Azure Local 2506 running OS version 26100.xxxx and later.
 
 In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing the management of both existing and new logical networks.
 
-With SDN enabled by Arc, you can create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
+With SDN enabled by Azure Arc, you can create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
 An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. This method uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
@@ -38,8 +38,7 @@ Here's a comparative summary of the SDN managed by Arc and via on-premises tools
 | SDN management | Supported SDN resources  | Supported VMs  | Management tools  |
 |---------|---------|---------|---------|
 | SDN enabled by Arc   | Logical networks<br><br>VM NICs<br><br>NSGs        | Azure Local VMs        | Azure portal <br><br> Azure CLI <br><br> ARM templates         |
-| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>SCVMM VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br><br>SCVMM       |
-
+| SDN managed by on-premises tools     |Logical networks<br><br>VM NICs<br><br>NSGs<br><br>Virtual networks<br><br>SLBs<br><br>VPN Gateways        | Hyper-V VMs<br><br>System Center Virtual Machine Manager (SCVMM) VMs         | SDN Express scripts<br><br>Windows Admin Center<br><br>PowerShell<br><br>SCVMM       |
 
 
 ## Unsupported scenarios for SDN enabled by Arc
@@ -54,13 +53,6 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 |DHCP-based networks     | DHCP-based logical networks and network interfaces aren't supported.         |
 |AKS workloads     | AKS workloads aren't supported.      |
 |Disaster recovery     | Disaster recovery support isn't available.      |
-
-<!-- The following functionality does not exist
-- Can't add and delete IP pools or expand IP pool range configuration on the logical network.
-- Can't update DNS servers, VLANs for the logical network.
-- Can't update IP configuration, MAC address for the VM NICs.
-- Can't apply NSGs on logical networks with AKS clusters.
--->
 
 
 ## Supported networking patterns for SDN enabled by Arc
@@ -126,3 +118,11 @@ For related information, see also:
 
 - [Enable SDN via action plan](../deploy/enable-sdn-ece-action-plan.md)
 - [Deploy SDN infrastructure using SDN Express PowerShell scripts](../deploy/sdn-express-23h2.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506 or later.
+
+::: moniker-end
