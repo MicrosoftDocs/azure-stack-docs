@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
-ms.date: 10/22/2024
+ms.date: 06/09/2025
 ---
 
 # Azure Arc extension management on Azure Local
@@ -388,6 +388,9 @@ New-AzStackHciExtension `
 The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all nodes in the cluster to that version.
 
 On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
+
+> [!NOTE]
+> Updating Azure Arc extensions out of band from the **Azure Local Machine** page from the Azure portal will result in issues during deployment.
 
 Use the manual workflow in these scenarios:
 
