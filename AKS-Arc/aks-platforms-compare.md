@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Compare Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
 author: sethmanheim
 ms.topic: concept-article
-ms.date: 06/05/2025
+ms.date: 06/09/2025
 ms.author: sethm
 ms.reviewer: rmody
 ---
@@ -23,9 +23,8 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 ## General comparison of AKS across platforms
 
-| Platform | Azure | Azure Local | Edge Essentials (Windows IoT client/server) | Windows Server |
+| Platform | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server Edge/On-premises |
 | --- | --- | --- | --- | --- |
-|Location | Cloud | Edge/On-premises | Edge/On-premises | Edge/On-premises |
 | Supported infrastructure for K8s cluster | Azure cloud | Azure Local, version 23H2 or later | Windows 10/11 IoT Enterprise<br>Windows 10/11 Enterprise<br>Windows 10/11 Pro<br>Windows Server 2019/2022 | Windows Server 2019<br>Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
 | K8s cluster lifecycle management tools (create, scale, upgrade and delete clusters) | Az CLI<br>Az PowerShell<br>Azure Portal<br>ARM templates<br>Bicep<br>Bicep Kubernetes Provider<br>Azure Developer CLI | Azure Portal<br>Azure CLI<br>ARM templates<br>Bicep templates | PowerShell | PowerShell<br>Windows Admin Center |
