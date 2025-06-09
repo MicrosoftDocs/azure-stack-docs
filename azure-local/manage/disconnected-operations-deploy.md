@@ -19,22 +19,22 @@ This article provides you with steps to deploy Azure Local with disconnected ope
 
 When deploying Azure Local with disconnected operations, consider the following key points:
 
-- Ensure that your network configuration and the names entered in the portal are consistent with your setup and the switches created earlier.
-- Virtual deployments aren't supported. You must use physical machines for support.
+- Ensure that your network configuration and the names entered in the portal are consistent with your setup and the previously created switches.
+- Virtual deployments aren't supported. Physical machines are required.
 - A minimum of three machines is required to support disconnected operations. Up to 8 machines are supported.
 - The deployment of the Azure Local cluster may take several hours.
 - The local control plane may experience periods of downtime during node reboots and updates.
-- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. It's important not to tamper with or delete the infrastructure volumes created by the deployment process.
+- During the creation of the cluster, a thinly provisioned 2-TB infrastructure volume is created for disconnected operations. Do not tamper with or delete the infrastructure volumes created during the deployment process.
 - Upon the creation of the Azure Local cluster, the disconnected operations VM appliance is moved to cluster storage and converted to a clustered VM.
 
 ## Prerequisites
 
 |Requirements                | Details      |
 |----------------------------|--------------|
-| Hardware                   | [Plan and understand hardware](disconnected-operations-overview.md#preview-participation-criteria) |
-| Identity                   | [Plan and understand identity](disconnected-operations-identity.md) |
-| Networking                 | [Plan and understand networking](disconnected-operations-network.md) |
-| Public key infrastructure  | [Plan and understand public key infrastructure (PKI)](disconnected-operations-pki.md) |
+| Hardware                   | [Plan and understand the hardware](disconnected-operations-overview.md#preview-participation-criteria) |
+| Identity                   | [Plan and understand the identity](disconnected-operations-identity.md) |
+| Networking                 | [Plan and understand the networking](disconnected-operations-network.md) |
+| Public key infrastructure  | [Plan and understand the public key infrastructure (PKI)](disconnected-operations-pki.md) |
 | Set up                     | [Set up disconnected operations for Azure Local](disconnected-operations-set-up.md) |
 
 For more information, see [Azure Local disconnected operations overview](disconnected-operations-overview.md).
