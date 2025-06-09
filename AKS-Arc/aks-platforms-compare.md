@@ -23,7 +23,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 ## General comparison of AKS across platforms
 
-| Platform | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server Edge/On-premises |
+| Platform | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Supported infrastructure for K8s cluster | Azure cloud | Azure Local, version 23H2 or later | Windows 10/11 IoT Enterprise<br>Windows 10/11 Enterprise<br>Windows 10/11 Pro<br>Windows Server 2019/2022 | Windows Server 2019<br>Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
