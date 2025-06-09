@@ -1,6 +1,6 @@
 ---
-title: Create Azure Local VM from Azure Compute gallery images via Azure CLI
-description: Learn how to create Azure Local VM images using Azure Compute gallery images.
+title: Create Azure Local VM from Azure Compute Gallery images via Azure CLI
+description: Learn how to create Azure Local VM images using Azure Compute Gallery images.
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
@@ -14,16 +14,14 @@ ms.date: 05/21/2025
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the following steps and then use these VM images to create Azure Local VMs.
+This article describes how to create Azure Local VMs enabled by Azure Arc using source images from the Azure Compute Gallery. You can create VM images on Azure CLI using the instructions in this article and then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
-
-- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
+- Make sure to review and [complete the Azure Local VM prerequisites](./azure-arc-vm-management-prerequisites.md).
 - Make sure that your image is using a [supported operating system](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
 - For custom images in Azure Compute Gallery, ensure you meet the following extra prerequisites:
-    - You should have a VHD loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
+    - You should have a Virtual Hard Disk (VHD) loaded in your Azure Compute Gallery. See how to [Create an image definition and image version](/azure/virtual-machines/image-version).
     - If using a VHDX:
         - The VHDX image must be Gen 2 type and secure boot enabled.
         - The VHDX image must be prepared using `sysprep /generalize /shutdown /oobe`. For more information, see [Sysprep command-line options](/windows-hardware/manufacture/desktop/sysprep-command-line-options).
@@ -115,7 +113,7 @@ To create an Azure Local VM image:
         "type": "CustomLocation" 
       }, 
       "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryImages/mylocal-image", 
-      "location": "eastus2euap", 
+      "location": "eastus", 
       "name": "mylocal-image", 
       "properties": { 
         "cloudInitDataSource": null, 
