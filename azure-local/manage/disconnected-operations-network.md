@@ -30,7 +30,7 @@ Here's a checklist to help you plan your network for disconnected operations on 
 - Review [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 - Verify [System requirements for Azure Local](../concepts/system-requirements.md).
 - Develop the Azure Local network plan (Disconnected operations and Azure Local):
-  - Create the [Host network plan (intents and switches)](../plan/cloud-deployment-network-considerations).
+  - Create the [Host network plan (intents and switches)](../plan/cloud-deployment-network-considerations.md).
   - Reserve the management IP address pool.
 - Configure the network for disconnected operations (ingress and management network):
   - Assign an ingress IP within the management IP address pool subnet, ensuring it doesn't overlap with the range provided during deployment.  
