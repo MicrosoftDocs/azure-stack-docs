@@ -404,8 +404,10 @@ To manually upgrade an extension, follow these steps:
 
 3. Choose the latest version and select **Save**.
 
-> [!NOTE]
-> Updating Azure Arc extensions out-of-band from the Azure Local Machine page via the Azure portal may result in issues during deployment. The extensions that shouldn't be updated out-of-band are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows` as shown in the figure.
+
+#### Extensions not supported for out-of-band upgrade
+
+Updating Azure Arc extensions out-of-band from the Azure Local Machine page via the Azure portal may result in issues during deployment. The extensions that shouldn't be updated out-of-band are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows` as shown in the figure.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-installation.png" alt-text="Screenshot of extensions that shouldn't be manually updated." lightbox="media/arc-extension-management/arc-extension-installation.png":::
 
