@@ -1,13 +1,13 @@
 ---
 title: Use auto-scaling in a Kubernetes cluster
-description: Learn how to use Az CLI for cluster autoscaling.
+description: Learn how to use Azure CLI for cluster autoscaling.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/02/2025
+ms.date: 06/09/2025
 ms.reviewer: abha
-ms.lastreviewed: 05/02/2025
+ms.lastreviewed: 06/09/2025
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
@@ -146,6 +146,18 @@ az aksarc update \
   --name my-aks-arc-cluster \
   --cluster-autoscaler-profile ""
 ```
+
+## Make effective use of autoscaler
+
+Now that the cluster and node pool are configured to automatically scale, you can optionally configure a workload to also scale in a way that makes use of the horizontal autoscaler capabilities.
+
+> [!NOTE]
+> The following guidance is not officially supported by Microsoft. It's shared as a best-effort recommendation based on open-source practices.
+
+There are two methods available for workload scaling:
+
+- **Kubernetes Horizontal Pod Autoscaler**: Based on load characteristics, the Horizontal Pod Autoscaler (also known as the *horizontal autoscaler*) scales the pods of an application deployment to available nodes in the Kubernetes cluster. If no more nodes are available to be scheduled, the horizontal autoscaler instantiates a new node to which to schedule the pods. If the application load subsides, the nodes are scaled back again. For the Horizontal Pod Autoscaler to work, you must manually deploy the Metrics Server component in your AKS cluster. For more information about horizontal pod autoscaler rules, see [Kubernetes horizontal pod autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+- **Kubernetes node anti-affinity rules**: Anti-affinity rules for a Kubernetes deployment can specify that a set of pods can't be scaled on the same node, and a different node is required to scale the workload. In combination with either load characteristics or the number of target pods for the application instances, the horizontal autoscaler instantiates new nodes in the node pool to satisfy requests. If application demand subsides, the horizontal autoscaler scales down the node pool again. For more information about Kubernetes pod affinity rules, see [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node).
 
 ## Next steps
 

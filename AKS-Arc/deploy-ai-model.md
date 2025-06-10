@@ -4,9 +4,9 @@ description: Learn how to deploy an AI model on AKS enabled by Azure Arc with th
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/20/2025
+ms.date: 05/27/2025
 ms.reviewer: haojiehang
-ms.lastreviewed: 05/20/2025
+ms.lastreviewed: 05/27/2025
 
 ---
 
@@ -167,12 +167,7 @@ kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POS
 
 ```powershell
 $CLUSTERIP = $(kubectl get svc workspace-llm -o jsonpath="{.spec.clusterIPs[0]}" )
-$jsonContent = '{
-    "model": "phi-3.5-mini-instruct",
-    "prompt": "What is kubernetes?",
-    "max_tokens": 20,
-    "temperature": 0
-  }'
+$jsonContent = '{"model":"phi-3.5-mini-instruct","prompt":"What is kubernetes","max_tokens":200,"temperature":0}' | ConvertTo-Json
 
 kubectl run -it --rm --restart=Never curl --image=curlimages/curl -- curl -X POST http://$CLUSTERIP/v1/completions -H "accept: application/json" -H "Content-Type: application/json" -d $jsonContent
 ```
@@ -209,4 +204,5 @@ The following table shows the supported GPU models and their corresponding VM SK
 
 ## Next steps
 
-In this article, you learned how to deploy an AI model on AKS enabled by Azure Arc with the Kubernetes AI toolchain operator (KAITO). For more information about the KAITO project, see the [KAITO GitHub repo](https://github.com/kaito-project/kaito).
+* [Monitor the inference metrics](/azure/aks/ai-toolchain-operator-monitoring) in Managed Prometheus and Managed Grafana
+* For more information about KAITO, see [KAITO GitHub Repo](https://github.com/kaito-project/kaito)
