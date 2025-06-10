@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
-ms.date: 06/09/2025
+ms.date: 06/10/2025
 ---
 
 # Azure Arc extension management on Azure Local
@@ -387,10 +387,7 @@ New-AzStackHciExtension `
 
 The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all nodes in the cluster to that version.
 
-On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
-
-> [!NOTE]
-> Updating Azure Arc extensions out of band from the **Azure Local Machine** page from the Azure portal will result in issues during deployment.
+On some servers, if the extension upgrade fails, the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
 
 Use the manual workflow in these scenarios:
 
@@ -406,6 +403,11 @@ To manually upgrade an extension, follow these steps:
     :::image type="content" source="media/arc-extension-management/arc-extension-manual-upgrade.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-manual-upgrade.png":::
 
 3. Choose the latest version and select **Save**.
+
+> [!NOTE]
+> Updating Azure Arc extensions out-of-band from the Azure Local Machine page via the Azure portal may result in issues during deployment. The extensions that shouldn't be updated out-of-band are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows` as shown in the figure.
+
+:::image type="content" source="media/arc-extension-management/arc-extension-installation.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-installation.png":::
 
 ### Disable automatic extension upgrade
 
