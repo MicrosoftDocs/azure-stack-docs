@@ -3,7 +3,7 @@ title:  Security updates for Azure Local, version 23H2
 description: Security updates for Azure Local, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/30/2025
+ms.date: 06/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -361,7 +361,7 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="azloc-24111"
+::: moniker range="azloc-previous"
 
 ## December OS security update (KB5048653) for Azure Local
 
@@ -388,10 +388,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5048653](https://go.microsoft.com/fwlink/?linkid=2299751).
-
-::: moniker-end
-
-::: moniker range="azloc-2411"
 
 ## November OS security update (KB) for Azure Local
 
@@ -428,10 +424,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5046618](https://go.microsoft.com/fwlink/?linkid=2296832).
-
-::: moniker-end
-
-::: moniker range="azloc-previous"
 
 ## October OS security update (KB 5044288) for Azure Local
 
@@ -507,10 +499,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5043055](https://go.microsoft.com/fwlink/?linkid=2278952).
 
-::: moniker-end
-
-::: moniker range="azloc-previous"
-
 ## August 2024 OS security update (KB 5041573) for Azure Local
 
 <!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
@@ -560,10 +548,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local instanc
 ### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5041573](https://go.microsoft.com/fwlink/?linkid=2282056).
-
-::: moniker-end
-
-::: moniker range="azloc-previous"
 
 ## July 2024 OS security update (KB 5040438) for Azure Local
 
