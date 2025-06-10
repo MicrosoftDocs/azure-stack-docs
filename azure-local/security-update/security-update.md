@@ -389,10 +389,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5048653](https://go.microsoft.com/fwlink/?linkid=2299751).
 
-::: moniker-end
-
-::: moniker range="azloc-2411"
-
 ## November OS security update (KB) for Azure Local
 
 <!-- [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)] -->
