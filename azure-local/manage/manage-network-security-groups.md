@@ -4,7 +4,7 @@ description: Learn how to manage network security groups and network security ru
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/04/2025
+ms.date: 06/09/2025
 ms.service: azure-local
 ---
 
@@ -460,7 +460,204 @@ In this example,  we associate a static logical network with an existing network
     } 
     ```
 
-</details>
+    </details>
+
+## Dissociate network security group from logical network
+
+You can dissociate a network security group from a logical network. This dissociation allows you to remove the network security rules applied to the logical network.
+
+Follow these steps to dissociate a network security group from logical network:
+1. Set the following parameters in your Azure CLI session. Make sure to pass the NSG name as an empty string encased in double quotes followed by single quotes ('""').
+
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = '""'
+    $lnetname="static-lnet3" 
+    ```
+2. To dissociate a network security group from a logical network, run the following command:
+
+    ```azurecli
+    az stack-hci-vm network lnet update -g $resource_group --name $lnetname --network-security-group '""'
+    ```
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+    
+    ```output
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft.extendedlocation/customlocations/s46r2004-cl-custo
+    mlocation",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/microsoft.azurestackhci/logicalnetworks/static-lnet2",
+      "location": "eastus",
+      "name": "static-lnet2",
+      "properties": {
+        "dhcpOptions": {
+          "dnsServers": [
+            "100.71.84.238"
+          ]
+        },
+        "provisioningState": "Succeeded",
+        "status": {
+          "errorCode": "",
+          "errorMessage": "",
+          "provisioningStatus": {
+            "operationId": "<Operation ID>",
+            "status": "Succeeded"
+          }
+        },
+        "subnets": [
+          {
+            "name": "static-lnet2",
+            "properties": {
+              "addressPrefix": "100.69.174.0/24",
+              "addressPrefixes": null,
+              "ipAllocationMethod": "Static",
+              "ipConfigurationReferences": [
+                {
+                  "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-0
+    1",
+                  "resourceGroup": "<Resource Group Name>"
+                }
+              ],
+              "ipPools": [
+                {
+                  "end": "100.69.174.126",
+                  "info": {
+                    "available": "30",
+                    "used": "1"
+                  },
+                  "ipPoolType": null,
+                  "name": null,
+                  "start": "100.69.174.96"
+                }
+              ],
+              "networkSecurityGroup": {
+                "id": null
+              },
+              "routeTable": {
+                "etag": null,
+                "name": null,
+                "properties": {
+                  "routes": [
+                    {
+                      "name": null,
+                      "properties": {
+                        "addressPrefix": "0.0.0.0/0",
+                        "nextHopIpAddress": "100.69.174.1"
+                      }
+                    }
+                  ]
+                },
+                "type": null
+              },
+              "vlan": 301
+            }
+          }
+        ],
+        "vmSwitchName": "ConvergedSwitch(managementcompute)"
+      },
+      "resourceGroup": "<Resource Group Name>",
+      "systemData": {
+        "createdAt": "2025-06-08T16:46:38.085581+00:00",
+        "createdBy": "gus@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2025-06-09T13:45:08.531262+00:00",
+        "lastModifiedBy": "<User ID>",
+        "lastModifiedByType": "Application"
+      },
+      "tags": {},
+      "type": "microsoft.azurestackhci/logicalnetworks"
+    }
+    ``` 
+    </details>
+
+## Dissociate network security group from network interface
+
+You can dissociate a network security group from a network interface. This dissociation allows you to remove the network security rules applied to the network interface.
+
+Follow these steps to dissociate a network security group from a network interface card:
+
+1. Set the following parameters in your Azure CLI session.
+
+    ```azurecli
+    $resource_group = "examplerg"
+    $location = "eastus"
+    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $nsgname = '""'
+    $nicname ="examplenic" 
+    ```
+
+2. To dissociate a network security group from a network interface, run the following command:
+
+    ```azurecli
+    az stack-hci-vm network nic update -g $resource_group --name $nicname --network-security-group '""'
+    ```
+
+  <details>
+  <summary>Expand this section to see an example output.</summary>
+  
+  ```output
+  {
+    "extendedLocation": {
+      "name": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.ExtendedLocation/customLocations/s46r2004-cl-custo
+  mlocation",
+      "type": "CustomLocation"
+    },
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-01",
+    "location": "eastus",
+    "name": "sdnbbnic-01",
+    "properties": {
+      "createFromLocal": null,
+      "dnsSettings": null,
+      "ipConfigurations": [
+        {
+          "name": null,
+          "properties": {
+            "gateway": "100.69.174.1",
+            "prefixLength": "24",
+            "privateIpAddress": "100.69.174.96",
+            "subnet": {
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/microsoft.azurestackhci/logicalNetworks/static-lnet2",
+              "resourceGroup": "<Resource Group Name>"
+            }
+          }
+        }
+      ],
+      "macAddress": "<Mac Address>",
+      "networkSecurityGroup": {
+        "id": null
+      },
+      "provisioningState": "Succeeded",
+      "status": {
+        "errorCode": null,
+        "errorMessage": null,
+        "provisioningStatus": {
+          "operationId": "<Operation ID>",
+          "status": "Succeeded"
+        }
+      }
+    },
+    "resourceGroup": "<Resource Group Name>",
+    "systemData": {
+      "createdAt": "2025-06-08T17:01:05.701432+00:00",
+      "createdBy": "gus@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2025-06-09T13:38:33.989674+00:00",
+      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+      "lastModifiedByType": "Application"
+    },
+    "tags": null,
+    "type": "microsoft.azurestackhci/networkinterfaces"
+  }  
+
+  ``` 
+  </details>
+
 
 ## Manage network security rules
 
