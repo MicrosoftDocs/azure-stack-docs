@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Compare Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
 author: sethmanheim
 ms.topic: concept-article
-ms.date: 06/09/2025
+ms.date: 06/10/2025
 ms.author: sethm
 ms.reviewer: rmody
 ---
@@ -54,16 +54,16 @@ This article explores how AKS extends across multiple platforms and highlights t
 | Linux OS offerings            | Ubuntu 18.04<br>Azure Linux | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) |
 | Container runtime             | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes |
 | Node pool auto-scaler         | Manual<br>Auto-scalar<br>Horizontal pod scalar | Manual<br>Auto-scalar | Manual | Manual<br>Auto-scalar<br>Horizontal pod scalar |
-| Azure container registry      | Yes             | Yes                       | Yes                                             | Yes                  |
-| Azure Container Instance      | Yes             | Yes                       |                                                 |                      |
-| Start/stop a Kubernetes cluster | Yes           | Yes                       |                                                 |                      |
-| Virtual nodes                 | Yes             | Yes                       |                                                 |                      |
-| Private cluster               | Yes             | No                        |                                                 |                      |
-| Node pool snapshot            | Yes             | No                        |                                                 |                      |
-| Custom node configuration     | Yes             | Yes                       |                                                 |                      |
-| SSH to nodes                  | Yes             | Yes                       |                                                 |                      |
-| Availability zones            | Yes             | No                        |                                                 |                      |
-| Proximity placement groups    | Yes             | No                        |                                                 |                      |
+|     Azure container registry    |     Yes    |     Yes    |     Yes    |     Yes    |
+|     Azure Container Instance     |     Yes    |     Yes    |     No    |     No    |
+|     Start/stop a Kubernetes cluster    |     Yes     |     Yes    |     Yes    |     Yes    |
+|     Virtual nodes     |     Yes    |     Yes    |     Yes    |     Yes    |
+|     Private cluster    |     Yes    |     No    |     No    |     No    |
+|     Node pool snapshot     |     Yes    |     No    |     No    |     No    |
+|     Custom node configuration at deployment    |     Yes    |     Yes    |     Yes    |     Yes    |
+|     SSH to nodes    |     Yes    |     Yes    |     Yes    |     Yes    |
+|     Availability zones    |     Yes    |     No    |     No    |     No    |
+|     Proximity placement groups    |     Yes    |     No    |     No    |     No    |
 
 ## Networking capabilities
 
@@ -76,7 +76,6 @@ This article explores how AKS extends across multiple platforms and highlights t
 | Supported CNIs                | Azure CNI<br>Calico<br>Azure CNI Overlay (Cillium)<br>Bring your own CNI | Calico                     | Calico (K8s)<br>Flannel (K3s)                   | Calico               |
 | Service Mesh                  | Istio addon      | Open Service Mesh, via Arc extensions. | Open Service Mesh, via Arc extensions.           | Open Service Mesh, via Arc extensions. |
 | Load Balancer                 | Azure load balancer – Basic SKU or Standard SKU<br>Internal load balancer<br>Bring Your Own Load Balancer (BYOLB) | Bring your own load balancer (BYOLB)<br>MetalLB Arc Extension | KubeVIP<br>Bring your own load balancer (BYOLB) | HAProxy<br>SDN load balancer<br>Bring your own load balancer (BYOLB) |
-| Customize CoreDNS             | Yes              |                            |                                                 |                      |
 
 ## Storage features
 
