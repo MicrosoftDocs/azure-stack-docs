@@ -25,7 +25,7 @@ This article explores how AKS extends across multiple platforms and highlights t
 
 | Platform | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
-| Supported infrastructure for Kubernetes cluster | Azure cloud | Azure Local, version 23H2 or later | Windows 10/11 IoT Enterprise<br>Windows 10/11 Enterprise<br>Windows 10/11 Pro<br>Windows Server 2019/2022 | Windows Server 2019<br>Windows Server 2022 |
+| Supported infrastructure for Kubernetes cluster | Azure cloud | Azure Local, version 23H2 or later | - Windows 10/11 IoT Enterprise<br>- Windows 10/11 Enterprise<br>- Windows 10/11 Pro<br>- Windows Server 2019/2022 | - Windows Server 2019<br>- Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
 | Kubernetes cluster lifecycle management tools (create, scale, upgrade, and delete clusters) | - Azure CLI<br>- Azure PowerShell<br>- Azure portal<br>- Azure Resource Manager (ARM) templates<br>- Bicep<br>- Bicep Kubernetes Provider<br>- Azure Developer CLI | - Azure portal<br>- Azure CLI<br>- ARM templates<br>- Bicep templates | PowerShell | - PowerShell<br>- Windows Admin Center |
 | Kubernetes cluster management plane | AKS is a managed Kubernetes offering. The AKS control plane is hosted and managed by Microsoft. AKS worker nodes are created in customer subscriptions. | Kubernetes clusters are managed through Arc Resource Bridge which is automatically created when Azure local gets deployed. | Kubernetes clusters are self-managed, to preserve resources. | Kubernetes clusters are managed using a *management cluster* that's installed using PowerShell before you can create Kubernetes workload clusters. |
