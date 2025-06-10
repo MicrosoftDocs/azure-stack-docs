@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/27/2025
+ms.date: 06/09/2025
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
