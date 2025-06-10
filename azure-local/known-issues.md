@@ -374,7 +374,7 @@ The following table lists the known issues from previous releases:
 
 ::: moniker-end
 
-::: moniker range="=azloc-24111"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2411.1
 
@@ -432,10 +432,6 @@ The following table lists the known issues from previous releases:
 | Update <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
 
-::: moniker-end
-
-::: moniker range="=azloc-2411"
-
 ## Known issues for version 2411
 
 This software release maps to software version number **2411.0.24**.
@@ -488,10 +484,6 @@ The following table lists the known issues from previous releases:
 | Update <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you've changed the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
 
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2408.2
 
