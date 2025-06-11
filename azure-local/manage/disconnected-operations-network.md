@@ -30,7 +30,7 @@ Here's a checklist to help you plan your network for disconnected operations on 
 - Review [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
 - Verify [System requirements for Azure Local](../concepts/system-requirements.md).
 - Develop the Azure Local network plan (Disconnected operations and Azure Local):
-  - Create the [Host network plan (intents and switches)](../concepts/host-network-requirements.md).
+  - Create the [Host network plan (intents and switches)](../plan/cloud-deployment-network-considerations.md).
   - Reserve the management IP address pool.
 - Configure the network for disconnected operations (ingress and management network):
   - Assign an ingress IP within the management IP address pool subnet, ensuring it doesn't overlap with the range provided during deployment.  
@@ -89,9 +89,36 @@ The ingress network has several endpoints that are based on the configured FQDN.
 > [!NOTE]
 > The wildcard endpoints serve as backing services where your users dynamically create services such as Azure Key Vault or Azure Container Registry. Your infrastructure needs to resolve a wildcard for these specific endpoints.
 
-If you plan to connect the appliance to Azure, make sure your DNS infrastructure resolves the necessary Microsoft endpoints. Allow DNS requests from the disconnected operations appliance and ensure there's a network path from disconnected operations to the ingress network to reach the external endpoints.
+If you plan to connect the appliance to Azure, make sure your DNS infrastructure resolves the necessary Microsoft endpoints. Allow DNS requests from the disconnected operations appliance and ensure there's a network path from disconnected operations to the ingress network to reach the external endpoints. 
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
+
+#### Configure your DNS server (if you are running Windows Server DNS role):
+
+Here is an example:
+
+```powershell  
+$externalFqdn = 'autonomous.cloud.private'
+$IngressIPAddress = '192.168.200.115'
+
+Add-DnsServerPrimaryZone -Name $ExternalFqdn -ReplicationScope Domain
+
+Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName $ExternalFqdn 
+```
+#### Verify your DNS setup
+
+Here is an example:
+
+```console  
+nslookup portal.autonomous.cloud.private
+```
+
+Here's a sample output:
+
+```console  
+Name:    portal.autonomous.cloud.private
+Address:  192.168.200.115
+```
 
 ## Run appliance with limited connectivity  
 
