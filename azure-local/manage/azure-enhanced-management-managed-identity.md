@@ -74,7 +74,7 @@ For systems running version 22H2, to enable Azure management and managed identit
         ```
 
 1. Skip this step and go to the next step if your system is already registered. If your system hasn't been previously registered to Azure, [register your system with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
-1. If the system is already registered to Azure, rerun the registration. Use of `RepairRegistration` parameter helps configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group, and other settings.
+1. If the system is already registered to Azure, rerun the registration. Use of the `RepairRegistration` parameter helps configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group, and other settings.
 
     ```powershell
     Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -RepairRegistration
