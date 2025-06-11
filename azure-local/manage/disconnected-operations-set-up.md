@@ -11,8 +11,6 @@ ms.date: 04/22/2025
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
 This article describes how to set up disconnected operations for Azure Local. It explains how to create a virtual appliance resource in the Azure portal, download the necessary installation files, and get support from Microsoft.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

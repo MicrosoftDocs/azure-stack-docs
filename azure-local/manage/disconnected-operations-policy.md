@@ -11,8 +11,6 @@ ms.date: 04/22/2025
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
 This article describes how to use Azure Policy in a disconnected Azure Local environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

@@ -12,8 +12,6 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This article explains how to connect with support and provide logs for troubleshooting issues when Azure Local operates in disconnected mode.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

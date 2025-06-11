@@ -11,8 +11,6 @@ ms.date: 04/22/2025
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This article helps you understand the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

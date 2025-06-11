@@ -12,8 +12,6 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local operates in disconnected mode.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
@@ -24,7 +22,7 @@ Use appliance fallback logging to collect and send logs to Microsoft when the Az
 
 ## Prerequisites
 
-- [Import the Appliance logging](#import-the-appliance-logging).
+- [Import the Appliance logging](#import-appliance-logging).
 
 ## Import Appliance logging
 

@@ -12,8 +12,6 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
 This article explains how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

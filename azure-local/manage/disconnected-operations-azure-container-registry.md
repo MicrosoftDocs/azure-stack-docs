@@ -12,8 +12,6 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This article explains how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

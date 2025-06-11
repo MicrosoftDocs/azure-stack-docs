@@ -11,8 +11,6 @@ ms.date: 04/22/2025
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This document describes your local public key infrastructure (PKI) requirements and shows you how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]

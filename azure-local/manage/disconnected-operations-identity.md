@@ -12,8 +12,6 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
 This article explains how to plan and set up your existing identity with disconnected operations on Azure Local. It describes how to set up your identity solution to work with disconnected operations and explains the actions and roles available to operators.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
