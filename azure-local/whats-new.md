@@ -123,11 +123,10 @@ This release has the following features and improvements:
 
     The following preview features aren't supported for Azure Local in Azure Government cloud:
 
-    - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
-    - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
-    - [Azure Site Recovery](./manage/azure-site-recovery.md).
-    - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
-<!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
+  - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
+  - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+  - [Azure Site Recovery](./manage/azure-site-recovery.md).
+  - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
