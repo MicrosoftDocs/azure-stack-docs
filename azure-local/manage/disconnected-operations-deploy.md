@@ -5,6 +5,7 @@ ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.date: 06/12/2025
+ai-usage: ai-assisted
 ---
 
 # Deploy disconnected operations for Azure Local (preview)
@@ -14,6 +15,8 @@ ms.date: 06/12/2025
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
 This article provides you with steps to deploy Azure Local with disconnected operations in your datacenter. You can determine the Azure Local topology, prepare the first machine for the disconnected operations appliance, install the appliance, and create the Azure Local instance.
+
+[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Key considerations
 

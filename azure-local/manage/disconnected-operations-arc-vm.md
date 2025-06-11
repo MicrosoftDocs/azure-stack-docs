@@ -5,6 +5,7 @@ ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 06/12/2025
+ai-usage: ai-assisted
 ---
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)

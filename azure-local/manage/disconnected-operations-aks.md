@@ -5,6 +5,7 @@ ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.date: 06/12/2025
+ai-usage: ai-assisted
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview)

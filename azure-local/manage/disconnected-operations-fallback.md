@@ -5,6 +5,7 @@ ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.date: 06/12/2025
+ai-usage: ai-assisted
 ---
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)

@@ -5,6 +5,7 @@ ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.date: 06/12/2025
+ai-usage: ai-assisted
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)

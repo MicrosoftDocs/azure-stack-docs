@@ -13,13 +13,9 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
-
 This article explains how to monitor infrastructure and workloads running on Azure Local with disconnected operations by integrating with external monitoring solutions. You can use Microsoft, non-Microsoft, and open-source monitoring systems for specific resource types.
 
 For more information on disconnected operations, see [Disconnected operations for Azure Local (preview)](./disconnected-operations-overview.md).
-
-[!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Why monitor disconnected operations?
 
