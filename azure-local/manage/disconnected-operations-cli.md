@@ -4,7 +4,7 @@ description: Learn how to use the Azure Command-Line Interface (CLI) for Azure L
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/12/2025
 ---
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
@@ -13,13 +13,13 @@ ms.date: 04/22/2025
 
 [!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
-This article covers how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
+This article explains how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About CLI
 
-**CLI** is a versatile, cross-platform command line interface that allows you to create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
+**CLI** is a versatile, cross-platform command line interface that lets you create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
 
 ## Supported versions for CLI and extension
 
@@ -42,7 +42,7 @@ To install the CLI, follow these steps:
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
-For disconnected operations, you must:
+For disconnected operations, do the following:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
@@ -110,9 +110,9 @@ For disconnected operations, you must:
     UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
-## Configure Azure CLI  
+## Set up Azure CLI  
 
-To configure the Azure CLI to run disconnected operations on Azure Local, follow these steps:
+To set up Azure CLI for disconnected operations on Azure Local, follow these steps:
 
 1. Run the `Get-ApplianceAzCliCloudConfig` function to generate the JSON file that contains the required cloud endpoints.
 
@@ -174,7 +174,7 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-    Now, use this helper method to get the endpoints and create a cloudConfig file for CLI:
+    Use this helper method to get the endpoints and create a cloudConfig file for CLI:
 
     ```azurecli
     az config set core.enable_broker_on_windows=false
@@ -205,7 +205,7 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
     }
     ```
 
-3. Register the cloud configuration with the CLI using the cloudConfig.json file.
+3. Register the cloud configuration with CLI using the cloudConfig.json file.
     ```azurecli
     az cloud register -n 'azure.local' --cloud-config '@cloudconfig.json'
     az cloud set -n azure.local
@@ -213,7 +213,7 @@ To configure the Azure CLI to run disconnected operations on Azure Local, follow
 
 ## Extensions for CLI
 
-CLI extensions are Python wheels that aren't shipped with the CLI but run as CLI commands. With extensions, you can access experimental and prerelease commands and write your own CLI interfaces. The first time you use an extension, you should receive a prompt to install it.
+CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
 
 To get a list of available extensions, run this command:
 
@@ -221,15 +221,15 @@ To get a list of available extensions, run this command:
 az extension list-available --output table  
 ```  
 
-For more information, see [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
+Learn more in [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview).
 
-To install specific versions of extensions, run this command:
+To install a specific version of an extension, run this command:
 
 ```azurecli
 az extension add --name anextension --version 1.0.0
 ```
 
-The following table lists the CLI extensions supported on Azure Local disconnected operations, along with the maximum extension version supported and installation information.
+The following table lists the CLI extensions supported on Azure Local disconnected operations, the maximum extension version supported, and installation information.
 
 | Disconnected operations services | Extensions | Maximum extension version supported | Installation information |  
 |----------------------------------|------------|------------------------------------|--------------------------|  
@@ -249,3 +249,4 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 This feature is available only in Azure Local 2411.2.
 
 ::: moniker-end
+

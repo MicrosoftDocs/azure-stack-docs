@@ -3,7 +3,7 @@ title: Monitor Disconnected Operations for Azure Local (preview)
 description: Learn how to monitor Disconnected operations for Azure Local (preview).
 author: ronmiab
 ms.topic: concept-article
-ms.date: 05/22/2025
+ms.date: 06/12/2025
 ms.author: robess
 ms.reviewer: robess
 ai-usage: ai-assisted
@@ -23,9 +23,9 @@ For more information on disconnected operations, see [Disconnected operations fo
 
 ## Why monitor disconnected operations?
 
-Monitoring is essential for ensuring the reliability, performance, and security of IT systems that support modern business operations. By continuously collecting and analyzing telemetry data—such as CPU usage, disk usage and utilization, memory consumption, network traffic, and error rates organizations gain real-time visibility into the health of their environments, whether on-premises, in the cloud, or across hybrid deployments.
+Monitoring is essential to keep your IT systems reliable, fast, and secure. When you continuously collect and analyze telemetry data—such as CPU usage, disk usage and utilization, memory consumption, network traffic, and error rates-you gain real-time visibility into the health of their environments, whether it's on-premises, in the cloud, or in a hybrid setup.
 
-Monitored data can be stored on-premises or in the cloud, depending on the monitoring solution used. This flexibility allows you to choose the best approach for your organizations specific needs and requirements.
+You can store monitored data on-premises or in the cloud, depending on your monitoring solution. This flexibility lets you choose the best approach for your organization's needs.
 
 ## Benefits
 
@@ -42,7 +42,7 @@ For information on the views that provide insights, visualization, and analysis 
 
 ## What can be monitored?
 
-The following components of Azure Local with disconnected operations can be monitored using external solutions:
+You can monitor these components of Azure Local with disconnected operations using external solutions:
 
 - [Azure Local](#monitor-azure-local-infrastructure) (infrastructure)
 - The disconnected operations appliance (local Azure portal and Arc services).
@@ -59,29 +59,29 @@ The disconnected operations appliance provides the local Azure portal and Arc se
 
 ### System Center Operations Manager
 
-When you deploy Azure Local using the disconnected operations feature, you can integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
+When you deploy Azure Local using the disconnected operations feature, integrate with external solutions such as System Center Operations Manager to monitor the instance and nodes.
 
-1. Install the Operations Manager agent on each node. Follow the steps in [Install Windows Agent Manually Using MOMAgent.msi](/system-center/scom/manage-deploy-windows-agent-manually?view=sc-om-2025#deploy-the-operations-manager-agent-with-the-agent-setup-wizard&preserve-view=true). Choose the installation method that best fits your environment.
+1. Install the Operations Manager agent on each node. Follow the steps in [Install Windows Agent Manually Using MOMAgent.msi](/system-center/scom/manage-deploy-windows-agent-manually?view=sc-om-2025#deploy-the-operations-manager-agent-with-the-agent-setup-wizard&preserve-view=true). Choose the installation method that fits your environment.
 
 1. Import these management packs:
 
-    - [Windows Server Operating System 2016 and above for Base OS](https://aka.ms/AAvqh49).
+    - [Windows Server Operating System 2016 and above for Base OS](https://aka.ms/AAvqh49)
 
-    - [Microsoft System Center Management Pack for Windows Server Cluster 2016 and above for Cluster](https://aka.ms/AAvqwlr).
+    - [Microsoft System Center Management Pack for Windows Server Cluster 2016 and above for Cluster](https://aka.ms/AAvqwlr)
 
-    - [Microsoft System Center 2019 Management Pack for Hyper-V](https://aka.ms/AAvqh4i).
+    - [Microsoft System Center 2019 Management Pack for Hyper-V](https://aka.ms/AAvqh4i)
 
-    - [AzS HCI S2D MP for Storage Spaces Direct (S2D)](https://aka.ms/AAvqwo9).
+    - [AzS HCI S2D MP for Storage Spaces Direct (S2D)](https://aka.ms/AAvqwo9)
 
-For more information, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
+For more information, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true)
 
 ### Disconnected operations management pack
 
-The disconnected operations management pack for System Center Operations Manager provides monitoring capabilities for Azure Local instances and nodes deployed with the disconnected operations feature. The management pack is designed to help you monitor the health and performance of your Azure Local infrastructure in a disconnected environment.
+The disconnected operations management pack for System Center Operations Manager lets you monitor Azure Local instances and nodes deployed with the disconnected operations feature. Use this management pack to monitor the health and performance of your Azure Local infrastructure in a disconnected environment.
 
 Capabilities of the disconnected operations management pack include:
 
-- Single disconnected operations deployment management.
+- Management for a single disconnected operations deployment.
 
 - Support for Active Directory Federation Services (AD FS).
 
@@ -98,23 +98,23 @@ For monitoring failover clusters, see [Monitoring Failover Cluster with Operatio
 
 ## Monitor virtual machines
 
-Monitor virtual machines (VMs) on Azure Local with disconnected operations using System Center Operations Manager or non-Microsoft/open-source solutions. Install the appropriate agents in each VM.
+Monitor virtual machines (VMs) on Azure Local with disconnected operations using System Center Operations Manager, non-Microsoft, or open-source solutions. Install the appropriate agents in each VM.
 
 For more information, see [Operations Manager](/system-center/scom/welcome?view=sc-om-2025&preserve-view=true).
 
 ## Monitor Azure Kubernetes Service clusters
 
-Monitor Azure Kubernetes Service (AKS) clusters and container applications on Azure Local with disconnected operations using non-Microsoft or open-source solutions. The following solutions are commonly used for monitoring AKS clusters:
+Monitor Azure Kubernetes Service (AKS) clusters and container apps on Azure Local with disconnected operations using non-Microsoft or open-source solutions. Here are some common solutions for monitoring AKS clusters:
 
 - **Prometheus**: An open-source monitoring and alerting toolkit designed for reliability and scalability. It collects metrics from configured targets at specified intervals, evaluates rule expressions, and can trigger alerts if certain conditions are met.
 
     For more information on Prometheus, see [Overview Prometheus](https://prometheus.io/docs/introduction/overview/).
 
-- **Grafana**: An open-source analytics and monitoring platform that integrates with Prometheus and other data sources to visualize metrics and logs. It provides a rich set of features for creating dashboards, alerts, and reports.
+- **Grafana**: An open-source analytics and monitoring platform that works with Prometheus and other data sources to show metrics and logs. It provides a rich set of features for creating dashboards, alerts, and reports.
 
     For more information on Grafana, see [Grafana OSS](https://grafana.com/oss/grafana/).
 
-Download these solutions from their repositories and install them on an AKS cluster running on Azure Local, or deploy them on a Kubernetes cluster running outside Azure Local.
+Download these solutions from their repositories and install them on an AKS cluster running on Azure Local, or deploy them on a Kubernetes cluster outside Azure Local.
 
 ::: moniker-end
 
