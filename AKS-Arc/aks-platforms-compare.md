@@ -16,7 +16,7 @@ With solutions like AKS enabled by Azure Arc on Azure Local, organizations can n
 
 The focus is on delivering a cohesive and adaptable AKS offering that meets customers across cloud and edge, while preserving the simplicity and power that define the AKS experience.
 
-This article explores how AKS extends across multiple platforms and highlights the unique advantages and capabilities it brings to cloud, on-premises, and edge environments.
+This article describes how AKS extends features across multiple platforms and highlights the unique advantages and capabilities it brings to cloud, on-premises, and edge environments.
 
 > [!NOTE]
 > AKS enabled by Azure Arc architecture on Windows Server (2019 and 2022) isn't supported after April 2025. AKS support on Windows Server continues to evolve. For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
