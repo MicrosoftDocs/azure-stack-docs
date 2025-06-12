@@ -3,7 +3,7 @@ title: Monitor Kubernetes audit events in AKS enabled by Azure Arc
 description: Learn how to create a diagnostic setting to access Kubernetes audit logs.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/08/2024
+ms.date: 06/12/2025
 ms.author: sethm 
 ms.lastreviewed: 02/26/2024
 ms.reviewer: guanghu
@@ -18,7 +18,7 @@ You can access Kubernetes audit logs in Kubernetes control plane logs. Control p
 
 ## Create a diagnostic setting
 
-Before creating the diagnostic setting, install the **Arc K8S** extension, which enables log collection from the AKS cluster.
+Before you create the diagnostic setting, install the **Arc K8S** extension, which enables log collection from the AKS cluster.
 
 Install the Arc K8S extension by running the following command:
 
