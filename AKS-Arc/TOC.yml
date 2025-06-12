@@ -42,21 +42,6 @@
       items:
       - name: Pricing details
         href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
-    - name: Security book - recommendations and best practices
-      items:
-      - name: Introduction and overview
-        href: /azure/azure-arc/kubernetes/conceptual-security-book.md
-        displayName: security, best practices, recommendations
-      - name: Securing your platform
-        href: /azure/azure-arc/kubernetes/conceptual-securing-your-platform.md
-      - name: Securing your workloads
-        href: /azure/azure-arc/kubernetes/conceptual-securing-your-workloads.md
-      - name: Securing your operations
-        href: /azure/azure-arc/kubernetes/conceptual-securing-your-operations.md
-      - name: Securing your data
-        href: /azure/azure-arc/kubernetes/conceptual-securing-your-data.md
-      - name: Securing your network
-        href: /azure/azure-arc/kubernetes/conceptual-securing-your-network.md
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
@@ -200,6 +185,21 @@
       href: network-validation-errors.md
     - name: Network validation error due to .local domain
       href: network-validation-error-local.md
+  - name: Security
+    items:  
+    - name: Security book - recommendations and best practices
+      href: /azure/azure-arc/kubernetes/conceptual-security-book.md
+      displayName: security, best practices, recommendations
+    - name: Securing your platform
+      href: /azure/azure-arc/kubernetes/conceptual-securing-your-platform.md
+    - name: Securing your workloads
+      href: /azure/azure-arc/kubernetes/conceptual-securing-your-workloads.md
+    - name: Securing your operations
+      href: /azure/azure-arc/kubernetes/conceptual-securing-your-operations.md
+    - name: Securing your data
+      href: /azure/azure-arc/kubernetes/conceptual-securing-your-data.md
+    - name: Securing your network
+      href: /azure/azure-arc/kubernetes/conceptual-securing-your-network.md
   - name: Reference
     items:
     - name: Azure CLI
