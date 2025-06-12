@@ -1,14 +1,14 @@
 ---
 title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
-description: Compare Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
+description: Learn about Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
 author: sethmanheim
 ms.topic: concept-article
-ms.date: 06/11/2025
+ms.date: 06/12/2025
 ms.author: sethm
 ms.reviewer: rmody
 ---
 
-# Azure Kubernetes Service (AKS) cloud, edge, and on-premises comparison
+# Compare AKS features across cloud, edge, and on-premises platforms
 
 Azure Kubernetes Service (AKS) is a fully managed Kubernetes platform that simplifies how organizations deploy, scale, and manage containerized applications in the cloud. As customer needs evolve to span cloud, on-premises, and edge environments, AKS expands its footprint and brings the same trusted Kubernetes capabilities to a broader range of edge and on-premises infrastructure.
 
