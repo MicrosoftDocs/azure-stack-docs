@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/10/2025
+ms.date: 06/12/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -70,7 +70,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Update <!--54889342--> |  A critical VM operational status not OK alert is shown in the Azure portal under **Update readiness** and in the **Alerts** pane after the update has completed successfully. Additionally, the alert appears when running the `Get-HealthFault` cmdlet. | No action is required on your part. This alert will resolve automatically in a few days. |
-| Deployment <!-- 33153622-->| Updating Azure Arc extensions out-of-band from the Azure Local Machine page via the Azure portal will result in issues during deployment. The extensions that shouldn't be updated out-of-band are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows`. | Installing extensions out-of-band from the Azure Local machine page is not supported. |
+| Deployment <!-- 33153622-->| Updating Azure Arc extensions manually from the Azure Local Machine page via the Azure portal will result in issues during deployment. The extensions that shouldn't be updated manually are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows`. | Installing extensions manually from the Azure Local machine page is not supported. |
 
 ## Known issues from previous releases
 
