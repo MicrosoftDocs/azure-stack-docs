@@ -16,22 +16,23 @@ This article provides troubleshooting steps for common issues encountered when d
 
 ## Action plan to deploy the Network Controller fails  
   
-**Error**
-Arc-managed SDN running Network Controller in Failover Cluster is only supported in 24H2 OS or above.  
+**Error**: Action plan to deploy the Network Controller fails with the following error message:
+
+```output
+<Insert full error message here>
+```
+
+**Root cause**: Arc-managed SDN running Network Controller in Failover Cluster is only supported in 24H2 OS or above.  
   
 **Resolution**: Make sure that you are running OS version 26100.xxxx or later on your Azure Local instance. For more information, see [Create network security groups](../manage/create-network-security-groups#prerequisites)
 
 
 ## SDN enabled by Azure Arc action plan fails due to DNS resolution errors
 
-**Error**
-
-Unable to create and delete NC Logical Network. Exception: The remote
+**Error**: Unable to create and delete NC Logical Network. Exception: The remote
 name could not be resolved.
 
-**Root cause**
-
-This error message occurs when the Dynamic DNS is disabled on the DNS
+**Root cause**: This error message occurs when the Dynamic DNS is disabled on the DNS
 Server. The DNS environment is not Active Directory integrated and an A record wasn't created manually for your DNS.
 
 Here is an example of the complete error message:
@@ -85,7 +86,7 @@ Follow these steps to resolve this issue:
 
 ## DNS conflict for NC fully qualified domain name
 
-**Error**
+**Error**: DNS conflict for NC fully qualified domain name
 
 Here is an example of the complete error message:
 
@@ -117,10 +118,9 @@ prefix~~.
 
 ## Error while creating an NSG or default network access policy
 
-**Error**
-You could receive the following error while creating an NSG or a default network access policy.
+**Error**: You could receive the following error while creating an NSG or a default network access policy.
 
-```ou
+```output
 
 The moc-operator network security group service returned an error
 while reconciling: AddOrUpdateNetworkSecurityGroup not implemented for
@@ -130,8 +130,7 @@ non-NC provider: Not Implemented: Failed
 ```
 
 
-**Remediation steps**
-Ensure that you have run network controller action plan to deploy SDN enabled by Azure Arc. For more information, see [Enable and run action plan](../deploy/enable-sdn-ece-action-plan)  
+**Remediation steps**: Ensure that you have run network controller action plan to deploy SDN enabled by Azure Arc. For more information, see [Enable and run action plan](../deploy/enable-sdn-ece-action-plan)  
   
 ## Next steps
 
