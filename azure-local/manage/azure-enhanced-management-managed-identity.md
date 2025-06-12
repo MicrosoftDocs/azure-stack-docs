@@ -4,7 +4,7 @@ description: Learn how to use enhanced Azure management for Azure Local. This en
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/12/2023
+ms.date: 06/10/2025
 ---
 
 # Enhanced management of Azure Local from Azure
@@ -30,7 +30,7 @@ The managed identity serves as an identity for the various components of your ma
 
     For more information, see [Monitor Azure Local with Azure Monitor Insights](./monitor-single-23h2.md).
 
-- **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical VM workloads running on Azure Local by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Local managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Local.
+- **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical virtual machine (VM) workloads running on Azure Local by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Local managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Local.
 
     The Arc for Server extension uses the system managed identity to download the key credential file to every machine of the system. If a new machine is added to your system, Azure Local automatically triggers the installation of Arc for Server extension for Azure Site Recovery on the new machine. In the absence of managed identity, this was previously a manual step that required you to install the agent to each machine that was added to the system.
 
@@ -43,7 +43,7 @@ With this feature enhancement, the following actions can be initiated from Azure
 
 ## Enable enhanced management
 
-To enable the enhanced management feature, you will need to install the latest cumulative update for Azure Local, version 22H2 and rerun registration for your system.
+To enable the enhanced management feature, you'll need to install the latest cumulative update for Azure Local, version 22H2 and rerun registration for your system.
 
 ## Prerequisites
 
@@ -73,15 +73,15 @@ For systems running version 22H2, to enable Azure management and managed identit
         Update-Module -Name Az.StackHCI
         ```
 
-1. Skip this step and go to the next step if your system is already registered. If your system has not been previously registered to Azure, [register your system with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
-1. If the system is already registered to Azure, rerun the registration. Use of `RepairRegistration` parameter will help configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group and other settings.
+1. Skip this step and go to the next step if your system is already registered. If your system hasn't been previously registered to Azure, [register your system with Azure](../deploy/register-with-azure.md). The registration process configures a managed identity and Azure Service Bus to enable the new management feature.
+1. If the system is already registered to Azure, rerun the registration. Use of the `RepairRegistration` parameter helps configure a managed identity and Azure Service Bus while retaining other information such as resource name, resource group, and other settings.
 
     ```powershell
     Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -RepairRegistration
     ```
 
 > [!NOTE]
-> The registration fails if you use an older version, earlier than 1.4.1 for your `Az.StackHCI` PowerShell module. The updated module is backward compatible and will run on OS versions with or without the new feature update installed.
+> The registration fails if you use an older version, earlier than 1.4.1 for your `Az.StackHCI` PowerShell module. The updated module is backward compatible and runs on OS versions with or without the new feature update installed.
 
 
 ## Next steps
