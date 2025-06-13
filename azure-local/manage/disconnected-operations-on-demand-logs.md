@@ -4,7 +4,7 @@ description: Use PowerShell module to collect logs on demand for Azure Local dis
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
 ai-usage: ai-assisted
 ---
 

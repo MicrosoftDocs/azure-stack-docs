@@ -4,7 +4,8 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 06/12/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Disconnected operations for Azure Local (preview)
