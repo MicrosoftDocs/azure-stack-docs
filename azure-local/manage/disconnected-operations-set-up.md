@@ -59,7 +59,7 @@ To create a virtual appliance and download the required files for your on-premis
 1. After the deployment finishes, go to your new resource. You see the resource details on the appliance page.
 
     > [!NOTE]
-    > > [!NOTE] > For the next two steps, see the supplemental documentation for getting the appliance. During the first preview, special instructions are required for downloading the appliance. Steps 6 and 7 are subject to change during preview.
+    > For the next two steps, see the supplemental documentation for getting the appliance. During the first preview, special instructions are required for downloading the appliance. Steps 6 and 7 are subject to change during preview.
 
 1. Look for the **download manifest** and **download appliance** actions. You need these files for your on-premises installation.
 
