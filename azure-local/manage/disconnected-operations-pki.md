@@ -4,7 +4,7 @@ description: Learn about the public key infrastructure (PKI) requirements for di
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/12/2025
 ---
 
 # Public key infrastructure (PKI) for disconnected operations on Azure Local (preview)
