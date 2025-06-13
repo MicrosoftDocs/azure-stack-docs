@@ -41,7 +41,7 @@ To install the CLI, follow these steps:
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
-For disconnected operations, do the following:
+For disconnected operations:
 
 1. Understand [public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md)
 2. Set up and configure the certificate trusts for Azure CLI using PowerShell.
@@ -238,7 +238,7 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | AKS Arc on Azure Local | az arcappliance <br></br> az k8s-extension <br></br> az customlocation <br></br> az stack-hci-vm <br></br> az aksarc | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> aksarc: 1.2.23 | [Create Kubernetes clusters using Azure CLI](/azure/aks/aksarc/aks-create-clusters-cli) |
 | Azure Local Resource Provider          | Arcappliance <br></br> k8s-extension <br></br> customlocation <br></br> stack-hci-vm <br></br> connectedk8s <br></br> stack-hci | arcappliance: 1.3.0 <br></br> PreviewSource: https://winfieldstable.z13.web.core.windows.net/arcappliance-1.3.0-py2.py3-none-any.whl <br></br> k8s-extension: 1.6.1 <br></br> customlocation: 0.1.3 <br></br> stack-hci-vm: 1.3.0 <br></br> connectedk8s: 1.6.2 <br></br> stack-hci: 1.1.0 | [How to install and manage Azure CLI extensions](/cli/azure/azure-cli-extensions-overview) |
 | Azure Container Registry | Built-in      |    |  |
-| Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify non-compliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
+| Azure Policy | Built-in      |    | [Quickstart: Create a policy assignment to identify noncompliant resources using Azure CLI](/azure/governance/policy/assign-policy-azurecli) |
 | Azure Key Vault | Built-in      |    | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ::: moniker-end
