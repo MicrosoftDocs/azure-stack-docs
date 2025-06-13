@@ -70,7 +70,7 @@ You should create a folder for VM templates, to store the Arc Resource Bridge an
 
 ## Supported Kubernetes version
 
-In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. You can find the Arc Resource Bridge version in the Azure portal under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](/azure/azure-arc/resource-bridge/release-notes).
+In this preview release, you can only deploy the Kubernetes version that matches what Arc Resource Bridge supports. Currently, this preview only supports Arc Resource Bridge version 1.2.0 and earlier versions. You can find the Arc Resource Bridge version in the **Azure portal** under **Azure Arc > Management > Resource Bridge**. To determine the corresponding Kubernetes version, see [What's new with Azure Arc resource bridge](azure/azure-arc/resource-bridge/release-notes#version-120-july-2024).
 
 ## Custom location
 
