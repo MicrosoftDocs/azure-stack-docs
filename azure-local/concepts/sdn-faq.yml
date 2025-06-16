@@ -8,18 +8,18 @@ metadata:
   ms.service: azure-local
   ms.date: 06/16/2025
 title: FAQ - SDN enabled by Azure Arc on Azure Local
-summary: The Azure Local FAQ provides information about Azure Local connectivity with the cloud, and how Azure Local relates to Windows Server.
+summary: Ths Azure Local FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs.
 
 sections:
   - name: Azure Local connectivity and general FAQ
     questions:
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the Action Plan?
         answer: |
-          Yes. As part of the action plan, first, the Virtual Filtering Platform (VFP) extension is enabled on the Hyper-V virtual switch. This extension offers an SDN dataplane that allows for network segmentation of the traffic. When this extension is applied all the VMs on the platform (including the Azure Arc resource bridge), you experience a brief downtime.  
+          Yes. As part of the action plan, first, the Virtual Filtering Platform (VFP) extension is enabled on the Hyper-V virtual switch. This extension offers an SDN data plane that allows for network segmentation of the traffic. When this extension is applied all the VMs on the platform (including the Azure Arc resource bridge), you experience a brief downtime.  
   
           Next, the action plan configures all the Azure Local VMs with a null port profile to enable network connectivity. As this configuration is performed for all the VMs, you experience a brief downtime.  
   
-          Given this is a disruptive operation, make sure to plan for a maintenance window if you're running on a production environment.
+          As this is a disruptive operation, make sure to plan for a maintenance window if you're running on a production environment.
 
       - question: Why do I notice network connectivity issues for my unmanaged VMs on Azure Local after enabling SDN enabled by Azure Arc?
         answer: |
@@ -31,12 +31,11 @@ sections:
           
       - question: Can I modify Azure Local VM resources such as VMs, virtual switches, and network interfaces directly using Network Controller APIs or PowerShell module, Windows Admin Center, or SDN Express PowerShell module for my Azure Local VMs?  
         answer: |
-          No. This should not be done and is an unsupported scenario. Doing so can cause your resources to go into bad or unrecoverable states.
+          No. This shouldn't be done and is an unsupported scenario. Doing so can cause your resources to go into bad or unrecoverable states.
 
       - question: On an Azure Local cluster with SDN enabled by Azure Arc, Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
-          No. Adding a secondary network interface to a VM after the VM is provisioned is currently not supported. Such configurations cause both network interfaces to be assigned as the default gateway and lead to asymmetric networking symptoms like packet-loss and cause the VMs networking to be unpredictable. You must configure all the static network interfaces you need at the time of VM provisioning when using SDN enabled by Azure Arc.
-
+          No. Adding a secondary network interface to a VM after the VM is provisioned, is currently not supported. Such configurations cause both network interfaces to be assigned as the default gateway and lead to asymmetric networking symptoms like packet-loss and cause the VMs networking to be unpredictable. You must configure all the static network interfaces you need at the time of VM provisioning when using SDN enabled by Azure Arc.
       - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
           If logical network and VM network interfaces on your Azure Local VMs have NSGs applied with conflicting allow/deny rules, this could lead to unexpected traffic drops or blocks. <br><br> When an inbound packet arrives, Azure Local first evaluates the logical network NSG, and then the network NSG. For outbound traffic, Azure Local evaluates the network interface NSG first and then the logical network NSG. If one scope has a **Deny** that matches before any **Allow**, the packet is dropped even if the other scope would have permitted it.

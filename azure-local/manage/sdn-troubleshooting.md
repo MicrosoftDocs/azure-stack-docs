@@ -10,9 +10,9 @@ ms.reviewer: alkohli
 ---
 
 
-# Troubleshoot Azure Local SDN enabled by Azure Arc
+# Troubleshoot Software-Defined Networking enabled by Azure Arc on Azure Local Virtual Machines
 
-This article provides troubleshooting steps for common issues encountered when deploying and managing Azure Local SDN enabled by Azure Arc. The article covers errors during the action plan deployment, VM connectivity issues, and network security group (NSG) configurations.
+This article provides troubleshooting steps for common issues encountered when you deploy and manage Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. The article covers errors during the action plan deployment, VM connectivity issues, and network security group (NSG) configurations.
 
 ## Action plan to deploy the Network Controller fails  
   
@@ -20,16 +20,16 @@ This article provides troubleshooting steps for common issues encountered when d
 
 **Root cause**: For SDN enabled by Azure Arc, running Network Controller in Failover Cluster is only supported in OS build version 26100.xxxx or later.  
   
-**Resolution**: Make sure that you are running OS version 26100.xxxx or later on your Azure Local instance. For more information, see [Create network security groups](../manage/create-network-security-groups#prerequisites).
+**Resolution**: Make sure that you're running OS version 26100.xxxx or later on your Azure Local instance. For more information, see [Create network security groups](../manage/create-network-security-groups#prerequisites).
 
 
 ## SDN enabled by Azure Arc action plan fails due to DNS resolution errors
 
-**Error**: Unable to create and delete NC Logical Network. Exception: The remote name could not be resolved.
+**Error**: Unable to create and delete NC Logical Network. Exception: The remote name couldn't be resolved.
 
-**Root cause**: This error message occurs when the Dynamic DNS is disabled on the DNS server. The DNS environment is not Active Directory integrated and an A record wasn't created manually for your DNS.
+**Root cause**: This error message occurs when the Dynamic DNS is disabled on the DNS server. The DNS environment isn't Active Directory integrated and an A record wasn't created manually for your DNS.
 
-Here is an example of the complete error message:
+Here's an example of the complete error message:
 
 ```output
 
@@ -54,7 +54,7 @@ Invoke-EceInterfaceInternal {CloudDeploymentModulePath=C:\NugetStore\Microsoft.A
 
 Follow these steps to resolve this issue:
 
-1. Create the A DNS Record for \$sdnPrefix-NC, pointing towards the 5th IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](/deploy/deploy-via-portal#specify-network-settings).
+1. Create the A DNS Record for \$sdnPrefix-NC, pointing towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](/deploy/deploy-via-portal#specify-network-settings).
 
 2. Run the action plan again using the cmdlet `Add-ECEFeature`.
 
@@ -62,20 +62,19 @@ Follow these steps to resolve this issue:
 
 **Error**: DNS conflict for NC fully qualified domain name.
 
-Here is an example of the complete error message:
+Here's an example of the complete error message:
 
 ```output
 FullStepIndex: 1.1.0.2.0
 RolePath: Cloud\Fabric\NC
 Interface: ValidateSDNPrefixNoDNSConflict
 StackTrace:
-CloudEngine.Actions.InterfaceInvocationFailedException: Type 'ValidateSDNPrefixNoDNSConflict' of Role 'NC' raised an exception:
-DNS conflict found for NC fully qualified domain name 'ro0108-NC.ro0108.masd.stbtest.microsoft.com'. Expected to resolve to the reserved IP '100.101.172.230', but resolved to IP '10.10.10.10'. Please update the conflicting DNS record or choose a different SDN prefix.
+CloudEngine.Actions.InterfaceInvocationFailedException: Type 'ValidateSDNPrefixNoDNSConflict' of Role 'NC' raised an exception: DNS conflict found for NC fully qualified domain name 'ro0108-NC.ro0108.masd.stbtest.microsoft.com'. Expected to resolve to the reserved IP '100.101.172.230', but resolved to IP '10.10.10.10'. Please update the conflicting DNS record or choose a different SDN prefix.
 ```
 
 **Remediation steps**
 
-1.  Ensure the A DNS Record for `\$sdnPrefix-NC` points towards the 5th IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal#specify-network-settings).
+1. Ensure the A DNS Record for `\$sdnPrefix-NC` points towards the fifth IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal#specify-network-settings).
 
 ## Error while creating an NSG or default network access policy
 
@@ -87,7 +86,7 @@ The moc-operator network security group service returned an error while reconcil
 (Code: Failed)
 ```
 
-**Remediation steps**: Ensure that you have run network controller action plan to deploy SDN enabled by Azure Arc. For more information, see [Enable and run action plan](../deploy/enable-sdn-ece-action-plan). 
+**Remediation steps**: Make sure to run the network controller action plan to deploy SDN enabled by Azure Arc. For more information, [Enable and run action plan](../deploy/enable-sdn-ece-action-plan).
   
 ## Next steps
 
