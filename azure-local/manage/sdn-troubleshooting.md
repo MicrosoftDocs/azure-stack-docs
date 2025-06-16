@@ -77,10 +77,7 @@ Invoke-EceInterfaceInternal
 
 Follow these steps to resolve this issue:
 
-1. Create the A DNS Record for \$sdnPrefix-NC, pointing towards the 5th
-    IP address in the IP address range when configuring the [Network
-    settings during the deployment of your Azure Local
-    instance](https://review.learn.microsoft.com/en-us/azure/azure-local/deploy/deploy-via-portal?view=azloc-2506#specify-network-settings)..
+1. Create the A DNS Record for \$sdnPrefix-NC, pointing towards the 5th IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](/deploy/deploy-via-portal#specify-network-settings).
 
 2. Run the action plan again using the cmdlet `Add-ECEFeature`.
 
@@ -111,10 +108,7 @@ prefix~~.
 
 **Remediation steps**
 
-1.  Ensure the A DNS Record for \$sdnPrefix-NC, points towards the 5th
-    IP address in the IP address range when configuring the [Network
-    settings during the deployment of your Azure Local
-    instance](https://review.learn.microsoft.com/en-us/azure/azure-local/deploy/deploy-via-portal?view=azloc-2506#specify-network-settings)..
+1.  Ensure the A DNS Record for \$sdnPrefix-NC, points towards the 5th IP address in the IP address range when configuring the [Network settings during the deployment of your Azure Local instance](../deploy/deploy-via-portal#specify-network-settings)..
 
 ## Error while creating an NSG or default network access policy
 
