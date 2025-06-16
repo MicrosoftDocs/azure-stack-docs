@@ -22,6 +22,9 @@ This article provides the release information for Azure Local, including the rel
 
 The Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so forth. Each release train after 2411 is either a feature build or cumulative update.
 
+> [!NOTE]
+> Formerly we have released annual OS updates and features in annual releases, which were named consistently as previous Windows Server sei-annual releases or Windows Client releases. Due to the changes how we are releasing Azure Local releases, we will no longer be using the annual releases anymore like 23H2 or 24H24. You might be still finding these as reference points in this or other documentation. However the versioning is now changed to align with the release tracks, as mentioned before.
+
 - **Feature build**: The feature update build is the initial version of the software in a release train. Feature releases go beyond quality and security fixes, incorporating product enhancements, including updates for Azure Local services and agents.
 
 - **Cumulative build**: A cumulative update build includes the incremental updates from the most recent feature build.
