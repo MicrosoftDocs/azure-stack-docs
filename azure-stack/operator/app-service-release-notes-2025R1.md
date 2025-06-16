@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 04/28/2025
+ms.date: 06/17/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -16,18 +16,22 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 25R1 build number is **102.0.2.5**
+The App Service on Azure Stack Hub 25R1 build number is **102.0.10.7**
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub.
+Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub and builds on the previously released 24R1 ([24R1 Release Notes](app-service-release-notes-2024r1.md)).  Customers can install 25R1 directly without deploying 24R1 first.
+
+- Updates to .NET 8 and 9.
+- Updates to App Service on Azure Stack Hub Resource Provider.
+- Resolution to [issues customers encountered with 24R1](## Issues fixed in this release).
 
 
 ## Prerequisites
 
 See the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
+Before you begin the upgrade of Azure App Service on Azure Stack to 25R1:
 
 - Ensure your Azure Stack Hub is updated to **1.2311.1.22** or later.
 - Ensure all roles are **Ready** in the Azure App Service Administration in the Azure Stack Hub admin portal.
@@ -46,73 +50,27 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 24R1:
 
 ## Updates
 
-Azure App Service on Azure Stack Update 24R1 includes the following improvements and fixes:
+Azure App Service on Azure Stack Update 25R1 includes the following improvements and fixes:
 
 - Updates to App Service Tenant, Admin, Functions portals and Kudu tools. Consistent with the Azure Stack portal SDK version.
 - Updates Azure Functions runtime to **{xxxx}**.
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 - Updates to the following application frameworks and tools:
-  - .NET Framework 4.8.1
+  - .NET Framework 3.5 and 4.8.1
   - ASP.NET Core 
-    - 8.0.7
-    - 8.0.14
-    - 8.0.303
+    - 9.0.3
+    - 9.0.201
     - 8.0.407
-    - 6.0.36
-    - 6.0.428
-  - Eclipse Temurin OpenJDK 8
-    - 8u302
-    - 8u312
-    - 8u322
-    - 8u332
-    - 8u345
-    - 8u362
-    - 8u392
-    - 8u412
-    - 8u422
-  - Microsoft OpenJDK 11
-    - 11.0.12.7.1
-    - 11.0.13.8
-    - 11.0.14.1
-    - 11.0.15.10
-    - 11.0.16.1
-    - 11.0.18.10
-    - 11.0.21.9
-    - 11.0.23.9
-    - 11.0.24.8
-  - Microsoft OpenJDK 17
-    - 17.0.11.9
-    - 17.0.1.12
-    - 17.0.2.8
-    - 17.0.3.7
-    - 17.0.4.1
-    - 17.0.6.1
-    - 17.0.9.8
-    - 17.0.12.7
-  - Microsoft OpenJDK 21
-    - 21.0.1.12
-    - 21.0.3.9
-    - 21.0.4.7
+    - 8.0.14
   - MSBuild 
-    - 15.9.21.664
-    - 16.4.0
-    - 16.7.0
-    - 16.11.2
-    - 17.11.2
     - 17.12.0
   - MSDeploy 
-    - 3.5.120530.385
-    - 3.5.130404.0
-    - 3.5.140307.0
-    - 2.5.1270717.34
+    - 3.5.140404
+    - 3.5.140521
   - NodeJS
     - 10.15.2
-    - 10.24.1
-    - 12.22.12
     - 14.20.0
     - 16.16.0
-    - 18.12.1
-    - 18.19.1
     - 18.20.4
     - 18.20.7
     - 20.9.0
@@ -121,56 +79,18 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
     - 22.14.0
   - npm
     - 6.4.1
-    - 6.13.4
-    - 6.14.11
-    - 6.14.12
-    - 6.14.15
-    - 6.14.16
-    - 6.14.17
-    - 7.21.1
-    - 8.1.0
-    - 8.19.2
-    - 10.1.0
-    - 10.2.4
     - 10.7.0
     - 10.8.2
     - 10.9.2
 
-  - Tomcat
-    - 8.5.20
-    - 8.5.57
-    - 8.5.58
-    - 8.5.79
-    - 8.5.82
-    - 8.5.85
-    - 8.5.96
-    - 8.5.100
-    - 9.0.0
-    - 9.0.27
-    - 9.0.31
-    - 9.0.37
-    - 9.0.63
-    - 9.0.65
-    - 9.0.71
-    - 9.0.83
-    - 9.0.91
-    - 9.0.96
-    - 10.0.21
-    - 10.0.23
-    - 10.0.27
-    - 10.1.5
-    - 10.1.16
-    - 10.1.25
-    - 10.1.31
-    - 11.0.0
   - Git 2.46.0
-  - Updated Kudu to 103.110221.001.
+  - Updated Kudu to 103.0.1.100
   - Continual accessibility and usability updates
 
 - **Updates to underlying operating system of all roles**:
-  - [2025-04 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5055526)](https://support.microsoft.com/help/5055526)
+  - [2025-06 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5060526)](https://support.microsoft.com/help/5060526)
   - [2025-04 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KB5054693)](https://support.microsoft.com/help/5054693)
-  - Definition updates for Windows Defender Antivirus and other Microsoft antimalware 1.427.311.0
+  - Definition updates for Windows Defender Antivirus and other Microsoft antimalware 1.429.494.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
@@ -178,27 +98,23 @@ Azure App Service on Azure Stack Update 24R1 includes the following improvements
 
 ## Issues fixed in this release
 
-- Some customers experienced database performance issues relating to locking of App Service Hosting tables, performance improvements are included this release.
+Newly fixed issues in this release
 
-- Ownership improvements in usage records service, to harden service when working with multiple roles and large number of workers
+- Application downtime should no longer be expected during Upgrade.  In 24R1 there was an issue which caused significant downtime due to a change in communication format within the Web Farm during upgrade, this has been mitigated in 25R1.
 
-- Stuck windows updates due to continually attempting to apply Windows Server 2016 updates to Windows Server 2022 and vice versa
+- Resolution to issues faced with Role Based Access Control and Single Sign on to Kudu and SCM sites
 
-- Resolved issue whereby Windows Update KB5034439 would never complete and prevents roles moving to Ready state
+- Further process improvements in usage records service, to more effectively handle failures and outages during usage record commits
 
-- Installer failures resolved when customers using newer versions of the Custom Script Extension
+- Resolved issues in Kudu where new runs of Web Jobs cannot be started due to stalled jobs running
 
-- Trace messages from App Service roles were reviewed and trimmed to improve the quality of the information provided and to reduce the burden on the database
+- Resolved issue when worker limits were not checked when scaling out an App Service Plan using a deployment template
 
-- Centralized SSL Certificate Support feature is installed on Front Ends as part of deployment and Tenants can bind certificates without Operator intervention
+- Resolved issue where an invalid Data Service endpoint is set in configuration when all names in management server certificate are of wildcard format
 
-- Virtual Network Integration options are now disabled in portal by default.
+- Enforced tcp prefix on all connection strings for the Resource Provider dataplane and ensured all roles receive updated connection string during rotation
 
-- Resolved issues enabling blob storage for application logging
-
-- Improved swap experience when swapping slots to prevent time-outs
-
-- Change of description from Management Server to Management/Controller Roles in the choices for credential rotation to be more explicit about action being taken
+- Enabled Health Check Feature in Tenant Portal
 
 ## Pre-Update steps
 
@@ -212,12 +128,6 @@ Review the [known issues for update](#known-issues-update) and take any action p
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
-
-- **Application downtime should be expected during Upgrade.**
-
-  > [!IMPORTANT]
-  >
-  > Due to a change in communication format within the Web Farm, during the upgrade all roles move into repair mode until they match the same version as the controller. Due to this, we advise you to declare a maintenance window during this upgrade and prepare for application downtime during the upgrade.
 
 - In situations where you converted the appservice_hosting and appservice_metering databases to contained database, upgrade might fail if logins weren't successfully migrated to contained users.
 
