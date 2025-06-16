@@ -3,7 +3,7 @@ title: Monitor Disconnected Operations for Azure Local (preview)
 description: Learn how to monitor Disconnected operations for Azure Local (preview).
 author: ronmiab
 ms.topic: concept-article
-ms.date: 06/13/2025
+ms.date: 06/16/2025
 ms.author: robess
 ms.reviewer: robess
 ai-usage: ai-assisted

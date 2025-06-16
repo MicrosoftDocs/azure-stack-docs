@@ -4,7 +4,7 @@ description: Use Disconnected operations to deploy and manage your Azure Local (
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 06/13/2025
+ms.date: 06/16/2025
 ai-usage: ai-assisted
 ---
 
@@ -101,6 +101,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Azure Container Registry for disconnected operations](disconnected-operations-azure-container-registry.md). | Manage Azure Container Registry on Azure Local. |
 | Review [Azure Policy for disconnected operations](disconnected-operations-policy.md). | Enforce standards with policies when creating new resources. |
 | Review [Azure Key Vault for disconnected operations](/azure/key-vault/general/quick-create-cli#create-a-key-vault). | Use the CLI to create an Azure Key Vault. |
+| Review [Monitor disconnected operations for Azure Local](disconnected-operations-monitoring.md). | Monitor infrastructure and workloads running on Azure Local with disconnected operations. |
 | **Troubleshoot** |      |
 | Review [On-demand log collection](../index.yml). | Collect logs on demand for troubleshooting. |
 | Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
