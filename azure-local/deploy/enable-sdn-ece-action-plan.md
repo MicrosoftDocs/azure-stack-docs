@@ -1,11 +1,11 @@
 ---
-title: Enable SDN on Azure Local using an Action Plan (Preview)
+title: Enable Software-Defined Networking (SDN) on Azure Local using an Action Plan (Preview)
 description: Describes how to enable SDN using an action on Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/09/2025
+ms.date: 06/16/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
@@ -103,7 +103,7 @@ Consider this information before you enable SDN:
 When you run the action plan to enable SDN, choose an SDN prefix. Make sure that the SDN prefix meets the following requirements:
 
 - Must not be null or empty.
-- Must be fewer than eight characters.
+- Must be eight or fewer characters.
 - Must contain only lowercase, uppercase, numeric, characters.
 - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
 
@@ -140,7 +140,7 @@ The action plan uses the following parameters:
 | Parameter  | Description  |
 |---------|---------|
 |**Name**   | Pass the name as `NC`. No other user input is allowed.         |
-|**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `<SDNPrefix>` makes `https://<SDNPrefix>-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br> Make sure that the SDN prefix meets the requirements included in [Choose an SDN prefix](#choose-between-default-or-custom-sdn-prefix).           |
+|**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `<SDNPrefix>` makes `https://<SDNPrefix>-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br> Make sure that the SDN prefix meets the requirements included in [Choose an SDN prefix](#choose-an-sdn-prefix).           |
 
 
 ## Run the action plan

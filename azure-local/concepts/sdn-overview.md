@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 06/09/2025
+ms.date: 06/16/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
@@ -61,7 +61,7 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 
 ### Group all traffic on single network intent
 
-- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#group-all-traffic-on-a-single-intent).
+- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#example-intents).
 
 - Use this pattern only with switched storage network connectivity.
 
@@ -73,7 +73,7 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 
 ### Group management and compute traffic in one intent with a separate storage intent
 
-- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#group-management-and-compute-in-one-intent-with-a-separate-intent-for-storage).
+- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#example-intents).
 
 - Use this pattern with switched or switchless storage network connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
 
@@ -85,7 +85,7 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 
 ### Custom configuration for disaggregated host networking
 
-- Use the *Custom configuration* host networking pattern in single or multi node configuration. For more information about this pattern, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#fully-disaggregated-host-networking).
+- Use the *Custom configuration* host networking pattern in single or multi node configuration. For more information about this pattern, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#example-intents).
 
     :::image type="content" source="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png" alt-text="Screenshot of custom configuration for fully disaggregated networking." lightbox="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png":::
 

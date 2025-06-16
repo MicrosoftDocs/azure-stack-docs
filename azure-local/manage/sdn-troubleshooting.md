@@ -20,7 +20,7 @@ This article provides troubleshooting steps for common issues encountered when y
 
 **Root cause**: For SDN enabled by Azure Arc, running Network Controller in Failover Cluster is only supported in OS build version 26100.xxxx or later.  
   
-**Resolution**: Make sure that you're running OS version 26100.xxxx or later on your Azure Local instance. For more information, see [Create network security groups](../manage/create-network-security-groups#prerequisites).
+**Resolution**: Make sure that you're running OS version 26100.xxxx or later on your Azure Local instance. For more information, see [Create network security groups](../manage/create-network-security-groups.md#prerequisites).
 
 
 ## SDN enabled by Azure Arc action plan fails due to DNS resolution errors

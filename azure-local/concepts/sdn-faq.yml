@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: Software Defined Networking on Azure Local  FAQ
-  description: The SDN on Azure Local FAQ provides information about SDN enabled by Azure Arc.
+  title: Frequently Asked Questions for Software-Defined Networking (SDN) on Azure Local
+  description: This FAQ provides information about SDN enabled by Azure Arc on Azure Local.
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
