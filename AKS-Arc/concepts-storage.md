@@ -3,7 +3,7 @@ title: Concepts - Storage options for applications in AKS enabled by Azure Arc
 description: Storage options for applications in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 06/24/2024
+ms.date: 06/16/2025
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -118,7 +118,7 @@ For your applications to run correctly, pods should run as a defined user or gro
 
 **fsGroup** is a field within the `securityContext` of a Kubernetes pod specification. It defines a supplemental group ID that Kubernetes assigns to all processes in the pod, and recursively to the files in mounted volumes. This ensures that the pod has the correct group-level access to shared storage volumes.
 
-When a volume is mounted, Kubernetes changes the ownership of the volume's contents to match the **fsGroup** value. This is particularly useful when containers run as non-root users and need write access to shared volumes. 
+When a volume is mounted, Kubernetes changes the ownership of the volume's contents to match the **fsGroup** value. This is particularly useful when containers run as non-root users and need write access to shared volumes.
 
 The following example YAML shows the **fsgroup** value:
 
