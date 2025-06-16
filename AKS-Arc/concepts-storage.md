@@ -112,6 +112,23 @@ volumeMounts:
           name: k-dir 
 ```
 
+## Secure pod access to mounted volumes
+
+For your applications to run correctly, pods should run as a defined user or group and not as *root*. The `securityContext` for a pod or container lets you define settings such as *fsGroup* to assume the appropriate permissions on the mounted volumes.
+
+**fsGroup** is a field within the `securityContext` of a Kubernetes pod specification. It defines a supplemental group ID that Kubernetes assigns to all processes in the pod, and recursively to the files in mounted volumes. This ensures that the pod has the correct group-level access to shared storage volumes.
+
+When a volume is mounted, Kubernetes changes the ownership of the volume's contents to match the **fsGroup** value. This is particularly useful when containers run as non-root users and need write access to shared volumes. 
+
+The following example YAML shows the **fsgroup** value:
+
+```yaml
+securityContext:
+  fsGroup: 2000
+```
+
+In this example, all files in mounted volumes are accessible by GID 2000.
+
 ## Next steps
 
 - [Use the AKS on Azure Local disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md).
