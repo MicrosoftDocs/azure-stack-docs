@@ -25,104 +25,18 @@ sections:
         answer: |
           You might encounter network connectivity issues when you enable the Network Controller and create unmanaged VMs outside of Azure interfaces such as Azure Command-line Interface, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. For more information, see how to [Unblock and configure null port profile for your unmanaged VMs]() to fix network connectivity issues.
 
-      - question: Does the control plane for Azure Local go through the cloud?
+      - question: If I associate an NSG with the VM network interface or its logical network, I can't connect to my Azure Local VM. Why is it so?
         answer: |
-          No. You can use edge-local tools, like Windows Admin Center, PowerShell, or System Center, to manage directly the host infrastructure and VMs even if your network connection to the cloud is down or severely limited.
+          If you configure an empty NSG, one with no security rules, on your VM’s network interface or the logical network the VM is on – by default, no inbound traffic is allowed into the VM and all the outbound traffic is allowed. You need to add specific inbound network security rules to allow inbound traffic into the VM.
           
-          Common everyday operations, like moving a VM between hosts, replacing a failed drive, or configuring IP addresses don’t rely on the cloud. However, cloud connectivity is required to obtain over-the-air software updates, change your Azure registration, or use features that directly rely on cloud services for backup, monitoring, and more.
-          
-      - question: Are there bandwidth or latency requirements between Azure Local and the cloud?
+      - question: Can I modify Azure Local VM resources such as VMs, virtual switches, and network interfaces directly using Network Controller APIs or PowerShell module, Windows Admin Center, or SDN Express PowerShell module for my Azure Local VMs?  
         answer: |
-          No. Limited-bandwidth connections like rural T1 lines or satellite/cellular connections are adequate for Azure Local to sync. The minimum required connectivity is several kilobytes per day. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+          No. This should not be done and is an unsupported scenario. Doing so can cause your resources to go into bad or unrecoverable states.
 
-      - question: Does Azure Local require continuous connectivity to the cloud?
+      - question: On an Azure Local cluster with SDN enabled by Azure Arc, Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
-          No. Azure Local is designed to handle periods of limited or zero connectivity.
+          No. Adding a secondary network interface to a VM after the VM is provisioned is currently not supported. Such configurations cause both network interfaces to be assigned as the default gateway and lead to asymmetric networking symptoms like packet-loss and cause the VMs networking to be unpredictable. You must configure all the static network interfaces you need at the time of VM provisioning when using SDN enabled by Azure Arc.
 
-      - question: What happens if my network connection to the cloud temporarily goes down?
+      - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
-          While your connection is down, all host infrastructure and VMs continue to run normally, and you can use edge-local tools for management. However, you wouldn't be able to use features that directly rely on cloud services. Information in the Azure portal may also become out-of-date until Azure Local is able to sync again.
-          
-          Configuration changes made to Azure Local VMs enabled by Arc using edge-local tools won't automatically sync with Azure.
-
-      - question: How long can Azure Local run with the connection down?
-        answer: |
-          At the minimum, Azure Local must sync successfully with Azure once per 30 consecutive days.
-
-      - question: What happens if the 30-day limit is exceeded?
-        answer: |
-          If Azure Local doesn’t sync with Azure in 30 consecutive days, the cluster’s connection status shows **Out of policy** in the Azure portal and other tools, and the cluster enters a reduced functionality mode. In this mode, the host infrastructure stays up and all current VMs continue to run normally. However, new VMs can’t be created until Azure Local is able to sync again. The internal technical reason is that the cluster’s cloud-generated license has expired and must renew by syncing with Azure.
-
-      - question: What content does Azure Local sync with the cloud?
-        answer: |
-          This depends on which features you’re using. At the minimum, Azure Local syncs basic cluster information to display in the Azure portal, including the list of clustered nodes, hardware model, and software version; billing information that summarizes accrued core-days since the last sync, and minimum required diagnostic information that helps Microsoft keep your Azure Local instance secure, up-to-date, and working properly.
-          
-          The total size is small – a few kilobytes. If you turn on additional services, they may upload more. For example, Azure Log Analytics would upload logs and performance counters for monitoring.
-
-      - question: How often does Azure Local sync with the cloud?
-        answer: |
-          This depends on which features you’re using. At the minimum, Azure Local tries to sync every 12 hours. If a sync operation doesn’t succeed, the content is retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time using the `Sync-AzureStackHCI` PowerShell cmdlet.
-          
-          If you turn on additional services, they may upload more frequently. For example, Azure Log Analytics uploads every 5 minutes for monitoring.
-
-      - question: Where does synced information actually go?
-        answer: |
-          Azure Local syncs with Azure and stores data in a secure, Microsoft-operated datacenter. To learn more about the diagnostic data we collect to keep Azure Local secure, up to date, and working as expected, see [Azure Local data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
-
-      - question: Can I use Azure Local and never connect to Azure?
-        answer: |
-          No. Azure Local must sync successfully with Azure once per 30 consecutive days.
-
-      - question: Can I transfer data offline between an "air-gapped" Azure Local and Azure?
-        answer: |
-          No. There's currently no mechanism to register and sync between on-premises and Azure without network connectivity.
-
-      - question: How does Azure Local relate to Windows Server?
-        answer: |
-          Windows Server is the foundation of nearly every Azure product, and all the features you value continue to release with support in Windows Server. The initial offering of Azure Local was based on Windows Server 2019 and used the traditional Windows Server licensing model.
-          
-          Today, Azure Local has its own operating system and subscription-based licensing model. Azure Local is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
-
-      - question: Which guest operating systems are supported on Azure Local?
-        answer: |
-          Azure Local supports several guest operating systems. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
-
-      - question: Can I upgrade from Windows Server to Azure Local?
-        answer: |
-          At this time, there's no in-place upgrade from Windows Server to Azure Local. However, you can migrate your VM workloads from Windows Server to Azure Local using Azure Migrate. For more information, see [Overview of Azure Migrate based migration for Azure Local (preview)](migrate/migration-azure-migrate-overview.md).
-          
-      - question: What Azure services can I connect to Azure Local?
-        answer: |
-          For an updated list of Azure services that you can connect Azure Local to, see [Managing hybrid capabilities on Azure Local with Azure services](hybrid-capabilities-with-azure-services-23h2.md).
-
-      - question: How do I identify an Azure Local machine?
-        answer: |
-          In Azure portal, go to your machine. If the machine is Arc registered, you should be able to see the OS version and overall Azure Local version. 
-          
-          Use the following PowerShell command to query for the OS name and OS version.
-          
-          ```PowerShell
-          Get-ComputerInfo -Property 'osName', 'osDisplayVersion'
-          ```
-          
-          Here’s some example output:
-          
-          ```
-          OsName                         OSDisplayVersion
-          ------                         ----------------
-          Microsoft Azure Stack HCI      23H2
-          ```
-      - question: Is it possible to unregister an Azure Local machine with Azure Arc once it is registered?
-        answer: |
-          No. You can't undo the registration once you've registered the Azure Local machine with Azure Arc. To undo, you'll need to install the operating system again on the machine.        
-      
-      - question: How long is Azure Local, version 22H2 supported?
-        answer: |
-            Azure Stack HCI, version 22H2 will reach end of support on May 31, 2025. After this date:
-            - Monthly security and quality updates stop.
-            - Billing continues for version 22H2 systems.
-            - Your system keeps working, including registration and repair.
-            - Microsoft Support remains available only for upgrade assistance.
-
-            To stay supported and continue receiving updates, we recommend upgrading your operating system to [version 23H2](./upgrade/upgrade-22h2-to-23h2-powershell.md).
-            If you're running an Azure Stack HCI, version 22H2 stretch cluster or managing Azure Local via System Center - Virtual Machine Manager, review the [Supported workloads and configurations](./upgrade/about-upgrades-23h2.md#supported-workloads-and-configurations) table for update timelines.
+          If logical network and VM network interfaces on your Azure Local VMs have NSGs applied with conflicting allow/deny rules, this could lead to unexpected traffic drops or blocks. <br><br> When an inbound packet arrives, Azure Local first evaluates the logical network NSG, and then the network NSG. For outbound traffic, Azure Local evaluates the network interface NSG first and then the logical network NSG. If one scope has a **Deny** that matches before any **Allow**, the packet is dropped even if the other scope would have permitted it.
