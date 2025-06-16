@@ -44,6 +44,10 @@ This release has the following features and improvements:
 
 - **.NET updates**: This build uses .NET version **8.0.XX** for both .NETRuntime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+- **Software-Defined Networking (SDN) enabled by Azure Arc**: Azure Local now supports Software-Defined Networking (SDN) enabled by Azure Arc. This feature allows you to manage your network resources using Azure Arc, providing a consistent networking experience across your hybrid and multi-cloud environments. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-enabled-by-azure-arc.md).
+
+- **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
 
 ::: moniker-end
 
