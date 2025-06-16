@@ -686,7 +686,7 @@ items:
       href: manage/disconnected-operations-azure-container-registry.md
     - name: Review Azure Policy
       href: manage/disconnected-operations-policy.md
-    - name: Review monitoring
+    - name: Review Monitoring
       href: manage/disconnected-operations-monitoring.md  
   - name: Troubleshoot disconnected operations
     items:

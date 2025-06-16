@@ -4,7 +4,7 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/13/2025
+ms.date: 06/16/2025
 ai-usage: ai-assisted
 ---
 
