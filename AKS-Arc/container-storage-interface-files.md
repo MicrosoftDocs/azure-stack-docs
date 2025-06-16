@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) file drivers in AKS enabled by Azur
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/20/2024
+ms.date: 06/16/2025
 ms.author: sethm 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -31,7 +31,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### [AKS on Azure Local](#tab/local)
 
-1. Make sure the SMB driver is deployed. The SMB CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command. If you create a Kubernetes cluster by using `--disable-smb-driver`, you must enable the SMB driver on this cluster using the `az aksarc update` command:
+1. Make sure the SMB driver is deployed. The SMB CSI driver is installed by default when you create a Kubernetes cluster using the `az aksarc create` command. If you create a Kubernetes cluster by using the Azure portal, Azure Resource Manager (ARM) template, or Terraform, or by using the `az aksarc create` command with `--disable-smb-driver`, you must enable the SMB driver on this cluster using the `az aksarc update` command:
 
    ```azurecli
    az aksarc update -n $aksclustername -g $resource_group --enable-smb-driver
@@ -78,7 +78,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### [AKS on Azure Local](#tab/local)
 
-1. Make sure the NFS driver is deployed. The NFS CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command. If you create a Kubernetes cluster by using `--disable-nfs-driver`, you must enable the the NFS driver on this cluster using the `az aksarc update` command:
+1. Make sure the NFS driver is deployed. The NFS CSI driver is installed by default when you create a Kubernetes cluster using the `az aksarc create` command. If you create a Kubernetes cluster by using the Azure portal, Azure Resource Manager (ARM) template, or Terraform, or by using the `az aksarc create` command with `--disable-nfs-driver`, you must enable the the NFS driver on this cluster using the `az aksarc update` command:
 
    ```azurecli
    az aksarc update -n $aksclustername -g $resource_group --enable-nfs-driver
