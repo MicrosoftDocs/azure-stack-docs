@@ -53,7 +53,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 25R1:
 Azure App Service on Azure Stack Update 25R1 includes the following improvements and fixes:
 
 - Updates to App Service Tenant, Admin, Functions portals and Kudu tools. Consistent with the Azure Stack portal SDK version.
-- Updates Azure Functions runtime to **{xxxx}**.
+- Updates Azure Functions runtime to **1.0.23001**.
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 - Updates to the following application frameworks and tools:
   - .NET Framework 3.5 and 4.8.1
@@ -82,8 +82,9 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
     - 10.7.0
     - 10.8.2
     - 10.9.2
-
   - Git 2.46.0
+  - VC14 Redistributable 14.40.33810
+  - SQL Native Client 11.0.2100.60
   - Updated Kudu to 103.0.1.100
   - Continual accessibility and usability updates
 
