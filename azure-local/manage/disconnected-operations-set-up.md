@@ -66,11 +66,11 @@ To create a virtual appliance and download the required files for your on-premis
     | Action | Description | Estimated download size |  
     |------|-------------|----------------|  
     | Manifest file | Identified as `AzureLocal.DisconnectedOperations.Appliance.manifest`. This file is needed for deployment and to activate the appliance. It contains the required licensing information and more. | < 1 KB |  
-    | Appliance | Downloads a set of files, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`, and`OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a wole. | 70 GB+ |  
+    | Appliance | Downloads a set of files, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`, and`OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. | 70 GB+ |  
 
 1. Select **download manifest**.
 
-:::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
+    :::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
 
 1. Select **download appliance** and download each file. Move these files to a single folder. Unzip the `AzureLocal.disconnectedoperations.zip` file in that folder. After you extract the zip file, delete it. You should have the following files required for installation in the folder after this step:
 
