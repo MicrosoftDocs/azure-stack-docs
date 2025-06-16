@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/14/2025
+ms.date: 06/06/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -15,7 +15,7 @@ ms.service: azure-local
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
-This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
+This article describes how to upgrade the operating system (OS) for Azure Local from version 22H2 to version 23H2 via PowerShell, which is the recommended method to upgrade the OS. This is the first step in the upgrade process, which upgrades only the OS.
 
 There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade the Azure Stack HCI OS, version 22H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade Azure Local to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
@@ -46,11 +46,34 @@ Before you begin, make sure that:
 - The system is registered in Azure.
 - All the machines  in your Azure Local, version 22H2 instance are healthy and show as **Online**.
 - You shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the Azure Stack HCI, version 23H2 OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version **2503** ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
+- You run the `RepairRegistration` cmdlet only if both of the following conditions apply:
+
+   - The *identity* property is either missing or doesn’t contain `type = "SystemAssigned"`.
+      - Check this in the Resource JSON in the Azure portal
+      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet
+   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+
+   If both these conditions are met, run the `RepairRegistration` cmdlet:
+
+   ```powershell
+   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -RepairRegistration
+   ```
+
+- (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
+   To enable Secure Boot, follow these steps:
+   1. Drain the cluster node.
+   1. Restart the OS.
+   1. Enter the BIOS/UEFI menu.
+   1. Review the **Boot** or **Security** section of the UEFI configuration options Locate the Secure Boot option.
+   1. Set the option to **Enabled** or **On**.
+   1. Save the changes and restart your computer.
+
+   Consult with your hardware vendor for assistance if required.
 
 > [!NOTE]
-> The ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#step-1-connect-to-azure-local), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
+> The **2503** ISO file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#step-1-connect-to-azure-local), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
 > Use of 3rd party tools to install upgrades is not supported.
 
 ## Step 0: Update registry keys
@@ -76,6 +99,8 @@ To ensure Resilient File System (ReFS) and live migrations function properly dur
    ```
 
 1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
+
+1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
 
 ## Step 1: Connect to Azure Local
 
@@ -156,34 +181,7 @@ Wait for the update to complete and check the status of the update.
 
 ## Step 3: Check the status of an update
 
-To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
-
-```PowerShell
-Get-CauRun -ClusterName <SystemName>
-```
-
-Here's a sample output: <!--ASK-->
-
-```output
-RunId                   : <Run ID> 
-RunStartTime            : 10/13/2024 1:35:39 PM 
-CurrentOrchestrator     : NODE1 
-NodeStatusNotifications : { 
-Node      : NODE1 
-Status    : Waiting 
-Timestamp : 10/13/2024 1:35:49 PM 
-} 
-NodeResults             : { 
-Node                     : NODE2 
-Status                   : Succeeded 
-ErrorRecordData          : 
-NumberOfSucceededUpdates : 0 
-NumberOfFailedUpdates    : 0 
-InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[] 
-}
-```
-
-You're now ready to perform the post-OS upgrade steps for your system.
+[!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
 ## Next steps
 

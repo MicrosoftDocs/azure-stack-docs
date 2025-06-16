@@ -65,6 +65,11 @@ For a consolidated list of endpoints for Japan East that includes Azure Local, A
 For a consolidated list of endpoints for South Central US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in South Central US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/SouthCentralUSEndpoints/southcentralus-hci-endpoints.md)
 
+## Required firewall URLs for Azure Local in Azure Government regions
+
+For a consolidated list of endpoints for US Gov Virginia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
+- [Required endpoints in US Gov Virginia for Azure Local](https://github.com/CristianEdwards/AzureStack-Tools/blob/master/HCI/usgovvirginia-hci-endpoints/usgovvirginia-hci-endpoints.md)
+
 ## Firewall requirements for OEMs
 
 Depending on the OEM you are using for Azure Local you may need to open additional endpoints in your firewall.

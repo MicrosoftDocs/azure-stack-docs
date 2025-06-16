@@ -3,7 +3,7 @@ title: Register your Azure Local machines with Azure Arc and assign permissions 
 description: Learn how to Register your Azure Local machines with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 04/03/2025
+ms.date: 05/06/2025
 ms.author: alkohli
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -119,17 +119,17 @@ Before you begin, make sure you complete the following prerequisites:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
     ```
 
-    If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
+    If you're accessing the internet using a proxy server, you need to add the `-Proxy` parameter and provide the proxy server in the format `http://<Proxy server FQDN or IP address>:Port` when running the script.
 
     For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
     # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your machines:
-    
+
     ```output
     PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
     >>
@@ -154,16 +154,12 @@ Before you begin, make sure you complete the following prerequisites:
 
 4. After the script completes successfully on all the machines, verify that:
 
-
     1. Your machines are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The machines appear within the specified resource group as **Machine - Azure Arc** type resources.
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
 
-
-
 > [!NOTE]
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
-
 
 ## Assign required permissions for deployment
 
@@ -188,7 +184,6 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
     - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
     - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
- 
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
 
@@ -197,7 +192,7 @@ This section describes how to assign Azure permissions for deployment from the A
     :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
 
     > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed. 
 
 ## Next steps
 

@@ -113,4 +113,4 @@ If your organization's processes and procedures require deviations from these re
 
 ## Next steps
 
-- [Download Azure Stack HCI OS, version 23H2 software](./download-23h2-software.md) on each machine in your system.
+- [Download operating system for Azure Local deployment](./download-23h2-software.md) on each machine in your system.

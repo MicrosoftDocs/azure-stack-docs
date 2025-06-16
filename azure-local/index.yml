@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: ronmiab
   ms.author: robess
-  ms.date: 10/31/2024
+  ms.date: 04/18/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -72,7 +72,7 @@ landingContent:
             url: /azure/aks/hybrid/aks-create-clusters-portal?toc=/azure-local/toc.json&bc=/azure-local/breadcrumb/toc.json
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
-          - text: Run Azure Arc Virtual Machines
+          - text: Run Azure Local VMs enabled by Azure Arc
             url: /azure/azure-local/manage/create-arc-virtual-machines
 
   # Card
@@ -86,7 +86,7 @@ landingContent:
             url: manage/add-server.md
           - text: Repair node
             url: manage/repair-server.md
-          - text: Manage Arc VMs
+          - text: Manage Azure Local VMs enabled by Azure Arc
             url: manage/manage-arc-virtual-machines.md
           - text: Manage SDN Multisite
             url: manage/manage-sdn-multisite.md?pivots=azure-local

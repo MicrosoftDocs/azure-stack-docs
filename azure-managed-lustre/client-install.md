@@ -5,9 +5,8 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 01/10/2025
+ms.date: 04/29/2025
 zone_pivot_groups: select-os
-
 ---
 
 # Install prebuilt Lustre client software
@@ -77,6 +76,14 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone-end
 
+::: zone pivot="ubuntu-24"
+
+## Install client software for Ubuntu 24.04
+
+This article shows how to install the client package to set up client VMs running Ubuntu 24.04.
+
+::: zone-end
+
 ### Download and install prebuilt client software
 
 ::: zone pivot="alma-86"
@@ -89,11 +96,11 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    rpm --import https://packages.microsoft.com/keys/microsoft.asc
-   
+
    DISTRIB_CODENAME=el8
-   
+
    REPO_PATH=/etc/yum.repos.d/amlfs.repo
    echo -e "[amlfs]" > ${REPO_PATH}
    echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
@@ -125,11 +132,11 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    rpm --import https://packages.microsoft.com/keys/microsoft.asc
-   
+
    DISTRIB_CODENAME=el7
-   
+
    REPO_PATH=/etc/yum.repos.d/amlfs.repo
    echo -e "[amlfs]" > ${REPO_PATH}
    echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
@@ -160,11 +167,11 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    rpm --import https://packages.microsoft.com/keys/microsoft.asc
-   
+
    DISTRIB_CODENAME=el8
-   
+
    REPO_PATH=/etc/yum.repos.d/amlfs.repo
    echo -e "[amlfs]" > ${REPO_PATH}
    echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
@@ -195,11 +202,11 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    rpm --import https://packages.microsoft.com/keys/microsoft.asc
-   
+
    DISTRIB_CODENAME=el9
-   
+
    REPO_PATH=/etc/yum.repos.d/amlfs.repo
    echo -e "[amlfs]" > ${REPO_PATH}
    echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
@@ -241,12 +248,12 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
    source /etc/lsb-release
    echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-   
+
    apt update
    ```
 
@@ -271,12 +278,12 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
    source /etc/lsb-release
    echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-   
+
    apt update
    ```
 
@@ -322,7 +329,7 @@ This article shows how to install the client package to set up client VMs runnin
 1. Remove any kernels newer than the one mentioned in the LTS metapackage.
 
    ```bash
-   sudo apt remove linux-image-5.15.0-1053-azure
+   sudo apt remove linux-image-6.8.0-1027-azure
    ```
 
    You receive a warning about removing the kernels, but these steps work if you're following them on a newly provisioned host. If you have concerns, consult Ubuntu documentation on configuring kernels to ensure that they can start after a restart.
@@ -340,12 +347,12 @@ This article shows how to install the client package to set up client VMs runnin
    ```bash
    #!/bin/bash
    set -ex
-   
+
    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
    source /etc/lsb-release
    echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-   
+
    apt update
    ```
 
@@ -360,6 +367,75 @@ This article shows how to install the client package to set up client VMs runnin
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+
+::: zone-end
+
+::: zone pivot="ubuntu-24"
+
+> [!IMPORTANT]
+> The Azure Marketplace image for the Ubuntu 24.04 LTS release uses the Hardware Enablement (HWE) kernel by default. However, HWE kernels are supported only for six-month periods, and Lustre support for these kernels is often not available when they're released. We recommend that you switch to the LTS kernel because it gives you more stability and it maintains a kernel version that's supported with the Lustre client.
+
+1. Install the LTS kernel metapackage:
+
+   ```bash
+   sudo apt update && sudo apt install linux-image-azure-lts-24.04
+   ```
+
+1. Remove the default (HWE) kernel metapackage. The response to the following command also asks you to remove the `linux-azure` metapackage.
+
+   ```bash
+   sudo apt remove linux-image-azure
+   ```
+
+1. List installed kernels and see which one the LTS metapackage supplies:
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+   Newly provisioned hosts have two kernels, and older hosts might have more. Compare the version that the LTS metapackage provides against the other installed kernels.
+
+1. Remove any kernels newer than the one mentioned in the LTS metapackage.
+
+   ```bash
+   sudo apt remove linux-image-6.11.0-1013-azure
+   ```
+
+   You receive a warning about removing the kernels, but these steps work if you're following them on a newly provisioned host. If you have concerns, consult Ubuntu documentation on configuring kernels to ensure that they can start after a restart.
+
+1. List installed kernels again to verify that you don't have kernels newer than the one mentioned in the LTS metapackage:
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Restart to load the LTS kernel.
+
+1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+    #!/bin/bash
+    set -ex
+
+    apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+    source /etc/lsb-release
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+
+    apt update
+   ```
+
+1. Run the script as a superuser:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel.
+
+    The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
+
+   [!INCLUDE [client-install-version-ubunt-24](./includes/client-install-version-ubuntu-24.md)]
 
 ::: zone-end
 

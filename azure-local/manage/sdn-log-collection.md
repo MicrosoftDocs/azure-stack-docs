@@ -72,7 +72,7 @@ Follow these steps to install the `SdnDiagnostics` PowerShell module on the clie
 1. To confirm the version of `SdnDiagnostics` module loaded into the runspace, run the following cmdlet:
 
     ```powershell
-    Get-Module -Name SdnDiagmostics
+    Get-Module -Name SdnDiagnostics
     ```
     - If you have multiple versions loaded into the runspace, we recommend removing and then re-importing the module.
 

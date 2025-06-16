@@ -5,7 +5,7 @@ author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 01/29/2025
+ms.date: 06/03/2025
 ---
 
 # Software Defined Networking (SDN) in Azure Local
@@ -29,7 +29,7 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-You have the option to [deploy SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard-23h2.md) after creating a system.
+You have the option to [deploy an SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard-23h2.md) after creating a system.
 
 ## Software Load Balancing
 

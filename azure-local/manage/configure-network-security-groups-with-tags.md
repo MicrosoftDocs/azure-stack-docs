@@ -7,7 +7,7 @@ ms.topic: article
 author: alkohli
 ms.subservice: 
 zone_pivot_groups: windows-os
-ms.date: 01/28/2025
+ms.date: 06/03/2025
 ---
 
 # Configure network security groups with tags in Windows Admin Center

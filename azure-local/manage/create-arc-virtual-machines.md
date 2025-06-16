@@ -7,14 +7,14 @@ ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 03/21/2025
+ms.date: 06/09/2025
 ---
 
 # Create Azure Local virtual machines enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local virtual machines (VMs) starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc, starting with the VM images that you created on your Azure Local instance. You can create Azure Local VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Local resource
 
@@ -28,7 +28,7 @@ The procedure to create VMs is described in the next section.
 
 ## Prerequisites
 
-Before you create an Azure Local VM, make sure that the following prerequisites are completed.
+Before you create an Azure Local VM, make sure that the following prerequisites are complete:
 
 # [Azure CLI](#tab/azurecli)
 
@@ -241,7 +241,7 @@ Follow these steps in Azure portal for your Azure Local.
 
    :::image type="content" source="./media/create-arc-virtual-machines/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/create-arc-virtual-machines/select-create-vm.png":::
 
-1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters in the **Project details** section:
+1. On the **Basics** tab, input the following parameters in the **Project details** section:
 
    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
 
@@ -262,7 +262,7 @@ Follow these steps in Azure portal for your Azure Local.
     
         **The Virtual machine kind** is automatically set to **Azure Local**.
 
-    1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information on what are Trusted launch Arc virtual machines, see [What is Trusted launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
+    1. **Security type** - For the security of your VM, select **Standard** or **Trusted launch virtual machines**. For more information about Trusted launch Azure Local VMs, see [What is Trusted launch for Azure Local Virtual Machines?](./trusted-launch-vm-overview.md).
 
    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on your Azure Local. In this case, ensure that the selected storage path has sufficient storage space.
 
@@ -305,7 +305,7 @@ Follow these steps in Azure portal for your Azure Local.
 
 1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
-    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png" alt-text="Screenshot of guest management enabled inVM extensions on Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-administrator-account-domain-join.png":::
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
@@ -689,6 +689,10 @@ You can use the Azure Verified Module (AVM) that contains the Terraform template
    :::image type="content" source="./media/create-arc-virtual-machines/terraform-virtual-machines.png" alt-text="Screenshot of select Virtual Machine after deployment." lightbox="./media/create-arc-virtual-machines/terraform-virtual-machines.png":::
 
 ---
+
+> [!NOTE]
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after successfully creating the VM. However, you might see the empty drives visible for the VM. 
+> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux you are using, you can also delete them for Linux VMs.
 
 ## Use managed identity to authenticate Azure Local VMs
 

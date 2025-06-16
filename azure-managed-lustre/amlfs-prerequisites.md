@@ -94,6 +94,7 @@ You must create a storage account or use an existing one. The storage account mu
 - **Account type** - A compatible storage account type. To learn more, see [Supported storage account types](#supported-storage-account-types).
 - **Access roles** - Role assignments that permit the Azure Managed Lustre system to modify data. To learn more, see [Required access roles](#access-roles-for-blob-integration).
 - **Access keys** - The storage account must have the storage account key access setting set to **Enabled**.
+- **Subnet access** - The storage account must be accessible from the Azure Managed Lustre subnet. To learn more, see [Enable subnet access](#enable-subnet-access).
 
 #### Supported storage account types
 
@@ -129,6 +130,21 @@ To add the roles for the service principal **HPC Cache Resource Provider**, foll
 1. Repeat steps 3 and 4 to add each role.
 
 For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+
+#### Enable subnet access
+
+Configure network access of the storage account to enable public access from all networks or from the subnet configured with the Azure Managed Lustre system.  If you choose to disable public access to the storage account (private endpoints), see [Private endpoints](#private-endpoints-optional).
+
+To enable storage account access from the Azure Managed Lustre subnet, follow these steps:
+
+1. Navigate your storage account, and expand **Security + Networking** in the left navigation pane.
+1. Select **Networking**.
+1. Under Public network access, click the radio button for either **Enable public access from selected virtual networks and IP Addresses** (recommended) or **Enable public access from all networks**. If you choose **Enable public access from selected virtual networks and IP Addresses**, then continue with the steps below. If you choose **Enable public access from all networks**, then jump to the last step below to **Save**.
+![Screenshot showing Enable public access from selected virtual networks and IP Addresses in the Network access section.](./media/prerequisites/storage-account-subnet-access.png)
+1. Under Virtual networks, click **Add existing virtual network**.
+1. On the right, select the Virtual networks and Subnets used by Azure Managed Lustre.
+1. Click **Enable**.
+1. In the upper left, click **Save**.
 
 ### Blob containers
 

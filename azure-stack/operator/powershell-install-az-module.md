@@ -4,7 +4,7 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
 ms.custom: linux-related-content
-ms.date: 01/17/2025
+ms.date: 05/08/2025
 ms.author: sethm
 ms.lastreviewed:  12/6/2021
 
@@ -30,19 +30,17 @@ This article explains how to install the Azure PowerShell Az and compatible Azur
 
 You can also run the Az modules for Azure Stack Hub in a Docker container. For instructions, see [Use Docker to run PowerShell for Azure Stack Hub](../user/azure-stack-powershell-user-docker.md).
 
-You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
-
-API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as [**2020-09-01-hybrid**](../user/azure-stack-profiles-azure-resource-manager-versions.md). When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
+You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers. API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as [**2020-09-01-hybrid**](../user/azure-stack-profiles-azure-resource-manager-versions.md). When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack Hub compatible PowerShell Az modules in Internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
-## 1. Verify your prerequisites
+## Verify your prerequisites
 
 Az modules are supported on Azure Stack Hub with update 2002 or later, and with all current hotfixes installed. See the [Azure Stack Hub release notes](release-notes.md) for more information.
 
 The Azure PowerShell Az modules work with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the [latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no other requirements when run on PowerShell Core.
 
-To check your PowerShell version, run the command:
+To check your PowerShell version, run the following command:
 
 ```powershell  
 $PSVersionTable.PSVersion
@@ -69,13 +67,13 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    Install-Module PowershellGet -MinimumVersion 2.2.3 -Force
    ```
 
-## Prerequisites for Linux and Mac
+### Prerequisites for Linux and Mac
 
 PowerShell Core 6.x or later version is needed. Follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions.
 
-## Uninstall existing versions of the Azure Stack Hub PowerShell modules
+### Uninstall existing versions of the Azure Stack Hub PowerShell modules
 
-Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub Azure Resource Manager or Az PowerShell modules. Uninstall the modules using one of the following two methods:
+Before you install the required version, make sure that you uninstall any previously installed Azure Stack Hub Azure Resource Manager or Az PowerShell modules. Uninstall the modules using one of the following two methods:
 
 - To uninstall the existing Azure Resource Manager and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
 
@@ -89,7 +87,7 @@ Before installing the required version, make sure that you uninstall any previou
 
 - If `Uninstall-Module` didn't succeed, delete all the folders that start with **Azure**, **Az**, or **Azs** from the `$env:PSModulePath` locations. For Windows PowerShell, the locations might be `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules`. For PowerShell Core, the locations might be `C:\Program Files\PowerShell\7\Modules` and `C:\Users\{yourusername}\Documents\PowerShell\Modules`. Deleting these folders removes any existing Azure PowerShell modules.
 
-## Connected: Install with internet connectivity
+## Connected: install with internet connectivity
 
 The Azure Stack Az module works with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same way on the supported platforms.
 

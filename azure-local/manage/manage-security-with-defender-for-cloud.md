@@ -4,7 +4,8 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2025
+ms.date: 04/23/2025
+
 ms.service: azure-local
 ---
 
@@ -32,7 +33,8 @@ Before you begin, make sure that the following prerequisites are completed:
 Follow these steps to enable Defender for Cloud for Azure Local.
 
 - Step 1: Turn on Foundational CSPM.
-- Step 2: Turn on Defender for Servers for individual machines and Azure Local VMs enabled by Arc.
+- Step 2: Turn on Defender for Servers for individual machines and Azure Local virtual machines (VMs) enabled by Azure Arc.
+
 
 ### Step 1: Turn on Foundational CSPM
 
@@ -40,7 +42,7 @@ This step turns on the basic Defender for Cloud plan—at no extra cost. This pl
 
 ### Step 2: Turn on Defender for Servers for individual machines and Azure Local VMs
 
-This step gets you enhanced security features including security alerts for individual machines and VMs.
+This step gets you enhanced security features including security alerts for individual machines and Azure Local VMs.
 
 To do so, follow all the instructions in the [Enable the Defender for Servers plan](/azure/defender-for-cloud/tutorial-enable-servers-plan#enable-the-defender-for-servers-plan) section, which includes:
 
@@ -100,11 +102,27 @@ After you've [enabled Defender for Cloud for Azure Local](#enable-defender-for-c
 
    To learn more about the security recommendations specific to Azure Local, refer to the [Azure compute recommendations](/azure/defender-for-cloud/recommendations-reference-compute#azure-compute-recommendations) section in the [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) article.
 
-## Monitor servers and Azure Local VMs
+### Security recommendation exclusions
 
-Go to the Microsoft Defender for Cloud portal to monitor alerts for individual servers and VMs running on Azure Local. You can utilize the regulatory compliance and attack path analysis features, among other enhanced security features.
+You can ignore the Windows Defender for Cloud recommendations below for storage accounts and Azure Key Vaults that are associated with Azure Local instances. However, don't ignore these recommendations for other storage accounts and Azure Key Vaults you may have.
 
-Follow these steps to access the Microsoft Defender for Cloud portal's pages to monitor individual servers and VMs:
+| Affected resource | Recommendation | Exclusion reason |
+| --- | --- | --- |
+| Storage account | Storage accounts should have infrastructure encryption. | Storage account encryption isn't supported for Azure Local instances because it doesn't allow passing in an encryption key. |
+| Storage account | Storage accounts should prevent shared key access. | Azure Local supports accessing storage accounts exclusively through shared keys. |
+| Storage account | Storage account should use a private link connection. | Azure Local doesn't currently support private link connections. |
+| Azure Key Vault | Azure Key Vaults should use a private link. | Azure Local doesn't currently support private link connections. |
+| Machine – Azure Arc | Windows Defender Exploit Guard should be enabled on Azure Local machines. | Windows Defender Exploit Guard isn't applicable to server-core SKUs without a GUI such as the Azure Local OS. |
+| Machine – Azure Arc | Azure Local machines should be configured to periodically check for missing system updates. | Azure Local machines shouldn't be updated individually. Use the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
+| Machine – Azure Arc | System updates should be installed on your Azure Local machines using Azure Update Manager. | Azure Local machines shouldn't be updated individually. Utilize the Azure Local section in Azure Update Manager to update multiple systems or the Updates page on the Azure Local resource view whenever an update is available for the Azure Local instance. Updating individual machines could result in a mixed-mode state, which isn't supported. |
+| Machine – Azure Arc | Azure Local machines should have a vulnerability assessment solution. | Microsoft Defender Vulnerability Management doesn't currently support Azure Local. |
+
+## Monitor Azure Local machines and Azure Local VMs
+
+Go to the Microsoft Defender for Cloud portal to monitor alerts for individual Azure Local machines and Azure Local VMs.
+
+Follow these steps to access the Microsoft Defender for Cloud portal's pages to monitor individual servers and Azure Local VMs:
+
 
 1. Sign into the Azure portal, and search for and select **Microsoft Defender for Cloud**.
 
@@ -113,6 +131,7 @@ Follow these steps to access the Microsoft Defender for Cloud portal's pages to 
 1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view security recommendations for individual servers and VMs running on Azure Local, or **Security alerts** to monitor alerts for them.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" alt-text="Screenshot of the Defender for Cloud Overview page." lightbox="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" :::
+
 
 ## Next steps
 

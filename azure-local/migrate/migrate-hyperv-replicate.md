@@ -85,7 +85,7 @@ Complete the following tasks to generate the target appliance key:
 
 You can download the appliance using either a .VHD file or a .zip file.
 
-Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
+Under **Step 2: Download Azure Migrate appliance**, select either **.VHD** or **.zip**, and then select **Download installer**.
 
 :::image type="content" source="media/migrate-hyperv-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-hyperv-replicate/download-target-appliance.png":::
 
@@ -295,7 +295,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps

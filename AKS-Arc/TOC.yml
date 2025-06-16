@@ -5,6 +5,8 @@
   items:
   - name: What is AKS enabled by Azure Arc?
     href: aks-overview.md
+  - name: Compare AKS across platforms
+    href: aks-platforms-compare.md 
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
@@ -125,7 +127,7 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use auto-scaler
+    - name: Use autoscaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
@@ -180,12 +182,17 @@
     - name: Can't see VM SKUs on Azure portal
       href: check-vm-sku.md
     - name: Connectivity issues with MetalLB
-      href: load-balancer-issues.md 
-
+      href: load-balancer-issues.md
+    - name: Troubleshoot general network validation errors
+      href: network-validation-errors.md
+    - name: Network validation error due to .local domain
+      href: network-validation-error-local.md
   - name: Reference
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
+    - name: Azure PowerShell
+      href: /powershell/module/az.aksarc/
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources

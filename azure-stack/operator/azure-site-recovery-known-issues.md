@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
 ms.custom: linux-related-content
-ms.date: 04/03/2025
+ms.date: 04/25/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/25/2024
 ---
@@ -31,20 +31,20 @@ When you try to protect a VM with a disk of 1023Gb, the following behavior occur
 
 The current workaround for this issue is to create a new disk (of 1,022 GB or less), attach it to your source VM, copy the data from the 1,023 GB disk to the new one, and then remove the 1,023 GB disk from the source VM. Once this procedure is done, and the VM has all disks smaller or equal to 1,022 GB, you can enable the protection using Azure Site Recovery.
 
-## Re-protection: available data disk slots on appliance
+## Reprotection: available data disk slots on appliance
 
-1. Ensure the appliance VM has enough data disk slots, as the replica disks for re-protection are attached to the appliance.
+1. Ensure the appliance VM has enough data disk slots, as the replica disks for reprotection are attached to the appliance.
 
-2. The initial allowed number of disks being re-protected at the same time is 31. The default size of the appliance created from the marketplace item is [Standard_DS4_v2](../user/azure-stack-vm-sizes.md#dsv2-series), which supports up to 32 data disks, and the appliance itself uses one data disk.
+2. The initial allowed number of disks being reprotected at the same time is 31. The default size of the appliance created from the marketplace item is [Standard_DS4_v2](../user/azure-stack-vm-sizes.md#dsv2-series), which supports up to 32 data disks, and the appliance itself uses one data disk.
 
 3. If the sum of the protected VMs is greater than 31, perform one of the following actions:
-    - Split the VMs that require re-protection into smaller groups to ensure that the number of disks re-protected at the same time doesn't exceed the maximum number of data disks the appliance supports.
+    - Split the VMs that require reprotection into smaller groups to ensure that the number of disks reprotected at the same time doesn't exceed the maximum number of data disks the appliance supports.
     - Increase the size of the Azure Site Recovery appliance VM.
 
     >[!NOTE]
     > We don't test and validate large VM SKUs for the appliance VM.
 
-4. If you're trying to re-protect a VM, but there aren't enough slots on the appliance to hold the replication disks, the error message **An internal error occurred** displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
+4. If you're trying to reprotect a VM, but there aren't enough slots on the appliance to hold the replication disks, the error message **An internal error occurred** displays. You can check the number of the data disks currently on the appliance, or sign in to the appliance, go to **Event Viewer**, and open logs for **Azure Site Recovery** under **Applications and Services Logs**:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/event-viewer.png" alt-text="Sample screenshot of Event Viewer for Azure Site Recovery."lightbox="media/azure-site-recovery/known-issues/event-viewer.png":::
 
@@ -83,9 +83,9 @@ The current workaround for this issue is to create a new disk (of 1,022 GB or le
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/mobility-agent-update.png" alt-text="Sample screenshot of mobility agent update check."lightbox="media/azure-site-recovery/known-issues/mobility-agent-update.png":::
 
-## Re-protect manual resync isn't supported yet
+## Reprotect manual resync isn't supported yet
 
-After the re-protect job is complete, the replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
+After the reprotect job is complete, the replication is started in sequence. During replication, there may be cases that require a resync, which means a new initial replication is triggered to synchronize all the changes.
 
 There are two types of resync:
 
@@ -103,7 +103,7 @@ There are two types of resync:
 
 ## Known issues in PowerShell automation
 
-- If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the re-protect can fail. See the following examples:
+- If you leave `$failbackPolicyName` and `$failbackExtensionName` empty or null, the reprotect can fail. See the following examples:
 
     :::image type="content" source="../operator/media/azure-site-recovery/known-issues/reprotect-fail-error-1.png" alt-text="Sample screenshot of a VM failed to perform operation error."lightbox="media/azure-site-recovery/known-issues/reprotect-fail-error-1.png":::
 
@@ -147,5 +147,5 @@ To avoid this issue, make sure to first remove the protection from all items in 
 
 ## Next steps
 
-- [Azure Site Recovery on Azure Stack Hub](azure-site-recovery-overview.md)
-- [Azure Site Recovery on Azure Stack Hub capacity planning](azure-site-recovery-capacity-planning.md)
+- [Azure Site Recovery on Azure Stack Hub](azure-site-recovery-overview.md).
+- [Azure Site Recovery on Azure Stack Hub capacity planning](azure-site-recovery-capacity-planning.md).

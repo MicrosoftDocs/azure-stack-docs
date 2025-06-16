@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/23/2025
+ms.date: 06/02/2025
 ---
 
 # Download operating system for Azure Local deployment
@@ -34,7 +34,8 @@ Before you begin the download of the software from Azure portal, ensure that you
 ## Download the software from the Azure portal
 
 > [!IMPORTANT]
-> English is the only supported language for the deployment.
+> - English is the only supported language for the deployment.
+> - For deployments in Azure Government only, download the OS image from the following location: [OS image](https://aka.ms/hcireleaseimage).
 
 Follow these steps to download the software:
 
@@ -51,13 +52,13 @@ Follow these steps to download the software:
     
 1. On the **Download Azure Stack HCI** page, do the following:
 
-    1. Select the subscription in which you intend to deploy Azure Local. Ensure that the selected subscription has the Microsoft Azure Stack HCI resource provider registered.
+    1. Select the subscription in which you intend to deploy Azure Local. Ensure that the selected subscription has the Microsoft Azure Stack HCI resource provider registered and which you have **Reader** access at a minimum.
 
     :::image type="content" source="media/download-23h2-software/download-azure-stack-hci.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 1." lightbox="media/download-23h2-software/download-azure-stack-hci.png":::
 
     2. Select your desired version. Only the recommended version is eligible for deployment using Azure portal. To deploy a previous version, use an [Azure Resource Manager template](deployment-azure-resource-manager-template.md).
     
-    3. Select **I agree with Azure Local license terms and private notice** and then select **Download**.
+    3. Select **I agree with Azure Local license terms and privacy notice** and then select **Download**.
     
     :::image type="content" source="media/download-23h2-software/download-azure-stack-hci-step-2.png" alt-text="Screenshot of the Download Azure Stack HCI OS version 23H2 page showing step 2." lightbox="media/download-23h2-software/download-azure-stack-hci-step-2.png":::
 
@@ -66,4 +67,4 @@ Follow these steps to download the software:
 
 ## Next steps
 
-- [Install the Azure Stack HCI operating system, version 23H2 ](./deployment-install-os.md).
+- [Install the Azure Stack HCI operating system](./deployment-install-os.md).

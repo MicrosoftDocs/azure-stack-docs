@@ -20,8 +20,10 @@
       href: blob-integration.md
     - name: Import data using import jobs
       href: create-import-job.md
-    - name: Export data using export jobs
+    - name: Export data using manual export jobs
       href: export-with-archive-jobs.md
+    - name: Export data using auto-export jobs
+      href: auto-export.md
 - name: Access a file system
   items:
     - name: Install Lustre client

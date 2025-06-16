@@ -1,11 +1,11 @@
 ---
-title: Use builtin RBAC roles for Azure Local VM to manage Azure Local VMs enabled by Azure Arc
-description: Learn how to use RBAC builtin roles to manage Azure Local VMs enabled by Azure Arc.
+title: Use built-in RBAC roles for Azure Local VM to manage Azure Local VMs enabled by Azure Arc
+description: Learn how to use RBAC built-in roles to manage Azure Local VMs enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/20/2025
+ms.date: 04/29/2025
 ---
 
 # Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc 
@@ -14,9 +14,9 @@ ms.date: 03/20/2025
 
 This article describes how to use the Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs) enabled by Azure Arc.
 
-You can use the builtin RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
+You can use the built-in RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
 
-## About builtin RBAC roles
+## About built-in RBAC roles
 
 To control access to VMs and VM resources on Azure Local, you can use the following RBAC roles:
 
@@ -26,7 +26,7 @@ To control access to VMs and VM resources on Azure Local, you can use the follow
 
 Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources. The VM resources are referred to resources required to create a VM and include virtual disks, network interfaces, VM images, logical networks, and storage paths:
 
-| Builtin role | VMs | VM resources |
+| Built-in role | VMs | VM resources |
 |--|--|--|
 | Azure Stack HCI Administrator | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources including logical networks, VM images, and storage paths |
 | Azure Stack HCI VM Contributor | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources except logical networks, VM images, and storage paths |
@@ -52,7 +52,7 @@ You can assign RBAC roles to users via the Azure portal. Follow these steps to a
 
     :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-1.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Local." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
-1. On the **Role** tab, select an RBAC role to assign and select one of the following builtin roles:
+1. On the **Role** tab, select an RBAC role to assign and select one of the following built-in roles:
 
     - **Azure Stack HCI Administrator**
     - **Azure Stack HCI VM Contributor**

@@ -4,13 +4,35 @@ description: Learn about new features for Azure Migrate on Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/07/2025
+ms.date: 05/15/2025
 ms.service: azure-local
 ---
 
 # What's new for VM migration on Azure Local
 
 This article lists the various features and improvements that are available in VM migration to Azure Local.
+
+## April 2025
+
+This release includes the following features and improvements:
+
+- **Linux VM static IP migration support** – Azure Migrate to Azure Local migrations now support preserving static IP addresses during Linux virtual machine (VM) migrations.
+
+- **Customizable physical sector size on migrated disks** – You can now select either 512B or 4KB physical sector sizes for migrated disks, enabling better alignment with your workload and storage configuration.
+
+- **Critical bug fixes** – Resolved several user-reported issues, including:
+
+    - An Azure portal issue where more than 10 VMs weren't displayed on the Replication summary page.
+
+    - A timeout bug affecting certain migrations.
+
+- **User experience enhancements** – Multiple UX improvements were introduced to streamline migration workflows:
+
+    - Added a banner in the **Select VMs for replication** view that explains how to enable VMs for replication.
+
+    - Implemented a paginated **Replication Summary** view to improve performance and searchability.
+
+- **Documentation updates** – Updated screenshots and guidance throughout the Azure Migrate documentation to reflect the latest portal UI and feature set.
 
 ## March 2025
 

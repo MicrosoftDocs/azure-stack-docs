@@ -1914,6 +1914,16 @@
       "source_path": "azure-local/manage/trusted-launch-vm-deploy.md", 
       "redirect_url": "/azure/azure-local/manage/trusted-launch-vm-overview", 
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/deploy/network-atc.md", 
+      "redirect_url": "/windows-server/networking/network-atc/network-atc", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/manage/manage-network-atc.md", 
+      "redirect_url": "/windows-server/networking/network-atc/manage-network-atc", 
+      "redirect_document_id": false
     }
   ]
 }
