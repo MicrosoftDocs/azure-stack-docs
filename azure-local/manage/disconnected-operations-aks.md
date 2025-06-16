@@ -4,14 +4,13 @@ description: Learn how to manage Azure Kubernetes Service (AKS) Arc for Azure Lo
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Azure Kubernetes Service (AKS) for Azure Local with disconnected operations (preview)
 
 ::: moniker range=">=azloc-24112"
-
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
 
 This article gives an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You'll learn about key differences and limitations of disconnected operations.
 
@@ -25,24 +24,24 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 
 - [Azure Command-Line Interface (CLI)](disconnected-operations-cli.md) installed on your local machine.
 - An Azure subscription associated with disconnected operations.
-- An understanding of AKS and Azure Arc concepts.
-- Completed [Identity for Azure Local with disconnected operations (preview)](disconnected-operations-identity.md).
-- Completed [Networking for Azure Local with disconnected operations (preview)](disconnected-operations-network.md).
-- Completed [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
-- Completed [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md#preview-participation-criteria).
-- Completed [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
+- Understanding of AKS and Azure Arc concepts.
+- Complete [Identity for Azure Local with disconnected operations (preview)](disconnected-operations-identity.md).
+- Complete [Networking for Azure Local with disconnected operations (preview)](disconnected-operations-network.md).
+- Complete [Public key infrastructure (PKI) for Azure Local with disconnected operations (preview)](disconnected-operations-pki.md).
+- Complete [Hardware for Azure Local with disconnected operations (preview)](disconnected-operations-overview.md#preview-participation-criteria).
+- Complete [Set up for Azure Local with disconnected operations (preview)](disconnected-operations-set-up.md).
 
 ## Limitations
 
-Here are some limitations associated with disconnected operations for AKS Arc:
+Limitations for disconnected operations with AKS Arc include:
 
 - Support for disconnected operations begins with the 2408 release.
 - Supported Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
-- Microsoft Entra ID (formerly known as Azure Active Directory) isn't currently supported for disconnected operations.
+- Microsoft Entra ID (formerly Azure Active Directory) isn't supported for disconnected operations.
 - GPUs aren't supported.
 - Arc Gateway isn't supported for configuring outbound URLs.
-- Create logical networks using the CLI. The portal isn't supported.
-- Create SSH keys using the CLI. The portal isn't supported.
+- Create logical networks using the CLI only. The portal isn't supported.
+- Create SSH keys using the CLI only. The portal isn't supported.
 
 ## Create an AKS cluster
 

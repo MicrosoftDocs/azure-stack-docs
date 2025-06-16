@@ -4,22 +4,21 @@ description: Use PowerShell module to collect logs on demand for Azure Local dis
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Collect logs on demand with Azure Local disconnected operations PowerShell Module
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
-This document helps you connect with support and provide logs for troubleshooting issues when Azure Local is operating in a disconnected mode.
+This article explains how to connect with support and provide logs for troubleshooting issues when Azure Local operates in disconnected mode.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Overview
 
-On-demand log collection lets you collect logs from Azure Local disconnected operations for troubleshooting purposes. This feature is useful when you need to provide logs to Microsoft support for troubleshooting issues.
+On-demand log collection lets you collect logs from Azure Local disconnected operations for troubleshooting. Use this feature to provide logs to Microsoft support.
 
 ## Supported scenarios
 
@@ -53,13 +52,13 @@ Use the following cmdlets and references to triage Azure Local issues.
 
 ## Prerequisites
 
-There are a few prerequisites you need to perform log collection in a connected disconnected operations scenario.
+Here are the prerequisites needed to perform log collection in a connected disconnected operations scenario.
 
 1. Use [Deploy disconnected operations for Azure Local (Preview)](disconnected-operations-deploy.md) to set up the following Azure resources:
   
-    - A resource group in Azure used for the appliance.
+    - A resource group in Azure for the appliance.
     - A Service Principal (SPN) with contributor rights on the resource group.
-    - Copy the `AppId` and `Password` form the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
+    - Copy the `AppId` and `Password` from the output. Use them as **ServicePrincipalId** and **ServicePrincipalSecret** during observability setup.
 
 2. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and modify the path to match your folder structure.
 
@@ -119,11 +118,11 @@ There are a few prerequisites you need to perform log collection in a connected 
     ```
 
 > [!NOTE]
-> On each deployment, the management IP address, management endpoint client certificate, and certificate password are different. Make sure you know the correct values for your deployment.
+> For each deployment, the management IP address, management endpoint client certificate, and certificate password are different. Make sure you use the correct values for your deployment.
 
 ## Log collection when connected to Azure with an accessible management endpoint
 
-Before you can start log collection and get the Stamp ID, you must have the observability configuration with Azure Local disconnected operations module setup.
+Before you can start log collection and get the Stamp ID, set up the observability configuration with Azure Local disconnected operations module.
 
 1. To check that the observability configuration is set up. Use the Get-`ApplianceObservabilityConfiguration` or `Get-Appliancehealthstate` cmdlet:
 
@@ -184,7 +183,7 @@ Before you can start log collection and get the Stamp ID, you must have the obse
     False       @{Services=22; Diagnostics=0; Identity=100; Networking=100} @{Services=System.Object[]; Diagnostics=System.Object[]; Identity=System.Object[]; Networking=System.Object[]}  
     ```
 
-3. Trigger log collection.Run the `Invoke-applianceLogCollection` cmdlet.
+3. Trigger log collection. Run the `Invoke-applianceLogCollection` cmdlet.
 
     ```azurecli
     $fromDate = (Get-Date).AddMinutes(-30)
@@ -221,9 +220,9 @@ Before you can start log collection and get the Stamp ID, you must have the obse
 
 ## Log collection for a disconnected environment and accessible management endpoint
 
-For this scenario, the management application programming interface (API) is used to copy logs from disconnected operations to a shared folder. Logs are then analyzed locally or manually uploaded to Microsoft via the `Send-DiagnsticsData` cmdlet.
+In this scenario, use the management application programming interface (API) to copy logs from disconnected operations to a shared folder. Analyze logs locally or manually uploaded to Microsoft with the `Send-DiagnsticsData` cmdlet.
 
-You can trigger the log collection for your disconnected environment using the `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
+Trigger log collection for your disconnected environment with the `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.
 
 1. Trigger log collection.
 
@@ -347,9 +346,9 @@ You can trigger the log collection for your disconnected environment using the `
     ```
 
 4. Send diagnostic data to Microsoft.
-    1. First, use the `Send-DiagnosticsData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticsData](disconnected-operations-fallback.md#send-diagnosticdata).
+    1. Use the `Send-DiagnosticsData` cmdlet to manually send diagnostics data to Microsoft. For more information, see [Send-DiagnosticsData](disconnected-operations-fallback.md#send-diagnosticdata).
 
-    2. Then, unzip all files into the share folder.
+    2. Unzip all files into the share folder.
 
     ```azurecli
     $logShareFolderPath = "***"
@@ -368,13 +367,13 @@ You can trigger the log collection for your disconnected environment using the `
 
 ## Log collection with an inaccessible management endpoint
 
-Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM is down, the management endpoint isn't accessible, and standard log collection can't be invoked.
+Use fallback log collection to collect and send logs when the disconnected operations with Azure Local VM is down, the management endpoint isn't accessible, and you can't invoke standard log collection.
 
-There are three methods in this scenario:
+There are three methods used in this scenario:
 
-- **Copy-DiagnosticData**: Used to copy logs from the disconnected operations with Azure Local VM to a local folder.
-- **Send-DiagnosticData**: Used to send logs to Microsoft for analysis.
-- **Get-observabilityStampId**: Used to get the stamp ID.
+- **Copy-DiagnosticData**: Copy logs from the disconnected operations with Azure Local VM to a local folder.
+- **Send-DiagnosticData**: Send logs to Microsoft for analysis.
+- **Get-observabilityStampId**: Get the stamp ID.
 
 For more information, see [Use appliance fallback log collection](disconnected-operations-fallback.md).
 

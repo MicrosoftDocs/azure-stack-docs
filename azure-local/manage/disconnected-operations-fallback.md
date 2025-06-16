@@ -4,30 +4,29 @@ description: Export and send logs using Appliance Fallback Logging for disconnec
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
-This article describes how to use appliance fallback logging to export and send logs to Microsoft when Azure Local is operating in a disconnected mode.
+This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local operates in disconnected mode.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About fallback logging
 
-Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations virtual machine (VM) is down. This method is used when standard log collection can't be initiated, and logs are needed for troubleshooting.
+Use appliance fallback logging to collect and send logs to Microsoft when the Azure Local disconnected operations virtual machine (VM) is down. Use this method when standard log collection can't start and you need logs for troubleshooting.
 
 ## Prerequisites
 
-- [Import the Appliance logging](#import-the-appliance-logging).
+- [Import the Appliance logging](#import-appliance-logging).
 
-## Import the Appliance logging
+## Import Appliance logging
 
-To import the appliance logging, run the following command:
+To import appliance logging, run the following command:
 
 ```PowerShell
 Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Force
@@ -35,7 +34,7 @@ Import-Module "C:\azurelocal\OperationsModule\ApplianceFallbackLogging.psm1" -Fo
 
 ## Export logs for the fallback scenario
 
-To export logs for the fallback scenario, you can use three cmdlets:
+To export logs for the fallback scenario, use three cmdlets:
 
 - [**Copy-DiagnosticData**](#copy-diagnosticdata)
 - [**Send-DiagnosticData**](#send-diagnosticdata)
@@ -43,13 +42,13 @@ To export logs for the fallback scenario, you can use three cmdlets:
 
 ### Copy-DiagnosticData
 
-The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and is typically used in scenarios where you need to collect diagnostic data from a VHD for analysis.
+The **Copy-DiagnosticData** command is used to copy diagnostic logs from mounted virtual hard disks (VHDs) to a specified folder. This command is part of the operations module and helps you collect diagnostic data from a VHD for analysis.
 
-Since the Azure Local VM running disconnected operations isn't expected to work in the appliance fallback logging scenario, you need to shut it down to retrieve logs. To obtain the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder nested in the user-defined folder location specified by `DiagnosticLogPath`. You can configure the time window and roles to be collected. If the `Observability Stamp ID` is configured, it should be included in the cmdlets return values.
+Since the Azure Local VM running disconnected operations isn't expected to work in the appliance fallback logging scenario, shut it down to retrieve logs. To obtain the logs, mount and unlock the VHDs, then copy the logs from the mounted VHDs to a local `LogsToExport` folder nested in the user-defined folder location specified by `DiagnosticLogPath`. You can set the time window and roles to collect. If the `Observability Stamp ID` is set, the cmdlet includes it in the return values.
 
-Ensure there's enough space in this location to hold the logs, as the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
+Make sure this location has enough space for the logs, because the Azure Local VMs running disconnected VHDs are temporarily mounted there during the copy action.
 
-You can use these parameters with the `Copy-DiagnosticData` cmdlet.
+Use these parameters with the `Copy-DiagnosticData` cmdlet.
 
 - **DiagnosticLogPath**: Required. The destination path contains the copied logs and temporarily mounted VHDs. If the `DiagnosticLogPath` cmdlet is piped into the `Send-DiagnosticData` cmdlet, it also serves as the default location where the Standalone Observability pipeline is installed and logs activity.
 
@@ -92,20 +91,20 @@ You can use these parameters with the `Copy-DiagnosticData` cmdlet.
     #>
     ```
 
-    To manually construct a RecoveryKeySet parameter, you can use the following template:
+    To manually construct a RecoveryKeySet parameter, use this template:
 
     ```console
     $bitLockerKeysPasswords = @(
     [PSCustomObject]@{protectorid = "{<Protector Id>}"; recoverypassword = "<Recovery password>"})
     ```
 
-    You can also retrieve BitLocker recovery keys using `Get-ApplianceBitlockerRecoveryKeys`. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
+    You can also retrieve BitLocker recovery keys using the `Get-ApplianceBitlockerRecoveryKeys` cmdlet. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
 
 #### Copy from the Azure Local VMs running disconnected and mount VHDs
 
-To copy diagnostic logs from the mounted VHDs to a folder location specified in `DiagnosticLogPath`, follow these steps:
+To copy diagnostic logs from the mounted VHDs to a folder location you specify in `DiagnosticLogPath`, follow these steps:
 
-1. Provide a drive or path for the `-DiagnosticLogPath` where the logs can be copied. Optionally, you can include specific roles and a log collection window.
+1. Enter a drive or path for the `-DiagnosticLogPath` where the logs are copied. Optionally, include specific roles and a log collection window.
 
     - If you specify a new file destination in the `-DiagnosticLogPath`, that destination is used to store the LogsToExport file. Otherwise, a parent folder named **CopyLogs_{timestamp}** (with the timestamp reflecting the time the cmdlet was called) is created by default.
 
@@ -114,9 +113,9 @@ To copy diagnostic logs from the mounted VHDs to a folder location specified in 
     > [!TIP]
     > The standalone pipeline used to send logs to Microsoft  is limited regarding the log volume it can handle. The more targeted the collection (the shorter the collection window and fewer the roles), the better the chance of avoiding errors during log ingestion.
 
-2. Specify a collection window, use the `-FromDate` and `-ToDate` parameters. By default, logs from the **last four hours** are collected.
+1. Specify a collection window using the `-FromDate` and `-ToDate` parameters. By default, the cmdlet collects logs from the **last four hours**.
 
-3. Run the `Copy-DiagnosticData` cmdlet:
+1. Run the `Copy-DiagnosticData` cmdlet:
 
     ```console
     $diagnosticLogPath = "C:\path\to\LogsToExport"
@@ -128,7 +127,7 @@ To copy diagnostic logs from the mounted VHDs to a folder location specified in 
     Copy-DiagnosticData [-DiagnosticLogPath] <String> [[-Roles] <String[]>] [[-FromDate] <Nullable`1>] [[-ToDate] <Nullable`1>] [[-RecoveryKeySet] <PSObject[]>] [<CommonParameters>]
     ```
 
-    Here's an example of the cmdlet:
+    Here's an example:
 
     ```powershell
     Copy-DiagnosticData -DiagnosticLogPath $diagnosticLogPath -Roles $role -FromDate $fromDate -ToDate $toDate -RecoveryKeySet $recoveryKeySet
@@ -146,7 +145,7 @@ To copy diagnostic logs from the mounted VHDs to a folder location specified in 
     VERBOSE: [2025-03-26 22:11:55Z] [Invoke-StopIRVMAndMountVHDs] Attempting to mount VHD 'C:\ClusterStorage\UserStorage_1\InfraVms\IRVM01\Virtual Hard Disks\OSAndDocker_A.vhdx'...      
     ```
 
-    Here's an example of the copy output including the StampId, if it exists:
+    Here's an example of the copy output with the StampId, if it exists:
 
     ```output
     | DiagnosticLogPath                                       | StampId                                  |
@@ -157,12 +156,12 @@ To copy diagnostic logs from the mounted VHDs to a folder location specified in 
     > [!NOTE]
     > The Azure Local VM running disconnected is **restarted** after this operation is completed.
 
-The autogenerated output folder, **CopyLogs_20240501T1525097418**, contains the copied logs within the **LogsToExport** folder. Additionally, it includes a **RobocopyLog.log** file and/or a **WEvtUtilLog.log** file, which documents the status of the copy actions.
+The autogenerated output folder, **CopyLogs_20240501T1525097418**, has the copied logs in the **LogsToExport** folder. It also includes a **RobocopyLog.log** file and a **WEvtUtilLog.log** file, which show the status of the copy actions.
 
 - **RobocopyLog.log**: Records the copying of all file types except Windows Event files.
 - **wevtutil**: A tool used to copy Windows events. This activity is logged in the **WEvtUtilLog.log** file.
 
-Here are examples of the LogtoExport folder structures:
+Here are examples of the **LogsToExport** folder structures:
 
 Overall file structure:
 
@@ -174,14 +173,14 @@ Azure Local VM running disconnected nested file structure:
 
 ### Send-DiagnosticData  
 
-After logs are collected into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, you can send them to Microsoft via the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targeting all the logs in the file location you provide, and sends them for ingestion to Microsoft. If log ingestion fails, the cmdlet attempts up to three times and then outputs the results of the send activity once it's complete.
+After you collect logs into a directory, either by using the `Copy-DiagnosticData` cmdlet or by copying them manually, send them to Microsoft with the standalone pipeline. This pipeline Arc-enables the host (the machine running the cmdlet) to perform the operation, targets all the logs in the file location you provide, and sends them for ingestion to Microsoft. If log ingestion fails, the cmdlet tries up to three times and then outputs the results of the send activity when it's complete.
 
 The **Send-DiagnosticData** cmdlet downloads and runs the standalone observability pipeline. You need to enter the credentials required to connect to Azure for the pipeline. There are two options for providing these credentials:
 
 - **Interactive registration with device code**. Prompts you to manually sign in to Azure once the cmdlet is invoked.
 - **Registration with Service Principal Credential**. Takes the required credentials upfront and uses them to run to completion. For more information, see [Collect logs on-demand with Azure Local disconnected operations (preview)](disconnected-operations-on-demand-logs.md).
 
-You must provide the following parameters for either option:
+Provide these required parameters for either option:
 
 - **ResourceGroupName**  
 - **SubscriptionId**  
@@ -189,7 +188,7 @@ You must provide the following parameters for either option:
 - **RegistrationRegion**  
 - **DiagnosticLogPath**  
 
-Optional parameters to provide:
+Optional parameters:
 
 - **ObsRootFolderPath**
 
@@ -199,7 +198,7 @@ Optional parameters to provide:
 - **StampId** (If set it defaults to `$env:STAMP_GUID`. If not the host machine's **UUID** is used.)
 
 > [!NOTE]
-> The RegistrationRegion is equivalent to Location with reference to the ObservabilityConfiguration endpoint's $arcContext JSON.
+> The `RegistrationRegion` is equivalent to `Location` with reference to the ObservabilityConfiguration endpoint's $arcContext JSON.
 
 Here's an example using the **Interactive registration with device code**:
 
@@ -213,7 +212,7 @@ Send-DiagnosticData
 -DiagnosticLogPath "C:\path\to\LogsToExport"   
 ```  
 
-The **-RegistrationWithDeviceCode** switch is optional. Whenever **-RegistrationWithCredential** is missing, interactive registration is automatically used.
+The **-RegistrationWithDeviceCode** switch is optional. If you don't use **-RegistrationWithCredential**, interactive registration is used.
 
 Here's an example using **Registration with Service Principal Credential**:
 
@@ -233,7 +232,7 @@ Send-DiagnosticData
 -StampId "Stamp ID"  
 ```  
 
-The cmdlet returns the stamp ID, also known as the **AEOStampId**. It also provides information about any errors encountered and the location of the send activity logs.
+The cmdlet returns the stamp ID, also called the **AEOStampId**. It also shows any errors and the location of the send activity logs.
 
 Here's an example of the output:
 
@@ -251,16 +250,16 @@ Here's an example of the file structure for the send logs:
 
 [![A screenshot of the file structure for the send logs.](./media/disconnected-operations/fallback-log/send-logs-file-structure.png)](media/disconnected-operations/fallback-log/send-logs-file-structure.png#lightbox)
 
-The file structure for the send logs contains all the logs and installation files from the standalone observability pipeline including the **GMACache logs** and pipeline install and/or uninstall logs.
+The send logs file structure has all the logs and installation files from the standalone observability pipeline, including the **GMACache logs** and pipeline install and uninstall logs.
 
 ### Get-ObservabilityStampId (optional)
 
 > [!NOTE]
-> You don't need to use this cmdlet in addition to `Copy-DiagnosticData`.
+> You don't need to use this cmdlet with `Copy-DiagnosticData`.
 
-The `Get-ObservabilityStampId` cmdlet is a heavy operation and should only be needed in rare cases. This cmdlet also shuts down the Azure Local VM running disconnected and mounts the OS volume VHD to retrieve the stamp ID. After the operation is complete, the Azure Local VM running disconnected is **restarted**.
+The `Get-ObservabilityStampId` cmdlet is a heavy operation and is only needed in rare cases. This cmdlet also shuts down the Azure Local VM running disconnected and mounts the OS volume VHD to get the stamp ID. After the operation, the Azure Local VM running disconnected restarts.
 
-You can use these parameters with the `Get-ObservabilityStampId` cmdlet:
+Use these parameters with the `Get-ObservabilityStampId` cmdlet:
 
 - **MountPath**: Optional. A valid drive or path to temporarily hold mounted VHDs used to retrieve the stamp ID. The file is removed on cleanup at the end of the cmdlet.
 - **Recoverykeyset**: Optional. The RecoveryKeySet containing relevant **ProtectorId** and **RecoveryPassword** pairs for BitLocker encrypted volumes used for log collection retrieval. If recovery keys aren't provided, manual entry of the keys is required during the mount process.
@@ -280,7 +279,7 @@ StampId
 <Stamp Id>
 ```
 
-If no `StampId` is listed in the returned content after running the command, the stamp ID isn't set and needs to be passed into the [Send-DiagnosticData](#send-diagnosticdata) manually. If the stamp ID isn't set and isn't passed manually, it defaults to the host **UUID**.
+If the command doesn't return a `StampId`, the stamp ID isn't set and you need to pass it into [Send-DiagnosticData](#send-diagnosticdata) manually. If the stamp ID isn't set and you don't pass it manually, it defaults to the host **UUID**.
 
 Alternatively, you can use the `Get-ApplianceInstanceConfiguration` command to get the stamp ID.
 
@@ -290,15 +289,15 @@ $stampId = (Get-ApplianceInstanceConfiguration).StampId
 
 ## Appendix  
 
-To view detailed information about the corresponding cmdlet, you can use the following commands:
+To view detailed information about each cmdlet, use these commands:
 
 <details>
 
 <summary>Get-Help Copy-DiagnosticData -Detailed</summary>
 
 ```plaintext  
-EXAMPLE 1
-PS C:\>Copy-DiagnosticData -DiagnosticLogPath "C:"
+EXAMPLE 1  
+PS C:\> Copy-DiagnosticData -DiagnosticLogPath "C:"
 
 EXAMPLE 2
 PS C:\>Copy-DiagnosticData -DiagnosticLogPath "C:/path/to/copied_logs_parent_directory"
@@ -376,3 +375,4 @@ PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles ` | Send-Diagn
 This feature is available only in Azure Local 2411.2.
 
 ::: moniker-end
+

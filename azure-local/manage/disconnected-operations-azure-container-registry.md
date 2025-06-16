@@ -4,24 +4,23 @@ description: Learn how to deploy and manage Azure Container Registry with discon
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Deploy Azure Container Registry with disconnected operations on Azure Local (preview)
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
-This article describes how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local.
+This article explains how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About Azure Container Registry
 
-Azure Container Registry on disconnected operations is a managed registry service. This service allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. With Azure Container Registry, you can:
+Azure Container Registry on disconnected operations is a managed registry service. This service lets you build, store, and manage container images and artifacts in a private registry for all types of container deployments. With Azure Container Registry, you can:
 
-- Create and manage container registries using these interfaces:
+- Create and manage container registries by using these interfaces:
   - User portal (disconnected operations)
   - PowerShell
   - Azure Command-Line Interface (CLI)
@@ -30,7 +29,7 @@ Azure Container Registry on disconnected operations is a managed registry servic
 - Assign role-based access control (RBAC) permissions.
 - Create webhooks.
 - Manage a local repository of images via a local container registry.
-  - This is part of a continuous integration and continuous delivery (CI/CD) pipeline.
+  - This registry is part of a continuous integration and continuous delivery (CI/CD) pipeline.
   - It's designed for deployment to Azure Kubernetes Service or other supported container orchestrators on disconnected operations.
 
 Key features of Azure Container Registry on disconnected operations include:
@@ -43,15 +42,15 @@ Key features of Azure Container Registry on disconnected operations include:
 
 ## Prerequisites
 
-- Ensure that the disconnected operations virtual machine is deployed.
-- Verify access to the disconnected operations portal.
+- Make sure that the disconnected operations virtual machine is deployed.
+- Check that you can access the disconnected operations portal.
 - Register the *Microsoft.ContainerRegistry* resource provider with disconnected operations.
 - [Install the Azure CLI](disconnected-operations-cli.md#install-cli) (supported up to version 2.54.0.).
-- (Optional) [Install Docker Desktop](https://www.docker.com/get-started/) on your disconnected operations host or client machine for test purposes.
+- (Optional) [Install Docker Desktop](https://www.docker.com/get-started/) on your disconnected operations host or client machine for testing.
 
 ## Deploy Azure Container Registry
 
-To deploy an Azure Container Registry on disconnected operations, follow these steps:
+To deploy an Azure Container Registry for disconnected operations, follow these steps:
 
 1. Sign in to the Azure Local portal and navigate to the **Create a resource** page.
 2. Select **Create a resource** > **Containers** > **Container Registry**.
@@ -59,7 +58,7 @@ To deploy an Azure Container Registry on disconnected operations, follow these s
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/create-container-registry.png" alt-text="Screenshot showing how to create a container registry from the portal." lightbox=" ./media/disconnected-operations/azure-container-registry/create-container-registry.png":::
 
 3. On the **Basics** tab, enter values for **Subscription**, **Resource group**, **Registry name**, **Location**, and **Pricing plan**.
-    - The registry name must be unique within Azure and contain 5-50 alphanumeric characters.
+    - The registry name must be unique in Azure and have 5-50 alphanumeric characters.
     - For **Location**, select **Autonomous** and for **Pricing plan**, select **Standard**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/basic-info.png" alt-text="Screenshot showing the basic information needed when creating a container registry." lightbox=" ./media/disconnected-operations/azure-container-registry/basic-info.png":::
@@ -68,7 +67,7 @@ To deploy an Azure Container Registry on disconnected operations, follow these s
 
 5. When the **Your deployment is complete** message appears, select the container registry in the portal.
 
-6. Note your registry name and value of the **Login server**.
+6. Note your registry name and the value of the **Login server**.
     - In Azure cloud, the login server is a fully qualified name ending with `azurecr.io`.
     - You need these values to push and pull images with Docker.
 
@@ -78,7 +77,7 @@ To deploy an Azure Container Registry on disconnected operations, follow these s
 
 In this section, you assign RBAC to a container registry on disconnected operations. For more information, see [Registry roles and permissions - Azure Container Registry](/azure/container-registry/container-registry-roles).
 
-To assign the **AcrPull** role to a user and validate the role assignment using the Docker CLI, follow these steps:
+To assign the **AcrPull** role to a user and check the role assignment using the Docker CLI, follow these steps:
 
 1. Navigate to your container registry and select **Access Control (IAM)**.
 
@@ -86,22 +85,22 @@ To assign the **AcrPull** role to a user and validate the role assignment using 
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/access-control.png" alt-text="Screenshot showing how to grant access to the resource using Access Control (IAM). " lightbox=" ./media/disconnected-operations/azure-container-registry/access-control.png":::
 
-3. Filter the list of roles by **Category = Containers**. Choose the appropriate role and select **Next**.
+3. Filter the list of roles by **Category = Containers**. Select the appropriate role, then select **Next**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/filter-category.png" alt-text="Screenshot showing how to filter a category for containers." lightbox=" ./media/disconnected-operations/azure-container-registry/filter-category.png":::
 
-4. Select **+Select members** and choose the member you want to add to the role. Select the **Select** button, and then select **Next**.
+4. Select **+Select members**, choose the member you want to add to the role, select the **Select** button, and select **Next**.
 
    :::image type="content" source="./media/disconnected-operations/azure-container-registry/select-members.png" alt-text="Screenshot showing how to add a specific member or members to a role." lightbox=" ./media/disconnected-operations/azure-container-registry/select-members.png":::
 
-5. Review your settings and select **Review + Assign**.
+5. Review your settings, then select **Review + Assign**.
 
 ## Manage images in Azure Container Registry
 
 ### Sign into the registry
 
 > [!NOTE]
-> You must sign into the registry instance before you push and pull container images. When you sign in with Azure CLI, only specify the registry resource name. Don't use the fully qualified login server name.
+> You must sign into the registry instance before you push and pull container images. When you sign in with Azure CLI, specify only the registry resource name. Don't use the fully qualified login server name.
 
 On your local machine, run the `az acr login` command.
 
@@ -111,7 +110,7 @@ az acr login --name <registry-name>
 
 ### Import a container image using Azure CLI
 
-You can import a container image to your container registry on disconnected operations using Azure CLI. In this example, we import the `mcr.microsoft.com/hello-world:latest` image into a registry.
+Import a container image to your container registry on disconnected operations using Azure CLI. In this example, we import the `mcr.microsoft.com/hello-world:latest` image into a registry.
 
 To return a list of registries in your resource group, use the `az acr list` command.
 
@@ -127,7 +126,7 @@ az acr import --name <registry-name> --source mcr.microsoft.com/hello-world:late
 
 ## Supported Azure Container Registry CLI commands
 
-The following table lists the supported Azure Container Registry CLI commands.
+The following table lists supported Azure Container Registry CLI commands.
 
 | Command | Description |  
 |---------|-------------|  

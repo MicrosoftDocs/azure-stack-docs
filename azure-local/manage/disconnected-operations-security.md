@@ -4,49 +4,48 @@ description: Learn about the security considerations and compliance regulations 
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to](../includes/release-2411-1-later.md)]
-
-This article helps you understand the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
+This article explains the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About security and compliance
 
-Azure Local with disconnected operations addresses security and compliance needs by using a locked down virtual machine (VM) appliance accessible only through the following methods:
+Azure Local with disconnected operations meets security and compliance needs by using a locked down virtual machine (VM) appliance that's accessible only through the following methods:
 
-- **Management Network Interface Card (NIC)**: Allows you to execute a limited set of commands for deployment and troubleshooting. It's secured with a customer-provided certificate during bootstrapping. For more information, see [Plan your network for disconnected operations](disconnected-operations-network.md).
-- **External (Ingress) NIC**: Exposed to users in your network. This network path is used for tenants and workloads of the system. User authentication is handled via your identity provider and uses role-based access control. For more information, see [Plan your identity for disconnected operations](disconnected-operations-identity.md).
+- **Management Network Interface Card (NIC)**: Lets you run a limited set of commands for deployment and troubleshooting. It's secured with a customer-provided certificate during bootstrapping. For more information, see [Plan your network for disconnected operations](disconnected-operations-network.md).
+- **External (Ingress) NIC**: Exposed to users in your network. This network path is for tenants and services of the system. User authentication uses your identity provider and role-based access control. For more information, see [Plan your identity for disconnected operations](disconnected-operations-identity.md).
 
-An Azure Local VM running disconnected operations uses the following security features:
+An Azure Local VM running disconnected operations uses these security features:
 
-- Transport Layer Security (TLS) 1.2, TLS 1.3, Datagram Transport Layer Security (DTLS) 1.2, and signed Server Message Block (SMB) protocols encryption for all data in transit.
-- Microsoft Defender to guard against viruses and malware.
-- Secure boot ensures the integrity of boot components.
-- Windows Defender Application Control ensures that only authorized code runs in a disconnected operations VM appliance.
+- Transport Layer Security (TLS) 1.2, TLS 1.3, Datagram Transport Layer Security (DTLS) 1.2, and signed Server Message Block (SMB) protocol encryption for all data in transit.
+- Microsoft Defender guards against viruses and malware.
+- Secure boot checks the integrity of boot components.
+- Windows Defender Application Control lets only authorized code run in a disconnected operations VM appliance.
 
 For more information about the security features for Azure Local, see [Security features for Azure Local](/azure/azure-local/concepts/security-features).
 
 ## Data at rest encryption
 
-By default, the data volumes in the Azure Local disconnected operations VM appliance are encrypted using BitLocker with AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) persist in an internal secure secret store.  
+By default, data volumes in the Azure Local disconnected operations VM appliance are encrypted with BitLocker using AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) stay in an internal secure secret store.
 
 ### Retrieve BitLocker recovery keys
 
-Azure Local with disconnected operations internally manages BitLocker recovery passwords for data at rest encryption. You don't need to provide them for regular operations or during system startup. However, support scenarios may require these passwords to bring the system online. Without these passwords, certain support scenarios may lead to data loss and require system redeployment.
+Azure Local with disconnected operations manages BitLocker recovery passwords for data at rest encryption. You don't need to provide them for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
 
-Follow these steps to retrieve your BitLocker recovery passwords:
+Follow these steps to get your BitLocker recovery passwords:
 
 1. Import the `Azure.Local.DisconnectedOperations.psd1` module.
 
     ```powershell
-    # Import-Module (If not already done): 
+    # Import-Module (if not already done): 
     Import-Module "C:\azurelocal\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force 
     ```
 
@@ -77,11 +76,11 @@ Follow these steps to retrieve your BitLocker recovery passwords:
     {8F84B18A-670E-4B3E-A194-0C6ABA022083}  604494-676940-630740-390940-155859-514789-56  
     ```
 
-4. Retrieve your BitLocker recovery passwords and store them in a secure location outside of Azure Local or the Azure Local host.
+1. Get your BitLocker recovery passwords and store them in a secure location outside Azure Local or the Azure Local host.
 
-If your system's experiencing BitLocker issues, like Azure Local with disconnected operations failing to start, contact support with your BitLocker recovery passwords.
+If your system is experiencing BitLocker issues, like Azure Local with disconnected operations failing to start, contact support and provide your BitLocker recovery passwords.
 
-You can manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. However, if BitLocker recovery keys aren't available, your only option is to redeploy the disconnected operations VM appliance.
+Manually unlock the virtual hard drive or virtual storage disk using BitLocker recovery passwords. If BitLocker recovery keys aren't available, you need to redeploy the disconnected operations VM appliance.
 
 ## Configure syslog forwarding
 
@@ -89,9 +88,9 @@ You can use the syslog protocol for Azure Local with disconnected operations VM 
 
 The syslog agent of the disconnected operations VM appliance forwards security events in syslog format from the Azure Local VM to the customer-configured syslog server.
 
-To configure syslog forwarding, access the physical host using a domain administrator account. Use GET and PUT HTTP commands to query or modify the state of the syslog forwarding configuration. The PowerShell scripts in the following section demonstrate how to control the behavior of the syslog forwarder from Azure Local hosts. However, any REST client can be used.
+To set up syslog forwarding, sign in to the physical host with a domain admin account. Use GET and PUT HTTP commands to check or change the syslog forwarding configuration. The following PowerShell scripts show how to control the syslog forwarder from Azure Local hosts. You can also use any REST client.
 
-To set up syslog forwarding for the Azure Local host, see [Manage syslog forwarding for Azure Local](manage-syslog-forwarding.md).
+For details about setting up syslog forwarding for the Azure Local host, see [Manage syslog forwarding for Azure Local](manage-syslog-forwarding.md).
 
 ### Syslog forwarding parameters
 
@@ -100,14 +99,14 @@ The following table provides the parameters for the REST endpoint:
 | Parameter                   | Description                                                                 | Type   | Required |  
 |-----------------------------|-----------------------------------------------------------------------------|--------|----------|  
 | **ClientCertificateThumbprint** | Thumbprint of the client certificate used to communicate with syslog server. | String | No       |  
-| **Enabled**                 | Determines whether the syslog agent in the Azure Local disconnected VM appliance is enabled or disabled. When disabled, remove the current syslog forwarder configuration and stop the syslog forwarder. | Flag   | Yes      |  
-| **NoEncryption**            | Force the client to send syslog messages in clear text.                     | Flag   | No       |  
-| **OutputSeverity**          | Level of output logging. Values are **Default** or **Verbose**.<br></br> **Default** includes severity levels: warning, critical, or error.<br></br> **Verbose** includes all severity levels: verbose, informational, warning, critical, or error. | String | No       |  
-| **ServerName**              | Fully qualified domain name (FQDN) or IP address of the syslog server.                                    | String | No       |  
-| **ServerPort**              | Port number the syslog server is listening on.                              | UInt16 | No       |  
-| **SkipServerCertificateCheck** | Skip validation of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
-| **SkipServerCNCheck**       | Skip validation of the Common Name value of the certificate provided by the syslog server during the initial TLS handshake. | Flag   | No       |  
-| **UseUDP**                  | Use syslog with UDP as transport protocol.                                  | Flag   | No       |  
+| **Enabled**                 | Lets you enable or disable the syslog agent in the Azure Local disconnected VM appliance. When disabled, the syslog forwarder configuration is removed and the syslog forwarder stops. | Flag   | Yes      |  
+| **NoEncryption**            | Sends syslog messages in clear text.                     | Flag   | No       |  
+| **OutputSeverity**          | Sets the output logging level. Use **Default** for warning, critical, or error messages. Use **Verbose** for all severity levels, including verbose, informational, warning, critical, or error. | String | No       |  
+| **ServerName**              | FQDN or IP address of the syslog server.                                    | String | No       |  
+| **ServerPort**              | Port number used by the syslog server.                              | UInt16 | No       |  
+| **SkipServerCertificateCheck** | Skips validation of the syslog server certificate during the initial TLS handshake. | Flag   | No       |  
+| **SkipServerCNCheck**       | Skips validation of the Common Name value in the syslog server certificate during the initial TLS handshake. | Flag   | No       |  
+| **UseUDP**                  | Uses UDP as the transport protocol for syslog.                                  | Flag   | No       |  
 <!--| **ClientCertPfxInBase64**   | Base64-encoded client certificate's public and private keys in `.pfx` format used to communicate with syslog server. | String | No       |  
 | **ClientCertPfxPassword**   | Password to use when installing the client certificate passed in `ClientCertPfxInBase64`. | String | No       |
 | **RootCertInBase64**        | Base64-encoded root certificate's public key for the Syslog server in `.cer` format. | String | No       |-->
@@ -166,7 +165,7 @@ try {
 
 In this configuration, the syslog forwarder in Azure Local forwards the messages to the syslog server over TCP with TLS encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
-This configuration prevents the client from sending messages to untrusted destinations. The default configuration is TCP with authentication and encryption, representing the minimum level of security that Microsoft recommends for a production environment. Microsoft recommends that you don't use the `-SkipServerCertificateCheck` flag in production environments
+This configuration prevents the client from sending messages to untrusted destinations. By default, TCP with authentication and encryption is used, which is the minimum level of security recommended for production. Don't use the `-SkipServerCertificateCheck` flag in production environments.
 
 To enable syslog forwarding with TCP, server authentication, and TLS encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -178,9 +177,9 @@ $configRequestContent = @{
 }
 ```
 
-To test the integration of your syslog server with the Azure Local syslog forwarder using a self-signed or untrusted certificate, use these flags to skip the server validation performed by the client during the initial handshake.
+To test integration with a self-signed or untrusted certificate, use these flags to skip server validation during the initial handshake.
 
-- Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server.
+- Skip validation of the Common Name value in the server certificate. Use this flag if you enter an IP address for your syslog server.
 
 ```powershell
 $configRequestContent = @{
@@ -189,7 +188,7 @@ $configRequestContent = @{
 }  
 ```
 
-- Skip the server certificate validation. Use this flag if you use a self-signed certificate for your syslog server.
+- Skip server certificate validation. Use this flag if you use a self-signed certificate for your syslog server.
 
 ```powershell
 $configRequestContent = @{
@@ -200,7 +199,7 @@ $configRequestContent = @{
 
 ### Configure syslog forwarding with TCP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over TCP with no encryption. The client doesn't verify the server's identity or provide its own identity for verification. Don't use this configuration in production environments.
 
 To enable syslog forwarding with TCP and no encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -214,11 +213,11 @@ $configRequestContent = @{
 ```
 
 > [!IMPORTANT]
-> To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments. The handshake between the endpoints determines the version of TLS encryption, and both TLS 1.2 and TLS 1.3 are supported by default.
+> To protect against man-in-the-middle attacks and eavesdropping, use TCP with authentication and encryption in production environments. The handshake between endpoints determines the TLS version, and both TLS 1.2 and TLS 1.3 are supported by default.
 
 ### Configure syslog forwarding with UDP and no encryption
 
-In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP, with no encryption. The client doesn’t verify the identity of the server, nor does it provide its own identity to the server for verification. Microsoft recommends that you don't use this configuration in production environments.
+In this configuration, the syslog client in Azure Local forwards messages to the syslog server over UDP with no encryption. The client doesn't verify the server's identity or provide its own identity for verification. Don't use this configuration in production environments.
 
 To enable syslog forwarding with UDP and no encryption, prepare a configuration request in PowerShell with the following values:
 
@@ -231,13 +230,13 @@ $configRequestContent = @{
 }
 ```
 
-While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks or eavesdropping of messages.
+UDP with no encryption is the easiest to set up, but it doesn't protect against man-in-the-middle attacks or eavesdropping.
 
 ## Manage syslog forwarding
 
 ### Disable syslog forwarding
 
-To disable syslog forwarding, run the following cmdlet:
+To disable syslog forwarding, run this cmdlet:
 
 ```powershell
 $configRequestContent = @{
@@ -249,7 +248,7 @@ $configRequestContent = @{
 
 ### Update syslog setup
 
-After the configuration is properly defined, send the configuration request using the following PowerShell script:
+After you define the configuration, send the configuration request by running this PowerShell script:
 
 ```powershell
 $IRVMIP = "<Azure Local VM management endpoint IP address>"
@@ -266,7 +265,7 @@ Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Me
 
 ### Verify syslog setup
 
-After you successfully connect the syslog client to your syslog server, you should start to receive event notifications. If you don’t see notifications, verify your cluster syslog forwarder configuration by running the following cmdlet:
+After you connect the syslog client to your syslog server, you start to receive event notifications. If you don't see notifications, check your cluster syslog forwarder configuration by running this cmdlet:
 
 ```powershell
 $IRVMIP = "<Azure Local VM management endpoint IP address>"
@@ -280,25 +279,25 @@ Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Me
 
 ```
 
-If a setting property isn't configured, its default value shows when trying to retrieve the current configurations.
+If a setting property isn't configured, you see its default value when you retrieve the current configuration.
 
 ## Reference: Message schema and event log
 
-In the next sections, we discuss syslog message schema and event definitions.
+This section describes the syslog message schema and event definitions.
 
 ### Syslog message schema
 
-The syslog forwarder of the Azure Local infrastructure sends messages formatted following the Berkeley Software Distribution (BSD) syslog protocol defined in RFC3164. Common Event Format (CEF) is also used to format the syslog message payload.
+The syslog forwarder in Azure Local infrastructure sends messages formatted using the Berkeley Software Distribution (BSD) syslog protocol defined in RFC3164. The syslog message payload uses the Common Event Format (CEF).
 
-Each syslog message is structured based on this schema:
+Each syslog message uses this schema:
 
 `Priority (PRI) | Time | Host | CEF payload |`
 
-The PRI part contains two values: *facility* and *severity*. Both depend on the type of message, like Windows Event, etc.
+The PRI part has two values: *facility* and *severity*. Both values depend on the message type, like Windows Event.
 
 ### Common event format payload schema/definitions
 
-The CEF payload is based on the following structure. The mapping for each field varies depending on the type of message, like Windows Event, etc.
+The CEF payload uses the following structure. Field mapping varies depending on the message type, like Windows Event.
 
 `CEF: |Version | Device Vendor | Device Product | Device Version | Signature ID | Name | Severity | Extensions |`
 
@@ -309,11 +308,11 @@ The CEF payload is based on the following structure. The mapping for each field 
 
 ### Windows event mapping and examples
 
-All Windows events use the PRI facility value 10.
+All Windows events use the PRI facility value of 10.
 
 - Signature ID: ProviderName:EventID
 - Name: TaskName
-- Severity: Level. For details, see the following Severity table.
+- Severity: Level. For details, see the following severity table.
 - Extension: Custom Extension Name. For details, see the following table.
 
 #### Severity of windows events
@@ -357,7 +356,7 @@ All Windows events use the PRI facility value 10.
 
 ### Miscellaneous events
 
-Here we identify a list of miscellaneous events that are forwarded. These events can't be customized.
+This section lists miscellaneous events that are forwarded. You can't customize these events.
 
 | Event type | Event query |
 |------------|-------------|

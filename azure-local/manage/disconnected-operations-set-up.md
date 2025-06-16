@@ -4,44 +4,43 @@ description: Learn how to set up disconnected operations for Azure Local by crea
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/22/2025
+ms.date: 06/13/2025
+ai-usage: ai-assisted
 ---
 
 # Set up disconnected operations for Azure Local (preview)
 
 ::: moniker range=">=azloc-24112"
 
-[!INCLUDE [applies-to:](../includes/release-2411-1-later.md)]
-
-This article describes how to set up disconnected operations for Azure Local. It explains how to create a virtual appliance resource in the Azure portal, download the necessary installation files, and get support from Microsoft.
+This article explains how to set up disconnected operations for Azure Local. You create a virtual appliance resource in the Azure portal, download the installation files, and get support from Microsoft.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## Prerequisites
 
-- Have an active Azure subscription.  
-- Have approval for disconnected operations for Azure Local.
-- Have an Azure account with role-based access control rights to create a disconnected operations instance.
+- An active Azure subscription.  
+- An approval for disconnected operations for Azure Local.
+- An Azure account with role-based access control rights to create a disconnected operations instance.
 
-After you complete the steps outlined in this document, you should have:  
+When you finish these steps, you get:
 
-- A disconnected operations instance in Azure that represents your on-premises, virtual appliance.  
-- The files required to deploy Azure Local disconnected operations.
+- A disconnected operations instance in Azure that represents your on-premises virtual appliance.
+- The files you need to deploy Azure Local disconnected operations.
 
 > [!NOTE]
-> In this preview, Azure CLI isn't supported. You can use the REST API, if you need automation capabilities. For more information, see [Azure Local REST API](/cli/azure/use-azure-cli-rest-command?tabs=bash).
+> In this preview, Azure CLI isn't supported. Use the REST API if you need automation capabilities. For more information, see [Azure Local REST API](/cli/azure/use-azure-cli-rest-command?tabs=bash).
 
 ## Create virtual appliance and download installation files
 
 To create a virtual appliance and download the required files for your on-premises installation, follow these steps:
 
-1. Sign into [the portal](https://portal.azure.com) and navigate to **Azure Local**. You should see the **Disconnected operations** tab if you're approved for disconnected operations.
+1. Sign in to [the portal](https://portal.azure.com) and navigate to **Azure Local**. You see the **Disconnected operations** tab if you're approved for disconnected operations.
 
-2. Select the **Disconnected operations** tab and then select the **Create** button.
+1. Select the **Disconnected operations** tab and then select the **Create** button.
 
     :::image type="content" source="media/disconnected-operations/set-up/azure-local-page.png" alt-text="Screenshot of Azure Local for Disconnected operations page." lightbox="media/disconnected-operations/set-up/azure-local-page.png":::
 
-3. On the **Basics** tab, complete these required fields:  
+1. On the **Basics** tab, complete these required fields:  
 
     | Field               | Description                                                              |  
     |---------------------|--------------------------------------------------------------------------|  
@@ -53,27 +52,27 @@ To create a virtual appliance and download the required files for your on-premis
 
     :::image type="content" source="media/disconnected-operations/set-up/basics-page.png" alt-text="Screenshot of the Basics page and required fields to create a virtual appliance." lightbox="media/disconnected-operations/set-up/basics-page.png":::
 
-4. Select **Review + create**, verify that the validation succeeds, then select the **Create** button.  
+1. Select **Review + create**, check that the validation succeeds, then select the **Create** button.  
 
     :::image type="content" source="media/disconnected-operations/set-up/create-validation.png" alt-text="Screenshot of the validation page to create your virtual appliance resource." lightbox="media/disconnected-operations/set-up/create-validation.png":::
 
-5. After the completion, navigate to your new resource. You should see the resource details on the appliance page.
+1. After the deployment finishes, go to your new resource. You see the resource details on the appliance page.
 
     > [!NOTE]
-    > For the next 2 steps, please see Supplemental doc for getting the appliance - as during the first preview, special instructions are required for downloading the appliance. Step 6 and 7 are subject to change during preview.
+    > For the next two steps, see the supplemental documentation for getting the appliance. During the first preview, special instructions are required for downloading the appliance. Steps 6 and 7 are subject to change during preview.
 
-6. Look for the **download manifest** and **download appliance** actions. These files are needed for your on-premises installation.
+1. Look for the **download manifest** and **download appliance** actions. You need these files for your on-premises installation.
 
     | Action | Description | Estimated download size |  
     |------|-------------|----------------|  
     | Manifest file | Identified as `AzureLocal.DisconnectedOperations.Appliance.manifest`. This file is needed for deployment and to activate the appliance. It contains the required licensing information and more. | < 1 KB |  
-    | Appliance | Downloads a set of files, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`,`OSAndDocker_A.vhdx`. These files will contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a wole. | 70 GB+ |  
+    | Appliance | Downloads a set of files, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`,`ArcA_SharedData_A.vhdx`, and`OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. | 70 GB+ |  
 
-7. Select **download manifest**
+1. Select **download manifest**.
 
-:::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
+    :::image type="content" source="media/disconnected-operations/set-up/new-appliance.png" alt-text="Screenshot of the resource page for the virtual appliance you created." lightbox="media/disconnected-operations/set-up/new-appliance.png":::
 
-8. Select download appliance and download each respective file. Move these files in a single folder. Unzip the AzureLocal.disconnectedoperations.zip in that directory. Once the zip is extracted, you can delete the zip file. You should have the following files required for installation in the directory after this step:
+1. Select **download appliance** and download each file. Move these files to a single folder. Unzip the `AzureLocal.disconnectedoperations.zip` file in that folder. After you extract the zip file, delete it. You should have the following files required for installation in the folder after this step:
 
     - manifest.xml
     - OperationsModule
@@ -82,11 +81,11 @@ To create a virtual appliance and download the required files for your on-premis
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
 
-9. When the steps are complete, put all the files in a share or onto a portable media. You need these files during the deployment process.
+1. When the steps are complete, put all the files in a share or on portable media. You need these files during deployment.
 
 ## Related content
 
-- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).
+- [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md)
 
 ::: moniker-end
 
