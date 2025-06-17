@@ -86,10 +86,10 @@ Consider this information before you enable SDN:
         - Verify that the `OS Version` in the output is **10.0.26100**.
 
 - You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the cmdlet.
-<!--
-- You have access to a client used to connect to Azure Local instance via Azure CLI.
+
+- You have access to a client used to connect to Azure Local instance.
     
-    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).-->
+    <!--This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).-->
 
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
