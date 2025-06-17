@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/16/2025
+ms.date: 06/17/2025
 ---
 
 # Enable SDN on Azure Local using action plan (Preview)
