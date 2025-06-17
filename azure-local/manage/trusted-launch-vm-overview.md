@@ -42,8 +42,6 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 - VM live migration network traffic isn't encrypted. We strongly recommend that you enable a network layer encryption technology such as IPsec to protect live migration network traffic.
 
-<!--- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728(v=ws.11)#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).-->
-
 ## Guest operating system images
 
 All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
