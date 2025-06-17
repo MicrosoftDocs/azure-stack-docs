@@ -26,7 +26,7 @@ This article describes how to manage network security groups (NSGs) on your Azur
     - This instance is running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
     - If using a client to connect to your Azure Local, ensure you've installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
     - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](../manage/create-network-security-groups.md).
 
@@ -37,7 +37,7 @@ This article describes how to manage network security groups (NSGs) on your Azur
     - This instance is running 2506 or later.
     - This instance has a custom location created.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
     
 ---
 

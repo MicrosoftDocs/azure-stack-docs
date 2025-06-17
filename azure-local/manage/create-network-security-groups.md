@@ -36,7 +36,7 @@ Here is a diagram that shows how network security groups are attached to logical
     - This instance must be running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
     - You have atleast one static logical network and one static network interface created on this instance. For more information, see [Create logical networks](./create-logical-networks.md#create-a-static-logical-network-via-cli) and [Create network interfaces](./create-network-interfaces.md#virtual-network-interface-with-static-ip).
     - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
@@ -48,7 +48,7 @@ Here is a diagram that shows how network security groups are attached to logical
     - This instance must be running 2506 with OS version 26100.xxxx, or later.
     - This instance has a custom location created.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
-    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-ece-action-plan.md).
+    - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
 ---
 
 

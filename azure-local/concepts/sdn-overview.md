@@ -116,7 +116,7 @@ Use the following detailed decision matrix to select the SDN type based on your 
 
 For related information, see also:
 
-- [Enable SDN via action plan](../deploy/enable-sdn-ece-action-plan.md)
+- [Enable SDN via action plan](../deploy/enable-sdn-integration.md)
 - [Deploy SDN infrastructure using SDN Express PowerShell scripts](../deploy/sdn-express-23h2.md)
 
 ::: moniker-end
