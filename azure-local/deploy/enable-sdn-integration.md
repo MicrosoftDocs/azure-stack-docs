@@ -8,18 +8,17 @@ ms.topic: how-to
 ms.date: 06/17/2025
 ---
 
-# Enable SDN on Azure Local using action plan (Preview)
+# Enable SDN integration on Azure Local using PowerShell (Preview)
 
 ::: moniker range=">=azloc-2506"
 
-This article describes how to enable software defined networking (SDN) on your existing Azure Local instance. You use an action plan via the Azure Command-line interface (CLI) to enable SDN.
+This article describes how to enable and integrate software defined networking (SDN) on your existing Azure Local instance. You use an action plan via a PowerShell cmdlet to enable SDN.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
-## About enabling SDN in Azure Local
+## About SDN integration in Azure Local
 
 For SDN enabled by Arc, the Network Controller (NC) is deployed as a Failover Cluster service managed by the orchestrator (also known as Lifecycle Manager). You run an orchestrator command that integrates the NC into the Azure Local platform.
-
 
 Once the NC is integrated, SDN is enabled. You can use the Azure portal, Azure CLI, or Azure Resource Manager templates to create and manage the following SDN features:
 
@@ -36,7 +35,7 @@ NC is a key component that manages and configures virtual network infrastructure
 
 Here's an architecture diagram of Network Controller in a 2-node Azure Local instance with SDN enabled by Arc:
 
-:::image type="content" source="./media/enable-sdn-ece-action-plan/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-ece-action-plan/network-controller-architecture.png":::
+:::image type="content" source="./media/enable-sdn-integration/network-controller-architecture.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/enable-sdn-integration/network-controller-architecture.png":::
 
  In this example, the network topology includes two Azure Local machines clustered together with two Top-of-Rack (ToR) switches. The Network Controller component and its services are set as a Failover Cluster group across all the Azure Local machines in your instance. Each Network Controller microservice is highly available as a Failover Cluster Resource Group.
  
@@ -86,32 +85,32 @@ Consider this information before you enable SDN:
 
         - Verify that the `OS Version` in the output is **10.0.26100**.
 
-- You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the action plan.
-
+- You have access to a node of your Azure Local instance with the Azure Stack HCI administrator role. This role is required to run the cmdlet.
+<!--
 - You have access to a client used to connect to Azure Local instance via Azure CLI.
     
-    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).
+    This client should have the latest version of [Azure CLI](/cli/azure/install-azure-cli) and the appropriate version of `stack-hci-vm` software installed from the [Azure Local VM release tracking table](https://aka.ms/arcvm-rel).-->
 
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
-    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
+    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles][Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 
 
 
 ## Choose an SDN prefix
 
-When you run the action plan to enable SDN, choose an SDN prefix. Make sure that the SDN prefix meets the following requirements:
+When you enable SDN, you will be required to provide an SDN prefix. Make sure that the SDN prefix meets the following requirements:
 
 - Must not be null or empty.
 - Must be eight or fewer characters.
 - Must contain only lowercase, uppercase, numeric, characters.
 - Can contain hyphens but must not contain two consecutive hyphens or end with a hyphen.
 
-If the prefix doesn't meet these requirements, the action plan fails.
+If the prefix doesn't meet these requirements, the SDN enablement fails.
 
 ## Prepare the DNS environment
 
-Prepare your DNS environment before you run the action plan to enable SDN. The action plan requires A DNS record for the Network Controller REST URL, which is used to access the Network Controller REST API.
+Prepare your DNS environment before you enable SDN. The SDN integration requires A DNS record for the Network Controller REST URL, which is used to access the Network Controller REST API.
 
 - **Static DNS environment**: Precreate the DNS record for the Network Controller REST URL. For more information, see [Precreate a DNS record](/windows-server/failover-clustering/prestage-cluster-adds).
 
@@ -132,9 +131,9 @@ Prepare your DNS environment before you run the action plan to enable SDN. The a
     For more information, see [Enable dynamic DNS updates in a DNS zone](../concepts/network-controller.md#enable-dynamic-dns-updates-for-a-zone).
 
 
-## Review action plan parameters
+## Review cmdlet parameters
 
-The action plan uses the following parameters:
+The SDN enablement cmdlet uses the following parameters:
 
 
 | Parameter  | Description  |
@@ -148,15 +147,13 @@ The action plan uses the following parameters:
 > [!IMPORTANT]
 > Make sure to plan for a maintenance window if you're running on a production environment.
 
-Follow these steps on the Azure CLI to run the action plan:
+Follow these steps to enable SDN on your Azure Local instance:
 
 1. Verify that you're [Connected to a node of your Azure Local instance](../manage/azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly) with Azure Stack HCI administrator role.
 
-1. Run the  action plan to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command. 
+1. Run the cmdlet to deploy Network Controller as a Failover Cluster Service. Open a PowerShell command prompt and run the following command. 
 
     ```powershell
-
-    ```azurecli
     #Run the LCM action plan to install Network Controller as Failover Cluster Service. Replace <SDNPrefix> with your SDN prefix.
     
     Add-EceFeature -Name NC -SDNPrefix <SDNPrefix>
