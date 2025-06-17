@@ -94,10 +94,6 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-==========================================
-
-# Known issues in Azure Local
-
 ::: moniker range="=azloc-2505"
 
 This article identifies critical known issues and their workarounds in Azure Local.
