@@ -16,7 +16,7 @@ This article provides troubleshooting steps for common issues encountered when y
 
 ## Action plan to deploy the Network Controller fails  
   
-**Error**: Action plan to deploy the Network Controller fails. 
+**Error**: Arc-managed SDN running Network Controller in Failover Cluster is only supported in 24H2 OS or above.
 
 **Root cause**: For SDN enabled by Azure Arc, running Network Controller in Failover Cluster is only supported in OS build version 26100.xxxx or later.  
   
@@ -86,7 +86,7 @@ The moc-operator network security group service returned an error while reconcil
 (Code: Failed)
 ```
 
-**Remediation steps**: Make sure to run the network controller action plan to deploy SDN enabled by Azure Arc. For more information, [Enable and run action plan](../deploy/enable-sdn-ece-action-plan).
+**Remediation steps**: Make sure to run the network controller action plan to deploy SDN enabled by Azure Arc. For more information, [Enable SDN integration](../deploy/enable-sdn-integration.md).
   
 ## Next steps
 
