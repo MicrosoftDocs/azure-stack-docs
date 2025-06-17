@@ -187,6 +187,8 @@
       href: network-validation-errors.md
     - name: Network validation error due to .local domain
       href: network-validation-error-local.md
+    - name: Entra authentication prompts when running kubectl
+      href: entra-prompts.md
   - name: Reference
     items:
     - name: Azure CLI
