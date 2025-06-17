@@ -35,7 +35,7 @@ Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the fo
   - To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission. Meanwhile, you need to verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
 
 > [!NOTE]
-> When you use **kubelogin version 1.9.0** with Microsoft Entra authentication and Kubernetes RBAC in AKS on Azure Local, you might encounter Entra authentication prompts for each command you run. For a solution to this known issue, see [Troubleshoot Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md).
+> When you use **kubelogin version 1.9.0** with Microsoft Entra authentication and Kubernetes RBAC in AKS on Azure Local, you might encounter Entra authentication prompts for each command you run. For a solution to this known issue, see [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md).
 
 ## Optional first steps
 

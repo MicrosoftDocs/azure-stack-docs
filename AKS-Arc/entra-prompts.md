@@ -10,7 +10,7 @@ ms.lastreviewed: 06/17/2025
 
 ---
 
-# Troubleshoot Entra authentication prompts when running kubectl with Kubernetes RBAC
+# Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC
 
 This article helps you diagnose and resolve issues related to repeated Entra authentication prompts when using **kubectl** with Kubernetes RBAC on AKS enabled by Azure Arc.
 
