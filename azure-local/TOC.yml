@@ -171,14 +171,16 @@ items:
     items: 
     - name: Read SDN overview
       href: concepts/sdn-overview.md
-    - name: Enable SDN via action plan  
-      href: deploy/enable-sdn-ece-action-plan.md
+    - name: Enable SDN integration  
+      href: deploy/enable-sdn-integration.md
     - name: Create network security groups   
       href: manage/create-network-security-groups.md
     - name: Manage network security groups
       href: manage/manage-network-security-groups.md
     - name: Troubleshoot SDN
       href: concepts/sdn-overview.md
+    - name: SDN FAQ
+      href: concepts/sdn-faq.yml
 
 
 - name: Update 
