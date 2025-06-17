@@ -162,11 +162,11 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-## "Windows created a temporary paging file" message on startup
+## "Windows created a temporary paging file" message appears at startup
 
 **Error:**
 
-When deploying an Azure Local VM using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you may encounter the following warning at startup:
+When you deploy an Azure Local VM using the SQL Server 2022 on Windows Server 2022 Azure marketplace images (Standard or Enterprise), you might see the following warning at startup:
 
 *Windows created a temporary paging file...*
 
@@ -175,17 +175,17 @@ When deploying an Azure Local VM using the SQL Server 2022 on Windows Server 202
 To resolve this issue, follow these steps:
 
 1. Select **OK** on the warning popup. Or, go to **System Properties** > **Advanced** > **Performance** > **Settings** to open the **Performance Options** window.
-1. Select the **Change** button under the **Virtual memory** section.
+1. In the **Performance Options** window, select **Change** under the **Virtual memory** section.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png" alt-text="Screenshot of the Performance Options window highlighing the Change button." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-1.png":::
 
-1. In the **Virtual Memory** window, select **System managed size**.  Also ensure that the **Automatically manage paging file size for all drives** checkbox is unchecked.
+1. In the **Virtual Memory** window, select **System managed size**.  Also ensure that the **Automatically manage paging file size for all drives** checkbox is cleared.
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png" alt-text="Screenshot of the Virtual Memory window showing options to configure the paging file size for each drive." lightbox="./media/troubleshoot-arc-enabled-vms/temporary-paging-file-2.png":::
 
 1. Select **Set**, then select **OK** to apply the changes.
 
-1. Reboot the VM. The warning message should no longer appear at startup.
+1. Restart the VM. After the restart, the warning message should no longer appear.
 
 ## Next steps
 
