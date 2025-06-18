@@ -10,7 +10,7 @@ ms.lastreviewed: 06/18/2025
 
 ---
 
-# BGP with FRR not working in AKS enabled by Azure Arc environment
+# BGP with FRR not working in AKS Arc environment
 
 This article helps you identify and resolve Border Gateway Protocol (BGP) connectivity issues when using MetalLB with Free Range Routing (FRR) in Azure Kubernetes Service (AKS) Arc environments.
 
