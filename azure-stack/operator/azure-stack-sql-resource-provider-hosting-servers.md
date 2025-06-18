@@ -3,7 +3,7 @@ title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao

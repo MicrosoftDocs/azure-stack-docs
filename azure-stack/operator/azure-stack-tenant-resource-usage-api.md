@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Reference for resource usage APIs, which retrieve Azure Stack Hub usage information.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: alfredop
