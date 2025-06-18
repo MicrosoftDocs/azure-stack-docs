@@ -944,16 +944,16 @@ To associate a network security group with a network interface, follow these ste
 1. Go to **Azure Local resource page > Resources > Network interfaces**.
 1. In the right pane, from the list of network interfaces, select a network interface.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting a network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png" alt-text="Screenshot of selecting a network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png":::
 
 1. Go to **Settings > Network security group**.
 1. In the right-pane, from the top command bar, select **+ Associate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Associate network security group with the selected network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-2.png" alt-text="Screenshot of selecting Associate network security group with the selected network interface." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-2.png":::
 
 1. In the **Associate network security group** page, input the following information:
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-3.png" alt-text="Screenshot of filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-3.png" alt-text="Screenshot of filled out Associate network security group page." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-3.png":::
 
     1. **Network security group** - Select a network security group from the list of network security groups available in your Azure Local instance.
     1. Select **Associate network security group**. The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
@@ -966,17 +966,17 @@ To dissociate a network security group from a network interface, follow these st
 
 1. Go to **Azure Local resource page > Resources > Network interfaces**.
 
-    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-nic-1.png" alt-text="Screenshot of selecting network interface to dissociate from the network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-nic-1.png"::: 
+    :::image type="content" source="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png" alt-text="Screenshot of selecting network interface to dissociate from the network security group." lightbox="./media/manage-network-security-groups/associate-network-security-group-network-interface-1.png"::: 
 
 1. In the right pane, from the list of network interfaces, select an interface that has a network security group attached to it.
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**. 
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-2.png" alt-text="Screenshot of selecting Dissociate network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-2.png":::
 
 1. Confirm the dissociation.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-nic-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png":::
 
 The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 After the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.

@@ -180,7 +180,7 @@ items:
     - name: Troubleshoot SDN
       href: concepts/sdn-overview.md
     - name: SDN FAQ
-      href: concepts/sdn-faq.yml
+      href: concepts/sdn-frequently-asked-questions.yml
 
 
 - name: Update 
