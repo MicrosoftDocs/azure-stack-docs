@@ -14,6 +14,8 @@ ms.reviewer: alkohli
 
 :::image type="content" source="./media/hardware-security/security-diagram-hardware-security.png" alt-text="Diagram illustrating hardware security layer." lightbox="./media/hardware-security/security-diagram-hardware-security.png":::
 
+## Introduction
+
 There are two clear trends emerging in the server space today. First, organizations around the world are embracing digital transformation using technologies across cloud and edge to better serve their customers and thrive in fast-paced environments. Second, attackers are constantly evolving their attack strategies and targeting these organizations' high-value infrastructure with advanced technical capabilities connected to both cybercrime and espionage.
 
 The [MagBo marketplace](https://www.zdnet.com/article/a-cybercrime-store-is-selling-access-to-more-than-43000-hacked-servers/), which sells access to more than 43,000 hacked servers, exemplifies the ever-expanding cybercrime threat. Compromised servers are being exploited to [mine cryptocurrency](https://www.bleepingcomputer.com/news/security/coinminer-campaigns-target-redis-apache-solr-and-windows-servers/) and are being hit with [ransomware attacks](https://www.zdnet.com/article/hackers-target-unpatched-citrix-servers-to-deploy-ransomware/). The Security Signals report shows that more than 80% of enterprises have experienced at least one firmware attack in the past two years.
@@ -22,12 +24,12 @@ Given these factors, continuing to raise the security bar for critical infrastru
 
 Following Secured-core PC, we are introducing Secured-core Server which is built on three key pillars: simplified security, advanced protection, and preventative defense. Secured-core Servers come with the assurance that manufacturing partners have built hardware and firmware that satisfy the requirements of the operating system (OS) security features.
 
-## Simplified security
+## Windows Admin Center extension
 
 The security extension in Windows Admin Center makes it easy for you to configure the OS security features of Secured-core for 
 Azure Local. The extension enables advanced security with a click of the button from a web browser anywhere in the world. With Azure Local Integrated Systems, manufacturing partners have further simplified the configuration experience for you so that Microsoft’s best server security is available right out of the box.
 
-## Advanced protection
+## Secured core servers
 
 Secured-core Servers maximize hardware, firmware, and OS capabilities to help protect against current and future threats. These safeguards create a platform with added security for critical applications and data used on the hosts and VMs that run on them. Secured-core functionality spans the following areas:
 
