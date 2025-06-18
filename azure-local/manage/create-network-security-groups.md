@@ -20,12 +20,34 @@ This article describes how to create and configure network security groups (NSGs
 
 ## About NSGs on Azure Local VMs
 
-Use a network security group to manage network traffic between logical networks or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic.
+Use a network security group to manage network traffic between logical networks or VMs on Azure Local. Configure a network security group with security rules that allow or deny either inbound or outbound network traffic. The network security rules control traffic based on:
 
-Here is a diagram that shows how network security groups are attached to logical networks and VMs on Azure Local:
+- Source and destination IP addresses.
+- Port numbers.
+- Protocols (TCP/UDP).
+
+Here is a diagram that shows how network security groups are attached to logical networks and VM network interfaces on Azure Local:
 
 :::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
 
+
+The diagram outlines a network setup with two logical networks:
+
+- Logical Network A
+
+    - Subnet: 192.168.1.0/24, VLAN 206
+    - Contains: VM Web at 192.168.1.3
+    - NSG rule allows outbound internet access.
+    - VM web can talk to the internet.
+
+- Logical Network B
+
+    - Subnet: 192.168.2.0/24, VLAN 310
+    - Contains: VM SQL at 192.168.2.3
+    - NSG rule denies outbound internet access.
+    - VM SQL is running SQL Server locally and is not exposed to the internet.
+
+In this example, NSG is used to control traffic flow between logical networks A and B and the VM Web and VM SQL. The NSG can be applied to each logical network or network interface to enforce specific security rules. For example, here the logical network B might allow only specific traffic over SQL port 1433 from logical network A.
 
 ## Prerequisites
 

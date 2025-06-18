@@ -13,9 +13,9 @@ summary: Ths Azure Local FAQ provides information about Software-Defined Network
 sections:
   - name: Azure Local connectivity and general FAQ
     questions:
-      - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the Action Plan?
+      - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
-          Yes. The action plan configures all the Azure Local VMs with a null port profile to enable network connectivity. As this configuration is performed for all the VMs, you experience a brief downtime  until all the VMs in the cluster are configured.  
+          Yes. When you enable Network Controller, all the Azure Local VMs are configured with a null port profile to enable network connectivity. As this configuration is performed for all the VMs, you experience a brief downtime  until all the VMs in the cluster are configured.  
   
           As this is a disruptive operation, make sure to plan for a maintenance window if you're running on a production environment.
 
