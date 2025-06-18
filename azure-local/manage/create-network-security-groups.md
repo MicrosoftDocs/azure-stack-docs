@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/04/2025
+ms.date: 06/18/2025
 ms.service: azure-local
 ---
 
