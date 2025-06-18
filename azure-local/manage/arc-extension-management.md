@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
-ms.date: 10/22/2024
+ms.date: 06/18/2025
 ---
 
 # Azure Arc extension management on Azure Local
@@ -17,7 +17,7 @@ This article describes how to install, upgrade, and manage Azure Arc extensions 
 
 ## Customer-managed Azure Arc extensions on Azure Local
 
-You can install, uninstall and update Azure Arc extensions on your Azure Local. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
+You can install, uninstall, and update Azure Arc extensions on your Azure Local. Azure Arc lets you run hybrid services like monitoring and Windows Admin Center in the Azure portal.
 
 Here are the individual extensions you can install and manage.
 
@@ -45,7 +45,7 @@ You can install extensions from the **Capabilities** tab for your Azure Local Ar
 When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all nodes of the system. If you add more nodes to your system, all the extensions installed on your system are automatically added to the new servers.
 
 ### [Azure CLI](#tab/azurecli)
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an extension following these steps:
 1. Set up parameters from your subscription, resource group, and clusters
@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install the Azure Site Recovery extension on all the systems under the resource group run the following command:
+1. To install the Azure Site Recovery extension on all the systems under the resource group, run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
@@ -253,7 +253,7 @@ You can check the status of an extension on each server from the **Extensions** 
 :::image type="content" source="media/arc-extension-management/arc-extension-status-view.png" alt-text="Screenshot of the different extension statuses in the Azure portal." lightbox="media/arc-extension-management/arc-extension-status-view.png":::
 
 ### [Azure CLI](#tab/azurecli)
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to check the status of an extension following these steps:
 
@@ -316,7 +316,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to check
 
 ## How the extension upgrade works
 
-When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Local Arc-enabled clusters unless you explicitly opt-out of automatic upgrades.
+When published by the extension publisher team, the extension upgrade process replaces the existing extension version with a newly supported one. By default, the automatic extension upgrade feature is enabled for all extensions deployed on Azure Local Arc-enabled clusters unless you explicitly opt out of automatic upgrades.
 
 Currently, automatic extension upgrades are only supported in the Windows Admin Center extension, but more extensions will be added in the future.
 
@@ -341,7 +341,7 @@ To enable an automatic upgrade, navigate to the **Extensions** page and perform 
     :::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png" alt-text="Screenshot of the notification to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png":::
 
 ### [Azure CLI](#tab/azurecli)
-To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent` run the following command:
+To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent`, run the following command:
 
 ```azurecli
 clusterName="HCICluster" # Replace with your cluster name
@@ -362,7 +362,7 @@ az stack-hci extension create \
 ```
 
 ### [Azure PowerShell](#tab/azurepowershell)
-To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent` run the following command:
+To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent`, run the following command:
 
 ```powershell
 $clusterName = "HCICluster" # Replace with your cluster name
@@ -458,7 +458,7 @@ If desired, you can uninstall some extensions from your Azure Local in the Azure
 
 ### [Azure CLI](#tab/azurecli)
 
-To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
+To remove a specific extension like `AzureMonitorWindowsAgent`, run the following command:
 ```azurecli
 extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
 resourceGroup="hcicluster-rg" # Replace with your resource group name
@@ -472,7 +472,7 @@ az stack-hci extension delete \
 ```
 
 ### [Azure PowerShell](#tab/azurepowershell)
-To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
+To remove a specific extension like `AzureMonitorWindowsAgent`, run the following command:
 ```powershell
 $clusterName = "HCICluster" # Replace with your cluster name
 $resourceGroup = "hcicluster-rg" # Replace with your resource group name
@@ -485,17 +485,8 @@ Remove-AzStackHciExtension `
     -ArcSettingName "default" `
     -Name "${extensionName}"
 ```
+
 ---
-
-## Troubleshooting extension errors
-
-**Extension Status**: Failed
-
-:::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png" alt-text="Screenshot of how to troubleshoot an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-1.png":::
-
-**Recommendation**: For an extension with a failed status, select the **Failed (View details)** link. View all the information about the failure and apply the troubleshooting tips.
-
-:::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
 
 ## Next step
 

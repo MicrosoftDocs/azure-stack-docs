@@ -1,45 +1,36 @@
 ---
-title:  Azure Local Remote Support Arc extension overview
-description: This article describes the remote support arc extension and how to enable it for your Azure Local.
+title:  Azure Local Remote Support Arc extension and remote support overview
+description: This article describes the remote support arc extension and remote support in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: shisab
-ms.lastreviewed: 01/19/2024
-ms.date: 04/25/2025
+ms.lastreviewed: 06/18/2024
+ms.date: 06/18/2025
 ---
 
-# Azure Local Remote Support ARC extension overview
+# Azure Local Remote Support Arc extension overview
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article provides a brief overview of the Remote Support Arc extension, its benefits, and how to enable it on your Azure Local system using PowerShell.
+This article provides a brief overview of the Remote Support Arc extension and remote support in Azure Local. It describes the benefits, scenarios, and commands available for Microsoft support during a remote support session.
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by preinstalling the remote support agent on all nodes of the system. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, simplifies setup and improves support efficiency. It comes preinstalled on all system nodes and enables key capabilities like configuring scheduled tasks for [Just Enough Administration](/powershell/scripting/security/remoting/jea/overview?view=powershell-7.5&preserve-view=true). This extension lays the groundwork for secure, streamlined support interactions.
 
-The scheduled tasks to configure JEA are set up through either:
+Remote support, on the other hand, is the actual process where a Microsoft support professional connects to your device to help resolve issues. With the extension in place, support personnel can securely access your system, perform limited troubleshooting or repair tasks, and resolve your case faster.
 
-- Enable remote support (recommended)
-- Restart the host or node
-
-[![Screenshot that shows where to browse for the remote support extension.](../manage/media/remote-support-extension/remote-support-extension.png)](../manage/media/remote-support-extension/remote-support-extension.png#lightbox)
-
-Remote support with your consent, as detailed in [Get remote support for Azure Local](../manage/get-remote-support.md#remote-support-terms-and-conditions), grants Microsoft support professionals’ access to your device remotely.
-
-Access is used to solve your support cases only after you submit a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) and is based on the level and duration of time that you grant.
-
-For information on how remote support works, see [How remote support works](../manage/get-remote-support.md).
+For more information on remote support and how to enable it, see [Get remote support](./get-remote-support.md).
 
 ## Benefits
 
-Remote support gives you the ability to:
+Remote support and using the extension gives you the ability to:
 
-- Improve the speed to resolution as Microsoft support no longer needs to arrange a meeting with you for troubleshooting.
-- View the detailed transcript of all executed operations at any time.
-- Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
-- Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
+- **Resolve issues faster**: No need to wait for scheduled meetings. Microsoft support can address your problems right away.
+- **Stay informed**: You can access and view detailed records of all actions whenever you want.
+- **Manage access**: Grant just-in-time authenticated access for each incident, specifying the level and duration of access.
+- **Revoke access anytime**: You can withdraw consent anytime to end the remote session. Access is automatically disabled once the consent period ends.
 
 ## Scenarios for remote support
 
@@ -49,165 +40,420 @@ The scenarios in this list highlight the critical role of remote support in effi
 |---------|------------|
 |Log Collection Initiation | Use remote support to initiate log collection for diagnostic purposes. This includes the initiation of the command `Send-Diagnosticdata`. |
 |Azure Local Information Retrieval | Obtain details related to Azure Local, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Local. |
-|Hyper-V Troubleshooting |Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
+|Hyper-V Troubleshooting | Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
 |Observability Pipeline Testing | Verify the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
 |Cluster Information Retrieval | Retrieve relevant details about clusters, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
 | Network Adapter Details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details.<br></br> Additionally, retrieve information about VM Switches and IPsec settings. |
-|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, SMB client information, and disk images. |
+|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, server message block client information, and disk images. |
 
-## Enable remote support via PowerShell on your Azure Local
+## List of Microsoft support operations
 
-To enable remote support on your Azure Local, follow these steps:
+You can grant Microsoft support one of the following access levels for remote support:
 
-1. On the client you're using to connect to your system, run PowerShell as an administrator.
+- [**Diagnostics**](#access-level-diagnostics): To view diagnostic info and logs
+- [**Diagnostics and repair**](#access-level-diagnostics-and-repair): To view diagnostic info and logs plus perform software repairs
 
-2. Open a remote PowerShell session to a node on your Azure Local. Run the following command and provide the credentials of your node when prompted:
+The following section lists the allowed commands that Microsoft support can execute during a remote support session.
 
-    ```powershell
-    $cred = Get-credential
-    Enter-PsSession -ComputerName <NodeName> -Credential $cred
-    ```
+### Access level: Diagnostics
 
-    Here's a sample output:
+The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session. The commands are listed alphabetically and grouped by module or functionality.
 
-    ```console
-    PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
-    ```
+#### Default
 
-    > [!NOTE]
-    > First time users, if you enable Remote Support through a remote PowerShell session, you might receive the following error:
-    >
-    > `Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
-    >
-    > For more information, see [Error handling](./remote-support-arc-extension.md#error-handling).
-
-3. To enable remote support, run this command:
-
-    ```powershell
-    Enable-RemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440>
-    ```
-
-    Here's a sample output:
-
-    ```console
-    PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
-
-    PS C:\Users\HciDeploymentUser\Documents> Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
-
-    By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ('Microsoft Support Engineer') will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
-
-    During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Local.
-
-    The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices (https://privacy.microsoft.com/en-US/). Any data previously collected with your consent will not be affected by the revocation of your permission.
-
-    Proceed with enabling remote support?
-    [Y] Yes  [N] No  [?] Help (default is "Y"): Y
-         
-    Enabling Remote Support for 'Diagnostics' expiring in '1440' minutes.
-    Remote Support successfully Enabled.
-     
-    State                  : Active
-    CreatedAt              : 9/6/2023 10:05:52 PM +00:00
-    UpdatedAt              : 9/6/2023 10:05:52 PM +00:00
-    ConnectionStatus       : Connecting
-    ConnectionErrorMessage :
-    TargetService          : PowerShell
-    AccessLevel            : Diagnostics
-    ExpiresAt              : 9/7/2023 10:05:50 PM +00:00
-    SasCredential          :
-    ```
-
-## Remote support operations
-
-There are various operations that you can perform to grant remote access for Microsoft support, after you enable remote support. The next sections detail some examples of those operations.
-
-### Enable remote support for diagnostics
-
-In this example, you grant remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
+<details>
+<summary>Expand this section to see commands.</summary>
 
 ```powershell
-Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
+    Clear-Host            
+    Exit-PSSession
+    Format-List
+    Format-Table
+    Get-Command
+    Get-Date
+    Get-FormatData
+    Get-Help
+    Get-Process
+    Get-Service
+    Measure-Object        
+    Select-Object
+    Sort-Object
+    Out-Default
+    Where-Object
 ```
 
-Use the `ExpireInMinutes` parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access can't be established.
+</details>
 
-You can set `ExpireInMinutes` a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
+#### Azure Local
 
-If duration isn't defined, the remote session expires in 480 (8 hours) by default.
-
-### Enable remote support for diagnostics and repair
-
-In this example, you grant remote support access for diagnostic and repair related operations only. Because expiration wasn't explicitly provided, it expires in eight hours by default.
+<details>
+<summary>Expand this section to see commands.</summary>
 
 ```powershell
-Enable-RemoteSupport -AccessLevel DiagnosticsRepair
+    Get-AzureStackHCI
+    Get-AzureStackHCIArcIntegration
+    Get-AzureStackHCIBillingRecord
+    Get-AzureStackHCIRegistrationCertificate
+    Get-AzureStackHCISubscriptionStatus
+    Send-DiagnosticData
+    Test-AzStackHCIConnection
 ```
 
-### Retrieve existing consent grants
+</details>
 
-In this example, you retrieve any previously granted consent. The result includes expired consent in the last 30 days.
+#### Hyper-V
+
+<details>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
-Get-RemoteSupportAccess -IncludeExpired
+    Get-VHD
+    Get-VHDSet
+    Get-VHDSnapshot
+    Get-VM
+    Get-VMAssignableDevice
+    Get-VMBios
+    Get-VMCheckpoint
+    Get-VMComPort
+    Get-VMConnectAccess
+    Get-VMDvdDrive
+    Get-VMFibreChannelHba
+    Get-VMFirmware
+    Get-VMFloppyDiskDrive
+    Get-VMGpuPartitionAdapter
+    Get-VMGroup
+    Get-VMHardDiskDrive
+    Get-VMHost
+    Get-VMHostAssignableDevice
+    Get-VMHostCluster
+    Get-VMHostNumaNode
+    Get-VMHostNumaNodeStatus
+    Get-VMHostPartitionableGpu
+    Get-VMHostSupportedVersion
+    Get-VMIdeController
+    Get-VMIntegrationService
+    Get-VMKeyProtector
+    Get-VMKeyStorageDrive
+    Get-VMMemory
+    Get-VMMigrationNetwork
+    Get-VMNetworkAdapter
+    Get-VMNetworkAdapterAcl
+    Get-VMNetworkAdapterExtendedAcl
+    Get-VMNetworkAdapterFailoverConfiguration
+    Get-VMNetworkAdapterIsolation
+    Get-VMNetworkAdapterRdma
+    Get-VMNetworkAdapterRoutingDomainMapping
+    Get-VMNetworkAdapterTeamMapping
+    Get-VMNetworkAdapterVlan
+    Get-VMPartitionableGpu
+    Get-VMPmemController
+    Get-VMProcessor
+    Get-VMRemoteFx3dVideoAdapter
+    Get-VMRemoteFXPhysicalVideoAdapter
+    Get-VMReplication
+    Get-VMReplicationAuthorizationEntry
+    Get-VMReplicationServer
+    Get-VMResourcePool
+    Get-VMSan
+    Get-VMScsiController
+    Get-VMSecurity
+    Get-VMSnapshot
+    Get-VMStoragePath
+    Get-VMStorageSettings
+    Get-VMSwitch
+    Get-VMSwitchExtension
+    Get-VMSwitchExtensionPortData
+    Get-VMSwitchExtensionPortFeature
+    Get-VMSwitchExtensionSwitchData
+    Get-VMSwitchExtensionSwitchFeature
+    Get-VMSwitchTeam
+    Get-VMSystemSwitchExtension
+    Get-VMSystemSwitchExtensionPortFeature
+    Get-VMSystemSwitchExtensionSwitchFeature
+    Get-VMVideo
 ```
 
-### Revoke remote access consent
+</details>
 
-In this example, you revoke remote access consent. Any existing sessions are terminated and new sessions can no longer be established.
+#### Failover cluster
+
+<details>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
-Disable-RemoteSupport
+    Export-CauReport
+    Get-CauClusterRole
+    Get-CauDeviceInfoForFeatureUpdates
+    Get-CauPlugin
+    Get-CauRun
+    Get-Cluster
+    Get-ClusterGroup
+    Get-ClusterNode
+    Get-ClusterOwnerNode
+    Get-ClusterResource
+    Get-ClusterSharedVolume
+    Test-CauSetup
 ```
 
-### List existing remote sessions
+</details>
 
-In this example, you list all the remote sessions that were made to the device since FromDate.
+#### Net Adapter
+
+<details>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
-Get-RemoteSupportSessionHistory -FromDate <Date>
+    Get-ClusteredScheduledTask
+    Get-DscConfiguration
+    Get-DscConfigurationStatus
+    Get-DscLocalConfigurationManager
+    Get-DscResource
+    Get-JobTrigger
+    Get-LogProperties
+    Get-NCSIPolicyConfiguration
+    Get-Net6to4Configuration
+    Get-NetAdapter
+    Get-NetAdapterAdvancedProperty
+    Get-NetAdapterBinding
+    Get-NetAdapterChecksumOffload
+    Get-NetAdapterDataPathConfiguration
+    Get-NetAdapterEncapsulatedPacketTaskOffload
+    Get-NetAdapterHardwareInfo
+    Get-NetAdapterIPsecOffload
+    Get-NetAdapterLso
+    Get-NetAdapterPacketDirect
+    Get-NetAdapterPowerManagement
+    Get-NetAdapterQos
+    Get-NetAdapterRdma
+    Get-NetAdapterRsc
+    Get-NetAdapterRss
+    Get-NetAdapterSriov
+    Get-NetAdapterSriovVf
+    Get-NetAdapterStatistics
+    Get-NetAdapterUso
+    Get-NetAdapterVmq
+    Get-NetAdapterVmqQueue
+    Get-NetAdapterVPort
+    Get-NetCompartment
+    Get-NetConnectionProfile
+    Get-NetDnsTransitionConfiguration
+    Get-NetDnsTransitionMonitoring
+    Get-NetEventNetworkAdapter
+    Get-NetEventPacketCaptureProvider
+    Get-NetEventProvider
+    Get-NetEventSession
+    Get-NetEventVFPProvider
+    Get-NetEventVmNetworkAdapter
+    Get-NetEventVmSwitch
+    Get-NetEventVmSwitchProvider
+    Get-NetEventWFPCaptureProvider
+    Get-NetFirewallAddressFilter
+    Get-NetFirewallApplicationFilter
+    Get-NetFirewallDynamicKeywordAddress
+    Get-NetFirewallInterfaceFilter
+    Get-NetFirewallInterfaceTypeFilter
+    Get-NetFirewallPortFilter
+    Get-NetFirewallProfile
+    Get-NetFirewallRule
+    Get-NetFirewallSecurityFilter
+    Get-NetFirewallServiceFilter
+    Get-NetFirewallSetting
+    Get-NetIPAddress
+    Get-NetIPHttpsConfiguration
+    Get-NetIPHttpsState
+    Get-NetIPInterface
+    Get-NetIPsecDospSetting
+    Get-NetIPsecMainModeCryptoSet
+    Get-NetIPsecMainModeRule
+    Get-NetIPsecMainModeSA
+    Get-NetIPsecPhase1AuthSet
+    Get-NetIPsecPhase2AuthSet
+    Get-NetIPsecQuickModeCryptoSet
+    Get-NetIPsecQuickModeSA
+    Get-NetIPsecRule
+    Get-NetIPv4Protocol
+    Get-NetIPv6Protocol
+    Get-NetIsatapConfiguration
+    Get-NetLbfoTeam
+    Get-NetLbfoTeamMember
+    Get-NetLbfoTeamNic
+    Get-NetNat
+    Get-NetNatExternalAddress
+    Get-NetNatGlobal
+    Get-NetNatStaticMapping
+    Get-NetNatTransitionConfiguration
+    Get-NetNatTransitionMonitoring
+    Get-NetNeighbor
+    Get-NetOffloadGlobalSetting
+    Get-NetPrefixPolicy
+    Get-NetQosPolicy
+    Get-NetRoute
+    Get-NetSwitchTeam
+    Get-NetSwitchTeamMember
+    Get-NetTCPConnection
+    Get-NetTCPSetting
+    Get-NetTeredoConfiguration
+    Get-NetTeredoState
+    Get-NetTransportFilter
+    Get-NetUDPEndpoint
+    Get-NetUDPSetting
+    Get-NetView
+    Get-ScheduledJob
+    Get-ScheduledJobOption
+    Get-ScheduledTask
+    Get-ScheduledTaskInfo
+    Get-SecureBootPolicy
+    Get-SecureBootUEFI
+    Test-DscConfiguration
 ```
 
-### Get details on a specific remote session
+</details>
 
-In this example, you get the details for remote session with the ID SessionID.
+#### Storage
+
+<details>
+<summary>Expand this section to see the commands.</summary>
 
 ```powershell
-Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
+    Get-ClusterAccess
+    Get-ClusterAffinityRule
+    Get-ClusterAvailableDisk
+    Get-ClusterFaultDomain
+    Get-ClusterFaultDomainXML
+    Get-ClusterGroupSet
+    Get-ClusterGroupSetDependency
+    Get-ClusterHCSVM
+    Get-ClusterNetwork
+    Get-ClusterNetworkInterface
+    Get-ClusterNodeSupportedVersion
+    Get-ClusterParameter
+    Get-ClusterQuorum
+    Get-ClusterResourceDependency
+    Get-ClusterResourceDependencyReport
+    Get-ClusterResourceType
+    Get-ClusterS2D
+    Get-ClusterSharedVolumeState
+    Get-ClusterStorageNode
+    Get-ClusterStorageSpacesDirect
+    Get-Disk
+    Get-DiskImage
+    Get-FileShare
+    Get-InitiatorId
+    Get-InitiatorPort
+    Get-MaskingSet
+    Get-OffloadDataTransferSetting
+    Get-Partition
+    Get-PartitionSupportedSize
+    Get-ResiliencySetting
+    Get-SmbClientConfiguration
+    Get-SmbClientNetworkInterface
+    Get-SmbConnection
+    Get-SmbGlobalMapping
+    Get-SmbMapping
+    Get-SmbMultichannelConnection
+    Get-SmbMultichannelConstraint
+    Get-SmbOpenFile
+    Get-SmbServerCertificateMapping
+    Get-SmbServerCertProps
+    Get-SmbServerConfiguration
+    Get-SmbServerNetworkInterface
+    Get-SmbSession
+    Get-SmbShare
+    Get-SmbShareAccess
+    Get-SmbWitnessClient
+    Get-StorageBusCache
+    Get-StorageBusClientDevice
+    Get-StorageBusTargetCacheStore
+    Get-StorageBusTargetCacheStoresInstance
+    Get-StorageBusTargetDevice
+    Get-StorageBusTargetDeviceInstance
+    Get-StorageEnclosure
+    Get-StorageFileServer
+    Get-StorageJob
+    Get-StorageNode
+    Get-StoragePool
+    Get-StorageProvider
+    Get-StorageSetting
+    Get-StorageSubsystem
+    Get-StorageTier
+    Get-StorageTierSupportedSize
+    Get-SupportedClusterSizes
+    Get-SupportedFileSystems
+    Get-TargetPort
+    Get-TargetPortal
+    Get-VirtualDisk
+    Get-VirtualDiskSupportedSize
+    Get-Volume
+    Get-VolumeCorruptionCount
+    Get-VolumeScrubPolicy
+    Get-WindowsErrorReporting
+    Test-ClusterResourceFailure
 ```
 
-> [!NOTE]
-> Session transcript details are retained for 90 days. You can retrieve details for a remote session within 90 days after the session.
+</details>
 
-## Error handling
+#### Log Collection
 
-When you run the enable remote support command for the first time, you may see the following error message:
+<details>
+<summary>Expand this section to see the commands.</summary>
 
-```console
-PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
-
-PS C:\Users\HciDeploymentUser\Documents> Enable-RemoteSupport -AccessLevel Diagnostics -ExpireMinutes 1440
-
-Proceed with enabling remote support?
-[Y] Yes  [N] No  [?] Help (default is "Y"): Y
-
-Type            Keys                                Name
-----            ----                                ----
-Container       {Name=SupportDiagnosticEndpoint}    SupportDiagnosticEndpoint
-
-
-Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request. 
+```powershell
+    Send-DiagnosticData
 ```
 
-**Error Message**: Processing data from remote server `NodeName` failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
+</details>
 
-**Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to active JEA. During the remote support JEA configuration, the WinRM restarts twice, which might disrupt the PowerShell session to the node.
+#### Diagnostic test
+<details>
+<summary>Expand this section to see the commands.</summary>
 
-**Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
+```powershell
+    Test-Observability
+```
 
-- Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
-  - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
-- Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
+</details>
+
+#### NetworkATC
+<details> 
+<summary>Expand this section to see the commands.</summary>
+
+```powershell
+    Get-NetIntentStatus
+```
+
+</details>
+
+#### UpdateService
+<details>
+<summary>Expand this section to see the commands.</summary>
+
+```powershell
+    Get-SolutionDiscoveryDiagnosticInfo
+    Get-SolutionUpdate
+    Get-SolutionUpdateEnvironment
+    Get-SolutionUpdateRun
+    Add-SolutionUpdate
+    Start-SolutionUpdate
+    Invoke-SolutionUpdatePrecheck
+    Set-SolutionDiscovery
+    Set-UpdateConfiguration
+    Set-OverrideUpdateConfiguration
+```
+
+</details>
+
+### Access level: Diagnostics and repair
+
+The **Diagnostics and Repair** access level includes the following commands in addition to the commands listed in the [Access level: Diagnostics](#access-level-diagnostics) section. The commands are listed alphabetically and grouped by module or functionality.
+
+**Default types**
+
+```powershell
+    Start-Service
+    Stop-Service
+```
 
 ## Next step
 
-Learn more about [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md).
+- Learn more about [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md).
+- Learn more about and how to [Get remote support](../manage/get-remote-support.md).
