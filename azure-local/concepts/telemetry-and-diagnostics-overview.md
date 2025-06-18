@@ -113,10 +113,6 @@ Repair Description: N/A
 
 You can grant remote access to Microsoft support by using remote support operations. After enabling remote support, assign a specific access level to Microsoft support based on your requirements. For more information, see [Enable remote support diagnostics](../manage/get-remote-support.md#enable-remote-support-diagnostics) and the [List of Microsoft support operations](../manage/remote-support-arc-extension.md#list-of-microsoft-support-operations).
 
-## Troubleshoot telemetry and diagnostic errors
-
-For information on troubleshootings Arc extension errors, see [Troubleshoot Arc extensions on Azure Local](../manage/troubleshoot-arc-enabled-extensions.md).
-
 ## Next step
 
 Learn about [Azure Arc extension management on Azure Local](../manage/arc-extension-management.md).

@@ -91,7 +91,7 @@ To enable remote support on your Azure Local, follow these steps:
     >
     > `Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
     >
-    > For more information, see [Error handling](./troubleshoot-arc-enabled-extensions.md#error-enabling-remote-support).
+    > For more information, see [Error handling](#error-handling).
 
 3. To enable remote support, run this command:
 
@@ -201,6 +201,37 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 
 > [!NOTE]
 > Session transcript details are retained for 90 days. You can retrieve details for a remote session within 90 days after the session.
+
+## Error handling
+
+When you enable remote support on Azure Local, you may encounter an error. The following section describes the error message, its cause, and suggested resolutions.
+
+When you run the enable remote support command for the first time, you may see the following error message:
+
+```console
+PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
+
+PS C:\Users\HciDeploymentUser\Documents> Enable-RemoteSupport -AccessLevel Diagnostics -ExpireMinutes 1440
+
+Proceed with enabling remote support?
+[Y] Yes  [N] No  [?] Help (default is "Y"): Y
+
+Type            Keys                                Name
+----            ----                                ----
+Container       {Name=SupportDiagnosticEndpoint}    SupportDiagnosticEndpoint
+
+Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
+```
+
+**Error Message**: Processing data from remote server `NodeName` failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
+
+**Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to active Just Enough Administration (JEA). During the remote support JEA configuration, the WinRM restarts twice, which might disrupt the PowerShell session to the node.
+
+**Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
+
+- Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
+    - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
+- Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
 
 ## Next steps
 
