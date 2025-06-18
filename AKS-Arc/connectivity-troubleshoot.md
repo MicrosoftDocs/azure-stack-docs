@@ -20,8 +20,8 @@ Use this guidance when BGP sessions fail to establish, external IP routing doesn
 
 In environments using MetalLB with FRR for BGP peering, you might experience the following issues:
 
-- BGP sessions are not established or keep flapping, a condition where the BGP session repeatedly goes up and down, causing route instability. This can be due to network issues, misconfigurations, or hardware problems. It can result in degraded performance or loss of service availability.
-- Services of type `LoadBalancer` do not receive properly routed external IPs.
+- BGP sessions are not established or keep flapping, a condition where the BGP session repeatedly goes up and down, causing route instability. This behavior can be due to network issues, misconfigurations, or hardware problems. It can result in degraded performance or loss of service availability.
+- Services of type `LoadBalancer` don't receive properly routed external IPs.
 - Advertised routes are missing or not propagated to upstream routers.
 - Network connectivity to exposed services is inconsistent or unavailable.
 
@@ -74,7 +74,7 @@ kubectl logs -n kube-system arcnetworking-metallb-speaker-xxxxx -c frr
 ### Review TOR switch configuration
 
 - Configuration and logs from the top-of-rack (TOR) switch or upstream router might be necessary.
-- These are hardware/vendor-specific and not covered in this guide.
+- These logs are hardware/vendor-specific and not covered in this guide.
 
 ## Next steps
 
