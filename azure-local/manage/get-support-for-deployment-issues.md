@@ -105,7 +105,7 @@ Follow these steps to enable remote support:
    > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the machine. To resolve this error, wait for a few minutes before reconnecting to the remote machine and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
    >
 
-For remote support usage scenarios, see [Remote support examples](./get-remote-support.md#remote-support-examples).
+For remote support usage scenarios, see [Enable remote support diagnostics](./get-remote-support.md#enable-remote-support-diagnostics) and [Other remote support operations](./get-remote-support.md#other-remote-support-operations).
 
 ## Next steps
 
