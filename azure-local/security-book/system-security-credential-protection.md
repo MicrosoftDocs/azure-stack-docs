@@ -1,6 +1,6 @@
 ---
-title:  Azure Local security book application control
-description: Application control for the Azure Local security book.
+title:  Azure Local security book credential protection
+description: Credential protection for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
 ms.date: 06/16/2025
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Application control
+# Credential protection
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 

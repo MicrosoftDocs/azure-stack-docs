@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/workload-security/security-diagram-workload-security.png" alt-text="Diagram illustrating workload security layer." lightbox="./media/work-load-security/workload-security.png":::
+:::image type="content" source="./media/workload-security/security-diagram-workload-security.png" alt-text="Diagram illustrating workload security layer." lightbox="./media/workload-security/security-diagram-workload-security.png":::
 
 You can enable Microsoft Defender for Cloud for your virtual machines running on Azure Local hosts. This enables you to continuously monitor their security posture and take corrective actions. With Azure Local, all virtual machines are automatically Arc-enabled. Microsoft Defender for Cloud protects virtual machines by installing the [Azure Monitor agent](/azure/azure-monitor/agents/azure-monitor-agent-overview) inside the virtual machine and correlating events that the agent collects into recommendations (hardening tasks) that you can perform to make your workloads secure. The hardening tasks are based on security best practices that include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Defender for Cloud monitoring while reducing the attack surface across all your resources.  
  

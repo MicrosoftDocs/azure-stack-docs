@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-:::image type="content" source="./media/workload-security/security-diagram-workload-security.png" alt-text="Diagram illustrating workload security layer." lightbox="./media/work-load-security/workload-security.png":::
+:::image type="content" source="./media/workload-security/security-diagram-workload-security.png" alt-text="Diagram illustrating workload security layer." lightbox="./media/workload-security/security-diagram-workload-security.png":::
 
 Trusted launch for Azure Local VMs enabled by Azure Arc supports secure boot, virtual Trusted Platform Module (vTPM), and vTPM state transfer when a VM migrates or fails over within a system. You can choose Trusted launch as a security type when creating Azure Local VMs via Azure portal or Azure CLI. For more information, see [Trusted launch for Azure Local VMs enabled by Azure Arc](../manage/trusted-launch-vm-overview.md).
  
