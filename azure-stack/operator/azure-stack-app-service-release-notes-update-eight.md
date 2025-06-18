@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub update 8 release notes
 description: Update 8 release notes for App Service on Azure Stack Hub, including new features, fixes, and known issues.
 author: sethmanheim
 manager: stefsch
-ms.topic: article
+ms.topic: release-notes
 ms.date: 11/17/2020
 ms.author: sethm
 ms.reviewer: anwestg

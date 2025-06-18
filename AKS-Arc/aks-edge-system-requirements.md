@@ -3,7 +3,7 @@ title: AKS Edge Essentials system requirements
 description: Requirements and supported versions for AKS Edge Essentials. 
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/10/2025
 ms.custom: template-concept
 ---

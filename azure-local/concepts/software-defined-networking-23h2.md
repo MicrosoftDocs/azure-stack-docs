@@ -3,7 +3,7 @@ title: Software defined networking (SDN) in Azure Local, version 23H2
 description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
 author: AnirbanPaul
 ms.author: anpaul
-ms.topic: conceptual
+ms.topic: article
 ms.service: azure-local
 ms.date: 06/03/2025
 ---

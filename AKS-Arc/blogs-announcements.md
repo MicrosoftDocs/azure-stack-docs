@@ -4,7 +4,7 @@ description: Learn about the latest blogs and announcements for Azure Kubernetes
 author: sethmanheim
 ms.author: sethm
 ms.date: 12/3/2024
-ms.topic: conceptual
+ms.topic: article
 
 ---
 

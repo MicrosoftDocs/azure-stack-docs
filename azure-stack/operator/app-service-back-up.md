@@ -2,7 +2,7 @@
 title: Back up App Service on Azure Stack Hub 
 description: Learn how to back up App Services on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/08/2024
 ms.author: sethm
 ms.reviewer: anwestg

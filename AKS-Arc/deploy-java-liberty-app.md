@@ -3,7 +3,7 @@ title: Deploy a Java app with Open Liberty or WebSphere Liberty on an Azure Kube
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS cluster in AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm 
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.date: 06/27/2024
 ms.lastreviewed: 01/14/2022
 ms.custom:  devx-track-extended-java, devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks, devx-track-azurecli

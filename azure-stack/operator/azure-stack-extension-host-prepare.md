@@ -4,7 +4,7 @@ description: Learn how to prepare for an extension host in Azure Stack Hub, whic
 author: sethmanheim
 ms.author: sethm
 ms.date: 1/17/2025
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: thoroet
 ms.lastreviewed: 03/07/2019
 
