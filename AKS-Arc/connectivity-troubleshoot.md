@@ -2,11 +2,11 @@
 title: Troubleshoot BGP with FRR in AKS Arc environments
 description: Learn how to troubleshoot BGP connectivity issues when using MetalLB with FRR in AKS Arc deployments.
 author: sethmanheim
-ms.date: 06/18/2025
+ms.date: 06/19/2025
 ms.author: sethm
 ms.topic: troubleshooting
 ms.reviewer: srikantsarwa
-ms.lastreviewed: 06/18/2025
+ms.lastreviewed: 06/19/2025
 
 ---
 
