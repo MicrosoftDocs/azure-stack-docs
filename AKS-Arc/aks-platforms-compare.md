@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Learn about Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
 author: sethmanheim
 ms.topic: concept-article
-ms.date: 06/12/2025
+ms.date: 06/16/2025
 ms.author: sethm
 ms.reviewer: rmody
 ---
@@ -23,7 +23,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## General comparison of AKS across platforms
 
-| Platform | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
+| Feature | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Supported infrastructure for Kubernetes cluster | Azure cloud | Azure Local, version 23H2 or later | - Windows 10/11 IoT Enterprise<br>- Windows 10/11 Enterprise<br>- Windows 10/11 Pro<br>- Windows Server 2019/2022 | - Windows Server 2019<br>- Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
@@ -38,7 +38,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Monitoring and diagnostic capabilities
 
-|   Feature       |     Azure Cloud    |     AKS on Azure Local    |      Edge Essentials (Windows IoT client/server)    |     Windows Server    |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 |     Azure Monitor Container Insights     |     Yes    |     Yes, via Arc extensions    |     Yes, via Arc extensions    |     Yes, via Arc extensions    |
 |     Azure Monitor Managed Prometheus and control plane metrics scraping     |     Yes    |     Yes, via Arc extensions    |     Yes, via Arc extensions    |     Yes, via Arc extensions    |
@@ -48,7 +48,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Node pool capabilities
 
-|  Feature                      | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT client/server) | Windows Server |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Windows node pool support      | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter | - Yes<br>- Windows Server 2022 Datacenter (Core) | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter |
 | Linux OS offerings            | - Ubuntu 18.04<br>- Azure Linux | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) |
@@ -67,7 +67,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Networking capabilities
 
-|  Feature                      | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT /Client/Server) | Windows Server |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Network creation and management | By default, Azure creates a virtual network and subnet for you. You can also choose an existing virtual network in which to create your AKS clusters. | Setting up networking parameters is a required prerequisite to deploy AKS on Azure Local. Network must have connectivity and IP address availability for successful operation of the cluster. | You must provide the IP address range for node IPs and service IPs that are available and have the right connection. The network configuration needed for the cluster is handled by AKS. See [AKS Edge Essentials networking](aks-edge-concept-networking.md). | You must create the network in Windows Server before creating an AKS cluster. Network must have connectivity and IP address availability for successful operation of the cluster. |
 | Supported networking option    | Bring your own Azure virtual network for AKS clusters. | Static IP networks with/without VLAN ID. | Static IP address or use reserved IPs when using DHCP. | - DHCP networks with/without VLAN ID.<br>- Static IP networks with/without VLAN ID. |
@@ -79,7 +79,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Storage features
 
-| Feature                       | Azure Cloud                                                          | AKS on Azure Local                                                                                 | Edge Essentials (Windows IoT /Client/Server) | Windows Server                        |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Types of supported persistent volumes | - Read Write Once<br>- Read Write Many                                         | - VHDX – Read Write Once<br>- SMB or NFS – Read Write Many<br>- ACSA - Read Write Many                             | - PVC using local storage<br>- ACSA                 | - VHDX – Read Write Once<br>- SMB or NFS - Read Write Many |
 | Container storage interface (CSI) support | Yes                                                                      | Yes                                                                                                    | Yes                                             | Yes                                         |
@@ -90,7 +90,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Security and authentication options
 
-| Feature                       | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT /Client/Server) | Windows Server |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Access to Kubernetes cluster             | Kubectl         | Kubectl                   | Kubectl                                         | Kubectl              |
 | Kubernetes cluster authorization (RBAC)  | - Kubernetes RBAC<br>- Azure RBAC | - Kubernetes RBAC<br>- Azure RBAC | Kubernetes RBAC                                 | Kubernetes RBAC      |
@@ -107,7 +107,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ## Pricing and SLA details
 
-| Feature                       | Azure Cloud                                                                           | AKS on Azure Local                        | Edge Essentials (Windows IoT client/server) | Windows Server                                               |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Pricing                           | - Unlimited free clusters, pay for on-demand compute of worker node VMs.<br>- Paid tier available with uptime SLA, support for 5k nodes. | Included in Azure Local at no extra cost.  | Cost is per device per month.                        | Pricing is based on the number of workload cluster vCPUs. Control plane nodes and load balancer VMs are free. |
 | Azure Hybrid Benefit support       | Not applicable                                                                            | Not applicable - AKS already included at no extra cost. | No                                              | Yes                                                               |
@@ -115,7 +115,7 @@ This article describes how AKS extends features across multiple platforms and hi
 
 ### AI/ML capabilities offered in each platform
 
-| Feature                      | Azure Cloud | AKS on Azure Local    | Edge Essentials (Windows IoT /Client/Server) | Windows Server |
+|   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | GPU support                       | Yes             | Yes                       | Yes                                             | Yes                  |
 | KAITO (Kubernetes AI toolchain operator) | Yes             | Yes, via Arc extensions   | No                                              | No                   |
