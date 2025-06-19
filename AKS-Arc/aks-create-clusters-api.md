@@ -20,8 +20,18 @@ This article describes how to create Kubernetes clusters on Azure Local using th
 Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
 
 - **Azure subscription ID**: The Azure subscription ID that Azure Local uses for deployment and registration.
-- **Custom Location ID**: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. If the infrastructure admin provides a custom location name and resource group name, you can also get the Resource Manager ID using the `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv` command.
-- **Network ID**: The Azure Resource Manager ID of the Azure Local logical network you created [following these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. If you know the resource group in which the logical network was created, you can also get the Azure Resource Manager ID using the `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` command.
+- **Custom Location ID**: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. If the infrastructure admin provides a custom location name and resource group name, you can also get the Resource Manager ID using the following command:
+
+  ```azurecli
+  az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv
+  ```
+  
+- **Network ID**: The Azure Resource Manager ID of the Azure Local logical network you created [following these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. If you know the resource group in which the logical network was created, you can also get the Azure Resource Manager ID using the following command:
+
+  ```azurecli
+  az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv
+  ```
+  
 - **Create an SSH key pair**: Create an SSH key pair in Azure and store the private key file for troubleshooting and log collection purposes. For detailed instructions, see [Create and store SSH keys with the Azure CLI](/azure/virtual-machines/ssh-keys-azure-cli), or with the [Azure portal](/azure/virtual-machines/ssh-keys-portal).
 - To connect to the Kubernetes cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you can't access the Kubernetes cluster using **kubectl**. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
 
@@ -146,4 +156,4 @@ moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 
 ## Next steps
 
--[AKS Arc overview](overview.md)
+[AKS Arc overview](overview.md)
