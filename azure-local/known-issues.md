@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/12/2025
+ms.date: 06/19/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -61,6 +61,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--31617326--> | Added validation to check for required permissions to change access control lists (ACL). | |
 | Deployment <!--32199814--> | Added a server-side filter to the WMI call to improve performance and reduce call time. | |
 | Deployment <!--31911046--> | Added fix to dispose of the PowerShell objects after use to improve performance when creating new PowerShell instances. | |
+| Deployment <!--642400448--> | Fixed the time zone issue when running the **Install Azure Stack HCI** wizard and selecting a time zone. The **Install Azure Stack HCI** wizard now correctly applies the selected time zone during deployment. | |
 | Security management <!--57340784--> | Fixed **Security defaults**, **Application control**, and **Data protections** pages showing as *Unknown* in the security compliance report. | |
 | Add server <br> Repair server <!--32483959--> | Fixed running `Add-server` and `Repair-server` cmdlets with a customized storage adapter IP in Azure Local which resulted in the error: `Type 'ConfigureAzureStackHostStorageAdpaterIPAddressesInAddRepairNode' of Role 'HostNetwork' raised an exception: Connecting to remote server <MACHINE> failed with the following error message: Access is denied.`. | |
 
@@ -150,6 +151,7 @@ The following table lists the known issues in this release:
 | Add server <br> Repair server <!--32483959--> | If running `Add-server` and `Repair-server` cmdlets with customized storage adapter IP configured in your Azure Local instance, the operation might fail with the error: <br> `Type 'ConfigureAzureStackHostStorageAdpaterIPAddressesInAddRepairNode' of Role 'HostNetwork' raised an exception: Connecting to remote server <MACHINE> failed with the following error message : Access is denied.`. | Contact Microsoft Support if you experience this issue. |
 | Security management <!--57340784--> | The **Security defaults**, **Application control**, and **Data protections** pages show *Unknown* for all security settings. | This issue is only in the security compliance report. The states of the security settings are unaffected. Use PowerShell to verify the compliance status of the security settings. <br><br>For more information, see [Manage secure baseline via PowerShell cmdlets](./manage/manage-secure-baseline.md#powershell-cmdlet-properties) |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/users/kagoyal/tsg-error42/TSG/ArcRegistration/TSG%20%7C%20Arc%20registration%20failing%20with%20error%2042.md). |
+| Deployment <!--642400448--> | In the 2504 release, when you run the **Install Azure Stack HCI** wizard and select a time zone, the system continues to use Pacific Standard Time (PST), regardless of your selection. | This is not a blocking issue, and deployment will still complete successfully. |
 
 ## Known issues from previous releases
 
