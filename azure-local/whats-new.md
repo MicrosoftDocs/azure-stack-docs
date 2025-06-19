@@ -1,11 +1,11 @@
 ---
 title: What's new in Azure Local latest release
-description: Find out what's new in Azure Local release.
+description: Find out what are the new features and enhancements in the latest Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 06/16/2025
+ms.date: 06/19/2025
 ---
 
 # What's new in Azure Local?
@@ -23,12 +23,12 @@ There are two 2506 releases for June. Here are the details of each release:
 
 |Solution version  |OS version |Deployment  |
 |---------|---------|---------|
-|12.2506.1001.16 |  26100.XXXX        | New deployments only.        |
-|11.2506.1001.15  | 25398.XXXX        | Existing deployments only.        |
+|12.2506.1001.23 |  26100.XXXX        | New deployments only.        |
+|11.2506.1001.22  | 25398.XXXX        | Existing deployments only.        |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
-## Features and improvements in 2505
+## Features and improvements in 2506
 
 This release has the following features and improvements:
 
@@ -40,11 +40,18 @@ This release has the following features and improvements:
 
         Existing deployments of Azure Local will continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
+    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with Azure Local 12.2506 or Windows Server 2025.
 
-- **.NET updates**: This build uses .NET version **8.0.XX** for both .NETRuntime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+- **.NET updates**: This build uses .NET version **8.0.17** for both .NETRuntime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Software-Defined Networking (SDN) enabled by Azure Arc**: Azure Local now supports Software-Defined Networking (SDN) enabled by Azure Arc. This feature allows you to manage your network resources using Azure Arc, providing a consistent networking experience across your hybrid and multi-cloud environments. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-enabled-by-azure-arc.md).
+
+- **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
+  - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
+  - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
+  - Additional adjustments tailored for Azure Local.
+
+  This release also has improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [Security baseline compliance in Azure Local](./manage/manage-secure-baseline.md).
 
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
