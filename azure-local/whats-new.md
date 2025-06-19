@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 05/29/2025
+ms.date: 06/10/2025
 ---
 
 # What's new in Azure Local?
@@ -123,11 +123,10 @@ This release has the following features and improvements:
 
     The following preview features aren't supported for Azure Local in Azure Government cloud:
 
-    - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
-    - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
-    - [Azure Site Recovery](./manage/azure-site-recovery.md).
-    - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
-<!--- [Azure Backup](/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).-->
+  - [Azure Arc Gateway](./deploy/deployment-azure-arc-gateway-overview.md).
+  - [Deploy using local identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+  - [Azure Site Recovery](./manage/azure-site-recovery.md).
+  - [Windows Admin Center in Azure portal](/windows-server/manage/windows-admin-center/azure/manage-vm).
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the extensions are installed in the machine validation step during the Azure Local instance deployment. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
@@ -191,7 +190,7 @@ For more information on improvements in this release, see the [Fixed issues in 2
 
 ::: moniker-end
 
-::: moniker range="=azloc-24111"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2411.1
 
@@ -204,10 +203,6 @@ This release has the following features and improvements:
 - **4-node switchless support** - Starting this release, 4-node switchless is supported for Azure Local.
 
 For more information on improvements in this release, see the [Fixed issues in 2411.1](./known-issues.md?view=azloc-24111&preserve-view=true#fixed-issues-1).
-
-::: moniker-end
-
-::: moniker range="=azloc-2411"
 
 ## Features and improvements in 2411
 
@@ -256,10 +251,6 @@ This release has the following features and improvements:
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 ## Features and improvements in 2408.2
 
 This release has the following features and improvements:
@@ -283,10 +274,6 @@ This release has the following features and improvements:
   - [Manage GPUs via Discrete Device Assignment for Azure Local (preview)](./manage/gpu-manage-via-device.md)
 - **Improved CLI error messages** for deletion of VM network interfaces, data disks, and storage paths that are in use.
 - **Improved reliability** when installing open ssh client during solution deployment.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2408
 
@@ -325,19 +312,9 @@ This release contains the following changes for SBE:
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing issues with drivers newer than those in the SBE. This plugin update provides hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends installing host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
-
 ## Features and improvements in 2405.3
 
 This is primarily a bug fix release. See the [Fixed issues list](./known-issues.md?view=azloc-previous&preserve-view=true) to understand the bug fixes.
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2405.2
 

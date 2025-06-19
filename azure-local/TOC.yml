@@ -233,6 +233,8 @@ items:
         items:
         - name: Using Azure Marketplace images
           href: manage/virtual-machine-image-azure-marketplace.md
+        - name: Using Azure Compute Gallery images
+          href: manage/virtual-machine-image-azure-compute-gallery.md
         - name: Using images in Azure Storage account
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 

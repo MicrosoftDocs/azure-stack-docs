@@ -5,6 +5,8 @@
   items:
   - name: What is AKS enabled by Azure Arc?
     href: aks-overview.md
+  - name: Compare AKS across platforms
+    href: aks-platforms-compare.md 
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
   - name: Data collection
@@ -125,7 +127,7 @@
         href: cluster-labels.md
       - name: Taints
         href: aks-arc-use-node-taints.md
-    - name: Use auto-scaler
+    - name: Use autoscaler
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md

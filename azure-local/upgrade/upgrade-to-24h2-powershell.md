@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS to version 26100.xxxx using PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS to version 26100.xxxx.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/05/2025
+ms.date: 06/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -20,8 +20,8 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 - From OS version 25398.xxxx to 26100.xxxx.
 
 > [!IMPORTANT]
-> This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed.
-> To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
+> - This article covers OS upgrades only. Do not proceed if solution upgrade is complete or Azure Local 2311.2 or later is deployed. To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
+> - The solution upgrade isn't yet supported on OS version 26100.xxxx.
 
 ## High-level workflow for the OS upgrade
 
@@ -77,12 +77,6 @@ To ensure Resilient File System (ReFS) functions properly during and after OS up
 
    ```powershell
    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
-   ```
-
-1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
-
-   ```powershell
-   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
    ```
 
 1. Restart the machine to apply changes. If ReFS volumes fail to come online after reboot and the `RefsEnableMetadataValidation` key is reset, toggle the key. Set `RefsEnableMetadataValidation` to **1** and then back to **0**. To check volume status, run the `Get-ClusterSharedVolumeState` command.

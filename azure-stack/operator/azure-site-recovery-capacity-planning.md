@@ -4,7 +4,7 @@ description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
-ms.date: 08/12/2024
+ms.date: 06/10/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/15/2024
 ---
@@ -79,7 +79,7 @@ The target environment requires one Azure Site Recovery vault to be created for 
 Installation of Azure Site Recovery on Azure Stack Hub requires that you install the Site Recovery Resource Provider (RP).
 
 > [!NOTE]
-> With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
+> With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub doesn't require Event Hubs as a dependency.
 
 :::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Screenshot of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
 
@@ -117,7 +117,7 @@ When creating the BCDR plan, consider all aspects of the protected workloads. Th
 
 For the scope of Azure Site Recovery on Azure Stack Hub, here's a starting point for calculations, especially for the cache storage account used:
 
-1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. For example, you might have (2MB * 250s). The cache storage account is normally a few KB to 500 MB per disk.
+1. If there's a failover, during normal operations, multiply the number of disks replicated by the average RPO. For example, you might have (2 MB * 250 s). The cache storage account is normally a few KB to 500 MB per disk.
 
 2. If there's a failover, given a worst case scenario, multiply the number of disks replicated by the average RPO over a full day.
 
@@ -151,11 +151,11 @@ The following table is an example of tests run in our environments. You can use 
 |16                       |32 MB/s         |4096     |                                   |
 
 > [!NOTE]
-> 8Kb is the smallest block size of data Azure Site Recovery supports. Any changes less than 8Kb are treated as 8Kb.
+> 8 Kb is the smallest block size of data Azure Site Recovery supports. Any changes less than 8 Kb are treated as 8 Kb.
 
 To test further, we generated a consistent type of workload; for example, consistent storage changes in blocks of 8 Kb that total up to 1 MB/s per disk. This scenario isn't likely in a real workload, given that changes can happen at various times of the day, or in spikes of various sizes.
 
-To replicate these random patterns, we've also tested scenarios with:
+To replicate these random patterns, we also tested scenarios with:
 
 - 120 VMs (80 Windows, 40 Linux) protected through the same Azure Site Recovery VM appliance.
   - Each VM generating at random intervals, at least twice per hour, random blocks totaling 5 Gb of data across five files.
