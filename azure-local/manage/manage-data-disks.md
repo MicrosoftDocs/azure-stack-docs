@@ -3,7 +3,7 @@ title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2025
+ms.date: 06/19/2025
 ms.author: alkohli
 ms.service: azure-local
 ---
@@ -55,7 +55,7 @@ The parameters are described in the following table:
 | `resource-group` | Resource group for Azure Local that you associate with this image. |
 | `name` | Name of the data disk for Azure Local. | 
 | `custom-location` | Resource ID of the custom location for Azure Local. |
-| `disk-file-format` | File format of the data disk. This can be `vhd` or `vhdx`. |
+| `disk-file-format` | File format of the data disk. The supported format is `vhd`. |
 | `download-url` | SAS URL of the Azure managed disk.| 
 
 Here is an example output:
