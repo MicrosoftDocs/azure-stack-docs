@@ -5,7 +5,7 @@ description: Learn how to use Virtual network peering to connect virtual network
 author: sethmanheim
 ms.author: sethm
 ms.date: 03/09/2022
-ms.topic: conceptual
+ms.topic: article
 ms.reviewer: cedward
 ms.lastreviewed: 03/10/2022
 ---

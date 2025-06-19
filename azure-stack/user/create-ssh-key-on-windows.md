@@ -3,7 +3,7 @@ title: Create an SSH key for Linux on Azure Stack Hub
 description: Learn how to create an SSH key for Linux on Azure Stack Hub
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 12/2/2020
 ms.author: sethm
