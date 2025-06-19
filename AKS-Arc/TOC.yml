@@ -62,6 +62,8 @@
         href: create-clusters-terraform.md
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: REST API
+        href: aks-create-clusters-api.md
     - name: Networking
       items:
       - name: Create logical networks
