@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 06/02/2025
+ms.date: 06/19/2025
 ---
 
 # Supported operations for Azure Local VMs enabled by Azure Arc
@@ -50,6 +50,15 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Delete extensions
 - Enable guest management
 - Connect via Secure Shell (SSH)
+- Rename the computer name of your Azure Local VM.
+
+    > [!NOTE]
+    > This operation will automatically restart your Azure Local VM.
+
+- Change the IP address of a network interface (NIC) to match static IP NIC configuration on Azure Local control plane.
+
+    > [!NOTE]
+    > This manual change is allowed from within the guest operating system using local tools only when a static IP NIC was added post VM provisioning from Azure Local control plane. This ensures network configurations within the VM aligns with the configuration defined in the Azure control plane.
 
 ### Azure CLI
 
@@ -116,8 +125,6 @@ The following VM operations aren't supported.
 > [!IMPORTANT]
 > You can't perform these operations by using the Azure portal, the Azure CLI, or local tools. Performing these operations can lead to Azure Local VMs becoming unmanageable from the Azure portal.
 
-- Rename a VM inside the guest operating cluster
-- Change the IP address of a network interface
 - Enable or change the VLAN ID of a network interface
 - Live migrate a VM from one cluster to another
 - Storage live migration on a VM
