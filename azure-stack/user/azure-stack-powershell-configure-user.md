@@ -2,7 +2,7 @@
 title: Connect to Azure Stack Hub with PowerShell as a user 
 description: Learn how to connect to Azure Stack Hub with PowerShell to use the interactive prompt or write scripts.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 03/06/2025
