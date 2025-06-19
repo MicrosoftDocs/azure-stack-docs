@@ -4,7 +4,7 @@ description: Guidance to get started with using Azure Stack Hub storage developm
 author: sethmanheim
 ms.author: sethm
 ms.date: 03/12/2024
-ms.topic: conceptual
+ms.topic: get-started
 ms.reviewer: jiahan
 ms.lastreviewed: 08/12/2020
 

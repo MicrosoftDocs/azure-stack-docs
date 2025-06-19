@@ -62,6 +62,8 @@
         href: create-clusters-terraform.md
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: REST API
+        href: aks-create-clusters-api.md
     - name: Networking
       items:
       - name: Create logical networks
@@ -187,6 +189,8 @@
       href: network-validation-errors.md
     - name: Network validation error due to .local domain
       href: network-validation-error-local.md
+    - name: BGP with FRR not working
+      href: connectivity-troubleshoot.md
   - name: Reference
     items:
     - name: Azure CLI
