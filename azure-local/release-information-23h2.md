@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 05/28/2025
+ms.date: 06/18/2025
 ---
 
 # Azure Local release information
@@ -36,10 +36,10 @@ The following diagram illustrates the feature builds, cumulative updates, and up
 
 - Starting with the 2504 release, Microsoft releases two solution versions each month, each aligned with a specific OS build. All future updates will continue using the OS build associated with their respective solution version. The following table provides the solution versions and their associated OS builds.
 
-  | OS build    | Update path              | Use case        |
+  | Solution version | OS build    | Update path              | Use case        |
   |---------------------| ------------| -------------------------| ----------------|
-  | 25398.xxxx  |  2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
-  | 26100.xxxx | 2504 -->  2505 --> so forth. |  Use this version to install a specific build directly. |
+  | 10.24xx or 11.25xx  | 25398.xxxx  |  2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
+  | 12.25xx  | 26100.xxxx | 2504 -->  2505 --> so forth. |  Use this version to install a specific build directly. |
 
 - To keep your Azure Local solution in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
