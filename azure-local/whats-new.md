@@ -46,12 +46,12 @@ This release has the following features and improvements:
 
 - **Software-Defined Networking (SDN) enabled by Azure Arc**: Azure Local now supports Software-Defined Networking (SDN) enabled by Azure Arc. This feature allows you to manage your network resources using Azure Arc, providing a consistent networking experience across your hybrid and multi-cloud environments. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
 
-- **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
+<!--- **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
   - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
   - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
   - Additional adjustments tailored for Azure Local.
 
-  This release also has improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
+  This release also has improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).-->
 
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
