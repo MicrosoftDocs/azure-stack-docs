@@ -13,7 +13,7 @@ ms.reviewer: rjaini
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Kubernetes clusters on Azure Local using the REST API. The Azure resource type for [AKS Arc provisioned clusters](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template) is **"Microsoft.HybridContainerService/provisionedClusterInstances"**. This resource is an extension of the [Connected Cluster](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-arm-template) resource type, **"Microsoft.Kubernetes/connectedClusters"**. Due to this dependency, you must first create a Connected Cluster resource before creating an AKS Arc resource.
+This article describes how to create Kubernetes clusters on Azure Local using the REST API. The Azure resource type for [AKS Arc provisioned clusters](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template) is **"Microsoft.HybridContainerService/provisionedClusterInstances"**. This resource is an extension of the [connected clusters](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-arm-template) resource type, **"Microsoft.Kubernetes/connectedClusters"**. Due to this dependency, you must first create a connected cluster resource before creating an AKS Arc resource.
 
 ## Before you begin
 
@@ -27,7 +27,7 @@ Before you begin, make sure you have the following details from your on-premises
 
 ## Step 1: Create a connected cluster resource
 
-Refer to the API definition for [connected clusters](/rest/api/hybridkubernetes/connected-cluster/create) and create a **PUT** request with the `kind` property set to 'ProvisionedCluster'. The following example is a sample **PUT** request to create a connected cluster resource using the REST API:
+See the API definition for [connected clusters](/rest/api/hybridkubernetes/connected-cluster/create) and create a **PUT** request with the `kind` property set to `ProvisionedCluster`. The following example is a sample **PUT** request to create a connected cluster resource using the REST API:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{connectedClusterName}?api-version=2024-01-01
@@ -56,7 +56,7 @@ Authorization: Bearer <access_token>
 }
 ```
 
-Replace all placeholder values with your actual details. For more information, see the [connected cluster API documentation](/rest/api/hybridkubernetes/connected-cluster/create).
+Replace all placeholder values with your actual details. For more information, see the [connected clusters API documentation](/rest/api/hybridkubernetes/connected-cluster/create).
 
 ## Step 2: Create a provisioned cluster resource
 
@@ -106,7 +106,7 @@ Authorization: Bearer <access_token>
 
 ```
 
-Replace the placeholder values with your actual details. For more information, see the [provisioned cluster API documentation](/rest/api/hybridcontainer/provisioned-cluster-instances/create-or-update).
+Replace the placeholder values with your actual details. For more information, see the [provisioned clusters API documentation](/rest/api/hybridcontainer/provisioned-cluster-instances/create-or-update).
 
 ## Connect to the Kubernetes cluster
 
