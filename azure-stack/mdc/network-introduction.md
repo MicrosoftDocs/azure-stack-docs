@@ -4,7 +4,7 @@ description: Learn about networking for the Azure Modular Datacenter device.
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/17/2025
 ms.lastreviewed: 12/31/2019
 ---

@@ -2,7 +2,7 @@
 title: About Azure Local upgrade to version 23H2
 description: Learn how to upgrade from Azure Local, version 22H2 to Azure Local, version 23H2.
 author: alkohli
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.date: 05/01/2025
 ms.author: alkohli
 ms.reviewer: alkohli

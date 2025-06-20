@@ -2,7 +2,7 @@
 title: Get support for AKS Edge Essentials
 description: Learn about how to get support and open a support request for AKS Edge Essentials.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2025
 ms.author: sethm 
 

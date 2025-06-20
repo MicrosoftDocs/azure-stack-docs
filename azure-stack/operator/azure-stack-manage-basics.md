@@ -2,7 +2,7 @@
 title: Azure Stack Hub administration basics 
 description: Learn the basics of Azure Stack Hub administration.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2025
 ms.author: sethm
 

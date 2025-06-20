@@ -1,7 +1,7 @@
 ---
 title: Deploy Windows Server Azure Edition VMs on Azure Local, version 23H2
 description: Learn how to deploy Windows Server Azure Edition VMs on Azure Local, version 23H2 starting with an image in Azure Local Marketplace or Azure Marketplace.
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
