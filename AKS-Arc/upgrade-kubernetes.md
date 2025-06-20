@@ -1,7 +1,7 @@
 ---
 title: Upgrade the Kubernetes version of Azure Kubernetes Service workload clusters with Windows Admin Center
 description: Learn how to upgrade the Kubernetes version of AKS workload clusters in AKS on Windows Server.
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.date: 06/26/2024
 author: sethmanheim
 ms.author: sethm 

@@ -2,7 +2,7 @@
 title: Azure-connected deployment decisions for Azure Stack Hub integrated systems 
 description: Determine deployment planning decisions for Azure-connected deployments of Azure Stack Hub integrated systems, including billing and identity.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 08/19/2024
 ms.author: sethm
 
@@ -62,7 +62,6 @@ Capacity billing requires an Enterprise Agreement (EA) Azure subscription for re
 
 ## Learn more
 - For information about use cases, purchasing, partners, and OEM hardware vendors, see the [Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) product page.
-- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see the white paper: [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/). 
 - To learn more about Microsoft Azure Stack Hub packaging and pricing, [download the .pdf](https://azure.microsoft.com/resources/azure-stack-hub-licensing-packaging-pricing-guide/). 
 
 ## Next steps

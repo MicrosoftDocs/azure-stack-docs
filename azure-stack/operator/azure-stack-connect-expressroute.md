@@ -3,7 +3,7 @@ title: Connect Azure Stack Hub to Azure using ExpressRoute
 description: Learn how to connect virtual networks in Azure Stack Hub to virtual networks in Azure using ExpressRoute.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: unknown

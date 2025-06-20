@@ -4,7 +4,7 @@ description: Learn about Azure Stack network integration for Azure Modular Datac
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/17/2025
 ms.lastreviewed: 01/02/2020
 ---

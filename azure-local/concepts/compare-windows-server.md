@@ -1,7 +1,7 @@
 ---
 title: Compare Azure Local to Windows Server
 description: This topic helps you determine whether Azure Local or Windows Server is right for your organization.
-ms.topic: conceptual
+ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
