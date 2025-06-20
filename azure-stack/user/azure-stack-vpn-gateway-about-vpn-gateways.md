@@ -3,7 +3,7 @@ title: Create VPN Gateways for Azure Stack Hub
 description: Create and configure VPN Gateways for Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: article
 ms.date: 04/12/2021
 ms.author: sethm
 ms.reviewer: cedward

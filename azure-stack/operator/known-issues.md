@@ -2,7 +2,7 @@
 title: Azure Stack Hub known issues 
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
-ms.topic: article
+ms.topic: troubleshooting-known-issue
 ms.date: 02/19/2025
 ms.author: sethm
 ms.reviewer: rtiberiu
