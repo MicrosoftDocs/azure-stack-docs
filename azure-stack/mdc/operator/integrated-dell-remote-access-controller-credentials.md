@@ -4,7 +4,7 @@ description: Learn how to update user credentials for the Integrated Dell Remote
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack-hub
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/27/2022
 ms.reviewer: justinha
 ms.lastreviewed: 10/27/2020

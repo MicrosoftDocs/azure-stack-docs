@@ -3,7 +3,7 @@ title: Add tenants for usage and billing to Azure Stack Hub
 description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
