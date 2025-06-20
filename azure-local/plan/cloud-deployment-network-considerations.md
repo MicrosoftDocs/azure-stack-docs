@@ -2,7 +2,7 @@
 title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: alkohli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2025
 ms.author: alkohli 
 ms.reviewer: alkohli

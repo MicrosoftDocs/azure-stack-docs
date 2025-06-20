@@ -2,7 +2,7 @@
 title: Network Controller Security
 description: Learn how to configure security for all communication between Network Controller and other software and devices.
 manager: grcusanz
-ms.topic: article
+ms.topic: how-to
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul

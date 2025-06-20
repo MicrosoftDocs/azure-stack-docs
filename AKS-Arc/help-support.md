@@ -1,7 +1,7 @@
 ---
 title: Get support for AKS on Windows Server
 description: Learn about how to get support and open a support request for AKS on Windows Server.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2025
 ms.custom: fasttrack-edit
 ms.author: sethm 
