@@ -4,7 +4,7 @@ description: Appendices for MDC networking.
 author: sethmanheim
 ms.service: azure-stack-hub
 ms.author: sethm
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/17/2025
 ms.lastreviewed: 12/30/2019
 ---
