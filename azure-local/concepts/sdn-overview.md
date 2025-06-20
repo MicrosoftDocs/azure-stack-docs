@@ -12,7 +12,7 @@ ms.date: 06/17/2025
 
 ::: moniker range=">=azloc-2506"
 
-This article provides an overview of Software Defined Networking (SDN) enabled by Azure Arc on Azure Local. The overview includes SDN management methods, guidance on when to use each method, and supported as well as unsupported SDN scenarios.
+This article explains Software Defined Networking (SDN) enabled by Azure Arc on Azure Local. It covers SDN management methods, when to use each method, and supported and unsupported SDN scenarios.
 
 SDN offers a centralized way to configure and manage networks and network services such as switching, routing, and load balancing in your datacenter. SDN enables you to dynamically create, secure, and connect your network to meet the evolving needs of your applications.
 
@@ -20,15 +20,15 @@ SDN offers a centralized way to configure and manage networks and network servic
 
 ## About SDN management on Azure Local
 
-SDN on Azure Local can be managed in two ways: via Arc and via on-premises tools.
+You can manage SDN on Azure Local in two ways: with Arc or with on-premises tools.
 
-**SDN enabled by Arc** is currently in Preview and available for Azure Local 2506 running OS version 26100.xxxx and later.
+**SDN enabled by Arc** is in Preview and available for Azure Local 2506 with OS version 26100.xxxx or later.
 
-In this method, the Network Controller runs as a Failover Cluster service instead of running on a virtual machine (VM). When SDN is enabled, the Network Controller integrates with the Azure Arc control plane, allowing the management of both existing and new logical networks.
+In this method, the Network Controller runs as a Failover Cluster service instead of on a virtual machine (VM). When you enable SDN, the Network Controller integrates with the Azure Arc control plane, so you can manage both existing and new logical networks.
 
-With SDN enabled by Azure Arc, you can create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
+With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
-An alternative way to manage SDN is through on-premises tools such as Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 and later. This method uses three major SDN components, allowing you to choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
+You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
 
 ## Comparison summary of SDN management
@@ -57,11 +57,11 @@ Here's a summary of unsupported scenarios for SDN enabled by Arc on Azure Local:
 
 ## Supported networking patterns for SDN enabled by Arc
 
-Before you deploy Azure Local and enable SDN, we recommend that you review the following supported networking patterns and available options.
+Before you deploy Azure Local and enable SDN, review these supported networking patterns and options.
 
 ### Group all traffic on single network intent
 
-- Use the *Group all traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#example-intent-group-all-traffic-on-a-single-intent).
+- Use the *Group all traffic* host networking pattern in single or multi node configuration. For details, see [Group all traffic on a single intent](../upgrade/install-enable-network-atc.md#example-intent-group-all-traffic-on-a-single-intent).
 
 - Use this pattern only with switched storage network connectivity.
 
@@ -73,9 +73,9 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 
 ### Group management and compute traffic in one intent with a separate storage intent
 
-- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For more information about this pattern, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#example-intent-group-management-and-compute-in-one-intent-with-a-separate-intent-for-storage).
+- Use the *Group management and compute traffic* host networking pattern in single or multi node configuration. For details, see [Group management and compute traffic in one intent with a separate storage intent](../upgrade/install-enable-network-atc.md#example-intent-group-management-and-compute-in-one-intent-with-a-separate-intent-for-storage).
 
-- Use this pattern with switched or switchless storage network connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
+- Use this pattern with switched or switchless storage connectivity for up to four-node Azure Local deployments. Use only storage switched connectivity for deployments with five or more nodes.
 
     :::image type="content" source="./media/sdn-overview/group-management-compute-traffic.png" alt-text="Screenshot of selecting switched storage connectivity for 2-node system." lightbox="./media/sdn-overview/group-all-traffic.png":::
 
@@ -85,20 +85,20 @@ Before you deploy Azure Local and enable SDN, we recommend that you review the f
 
 ### Custom configuration for disaggregated host networking
 
-- Use the *Custom configuration* host networking pattern in single or multi node configuration. For more information about this pattern, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#example-intent-fully-disaggregated-host-networking).
+- Use the *Custom configuration* host networking pattern in single or multi node configuration. For details, see [Custom configuration - Disaggregated host networking](../upgrade/install-enable-network-atc.md#example-intent-fully-disaggregated-host-networking).
 
     :::image type="content" source="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png" alt-text="Screenshot of custom configuration for fully disaggregated networking." lightbox="./media/sdn-overview/pattern-custom-configuration-disaggregated-networking.png":::
 
-- Use this pattern with switched or switchless storage connectivity for up to 4-node Azure Local deployments. Use only storage switched connectivity for deployments with 5 or more nodes.
+- Use this pattern with switched or switchless storage connectivity for up to four-node Azure Local deployments. Use only storage switched connectivity for deployments with five or more nodes.
 
     :::image type="content" source="./media/sdn-overview/custom-configuration-disaggregated-networking.png" alt-text="Screenshot of switched or switchless storage connectivity for up to 4 nodes." lightbox="./media/sdn-overview/custom-configuration-disaggregated-networking.png":::
 
 - A single virtual switch is available to create SDN resources.
 
-- You can use up to 3 network intents provided there are enough network adapter ports to separate the network traffic types.
-    - The first management intent is used only for host management traffic.
-    - The second compute intent is used only for VMs and workloads traffic.
-    - The third storage intent is used only for storage traffic.
+- Use up to three network intents provided there are enough network adapter ports to separate the network traffic types.
+    - The first management intent is only for host management traffic.
+    - The second compute intent is only for VMs and workloads traffic.
+    - The third storage intent is only for storage traffic.
 
 <!--## Choose SDN type based on your requirements
 
@@ -114,7 +114,7 @@ Use the following detailed decision matrix to select the SDN type based on your 
 
 ## Next steps
 
-For related information, see also:
+For related information, see:
 
 - [Enable SDN via action plan](../deploy/enable-sdn-integration.md)
 - [Deploy SDN infrastructure using SDN Express PowerShell scripts](../deploy/sdn-express-23h2.md)
@@ -123,6 +123,6 @@ For related information, see also:
 
 ::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2506 with OS build 26100.xxxx or later.
+This feature is available in Azure Local 2506 with OS build 26100.xxxx or later.
 
 ::: moniker-end

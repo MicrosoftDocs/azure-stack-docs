@@ -15,25 +15,27 @@ sections:
     questions:
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
-          Yes. When you enable Network Controller, all the Azure Local VMs are configured with a null port profile to enable network connectivity. As this configuration is performed for all the VMs, you experience a brief downtime  until all the VMs in the cluster are configured.  
-  
-          As this is a disruptive operation, make sure to plan for a maintenance window if you're running on a production environment.
+          Yes. When you enable Network Controller, Azure Local VMs use a null port profile to set up network connectivity. Because this process affects all VMs, you experience brief downtime until configuration finishes.
+
+          Because this operation is disruptive, plan a maintenance window if you're running in a production environment.
 
       - question: Why am I experiencing network connectivity issues for my unmanaged VMs on Azure Local after I enabled SDN enabled by Azure Arc?
         answer: |
-          You might encounter network connectivity issues after you enable the Network Controller and create unmanaged VMs outside of Azure interfaces such as Azure Command-line Interface, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. For more information, see how to [Unblock and configure null port profile for your unmanaged VMs]() to fix network connectivity issues.
+          You can experience network connectivity issues if you enable Network Controller and create unmanaged VMs outside Azure interfaces like Azure CLI, Azure portal, Azure PowerShell, and Azure Resource Manager APIs. To fix these issues, see how to [unblock and configure the null port profile for unmanaged VMs]().
 
       - question: Why can't I connect to my Azure Local VMs, if I associate an NSG with the VM network interface or its logical network?
         answer: |
-          If you configure an empty NSG, one with no security rules, on your VM’s network interface or the logical network the VM is on – by default, no inbound traffic is allowed into the VM and all the outbound traffic is allowed. You need to add specific inbound network security rules to allow inbound traffic into the VM.
+          If you set up an empty NSG with no security rules on your VM's network interface or the logical network, Azure Local blocks all inbound traffic by default and allows all outbound traffic. Add specific inbound network security rules to let traffic into the VM.
           
       - question: Can I modify Azure Local VM resources such as VMs, virtual switches, and network interfaces directly using Network Controller APIs, Windows Admin Center, or SDN Express PowerShell scripts for my Azure Local VMs?  
         answer: |
-          No. This shouldn't be done and is an unsupported scenario. Doing so can cause your resources to go into bad or unrecoverable states.
+          No. Don't do this, as it's unsupported and can cause your resources to enter bad or unrecoverable states.
 
       - question: Can I configure static network interfaces after the Azure Local VM is provisioned on an Azure Local instance with SDN enabled by Azure Arc?
         answer: |
-          No. Adding a secondary network interface to a VM after the VM is provisioned, is currently not supported. Such configurations cause both network interfaces to be assigned as the default gateway and lead to asymmetric networking symptoms like packet-loss and cause the VMs networking to be unpredictable. You must configure all the static network interfaces you need at the time of VM provisioning when using SDN enabled by Azure Arc.
+          No. You can't add a secondary network interface to a VM after provisioning. This setup causes both interfaces to act as the default gateway, which leads to asymmetric networking, packet loss, and unpredictable networking. Set up all needed static network interfaces during VM provisioning when using SDN enabled by Azure Arc.
       - question: Why am I seeing unexpected traffic drop or blocks for my Azure Local VMs?
         answer: |
-          If logical networks and VM network interfaces on your Azure Local VMs have NSGs applied with conflicting allow/deny rules, this could lead to unexpected traffic drops or blocks. <br><br> When an inbound packet arrives, Azure Local first evaluates the logical network NSG, and then the network NSG. For outbound traffic, Azure Local evaluates the network interface NSG first and then the logical network NSG. If the first NSG encountered has a **Deny** on the logical network and an **Allow** appears on the network interface, the packet is dropped.
+          If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.
+
+          When an inbound packet arrives, Azure Local checks the logical network NSG first, then the network interface NSG. For outbound traffic, Azure Local checks the network interface NSG first, then the logical network NSG. If the first NSG has a **Deny** rule and the next has an **Allow** rule, Azure Local drops the packet.
