@@ -1,7 +1,7 @@
 ---
 title: Proxy server settings in AKS on Windows Server
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Windows Server.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2025
 ms.author: sethm 
 ms.lastreviewed: 05/25/2022

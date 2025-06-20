@@ -5,7 +5,7 @@ services: azure-stack
 author: sethmanheim
 manager: lizross
 ms.service: azure-stack-hub
-ms.topic: article
+ms.topic: concept-article
 ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop

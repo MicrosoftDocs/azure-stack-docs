@@ -4,7 +4,7 @@ description: Learn about capacity planning for Azure Stack Hub MDC deployments, 
 services: azure-stack
 author: sethmanheim
 ms.service: azure-stack-hub
-ms.topic: article
+ms.topic: concept-article
 ms.date: 01/17/2025
 ms.author: sethm
 ms.lastreviewed: 01/10/2020
