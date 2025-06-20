@@ -3,7 +3,7 @@ title: App Service on Azure Stack Hub 25R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 25R1 release.
 author: apwestgarth
 ms.topic: article
-ms.date: 06/17/2025
+ms.date: 06/20/2025
 ms.author: anwestg
 ms.reviewer:
 ---
@@ -16,7 +16,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 25R1 build number is **102.0.10.7**
+The App Service on Azure Stack Hub 25R1 build number is **102.10.2.9**
 
 ## What's new?
 
