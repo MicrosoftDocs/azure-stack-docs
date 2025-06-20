@@ -2,7 +2,7 @@
 title: Troubleshoot Azure Container Registry on Azure Stack Hub for cloud operators
 description: As an operator, learn to troubleshoot Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: troubleshooting-general
 ms.date: 07/25/2024
 ms.author: sethm
 

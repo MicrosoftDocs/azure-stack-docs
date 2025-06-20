@@ -2,7 +2,7 @@
 title: Install PowerShell Az module for Azure Stack Hub 
 description: Learn how to install PowerShell for Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.custom: linux-related-content
 ms.date: 05/08/2025
 ms.author: sethm
