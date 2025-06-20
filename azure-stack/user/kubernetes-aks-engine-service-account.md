@@ -3,7 +3,7 @@ title: Enabling service account token volume projection for AKS engine on Azure 
 description: Learn how to enable service account token volume projection for AKS engine on Azure Stack Hub.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/21/2022
 ms.author: sethm
 ms.reviewer: waltero
