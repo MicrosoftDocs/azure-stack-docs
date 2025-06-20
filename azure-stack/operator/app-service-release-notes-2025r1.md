@@ -20,7 +20,7 @@ The App Service on Azure Stack Hub 25R1 build number is **102.10.2.9**
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub and builds on the previously released 24R1 ([24R1 Release Notes](app-service-release-notes-2024r1.md)).  Customers can install 25R1 directly without deploying 24R1 first.
+Azure App Service on Azure Stack Hub 25 R1 brings new updates to Azure Stack Hub and builds on the previously released 24R1 ([24R1 Release Notes](app-service-release-notes-2024r1.md)). Customers can install 25R1 directly without deploying 24R1 first.
 
 - Updates to .NET 8 and 9.
 - Updates to App Service on Azure Stack Hub Resource Provider.
@@ -91,7 +91,7 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 - **Updates to underlying operating system of all roles**:
   - [2025-06 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5060526)](https://support.microsoft.com/help/5060526)
   - [2025-04 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KB5054693)](https://support.microsoft.com/help/5054693)
-  - Definition updates for Windows Defender Antivirus and other Microsoft antimalware 1.429.494.0
+  - Definition updates for Windows Defender Antivirus and other Microsoft anti-malware 1.429.494.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**.
 
@@ -99,21 +99,21 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 
 ## Issues fixed in this release
 
-Newly fixed issues in this release
+Newly fixed issues in this release:
 
-- Application downtime should no longer be expected during Upgrade.  In 24R1 there was an issue which caused significant downtime due to a change in communication format within the Web Farm during upgrade, this has been mitigated in 25R1.
+- Application downtime should no longer be expected during Upgrade. In 24R1, an issue caused significant downtime due to a change in communication format within the Web Farm during upgrade, this has been mitigated in 25R1.
 
 - Resolution to issues faced with Role Based Access Control and Single Sign on to Kudu and SCM sites
 
 - Further process improvements in usage records service, to more effectively handle failures and outages during usage record commits
 
-- Resolved issues in Kudu where new runs of Web Jobs cannot be started due to stalled jobs running
+- Resolved issues in Kudu where new runs of Web Jobs can't be started due to stalled jobs running
 
-- Resolved issue when worker limits were not checked when scaling out an App Service Plan using a deployment template
+- Resolved issue when worker limits weren't checked when scaling out an App Service Plan using a deployment template
 
 - Resolved issue where an invalid Data Service endpoint is set in configuration when all names in management server certificate are of wildcard format
 
-- Enforced tcp prefix on all connection strings for the Resource Provider dataplane and ensured all roles receive updated connection string during rotation
+- Enforced tcp prefix on all connection strings for the Resource Provider data plane and ensured all roles receive updated connection string during rotation
 
 - Enabled Health Check Feature in Tenant Portal
 
@@ -126,7 +126,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
@@ -134,7 +134,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
   Customers that converted the appservice_hosting and appservice_metering databases to contained database post deployment, and didn't successfully migrate the database logins to contained users, might experience upgrade failures.  
 
-  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and does not cause downtime.
+  Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is nondestructive and doesn't cause downtime.
 
   This script must be run under the following conditions:
 
@@ -224,7 +224,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 ## Update the Entra ID Application with new Redirect URI
   
 1. Sign into the Azure portal to access the Entra ID tenant you connected your Azure Stack Hub to at deployment time.
-1. Using the Azure portal and navigate to **Microsoft Entra ID**.
+1. Use the Azure portal, and navigate to **Microsoft Entra ID**.
 1. Search your tenant for the `ApplicationClientId` you retrieved earlier.
 1. Select the application.
 1. Select **Authentication**.
@@ -268,7 +268,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when workers are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
