@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently Asked Questions for Software-Defined Networking (SDN) on Azure Local
+  title: Frequently Asked Questions (FAQ) for Software-Defined Networking (SDN) on Azure Local
   description: This FAQ provides information about SDN enabled by Azure Arc on Azure Local.
   ms.topic: faq
   author: alkohli
@@ -8,10 +8,10 @@ metadata:
   ms.service: azure-local
   ms.date: 06/17/2025
 title: FAQ - SDN enabled by Azure Arc on Azure Local
-summary: Ths Azure Local FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs.
+summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs.
 
 sections:
-  - name: Azure Local connectivity and general FAQ
+  - name: Ignored
     questions:
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
