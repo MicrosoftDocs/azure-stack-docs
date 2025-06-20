@@ -44,7 +44,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 25R1:
 - Back up the Tenant App content file share.
 
   > [!IMPORTANT]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider doesn't manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the Custom Script Extension version **1.9.3** from the Marketplace.
 
