@@ -1,6 +1,6 @@
 ---
-title: Enable Software-Defined Networking (SDN) on Azure Local using an Action Plan (Preview)
-description: Describes how to enable SDN using an action on Azure Local (Preview).
+title: Enable Software-Defined Networking (SDN) on Azure Local using a PowerShell Action Plan (Preview)
+description: Describes how to enable SDN integration using a PowerShell action plan on Azure Local (Preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -12,7 +12,7 @@ ms.date: 06/17/2025
 
 ::: moniker range=">=azloc-2506"
 
-This article describes how to enable and integrate software defined networking (SDN) on your existing Azure Local instance. You use an action plan via a PowerShell cmdlet to enable SDN.
+This article describes how to enable and integrate software defined networking (SDN) on your existing Azure Local instance. You use a PowerShell action plan to enable SDN.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -93,7 +93,7 @@ Consider this information before you enable SDN:
 
 - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources.
 
-    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Assign Azure Local RBAC roles][Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
+    An Azure Stack HCI administrator can register the Azure Local instance and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. For more information, see [Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md#about-built-in-rbac-roles).
 
 
 
@@ -142,7 +142,7 @@ The SDN enablement cmdlet uses the following parameters:
 |**SDNPrefix**     | This parameter is used for Network Controller REST URL to differentiate network controllers across Azure Local instances. For example, `<SDNPrefix>` makes `https://<SDNPrefix>-NC.domainname/` as the `NC` REST URL for the Azure Local instance. <br><br> Make sure that the SDN prefix meets the requirements included in [Choose an SDN prefix](#choose-an-sdn-prefix).           |
 
 
-## Run the action plan
+## Run the cmdlet to enable SDN
 
 > [!IMPORTANT]
 > Make sure to plan for a maintenance window if you're running on a production environment.
@@ -159,7 +159,7 @@ Follow these steps to enable SDN on your Azure Local instance:
     Add-EceFeature -Name NC -SDNPrefix <SDNPrefix>
     ```
 
-    Confirm when prompted to proceed with the action plan.
+    Confirm when prompted to proceed.
 
     > [!TIP]
     > To skip the confirmation prompt, use the `-AcknowledgeMaintenanceWindow` parameter.
