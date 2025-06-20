@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn about Azure Stack Hub telemetry and how to configure telemetry settings using PowerShell.
 author: sethmanheim
 
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2021
 ms.author: sethm
 ms.reviewer: comartin

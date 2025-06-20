@@ -2,7 +2,7 @@
 title: What is Azure Stack Hub for a user? 
 description: Learn how to use Azure Stack Hub as a user.
 author: sethmanheim
-ms.topic: article
+ms.topic: concept-article
 ms.date: 01/28/2025
 ms.author: sethm
 ms.reviewer: thoroet

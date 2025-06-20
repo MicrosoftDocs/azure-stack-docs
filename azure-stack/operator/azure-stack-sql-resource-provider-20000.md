@@ -2,7 +2,7 @@
 title: Azure Stack Hub SQL resource provider 2.0.6.x release notes 
 description: View the release notes to see what's new in the Azure Stack Hub SQL resource provider 2.0.6.x update.
 author: sethmanheim
-ms.topic: article
+ms.topic: release-notes
 ms.date: 08/17/2021
 ms.author: sethm
 ms.reviewer: jiadu

@@ -3,7 +3,7 @@ title: Validation as a service release notes
 titleSuffix: Azure Stack Hub
 description: Release notes for Azure Stack Hub validation as a service.
 author: sethmanheim
-ms.topic: article
+ms.topic: release-notes
 ms.date: 12/16/2020
 ms.author: sethm
 ms.reviewer: johnhas
