@@ -25,6 +25,7 @@ ms.lastreviewed: 03/20/2025
    Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
    Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
    Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
    ```
 
     > [!NOTE]
