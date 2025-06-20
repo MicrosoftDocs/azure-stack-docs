@@ -106,6 +106,10 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [On-demand log collection](../index.yml). | Collect logs on demand for troubleshooting. |
 | Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
 
+## Related content
+
+- Learn more about [Azure Local with Disconnected operations](https://techcommunity.microsoft.com/blog/azurearcblog/cloud-infrastructure-for-disconnected-environments-enabled-by-azure-arc/4413561)
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2506"
