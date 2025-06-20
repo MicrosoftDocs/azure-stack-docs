@@ -1,18 +1,18 @@
 ---
 title: Use Azure Policy in a disconnected Azure Local environment (preview)
-description: Learn how to use Azure Policy in a disconnected Azure Local environment (preview).
+description: Learn how to use Azure Policy to enforce compliance and manage resources in a disconnected Azure Local environment (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Use Azure Policy in a disconnected Azure Local environment
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2507"
 
-This article explains how to use Azure Policy in a disconnected Azure Local environment.
+This article explains how to use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. Azure Policy helps organizations meet standards by checking resource properties against business rules, even when disconnected from Azure cloud.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -44,11 +44,11 @@ For more information, see [Supported built-in policies](#supported-built-in-poli
 
 You can use Azure Policy to enforce tags on various resources. In this example, we've used a built-in policy that enforces tags on resource groups. This prevents the creation of resource groups without the required tag. To enable an Azure Policy, follow these steps:
 
-### Set up the Basics
+### Set up the basics
 
 1. Sign in to the Azure Local portal and navigate to **Policy**.
 
-    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
+    :::image type="content" source="media/disconnected-operations/azure-policy/policy-main.png" alt-text="Screenshot of the Assign policy page in Azure Local portal showing policy assignment options." lightbox="media/disconnected-operations/azure-policy/policy-main.png":::
 
 2. Under the **Authoring** section, choose **Assignments**, and then select **+ Assign policy**.
 
@@ -115,8 +115,8 @@ In this preview, the compliance dashboard, remediation actions, and policy exemp
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2506"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2507.
 
 ::: moniker-end

@@ -1,18 +1,18 @@
 ---
 title: Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (Preview)
-description: Export and send logs using Appliance Fallback Logging for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
+description: Export and send logs for disconnected operations with Azure Local VMs enabled by Azure Arc (preview).
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Appliance fallback log collection for disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local operates in disconnected mode.
+This article explains how to use appliance fallback logging to export and send logs to Microsoft when Azure Local VMs operates in disconnected mode. This process helps you troubleshoot issues when standard log collection is unavailable.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -22,9 +22,9 @@ Use appliance fallback logging to collect and send logs to Microsoft when the Az
 
 ## Prerequisites
 
-- [Import the Appliance logging](#import-appliance-logging).
+- [Import the appliance logging](#import-appliance-logging).
 
-## Import Appliance logging
+## Import appliance logging
 
 To import appliance logging, run the following command:
 
@@ -165,11 +165,11 @@ Here are examples of the **LogsToExport** folder structures:
 
 Overall file structure:
 
-[![A screenshot of the copy diagnostics overall file structure.](./media/disconnected-operations/fallback-log/overall-file-structure.png)](media/disconnected-operations/fallback-log/overall-file-structure.png#lightbox)
+[![Screenshot of the copy diagnostics overall file structure.](./media/disconnected-operations/fallback-log/overall-file-structure.png)](media/disconnected-operations/fallback-log/overall-file-structure.png#lightbox)
 
 Azure Local VM running disconnected nested file structure:  
 
-[![A screenshot of the Azure Local VM running disconnected nested file structure.](./media/disconnected-operations/fallback-log/nested-file-structure.png)](media/disconnected-operations/fallback-log/nested-file-structure.png#lightbox)
+[![Screenshot of the Azure Local VM running disconnected nested file structure.](./media/disconnected-operations/fallback-log/nested-file-structure.png)](media/disconnected-operations/fallback-log/nested-file-structure.png#lightbox)
 
 ### Send-DiagnosticData  
 
@@ -248,7 +248,7 @@ G:\CopyLogs_20241218T1622391740\SendLogs_20241218T1625348996\ObsScheduledTaskTra
 
 Here's an example of the file structure for the send logs:
 
-[![A screenshot of the file structure for the send logs.](./media/disconnected-operations/fallback-log/send-logs-file-structure.png)](media/disconnected-operations/fallback-log/send-logs-file-structure.png#lightbox)
+[![Screenshot of the file structure for the send logs.](./media/disconnected-operations/fallback-log/send-logs-file-structure.png)](media/disconnected-operations/fallback-log/send-logs-file-structure.png#lightbox)
 
 The send logs file structure has all the logs and installation files from the standalone observability pipeline, including the **GMACache logs** and pipeline install and uninstall logs.
 
@@ -370,9 +370,9 @@ PS C:\> Copy-DiagnosticData -DiagnosticLogPath "G:" -Roles $roles ` | Send-Diagn
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2506"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2507.
 
 ::: moniker-end
 

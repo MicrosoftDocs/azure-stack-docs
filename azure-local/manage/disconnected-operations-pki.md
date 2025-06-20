@@ -1,22 +1,22 @@
 ---
 title: Understand Public Key Infrastructure (PKI) requirements for disconnected operations on Azure Local (preview)
-description: Learn about the public key infrastructure (PKI) requirements for disconnected operations on Azure Local and how to create the necessary certificates to secure the endpoints provided by the disconnected operations appliance (preview).
+description: Learn about public key infrastructure (PKI) requirements for disconnected operations on Azure Local. Discover how to create certificates to secure endpoints and ensure a trusted deployment (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Public key infrastructure (PKI) for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2507"
 
-This article describes your local public key infrastructure (PKI) requirements and shows you how to create the certificates you need to secure the endpoints provided by the disconnected operations appliance.
+This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You'll learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-## About PKI
+## PKI overview for disconnected operations
 
 PKI for disconnected operations is essential for securing the endpoints provided by the disconnected operations appliance. Create and manage digital certificates to ensure secure communication and data transfer within your Azure Local environment.
 
@@ -270,8 +270,8 @@ foreach ($file in (Get-ChildItem $targetDirectory))
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2506"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2507.
 
 ::: moniker-end

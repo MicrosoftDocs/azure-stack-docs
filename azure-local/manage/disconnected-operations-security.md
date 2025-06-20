@@ -1,22 +1,22 @@
 ---
-title: Understand security controls with disconnected operations on Azure Local (preview)
-description: Learn about the security considerations and compliance regulations for using a local control plane with Azure Local with disconnected operations.
+title: Security controls with disconnected operations on Azure Local (preview)
+description: Learn about the security considerations and compliance regulations for disconnected operations on Azure Local (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Security considerations for Azure Local with disconnected operations (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2507"
 
-This article explains the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc.
+This article explains the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc. Learn how to protect your environment and meet regulatory standards when running Azure Local VMs disconnected.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-## About security and compliance
+## Security and compliance overview
 
 Azure Local with disconnected operations meets security and compliance needs by using a locked down virtual machine (VM) appliance that's accessible only through the following methods:
 
@@ -36,7 +36,7 @@ For more information about the security features for Azure Local, see [Security 
 
 By default, data volumes in the Azure Local disconnected operations VM appliance are encrypted with BitLocker using AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) stay in an internal secure secret store.
 
-### Retrieve BitLocker recovery keys
+### BitLocker recovery key retrieval
 
 Azure Local with disconnected operations manages BitLocker recovery passwords for data at rest encryption. You don't need to provide them for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
 
@@ -49,14 +49,14 @@ Follow these steps to get your BitLocker recovery passwords:
     Import-Module "C:\azurelocal\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force 
     ```
 
-2. Set the context. The command requires a `DisconnectedOperationsClientContext` object as a parameter.
+1. Set the context. The command requires a `DisconnectedOperationsClientContext` object as a parameter.
 
     ```powershell
     $password = ConvertTo-SecureString "RETRACTED" -AsPlainText -Force 
     $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25" 
     ```
 
-3. Run Get-ApplianceBitLockerRecoveryKeys against the management endpoint.
+1. Run Get-ApplianceBitLockerRecoveryKeys against the management endpoint.
 
     ```powershell
     $recoveryKeys = Get-ApplianceBitlockerRecoveryKeys $context 
@@ -246,7 +246,7 @@ $configRequestContent = @{
 }
 ```
 
-### Update syslog setup
+### Syslog setup update
 
 After you define the configuration, send the configuration request by running this PowerShell script:
 
@@ -263,7 +263,7 @@ $requestBody = $configRequestContent | ConvertTo-Json
 Invoke-RestMethod -Certificate $clientCert -Uri $syslogConfigurationEndpoint -Method Put -Body $requestBody -ContentType "application/json" -Verbose
 ```
 
-### Verify syslog setup
+### Syslog setup verification
 
 After you connect the syslog client to your syslog server, you start to receive event notifications. If you don't see notifications, check your cluster syslog forwarder configuration by running this cmdlet:
 
@@ -415,8 +415,8 @@ This section lists miscellaneous events that are forwarded. You can't customize 
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2506"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2507.
 
 ::: moniker-end
