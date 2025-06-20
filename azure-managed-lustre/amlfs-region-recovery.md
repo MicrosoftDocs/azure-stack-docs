@@ -3,7 +3,7 @@ title: Regional redundancy and failover recovery with Azure Managed Lustre
 description: Understand techniques to provide failover capabilities for disaster recovery with Azure Managed Lustre 
 author: pauljewellmsft
 ms.author: pauljewell
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/11/2024
 ---
 

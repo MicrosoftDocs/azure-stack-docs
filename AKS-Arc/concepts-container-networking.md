@@ -2,7 +2,7 @@
 title: Container networking concepts
 description: Learn about container networking in AKS on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/07/2025
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022

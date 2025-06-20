@@ -1,7 +1,7 @@
 ---
 title: Repair a node on Azure Local, version 23H2
 description: Learn how to repair a node on your Azure Local, version 23H2 system.
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.date: 05/08/2025

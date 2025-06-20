@@ -2,7 +2,7 @@
 title: Create and publish a Marketplace item in Azure Stack Hub 
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2025
 ms.author: sethm
 ms.reviewer: avishwan

@@ -2,7 +2,7 @@
 title: Tested resource limits, VM sizes, and regions for AKS on Windows Server
 description: Resource limits, VM sizes, regions for Azure Kubernetes Service (AKS) on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/31/2025
 ms.author: sethm 
 ms.lastreviewed: 02/03/2022

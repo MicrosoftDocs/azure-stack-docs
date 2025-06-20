@@ -1,7 +1,7 @@
 ---
 title: Review single-server storage reference pattern components for Azure Local
 description: Learn about single-server storage reference pattern components for Azure Local.
-ms.topic: conceptual
+ms.topic: article
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
