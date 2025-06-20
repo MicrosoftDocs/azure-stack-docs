@@ -46,7 +46,7 @@ The following table explains the rules that aren't compliant and the rationale o
 
 ### Fixing the compliance for the rules
 
-To fix the compliance for the rules, run the following commands or use any other tool you prefer: 
+To fix the compliance for the rules, run the following commands or use any other tool you prefer:
 
 1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
 
