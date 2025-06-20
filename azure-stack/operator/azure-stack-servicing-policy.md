@@ -3,8 +3,8 @@ title: Azure Stack Hub servicing policy
 titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
-ms.topic: article
-ms.date: 03/12/2025
+ms.topic: how-to
+ms.date: 02/11/2025
 ms.author: sethm
 ms.lastreviewed: 03/18/2020
 

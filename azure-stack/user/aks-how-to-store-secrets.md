@@ -2,7 +2,7 @@
 title: Use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 02/14/2025
 ms.author: sethm
 ms.reviewer: waltero
