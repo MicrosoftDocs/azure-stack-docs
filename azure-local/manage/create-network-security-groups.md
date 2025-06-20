@@ -12,7 +12,7 @@ ms.service: azure-local
 
 ::: moniker range=">=azloc-2506"
 
-This article describes how to create and configure network security groups (NSGs) to manage the data traffic flow after network controller is enabled on your Azure Local.
+This article explains how to create and configure network security groups (NSGs) to manage data traffic flow after you enable network controller on your Azure Local.
 
 
 [!INCLUDE [important](../includes/hci-preview.md)]
@@ -31,23 +31,23 @@ Here is a diagram that shows how network security groups are attached to logical
 :::image type="content" source="./media/create-network-security-groups/network-security-groups.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/create-network-security-groups/network-security-groups.png":::
 
 
-The diagram outlines a network setup with two logical networks:
+The diagram shows a network setup with two logical networks:
 
 - Logical Network A
 
     - Subnet: 192.168.1.0/24, VLAN 206
-    - Contains: VM Web at 192.168.1.3
-    - NSG rule allows outbound internet access.
-    - VM web can talk to the internet.
+    - Has VM Web at 192.168.1.3.
+    - NSG rule lets outbound internet access.
+    - VM Web can access the internet.
 
 - Logical Network B
 
     - Subnet: 192.168.2.0/24, VLAN 310
-    - Contains: VM SQL at 192.168.2.3
-    - NSG rule denies outbound internet access.
-    - VM SQL is running SQL Server locally and is not exposed to the internet.
+    - Has VM SQL at 192.168.2.3.
+    - NSG rule blocks outbound internet access.
+    - VM SQL runs SQL Server locally and isn't exposed to the internet.
 
-In this example, NSG is used to control traffic flow between logical networks A and B and the VM Web and VM SQL. The NSG can be applied to each logical network or network interface to enforce specific security rules. For example, here the logical network B might allow only specific traffic over SQL port 1433 from logical network A.
+In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL. You can apply the NSG to each logical network or network interface to enforce specific security rules. For example, logical network B might allow only traffic over SQL port 1433 from logical network A.
 
 ## Prerequisites
 
@@ -55,20 +55,20 @@ In this example, NSG is used to control traffic flow between logical networks A 
 
 - You have access to an Azure Local instance.
 
-    - This instance must be running 2506 with OS version 26100.xxxx, or later.
-    - This instance has a custom location created.
+    - This instance must run version 2506 with OS version 26100.xxxx or later.
+    - This instance has a custom location.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
-    - You have atleast one static logical network and one static network interface created on this instance. For more information, see [Create logical networks](./create-logical-networks.md#create-a-static-logical-network-via-cli) and [Create network interfaces](./create-network-interfaces.md#virtual-network-interface-with-static-ip).
-    - If using a client to connect to your Azure Local, ensure you have installed the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+    - You have at least one static logical network and one static network interface on this instance. For more information, see [Create logical networks](./create-logical-networks.md#create-a-static-logical-network-via-cli) and [Create network interfaces](./create-network-interfaces.md#virtual-network-interface-with-static-ip).
+    - If you use a client to connect to your Azure Local, make sure you install the latest Azure CLI and the `az-stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 
 # [Azure portal](#tab/azureportal)
 
 - You have access to an Azure Local instance.
 
-    - This instance must be running 2506 with OS version 26100.xxxx, or later.
-    - This instance has a custom location created.
+    - This instance must run version 2506 with OS version 26100.xxxx or later.
+    - This instance has a custom location.
     - You have access to an Azure subscription with the Azure Stack HCI Administrator role-based access control (RBAC) role. This role grants full access to your Azure Local instance and its resources. For more information, see [Assign Azure Local RBAC roles](../manage//assign-vm-rbac-roles.md#about-built-in-rbac-roles).
     - This instance has the SDN feature enabled. For more information, see [Enable software defined networking (SDN) on Azure Local](../deploy/enable-sdn-integration.md).
 ---
@@ -85,12 +85,12 @@ In this example, NSG is used to control traffic flow between logical networks A 
 
 ## Create a network security group (NSG)
 
-Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG by itself, or associate NSG with a network interface or a logical network.
+Create a network security group (NSG) to manage data traffic flow on Azure Local. You can create an NSG by itself or associate it with a network interface or a logical network.
 
-NSGs are only available for static logical networks. DHCP-based logical networks aren't supported.
+NSGs are available only for static logical networks. DHCP-based logical networks aren't supported.
 
 > [!WARNING]
-> NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
+> NSGs must have at least one network security rule. An empty NSG denies all inbound traffic by default. A VM or logical network associated with this NSG isn't reachable.
 
 1. Set the following parameters in your Azure CLI session.
 
@@ -118,11 +118,11 @@ NSGs are only available for static logical networks. DHCP-based logical networks
     az stack-hci-vm network nsg create -g $resource_group --name $nsgname --custom-location $customLocationId --location $location  
     ```
 
-1. The command creates a network security group (NSG) with the specified name and associates it with the specified custom location. 
-    <br></br>
+1. The command creates a network security group (NSG) with the specified name and associates it with the specified custom location.
+
     <details>
-    <summary>Expand this section to see an example output.</summary>
-    
+    <summary>Expand to see an example output.</summary>
+
     ```output
     { 
       "eTag": null, 
@@ -165,7 +165,7 @@ NSGs are only available for static logical networks. DHCP-based logical networks
 
 ## Create a network security rule
 
-After you create a network security group, you're ready to create network security rules. If you want to apply network security rules to both inbound and outbound traffic, you need to create two rules.
+After you create a network security group, create network security rules. To apply rules to both inbound and outbound traffic, create two rules.
 
 ### Create an inbound security rule
 
@@ -198,13 +198,13 @@ After you create a network security group, you're ready to create network securi
     | **source-port-ranges** | Specify the source port range 0 and 65535 to match either an incoming or outgoing packet. The default `*` will specify all source ports. |
     | **source-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.|
     | **destination-address-prefixes** | Specify the CIDR or destination IP ranges. The default is `*`.  |  
-    | **destination-port-ranges** | Specify the destination port range from 0 to 65535 (default 80) to match either an incoming or outgoing packet. You can enter `*` to specify all destination ports.  |
+    | **destination-port-ranges** | Enter a specific port or a port range that this rule allows or denies. Enter an asterisk (*) to allow traffic on any port.  |
     | **protocol** | Protocol to match either an incoming or outgoing packet. Acceptable values are `*` (default), **All**, **TCP** and **UDP**. |
     | **access** | If the above conditions are matched, specify either to allow or block the packet. Acceptable values are **Allow** and **Deny** with default being **Allow**. |
     | **priority** | Specify a unique priority for each rule in the collection. Acceptable values are from **100** to **4096**. A lower value denotes a higher priority.  |
     | **description** | An optional description for this network security rule. The description is a maximum of 140 characters.  |
 
-1. Run the following command to create an inbound network security rule on your Azure Local instance. This rule blocks all inbound ICMP traffic to Azure Local VMs (except the specified management ports you want enabled) while allowing all outbound access.
+1. Run the following command to create an inbound network security rule on your Azure Local instance. This rule blocks all inbound ICMP traffic to Azure Local VMs (except the management ports you want enabled) and allows all outbound access.
 
     ```azurecli
     az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
@@ -282,17 +282,17 @@ Run the following command to create an outbound network security rule that block
 
 ## Create a network security group
 
-Follow these steps in Azure portal to create a network security group.
+Follow these steps in the Azure portal to create a network security group.
 
-1. Go to **Azure Local resource page > Resources > Network security groups**. You see a list of network security groups present on your Azure Local.
+1. Go to **Azure Local resource page > Resources > Network security groups**. You see a list of network security groups on your Azure Local.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-1.png" alt-text="Screenshot of Network security groups option in left-pane." lightbox="./media/create-network-security-groups/create-network-security-group-1.png":::
 
-1. In the right pane, from the top command bar, select **+ Create network security group**.
+1. In the right pane, select **+ Create network security group** from the top command bar.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-2.png" alt-text="Screenshot of Create network security group option selected." lightbox="./media/create-network-security-groups/create-network-security-group-2.png":::
 
-1. On the **Basics** tab, input the following information:
+1. On the **Basics** tab, enter the following information:
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-3.png" alt-text="Screenshot of Basics tab filled out for creation of network security group." lightbox="./media/create-network-security-groups/create-network-security-group-3.png":::
 
@@ -309,56 +309,56 @@ Follow these steps in Azure portal to create a network security group.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-4.png" alt-text="Screenshot of Review + Create tab for creation of network security group." lightbox="./media/create-network-security-groups/create-network-security-group-4.png":::
 
-1. A job starts and after the job is completed, you see a notification. Select **Go to resource**. On the **Resource group**, you see an NSG is created.
+1. A job starts. When the job finishes, you see a notification. Select **Go to resource**. On the **Resource group**, you see the NSG.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-5.png" alt-text="Screenshot of newly created network security group in the resource group." lightbox="./media/create-network-security-groups/create-network-security-group-5.png":::
 
-1. Go to **Azure Local cluster resource > Resources > Network security groups**. A new NSG is added to the list of the NSG on your Azure Local.
+1. Go to **Azure Local cluster resource > Resources > Network security groups**. The new NSG appears in the list of network security groups on your Azure Local.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-group-6.png" alt-text="Screenshot of newly created network security group in the list of network security groups." lightbox="./media/create-network-security-groups/create-network-security-group-6.png":::
 
 ## Create a network security rule
 
-The same procedure works for both inbound and outbound security rules. The only difference is the direction of the rule.
+Use the same procedure for both inbound and outbound security rules. The only difference is the direction of the rule.
 
-Follow these steps in Azure portal for your Azure Local:
+Follow these steps in the Azure portal for your Azure Local:
 
 1. Go to **Azure Local resource page > Resources > Network security groups**.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-1.png" alt-text="Screenshot of network security groups option selected for the creation of network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-1.png":::
 
-1. In the right pane, from the list of network security groups, select a network security group.
+1. In the right pane, select a network security group from the list.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-2.png" alt-text="Screenshot of a network security group selected for the creation of network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-2.png":::
 
-1. Go to **Settings > Inbound security rules** for inbound rules or **Outbound security rules** for outbound rule. In the right-pane, from the top command bar, select **+ Create**.
+1. Go to **Settings > Inbound security rules** for inbound rules or **Outbound security rules** for outbound rules. In the right pane, select **+ Create** from the top command bar.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-3.png" alt-text="Screenshot of for an inbound network security rule with Create selected." lightbox="./media/create-network-security-groups/create-network-security-rule-3.png":::
 
-1. In the **Add inbound security rule** page, input the following information:
+1. In the **Add inbound security rule** page, enter the following information:
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-4.png" alt-text="Screenshot of Inbound security rule with all the parameters filled out." lightbox="./media/create-network-security-groups/create-network-security-rule-4.png":::
 
     1. **Source** - Choose between **IP address** or **Any**. The source specifies the incoming traffic from a specific IP address range that is allowed or denied by this rule.
-    1. **Source IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you chose IP address as the source.
+    1. **Source IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you choose IP address as the source.
     1. **Source port ranges** - Provide a specific port or a port range that will be denied or allowed by this rule. Provide an asterisk* to allow traffic on any port.
     1. **Destination** - Choose between **IP address** or **Any**. The destination specifies the outgoing traffic to a specific IP address range that will be allowed or denied by this rule.
-    1. **Destination IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you chose IP address as the destination.
+    1. **Destination IP address/CIDR ranges** - Provide an address range using CIDR notation (for example, 192.168.99.0/24) or an IP address (for example, 192.168.99.0) if you choose IP address as the destination.
     1. **Destination port ranges** - Provide a specific port or a port range that will be denied or allowed by this rule. Provide an asterisk* to allow traffic on any port.
-    1. **Protocol** - Choose  a protocol from **Any**, **TCP**, **UDP, or **ICMP**. The protocol specifies the type of traffic that is allowed or denied by this rule.
-    1. **Action** - Choose between **Allow** or **Deny**. The action specifies whether the traffic that matches this rule will be allowed or denied.
-    1. **Priority** - Enter a number between 100 and 4096. The priority specifies the order in which the rules are applied. Lower numbers are processed first.
-    1. **Name** - Enter a name for the rule. The name must be unique within the network security group.
-    1. **Description** - Enter a description for the rule. The description is optional but recommended.
+    1. **Protocol** - Choose a protocol from **Any**, **TCP**, **UDP**, or **ICMP**. The protocol specifies the type of traffic that this rule allows or denies.
+    1. **Action** - Choose between **Allow** or **Deny**. The action specifies whether this rule allows or denies matching traffic.
+    1. **Priority** - Enter a number between 100 and 4096. The priority specifies the order in which the rules apply. Lower numbers are processed first.
+    1. **Name** - Enter a name for the rule. The name must be unique in the network security group.
+    1. **Description** - Enter a description for the rule. The description is optional.
 1. Select **Add**.
 
-1. **Refresh** the list. The newly created network security rule should show up.
+1. **Refresh** the list. The new network security rule appears.
 
     :::image type="content" source="./media/create-network-security-groups/create-network-security-rule-5-a.png" alt-text="Screenshot of the new network security rule." lightbox="./media/create-network-security-groups/create-network-security-rule-5-a.png":::
 
 ## Create default network access policy
 
-Create a default network access policy to block all inbound traffic to Azure Local VMs (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
+Create a default network access policy to block all inbound traffic to Azure Local VMs (except the management ports you want enabled) and allow all outbound access. Use these policies to make sure your VMs have access only to required assets, which helps prevent threats from spreading laterally.
 
 You can attach a default network access policy to Azure Local VM in two ways:
 - During VM creation. You need to attach the VM to a logical network. For more information, see [Create a logical network](./create-logical-networks.md).
@@ -366,7 +366,7 @@ You can attach a default network access policy to Azure Local VM in two ways:
 
 ### Apply default network access policy when creating a VM
 
-While creating a VM, you can create a network interface and attach a default network access policy to it. 
+While creating a VM, create a network interface and attach a default network access policy to it. 
 
 For more information, see [Create Azure Local VM via Azure portal](./create-arc-virtual-machines.md). In this procedure, when you reach the **Networking** tab, follow these steps to add a default network access policy:
 
@@ -374,7 +374,7 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
 
     :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-1.png" alt-text="Screenshot showing addition of a network interface." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
 
-1. In the **Add network interface** page, input the following information:
+1. In the **Add network interface** page, enter the following information:
 
     :::image type="content" source="./media/create-network-security-groups/create-default-network-access-policy-3.png" alt-text="Screenshot showing network interface NSG options for the new network interface." lightbox="./media/create-network-security-groups/create-default-network-access-policy-1.png":::
 
@@ -382,15 +382,15 @@ For more information, see [Create Azure Local VM via Azure portal](./create-arc-
     1. **Network** - Select a logical network from the list of logical networks available in your Azure Local instance.
     1. IPv4 type - Select **Static** or **Dynamic**. If you select **Static**, enter a static IP address for the VM. If you select **Dynamic**, the system assigns a random IP address from the subnet.
     1. Allocation method: Select Automatic or Manual. If you select Automatic, the system assigns a random IP address from the subnet. If you select Manual, enter a static IP address for the VM.
-    1. **NIC Network security group** - There are three options:
-        1. **None** - Choose this option if you don't want to enforce any network access policies to your VM. When this option is selected, all ports on your VM are exposed to external networks thereby posing a security risk. This option isn't recommended.
-        1. **Basic** - Choose this option to specify a default network access policy. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH, or RDP as per your requirements.
-        1. **Advanced** - Choose this option to specify a network security group.
+    1. **NIC Network security group** - Choose one of the following options:
+        1. **None** - Select this option if you don't want to enforce any network access policies on your VM. When you select this option, all ports on your VM are exposed to external networks, which poses a security risk. This option isn't recommended.
+        1. **Basic** - Select this option to specify a default network access policy. The default policies block all inbound access and allow all outbound access. You can enable inbound access to one or more well defined ports, like HTTP, HTTPS, SSH, or RDP as needed.
+        1. **Advanced** - Select this option to specify a network security group.
     1. Select **Add**.
 1. Continue with the rest of the VM creation process.
 
 > [!IMPORTANT]
-> The default network access policy is only available for the first network interface of the VM. If you add a second network interface, the default network access policy isn't available to attach to the interface.
+> The default network access policy is available only for the first network interface of the VM. If you add a second network interface, you can't attach the default network access policy to it.
 
 ### Apply default network access policy to an existing VM
 
