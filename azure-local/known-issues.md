@@ -27,11 +27,11 @@ For the 2506 release of Azure Local, Microsoft released two security updates: on
 
 | Deployment type  | Solution version  | OS build  |
 |---------|---------|---------|
-| Existing deployments    | 11.2506.1001.15          | 25398.1611         |
-| New deployments    | 12.2506.1001.16         | 26100.4061        |
+| Existing deployments    | 11.2506.1001.22          | 25398.1665         |
+| New deployments    | 12.2506.1001.23         | 26100.4349        |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2506.1001.16** build. You can also update an existing deployment from 2504 using **11.2506.1001.15**.
+> The new deployments of this software use the **12.2506.1001.23** build. You can also update an existing deployment from 2504 using **11.2506.1001.22**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
@@ -62,7 +62,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, open a support case. |
+| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 
 ## Known issues from previous releases
 
