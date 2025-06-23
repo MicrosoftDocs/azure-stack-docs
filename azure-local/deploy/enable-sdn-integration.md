@@ -47,12 +47,13 @@ Here's an architecture diagram of Network Controller in a 2-node Azure Local ins
 ## Considerations for SDN enabled by Arc
 
 > [!IMPORTANT]
-> - SDN enabled by Arc is a preview feature.
-> - Once you enable SDN, you can't roll back or disable.
+> - SDN enabled by Arc is a preview feature. Once you enable SDN, you can't roll back or disable.
+> - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools you MUST NOT attempt to run this method.
+> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure Portal, ARM). DO NOT use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools!
 
-Consider this information before you enable SDN:
 
-- SDN enabled by Arc is supported with updates to newer Azure Local releases.
+For your existing Azure Local instances:
+
 - Enabling SDN with existing Azure Local VMs and logical networks is supported.
     - The logical networks and network interfaces are automatically hydrated into the Network Controller.
     - Make sure to plan for a maintenance window if you're running on a production environment. Your workloads experience a short network disruption while SDN Azure Virtual Filtering Platform policies are applied.

@@ -30,6 +30,9 @@ With SDN enabled by Azure Arc, you create and apply network security groups (NSG
 
 You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
+## Important considerations
+
+<insert table>
 
 ## Comparison summary of SDN management
 
