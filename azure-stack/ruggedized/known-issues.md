@@ -5,7 +5,7 @@ services: azure-stack
 author: sethmanheim
 manager: lizross
 ms.service: azure-stack
-ms.topic: article
+ms.topic: troubleshooting-known-issue
 ms.date: 12/08/2020
 ms.author: sethm
 ms.reviewer: sranthar

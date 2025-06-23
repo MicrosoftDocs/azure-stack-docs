@@ -2,7 +2,7 @@
 title: Azure Kubernetes Service on Azure Stack Hub support
 description: Learn about support options for Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 10/26/2021
 ms.author: sethm
 ms.reviewer: waltero

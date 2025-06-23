@@ -385,9 +385,9 @@ New-AzStackHciExtension `
 
 ### Manual extension upgrade via the Azure portal
 
-The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all nodes in the cluster to that version.
+The manual extension upgrade works like the [Automatic extension upgrade](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#how-does-automatic-extension-upgrade-work). On an Azure Local Arc-enabled cluster, when you manually upgrade an extension, Azure saves the version you've selected. Azure then attempts to upgrade the extension on all nodes in the cluster to that version. Make sure that [extensions are supported for manual upgrade](#extensions-not-supported-for-manual-upgrade).
 
-On some servers, if the extension upgrade fails the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
+On some servers, if the extension upgrade fails, the platform attempts to upgrade to the selected version during the next [Azure Local cloud sync](../faq.yml).
 
 Use the manual workflow in these scenarios:
 
@@ -403,6 +403,13 @@ To manually upgrade an extension, follow these steps:
     :::image type="content" source="media/arc-extension-management/arc-extension-manual-upgrade.png" alt-text="Screenshot of how to manually upgrade an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-manual-upgrade.png":::
 
 3. Choose the latest version and select **Save**.
+
+
+#### Extensions not supported for manual upgrade
+
+Updating Azure Arc extensions manually from the Azure Local Machine page via the Azure portal may result in issues during deployment. The extensions that shouldn't be updated manually are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows` as shown in the figure.
+
+:::image type="content" source="media/arc-extension-management/arc-extension-installation.png" alt-text="Screenshot of extensions that shouldn't be manually updated." lightbox="media/arc-extension-management/arc-extension-installation.png":::
 
 ### Disable automatic extension upgrade
 

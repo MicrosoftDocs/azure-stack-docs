@@ -2,7 +2,7 @@
 title: Create VM disk storage in Azure Stack Hub
 description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/25/2025
 ms.author: sethm
 ms.lastreviewed: 11/22/2020
