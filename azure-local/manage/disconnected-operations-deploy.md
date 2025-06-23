@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Deploy disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to deploy disconnected operations for Azure Local in your datacenter. You'll learn how to determine the Azure Local topology, prepare the first machine, install the appliance, and create the Azure Local instance for improved resilience and control.
 
@@ -702,8 +702,8 @@ After you install the appliance, you might see this screen for a while. Let the 
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

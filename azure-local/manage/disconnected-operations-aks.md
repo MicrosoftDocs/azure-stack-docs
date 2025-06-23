@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Manage AKS Arc for Azure Local with disconnected operations (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article gives you an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations on Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You'll learn how to deploy and manage AKS clusters in disconnected environments, understand key differences, and review limitations to ensure successful implementation.
 
@@ -195,8 +195,8 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

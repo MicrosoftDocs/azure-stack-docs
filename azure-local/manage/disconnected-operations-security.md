@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Security considerations for Azure Local with disconnected operations (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains the security considerations and compliance regulations for disconnected operations with Azure Local VMs enabled by Azure Arc. Learn how to protect your environment and meet regulatory standards when running Azure Local VMs disconnected.
 
@@ -415,8 +415,8 @@ This section lists miscellaneous events that are forwarded. You can't customize 
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

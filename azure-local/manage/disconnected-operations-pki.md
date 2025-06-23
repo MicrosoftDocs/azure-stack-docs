@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Public key infrastructure (PKI) for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains the public key infrastructure (PKI) requirements for disconnected operations on Azure Local. You'll learn how to create certificates to secure appliance endpoints and ensure secure communication in your environment.
 
@@ -270,8 +270,8 @@ foreach ($file in (Get-ChildItem $targetDirectory))
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

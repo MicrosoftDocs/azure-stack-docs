@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Collect logs on demand with Azure Local disconnected operations PowerShell module
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to collect logs on demand for Azure Local disconnected operations using the PowerShell module. Learn how to provide logs for troubleshooting and support when Azure Local operates in disconnected mode.
 
@@ -379,8 +379,8 @@ For more information, see [Use appliance fallback log collection](disconnected-o
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

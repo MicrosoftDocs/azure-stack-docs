@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Plan your network for disconnected operations on Azure Local (preview) 
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to plan your network for disconnected operations on Azure Local. Learn key design considerations and requirements to ensure reliable integration and performance in a disconnected environment.
 
@@ -153,8 +153,8 @@ The following features aren't supported in this preview:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

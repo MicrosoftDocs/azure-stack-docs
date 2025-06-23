@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article gives a brief overview of Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It covers the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You learn about key differences and limitations of disconnected operations.
 
@@ -224,8 +224,8 @@ To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-ma
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

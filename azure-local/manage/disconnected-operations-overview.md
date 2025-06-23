@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains disconnected operations and how it can be used in the deployment and management of your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
 
@@ -112,8 +112,8 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

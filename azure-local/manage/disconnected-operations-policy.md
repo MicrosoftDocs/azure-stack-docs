@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Use Azure Policy in a disconnected Azure Local environment
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to use Azure Policy in a disconnected Azure Local environment to enforce compliance and manage resources at scale. Azure Policy helps organizations meet standards by checking resource properties against business rules, even when disconnected from Azure cloud.
 
@@ -115,8 +115,8 @@ In this preview, the compliance dashboard, remediation actions, and policy exemp
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

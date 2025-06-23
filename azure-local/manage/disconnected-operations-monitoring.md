@@ -11,7 +11,7 @@ ai-usage: ai-assisted
 
 # Monitor disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to monitor disconnected operations in Azure Local by integrating with external monitoring solutions. Learn how to use Microsoft, non-Microsoft, and open-source monitoring systems to ensure the reliability and performance of your infrastructure and workloads.
 
@@ -114,8 +114,8 @@ Download these solutions from their repositories and install them on an AKS clus
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

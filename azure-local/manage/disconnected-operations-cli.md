@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-2507"
+::: moniker range=">=azloc-2506"
 
 This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations on Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
 
@@ -244,9 +244,9 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2506"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2507.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end
 
