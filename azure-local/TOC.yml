@@ -674,7 +674,7 @@ items:
       href: manage/disconnected-operations-set-up.md
     - name: Deploy disconnected operations
       href: manage/disconnected-operations-deploy.md
-  - name: Manage disconnected operations
+  - name: Manage
     items:
     - name: Review Azure CLI
       href: manage/disconnected-operations-cli.md
@@ -688,7 +688,7 @@ items:
       href: manage/disconnected-operations-policy.md
     - name: Review Monitoring
       href: manage/disconnected-operations-monitoring.md  
-  - name: Troubleshoot disconnected operations
+  - name: Troubleshoot
     items:
     - name: On-demand log collection
       href: manage/disconnected-operations-on-demand-logs.md
