@@ -14,7 +14,6 @@ ai-usage: ai-assisted
 
 This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations on Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
 
-[!INCLUDE [Prerequisites](../includes/disconnected-operations-prerequisites.md)]
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
 ## About Azure CLI

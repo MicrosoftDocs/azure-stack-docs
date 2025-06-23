@@ -20,6 +20,8 @@ This article explains how to collect logs on demand for Azure Local disconnected
 
 On-demand log collection lets you collect logs from Azure Local disconnected operations for troubleshooting. Use this feature to provide logs to Microsoft support.
 
+Log collection when the management endpoint is inaccessible
+
 ## Supported scenarios
 
 The following on-demand scenarios are supported for log collection:
@@ -27,8 +29,8 @@ The following on-demand scenarios are supported for log collection:
 | Scenarios for log collection             | How to collect logs                    |
 |------------------------------------------|----------------------------------------|
 | [Use on-demand direct log collection](#log-collection-when-connected-to-azure-with-an-accessible-management-endpoint) when an on-premises device with Azure Local disconnected operations is connected to Azure and the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollection`.<br></br>**Prerequisite**: Setup observability configuration using the cmdlet: `Set-ApplianceObservabilityConfiguration`. |
-| [Use on-demand indirect log collection](#log-collection-for-a-disconnected-environment-and-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.<br></br> After the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` step, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft.  |
-| [Use on-demand fallback log collection](#log-collection-with-an-inaccessible-management-endpoint) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Logs are collected after shutting down the disconnected operations with Azure Local VM, mounting and unlocking virtual hard disks (VHDs) and copying logs using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
+| [Use on-demand indirect log collection](#log-collection-for-a-disconnected-environment-with-an-accessible-management-endpoint) when an on-premises device using Azure Local disconnected operations doesn't have a connection to Azure, but the management endpoint for disconnected operations is accessible. | Trigger log collection with cmdlet `Invoke-ApplianceLogCollectionAndSaveToShareFolder`.<br></br> After the `Invoke-ApplianceLogCollectionAndSaveToShareFolder` step, use the `Send-DiagnosticData` cmdlet to upload the copied data logs from the file share to Microsoft.  |
+| [Use on-demand fallback log collection](#log-collection-when-the-management-endpoint-is-inaccessible) when the management endpoint for disconnected operations isn't accessible or the integrated runtime disconnected operations with Azure Local virtual machine (VM) is down. | Logs are collected after shutting down the disconnected operations with Azure Local VM, mounting and unlocking virtual hard disks (VHDs) and copying logs using the `Copy-DiagnosticData` cmdlet from mounted VHDs into a local, user-defined location.<br></br> Use the `Send-DiagnosticData` cmdlet to manually send diagnostic data to Microsoft. |
 
 ## Trigger on demand log collection
 
