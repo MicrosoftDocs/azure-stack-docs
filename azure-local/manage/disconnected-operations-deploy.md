@@ -437,13 +437,11 @@ Install-Appliance @installAzureLocalParams -Verbose
 
 If the installation fails because of incorrect network, identity, or observability settings, update the configuration object and run the `Install-appliance` command again.
 
-Here's an example via a configuration object:
-
 1. Modify the configuration object.
 
-  ```powershell
-  $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
-  ```
+    ```powershell
+    $ingressNetworkConfiguration.IngressIpAddress = '192.168.200.115'
+    ```
 
 1. Set `$installAzureLocalParams` and rerun the `Install-appliance` as shown in [Install and configure the appliance](#install-and-configure-the-appliance).
 
