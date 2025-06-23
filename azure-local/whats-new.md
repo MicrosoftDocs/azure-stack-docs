@@ -46,7 +46,7 @@ This release has the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.17** for both .NET Runtime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-- **Software-Defined Networking (SDN) enabled by Azure Arc**: Azure Local now supports Software-Defined Networking (SDN) enabled by Azure Arc. This feature allows you to manage your network resources using Azure Arc, providing a consistent networking experience across your hybrid and multi-cloud environments. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
+- **Software-Defined Networking (SDN) enabled by Azure Arc (Preview)**: Azure Local now supports creating Networking Security Groups (NSGs), configuring Network Security Rules, and assigning them to logical networks and network interfaces. This provides a consistent networking experience across your cloud and edge environment. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
 
 - **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
 
@@ -60,7 +60,7 @@ This release has the following features and improvements:
 
       This release also has improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
 
-    - The password length when deploying Azure Local is changed to required 14 characters to comply with National Institute of Standards and Technology(NIST) 2 guidelines.
+    - To comply with National Institute of Standards and Technology(NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
 
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
