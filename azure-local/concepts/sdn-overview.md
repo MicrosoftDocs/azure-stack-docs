@@ -32,7 +32,11 @@ You can also manage SDN with on-premises tools like Windows Admin Center or SDN 
 
 ## Important considerations
 
-<insert table>
+
+|Management method  |Consideration |
+|---------|---------|
+|SDN enabled by Azure Arc    | Enable SDN by running this PowerShell command `Add-EceFeature`. If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools you MUST NOT attempt to run this method.<br><br>The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure Portal, ARM). DO NOT use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools!         |
+|SDN managed by on-premises tools    | Enable SDN using on-premises tools like Windows Admin Center or SDN Express scripts. If you have already deployed Network controller using on-premises tools you MUST NOT attempt to run SDN Enabled by Azure Arc. <br><br>The only VMs that are in scope for NSG management using this feature are unmanaged VMs that were deployed from local tools such as WAC, Hyper-V Manager, SCVMM, Failover Cluster manager etc. The only NSG management control plane for unmanaged VMs are WAC, and SDNExpress.         |
 
 ## Comparison summary of SDN management
 
