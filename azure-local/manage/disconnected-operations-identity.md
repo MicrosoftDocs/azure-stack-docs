@@ -1,18 +1,18 @@
 ---
-title: Understand and plan your identity for disconnected operations on Azure Local (preview)
-description: Integrate your identity with disconnected operations on Azure Local (preview).
+title: Plan your Identity for Disconnected Operations on Azure Local (preview)
+description: Plan and integrate your identity for disconnected operations on Azure Local (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Plan your identity for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article explains how to plan and set up your existing identity with disconnected operations on Azure Local. It describes how to set up your identity solution to work with disconnected operations and explains the actions and roles available to operators.
+This article explains how to plan and integrate your identity for disconnected operations on Azure Local. Learn how to set up your identity solution, and understand the actions and roles available to operators.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -34,7 +34,7 @@ During deployment, set up disconnected operations to integrate with your Identit
 
 On a high level, the OpenID Connect (OIDC) endpoint authenticates users to disconnected operations, and the Lightweight Directory Access Protocol (LDAP) endpoint integrates groups and memberships from your organization. After integration, standard Azure role-based access control is assigned to the desired scopes.
 
-:::image type="content" source="./media/disconnected-operations/identity/identity-layout.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/identity/identity-layout.png":::
+:::image type="content" source="./media/disconnected-operations/identity/identity-layout.png" alt-text="Screenshot of how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/identity/identity-layout.png":::
 
 > [!NOTE]
 > Role assignments and policies aren't inherited from the operator subscription to individual subscriptions. Each subscription has its own scope. Only specific roles assigned to individual subscriptions can perform actions within that specific subscription.
@@ -318,8 +318,8 @@ Write-Verbose "Granted 'GenericRead' permissions to ldap account."
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

@@ -4,13 +4,13 @@ description: Learn how to manage Azure Local VMs running disconnected (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Disconnected operations with Azure Local VMs enabled by Azure Arc (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
 This article gives a brief overview of Azure Local virtual machine (VM) management features for disconnected operations on Azure Local. It covers the benefits, components, and high-level workflow. This feature closely mirrors Azure Local VM capabilities and references many Azure Local VM articles. You learn about key differences and limitations of disconnected operations.
 
@@ -74,7 +74,7 @@ Follow these steps to create Azure Local VMs running disconnected operations.
 
 1. [Review prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-    - [Install Azure CLI](disconnected-operations-cli.md#install-cli) version AzCLI 2.60.0.
+    - [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) version AzCLI 2.60.0.
     - Install the Azure Local extension **stack-hci-vm** version v1.3.0.
     - [Sign into Azure interactively using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
@@ -224,8 +224,8 @@ To manage VM extensions, see [Manage VM extensions](../manage/virtual-machine-ma
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

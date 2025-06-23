@@ -4,15 +4,15 @@ description: Learn how to deploy and manage Azure Container Registry with discon
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Deploy Azure Container Registry with disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article explains how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local.
+This article explains how to deploy and manage Azure Container Registry on disconnected operations running on Azure Local. It provides an overview of the service, prerequisites, deployment steps, and how to manage images in the registry.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -45,10 +45,10 @@ Key features of Azure Container Registry on disconnected operations include:
 - Make sure that the disconnected operations virtual machine is deployed.
 - Check that you can access the disconnected operations portal.
 - Register the *Microsoft.ContainerRegistry* resource provider with disconnected operations.
-- [Install the Azure CLI](disconnected-operations-cli.md#install-cli) (supported up to version 2.54.0.).
+- [Install the Azure CLI](disconnected-operations-cli.md#install-azure-cli) (supported up to version 2.54.0.).
 - (Optional) [Install Docker Desktop](https://www.docker.com/get-started/) on your disconnected operations host or client machine for testing.
 
-## Deploy Azure Container Registry
+## Deploy Azure Container Registry for disconnected operations
 
 To deploy an Azure Container Registry for disconnected operations, follow these steps:
 
@@ -155,8 +155,8 @@ In this preview, viewing metrics for a container registry isn't supported.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

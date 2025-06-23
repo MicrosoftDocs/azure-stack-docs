@@ -1,18 +1,18 @@
 ---
-title: Understand and plan your network for disconnected operations on Azure Local (preview)
-description: Integrate your network with disconnected operations on Azure Local (preview).
+title: Plan your network for Disconnected Operations on Azure Local (preview)
+description: Plan and integrate your network for disconnected operations on Azure Local (preview).
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
-# Plan your network disconnected operations on Azure Local (preview) 
+# Plan your network for disconnected operations on Azure Local (preview) 
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article helps you plan the integration of your network with disconnected operations on Azure Local. It outlines essential design considerations and requirements for operating in a disconnected operations environment.
+This article explains how to plan your network for disconnected operations on Azure Local. Learn key design considerations and requirements to ensure reliable integration and performance in a disconnected environment.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -65,7 +65,7 @@ Here's a high-level workflow for vNIC management and deployment:
 - Set an IP address for the vNICs during deployment.
 - Use the vNIC interfaces for bootstrapping, troubleshooting, operations, and regular use through the portal or CLI.
   
-:::image type="content" source="./media/disconnected-operations/network/network-overview.png" alt-text="Screenshot showing how the Appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/network/network-overview.png":::
+:::image type="content" source="./media/disconnected-operations/network/network-overview.png" alt-text="Screenshot of how the appliance and users or workloads communicate with the service." lightbox=" ./media/disconnected-operations/network/network-overview.png":::
 
 ## Plan your ingress IP  
 
@@ -153,8 +153,8 @@ The following features aren't supported in this preview:
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

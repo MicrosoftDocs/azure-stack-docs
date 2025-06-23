@@ -1,18 +1,18 @@
 ---
-title: About disconnected operations for Azure Local overview (preview)
-description: Use Disconnected operations to deploy and manage your Azure Local (preview).
+title: Disconnected operations for Azure Local overview (preview)
+description: Learn how to use disconnected operations to deploy and manage Azure Local (preview).
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article describes disconnected operations and how they can be used in the deployment and management of your Azure Local.
+This article explains disconnected operations and how it can be used in the deployment and management of your Azure Local instances. Learn how this capability supports compliance, security, and remote deployments.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
@@ -106,10 +106,14 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [On-demand log collection](../index.yml). | Collect logs on demand for troubleshooting. |
 | Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
 
+## Related content
+
+- Learn more about [Azure Local with Disconnected operations](https://techcommunity.microsoft.com/blog/azurearcblog/cloud-infrastructure-for-disconnected-environments-enabled-by-azure-arc/4413561)
+
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end

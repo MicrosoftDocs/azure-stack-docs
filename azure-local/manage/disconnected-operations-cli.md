@@ -1,22 +1,22 @@
 ---
-title: Use Azure Command Line Interface (CLI) for disconnected operations on Azure Local (preview)
-description: Learn how to use the Azure Command-Line Interface (CLI) for Azure Local disconnected operations (preview).
+title: Use Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview)
+description:  Learn how to use the Azure Command-Line Interface (CLI) for disconnected operations on Azure Local (preview).
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ai-usage: ai-assisted
 ---
 
 # Use Azure Command-Line Interface for disconnected operations on Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article explains how to install and configure the Azure Command-Line Interface (CLI) and install extensions for disconnected operations on Azure Local.
+This article explains how to install and configure the Azure Command-Line Interface (CLI) and its extensions for disconnected operations on Azure Local. It provides an overview of CLI, supported versions, installation steps, and how to set up the CLI for disconnected operations.
 
 [!INCLUDE [IMPORTANT](../includes/disconnected-operations-preview.md)]
 
-## About CLI
+## About Azure CLI
 
 **CLI** is a versatile, cross-platform command line interface that lets you create and manage Azure resources for Azure Local disconnected operations. For more information, see [What is Azure CLI](/cli/azure/what-is-azure-cli).
 
@@ -30,14 +30,14 @@ az version
 
 For more information, see [Azure CLI commands](/cli/azure/reference-index?view=azure-cli-latest#az_version&preserve-view=true).
 
-## Install CLI
+## Install Azure CLI
 
 To install the CLI, follow these steps:
 
 1. [Download version 2.60.0](https://azcliprod.blob.core.windows.net/msi/azure-cli-2.60.0-x64.msi).
 2. [Install the CLI](/cli/azure/install-azure-cli) locally on Linux, macOS, or Windows computers.
 
-## Configure certificates for CLI
+## Configure certificates for Azure CLI
 
 To use CLI, you must trust the certificate authority (CA) root certificate on your machine.
 
@@ -109,7 +109,7 @@ For disconnected operations:
     UpdatePythonCertStore -ApplianceRootCertPath D:\applianceIngressRoot.cer
     ```
 
-## Set up Azure CLI  
+## Set up Azure CLI for disconnected operations
 
 To set up Azure CLI for disconnected operations on Azure Local, follow these steps:
 
@@ -210,7 +210,7 @@ To set up Azure CLI for disconnected operations on Azure Local, follow these ste
     az cloud set -n azure.local
     ```
 
-## Extensions for CLI
+## Extensions for Azure CLI
 
 CLI extensions are Python wheels that aren't shipped with CLI but run as CLI commands. Extensions let you access experimental and prerelease commands and create your own CLI interfaces. The first time you use an extension, you get a prompt to install it.
 
@@ -243,9 +243,9 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end
 

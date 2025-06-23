@@ -26,8 +26,6 @@ landingContent:
         links:
           - text: What's new in Azure Local?
             url: whats-new.md
-          - text: Small Form Factor (preview)
-            url: concepts/system-requirements-small-23h2.md
           - text: Azure Local disconnected operations (preview)
             url: manage/disconnected-operations-overview.md  
 
@@ -114,6 +112,10 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
+          - text: Plan your network for disconnected operations on Azure Local (preview)
+            url: manage/disconnected-operations-network.md
+          - text: Deploy disconnected operations for Azure Local (preview)
+            url: manage/disconnected-operations-deploy.md  
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
           - text: Deploy using local identity with Key Vault (preview)
@@ -122,10 +124,6 @@ landingContent:
             url: manage/gpu-manage-via-partitioning.md
           - text: Migrate VMware (preview)
             url: migrate/migration-azure-migrate-vmware-overview.md
-          - text: Set up disconnected operations for Azure Local (preview)
-            url: manage/disconnected-operations-set-up.md
-          - text: Deploy disconnected operations for Azure Local (preview)
-            url: manage/disconnected-operations-deploy.md             
       
   # Card
   - title: Concepts

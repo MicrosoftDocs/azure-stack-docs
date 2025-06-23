@@ -1,9 +1,9 @@
 ---
-title: Monitor Disconnected Operations for Azure Local (preview)
-description: Learn how to monitor Disconnected operations for Azure Local (preview).
+title: Monitor Disconnected Operations in Azure Local (preview)
+description: Learn how to monitor disconnected operations in Azure Local to ensure system reliability and performance (preview).
 author: ronmiab
 ms.topic: concept-article
-ms.date: 06/16/2025
+ms.date: 06/20/2025
 ms.author: robess
 ms.reviewer: robess
 ai-usage: ai-assisted
@@ -11,9 +11,9 @@ ai-usage: ai-assisted
 
 # Monitor disconnected operations for Azure Local (preview)
 
-::: moniker range=">=azloc-24112"
+::: moniker range=">=azloc-2506"
 
-This article explains how to monitor infrastructure and workloads running on Azure Local with disconnected operations by integrating with external monitoring solutions. You can use Microsoft, non-Microsoft, and open-source monitoring systems for specific resource types.
+This article explains how to monitor disconnected operations in Azure Local by integrating with external monitoring solutions. Learn how to use Microsoft, non-Microsoft, and open-source monitoring systems to ensure the reliability and performance of your infrastructure and workloads.
 
 For more information on disconnected operations, see [Disconnected operations for Azure Local (preview)](./disconnected-operations-overview.md).
 
@@ -114,8 +114,8 @@ Download these solutions from their repositories and install them on an AKS clus
 
 ::: moniker-end
 
-::: moniker range="<=azloc-24111"
+::: moniker range="<=azloc-2505"
 
-This feature is available only in Azure Local 2411.2.
+This feature is available only in Azure Local 2506.
 
 ::: moniker-end
