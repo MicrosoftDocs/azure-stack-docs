@@ -2,7 +2,7 @@
 title: FedRAMP guidance for Azure Local
 description: Learn about FedRAMP compliance using Azure Local.
 ms.date: 12/27/2024
-ms.topic: conceptual
+ms.topic: article
 ms.service: azure-local
 ms.author: nguyenhung
 author: dv00000

@@ -3,7 +3,7 @@ title: Validation as a service overview
 titleSuffix: Azure Stack Hub 
 description: An overview of Azure Stack Hub validation as a service.
 author: sethmanheim
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/16/2020
 ms.author: sethm
 ms.reviewer: johnhas

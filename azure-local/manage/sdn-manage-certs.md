@@ -1,7 +1,7 @@
 ---
 title: Manage certificates for Software Defined Networking
 description: Learn how to manage certificates for Network Controller Northbound and Southbound communications when you deploy Software Defined Networking (SDN).
-ms.topic: article
+ms.topic: how-to
 ms.author: anpaul
 author: AnirbanPaul
 ms.date: 01/16/2025

@@ -2,7 +2,7 @@
 title: Azure Stack Hub Capacity Planner - MDC
 description: Learn how to use the Azure Stack Hub Capacity planner for MDC to view allocations of computing resources for Azure Stack Hub deployments.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/16/2025
 ms.author: sethm
 ms.lastreviewed: 03/08/2021

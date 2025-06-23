@@ -2,7 +2,7 @@
 title: Identity architecture for Azure Stack Hub 
 description: Learn about identity architecture for Azure Stack Hub, and the differences between Microsoft Entra ID and AD FS.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/21/2022
 ms.author: sethm
 ms.reviewer: fiseraci
