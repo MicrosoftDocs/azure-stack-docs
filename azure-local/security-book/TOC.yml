@@ -52,6 +52,6 @@ items:
       - name: Conclusion
         href: conclusion.md
       - name: < Azure Local security
-        href: concepts/security-features.md
+        href: ../concepts/security-features.md
 
 
