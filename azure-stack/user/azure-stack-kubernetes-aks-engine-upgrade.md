@@ -3,7 +3,7 @@ title: Upgrade a Kubernetes cluster using AKS engine on Azure Stack Hub
 description: Learn how to upgrade a Kubernetes cluster using AKS engine on Azure Stack Hub. 
 author: sethmanheim
 
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.date: 02/13/2023
 ms.author: sethm
 ms.reviewer: waltero

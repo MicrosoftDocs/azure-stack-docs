@@ -2,7 +2,7 @@
 title: Differences between Azure Stack Hub and Azure when using services and building apps
 description: Understand the differences between Azure and Azure Stack Hub when using services and building apps.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/21/2025
 ms.author: sethm
 ms.lastreviewed: 11/20/2020

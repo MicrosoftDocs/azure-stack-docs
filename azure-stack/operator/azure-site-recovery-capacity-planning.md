@@ -3,7 +3,7 @@ title: Capacity planning using Azure Site Recovery
 description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
-ms.topic: conceptual
+ms.topic: article
 ms.date: 06/10/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/15/2024

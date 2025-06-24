@@ -3,7 +3,7 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 04/30/2025
+ms.date: 06/18/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2025
 ms.reviewer: abha
@@ -36,6 +36,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 
 | AKS Arc operation | Issue |
 |------------------------|-------|
+| General network validation errors | [Troubleshoot network validation errors](network-validation-errors.md) |
 | Create validation      | [Control plane configuration validation errors](control-plane-validation-errors.md) |
 | Create validation      | [K8sVersionValidation error](cluster-k8s-version.md) |
 | Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md) |
@@ -43,6 +44,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
+| BGP with FRR not working | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
 
 ## Next steps
 
