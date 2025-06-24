@@ -3,7 +3,7 @@ title:  Azure Local security book introduction
 description: Introduction for the Azure Local security book.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/16/2025
+ms.date: 06/24/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -11,6 +11,10 @@ ms.reviewer: alkohli
 # Introduction
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
+
+## Layered, built-in security from core to cloud
+
+Security threats are evolving in new ways, new vulnerabilities are emerging for organizations all the time, making it imperative to choose an infrastructure that is protected from these threats. Azure Local, a Microsoft Azure Arc-enabled infrastructure, is designed and built to help secure workloads, data, and operations with built-in capabilities inspired by Azure hyper scaled security.
 
 Security affects everyone in your organization from upper-level management to the information worker. Inadequate security is a real risk for organizations as a security breach can disrupt all normal business and bring your organization to a halt. Information technology infrastructure is susceptible to a wide variety of attacks. Attackers typically take advantage of vulnerabilities in the hardware, firmware, operating system, or the application layer. Once they gain a foothold, they use techniques such as privilege escalation to move laterally to other systems in the organization. Azure Local supports security capabilities that can help protect as well as detect and respond to such attacks as quickly as possible.
 
@@ -33,3 +37,5 @@ Our customers face the significant burden of getting their infrastructure to mee
 Our goal is to empower customers to achieve their security requirements, regardless of industry regulations or compliance, more easily and in a flexible manner. Azure Local builds on industry-leading security features such as Windows Defender Application Control and BitLocker. With Azure Local, we have enabled security right from the start, where the system is by default deployed in a known good state in accordance with the [Microsoft Cloud Security Benchmark](/security/benchmark/azure/overview).
 
 With Azure Locl, customers do not have to burden themselves with the mechanics of enabling the various security capabilities, at least not for most of the well-known security requirements. From a customer standpoint, security "just works".
+
+## Related content

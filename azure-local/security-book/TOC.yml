@@ -1,0 +1,57 @@
+items:
+    - name: Azure Local security book
+      items:
+      - name: 1. Introduction
+        href: security-book/introduction.md
+      - name: 2. Hardware security
+        items:
+        - name: Secured core hardware
+          href: security-book/hardware-security-secured-core.md
+        - name: Azure Local solutions
+          href: security-book/hardware-security-solutions.md
+      - name: 3. System security
+        items:
+        - name: Security baselines
+          href: security-book/system-security-baselines.md
+        - name: Memory protection
+          href: security-book/system-security-memory-protection.md
+        - name: Data protection
+          href: security-book/system-security-data-protection.md
+        - name: Application control
+          href: security-book/system-security-application-control.md
+        - name: Network security
+          href: security-book/system-security-network-security.md
+        - name: Credential protection
+          href: security-book/system-security-credential-protection.md
+        - name: Malware protection
+          href: security-book/system-security-malware-protection.md
+        - name: Privacy controls
+          href: security-book/system-security-privacy.md
+      - name: 4. Operational security
+        items:
+        - name: Ongoing operations
+          href: security-book/operational-security-operations.md
+        - name: Ongoing compliance
+          href: security-book/operational-security-compliance.md
+        - name: Software updates
+          href: security-book/operational-security-updates.md
+      - name: 5. Workload security
+        items:
+        - name: Trusted launch for Azure Local VMs
+          href: security-book/workload-security-trusted-launch.md
+        - name: Microsoft Defender
+          href: security-book/workload-security-monitoring.md
+      - name: 6. Security foundation
+        items:
+        - name: Security assurance
+          href: security-book/security-foundation-security-assurance.md
+        - name: Certifications
+          href: security-book/security-foundation-certifications.md
+        - name: Secure supply chain
+          href: security-book/security-foundation-secure-supply-chain.md
+      - name: Conclusion
+        href: security-book/conclusion.md
+      - name: < Azure Local security
+        href: concepts/security-features.md
+
+

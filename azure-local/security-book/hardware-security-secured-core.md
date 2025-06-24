@@ -46,3 +46,5 @@ In the last few years, there has been a significant [uptick in firmware vulnerab
 Secured-core machines support VBS and hypervisor-based code integrity (HVCI). The cryptocurrency mining attack mentioned earlier leveraged the [EternalBlue exploit](https://www.cisecurity.org/wp-content/uploads/2019/01/Security-Primer-EternalBlue.pdf). VBS and HVCI help protect against this entire class of vulnerabilities by isolating privileged parts of the OS, like the kernel, from the rest of the system. This helps to ensure that machines remain devoted to running critical workloads and helps protect related applications and data from attack and exfiltration.
  
 Enabling Secured-core functionality helps proactively defend against and disrupt many of the paths attackers may use to exploit a system. These defenses also enable IT and SecOps teams to better leverage their time across the many areas that need their attention.
+
+## Related content
