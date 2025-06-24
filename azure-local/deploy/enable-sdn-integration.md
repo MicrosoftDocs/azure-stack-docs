@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 06/17/2025
+ms.date: 06/24/2025
 ---
 
 # Enable SDN integration on Azure Local using PowerShell (Preview)
@@ -48,8 +48,8 @@ Here's an architecture diagram of Network Controller in a 2-node Azure Local ins
 
 > [!IMPORTANT]
 > - SDN enabled by Arc is a preview feature. Once you enable SDN, you can't roll back or disable.
-> - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools you MUST NOT attempt to run this method.
-> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure Portal, ARM). DO NOT use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools!
+> - If you are already running Network controller on your Azure Local cluster that was deployed using on-premises tools, you must not attempt to run this method.
+> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are the VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.
 
 
 For your existing Azure Local instances:

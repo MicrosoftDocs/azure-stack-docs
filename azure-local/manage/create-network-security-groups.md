@@ -4,7 +4,7 @@ description: Learn how to create network security groups, network security rules
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/18/2025
+ms.date: 06/24/2025
 ms.service: azure-local
 ---
 
@@ -51,7 +51,7 @@ The diagram shows a network setup with two logical networks:
 In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL. You can apply the NSG to each logical network or network interface to enforce specific security rules. For example, logical network B might allow only traffic over SQL port 1433 from logical network A.
 
 > [!NOTE]
-> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure Portal, ARM). DO NOT use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools!
+> - The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These are VMs that were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.
 
 ## Prerequisites
 

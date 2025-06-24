@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 06/17/2025
+ms.date: 06/24/2025
 ---
 
 # Software Defined Networking enabled by Azure Arc on Azure Local (Preview)
@@ -35,7 +35,7 @@ You can also manage SDN with on-premises tools like Windows Admin Center or SDN 
 
 |Management method  |Consideration |
 |---------|---------|
-|SDN enabled by Azure Arc    | Enable SDN by running this PowerShell command `Add-EceFeature`. <br><br>If your Network controller Azure Local was deployed using on-premises tools, you must not attempt to run this method. <br><br>The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These Azure Local VMs were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). <br><br>Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.        |
+|SDN enabled by Azure Arc    | Enable SDN by running this PowerShell command `Add-EceFeature`. <br><br>If Network controller on your Azure Local was deployed using on-premises tools, you must not attempt to run this method. <br><br>The only VMs that are in scope for using NSGs with this feature are Azure Local VMs. These Azure Local VMs were deployed from Azure client interfaces (Azure CLI, Azure portal, Azure Resource Manager). <br><br>Do not use an Azure Local VM in conjunction with an NSG that is managed and applied from on-premises tools.        |
 |SDN managed by on-premises tools    | Enable SDN using on-premises tools like Windows Admin Center or SDN Express scripts. <br><br>If Network Controller on your Azure Local was deployed using PowerShell command `Add-EceFeature`, you must not attempt to run SDN managed by on-premises tools. <br><br>The only VMs that are in scope for NSG management using this feature are unmanaged VMs that were deployed from local tools such as Windows Admin Center, Hyper-V Manager, System Center Virtual Machine Manager and Failover Cluster Manager. To manage NSGs on unmanaged VMs, you can only use Windows Admin Center, and SDN Express scripts.         |
 
 ## Comparison summary of SDN management
