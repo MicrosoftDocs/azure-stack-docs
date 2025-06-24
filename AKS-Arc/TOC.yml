@@ -47,7 +47,7 @@
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
-      href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+      href: https://jumpstart.azure.com/azure_arc_jumpstart
   - name: How-to
     items:
     - name: Create Kubernetes clusters
