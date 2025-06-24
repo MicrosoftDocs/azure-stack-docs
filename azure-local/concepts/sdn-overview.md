@@ -22,13 +22,13 @@ SDN offers a centralized way to configure and manage networks and network servic
 
 You can manage SDN on Azure Local in two ways: with Arc or with on-premises tools.
 
-**SDN enabled by Arc** is in Preview and available for Azure Local 2506 with OS version 26100.xxxx or later.
+- **SDN enabled by Arc**: This feature is in Preview and is available for Azure Local 2506 with OS version 26100.xxxx or later.
 
-In this method, the Network Controller runs as a Failover Cluster service instead of on a virtual machine (VM). When you enable SDN, the Network Controller integrates with the Azure Arc control plane, so you can manage both existing and new logical networks.
+    In this method, the Network Controller runs as a Failover Cluster service instead of on a virtual machine (VM). When you enable SDN, the Network Controller integrates with the Azure Arc control plane, so you can manage both existing and new logical networks.
 
-With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
+    With SDN enabled by Azure Arc, you create and apply network security groups (NSGs) to logical networks and Azure Local VM network interfaces (NICs).
 
-You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
+- **SDN managed by on-premises tools**: You can also manage SDN with on-premises tools like Windows Admin Center or SDN Express scripts. This approach is available for Windows Server and Azure Local 2311.2 or later. This method uses three main SDN components, and you choose which to deploy: Network Controller, Software Load Balancer (SLB), and Gateway. For more information, see [SDN managed by on-premises tools](../concepts/software-defined-networking-23h2.md).
 
 ## Important considerations
 
@@ -107,23 +107,13 @@ Before you deploy Azure Local and enable SDN, review these supported networking 
     - The second compute intent is only for VMs and workloads traffic.
     - The third storage intent is only for storage traffic.
 
-<!--## Choose SDN type based on your requirements
-
-Starting release 2504, you have two ways to enable SDN.
-
-- Use SDN enabled by Arc if workloads only require logical networks based on VLAN isolation and network security groups to secure access.​
-- Use SDN managed by on-prem tools if workloads require virtual networks for isolation, and load balancers or gateways.
-
-Use the following detailed decision matrix to select the SDN type based on your requirements:
-
-:::image type="content" source="./media/sdn-overview/sdn-type-decision-matrix.png" alt-text="Screenshot of SDN decision matrix." lightbox="./media/sdn-overview/sdn-type-decision-matrix.png":::-->
 
 
 ## Next steps
 
 For related information, see:
 
-- [Enable SDN via action plan](../deploy/enable-sdn-integration.md)
+- [Enable SDN integration](../deploy/enable-sdn-integration.md)
 - [Deploy SDN infrastructure using SDN Express PowerShell scripts](../deploy/sdn-express-23h2.md)
 
 ::: moniker-end

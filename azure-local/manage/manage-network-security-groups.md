@@ -1,6 +1,6 @@
 ---
 title: Manage network security groups and network security rules on Azure Local VMs (Preview)
-description: Learn how to manage network security groups and network security rules for Azure Local virtual machines(Preview).
+description: Learn how to manage network security groups and network security rules for Azure Local virtual machines (Preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -683,7 +683,6 @@ This section describes the manage operations supported for network security rule
     az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
     ```
 
-    <br></br>
     <details>
     <summary>Expand this section to see an example output.</summary>
     
@@ -931,7 +930,7 @@ To dissociate a network security group from a logical network, follow these step
 1. Go to **Settings > Network security groups**.
 1. In the right-pane, from the top command bar, select **Dissociate network security group**.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Dissociate network security group for the specified logical network" lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png" alt-text="Screenshot of selecting Dissociate network security group for the specified logical network." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-logical-network-2.png":::
 
 1. Confirm the dissociation.
 
