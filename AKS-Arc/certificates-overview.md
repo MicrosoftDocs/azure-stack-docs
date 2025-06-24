@@ -2,7 +2,7 @@
 title: Overview of certificate management in AKS on Windows Server
 description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS on Windows Server.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/10/2024
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023

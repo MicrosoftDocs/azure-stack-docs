@@ -1,7 +1,7 @@
 ---
 title: Network reference patterns overview for Azure Local
 description: Learn about the different supported network reference patterns for Azure Local.
-ms.topic: conceptual
+ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli

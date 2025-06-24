@@ -2,7 +2,7 @@
 title: Network integration planning for Azure Stack Hub 
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/27/2025
 ms.author: sethm
 ms.lastreviewed: 03/18/2022

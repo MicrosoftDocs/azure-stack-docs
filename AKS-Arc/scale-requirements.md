@@ -1,7 +1,7 @@
 ---
 title: Scale requirements for AKS on Azure Local
 description: Learn about scale requirements for AKS on Azure Local.
-ms.topic: conceptual
+ms.topic: article
 ms.date: 05/02/2025
 author: sethmanheim
 ms.author: sethm 

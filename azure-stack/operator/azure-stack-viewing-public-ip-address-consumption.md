@@ -3,7 +3,7 @@ title: Manage network resources
 titleSuffix: Azure Stack Hub
 description: Learn how to manage network resources, including the MAC address pool and the consumption of public IP addresses in a region.
 author: sethmanheim
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 1/17/2025
 ms.author: sethm
 ms.lastreviewed: 09/17/2019

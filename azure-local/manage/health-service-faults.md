@@ -2,7 +2,7 @@
 description: "Learn more about: Health Service faults"
 title: View Health Service faults
 ms.author: alkohli
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.date: 01/16/2025
 ---
