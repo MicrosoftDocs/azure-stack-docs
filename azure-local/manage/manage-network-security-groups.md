@@ -978,7 +978,7 @@ To dissociate a network security group from a network interface, follow these st
 
 1. Confirm the dissociation.
 
-    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png" alt-text="Screenshot of confirmation for Dissociatete network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png":::
+    :::image type="content" source="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png" alt-text="Screenshot of confirmation for Dissociated network security group." lightbox="./media/manage-network-security-groups/dissociate-network-security-group-network-interface-3.png":::
 
 The operation takes a few minutes to complete. You can see the status of the operation in the **Notifications** pane.
 After the network security group is dissociated from the network interface, the page refreshes to indicate the dissociation.
