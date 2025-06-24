@@ -112,9 +112,9 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: Plan your network for disconnected operations on Azure Local (preview)
+          - text: Plan your network for disconnected operations (preview)
             url: manage/disconnected-operations-network.md
-          - text: Deploy disconnected operations for Azure Local (preview)
+          - text: Deploy disconnected operations (preview)
             url: manage/disconnected-operations-deploy.md  
           - text: Deploy Arc gateway (preview)
             url: deploy/deployment-azure-arc-gateway-overview.md
