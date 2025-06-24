@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-local
-ms.date: 06/18/2025
+ms.date: 06/24/2025
 ---
 
 # Azure Local release information
