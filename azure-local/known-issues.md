@@ -63,7 +63,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
-| Deployment <!--33390832--> | Deployment fails with errors during validation that state that the mandatory extensions are not yet installed. |  |
+| Deployment <!--33390832--> | Deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. |  |
 | Deployment <!--33392176--> |  Deployment fails with PSTerminatingError. | If you face this issue, retry the deployment. |
 
 ## Known issues from previous releases
