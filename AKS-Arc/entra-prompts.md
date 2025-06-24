@@ -4,9 +4,9 @@ description: Learn how to troubleshoot Entra authentication issues when using ku
 author: sethmanheim
 ms.author: sethm
 ms.topic: troubleshooting
-ms.date: 06/17/2025
+ms.date: 06/24/2025
 ms.reviewer: leslielin
-ms.lastreviewed: 06/17/2025
+ms.lastreviewed: 06/24/2025
 
 ---
 
@@ -20,7 +20,7 @@ When you use **kubectl** with [Microsoft Entra authentication and Kubernetes RBA
 
 ## Possible causes
 
-This issue is caused by a [GitHub bug](https://github.com/Azure/kubelogin/issues/654) introduced in **kubelogin** version 0.2.0 and later.
+This issue is caused by [a GitHub bug](https://github.com/Azure/kubelogin/issues/654) introduced in **kubelogin** version 0.2.0 and later.
 
 ## Mitigation
 
