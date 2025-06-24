@@ -1,11 +1,11 @@
 ---
 title: What's new in Azure Local latest release
-description: Find out what's new in Azure Local release.
+description: Find out what are the new features and enhancements in the latest Azure Local release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 06/10/2025
+ms.date: 06/19/2025
 ---
 
 # What's new in Azure Local?
@@ -15,6 +15,58 @@ ms.date: 06/10/2025
 [!INCLUDE [azure-local-end-of-support-banner-23h2](./includes/azure-local-end-of-support-banner-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+
+::: moniker range="=azloc-2506"
+
+There are two 2506 releases for June. Here are the details of each release:
+
+|Solution version  |OS version |Deployment  |
+|---------|---------|---------|
+|12.2506.1001.25 |  26100.4349        | New deployments only.        |
+|11.2506.1001.24  | 25398.1665        | Existing deployments only.        |
+
+For more information, see [Release information summary](./release-information-23h2.md).
+
+## Features and improvements in 2506
+
+This release has the following features and improvements:
+
+- **OS changes**:
+
+    - In 2504 release, a new operating system was introduced for Azure Local deployments. For 2506, all the new deployments of Azure Local run the new OS version **26100.4349**. You can download the 2506 OS image from the Azure portal.
+    
+        You also need to get the driver compatible with OS version **26100.4349** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+
+        Existing deployments of Azure Local continue to use OS version **25398.1665**. For more information, see [Release information summary](./release-information-23h2.md).
+
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4349** or Windows Server 2025.
+
+    - The new OS media uses consistent device naming (CDN) if the hardware supports it and ensures consistent network adapter naming.
+    
+- **.NET updates**: This build uses .NET version **8.0.17** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **Software-Defined Networking (SDN) enabled by Azure Arc (Preview)**: Azure Local now supports creating Networking Security Groups (NSGs), configuring Network Security Rules, and assigning them to logical networks and network interfaces. This provides a consistent networking experience across your cloud and edge environment. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./overview.md).
+
+- **Deployment changes**: To ensure consistent validation before you deploy Azure Local, deployment validators for Microsoft On-premises Cloud and Azure resource bridge are now a part of environment checker.
+
+- **Overprovisioning alert**: An alert is added to indicate if a cluster is overprovisioned. Make sure to acknowledge the alert warning before you update as VM workloads are paused during the update run.
+
+- **Security improvements**:
+    - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
+      - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
+      - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
+      - Additional adjustments tailored for Azure Local.
+
+      This release has also improved conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
+
+    - To comply with National Institute of Standards and Technology(NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
+
+- **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **Azure Government cloud**: The solution update isn't supported for Azure Local instances deployment in Azure Government cloud.
+
+::: moniker-end
 
 ::: moniker range="=azloc-2505"
 
@@ -33,21 +85,21 @@ This release has the following features and improvements:
 
 - **OS version changes**:
 
-    - In the last release (2504), a new operating system was introduced for Azure Local deployments. For 2505, all the new deployments of Azure Local will run new OS version **26100.4061**. You can download the 2505 OS image from the Azure portal.
+    - In the last release (2504), a new operating system was introduced for Azure Local deployments. For 2505, all the new deployments of Azure Local run new OS version **26100.4061**. You can download the 2505 OS image from the Azure portal.
     
-        You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver is not available, you can use the 2503 image.
+        You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        Existing deployments of Azure Local will continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+        Existing deployments of Azure Local continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
+    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS should be preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
 
-- **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more details, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+- **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-2505&preserve-view=true#fixed-issues).
 
 - **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine issues, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
 
-- **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will be completed soon. Once archived, the articles will be available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+- **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
 ::: moniker-end
 
@@ -97,7 +149,7 @@ This release has the following features and improvements:
 - **OEM license changes**:
     
     - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
-    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local will be available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
+    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local is available with Windows Server 2025 guest VMs. This integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
 
 - **Solution extension improvements**:
     - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
@@ -367,7 +419,7 @@ Here are the features and improvements in this release.
   - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
 
 - **Add server and Repair server fixes** include:
-  - An issue that prevents a node from joining Active Directory during the add server operation. <!--27101597-->
+  - An issue that prevents a node from joining Active Directory during the add-server operation. <!--27101597-->
   - Enabling deployment when a disjoint namespace is used.
 
 - **Reliability enhancements** include:

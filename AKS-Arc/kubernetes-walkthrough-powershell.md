@@ -3,7 +3,7 @@ title: Use PowerShell to set up Kubernetes on Windows Server clusters
 description: Learn how to set up an AKS host and create Kubernetes clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 03/28/2025
+ms.date: 06/16/2025
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: abha
@@ -117,7 +117,7 @@ Set-AksHciConfig -imageDir $csvPath\Images -workingDir $csvPath\ImageStore -clou
 ```
 
 > [!NOTE]
-> You must customize the values shown in this example command for your environment.
+> You must customize the values shown in this example command for your environment, but you can't change the VM name on the host or on the Kubernetes cluster.
 
 ## Step 4: sign in to Azure and configure registration settings
 

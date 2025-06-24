@@ -2,7 +2,7 @@
 title: What is the AKS engine on Azure Stack Hub? 
 description: Learn how to use the AKS engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack Hub. 
 author: sethmanheim
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 01/24/2025
 ms.author: sethm
 ms.lastreviewed: 09/02/2020

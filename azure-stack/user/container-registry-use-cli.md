@@ -2,7 +2,7 @@
 title: Use Azure CLI with Azure Container Registry on Azure Stack Hub
 description: Learn how to use Azure CLI with Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ms.date: 07/25/2024

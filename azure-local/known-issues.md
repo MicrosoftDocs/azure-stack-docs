@@ -2,7 +2,7 @@
 title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
-ms.topic: conceptual
+ms.topic: release-notes
 ms.date: 06/12/2025
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -71,6 +71,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Update <!--54889342--> |  A critical VM operational status not OK alert is shown in the Azure portal under **Update readiness** and in the **Alerts** pane after the update has completed successfully. Additionally, the alert appears when running the `Get-HealthFault` cmdlet. | No action is required on your part. This alert will resolve automatically in a few days. |
+| Deployment <!-- 33153622-->| Updating Azure Arc extensions manually from the Azure Local Machine page via the Azure portal will result in issues during deployment. The extensions that shouldn't be updated manually are: `AzureEdgeDeviceManagement`, `AzureEdgeLifecycleManager`, and `AzureEdgeAKVBackupForWindows`. | Installing extensions manually from the Azure Local machine page is not supported. |
 
 ## Known issues from previous releases
 
@@ -222,7 +223,6 @@ The following table lists the fixed issues in this release:
 | Security <!--XXXX--> | Mitigation for security vulnerability CVE-2024-21302 was implemented. See the [Guidance for blocking rollback of Virtualization-based Security (VBS) related security updates](https://support.microsoft.com/topic/guidance-for-blocking-rollback-of-virtualization-based-security-vbs-related-security-updates-b2e7ebf4-f64d-4884-a390-38d63171b8d3)   |   |
 | Deployment  | During Azure Local deployment via portal, **Validate selected machines** fails with this error message: `Mandatory extension [Lcm controller] installed version [30.2503.0.907] is not equal to the required version [30.2411.2.789] for Arc machine [Name of the machine]. Please create EdgeDevice resource again for this machine to fix the issue.`   | Reinstall the correct version of `AzureEdgeLifecycleManager` extension. Follow these steps: <br> 1. Select the machine and then select **Install extensions**. <br> <br>![Screenshot of extension installation on Azure Local machines.](media/known-issues/select-machine-2.png)<br> <br> 2. Repeat this step for each machine you intend to cluster. It takes roughly 15 minutes for the installation to complete. <br> 3. Verify that the `AzureEdgeLifecycleManager` extension version is 30.2411.2.789. <br><br> ![Screenshot of extension version installed on Azure Local machines that can be validated.](media/known-issues/select-machine-1.png) <br><br> 4. After the extensions are installed on all the machines in the list, select **Add machines** to refresh the list. <br> 5. Select **Validate selected machines**. The validation should succeed. |
 
-
 ## Known issues in this release
 
 The following table lists the known issues in this release:
@@ -329,12 +329,14 @@ The following issues are fixed in this release:
 
 ## Known issues in this release
 
+There's no known issue in this release. Any previously known issues have been fixed in subsequent releases.
+
 <!--The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
-|---------|---------|---------| -->
+|---------|---------|---------|
+| Deployment <!--31699269--| This issue affects deployment and update on OEM-licensed devices. During deployment, you might see this error at **Apply security settings on servers**: <br></br>`Type 'ConfigureSecurityBaseline' of Role 'AzureStackOSConfig' raised an exception: [ConfigureSecurityBaseline] ConfigureSecurityBaseline failed on <server name> with exception: -> Failed to apply OSConfiguration enforcement for ASHCIApplianceSecurityBaselineConfig on <server name>`. | If you haven’t started the update, see [Azure Local OEM license devices](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-HCI-OEM-license-devices.md) to apply the preventive steps before updating to Azure Local 2411.3. <br></br> If you’ve encountered the issue, use the same insructions to validate and apply the mitigation. |-->
 
-Microsoft isn't aware of any known issues in this release.
 
 ## Known issues from previous releases
 

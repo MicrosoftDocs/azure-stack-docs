@@ -3,7 +3,7 @@ title: Deploy Kubernetes to Azure Stack Hub using Microsoft Entra ID
 description: Learn how to deploy Kubernetes to Azure Stack Hub using Microsoft Entra ID.
 author: sethmanheim
 
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: waltero
