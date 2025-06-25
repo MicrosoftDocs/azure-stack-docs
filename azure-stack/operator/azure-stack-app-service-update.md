@@ -20,7 +20,7 @@ zone_pivot_groups:
 In this article, you learn how to upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack Hub environment that is connected or disconnected from the Internet and, secured by Entra ID or Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Prior to running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub](./azure-stack-app-service-deploy.md). 
+> Before running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub](./azure-stack-app-service-deploy.md). 
 
 ## Run the App Service resource provider installer
 
@@ -41,7 +41,7 @@ During this process, the upgrade will:
 ## Complete the upgrade of App Service on Azure Stack Hub
 
 > [!IMPORTANT]
-> The Azure App Service installer must be run on a machine which can reach the Azure Stack Hub Administrator Azure Resource Manager Endpoint.
+> The Azure App Service installer must be run on a machine, which can reach the Azure Stack Hub Administrator Azure Resource Manager Endpoint.
 
 # [Azure App Service on Azure Stack 2022 H1](#tab/22h1)
 
@@ -53,7 +53,7 @@ During this process, the upgrade will:
 
     ![Screenshot showing the Azure App Service on Azure Stack Hub installer advanced options.][7]
 
-1. Browse to the location of the offline upgrade package you previously dopwnloaded and then select **Next**.
+1. Browse to the location of the offline upgrade package you previously downloaded and then select **Next**.
 
 1. Review and accept the Microsoft Software License Terms and then select **Next**.
 
@@ -73,21 +73,21 @@ During this process, the upgrade will:
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
-   1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
+   1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**. Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
-   1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+   1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the Azure Stack Deployment Kit.
 
    1. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
 
-   1. **NEW**: Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
+   1. **NEW**: Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed. The Deployment Prefix is useful if managing multiple Azure Stack Hub instances.
 
       ![Screenshot showing Azure App Service on Azure Stack Hub installation detected.][9]
 
-1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider.  This status check has been added to verify the deployment is in the correct state to be upgraded.  The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
+1. In the next screen, you'll see the results of a status check performed against the App Service Resource Provider. This status check was added to verify the deployment is in the correct state to be upgraded. The status check verifies that all roles are ready, all worker tiers are valid, all virtual machine scale sets are healthy and verifies access to the App Service secrets.
 
     ![Screenshot showing Azure App Service on Azure Stack Hub pre-upgrade status check.][10]
 
-1. The Platform Image and SKU screen gives Administrators the opportunity to choose the correct [Windows 2022 Platform](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace) image to be used to deploy the new role instances.
+1. The Platform Image and SKU screen, gives Administrators the opportunity to choose the correct [Windows 2022 Platform](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace) image to be used to deploy the new role instances.
     1. **Select** the correct Platform Image
     1. Over time the minimum recommended spec of VM/VM Scale Set instance SKUs has changed and here you see the details of what is currently deployed and the new recommended SKU.
 
@@ -99,7 +99,7 @@ During this process, the upgrade will:
        ![Screenshot showing Azure App Service on Azure Stack Hub upgrade summary.][4]
 
 > [!NOTE]
-> Upgrading to 2022.H1 can take a considerable amount of time dependent on the number of role instances deployed within the App Service on Azure Stack Hub Resource Provider deployment.
+> Upgrade to 25R1 can take a considerable amount of time dependent on the number of role instances within the App Service on Azure Stack Hub Resource Provider deployment.
 >
 
 1. Upgrade progress page:
