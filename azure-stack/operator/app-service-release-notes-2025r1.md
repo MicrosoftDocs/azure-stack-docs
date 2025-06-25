@@ -257,7 +257,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 - Worker instances are unable to reach file server when App Service is deployed in an existing virtual network. The file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
 
-  If the App Service Resource Provider was deployed into an existing virtual network and and use internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If you chose to deploy into an existing virtual network and use an internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses

@@ -179,7 +179,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 > [!IMPORTANT]
 > If you've provided the Azure App Service Resource Provider with a SQL Always On Instance, you **must** [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and use an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
 
 - Source: Any
 - Source port range: *
