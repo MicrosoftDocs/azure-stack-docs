@@ -101,7 +101,7 @@ Azure App Service on Azure Stack Update 25R1 includes the following improvements
 
 Newly fixed issues in this release:
 
-- Application downtime should no longer be expected during Upgrade. In 24R1, an issue caused significant downtime due to a change in communication format within the Web Farm during upgrade, the handling of this change has been improved and this change does not cause downtime in 25R1.
+- Application downtime should no longer be expected during Upgrade. In 24R1, an issue caused significant downtime due to a change in communication format within the Web Farm during upgrade. The handling of the communication change was modified in this update, and does not cause downtime in 25R1.
 
 - Resolution to issues faced with Role Based Access Control and Single Sign on to Kudu and SCM sites
 
@@ -126,7 +126,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you've provided the App Service resource provider with a SQL Always On Instance, you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If App Service resource provider is configured with a SQL Always On Instance, you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database). Once added, you MUST synchronize the databases, to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
@@ -255,9 +255,9 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 ## Known issues (post-installation)
 
-- Worker instances are unable to reach file server when App Service is deployed in an existing virtual network, and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
+- Worker instances are unable to reach file server when App Service is deployed in an existing virtual network. The file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
 
-  If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If you chose to deploy into an existing virtual network and an use internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -268,7 +268,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when worker instances are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group) to allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when worker instances are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group). This will allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
