@@ -1,3 +1,4 @@
+::: moniker range=">=azloc-2506"
 ### YamlMime:FAQ
 metadata:
   title: Frequently Asked Questions (FAQ) for Software-Defined Networking (SDN) on Azure Local
@@ -39,3 +40,12 @@ sections:
           If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.
 
           When an inbound packet arrives, Azure Local checks the logical network NSG first, then the network interface NSG. For outbound traffic, Azure Local checks the network interface NSG first, then the logical network NSG. If the first NSG has a **Deny** rule and the next has an **Allow** rule, Azure Local drops the packet.
+
+
+::: moniker-end
+
+::: moniker range="<=azloc-2505"
+
+This feature is available only in Azure Local 2506 or later.
+
+::: moniker-end
