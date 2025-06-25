@@ -162,6 +162,37 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
+## Live migrations on Azure Local 2311.2 and later could fail without error
+
+After you upgrade to Azure Local 2311.2 or on a new deployment of 2311.2 or later, you could see issues where the Azure Local VMs fail to live migrate in an Azure Local instance.
+
+**Issue:** Live migration attempts may fail silently — no error messages are logged.
+
+Cause: This problem is caused by a known issue in Azure Local, version 2311.2 or later. This problem manifests under specific system configurations.
+
+**Resolution:**  
+
+Run the following PowerShell script locally on one of the Azure Local machines. This script applies a registry fix on all the machines of your Azure Local instance.
+
+After you have run the script, reboot each machine one at a time for the change to take effect.
+
+```PowerShell
+Get-ClusterNode | ForEach-Object {
+    Invoke-Command -ComputerName $_.Name -ScriptBlock {
+        $RegPath = "HKLM:\System\CurrentControlSet\Services\Vid\Parameters"
+        $ValueName = "SkipSmallLocalAllocations"
+        $ValueData = 0
+
+        # Create the key if it doesn't exist
+        if (-Not (Test-Path $RegPath)) {
+            New-Item -Path $RegPath -Force | Out-Null
+        }
+
+        # Create or update the DWORD value
+        New-ItemProperty -Path $RegPath -Name $ValueName -Value $ValueData -PropertyType DWord -Force
+    }
+}
+```
 
 
 ## Next steps
