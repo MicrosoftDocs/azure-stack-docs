@@ -4,7 +4,7 @@ description: Learn how to update Azure App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/25/2025
-ms.author: anwest
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2020
 zone_pivot_groups: 
