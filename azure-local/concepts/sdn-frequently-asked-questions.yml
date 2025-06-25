@@ -12,7 +12,6 @@ summary: This FAQ provides information about Software-Defined Networking (SDN) e
 
 sections:
   - name: Behavior for Azure Local versions 2506 and later
-    monikerRange: '>=azloc-24113'
     questions:
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
@@ -43,7 +42,6 @@ sections:
 
 
   - name: Behavior for Azure Local versions before 2506
-    monikerRange: '<azloc-24113'
     questions:
       - question: Which versions of Azure Local support SDN enabled by Azure Arc?
         answer: |
