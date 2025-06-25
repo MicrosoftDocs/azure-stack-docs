@@ -27,7 +27,7 @@ In this article you learn how to deploy the [Azure App Service resource provider
 To add the Azure App Service resource provider to your Azure Stack Hub deployment, you must complete these top-level tasks:
 
 1. Complete the [prerequisite steps](azure-stack-app-service-before-you-get-started.md) (like purchasing certificates, which can take a few days to receive).
-2. [Download and extract the installation and helper files](azure-stack-app-service-before-you-get-started.md) to a machine that's connected to the internet.
+2. [Download and extract the installation and helper files](azure-stack-app-service-before-you-get-started.md).
 3. Download the offline installation package.
 4. Run the appservice.exe installer file.
 
@@ -47,11 +47,11 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 
 1. Review and accept the third-party license terms, and then select **Next**.
 
-1. Make sure the Azure App Service cloud configuration info is correct. If you used the default settings during ASDK deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub or are deploying on an integrated system, you must edit the values in this window to reflect those changes. For example, if you use the domain suffix mycloud.com, your Azure Stack Hub Tenant Azure Resource Manager endpoint must change to `management.<region>.mycloud.com`. After you confirm your info, select **Next**.
+1. Make sure the Azure App Service cloud configuration info is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub or are deploying on an integrated system, you must edit the values in this window to reflect those changes. For example, if you use the domain suffix mycloud.com, your Azure Stack Hub Tenant Azure Resource Manager endpoint must change to `management.<region>.mycloud.com`. After you confirm your info, select **Next**.
 
     ![Configure Azure App Service cloud in Azure App Service Installer][2]
 
-1. On the next App Service Installer page you will connect to your Azure Stack Hub:
+1. On the next App Service Installer page you'll connect to your Azure Stack Hub:
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
@@ -61,11 +61,11 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File**, and **Password** and select **Connect**.
 
-    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
+    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**. Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
     1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
-    1. Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed.  This is useful if managing multiple Azure Stack Hub instances.
+    1. Administrators can specify a three character **Deployment Prefix** for the individual instances in each Virtual Machine Scale Set that are deployed. The Deployment Prefix is useful if managing multiple Azure Stack Hub instances.
 
 1. You can allow the Azure App Service installer to create a virtual network and associated subnets. Or, you can deploy into an existing virtual network, as configured through [these steps](azure-stack-app-service-before-you-get-started.md#virtual-network).
    - To use the Azure App Service installer method, select **Create VNet with default settings**, accept the defaults, and then select **Next**.
@@ -77,7 +77,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 
       ![Virtual network and subnet info in Azure App Service Installer][4]
 
-1. Enter the info for your file share and then select **Next**. The address of the file share must use the Fully Qualified Domain Name (FQDN) or IP address of your file server. For example: \\\appservicefileserver.local.cloudapp.azurestack.external\websites, or \\\10.0.0.1\websites.  If you're using a file server that's domain-joined, you must provide the full user name, including the domain. For example: `<myfileserverdomain>\<FileShareOwner>`.
+1. Enter the info for your file share and then select **Next**. The address of the file share must use the Fully Qualified Domain Name (FQDN) or IP address of your file server. For example: \\\appservicefileserver.local.cloudapp.azurestack.external\websites, or \\\10.0.0.1\websites. If you're using a domain-joined file server, you must provide the full user name, including the domain. For example: `<myfileserverdomain>\<FileShareOwner>`.
 
     > [!NOTE]
     > The installer tries to test connectivity to the file share before proceeding. However, if you choose to deploy into an existing virtual network, the installer might be unable to connect to the file share and displays a warning asking whether you want to continue. Verify the file share info and continue if it's correct.
@@ -85,7 +85,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
    ![File share info in Azure App Service Installer][5]
 
 1. On the next page:
-    1. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [pre-requisites](azure-stack-app-service-before-you-get-started.md).
+    1. In the **Identity Application ID** box, enter the GUID for the Identity application you created as part of the [prerequisites](azure-stack-app-service-before-you-get-started.md).
     1. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
     1. In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
     1. In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
@@ -123,7 +123,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 
     ![Enter SQL Server info in Azure App Service Installer][8]
 
-1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment.  For ASDK deployment, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.  A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
+1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in a production deployment. For ASDK deployment, you can scale the instances down to lower SKUs to reduce the core and memory commit but you'll experience a performance degradation. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
@@ -144,7 +144,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 1. In the **Select Platform Image** box, choose your prepared Windows Server 2022 Datacenter virtual machine (VM) image from the images available on the compute resource provider for the Azure App Service cloud. Select **Next**.
 
     > [!NOTE]
-    > Windows Server 2022 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2022 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2022 image with this feature pre-enabled.
+    > Windows Server 2022 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub. Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2022 images don't have this feature enabled. Therefore, when deploying in offline environments, you must create and use a Windows Server 2022 image with this feature pre-enabled.
     >
     > See [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md?tabs=2022H1-connected%2C2022H1-disconnected&pivots=state-disconnected#tabpanel_2_2022H1-disconnected) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
     >
@@ -177,7 +177,7 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you've provided the Azure App Service RP with a SQL Always On Instance, you **must** [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the Azure App Service Resource Provider with a SQL Always On Instance, you **must** [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database). You must also synchronize the databases to prevent any loss of service in the event of a database failover.
 
 If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
 
@@ -191,7 +191,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 - Priority: 700
 - Name: Outbound_Allow_SMB445
 
-To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker Network Security Group to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
 
 Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
  - Source: Any
@@ -241,7 +241,7 @@ After you deploy and register the Azure App Service resource provider, test it t
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack Hub user portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack Hub user portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any other resource providers, such as SQL or MySQL.
 
 1. If you also deployed a MySQL resource provider, you can deploy a WordPress website from Azure Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 
@@ -249,7 +249,7 @@ After you deploy and register the Azure App Service resource provider, test it t
 
 ## Next steps
 
-Prepare for additional admin operations for App Service on Azure Stack Hub:
+Prepare for other admin operations for App Service on Azure Stack Hub:
 
 - [Capacity Planning](azure-stack-app-service-capacity-planning.md)
 - [Configure Deployment Sources](azure-stack-app-service-configure-deployment-sources.md)
