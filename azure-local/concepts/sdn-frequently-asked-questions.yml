@@ -41,11 +41,8 @@ sections:
 
           When an inbound packet arrives, Azure Local checks the logical network NSG first, then the network interface NSG. For outbound traffic, Azure Local checks the network interface NSG first, then the logical network NSG. If the first NSG has a **Deny** rule and the next has an **Allow** rule, Azure Local drops the packet.
 
+additionalContent: |
 
-::: moniker-end
-
-::: moniker range="<=azloc-2505"
-
-This feature is available only in Azure Local 2506 or later.
-
-::: moniker-end
+  ## Next steps
+  
+    - [Troubleshoot SDN enabled by Azure Arc on Azure Local](./sdn-troubleshooting.md).
