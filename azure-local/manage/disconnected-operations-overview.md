@@ -103,8 +103,8 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Review [Azure Key Vault for disconnected operations](/azure/key-vault/general/quick-create-cli#create-a-key-vault). | Use the CLI to create an Azure Key Vault. |
 | Review [Monitor disconnected operations for Azure Local](disconnected-operations-monitoring.md). | Monitor infrastructure and workloads running on Azure Local with disconnected operations. |
 | **Troubleshoot** |      |
-| Review [On-demand log collection](../index.yml). | Collect logs on demand for troubleshooting. |
-| Review [Fallback log collection](../index.yml). | Use fallback log collection for troubleshooting. |
+| Review [On-demand log collection](disconnected-operations-on-demand-logs.md). | Collect logs on demand for troubleshooting. |
+| Review [Fallback log collection](disconnected-operations-fallback.md). | Use fallback log collection for troubleshooting. |
 
 ## Related content
 

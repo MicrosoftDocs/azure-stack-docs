@@ -54,7 +54,9 @@ Use this checklist to plan your network for disconnected operations on Azure Loc
 
 ## Virtual network interface cards and network integration
 
-The disconnected operations VM appliance uses two different virtual network interface cards (vNICs) that plug into the network intent. These are:
+The disconnected operations VM appliance uses two different virtual network interface cards (vNICs) that plug into the network intent.
+
+These vNICs are:
 
 - **Management vNIC**  
 - **Ingress vNIC**  
@@ -82,14 +84,14 @@ Use this checklist to plan your IP addresses for the disconnected operations app
 
 - **Ingress IP**:
   - Connects to the management intent.
-  - Is part of the regular network path for the control plane and Azure Local capabilities.
-  - Needs DNS resolution to the desired Fully Qualified Domain Name (FQDN).
-  - Is in the same subnet as the Azure Local instance, but outside the reserved range used for the instance deployment.
+  - Uses the standard network path for the control plane and Azure Local features.
+  - Requires DNS resolution to the target fully qualified domain name (FQDN).
+  - Must be in the same subnet as the Azure Local instance, but outside the reserved range used for the instance deployment.
 
 - **Management IP**:
   - Connects to management intent.
-  - Is any valid, unused IP on the local network.
-  - Is reachability if you access lower management application programming interfaces (APIs) from outside the cluster.
+  - Must be a valid, unused IP on the local network.
+  - Must be reachable if you access lower management application programming interfaces (APIs) from outside the cluster.
 
 ### Plan DNS and public key infrastructure (PKI)  
 
@@ -104,9 +106,9 @@ If you plan to connect the appliance to Azure, make sure your DNS infrastructure
 
 For more information, see [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
 
-#### Configure your DNS server (if you are running Windows Server DNS role):
+#### Configure your DNS server (if you're running Windows Server DNS role):
 
-Here is an example:
+Here's an example:
 
 ```powershell  
 $externalFqdn = 'autonomous.cloud.private'
@@ -118,7 +120,7 @@ Add-DnsServerResourceRecordA -Name "*" -IPv4Address $IngressIpAddress -ZoneName 
 ```
 #### Verify your DNS setup
 
-Here is an example:
+Here's an example:
 
 ```console  
 nslookup portal.autonomous.cloud.private
@@ -148,7 +150,7 @@ Here are the endpoints that the appliance needs to resolve:
 
 The following features aren't supported in this preview:
 
-- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that let you add VLAN tags to ingress packets on a per-port basis.
+- Configurable Virtual Local Area Network (VLAN) for disconnected operations ingress network that lets you add VLAN tags to ingress packets on a per-port basis.
 - Configurable VLAN for disconnected operations management network that lets you isolate management traffic from other network traffic, enhance security, and reduce interference.
 
 ::: moniker-end
