@@ -47,7 +47,7 @@
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
-      href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+      href: https://jumpstart.azure.com/azure_arc_jumpstart
   - name: How-to
     items:
     - name: Create Kubernetes clusters
@@ -189,6 +189,8 @@
       href: network-validation-errors.md
     - name: Network validation error due to .local domain
       href: network-validation-error-local.md
+    - name: Entra authentication prompts when running kubectl
+      href: entra-prompts.md
     - name: BGP with FRR not working
       href: connectivity-troubleshoot.md
   - name: Reference

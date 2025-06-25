@@ -39,7 +39,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 # [Arista](#tab/Arista)
 
-### 23H2
+### 24H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -53,7 +53,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-### 22H2
+### 23H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -69,7 +69,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Aruba](#tab/Aruba)
-### 23H2
+### 24H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -84,7 +84,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -100,7 +100,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > Guest RDMA requires both Compute (Standard) and Storage.
 # [Cisco](#tab/Cisco)
 
-### 23H2
+### 24H2
 <!-- > [!Important]     
 > NX-OS version 10.3(2)F or later is required. -->
 
@@ -116,7 +116,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [Nexus 9300-H1](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nb-06-nexus-93400ld-h1-switch-ds-cte-en.html) <br> (10, 25 GbE)|NX-OS 10.4(2) or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 <!-- > [!Important]     
 > NX-OS version 10.3(2)F or later is required. -->
 
@@ -135,7 +135,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Dell](#tab/Dell)
-### 23H2
+### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -151,7 +151,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -169,7 +169,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > Guest RDMA requires both Compute (Standard) and Storage.
 
 # [HPE](#tab/HPE)
-### 23H2
+### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -177,7 +177,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -188,14 +188,14 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Juniper](#tab/Juniper)
-### 23H2
+### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2.13 or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -210,7 +210,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 # [NETGEAR](#tab/NETGEAR)
 
-### 23H2
+### 24H2
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
@@ -218,7 +218,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
@@ -229,7 +229,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [NVIDIA](#tab/NVIDIA)
-### 23H2
+### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -239,7 +239,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-### 22H2
+### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -250,7 +250,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > Guest RDMA requires both Compute (Standard) and Storage.
 
 # [Supermicro](#tab/Supermicro)
-### 23H2
+### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -258,7 +258,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 22H2
+### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
@@ -277,9 +277,9 @@ This section lists industry standards that are mandatory for the specific roles 
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
 
 Here are the mandatory IEEE standards and specifications:
-# [23H2](#tab/23H2reqs)
+# [24H2](#tab/24H2reqs)
 
-### 23H2 Role Requirements
+### 24H2 Role Requirements
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  | :-:  | :-:  | :-:   | :-:   |
@@ -344,9 +344,9 @@ Ethernet switches used for Azure Local SDN compute traffic must support Border G
 
 Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
-# [22H2](#tab/22H2reqs)
+# [23H2](#tab/23H2reqs)
 
-### 22H2 Role Requirements
+### 23H2 Role Requirements
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  | :-:  | :-:  | :-:   | :-:   |
@@ -403,17 +403,13 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
 ### Maximum Transmission Unit 
-*New Requirement in 22H2*
 
 The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. A range of 1514 - 9174 is required for SDN encapsulation.
 ### Border Gateway Protocol 
-*New Requirement in 22H2*
 
 Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This is required to enable tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
 
 ### DHCP Relay Agent 
-*New Requirement in 22H2*
-
 
 Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host which is used to forward requests and replies between the DHCP server and client when the server is present on a different network. It is required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
