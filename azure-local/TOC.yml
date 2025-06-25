@@ -178,7 +178,7 @@ items:
     - name: Manage Network Security Groups
       href: manage/manage-network-security-groups.md
     - name: Troubleshoot SDN
-      href: manage/troubleshoot-sdn.md
+      href: manage/sdn-troubleshooting.md
     - name: SDN FAQ
       href: concepts/sdn-frequently-asked-questions.yml
 
