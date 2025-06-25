@@ -128,17 +128,19 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-## Live Migrations on Azure Local 23H2 May Fail Without Error
+## Live migrations on Azure Local 2311.2 and later could fail without error
 
-After upgrading from Azure Local 22H2 to 23H2, or on a clean install of 23H2, you may encounter issues where VMs fail to live migrate in an Azure Local Cluster.  
+After you upgrade to Azure Local 2311.2 or on a new deployment of 2311.2 or later, you could see issues where the Azure Local VMs fail to live migrate in an Azure Local instance.
 
 **Issue:** Live migration attempts may fail silently — no error messages are logged.
 
-This problem is caused by a known issue in Azure Local 23H2 that manifests under specific system configurations.
+Cause: This problem is caused by a known issue in Azure Local, version 2311.2 or later. This problem manifests under specific system configurations.
 
 **Resolution:**  
 
-Run the following PowerShell script locally on one of the cluster nodes. This script will apply a registry fix on all nodes. After running it, reboot each node one at a time for the change to take effect.
+Run the following PowerShell script locally on one of the Azure Local machines. This script applies a registry fix on all the machines of your Azure Local instance.
+
+After you have run the script, reboot each machine one at a time for the change to take effect.
 
 ```PowerShell
 Get-ClusterNode | ForEach-Object {
