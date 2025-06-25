@@ -11,7 +11,8 @@ title: FAQ - SDN enabled by Azure Arc on Azure Local
 summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. This feature is available in Azure Local version 2506 and later.
 
 sections:
-  - name: Ignored
+  - title: Behavior for Azure Local versions 2506 and later
+    monikerRange: '>=azloc-24113'
     questions:
       - question: Will I have downtime for my Azure Local VMs when I enable Network Controller via the PowerShell cmdlet?
         answer: |
@@ -39,6 +40,15 @@ sections:
           If logical networks and VM network interfaces on your Azure Local VMs have NSGs with conflicting allow or deny rules, you can see unexpected traffic drops or blocks.
 
           When an inbound packet arrives, Azure Local checks the logical network NSG first, then the network interface NSG. For outbound traffic, Azure Local checks the network interface NSG first, then the logical network NSG. If the first NSG has a **Deny** rule and the next has an **Allow** rule, Azure Local drops the packet.
+
+
+  - title: Behavior for Azure Local versions before 2506
+    monikerRange: '<azloc-24113'
+    questions:
+      - question: Which versions of Azure Local support SDN enabled by Azure Arc?
+        answer: |
+          SDN enabled by Azure Arc is available in Azure Local version 2506 and later.
+
 
 additionalContent: |
 
