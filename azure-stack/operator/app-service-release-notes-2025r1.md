@@ -257,7 +257,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
 
 - Worker instances are unable to reach file server when App Service is deployed in an existing virtual network. The file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
 
-  If you chose to deploy into an existing virtual network and an use internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If the App Service Resource Provider was deployed into an existing virtual network, and an use internal IP address to connect to your file server. You must add an outbound security rule, enabling SMB (Server Message Block) traffic between the worker subnet, and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -268,7 +268,7 @@ Review the [known issues for update](#known-issues-update) and take any action p
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when worker instances are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group). This will allow outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when worker instances are communicating with the file server, we also advise adding the following rule to the Worker NSG (Network Security Group). This rule, allows outbound LDAP (Lightweight Directory Access Protocol) and Kerberos traffic to your Active Directory Controllers when securing the file server using Active Directory. For example, if you used the Quickstart template to deploy a HA File Server and SQL Server.
 
   Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
