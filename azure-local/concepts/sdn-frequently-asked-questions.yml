@@ -7,9 +7,9 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 06/17/2025
-title: FAQ - SDN enabled by Azure Arc on Azure Local
-summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs.
+  ms.date: 06/25/2025
+title: FAQ - SDN enabled by Azure Arc on Azure Local 
+summary: This FAQ provides information about Software-Defined Networking (SDN) enabled by Azure Arc on your Azure Local VMs. This feature is available in Azure Local version 2506 and later.
 
 sections:
   - name: Ignored
