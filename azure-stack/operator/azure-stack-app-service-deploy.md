@@ -31,8 +31,6 @@ To add the Azure App Service resource provider to your Azure Stack Hub deploymen
 3. Download the offline installation package.
 4. Run the appservice.exe installer file.
 
-# [Azure App Service on Azure Stack 25R1]
-
 ## Complete the offline installation of Azure App Service on Azure Stack Hub
 
 1. Run appservice.exe as an admin from a computer that can reach the Azure Stack Hub Admin Azure Resource Management endpoint.
