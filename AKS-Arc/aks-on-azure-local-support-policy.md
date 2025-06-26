@@ -51,11 +51,11 @@ Your cluster operates on a deprecated minor version. The version you're running 
 
 You are asked to upgrade the cluster to a supported version when requesting support.
 
-For information about the supported Kubernetes versions, see [Supported Kubernetes versions](https://ppc-word-edit.officeapps.live.com/we/supported-kubernetes-versions.md).
+For information about the supported Kubernetes versions, see [Supported Kubernetes versions](supported-kubernetes-versions.md).
 
 AKS Arc follows the platform version support timeframes for those products. That is, AKS Arc is not supported on unsupported versions of those products. For more information, see their support policy:
 
-[Azure Local supported versions information](https://ppc-word-edit.officeapps.live.com/azure/azure-local/release-information)
+[Azure Local supported versions information](/azure/azure-local/release-information-23h2)
 
 ## Shared responsibility
 
@@ -92,7 +92,7 @@ Microsoft doesn't provide technical support for questions about how to use Kuber
 - Apply third-party or open-source software packages or tools.
 - Third-party open-source projects that aren't provided as part of the Kubernetes control plane or deployed when AKS Arc clusters are created. These projects might include Istio, Helm, Envoy, or others.
 - Third-party closed-source software. This software can include security scanning tools and networking devices or software.
-- Network customizations other than the ones listed in the [AKS Arc documentation](https://ppc-word-edit.officeapps.live.com/we/index.yml).
+- Network customizations other than the ones listed in the [AKS Arc documentation](aks-hci-network-system-requirements.md).
 
 > [!NOTE]
 > Microsoft Support can advise on cluster functionality, customization, and tuning in AKS Arc, for example, Kubernetes operations issues and procedures.
@@ -141,13 +141,13 @@ For node pools affected by a security flaw, Microsoft notifies you with details 
 
 Although you can sign into your Azure Local clusters change the node pool VMs, this operation is discouraged because changes can make an AKS Arc cluster unsupportable.
 
-You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](https://ppc-word-edit.officeapps.live.com/we/system-requirements.md).
+You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](aks-hci-network-system-requirements).
 
 ## Stopped or disconnected AKS Arc clusters
 
 As previously described, manually de-allocating all cluster nodes via the Hyper-V APIs, CLI, or MMC renders the cluster out of support.
 
-Clusters that are stopped for more than 30 days can no longer be updated. The control planes for AKS Arc clusters in this state are out of support after 30 days, and they can't be updated to the latest Kubernetes version. For more information, refer to [AKS Arc connectivity modes.](/azure/aks/aksarc/connectivity-modes)
+Clusters that are stopped for more than 30 days can no longer be updated. The control planes for AKS Arc clusters in this state are out of support after 30 days, and they can't be updated to the latest Kubernetes version. For more information, see the [AKS Arc connectivity modes.](/azure/aks/aksarc/connectivity-modes)
 
 ## Deleted or suspended subscription
 
@@ -177,5 +177,5 @@ When a technical support issue is root-caused by one or more upstream bugs, AKS 
 
 ## Next steps
 
-- [Open a support ticket](https://ppc-word-edit.officeapps.live.com/we/help-support.md)
-- [Learn more about resource limits and scaling](https://ppc-word-edit.officeapps.live.com/we/concepts-support.md)
+- [Open a support ticket](help-support.md)
+- [Learn more about resource limits and scaling](concepts-support.md)
