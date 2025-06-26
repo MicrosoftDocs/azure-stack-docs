@@ -1,621 +1,625 @@
 - name: Azure Kubernetes Service (AKS) enabled by Azure Arc
   href: index.yml
 - name: Overview
+  expanded: true
   items:
-    - name: What is AKS enabled by Azure Arc?
-      href: aks-overview.md
-    - name: Compare AKS across platforms
-      href: aks-platforms-compare.md
-    - name: Supported Kubernetes versions
-      href: supported-kubernetes-versions.md
-    - name: Data collection
-      href: data-collection.md
-    - name: Blogs and announcements
-      href: blogs-announcements.md
+  - name: What is AKS enabled by Azure Arc?
+    href: aks-overview.md
+  - name: Compare AKS across platforms
+    href: aks-platforms-compare.md 
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md  
+  - name: Data collection
+    href: data-collection.md
+  - name: Blogs and announcements
+    href: blogs-announcements.md
 - name: AKS on Azure Local
+  expanded: true
   items:
-    - name: What's new in AKS on Azure Local
-      href: aks-whats-new-local.md
-    - name: Concepts
+  - name: What's new in AKS on Azure Local
+    href: aks-whats-new-local.md
+  - name: Concepts
+    items:
+    - name: Architecture
+      href: cluster-architecture.md
+    - name: Networking
       items:
-        - name: Architecture
-          href: cluster-architecture.md
-        - name: Networking
-          items:
-            - name: Networking concepts and requirements
-              href: aks-hci-network-system-requirements.md
-            - name: IP address planning
-              href: aks-hci-ip-address-planning.md
-            - name: Load balancer
-              href: load-balancer-overview.md
-        - name: Access and identity
-          href: concepts-security-access-identity.md
-        - name: High availability
-          items:
-            - name: Use availability sets
-              href: availability-sets.md
-        - name: Supported scale requirements
-          href: scale-requirements.md
-        - name: Connectivity modes
-          href: connectivity-modes.md
-        - name: Billing
-          items:
-            - name: Pricing details
-              href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
-    - name: Quickstarts
+      - name: Networking concepts and requirements
+        href: aks-hci-network-system-requirements.md
+      - name: IP address planning
+        href: aks-hci-ip-address-planning.md
+      - name: Load balancer
+        href: load-balancer-overview.md      
+    - name: Access and identity
+      href: concepts-security-access-identity.md
+    - name: High availability
+      items: 
+      - name: Use availability sets
+        href: availability-sets.md
+    - name: Supported scale requirements
+      href: scale-requirements.md
+    - name: Connectivity modes
+      href: connectivity-modes.md  
+    - name: Billing
       items:
-        - name: Jumpstart HCIBox (external link)
-          href: https://jumpstart.azure.com/azure_arc_jumpstart
-    - name: How-to
+      - name: Pricing details
+        href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
+  - name: Quickstarts
+    items:
+    - name: Jumpstart HCIBox (external link)
+      href: https://jumpstart.azure.com/azure_arc_jumpstart
+  - name: How-to
+    items:
+    - name: Create Kubernetes clusters
       items:
-        - name: Create Kubernetes clusters
-          items:
-            - name: Azure CLI
-              href: aks-create-clusters-cli.md
-            - name: Azure portal
-              href: aks-create-clusters-portal.md
-            - name: Bicep
-              href: create-clusters-bicep.md
-            - name: Terraform
-              href: create-clusters-terraform.md
-            - name: Azure Resource Manager template
-              href: resource-manager-quickstart.md
-            - name: REST API
-              href: aks-create-clusters-api.md
-        - name: Networking
-          items:
-            - name: Create logical networks
-              href: aks-networks.md
-            - name: Simplify outbound connectivity
-              href: arc-gateway-aks-arc.md
-            - name: Deploy in environments with low internet bandwidth
-              items:
-                - name: Disable Windows nodepool
-                  href: disable-windows-nodepool.md
-            - name: Use MetalLB load balancer
-              items:
-                - name: Azure CLI
-                  href: deploy-load-balancer-cli.md
-                - name: Azure portal
-                  href: deploy-load-balancer-portal.md
-        - name: Security
-          items:
-            - name: Encrypt etcd secrets
-              href: encrypt-etcd-secrets.md
-        - name: AI and Machine Learning
-          items:
-            - name: Deploy an AI model with the AI toolchain operator
-              href: deploy-ai-model.md
-        - name: Authentication and authorization
-          items:
-            - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
-              href: enable-authentication-microsoft-entra-id.md
-            - name: Use Azure RBAC for Kubernetes authorization
-              href: azure-rbac-local.md
-            - name: Use Kubernetes RBAC with Microsoft Entra ID
-              href: kubernetes-rbac-local.md
-            - name: Retrieve certificate-based admin kubeconfig
-              href: retrieve-admin-kubeconfig.md
-            - name: Configure SSH keys for a cluster
-              href: configure-ssh-keys.md
-            - name: Connect to Windows or Linux worker nodes with SSH
-              href: ssh-connect-to-windows-and-linux-worker-nodes.md
-            - name: Restrict SSH access
-              href: restrict-ssh-access.md
-            - name: Deploy and configure Workload Identity
-              href: workload-identity.md
-        - name: Storage
-          href: concepts-storage.md
-          items:
-            - name: CSI storage drivers
-              items:
-                - name: Use disk CSI drivers
-                  href: container-storage-interface-disks.md
-                - name: Use file CSI drivers
-                  href: container-storage-interface-files.md
-        - name: Node pools
-          items:
-            - name: Manage multiple node pools
-              href: manage-node-pools.md
-            - name: Use GPUs
-              href: deploy-gpu-node-pool.md
-        - name: Cluster management
-          items:
-            - name: Labels
-              href: cluster-labels.md
-            - name: Taints
-              href: aks-arc-use-node-taints.md
-        - name: Use autoscaler
-          href: auto-scale-aks-arc.md
-        - name: Upgrade Kubernetes clusters
-          href: cluster-upgrade.md
-        - name: Create Windows Server containers
-          href: aks-create-containers.md
-        - name: Integrate Azure Container Registry
-          href: deploy-container-registry.md
-        - name: Monitoring and logging
-          items:
-            - name: Monitor Kubernetes object events
-              href: kubernetes-monitor-object-events.md
-            - name: Get kubelet logs
-              href: aks-get-kubelet-logs.md
-            - name: Monitor control plane metrics
-              href: control-plane-metrics.md
-            - name: Enable Container Insights
-              href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
-            - name: Monitor Kubernetes audit events
-              href: kubernetes-monitor-audit-events.md
-            - name: Use on-premises monitoring
-              href: aks-monitor-logging.md
-            - name: Get on-demand logs for troubleshooting
-              href: get-on-demand-logs.md
-            - name: Monitoring data reference
-              href: kubernetes-monitor-metrics.md
-    - name: Troubleshooting
+      - name: Azure CLI
+        href: aks-create-clusters-cli.md
+      - name: Azure portal
+        href: aks-create-clusters-portal.md
+      - name: Bicep
+        href: create-clusters-bicep.md
+      - name: Terraform
+        href: create-clusters-terraform.md
+      - name: Azure Resource Manager template
+        href: resource-manager-quickstart.md
+      - name: REST API
+        href: aks-create-clusters-api.md
+    - name: Networking
       items:
-        - name: Troubleshoot and known issues
-          href: aks-troubleshoot.md
-        - name: Control plane configuration validation errors
-          href: control-plane-validation-errors.md
-        - name: K8sVersionValidation error
-          href: cluster-k8s-version.md
-        - name: Use diagnostic checker
-          href: aks-arc-diagnostic-checker.md
-        - name: KubeAPIServer unreachable error
-          href: kube-api-server-unreachable.md
-        - name: Can't create/scale AKS cluster due to image issues
-          href: gallery-image-not-usable.md
-        - name: Disk space exhaustion on control plane VMs
-          href: kube-apiserver-log-overflow.md
-        - name: Telemetry pod consumes too much memory and CPU
-          href: telemetry-pod-resources.md
-        - name: Issues after deleting storage volumes
-          href: delete-storage-volume.md
-        - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
-          href: delete-cluster-pdb.md
-        - name: Azure Advisor upgrade recommendation
-          href: azure-advisor-upgrade.md
-        - name: Deleted AKS Arc cluster still visible on Azure portal
-          href: deleted-cluster-visible.md
-        - name: Can't see VM SKUs on Azure portal
-          href: check-vm-sku.md
-        - name: Connectivity issues with MetalLB
-          href: load-balancer-issues.md
-        - name: Troubleshoot general network validation errors
-          href: network-validation-errors.md
-        - name: Network validation error due to .local domain
-          href: network-validation-error-local.md
-        - name: Entra authentication prompts when running kubectl
-          href: entra-prompts.md
-        - name: BGP with FRR not working
-          href: connectivity-troubleshoot.md
-    - name: Reference
-      items:
+      - name: Create logical networks
+        href: aks-networks.md
+      - name: Simplify outbound connectivity
+        href: arc-gateway-aks-arc.md
+      - name: Deploy in environments with low internet bandwidth 
+        items: 
+        - name: Disable Windows nodepool
+          href: disable-windows-nodepool.md        
+      - name: Use MetalLB load balancer
+        items:
         - name: Azure CLI
-          href: /cli/azure/aksarc
-        - name: Azure PowerShell
-          href: /powershell/module/az.aksarc/
-        - name: REST API reference
-          href: /rest/api/hybridcontainer/operation-groups
-    - name: Resources
+          href: deploy-load-balancer-cli.md
+        - name: Azure portal
+          href: deploy-load-balancer-portal.md
+        # - name: Troubleshoot issues
+        #   href: load-balancer-troubleshoot.md
+    - name: Security
       items:
-        - name: Azure Local
-          href: /azure/azure-local
-        - name: Azure adaptive cloud
-          href: /azure/adaptive-cloud
-        - name: Azure Arc Jumpstart
-          href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-        - name: AKS enabled by Arc roadmap
-          href: https://github.com/Azure/aksArc/projects
-        - name: AKS on Azure Local support policy
-          href: aks-on-azure-local-support-policy.md
+      - name: Encrypt etcd secrets
+        href: encrypt-etcd-secrets.md
+    - name: AI and Machine Learning
+      items:
+      - name: Deploy an AI model with the AI toolchain operator
+        href: deploy-ai-model.md
+    - name: Authentication and authorization
+      items:
+      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
+        href: enable-authentication-microsoft-entra-id.md
+      - name: Use Azure RBAC for Kubernetes authorization
+        href: azure-rbac-local.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-local.md
+      - name: Retrieve certificate-based admin kubeconfig
+        href: retrieve-admin-kubeconfig.md
+      - name: Configure SSH keys for a cluster
+        href: configure-ssh-keys.md
+      - name: Connect to Windows or Linux worker nodes with SSH
+        href: ssh-connect-to-windows-and-linux-worker-nodes.md
+      - name: Restrict SSH access
+        href: restrict-ssh-access.md
+      - name: Deploy and configure Workload Identity
+        href: workload-identity.md     
+    - name: Storage
+      href: concepts-storage.md
+      items:
+      - name: CSI storage drivers
+        items: 
+        - name: Use disk CSI drivers
+          href: container-storage-interface-disks.md
+        - name: Use file CSI drivers
+          href: container-storage-interface-files.md
+    - name: Node pools
+      items:
+      - name: Manage multiple node pools
+        href: manage-node-pools.md
+      - name: Use GPUs
+        href: deploy-gpu-node-pool.md
+    - name: Cluster management
+      items:
+      - name: Labels
+        href: cluster-labels.md
+      - name: Taints
+        href: aks-arc-use-node-taints.md
+    - name: Use autoscaler
+      href: auto-scale-aks-arc.md
+    - name: Upgrade Kubernetes clusters
+      href: cluster-upgrade.md
+    - name: Create Windows Server containers
+      href: aks-create-containers.md
+    - name: Integrate Azure Container Registry
+      href: deploy-container-registry.md
+    - name: Monitoring and logging
+      items:    
+          - name: Monitor Kubernetes object events
+            href: kubernetes-monitor-object-events.md
+          - name: Get kubelet logs
+            href: aks-get-kubelet-logs.md
+          - name: Monitor control plane metrics
+            href: control-plane-metrics.md
+          - name: Enable Container Insights
+            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+          - name: Monitor Kubernetes audit events
+            href: kubernetes-monitor-audit-events.md
+          - name: Use on-premises monitoring
+            href: aks-monitor-logging.md
+          - name: Get on-demand logs for troubleshooting
+            href: get-on-demand-logs.md
+          - name: Monitoring data reference
+            href: kubernetes-monitor-metrics.md
+  - name: Troubleshooting
+    items:
+    - name: Troubleshoot and known issues
+      href: aks-troubleshoot.md
+    - name: Control plane configuration validation errors
+      href: control-plane-validation-errors.md
+    - name: K8sVersionValidation error
+      href: cluster-k8s-version.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
+    - name: KubeAPIServer unreachable error
+      href: kube-api-server-unreachable.md
+    - name: Can't create/scale AKS cluster due to image issues
+      href: gallery-image-not-usable.md
+    - name: Disk space exhaustion on control plane VMs
+      href: kube-apiserver-log-overflow.md
+    - name: Telemetry pod consumes too much memory and CPU  
+      href: telemetry-pod-resources.md
+    - name: Issues after deleting storage volumes
+      href: delete-storage-volume.md
+    - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+      href: delete-cluster-pdb.md
+    - name: Azure Advisor upgrade recommendation
+      href: azure-advisor-upgrade.md
+    - name: Deleted AKS Arc cluster still visible on Azure portal
+      href: deleted-cluster-visible.md
+    - name: Can't see VM SKUs on Azure portal
+      href: check-vm-sku.md
+    - name: Connectivity issues with MetalLB
+      href: load-balancer-issues.md
+    - name: Troubleshoot general network validation errors
+      href: network-validation-errors.md
+    - name: Network validation error due to .local domain
+      href: network-validation-error-local.md
+    - name: Entra authentication prompts when running kubectl
+      href: entra-prompts.md
+    - name: BGP with FRR not working
+      href: connectivity-troubleshoot.md
+  - name: Reference
+    items:
+    - name: Azure CLI
+      href: /cli/azure/aksarc
+    - name: Azure PowerShell
+      href: /powershell/module/az.aksarc/
+    - name: REST API reference
+      href: /rest/api/hybridcontainer/operation-groups
+  - name: Resources
+    items:
+    - name: AKS on Azure Local support policy
+      href: aks-on-azure-local-support-policy.md
+    - name: Azure Local
+      href: /azure/azure-local
+    - name: Azure adaptive cloud
+      href: /azure/adaptive-cloud
+    - name: Azure Arc Jumpstart
+      href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+    - name: AKS enabled by Arc roadmap
+      href: https://github.com/Azure/aksArc/projects
 - name: AKS Edge Essentials
   items:
-    - name: Overview
-      href: aks-edge-overview.md
-    - name: System requirements and support matrix
-      href: aks-edge-system-requirements.md
-    - name: What's new in AKS Edge Essentials
-      href: aks-edge-whats-new.md
-    - name: Quickstart
-      href: aks-edge-quickstart.md
-    - name: Concepts
+  - name: Overview
+    href: aks-edge-overview.md
+  - name: System requirements and support matrix
+    href: aks-edge-system-requirements.md
+  - name: What's new in AKS Edge Essentials
+    href: aks-edge-whats-new.md
+  - name: Quickstart
+    href: aks-edge-quickstart.md
+  - name: Concepts
+    items:
+    - name: Clusters and nodes
+      href: aks-edge-concept-clusters-nodes.md
+    - name: Networking
+      href: aks-edge-concept-networking.md
+    - name: Deployment JSON configuration parameters
+      href: aks-edge-deployment-config-json.md
+  - name: How-to
+    items:
+    - name: Set up machine
+      href: aks-edge-howto-setup-machine.md
+    - name: Create single machine deployment
+      href: aks-edge-howto-single-node-deployment.md
+    - name: Create full deployment
+      href: aks-edge-howto-multi-node-deployment.md
+    - name: Scale out deployment
+      href: aks-edge-howto-scale-out.md
+    - name: Deploy application
+      href: aks-edge-howto-deploy-app.md
+    - name: Connect to Arc
+      href: aks-edge-howto-connect-to-arc.md
+    - name: Enable metric server
+      href: aks-edge-howto-metric-server.md
+    - name: Set up nested virtualization
+      href: aks-edge-howto-setup-nested-environment.md
+    - name: Use GitOps with AKS Edge Essentials
+      href: aks-edge-howto-use-gitops.md
+    - name: Deploy Azure IoT Operations
+      href: aks-edge-howto-deploy-azure-iot.md
+    - name: Offline installation
+      href: aks-edge-howto-offline-install.md
+    - name: Additional configuration
+      href: aks-edge-howto-more-configs.md
+    - name: Use GPU acceleration
+      href: aks-edge-gpu.md
+    - name: Security
       items:
-        - name: Clusters and nodes
-          href: aks-edge-concept-clusters-nodes.md
-        - name: Networking
-          href: aks-edge-concept-networking.md
-        - name: Deployment JSON configuration parameters
-          href: aks-edge-deployment-config-json.md
-    - name: How-to
+      - name: Configure Workload Identity
+        href: aks-edge-workload-identity.md      
+      - name: Access TPM secrets
+        href: aks-edge-howto-access-tpm.md
+      - name: Enable secret encryption with the KMS plugin
+        href: aks-edge-howto-secret-encryption.md
+      - name: Use the Key Manager for Kubernetes extension
+        href: aks-edge-howto-key-manager.md        
+    - name: Update AKS Edge Essentials
       items:
-        - name: Set up machine
-          href: aks-edge-howto-setup-machine.md
-        - name: Create single machine deployment
-          href: aks-edge-howto-single-node-deployment.md
-        - name: Create full deployment
-          href: aks-edge-howto-multi-node-deployment.md
-        - name: Scale out deployment
-          href: aks-edge-howto-scale-out.md
-        - name: Deploy application
-          href: aks-edge-howto-deploy-app.md
-        - name: Connect to Arc
-          href: aks-edge-howto-connect-to-arc.md
-        - name: Enable metric server
-          href: aks-edge-howto-metric-server.md
-        - name: Set up nested virtualization
-          href: aks-edge-howto-setup-nested-environment.md
-        - name: Use GitOps with AKS Edge Essentials
-          href: aks-edge-howto-use-gitops.md
-        - name: Deploy Azure IoT Operations
-          href: aks-edge-howto-deploy-azure-iot.md
-        - name: Offline installation
-          href: aks-edge-howto-offline-install.md
-        - name: Additional configuration
-          href: aks-edge-howto-more-configs.md
-        - name: Use GPU acceleration
-          href: aks-edge-gpu.md
-        - name: Security
-          items:
-            - name: Configure Workload Identity
-              href: aks-edge-workload-identity.md
-            - name: Access TPM secrets
-              href: aks-edge-howto-access-tpm.md
-            - name: Enable secret encryption with the KMS plugin
-              href: aks-edge-howto-secret-encryption.md
-            - name: Use the Key Manager for Kubernetes extension
-              href: aks-edge-howto-key-manager.md
-        - name: Update AKS Edge Essentials
-          items:
-            - name: Update online
-              href: aks-edge-howto-update.md
-            - name: Update offline (airgapped)
-              href: aks-edge-hybrid-howto-update-offline.md
-        - name: Uninstall AKS Edge Essentials
-          href: aks-edge-howto-uninstall.md
-        - name: Networking
-          items:
-            - name: Expose Kubernetes services
-              href: aks-edge-howto-expose-service.md
-            - name: Configure multiple NICs
-              href: aks-edge-howto-multi-nic.md
-        - name: Storage
-          items:
-            - name: Add local storage binding
-              href: aks-edge-howto-use-storage-local-path.md
-            - name: Add NFS storage binding
-              href: aks-edge-howto-use-storage-nfs.md
-        - name: Akri
-          items:
-            - name: Discover OPC UA Servers with Akri
-              href: aks-edge-how-to-akri-opc-ua.md
-            - name: Discover ONVIF cameras with Akri
-              href: aks-edge-how-to-akri-onvif.md
-    - name: Resources
+      - name: Update online
+        href: aks-edge-howto-update.md
+      - name: Update offline (airgapped)
+        href: aks-edge-hybrid-howto-update-offline.md
+    - name: Uninstall AKS Edge Essentials
+      href: aks-edge-howto-uninstall.md
+    - name: Networking
       items:
-        - name: AKS Edge Essentials PowerShell
-          href: ./reference/aks-edge-ps/index.md
-        - name: Get support
-          href: aks-edge-help-support.md
-        - name: Troubleshooting
-          href: aks-edge-troubleshoot-overview.md
-        - name: Logs
-          href: aks-edge-resources-logs.md
-        - name: File bugs
-          href: https://github.com/Azure/AKS-Edge/issues
-        - name: AKS Edge Essentials pricing
-          href: aks-edge-pricing.md
-        - name: AKS Edge Essentials licensing
-          href: aks-edge-licensing.md
-        - name: Microsoft Software License Terms
-          href: aks-edge-software-license-terms.md
+      - name: Expose Kubernetes services
+        href: aks-edge-howto-expose-service.md
+      - name: Configure multiple NICs
+        href: aks-edge-howto-multi-nic.md
+    - name: Storage
+      items:
+      - name: Add local storage binding
+        href: aks-edge-howto-use-storage-local-path.md
+      - name: Add NFS storage binding
+        href: aks-edge-howto-use-storage-nfs.md
+    - name: Akri
+      items:
+      - name: Discover OPC UA Servers with Akri
+        href: aks-edge-how-to-akri-opc-ua.md
+      - name: Discover ONVIF cameras with Akri
+        href: aks-edge-how-to-akri-onvif.md
+  - name: Resources
+    items:
+    - name: AKS Edge Essentials PowerShell 
+      href: ./reference/aks-edge-ps/index.md
+    - name: Get support
+      href: aks-edge-help-support.md
+    - name: Troubleshooting 
+      href: aks-edge-troubleshoot-overview.md
+    - name: Logs 
+      href: aks-edge-resources-logs.md
+    - name: File bugs
+      href: https://github.com/Azure/AKS-Edge/issues
+    - name: AKS Edge Essentials pricing
+      href: aks-edge-pricing.md
+    - name: AKS Edge Essentials licensing 
+      href: aks-edge-licensing.md
+    - name: Microsoft Software License Terms
+      href: aks-edge-software-license-terms.md 
 - name: AKS on VMware
   items:
-    - name: Overview
-      href: aks-vmware-overview.md
-    - name: System requirements
-      href: aks-vmware-system-requirements.md
-    - name: Network requirements
-      href: aks-vmware-networking-concepts.md
-    - name: Supported scale requirements
-      href: aks-vmware-scale-requirements.md
-    - name: Quickstart
+  - name: Overview
+    href: aks-vmware-overview.md
+  - name: System requirements
+    href: aks-vmware-system-requirements.md
+  - name: Network requirements
+    href: aks-vmware-networking-concepts.md
+  - name: Supported scale requirements
+    href: aks-vmware-scale-requirements.md
+  - name: Quickstart
+    items:
+    - name: Deploy an AKS cluster
+      href: aks-vmware-quickstart-deploy.md
+  - name: Concepts
+    items:
+    - name: Cluster architecture
+      href: aks-vmware-cluster-architecture.md
+  - name: How-to
+    items:
+    - name: Install Kubernetes Extension for Operators
+      href: aks-vmware-install-kubernetes-extension.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: aks-vmware-retrieve-kubeconfig.md
+    - name: Monitoring and logging
+      href: aks-vmware-monitoring-logging.md
+  - name: Troubleshooting
+    items:
+    - name: Troubleshooting and support
+      href: aks-vmware-support-troubleshoot.md
+    - name: Known issues
+      href: aks-vmware-known-issues.md
+    - name: Troubleshooting guide
+      href: aks-vmware-troubleshooting-guide.md
+  - name: Reference
+    items:
+    - name: aksarc CLI version 1.0.0b1
       items:
-        - name: Deploy an AKS cluster
-          href: aks-vmware-quickstart-deploy.md
-    - name: Concepts
-      items:
-        - name: Cluster architecture
-          href: aks-vmware-cluster-architecture.md
-    - name: How-to
-      items:
-        - name: Install Kubernetes Extension for Operators
-          href: aks-vmware-install-kubernetes-extension.md
-        - name: Retrieve certificate-based admin kubeconfig
-          href: aks-vmware-retrieve-kubeconfig.md
-        - name: Monitoring and logging
-          href: aks-vmware-monitoring-logging.md
-    - name: Troubleshooting
-      items:
-        - name: Troubleshooting and support
-          href: aks-vmware-support-troubleshoot.md
-        - name: Known issues
-          href: aks-vmware-known-issues.md
-        - name: Troubleshooting guide
-          href: aks-vmware-troubleshooting-guide.md
-    - name: Reference
-      items:
-        - name: aksarc CLI version 1.0.0b1
-          items:
-            - name: Commands
-              href: aksarc.yml
-            - name: logs
-              href: logs.yml
-            - name: nodepool
-              href: nodepool.yml
-            - name: vmsize
-              href: vmsize.yml
-            - name: vnet
-              href: vnet.yml
+      - name: Commands
+        href: aksarc.yml
+      - name: logs
+        href: logs.yml
+      - name: nodepool
+        href: nodepool.yml
+      - name: vmsize
+        href: vmsize.yml
+      - name: vnet
+        href: vnet.yml
 - name: AKS on Windows Server
   items:
-    - name: AKS on Windows Server retirement
-      href: aks-windows-server-retirement.md
-    - name: Overview
-      href: overview.md
-    - name: System requirements
-      href: system-requirements.md
-    - name: Quickstarts
+  - name: AKS on Windows Server retirement
+    href: aks-windows-server-retirement.md
+  - name: Overview
+    href: overview.md
+  - name: System requirements
+    href: system-requirements.md
+  - name: Quickstarts 
+    items:
+    - name: Deploy an AKS cluster
       items:
-        - name: Deploy an AKS cluster
-          items:
+      - name: Use PowerShell
+        href: kubernetes-walkthrough-powershell.md
+      - name: Use Windows Admin Center
+        items:
+          - name: Set up AKS
+            href: setup.md
+          - name: Create a Kubernetes cluster
+            href: create-kubernetes-cluster.md
+  - name: Concepts
+    items:
+    - name: Quotas and resource limits
+      href: concepts-support.md
+    - name: Clusters and workloads
+      items:
+      - name: Kubernetes cluster architecture and workloads
+        href: kubernetes-concepts.md
+      - name: Deploy a container image from Azure Container Registry
+        href: deploy-azure-container-registry.md
+      - name: Manage workloads
+        items:
+        - name: Create and delete pods
+          href: create-pods.md
+        - name: Create deployments
+          href: create-deployments.md
+        - name: Create a DaemonSet
+          href: create-daemonsets.md
+        - name: Create a ReplicaSet
+          href: create-replicasets.md
+        - name: Create a StatefulSet
+          href: create-statefulset.md
+    - name: Availability with 2-node Azure Local cluster
+      href: deploy-cluster-on-two-node-hci.md
+    - name: Security
+      items:
+        - name: Security overview
+          href: concepts-security.md
+        - name: Container security
+          href: container-security.md
+        - name: Certificate management overview
+          href: certificates-overview.md
+        - name: Azure policy guidance
+          href: policy-guidance.md
+    - name: Networking
+      items:
+        - name: Kubernetes node networking
+          href: concepts-node-networking.md
+        - name: Kubernetes container networking
+          href: concepts-container-networking.md
+    - name: Application availability
+      href: app-availability.md
+    - name: Scale
+      items:
+        - name: Cluster autoscaler
+          href: concepts-cluster-autoscaling.md
+        - name: Vertical node autoscaling
+          href: concepts-vertical-node-pool-scaling.md
+    - name: Node auto-repair
+      href: node-repair.md
+    - name: Billing
+      items:
+      - name: Pricing overview
+        href: pricing.md      
+      - name: Azure Hybrid Benefit
+        href: azure-hybrid-benefit-22h2.md
+  - name: How-to guides
+    items: 
+    - name: Install AKS Arc host with prestaged cluster service objects and DNS records
+      href: prestage-cluster-service-host-create.md
+    - name: Use manual (offline) download
+      href: offline-download-22h2.md
+    - name: Use GPUs
+      href: deploy-gpu-node-pool-22h2.md
+    - name: Manage multiple node pools
+      href: manage-node-pools-22h2.md
+    - name: Upgrade
+      items:
+      - name: Upgrade AKS Arc host
+        items:
+        - name: Use PowerShell
+          href: update-akshci-host-powershell.md
+        - name: Use Windows Admin Center
+          href: update-akshci-host-windows-admin-center.md
+      - name: Upgrade Kubernetes version
+        items:
+        - name: Use PowerShell
+          href: upgrade.md
+        - name: Use Windows Admin Center
+          href: upgrade-kubernetes.md
+    - name: Develop applications
+      items:
+        - name: Deploy applications with Helm
+          href: helm-deploy.md
+        - name: Deploy Azure Arc-enabled data services
+          href: deploy-arc-data-services.md
+        - name: Deploy configurations using GitOps
+          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
+        - name: Implement CI/CD using GitOps
+          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
+    - name: Scale
+      items:    
+          - name: Scale an AKS cluster
+            href: scale-cluster.md
+          - name: Use autoscaler
+            items:
             - name: Use PowerShell
-              href: kubernetes-walkthrough-powershell.md
-            - name: Use Windows Admin Center
-              items:
-                - name: Set up AKS
-                  href: setup.md
-                - name: Create a Kubernetes cluster
-                  href: create-kubernetes-cluster.md
-    - name: Concepts
+              href: work-with-horizontal-autoscaler.md
+            - name: Use autoscaler profiles
+              href: work-with-autoscaler-profiles.md
+    - name: Restart, stop, restore
+      items:    
+      - name: Restart, remove, or reinstall AKS
+        href: restart-cluster.md
+      - name: Stop and start an AKS cluster
+        href: stop-start-cluster.md
+      - name: Restore AKS cluster from disaster
+        href: restore-aks-cluster.md
+      - name: Back up or restore workload clusters using Velero
+        href: backup-workload-cluster.md
+    - name: Use Azure Arc Kubernetes
       items:
-        - name: Quotas and resource limits
-          href: concepts-support.md
-        - name: Clusters and workloads
-          items:
-            - name: Kubernetes cluster architecture and workloads
-              href: kubernetes-concepts.md
-            - name: Deploy a container image from Azure Container Registry
-              href: deploy-azure-container-registry.md
-            - name: Manage workloads
-              items:
-                - name: Create and delete pods
-                  href: create-pods.md
-                - name: Create deployments
-                  href: create-deployments.md
-                - name: Create a DaemonSet
-                  href: create-daemonsets.md
-                - name: Create a ReplicaSet
-                  href: create-replicasets.md
-                - name: Create a StatefulSet
-                  href: create-statefulset.md
-        - name: Availability with 2-node Azure Local cluster
-          href: deploy-cluster-on-two-node-hci.md
-        - name: Security
-          items:
-            - name: Security overview
-              href: concepts-security.md
-            - name: Container security
-              href: container-security.md
-            - name: Certificate management overview
-              href: certificates-overview.md
-            - name: Azure policy guidance
-              href: policy-guidance.md
-        - name: Networking
-          items:
-            - name: Kubernetes node networking
-              href: concepts-node-networking.md
-            - name: Kubernetes container networking
-              href: concepts-container-networking.md
-        - name: Application availability
-          href: app-availability.md
-        - name: Scale
-          items:
-            - name: Cluster autoscaler
-              href: concepts-cluster-autoscaling.md
-            - name: Vertical node autoscaling
-              href: concepts-vertical-node-pool-scaling.md
-        - name: Node auto-repair
-          href: node-repair.md
-        - name: Billing
-          items:
-            - name: Pricing overview
-              href: pricing.md
-            - name: Azure Hybrid Benefit
-              href: azure-hybrid-benefit-22h2.md
-    - name: How-to guides
+      - name: Connect to Azure Arc for Kubernetes
+        href: connect-to-arc.md
+      - name: Az module CLI commands
+        href: /cli/azure/connectedk8s
+    - name: Networking
       items:
-        - name: Install AKS Arc host with prestaged cluster service objects and DNS records
-          href: prestage-cluster-service-host-create.md
-        - name: Use manual (offline) download
-          href: offline-download-22h2.md
-        - name: Use GPUs
-          href: deploy-gpu-node-pool-22h2.md
-        - name: Manage multiple node pools
-          href: manage-node-pools-22h2.md
-        - name: Upgrade
-          items:
-            - name: Upgrade AKS Arc host
-              items:
-                - name: Use PowerShell
-                  href: update-akshci-host-powershell.md
-                - name: Use Windows Admin Center
-                  href: update-akshci-host-windows-admin-center.md
-            - name: Upgrade Kubernetes version
-              items:
-                - name: Use PowerShell
-                  href: upgrade.md
-                - name: Use Windows Admin Center
-                  href: upgrade-kubernetes.md
-        - name: Develop applications
-          items:
-            - name: Deploy applications with Helm
-              href: helm-deploy.md
-            - name: Deploy Azure Arc-enabled data services
-              href: deploy-arc-data-services.md
-            - name: Deploy configurations using GitOps
-              href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
-            - name: Implement CI/CD using GitOps
-              href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
-        - name: Scale
-          items:
-            - name: Scale an AKS cluster
-              href: scale-cluster.md
-            - name: Use autoscaler
-              items:
-                - name: Use PowerShell
-                  href: work-with-horizontal-autoscaler.md
-                - name: Use autoscaler profiles
-                  href: work-with-autoscaler-profiles.md
-        - name: Restart, stop, restore
-          items:
-            - name: Restart, remove, or reinstall AKS
-              href: restart-cluster.md
-            - name: Stop and start an AKS cluster
-              href: stop-start-cluster.md
-            - name: Restore AKS cluster from disaster
-              href: restore-aks-cluster.md
-            - name: Back up or restore workload clusters using Velero
-              href: backup-workload-cluster.md
-        - name: Use Azure Arc Kubernetes
-          items:
-            - name: Connect to Azure Arc for Kubernetes
-              href: connect-to-arc.md
-            - name: Az module CLI commands
-              href: /cli/azure/connectedk8s
-        - name: Networking
-          items:
-            - name: Use proxy settings
-              href: set-proxy-settings.md
-            - name: Update proxy settings and certificates
-              href: proxy-change.md
-            - name: Configure load balancer
-              href: configure-load-balancer.md
-            - name: Use multiple load balancers
-              href: multiple-load-balancers.md
-            - name: Configure a custom load balancer
-              href: configure-custom-load-balancer.md
-            - name: Use an ingress controller
-              href: create-ingress-controller.md
-            - name: Use Microsoft Software Defined Networking (SDN)
-              items:
-                - name: Deploy SDN
-                  href: software-defined-networking.md
-                - name: Deploy application clusters on different SDN virtual networks
-                  href: deploy-target-clusters-virtual-networks.md
-        - name: Storage
-          items:
-            - name: Use persistent volumes
-              href: persistent-volume.md
-        - name: Security and authentication
-          items:
-            - name: Restrict SSH access
-              href: restrict-ssh-access-22h2.md
-            - name: Use Active Directory single sign-on
-              href: ad-sso.md
-            - name: Use Kubernetes RBAC with Microsoft Entra ID
-              href: kubernetes-rbac-entra-id.md
-            - name: Use Azure RBAC with AKS clusters
-              href: azure-rbac-aks-hybrid.md
-            - name: Update certificate bundle on container hosts
-              href: update-certificate-bundle.md
-            - name: Update certificates
-              href: update-certificates.md
-            - name: Secrets Store CSI Driver configuration
-              href: secrets-store-csi-driver.md
-            - name: Encrypt etcd secrets
-              href: encrypt-secrets.md
-            - name: Configure Defender for Azure Arc-enabled Kubernetes clusters
-              href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
-        - name: Monitoring and logging
-          items:
-            - name: Use on-premises monitoring
-              href: monitor-logging.md
-        - name: Use Windows Server containers
-          items:
-            - name: Deploy .NET applications
-              href: deploy-windows-application.md
-            - name: Configure group Managed Service Account support
-              href: prepare-windows-nodes-gmsa.md
-            - name: Adapt apps for mixed-OS Kubernetes clusters
-              href: adapt-apps-mixed-os-clusters.md
-        - name: Develop and run applications
-          items:
-            - name: Install existing applications with Helm
-              href: kubernetes-helm.md
-            - name: Use OpenFaaS
-              href: openfaas.md
-            - name: Use Bridge to Kubernetes with Visual Studio Code
-              href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
-            - name: Use Bridge to Kubernetes with Visual Studio
-              href: /visualstudio/containers/bridge-to-kubernetes
-            - name: Deploy a Java application with Open Liberty or WebSphere Liberty
-              href: deploy-java-liberty-app.md
-            - name: Deploy Linux applications
-              href: deploy-linux-application.md
-        - name: Helper scripts
-          items:
-            - name: Set up multiple administrators
-              href: set-multiple-administrators.md
-            - name: Remove old PowerShell modules
-              href: https://github.com/Azure/aks-hci/issues/130
-    - name: Troubleshooting
+      - name: Use proxy settings
+        href: set-proxy-settings.md
+      - name: Update proxy settings and certificates
+        href: proxy-change.md
+      - name: Configure load balancer
+        href: configure-load-balancer.md
+      - name: Use multiple load balancers
+        href: multiple-load-balancers.md
+      - name: Configure a custom load balancer
+        href: configure-custom-load-balancer.md
+      - name: Use an ingress controller
+        href: create-ingress-controller.md
+      - name: Use Microsoft Software Defined Networking (SDN)
+        items:
+        - name: Deploy SDN
+          href: software-defined-networking.md
+        - name: Deploy application clusters on different SDN virtual networks
+          href: deploy-target-clusters-virtual-networks.md
+    - name: Storage
       items:
-        - name: Uninstall AKS cluster provisioning from Azure preview
-          href: aks-hybrid-preview-uninstall.md
-        - name: Troubleshooting overview
-          href: troubleshoot-overview.md
-        - name: Azure Arc-enabled Kubernetes
-          href: known-issues-arc.yml
-        - name: Pre-installation validation tests
-          href: validation-tests.md
-        - name: Install
-          href: known-issues-installation.yml
-        - name: Upgrade
-          href: known-issues-upgrade.yml
-        - name: Workload and clusters
-          items:
-            - name: Kubernetes clusters
-              href: known-issues-workload-clusters.yml
-            - name: Connect to nodes with SSH
-              href: ssh-connection.md
-        - name: Networking
-          href: known-issues-networking.yml
-        - name: Security
-          href: known-issues-security.yml
-        - name: Storage
-          href: known-issues-storage.yml
-        - name: Windows Admin Center
-          href: known-issues-windows-admin-center.yml
-        - name: Uninstall
-          href: known-issues-uninstall.yml
-        - name: Other
-          href: known-issues.yml
-        - name: Support policies
-          href: support-policies.md
-        - name: Get support
-          href: help-support.md
-        - name: File bugs
-          href: https://aka.ms/AKS-hybrid-issues
-        - name: Release notes
-          href: https://aka.ms/AKS-hybrid-Releasenotes
-        - name: AKS Arc PowerShell
-          href: ./reference/ps/index.md
-        - name: Add-ons, extensions, and integrations
-          href: add-ons.md
-    - name: Architecture
+      - name: Use persistent volumes
+        href: persistent-volume.md
+    - name: Security and authentication
       items:
-        - name: Baseline architecture for AKS
-          href: /azure/architecture/example-scenario/hybrid/aks-baseline
-        - name: Network architecture for AKS
-          href: /azure/architecture/example-scenario/hybrid/aks-network
+      - name: Restrict SSH access
+        href: restrict-ssh-access-22h2.md
+      - name: Use Active Directory single sign-on
+        href: ad-sso.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-entra-id.md
+      - name: Use Azure RBAC with AKS clusters
+        href: azure-rbac-aks-hybrid.md
+      - name: Update certificate bundle on container hosts
+        href: update-certificate-bundle.md
+      - name: Update certificates
+        href: update-certificates.md
+      - name: Secrets Store CSI Driver configuration
+        href: secrets-store-csi-driver.md
+      - name: Encrypt etcd secrets
+        href: encrypt-secrets.md
+      - name: Configure Defender for Azure Arc-enabled Kubernetes clusters
+        href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Monitoring and logging
+      items:    
+      - name: Use on-premises monitoring
+        href: monitor-logging.md
+    - name: Use Windows Server containers
+      items:
+      - name: Deploy .NET applications
+        href: deploy-windows-application.md
+      - name: Configure group Managed Service Account support
+        href: prepare-windows-nodes-gmsa.md
+      - name: Adapt apps for mixed-OS Kubernetes clusters
+        href: adapt-apps-mixed-os-clusters.md
+    - name: Develop and run applications
+      items:
+      - name: Install existing applications with Helm
+        href: kubernetes-helm.md
+      - name: Use OpenFaaS
+        href: openfaas.md
+      - name: Use Bridge to Kubernetes with Visual Studio Code
+        href: /visualstudio/bridge/bridge-to-kubernetes-vs-code
+      - name: Use Bridge to Kubernetes with Visual Studio
+        href: /visualstudio/containers/bridge-to-kubernetes
+      - name: Deploy a Java application with Open Liberty or WebSphere Liberty
+        href: deploy-java-liberty-app.md
+      - name: Deploy Linux applications
+        href: deploy-linux-application.md
+    - name: Helper scripts
+      items: 
+      - name: Set up multiple administrators
+        href: set-multiple-administrators.md
+      - name: Remove old PowerShell modules
+        href: https://github.com/Azure/aks-hci/issues/130
+  - name: Troubleshooting
+    items:
+    - name: Uninstall AKS cluster provisioning from Azure preview
+      href: aks-hybrid-preview-uninstall.md
+    - name: Troubleshooting overview
+      href: troubleshoot-overview.md
+    - name: Azure Arc-enabled Kubernetes
+      href: known-issues-arc.yml
+    - name: Pre-installation validation tests
+      href: validation-tests.md
+    - name: Install
+      href: known-issues-installation.yml
+    - name: Upgrade 
+      href: known-issues-upgrade.yml
+    - name: Workload and clusters
+      items: 
+      - name: Kubernetes clusters
+        href: known-issues-workload-clusters.yml
+      - name: Connect to nodes with SSH
+        href: ssh-connection.md
+    - name: Networking
+      href: known-issues-networking.yml
+    - name: Security
+      href: known-issues-security.yml
+    - name: Storage
+      href: known-issues-storage.yml  
+    - name: Windows Admin Center
+      href: known-issues-windows-admin-center.yml
+    - name: Uninstall
+      href: known-issues-uninstall.yml
+    - name: Other
+      href: known-issues.yml
+    - name: Support policies
+      href: support-policies.md
+    - name: Get support
+      href: help-support.md
+    - name: File bugs
+      href: https://aka.ms/AKS-hybrid-issues
+    - name: Release notes
+      href: https://aka.ms/AKS-hybrid-Releasenotes
+    - name: AKS Arc PowerShell
+      href: ./reference/ps/index.md
+    - name: Add-ons, extensions, and integrations
+      href: add-ons.md    
+  - name: Architecture
+    items:
+    - name: Baseline architecture for AKS
+      href: /azure/architecture/example-scenario/hybrid/aks-baseline
+    - name: Network architecture for AKS
+      href: /azure/architecture/example-scenario/hybrid/aks-network
