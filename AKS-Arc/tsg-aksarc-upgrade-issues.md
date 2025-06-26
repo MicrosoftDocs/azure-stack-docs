@@ -47,7 +47,7 @@ Upgrading the AKSArc cluster. This operation might take a while...
 
 ## Possible causes and follow-ups
 
-- The root cause is a recent change introduced in Azure Local version 2503. Under certain conditions, transient or intermittent failures during the Kubernetes upgrade process are not correctly detected or recovered from, leading the cluster state to remain indefinitely in the 'Upgrading' state.
+- The root cause's a recent change introduced in Azure Local version 2503. Under certain conditions, if there are transient or intermittent failures during the Kubernetes upgrade process, they're not correctly detected or recovered from. This can cause the cluster state to stay stuck in the 'Upgrading' state.
 - You hit this issue if the version of the AKS Arc extension on your custom location - the `hybridaksextension` extension's version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
 
 ```azurecli
@@ -59,14 +59,14 @@ az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceB
 
 
 ## Mitigation
-This issue can be resolved by invoking the AKS Arc update call. The `update` command will retrigger the upgrade flow as well. You can invoke the `aksarc update` command with some placeholder parameters. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features are not already enabled. First, check whether any of the features enabled
+This issue can be resolved by invoking the AKS Arc update call. The `update` command will retrigger the upgrade flow as well. You can invoke the `aksarc update` command with some placeholder parameters. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features aren't already enabled. First, check whether any of the features enabled
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 
 az account set -s <subscription ID> 
 az aksarc show -g <resource_group_name> -n <cluster_name>
 ```
-Check the storage profile setion:
+Check the storage profile section:
 ```json
 "storageProfile": {  
      "nfsCsiDriver": {  
@@ -79,7 +79,7 @@ Check the storage profile setion:
    }
 ```
 
-If one of the drivers are disabled, you can enable it using the following command
+If one of the drivers is disabled, you can enable it using the following command:
 
 ```azurecli
 az aksarc update --enable-smb-driver -g <resource_group_name> -n <cluster_name>
