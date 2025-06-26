@@ -27,7 +27,6 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS Arc images](gallery-image-not-usable.md) | Partially fixed in 2503 release |
 | AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Active |
 | AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Active |
-| AKS steady state       | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) | Active |
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
 | AKS cluster delete     | [Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
 | Azure portal           | [Can't see VM SKUs on Azure portal](check-vm-sku.md) | Fixed in 2411 release |
@@ -43,6 +42,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | Create validation      | [KubeAPIServer unreachable error](kube-api-server-unreachable.md) |
 | Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md) |
 | Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
+| Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) | 
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
 | BGP with FRR not working | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
