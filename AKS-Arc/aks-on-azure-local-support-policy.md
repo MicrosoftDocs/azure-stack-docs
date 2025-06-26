@@ -141,7 +141,7 @@ For node pools affected by a security flaw, Microsoft notifies you with details 
 
 Although you can sign into your Azure Local clusters change the node pool VMs, this operation is discouraged because changes can make an AKS Arc cluster unsupportable.
 
-You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](aks-hci-network-system-requirements).
+You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](aks-hci-network-system-requirements.md).
 
 ## Stopped or disconnected AKS Arc clusters
 
