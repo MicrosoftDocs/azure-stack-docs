@@ -5,7 +5,7 @@ description: Troubleshooting steps you can take after you configure a site-to-si
 author: sethmanheim
 ms.author: sethm
 ms.date: 07/27/2021
-ms.topic: article
+ms.topic: troubleshooting-general
 ms.reviewer: unknown
 ms.lastreviewed: 11/22/2020
 

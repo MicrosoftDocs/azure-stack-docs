@@ -4,7 +4,7 @@ description: Activate Azure Hybrid Benefit for AKS on Windows Server.
 author: sethmanheim
 ms.author: sethm
 ms.date: 04/01/2025
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
 ms.custom:

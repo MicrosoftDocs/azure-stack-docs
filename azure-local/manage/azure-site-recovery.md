@@ -1,7 +1,7 @@
 ---
 title: Protect your Hyper-V Virtual Machine workloads on Azure Local with Azure Site Recovery (preview)
 description: Use Azure Site Recovery to protect Hyper-V VM workloads running on Azure Local. (preview)
-ms.topic: article
+ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.date: 05/20/2025

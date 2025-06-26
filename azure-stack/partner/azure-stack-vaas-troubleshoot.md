@@ -3,7 +3,7 @@ title: Troubleshoot validation as a service
 titleSuffix: Azure Stack Hub
 description: Troubleshoot validation as a service for Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: troubleshooting-general
 ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: johnhas
