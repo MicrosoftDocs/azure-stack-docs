@@ -15,7 +15,7 @@ This article describes how to fix an issue in which your Azure Kubernetes Servic
 
 ## Symptoms
 
-When you try to upgrade an AKS Arc cluster, you notice that the **Current state** property of the cluster remains in the **Upgrading** state.
+When you try to upgrade an AKS Arc cluster, you notice that the `currentState` property of the cluster remains in the **Upgrading** state.
 
 ```azurecli
 az aksarc upgrade --name "cluster-name" --resource-group "rg-name"
@@ -49,14 +49,14 @@ Upgrading the AKSArc cluster. This operation might take a while...
 ## Cause
 
 - The root cause is a recent change introduced in Azure Local version 2503. Under certain conditions, if there are transient or intermittent failures during the Kubernetes upgrade process, they're not correctly detected or recovered from. This can cause the cluster state to remain in the **Upgrading** state.
-- You see this issue if the AKS Arc extension on your custom location - the `hybridaksextension` extension version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
+- You see this issue if the AKS Arc custom location extension `hybridaksextension` version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
 
-```azurecli
-az login --use-device-code --tenant <Azure tenant ID> 
-az account set -s <subscription ID> 
-$res=get-archcimgmt
-az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceBridge.name --cluster-type appliances --name hybridaksextension
-```
+  ```azurecli
+  az login --use-device-code --tenant <Azure tenant ID> 
+  az account set -s <subscription ID> 
+  $res=get-archcimgmt
+  az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceBridge.name --cluster-type appliances --name hybridaksextension
+  ```
 
 ## Mitigation
 
@@ -89,18 +89,18 @@ az aksarc update --enable-smb-driver -g <resource_group_name> -n <cluster_name>
 az aksarc update --enable-nfs-driver -g <resource_group_name> -n <cluster_name>
 ```
 
-Running the `aksarc update` command should resolve the issue and the `Current state` parameter of the cluster should now show as **Succeeded**. Once the status is updated, if you don't want to retain the drivers as enabled, you can revert this action by running the following commands:
+Running the `aksarc update` command should resolve the issue and the `currentState` property of the cluster should now show as **Succeeded**. Once the status is updated, if you don't want to retain the drivers as enabled, you can revert this action by running one of the following commands:
 
 ```azurecli
 az aksarc update --disable-smb-driver -g <resource_group_name> -n <cluster_name>
 az aksarc update --disable-nfs-driver -g <resource_group_name> -n <cluster_name>
 ```
 
-If both drivers are already enabled on your cluster, you can disable the one that is not in use. If you require both drivers to remain enabled, contact Microsoft Support for further assistance.
+If both drivers are already enabled on your cluster, you can disable the one that's not in use. If you require both drivers to remain enabled, contact Microsoft Support for further assistance.
 
 ## Verification
 
-To confirm the K8s version upgrade is complete, run the following command and check that the `Current State` parameter in the JSON output is set to `Succeeded`.
+To confirm the K8s version upgrade is complete, run the following command and check that the `currentState` property in the JSON output is set to `Succeeded`.
 
 ```azurecli
 az aksarc show -g <resource_group> -n <cluster_name>
