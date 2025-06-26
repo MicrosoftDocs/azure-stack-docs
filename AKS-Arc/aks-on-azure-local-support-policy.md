@@ -53,9 +53,7 @@ You are asked to upgrade the cluster to a supported version when requesting supp
 
 For information about the supported Kubernetes versions, see [Supported Kubernetes versions](supported-kubernetes-versions.md).
 
-AKS Arc follows the platform version support timeframes for those products. That is, AKS Arc is not supported on unsupported versions of those products. For more information, see their support policy:
-
-[Azure Local supported versions information](/azure/azure-local/release-information-23h2)
+AKS Arc follows the platform version support timeframes for those products. That is, AKS Arc is not supported on unsupported versions of those products. For more information, see [Azure Local supported versions information](/azure/azure-local/release-information-23h2).
 
 ## Shared responsibility
 
