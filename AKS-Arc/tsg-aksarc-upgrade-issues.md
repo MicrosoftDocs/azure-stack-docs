@@ -11,11 +11,11 @@ ms.reviewer: abha
 
 # Troubleshoot the issue when the AKS Arc cluster is stuck in 'Upgrading' state
 
-This article describes how to fix the issue when your Azure Kubernetes Service enablied by Arc (AKS Arc) cluster is stuck in 'Upgrading' state. This issue typically occurs after updating Azure Local to version 2503 or 2504 and when you try to upgrade the Kubernetes version on your cluster.
+This article describes how to fix the issue when your Azure Kubernetes Service enabled by Arc (AKS Arc) cluster is stuck in 'Upgrading' state. This issue typically occurs after updating Azure Local to version 2503 or 2504 and when you try to upgrade the Kubernetes version on your cluster.
 
 ## Symptoms
 
-When you try to upgrade an AKS Arc cluster, you notice that the **Current state** property of the cluster remains in the 'Upgrading' state. 
+When you try to upgrade an AKS Arc cluster, you notice that the **Current state** property of the cluster remains in the 'Upgrading' state.
 
 ```output
 az aksarc upgrade --name "cluster-name" --resource-group "rg-name"
@@ -34,16 +34,15 @@ Upgrading the AKSArc cluster. This operation might take a while...
   "id": "/subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/Bellevue/providers/Microsoft.Kubernetes/ConnectedClusters/Bel-cluster/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default",
   "name": "default",
   "properties": {
-	"kubernetesVersion": "1.30.4",
-	"provisioningState": "Succeeded",
-	"currentState": "Upgrading",
+ "kubernetesVersion": "1.30.4",
+ "provisioningState": "Succeeded",
+ "currentState": "Upgrading",
     "errorMessage": null,
     "operationStatus": null
     "agentPoolProfiles": [
       {
         ...
 ```
-
 
 ## Possible causes and follow-ups
 
@@ -57,16 +56,18 @@ $res=get-archcimgmt
 az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceBridge.name --cluster-type appliances --name hybridaksextension
 ```
 
-
 ## Mitigation
-This issue can be resolved by invoking the AKS Arc update command. The `update` command will retriggers the upgrade flow. You can invoke the `aksarc update` command with placeholder parameters, which dont impact the state of the cluster. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
+
+This issue can be resolved by invoking the AKS Arc update command. The `update` command retriggers the upgrade flow. You can invoke the `aksarc update` command with placeholder parameters, which do not impact the state of the cluster. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 
 az account set -s <subscription ID> 
 az aksarc show -g <resource_group_name> -n <cluster_name>
 ```
+
 Check the storage profile section:
+
 ```json
 "storageProfile": {  
      "nfsCsiDriver": {  
@@ -92,16 +93,17 @@ Running the `aksarc update` command should resolve the issue and the `Current st
 az aksarc update --disable-smb-driver -g <resource_group_name> -n <cluster_name>
 az aksarc update --disable-nfs-driver -g <resource_group_name> -n <cluster_name>
 ```
+
 If both drivers are already enabled on your cluster, you can disable the one that is not in use. If you require both drivers to remain enabled, contact Microsoft Support for further assistance.
 
 ## Verification
+
 Run the following command and check that the **Current State** parameter in the JSON output is set to 'Succeeded' to confirm the K8s version upgrade is complete.
 
 ```azurecli
 az aksarc show -g <resource_group> -n <cluster_name>
 
 ```
-
 
 ## Contact Microsoft Support
 
