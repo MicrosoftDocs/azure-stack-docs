@@ -11,11 +11,11 @@ ms.reviewer: abha
 
 # Troubleshoot the issue when the AKS Arc cluster is stuck in 'Upgrading' state
 
-This article describes how to fix the issue when your AKS Arc cluster is stuck in 'Upgrading' state, when you try to upgrade the Kubernetes version on your cluster. This issue typically occurs after updating ASZ Local to version 2503 or 2504.
+This article describes how to fix the issue when your Azure Kubernetes Service enablied by Arc (AKS Arc) cluster is stuck in 'Upgrading' state, when you try to upgrade the Kubernetes version on your cluster. This issue typically occurs after updating Azure Local to version 2503 or 2504.
 
 ## Symptoms
 
-When you try to upgrade an AKS Arc cluster, you notice that the **Current state** property of the cluster continues to show as 'Upgrading', as shown below:
+When you try to upgrade an AKS Arc cluster, you notice that the **Current state** property of the cluster continues to show as 'Upgrading'. 
 
 ```output
 az aksarc upgrade --name "cluster-name" --resource-group "rg-name"
@@ -48,7 +48,7 @@ Upgrading the AKSArc cluster. This operation might take a while...
 ## Possible causes and follow-ups
 
 - The root cause is a recent change introduced in Azure Local version 2503. Under certain conditions, transient or intermittent failures during the Kubernetes upgrade process are not correctly detected or recovered from, leading the cluster state to remain indefinitely in the 'Upgrading' state.
-- You will hit this issue if the version of the AKS Arc extension on your custom location - the `hybridaksextension` extension's version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
+- You hit this issue if the version of the AKS Arc extension on your custom location - the `hybridaksextension` extension's version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 
@@ -59,7 +59,7 @@ az k8s-extension show -g $res.HybridaksExtension.resourceGroup -c $res.ResourceB
 
 
 ## Mitigation
-This issue can be resolved by invoking the AKS Arc update call. This will retrigger the upgrade flow as well. You can invoke the `aksarc update` command with some placeholder parameters. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features are not already enabled. First, check whether any of the features enabled
+This issue can be resolved by invoking the AKS Arc update call. The `update` command will retrigger the upgrade flow as well. You can invoke the `aksarc update` command with some placeholder parameters. So in this case, you could invoke the update call to enable NFS or SMB drivers if those features are not already enabled. First, check whether any of the features enabled
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 
@@ -73,6 +73,7 @@ Check the storage profile setion:
        "enabled": false
      },  
      "smbCsiDriver": {  
+
        "enabled": true  
      }  
    }
@@ -91,10 +92,10 @@ Running the `aksarc update` command should resolve the issue and the `Current st
 az aksarc update --disable-smb-driver -g <resource_group_name> -n <cluster_name>
 az aksarc update --disable-nfs-driver -g <resource_group_name> -n <cluster_name>
 ```
-If you find that both of the drivers are enabled on your cluster, you can disable the driver you are not using. If you are using both drivers, please contact the support team for further instructions.
+If both drivers are already enabled on your cluster, you can disable the one that is not in use. If you require both drivers to remain enabled, contact Microsoft Support for further assistance.
 
 ## Verification
-You can check that the K8s version upgrade has completed, and state has moved to Succeeded, by running the following command and checking for the **Current State** parameter in the JSON. 
+Run the following command and check that the **Current State** parameter in the JSON output is set to 'Succeeded' to confirm the K8s version upgrade is complete.
 
 ```azurecli
 az aksarc show -g <resource_group> -n <cluster_name>
