@@ -89,7 +89,7 @@ az aksarc update --enable-smb-driver -g <resource_group_name> -n <cluster_name>
 az aksarc update --enable-nfs-driver -g <resource_group_name> -n <cluster_name>
 ```
 
-Running the `aksarc update` command should resolve the issue and the `currentState` property of the cluster should now show as **Succeeded**. Once the status is updated, if you don't want to retain the drivers as enabled, you can revert this action by running one of the following commands:
+Running the `aksarc update` command should resolve the issue and the `currentState` property of the cluster should now show as **Succeeded**. Once the status is updated, if you don't want to keep the drivers enabled, you can reverse this action by running one of the following commands:
 
 ```azurecli
 az aksarc update --disable-smb-driver -g <resource_group_name> -n <cluster_name>
