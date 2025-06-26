@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/12/2025
+ms.date: 06/26/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -63,9 +63,11 @@ The following table lists the known issues in this release:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
-| Deployment <!--33390832--> | Deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. |  |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions are not yet installed. | If you face this issue, retry the deployment. |
 | Deployment <!--33392176--> |  Deployment fails with PSTerminatingError. | If you face this issue, retry the deployment. |
-| Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` | To work around this issue, run the following on each node:<br><br>`$ComposedImageRegistryKeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\ComposedBuildInfo\Parameters"`<br>`$ComposedBuildIdKey = "COMPOSED_BUILD_ID"`<br>`$ComposedBuildIdValue = "11.2504.0.3141"`<br><br>`if (!(Test-Path -Path $ComposedImageRegistryKeyPath))`<br>`{`<br>` Write-Host "Creating registry key $($RegKeyPath) with key $($ComposedBuildIdKey)";`<br>`New-Item -Path $ComposedImageRegistryKeyPath -Force | Out-Null;`<br>`New-ItemProperty -Path $ComposedImageRegistryKeyPath -Name $ComposedBuildIdKey -PropertyType String -Force | Out-Null;`<br>`Set-ItemProperty -Path $ComposedImageRegistryKeyPath -Name $ComposedBuildIdKey -Value $ComposedBuildIdValue`<br>`Write-Host "Set registry with value $($ComposedBuildIdValue)"`<br><br>`}` |
+| Update <!--33470082--> |  Solution update fails with the error: `Unable to install solution update "11.2506.1001.24" - Type 'UpdateFOD' of Role 'ComposedImageUpdate' raised an exception.` | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/SolutionUpdate-UpdateFOD.md). |
+| Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` |  |
+| Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | Wait for CAU run to complete (wait for `Get-CauRun` to report `RunNotInProgress`) and resume the update. |
 
 ## Known issues from previous releases
 
