@@ -3,7 +3,7 @@ title: Troubleshoot common issues in AKS enabled by Azure Arc
 description: Learn about common issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 06/18/2025
+ms.date: 06/27/2025
 ms.author: sethm 
 ms.lastreviewed: 04/01/2025
 ms.reviewer: abha
@@ -45,7 +45,7 @@ The following sections describe known issues for AKS enabled by Azure Arc:
 | Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) | 
 | Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
-| BGP with FRR not working | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
+| Network validation | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
 
 ## Next steps
 
