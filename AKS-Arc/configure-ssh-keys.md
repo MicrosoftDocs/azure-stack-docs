@@ -80,4 +80,4 @@ For information about error messages that can occur when you create and deploy a
 - [Connect to Windows or Linux worker nodes with SSH](ssh-connect-to-windows-and-linux-worker-nodes.md)
 - [Restrict SSH access to specific IP addresses](restrict-ssh-access.md)
 - [Get on-demand logs for troubleshooting](get-on-demand-logs.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml).

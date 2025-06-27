@@ -155,4 +155,4 @@ The following table contains a summary of how users can authenticate to Kubernet
 
 - To get started with Kubernetes RBAC for Kubernetes authorization, see [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-local.md)
 - To get started with Azure RBAC for Kubernetes authorization, see [Use Azure RBAC for Kubernetes Authorization](azure-rbac-local.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.yml&bc=/azure/aks/aksarc/breadcrumb/toc.yml).
