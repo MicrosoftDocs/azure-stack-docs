@@ -31,7 +31,7 @@ For the 2506 release of Azure Local, Microsoft released two security updates: on
 | New deployments    | 12.2506.1001.27         | 26100.4349        |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2506.1001.23** build. You can also update an existing deployment from 2504 using **11.2506.1001.22**.
+> The new deployments of this software use the **12.2506.1001.27** build. You can also update an existing deployment from 2504 using **11.2506.1001.26**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release note issues carried over from previous versions.
 
